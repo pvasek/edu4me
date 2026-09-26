@@ -1,0 +1,217 @@
+/* Shared bits for the element games (prefix g-sh-). */
+.g-sh-root {
+  display: grid;
+  gap: var(--space-4);
+  width: 100%;
+  min-width: 0;
+}
+.g-sh-instr {
+  font: 600 15px/1.4 var(--font-body);
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ---------- HUD ---------- */
+.g-sh-hud {
+  display: grid;
+  gap: var(--space-2);
+}
+.g-sh-hud-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.g-sh-hud-chip {
+  font-size: 14px;
+  padding: 5px 11px;
+}
+.g-sh-hud-chip b {
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+.g-sh-hud-score {
+  background: var(--highlight);
+  color: var(--ink);
+}
+.g-sh-hud-score svg {
+  color: var(--accent);
+}
+.g-sh-hud-bar {
+  height: 8px;
+}
+.g-sh-bumpnum {
+  display: inline-block;
+}
+
+/* ---------- feedback ---------- */
+.g-sh-fb {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: 10px 14px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  font: 600 15.5px/1.45 var(--font-body);
+}
+.g-sh-fb-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 99px;
+  border: var(--bw) solid var(--edge);
+  background: var(--surface);
+}
+.g-sh-fb-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 3;
+}
+.g-sh-fb-text {
+  min-width: 0;
+  padding-top: 2px;
+}
+.g-sh-fb-good {
+  background: var(--good-soft);
+}
+.g-sh-fb-good .g-sh-fb-icon {
+  background: var(--good);
+  color: var(--surface);
+}
+.g-sh-fb-bad {
+  background: var(--bad-soft);
+}
+.g-sh-fb-bad .g-sh-fb-icon {
+  background: var(--bad);
+  color: var(--surface);
+}
+.g-sh-fb-warn {
+  background: var(--warn-soft);
+}
+.g-sh-fb-warn .g-sh-fb-icon {
+  background: var(--warn);
+  color: var(--surface);
+}
+.g-sh-fb-info {
+  background: var(--info-soft);
+}
+
+/* ---------- inputs ---------- */
+.g-sh-input {
+  appearance: none;
+  width: 100%;
+  min-width: 0;
+  min-height: 50px;
+  padding: 10px 14px;
+  background: var(--surface);
+  color: var(--ink);
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  font: 600 18px/1.2 var(--font-mono);
+  box-shadow: inset 2px 2px 0 var(--surface-2);
+}
+.g-sh-input::placeholder {
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+.g-sh-input:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 1px;
+}
+
+/* segmented toggle */
+.g-sh-seg {
+  display: inline-flex;
+  padding: 3px;
+  gap: 3px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+}
+.g-sh-seg button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  min-height: 36px;
+  padding: 4px 14px;
+  border-radius: calc(var(--r-sm) - 3px);
+  font: 700 14px/1 var(--font-body);
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+.g-sh-seg button[aria-pressed='true'] {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 0 0 1.5px var(--edge);
+}
+
+/* ---------- legacy CSS feedback classes for useAnim() (new code: useJolt / motion) ---------- */
+.g-sh-shake0 {
+  animation: g-sh-shake-a 0.3s ease;
+}
+.g-sh-shake1 {
+  animation: g-sh-shake-b 0.3s ease;
+}
+.g-sh-pop0 {
+  animation: g-sh-pop-a 0.35s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+.g-sh-pop1 {
+  animation: g-sh-pop-b 0.35s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+@keyframes g-sh-shake-a {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(7px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(3px); }
+}
+@keyframes g-sh-shake-b {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(7px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(3px); }
+}
+@keyframes g-sh-pop-a {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+@keyframes g-sh-pop-b {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+.g-sh-points {
+  position: absolute;
+  right: 12px;
+  top: -6px;
+  font: 800 22px/1 var(--font-display);
+  color: var(--good);
+  pointer-events: none;
+}
+
+/* prompt card with mascot */
+.g-sh-prompt {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+}
+.g-sh-prompt-body {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+.g-sh-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}

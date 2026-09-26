@@ -1,0 +1,237 @@
+/* Funkční skupiny (prefix g-fg-) */
+.g-fg {
+  display: grid;
+  gap: var(--space-4);
+  width: 100%;
+  min-width: 0;
+}
+.g-fg-instr {
+  margin: 0;
+  font: 600 15px/1.4 var(--font-body);
+  color: var(--ink-soft);
+}
+.g-fg-streak {
+  background: var(--accent-soft);
+}
+.g-fg-streak svg {
+  color: var(--accent);
+}
+
+.g-fg-card {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-4) var(--space-4);
+  overflow: hidden;
+  min-width: 0;
+}
+.g-fg-timer {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  background: var(--surface-2);
+}
+.g-fg-timer span {
+  display: block;
+  height: 100%;
+  background: var(--muted);
+  transform-origin: left center;
+  transition: background 0.4s;
+}
+.g-fg-timer.is-calm span {
+  background: var(--green);
+}
+.g-fg-timer.is-hurry span {
+  background: var(--yellow);
+}
+.g-fg-timer.is-urgent span {
+  background: var(--bad);
+}
+.g-fg-head {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: 4px;
+}
+.g-fg-q {
+  margin: 0;
+  font: 700 16px/1.35 var(--font-body);
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ---------- prompt ---------- */
+.g-fg-formula {
+  font-style: normal;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  max-width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--r);
+  background: var(--surface-2);
+  font: 700 clamp(22px, 6.4vw, 34px) / 1.25 var(--font-mono);
+  color: var(--ink);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.g-fg-formula .chem {
+  white-space: normal;
+}
+.g-fg-art {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--r);
+  background: var(--surface-2);
+  font: 700 clamp(19px, 5.4vw, 26px) / 1.15 var(--font-mono);
+  color: var(--ink);
+  max-width: 100%;
+  overflow-x: auto;
+}
+.g-fg-ring {
+  display: grid;
+  place-items: center;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--r);
+  background: var(--surface-2);
+}
+.g-fg-ring svg {
+  height: 110px;
+  width: auto;
+  overflow: visible;
+}
+.g-fg-ring-hex {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3.2;
+  stroke-linejoin: round;
+}
+.g-fg-ring-pi {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.4;
+}
+.g-fg-ring-sub {
+  font: 700 24px/1 var(--font-mono);
+  fill: var(--ink);
+}
+
+/* ---------- options ---------- */
+.g-fg-opts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+.g-fg-opt {
+  appearance: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 60px;
+  padding: 10px 12px;
+  text-align: left;
+  background: var(--surface);
+  color: var(--ink);
+  border: var(--bw) solid var(--edge);
+  border-bottom-width: calc(var(--bw) + 3px);
+  border-radius: var(--r);
+  font: 700 16px/1.2 var(--font-body);
+  cursor: pointer;
+  transition: border-bottom-width 0.08s ease, background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.g-fg-opt:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+.g-fg-opt:active:not(:disabled) {
+  border-bottom-width: var(--bw);
+}
+.g-fg-opt:disabled {
+  cursor: default;
+}
+.g-fg-key {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1.5px solid var(--line);
+  font: 700 12px/1 var(--font-mono);
+  color: var(--muted);
+}
+.g-fg-opt-label {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.g-fg-opt-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 99px;
+  border: var(--bw) solid var(--edge);
+  color: var(--surface);
+}
+.g-fg-opt-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 3;
+}
+.g-fg-opt.is-correct {
+  background: var(--good-soft);
+  border-color: var(--good);
+}
+.g-fg-opt.is-correct .g-fg-opt-icon {
+  background: var(--good);
+}
+.g-fg-opt.is-wrong {
+  background: var(--bad-soft);
+  border-color: var(--bad);
+}
+.g-fg-opt.is-wrong .g-fg-opt-icon {
+  background: var(--bad);
+}
+
+.g-fg-prompt {
+  display: grid;
+  place-items: center;
+  max-width: 100%;
+}
+.g-fg-after {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-fg-explain {
+  display: grid;
+  gap: 4px;
+}
+.g-fg-explain p {
+  margin: 0;
+}
+.g-fg-explain-alt {
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+.g-fg-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 400px) {
+  .g-fg-opt {
+    font-size: 15px;
+    padding: 8px 10px;
+  }
+  .g-fg-key {
+    display: none;
+  }
+}

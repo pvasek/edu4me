@@ -1,0 +1,1005 @@
+/* =====================================================================
+   Lesson diagrams (src/diagrams). Theme colours come only from tokens in
+   src/ui/theme.css; subject colours (pH, flames, metals, GHS) are literal.
+   Engraving look: thin ink lines, double rules, hatched fills, italic
+   display-font annotations.
+   ===================================================================== */
+
+.dg {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  color: var(--ink);
+}
+.dg-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 520px;
+  overflow: visible;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dg-fallback {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1.5px dashed var(--line);
+  border-radius: var(--r-sm);
+  color: var(--muted);
+  font: 500 14px/1.4 var(--font-body);
+}
+
+/* ---------------------------------------------------------------- text */
+.dg-t {
+  font: 500 14px var(--font-body);
+  fill: var(--ink);
+}
+.dg-small {
+  font-size: 12.5px;
+}
+.dg-tiny {
+  font-size: 11px;
+}
+.dg-strong {
+  font-weight: 700;
+}
+.dg-muted {
+  fill: var(--muted);
+}
+.dg-ink {
+  fill: var(--ink);
+}
+.dg-mono {
+  font-family: var(--font-mono);
+  fill: var(--ink);
+  font-size: 13px;
+}
+.dg-mono.dg-small {
+  font-size: 12px;
+}
+.dg-tick {
+  font-size: 11px;
+  fill: var(--ink-soft);
+}
+/* annotations: italic display face, like an engraved plate caption */
+.dg-note {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 17px;
+  fill: var(--ink-soft);
+}
+.dg-strong-note {
+  font-weight: 700;
+  fill: var(--ink);
+  font-size: 18px;
+}
+.dg-sym {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 36px;
+  fill: var(--ink);
+}
+.dg-accent-t,
+.dg-heat-t {
+  fill: var(--accent);
+}
+.dg-blue-t,
+.dg-cool-t,
+.dg-water-t {
+  fill: var(--blue);
+}
+.dg-cat-t {
+  fill: var(--teal);
+}
+.dg-ea-t {
+  fill: var(--ink);
+}
+
+/* ---------------------------------------------------------------- lines */
+.dg-outline {
+  stroke: var(--edge);
+  stroke-width: 1.75;
+}
+.dg-outline-thin {
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.dg-rule {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.dg-rule-fill {
+  fill: var(--surface);
+}
+.dg-box {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.75;
+}
+.dg-hatch {
+  stroke: none;
+  pointer-events: none;
+}
+.dg-hatch-line {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.45;
+}
+.dg-hatch-dark .dg-hatch-line,
+.dg-hatch-dark {
+  opacity: 0.75;
+}
+.dg-arrow line {
+  stroke: var(--edge);
+  stroke-width: 1.75;
+  fill: none;
+}
+.dg-arrow polygon {
+  fill: var(--edge);
+}
+.dg-arrow-thin line {
+  stroke-width: 1.3;
+}
+.dg-axis line {
+  stroke-width: 1.5;
+}
+.dg-heat line {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+.dg-heat polygon {
+  fill: var(--accent);
+}
+.dg-cool line {
+  stroke: var(--blue);
+  stroke-width: 2.5;
+}
+.dg-cool polygon {
+  fill: var(--blue);
+}
+.dg-axis-line {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+}
+.dg-grid {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.dg-guide {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 4;
+}
+.dg-guide-solid {
+  stroke-dasharray: none;
+  stroke: var(--edge);
+}
+.dg-leader {
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+}
+.dg-leader-dot {
+  fill: var(--ink-soft);
+}
+.dg-curve {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.dg-curve-main {
+  stroke: var(--accent);
+}
+.dg-curve-a {
+  stroke: var(--accent);
+}
+.dg-curve-b {
+  stroke: var(--blue);
+}
+.dg-curve-cat {
+  stroke: var(--teal);
+  stroke-dasharray: 7 5;
+  stroke-width: 2.2;
+}
+.dg-cat line {
+  stroke: var(--teal);
+}
+.dg-cat polygon {
+  fill: var(--teal);
+}
+.dg-dh line {
+  stroke: var(--accent);
+  stroke-width: 2.2;
+}
+.dg-dh polygon {
+  fill: var(--accent);
+}
+.dg-tangent {
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 4;
+}
+.dg-point {
+  fill: var(--accent);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+}
+.dg-point-alt {
+  fill: var(--surface);
+}
+.dg-point-live {
+  fill: var(--blue);
+}
+
+/* ---------------------------------------------------------------- bohr */
+.dg-shell-ring {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.dg-shell-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 14;
+  pointer-events: stroke;
+}
+.dg-shell:hover .dg-shell-ring {
+  stroke: var(--accent);
+  stroke-width: 2.2;
+}
+.dg-electron {
+  fill: var(--blue);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.dg-orbit {
+  transform-box: view-box;
+  transform-origin: 180px 180px;
+  animation: dg-spin var(--dur, 16s) linear infinite;
+}
+.dg-shell:hover .dg-orbit {
+  animation-play-state: paused;
+}
+@keyframes dg-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.dg-pill rect {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.dg-pill text {
+  font: 700 12px var(--font-mono);
+  fill: var(--ink);
+}
+.dg-nucleus {
+  fill: var(--accent-soft);
+  stroke: var(--edge);
+  stroke-width: 1.75;
+}
+.dg-nucleus-plate {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+
+/* ---------------------------------------------------------------- states */
+.dg-particle {
+  fill: var(--cat-nonmetal);
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.dg-liquid-bg {
+  fill: var(--info-soft);
+}
+.dg-vib {
+  animation: dg-vib 0.4s ease-in-out infinite alternate;
+}
+@keyframes dg-vib {
+  from {
+    transform: translate(-1.3px, 0.7px);
+  }
+  to {
+    transform: translate(1.3px, -0.7px);
+  }
+}
+.dg-slide {
+  animation: dg-slide 2.4s ease-in-out infinite alternate;
+}
+@keyframes dg-slide {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(var(--dx, 4px), var(--dy, 0px));
+  }
+}
+.dg-fly {
+  animation: dg-fly 3s linear infinite;
+}
+@keyframes dg-fly {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(var(--x1), var(--y1));
+  }
+  50% {
+    transform: translate(var(--x2), var(--y2));
+  }
+  75% {
+    transform: translate(var(--x3), var(--y3));
+  }
+}
+
+/* ---------------------------------------------------------------- pH */
+.dg-ph-num {
+  font-size: 11.5px;
+  font-weight: 700;
+}
+.dg-mark-dot {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+}
+.dg-mark {
+  cursor: default;
+  outline: none;
+}
+.dg-mark:hover .dg-note,
+.dg-mark:focus .dg-note {
+  fill: var(--accent);
+}
+.dg-mark:hover .dg-mark-dot,
+.dg-mark:focus .dg-mark-dot {
+  fill: var(--accent);
+}
+
+/* ---------------------------------------------------------------- periodic */
+.dg-pt {
+  container-type: inline-size;
+}
+.dg-pt .dg-svg {
+  max-width: 620px;
+}
+.dg-pt-cell {
+  transition: opacity 0.15s;
+}
+.dg-pt-edge {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.dg-pt-sym {
+  font: 700 9.5px var(--font-body);
+}
+.dg-pt-gnum {
+  font: 500 8.5px var(--font-mono);
+  fill: var(--muted);
+}
+.dg-dim {
+  opacity: 0.18;
+}
+.dg-stair {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linecap: square;
+}
+.dg-pt-block text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 26px;
+  fill: var(--cat-ink);
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+@container (max-width: 440px) {
+  .dg-pt-sym,
+  .dg-pt-gnum {
+    display: none;
+  }
+}
+.dg-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  font: 500 13px/1.25 var(--font-body);
+}
+.dg-legend-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  padding: 3px 9px;
+  border: 1.5px solid var(--line);
+  border-radius: 99px;
+  background: var(--surface);
+  cursor: pointer;
+  font: inherit;
+  color: var(--ink);
+}
+.dg-legend-btn:hover,
+.dg-legend-btn.is-on {
+  border-color: var(--edge);
+}
+.dg-legend-static {
+  display: grid;
+  justify-content: start;
+  gap: 4px;
+}
+.dg-legend-static li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dg-legend-arrow {
+  font-weight: 800;
+  min-width: 2.2em;
+}
+.dg-legend-arrow.dg-heat-t {
+  color: var(--accent);
+}
+.dg-legend-arrow.dg-cool-t {
+  color: var(--blue);
+}
+.dg-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1.2px solid var(--edge);
+  border-radius: 3px;
+  flex: none;
+}
+.dg-swatch-grad {
+  width: 2.2em;
+  background: linear-gradient(90deg, var(--surface), var(--accent));
+}
+
+/* ---------------------------------------------------------------- energy / titration */
+.dg-ea line {
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+.dg-ea polygon {
+  fill: var(--ink);
+}
+.dg-touch {
+  touch-action: pan-y;
+  cursor: crosshair;
+}
+.dg-readout rect {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.dg-readout text {
+  font: 700 12.5px var(--font-mono);
+  fill: var(--ink);
+}
+.dg-guide-live {
+  stroke: var(--blue);
+}
+
+/* ---------------------------------------------------------------- orbitals */
+.dg-orb {
+  justify-items: stretch;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.dg-orb-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font: 500 14px var(--font-body);
+}
+.dg-orb-sym {
+  font: 700 26px/1 var(--font-display);
+}
+.dg-orb-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 16px;
+  align-items: flex-end;
+}
+.dg-orb-sub {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.dg-orb-boxes {
+  display: flex;
+}
+.dg-orb-box {
+  width: 30px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border: 1.75px solid var(--edge);
+  background: var(--surface);
+}
+.dg-orb-box + .dg-orb-box {
+  border-left-width: 0;
+}
+.dg-orb-lab {
+  font: 700 13px var(--font-mono);
+  color: var(--ink-soft);
+}
+.dg-spin {
+  width: 9px;
+  height: 26px;
+  overflow: visible;
+}
+.dg-spin path {
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.dg-spin-up path {
+  stroke: var(--blue);
+}
+.dg-spin-down path {
+  stroke: var(--accent);
+}
+.dg-orb-cfg {
+  font: 600 17px/1.5 var(--font-mono);
+  word-spacing: 0.15em;
+}
+.dg-orb-note {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  align-items: baseline;
+  font: 500 14px var(--font-body);
+  color: var(--ink-soft);
+}
+.dg-orb-note .hand {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+/* ---------------------------------------------------------------- lab apparatus */
+.dg-glass {
+  fill: var(--surface);
+  fill-opacity: 0.35;
+  stroke: var(--edge);
+  stroke-width: 1.75;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.dg-glass-open {
+  fill: none;
+}
+.dg-tube {
+  fill-opacity: 1;
+}
+.dg-jacket {
+  fill: #74c0fc;
+  fill-opacity: 0.35;
+  stroke: var(--edge);
+  stroke-width: 1.75;
+}
+.dg-vapour {
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+  stroke-dasharray: 2 5;
+  fill: none;
+  animation: dg-flow 1s linear infinite;
+}
+.dg-water {
+  fill: #74c0fc;
+  fill-opacity: 0.45;
+}
+.dg-mud {
+  fill: #b08050;
+  fill-opacity: 0.55;
+}
+.dg-mud-light {
+  fill-opacity: 0.35;
+}
+.dg-grain,
+.dg-sediment {
+  fill: #7a5230;
+  stroke: var(--edge);
+  stroke-width: 0.6;
+}
+.dg-sediment {
+  fill-opacity: 0.85;
+}
+.dg-metal {
+  fill: var(--surface-3);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+}
+.dg-rod,
+.dg-leg {
+  stroke: var(--edge);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.dg-leg {
+  stroke-width: 2.4;
+}
+.dg-ring {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2.4;
+}
+.dg-paper {
+  fill: var(--surface);
+  stroke: var(--ink-soft);
+  stroke-width: 1.3;
+}
+.dg-paper-fold {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  fill: none;
+}
+.dg-stopper {
+  fill: var(--ink-soft);
+}
+.dg-drop {
+  fill: #339af0;
+  stroke: var(--edge);
+  stroke-width: 0.6;
+}
+.dg-drip {
+  transform-box: fill-box;
+  animation: dg-drip 1.5s ease-in infinite;
+}
+.dg-drip-long {
+  animation-name: dg-drip-long;
+}
+@keyframes dg-drip {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(38px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(42px);
+    opacity: 0;
+  }
+}
+@keyframes dg-drip-long {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(54px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(58px);
+    opacity: 0;
+  }
+}
+.dg-bubble {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+  animation: dg-bubble 2s ease-in infinite;
+}
+@keyframes dg-bubble {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+}
+.dg-flame {
+  animation: dg-flicker 0.35s ease-in-out infinite alternate;
+}
+@keyframes dg-flicker {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(0.94, 1.07);
+  }
+}
+.dg-waterflow {
+  stroke: var(--blue);
+  stroke-width: 2.4;
+  stroke-dasharray: 5 4;
+  animation: dg-flow 0.8s linear infinite;
+}
+.dg-waterhead {
+  fill: var(--blue);
+}
+@keyframes dg-flow {
+  to {
+    stroke-dashoffset: -9;
+  }
+}
+.dg-pencil {
+  stroke: var(--ink-soft);
+  stroke-width: 1.3;
+  stroke-dasharray: 3 3;
+}
+.dg-front {
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-dasharray: 5 3;
+}
+.dg-wet {
+  fill: #74c0fc;
+  fill-opacity: 0.18;
+}
+.dg-replay {
+  justify-self: center;
+}
+.dg-glassrod {
+  stroke: var(--edge);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+.dg-stream {
+  fill: none;
+  stroke: #339af0;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 8 5;
+  animation: dg-flow 0.7s linear infinite;
+}
+.dg-steam {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  opacity: 0.7;
+  animation: dg-steam 2.2s ease-out infinite;
+}
+@keyframes dg-steam {
+  0% {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-8px);
+    opacity: 0.35;
+  }
+}
+.dg-crystal {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.dg-dish {
+  fill-opacity: 0.6;
+}
+
+/* ---------------------------------------------------------------- galvanic */
+.dg-bridge-out {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 20;
+  stroke-linejoin: round;
+}
+.dg-bridge-in {
+  fill: none;
+  stroke: var(--surface-2);
+  stroke-width: 16.5;
+  stroke-linejoin: round;
+}
+.dg-wire {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+}
+.dg-wire-head {
+  fill: var(--edge);
+}
+.dg-electrons {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 0.1 18;
+}
+.dg-badge {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+}
+.dg-badge-t {
+  font: 800 18px var(--font-body);
+  fill: var(--ink);
+}
+
+/* ---------------------------------------------------------------- rate / collisions */
+.dg-rate {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+.dg-rate > .dg-svg:first-child {
+  flex: 1 1 300px;
+  max-width: 480px;
+}
+.dg-rate > .dg-collide {
+  flex: 0 1 200px;
+  max-width: 220px;
+  border: 1px solid var(--edge);
+  outline: 1px solid var(--edge);
+  outline-offset: 3px;
+  border-radius: 4px;
+  background: var(--surface);
+}
+.dg-ball {
+  stroke: var(--edge);
+  stroke-width: 1.4;
+}
+.dg-ball-a {
+  fill: var(--accent);
+}
+.dg-ball-b {
+  fill: var(--blue);
+}
+.dg-spark {
+  fill: var(--yellow);
+  stroke: var(--edge);
+  stroke-width: 1;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dg-spark 3.2s ease-out infinite;
+}
+.dg-hit-a {
+  animation: dg-hit-a 3.2s ease-in-out infinite;
+}
+.dg-hit-b {
+  animation: dg-hit-b 3.2s ease-in-out infinite;
+}
+.dg-miss-a {
+  animation: dg-miss-a 3.2s ease-in-out infinite;
+}
+.dg-miss-b {
+  animation: dg-miss-b 3.2s ease-in-out infinite;
+}
+@keyframes dg-hit-a {
+  0% {
+    transform: translateX(-58px);
+  }
+  40%,
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes dg-hit-b {
+  0% {
+    transform: translateX(58px);
+  }
+  40%,
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes dg-spark {
+  0%,
+  38% {
+    transform: scale(0);
+  }
+  48% {
+    transform: scale(1.25);
+  }
+  60%,
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes dg-miss-a {
+  0% {
+    transform: translateX(-14px);
+  }
+  40% {
+    transform: translateX(44px);
+  }
+  85%,
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes dg-miss-b {
+  0% {
+    transform: translateX(14px);
+  }
+  40% {
+    transform: translateX(-44px);
+  }
+  85%,
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ---------------------------------------------------------------- GHS */
+.dg-ghs-wrap {
+  justify-items: stretch;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.dg-ghs-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 8px;
+}
+.dg-ghs-btn {
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 4px;
+  padding: 8px 4px 10px;
+  border: 1.5px solid transparent;
+  border-radius: var(--r);
+  background: transparent;
+  cursor: pointer;
+  color: var(--ink);
+  font: 600 13px/1.25 var(--font-body);
+  text-align: center;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+.dg-ghs-btn:hover {
+  background: var(--surface-2);
+}
+.dg-ghs-btn.is-on {
+  border-color: var(--edge);
+  background: var(--surface);
+}
+.dg-ghs-btn:active {
+  transform: scale(0.97);
+}
+.dg-ghs {
+  width: 72px;
+  height: 72px;
+}
+.dg-ghs-info {
+  min-height: 3em;
+  padding: 8px 12px;
+  border-top: 1px solid var(--edge);
+  border-bottom: 1px solid var(--edge);
+  font: 500 15px/1.45 var(--font-body);
+}
