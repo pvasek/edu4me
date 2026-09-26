@@ -37,6 +37,13 @@
 .g-sh-hud-score svg {
   color: var(--accent);
 }
+.g-sh-hud-level {
+  background: var(--info-soft);
+  color: var(--ink);
+}
+.g-sh-hud-level svg {
+  color: var(--blue);
+}
 .g-sh-hud-bar {
   height: 8px;
 }

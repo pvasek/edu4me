@@ -6,6 +6,8 @@ import { useProgress, type ProgressState } from '../core/progress'
 import type { Course, LevelOutline } from '../core/types'
 import { gamesForLevel } from '../games/registry'
 import { BY_SYMBOL } from '../courses/chemie/data/elements'
+import { ChemIconView } from '../illustrations/ChemIcon'
+import { LevelVignette } from '../illustrations/vignettes/LevelVignette'
 import { Icon } from '../ui/Icon'
 import { Mascot } from '../ui/Mascot'
 import { Bar, MLink, Page } from '../ui/anim'
@@ -149,9 +151,10 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
-        <span className="atlas-aside-z tabnum">{BY_SYMBOL[level.symbol]?.z}</span>
-        <span className="atlas-aside-sym">{level.symbol}</span>
-        <span className="atlas-aside-name">{BY_SYMBOL[level.symbol]?.name}</span>
+        <LevelVignette level={level.number} size={230} />
+        <span className="atlas-aside-name">
+          {BY_SYMBOL[level.symbol]?.name} · <span className="atlas-aside-sym-inline">{level.symbol}</span>
+        </span>
         <span className="atlas-aside-caption">
           Tabule {['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'][level.number - 1]}
         </span>
@@ -191,7 +194,7 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
                 to={`/c/${courseId}/l/${level.id}/${ls.id}`}
                 className={`atlas-lesson${done[i] ? ' done' : ''}${i === nextIdx ? ' next' : ''}`}
               >
-                <span className="atlas-lesson-mark">{done[i] ? <Icon name="check" width={15} height={15} /> : i + 1}</span>
+                <span className="atlas-lesson-mark">{done[i] ? <Icon name="check" width={15} height={15} /> : <ChemIconView name={ls.icon} size={16} />}</span>
                 <span className="atlas-lesson-title">{ls.title}</span>
                 <span className="atlas-lesson-min tabnum">{ls.minutes} min</span>
               </Link>

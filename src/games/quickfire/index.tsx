@@ -1,17 +1,15 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, animate, motion, useMotionValue } from 'motion/react'
-import type { GameProps } from '../types'
-import type { Question } from '../../core/types'
+import { levelNum, type GameProps } from '../types'
 import { shuffle } from '../../core/check'
 import { Md } from '../../core/markup'
-import { loadQuestionPool } from '../../core/questionPool'
 import { chemie } from '../../courses/chemie'
 import { Icon } from '../../ui/Icon'
 import { Mascot, MascotSays, type Mood } from '../../ui/Mascot'
 import { bump, ease, popIn, rise, shake, slide, spring } from '../../ui/motion'
+import { playLevel, quickfirePool, type QfItem } from './pool'
 import './quickfire.css'
 
-type QfQuestion = Extract<Question, { kind: 'choice' | 'tf' }>
 type Phase = 'loading' | 'empty' | 'play' | 'over'
 
 const DURATION = 60_000
@@ -39,8 +37,10 @@ interface Feedback {
 
 export default function Quickfire({ levelId, onFinish }: GameProps) {
   const [phase, setPhase] = useState<Phase>('loading')
-  const pool = useRef<QfQuestion[]>([])
-  const [question, setQuestion] = useState<QfQuestion | null>(null)
+  const pool = useRef<QfItem[]>([])
+  const [item, setItem] = useState<QfItem | null>(null)
+  const question = item?.question ?? null
+  const level = levelNum(playLevel(levelId))
   const [qKey, setQKey] = useState(0)
   const [left, setLeft] = useState(DURATION)
   const [score, setScore] = useState(0)
@@ -49,8 +49,8 @@ export default function Quickfire({ levelId, onFinish }: GameProps) {
   const [perfect, setPerfect] = useState(0)
   const [feedback, setFeedback] = useState<Feedback | null>(null)
   const finished = useRef(false)
-  const queue = useRef<QfQuestion[]>([])
-  const last = useRef<QfQuestion | null>(null)
+  const queue = useRef<QfItem[]>([])
+  const last = useRef<QfItem | null>(null)
   const advanceTimer = useRef<number | undefined>(undefined)
   const result = useRef({ score: 0, perfect: 0 })
   const ringOffset = useMotionValue(0)
@@ -73,7 +73,7 @@ export default function Quickfire({ levelId, onFinish }: GameProps) {
     }
     const q = queue.current.shift() ?? null
     last.current = q
-    setQuestion(q)
+    setItem(q)
     setQKey((k) => k + 1)
     setFeedback(null)
   }, [])
@@ -81,13 +81,11 @@ export default function Quickfire({ levelId, onFinish }: GameProps) {
   // Load the question pool.
   useEffect(() => {
     let alive = true
-    loadQuestionPool(chemie, { upToLevel: levelId, kinds: ['choice', 'tf'] })
+    quickfirePool(chemie, levelId)
       .catch(() => [])
       .then((items) => {
         if (!alive) return
         pool.current = items
-          .map((i) => i.question)
-          .filter((q): q is QfQuestion => (q.kind === 'choice' && q.options.length >= 2) || q.kind === 'tf')
         if (!pool.current.length) {
           setPhase('empty')
           return
@@ -208,7 +206,12 @@ export default function Quickfire({ levelId, onFinish }: GameProps) {
 
   return (
     <div className="g-qf">
-      <p className="g-qf-instr">Odpovídej jedním klepnutím. Tři správně v řadě a body se násobí!</p>
+      <div className="g-qf-top">
+        <p className="g-qf-instr">Odpovídej jedním klepnutím. Tři správně v řadě a body se násobí!</p>
+        <span className="chip chip-soft g-qf-level" title={level ? `Otázky z úrovně ${level}` : 'Otázky ze všech úrovní'}>
+          <Icon name="book" /> {level ? `Úroveň ${level}` : 'Vše'}
+        </span>
+      </div>
 
       <div className="g-qf-hud">
         <div
@@ -295,6 +298,11 @@ export default function Quickfire({ levelId, onFinish }: GameProps) {
               animate="center"
               exit="exit"
             >
+              {item?.review && (
+                <span className="g-qf-review" title="Otázka z předchozí úrovně">
+                  <Icon name="refresh" /> opakování
+                </span>
+              )}
               <div className="g-qf-q">
                 <Md text={question.q} />
               </div>

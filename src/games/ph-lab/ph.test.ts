@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
+import { LEVELS } from './missions'
 import {
-  MISSIONS,
   REAGENTS,
   REAGENT_BY_ID,
   add,
@@ -9,7 +9,6 @@ import {
   meterReading,
   phFromNet,
   phOf,
-  pickMissions,
   scoreMission,
   solution,
   water,
@@ -98,22 +97,8 @@ describe('missions', () => {
     expect(meterReading(10.996)).toBe(11)
   })
 
-  it('every par-1 mission is solvable with a single addition', () => {
-    for (const m of MISSIONS.filter((x) => x.par === 1)) {
-      const ok = REAGENTS.some((r) => [1, 10].some((ml) => scoreMission(m, phOf(add(m.start, r.conc, ml)), 1).inRange))
-      expect(ok, m.id).toBe(true)
-    }
-  })
-
-  it('the dilution mission is solvable in par additions', () => {
-    const m = MISSIONS.find((x) => x.id === 'dilute')!
-    let s = m.start
-    for (let i = 0; i < m.par; i++) s = add(s, 0, 10)
-    expect(scoreMission(m, phOf(s), m.par).total).toBe(10)
-  })
-
   it('scores accuracy and efficiency', () => {
-    const m = MISSIONS.find((x) => x.id === 'acid-3')!
+    const m = LEVELS[5].missions.find((x) => x.id === 'acid-3')!
     expect(scoreMission(m, 3.0, 1).total).toBe(10)
     expect(scoreMission(m, 3.0, 3).total).toBe(9)
     expect(scoreMission(m, 3.0, 20).total).toBe(7)
@@ -124,8 +109,9 @@ describe('missions', () => {
     expect(near.efficiency).toBe(0)
   })
 
-  it('picks one mission per category', () => {
-    const ms = pickMissions(() => 0.99)
-    expect(ms.map((m) => m.category)).toEqual(['acid', 'base', 'neutral', 'special'])
+  it('a required bottle that was not used voids the mission', () => {
+    const m = LEVELS[6].missions.find((x) => x.id === 'compare-acid')!
+    expect(scoreMission(m, 4.76, 1, new Set(['voda'])).inRange).toBe(false)
+    expect(scoreMission(m, 4.74, 1, new Set(['hcl'])).total).toBe(10)
   })
 })

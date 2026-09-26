@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
 import { AnimatePresence, LayoutGroup, motion, useAnimate } from 'motion/react'
-import type { GameProps } from '../types'
+import { levelNum, type GameProps } from '../types'
 import { Md } from '../../core/markup'
 import { Icon } from '../../ui/Icon'
 import { Mascot, type Mood } from '../../ui/Mascot'
@@ -8,10 +8,9 @@ import { bump, fadeUp, popIn, rise, shake, slide, spring, stagger } from '../../
 import { parseFormula } from '../../courses/chemie/data/formula'
 import { Feedback, Hud, PointsPop } from '../shared/GameKit'
 import { useFinishOnce } from '../shared/hooks'
-import { levelNumber } from '../shared/util'
 import { ionMarkup, ionPlain, type Anion, type Cation } from '../shared/ions'
 import { gcd, group } from '../shared/nomenclature'
-import { buildTasks, type Task } from './tasks'
+import { LEVELS, buildTasks, type Task } from './tasks'
 import './ion-builder.css'
 
 const BASE = 10
@@ -38,7 +37,8 @@ function charges(n: number, sign: '+' | '−') {
 }
 
 export default function IonBuilder({ levelId, onFinish }: GameProps) {
-  const level = levelNumber(levelId, 5)
+  const n = levelNum(levelId)
+  const level = n !== undefined && LEVELS[n] ? n : undefined
   const [tasks] = useState(() => buildTasks(level))
   const maxScore = useMemo(() => tasks.reduce((s, _, i) => s + BASE + bonusFor(i + 1), 0), [tasks])
   const finish = useFinishOnce(onFinish)
@@ -188,13 +188,16 @@ export default function IonBuilder({ levelId, onFinish }: GameProps) {
         rounds={tasks.length}
         roundLabel="Úkol"
         extra={
-          <AnimatePresence>
-            {streak >= 2 && (
-              <motion.span className="chip g-ion-streak" key="streak" variants={popIn} initial="hidden" animate="show" exit="hidden">
-                <Icon name="flame" /> kombo {streak}×
-              </motion.span>
-            )}
-          </AnimatePresence>
+          <>
+            <LevelChip level={level} />
+            <AnimatePresence>
+              {streak >= 2 && (
+                <motion.span className="chip g-ion-streak" key="streak" variants={popIn} initial="hidden" animate="show" exit="hidden">
+                  <Icon name="flame" /> kombo {streak}×
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </>
         }
       />
 
@@ -312,6 +315,16 @@ export default function IonBuilder({ levelId, onFinish }: GameProps) {
         )}
       </div>
     </div>
+  )
+}
+
+/** HUD chip: which level's content is being played. */
+function LevelChip({ level }: { level?: number }) {
+  return (
+    <span className="chip g-sh-hud-chip" title={level ? `Sloučeniny z úrovně ${level}` : 'Sloučeniny ze všech úrovní'}>
+      <Icon name={level ? 'book' : 'shuffle'} />
+      <span>{level ? `Úroveň ${level}` : 'Vše'}</span>
+    </span>
   )
 }
 

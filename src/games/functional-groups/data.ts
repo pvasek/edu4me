@@ -193,8 +193,81 @@ export const ITEMS: FgItem[] = [
     name: 'kyselina stearová',
     note: 'Nasycená mastná kyselina ze živočišných tuků.',
   },
-
+  {
+    id: 'b-oleic',
+    kind: 'bio',
+    text: '$CH3–(CH2)7–CH=CH–(CH2)7–COOH$',
+    answer: 'alken + karboxylová kyselina',
+    options: ['alken + karboxylová kyselina', 'aren + karboxylová kyselina', 'alken + ester', 'alkohol + aldehyd'],
+    name: 'kyselina olejová',
+    note: 'Nenasycená mastná kyselina z olivového oleje: dvojná vazba C=C v řetězci a karboxyl na konci.',
+  },
+  {
+    id: 'b-alanine',
+    kind: 'bio',
+    text: '$CH3–CH(NH2)–COOH$',
+    answer: 'amin + karboxylová kyselina',
+    options: ['amin + karboxylová kyselina', 'amid + karboxylová kyselina', 'amin + ester', 'nitrosloučenina + karboxylová kyselina'],
+    name: 'alanin',
+    note: 'Každá aminokyselina má aminoskupinu –NH₂ i karboxyl –COOH; liší se jen postranním řetězcem (tady –CH₃).',
+  },
+  {
+    id: 'b-ribose',
+    kind: 'bio',
+    text: '$CH2OH–(CHOH)3–CHO$',
+    answer: 'aldehyd + alkohol',
+    options: ['aldehyd + alkohol', 'keton + alkohol', 'karboxylová kyselina + alkohol', 'ether + alkohol'],
+    name: 'ribóza (otevřená forma)',
+    note: 'Ribóza je aldopentóza, cukr v nukleotidech RNA. V DNA je deoxyribóza, které chybí jedna skupina –OH.',
+  },
+  {
+    id: 'b-phosphodiester',
+    kind: 'bio',
+    text: '$…–CH2–O–PO2^-–O–CH…$  (páteř DNA)',
+    answer: 'ester',
+    exclude: ['ether'],
+    name: 'fosfodiesterová vazba',
+    note: 'Nukleotidy v DNA a RNA spojuje fosfodiesterová vazba: kyselina fosforečná tvoří ester se dvěma cukry.',
+  },
+  {
+    id: 'b-cholesterol',
+    kind: 'bio',
+    text: '$C27H45–OH$  (steroidní kostra)',
+    answer: 'alkohol',
+    exclude: ['fenol'],
+    name: 'cholesterol',
+    note: 'Cholesterol je steroidní alkohol: skupina –OH sedí na nasyceném uhlíku kruhu, ne na benzenovém jádře.',
+  },
 ]
+
+/** How many items of each kind one round of 10 takes. */
+export type LevelPlan = [FgItem['kind'], number][]
+
+/**
+ * Content per level (see spec/courses/chemie/games.md):
+ * L8 organic functional groups, L9 groups in biomolecules.
+ * Free play ("Vše") mixes both.
+ */
+export const LEVELS: Record<number, LevelPlan> = {
+  8: [
+    ['fragment', 4],
+    ['example', 6],
+  ],
+  9: [
+    ['fragment', 2],
+    ['bio', 8],
+  ],
+}
+
+export const MIX_PLAN: LevelPlan = [
+  ['fragment', 3],
+  ['example', 3],
+  ['bio', 4],
+]
+
+export function planFor(level: number | undefined): LevelPlan {
+  return (level !== undefined && LEVELS[level]) || MIX_PLAN
+}
 
 export function labelOf(answer: string): string {
   return answer in CLASSES ? CLASSES[answer as ClassId].label : answer

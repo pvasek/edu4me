@@ -375,6 +375,31 @@ a.course-card:hover {
 }
 
 /* ============================ level page ============================ */
+.level-hero-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  color: var(--level);
+}
+.level-hero-tile {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+}
+.lesson-node-num {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  border: var(--bw) solid var(--edge);
+  font: 700 12px var(--font-mono);
+}
 .level-hero {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -537,11 +562,13 @@ a.course-card:hover {
 .game-head {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: center;
   gap: 12px;
 }
 .game-intro {
   max-width: 760px;
+  margin: 0 auto;
+  padding: 8px;
 }
 .level-chips {
   gap: 8px;

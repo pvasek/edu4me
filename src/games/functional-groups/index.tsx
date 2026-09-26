@@ -1,73 +1,22 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, animate as animateValue, motion, useAnimate, useMotionValue, type Variants } from 'motion/react'
-import type { GameProps } from '../types'
+import { levelNum, type GameProps } from '../types'
 import { Md } from '../../core/markup'
 import { Icon } from '../../ui/Icon'
 import { Mascot, type Mood } from '../../ui/Mascot'
 import { bump, fadeUp, popIn, shake, spring } from '../../ui/motion'
 import { Feedback, Hud, PointsPop } from '../shared/GameKit'
 import { useFinishOnce, useNow } from '../shared/hooks'
-import { levelNumber, shuffle, timeBonus } from '../shared/util'
-import { CLASSES, CONFUSE, ITEMS, labelOf, type ClassId, type FgItem } from './data'
+import { timeBonus } from '../shared/util'
+import { CLASSES, LEVELS, labelOf, type ClassId, type FgItem } from './data'
+import { buildRounds } from './rounds'
 import './functional-groups.css'
 
 const ROUND_S = 20
 const BASE = 10
 const BONUS = 5
 
-interface Round {
-  item: FgItem
-  options: string[]
-}
-
 type Result = { choice: string | null; correct: boolean; points: number }
-
-function buildRounds(level: number): Round[] {
-  const withBio = level >= 9
-  const byKind = (k: FgItem['kind']) => shuffle(ITEMS.filter((i) => i.kind === k))
-  const plan: [FgItem['kind'], number][] = withBio
-    ? [
-        ['fragment', 3],
-        ['example', 3],
-        ['bio', 4],
-      ]
-    : [
-        ['fragment', 4],
-        ['example', 6],
-      ]
-  const perAnswer = new Map<string, number>()
-  const chosen: FgItem[] = []
-  for (const [kind, n] of plan) {
-    let taken = 0
-    for (const item of byKind(kind)) {
-      if (taken === n) break
-      const c = perAnswer.get(item.answer) ?? 0
-      if (c >= 2) continue
-      perAnswer.set(item.answer, c + 1)
-      chosen.push(item)
-      taken++
-    }
-  }
-  // Start with a fragment (the "rule"), then mix the rest.
-  const [first, ...rest] = chosen
-  return [first, ...shuffle(rest)].map((item) => ({ item, options: optionsFor(item) }))
-}
-
-function optionsFor(item: FgItem): string[] {
-  if (item.options) return shuffle(item.options)
-  const answer = item.answer as ClassId
-  const banned = new Set<string>([answer, ...(item.exclude ?? [])])
-  const pool = [
-    ...shuffle(CONFUSE[answer]),
-    ...shuffle((Object.keys(CLASSES) as ClassId[]).filter((c) => !CONFUSE[answer].includes(c))),
-  ]
-  const wrong: string[] = []
-  for (const c of pool) {
-    if (wrong.length === 3) break
-    if (!banned.has(c) && !wrong.includes(c)) wrong.push(c)
-  }
-  return shuffle([answer, ...wrong])
-}
 
 const optVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -78,7 +27,8 @@ const optVariants: Variants = {
 }
 
 export default function FunctionalGroups({ levelId, onFinish }: GameProps) {
-  const level = levelNumber(levelId, 8)
+  const n = levelNum(levelId)
+  const level = n !== undefined && n in LEVELS ? n : undefined
   const [rounds] = useState(() => buildRounds(level))
   const finish = useFinishOnce(onFinish)
   const [idx, setIdx] = useState(0)
@@ -187,13 +137,18 @@ export default function FunctionalGroups({ levelId, onFinish }: GameProps) {
         rounds={rounds.length}
         seconds={asking ? remaining : undefined}
         extra={
-          <AnimatePresence>
-            {streak >= 2 && (
-              <motion.span className="chip g-fg-streak" key="streak" variants={popIn} initial="hidden" animate="show" exit="hidden">
-                <Icon name="flame" /> {streak}×
-              </motion.span>
-            )}
-          </AnimatePresence>
+          <>
+            <span className="chip chip-soft" title={level ? `Obsah úrovně ${level}` : 'Mix všech úrovní'}>
+              <Icon name="book" /> {level ? `Úroveň ${level}` : 'Vše'}
+            </span>
+            <AnimatePresence>
+              {streak >= 2 && (
+                <motion.span className="chip g-fg-streak" key="streak" variants={popIn} initial="hidden" animate="show" exit="hidden">
+                  <Icon name="flame" /> {streak}×
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </>
         }
       />
 

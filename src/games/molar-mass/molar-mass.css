@@ -21,6 +21,12 @@
   font: 800 clamp(28px, 8vw, 46px) / 1.15 var(--font-display);
   overflow-wrap: anywhere;
 }
+.g-mm-cname {
+  display: block;
+  margin-top: 4px;
+  font: 600 clamp(15px, 4.2vw, 18px) / 1.3 var(--font-body);
+  color: var(--ink-soft);
+}
 .g-mm-m {
   font-weight: 500;
   color: var(--ink-soft);

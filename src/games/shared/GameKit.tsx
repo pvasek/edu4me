@@ -13,6 +13,7 @@ export function Hud({
   seconds,
   timeLabel = 'Čas',
   extra,
+  level,
 }: {
   score?: number
   round?: number
@@ -21,6 +22,8 @@ export function Hud({
   seconds?: number
   timeLabel?: string
   extra?: ReactNode
+  /** Level whose content is played: a number, or 'mix' for all levels together. Omit to hide the chip. */
+  level?: number | 'mix'
 }) {
   const pct = round !== undefined && rounds ? Math.min(100, ((round - 1) / rounds) * 100) : null
   return (
@@ -40,6 +43,7 @@ export function Hud({
             <span className="mono">{fmtClock(seconds)}</span>
           </span>
         )}
+        {level !== undefined && <LevelChip level={level} />}
         {extra}
         <span className="spacer" />
         {score !== undefined && (
@@ -57,6 +61,17 @@ export function Hud({
         </div>
       )}
     </div>
+  )
+}
+
+/** Chip telling which level's content the round trains ("Úroveň 7" / "Všechny úrovně"). */
+export function LevelChip({ level }: { level: number | 'mix' }) {
+  const text = level === 'mix' ? 'Všechny úrovně' : `Úroveň ${level}`
+  return (
+    <span className="chip g-sh-hud-chip g-sh-hud-level" title={level === 'mix' ? 'Obsah všech úrovní hry dohromady' : `Obsah lekcí úrovně ${level}`}>
+      <Icon name="book" />
+      <span>{text}</span>
+    </span>
   )
 }
 

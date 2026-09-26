@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { AnimatePresence, motion, useAnimate } from 'motion/react'
-import type { GameProps } from '../types'
+import { levelNum, type GameProps } from '../types'
 import { Md } from '../../core/markup'
 import { Icon } from '../../ui/Icon'
 import { Mascot, type Mood } from '../../ui/Mascot'
@@ -8,11 +8,9 @@ import { bump, fadeUp, popIn, rise, shake, slide, spring, stagger } from '../../
 import { BY_SYMBOL, categoryVar } from '../../courses/chemie/data/elements'
 import { Feedback, Hud, PointsPop } from '../shared/GameKit'
 import { useFinishOnce } from '../shared/hooks'
-import { levelNumber } from '../shared/util'
-import { gcdAll, isBalanced, pickEquations, tally, type Equation } from './equations'
+import { LEVELS, MAX_COEF, difficulty, gcdAll, isBalanced, pickEquations, tally, type Equation } from './equations'
 import './balance.css'
 
-const MAX_COEF = 20
 const BASE = 10
 const bonusFor = (streak: number) => Math.min(Math.max(streak - 1, 0), 2) * 2
 const pointsFor = (mistakes: number) => Math.max(4, BASE - 2 * mistakes)
@@ -21,7 +19,8 @@ type Phase = 'play' | 'solved' | 'revealed'
 type Fb = { kind: 'good' | 'bad' | 'warn' | 'info'; text: string; n: number } | null
 
 export default function Balance({ levelId, onFinish }: GameProps) {
-  const level = levelNumber(levelId, 5)
+  const n = levelNum(levelId)
+  const level = n !== undefined && LEVELS[n] ? n : undefined
   const [eqs] = useState(() => pickEquations(level))
   const maxScore = useMemo(() => eqs.reduce((s, _, i) => s + BASE + bonusFor(i + 1), 0), [eqs])
   const finish = useFinishOnce(onFinish)
@@ -91,7 +90,7 @@ export default function Balance({ levelId, onFinish }: GameProps) {
     fx('bump')
     setFb({
       kind: 'good',
-      text: (mistakes === 0 ? 'Vyčísleno napoprvé!' : 'Vyčísleno!') + (s >= 2 ? ` Série ${s}× bez chyby.` : '') + ` ${eq.note}`,
+      text: (mistakes === 0 ? 'Vyčísleno napoprvé!' : 'Vyčísleno!') + (s >= 2 ? ` Série ${s}× bez chyby.` : '') + ` ${eq.caption}.`,
     })
   }
 
@@ -99,7 +98,7 @@ export default function Balance({ levelId, onFinish }: GameProps) {
     setCoefs(eq.coefs)
     setPhase('revealed')
     setStreak(0)
-    setFb({ kind: 'info', text: `Řešení: ${formatEquation(eq, eq.coefs)}. ${eq.note}` })
+    setFb({ kind: 'info', text: `Řešení: ${formatEquation(eq, eq.coefs)}. ${eq.caption}.` })
   }
 
   function next() {
@@ -126,13 +125,16 @@ export default function Balance({ levelId, onFinish }: GameProps) {
         rounds={eqs.length}
         roundLabel="Rovnice"
         extra={
-          <AnimatePresence>
-            {streak >= 2 && (
-              <motion.span className="chip g-bal-streak" key="streak" variants={popIn} initial="hidden" animate="show" exit="hidden">
-                <Icon name="flame" /> {streak}×
-              </motion.span>
-            )}
-          </AnimatePresence>
+          <>
+            <LevelChip level={level} />
+            <AnimatePresence>
+              {streak >= 2 && (
+                <motion.span className="chip g-bal-streak" key="streak" variants={popIn} initial="hidden" animate="show" exit="hidden">
+                  <Icon name="flame" /> {streak}×
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </>
         }
       />
 
@@ -153,9 +155,9 @@ export default function Balance({ levelId, onFinish }: GameProps) {
               </motion.div>
               <div className="g-bal-head-text">
                 <span className="eyebrow">
-                  {eq.redox ? 'Redoxní rovnice' : eq.level === 1 ? 'Rozcvička' : eq.level === 2 ? 'Střední' : 'Těžší'}
+                  {eq.redox ? 'Redoxní rovnice' : ['Rozcvička', 'Střední', 'Těžší'][difficulty(eq) - 1]}
                 </span>
-                <span className="g-bal-note">{phase === 'play' ? 'Která čísla patří před vzorce?' : eq.note}</span>
+                <span className="g-bal-note">{eq.caption}</span>
               </div>
               <PointsPop key={gained.key} points={phase === 'solved' ? gained.n : 0} />
             </div>
@@ -370,5 +372,15 @@ function Pan({ x, y, n }: { x: number; y: number; n: number }) {
         {n}
       </text>
     </motion.g>
+  )
+}
+
+/** HUD chip: which level's content is being played. */
+function LevelChip({ level }: { level?: number }) {
+  return (
+    <span className="chip g-sh-hud-chip" title={level ? `Rovnice z úrovně ${level}` : 'Rovnice ze všech úrovní'}>
+      <Icon name={level ? 'book' : 'shuffle'} />
+      <span>{level ? `Úroveň ${level}` : 'Vše'}</span>
+    </span>
   )
 }

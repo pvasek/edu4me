@@ -1,15 +1,17 @@
 import { useCallback, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import type { ChemElement } from '../../courses/chemie/data/elements'
+import { Md } from '../../core/markup'
 import { Icon } from '../../ui/Icon'
 import { Mascot, type Mood } from '../../ui/Mascot'
 import { popIn } from '../../ui/motion'
 import { Feedback, Hud, PointsPop } from '../shared/GameKit'
 import { useFinishOnce, useJolt, useLater, useNow } from '../shared/hooks'
 import { PeriodicTable, type CellState } from '../shared/PeriodicTable'
-import { levelNumber, timeBonus } from '../shared/util'
-import type { GameProps } from '../types'
-import { MAX_PER_ROUND, makeRounds } from './logic'
+import { pickLevel, timeBonus } from '../shared/util'
+import { levelNum, type GameProps } from '../types'
+import { LEVELS } from './levels'
+import { MAX_PER_ROUND, makeLevelRounds } from './logic'
 import './periodic-find.css'
 
 const BONUS_MAX = 30
@@ -19,8 +21,8 @@ const BONUS_ZERO = 15
 type Phase = 'play' | 'right' | 'reveal'
 
 export default function PeriodicFind({ levelId, onFinish }: GameProps) {
-  const level = levelNumber(levelId)
-  const [rounds] = useState(() => makeRounds(level))
+  const level = pickLevel(LEVELS, levelNum(levelId))
+  const [rounds] = useState(() => makeLevelRounds(level))
   const [i, setI] = useState(0)
   const [phase, setPhase] = useState<Phase>('play')
   const [wrong, setWrong] = useState<number[]>([])
@@ -66,7 +68,7 @@ export default function PeriodicFind({ levelId, onFinish }: GameProps) {
       setPhase('right')
       setMsg({
         kind: 'good',
-        text: `Správně! ${el.name} (${el.symbol}) má protonové číslo ${el.z}.${t < BONUS_FULL + 0.5 && wrong.length === 0 ? ' Bleskové!' : ''}`,
+        text: `Správně! ${el.name} ($${el.symbol}$). ${round.why ?? `Má protonové číslo ${el.z}.`}${t < BONUS_FULL + 0.5 && wrong.length === 0 ? ' Bleskové!' : ''}`,
       })
       jolt.pop()
       later(next, 1200)
@@ -80,10 +82,10 @@ export default function PeriodicFind({ levelId, onFinish }: GameProps) {
       setPhase('reveal')
       setMsg({
         kind: 'warn',
-        text: `Tohle je ${el.name} (${el.symbol}). Hledaný prvek ${round.el.name} (${round.el.symbol}) svítí v tabulce.`,
+        text: `Tohle je ${el.name} ($${el.symbol}$). Hledaný prvek ${round.el.name} ($${round.el.symbol}$) svítí v tabulce.${round.why ? ` ${round.why}` : ''}`,
       })
     } else {
-      setMsg({ kind: 'bad', text: `Tohle je ${el.name} (${el.symbol}). Zkus to ještě jednou!` })
+      setMsg({ kind: 'bad', text: `Tohle je ${el.name} ($${el.symbol}$). Zkus to ještě jednou!` })
     }
   }
 
@@ -98,12 +100,14 @@ export default function PeriodicFind({ levelId, onFinish }: GameProps) {
 
   const mood: Mood = phase === 'right' ? 'cheer' : phase === 'reveal' ? 'sad' : wrong.length ? 'wow' : 'think'
   const label =
-    round.kind === 'name' ? 'Najdi prvek' : round.kind === 'symbol' ? 'Najdi prvek se značkou' : 'Najdi prvek podle nápovědy'
+    (round.kind === 'name' ? 'Najdi prvek' : round.kind === 'symbol' ? 'Najdi prvek se značkou' : 'Najdi prvek podle nápovědy') +
+    (level === undefined && round.level ? ` · úroveň ${round.level}` : '')
+  const long = round.kind === 'hint' && round.text.length > 60
 
   return (
     <div className="g-sh-root g-pf">
       <p className="g-sh-instr">Ťukni v tabulce na zadaný prvek. Čím rychleji, tím víc bodů.</p>
-      <Hud score={score} round={i + 1} rounds={rounds.length} seconds={secs} />
+      <Hud score={score} round={i + 1} rounds={rounds.length} seconds={secs} level={level ?? 'mix'} />
 
       <div ref={cardRef} className="card g-sh-prompt g-pf-prompt" aria-live="polite">
         <Mascot mood={mood} size={64} />
@@ -111,14 +115,14 @@ export default function PeriodicFind({ levelId, onFinish }: GameProps) {
           <span className="eyebrow">{label}</span>
           <AnimatePresence mode="popLayout" initial={false}>
             <motion.span
-              className={`g-pf-target g-pf-${round.kind}`}
+              className={`g-pf-target g-pf-${round.kind}${long ? ' g-pf-long' : ''}`}
               key={i}
               variants={popIn}
               initial="hidden"
               animate="show"
               exit={{ opacity: 0, y: -12, transition: { duration: 0.15 } }}
             >
-              {round.text}
+              <Md text={round.text} />
             </motion.span>
           </AnimatePresence>
           <div className="g-pf-bonus" aria-label={`Bonus za rychlost: ${phase === 'play' ? bonus : 0} bodů`}>
@@ -139,7 +143,7 @@ export default function PeriodicFind({ levelId, onFinish }: GameProps) {
       <div className="g-pf-status">
         {msg ? (
           <Feedback kind={msg.kind} key={`${i}-${wrong.length}-${phase}`}>
-            {msg.text}
+            <Md text={msg.text} />
           </Feedback>
         ) : (
           <p className="g-pf-tip note">Tip: čísla nahoře jsou skupiny, vlevo periody.</p>

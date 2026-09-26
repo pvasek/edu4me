@@ -1,0 +1,146 @@
+.gs {
+  --gs-color: var(--accent);
+  position: relative;
+  display: grid;
+  gap: 0;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: color-mix(in srgb, var(--gs-color) 10%, var(--paper));
+  box-shadow: var(--double-rule), var(--shadow-hard-lg);
+}
+.gs-periodic {
+  --gs-color: var(--blue);
+}
+.gs-build {
+  --gs-color: var(--accent);
+}
+.gs-quiz {
+  --gs-color: var(--violet);
+}
+.gs-lab {
+  --gs-color: var(--green);
+}
+.gs-backdrop {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 200px;
+  color: var(--gs-color);
+  opacity: 0.55;
+  pointer-events: none;
+  mask-image: linear-gradient(#000 40%, transparent);
+  -webkit-mask-image: linear-gradient(#000 40%, transparent);
+}
+.gs-svg {
+  width: 100%;
+  height: 100%;
+}
+.gs-svg .gs-draw {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gs-svg .gs-dot {
+  fill: currentColor;
+  opacity: 0.5;
+}
+.gs-lamp {
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+  transform-origin: 600px 0;
+  animation: gs-swing 5s ease-in-out infinite;
+}
+.gs-bubbles circle {
+  fill: currentColor;
+  animation: gs-bubble 3.2s ease-in infinite;
+}
+.gs-bubbles circle:nth-child(2) {
+  animation-delay: 1.1s;
+}
+.gs-bubbles circle:nth-child(3) {
+  animation-delay: 2s;
+}
+@keyframes gs-swing {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+@keyframes gs-bubble {
+  from {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  to {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+.gs-plaque {
+  position: relative;
+  z-index: 1;
+  justify-self: center;
+  margin-top: 18px;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 8px 28px 10px;
+  background: var(--surface);
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  box-shadow: var(--double-rule), var(--shadow-hard);
+  text-align: center;
+}
+.gs-plaque::before,
+.gs-plaque::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gs-color);
+  border: var(--bw) solid var(--edge);
+  translate: 0 -50%;
+}
+.gs-plaque::before {
+  left: 8px;
+}
+.gs-plaque::after {
+  right: 8px;
+}
+.gs-plaque-title {
+  font: italic 700 clamp(22px, 4vw, 30px) / 1.1 var(--font-display);
+}
+.gs-plaque-level {
+  font: 700 11px/1 var(--font-body);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gs-color);
+}
+.gs-table {
+  position: relative;
+  z-index: 1;
+  margin: 18px 12px 12px;
+  padding: 16px;
+  border-radius: var(--r);
+  background: var(--surface);
+  border: var(--bw) solid var(--line);
+  box-shadow: 0 -2px 0 var(--line) inset;
+  min-height: 380px;
+}
+@media (max-width: 520px) {
+  .gs-table {
+    margin: 12px 6px 6px;
+    padding: 10px;
+  }
+  .gs-backdrop {
+    height: 140px;
+  }
+}

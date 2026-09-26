@@ -1,21 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, animate, motion, useMotionValue, useTransform, type PanInfo } from 'motion/react'
-import type { GameProps } from '../types'
-import type { Question } from '../../core/types'
-import { shuffle } from '../../core/check'
+import { levelNum, type GameProps } from '../types'
 import { Md } from '../../core/markup'
-import { loadQuestionPool } from '../../core/questionPool'
 import { chemie } from '../../courses/chemie'
 import { Icon } from '../../ui/Icon'
 import { Mascot, MascotSays, type Mood } from '../../ui/Mascot'
 import { ease, popIn, shake, spring } from '../../ui/motion'
+import { playLevel, swipeDeck, type SwipeCard } from './pool'
 import './swipe.css'
 
-type TfQuestion = Extract<Question, { kind: 'tf' }>
 type Phase = 'loading' | 'empty' | 'play' | 'done'
 type Dir = 'left' | 'right'
-
-const ROUND = 12
 
 interface Toast {
   id: number
@@ -26,7 +21,8 @@ interface Toast {
 
 export default function Swipe({ levelId, onFinish }: GameProps) {
   const [phase, setPhase] = useState<Phase>('loading')
-  const [cards, setCards] = useState<TfQuestion[]>([])
+  const [cards, setCards] = useState<SwipeCard[]>([])
+  const level = levelNum(playLevel(levelId))
   const [pos, setPos] = useState(0)
   const [exitDir, setExitDir] = useState<1 | -1>(1)
   const [toast, setToast] = useState<Toast | null>(null)
@@ -38,14 +34,10 @@ export default function Swipe({ levelId, onFinish }: GameProps) {
 
   useEffect(() => {
     let alive = true
-    loadQuestionPool(chemie, { upToLevel: levelId, kinds: ['tf'] })
+    swipeDeck(chemie, levelId)
       .catch(() => [])
-      .then((items) => {
+      .then((picked) => {
         if (!alive) return
-        // Prefer statements from the level the game was opened from.
-        const own = shuffle(items.filter((i) => i.levelId === levelId)).slice(0, 8)
-        const rest = shuffle(items.filter((i) => !own.includes(i)))
-        const picked = shuffle([...own, ...rest].slice(0, ROUND)).map((i) => i.question as TfQuestion)
         if (!picked.length) {
           setPhase('empty')
           return
@@ -70,7 +62,7 @@ export default function Swipe({ levelId, onFinish }: GameProps) {
   const commit = useCallback(
     (dir: Dir) => {
       if (phase !== 'play' || pos >= cards.length) return
-      const q = cards[pos]
+      const q = cards[pos].question
       const ok = (dir === 'right') === q.answer
       setExitDir(dir === 'right' ? 1 : -1)
       setScore((s) => s + (ok ? 1 : 0))
@@ -129,6 +121,9 @@ export default function Swipe({ levelId, onFinish }: GameProps) {
       <p className="g-sw-instr">Pravdivé tvrzení odhoď doprava, nepravdivé doleva. Nebo použij tlačítka či šipky.</p>
 
       <div className="g-sw-hud">
+        <span className="chip chip-soft" title={level ? `Tvrzení z úrovně ${level}` : 'Tvrzení ze všech úrovní'}>
+          {level ? `Úroveň ${level}` : 'Vše'}
+        </span>
         <span className="chip">
           <Icon name="book" /> {Math.min(pos + 1, cards.length)}/{cards.length}
         </span>
@@ -175,7 +170,8 @@ export default function Swipe({ levelId, onFinish }: GameProps) {
               .map((q, i) => (
                 <Card
                   key={pos + i}
-                  q={q}
+                  q={q.question}
+                  review={q.review}
                   n={pos + i + 1}
                   total={cards.length}
                   depth={i}
@@ -234,12 +230,14 @@ export default function Swipe({ levelId, onFinish }: GameProps) {
 /** Card in the stack. Only the top one (depth 0) can be dragged. */
 function Card({
   q,
+  review,
   n,
   total,
   depth,
   onCommit,
 }: {
-  q: TfQuestion
+  q: SwipeCard['question']
+  review: boolean
   n: number
   total: number
   depth: number
@@ -298,7 +296,14 @@ function Card({
           </motion.span>
         </>
       )}
-      <div className="eyebrow">Tvrzení {n}</div>
+      <div className="g-sw-eyebrow">
+        <span className="eyebrow">Tvrzení {n}</span>
+        {review && (
+          <span className="g-sw-review" title="Tvrzení z předchozí úrovně">
+            <Icon name="refresh" /> opakování
+          </span>
+        )}
+      </div>
       <div className="g-sw-q">
         <Md text={q.q} />
       </div>

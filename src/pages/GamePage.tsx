@@ -15,6 +15,10 @@ import { CountUp, Page } from '../ui/anim'
 import { motion } from 'motion/react'
 import { spring } from '../ui/motion'
 import { NotFound } from './NotFound'
+import { GameStage } from '../ui/GameStage'
+import { KIND } from '../ui/GameCard'
+
+const GAME_KIND_LABEL = Object.fromEntries(Object.entries(KIND).map(([k, v]) => [k, v.title])) as Record<string, string>
 
 type Phase = { kind: 'intro' } | { kind: 'play'; run: number } | { kind: 'result'; result: GameResult; xp: number; stars: number }
 
@@ -46,19 +50,18 @@ export default function GamePage() {
         </Link>
       </nav>
       <header className="game-head">
-        <div className="stack">
-          <span className="eyebrow">Mini-hra</span>
-          <h1>{meta.title}</h1>
-        </div>
+        <h1 className="sr-only">{meta.title}</h1>
+        <span className="eyebrow">Mini-hra · {GAME_KIND_LABEL[meta.kind]}</span>
         {phase.kind === 'play' && (
           <button className="btn btn-sm" onClick={() => setPhase({ kind: 'intro' })}>
             <Icon name="x" /> Ukončit
           </button>
         )}
       </header>
+      <GameStage meta={meta} levelLabel={level ? `Úroveň ${level.number} · ${level.title}` : levels.length > 1 ? 'Všechny úrovně' : undefined}>
 
       {phase.kind === 'intro' && (
-        <motion.section className="card game-intro stack" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={spring.gentle}>
+        <motion.section className="game-intro stack" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={spring.gentle}>
           <MascotSays mood="cheer">
             {meta.blurb}
             {level && meta.levels[level.number] && (
@@ -130,7 +133,7 @@ export default function GamePage() {
       )}
 
       {phase.kind === 'result' && (
-        <motion.section className="card lesson-done stack" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={spring.bouncy}>
+        <motion.section className="lesson-done stack" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={spring.bouncy}>
           {phase.stars >= 2 && <Confetti />}
           <Mascot mood={phase.stars >= 2 ? 'cheer' : phase.stars === 1 ? 'happy' : 'think'} size={110} />
           <h2>{phase.stars === 3 ? 'Fantastické!' : phase.stars === 2 ? 'Skvělá hra!' : phase.stars === 1 ? 'Dobrý začátek!' : 'Příště to vyjde!'}</h2>
@@ -163,6 +166,7 @@ export default function GamePage() {
           </div>
         </motion.section>
       )}
+      </GameStage>
     </Page>
   )
 }

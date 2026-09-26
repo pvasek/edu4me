@@ -5,6 +5,7 @@ import {
   adjective,
   anionStem,
   binary,
+  complexIon,
   crossRule,
   genitive,
   group,
@@ -270,6 +271,40 @@ describe('ion table sanity', () => {
     expect(ionMarkup(cation('NH4'))).toBe('$NH4^+$')
     expect(ionPlain(cation('Fe', 3))).toBe('Fe³⁺')
     expect(ionPlain(anion('PO4'))).toBe('PO₄³⁻')
+  })
+})
+
+describe('coordination compounds (level 7)', () => {
+  it.each([
+    ['Cu', 2, 'NH3', 4, '[Cu(NH3)4]', 2, 'tetraamminměďnatý kation'],
+    ['Cu', 2, 'H2O', 6, '[Cu(H2O)6]', 2, 'hexaaquaměďnatý kation'],
+    ['Ag', 1, 'NH3', 2, '[Ag(NH3)2]', 1, 'diamminstříbrný kation'],
+    ['Fe', 2, 'CN', 6, '[Fe(CN)6]', -4, 'hexakyanidoželeznatanový anion'],
+    ['Fe', 3, 'CN', 6, '[Fe(CN)6]', -3, 'hexakyanidoželezitanový anion'],
+    ['Al', 3, 'OH', 4, '[Al(OH)4]', -1, 'tetrahydroxidohlinitanový anion'],
+    ['Al', 3, 'F', 6, '[AlF6]', -3, 'hexafluoridohlinitanový anion'],
+  ] as const)('%s(%i) + %i× %s', (metal, ox, ligand, n, formula, charge, ion) => {
+    const c = complexIon(metal, ox, ligand, n)
+    expect({ formula: c.formula, charge: c.charge, ion: c.ion }).toEqual({ formula, charge, ion })
+  })
+
+  it('names salts with complex ions', () => {
+    expect(salt(complexIon('Cu', 2, 'NH3', 4), anion('SO4'))).toEqual({ formula: '[Cu(NH3)4]SO4', name: 'síran tetraamminměďnatý' })
+    expect(salt(cation('K'), complexIon('Fe', 2, 'CN', 6))).toEqual({ formula: 'K4[Fe(CN)6]', name: 'hexakyanidoželeznatan draselný' })
+    expect(salt(cation('K'), complexIon('Fe', 3, 'CN', 6))).toEqual({ formula: 'K3[Fe(CN)6]', name: 'hexakyanidoželezitan draselný' })
+    expect(salt(cation('Na'), complexIon('Al', 3, 'F', 6))).toEqual({ formula: 'Na3[AlF6]', name: 'hexafluoridohlinitan sodný' })
+    expect(salt(complexIon('Ag', 1, 'NH3', 2), anion('SO4'))).toEqual({ formula: '[Ag(NH3)2]2SO4', name: 'síran diamminstříbrný' })
+    expect(parseFormula('K4[Fe(CN)6]')).toEqual({ K: 4, Fe: 1, C: 6, N: 6 })
+  })
+})
+
+describe('level 7 ions', () => {
+  it('has lead(IV), tin(IV) and thiosulfate', () => {
+    expect(cation('Pb', 4).adj).toBe('olovičitý')
+    expect(cation('Sn', 4).adj).toBe('cíničitý')
+    expect(salt(cation('Pb', 4), anion('O'))).toEqual({ formula: 'PbO2', name: 'oxid olovičitý' })
+    expect(salt(cation('Na'), anion('S2O3'))).toEqual({ formula: 'Na2S2O3', name: 'thiosíran sodný' })
+    expect(anion('S2O3').ion).toBe('thiosíranový anion')
   })
 })
 

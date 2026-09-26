@@ -111,6 +111,7 @@ export const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : Math.a
 /** Formula fragment with a count: ('Cl', 2) -> 'Cl2', ('SO4', 3) -> '(SO4)3', ('OH', 1) -> 'OH'. */
 export function group(formula: string, n: number): string {
   if (n === 1) return formula
+  if (/^\[.*\]$/.test(formula)) return `${formula}${n}` // complex ion: [Ag(NH3)2]2SO4
   const poly = /[A-Z].*[A-Z]/.test(formula) || /\d/.test(formula)
   return poly ? `(${formula})${n}` : `${formula}${n}`
 }
@@ -215,6 +216,51 @@ export const MULT = ['', 'mono', 'di', 'tri', 'tetra', 'penta', 'hexa', 'hepta',
 /** Hydrate: hydrate(CuSO4, 5) -> CuSO4·5H2O pentahydrát síranu měďnatého. */
 export function hydrate(c: Compound, n: number): Compound {
   return { formula: `${c.formula}·${n > 1 ? n : ''}H2O`, name: `${MULT[n]}hydrát ${genitive(c.name)}` }
+}
+
+/** Ligands of simple coordination compounds (level 7). */
+export const LIGANDS = {
+  H2O: { name: 'aqua', charge: 0 },
+  NH3: { name: 'ammin', charge: 0 },
+  OH: { name: 'hydroxido', charge: -1 },
+  F: { name: 'fluorido', charge: -1 },
+  Cl: { name: 'chlorido', charge: -1 },
+  CN: { name: 'kyanido', charge: -1 },
+} as const
+
+export type Ligand = keyof typeof LIGANDS
+
+export interface ComplexIon {
+  /** '[Cu(NH3)4]' (without the charge). */
+  formula: string
+  charge: number
+  /** Adjective of a complex cation: 'tetraamminměďnatý' (síran tetraamminměďnatý). */
+  adj: string
+  /** Noun of a complex anion: 'hexakyanidoželeznatan' (hexakyanidoželeznatan draselný). */
+  stem: string
+  /** Name of the ion: 'tetraamminměďnatý kation', 'hexakyanidoželeznatanový anion'. */
+  ion: string
+}
+
+/**
+ * Complex ion with one kind of ligand:
+ * complexIon('Cu', 2, 'NH3', 4) -> [Cu(NH3)4] 2+ tetraamminměďnatý kation;
+ * complexIon('Fe', 2, 'CN', 6) -> [Fe(CN)6] 4− hexakyanidoželeznatanový anion.
+ */
+export function complexIon(metal: string, ox: number, ligand: Ligand, n: number): ComplexIon {
+  const L = LIGANDS[ligand]
+  const charge = ox + n * L.charge
+  if (charge === 0) throw new Error('Neutrální komplex nemá kation ani anion')
+  const prefix = MULT[n] + L.name
+  const adj = prefix + adjective(metal, ox)
+  const stem = prefix + anionStem(adjective(metal, ox))
+  return {
+    formula: `[${metal}${group(ligand, n)}]`,
+    charge,
+    adj,
+    stem,
+    ion: charge > 0 ? `${adj} kation` : `${stem}ový anion`,
+  }
 }
 
 /** Formula as <Md> markup (subscripts come for free): 'Ca3(PO4)2' -> '$Ca3(PO4)2$'. */

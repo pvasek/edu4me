@@ -4,6 +4,7 @@ import { CHEM_ICONS, FIGURES, MOLECULES } from '../illustrations/catalog'
 import { parseFormula } from '../courses/chemie/data/formula'
 
 const ICONS = new Set<string>(CHEM_ICONS)
+const VISUAL = new Set<string>(['diagram', 'molecule', 'particles', 'reaction', 'process', 'iconlist', 'compare', 'elements', 'structure'])
 const MOLS = new Set<string>(MOLECULES)
 
 const DIAGRAMS = new Set<string>([...FIGURES, 'bohr', 'states', 'ph-scale', 'periodic-mini', 'energy-profile', 'titration-curve', 'orbitals', 'separation', 'galvanic', 'rate-curve', 'lab-safety'])
@@ -27,7 +28,9 @@ export function validateLevel(outline: LevelOutline, content: LevelContent): str
     if (kinds.size < 3) at('quiz should mix at least 3 question kinds')
     lesson.sections.forEach((s, si) => {
       if (!s.blocks.some((b) => b.type === 'check')) at(`section ${si + 1} "${s.title}" has no check question`)
-      if (s.icon && !ICONS.has(s.icon)) at(`section ${si + 1}: unknown icon ${s.icon}`)
+      if (!s.icon) at(`section ${si + 1} "${s.title}" has no icon`)
+      else if (!ICONS.has(s.icon)) at(`section ${si + 1}: unknown icon ${s.icon}`)
+      if (!s.blocks.some((b) => VISUAL.has(b.type))) at(`section ${si + 1} "${s.title}" has no visual block`)
       s.blocks.forEach((b, bi) => checkBlock(b, (m) => at(`section ${si + 1} block ${bi + 1}: ${m}`)))
     })
     lesson.quiz.forEach((q, qi) => checkQuestion(q, (m) => at(`quiz ${qi + 1}: ${m}`)))

@@ -75,6 +75,9 @@ export const CATIONS: Cation[] = [
   cat('Fe', 3, 'železitý'),
   cat('Al', 3, 'hlinitý'),
   cat('Cr', 3, 'chromitý'),
+  cat('Co', 3, 'kobaltitý'),
+  cat('Pb', 4, 'olovičitý'),
+  cat('Sn', 4, 'cíničitý'),
 ]
 
 export const ANIONS: Anion[] = [
@@ -107,6 +110,7 @@ export const ANIONS: Anion[] = [
   an('MnO4', -1, 'manganistan', 'Mn', 'kyselina manganistá'),
   an('CrO4', -2, 'chroman', 'Cr', 'kyselina chromová'),
   an('Cr2O7', -2, 'dichroman', 'Cr', 'kyselina dichromová'),
+  an('S2O3', -2, 'thiosíran', 'S', 'kyselina thiosírová'),
 ]
 
 /** Look up an ion by formula and charge: cation('Fe', 3), anion('SO4'). */

@@ -7,6 +7,8 @@ import { Mascot } from '../ui/Mascot'
 import { ElementTile } from '../ui/ElementTile'
 import { gamesForLevel } from '../games/registry'
 import { NotFound } from './NotFound'
+import { ChemIconView } from '../illustrations/ChemIcon'
+import { LevelVignette } from '../illustrations/vignettes/LevelVignette'
 import { Page } from '../ui/anim'
 import { GameCard } from '../ui/GameCard'
 
@@ -33,7 +35,8 @@ export function LevelPage() {
         className={`lesson-node${done[i] ? ' done' : ''}${i === firstOpen ? ' current' : ''}`}
       >
         <span className="lesson-node-disc">
-          {done[i] ? <Icon name="check" width={30} height={30} /> : <span>{i + 1}</span>}
+          {done[i] ? <Icon name="check" width={30} height={30} /> : <ChemIconView name={ls.icon} size={34} />}
+          <span className="lesson-node-num">{i + 1}</span>
           {i === firstOpen && <Mascot mood="happy" size={50} className="lesson-node-mascot" />}
         </span>
         <span className="lesson-node-label">
@@ -71,8 +74,11 @@ export function LevelPage() {
         </Link>
       </nav>
       <section className="level-hero card">
-        <div className="level-hero-tile">
-          <ElementTile symbol={level.symbol} size="lg" />
+        <div className="level-hero-art">
+          <LevelVignette level={level.number} size={190} />
+          <span className="level-hero-tile">
+            <ElementTile symbol={level.symbol} size="sm" />
+          </span>
         </div>
         <div className="stack">
           <span className="eyebrow">Úroveň {level.number}</span>

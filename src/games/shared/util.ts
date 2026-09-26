@@ -91,3 +91,45 @@ export function timeBonus(seconds: number, max: number, fullUntil: number, zeroA
   if (seconds >= zeroAt) return 0
   return Math.round((max * (zeroAt - seconds)) / (zeroAt - fullUntil))
 }
+
+/**
+ * The level whose content set a game should play: `level` when the game has a set for it,
+ * otherwise undefined, which means "mix all sets" (free play or an unsupported level).
+ */
+export function pickLevel(sets: Record<number, unknown>, level?: number): number | undefined {
+  return level !== undefined && level in sets ? level : undefined
+}
+
+/** Level numbers that have a content set, ascending. */
+export const levelsOf = (sets: Record<number, unknown>): number[] =>
+  Object.keys(sets)
+    .map(Number)
+    .sort((a, b) => a - b)
+
+/**
+ * Picks `n` items from several level sets, taking turns between the levels (in random order)
+ * so a mixed round covers them evenly. Items with an already used `key` are skipped.
+ */
+export function mixLevels<T>(
+  sets: Record<number, readonly T[]>,
+  n: number,
+  rng: () => number = Math.random,
+  key: (item: T) => string = (item) => JSON.stringify(item),
+): { item: T; level: number }[] {
+  const queues = shuffle(levelsOf(sets), rng).map((level) => ({ level, items: shuffle(sets[level], rng) }))
+  const used = new Set<string>()
+  const out: { item: T; level: number }[] = []
+  while (out.length < n && queues.some((q) => q.items.length)) {
+    for (const q of queues) {
+      if (out.length >= n) break
+      while (q.items.length) {
+        const item = q.items.shift()!
+        if (used.has(key(item))) continue
+        used.add(key(item))
+        out.push({ item, level: q.level })
+        break
+      }
+    }
+  }
+  return out
+}

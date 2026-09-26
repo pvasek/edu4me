@@ -5,11 +5,11 @@ import { Md } from '../../core/markup'
 import { Icon } from '../../ui/Icon'
 import { Mascot, type Mood } from '../../ui/Mascot'
 import { popIn, rise, spring, stagger } from '../../ui/motion'
-import { Feedback, Hud, PointsPop } from '../shared/GameKit'
+import { Feedback, Hud, LevelChip, PointsPop } from '../shared/GameKit'
 import { useFinishOnce, useJolt, useNow } from '../shared/hooks'
 import { fmtNum, timeBonus } from '../shared/util'
 import type { GameProps } from '../types'
-import { TOLERANCE, breakdown, checkMass, pickFormulas } from './logic'
+import { TOLERANCE, breakdown, checkMass, pickItems, playedLevel } from './logic'
 import './molar-mass.css'
 
 const BONUS_MAX = 25
@@ -19,8 +19,9 @@ const PER_ROUND = 100 + BONUS_MAX
 
 type Status = 'play' | 'won' | 'lost'
 
-export default function MolarMass({ onFinish }: GameProps) {
-  const [formulas] = useState(() => pickFormulas())
+export default function MolarMass({ levelId, onFinish }: GameProps) {
+  const [level] = useState(() => playedLevel(levelId))
+  const [items] = useState(() => pickItems(level))
   const [i, setI] = useState(0)
   const [status, setStatus] = useState<Status>('play')
   const [tries, setTries] = useState(0)
@@ -38,7 +39,8 @@ export default function MolarMass({ onFinish }: GameProps) {
   const [cardRef, jolt] = useJolt()
   const now = useNow(status === 'play', 250)
 
-  const f = formulas[i]
+  const f = items[i].formula
+  const name = items[i].name
   const bd = breakdown(f)
   const secs = status === 'play' ? Math.max(0, (now - start) / 1000) : frozen
   const bonus = tries === 0 ? timeBonus(secs, BONUS_MAX, BONUS_FULL, BONUS_ZERO) : 0
@@ -89,8 +91,8 @@ export default function MolarMass({ onFinish }: GameProps) {
   }
 
   const next = () => {
-    if (i + 1 >= formulas.length) {
-      finish({ score: scoreRef.current, max: formulas.length * PER_ROUND, collected: [...collected.current] })
+    if (i + 1 >= items.length) {
+      finish({ score: scoreRef.current, max: items.length * PER_ROUND, collected: [...collected.current] })
       return
     }
     setI(i + 1)
@@ -108,9 +110,16 @@ export default function MolarMass({ onFinish }: GameProps) {
   return (
     <div className="g-sh-root g-mm">
       <p className="g-sh-instr">
-        Spočítej molární hmotnost v g/mol (tolerance ±{fmtNum(TOLERANCE, 1)}). Čím rychleji, tím větší bonus.
+        Spočítej molární hmotnost v g/mol (tolerance ±{fmtNum(TOLERANCE, 1)}, u velkých molekul 0,1 %). Čím rychleji, tím větší bonus.
       </p>
-      <Hud score={score} round={i + 1} rounds={formulas.length} roundLabel="Vzorec" seconds={secs} />
+      <Hud
+        score={score}
+        round={i + 1}
+        rounds={items.length}
+        roundLabel="Vzorec"
+        seconds={secs}
+        extra={<LevelChip level={level ?? 'mix'} />}
+      />
 
       <div ref={cardRef} className="card g-mm-card">
         <div className="g-mm-top">
@@ -128,6 +137,9 @@ export default function MolarMass({ onFinish }: GameProps) {
                 <span className="g-mm-m">M(</span>
                 <Md text={`$${f}$`} />
                 <span className="g-mm-m">) = ?</span>
+                <span className="g-mm-cname" lang="cs">
+                  {name}
+                </span>
               </motion.span>
             </AnimatePresence>
           </div>
@@ -204,7 +216,7 @@ export default function MolarMass({ onFinish }: GameProps) {
         <motion.div className="card-flat g-mm-break" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={spring.gentle}>
           <table className="g-mm-table">
             <caption>
-              Rozpis pro <Md text={`$${f}$`} />
+              Rozpis pro <Md text={`$${f}$`} /> ({name})
             </caption>
             <thead>
               <tr>
@@ -244,7 +256,7 @@ export default function MolarMass({ onFinish }: GameProps) {
           </table>
           <div className="g-sh-actions">
             <button type="button" className="btn btn-primary btn-lg" onClick={next} autoFocus>
-              {i + 1 >= formulas.length ? 'Dokončit' : 'Další vzorec'} <Icon name="arrowRight" />
+              {i + 1 >= items.length ? 'Dokončit' : 'Další vzorec'} <Icon name="arrowRight" />
             </button>
           </div>
         </motion.div>
