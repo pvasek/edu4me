@@ -110,7 +110,7 @@ export default function PeriodicMini({ props }: DiagramProps) {
             {i + 1}
           </text>
         ))}
-        <text className="dg-pt-gnum" x={ML + 2 * S + 1} y={MT + 7 * S + 8 + 14} textAnchor="end">
+        <text className="dg-pt-gnum" x={ML + 2 * S - 4} y={MT + 7 * S + 8 + 14} textAnchor="end">
           f
         </text>
         {ELEMENTS.map((e) => {

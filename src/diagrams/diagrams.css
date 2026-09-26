@@ -853,7 +853,7 @@
 }
 .dg-rate > .dg-svg:first-child {
   flex: 1 1 300px;
-  max-width: 480px;
+  max-width: 430px;
 }
 .dg-rate > .dg-collide {
   flex: 0 1 200px;

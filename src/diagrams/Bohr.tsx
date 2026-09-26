@@ -30,7 +30,8 @@ export default function Bohr({ props }: DiagramProps) {
   const maxR = 156
   const gap = Math.min(44, (maxR - rNuc - 4) / Math.max(1, shells.length))
   // where the shell name pills sit (a spiral when there are many shells, so they do not collide)
-  const pillAngle = (i: number) => (shells.length > 4 ? -64 + i * 15 : -42)
+  const many = shells.length > 4
+  const pillAngle = () => (many ? -90 : -42)
   const extra = typeof props.label === 'string' ? props.label : ''
   const sym = el.symbol + chargeMarkup(ion)
 
@@ -71,14 +72,15 @@ export default function Bohr({ props }: DiagramProps) {
         {shells.map((count, i) => {
           const r = rNuc + (i + 1) * gap
           const step = 360 / Math.max(1, count)
-          const labelAngle = pillAngle(i)
+          const labelAngle = pillAngle()
           const start = labelAngle + step / 2
           const re = Math.max(3, Math.min(6.5, gap * 0.28, (Math.PI * r) / Math.max(1, count) * 0.55))
           const la = (labelAngle * Math.PI) / 180
           const lx = C + Math.cos(la) * r
           const ly = C + Math.sin(la) * r
           const pill = `${SHELL_NAMES[i]} ${count}`
-          const pw = pill.length * 7.4 + 8
+          const ph = many ? 14 : 18
+          const pw = pill.length * (many ? 6.2 : 7.4) + 8
           return (
             <g className="dg-shell" key={i}>
               <circle className="dg-shell-ring" cx={C} cy={C} r={r} />
@@ -101,8 +103,8 @@ export default function Bohr({ props }: DiagramProps) {
                 </motion.g>
               </g>
               <g className="dg-pill">
-                <rect x={lx - pw / 2} y={ly - 9} width={pw} height={18} rx={9} />
-                <text x={lx} y={ly + 4.5} textAnchor="middle">
+                <rect x={lx - pw / 2} y={ly - ph / 2} width={pw} height={ph} rx={ph / 2} />
+                <text x={lx} y={ly + (many ? 3.6 : 4.5)} textAnchor="middle" style={many ? { fontSize: 10 } : undefined}>
                   {pill}
                 </text>
               </g>

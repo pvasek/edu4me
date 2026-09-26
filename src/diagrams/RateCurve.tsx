@@ -27,7 +27,7 @@ function Plot() {
     <Svg
       w={360}
       h={262}
-      max={480}
+      max={430}
       label="Graf koncentrace v čase: koncentrace reaktantu klesá, koncentrace produktu roste, obě se postupně zpomalují. Tečna ke křivce reaktantu ukazuje okamžitou rychlost reakce v = −Δc/Δt."
     >
       <Arrow x1={PL} y1={PB} x2={PL} y2={PT - 8} className="dg-arrow dg-axis" head={8} />

@@ -130,7 +130,7 @@
   place-items: center;
   width: 20px;
   height: 20px;
-  border-radius: 99px;
+  border-radius: 50%;
   background: var(--good);
   color: var(--surface);
   border: 1.5px solid var(--edge);

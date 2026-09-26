@@ -61,7 +61,7 @@
   place-items: center;
   width: 28px;
   height: 28px;
-  border-radius: 99px;
+  border-radius: 50%;
   border: var(--bw) solid var(--edge);
   background: var(--surface);
 }
