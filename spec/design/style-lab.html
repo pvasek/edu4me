@@ -1,0 +1,418 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>edu4me Style Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,800;1,9..144,600&family=Caveat:wght@600&family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=Caveat+Brush&family=JetBrains+Mono:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Baloo+2:wght@500;800&family=Fredoka:wght@500;700&family=Familjen+Grotesk:wght@500;700&family=Shrikhand&family=DM+Sans:wght@400;700&family=Press+Start+2P&family=VT323&family=Young+Serif&family=Karla:wght@400;700&family=Gluten:wght@600;800&family=Sora:wght@400;700&family=Cormorant+Garamond:ital,wght@0,700;1,700&family=Bangers&family=Patrick+Hand&family=Instrument+Sans:wght@400;600;700&family=Righteous&family=Outfit:wght@400;700&family=M+PLUS+Rounded+1c:wght@500;800&family=Lexend:wght@400;700&family=Nunito:wght@500;800&family=Rubik:wght@400;700;800&display=swap">
+<style>
+:root{
+  --page:#efeee9; --page-ink:#1d1c1a; --page-muted:#6b6862; --page-line:#d8d5cc; --page-card:#fbfaf6; --page-accent:#c2412d;
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--page:#161615;--page-ink:#ecebe6;--page-muted:#9d9a92;--page-line:#34332f;--page-card:#1f1e1c;--page-accent:#ff8a70;color-scheme:dark}
+}
+:root[data-theme="dark"]{--page:#161615;--page-ink:#ecebe6;--page-muted:#9d9a92;--page-line:#34332f;--page-card:#1f1e1c;--page-accent:#ff8a70;color-scheme:dark}
+
+body{background:var(--page);color:var(--page-ink);font:15px/1.5 "Instrument Sans",system-ui,sans-serif;padding:0 16px 110px}
+.wrap{max-width:1440px;margin:0 auto}
+header.page{padding-block:36px 20px;display:grid;gap:10px;max-width:760px}
+header.page .eyebrow{font:600 12px/1 "Instrument Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--page-accent)}
+header.page h1{font:800 clamp(30px,5vw,48px)/1.05 "Fraunces",Georgia,serif;margin:0;text-wrap:balance}
+header.page p{margin:0;color:var(--page-muted);max-width:64ch}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.legend span{font-size:12px;border:1px solid var(--page-line);border-radius:99px;padding:3px 10px;color:var(--page-muted)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px}
+.variant{display:grid;gap:10px;align-content:start}
+.vhead{display:flex;align-items:baseline;gap:10px}
+.vnum{font:700 13px/1 "JetBrains Mono",monospace;color:var(--page-accent);font-variant-numeric:tabular-nums}
+.vname{font:700 17px/1.2 "Instrument Sans",sans-serif;flex:1}
+.star{appearance:none;border:1px solid var(--page-line);background:var(--page-card);color:var(--page-muted);border-radius:99px;padding:4px 11px;font:600 12px "Instrument Sans",sans-serif;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.star:hover{border-color:var(--page-accent);color:var(--page-ink)}
+.star:focus-visible{outline:2px solid var(--page-accent);outline-offset:2px}
+.star[aria-pressed="true"]{background:var(--page-accent);border-color:var(--page-accent);color:#fff}
+.star svg{width:13px;height:13px}
+.vblurb{font-size:13px;color:var(--page-muted);margin:0;min-height:3em}
+.variant.picked .mock{outline:3px solid var(--page-accent);outline-offset:4px}
+
+.bar{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:var(--page-card);border-top:1px solid var(--page-line);display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;z-index:10}
+.bar .picks{font-size:14px;color:var(--page-muted);max-width:70ch}
+.bar .picks b{color:var(--page-ink)}
+.bar button{appearance:none;border:0;background:var(--page-ink);color:var(--page);padding:9px 16px;border-radius:99px;font:700 13px "Instrument Sans",sans-serif;cursor:pointer}
+.bar button:focus-visible{outline:2px solid var(--page-accent);outline-offset:2px}
+.bar textarea{position:absolute;left:-9999px}
+
+/* ================= MOCK (shared) ================= */
+.mock{
+  --bg:#fff; --surface:#fff; --ink:#222; --muted:#6a6a6a; --accent:#e4572e; --accent2:#2e86ab; --accent3:#f3a712;
+  --line:#e2e2e2; --edge:transparent; --r:14px; --bw:1px; --shadow:0 2px 8px rgba(0,0,0,.08);
+  --fd:Georgia,serif; --fb:system-ui,sans-serif; --fh:"Caveat",cursive;
+  --btn-bg:var(--accent); --btn-ink:#fff; --btn-shadow:none; --btn-r:var(--r);
+  --el-bg:var(--accent3); --el-ink:var(--ink);
+  --node-done:var(--accent2); --node-cur:var(--accent); --node-lock:var(--line); --node-ink:#fff; --node-lock-ink:var(--muted);
+  --path:var(--line); --track:var(--line); --prog:var(--accent2); --orbit:var(--muted); --note:var(--accent);
+  --title-size:22px; --title-weight:800;
+  background:var(--bg); color:var(--ink); font-family:var(--fb);
+  border-radius:20px; padding:16px; display:grid; gap:14px; position:relative; overflow:hidden; isolation:isolate;
+  box-shadow:0 1px 2px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.06);
+}
+.mock > *{position:relative;z-index:1}
+.m-top{display:flex;align-items:center;gap:8px}
+.m-logo{font:var(--title-weight) 17px/1 var(--fd);flex:1;letter-spacing:-.01em}
+.m-logo small{font:500 12px var(--fb);color:var(--muted);letter-spacing:0;margin-left:4px}
+.m-pill{white-space:nowrap;display:inline-flex;align-items:center;gap:4px;font:700 12px/1 var(--fb);padding:5px 9px;border-radius:99px;background:var(--surface);border:var(--bw) solid var(--edge);font-variant-numeric:tabular-nums}
+.m-pill svg{width:13px;height:13px}
+.m-pill.streak svg{fill:var(--accent)}
+.m-pill.xp svg{fill:var(--accent3)}
+
+.m-map{display:flex;justify-content:space-between;align-items:center;padding:6px 8px;position:relative}
+.m-map::before{content:"";position:absolute;left:24px;right:24px;top:50%;height:var(--path-w,3px);background:var(--path);transform:translateY(-50%);border-radius:3px}
+.node{position:relative;z-index:1;width:30px;height:30px;border-radius:var(--node-r,50%);display:grid;place-items:center;font:700 12px/1 var(--fd);background:var(--node-lock);color:var(--node-lock-ink);border:var(--bw) solid var(--edge)}
+.node.done{background:var(--node-done);color:var(--node-ink)}
+.node.cur{background:var(--node-cur);color:var(--node-ink);width:42px;height:42px;font-size:15px;box-shadow:0 0 0 5px color-mix(in srgb,var(--node-cur) 25%,transparent)}
+
+.m-card{background:var(--surface);border:var(--bw) solid var(--edge);border-radius:var(--r);box-shadow:var(--shadow);padding:14px;display:grid;gap:10px;position:relative}
+.m-eyebrow{font:700 11px/1.2 var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.m-title{font:var(--title-weight) var(--title-size)/1.12 var(--fd);padding-right:70px;text-wrap:balance}
+.m-atom{position:absolute;top:8px;right:8px;width:66px;height:66px}
+.m-atom .orb{stroke:var(--orbit);animation:spin 18s linear infinite;transform-origin:50px 50px}
+.m-atom .nuc{fill:var(--accent)}
+.m-atom .e{fill:var(--accent2)}
+.m-atom .face{display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.m-atom .orb{animation:none}}
+
+.m-row{display:flex;gap:12px;align-items:center}
+.m-el{width:76px;flex:none;aspect-ratio:1;display:grid;grid-template-rows:auto 1fr auto;padding:6px 7px;background:var(--el-bg);color:var(--el-ink);border:var(--bw) solid var(--edge);border-radius:calc(var(--r) * .6);box-shadow:var(--shadow);line-height:1}
+.m-el .z{font:700 10px var(--fb)}
+.m-el .sym{font:var(--title-weight) 28px/1 var(--fd);align-self:center}
+.m-el .nm{font:600 10px var(--fb);display:flex;justify-content:space-between}
+.m-note{font:600 19px/1.05 var(--fh);color:var(--note);display:flex;gap:6px;align-items:center}
+.m-note svg{width:34px;height:22px;flex:none;stroke:currentColor;fill:none;stroke-width:1.6;stroke-dasharray:3 3}
+
+.m-proglabel{display:flex;justify-content:space-between;font:600 11px/1 var(--fb);color:var(--muted);font-variant-numeric:tabular-nums}
+.m-prog{height:10px;border-radius:99px;background:var(--track);overflow:hidden;border:var(--bw) solid var(--edge)}
+.m-prog span{display:block;height:100%;width:62%;background:var(--prog);border-radius:inherit}
+
+.m-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.m-btn{font:700 15px/1 var(--fd);background:var(--btn-bg);color:var(--btn-ink);border:var(--bw) solid var(--edge);border-radius:var(--btn-r);padding:12px 18px;box-shadow:var(--btn-shadow)}
+.m-game{font:600 12px/1.2 var(--fb);color:var(--ink);border:1.5px dashed var(--muted);border-radius:var(--btn-r);padding:8px 10px;display:inline-flex;gap:6px;align-items:center}
+.m-game svg{width:14px;height:14px;fill:var(--accent2)}
+
+/* ================= VARIANTS ================= */
+
+/* 01 Lab Notebook — closest to the reference */
+.v01{--bg:#f3eee3;--surface:#faf7ef;--ink:#2b2724;--muted:#7a716a;--accent:#c4452d;--accent2:#3d5a80;--accent3:#f2e3bf;--line:#ddd3c2;--edge:#2b2724;--bw:1.5px;--r:6px;--shadow:3px 3px 0 rgba(43,39,36,.14);--fd:"Fraunces",Georgia,serif;--fb:"Karla",sans-serif;--fh:"Caveat",cursive;--btn-shadow:3px 3px 0 #2b2724;--node-lock:#faf7ef;
+  background-image:linear-gradient(rgba(90,75,55,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(90,75,55,.08) 1px,transparent 1px);background-size:16px 16px}
+.v01 .m-title{font-weight:500}
+.v01 .m-title em{color:var(--accent);font-weight:800;font-style:normal}
+.v01 .m-map::before{background:none;border-top:2px dashed #2b2724;height:0}
+
+/* 02 Highlighter Notebook */
+.v02{--bg:#fffdf6;--surface:#fff;--ink:#23232b;--muted:#77737f;--accent:#ff5d8f;--accent2:#34c38f;--accent3:#ffe45c;--line:#ece8dc;--edge:#23232b;--bw:1.5px;--r:10px;--shadow:none;--fd:"Fraunces",Georgia,serif;--fb:"Karla",sans-serif;--note:#3a7bd5;--node-done:#34c38f;--node-cur:#ff5d8f;--node-lock:#fff;--prog:linear-gradient(90deg,#ffe45c,#ff9f5c,#ff5d8f);--btn-bg:#23232b;--btn-shadow:0 4px 0 #ffe45c;
+  background-image:radial-gradient(#d6d0c0 1px,transparent 1.3px);background-size:14px 14px}
+.v02 .m-title{font-style:italic;font-weight:600}
+.v02 .m-title em{font-style:normal;background:linear-gradient(transparent 55%,#ffe45c 55%, #ffe45c 92%,transparent 92%)}
+.v02 .m-card{border-radius:10px 14px 9px 16px}
+.v02 .m-el{transform:rotate(-3deg)}
+
+/* 03 Risograph */
+.v03{--bg:#f4efe4;--surface:#fbf7ee;--ink:#1f3a93;--muted:#5669a8;--accent:#ff48b0;--accent2:#00a2b0;--accent3:#ffe800;--line:#e1d8c6;--edge:#1f3a93;--bw:2px;--r:0;--shadow:4px 4px 0 #ff48b0;--fd:"Archivo Black",sans-serif;--fb:"IBM Plex Mono",monospace;--fh:"IBM Plex Mono",monospace;--title-weight:400;--btn-bg:#ffe800;--btn-ink:#1f3a93;--btn-shadow:4px 4px 0 #00a2b0;--node-lock:#fbf7ee;--node-lock-ink:#1f3a93;--note:#ff48b0;
+  background-image:var(--noise)}
+.v03 .m-title{text-shadow:2px 2px 0 rgba(255,72,176,.55);text-transform:uppercase;font-size:20px}
+.v03 .m-note{font-size:12px;font-weight:600}
+.v03 .m-el{mix-blend-mode:multiply}
+.v03::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#00a2b0;opacity:.18;right:-60px;bottom:-60px;mix-blend-mode:multiply;z-index:0}
+
+/* 04 Chalkboard */
+.v04{--bg:#2d4739;--surface:rgba(255,255,255,.04);--ink:#f2f1e6;--muted:#b8c2b5;--accent:#ffb3c1;--accent2:#9bd4ff;--accent3:#fff09b;--line:rgba(255,255,255,.25);--edge:rgba(242,241,230,.75);--bw:2px;--r:12px;--shadow:none;--fd:"Caveat Brush",cursive;--fb:"Patrick Hand",sans-serif;--title-weight:400;--title-size:28px;--el-bg:transparent;--el-ink:#fff09b;--btn-bg:transparent;--btn-ink:#fff09b;--node-lock:transparent;--node-ink:#2d4739;--node-lock-ink:#b8c2b5;--prog:#fff09b;--track:rgba(255,255,255,.1);--note:#9bd4ff;
+  background-image:var(--noise),radial-gradient(ellipse at 30% 20%,#3b5a49,transparent 70%);border:10px solid #8a5a33;box-shadow:inset 0 0 0 2px #6d4526,0 8px 24px rgba(0,0,0,.2)}
+.v04 .m-card,.v04 .m-el,.v04 .m-btn,.v04 .node{border-style:dashed}
+.v04 .m-btn{font-size:22px;font-weight:400}
+.v04 .m-el .sym{font-size:34px}
+.v04 .m-pill{background:transparent;color:var(--ink)}
+.v04 .m-game{border-color:#ffb3c1}
+
+/* 05 Blueprint */
+.v05{--bg:#1c4f8a;--surface:rgba(255,255,255,.06);--ink:#eaf3ff;--muted:#a9c4e8;--accent:#ffd166;--accent2:#7fd8ff;--accent3:transparent;--line:rgba(234,243,255,.35);--edge:#eaf3ff;--bw:1px;--r:2px;--shadow:none;--fd:"JetBrains Mono",monospace;--fb:"JetBrains Mono",monospace;--fh:"JetBrains Mono",monospace;--title-size:18px;--btn-bg:#ffd166;--btn-ink:#1c4f8a;--el-ink:#eaf3ff;--node-lock:transparent;--node-ink:#1c4f8a;--node-lock-ink:#a9c4e8;--track:rgba(255,255,255,.1);--prog:repeating-linear-gradient(45deg,#ffd166 0 6px,#ffe29a 6px 12px);--orbit:#eaf3ff;
+  background-image:linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:60px 60px,60px 60px,12px 12px,12px 12px}
+.v05 .m-title{text-transform:uppercase;letter-spacing:.02em}
+.v05 .m-note{font-size:11px;font-weight:400}
+.v05 .m-card,.v05 .m-el{border-style:dashed}
+.v05 .m-map::before{background:none;border-top:1px dashed #eaf3ff;height:0}
+
+/* 06 Neo-brutal Candy */
+.v06{--bg:#fff3d1;--surface:#fff;--ink:#111;--muted:#444;--accent:#ff5c8a;--accent2:#35d0c9;--accent3:#ffd23f;--line:#fff;--edge:#111;--bw:3px;--r:12px;--shadow:5px 5px 0 #111;--fd:"Bricolage Grotesque",sans-serif;--fb:"Bricolage Grotesque",sans-serif;--fh:"Bricolage Grotesque",sans-serif;--btn-shadow:4px 4px 0 #111;--node-ink:#111;--node-lock-ink:#111;--path:#111;--prog:#35d0c9;--track:#fff;--orbit:#111;--note:#111;--title-size:24px}
+.v06 .m-note{font-size:13px;font-weight:800;background:#ffd23f;border:3px solid #111;padding:4px 8px;border-radius:8px;transform:rotate(2deg)}
+.v06 .m-note svg{display:none}
+.v06 .m-pill{box-shadow:2px 2px 0 #111}
+.v06 .m-game{border:3px solid #111;border-style:solid;background:#35d0c9}
+
+/* 07 Clay */
+.v07{--bg:#e9e5ff;--surface:#f6f4ff;--ink:#2f2759;--muted:#7a72a8;--accent:#7c5cff;--accent2:#ff8fc7;--accent3:#ffd66b;--line:#d9d3fb;--r:26px;--shadow:8px 10px 20px rgba(110,90,210,.22),inset -4px -5px 10px rgba(110,90,210,.14),inset 4px 4px 10px rgba(255,255,255,.9);--fd:"Baloo 2",sans-serif;--fb:"Nunito",sans-serif;--fh:"Baloo 2",sans-serif;--btn-r:99px;--btn-shadow:0 8px 16px rgba(124,92,255,.35),inset 0 -4px 0 rgba(0,0,0,.15),inset 0 3px 0 rgba(255,255,255,.35);--prog:linear-gradient(90deg,#7c5cff,#ff8fc7);--node-lock:#f6f4ff;--title-size:24px}
+.v07 .node{box-shadow:4px 5px 10px rgba(110,90,210,.25),inset -2px -3px 5px rgba(0,0,0,.12),inset 2px 2px 4px rgba(255,255,255,.6)}
+.v07 .m-note{font-size:14px;font-weight:800}
+.v07 .m-atom .face{display:block;fill:#fff;stroke:#fff}
+.v07 .m-game{border:0;background:#f6f4ff;box-shadow:inset 3px 3px 6px rgba(110,90,210,.2)}
+
+/* 08 Chunky Game */
+.v08{--bg:#ffffff;--surface:#fff;--ink:#3c3c3c;--muted:#8a8a8a;--accent:#58cc02;--accent2:#1cb0f6;--accent3:#ffc800;--line:#e5e5e5;--edge:#e5e5e5;--bw:2px;--r:16px;--shadow:0 4px 0 #e5e5e5;--fd:"Fredoka",sans-serif;--fb:"Nunito",sans-serif;--fh:"Fredoka",sans-serif;--btn-shadow:0 5px 0 #46a302;--node-done:#ffc800;--node-cur:#58cc02;--prog:#58cc02;--path:#e5e5e5;--path-w:8px;--title-size:23px;--title-weight:700;--note:#1cb0f6}
+.v08 .m-btn{border-color:#58cc02;text-transform:uppercase;letter-spacing:.06em;font-size:14px}
+.v08 .node{width:36px;height:36px;box-shadow:0 5px 0 rgba(0,0,0,.18)}
+.v08 .node.cur{width:48px;height:48px;box-shadow:0 5px 0 #46a302,0 0 0 6px #d7ffb8}
+.v08 .m-eyebrow{color:#1cb0f6}
+.v08 .m-note{font-size:14px;font-weight:700;background:#ddf4ff;padding:6px 10px;border-radius:12px}
+.v08 .m-note svg{display:none}
+.v08 .m-game{border:2px solid #e5e5e5;border-bottom-width:4px}
+
+/* 09 Periodic Pop */
+.v09{--bg:#f7f7f4;--surface:#fff;--ink:#16161a;--muted:#6d6d74;--accent:#ff6b6b;--accent2:#4dabf7;--accent3:#ff6b6b;--line:#e3e3de;--edge:#16161a;--bw:1.5px;--r:4px;--shadow:none;--fd:"Familjen Grotesk",sans-serif;--fb:"Familjen Grotesk",sans-serif;--fh:"Familjen Grotesk",sans-serif;--node-r:4px;--btn-bg:#16161a;--node-ink:#16161a;--title-size:24px;--title-weight:700;--prog:linear-gradient(90deg,#ff6b6b 0 20%,#ffa94d 20% 40%,#ffd43b 40% 60%,#69db7c 60% 80%,#4dabf7 80%)}
+.v09 .node.n1{background:#ffa94d}.v09 .node.n2{background:#ffd43b}.v09 .node.cur{background:#69db7c;box-shadow:none}
+.v09 .m-note{font-size:12px;font-weight:500;color:var(--muted)}
+.v09 .m-note svg{display:none}
+.v09 .m-note b{display:inline-block;width:10px;height:10px;background:#ff6b6b;margin-right:4px;border:1px solid #16161a}
+.v09::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:linear-gradient(90deg,#ff6b6b 0 16.6%,#ffa94d 0 33.3%,#ffd43b 0 50%,#69db7c 0 66.6%,#4dabf7 0 83.3%,#b197fc 0)}
+
+/* 10 Retro 70s */
+.v10{--bg:#f7e2bf;--surface:#fdf1dc;--ink:#4a2a17;--muted:#8a6446;--accent:#e2641f;--accent2:#2a7f62;--accent3:#f2b134;--line:#ebcf9f;--r:26px;--shadow:0 3px 0 #d9b57a;--fd:"Shrikhand",cursive;--fb:"DM Sans",sans-serif;--fh:"Shrikhand",cursive;--title-weight:400;--btn-r:99px;--btn-shadow:0 4px 0 #a8430d;--prog:linear-gradient(90deg,#b8432f,#e2641f,#f2b134);--note:#2a7f62;--title-size:22px}
+.v10 .m-note{font-size:14px}
+.v10::after{content:"";position:absolute;left:-40px;bottom:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,transparent 0 40px,#b8432f 40px 56px,#e2641f 56px 72px,#f2b134 72px 88px,#2a7f62 88px 100px,transparent 100px);opacity:.9;z-index:0}
+
+/* 11 Arcade Pixel */
+.v11{--bg:#15102c;--surface:#221a47;--ink:#ece8ff;--muted:#a79ee0;--accent:#ff3ea5;--accent2:#00e5ff;--accent3:#ffe600;--line:#3a2f73;--edge:#ece8ff;--bw:3px;--r:0;--shadow:4px 4px 0 #000;--fd:"Press Start 2P",monospace;--fb:"VT323",monospace;--fh:"VT323",monospace;--title-size:13px;--title-weight:400;--btn-r:0;--btn-shadow:4px 4px 0 #000;--el-ink:#15102c;--node-r:0;--node-ink:#15102c;--prog:repeating-linear-gradient(90deg,#00e5ff 0 8px,#15102c 8px 10px);--track:#15102c;--orbit:#00e5ff;--note:#ffe600}
+.v11 .m-title{line-height:1.6}
+.v11 .m-logo{font-size:12px}
+.v11 .m-eyebrow{font:400 16px var(--fb);letter-spacing:.04em}
+.v11 .m-btn{font-size:11px}
+.v11 .m-el .sym{font-size:20px}
+.v11 .m-el .nm,.v11 .m-el .z{font:400 14px var(--fb)}
+.v11 .m-note{font-size:22px}
+.v11 .m-pill{font:400 16px var(--fb);border-radius:0}
+.v11 .m-game,.v11 .m-proglabel{font:400 16px var(--fb)}
+.v11 .node{font-size:10px}
+.v11::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 2px,rgba(0,0,0,.25) 2px 3px);z-index:2;pointer-events:none}
+
+/* 12 Watercolor */
+.v12{--bg:#fdfbf6;--surface:rgba(255,255,255,.72);--ink:#33415c;--muted:#76819a;--accent:#e07a5f;--accent2:#5e9fb8;--accent3:#f6dca8;--line:#ece6da;--r:18px;--shadow:0 6px 24px rgba(51,65,92,.08);--fd:"Young Serif",Georgia,serif;--fb:"Karla",sans-serif;--title-weight:400;--btn-r:99px;--prog:linear-gradient(90deg,#9cc9d9,#5e9fb8);--node-done:#81b29a;--title-size:23px;
+  background-image:radial-gradient(circle at 15% 12%,rgba(224,122,95,.28),transparent 32%),radial-gradient(circle at 90% 40%,rgba(94,159,184,.28),transparent 36%),radial-gradient(circle at 30% 95%,rgba(242,204,143,.45),transparent 40%)}
+.v12 .m-el{border-radius:40% 55% 45% 60% / 55% 45% 60% 45%}
+.v12 .m-el{padding:10px 12px}
+
+/* 13 Paper Cut-out */
+.v13{--bg:#ffcb47;--surface:#fff;--ink:#3a2e1f;--muted:#8a7658;--accent:#ff6f59;--accent2:#2ec4b6;--accent3:#ffe9a8;--line:#ffe9a8;--r:20px;--shadow:0 2px 0 #e8b22f,0 8px 0 rgba(0,0,0,.08);--fd:"Gluten",cursive;--fb:"Nunito",sans-serif;--fh:"Gluten",cursive;--btn-r:99px;--btn-shadow:0 5px 0 #d4513d;--node-lock:#fff;--title-size:23px;--note:#3a2e1f}
+.v13 .m-note{font-size:15px}
+.v13::before{content:"";position:absolute;inset:auto -20px -30px -20px;height:120px;background:#ff9f59;border-radius:50% 50% 0 0/40px 40px 0 0;box-shadow:0 -10px 0 #ffb86b;z-index:0}
+.v13::after{content:"";position:absolute;inset:auto -20px -60px -20px;height:110px;background:#2ec4b6;border-radius:45% 55% 0 0/50px 50px 0 0;z-index:0}
+
+/* 14 Night Lab Glow */
+.v14{--bg:#0b1026;--surface:rgba(255,255,255,.05);--ink:#e6ecff;--muted:#8d97c2;--accent:#39ff88;--accent2:#6c8cff;--accent3:rgba(57,255,136,.1);--line:#252d55;--edge:rgba(255,255,255,.12);--r:16px;--shadow:0 0 0 1px rgba(255,255,255,.04),0 10px 30px rgba(0,0,0,.4);--fd:"Sora",sans-serif;--fb:"Sora",sans-serif;--fh:"Sora",sans-serif;--title-weight:700;--title-size:21px;--btn-ink:#0b1026;--btn-shadow:0 0 22px rgba(57,255,136,.55);--node-ink:#0b1026;--el-ink:#39ff88;--prog:linear-gradient(90deg,#6c8cff,#39ff88);--orbit:#6c8cff;--note:#ff5bd6;
+  background-image:radial-gradient(circle at 80% 0%,rgba(108,140,255,.35),transparent 45%),radial-gradient(circle at 0% 100%,rgba(57,255,136,.18),transparent 40%)}
+.v14 .m-el{border-color:#39ff88;box-shadow:0 0 18px rgba(57,255,136,.35),inset 0 0 12px rgba(57,255,136,.2)}
+.v14 .m-note{font-size:12px;font-weight:400}
+.v14 .node.cur{box-shadow:0 0 18px #39ff88}
+.v14 .m-atom .nuc{filter:drop-shadow(0 0 6px #39ff88)}
+
+/* 15 Encyclopedia Engraving */
+.v15{--bg:#f3eddc;--surface:#f8f3e5;--ink:#1f2a44;--muted:#5d6477;--accent:#b5651d;--accent2:#1f2a44;--accent3:#f8f3e5;--line:#d9ceb2;--edge:#1f2a44;--bw:1px;--r:0;--shadow:none;--fd:"Cormorant Garamond",Georgia,serif;--fb:"Karla",sans-serif;--fh:"Caveat",cursive;--title-size:27px;--title-weight:700;--btn-bg:#1f2a44;--btn-r:0;--node-lock:#f8f3e5;--prog:repeating-linear-gradient(135deg,#1f2a44 0 2px,transparent 2px 5px);--track:#f8f3e5;--note:#b5651d}
+.v15 .m-title{font-style:italic}
+.v15 .m-card{outline:1px solid #1f2a44;outline-offset:-5px}
+.v15 .m-el{background-image:repeating-linear-gradient(135deg,rgba(31,42,68,.12) 0 1px,transparent 1px 4px)}
+.v15 .m-eyebrow{font-family:var(--fd);font-size:13px;letter-spacing:.2em;font-weight:700}
+
+/* 16 Comic */
+.v16{--bg:#ffffff;--surface:#fff;--ink:#111;--muted:#333;--accent:#ff2e4d;--accent2:#1e90ff;--accent3:#ffe14d;--line:#fff;--edge:#111;--bw:3px;--r:4px;--shadow:4px 4px 0 #111;--fd:"Bangers",cursive;--fb:"Patrick Hand",sans-serif;--fh:"Patrick Hand",sans-serif;--title-weight:400;--title-size:30px;--btn-shadow:4px 4px 0 #111;--node-ink:#111;--node-lock-ink:#111;--path:#111;--prog:repeating-linear-gradient(-45deg,#ff2e4d 0 6px,#ff5a72 6px 12px);--note:#111;
+  background-image:radial-gradient(rgba(30,144,255,.35) 22%,transparent 24%);background-size:9px 9px}
+.v16 .m-title,.v16 .m-btn,.v16 .m-logo{letter-spacing:.04em}
+.v16 .m-btn{font-size:20px;font-weight:400;transform:rotate(-2deg)}
+.v16 .m-note{font-size:17px;background:#fff;border:3px solid #111;border-radius:22px;padding:6px 10px;position:relative;margin-left:10px}
+.v16 .m-note svg{display:none}
+.v16 .m-note::before{content:"";position:absolute;left:-12px;top:50%;border:8px solid transparent;border-right:12px solid #111;transform:translateY(-50%)}
+
+/* 17 Swiss Minimal */
+.v17{--bg:#ffffff;--surface:#fff;--ink:#0a0a0a;--muted:#777;--accent:#ff3b00;--accent2:#0a0a0a;--accent3:#f2f2f2;--line:#e6e6e6;--edge:#0a0a0a;--bw:1px;--r:0;--shadow:none;--fd:"Instrument Sans",sans-serif;--fb:"Instrument Sans",sans-serif;--fh:"Instrument Sans",sans-serif;--title-size:28px;--title-weight:700;--btn-r:0;--node-lock:#fff;--prog:#ff3b00;--track:#f2f2f2;--note:#777;--path-w:1px;--path:#0a0a0a}
+.v17 .m-title{letter-spacing:-.03em;line-height:1}
+.v17 .m-note{font-size:12px;font-weight:400}
+.v17 .m-card{border-width:0;border-top-width:2px;padding-inline:0}
+.v17 .m-pill{border-radius:0}
+
+/* 18 Sticker Book */
+.v18{--bg:#7cc6f6;--surface:#fff;--ink:#233044;--muted:#6a7a90;--accent:#ff5d8f;--accent2:#5ce1a6;--accent3:#ffe45e;--line:#ddeefb;--edge:#fff;--bw:4px;--r:18px;--shadow:0 4px 10px rgba(20,60,100,.25);--fd:"Baloo 2",sans-serif;--fb:"Nunito",sans-serif;--fh:"Baloo 2",sans-serif;--btn-r:99px;--btn-shadow:0 4px 10px rgba(20,60,100,.3);--node-ink:#233044;--title-size:24px;--note:#fff;
+  background-image:radial-gradient(rgba(255,255,255,.35) 2px,transparent 2.5px);background-size:22px 22px}
+.v18 .m-el{transform:rotate(-6deg)}
+.v18 .m-btn{transform:rotate(1.5deg)}
+.v18 .m-note{font-size:15px;font-weight:800;background:#233044;padding:5px 10px;border-radius:99px;border:3px solid #fff;transform:rotate(3deg)}
+.v18 .m-note svg{display:none}
+.v18 .m-pill{box-shadow:0 2px 6px rgba(20,60,100,.25)}
+.v18 .m-atom{filter:drop-shadow(0 0 0 #fff) drop-shadow(2px 3px 3px rgba(20,60,100,.3))}
+.v18 .m-atom .face{display:block;fill:#fff;stroke:#fff}
+
+/* 19 Memphis */
+.v19{--bg:#fff8ec;--surface:#fff;--ink:#2a1e4a;--muted:#6f6490;--accent:#ff4f79;--accent2:#00b8a9;--accent3:#ffde7d;--line:#f0e4f7;--edge:#2a1e4a;--bw:2px;--r:0 18px 0 18px;--shadow:6px 6px 0 #6a4c93;--fd:"Righteous",sans-serif;--fb:"Outfit",sans-serif;--fh:"Righteous",sans-serif;--title-weight:400;--title-size:23px;--btn-r:0 14px 0 14px;--btn-shadow:4px 4px 0 #00b8a9;--note:#6a4c93;
+  background-image:
+   radial-gradient(circle at 88% 10%,#ffde7d 0 16px,transparent 17px),
+   linear-gradient(135deg,transparent 46%,#00b8a9 46% 54%,transparent 54%),
+   repeating-radial-gradient(circle at 5% 90%,transparent 0 8px,#ff4f79 8px 10px,transparent 10px 18px);
+  background-size:auto,26px 26px,auto;background-repeat:no-repeat,repeat-x,no-repeat;background-position:0 0,0 100%,0 0}
+.v19 .m-note{font-size:14px}
+.v19 .m-el{border-radius:0 12px}
+
+/* 20 Pastel Mesh */
+.v20{--bg:#fbeee6;--surface:rgba(255,255,255,.62);--ink:#2c2540;--muted:#7a7090;--accent:#ff7a59;--accent2:#8a6cff;--accent3:rgba(255,255,255,.7);--line:rgba(255,255,255,.7);--edge:rgba(255,255,255,.9);--r:24px;--shadow:0 10px 30px rgba(90,60,140,.12);--fd:"Outfit",sans-serif;--fb:"Outfit",sans-serif;--fh:"Outfit",sans-serif;--title-weight:700;--btn-r:99px;--btn-bg:#2c2540;--prog:linear-gradient(90deg,#ff7a59,#8a6cff);--note:#8a6cff;
+  background-image:radial-gradient(at 0% 0%,#ffc4b2 0,transparent 55%),radial-gradient(at 100% 20%,#d6c8ff 0,transparent 55%),radial-gradient(at 40% 100%,#b8f0dc 0,transparent 55%)}
+.v20 .m-card,.v20 .m-el{backdrop-filter:blur(10px)}
+.v20 .m-note{font-size:13px;font-weight:400}
+
+/* 21 Kawaii Stationery */
+.v21{--bg:#fff0f5;--surface:#fff;--ink:#5b4250;--muted:#a3899a;--accent:#ff8fb1;--accent2:#8fd3ff;--accent3:#fff0b3;--line:#ffe0ea;--edge:#ffb3c9;--bw:2px;--r:22px;--shadow:0 4px 0 #ffd3e1;--fd:"M PLUS Rounded 1c",sans-serif;--fb:"M PLUS Rounded 1c",sans-serif;--fh:"M PLUS Rounded 1c",sans-serif;--title-size:21px;--btn-r:99px;--btn-shadow:0 4px 0 #e0678f;--node-lock:#fff;--prog:repeating-linear-gradient(45deg,#ff8fb1 0 8px,#ffb3c9 8px 16px);--note:#ff8fb1;
+  background-image:linear-gradient(90deg,rgba(255,143,177,.12) 50%,transparent 50%),linear-gradient(rgba(255,143,177,.12) 50%,transparent 50%);background-size:24px 24px}
+.v21 .m-card{border-style:dashed}
+.v21 .m-note{font-size:13px;font-weight:800}
+.v21 .m-atom .face{display:block;fill:#5b4250;stroke:#5b4250}
+.v21 .m-atom .e{fill:#8fd3ff}
+
+/* 22 CPK Molecule */
+.v22{--bg:#eef1f5;--surface:#fff;--ink:#1e2430;--muted:#6b7385;--accent:#e8483d;--accent2:#3a6fd8;--accent3:#fff;--line:#d6dbe4;--r:18px;--shadow:0 2px 0 #d6dbe4;--fd:"Lexend",sans-serif;--fb:"Lexend",sans-serif;--fh:"Lexend",sans-serif;--title-weight:700;--btn-bg:#2d2d2d;--btn-r:99px;--node-done:#2d2d2d;--node-cur:#e8483d;--path:#9aa3b3;--path-w:6px;--prog:linear-gradient(90deg,#2d2d2d,#3a6fd8);--note:#3a6fd8;--el-ink:#1e2430}
+.v22 .node{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.6),transparent 40%),var(--node-lock)}
+.v22 .node.done{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.45),transparent 40%),#2d2d2d}
+.v22 .node.n2{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.5),transparent 40%),#3a6fd8}
+.v22 .node.cur{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.55),transparent 40%),#e8483d;box-shadow:none}
+.v22 .node.lock{background:radial-gradient(circle at 35% 30%,#fff,#dfe3ea);border:1px solid #c5ccd8}
+.v22 .m-el{border:1px solid #d6dbe4;background:linear-gradient(#fff,#f5f7fa)}
+.v22 .m-note{font-size:12px;font-weight:400}
+.v22 .m-atom .nuc{fill:#e8483d}
+
+/* 23 Flame Test */
+.v23{--bg:#140e0c;--surface:#1f1714;--ink:#fbeee4;--muted:#b49b8c;--accent:#ffb000;--accent2:#ff2a4d;--accent3:#2a1c17;--line:#3a2a23;--edge:#3a2a23;--r:14px;--shadow:none;--fd:"Rubik",sans-serif;--fb:"Rubik",sans-serif;--fh:"Rubik",sans-serif;--title-size:23px;--btn-ink:#140e0c;--btn-r:99px;--btn-shadow:0 0 24px rgba(255,176,0,.5);--node-ink:#140e0c;--el-ink:#ffb000;--prog:linear-gradient(90deg,#ff2a4d,#ff6a2b,#ffb000,#33e08a,#b889ff);--note:#b889ff;
+  background-image:radial-gradient(ellipse at 50% 120%,rgba(255,106,43,.35),transparent 60%)}
+.v23 .node.done.n1{background:#ff2a4d}.v23 .node.done.n2{background:#ff6a2b}.v23 .node.cur{background:#ffb000;box-shadow:0 0 20px #ffb000}.v23 .node.lock{background:#1f1714;color:#b889ff;border-color:#b889ff}
+.v23 .m-el{border:1px solid #ffb000;box-shadow:0 -6px 22px rgba(255,176,0,.35)}
+.v23 .m-note{font-size:12px;font-weight:400}
+
+/* 24 pH Indicator */
+.v24{--bg:#fbfbf7;--surface:#fff;--ink:#1b1b2f;--muted:#6b6b80;--accent:#6c3fd1;--accent2:#1e9e5a;--accent3:#fff;--line:#ebebe4;--edge:#1b1b2f;--bw:2px;--r:14px;--shadow:0 3px 0 #1b1b2f;--fd:"Rubik",sans-serif;--fb:"Rubik",sans-serif;--fh:"Rubik",sans-serif;--title-size:24px;--btn-bg:#1b1b2f;--btn-r:12px;--btn-shadow:0 4px 0 #6c3fd1;--prog:linear-gradient(90deg,#e8262b,#f36f21,#f9c80e,#8cc63f,#1e9e5a,#1a8fc9,#3b4cb8,#6c3fd1);--note:#1a8fc9;--node-ink:#fff;--node-lock:#fff}
+.v24 .node.n1{background:#e8262b}.v24 .node.n2{background:#f9c80e;color:#1b1b2f}.v24 .node.cur{background:#1e9e5a;box-shadow:0 0 0 5px rgba(30,158,90,.25)}
+.v24::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:var(--prog)}
+.v24 .m-note{font-size:12px;font-weight:700}
+.v24 .m-note svg{display:none}
+.v24 .m-note span{background:#8cc63f;color:#1b1b2f;padding:4px 8px;border-radius:99px;border:2px solid #1b1b2f}
+.v24 .m-el{border-color:#1b1b2f;background:linear-gradient(135deg,#fff 60%,#f9c80e 60%)}
+</style>
+
+<div class="wrap">
+  <header class="page">
+    <span class="eyebrow">edu4me · Chemie · style selection</span>
+    <h1>Pick the look for the chemistry course</h1>
+    <p>Each card mocks up the same screen: the level map, a lesson card with the sodium tile, XP and streak, the continue button and a game link. Star one or more cards; the bar at the bottom collects your picks so you can copy them back to me. Mixing works too, e.g. "colours of 22, type of 06".</p>
+    <div class="legend"><span>24 variants</span><span>Text shown in Czech, as in the real app</span><span>Atoms spin slowly</span></div>
+  </header>
+  <main class="grid" id="grid"></main>
+</div>
+
+<div class="bar" role="region" aria-label="Your picks">
+  <div class="picks" id="picks">No picks yet. Star the variants you like.</div>
+  <button type="button" id="copy">Copy picks</button>
+  <textarea id="copybuf" aria-hidden="true" tabindex="-1"></textarea>
+</div>
+
+<script>
+const VARIANTS = [
+  ["01","Lab Notebook","Closest to your reference: squared paper, serif display, terracotta accent, sketchy offset shadows and handwritten notes."],
+  ["02","Highlighter Notebook","Dotted notebook page with neon highlighter marks, italic serif titles and slightly tilted, hand-placed elements."],
+  ["03","Risograph","Two-ink print look: fluoro pink, teal and yellow over grainy paper, with misregistered shadows and mono type."],
+  ["04","Chalkboard","A classroom blackboard in a wooden frame, coloured chalk and handwriting. Dashed chalk outlines everywhere."],
+  ["05","Blueprint","Engineering drawing: blue sheet, white grid, monospace labels, dashed construction lines."],
+  ["06","Neo-brutal Candy","Thick black outlines, hard offset shadows, candy colours. Loud, confident and very clickable."],
+  ["07","Clay","Soft 3D clay buttons in lavender and pink, with bouncy rounded type and a smiling atom."],
+  ["08","Chunky Game","Language-app energy: big 3D buttons, fat path between levels, bright green for go."],
+  ["09","Periodic Pop","Swiss grid in the colours of periodic-table groups. Levels and progress take element-family colours."],
+  ["10","Retro 70s","Warm mustard, orange and green, groovy display script and a rainbow arc."],
+  ["11","Arcade Pixel","8-bit game screen with pixel type, scanlines and neon. Strong for game sections, harder for long reading."],
+  ["12","Watercolor","Soft paint washes behind frosted cards, a friendly serif and an organic blob-shaped element tile."],
+  ["13","Paper Cut-out","Layered cut-paper hills and chunky rounded type. Crafty and warm."],
+  ["14","Night Lab","Dark lab at night with glowing reagents: neon green and blue glow on glassy panels."],
+  ["15","Encyclopedia","Old scientific engraving: ink blue on parchment, hatched fills, italic Garamond, double rules."],
+  ["16","Comic","Halftone dots, speech bubbles, Bangers lettering and heavy panel borders."],
+  ["17","Swiss Minimal","Black, white and one signal orange, tight grotesque type. The calm baseline for comparison."],
+  ["18","Sticker Book","White die-cut stickers on a sky-blue page, slightly rotated, like a collectible album."],
+  ["19","Memphis","80s Memphis confetti: squiggles, circles and diagonal stripes, asymmetric corners."],
+  ["20","Pastel Mesh","Peach, lilac and mint gradient mesh behind frosted glass cards. Modern and gentle."],
+  ["21","Kawaii Stationery","Gingham pink paper, stitched borders, rounded Japanese-style type, cute atom face."],
+  ["22","CPK Molecule","Palette taken from molecular models (carbon black, oxygen red, nitrogen blue); level map drawn as ball-and-stick."],
+  ["23","Flame Test","Dark background lit by real flame-test colours: lithium crimson, sodium yellow, copper green, potassium lilac."],
+  ["24","pH Indicator","Universal indicator rainbow used as the structural colour system: progress bar, header stripe, level nodes."],
+];
+
+const flame = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 4 5 5.5 5 11a5 5 0 0 1-10 0c0-2.5 1.2-4 2.5-5 .1 1.8.8 3 2 3.4C11 8.5 10.5 5.5 12 2z"/></svg>';
+const bolt  = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>';
+const play  = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>';
+const arrow = '<svg viewBox="0 0 34 22" aria-hidden="true"><path d="M32 4C22 2 10 6 4 16"/><path d="M4 16l1-7M4 16l7-2" stroke-dasharray="0"/></svg>';
+const atom = `<svg class="m-atom" viewBox="0 0 100 100" aria-hidden="true">
+  <g class="orb" fill="none" stroke-width="2.4"><ellipse cx="50" cy="50" rx="44" ry="16"/><ellipse cx="50" cy="50" rx="44" ry="16" transform="rotate(60 50 50)"/><ellipse cx="50" cy="50" rx="44" ry="16" transform="rotate(120 50 50)"/>
+  <circle class="e" cx="6" cy="50" r="5" stroke="none"/><circle class="e" cx="72" cy="88.1" r="5" stroke="none"/><circle class="e" cx="72" cy="11.9" r="5" stroke="none"/></g>
+  <circle class="nuc" cx="50" cy="50" r="12"/>
+  <g class="face"><circle cx="45.5" cy="48" r="1.7"/><circle cx="54.5" cy="48" r="1.7"/><path d="M46 53q4 3.5 8 0" fill="none" stroke-width="1.5"/></g>
+</svg>`;
+
+function mock(id){
+  return `<div class="mock v${id}" aria-hidden="true">
+    <div class="m-top"><span class="m-logo">edu4me<small>Chemie</small></span>
+      <span class="m-pill streak">${flame}7 dní</span><span class="m-pill xp">${bolt}340 XP</span></div>
+    <div class="m-map"><span class="node done n1">1</span><span class="node done n2">2</span><span class="node cur">3</span><span class="node lock">4</span><span class="node lock">5</span></div>
+    <div class="m-card">${atom}
+      <div class="m-eyebrow">Úroveň 3 · Chemická vazba</div>
+      <div class="m-title">Proč se atomy <em>spojují?</em></div>
+      <div class="m-row">
+        <div class="m-el"><span class="z">11</span><span class="sym">Na</span><span class="nm"><span>Sodík</span><span>22,99</span></span></div>
+        <div class="m-note">${arrow}<span>${id==="09"?"<b></b>alkalický kov":"jeden elektron navíc chce pryč!"}</span></div>
+      </div>
+      <div class="m-proglabel"><span>Lekce 3 z 5</span><span>62 %</span></div>
+      <div class="m-prog"><span></span></div>
+    </div>
+    <div class="m-actions"><span class="m-btn">Pokračovat</span><span class="m-game">${play}Hra: Postav atom</span></div>
+  </div>`;
+}
+
+const store = {
+  get(){ try{ return JSON.parse(localStorage.getItem("edu4me-picks")||"[]"); }catch(e){ return []; } },
+  set(v){ try{ localStorage.setItem("edu4me-picks",JSON.stringify(v)); }catch(e){} }
+};
+let picks = store.get();
+const grid = document.getElementById("grid");
+const starSvg = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6z"/></svg>';
+
+grid.innerHTML = VARIANTS.map(([id,name,blurb]) => `
+  <section class="variant" data-id="${id}">
+    <div class="vhead"><span class="vnum">${id}</span><span class="vname">${name}</span>
+      <button type="button" class="star" id="star-${id}" aria-pressed="false">${starSvg}<span>Pick</span></button></div>
+    <p class="vblurb">${blurb}</p>
+    ${mock(id)}
+  </section>`).join("");
+
+function render(){
+  document.querySelectorAll(".variant").forEach(el=>{
+    const on = picks.includes(el.dataset.id);
+    el.classList.toggle("picked",on);
+    const b = el.querySelector(".star");
+    b.setAttribute("aria-pressed",on);
+    b.querySelector("span").textContent = on ? "Picked" : "Pick";
+  });
+  const el = document.getElementById("picks");
+  el.innerHTML = picks.length
+    ? "Your picks: <b>" + picks.slice().sort().map(id=>id+" "+VARIANTS.find(v=>v[0]===id)[1]).join(", ") + "</b>"
+    : "No picks yet. Star the variants you like.";
+}
+grid.addEventListener("click",e=>{
+  const b = e.target.closest(".star"); if(!b) return;
+  const id = b.closest(".variant").dataset.id;
+  picks = picks.includes(id) ? picks.filter(p=>p!==id) : [...picks,id];
+  store.set(picks); render();
+});
+document.getElementById("copy").addEventListener("click",()=>{
+  const txt = picks.length ? "Style picks: " + picks.slice().sort().map(id=>id+" "+VARIANTS.find(v=>v[0]===id)[1]).join(", ") : "No picks";
+  const btn = document.getElementById("copy");
+  const done = ()=>{ btn.textContent="Copied"; setTimeout(()=>btn.textContent="Copy picks",1500); };
+  const fallback = ()=>{ const t=document.getElementById("copybuf"); t.value=txt; t.select(); try{document.execCommand("copy");}catch(e){} done(); };
+  try{ navigator.clipboard.writeText(txt).then(done,fallback); }catch(e){ fallback(); }
+});
+render();
+</script>
