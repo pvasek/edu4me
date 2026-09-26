@@ -1,0 +1,58 @@
+.mascot {
+  flex: none;
+  overflow: visible;
+}
+.mascot-orbits {
+  transform-origin: 60px 60px;
+  animation: mascot-spin 14s linear infinite;
+}
+.mascot-cheer .mascot-body {
+  animation: mascot-bounce 0.9s ease-in-out infinite;
+  transform-origin: 60px 90px;
+}
+.mascot-sleep .mascot-orbits {
+  animation-duration: 40s;
+}
+@keyframes mascot-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes mascot-bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  40% {
+    transform: translateY(-7px) scale(0.97, 1.04);
+  }
+  60% {
+    transform: translateY(0) scale(1.04, 0.96);
+  }
+}
+.mascot-says {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.mascot-bubble {
+  position: relative;
+  background: var(--surface);
+  border: 2px solid var(--edge);
+  border-radius: 18px;
+  padding: 12px 16px;
+  box-shadow: var(--shadow-hard);
+  max-width: 60ch;
+}
+.mascot-bubble::before {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  background: var(--surface);
+  border-left: 2px solid var(--edge);
+  border-bottom: 2px solid var(--edge);
+  transform: translateY(-50%) rotate(45deg);
+}

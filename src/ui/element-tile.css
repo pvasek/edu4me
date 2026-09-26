@@ -1,0 +1,90 @@
+.el-tile {
+  appearance: none;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  align-content: start;
+  gap: 1px;
+  width: var(--el-w, 92px);
+  aspect-ratio: 1 / 1.08;
+  padding: 7px 8px;
+  background: var(--el-bg);
+  color: var(--cat-ink);
+  border: 2px solid var(--edge);
+  border-radius: 10px;
+  box-shadow: var(--shadow-hard);
+  text-align: left;
+  font-family: var(--font-body);
+  line-height: 1;
+  position: relative;
+}
+button.el-tile {
+  cursor: pointer;
+}
+button.el-tile:hover {
+  transform: translate(-1px, -1px);
+}
+.el-z {
+  font: 700 12px var(--font-mono);
+}
+.el-sym {
+  font: 800 34px/1 var(--font-display);
+  align-self: center;
+}
+.el-name {
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.el-mass {
+  font: 500 10.5px var(--font-mono);
+  opacity: 0.8;
+}
+.el-cat {
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0.75;
+}
+.el-sm {
+  --el-w: 60px;
+  padding: 4px 5px;
+  border-radius: 7px;
+  box-shadow: 2px 2px 0 var(--shadow-color);
+}
+.el-sm .el-sym {
+  font-size: 22px;
+}
+.el-sm .el-z {
+  font-size: 10px;
+}
+.el-sm .el-name {
+  font-size: 9.5px;
+}
+.el-lg {
+  --el-w: 140px;
+  padding: 10px 12px;
+}
+.el-lg .el-sym {
+  font-size: 56px;
+}
+.el-lg .el-z {
+  font-size: 15px;
+}
+.el-lg .el-name {
+  font-size: 15px;
+}
+.el-lg .el-mass {
+  font-size: 13px;
+}
+.el-dim {
+  filter: grayscale(0.9);
+  opacity: 0.35;
+}
+.el-selected {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+.el-missing {
+  font-family: var(--font-mono);
+}
