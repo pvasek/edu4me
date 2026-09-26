@@ -5,7 +5,7 @@ import { PathMap } from '../ui/PathMap'
 import { Icon } from '../ui/Icon'
 import { Mascot } from '../ui/Mascot'
 import { ElementTile } from '../ui/ElementTile'
-import { GAME_BY_ID } from '../games/registry'
+import { gamesForLevel } from '../games/registry'
 import { NotFound } from './NotFound'
 import { Page } from '../ui/anim'
 import { GameCard } from '../ui/GameCard'
@@ -100,8 +100,8 @@ export function LevelPage() {
       <section className="stack">
         <h2>Procvič si hrou</h2>
         <div className="game-grid">
-          {level.games.map((g) => (
-            <GameCard key={g} game={GAME_BY_ID[g]} courseId={course.id} levelId={level.id} />
+          {gamesForLevel(level.number).map((g) => (
+            <GameCard key={g.id} game={g} courseId={course.id} levelId={level.id} note={g.levels[level.number]} />
           ))}
         </div>
       </section>

@@ -28,9 +28,9 @@ export default function GamePage() {
   const [runs, setRuns] = useState(0)
   if (!course || !meta) return <NotFound />
   const Game = GAME_COMPONENTS[meta.id]
-  const levels = course.levels.filter((l) => l.number >= meta.minLevel)
+  const levels = course.levels.filter((l) => l.number in meta.levels)
   const levelId = search.get('uroven') ?? undefined
-  const level = course.levels.find((l) => l.id === levelId)
+  const level = course.levels.find((l) => l.id === levelId && l.number in meta.levels)
   const rec = p.games[meta.id]
 
   const start = () => {
@@ -59,7 +59,16 @@ export default function GamePage() {
 
       {phase.kind === 'intro' && (
         <motion.section className="card game-intro stack" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={spring.gentle}>
-          <MascotSays mood="cheer">{meta.blurb}</MascotSays>
+          <MascotSays mood="cheer">
+            {meta.blurb}
+            {level && meta.levels[level.number] && (
+              <>
+                {' '}
+                <strong>Úroveň {level.number}:</strong> {meta.levels[level.number]}.
+              </>
+            )}
+            {!level && levels.length > 1 && ' Bez zvolené úrovně se mísí všechny úrovně.'}
+          </MascotSays>
           {levels.length > 1 && (
             <div className="stack">
               <span className="stat-label">Obtížnost podle úrovně</span>
@@ -82,7 +91,7 @@ export default function GamePage() {
                     className={`chip level-chip${level?.id === l.id ? ' on' : ''}`}
                     style={{ ['--c' as string]: l.color }}
                     onClick={() => setSearch({ uroven: l.id })}
-                    title={l.title}
+                    title={meta.levels[l.number]}
                   >
                     {l.number}. {l.title}
                   </button>

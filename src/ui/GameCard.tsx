@@ -11,7 +11,7 @@ export const KIND: Record<GameMeta['kind'], { title: string; icon: IconName; col
   lab: { title: 'Virtuální laboratoř', icon: 'flask', color: 'var(--cat-post)' },
 }
 
-export function GameCard({ game, courseId, levelId }: { game: GameMeta; courseId: string; levelId?: string }) {
+export function GameCard({ game, courseId, levelId, note }: { game: GameMeta; courseId: string; levelId?: string; note?: string }) {
   const p = useProgress()
   const rec = p.games[game.id]
   const k = KIND[game.kind]
@@ -27,7 +27,7 @@ export function GameCard({ game, courseId, levelId }: { game: GameMeta; courseId
       </span>
       <span className="game-card-text">
         <strong>{game.title}</strong>
-        <span className="muted">{game.blurb}</span>
+        <span className="muted">{note ? note.charAt(0).toUpperCase() + note.slice(1) + '.' : game.blurb}</span>
       </span>
       <span className="game-card-meta">
         {rec ? (

@@ -20,7 +20,6 @@ export const chemie: Course = {
       stage: 'ZŠ 8. třída · IGCSE 1',
       color: '#b8483a',
       symbol: 'H',
-      games: ['swipe', 'quickfire'],
       load: () => import('./levels/l1').then((m) => m.default),
       lessons: [
         { id: 'l1-1', title: 'Co je chemie a jak bezpečně pracovat', minutes: 12 },
@@ -39,7 +38,6 @@ export const chemie: Course = {
       stage: 'ZŠ 8. třída → gymnázium 1',
       color: '#bd6a26',
       symbol: 'He',
-      games: ['build-atom', 'periodic-find', 'element-memory', 'electron-config', 'who-am-i'],
       load: () => import('./levels/l2').then((m) => m.default),
       lessons: [
         { id: 'l2-1', title: 'Atomy, molekuly a ionty', minutes: 12 },
@@ -58,7 +56,6 @@ export const chemie: Course = {
       stage: 'ZŠ 8.–9. třída → gymnázium 1',
       color: '#9c7a12',
       symbol: 'Li',
-      games: ['ion-builder', 'naming', 'quickfire'],
       load: () => import('./levels/l3').then((m) => m.default),
       lessons: [
         { id: 'l3-1', title: 'Proč se atomy spojují: elektronegativita', minutes: 12 },
@@ -77,7 +74,6 @@ export const chemie: Course = {
       stage: 'ZŠ 8.–9. třída → gymnázium 1–2',
       color: '#56834a',
       symbol: 'Be',
-      games: ['balance', 'molar-mass', 'quickfire'],
       load: () => import('./levels/l4').then((m) => m.default),
       lessons: [
         { id: 'l4-1', title: 'Chemická reakce a zákon zachování hmotnosti', minutes: 12 },
@@ -96,7 +92,6 @@ export const chemie: Course = {
       stage: 'ZŠ 9. třída → gymnázium 2',
       color: '#2c7a72',
       symbol: 'B',
-      games: ['ph-lab', 'titration', 'naming', 'swipe'],
       load: () => import('./levels/l5').then((m) => m.default),
       lessons: [
         { id: 'l5-1', title: 'Kyseliny a jejich názvosloví', minutes: 17 },
@@ -115,7 +110,6 @@ export const chemie: Course = {
       stage: 'Gymnázium 2 · A-level / AP',
       color: '#3f6699',
       symbol: 'C',
-      games: ['quickfire', 'swipe'],
       load: () => import('./levels/l6').then((m) => m.default),
       lessons: [
         { id: 'l6-1', title: 'Redoxní reakce', minutes: 17 },
@@ -134,7 +128,6 @@ export const chemie: Course = {
       stage: 'Gymnázium 2–3 · IGCSE / A-level',
       color: '#555a9e',
       symbol: 'N',
-      games: ['who-am-i', 'periodic-find', 'naming', 'quickfire'],
       load: () => import('./levels/l7').then((m) => m.default),
       lessons: [
         { id: 'l7-1', title: 'Vodík, kyslík a voda', minutes: 15 },
@@ -153,7 +146,6 @@ export const chemie: Course = {
       stage: 'Gymnázium 3 · A-level / AP',
       color: '#7a5290',
       symbol: 'O',
-      games: ['functional-groups', 'quickfire', 'swipe'],
       load: () => import('./levels/l8').then((m) => m.default),
       lessons: [
         { id: 'l8-1', title: 'Uhlík v organice: vzorce a izomerie', minutes: 16 },
@@ -172,7 +164,6 @@ export const chemie: Course = {
       stage: 'Gymnázium 3–4 · maturita',
       color: '#a84d6c',
       symbol: 'F',
-      games: ['functional-groups', 'quickfire', 'swipe'],
       load: () => import('./levels/l9').then((m) => m.default),
       lessons: [
         { id: 'l9-1', title: 'Sacharidy', minutes: 16 },

@@ -23,6 +23,14 @@ export interface GameMeta {
   blurb: string
   /** Skill family, used for grouping and colour. */
   kind: 'periodic' | 'build' | 'quiz' | 'lab'
-  /** Lowest level number where the game makes sense. */
-  minLevel: number
+  /**
+   * Levels (by number) the game supports, each with a short Czech description
+   * of what the game trains at that level. Every listed level has its own
+   * content set in the game (see spec/courses/chemie/games.md).
+   * Playing without a level ("Vše") mixes all of them.
+   */
+  levels: Partial<Record<number, string>>
 }
+
+/** Level number from a level id like "l5"; undefined for free play. */
+export const levelNum = (levelId?: string) => (levelId ? Number(levelId.replace(/\D/g, '')) || undefined : undefined)

@@ -93,7 +93,6 @@ export interface LevelOutline {
   /** Element symbol used as the level "badge" on the map. */
   symbol: string
   lessons: LessonOutline[]
-  games: GameId[]
   load: () => Promise<LevelContent>
 }
 

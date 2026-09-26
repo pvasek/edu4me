@@ -25,7 +25,6 @@ const level = (id: string, n: number, load: () => Promise<LevelContent>): LevelO
   color: '#000',
   symbol: 'H',
   lessons: [],
-  games: [],
   load,
 })
 
