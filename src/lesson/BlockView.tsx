@@ -7,6 +7,12 @@ import { Icon, type IconName } from '../ui/Icon'
 import { Diagram } from '../diagrams'
 import { GAME_BY_ID } from '../games/registry'
 import { QuestionView } from './QuestionView'
+import { IconList } from '../illustrations/blocks/IconList'
+import { Compare } from '../illustrations/blocks/Compare'
+import { Process } from '../illustrations/blocks/Process'
+import { MoleculeView } from '../illustrations/molecules/MoleculeView'
+import { ParticleScene } from '../illustrations/particles/ParticleScene'
+import { ReactionView } from '../illustrations/particles/ReactionView'
 import './blocks.css'
 
 const CALLOUT: Record<CalloutVariant, { icon: IconName; label: string }> = {
@@ -202,6 +208,63 @@ export function BlockView({
       return (
         <figure className="b-diagram">
           <Diagram id={block.id} props={block.props} />
+          {block.caption && (
+            <figcaption>
+              <Md text={block.caption} />
+            </figcaption>
+          )}
+        </figure>
+      )
+    case 'molecule':
+      return (
+        <figure className="b-visual">
+          <MoleculeView molecules={block.molecules} labels={block.labels} />
+          {block.caption && (
+            <figcaption>
+              <Md text={block.caption} />
+            </figcaption>
+          )}
+        </figure>
+      )
+    case 'particles':
+      return (
+        <figure className="b-visual">
+          <ParticleScene boxes={block.boxes} arrows={block.arrows} />
+          {block.caption && (
+            <figcaption>
+              <Md text={block.caption} />
+            </figcaption>
+          )}
+        </figure>
+      )
+    case 'reaction':
+      return (
+        <figure className="b-visual">
+          <ReactionView equation={block.equation} />
+          {block.caption && (
+            <figcaption>
+              <Md text={block.caption} />
+            </figcaption>
+          )}
+        </figure>
+      )
+    case 'process':
+      return (
+        <figure className="b-visual b-visual-plain">
+          <Process layout={block.layout} steps={block.steps} />
+          {block.caption && (
+            <figcaption>
+              <Md text={block.caption} />
+            </figcaption>
+          )}
+        </figure>
+      )
+    case 'iconlist':
+      return <IconList items={block.items} />
+    case 'compare':
+      return (
+        <figure className="b-visual b-visual-plain">
+          <Compare columns={block.columns} />
           {block.caption && (
             <figcaption>
               <Md text={block.caption} />

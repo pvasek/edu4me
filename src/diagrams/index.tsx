@@ -12,10 +12,12 @@ import Separation from './Separation'
 import States from './States'
 import TitrationCurve from './TitrationCurve'
 import { Fallback, type DiagramProps } from './util'
+import { FIGURE_COMPONENTS } from '../illustrations/figures'
 import './diagrams.css'
 
 /** One component per diagram id (see DiagramId in src/core/types.ts). */
-export const DIAGRAMS: Record<DiagramId, ComponentType<DiagramProps>> = {
+/** Parametrised diagrams; named figures come from src/illustrations/figures. */
+export const DIAGRAMS: Partial<Record<DiagramId, ComponentType<DiagramProps>>> = {
   bohr: Bohr,
   states: States,
   'ph-scale': PhScale,
@@ -47,8 +49,15 @@ class Guard extends Component<{ id: string; children: ReactNode }, { failed: boo
  * the caption. Unknown ids or invalid props render a small fallback note.
  */
 export function Diagram({ id, props }: { id: DiagramId; props?: Record<string, unknown> }) {
+  const Fig = Object.prototype.hasOwnProperty.call(FIGURE_COMPONENTS, id) ? FIGURE_COMPONENTS[id as keyof typeof FIGURE_COMPONENTS] : undefined
+  if (Fig)
+    return (
+      <Guard id={id} key={id}>
+        <Fig />
+      </Guard>
+    )
   const C = Object.prototype.hasOwnProperty.call(DIAGRAMS, id) ? DIAGRAMS[id] : undefined
-  if (!C) return <Fallback id={String(id)} reason="neznámý diagram" />
+  if (!C) return <Fallback id={String(id)} reason="obrázek se připravuje" />
   const safe = props && typeof props === 'object' && !Array.isArray(props) ? props : {}
   return (
     <Guard id={id} key={id}>

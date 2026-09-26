@@ -83,3 +83,26 @@ describe('loadQuestionPool', () => {
     expect(pool).toHaveLength(6)
   })
 })
+
+describe('loadLevelPool', () => {
+  it('uses only the level and tops up from earlier levels', async () => {
+    const { loadLevelPool } = await import('./questionPool')
+    const own = await loadLevelPool(course, 'c')
+    expect(own.map((p) => [p.question.q, p.review])).toEqual([
+      ['c1 choice', false],
+      ['c boss', false],
+    ])
+    const topped = await loadLevelPool(course, 'c', { min: 4 })
+    expect(topped).toHaveLength(4)
+    expect(topped.slice(2).every((p) => p.review && p.levelId === 'a')).toBe(true)
+  })
+
+  it('applies kinds and accept before counting; no level mixes all', async () => {
+    const { loadLevelPool } = await import('./questionPool')
+    const tfOnly = await loadLevelPool(course, 'c', { kinds: ['tf'], min: 5 })
+    expect(tfOnly.map((p) => p.question.q).sort()).toEqual(['a boss', 'a1 tf'])
+    const all = await loadLevelPool(course, undefined, { accept: (q) => q.kind !== 'number' })
+    expect(all.map((p) => p.question.q)).toEqual(['a1 tf', 'a1 choice', 'a boss', 'c1 choice'])
+    expect(all.some((p) => p.review)).toBe(false)
+  })
+})

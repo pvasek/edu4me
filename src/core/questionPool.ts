@@ -49,3 +49,44 @@ export async function loadQuestionPool(course: Course, opts: PoolOptions = {}): 
   })
   return out
 }
+
+export interface LevelPoolItem extends PoolItem {
+  /** True when the item tops up a thin level from an earlier level ("opakování"). */
+  review: boolean
+}
+
+export interface LevelPoolOptions {
+  /** Keep only these question kinds. */
+  kinds?: Question['kind'][]
+  /** Extra filter applied before counting (e.g. "choice with at least 2 options"). */
+  accept?: (q: Question) => boolean
+  /** Minimum pool size; below it, earlier levels top the pool up (marked `review`). */
+  min?: number
+  /** Random source for picking the top-up questions. */
+  rng?: () => number
+}
+
+/**
+ * Questions for one level of a game. With a known `levelId` only that level's
+ * questions are used; if there are fewer than `min`, questions from the
+ * previous level (then the one before, …) are added as review items until
+ * `min` is reached. Without a level, or with an id the course does not know,
+ * every level is used and nothing is marked as review.
+ */
+export async function loadLevelPool(course: Course, levelId: string | undefined, opts: LevelPoolOptions = {}): Promise<LevelPoolItem[]> {
+  const { kinds, accept = () => true, min = 0, rng = Math.random } = opts
+  const idx = levelId ? course.levels.findIndex((l) => l.id === levelId) : -1
+  const load = async (o: PoolOptions) => (await loadQuestionPool(course, { ...o, kinds })).filter((p) => accept(p.question))
+  if (idx < 0) return (await load({})).map((p) => ({ ...p, review: false }))
+  const out: LevelPoolItem[] = (await load({ onlyLevel: levelId })).map((p) => ({ ...p, review: false }))
+  for (let i = idx - 1; i >= 0 && out.length < min; i--) {
+    const earlier = await load({ onlyLevel: course.levels[i].id })
+    // Random pick without replacement (Fisher–Yates on a copy).
+    for (let j = earlier.length - 1; j > 0; j--) {
+      const k = Math.floor(rng() * (j + 1))
+      ;[earlier[j], earlier[k]] = [earlier[k], earlier[j]]
+    }
+    out.push(...earlier.slice(0, min - out.length).map((p) => ({ ...p, review: true })))
+  }
+  return out
+}

@@ -7,6 +7,9 @@
  */
 export type Inline = string
 
+import type { ChemIcon, FigureId, MoleculeId } from '../illustrations/catalog'
+export type { ChemIcon, FigureId, MoleculeId }
+
 export type CalloutVariant = 'tip' | 'warning' | 'fact' | 'remember' | 'mascot'
 
 export type DiagramId =
@@ -21,6 +24,7 @@ export type DiagramId =
   | 'galvanic' // Daniell cell
   | 'rate-curve' // concentration vs time / collision theory
   | 'lab-safety' // hazard pictograms (GHS)
+  | FigureId // named engraved figures, see src/illustrations/catalog.ts
 
 export type Block =
   | { type: 'p'; text: Inline }
@@ -35,7 +39,40 @@ export type Block =
   | { type: 'structure'; art: string; caption?: Inline }
   | { type: 'diagram'; id: DiagramId; caption?: Inline; props?: Record<string, unknown> }
   | { type: 'check'; question: Question }
+  /** 1–4 molecules as rotatable 3D ball-and-stick models. */
+  | { type: 'molecule'; molecules: MoleculeId[]; labels?: Inline[]; caption?: Inline }
+  /** Particle-model boxes (element / compound / mixture, states, before → after). */
+  | { type: 'particles'; boxes: ParticleBox[]; arrows?: boolean; caption?: Inline }
+  /** A balanced equation drawn as particles, e.g. "2H2 + O2 -> 2H2O". */
+  | { type: 'reaction'; equation: string; caption?: Inline }
+  /** Steps with icons as a flow (→) or a closed cycle. */
+  | { type: 'process'; layout: 'flow' | 'cycle'; steps: IconItem[]; caption?: Inline }
+  /** Grid of icon cards: examples, uses, "kde to potkáš". */
+  | { type: 'iconlist'; items: IconItem[] }
+  /** 2–3 columns side by side. */
+  | { type: 'compare'; columns: CompareColumn[]; caption?: Inline }
   | { type: 'game'; gameId: GameId; text?: Inline }
+
+export interface IconItem {
+  icon: ChemIcon
+  title: Inline
+  text?: Inline
+}
+
+export interface CompareColumn {
+  title: Inline
+  icon?: ChemIcon
+  tone?: 'a' | 'b' | 'c' | 'good' | 'bad'
+  points: Inline[]
+}
+
+export interface ParticleBox {
+  label: Inline
+  /** species: a MoleculeId, an element symbol (single atoms) or a simple formula. */
+  items: { species: string; count: number }[]
+  state?: 'solid' | 'liquid' | 'gas' | 'solution'
+  note?: Inline
+}
 
 interface QBase {
   q: Inline
@@ -53,6 +90,8 @@ export type Question =
 
 export interface LessonSection {
   title: Inline
+  /** Icon shown next to the section title. */
+  icon?: ChemIcon
   blocks: Block[]
 }
 
@@ -79,6 +118,7 @@ export interface LevelContent {
 export interface LessonOutline {
   id: string
   title: string
+  icon: ChemIcon
   minutes: number
 }
 

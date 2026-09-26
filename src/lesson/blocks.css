@@ -336,3 +336,45 @@ figcaption {
 .b-game-text strong {
   font: 800 18px var(--font-display);
 }
+
+.b-visual {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  justify-items: stretch;
+  padding: 12px;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  box-shadow: var(--double-rule);
+}
+.b-visual-plain {
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+.b-visual > figcaption,
+.b-diagram > figcaption {
+  text-align: center;
+  font-style: italic;
+  font-family: var(--font-display);
+  font-size: 17px;
+}
+.lesson-section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.lesson-section-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--level, var(--accent));
+  color: var(--on-level);
+  border: var(--bw) solid var(--edge);
+  box-shadow: var(--double-rule);
+}

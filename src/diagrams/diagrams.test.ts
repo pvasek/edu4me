@@ -19,7 +19,7 @@ const ALL_IDS: DiagramId[] = [
   'lab-safety',
 ]
 
-const SAMPLE: Record<DiagramId, Record<string, unknown>[]> = {
+const SAMPLE: Partial<Record<DiagramId, Record<string, unknown>[]>> = {
   bohr: [{ z: 11 }, { z: 17, ion: -1 }, { z: 26, ion: 2 }, { z: 118 }],
   states: [{}],
   'ph-scale': [{}, { marks: [{ ph: 7, label: 'voda' }] }, { marks: [] }],
@@ -58,7 +58,7 @@ describe('diagram registry', () => {
 
   it('renders every diagram with valid props', () => {
     for (const id of ALL_IDS)
-      for (const props of SAMPLE[id]) {
+      for (const props of SAMPLE[id] ?? []) {
         const html = render(id, props)
         expect(html, `${id} ${JSON.stringify(props)}`).not.toContain('dg-fallback')
         expect(html).toMatch(/role="(img|group)"/)

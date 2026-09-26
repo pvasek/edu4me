@@ -14,7 +14,8 @@ import { ElementTile } from '../ui/ElementTile'
 import { Confetti, Stars } from '../ui/Confetti'
 import { NotFound } from './NotFound'
 import { AnimatePresence, motion } from 'motion/react'
-import { rise, slide, stagger } from '../ui/motion'
+import { rise, slide, spring, stagger } from '../ui/motion'
+import { ChemIconView } from '../illustrations/ChemIcon'
 import { Bar, CountUp } from '../ui/anim'
 import '../lesson/lesson.css'
 
@@ -130,7 +131,17 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
                 <span className="eyebrow">
                   Část {step.i + 1} z {lesson.sections.length}
                 </span>
-                <h2>
+                <h2 className="lesson-section-title">
+                  {sec.icon && (
+                    <motion.span
+                      className="lesson-section-icon"
+                      initial={{ scale: 0, rotate: -30 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={spring.bouncy}
+                    >
+                      <ChemIconView name={sec.icon} size={30} />
+                    </motion.span>
+                  )}
                   <Md text={sec.title} />
                 </h2>
                 <motion.div className="lesson-blocks" variants={stagger(0.06, 0.15)} initial="hidden" animate="show">

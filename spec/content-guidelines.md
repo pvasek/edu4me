@@ -84,6 +84,15 @@ A section may embed a `game` block pointing at a related mini-game (at most once
   - `galvanic` – Daniell cell (Zn/Cu)
   - `rate-curve` – concentration against time, with a collision-theory note
   - `lab-safety` – GHS hazard pictograms with Czech labels
+- **Visual blocks** (see [illustration-guide.md](illustration-guide.md); ids only from `src/illustrations/catalog.ts`):
+  - `diagram` with a **figure id** (e.g. `{ type: 'diagram', id: 'blast-furnace', caption: '…' }`): engraved technical schemas, no props.
+  - `molecule` – `{ molecules: ['H2O', 'NH3', 'CH4'], labels?: ['lomená', 'pyramida', 'tetraedr'] }` rotatable 3D models.
+  - `particles` – `{ boxes: [{ label, items: [{ species: 'H2O', count: 6 }], state?: 'solid'|'liquid'|'gas'|'solution', note? }], arrows? }` particle-model boxes; `arrows: true` draws → between boxes (before → after).
+  - `reaction` – `{ equation: '2H2 + O2 -> 2H2O' }`: must be balanced (validated); drawn as molecules with coefficients.
+  - `process` – `{ layout: 'flow' | 'cycle', steps: [{ icon, title, text? }] }` 3–7 steps.
+  - `iconlist` – `{ items: [{ icon, title, text? }] }` 3–8 cards.
+  - `compare` – `{ columns: [{ title, icon?, tone?, points: [...] }] }` 2–3 columns.
+- Every section may set `icon` (a `ChemIcon`) shown next to its title – set it on every section.
 - `check` – one inline question (see below).
 - `game` – `{ gameId, text }`: a card inviting the learner to a mini-game.
 
