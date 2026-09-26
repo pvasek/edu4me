@@ -1,10 +1,12 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { courseById } from '../core/registry'
 import { useProgress } from '../core/progress'
 import { GAMES } from '../games/registry'
 import type { GameMeta } from '../games/types'
 import { Icon, type IconName } from '../ui/Icon'
 import { MascotSays } from '../ui/Mascot'
+import { MLink, Page } from '../ui/anim'
+import { pressable } from '../ui/motion'
 import { NotFound } from './NotFound'
 
 const KIND: Record<GameMeta['kind'], { title: string; icon: IconName; color: string }> = {
@@ -19,7 +21,8 @@ export function GameCard({ game, courseId, levelId }: { game: GameMeta; courseId
   const rec = p.games[game.id]
   const k = KIND[game.kind]
   return (
-    <Link
+    <MLink
+      {...pressable}
       to={`/c/${courseId}/hry/${game.id}${levelId ? `?uroven=${levelId}` : ''}`}
       className="game-card card"
       style={{ ['--g-color' as string]: k.color }}
@@ -42,7 +45,7 @@ export function GameCard({ game, courseId, levelId }: { game: GameMeta; courseId
           <span className="chip chip-soft">Nové</span>
         )}
       </span>
-    </Link>
+    </MLink>
   )
 }
 
@@ -52,7 +55,7 @@ export default function GamesPage() {
   if (!course) return <NotFound />
   const kinds = Object.keys(KIND) as GameMeta['kind'][]
   return (
-    <main className="page">
+    <Page>
       <section className="stack">
         <span className="eyebrow">{course.title}</span>
         <h1>Mini-hry</h1>
@@ -75,6 +78,6 @@ export default function GamesPage() {
           </div>
         </section>
       ))}
-    </main>
+    </Page>
   )
 }

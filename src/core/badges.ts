@@ -14,15 +14,15 @@ const lessonsDone = (p: ProgressState) => Object.keys(p.lessons).length
 const levelPassed = (p: ProgressState, id: string) => Boolean(p.levels[`chemie:${id}`])
 
 const LEVEL_BADGES: [string, string, string][] = [
-  ['l1', 'Pán látek', '#ff6b6b'],
-  ['l2', 'Atomový architekt', '#ff9f43'],
-  ['l3', 'Mistr vazeb', '#f5c518'],
-  ['l4', 'Počtář', '#51cf66'],
-  ['l5', 'Strážce pH', '#20c997'],
-  ['l6', 'Energetik', '#4dabf7'],
-  ['l7', 'Znalec prvků', '#748ffc'],
-  ['l8', 'Organik', '#b197fc'],
-  ['l9', 'Biochemik', '#f783ac'],
+  ['l1', 'Pán látek', '#b8483a'],
+  ['l2', 'Atomový architekt', '#bd6a26'],
+  ['l3', 'Mistr vazeb', '#9c7a12'],
+  ['l4', 'Počtář', '#56834a'],
+  ['l5', 'Strážce pH', '#2c7a72'],
+  ['l6', 'Energetik', '#3f6699'],
+  ['l7', 'Znalec prvků', '#555a9e'],
+  ['l8', 'Organik', '#7a5290'],
+  ['l9', 'Biochemik', '#a84d6c'],
 ]
 
 export const BADGES: Badge[] = [

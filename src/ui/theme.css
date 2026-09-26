@@ -1,66 +1,74 @@
 /* =====================================================================
-   edu4me design tokens — "Lab Notebook Pop"
+   edu4me design tokens — "Encyclopedia" (style-lab variant 15)
+   An antique scientific encyclopedia: parchment, ink blue, ochre,
+   engraving hatches, double rules, with vintage colour pops.
    See spec/style-guide.md. Every colour and font in the app comes from
    these tokens; swapping the look = editing this block.
    ===================================================================== */
 :root {
-  --paper: #f6f1e6;
-  --paper-grid: rgba(96, 78, 52, 0.075);
-  --surface: #fffcf5;
-  --surface-2: #f1eadb;
-  --surface-3: #e8dfcc;
-  --ink: #26221e;
-  --ink-soft: #564e46;
-  --muted: #8a7f73;
-  --line: #e0d6c3;
-  --edge: #26221e;
-  --shadow-color: #26221e;
+  --paper: #f3ecdb;
+  --paper-grid: rgba(31, 42, 68, 0.045);
+  --paper-shade: rgba(120, 90, 40, 0.1);
+  --surface: #faf5e8;
+  --surface-2: #efe6cf;
+  --surface-3: #e2d6b8;
+  --ink: #1f2a44;
+  --ink-soft: #3d4862;
+  --muted: #6b6e78;
+  --line: #d5c7a4;
+  --edge: #1f2a44;
+  --shadow-color: rgba(31, 42, 68, 0.22);
+  --hatch: rgba(31, 42, 68, 0.13);
 
-  --accent: #e8553d;
-  --accent-ink: #ffffff;
-  --accent-soft: #fde3dc;
-  --blue: #3b6fd8;
-  --green: #2f9e68;
-  --yellow: #f5c518;
-  --violet: #8b6cf0;
-  --pink: #f06595;
-  --teal: #12b3a0;
+  --accent: #a8561a;
+  --accent-ink: #fffaf0;
+  --accent-soft: #f3dcc0;
+  --blue: #3d5f9a;
+  --green: #4f7f5a;
+  --yellow: #c9962c;
+  --violet: #7a5a8e;
+  --pink: #b0506f;
+  --teal: #2f7d86;
 
-  --good: #2f9e68;
-  --good-soft: #dcf5e7;
-  --bad: #e03e3e;
-  --bad-soft: #fde2e2;
-  --warn: #e98b00;
-  --warn-soft: #fff1d6;
-  --info-soft: #e1ebff;
-  --highlight: #ffe86a;
+  --good: #3f7a4c;
+  --good-soft: #dde9d3;
+  --bad: #a8322a;
+  --bad-soft: #f3d7cf;
+  --warn: #a8691a;
+  --warn-soft: #f4e2bf;
+  --info-soft: #dbe3ee;
+  --highlight: #f0d58a;
 
-  /* Element category colours (periodic table) */
-  --cat-alkali: #ff8a80;
-  --cat-alkaline: #ffb870;
-  --cat-transition: #ffd966;
-  --cat-post: #b9e08a;
-  --cat-metalloid: #7fdcc0;
-  --cat-nonmetal: #8cc8ff;
-  --cat-halogen: #a9b4ff;
-  --cat-noble: #d2a8ff;
-  --cat-lanthanide: #ffa8d2;
-  --cat-actinide: #f59ab0;
-  --cat-unknown: #d9d4cb;
-  --cat-ink: #26221e;
+  /* Element category colours (antique plate tints) */
+  --cat-alkali: #e8a598;
+  --cat-alkaline: #efc38f;
+  --cat-transition: #ecd79b;
+  --cat-post: #c8d8a3;
+  --cat-metalloid: #a7d2c2;
+  --cat-nonmetal: #a9c3de;
+  --cat-halogen: #b9b8e2;
+  --cat-noble: #d4b9da;
+  --cat-lanthanide: #e7bacb;
+  --cat-actinide: #daa7b5;
+  --cat-unknown: #d9d1bf;
+  --cat-ink: #1f2a44;
+  /* text on level colours (levels are mid-dark vintage inks) */
+  --on-level: #fffaf0;
 
-  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-display: 'Cormorant Garamond', 'Cormorant', Garamond, Georgia, 'Times New Roman', serif;
   --font-body: 'Karla', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-hand: 'Caveat', 'Comic Sans MS', cursive;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
-  --r-sm: 8px;
-  --r: 12px;
-  --r-lg: 20px;
-  --bw: 2px;
+  --r-sm: 4px;
+  --r: 6px;
+  --r-lg: 10px;
+  --bw: 1.5px;
   --shadow-hard: 3px 3px 0 var(--shadow-color);
   --shadow-hard-lg: 5px 5px 0 var(--shadow-color);
-  --shadow-soft: 0 6px 24px rgba(60, 45, 25, 0.1);
+  --shadow-soft: 0 8px 28px rgba(60, 45, 20, 0.14);
+  /* the encyclopedia "double rule" frame */
+  --double-rule: inset 0 0 0 3px var(--surface), inset 0 0 0 4px color-mix(in srgb, var(--edge) 55%, transparent);
 
   --space-1: 4px;
   --space-2: 8px;
@@ -77,68 +85,72 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --paper: #1a1c23;
-    --paper-grid: rgba(255, 255, 255, 0.035);
-    --surface: #23262f;
-    --surface-2: #2c303b;
-    --surface-3: #363b48;
-    --ink: #f1ece2;
-    --ink-soft: #cdc5b8;
-    --muted: #978e82;
-    --line: #3a3f4c;
-    --edge: #d9d1c3;
-    --shadow-color: #07080b;
-    --accent: #ff7a5c;
-    --accent-ink: #1a1c23;
-    --accent-soft: #4a2b25;
-    --blue: #7aa2ff;
-    --green: #5fd39a;
-    --yellow: #ffd84d;
-    --violet: #b3a0ff;
-    --pink: #ff8fb8;
-    --teal: #4fe0cc;
-    --good: #5fd39a;
-    --good-soft: #1f3a2d;
-    --bad: #ff7070;
-    --bad-soft: #472326;
-    --warn: #ffb547;
-    --warn-soft: #43351c;
-    --info-soft: #25304a;
-    --highlight: #7a6a12;
-    --shadow-soft: 0 6px 24px rgba(0, 0, 0, 0.35);
+    --paper: #141a29;
+    --paper-grid: rgba(239, 230, 210, 0.03);
+    --paper-shade: rgba(0, 0, 0, 0.35);
+    --surface: #1c2336;
+    --surface-2: #242d44;
+    --surface-3: #2e3852;
+    --ink: #efe6d2;
+    --ink-soft: #cfc4ab;
+    --muted: #a0978a;
+    --line: #36415e;
+    --edge: #d8cbae;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --hatch: rgba(239, 230, 210, 0.1);
+    --accent: #e3a45e;
+    --accent-ink: #141a29;
+    --accent-soft: #4a3520;
+    --blue: #93b2e6;
+    --green: #93c79e;
+    --yellow: #e6c36c;
+    --violet: #c4a6d8;
+    --pink: #e49ab4;
+    --teal: #72c9c2;
+    --good: #93c79e;
+    --good-soft: #1f3528;
+    --bad: #ef8d80;
+    --bad-soft: #452523;
+    --warn: #e8b35d;
+    --warn-soft: #3f321b;
+    --info-soft: #22304a;
+    --highlight: #6d5a22;
+    --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.45);
     color-scheme: dark;
   }
 }
 :root[data-theme='dark'] {
-  --paper: #1a1c23;
-  --paper-grid: rgba(255, 255, 255, 0.035);
-  --surface: #23262f;
-  --surface-2: #2c303b;
-  --surface-3: #363b48;
-  --ink: #f1ece2;
-  --ink-soft: #cdc5b8;
-  --muted: #978e82;
-  --line: #3a3f4c;
-  --edge: #d9d1c3;
-  --shadow-color: #07080b;
-  --accent: #ff7a5c;
-  --accent-ink: #1a1c23;
-  --accent-soft: #4a2b25;
-  --blue: #7aa2ff;
-  --green: #5fd39a;
-  --yellow: #ffd84d;
-  --violet: #b3a0ff;
-  --pink: #ff8fb8;
-  --teal: #4fe0cc;
-  --good: #5fd39a;
-  --good-soft: #1f3a2d;
-  --bad: #ff7070;
-  --bad-soft: #472326;
-  --warn: #ffb547;
-  --warn-soft: #43351c;
-  --info-soft: #25304a;
-  --highlight: #7a6a12;
-  --shadow-soft: 0 6px 24px rgba(0, 0, 0, 0.35);
+  --paper: #141a29;
+  --paper-grid: rgba(239, 230, 210, 0.03);
+  --paper-shade: rgba(0, 0, 0, 0.35);
+  --surface: #1c2336;
+  --surface-2: #242d44;
+  --surface-3: #2e3852;
+  --ink: #efe6d2;
+  --ink-soft: #cfc4ab;
+  --muted: #a0978a;
+  --line: #36415e;
+  --edge: #d8cbae;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --hatch: rgba(239, 230, 210, 0.1);
+  --accent: #e3a45e;
+  --accent-ink: #141a29;
+  --accent-soft: #4a3520;
+  --blue: #93b2e6;
+  --green: #93c79e;
+  --yellow: #e6c36c;
+  --violet: #c4a6d8;
+  --pink: #e49ab4;
+  --teal: #72c9c2;
+  --good: #93c79e;
+  --good-soft: #1f3528;
+  --bad: #ef8d80;
+  --bad-soft: #452523;
+  --warn: #e8b35d;
+  --warn-soft: #3f321b;
+  --info-soft: #22304a;
+  --highlight: #6d5a22;
+  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.45);
   color-scheme: dark;
 }
 
@@ -154,9 +166,9 @@ html {
 body {
   margin: 0;
   background-color: var(--paper);
-  background-image: linear-gradient(var(--paper-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--paper-grid) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background-image: radial-gradient(ellipse at 50% 0%, transparent 55%, var(--paper-shade) 130%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .27 0 0 0 0 .15 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-attachment: fixed;
   color: var(--ink);
   font: 17px/1.6 var(--font-body);
   min-height: 100dvh;
@@ -177,15 +189,17 @@ h4 {
   font-weight: 700;
 }
 h1 {
-  font-size: clamp(30px, 6vw, 46px);
-  letter-spacing: -0.02em;
+  font-size: clamp(36px, 7vw, 56px);
+  font-style: italic;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
 }
 h2 {
-  font-size: clamp(24px, 4.2vw, 32px);
-  letter-spacing: -0.01em;
+  font-size: clamp(28px, 5vw, 38px);
+  font-style: italic;
 }
 h3 {
-  font-size: 21px;
+  font-size: 24px;
 }
 p {
   margin: 0;
@@ -228,7 +242,7 @@ sup {
 }
 .eyebrow {
   font: 700 12px/1.2 var(--font-body);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -344,7 +358,7 @@ sup {
   background: var(--surface);
   border: var(--bw) solid var(--edge);
   border-radius: var(--r-lg);
-  box-shadow: var(--shadow-hard);
+  box-shadow: var(--double-rule), var(--shadow-hard);
   padding: var(--space-5);
 }
 .card-flat {
@@ -404,4 +418,25 @@ sup {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/* ============================ encyclopedia ornaments ============================ */
+/* engraving hatch fill: add on top of any background */
+.hatch {
+  background-image: repeating-linear-gradient(135deg, var(--hatch) 0 1px, transparent 1px 5px);
+}
+/* ornamental rule with a fleuron, used between major sections */
+.fleuron {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--muted);
+  font: italic 700 20px var(--font-display);
+}
+.fleuron::before,
+.fleuron::after {
+  content: '';
+  flex: 1;
+  height: 0;
+  border-top: 3px double var(--line);
 }

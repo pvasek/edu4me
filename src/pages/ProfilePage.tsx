@@ -14,6 +14,9 @@ import { BADGES } from '../core/badges'
 import { ELEMENTS, CATEGORY_LABEL, categoryVar, tablePosition, type ChemElement } from '../courses/chemie/data/elements'
 import { Icon } from '../ui/Icon'
 import { Mascot } from '../ui/Mascot'
+import { motion } from 'motion/react'
+import { Bar, CountUp, Page } from '../ui/anim'
+import { popIn, stagger } from '../ui/motion'
 import { ElementTile } from '../ui/ElementTile'
 
 export default function ProfilePage() {
@@ -48,7 +51,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <main className="page profile">
+    <Page className="profile">
       <section className="profile-head card">
         <Mascot mood="cheer" size={96} />
         <div className="stack">
@@ -66,11 +69,9 @@ export default function ProfilePage() {
           <strong className="profile-rank">
             Hodnost {rank}: {rankTitle(rank)}
           </strong>
-          <div className="progress" style={{ ['--bar' as string]: 'var(--yellow)' }}>
-            <span style={{ width: `${(into / need) * 100}%` }} />
-          </div>
+          <Bar value={into / need} color="var(--yellow)" label="Postup k další hodnosti" />
           <span className="muted tabnum">
-            {p.xp} XP celkem · {need - into} XP do další hodnosti
+            <CountUp value={p.xp} /> XP celkem · {need - into} XP do další hodnosti
           </span>
         </div>
       </section>
@@ -117,20 +118,26 @@ export default function ProfilePage() {
 
       <section className="stack">
         <h2>Odznaky</h2>
-        <div className="badge-grid">
+        <motion.div className="badge-grid" variants={stagger(0.04)} initial="hidden" whileInView="show" viewport={{ once: true }}>
           {BADGES.map((b) => {
             const got = Boolean(p.badges[b.id])
             return (
-              <div key={b.id} className={`badge${got ? ' got' : ''}`} style={{ ['--b-color' as string]: b.color }}>
+              <motion.div
+                key={b.id}
+                variants={popIn}
+                whileHover={got ? { rotate: [0, -6, 6, 0], transition: { duration: 0.5 } } : undefined}
+                className={`badge${got ? ' got' : ''}`}
+                style={{ ['--b-color' as string]: b.color, ['--b-ink' as string]: b.color.startsWith('#') ? 'var(--on-level)' : 'var(--surface)' }}
+              >
                 <span className="badge-medal">
                   <Icon name={got ? b.icon : 'lock'} width={26} height={26} />
                 </span>
                 <strong>{b.title}</strong>
                 <span className="muted">{b.description}</span>
-              </div>
+              </motion.div>
             )
           })}
-        </div>
+        </motion.div>
       </section>
 
       <section className="stack">
@@ -140,14 +147,17 @@ export default function ProfilePage() {
         </div>
         <p className="muted">Prvky získáváš v lekcích, v závěrečných výzvách a ve hrách. Klepni na prvek pro detail.</p>
         <div className="album-scroll">
-          <div className="album">
+          <motion.div className="album" variants={stagger(0.006)} initial="hidden" whileInView="show" viewport={{ once: true }}>
             {ELEMENTS.map((e) => {
               const pos = tablePosition(e)
               const have = owned.has(e.symbol)
               return (
-                <button
+                <motion.button
                   key={e.z}
                   type="button"
+                  variants={popIn}
+                  whileHover={{ scale: 1.18, zIndex: 2 }}
+                  whileTap={{ scale: 0.92 }}
                   className={`album-cell${have ? ' have' : ''}${picked?.z === e.z ? ' sel' : ''}`}
                   style={{ gridRow: pos.row + (pos.row >= 9 ? 1 : 0), gridColumn: pos.col, ['--c' as string]: categoryVar(e.category) }}
                   onClick={() => setPicked(e)}
@@ -155,14 +165,14 @@ export default function ProfilePage() {
                 >
                   <span className="album-z">{e.z}</span>
                   <span className="album-sym">{e.symbol}</span>
-                </button>
+                </motion.button>
               )
             })}
             <span className="album-gap" style={{ gridRow: 9, gridColumn: '1 / -1' }} />
-          </div>
+          </motion.div>
         </div>
         {picked && (
-          <div className="card album-detail">
+          <motion.div key={picked.z} className="card album-detail" initial={{ opacity: 0, y: 12, rotateX: -20 }} animate={{ opacity: 1, y: 0, rotateX: 0 }}>
             <ElementTile element={picked} size="lg" dim={!owned.has(picked.symbol)} />
             <div className="stack">
               <h3>{picked.name}</h3>
@@ -175,7 +185,7 @@ export default function ProfilePage() {
               </span>
               {!owned.has(picked.symbol) && <span className="note">Tenhle ti ještě chybí!</span>}
             </div>
-          </div>
+          </motion.div>
         )}
       </section>
 
@@ -233,6 +243,6 @@ export default function ProfilePage() {
           )}
         </div>
       </section>
-    </main>
+    </Page>
   )
 }

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { onProgressEvent } from '../core/progress'
 import { BADGE_BY_ID } from '../core/badges'
 import { Icon } from './Icon'
+import { AnimatePresence, motion } from 'motion/react'
+import { spring } from './motion'
 
 interface Toast {
   id: number
@@ -29,8 +31,17 @@ export function Toasts() {
   )
   return (
     <div className="toasts" aria-live="polite">
+      <AnimatePresence>
       {toasts.map((t) => (
-        <div key={t.id} className="toast" style={{ ['--t-color' as string]: t.color }}>
+        <motion.div
+          key={t.id}
+          layout
+          className="toast"
+          style={{ ['--t-color' as string]: t.color }}
+          initial={{ opacity: 0, y: 30, scale: 0.85 }}
+          animate={{ opacity: 1, y: 0, scale: 1, transition: spring.bouncy }}
+          exit={{ opacity: 0, x: 60, transition: { duration: 0.25 } }}
+        >
           <span className="toast-icon">
             <Icon name="trophy" />
           </span>
@@ -38,8 +49,9 @@ export function Toasts() {
             <strong>{t.title}</strong>
             <div className="muted">{t.text}</div>
           </div>
-        </div>
+        </motion.div>
       ))}
+      </AnimatePresence>
     </div>
   )
 }

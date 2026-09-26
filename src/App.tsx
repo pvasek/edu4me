@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react'
 import { HashRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { MotionConfig } from 'motion/react'
 import { AppHeader } from './ui/AppHeader'
 import { Toasts } from './ui/Toasts'
 import { Loading } from './ui/Loading'
@@ -33,6 +34,7 @@ function ScrollTop() {
 
 export function App() {
   return (
+    <MotionConfig reducedMotion="user">
     <HashRouter>
       <ThemeSync />
       <ScrollTop />
@@ -52,5 +54,6 @@ export function App() {
       </Suspense>
       <Toasts />
     </HashRouter>
+    </MotionConfig>
   )
 }

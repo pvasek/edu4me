@@ -11,6 +11,9 @@ import { Icon } from '../ui/Icon'
 import { ElementTile } from '../ui/ElementTile'
 import { Confetti, Stars } from '../ui/Confetti'
 import { ErrorBoundary } from '../ui/ErrorBoundary'
+import { CountUp, Page } from '../ui/anim'
+import { motion } from 'motion/react'
+import { spring } from '../ui/motion'
 import { NotFound } from './NotFound'
 
 type Phase = { kind: 'intro' } | { kind: 'play'; run: number } | { kind: 'result'; result: GameResult; xp: number; stars: number }
@@ -36,7 +39,7 @@ export default function GamePage() {
   }
 
   return (
-    <main className="page game-page" style={level ? { ['--level' as string]: level.color } : undefined}>
+    <Page className="game-page" style={level ? { ['--level' as string]: level.color } : undefined}>
       <nav className="crumbs">
         <Link to={level ? `/c/${course.id}/l/${level.id}` : `/c/${course.id}/hry`}>
           <Icon name="arrowLeft" width={16} height={16} /> {level ? `${level.number}. ${level.title}` : 'Mini-hry'}
@@ -55,7 +58,7 @@ export default function GamePage() {
       </header>
 
       {phase.kind === 'intro' && (
-        <section className="card game-intro stack">
+        <motion.section className="card game-intro stack" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={spring.gentle}>
           <MascotSays mood="cheer">{meta.blurb}</MascotSays>
           {levels.length > 1 && (
             <div className="stack">
@@ -97,11 +100,11 @@ export default function GamePage() {
               <Icon name="play" /> Hrát
             </button>
           </div>
-        </section>
+        </motion.section>
       )}
 
       {phase.kind === 'play' && (
-        <section className="game-stage">
+        <motion.section className="game-stage" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={spring.gentle}>
           <ErrorBoundary fallback={<MascotSays mood="sad">Tahle hra se zrovna nepovedla načíst. Zkus to prosím znovu.</MascotSays>}>
             <Suspense fallback={<Loading text="Připravuju hru…" />}>
               <Game
@@ -114,11 +117,11 @@ export default function GamePage() {
               />
             </Suspense>
           </ErrorBoundary>
-        </section>
+        </motion.section>
       )}
 
       {phase.kind === 'result' && (
-        <section className="card lesson-done stack">
+        <motion.section className="card lesson-done stack" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={spring.bouncy}>
           {phase.stars >= 2 && <Confetti />}
           <Mascot mood={phase.stars >= 2 ? 'cheer' : phase.stars === 1 ? 'happy' : 'think'} size={110} />
           <h2>{phase.stars === 3 ? 'Fantastické!' : phase.stars === 2 ? 'Skvělá hra!' : phase.stars === 1 ? 'Dobrý začátek!' : 'Příště to vyjde!'}</h2>
@@ -128,7 +131,7 @@ export default function GamePage() {
               <Icon name="target" /> {phase.result.score} / {phase.result.max} bodů
             </span>
             <span className="chip xp-chip">
-              <Icon name="bolt" style={{ color: 'var(--yellow)' }} /> +{phase.xp} XP
+              <Icon name="bolt" style={{ color: 'var(--yellow)' }} /> <CountUp value={phase.xp} prefix="+" suffix=" XP" />
             </span>
           </div>
           {phase.result.collected && phase.result.collected.length > 0 && (
@@ -149,8 +152,8 @@ export default function GamePage() {
               Další hry
             </Link>
           </div>
-        </section>
+        </motion.section>
       )}
-    </main>
+    </Page>
   )
 }

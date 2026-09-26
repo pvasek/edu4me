@@ -2,6 +2,8 @@ import { useState } from 'react'
 import type { Question } from '../core/types'
 import { QuestionView } from './QuestionView'
 import { Icon } from '../ui/Icon'
+import { AnimatePresence, motion } from 'motion/react'
+import { bump, slide, spring } from '../ui/motion'
 
 /** Runs a list of questions one at a time and reports the score. */
 export function QuizRunner({
@@ -36,16 +38,27 @@ export function QuizRunner({
         </span>
         <div className="quiz-dots" aria-hidden="true">
           {questions.map((_, k) => (
-            <span key={k} className={k < i ? 'done' : k === i ? 'cur' : ''} />
+            <motion.span key={k} className={k < i ? 'done' : k === i ? 'cur' : ''} animate={{ scaleY: k === i ? 1.5 : 1 }} transition={spring.snappy} />
           ))}
         </div>
-        {streak >= 2 && (
-          <span className="chip streak-chip">
-            <Icon name="flame" style={{ color: 'var(--accent)' }} /> {streak}× v řadě
-          </span>
-        )}
+        <AnimatePresence>
+          {streak >= 2 && (
+            <motion.span
+              className="chip streak-chip"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0 }}
+              transition={spring.bouncy}
+            >
+              <motion.span key={streak} animate={bump} style={{ display: 'inline-flex', gap: 6, alignItems: 'center' }}>
+                <Icon name="flame" style={{ color: 'var(--accent)' }} /> {streak}× v řadě
+              </motion.span>
+            </motion.span>
+          )}
+        </AnimatePresence>
       </div>
-      <div className="card quiz-card">
+      <AnimatePresence mode="wait" custom={1}>
+      <motion.div key={i} className="card quiz-card" custom={1} variants={slide} initial="enter" animate="center" exit="exit">
         <QuestionView
           key={i}
           question={q}
@@ -57,7 +70,8 @@ export function QuizRunner({
             } else setStreak(0)
           }}
         />
-      </div>
+      </motion.div>
+      </AnimatePresence>
       <div className="bottom-bar">
         <button type="button" className="btn btn-primary btn-lg" disabled={!answered} onClick={next}>
           {last ? 'Vyhodnotit' : 'Další otázka'} <Icon name="arrowRight" />

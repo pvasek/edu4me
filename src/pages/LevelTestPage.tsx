@@ -10,6 +10,7 @@ import { Icon } from '../ui/Icon'
 import { ElementTile } from '../ui/ElementTile'
 import { Confetti, Stars } from '../ui/Confetti'
 import { NotFound } from './NotFound'
+import { CountUp } from '../ui/anim'
 import '../lesson/lesson.css'
 
 export default function LevelTestPage() {
@@ -72,7 +73,7 @@ export default function LevelTestPage() {
                 <Icon name="target" /> {phase.score} / {phase.max} správně
               </span>
               <span className="chip xp-chip">
-                <Icon name="bolt" style={{ color: 'var(--yellow)' }} /> +{phase.xp} XP
+                <Icon name="bolt" style={{ color: 'var(--yellow)' }} /> <CountUp value={phase.xp} prefix="+" suffix=" XP" />
               </span>
             </div>
             {!phase.passed && <p className="muted">Potřebuješ {need} správných odpovědí. Projdi si lekce a zkus to znovu.</p>}

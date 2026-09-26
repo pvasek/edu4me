@@ -3,6 +3,8 @@ import type { Question } from '../core/types'
 import { correctAnswerText, isCorrect, shuffle, type Answer } from '../core/check'
 import { Md } from '../core/markup'
 import { Icon } from '../ui/Icon'
+import { AnimatePresence, motion } from 'motion/react'
+import { bump, rise, shake, spring, stagger } from '../ui/motion'
 import './question.css'
 
 const KIND_HINT: Record<Question['kind'], string> = {
@@ -53,10 +55,24 @@ export function QuestionView({
           </button>
         </div>
       )}
+      <AnimatePresence>
       {done && (
-        <div className={`qv-feedback ${result ? 'ok' : 'bad'}`} role="status">
+        <motion.div
+          className={`qv-feedback ${result ? 'ok' : 'bad'}`}
+          role="status"
+          initial={{ opacity: 0, y: 12, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={spring.bouncy}
+        >
           <div className="qv-verdict">
-            <Icon name={result ? 'check' : 'x'} />
+            <motion.span
+              className="qv-verdict-icon"
+              initial={{ scale: 0, rotate: -90 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ ...spring.bouncy, delay: 0.08 }}
+            >
+              <Icon name={result ? 'check' : 'x'} />
+            </motion.span>
             {result ? pick(PRAISE) : 'Tentokrát ne.'}
           </div>
           {!result && (
@@ -69,8 +85,9 @@ export function QuestionView({
               <Md text={question.explain} />
             </div>
           )}
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </div>
   )
 }
@@ -108,15 +125,17 @@ function Inputs({
       return (
         <div className="qv-tf">
           {[true, false].map((b) => (
-            <button
+            <motion.button
               key={String(b)}
+              animate={locked && v === b ? (q.answer === b ? bump : shake) : undefined}
+              whileTap={locked ? undefined : { scale: 0.96 }}
               type="button"
               disabled={locked}
               className={`qv-opt${v === b ? ' sel' : ''}${locked && q.answer === b ? ' right' : ''}${locked && v === b && q.answer !== b ? ' wrong' : ''}`}
               onClick={() => setAnswer({ kind: 'tf', value: b })}
             >
               <Icon name={b ? 'check' : 'x'} /> {b ? 'Pravda' : 'Nepravda'}
-            </button>
+            </motion.button>
           ))}
         </div>
       )
@@ -170,16 +189,18 @@ function Options({ q, answer, setAnswer, locked }: Props<'choice' | 'multi'>) {
     setAnswer({ kind: 'multi', indices: [...s] })
   }
   return (
-    <div className="qv-opts">
+    <motion.div className="qv-opts" variants={stagger(0.05)} initial="hidden" animate="show">
       {order.map((i, pos) => {
         const sel = selected.includes(i)
         const right = locked && correct.includes(i)
         const wrong = locked && sel && !correct.includes(i)
         return (
-          <button
-            key={i}
+          <motion.div key={i} variants={rise}>
+          <motion.button
             type="button"
             disabled={locked}
+            animate={wrong ? shake : right && sel ? bump : undefined}
+            whileTap={locked ? undefined : { scale: 0.98 }}
             aria-pressed={sel}
             className={`qv-opt${sel ? ' sel' : ''}${right ? ' right' : ''}${wrong ? ' wrong' : ''}`}
             onClick={() => toggle(i)}
@@ -188,10 +209,11 @@ function Options({ q, answer, setAnswer, locked }: Props<'choice' | 'multi'>) {
             <span>
               <Md text={q.options[i]} />
             </span>
-          </button>
+          </motion.button>
+          </motion.div>
         )
       })}
-    </div>
+    </motion.div>
   )
 }
 
@@ -212,7 +234,7 @@ function Order({ q, answer, setAnswer, locked }: Props<'order'>) {
   return (
     <ol className="qv-order">
       {order.map((idx, pos) => (
-        <li key={idx} className={locked ? (idx === pos ? 'right' : 'wrong') : ''}>
+        <motion.li layout transition={spring.snappy} key={idx} className={locked ? (idx === pos ? 'right' : 'wrong') : ''}>
           <span className="qv-order-n">{pos + 1}</span>
           <span className="qv-order-t">
             <Md text={q.items[idx]} />
@@ -233,7 +255,7 @@ function Order({ q, answer, setAnswer, locked }: Props<'order'>) {
               </button>
             </span>
           )}
-        </li>
+        </motion.li>
       ))}
       {!answer && !locked && (
         <li className="qv-order-confirm">

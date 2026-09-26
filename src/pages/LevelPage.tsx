@@ -7,6 +7,7 @@ import { Mascot } from '../ui/Mascot'
 import { ElementTile } from '../ui/ElementTile'
 import { GAME_BY_ID } from '../games/registry'
 import { NotFound } from './NotFound'
+import { Page } from '../ui/anim'
 import { GameCard } from './GamesPage'
 
 export function LevelPage() {
@@ -63,7 +64,7 @@ export function LevelPage() {
   })
 
   return (
-    <main className="page level-page" style={{ ['--level' as string]: level.color }}>
+    <Page className="level-page" style={{ ['--level' as string]: level.color }}>
       <nav className="crumbs">
         <Link to={`/c/${course.id}`}>
           <Icon name="arrowLeft" width={16} height={16} /> {course.title}
@@ -119,6 +120,6 @@ export function LevelPage() {
           </Link>
         )}
       </nav>
-    </main>
+    </Page>
   )
 }

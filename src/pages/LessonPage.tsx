@@ -13,6 +13,9 @@ import { Icon } from '../ui/Icon'
 import { ElementTile } from '../ui/ElementTile'
 import { Confetti, Stars } from '../ui/Confetti'
 import { NotFound } from './NotFound'
+import { AnimatePresence, motion } from 'motion/react'
+import { rise, slide, stagger } from '../ui/motion'
+import { Bar, CountUp } from '../ui/anim'
 import '../lesson/lesson.css'
 
 type Step = { kind: 'intro' } | { kind: 'section'; i: number } | { kind: 'summary' } | { kind: 'quiz' } | { kind: 'done'; score: number; max: number; xp: number }
@@ -39,6 +42,7 @@ function lessonElements(lesson: Lesson) {
 function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: string; levelId: string; levelColor: string; lesson: Lesson }) {
   const navigate = useNavigate()
   const [step, setStep] = useState<Step>({ kind: 'intro' })
+  const [dir, setDir] = useState(1)
   const [answered, setAnswered] = useState<Record<string, boolean>>({})
   const course = courseById(courseId)!
   const level = findLevel(course, levelId)!
@@ -52,7 +56,9 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
     step.kind === 'intro' ? 0 : step.kind === 'section' ? step.i + 1 : step.kind === 'summary' ? lesson.sections.length + 1 : totalSteps - 1
   const progress = step.kind === 'done' ? 1 : stepIndex / (totalSteps - 1)
 
+  const order = (s: Step) => (s.kind === 'intro' ? 0 : s.kind === 'section' ? s.i + 1 : s.kind === 'summary' ? 100 : s.kind === 'quiz' ? 101 : 102)
   const go = (s: Step) => {
+    setDir(order(s) >= order(step) ? 1 : -1)
     setStep(s)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -65,15 +71,22 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
         <Link to={exit} className="icon-btn" aria-label="Zavřít lekci">
           <Icon name="x" />
         </Link>
-        <div className="progress lesson-progress" style={{ ['--bar' as string]: levelColor }} aria-label={`Postup lekcí ${Math.round(progress * 100)} %`}>
-          <span style={{ width: `${progress * 100}%` }} />
-        </div>
+        <Bar value={progress} color={levelColor} className="lesson-progress" label="Postup lekcí" />
         <span className="lesson-bar-step tabnum">
           {Math.min(stepIndex + 1, totalSteps)}/{totalSteps}
         </span>
       </div>
 
       <div className="lesson-body">
+        <AnimatePresence mode="wait" custom={dir} initial={false}>
+        <motion.div
+          key={step.kind === 'section' ? `s${step.i}` : step.kind}
+          custom={dir}
+          variants={slide}
+          initial="enter"
+          animate="center"
+          exit="exit"
+        >
         {step.kind === 'intro' && (
           <section className="lesson-intro stack">
             <span className="eyebrow">
@@ -120,17 +133,18 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
                 <h2>
                   <Md text={sec.title} />
                 </h2>
-                <div className="lesson-blocks">
+                <motion.div className="lesson-blocks" variants={stagger(0.06, 0.15)} initial="hidden" animate="show">
                   {sec.blocks.map((b, bi) => (
-                    <BlockView
-                      key={bi}
-                      block={b}
-                      courseId={courseId}
-                      levelId={levelId}
-                      onCheck={(ok) => setAnswered((a) => ({ ...a, [`${step.i}-${bi}`]: ok }))}
-                    />
+                    <motion.div key={bi} variants={rise}>
+                      <BlockView
+                        block={b}
+                        courseId={courseId}
+                        levelId={levelId}
+                        onCheck={(ok) => setAnswered((a) => ({ ...a, [`${step.i}-${bi}`]: ok }))}
+                      />
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
                 <div className="bottom-bar">
                   <button className="btn btn-ghost" onClick={() => go(step.i === 0 ? { kind: 'intro' } : { kind: 'section', i: step.i - 1 })}>
                     <Icon name="arrowLeft" /> Zpět
@@ -152,13 +166,13 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
             <span className="eyebrow">Shrnutí</span>
             <h2>Co si odnést</h2>
             <div className="card notebook">
-              <ul>
+              <motion.ul variants={stagger(0.12, 0.2)} initial="hidden" animate="show">
                 {lesson.summary.map((s, i) => (
-                  <li key={i}>
+                  <motion.li key={i} variants={rise}>
                     <Md text={s} />
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
               <span className="note notebook-note">zapiš si to!</span>
             </div>
             <MascotSays mood="think">
@@ -199,17 +213,19 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
                 <Icon name="target" /> {step.score} / {step.max} správně
               </span>
               <span className="chip xp-chip">
-                <Icon name="bolt" style={{ color: 'var(--yellow)' }} /> +{step.xp} XP
+                <Icon name="bolt" style={{ color: 'var(--yellow)' }} /> <CountUp value={step.xp} prefix="+" suffix=" XP" />
               </span>
             </div>
             {elements.length > 0 && !alreadyDone && (
               <div className="stack done-elements">
                 <span className="hand">Nové prvky ve tvém albu:</span>
-                <div className="row">
+                <motion.div className="row" variants={stagger(0.08, 0.8)} initial="hidden" animate="show">
                   {elements.slice(0, 8).map((s) => (
-                    <ElementTile key={s} symbol={s} size="sm" />
+                    <motion.div key={s} variants={{ hidden: { opacity: 0, scale: 0.4, rotate: -20 }, show: { opacity: 1, scale: 1, rotate: 0 } }}>
+                      <ElementTile symbol={s} size="sm" />
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </div>
             )}
             <div className="row done-actions">
@@ -231,6 +247,8 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
             </Link>
           </section>
         )}
+        </motion.div>
+        </AnimatePresence>
       </div>
     </main>
   )

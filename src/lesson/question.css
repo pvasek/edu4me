@@ -114,7 +114,6 @@
   padding: 14px 16px;
   border-radius: var(--r);
   border: 2px solid;
-  animation: qv-pop 0.35s cubic-bezier(0.3, 1.5, 0.5, 1);
 }
 .qv-feedback.ok {
   background: var(--good-soft);
@@ -141,12 +140,6 @@
 }
 .qv-explain {
   color: var(--ink-soft);
-}
-@keyframes qv-pop {
-  from {
-    transform: scale(0.96);
-    opacity: 0;
-  }
 }
 .qv-order {
   list-style: none;
@@ -212,4 +205,8 @@
 .qv-match-help {
   grid-column: 1 / -1;
   font-size: 14px;
+}
+
+.qv-verdict-icon {
+  display: inline-grid;
 }

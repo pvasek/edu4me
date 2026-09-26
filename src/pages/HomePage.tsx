@@ -3,6 +3,9 @@ import { COURSES, nextLesson } from '../core/registry'
 import { liveStreak, rankFromXp, rankTitle, useProgress } from '../core/progress'
 import { MascotSays } from '../ui/Mascot'
 import { Icon } from '../ui/Icon'
+import { motion } from 'motion/react'
+import { Bar, CountUp, MLink, Page } from '../ui/anim'
+import { pressable, rise, stagger } from '../ui/motion'
 import { ElementTile } from '../ui/ElementTile'
 
 function greeting() {
@@ -24,7 +27,7 @@ export function HomePage() {
   const name = p.settings.name ? `, ${p.settings.name}` : ''
 
   return (
-    <main className="page home">
+    <Page className="home">
       <section className="home-hero">
         <div className="home-hero-text">
           <span className="eyebrow">edu4me · hravé učení</span>
@@ -50,7 +53,8 @@ export function HomePage() {
       </section>
 
       {next && (
-        <Link
+        <MLink
+          {...pressable}
           to={`/c/chemie/l/${next.level.id}/${next.lesson.id}`}
           className="continue-card card"
           style={{ ['--level' as string]: next.level.color }}
@@ -70,47 +74,45 @@ export function HomePage() {
           <span className="btn btn-primary btn-lg continue-go">
             <Icon name="play" /> {doneCount ? 'Pokračovat' : 'Začít'}
           </span>
-        </Link>
+        </MLink>
       )}
 
-      <section className="stat-row" aria-label="Tvoje statistiky">
-        <div className="stat card-flat">
+      <motion.section className="stat-row" aria-label="Tvoje statistiky" variants={stagger(0.08, 0.3)} initial="hidden" animate="show">
+        <motion.div className="stat card-flat" variants={rise}>
           <span className="stat-label">Hodnost</span>
           <strong className="stat-value">
             {rank}. {rankTitle(rank)}
           </strong>
-          <div className="progress" style={{ ['--bar' as string]: 'var(--yellow)' }}>
-            <span style={{ width: `${(into / need) * 100}%` }} />
-          </div>
+          <Bar value={into / need} color="var(--yellow)" label="Postup k další hodnosti" />
           <span className="stat-sub tabnum">
             {into} / {need} XP do další
           </span>
-        </div>
-        <div className="stat card-flat">
+        </motion.div>
+        <motion.div className="stat card-flat" variants={rise}>
           <span className="stat-label">Série</span>
           <strong className="stat-value">
             <Icon name="flame" style={{ color: streak ? 'var(--accent)' : 'var(--muted)' }} /> {streak}{' '}
             {streak === 1 ? 'den' : streak >= 2 && streak <= 4 ? 'dny' : 'dní'}
           </strong>
           <span className="stat-sub">Nejdelší: {p.streak.best}</span>
-        </div>
-        <div className="stat card-flat">
+        </motion.div>
+        <motion.div className="stat card-flat" variants={rise}>
           <span className="stat-label">Lekce</span>
           <strong className="stat-value tabnum">
-            {doneCount} / {total}
+            <CountUp value={doneCount} /> / {total}
           </strong>
-          <div className="progress">
-            <span style={{ width: `${(doneCount / total) * 100}%` }} />
-          </div>
-        </div>
+          <Bar value={doneCount / total} label="Dokončené lekce" />
+        </motion.div>
         <Link to="/profil" className="stat card-flat stat-link">
           <span className="stat-label">Album prvků</span>
-          <strong className="stat-value tabnum">{p.elements.length} / 118</strong>
+          <strong className="stat-value tabnum">
+            <CountUp value={p.elements.length} /> / 118
+          </strong>
           <span className="stat-sub">
             Otevřít album <Icon name="arrowRight" width={14} height={14} />
           </span>
         </Link>
-      </section>
+      </motion.section>
 
       <section className="stack">
         <h2>Kurzy</h2>
@@ -131,9 +133,9 @@ export function HomePage() {
               </>
             )
             return c.available ? (
-              <Link key={c.id} to={`/c/${c.id}`} className="course-card card">
+              <MLink key={c.id} to={`/c/${c.id}`} className="course-card card" {...pressable}>
                 {inner}
-              </Link>
+              </MLink>
             ) : (
               <div key={c.id} className="course-card card-flat disabled" aria-disabled="true">
                 {inner}
@@ -142,6 +144,6 @@ export function HomePage() {
           })}
         </div>
       </section>
-    </main>
+    </Page>
   )
 }

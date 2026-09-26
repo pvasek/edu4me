@@ -23,7 +23,7 @@ export function normalizeText(s: string, caseSensitive = false) {
 
 /** Formulas: ignore spaces entirely, keep case. */
 function compact(s: string) {
-  return plain(s).replace(/\s+/g, '')
+  return plain(s).replace(/\s+/g, '').replace(/[·.*•⋅]/g, '·')
 }
 
 export function parseNumber(s: string): number | null {

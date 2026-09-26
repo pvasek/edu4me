@@ -291,7 +291,7 @@ figcaption {
   gap: 6px;
   align-items: center;
   background: var(--yellow);
-  color: #26221e;
+  color: var(--cat-ink);
   border: 2px solid var(--edge);
   border-radius: 99px;
   padding: 2px 12px;
@@ -325,7 +325,7 @@ figcaption {
   flex: none;
   border-radius: 14px;
   background: var(--level, var(--accent));
-  color: #26221e;
+  color: var(--on-level);
   border: 2px solid var(--edge);
 }
 .b-game-text {

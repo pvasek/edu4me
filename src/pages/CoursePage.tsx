@@ -4,6 +4,7 @@ import { useProgress } from '../core/progress'
 import { PathMap, Ring } from '../ui/PathMap'
 import { Icon } from '../ui/Icon'
 import { Mascot } from '../ui/Mascot'
+import { Page } from '../ui/anim'
 import { NotFound } from './NotFound'
 
 export function CoursePage() {
@@ -22,7 +23,7 @@ export function CoursePage() {
   const total = stats.reduce((a, s) => a + s.level.lessons.length, 0)
 
   return (
-    <main className="page">
+    <Page>
       <section className="course-head">
         <div className="stack">
           <span className="eyebrow">Kurz</span>
@@ -80,6 +81,6 @@ export function CoursePage() {
           ),
         }))}
       />
-    </main>
+    </Page>
   )
 }

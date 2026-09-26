@@ -1,4 +1,6 @@
-import type { CSSProperties } from 'react'
+import { useId, type CSSProperties } from 'react'
+import { motion } from 'motion/react'
+import { spring } from './motion'
 import './mascot.css'
 
 export type Mood = 'happy' | 'think' | 'wow' | 'sad' | 'cheer' | 'sleep'
@@ -20,8 +22,13 @@ export function Mascot({
   style?: CSSProperties
   className?: string
 }) {
+  const hatchId = useId().replace(/:/g, '')
   return (
-    <svg
+    <motion.svg
+      key={mood}
+      initial={{ scale: 0.8, rotate: -8 }}
+      animate={{ scale: 1, rotate: 0 }}
+      transition={spring.bouncy}
       className={`mascot mascot-${mood} ${className}`}
       viewBox="0 0 120 120"
       width={size}
@@ -30,7 +37,12 @@ export function Mascot({
       role="img"
       aria-label="Atomík"
     >
-      <g className="mascot-orbits" fill="none" stroke="var(--edge)" strokeWidth="2.6">
+      <defs>
+        <pattern id={hatchId} width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="5" stroke="#1f2a44" strokeWidth="1.2" opacity=".28" />
+        </pattern>
+      </defs>
+      <g className="mascot-orbits" fill="none" stroke="var(--edge)" strokeWidth="2">
         <ellipse cx="60" cy="60" rx="54" ry="19" />
         <ellipse cx="60" cy="60" rx="54" ry="19" transform="rotate(60 60 60)" />
         <ellipse cx="60" cy="60" rx="54" ry="19" transform="rotate(120 60 60)" />
@@ -39,16 +51,18 @@ export function Mascot({
         <circle cx="87" cy="13.2" r="6" fill="var(--green)" stroke="var(--edge)" strokeWidth="2" />
       </g>
       <g className="mascot-body">
-        <circle cx="60" cy="60" r="27" fill="var(--m-color)" stroke="var(--edge)" strokeWidth="3" />
+        <circle cx="60" cy="60" r="27" fill="var(--m-color)" stroke="var(--edge)" strokeWidth="2.4" />
+        <path d="M60 33a27 27 0 0 1 0 54a14 27 0 0 0 0-54z" transform="rotate(35 60 60)" fill={`url(#${hatchId})`} />
+        <circle cx="60" cy="60" r="23.5" fill="none" stroke="var(--edge)" strokeWidth=".8" opacity=".5" />
         <ellipse cx="51" cy="50" rx="7" ry="4" fill="#fff" opacity=".45" />
         <Face mood={mood} />
       </g>
-    </svg>
+    </motion.svg>
   )
 }
 
 function Face({ mood }: { mood: Mood }) {
-  const ink = '#26221e'
+  const ink = '#1f2a44'
   switch (mood) {
     case 'think':
       return (
