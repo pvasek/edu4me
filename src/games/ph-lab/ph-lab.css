@@ -1,0 +1,358 @@
+.g-ph {
+  display: grid;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.g-ph-instr {
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+.g-ph-hud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.g-ph-hud .chip:nth-child(2) {
+}
+
+/* mission card */
+.g-ph-mission {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-4);
+}
+.g-ph-mission-body {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+.g-ph-mission-text {
+  font: 600 17px/1.4 var(--font-body);
+}
+.g-ph-mission-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  align-items: center;
+}
+.g-ph-hint {
+  font-size: 19px;
+}
+
+/* lab layout */
+.g-ph-lab {
+  display: grid;
+  gap: var(--space-4);
+}
+@media (min-width: 760px) {
+  .g-ph-lab {
+    grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.1fr);
+    align-items: start;
+  }
+}
+.g-ph-bench {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: end;
+}
+
+/* beaker */
+.g-ph-beaker {
+  width: 100%;
+  max-height: 300px;
+  overflow: visible;
+}
+.g-ph-glass-outline {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.g-ph-grad line {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  opacity: 0.55;
+}
+.g-ph-grad text,
+.g-ph-unit {
+  font: 700 11px var(--font-mono);
+  fill: var(--ink-soft);
+}
+.g-ph-fill {
+  opacity: 0.88;
+}
+.g-ph-shine {
+  fill: var(--surface);
+  opacity: 0.35;
+}
+.g-ph-bulb {
+  fill: var(--accent);
+  stroke: var(--edge);
+  stroke-width: 2;
+}
+.g-ph-glass {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.g-ph-drop {
+  fill: var(--blue);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.g-ph-stream {
+  fill: var(--blue);
+  opacity: 0.75;
+}
+.g-ph-ripple {
+  fill: none;
+  stroke: var(--surface);
+  stroke-width: 2;
+  opacity: 0;
+}
+
+/* pH meter */
+.g-ph-meter {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--surface);
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-hard);
+  align-self: center;
+}
+.g-ph-meter-top {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font: 700 12px/1.2 var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.g-ph-meter-vol {
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--font-mono);
+}
+.g-ph-meter-lcd {
+  font: 700 clamp(34px, 11vw, 50px) / 1 var(--font-mono);
+  text-align: center;
+  padding: var(--space-2) var(--space-1);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  border: 1.5px solid var(--line);
+  color: var(--ink);
+}
+.g-ph-meter-desc {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 700;
+  font-size: 15px;
+}
+.g-ph-swatch {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  border-radius: 50%;
+  border: 1.5px solid var(--edge);
+}
+.g-ph-scale {
+  display: grid;
+  gap: 2px;
+}
+.g-ph-scale-bar {
+  position: relative;
+  height: 14px;
+  border-radius: 99px;
+  border: 1.5px solid var(--edge);
+}
+.g-ph-scale-target {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  border: var(--bw) dashed var(--edge);
+  border-radius: 6px;
+  min-width: 4px;
+}
+.g-ph-scale-marker {
+  position: absolute;
+  top: -9px;
+  width: 0;
+  height: 0;
+  margin-left: -7px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 10px solid var(--ink);
+}
+.g-ph-scale-labels {
+  display: flex;
+  justify-content: space-between;
+  font: 700 11px var(--font-mono);
+  color: var(--muted);
+}
+
+/* controls */
+.g-ph-controls {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-ph-bottles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+.g-ph-bottle {
+  appearance: none;
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 2px;
+  min-height: 96px;
+  padding: 8px 4px 6px;
+  background: var(--surface);
+  color: var(--ink);
+  border: var(--bw) solid var(--line);
+  border-bottom-width: 4px;
+  border-radius: var(--r);
+  cursor: pointer;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.12s, background 0.12s;
+}
+.g-ph-bottle:hover {
+  border-color: var(--edge);
+}
+.g-ph-bottle.sel {
+  border-color: var(--edge);
+  background: var(--info-soft);
+  box-shadow: var(--shadow-hard);
+}
+.g-ph-cap {
+  fill: var(--ink);
+}
+.g-ph-bottle-body {
+  fill: var(--surface-2);
+  stroke: var(--edge);
+  stroke-width: 1.8;
+}
+.g-ph-bottle-name {
+  font: 700 13px/1.15 var(--font-body);
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+.g-ph-bottle-sub {
+  font: 600 11px/1.2 var(--font-mono);
+  color: var(--muted);
+}
+.g-ph-bottle-tick {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--cat-nonmetal);
+  border: 1.5px solid var(--edge);
+  color: var(--cat-ink);
+}
+.g-ph-bottle-tick svg {
+  width: 13px;
+  height: 13px;
+  stroke-width: 3;
+}
+.g-ph-add {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+.g-ph-add .btn {
+  font-family: var(--font-display);
+  font-size: 19px;
+  padding-inline: 10px;
+}
+.g-ph-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  min-height: 22px;
+}
+.g-ph-status svg {
+  width: 16px;
+  height: 16px;
+  color: var(--warn);
+}
+.g-ph-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.g-ph-actions .btn {
+  flex: 1 1 180px;
+}
+.g-ph-keys {
+  display: none;
+  font-size: 13px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .g-ph-keys {
+    display: block;
+  }
+}
+
+/* result */
+.g-ph-result {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: var(--bw) solid;
+  border-radius: var(--r);
+}
+.g-ph-result.ok {
+  background: var(--good-soft);
+  border-color: var(--good);
+}
+.g-ph-result.bad {
+  background: var(--bad-soft);
+  border-color: var(--bad);
+}
+.g-ph-verdict {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font: 800 20px/1.25 var(--font-display);
+}
+.g-ph-result.ok .g-ph-verdict {
+  color: var(--good);
+}
+.g-ph-result.bad .g-ph-verdict {
+  color: var(--bad);
+}
+.g-ph-verdict svg {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  stroke-width: 3;
+}
+.g-ph-breakdown {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 2px;
+}
+.g-ph-points {
+  font: 800 28px/1 var(--font-display);
+}
+
