@@ -130,7 +130,7 @@
   border-radius: var(--r-sm);
   background: var(--surface);
   color: var(--ink);
-  font: 800 20px/1 var(--font-display);
+  font: 800 24px/1 var(--font-body);
   box-shadow: 2px 2px 0 var(--shadow-color);
   cursor: pointer;
   transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s;
@@ -191,7 +191,7 @@
 .g-bal-scale {
   width: 100%;
   max-width: 150px;
-  height: 58px;
+  height: 64px;
   justify-self: center;
   overflow: visible;
 }
@@ -231,9 +231,7 @@
 .g-bal-pan text {
   font: 800 14px/1 var(--font-mono);
   fill: var(--ink);
-  paint-order: stroke;
-  stroke: var(--surface);
-  stroke-width: 3px;
+  stroke: none;
 }
 .g-bal-verdict {
   display: inline-flex;

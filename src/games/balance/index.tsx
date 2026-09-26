@@ -339,9 +339,9 @@ function ScaleRow({ el, left, right }: { el: string; left: number; right: number
       <span className="g-bal-el" style={{ ['--el-bg' as string]: e ? categoryVar(e.category) : 'var(--surface-2)' }}>
         {el}
       </span>
-      <svg className="g-bal-scale" viewBox="0 0 140 62" aria-hidden="true">
-        <path className="g-bal-stand" d="M70 18 L70 54 M56 58 L84 58" />
-        <path className="g-bal-stand-foot" d="M60 58 L70 50 L80 58 Z" />
+      <svg className="g-bal-scale" viewBox="0 0 140 66" aria-hidden="true">
+        <path className="g-bal-stand" d="M70 18 L70 60 M54 64 L86 64" />
+        <path className="g-bal-stand-foot" d="M60 64 L70 56 L80 64 Z" />
         <motion.g initial={false} style={{ x: cx, y: cy }} animate={{ rotate: deg }} transition={spring.bouncy}>
           <line className="g-bal-beam" x1={-arm} y1="0" x2={arm} y2="0" />
         </motion.g>
@@ -364,9 +364,9 @@ function ScaleRow({ el, left, right }: { el: string; left: number; right: number
 function Pan({ x, y, n }: { x: number; y: number; n: number }) {
   return (
     <motion.g className="g-bal-pan" initial={false} animate={{ x, y }} transition={spring.bouncy}>
-      <path d="M0 0 L-12 18 M0 0 L12 18" />
-      <path className="g-bal-dish" d="M-17 18 Q0 30 17 18 Z" />
-      <text x="0" y="14" textAnchor="middle">
+      <path d="M0 0 L-15 16 M0 0 L15 16" />
+      <path className="g-bal-dish" d="M-20 16 L20 16 Q20 34 0 34 Q-20 34 -20 16 Z" />
+      <text x="0" y="30" textAnchor="middle">
         {n}
       </text>
     </motion.g>
