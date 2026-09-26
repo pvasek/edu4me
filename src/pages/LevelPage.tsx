@@ -8,7 +8,7 @@ import { ElementTile } from '../ui/ElementTile'
 import { GAME_BY_ID } from '../games/registry'
 import { NotFound } from './NotFound'
 import { Page } from '../ui/anim'
-import { GameCard } from './GamesPage'
+import { GameCard } from '../ui/GameCard'
 
 export function LevelPage() {
   const { courseId, levelId } = useParams()

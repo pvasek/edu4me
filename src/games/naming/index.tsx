@@ -278,7 +278,7 @@ export default function Naming({ levelId, onFinish }: GameProps) {
               spellCheck={false}
               readOnly={!!result}
             />
-            <button type="submit" className="btn btn-primary" disabled={!!result || !input.trim()}>
+            <button type="submit" className="btn btn-primary" disabled={!!result || !input.trim()} aria-label="Zkontrolovat">
               <Icon name="check" /> <span className="g-nm-hide-xs">Zkontrolovat</span>
             </button>
           </form>

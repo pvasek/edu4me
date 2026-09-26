@@ -171,6 +171,7 @@ body {
   background-attachment: fixed;
   color: var(--ink);
   font: 17px/1.6 var(--font-body);
+  font-variant-numeric: lining-nums;
   min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
 }
@@ -187,6 +188,7 @@ h4 {
   margin: 0;
   text-wrap: balance;
   font-weight: 700;
+  font-variant-numeric: lining-nums;
 }
 h1 {
   font-size: clamp(36px, 7vw, 56px);
@@ -369,6 +371,7 @@ sup {
 }
 
 .chip {
+  justify-self: start;
   display: inline-flex;
   align-items: center;
   gap: 6px;

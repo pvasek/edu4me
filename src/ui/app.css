@@ -146,8 +146,9 @@
   right: 2%;
   bottom: -0.08em;
   height: 0.28em;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M3 14 C 40 4, 80 18, 120 8 S 180 6, 197 10' fill='none' stroke='%23e8553d' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E")
-    no-repeat center / 100% 100%;
+  background: var(--accent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M3 14 C 40 4, 80 18, 120 8 S 180 6, 197 10' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M3 14 C 40 4, 80 18, 120 8 S 180 6, 197 10' fill='none' stroke='%23000' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
 }
 .home-hero-text {
   display: grid;
@@ -189,7 +190,7 @@
 }
 .stat-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: var(--space-3);
 }
 .stat {
@@ -204,7 +205,7 @@
   color: var(--muted);
 }
 .stat-value {
-  font: 800 22px/1.2 var(--font-display);
+  font: 700 26px/1.2 var(--font-display);
   display: flex;
   align-items: center;
   gap: 6px;

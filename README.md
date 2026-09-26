@@ -17,7 +17,7 @@ npm run build   # production build to dist/
 
 ## Deployment
 
-Pushing to `main` runs `.github/workflows/deploy.yml`, which tests, builds and publishes to GitHub Pages. In the repository settings set **Pages → Source: GitHub Actions** once.
+Pushing to `main` (or the current default branch `claude/chemistry-class-curriculum-l9unrq`) runs `.github/workflows/deploy.yml`, which tests, builds and publishes to GitHub Pages. In the repository settings set **Pages → Source: GitHub Actions** once.
 
 ## Documentation
 

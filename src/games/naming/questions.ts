@@ -158,7 +158,7 @@ function binaryItem(cat: Cat, el: string, ox: number, partner: BinaryPartner): N
     formula: c.formula,
     name: c.name,
     wrong,
-    explain: `${PARTNER_DESC[partner]}. ${arithmetic} → ${el} má ${ROMAN[ox]} → koncovka **-${endingOf(el, ox)}**.`,
+    explain: `${PARTNER_DESC[partner]}. ${arithmetic} → ${el} má ${ROMAN[ox]} → koncovka **‑${endingOf(el, ox)}**.`,
   }
 }
 
@@ -237,7 +237,7 @@ function acidItem(el: string, ox: number): NItem {
     formula: a.formula,
     name: a.name,
     wrong: uniq(wrong, a.name),
-    explain: `Vodík +I, kyslík −II: ${a.h} · (+1) + x + ${a.o} · (−2) = 0 → x = +${ox} (${ROMAN[ox]}) → koncovka **-${end}**. ${
+    explain: `Vodík +I, kyslík −II: ${a.h} · (+1) + x + ${a.o} · (−2) = 0 → x = +${ox} (${ROMAN[ox]}) → koncovka **‑${end}**. ${
       a.h === 3 && ox % 2 === 1 ? `Výjimka: ${a.name} má 3 vodíky.` : ox % 2 ? 'Liché oxidační číslo → 1 vodík.' : 'Sudé oxidační číslo → 2 vodíky.'
     }`,
   }
@@ -344,7 +344,7 @@ function cationIonItem(c: Cation): NItem {
     name: c.ion,
     wrong: uniq([wrongAdj[0], `${c.adj} anion`, ...wrongAdj.slice(1)], c.ion),
     only: 'toName',
-    explain: `Kladný náboj = kation. Náboj ${c.charge}+ → oxidační číslo ${ROMAN[c.charge]} → koncovka **-${endingOf(c.formula, c.charge)}**.`,
+    explain: `Kladný náboj = kation. Náboj ${c.charge}+ → oxidační číslo ${ROMAN[c.charge]} → koncovka **‑${endingOf(c.formula, c.charge)}**.`,
   }
 }
 

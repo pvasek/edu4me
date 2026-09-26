@@ -7,9 +7,9 @@ import { chemie } from '../courses/chemie'
  */
 export const COURSES: Course[] = [
   chemie,
-  { id: 'fyzika', title: 'Fyzika', tagline: 'Síly, energie, elektřina a vesmír.', color: '#4dabf7', available: false, levels: [] },
-  { id: 'biologie', title: 'Biologie', tagline: 'Od buňky po ekosystémy.', color: '#51cf66', available: false, levels: [] },
-  { id: 'matematika', title: 'Matematika', tagline: 'Čísla, funkce a geometrie hravě.', color: '#b197fc', available: false, levels: [] },
+  { id: 'fyzika', title: 'Fyzika', tagline: 'Síly, energie, elektřina a vesmír.', color: '#3f6699', available: false, levels: [] },
+  { id: 'biologie', title: 'Biologie', tagline: 'Od buňky po ekosystémy.', color: '#56834a', available: false, levels: [] },
+  { id: 'matematika', title: 'Matematika', tagline: 'Čísla, funkce a geometrie hravě.', color: '#7a5290', available: false, levels: [] },
 ]
 
 export const courseById = (id: string | undefined) => COURSES.find((c) => c.id === id && c.available)

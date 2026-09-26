@@ -108,7 +108,7 @@ export default function IonBuilder({ levelId, onFinish }: GameProps) {
         task.mode === 'name'
           ? `„${task.name}“ obsahuje ${task.cation.ion} ${ionMarkup(task.cation)}${
               task.cation.formula === task.cation.element
-                ? ` (koncovka -${ending(task.cation.adj)} = oxidační číslo ${roman(task.cation.charge)})`
+                ? ` (koncovka ‑${ending(task.cation.adj)} = oxidační číslo ${roman(task.cation.charge)})`
                 : ''
             }, ne ${ionMarkup(wrongC.ion)}.`
           : `Kation ${ionMarkup(wrongC.ion)} do zadání nepatří.`,
@@ -503,7 +503,7 @@ function CrossRule({ task }: { task: Task }) {
       </div>
       {g > 1 && (
         <motion.p className="g-ion-cross-note" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
-          <Md text={`Poměr ${qa} : ${c.charge} zkrátíme ${g} → ${task.nC} : ${task.nA}`} />
+          <Md text={`Poměr ${qa} : ${c.charge} vydělíme ${g} → ${task.nC} : ${task.nA}`} />
         </motion.p>
       )}
       <motion.div
