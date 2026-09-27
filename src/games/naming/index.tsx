@@ -155,7 +155,11 @@ export default function Naming({ levelId, onFinish }: GameProps) {
 
   return (
     <div className="g-nm">
-      <p className="g-nm-instr">Převáděj vzorce na názvy a zpátky. Vzorce piš přesně – záleží na velkých a malých písmenech.</p>
+      <p className="g-nm-instr">
+        {level === 8
+          ? 'Převáděj racionální vzorce na názvy a zpátky. Hlídej hlavní řetězec, lokanty a koncovku.'
+          : 'Převáděj vzorce na názvy a zpátky. Vzorce piš přesně – záleží na velkých a malých písmenech.'}
+      </p>
       <Hud
         score={score}
         round={idx + 1}

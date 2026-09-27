@@ -248,12 +248,15 @@ export default function Balance({ levelId, onFinish }: GameProps) {
   )
 }
 
+/** Single bonds in condensed organic formulas shown as dashes. */
+const bonds = (f: string) => f.replace(/-/g, '–')
+
 function ones(e: Equation) {
   return [...e.reactants, ...e.products].map(() => 1)
 }
 
 function formatEquation(e: Equation, c: number[]) {
-  const part = (fs: string[], off: number) => fs.map((f, i) => `${c[off + i] > 1 ? c[off + i] + ' ' : ''}$${f}$`).join(' + ')
+  const part = (fs: string[], off: number) => fs.map((f, i) => `${c[off + i] > 1 ? c[off + i] + ' ' : ''}$${bonds(f)}$`).join(' + ')
   return `${part(e.reactants, 0)} -> ${part(e.products, e.reactants.length)}`
 }
 
@@ -303,7 +306,7 @@ function Side({
                 </AnimatePresence>
               </span>
               <span className="g-bal-formula">
-                <Md text={`$${f}$`} />
+                <Md text={`$${bonds(f)}$`} />
               </span>
             </div>
             <button
