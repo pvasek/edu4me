@@ -30,11 +30,11 @@ function Nucleus() {
   )
 }
 
-function Letters({ x, y, s, lv = false, dx = 12 }: { x: number; y: number; s: string; lv?: boolean; dx?: number }) {
+function Letters({ x, y, s, lv = false, dx = 12, onLight = false }: { x: number; y: number; s: string; lv?: boolean; dx?: number; onLight?: boolean }) {
   return (
     <g>
       {s.split('').map((c, i) => (
-        <text key={i} className="f89-f f89-b" x={x + i * dx} y={y} textAnchor="middle" style={{ fontSize: 11.5, fill: lv ? 'var(--lv-t)' : undefined }}>
+        <text key={i} className="f89-f f89-b" x={x + i * dx} y={y} textAnchor="middle" style={{ fontSize: 11.5, fill: onLight ? (lv ? '#8a2f52' : '#1f2a44') : lv ? 'var(--lv-t)' : undefined }}>
           {c}
         </text>
       ))}
@@ -80,7 +80,7 @@ function Trna({ x, anti, aa, color, faded }: { x: number; anti: string; aa?: str
     <g opacity={faded ? 0.55 : 1}>
       <path d={`M${x - 20} 276 H${x + 20} V292 H${x - 20}Z`} fill="#e7d3a6" stroke="var(--edge)" strokeWidth={1.1} />
       <path d={`M${x - 6} 276 V238 H${x - 18} V224 H${x - 6} V214 H${x + 6} V224 H${x + 18} V238 H${x + 6} V276`} fill="#e7d3a6" stroke="var(--edge)" strokeWidth={1.1} />
-      <Letters x={x - 12} y={288} s={anti} />
+      <Letters x={x - 12} y={288} s={anti} onLight />
       {aa && (
         <g>
           <line className="f89-bond" x1={x} y1={214} x2={x} y2={204} />
@@ -103,9 +103,10 @@ function Translation({ narrow }: { narrow: boolean }) {
       <ellipse cx={505} cy={246} rx={98} ry={50} fill="#b9a3c9" opacity={0.55} stroke="var(--edge)" strokeWidth={1.5} />
       <ellipse cx={505} cy={246} rx={98} ry={50} fill={hatch('d')} className="f89-hatch" />
       <ellipse cx={505} cy={322} rx={84} ry={22} fill="#b9a3c9" opacity={0.7} stroke="var(--edge)" strokeWidth={1.5} />
+      <rect x={cx(0) - 22} y={305} width={cx(4) - cx(0) + 44} height={18} rx={3} fill="#efe3c8" stroke="var(--edge)" strokeWidth={0.8} />
       {CODONS.map((c, i) => (
         <g key={c}>
-          <Letters x={cx(i) - 12} y={318} s={c} lv={i < 3} />
+          <Letters x={cx(i) - 12} y={318} s={c} lv={i < 3} onLight />
           <line className="f89-thin" x1={cx(i) - 18} y1={306} x2={cx(i) + 18} y2={306} style={{ opacity: 0.5 }} />
         </g>
       ))}

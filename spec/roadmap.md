@@ -11,7 +11,20 @@
 - [x] Light and dark theme, mobile first
 - [x] GitHub Pages deployment through GitHub Actions
 
+## v0.2: Illustrated encyclopedia (this release)
+
+- [x] Illustration system (`spec/illustration-guide.md`, `src/illustrations/catalog.ts`)
+- [x] 106 engraved chemistry icons; icon on every lesson and every section
+- [x] 103 molecules as rotatable 3D ball-and-stick models
+- [x] Particle scenes (states, mixtures, solutions, before → after) and particle-drawn equations with atom ledgers
+- [x] 71 engraved technical figures (apparatus, industrial processes, cycles, biomolecules) + 9 level vignettes
+- [x] All 54 lessons rewritten picture-first: ≥ 1 visual per section (validated), ~⅓ less paragraph text
+- [x] Every game has its own content for each level it supports (see games.md level matrix)
+- [x] Course atlas with full per-level detail; 2D game stages for all games
+
 ## Next
+
+- Split the figure library into per-level chunks (the lesson bundle is ~160 kB gzip).
 
 - **Review pass by a chemistry teacher** of all content (typos, terminology, difficulty balance).
 - Spaced-repetition review mode built from the question pool.
