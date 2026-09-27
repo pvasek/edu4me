@@ -127,7 +127,7 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
         className="atlas-node"
         initial={{ scale: 0.4, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true, margin: '-60px' }}
+        viewport={{ once: true, margin: '-60px 0px' }}
         transition={spring.bouncy}
       >
         <Link to={`/c/${courseId}/l/${level.id}`} className="level-node-disc" aria-label={`Úroveň ${level.number}: ${level.title}`}>
@@ -150,7 +150,7 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
         variants={stagger(0.05, 0.1)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: '-60px' }}
+        viewport={{ once: true, margin: '-60px 0px' }}
       >
         <motion.header className="atlas-plate-head" variants={rise}>
           <div className="stack atlas-plate-titles">
@@ -182,7 +182,11 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
           </figure>
         </motion.header>
 
-        <motion.ol className="atlas-lessons" variants={stagger(0.04)}>
+        <motion.ol
+          className="atlas-lessons"
+          variants={stagger(0.04)}
+          style={{ ['--rows' as string]: Math.ceil((level.lessons.length + 1) / 2) }}
+        >
           {level.lessons.map((ls, i) => (
             <motion.li key={ls.id} variants={rise}>
               <Link

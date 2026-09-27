@@ -58,25 +58,26 @@
   background: var(--level);
 }
 
-/* Plates use the full width; each level's node sits in the gap above its
-   plate on the right, straddling the edges of the neighbouring plates. The
-   spine runs behind the plates, so it only shows between them. */
+/* The timeline runs down the left edge of the plates. Its level nodes
+   straddle each plate's left border (or sit in the page margin on wide
+   screens), so the plates keep almost the full width.
+   --node-x = node centre relative to the plate's left edge. */
 .atlas {
-  --node: 84px;
-  --node-inset: 28px;
-  --node-overlap: 22px;
+  --node: 72px;
+  --node-x: 0px;
+  --atlas-pad: 22px;
   position: relative;
   list-style: none;
   margin: 0;
-  padding: var(--node-overlap) 0 0;
+  padding: 0 0 0 var(--atlas-pad);
   display: grid;
-  gap: 10px;
+  gap: var(--space-5);
 }
 .atlas-spine {
   position: absolute;
-  top: calc(var(--node) / 2);
+  top: 30px;
   bottom: 60px;
-  right: calc(var(--node-inset) + var(--node) / 2);
+  left: calc(var(--atlas-pad) + var(--node-x) - 1px);
   width: 0;
   border-left: 2px dotted var(--line);
 }
@@ -108,10 +109,10 @@
   font-weight: inherit;
 }
 .atlas-node {
-  position: relative;
+  position: absolute;
   z-index: 2;
-  justify-self: end;
-  margin: calc(-1 * var(--node-overlap)) var(--node-inset) calc(-1 * var(--node-overlap)) 0;
+  top: 18px;
+  left: calc(var(--node-x) - var(--node) / 2);
   display: grid;
   justify-items: center;
 }
@@ -134,10 +135,11 @@
   font-size: calc(var(--node) * 0.32);
 }
 .atlas-mascot {
+  display: none;
   position: absolute;
-  top: 50%;
-  right: calc(100% + 6px);
-  translate: 0 -50%;
+  top: calc(100% + 4px);
+  left: 50%;
+  translate: -50% 0;
 }
 .atlas-plate {
   position: relative;
@@ -146,6 +148,18 @@
   gap: var(--space-4);
   border-top: 8px solid var(--level);
   padding: var(--space-5);
+  padding-left: max(var(--space-5), calc(var(--node-x) + var(--node) / 2 + 14px));
+}
+/* wide screens: the timeline moves out into the page margin */
+@media (min-width: 1280px) {
+  .atlas {
+    --node: 84px;
+    --node-x: -60px;
+    --atlas-pad: 0px;
+  }
+  .atlas-mascot {
+    display: block;
+  }
 }
 .atlas-row.current .atlas-plate {
   box-shadow: var(--double-rule), var(--shadow-hard-lg);
@@ -328,19 +342,25 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: var(--space-4);
     grid-auto-flow: column;
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: repeat(var(--rows, 4), auto);
   }
 }
 
 @media (max-width: 560px) {
   .atlas {
-    --node: 64px;
-    --node-inset: 14px;
-    --node-overlap: 16px;
+    --node: 52px;
+    --atlas-pad: 12px;
+    gap: var(--space-4);
   }
   .atlas-node .level-node-tile {
     border-radius: 12px;
     padding: 2px 4px;
+  }
+  .atlas-node .level-node-num {
+    display: none;
+  }
+  .atlas-node .level-node-tile {
+    grid-template-rows: 1fr;
   }
   .atlas-mascot {
     width: 48px;
@@ -348,6 +368,7 @@
   }
   .atlas-plate {
     padding: var(--space-4);
+    padding-left: calc(var(--node) / 2 + 10px);
   }
   /* phone: the engraving sits next to the eyebrow, the title gets the full width */
   .atlas-plate-head {
