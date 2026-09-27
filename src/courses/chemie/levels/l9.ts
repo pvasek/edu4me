@@ -127,21 +127,6 @@ const level: LevelContent = {
             { type: 'p', text: 'Tenhle drobný rozdíl rozhoduje o všem: naše trávicí enzymy umějí štěpit jen α-glykosidové vazby. ==Celulózu proto nestrávíme, a přesto je jako vláknina pro trávení užitečná.==' },
             { type: 'callout', variant: 'fact', text: 'Ani krávy celulózu samy nerozloží. Dělají to za ně mikroorganismy v bachoru, které mají enzym celulázu. Termiti na tom jsou podobně – bez střevních mikrobů by dřevo nestrávili.' },
             {
-              type: 'table',
-              headers: ['Sacharid', 'Druh', 'Složení', 'Kde ho najdeš', 'Redukující?'],
-              rows: [
-                ['glukóza', 'monosacharid, aldohexóza', '–', 'ovoce, med, krev', 'ano'],
-                ['fruktóza', 'monosacharid, ketohexóza', '–', 'ovoce, med', 'ano'],
-                ['sacharóza', 'disacharid', 'glukóza + fruktóza', 'cukrová řepa, třtina', 'ne'],
-                ['laktóza', 'disacharid', 'galaktóza + glukóza', 'mléko', 'ano'],
-                ['maltóza', 'disacharid', 'glukóza + glukóza', 'slad, klíčící obilí', 'ano'],
-                ['škrob', 'polysacharid', 'α-glukóza', 'brambory, obilí, rýže', 'prakticky ne'],
-                ['glykogen', 'polysacharid', 'α-glukóza, silně větvený', 'játra, svaly', 'prakticky ne'],
-                ['celulóza', 'polysacharid', 'β-glukóza', 'dřevo, bavlna, papír', 'prakticky ne'],
-              ],
-              caption: 'Přehled nejdůležitějších sacharidů',
-            },
-            {
               type: 'process',
               layout: 'flow',
               steps: [
@@ -174,11 +159,8 @@ const level: LevelContent = {
           icon: 'leaf',
           blocks: [
             { type: 'p', text: 'Glukózu vyrábějí zelené rostliny, řasy a sinice při **fotosyntéze**: z oxidu uhličitého a vody s pomocí světla a zeleného barviva **chlorofylu**. Jako vedlejší produkt uvolní kyslík.' },
-            { type: 'reaction', equation: '6CO2 + 6H2O -> C6H12O6 + 6O2', caption: 'Fotosyntéza (světlo, chlorofyl): děj je endotermní, ΔH ≈ +2 800 kJ/mol.' },
-            { type: 'diagram', id: 'photosynthesis-respiration', caption: 'Dva děje, jeden koloběh: rostlina ukládá energii Slunce do glukózy, buňky ji dýcháním zase uvolňují.' },
-            { type: 'p', text: '**Buněčné dýchání** je opačný děj: buňky glukózu „spalují“ kyslíkem zpět na $CO2$ a vodu. Energii přitom neztrácejí jako teplo – většinu uloží do molekul **ATP** (adenosintrifosfátu), univerzální „baterie“ buňky.' },
-            { type: 'reaction', equation: 'C6H12O6 + 6O2 -> 6CO2 + 6H2O', caption: 'Buněčné dýchání: děj je exotermní, ΔH ≈ −2 800 kJ/mol, a vznikne z něj asi 30–32 molekul ATP.' },
-            { type: 'p', text: 'Je to redoxní reakce: uhlík v glukóze (průměrné oxidační číslo 0) se oxiduje na $C^{IV}$ v $CO2$ a kyslík se redukuje z $O^{0}$ na $O^{−II}$ ve vodě. Buňka to nedělá najednou jako plamen, ale v mnoha malých krocích.' },
+            { type: 'diagram', id: 'photosynthesis-respiration', caption: 'Dva děje, jeden koloběh. Fotosyntéza v chloroplastu: $6CO2 + 6H2O -> C6H12O6 + 6O2$, děj je endotermní (ΔH ≈ +2 800 kJ/mol) a energii dodá světlo. Buněčné dýchání v mitochondrii běží opačně: $C6H12O6 + 6O2 -> 6CO2 + 6H2O$ je exotermní (ΔH ≈ −2 800 kJ/mol) a uvolněná energie se uloží do asi 30–32 molekul ATP. Produkty jednoho děje jsou výchozími látkami druhého.' },
+            { type: 'p', text: '**Buněčné dýchání** je opačný děj: buňky glukózu „spalují“ kyslíkem zpět na $CO2$ a vodu a energii přitom neztrácejí jako teplo – většinu uloží do molekul **ATP** (adenosintrifosfátu), univerzální „baterie“ buňky. Je to redoxní reakce: uhlík v glukóze (průměrné oxidační číslo 0) se oxiduje na $C^{IV}$ v $CO2$ a kyslík se redukuje z $O^{0}$ na $O^{−II}$ ve vodě. Buňka to nedělá najednou jako plamen, ale v mnoha malých krocích.' },
             {
               type: 'process',
               layout: 'flow',
@@ -190,12 +172,11 @@ const level: LevelContent = {
               ],
               caption: 'Od glukózy k ATP krok za krokem',
             },
-            { type: 'reaction', equation: 'C6H12O6 -> 2C2H5OH + 2CO2', caption: 'Alkoholové kvašení kvasinek bez přístupu kyslíku: díky němu kyne těsto a vzniká víno i pivo.' },
             {
               type: 'compare',
               columns: [
                 { title: 'Mléčné kvašení', icon: 'muscle', tone: 'a', points: ['svaly při sprintu, když chybí kyslík', 'pyruvát se mění na laktát (kyselinu mléčnou)', 'bakterie mléčného kvašení dělají jogurt a kysané zelí'] },
-                { title: 'Alkoholové kvašení', icon: 'bread', tone: 'b', points: ['kvasinky', 'glukóza -> ethanol + $CO2$', 'bublinky $CO2$ nakypří těsto'] },
+                { title: 'Alkoholové kvašení', icon: 'bread', tone: 'b', points: ['kvasinky bez přístupu kyslíku', '$C6H12O6 -> 2C2H5OH + 2CO2$', 'bublinky $CO2$ nakypří těsto, vzniká víno i pivo'] },
               ],
               caption: 'Když chybí kyslík: dvě cesty, jak z glukózy získat aspoň trochu energie',
             },
@@ -488,28 +469,8 @@ const level: LevelContent = {
           title: 'Jak mýdlo myje: micely',
           icon: 'water-tap',
           blocks: [
-            { type: 'p', text: 'Molekula mýdla má dvě tváře. Nepolární uhlovodíkový **ocas** je **hydrofobní** a rád se rozpouští v mastnotě, nabitá karboxylátová **hlava** $–COO^-$ je **hydrofilní**. Takové látky jsou **amfifilní** a patří mezi **tenzidy** (povrchově aktivní látky).' },
-            {
-              type: 'structure',
-              art: art(
-                '  hydrofobní ocas           hydrofilní',
-                '  (nepolární)               hlava',
-                '  CH3—CH2—CH2— ··· —CH2—CH2—COO⁻ Na⁺',
-              ),
-              caption: 'Molekula mýdla, například palmitan sodný $CH3(CH2)14COONa$',
-            },
-            {
-              type: 'process',
-              layout: 'flow',
-              steps: [
-                { icon: 'drop', title: 'Ocasy do mastnoty', text: 'nepolární se rozpouští v nepolárním' },
-                { icon: 'soap', title: 'Hlavy zůstanou ve vodě', text: 'obalí kapku mastnoty ze všech stran' },
-                { icon: 'droplets', title: 'Vznikne micela', text: 'kulička s mastnotou uvnitř a záporným nábojem na povrchu' },
-                { icon: 'water-tap', title: 'Voda ji odplaví', text: 'micely se navzájem odpuzují a nespojí se zpět' },
-              ],
-              caption: 'Jak mýdlo umyje mastný talíř',
-            },
-            { type: 'diagram', id: 'micelle', caption: 'Micela v řezu: ocasy uvnitř drží mastnotu, hlavy na povrchu jsou obrácené k vodě.' },
+            { type: 'p', text: 'Molekula mýdla, například palmitan sodný $CH3(CH2)14COONa$, má dvě tváře. Nepolární uhlovodíkový **ocas** je **hydrofobní** a rád se rozpouští v mastnotě, nabitá karboxylátová **hlava** $–COO^-$ je **hydrofilní**. Takové látky jsou **amfifilní** a patří mezi **tenzidy** (povrchově aktivní látky).' },
+            { type: 'diagram', id: 'micelle', caption: 'Jak mýdlo umyje mastný talíř: nepolární ocasy se rozpustí v kapce mastnoty, nabité hlavy zůstanou ve vodě a obalí ji ze všech stran. Vznikne **micela** s mastnotou uvnitř a záporným nábojem na povrchu. Micely se navzájem odpuzují, nespojí se zpět a voda je odplaví.' },
             { type: 'callout', variant: 'remember', text: '==Podobné se rozpouští v podobném.== Mýdlo funguje jako prostředník: jedním koncem drží vodu, druhým mastnotu.' },
             { type: 'p', text: 'V **tvrdé vodě** mýdlo hůř pění. Proto chemici vyvinuli **syntetické tenzidy** (detergenty).' },
             {
@@ -755,8 +716,7 @@ const level: LevelContent = {
           icon: 'bond',
           blocks: [
             { type: 'p', text: 'Aminokyseliny se spojují **kondenzací**: karboxylová skupina jedné reaguje s aminoskupinou druhé a odštěpí se voda. Vznikne **peptidová vazba** $–CO–NH–$ – amidová vazba, kterou znáš z úrovně 8 (i nylon je polyamid).' },
-            { type: 'reaction', equation: 'C2H5NO2 + C3H7NO2 -> C5H10N2O3 + H2O', caption: 'glycin + alanin -> glycylalanin (Gly-Ala) + voda' },
-            { type: 'diagram', id: 'peptide-bond', caption: 'Vznik peptidové vazby: z $–COOH$ jedné a $–NH2$ druhé aminokyseliny odejde molekula vody a zbude skupina $–CO–NH–$.' },
+            { type: 'diagram', id: 'peptide-bond', caption: 'Glycin + alanin -> glycylalanin (Gly-Ala) + voda: z $–COOH$ glycinu a $–NH2$ alaninu odejde molekula vody a zbude peptidová vazba $–CO–NH–$. Opakováním vzniká polypeptidový řetězec s N-koncem a C-koncem.' },
             {
               type: 'process',
               layout: 'flow',
@@ -764,8 +724,8 @@ const level: LevelContent = {
                 { icon: 'molecule', title: 'Aminokyselina', text: 'monomer' },
                 { icon: 'bond', title: 'Dipeptid', text: '2 aminokyseliny, 1 peptidová vazba' },
                 { icon: 'bond', title: 'Tripeptid', text: '3 aminokyseliny' },
-                { icon: 'arrow-cycle', title: 'Polypeptid', text: 'desítky aminokyselin' },
-                { icon: 'protein', title: 'Bílkovina', text: 'zhruba od 50–100 aminokyselin' },
+                { icon: 'protein', title: 'Polypeptid', text: 'desítky aminokyselin' },
+                { icon: 'egg', title: 'Bílkovina', text: 'zhruba od 50–100 aminokyselin' },
               ],
               caption: 'Řetězec roste po jedné aminokyselině',
             },
@@ -797,27 +757,16 @@ const level: LevelContent = {
           icon: 'magnifier',
           blocks: [
             { type: 'p', text: 'Rozmotaný řetězec by byl k ničemu. Bílkovina funguje, jen když se složí do přesného prostorového tvaru, a ten popisujeme ve čtyřech úrovních.' },
-            { type: 'diagram', id: 'protein-structure', caption: 'Od pořadí aminokyselin k hotové molekule: primární, sekundární, terciární a kvartérní struktura' },
-            {
-              type: 'process',
-              layout: 'flow',
-              steps: [
-                { icon: 'molecule', title: 'Primární', text: 'pořadí (sekvence) aminokyselin; drží ji peptidové vazby' },
-                { icon: 'arrow-cycle', title: 'Sekundární', text: 'α-šroubovice a β-skládaný list; vodíkové vazby mezi $C=O$ a $N–H$ hlavního řetězce' },
-                { icon: 'protein', title: 'Terciární', text: 'tvar celého řetězce; disulfidové můstky, iontové a vodíkové vazby, hydrofobní interakce postranních řetězců' },
-                { icon: 'blood', title: 'Kvartérní', text: 'spojení více řetězců (podjednotek); stejné interakce jako u terciární struktury' },
-              ],
-            },
+            { type: 'diagram', id: 'protein-structure', caption: 'Čtyři úrovně struktury. **Primární**: pořadí (sekvence) aminokyselin, drží ji peptidové vazby. **Sekundární**: α-šroubovice a β-skládaný list, drží je vodíkové vazby mezi $C=O$ a $N–H$ hlavního řetězce. **Terciární**: tvar celého řetězce; drží ho disulfidové můstky, iontové a vodíkové vazby a hydrofobní interakce postranních řetězců. **Kvartérní**: spojení více řetězců (podjednotek) stejnými interakcemi.' },
             {
               type: 'compare',
               columns: [
-                { title: 'α-šroubovice', icon: 'arrow-cycle', tone: 'a', points: ['řetězec se stáčí jako pružina', 'vodíková vazba spojí každou $C=O$ se skupinou $N–H$ o čtyři aminokyseliny dál', 'vlasy (keratin)'] },
-                { title: 'β-skládaný list', icon: 'book', tone: 'b', points: ['úseky řetězce leží vedle sebe', 'zprohýbané jako harmonika', 'přírodní hedvábí (fibroin)'] },
+                { title: 'α-šroubovice', tone: 'a', points: ['řetězec se stáčí jako pružina', 'vodíková vazba spojí každou $C=O$ se skupinou $N–H$ o čtyři aminokyseliny dál', 'vlasy (keratin)'] },
+                { title: 'β-skládaný list', tone: 'b', points: ['úseky řetězce leží vedle sebe', 'zprohýbané jako harmonika', 'přírodní hedvábí (fibroin)'] },
               ],
               caption: 'Dva typy sekundární struktury',
             },
             { type: 'p', text: 'Příkladem kvartérní struktury je **hemoglobin**: čtyři polypeptidové řetězce, každý s jednou skupinou hemu. Uprostřed hemu je ion $Fe^{2+}$, který váže kyslík.' },
-            { type: 'elements', symbols: ['Fe', 'S', 'N'], caption: 'Železo v hemoglobinu, síra v disulfidových můstcích, dusík v každé peptidové vazbě' },
             { type: 'callout', variant: 'remember', text: '==Primární struktura určuje všechny ostatní.== Pořadí aminokyselin rozhodne, jak se řetězec složí. Záměna jediné aminokyseliny v hemoglobinu (valin místo kyseliny glutamové) způsobuje srpkovitou anémii.' },
             { type: 'callout', variant: 'fact', title: 'Trvalá ondulace', text: 'Redukční činidlo rozštěpí disulfidové můstky v keratinu vlasů, vlasy se natočí na natáčky a oxidační činidlo pak můstky spojí v nové poloze. Kadeře drží, dokud nedorostou nové vlasy.' },
             {
@@ -883,14 +832,13 @@ const level: LevelContent = {
               type: 'table',
               headers: ['Důkaz', 'Činidlo', 'Pozitivní výsledek', 'Dokazuje'],
               rows: [
-                ['biuretová reakce', '$CuSO4$ a $NaOH$', 'fialové zbarvení', 'peptidové vazby, bílkoviny'],
                 ['xanthoproteinová reakce', 'koncentrovaná $HNO3$', 'žluté zbarvení', 'aromatické aminokyseliny'],
                 ['jodová zkouška', 'Lugolův roztok ($I2$ v $KI$)', 'modročerné zbarvení', 'škrob'],
                 ['Fehlingova zkouška', 'Fehlingovo činidlo, zahřátí', 'cihlově červená sraženina', 'redukující sacharidy'],
                 ['Tollensova zkouška', 'Tollensovo činidlo', 'stříbrné zrcátko', 'redukující sacharidy'],
                 ['Sudan III', 'barvivo Sudan III', 'oranžově červená olejová vrstva', 'tuky a oleje'],
               ],
-              caption: 'Přehled důkazových reakcí biomolekul',
+              caption: 'Další důkazové reakce biomolekul',
             },
             { type: 'callout', variant: 'warning', title: 'Bezpečnost', text: 'Hydroxid sodný i koncentrovaná kyselina dusičná jsou žíraviny. Ochranné brýle a rukavice jsou povinné, s kyselinou dusičnou se pracuje jen v digestoři. Mimochodem: xanthoproteinová reakce je důvod, proč kyselina dusičná barví kůži nažluto.' },
             {
@@ -1028,22 +976,11 @@ const level: LevelContent = {
           icon: 'catalyst',
           blocks: [
             { type: 'p', text: 'Substrát se váže jen na malé místo obrovské molekuly enzymu – **aktivní centrum**. Je to prohlubeň z několika postranních řetězců aminokyselin, která vzniká díky terciární struktuře bílkoviny. Její tvar a náboj přesně odpovídají substrátu.' },
-            { type: 'diagram', id: 'enzyme-lock-key', caption: 'Substrát zapadne do aktivního centra, v komplexu enzym–substrát se jeho vazby oslabí a reakce proběhne snadněji.' },
-            {
-              type: 'process',
-              layout: 'cycle',
-              steps: [
-                { icon: 'enzyme', title: 'E + S', text: 'substrát se naváže do aktivního centra' },
-                { icon: 'bond', title: 'Komplex ES', text: 'přechodné spojení; vazby v substrátu se oslabí' },
-                { icon: 'lightning', title: 'Přeměna', text: 'substrát se přemění na produkt' },
-                { icon: 'arrow-cycle', title: 'E + P', text: 'produkt se uvolní a enzym může pracovat znovu' },
-              ],
-              caption: '$E + S <=> ES -> E + P$: enzym vyjde z reakce nezměněný.',
-            },
+            { type: 'diagram', id: 'enzyme-lock-key', caption: 'Enzymová katalýza ve čtyřech krocích: substrát zapadne do aktivního centra, v komplexu enzym–substrát (ES) se jeho vazby oslabí, substrát se přemění na produkty a ty se uvolní. Enzym vyjde z reakce nezměněný a může pracovat znovu: $E + S <=> ES -> E + P$. Poslední obrázek ukazuje inhibitor, který aktivní centrum zablokuje.' },
             {
               type: 'compare',
               columns: [
-                { title: 'Zámek a klíč', icon: 'check', tone: 'a', points: ['Emil Fischer, 1894', 'aktivní centrum má pevný tvar', 'do zámku pasuje jen správný klíč'] },
+                { title: 'Zámek a klíč', tone: 'a', points: ['Emil Fischer, 1894', 'aktivní centrum má pevný tvar', 'do zámku pasuje jen správný klíč'] },
                 { title: 'Indukované přizpůsobení', icon: 'gloves', tone: 'b', points: ['anglicky *induced fit*', 'aktivní centrum se při navázání substrátu mírně změní', 'substrát „obejme“ jako rukavice ruku'] },
               ],
               caption: 'Dva modely vazby substrátu',
@@ -1282,14 +1219,6 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: '**Nukleové kyseliny** – DNA a RNA – uchovávají a přenášejí genetickou informaci. Jsou to polymery a jejich monomery se nazývají **nukleotidy**.' },
             {
-              type: 'iconlist',
-              items: [
-                { icon: 'ion-minus', title: 'Fosfát', text: 'zbytek kyseliny fosforečné' },
-                { icon: 'sugar', title: 'Pentóza', text: 'cukr s pěti uhlíky: **deoxyribóza** v DNA, **ribóza** v RNA' },
-                { icon: 'dna', title: 'Dusíkatá báze', text: 'A, G, C a T (v DNA) nebo U (v RNA)' },
-              ],
-            },
-            {
               type: 'structure',
               art: art(
                 ' ┌───────┐     ┌────────┐     ┌───────┐',
@@ -1298,7 +1227,7 @@ const level: LevelContent = {
                 '                   │',
                 '                   OH na C3′',
               ),
-              caption: 'Nukleotid schematicky. Báze je vázaná na uhlík C1′ pentózy, fosfát esterovou vazbou na C5′. Na hydroxyskupinu na C3′ se napojí fosfát dalšího nukleotidu.',
+              caption: 'Nukleotid schematicky: **fosfát** (zbytek kyseliny fosforečné), **pentóza** (cukr s pěti uhlíky: deoxyribóza v DNA, ribóza v RNA) a **dusíkatá báze** (A, G, C a T v DNA, v RNA místo T uracil U). Báze je vázaná na uhlík C1′ pentózy, fosfát esterovou vazbou na C5′. Na hydroxyskupinu na C3′ se napojí fosfát dalšího nukleotidu.',
             },
             { type: 'molecule', molecules: ['ribose'], labels: ['ribóza'], caption: 'Pentóza RNA. Deoxyribóza má na uhlíku C2′ místo skupiny $–OH$ jen vodík – odtud předpona *deoxy-*.' },
             {
@@ -1335,22 +1264,7 @@ const level: LevelContent = {
           icon: 'dna',
           blocks: [
             { type: 'p', text: 'V roce 1953 popsali James Watson a Francis Crick strukturu DNA; klíčová data získali z rentgenových snímků **Rosalind Franklinové**. DNA tvoří **dvoušroubovice**: dvě vlákna stočená kolem sebe jako točité schodiště.' },
-            { type: 'diagram', id: 'dna-helix', caption: 'Páteř každého vlákna tvoří střídající se deoxyribóza a fosfát, báze míří dovnitř jako příčky žebříku. Vlákna jsou **antiparalelní**: jedno běží ve směru 5′ -> 3′, druhé opačně.' },
-            {
-              type: 'structure',
-              art: art(
-                '  5′              3′',
-                '  S — A  · ·  T — S',
-                '  P               P',
-                '  S — G · · · C — S',
-                '  P               P',
-                '  S — C · · · G — S',
-                '  P               P',
-                '  S — T  · ·  A — S',
-                '  3′              5′',
-              ),
-              caption: 'Úsek DNA rozvinutý do žebříku. S = deoxyribóza, P = fosfát, tečky = vodíkové vazby mezi bázemi.',
-            },
+            { type: 'diagram', id: 'dna-helix', caption: 'Páteř každého vlákna tvoří střídající se deoxyribóza a fosfát, báze míří dovnitř jako příčky žebříku. Vlákna jsou **antiparalelní**: jedno běží ve směru 5′ -> 3′, druhé opačně. Vložený rozvinutý žebřík ukazuje cukr S, fosfát P a vodíkové vazby mezi bázemi.' },
             { type: 'p', text: 'Báze naproti sobě se párují podle pravidla **komplementarity**: ==adenin vždy s thyminem (A–T), guanin vždy s cytosinem (G–C).== Vždy se spojí větší purinová báze s menší pyrimidinovou, takže má žebřík všude stejnou šířku.' },
             {
               type: 'compare',
@@ -1421,7 +1335,6 @@ const level: LevelContent = {
           icon: 'protein',
           blocks: [
             { type: 'p', text: 'Informace v buňce teče jedním směrem: DNA -> RNA -> bílkovina. Tomuto principu se říká **centrální dogma molekulární biologie**.' },
-            { type: 'diagram', id: 'protein-synthesis', caption: 'Transkripce v jádře, translace na ribozomu: od genu k hotovému řetězci aminokyselin' },
             {
               type: 'process',
               layout: 'flow',
@@ -1432,17 +1345,8 @@ const level: LevelContent = {
               ],
               caption: '**Replikace**: zdvojení DNA před dělením buňky',
             },
-            {
-              type: 'process',
-              layout: 'flow',
-              steps: [
-                { icon: 'dna', title: 'Gen v DNA', text: 'úsek DNA se v jádře rozvine' },
-                { icon: 'enzyme', title: 'RNA-polymeráza', text: 'přikládá nukleotidy komplementárně k templátovému vláknu, místo T dává U' },
-                { icon: 'book', title: 'mRNA', text: 'kopie genu odchází z jádra k ribozomům' },
-              ],
-              caption: '**Transkripce**: přepis úseku DNA (genu) do mRNA',
-            },
-            { type: 'p', text: 'Ribozom čte mRNA po trojicích bází – **kodonech**. Čtyři báze dávají $4^3 = 64$ trojic: 61 kodonů určuje některou z 20 aminokyselin a 3 jsou **stop kodony**, které translaci ukončí. Startovní kodon **AUG** zároveň kóduje methionin.' },
+            { type: 'diagram', id: 'protein-synthesis', caption: '**Transkripce**, přepis genu z DNA do mRNA, probíhá v jádře: úsek DNA se rozvine a RNA-polymeráza přikládá nukleotidy komplementárně k templátovému vláknu DNA (místo T dává U) a vzniklá mRNA, kopie genu, odchází z jádra k ribozomům. **Translace**, překlad pořadí kodonů v mRNA do pořadí aminokyselin, probíhá na ribozomu: čtení začne na kodonu AUG, tRNA přináší aminokyseliny (její antikodon se páruje s kodonem), ribozom je spojí peptidovou vazbou a posune se o kodon dál.' },
+            { type: 'p', text: 'Ribozom čte mRNA po trojicích bází – **kodonech**. Čtyři báze dávají $4^3 = 64$ trojic: 61 kodonů určuje některou z 20 aminokyselin a 3 jsou **stop kodony**, které translaci ukončí: hotový polypeptid se uvolní a složí do prostorové struktury. Startovní kodon **AUG** zároveň kóduje methionin.' },
             {
               type: 'iconlist',
               items: [
@@ -1451,17 +1355,6 @@ const level: LevelContent = {
                 { icon: 'earth', title: 'Univerzální', text: 'téměř všechny organismy používají stejný kód, proto bakterie umí vyrobit lidský inzulin' },
                 { icon: 'check', title: 'Nepřekrývající se', text: 'každá báze patří jen do jednoho kodonu' },
               ],
-            },
-            {
-              type: 'process',
-              layout: 'flow',
-              steps: [
-                { icon: 'book', title: 'Start na AUG', text: 'mRNA se naváže na ribozom a čtení začne na kodonu AUG' },
-                { icon: 'leaf', title: 'tRNA přinese aminokyselinu', text: 'její antikodon se páruje s kodonem' },
-                { icon: 'bond', title: 'Peptidová vazba', text: 'ribozom spojí aminokyseliny a posune se o kodon dál' },
-                { icon: 'protein', title: 'Stop kodon', text: 'hotový polypeptid se uvolní a složí do prostorové struktury' },
-              ],
-              caption: '**Translace**: překlad pořadí kodonů v mRNA do pořadí aminokyselin na ribozomu',
             },
             {
               type: 'example',
@@ -1787,25 +1680,13 @@ const level: LevelContent = {
           title: 'Atmosféra: skleníkový efekt, ozon a kyselé deště',
           icon: 'cloud',
           blocks: [
-            { type: 'p', text: 'Sluneční záření ohřívá zemský povrch a ten vyzařuje teplo jako **infračervené záření**. **Skleníkové plyny** – vodní pára, $CO2$, methan $CH4$ a oxid dusný $N2O$ – ho pohlcují a část vyzáří zpět k Zemi. Bez tohoto přirozeného **skleníkového efektu** by byla průměrná teplota na Zemi asi −18 °C místo +15 °C.' },
-            { type: 'diagram', id: 'greenhouse-effect', caption: 'Viditelné světlo projde, infračervené záření ze Země skleníkové plyny zčásti zachytí a vrátí.' },
-            { type: 'p', text: 'Infračervené záření rozkmitá vazby v molekule, ale pohltí se jen tehdy, když se při kmitání mění rozložení náboje. Dvouatomové molekuly $N2$ a $O2$ tuto podmínku nesplňují, $CO2$, $CH4$ a $H2O$ ano.' },
-            { type: 'molecule', molecules: ['CO2', 'CH4', 'H2O', 'N2'], labels: ['$CO2$: pohlcuje IR', '$CH4$: pohlcuje IR', '$H2O$: pohlcuje IR', '$N2$: nepohlcuje'], caption: 'Tři skleníkové plyny a jeden, který skleníkovým plynem není' },
+            { type: 'p', text: '**Skleníkové plyny** – vodní pára, $CO2$, methan $CH4$ a oxid dusný $N2O$ – propustí sluneční záření, ale zčásti pohlcují **infračervené záření**, kterým ohřátá Země vyzařuje teplo, a část ho vracejí zpět. Tomu říkáme **skleníkový efekt**.' },
+            { type: 'diagram', id: 'greenhouse-effect', caption: 'Sluneční záření projde atmosférou a ohřeje povrch, ohřátý povrch vyzařuje infračervené záření a skleníkové plyny ($CO2$, $CH4$, $H2O$) jeho část vracejí k Zemi. Bez tohoto přirozeného skleníkového efektu by byla průměrná teplota na Zemi asi −18 °C místo +15 °C.' },
+            { type: 'molecule', molecules: ['CO2', 'CH4', 'H2O', 'N2'], labels: ['$CO2$: pohlcuje IR', '$CH4$: pohlcuje IR', '$H2O$: pohlcuje IR', '$N2$: nepohlcuje'], caption: 'Infračervené záření rozkmitá vazby v molekule, ale pohltí se jen tehdy, když se při kmitání mění rozložení náboje. Dvouatomové molekuly $N2$ a $O2$ tuto podmínku nesplňují, $CO2$, $CH4$ a $H2O$ ano.' },
             { type: 'p', text: 'Spalováním fosilních paliv a kácením lesů vzrostla koncentrace $CO2$ z asi 280 ppm před průmyslovou revolucí na víc než 420 ppm dnes. **Methanu** je ve vzduchu mnohem méně, ale kilogram methanu přispěje za 100 let k oteplení asi 28krát víc než kilogram $CO2$. Pochází z chovu skotu, rýžových polí, skládek a z úniků při těžbě zemního plynu.' },
             { type: 'callout', variant: 'fact', title: 'Co říkají data', text: 'Průměrná teplota Země je dnes zhruba o 1,2 °C vyšší než v druhé polovině 19. století. Podle Mezivládního panelu pro změnu klimatu (IPCC) je hlavní příčinou jednoznačně lidská činnost. Klima se měnilo i v minulosti, dnešní změna je ale mimořádně rychlá a v atmosféře je izotopový „otisk“ uhlíku z fosilních paliv.' },
-            { type: 'p', text: '**Ozon** $O3$ ve stratosféře (asi 15–35 km nad zemí) pohlcuje nebezpečné UV záření. **Freony** (chlorfluorované uhlovodíky, například $CCl2F2$) se tam působením UV záření rozkládají a uvolněný atom chloru rozkládá ozon jako katalyzátor.' },
-            { type: 'diagram', id: 'ozone-layer', caption: 'Ozonová vrstva ve stratosféře zachytí většinu UV záření dřív, než dopadne na povrch.' },
-            { type: 'molecule', molecules: ['O3', 'CCl2F2'], labels: ['ozon $O3$', 'freon $CCl2F2$'] },
-            {
-              type: 'process',
-              layout: 'cycle',
-              steps: [
-                { icon: 'sun', title: 'UV rozbije freon', text: 'uvolní se atom $Cl$' },
-                { icon: 'ozone', title: '$Cl + O3 -> ClO + O2$', text: 'chlor rozloží molekulu ozonu' },
-                { icon: 'arrow-cycle', title: '$ClO + O -> Cl + O2$', text: 'chlor se obnoví a jde znovu do akce' },
-              ],
-              caption: 'Atom chloru se v cyklu obnovuje, takže jeden atom může zničit až 100 000 molekul ozonu.',
-            },
+            { type: 'p', text: '**Ozon** $O3$ ve stratosféře (asi 15–35 km nad zemí) pohlcuje nebezpečné UV záření. Ohrožují ho **freony** (chlorfluorované uhlovodíky): uvolňují atom chloru, který rozkládá ozon jako katalyzátor.' },
+            { type: 'diagram', id: 'ozone-layer', caption: 'Ozonová vrstva zachytí většinu UV záření dřív, než dopadne na povrch. Ve stratosféře UV záření rozbije freon $CCl2F2$ a uvolněný atom chloru rozkládá ozon v cyklu $Cl + O3 -> ClO + O2$ a $ClO + O -> Cl + O2$. Chlor se v něm obnovuje, takže jeden atom může zničit až 100 000 molekul ozonu.' },
             { type: 'callout', variant: 'fact', title: 'Příběh s dobrým koncem', text: '**Montrealský protokol** (1987) postupně zakázal freony a ozonová vrstva se obnovuje; nad Antarktidou by se měla vrátit na úroveň z roku 1980 kolem roku 2066. Pozor na rozdíl: ozon ve stratosféře nás chrání, přízemní ozon ve smogu škodí dýchacím cestám.' },
             { type: 'p', text: '**Kyselé deště**: $SO2$ z uhelných elektráren a oxidy dusíku z motorů reagují ve vzduchu s kyslíkem a vodou na kyselinu sírovou a dusičnou, například $2SO2 + O2 -> 2SO3$ a $SO3 + H2O -> H2SO4$. Běžný déšť má kvůli rozpuštěnému $CO2$ pH asi 5,6, kyselý déšť i méně než 4,5.' },
             {
@@ -1842,17 +1723,18 @@ const level: LevelContent = {
               ],
             },
             { type: 'p', text: 'Plasty z úrovně 8 jsou lehké, levné a odolné – a právě odolnost je problém. V přírodě vydrží desítky až stovky let a rozpadají se na **mikroplasty**, částice menší než 5 mm. Zároveň šetří palivo v dopravě a prodlužují trvanlivost potravin, takže klíčové je, co s nimi uděláme po použití.' },
-            { type: 'diagram', id: 'plastic-lifecycle', caption: 'Život plastu: od ropy přes výrobek k recyklaci, spálení, nebo do přírody' },
+            { type: 'diagram', id: 'plastic-lifecycle', caption: 'Život plastu: od ropy přes monomer a polymer k výrobku a po použití k recyklaci, do spalovny, na skládku, nebo jako mikroplasty do oceánu. Dole recyklační kódy 1–7.' },
             {
-              type: 'iconlist',
-              items: [
-                { icon: 'plastic-bottle', title: '1 · PET', text: 'polyethylentereftalát: lahve od nápojů' },
-                { icon: 'soap', title: '2 · HDPE', text: 'polyethylen s vysokou hustotou: lahve od drogerie' },
-                { icon: 'water-tap', title: '3 · PVC', text: 'polyvinylchlorid: trubky, podlahové krytiny' },
-                { icon: 'bread', title: '4 · LDPE', text: 'polyethylen s nízkou hustotou: sáčky, fólie' },
-                { icon: 'coffee', title: '5 · PP', text: 'polypropylen: kelímky, víčka' },
-                { icon: 'ice', title: '6 · PS', text: 'polystyren: obaly, tepelná izolace' },
-                { icon: 'question', title: '7 · ostatní', text: 'směsi, polykarbonát' },
+              type: 'table',
+              headers: ['Kód', 'Plast', 'Typické výrobky'],
+              rows: [
+                ['1 · PET', 'polyethylentereftalát', 'lahve od nápojů'],
+                ['2 · HDPE', 'polyethylen s vysokou hustotou', 'lahve od drogerie'],
+                ['3 · PVC', 'polyvinylchlorid', 'trubky, podlahové krytiny'],
+                ['4 · LDPE', 'polyethylen s nízkou hustotou', 'sáčky, fólie'],
+                ['5 · PP', 'polypropylen', 'kelímky, víčka'],
+                ['6 · PS', 'polystyren', 'obaly, tepelná izolace'],
+                ['7 · ostatní', 'směsi, polykarbonát', ''],
               ],
             },
             {
@@ -1921,15 +1803,16 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: '**Přídatné látky** (aditiva) prodlužují trvanlivost potravin nebo zlepšují jejich chuť, barvu či konzistenci. V EU se smí použít jen schválená látka s kódem **E + číslo**; Evropský úřad pro bezpečnost potravin (EFSA) u ní stanoví **ADI**, přijatelný denní příjem. Ten bývá stokrát nižší než dávka, která v pokusech ještě neměla žádný účinek.' },
             {
-              type: 'iconlist',
-              items: [
-                { icon: 'cabbage', title: 'E 100–199 · barviva', text: 'E 160a β-karoten (z mrkve)' },
-                { icon: 'salt', title: 'E 200–299 · konzervanty', text: 'E 250 dusitan sodný (uzeniny)' },
-                { icon: 'lemon', title: 'E 300–399 · antioxidanty, regulátory kyselosti, emulgátory', text: 'E 300 kyselina askorbová (vitamin C), E 322 lecitin' },
-                { icon: 'apple', title: 'E 400–499 · zahušťovadla, stabilizátory', text: 'E 440 pektin, E 415 xanthan' },
-                { icon: 'bread', title: 'E 500–599 · regulátory kyselosti, kypřicí látky', text: 'E 500 hydrogenuhličitan sodný (jedlá soda)' },
-                { icon: 'star', title: 'E 600–699 · zvýrazňovače chuti', text: 'E 621 glutamát sodný' },
-                { icon: 'sugar', title: 'E 900–999 · sladidla, plyny a další', text: 'E 951 aspartam, E 948 kyslík' },
+              type: 'table',
+              headers: ['Kódy', 'Skupina', 'Příklad'],
+              rows: [
+                ['E 100–199', 'barviva', 'E 160a β-karoten (z mrkve)'],
+                ['E 200–299', 'konzervanty', 'E 250 dusitan sodný (uzeniny)'],
+                ['E 300–399', 'antioxidanty, regulátory kyselosti, emulgátory', 'E 300 kyselina askorbová (vitamin C), E 322 lecitin'],
+                ['E 400–499', 'zahušťovadla, stabilizátory', 'E 440 pektin, E 415 xanthan'],
+                ['E 500–599', 'regulátory kyselosti, kypřicí látky', 'E 500 hydrogenuhličitan sodný (jedlá soda)'],
+                ['E 600–699', 'zvýrazňovače chuti', 'E 621 glutamát sodný'],
+                ['E 900–999', 'sladidla, plyny a další', 'E 951 aspartam, E 948 kyslík'],
               ],
             },
             { type: 'p', text: 'E-kód tedy neznamená „umělé“ ani „nebezpečné“, ale prověřené. Svoje éčko má jedlá soda, vitamin C, lecitin ze žloutku i kyslík.' },

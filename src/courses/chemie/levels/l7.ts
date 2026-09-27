@@ -43,10 +43,9 @@ const l71: Lesson = {
           caption: 'Průmyslová výroba vodíku',
           columns: [
             { title: 'parní reformování', icon: 'factory', tone: 'a', points: ['$CH4 + H2O -> CO + 3H2$', 'zemní plyn, niklový katalyzátor, asi 800 °C', 'hlavní zdroj vodíku'] },
-            { title: 'elektrolýza vody', icon: 'lightning', tone: 'b', points: ['$2H2O -> 2H2 + O2$', 'stejnosměrný proud', 'v menší míře'] },
+            { title: 'elektrolýza vody', icon: 'lightning', tone: 'b', points: ['$2H2O -> 2H2 + O2$', 'stejnosměrný proud: vodík vzniká na katodě, kyslík na anodě', 'v menší míře'] },
           ],
         },
-        { type: 'diagram', id: 'electrolysis', caption: 'Elektrolýza: stejnosměrný proud rozkládá látku na elektrodách. U vody vzniká vodík na katodě a kyslík na anodě.' },
         { type: 'callout', variant: 'warning', title: 'Třaskavá směs', text: 'Směs vodíku se vzduchem nebo s kyslíkem (nejprudší je poměr $2 : 1$ s kyslíkem) po zapálení vybuchne. Než vodík zapálíš, zkontroluj jeho čistotu: zkumavku s ním přibliž ústím dolů ke kahanu. Ostré „štěknutí“ znamená, že je v něm ještě vzduch.' },
         {
           type: 'check',
@@ -142,7 +141,7 @@ const l71: Lesson = {
       icon: 'periodic-table',
       blocks: [
         { type: 'p', text: 'Kyslík se slučuje téměř se všemi prvky. Jak se oxid chová k vodě, kyselinám a zásadám, prozradí poloha druhého prvku v tabulce, tedy jeho **elektronegativita**.' },
-        { type: 'diagram', id: 'periodic-mini', props: { highlight: 'metals' }, caption: 'Kovy vlevo tvoří zásadité oxidy, nekovy vpravo nahoře kyselé. Na hranici leží prvky s amfoterními oxidy.' },
+        { type: 'diagram', id: 'periodic-mini', props: { highlight: 'metals' }, caption: 'Tabulka rozdělená na kovy, polokovy a nekovy. Kovy vlevo tvoří zásadité oxidy, nekovy vpravo nahoře kyselé. Na hranici leží prvky s amfoterními oxidy.' },
         {
           type: 'table',
           headers: ['typ oxidu', 'kdo ho tvoří', 'příklady', 'reaguje s'],
@@ -314,18 +313,7 @@ const l72: Lesson = {
         { type: 'elements', symbols: ['F', 'Cl', 'Br', 'I', 'At'], caption: '17. skupina: halogeny' },
         { type: 'p', text: 'Slovo **halogen** znamená řecky „solitvorný“: s kovy halogeny přímo tvoří soli, chlor se sodíkem dá kuchyňskou sůl $NaCl$. Všechny mají 7 valenčních elektronů ($ns^2 np^5$), jediný chybějící elektron ochotně přijmou a změní se na **halogenidový anion** $X^-$.' },
         { type: 'molecule', molecules: ['F2', 'Cl2', 'Br2', 'I2'], labels: ['fluor', 'chlor', 'brom', 'jod'], caption: 'Jako prvky tvoří halogeny dvouatomové molekuly $X2$.' },
-        { type: 'diagram', id: 'halogen-colors', caption: 'Směrem dolů barva tmavne: světle žlutý fluor, žlutozelený chlor, červenohnědý brom, tmavě fialový jod s fialovými parami' },
-        {
-          type: 'table',
-          headers: ['prvek', 'skupenství (25 °C)', 'barva', 'teplota varu', 'elektronegativita'],
-          rows: [
-            ['fluor $F2$', 'plyn', 'světle žlutý', '−188 °C', '3,98'],
-            ['chlor $Cl2$', 'plyn', 'žlutozelený', '−34 °C', '3,16'],
-            ['brom $Br2$', 'kapalina', 'červenohnědý', '59 °C', '2,96'],
-            ['jod $I2$', 'pevná látka', 'tmavě fialový, kovově lesklý; páry fialové', '184 °C', '2,66'],
-          ],
-          caption: 'Směrem dolů barva tmavne, teplota varu roste a elektronegativita klesá',
-        },
+        { type: 'diagram', id: 'halogen-colors', caption: 'Halogeny v odměrných válcích: u každého barva, skupenství a teplota varu. Směrem dolů barva tmavne, teplota varu roste a elektronegativita klesá (F 3,98, Cl 3,16, Br 2,96, I 2,66).' },
         { type: 'p', text: 'Proč teplota varu roste? Větší molekuly mají více elektronů, a tak mezi nimi působí silnější **Londonovy (disperzní) síly**. Proto je fluor plyn, brom kapalina a jod pevná látka.' },
         { type: 'callout', variant: 'fact', text: 'Jod při zahřívání **sublimuje**: z lesklých krystalků rovnou stoupají fialové páry, které na studené ploše znovu krystalizují. Tak se jod i čistí.' },
         {
@@ -631,19 +619,9 @@ const l73: Lesson = {
       icon: 'factory',
       blocks: [
         { type: 'p', text: '**Kyselina sírová** je nejvyráběnější chemikálií světa. Vyrábí se **kontaktním způsobem**: plyny reagují při kontaktu s pevným katalyzátorem.' },
-        { type: 'diagram', id: 'contact-process', caption: 'Kontaktní způsob: od síry přes $SO2$ a $SO3$ ke kyselině sírové' },
-        {
-          type: 'process',
-          layout: 'flow',
-          steps: [
-            { icon: 'flame', title: 'Spálení síry', text: '$S + O2 -> SO2$ (nebo pražení pyritu)' },
-            { icon: 'catalyst', title: 'Oxidace na $SO3$', text: 'katalyzátor $V2O5$, asi 450 °C' },
-            { icon: 'flask', title: 'Pohlcení v $H2SO4$', text: '$SO3 + H2SO4 -> H2S2O7$, vzniká oleum (kyselina disírová)' },
-            { icon: 'drop', title: 'Zředění vodou', text: '$H2S2O7 + H2O -> 2H2SO4$' },
-          ],
-        },
+        { type: 'diagram', id: 'contact-process', caption: 'Kontaktní způsob ve čtyřech krocích: spálení síry na $SO2$ (surovinou může být i pražený pyrit), oxidace na $SO3$ na katalyzátoru $V2O5$ při asi 450 °C, pohlcení $SO3$ v kyselině sírové na oleum (kyselinu disírovou $H2S2O7$) a jeho zředění vodou.' },
         { type: 'reaction', equation: '2SO2 + O2 <=> 2SO3', caption: 'klíčový vratný krok: ΔH = −198 kJ, katalyzátor $V2O5$' },
-        { type: 'molecule', molecules: ['SO2', 'SO3', 'H2SO4'], labels: ['oxid siřičitý', 'oxid sírový', 'kyselina sírová'] },
+        { type: 'molecule', molecules: ['H2SO4'], labels: ['kyselina sírová'] },
         { type: 'p', text: 'Reakce je **exotermní**: nízká teplota by podle Le Chatelierova principu zvýšila výtěžek, ale reakce by byla příliš pomalá. ==450 °C s katalyzátorem je kompromis mezi výtěžkem a rychlostí.== Vyšší tlak by pomohl (3 moly plynu → 2), ale konverze přes 99 % stačí i za tlaku blízkého atmosférickému, a drahé kompresory se nevyplatí.' },
         { type: 'callout', variant: 'tip', title: 'Proč ne rovnou do vody?', text: 'Reakce $SO3$ s vodou je tak prudce exotermní, že vznikne mlha drobných kapiček kyseliny, kterou nejde zachytit. Proto se $SO3$ pohlcuje v kyselině sírové.' },
         {
@@ -687,8 +665,7 @@ const l73: Lesson = {
           type: 'iconlist',
           items: [
             { icon: 'crystal', title: 'Modrá skalice', text: '$CuSO4·5H2O$' },
-            { icon: 'bone', title: 'Sádrovec', text: '$CaSO4·2H2O$, z něj se vyrábí sádra' },
-            { icon: 'stomach', title: 'Síran barnatý', text: '$BaSO4$, kontrastní látka pro rentgen' },
+            { icon: 'powder', title: 'Sádrovec', text: '$CaSO4·2H2O$, z něj se vyrábí sádra' },
           ],
         },
         { type: 'callout', variant: 'warning', title: 'Nejdřív voda, potom kyselina', text: 'Ředění kyseliny sírové uvolňuje obrovské teplo. Lij vždy kyselinu pomalu do vody a za míchání, nikdy naopak: voda nalitá do kyseliny se okamžitě vaří a vystříkne i s kyselinou. Ochranné brýle a rukavice jsou samozřejmost.' },
@@ -717,8 +694,7 @@ const l73: Lesson = {
         { type: 'p', text: '**Dusík** tvoří 78 % objemu vzduchu. Jeho **trojná vazba** $N≡N$ (945 kJ/mol) patří k nejpevnějším vůbec, proto je dusík velmi netečný. Slouží jako **ochranná atmosféra**, třeba v sáčcích chipsů, aby nežlukly.' },
         { type: 'molecule', molecules: ['N2', 'NH3'], labels: ['dusík $N≡N$: trojná vazba', 'amoniak: trojboká pyramida'] },
         { type: 'p', text: 'Rostliny i zvířata dusík nutně potřebují (je v bílkovinách i DNA), ale vzdušný $N2$ neumí přímo využít. Vázaný dusík byl proto dlouho vzácný, dokud nepřišla **Haberova–Boschova syntéza amoniaku**.' },
-        { type: 'reaction', equation: 'N2 + 3H2 <=> 2NH3', caption: 'ΔH = −92 kJ; železný katalyzátor, 400–450 °C, asi 20 MPa' },
-        { type: 'diagram', id: 'haber-process', caption: 'Haberova–Boschova syntéza: nezreagovaný dusík a vodík se vracejí do reaktoru' },
+        { type: 'diagram', id: 'haber-process', caption: 'Haberova–Boschova syntéza jako výrobní schéma: kompresor, reaktor se železným katalyzátorem, chladič, ve kterém amoniak zkapalní, a zpětné vedení nezreagovaného dusíku a vodíku do reaktoru' },
         {
           type: 'compare',
           caption: 'Dva průmyslové procesy, jeden princip: Le Chatelier a kompromis s rychlostí',
@@ -730,16 +706,7 @@ const l73: Lesson = {
         { type: 'p', text: '**Amoniak** $NH3$ je bezbarvý, štiplavě páchnoucí plyn, výborně rozpustný ve vodě. Je to zásada: $NH3 + H2O <=> NH4^+ + OH^-$. S chlorovodíkem tvoří bílý dým chloridu amonného.' },
         { type: 'reaction', equation: 'NH3 + HCl -> NH4Cl', caption: 'bílý dým chloridu amonného' },
         { type: 'p', text: 'Z amoniaku se **Ostwaldovým způsobem** vyrábí **kyselina dusičná**.' },
-        { type: 'diagram', id: 'ostwald-process', caption: 'Ostwaldův způsob: amoniak → $NO$ → $NO2$ → $HNO3$' },
-        {
-          type: 'process',
-          layout: 'flow',
-          steps: [
-            { icon: 'catalyst', title: 'Spálení amoniaku', text: '$4NH3 + 5O2 -> 4NO + 6H2O$ na platinové síťce (Pt/Rh)' },
-            { icon: 'gas-cloud', title: 'Oxidace na $NO2$', text: '$2NO + O2 -> 2NO2$' },
-            { icon: 'drop', title: 'Pohlcení ve vodě', text: '$4NO2 + O2 + 2H2O -> 4HNO3$' },
-          ],
-        },
+        { type: 'diagram', id: 'ostwald-process', caption: 'Ostwaldův způsob ve třech krocích: amoniak shoří na rozžhavené platino-rhodiové síťce na $NO$, ten se vzduchem oxiduje na hnědý $NO2$ a v absorpční věži se $NO2$ pohltí ve vodě na $HNO3$' },
         { type: 'molecule', molecules: ['HNO3'], labels: ['kyselina dusičná'] },
         { type: 'p', text: 'Koncentrovaná $HNO3$ je silné oxidační činidlo a rozpustí i měď. **Lučavka královská** (1 díl $HNO3$ + 3 díly $HCl$) rozpustí dokonce zlato. Na kůži dělá kyselina dusičná žluté skvrny (**xanthoproteinová reakce** s bílkovinami).' },
         { type: 'reaction', equation: 'Cu + 4HNO3 -> Cu(NO3)2 + 2NO2 + 2H2O', caption: 'měď v koncentrované kyselině dusičné, unikají hnědé dýmy $NO2$' },
@@ -802,26 +769,16 @@ const l73: Lesson = {
       icon: 'leaf',
       blocks: [
         { type: 'p', text: 'Dusík v přírodě neustále koluje mezi vzduchem, půdou a živými organismy. Tomuto oběhu říkáme **koloběh dusíku**.' },
-        { type: 'diagram', id: 'nitrogen-cycle', caption: 'Koloběh dusíku: vzduch → půda → organismy → zpět do vzduchu' },
-        {
-          type: 'process',
-          layout: 'cycle',
-          steps: [
-            { icon: 'lightning', title: 'Fixace', text: 'hlízkové bakterie na kořenech bobovitých rostlin (hrách, jetel) a blesky převádějí $N2$ na sloučeniny' },
-            { icon: 'cell', title: 'Nitrifikace', text: 'půdní bakterie oxidují amonné ionty přes dusitany na dusičnany $NO3^-$' },
-            { icon: 'leaf', title: 'Asimilace', text: 'rostliny z dusičnanů tvoří bílkoviny, živočichové je získají potravou' },
-            { icon: 'recycle', title: 'Amonizace', text: 'rozkladači mění odumřelá těla a výkaly zpět na amoniak a amonné ionty' },
-            { icon: 'wind', title: 'Denitrifikace', text: 'jiné bakterie redukují dusičnany zpět na $N2$, který se vrací do vzduchu' },
-          ],
-        },
+        { type: 'diagram', id: 'nitrogen-cycle', caption: 'Koloběh dusíku: **fixace** (hlízkové bakterie na kořenech bobovitých rostlin, jako je hrách nebo jetel, a blesky), **nitrifikace** amonných iontů přes dusitany na dusičnany, **asimilace** do bílkovin rostlin a živočichů, **amonizace** odumřelých těl a výkalů zpět na amonné ionty a **denitrifikace** zpět na $N2$. Průmysl přidává dusík z Haberovy–Boschovy syntézy a hnojiv.' },
         { type: 'p', text: 'Zemědělci doplňují dusík, fosfor a draslík (**NPK**) hnojivy.' },
         {
-          type: 'iconlist',
-          items: [
-            { icon: 'fertilizer', title: 'ledek amonný', text: '$NH4NO3$' },
-            { icon: 'salt', title: 'síran amonný', text: '$(NH4)2SO4$' },
-            { icon: 'powder', title: 'draselný ledek', text: '$KNO3$' },
-            { icon: 'mortar', title: 'superfosfát', text: 'vzniká z nerozpustného fosforečnanu vápenatého a kyseliny sírové' },
+          type: 'table',
+          headers: ['hnojivo', 'vzorec'],
+          rows: [
+            ['ledek amonný', '$NH4NO3$'],
+            ['síran amonný', '$(NH4)2SO4$'],
+            ['draselný ledek', '$KNO3$'],
+            ['superfosfát', '$Ca(H2PO4)2$ + $CaSO4$, vzniká z nerozpustného fosforečnanu vápenatého a kyseliny sírové'],
           ],
         },
         { type: 'reaction', equation: 'Ca3(PO4)2 + 2H2SO4 -> Ca(H2PO4)2 + 2CaSO4', caption: 'superfosfát: rozpustný dihydrogenfosforečnan vápenatý + sádra' },
@@ -954,7 +911,7 @@ const l74: Lesson = {
       blocks: [
         { type: 'elements', symbols: ['C'], caption: 'uhlík, $Z = 6$, 14. skupina' },
         { type: 'p', text: '**Uhlík** má 4 valenční elektrony, a tak tvoří 4 kovalentní vazby. Jeho atomy se ochotně spojují do řetězců, kruhů i prostorových sítí, a proto má uhlík víc alotropických modifikací než kterýkoli jiný prvek.' },
-        { type: 'diagram', id: 'carbon-allotropes', caption: 'Diamant, grafit, grafen, fulleren $C60$ a nanotrubice: stejné atomy, jiné propojení' },
+        { type: 'diagram', id: 'carbon-allotropes', caption: 'Diamant, grafit, grafen (jediná vrstva grafitu silná jeden atom), fulleren $C60$ (kulovitá molekula jako fotbalový míč) a nanotrubice (srolovaný grafen, pevnější než ocel): stejné atomy, jiné propojení' },
         {
           type: 'compare',
           columns: [
@@ -964,12 +921,12 @@ const l74: Lesson = {
         },
         { type: 'p', text: 'Vrstvy grafitu drží pohromadě jen slabé mezimolekulové síly, proto po sobě kloužou a tuha píše po papíře. ==Vlastnosti alotropů neurčuje prvek, ale způsob, jak jsou jeho atomy propojené.==' },
         {
-          type: 'iconlist',
+          type: 'keyterms',
           items: [
-            { icon: 'phone', title: 'Grafen', text: 'jediná vrstva grafitu silná jeden atom; extrémně pevný, výborně vede proud i teplo (výzkum: elektronika, senzory, kompozity)' },
-            { icon: 'molecule', title: 'Fullereny', text: 'kulovité molekuly, nejznámější $C60$ jako fotbalový míč; molekulová látka rozpustná v organických rozpouštědlech' },
-            { icon: 'bond', title: 'Nanotrubice', text: 'srolovaný grafen o průměru jednotek nm; pevnější než ocel, vedou proud (rámy kol, rakety, elektronika)' },
-            { icon: 'pill', title: 'Amorfní uhlík', text: 'saze, dřevěné uhlí a **aktivní uhlí**: vnitřní povrch až 1 000 m² v gramu zachytí jedy, pachy i barviva (lékárnička, filtry na vodu)' },
+            { term: 'Grafen', def: 'extrémně pevný, výborně vede proud i teplo (výzkum: elektronika, senzory, kompozity)' },
+            { term: 'Fullereny', def: 'molekulová látka rozpustná v organických rozpouštědlech' },
+            { term: 'Nanotrubice', def: 'průměr jednotek nm, vedou proud (rámy kol, rakety, elektronika)' },
+            { term: 'Amorfní uhlík', def: 'saze, dřevěné uhlí a **aktivní uhlí**: vnitřní povrch až 1 000 m² v gramu zachytí jedy, pachy i barviva (lékárnička, filtry na vodu)' },
           ],
         },
         { type: 'callout', variant: 'fact', title: 'Diamanty nejsou věčné', text: 'Za běžných podmínek je stálejší grafit a diamant by se na něj měl přeměnit. Reakce má ale tak obrovskou aktivační energii, že neproběhne ani za miliardy let. Termodynamika říká „ano“, kinetika „nikdy“.' },
@@ -1004,9 +961,8 @@ const l74: Lesson = {
         { type: 'p', text: '$CO2$ se rozpouští ve vodě za vzniku slabé **kyseliny uhličité**, a proto bublinky v minerálce chutnají trochu kysele. Vápennou vodu zakalí, a to je jeho důkaz.' },
         { type: 'reaction', equation: 'CO2 + H2O <=> H2CO3' },
         { type: 'reaction', equation: 'Ca(OH)2 + CO2 -> CaCO3 + H2O', caption: 'důkaz $CO2$: vápenná voda se zakalí' },
-        { type: 'p', text: '$CO2$ je hlavní **skleníkový plyn**. V **koloběhu uhlíku** ho rostliny fotosyntézou berou ze vzduchu, dýchání a rozklad ho vracejí a vápence ho uchovávají miliony let. Spalováním fosilních paliv stoupla jeho koncentrace z asi 280 ppm před průmyslovou revolucí na víc než 420 ppm.' },
-        { type: 'diagram', id: 'carbon-cycle', caption: 'Koloběh uhlíku: atmosféra, rostliny, živočichové, oceány, horniny a fosilní paliva' },
-        { type: 'reaction', equation: '6CO2 + 6H2O -> C6H12O6 + 6O2', caption: 'fotosyntéza (dýchání probíhá opačně)' },
+        { type: 'p', text: '$CO2$ je hlavní **skleníkový plyn**. Spalováním fosilních paliv stoupla jeho koncentrace z asi 280 ppm před průmyslovou revolucí na víc než 420 ppm.' },
+        { type: 'diagram', id: 'carbon-cycle', caption: 'Koloběh uhlíku: rostliny ho fotosyntézou ($6CO2 + 6H2O -> C6H12O6 + 6O2$) berou ze vzduchu, dýchání a rozklad ho vracejí, oceán ho rozpouští a vápence ze schránek mořských živočichů ho uchovají miliony let. Spalování fosilních paliv vrací uhlík, který byl dlouho uložený pod zemí.' },
         { type: 'callout', variant: 'warning', title: 'Tichý zabiják', text: 'Oxid uhelnatý nevidíš ani necítíš. Vzniká ve špatně větraných plynových karmách, kamnech a v uzavřených garážích s běžícím motorem, proto do bytu s plynovým spotřebičem patří **detektor CO**. Pozor i na $CO2$: ve vinných sklepech při kvašení vytlačí vzduch u podlahy.' },
         {
           type: 'check',
@@ -1062,25 +1018,7 @@ const l74: Lesson = {
       icon: 'mountain',
       blocks: [
         { type: 'p', text: 'Z vápence se už od starověku vyrábí stavební pojivo. Celý děj je uzavřený kruh, který se jmenuje **vápencový cyklus**.' },
-        { type: 'diagram', id: 'limestone-cycle', caption: 'Vápencový cyklus: vápenec → pálené vápno → hašené vápno → vápenec' },
-        {
-          type: 'process',
-          layout: 'cycle',
-          steps: [
-            { icon: 'heat', title: 'Pálení vápna', text: '$CaCO3 -> CaO + CO2$ ve vápence, asi 900 °C (endotermní)' },
-            { icon: 'drop', title: 'Hašení vápna', text: '$CaO + H2O -> Ca(OH)2$, silně exotermní, voda se vaří' },
-            { icon: 'mountain', title: 'Tuhnutí malty', text: '$Ca(OH)2 + CO2 -> CaCO3 + H2O$: hašené vápno pohlcuje $CO2$ ze vzduchu' },
-          ],
-        },
-        { type: 'reaction', equation: 'CaCO3 -> CaO + CO2', caption: 'pálení vápna' },
-        {
-          type: 'keyterms',
-          items: [
-            { term: 'pálené vápno', def: 'oxid vápenatý $CaO$' },
-            { term: 'hašené vápno', def: 'hydroxid vápenatý $Ca(OH)2$' },
-            { term: 'vápenná malta', def: 'směs hašeného vápna, písku a vody; tuhne na $CaCO3$, tedy zpátky na „vápenec“' },
-          ],
-        },
+        { type: 'diagram', id: 'limestone-cycle', caption: 'Vápencový cyklus s rovnicemi: pálením vápence vzniká **pálené vápno** $CaO$, hašením vodou **hašené vápno** $Ca(OH)2$, s pískem a vodou z něj je **vápenná malta** a ta tuhne pohlcováním $CO2$ ze vzduchu zpátky na „vápenec“ $CaCO3$' },
         {
           type: 'example',
           problem: 'Kolik tun $CO2$ se uvolní při pálení 1 t vápence? $M(CaCO3) = 100 g/mol$, $M(CO2) = 44 g/mol$.',
@@ -1380,7 +1318,7 @@ const l75: Lesson = {
       icon: 'fireworks',
       blocks: [
         { type: 'p', text: 'Teplo plamene **vybudí** elektrony do vyšších energetických hladin. Při návratu zpět vyzáří přebytečnou energii jako světlo určitých vlnových délek. Každý prvek má svou sadu hladin, a tím i svou barvu: říkáme tomu **barvení plamene**.' },
-        { type: 'diagram', id: 'flame-tests', caption: 'Každý kov barví plamen svou typickou barvou' },
+        { type: 'diagram', id: 'flame-tests', caption: 'Sedm kahanů, v okraji plamene platinový drátek se solí kovu: lithium barví plamen karmínově, sodík žlutě, draslík fialově, vápník cihlově červeně, stroncium červeně, baryum zeleně a měď modrozeleně' },
         {
           type: 'process',
           layout: 'flow',
@@ -1391,20 +1329,18 @@ const l75: Lesson = {
             { icon: 'flame', title: 'Do plamene', text: 'vlož ho do okraje nesvítivého (modrého) plamene kahanu a sleduj barvu' },
           ],
         },
-        { type: 'elements', symbols: ['Li', 'Na', 'K', 'Ca', 'Sr', 'Ba', 'Cu'], caption: 'kovy, které barví plamen' },
         {
           type: 'table',
-          headers: ['prvek', 'barva plamene', 'kde ji uvidíš'],
+          headers: ['prvek', 'kde jeho barvu uvidíš'],
           rows: [
-            ['lithium', 'karmínová', 'červené světlice'],
-            ['sodík', 'žlutá', 'staré pouliční sodíkové výbojky, přeteklá polévka na plynovém sporáku'],
-            ['draslík', 'fialová', 'hoření draslíku na vodě'],
-            ['vápník', 'cihlově červená', 'oranžové ohňostroje'],
-            ['stroncium', 'červená', 'červené ohňostroje a nouzové světlice'],
-            ['baryum', 'zelená', 'zelené ohňostroje'],
-            ['měď', 'modrozelená', 'modrozelené ohňostroje, spálený měděný drát'],
+            ['lithium', 'červené světlice'],
+            ['sodík', 'staré pouliční sodíkové výbojky, přeteklá polévka na plynovém sporáku'],
+            ['draslík', 'hoření draslíku na vodě'],
+            ['vápník', 'oranžové ohňostroje'],
+            ['stroncium', 'červené ohňostroje a nouzové světlice'],
+            ['baryum', 'zelené ohňostroje'],
+            ['měď', 'modrozelené ohňostroje, spálený měděný drát'],
           ],
-          caption: 'Barvy plamene: Li karmínová, Na žlutá, K fialová, Ca cihlově červená, Sr červená, Ba zelená, Cu modrozelená',
         },
         { type: 'callout', variant: 'tip', title: 'Sodík všechno přebije', text: 'Stopa sodíku, třeba z potu na prstech, zbarví plamen žlutě a přehluší slabou fialovou draslíku. Proto se na draslík díváme přes **kobaltové sklo**, které žluté světlo pohltí.' },
         { type: 'callout', variant: 'fact', text: 'Robert Bunsen a Gustav Kirchhoff zkoumali světlo plamenů spektroskopem a v letech 1860–1861 objevili dva nové prvky: cesium (podle latinského *caesius*, blankytný, kvůli modrým čarám) a rubidium (*rubidus*, tmavě červený).' },
@@ -1469,12 +1405,11 @@ const l75: Lesson = {
           type: 'iconlist',
           items: [
             { icon: 'heat', title: 'Převaření', text: '$Ca(HCO3)2 -> CaCO3 + H2O + CO2$; odstraní jen přechodnou tvrdost' },
-            { icon: 'powder', title: 'Přidání sody', text: '$Ca^2+ + CO3^2- -> CaCO3$; odstraní přechodnou i trvalou' },
+            { icon: 'powder', title: 'Přidání sody', text: 'soda vysráží vápník jako nerozpustný uhličitan: $Ca^2+ + CO3^2- -> CaCO3$; odstraní přechodnou i trvalou' },
             { icon: 'arrow-cycle', title: 'Iontoměnič', text: 'vymění $Ca^2+$ a $Mg^2+$ za $Na^+$; přechodnou i trvalou' },
             { icon: 'steam', title: 'Destilace, reverzní osmóza', text: 'oddělí vodu od všech solí; přechodnou i trvalou' },
           ],
         },
-        { type: 'reaction', equation: 'Ca^2+ + CO3^2- -> CaCO3', caption: 'soda vysráží vápník jako nerozpustný uhličitan' },
         { type: 'formula', text: '$2R−Na + Ca^2+ -> R2Ca + 2Na^+$', caption: 'iontoměnič; $R$ označuje pryskyřici' },
         { type: 'p', text: 'Iontoměnič je i v tvé myčce. Když se zaplní vápníkem, **regeneruje** se koncentrovaným roztokem $NaCl$, který rovnováhu obrátí. Proto se do myčky sype speciální sůl.' },
         { type: 'callout', variant: 'tip', title: 'Odvápnění konvice', text: 'Vodní kámen je hlavně $CaCO3$, a ten rozpustí každá kyselina. Stačí ocet nebo kyselina citronová: $CaCO3 + 2H3O^+ -> Ca^2+ + CO2 + 3H2O$.' },
@@ -1626,21 +1561,20 @@ const l76: Lesson = {
       icon: 'lightning',
       blocks: [
         { type: 'p', text: 'Hlavní rudou je **bauxit**, směs hydratovaných oxidů hliníku se železem, z níž se nejdřív vyčistí čistý $Al2O3$. Ten taje až při 2 050 °C, proto se rozpouští v roztaveném **kryolitu** $Na3AlF6$ a taveninou při asi 950 °C prochází proud. Tomuto postupu se říká **Hallův–Héroultův proces** (1886).' },
-        { type: 'diagram', id: 'aluminium-electrolysis', caption: 'Elektrolýza taveniny $Al2O3$ v kryolitu: hliník se vylučuje na katodě, kyslík spaluje grafitovou anodu' },
+        { type: 'diagram', id: 'aluminium-electrolysis', caption: 'Elektrolyzér v řezu: na uhlíkové katodě na dně se redukují ionty $Al^{3+}$ na hliník ($Al^3+ + 3e^- -> Al$), na uhlíkových anodách se oxidují ionty $O^{2-}$ na kyslík a ten anody postupně spaluje na $CO2$' },
+        { type: 'reaction', equation: '2Al2O3 -> 4Al + 3O2', caption: 'celková reakce' },
         {
           type: 'process',
           layout: 'flow',
+          caption: 'Od rudy k hliníku',
           steps: [
             { icon: 'mountain', title: 'Těžba bauxitu' },
             { icon: 'funnel', title: 'Čištění', text: 'z bauxitu čistý oxid hlinitý' },
-            { icon: 'heat', title: 'Rozpuštění v kryolitu', text: '$Al2O3$ v roztaveném $Na3AlF6$, asi 950 °C' },
-            { icon: 'lightning', title: 'Elektrolýza', text: 'na katodě se vylučuje hliník' },
+            { icon: 'heat', title: 'Rozpuštění v kryolitu' },
+            { icon: 'lightning', title: 'Elektrolýza' },
             { icon: 'factory', title: 'Odlévání', text: 'tekutý hliník do ingotů' },
           ],
         },
-        { type: 'formula', text: '$Al^3+ + 3e^- -> Al$', caption: 'katoda (redukce)' },
-        { type: 'formula', text: '$2O^2- -> O2 + 4e^-$', caption: 'grafitová anoda (oxidace); kyslík anodu postupně spaluje na $CO2$' },
-        { type: 'reaction', equation: '2Al2O3 -> 4Al + 3O2', caption: 'celková reakce' },
         { type: 'p', text: 'Elektrolýza spotřebuje asi 14 kWh na kilogram hliníku, zhruba tolik, kolik domácnost za dva dny. Proto se hliníkárny stavějí u levné elektřiny, třeba u vodních elektráren na Islandu nebo v Norsku. Dřív se hliník vyráběl chemicky pomocí sodíku, a byl proto vzácný a drahý.' },
         { type: 'callout', variant: 'remember', text: '==Recyklace hliníku spotřebuje jen asi 5 % energie potřebné na výrobu nového kovu.== Plechovka se dá přetavit znovu a znovu, bez ztráty kvality.' },
         {
@@ -1676,24 +1610,14 @@ const l76: Lesson = {
           ],
         },
         { type: 'p', text: 'Do **vysoké pece** se shora sype **vsázka**: ruda, koks a vápenec. Zdola se vhání horký vzduch. Koks shoří, a jak plyny stoupají vzhůru, redukují rudu na železo.' },
-        { type: 'diagram', id: 'blast-furnace', caption: 'Vysoká pec: vsázka shora, horký vzduch zdola, dole surové železo a struska' },
-        {
-          type: 'process',
-          layout: 'flow',
-          steps: [
-            { icon: 'flame', title: 'Koks hoří', text: '$C + O2 -> CO2$ u dna pece, teplo až 2 000 °C' },
-            { icon: 'gas-cloud', title: 'Vzniká $CO$', text: '$CO2 + C -> 2CO$ na rozžhaveném koksu' },
-            { icon: 'heat', title: 'Redukce rudy', text: '$Fe2O3 + 3CO -> 2Fe + 3CO2$' },
-            { icon: 'mountain', title: 'Struska', text: '$CaCO3 -> CaO + CO2$; $CaO + SiO2 -> CaSiO3$: vápenec váže hlušinu (písek)' },
-          ],
-        },
+        { type: 'diagram', id: 'blast-furnace', caption: 'Vysoká pec v řezu: u každého pásma je rovnice, která tam probíhá, i s teplotou. Dole koks hoří až při 2 000 °C, výš vzniká $CO$, ten redukuje rudu a vápenec váže hlušinu (písek) do strusky.' },
         { type: 'reaction', equation: 'Fe2O3 + 3CO -> 2Fe + 3CO2', caption: 'hlavní děj: $CO$ redukuje rudu ($Fe^{III} -> Fe^{0}$)' },
         { type: 'p', text: 'Na dně pece se hromadí tekuté **surové železo** a nad ním lehčí **struska**, která se využije na stavbu silnic nebo do cementu.' },
         {
           type: 'compare',
           columns: [
-            { title: 'surové železo', icon: 'factory', tone: 'a', points: ['asi 4 % uhlíku', 'tvrdé a křehké', 'vzniká ve vysoké peci'] },
-            { title: 'ocel', icon: 'star', tone: 'b', points: ['méně než asi 2 % uhlíku', 'v **kyslíkovém konvertoru** čistý kyslík spálí přebytečný uhlík na plynné oxidy', 's chromem (aspoň 10,5 %) a niklem vzniká **nerezová ocel**'] },
+            { title: 'surové železo', tone: 'a', points: ['asi 4 % uhlíku', 'tvrdé a křehké', 'vzniká ve vysoké peci'] },
+            { title: 'ocel', tone: 'b', points: ['méně než asi 2 % uhlíku', 'v **kyslíkovém konvertoru** čistý kyslík spálí přebytečný uhlík na plynné oxidy', 's chromem (aspoň 10,5 %) a niklem vzniká **nerezová ocel**'] },
           ],
         },
         {
@@ -1729,7 +1653,7 @@ const l76: Lesson = {
           type: 'iconlist',
           items: [
             { icon: 'battery', title: 'Zinek', text: 'neušlechtilý, na vzduchu se pasivuje; pozinkování železa, baterie, $ZnO$ v opalovacích krémech a mastech' },
-            { icon: 'star', title: 'Chrom', text: 'tvrdý, lesklý, nekoroduje; chromování, nerezová ocel; sloučeniny $Cr^{VI}$ jsou karcinogenní' },
+            { icon: 'water-tap', title: 'Chrom', text: 'tvrdý, lesklý, nekoroduje; chromování, nerezová ocel; sloučeniny $Cr^{VI}$ jsou karcinogenní' },
             { icon: 'ring', title: 'Stříbro', text: 'nejlepší vodič tepla a elektřiny; šperky, zrcadla, kontakty, antibakteriální úprava' },
             { icon: 'coin', title: 'Zlato', text: 'nereaguje s kyslíkem ani s běžnými kyselinami, rozpustí ho jen lučavka královská; šperky, konektory v elektronice' },
             { icon: 'catalyst', title: 'Platina', text: 'ušlechtilá, výborný katalyzátor; autokatalyzátory, elektrody, šperky, lék cisplatina' },
@@ -1743,9 +1667,9 @@ const l76: Lesson = {
           type: 'compare',
           caption: 'Tři důležité slitiny',
           columns: [
-            { title: 'mosaz', icon: 'coin', tone: 'a', points: ['měď + zinek', 'žlutá', 'kliky, dechové nástroje, šroubení'] },
-            { title: 'bronz', icon: 'trophy', tone: 'b', points: ['měď + cín', 'zvony, sochy, medaile', 'dala jméno celé době bronzové'] },
-            { title: 'dural', icon: 'speed', tone: 'c', points: ['hliník + měď + hořčík', 'lehký a pevný', 'letadla'] },
+            { title: 'mosaz', tone: 'a', points: ['měď + zinek', 'žlutá', 'kliky, dechové nástroje, šroubení'] },
+            { title: 'bronz', tone: 'b', points: ['měď + cín', 'zvony, sochy, medaile', 'dala jméno celé době bronzové'] },
+            { title: 'dural', tone: 'c', points: ['hliník + měď + hořčík', 'lehký a pevný', 'letadla'] },
           ],
         },
         {
@@ -1835,9 +1759,7 @@ const l76: Lesson = {
       icon: 'rust',
       blocks: [
         { type: 'p', text: '**Rezavění** je elektrochemická koroze železa. Potřebuje současně **vodu i kyslík** a sůl (třeba posypová na silnicích) ho výrazně urychlí, protože zvýší vodivost vody.' },
-        { type: 'diagram', id: 'corrosion', caption: 'Koroze železa: železo se oxiduje, kyslík ve vodě se redukuje' },
-        { type: 'formula', text: '$Fe -> Fe^2+ + 2e^-$', caption: 'oxidace železa' },
-        { type: 'formula', text: '$O2 + 2H2O + 4e^- -> 4OH^-$', caption: 'redukce kyslíku' },
+        { type: 'diagram', id: 'corrosion', caption: 'Koroze pod kapkou vody: uprostřed kapky, kam se dostane málo kyslíku, se železo oxiduje ($Fe -> Fe^2+ + 2e^-$), na okraji se redukuje kyslík ($O2 + 2H2O + 4e^- -> 4OH^-$) a kde se ionty potkají, usazuje se rez. Obrázek ukazuje i tři způsoby ochrany: nátěr, pozinkování a obětovanou anodu.' },
         { type: 'formula', text: '$4Fe + 3O2 + 2xH2O -> 2Fe2O3·xH2O$', caption: 'celkově: rez je hydratovaný oxid železitý' },
         {
           type: 'compare',
@@ -1847,13 +1769,13 @@ const l76: Lesson = {
           ],
         },
         {
-          type: 'iconlist',
+          type: 'keyterms',
           items: [
-            { icon: 'drop', title: 'Nátěr, olej, plast', text: 'odděluje kov od vody a kyslíku: zábradlí, řetěz kola' },
-            { icon: 'check', title: 'Pozinkování', text: 'zinek je neušlechtilejší, koroduje místo železa i v místě škrábnutí: svodidla, okapy, plechy' },
-            { icon: 'warning', title: 'Pocínování', text: 'cín jen odděluje; po poškrábání železo koroduje ještě rychleji: plechovky od konzerv' },
-            { icon: 'battery', title: 'Obětovaná anoda', text: 'blok hořčíku nebo zinku připojený k železu se rozpouští místo něj: lodě, bojlery, potrubí' },
-            { icon: 'star', title: 'Legování', text: 'chrom vytvoří na povrchu pasivní vrstvu: nerezové příbory a dřezy' },
+            { term: 'Nátěr, olej, plast', def: 'odděluje kov od vody a kyslíku: zábradlí, řetěz kola' },
+            { term: 'Pozinkování', def: 'zinek je neušlechtilejší, koroduje místo železa i v místě škrábnutí: svodidla, okapy, plechy' },
+            { term: 'Pocínování', def: 'cín jen odděluje; po poškrábání železo koroduje ještě rychleji: plechovky od konzerv' },
+            { term: 'Obětovaná anoda', def: 'blok hořčíku nebo zinku připojený k železu se rozpouští místo něj: lodě, bojlery, potrubí' },
+            { term: 'Legování', def: 'chrom vytvoří na povrchu pasivní vrstvu: nerezové příbory a dřezy' },
           ],
         },
         { type: 'p', text: '**Recyklace kovů** šetří energii i rudy.' },
