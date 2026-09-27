@@ -1,0 +1,160 @@
+/* 3D ball-and-stick molecules (MoleculeView). Engraving style: flat CPK colour,
+   ink rim, hatched crescent shadow, small highlight. */
+.mol-view {
+  container-type: inline-size;
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  /* shading of the CPK balls: a subject colour, same in both themes */
+  --mol-shadow: rgba(24, 18, 10, 0.55);
+  --mol-light: rgba(255, 255, 255, 0.78);
+}
+.mol-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 12px;
+  justify-items: center;
+}
+.mol-view[data-n='1'] .mol-grid {
+  grid-template-columns: minmax(0, 360px);
+  justify-content: center;
+}
+@container (min-width: 560px) {
+  .mol-view[data-n='3'] .mol-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .mol-view[data-n='4'] .mol-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.mol-cell {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  width: 100%;
+  max-width: 320px;
+  min-width: 0;
+}
+.mol-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+.mol-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.mol-svg:active {
+  cursor: grabbing;
+}
+.mol-stick {
+  fill: var(--surface-2);
+  stroke: var(--edge);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.mol-arom {
+  stroke: var(--edge);
+  stroke-width: 1.1;
+  stroke-dasharray: 2.5 2.5;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
+.mol-ball {
+  stroke: none;
+}
+.mol-rim {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.3;
+  vector-effect: non-scaling-stroke;
+}
+.mol-hatch {
+  stroke: var(--mol-shadow);
+  stroke-width: 0.85;
+}
+.mol-shade {
+  pointer-events: none;
+}
+.mol-hl {
+  fill: none;
+  stroke: var(--mol-light);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+.mol-atom.is-on .mol-rim {
+  stroke: var(--accent);
+  stroke-width: 2.6;
+}
+.mol-q {
+  font: 700 11px var(--font-mono);
+  fill: var(--ink);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 3px;
+  pointer-events: none;
+}
+.mol-tip {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 6px));
+  padding: 2px 8px;
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-hard);
+  font: italic 600 15px/1.3 var(--font-display);
+  color: var(--ink);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 2;
+}
+.mol-tip b {
+  font: 600 12px var(--font-mono);
+  font-style: normal;
+  margin-left: 3px;
+}
+.mol-caption {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 0;
+  line-height: 1.25;
+}
+.mol-name {
+  font: italic 600 18px/1.2 var(--font-display);
+  color: var(--ink);
+  text-wrap: balance;
+}
+.mol-formula {
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+.mol-label {
+  font-size: 14px;
+  color: var(--muted);
+  text-wrap: balance;
+}
+.mol-hint {
+  margin: 0;
+  text-align: center;
+  font: italic 13px var(--font-display);
+  color: var(--muted);
+}
+@container (max-width: 380px) {
+  .mol-name {
+    font-size: 16px;
+  }
+  .mol-formula {
+    font-size: 14px;
+  }
+}

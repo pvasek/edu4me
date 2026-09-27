@@ -141,7 +141,7 @@
 }
 /* font size by text length (logic.ts → faceSize) */
 .g-em-fs-xl {
-  font-size: clamp(20px, 6vw, 30px);
+  font-size: clamp(20px, 5.5vw, 26px);
   font-weight: 800;
 }
 .g-em-fs-l {
@@ -165,7 +165,7 @@
   font-size: clamp(12.5px, 3.85vw, 16.5px);
 }
 .is-long .g-em-fs-xs {
-  font-size: clamp(11.5px, 3.45vw, 15px);
+  font-size: clamp(11px, 3.45vw, 15px);
 }
 .g-em-sym.has-name {
   font-size: clamp(22px, 6.5vw, 32px);

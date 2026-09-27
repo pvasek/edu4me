@@ -179,7 +179,7 @@ const indicatorPairs: MemPair[] = [
 
 const L5: MemLevel = {
   instr: 'Spoj kyselinu s aniontem jejích solí a indikátor s jeho barvou.',
-  tagA: 'kyselina',
+  tagA: '',
   tagB: 'anion soli',
   size: 6,
   long: true,
@@ -202,7 +202,7 @@ const L6: MemLevel = {
     { a: 'anoda galvanického článku', b: 'elektroda, kde probíhá oxidace' },
     { a: 'katoda galvanického článku', b: 'elektroda, kde probíhá redukce' },
     { a: 'solný můstek', b: 'uzavírá obvod mezi poločlánky' },
-    { a: 'elektrolýza', b: 'reakce vynucená vnějším zdrojem proudu' },
+    { a: 'elektrolýza', b: 'reakce vynucená elektrickým proudem' },
     { a: 'exotermní děj', b: 'teplo uvolňuje, ΔH < 0' },
     { a: 'endotermní děj', b: 'teplo pohlcuje, ΔH > 0' },
     { a: 'Hessův zákon', b: 'ΔH nezávisí na cestě, jen na počátku a konci' },

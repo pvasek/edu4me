@@ -126,7 +126,7 @@ export function faceSize(md: string): 'xl' | 'l' | 'm' | 's' | 'xs' {
   if (t.length <= 4) return 'xl'
   if (t.length <= 9 && longest <= 9) return 'l'
   if (t.length <= 22 && longest <= 11) return 'm'
-  if (t.length <= 34 && longest <= 13) return 's'
+  if (t.length <= 34 && longest <= 12) return 's'
   return 'xs'
 }
 

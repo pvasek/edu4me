@@ -20,7 +20,7 @@ IONS.forEach((A, a) =>
     const d = A.p.map((v, t) => Math.abs(v - B.p[t]))
     if (d[0] + d[1] + d[2] !== 1) return
     // an edge of the cube: the two unchanged coordinates are both ±1
-    const fixed = A.p.filter((v, t) => d[t] === 0)
+    const fixed = A.p.filter((_, t) => d[t] === 0)
     PAIRS.push({ a, b, edge: fixed.every((v) => v !== 0) })
   }),
 )
@@ -153,7 +153,7 @@ function Legend({ x, y, compact }: { x: number; y: number; compact?: boolean }) 
             kation sodný
           </tspan>
         </text>
-        <text x={46} y={36} className="f35-mono f35-small f35-muted">
+        <text x={46} y={36} className="f35-mono f35-muted" style={{ fontSize: 11.5 }}>
           r = 102 pm
         </text>
         <Atom x={22} y={70} r={19} el="Cl" sym={false} />
@@ -163,7 +163,7 @@ function Legend({ x, y, compact }: { x: number; y: number; compact?: boolean }) 
             anion chloridový
           </tspan>
         </text>
-        <text x={50} y={86} className="f35-mono f35-small f35-muted">
+        <text x={50} y={86} className="f35-mono f35-muted" style={{ fontSize: 11.5 }}>
           r = 181 pm
         </text>
         <line x1={6} x2={38} y1={118} y2={118} className="f35-lvline" style={{ strokeWidth: 2.6 }} />
@@ -172,15 +172,15 @@ function Legend({ x, y, compact }: { x: number; y: number; compact?: boolean }) 
         </text>
       </Fade>
       <Fade d={1.3}>
-        <Octa x={compact ? 60 : 62} y={compact ? 196 : 200} />
-        <text x={compact ? 128 : 124} y={compact ? 186 : 190} className="f35-note">
+        <Octa x={compact ? 56 : 52} y={compact ? 196 : 200} />
+        <text x={compact ? 118 : 110} y={compact ? 186 : 190} className="f35-note">
           každý ion má
         </text>
-        <text x={compact ? 128 : 124} y={compact ? 205 : 209} className="f35-note">
-          6 sousedů s opačným
+        <text x={compact ? 118 : 110} y={compact ? 205 : 209} className="f35-note">
+          6 sousedů
         </text>
-        <text x={compact ? 128 : 124} y={compact ? 224 : 228} className="f35-note">
-          nábojem
+        <text x={compact ? 118 : 110} y={compact ? 224 : 228} className="f35-note">
+          s opačným nábojem
         </text>
       </Fade>
     </g>

@@ -35,8 +35,8 @@ function Burner({ cx, open }: { cx: number; open: boolean }) {
         <path className="f12-flow f12-gas" d={`M${cx} ${BASE - 22} L${cx} ${TOP + 4}`} />
         {open && (
           <>
-            <path className="f12-flow f12-air" d={`M${R + 62} ${COL + 10} L${R + 8} ${COL + 10} Q${cx + 5} ${COL + 8} ${cx + 5} ${COL - 20} L${cx + 5} ${TOP + 4}`} />
-            <path className="f12-flow f12-air" d={`M${L - 62} ${COL + 10} L${L - 8} ${COL + 10} Q${cx - 5} ${COL + 8} ${cx - 5} ${COL - 20} L${cx - 5} ${TOP + 4}`} />
+            <path className="f12-flow f12-air" d={`M${R + 56} ${COL + 46} Q${R + 30} ${COL + 12} ${R + 6} ${COL + 10} Q${cx + 5} ${COL + 8} ${cx + 5} ${COL - 20} L${cx + 5} ${TOP + 4}`} />
+            <path className="f12-flow f12-air" d={`M${L - 56} ${COL + 46} Q${L - 30} ${COL + 12} ${L - 6} ${COL + 10} Q${cx - 5} ${COL + 8} ${cx - 5} ${COL - 20} L${cx - 5} ${TOP + 4}`} />
           </>
         )}
       </Fade>
@@ -89,10 +89,10 @@ export default function BunsenBurner() {
 
       {/* flames */}
       <Pop delay={0.7} origin="50% 100%">
-        <Flame x={A} y={TOP} h={172} kind="yellow" />
+        <Flame x={A} y={TOP} h={150} kind="yellow" />
         <g className="f12-soot">
-          <path d={`M${A - 4} ${TOP - 176} q-8 -10 0 -18 q8 -8 0 -18`} />
-          <path d={`M${A + 8} ${TOP - 170} q-7 -9 1 -16 q7 -7 -1 -14`} />
+          <path d={`M${A - 3} ${TOP - 154} q-6 -7 0 -13 q6 -6 0 -12`} />
+          <path d={`M${A + 7} ${TOP - 150} q-5 -6 1 -11 q5 -5 -1 -10`} />
         </g>
       </Pop>
       <Pop delay={0.9} origin="50% 100%">
@@ -118,10 +118,10 @@ export default function BunsenBurner() {
       <Lbl x={320} y={454} tx={A + 92} ty={BASE + 26} anchor="end" sec>
         přívod plynu
       </Lbl>
-      <Lbl x={240} y={214} tx={A} ty={TOP - 22} anchor="middle" className="f12-lab-strong" lx={228} ly={203}>
+      <Lbl x={262} y={206} tx={A + 22} ty={TOP - 36} className="f12-lab-strong">
         ≈ 1000 °C
       </Lbl>
-      <Lbl x={250} y={120} tx={A + 20} ty={TOP - 118} line2="čadí sazemi" sec>
+      <Lbl x={262} y={132} tx={A + 18} ty={TOP - 100} line2="čadí sazemi" sec>
         žlutý, svítí,
       </Lbl>
 
@@ -135,7 +135,7 @@ export default function BunsenBurner() {
       <Lbl x={500} y={TOP - 128} tx={B + 22} ty={TOP - 96} line2="(oxidační)" line2Sec sec>
         vnější plášť
       </Lbl>
-      <Lbl x={526} y={COL - 20} tx={B + 60} ty={COL + 10} line2="vstupuje" lx={522} ly={COL - 16}>
+      <Lbl x={526} y={COL - 20} tx={B + 50} ty={COL + 30} line2="vstupuje" lx={522} ly={COL - 16}>
         vzduch
       </Lbl>
       <Lbl x={374} y={300} tx={B - 3} ty={300} anchor="end" line2="se mísí" sec>

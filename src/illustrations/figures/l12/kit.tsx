@@ -223,15 +223,22 @@ export function Pop({
   className,
   origin,
   style,
+  vb = false,
 }: {
   children: ReactNode
   delay?: number
   className?: string
   origin?: string
   style?: CSSProperties
+  /** origin is in viewBox units (e.g. "60px 62px") instead of the group's own box */
+  vb?: boolean
 }) {
   return (
-    <motion.g className={className} variants={popV(delay)} style={{ transformBox: 'fill-box', transformOrigin: origin ?? 'center', ...style }}>
+    <motion.g
+      className={className}
+      variants={popV(delay)}
+      style={{ transformBox: vb ? 'view-box' : 'fill-box', transformOrigin: origin ?? 'center', ...style }}
+    >
       {children}
     </motion.g>
   )

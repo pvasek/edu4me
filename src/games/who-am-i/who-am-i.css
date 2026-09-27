@@ -214,3 +214,61 @@
     display: none;
   }
 }
+
+/* compound answers (levels 8 and 9): name + formula */
+.g-wa-cmp {
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  width: 100%;
+  min-height: 76px;
+  padding: 10px 12px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-hard);
+  text-align: left;
+  font: inherit;
+}
+button.g-wa-cmp {
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+button.g-wa-cmp:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hard-lg);
+}
+button.g-wa-cmp:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+.g-wa-cmp.is-dim {
+  opacity: 0.5;
+  box-shadow: none;
+}
+.g-wa-cmp-name {
+  font: 800 19px/1.15 var(--font-display);
+  overflow-wrap: anywhere;
+}
+.g-wa-cmp-formula {
+  font: 600 14px/1.3 var(--font-body);
+  color: var(--ink-soft);
+  overflow-wrap: anywhere;
+}
+.g-wa-reveal .g-wa-cmp {
+  min-width: 110px;
+  max-width: 180px;
+  min-height: 0;
+}
+.g-wa-tiles-cmp {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.g-wa-optformula {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.g-wa-opt .g-wa-optformula + .g-wa-opttag {
+  margin-left: var(--space-2);
+}

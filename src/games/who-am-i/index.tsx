@@ -1,29 +1,49 @@
 import { useId, useRef, useState, type KeyboardEvent } from 'react'
 import { motion } from 'motion/react'
-import { categoryVar, type ChemElement } from '../../courses/chemie/data/elements'
+import { BY_SYMBOL, categoryVar } from '../../courses/chemie/data/elements'
+import { Md } from '../../core/markup'
 import { ElementTile } from '../../ui/ElementTile'
 import { Icon } from '../../ui/Icon'
 import { Mascot, type Mood } from '../../ui/Mascot'
 import { popIn, rise, shake, spring, stagger } from '../../ui/motion'
 import { Bump, Feedback, Hud, PointsPop } from '../shared/GameKit'
 import { useFinishOnce, useJolt } from '../shared/hooks'
-import { levelNumber } from '../shared/util'
-import type { GameProps } from '../types'
-import { POINTS, hintsFor, matchElement, pickTargets, roundPoints, suggest, tileOptions } from './logic'
+import { pickLevel } from '../shared/util'
+import { levelNum, type GameProps } from '../types'
+import { LEVELS } from './levels'
+import { POINTS, answerOptions, matchAnswer, pickSubjects, roundPoints, subjectAnswer, suggestAnswers, type Answer } from './logic'
 import './who-am-i.css'
 
 const ROUNDS = 5
 type Status = 'play' | 'won' | 'lost'
 type Mode = 'type' | 'tiles'
 
+/** "sodík (Na)" / "ethanol ($C2H5OH$)" in <Md> markup. */
+const label = (a: Answer) => (a.symbol ? `${a.name.toLowerCase()} ($${a.symbol}$)` : a.formula ? `${a.name} (${a.formula})` : a.name)
+
+/** Option card / reveal card for a compound: name and formula. */
+function CompoundCard({ a, dim = false, onClick }: { a: Answer; dim?: boolean; onClick?: () => void }) {
+  const Tag = onClick ? 'button' : 'div'
+  return (
+    <Tag type={onClick ? 'button' : undefined} className={`g-wa-cmp${dim ? ' is-dim' : ''}`} onClick={onClick} aria-label={a.name}>
+      <span className="g-wa-cmp-name">{a.name}</span>
+      {a.formula && (
+        <span className="g-wa-cmp-formula">
+          <Md text={a.formula} />
+        </span>
+      )}
+    </Tag>
+  )
+}
+
 export default function WhoAmI({ levelId, onFinish }: GameProps) {
-  const level = levelNumber(levelId)
-  const [targets] = useState(() => pickTargets(level, ROUNDS))
+  const level = pickLevel(LEVELS, levelNum(levelId))
+  const [rounds] = useState(() => pickSubjects(level, ROUNDS))
   const [i, setI] = useState(0)
   const [shown, setShown] = useState(1)
-  const [mode, setMode] = useState<Mode>(level <= 2 ? 'tiles' : 'type')
-  const [options, setOptions] = useState(() => tileOptions(targets[0], level))
-  const [wrong, setWrong] = useState<number[]>([])
+  const [mode, setMode] = useState<Mode>(level === 2 ? 'tiles' : 'type')
+  const [options, setOptions] = useState(() => answerOptions(rounds[0]))
+  const [wrong, setWrong] = useState<string[]>([])
   const [status, setStatus] = useState<Status>('play')
   const [score, setScore] = useState(0)
   const [pts, setPts] = useState(0)
@@ -37,54 +57,60 @@ export default function WhoAmI({ levelId, onFinish }: GameProps) {
   const [cardRef, jolt] = useJolt()
   const listId = useId()
 
-  const target = targets[i]
-  const hints = hintsFor(target)
-  const sugg = status === 'play' ? suggest(text, 6) : []
+  const round = rounds[i]
+  const subject = round.subject
+  const isEl = subject.kind === 'element'
+  const target = subjectAnswer(subject)
+  const hints = subject.hints
+  const sugg = status === 'play' ? suggestAnswers(text, subject.kind, 6) : []
   const mood: Mood = status === 'won' ? 'cheer' : status === 'lost' ? 'sad' : wrong.length ? 'wow' : 'think'
+  const allElements = level !== undefined && level <= 7
+  const noun = level === undefined ? 'prvek nebo látku' : allElements ? 'prvek' : 'látku'
 
   const moreHint = () => {
     if (shown < hints.length) setShown(shown + 1)
   }
 
-  const guess = (el: ChemElement) => {
+  const guess = (a: Answer) => {
     if (status !== 'play') return
-    if (el.z === target.z) {
+    if (a.id === target.id) {
       const p = roundPoints(shown, mode)
       scoreRef.current += p
       setScore(scoreRef.current)
       setPts(p)
-      collected.current.push(el.symbol)
+      if (a.symbol) collected.current.push(a.symbol)
       setStatus('won')
-      setMsg({
-        kind: 'good',
-        text: `Správně, jsem ${el.name.toLowerCase()} (${el.symbol})! ${shown === 1 ? 'Na první nápovědu, klobouk dolů.' : `Stačilo ti ${shown} nápověd.`}`,
-      })
+      const praise = shown === 1 ? 'Na první nápovědu, klobouk dolů.' : `Stačilo ti ${shown} nápověd.`
+      setMsg({ kind: 'good', text: isEl ? `Správně, jsem ${label(a)}! ${praise}` : `Správně, je to ${label(a)}! ${praise}` })
       jolt.pop()
       return
     }
-    if (wrong.includes(el.z)) {
-      setMsg({ kind: 'info', text: `${el.name} už jsi zkoušel(a). Zkus jiný prvek.` })
+    if (wrong.includes(a.id)) {
+      setMsg({ kind: 'info', text: `${a.name} už jsi zkoušel(a). Zkus něco jiného.` })
       return
     }
-    setWrong([...wrong, el.z])
+    setWrong([...wrong, a.id])
     jolt.shake()
     setText('')
+    const nope = isEl ? `Kdepak, nejsem ${a.name.toLowerCase()}.` : `Kdepak, ${a.name} to není.`
     if (shown < hints.length) {
       setShown(shown + 1)
-      setMsg({ kind: 'bad', text: `Kdepak, nejsem ${el.name.toLowerCase()}. Přidávám další nápovědu.` })
+      setMsg({ kind: 'bad', text: `${nope} Přidávám další nápovědu.` })
     } else {
       setStatus('lost')
-      setMsg({ kind: 'warn', text: `Nejsem ${el.name.toLowerCase()}. Byl jsem ${target.name.toLowerCase()} (${target.symbol}).` })
+      setMsg({ kind: 'warn', text: isEl ? `${nope} Byl jsem ${label(target)}.` : `${nope} Správná odpověď: ${label(target)}.` })
     }
   }
 
   const submitText = () => {
-    const el = sugg[active] ?? matchElement(text)
-    if (!el) {
-      if (text.trim()) setMsg({ kind: 'info', text: 'Takový prvek neznám. Vyber ho z nabídky pod políčkem.' })
+    const a = sugg[active] ?? matchAnswer(text, subject.kind)
+    if (!a) {
+      if (text.trim()) {
+        setMsg({ kind: 'info', text: isEl ? 'Takový prvek neznám. Vyber ho z nabídky pod políčkem.' : 'Takovou látku neznám. Vyber ji z nabídky pod políčkem.' })
+      }
       return
     }
-    guess(el)
+    guess(a)
     setText('')
     setActive(0)
   }
@@ -105,7 +131,7 @@ export default function WhoAmI({ levelId, onFinish }: GameProps) {
   }
 
   const next = () => {
-    if (i + 1 >= targets.length) {
+    if (i + 1 >= rounds.length) {
       finish({ score: scoreRef.current, max: ROUNDS * POINTS[0], collected: [...collected.current] })
       return
     }
@@ -118,7 +144,7 @@ export default function WhoAmI({ levelId, onFinish }: GameProps) {
     setText('')
     setActive(0)
     setPts(0)
-    setOptions(tileOptions(targets[ni], level))
+    setOptions(answerOptions(rounds[ni]))
   }
 
   const switchMode = (m: Mode) => {
@@ -130,14 +156,22 @@ export default function WhoAmI({ levelId, onFinish }: GameProps) {
 
   return (
     <div className="g-sh-root g-wa">
-      <p className="g-sh-instr">Hádej prvek z nápověd. Čím méně jich potřebuješ, tím víc bodů.</p>
-      <Hud score={score} round={i + 1} rounds={ROUNDS} roundLabel="Prvek" />
+      <p className="g-sh-instr">Hádej {noun} z nápověd. Čím méně jich potřebuješ, tím víc bodů.</p>
+      <Hud
+        score={score}
+        round={i + 1}
+        rounds={ROUNDS}
+        roundLabel={level === undefined ? 'Hádanka' : allElements ? 'Prvek' : 'Látka'}
+        level={level ?? 'mix'}
+      />
 
       <div ref={cardRef} className="card g-wa-card">
         <div className="g-wa-head">
           <Mascot mood={mood} size={60} />
           <div className="g-wa-head-text">
-            <span className="eyebrow">Kdo jsem?</span>
+            <span className="eyebrow">
+              Kdo jsem?{level === undefined ? ` · úroveň ${round.level}` : ''}
+            </span>
             <span className="g-wa-worth">
               {status === 'play' ? (
                 <>
@@ -157,7 +191,7 @@ export default function WhoAmI({ levelId, onFinish }: GameProps) {
               animate={{ opacity: 1, rotateY: 0, scale: 1 }}
               transition={spring.bouncy}
             >
-              <ElementTile element={target} size="md" />
+              {target.symbol ? <ElementTile element={BY_SYMBOL[target.symbol]} size="md" /> : <CompoundCard a={target} />}
             </motion.div>
           )}
           {status === 'won' && <PointsPop key={`p${i}`} points={pts} />}
@@ -186,7 +220,9 @@ export default function WhoAmI({ levelId, onFinish }: GameProps) {
                     transition={spring.snappy}
                   >
                     <span className="g-wa-hint-label">{h.label}</span>
-                    <span>{h.text}</span>
+                    <span>
+                      <Md text={h.text} />
+                    </span>
                   </motion.div>
                 ) : (
                   <span className="g-wa-locked">
@@ -202,7 +238,7 @@ export default function WhoAmI({ levelId, onFinish }: GameProps) {
       <div className="g-wa-status" aria-live="polite">
         {msg && (
           <Feedback kind={msg.kind} key={`${i}-${wrong.length}-${status}`}>
-            {msg.text}
+            <Md text={msg.text} />
           </Feedback>
         )}
       </div>
@@ -235,8 +271,8 @@ export default function WhoAmI({ levelId, onFinish }: GameProps) {
                   aria-controls={listId}
                   aria-autocomplete="list"
                   aria-activedescendant={sugg.length ? `${listId}-${active}` : undefined}
-                  aria-label="Název nebo značka prvku"
-                  placeholder="Napiš název nebo značku…"
+                  aria-label={isEl ? 'Název nebo značka prvku' : 'Název látky'}
+                  placeholder={isEl ? 'Napiš název nebo značku…' : 'Napiš název látky…'}
                   autoComplete="off"
                   autoCapitalize="off"
                   spellCheck={false}
@@ -261,55 +297,69 @@ export default function WhoAmI({ levelId, onFinish }: GameProps) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={spring.snappy}
                 >
-                  {sugg.map((e, k) => (
-                    <li
-                      key={e.z}
-                      id={`${listId}-${k}`}
-                      role="option"
-                      aria-selected={k === active}
-                      className={`g-wa-opt${k === active ? ' is-active' : ''}${wrong.includes(e.z) ? ' is-wrong' : ''}`}
-                      onPointerDown={(ev) => ev.preventDefault()}
-                      onClick={() => {
-                        guess(e)
-                        setText('')
-                        setActive(0)
-                      }}
-                    >
-                      <span className="g-wa-optsym" style={{ background: categoryVar(e.category) }}>
-                        {e.symbol}
-                      </span>
-                      <span>{e.name}</span>
-                      {wrong.includes(e.z) && (
-                        <span className="g-wa-opttag">
-                          <Icon name="x" /> zkoušeno
-                        </span>
-                      )}
-                    </li>
-                  ))}
+                  {sugg.map((a, k) => {
+                    const tried = wrong.includes(a.id)
+                    return (
+                      <li
+                        key={a.id}
+                        id={`${listId}-${k}`}
+                        role="option"
+                        aria-selected={k === active}
+                        className={`g-wa-opt${k === active ? ' is-active' : ''}${tried ? ' is-wrong' : ''}`}
+                        onPointerDown={(ev) => ev.preventDefault()}
+                        onClick={() => {
+                          guess(a)
+                          setText('')
+                          setActive(0)
+                        }}
+                      >
+                        {a.symbol ? (
+                          <span className="g-wa-optsym" style={{ background: categoryVar(BY_SYMBOL[a.symbol].category) }}>
+                            {a.symbol}
+                          </span>
+                        ) : null}
+                        <span>{a.name}</span>
+                        {!a.symbol && a.formula && (
+                          <span className="g-wa-optformula">
+                            <Md text={a.formula} />
+                          </span>
+                        )}
+                        {tried && (
+                          <span className="g-wa-opttag">
+                            <Icon name="x" /> zkoušeno
+                          </span>
+                        )}
+                      </li>
+                    )
+                  })}
                 </motion.ul>
               )}
             </div>
           ) : (
             <motion.div
-              className="g-wa-tiles"
+              className={`g-wa-tiles${isEl ? '' : ' g-wa-tiles-cmp'}`}
               role="group"
-              aria-label="Vyber prvek"
+              aria-label={isEl ? 'Vyber prvek' : 'Vyber látku'}
               key={`t${i}`}
               variants={stagger(0.06, 0.05)}
               initial="hidden"
               animate="show"
             >
-              {options.map((e) => {
-                const bad = wrong.includes(e.z)
+              {options.map((a) => {
+                const bad = wrong.includes(a.id)
                 return (
-                  <motion.div key={e.z} variants={popIn}>
+                  <motion.div key={a.id} variants={popIn}>
                     <motion.div
                       className={`g-wa-tile${bad ? ' is-wrong' : ''}`}
                       animate={bad ? { x: shake.x } : { x: 0 }}
                       transition={shake.transition}
                       whileTap={bad ? undefined : { scale: 0.95 }}
                     >
-                      <ElementTile element={e} size="md" dim={bad} onClick={bad ? undefined : () => guess(e)} />
+                      {a.symbol ? (
+                        <ElementTile element={BY_SYMBOL[a.symbol]} size="md" dim={bad} onClick={bad ? undefined : () => guess(a)} />
+                      ) : (
+                        <CompoundCard a={a} dim={bad} onClick={bad ? undefined : () => guess(a)} />
+                      )}
                       {bad && (
                         <motion.span
                           className="g-wa-tilex"
@@ -331,7 +381,7 @@ export default function WhoAmI({ levelId, onFinish }: GameProps) {
       ) : (
         <div className="g-sh-actions">
           <button type="button" className="btn btn-primary btn-lg" onClick={next} autoFocus>
-            {i + 1 >= targets.length ? 'Dokončit' : 'Další prvek'}
+            {i + 1 >= rounds.length ? 'Dokončit' : 'Další hádanka'}
             <Icon name="arrowRight" />
           </button>
         </div>

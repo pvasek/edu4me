@@ -144,8 +144,10 @@
 }
 
 /* ---------------------------------------------------------------- lines */
-.f67-o {
+:where(.f67-o:not([fill])) {
   fill: none;
+}
+.f67-o {
   stroke: var(--edge);
   stroke-width: 1.5;
   stroke-linejoin: round;

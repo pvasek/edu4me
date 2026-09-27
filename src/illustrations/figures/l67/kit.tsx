@@ -385,8 +385,21 @@ export function Lbl({
 }) {
   let lead: ReactNode = null
   if (tx !== undefined && ty !== undefined) {
-    const sx = lx ?? (anchor === 'start' ? x - 4 : anchor === 'end' ? x + 4 : x)
-    const sy = ly ?? (anchor === 'middle' ? (ty < y ? y - 15 : y + 5) : y - 5)
+    // estimate the text run so the leader leaves from the side facing the target
+    const size = className.includes('f67-big') ? 19 : className.includes('f67-sm') ? 14.5 : 16.5
+    const tw = flat(children).length * size * (className.includes('f67-b') ? 0.46 : 0.43)
+    const left = anchor === 'start' ? x : anchor === 'end' ? x - tw : x - tw / 2
+    const right = left + tw
+    let sx: number
+    let sy = y - size * 0.3
+    if (tx > right) sx = right + 4
+    else if (tx < left) sx = left - 4
+    else {
+      sx = Math.min(Math.max(tx, left), right)
+      sy = ty < y ? y - size * 0.95 : y + 5
+    }
+    sx = lx ?? sx
+    sy = ly ?? sy
     lead = (
       <>
         <line className="f67-lead" x1={sx} y1={sy} x2={tx} y2={ty} />
@@ -402,6 +415,17 @@ export function Lbl({
       </text>
     </g>
   )
+}
+
+function flat(n: ReactNode): string {
+  if (n === null || n === undefined || typeof n === 'boolean') return ''
+  if (typeof n === 'string' || typeof n === 'number') return String(n)
+  if (Array.isArray(n)) return n.map(flat).join('')
+  if (typeof n === 'object' && 'props' in n) {
+    const p = (n as { props: { children?: ReactNode; text?: string } }).props
+    return p.text ? p.text.replace(/[\^_]\{([^}]*)\}/g, '$1') : flat(p.children)
+  }
+  return ''
 }
 
 /** A formula (ChemText markup: ^{2+}, _{2}). */

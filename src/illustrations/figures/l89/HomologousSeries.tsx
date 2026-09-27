@@ -64,7 +64,7 @@ function Series() {
 
       {/* temperature axis */}
       <line className="f89-thin" x1={x0} y1={36} x2={x0} y2={L.top + ALKANES.length * L.rowH - L.rowH / 2} />
-      <text className="f89-f f89-sm f89-muted" x={x0} y={46} textAnchor="middle">
+      <text className="f89-f f89-sm f89-muted" x={x0 - 4} y={46} textAnchor="end">
         0 °C
       </text>
       <line className="f89-guide" x1={x25} y1={L.top - L.rowH / 2} x2={x25} y2={L.top + ALKANES.length * L.rowH - L.rowH / 2 + 8} />
@@ -103,7 +103,7 @@ function Series() {
                 cx={p[0]}
                 cy={p[1]}
                 r={k === n - 1 && n > 1 ? 3.6 : 3}
-                fill={k === n - 1 && n > 1 ? 'var(--lv)' : '#3b3b3b'}
+                fill={k === n - 1 && n > 1 ? 'var(--lv)' : 'var(--edge)'}
                 stroke="var(--edge)"
                 strokeWidth={0.8}
               />
@@ -127,7 +127,7 @@ function Series() {
               transition={{ duration: 0.6, delay: delay + 0.25, ease: ease.out }}
             />
             <rect x={Math.min(bx, x0)} y={y - 7} width={Math.abs(bx - x0)} height={14} className="f89-thin" style={{ opacity: on ? 1 : 0, transition: `opacity .3s ${delay + 0.7}s` }} />
-            <text className="f89-f f89-sm" x={neg ? x0 + 5 : x0 - 5} y={y + 4} textAnchor={neg ? 'start' : 'end'}>
+            <text className="f89-f f89-sm" x={neg ? x25 + 5 : x0 - 5} y={y + 4} textAnchor={neg ? 'start' : 'end'}>
               {bp < 0 ? `−${-bp}` : bp} °C
             </text>
           </motion.g>

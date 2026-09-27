@@ -153,14 +153,16 @@ function cholesterol() {
   m.sub(c10, 'C')
   m.sub(c13, 'C')
   m.sub(c3, 'O', { pick: 'up' })
-  const c20 = m.sub(c17, 'C', { pick: 'up' })
+  // side chain leaves C17 roughly in the ring plane, tilted to the β face
+  const [d1, d2] = m.freeDirs(c17, 'tet')
+  const c20 = m.grow(c17, 'C', vadd(vadd(d1, d2), [0, 0, 0.35]))
   const c22 = m.sub(c20, 'C', { pick: 0 })
-  m.sub(c20, 'C', { pick: 1 })
+  m.sub(c20, 'C', { pick: 0 })
   const c23 = m.sub(c22, 'C')
   const c24 = m.sub(c23, 'C')
   const c25 = m.sub(c24, 'C')
   m.sub(c25, 'C', { pick: 1 })
-  m.sub(c25, 'C', { pick: 2 })
+  m.sub(c25, 'C', { pick: 0 })
   return m.hs()
 }
 
@@ -664,7 +666,7 @@ const DEFS: Record<MoleculeId, Def> = {
       m.sub(c7, 'O', { order: 2 })
       m.sub(c7, 'O')
       const o = m.sub(r[1], 'O')
-      const c8 = m.sub(o, 'C', { geo: 'tri', len: 1.36 })
+      const c8 = m.sub(o, 'C', { geo: 'tri', len: 1.36, pick: 1 })
       m.sub(c8, 'C')
       m.sub(c8, 'O', { order: 2 })
       return m.hs()
@@ -846,7 +848,7 @@ export function findMolecule(species: string): MoleculeData | undefined {
     bySig = new Map()
     byFormula = new Map()
     for (const id of MOLECULES) {
-      byFormula.set(DEFS[id].formula, id)
+      if (!byFormula.has(DEFS[id].formula)) byFormula.set(DEFS[id].formula, id)
       const sig = signature(DEFS[id].formula)
       if (sig && !bySig.has(sig)) bySig.set(sig, id)
     }

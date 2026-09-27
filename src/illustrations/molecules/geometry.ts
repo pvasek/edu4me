@@ -179,6 +179,8 @@ export interface SubOpts {
   pick?: number | 'up' | 'down'
   /** atom the first free direction should be anti to (for 1-neighbour atoms) */
   anti?: number
+  /** explicit bond length (Å) */
+  len?: number
 }
 
 export class MolBuilder {

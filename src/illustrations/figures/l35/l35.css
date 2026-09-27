@@ -498,3 +498,79 @@
   fill: var(--ink);
   opacity: 0.07;
 }
+.f35-electron {
+  fill: var(--blue);
+  stroke: var(--surface);
+  stroke-width: 0.8;
+}
+.f35-sea {
+  fill: color-mix(in srgb, var(--blue) 13%, var(--surface));
+  stroke: none;
+}
+.f35-wood {
+  fill: #b98a52;
+  stroke: var(--edge);
+  stroke-width: 1.4;
+}
+.f35-arrow-line {
+  fill: none;
+  stroke: var(--lv-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.f35-arrow-head {
+  fill: var(--lv-ink);
+}
+.f35-ice-bg {
+  fill: color-mix(in srgb, var(--info-soft) 70%, var(--surface));
+}
+.f35-o-small {
+  fill: #d9493b;
+  stroke: #1f2a44;
+  stroke-width: 1.1;
+}
+.f35-h-small {
+  fill: #f4f1ea;
+  stroke: #1f2a44;
+  stroke-width: 1;
+}
+.f35-cloud {
+  fill: color-mix(in srgb, var(--blue) 14%, var(--surface));
+}
+.f35-cloud-edge {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.1;
+  stroke-dasharray: 3 2.5;
+}
+.f35-seg1 {
+  fill: var(--surface-2);
+}
+.f35-seg2 {
+  fill: var(--lv-soft);
+}
+.f35-seg3 {
+  fill: var(--lv-mid);
+}
+.f35-wipe {
+  fill: var(--surface);
+}
+.f35-pointer {
+  fill: var(--lv-ink);
+}
+.f35-dipole path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.f35-dipole polygon {
+  fill: var(--ink);
+}
+.f35-dipole-big path {
+  stroke: var(--lv-ink);
+  stroke-width: 2.6;
+}
+.f35-dipole-big polygon {
+  fill: var(--lv-ink);
+}
