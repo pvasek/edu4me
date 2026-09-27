@@ -1063,7 +1063,7 @@ const l33: Lesson = {
         },
         {
           type: 'p',
-          text: 'Proč taje $MgO$ o dva tisíce stupňů výš než $NaCl$? Ionty $Mg^{2+}$ a $O^{2-}$ nesou dvojnásobné náboje a jsou menší, takže se přitahují mnohem silněji. Proto se z oxidu hořečnatého vyrábějí žáruvzdorné vyzdívky pecí.',
+          text: 'Ionty $Mg^{2+}$ a $O^{2-}$ nesou dvojnásobné náboje a jsou menší, takže se přitahují mnohem silněji a $MgO$ taje o dva tisíce stupňů výš než $NaCl$. Vyrábějí se z něj žáruvzdorné vyzdívky pecí.',
         },
         {
           type: 'structure',
@@ -1093,7 +1093,7 @@ const l33: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Kovy mají nízkou elektronegativitu a málo valenčních elektronů, které snadno uvolní. Atomy kovu se proto změní na kationty a valenční elektrony vytvoří společný **elektronový plyn** („moře elektronů“), který prostupuje celým kusem kovu.',
+          text: 'Kovy mají nízkou elektronegativitu a své valenční elektrony snadno uvolní. Atomy se změní na kationty a elektrony vytvoří společný **elektronový plyn** („moře elektronů“), který prostupuje celým kusem kovu.',
         },
         {
           type: 'diagram',
@@ -1178,7 +1178,7 @@ const l33: Lesson = {
         },
         {
           type: 'p',
-          text: 'Kovalentní látky jsou dvojího druhu. **Molekulové látky** ($H2O$, $CO2$, $I2$, cukr) mají pevné vazby jen uvnitř molekul a mezi molekulami slabé síly (o nich je další lekce), proto tají a vřou při nízkých teplotách. V **kovalentních (atomových) krystalech** jsou kovalentně propojeny všechny atomy: ==roztavit je znamená rozbít pevné kovalentní vazby, proto tají až při velmi vysokých teplotách.==',
+          text: '**Molekulové látky** ($H2O$, $CO2$, $I2$, cukr) mají pevné vazby jen uvnitř molekul a mezi molekulami slabé síly (další lekce), proto tají a vřou při nízkých teplotách. V **kovalentních (atomových) krystalech** jsou kovalentně propojeny všechny atomy: ==roztavit je znamená rozbít pevné kovalentní vazby, proto tají až při velmi vysokých teplotách.==',
         },
         {
           type: 'diagram',
@@ -1321,7 +1321,7 @@ const l34: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Kovalentní vazby** drží atomy uvnitř molekuly a jsou pevné. **Mezimolekulové síly** přitahují celé molekuly k sobě, jsou mnohem slabší a rozhodují o teplotě tání a varu, rozpustnosti i povrchovém napětí molekulových látek. ==Při tání a varu molekulové látky se kovalentní vazby nerozbíjejí, molekuly se jen od sebe vzdálí.==',
+          text: '**Kovalentní vazby** drží atomy uvnitř molekuly, **mezimolekulové síly** přitahují celé molekuly k sobě a jsou mnohem slabší. Právě ony rozhodují o teplotě tání a varu, rozpustnosti i povrchovém napětí. ==Při tání a varu molekulové látky se kovalentní vazby nerozbíjejí, molekuly se jen od sebe vzdálí.==',
         },
         {
           type: 'particles',
@@ -1374,7 +1374,7 @@ const l34: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Van der Waalsovy síly** (podle nizozemského fyzika J. D. van der Waalse) je souhrnný název pro slabé přitažlivé síly mezi molekulami. Patří sem dva hlavní druhy; třetí, silnější, je vodíková vazba.',
+          text: '**Van der Waalsovy síly** (podle fyzika J. D. van der Waalse) jsou slabé přitažlivé síly mezi molekulami. Patří sem dva hlavní druhy; silnější je vodíková vazba.',
         },
         {
           type: 'compare',
@@ -1402,7 +1402,7 @@ const l34: Lesson = {
         },
         {
           type: 'p',
-          text: '**Londonovy síly**: elektrony se neustále pohybují, takže na okamžik bývá na jedné straně molekuly víc elektronů. Vznikne **okamžitý dipól**, který „nakazí“ sousední molekulu, a obě se na chvilku přitáhnou. ==Londonovy síly působí mezi všemi částicemi a rostou s počtem elektronů, tedy s velikostí molekuly.==',
+          text: '**Londonovy síly**: elektrony se pohybují, takže na okamžik bývá na jedné straně molekuly víc elektronů. Vznikne **okamžitý dipól**, který „nakazí“ souseda, a obě molekuly se na chvilku přitáhnou. ==Londonovy síly působí mezi všemi částicemi a rostou s počtem elektronů, tedy s velikostí molekuly.==',
         },
         {
           type: 'table',
@@ -1453,7 +1453,7 @@ const l34: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Vodíková vazba** je zvlášť silné přitahování mezi molekulami. Vzniká, když je vodík vázán na malý a velmi elektronegativní atom **F, O nebo N**. Takový vodík nese výrazný náboj δ+ a přitahuje volný elektronový pár atomu F, O nebo N sousední molekuly.',
+          text: '**Vodíková vazba** je zvlášť silné přitahování molekul. Vzniká, když je vodík vázán na malý, velmi elektronegativní atom **F, O nebo N**. Takový vodík nese výrazný náboj δ+ a přitahuje volný elektronový pár atomu F, O nebo N sousední molekuly.',
         },
         {
           type: 'diagram',
@@ -1503,7 +1503,7 @@ const l34: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'U sloučenin vodíku s prvky 16. a 17. skupiny roste od třetí periody dolů teplota varu, protože přibývá elektronů a sílí Londonovy síly. První člen každé řady ale z trendu divoce vybočuje.',
+          text: 'U sloučenin vodíku s prvky 16. a 17. skupiny roste od 3. periody dolů teplota varu: přibývá elektronů a sílí Londonovy síly. První člen každé řady ale z trendu divoce vybočuje.',
         },
         {
           type: 'table',
@@ -1645,7 +1645,7 @@ const l34: Lesson = {
         },
         {
           type: 'p',
-          text: 'Molekulu uvnitř kapaliny táhnou sousedé na všechny strany, molekulu na hladině jen do stran a dovnitř, proto se povrch „stahuje“. Voda má díky vodíkovým vazbám povrchové napětí mimořádně velké: kapky jsou kulaté a vodoměrky běhají po hladině.',
+          text: 'Molekulu na hladině táhnou sousedé jen do stran a dovnitř kapaliny, proto se povrch „stahuje“. Voda má díky vodíkovým vazbám povrchové napětí mimořádně velké: kapky jsou kulaté a vodoměrky běhají po hladině.',
         },
         {
           type: 'callout',
