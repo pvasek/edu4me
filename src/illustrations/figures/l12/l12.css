@@ -513,10 +513,13 @@
   stroke-width: 1.4;
 }
 .f12-tick {
-  font: 500 12px var(--font-mono);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: max(12px, calc(var(--f12-fs) * 0.72));
   fill: var(--ink-soft);
 }
 .f12-cross {
+  fill: none;
   stroke: var(--ink-soft);
   stroke-width: 1;
   stroke-dasharray: 3 3;
@@ -1166,4 +1169,23 @@
 }
 .f12-legend svg {
   overflow: visible;
+}
+
+/* ------------------------------------------------------------ dissolving */
+.f12-stack {
+  width: 100%;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+.f12-site {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+.f12-tank-water {
+  fill: color-mix(in srgb, var(--blue) 12%, var(--surface));
+  stroke: var(--line);
+  stroke-width: 1;
 }

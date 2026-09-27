@@ -40,6 +40,7 @@ function width(t: Tok) {
 
 function Scheme({ toks, cx, y, delay }: { toks: Tok[]; cx: number; y: number; delay: number }) {
   const total = toks.reduce((a, t) => a + width(t), 0)
+  const k = Math.min(1, 200 / total)
   let x = cx - total / 2
   const arrowAt = toks.indexOf('→')
   const out: ReactNode[] = []
@@ -73,7 +74,7 @@ function Scheme({ toks, cx, y, delay }: { toks: Tok[]; cx: number; y: number; de
     }
     x += w
   })
-  return <g>{out}</g>
+  return <g transform={k < 1 ? `translate(${cx} ${y}) scale(${k.toFixed(3)}) translate(${-cx} ${-y})` : undefined}>{out}</g>
 }
 
 interface Panel {

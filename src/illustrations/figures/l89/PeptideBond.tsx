@@ -130,8 +130,8 @@ export default function PeptideBond() {
         {/* the atoms that leave as water */}
         <Draw d={`M${gx + 124} ${r1 - 16} H${ax + 12} Q${ax + 20} ${r1 - 16} ${ax + 20} ${r1} Q${ax + 20} ${r1 + 16} ${ax + 12} ${r1 + 16} H${gx + 124} Q${gx + 116} ${r1 + 16} ${gx + 116} ${r1} Q${gx + 116} ${r1 - 16} ${gx + 124} ${r1 - 16}Z`} className="f89-ring" delay={0.9} dur={0.8} />
         <Fade delay={1.5}>
-          <Arrow x1={200} y1={r1 + 58} x2={200} y2={r2 - 44} />
-          <text className="f89-lb f89-lv" x={212} y={r1 + 86}>
+          <Arrow x1={330} y1={r1 + 58} x2={330} y2={r2 - 44} />
+          <text className="f89-lb f89-lv" x={340} y={r1 + 86}>
             kondenzace, − H₂O
           </text>
         </Fade>

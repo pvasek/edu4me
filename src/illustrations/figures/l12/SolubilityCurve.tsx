@@ -73,7 +73,7 @@ function Marker({ key2, x, y, on = false }: { key2: Key; x: number; y: number; o
   return <circle className={cls} cx={x} cy={y} r={4.8} />
 }
 
-const fmtG = (g: number) => (g >= 100 ? cz(g, 0) : cz(g, 1))
+const fmtG = (g: number) => (g >= 100 ? cz(g, 0) : g.toFixed(1).replace('.', ','))
 
 export default function SolubilityCurve() {
   const [t, setT] = useState<number | null>(null)
@@ -167,10 +167,10 @@ function Chart({ t }: { t: number | null }) {
       <Fade delay={2} className="f12-sec">
         <path className="f12-hatch" d={`M${sx(20)} ${sy(110)} L${sx(60)} ${sy(110)} L${sx(60)} ${sy(31.6)} L${sx(20)} ${sy(31.6)} Z`} fill={h('d')} />
         <path className="f12-cross" d={`M${sx(60)} ${sy(110)} L${sx(20)} ${sy(110)} L${sx(20)} ${sy(31.6)}`} />
-        <text className="f12-t" x={sx(22)} y={sy(80)}>
+        <text className="f12-t" x={sx(21)} y={sy(165)}>
           ochlazením z 60 na 20 °C
         </text>
-        <text className="f12-t f12-t-strong" x={sx(22)} y={sy(80) + 20}>
+        <text className="f12-t f12-t-strong" x={sx(21)} y={sy(165) + 20}>
           se vyloučí 78,4 g KNO₃
         </text>
       </Fade>

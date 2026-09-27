@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { ease } from '../../../ui/motion'
-import { Atom, Beaker, ChemText, CurveArrow, Fade, Figure, Note, Pop, T, vFade } from './kit'
+import { Atom, Beaker, ChemText, CurveArrow, Figure, Note, Pop, T, vFade } from './kit'
 
 type Pt = [number, number]
 const pol = (c: Pt, ang: number, len: number): Pt => [c[0] + Math.cos((ang * Math.PI) / 180) * len, c[1] + Math.sin((ang * Math.PI) / 180) * len]
@@ -27,7 +27,7 @@ function Hydronium({ at }: { at: Pt }) {
         <Atom key={i} x={h[0]} y={h[1]} r={6} el="H" sym={false} />
       ))}
       <Atom x={at[0]} y={at[1]} r={9.5} el="O" sym={false} />
-      <text x={at[0] + 16} y={at[1] - 10} className="f35-t f35-b" style={{ fontSize: 13 }}>
+      <text x={at[0] - 26} y={at[1] + 2} className="f35-t f35-b" style={{ fontSize: 14 }}>
         +
       </text>
     </g>
@@ -39,7 +39,7 @@ function Hydroxide({ at }: { at: Pt }) {
     <g>
       <Atom x={h[0]} y={h[1]} r={6} el="H" sym={false} />
       <Atom x={at[0]} y={at[1]} r={9.5} el="O" sym={false} />
-      <text x={at[0] - 18} y={at[1] - 6} className="f35-t f35-b" style={{ fontSize: 14 }}>
+      <text x={at[0] + 14} y={at[1] + 16} className="f35-t f35-b" style={{ fontSize: 15 }}>
         −
       </text>
     </g>

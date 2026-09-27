@@ -22,7 +22,7 @@ export function ParticleScene({ boxes, arrows }: { boxes: ParticleBox[]; arrows?
   }, [boxes])
   return (
     <motion.div
-      className="pt-scene"
+      className={'pt-scene' + (arrows && boxes.length <= 3 ? ' pt-seq' : '')}
       variants={stagger(0.14, 0.05)}
       initial="hidden"
       whileInView="show"

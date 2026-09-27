@@ -38,14 +38,14 @@ function Cabbage({ x, y, w }: { x: number; y: number; w: number }) {
       <rect x={x} y={y} width={w} height={26} fill={pat(p, 'sw')} opacity={0.6} />
       <rect x={x} y={y} width={w} height={26} rx={2} className="f35-line" />
       {CABBAGE.map((_, i) => (
-        <text key={i} x={x + (i + 0.5) * cw} y={y + 17} textAnchor="middle" className="f35-mono" style={{ fontSize: 10, fill: '#fffaf0' }}>
+        <text key={i} x={x + (i + 0.5) * cw} y={y + 17} textAnchor="middle" className="f35-mono" style={{ fontSize: 10, fill: i >= 11 ? '#1f2a44' : '#fffaf0' }}>
           {i + 1}
         </text>
       ))}
       {[
         { ph: 3, t: 'ocet' },
         { ph: 7, t: 'voda' },
-        { ph: 8.5, t: 'jedlá soda' },
+        { ph: 9.2, t: 'jedlá soda' },
       ].map((m) => (
         <g key={m.t}>
           <line x1={at(m.ph)} x2={at(m.ph)} y1={y + 26} y2={y + 36} className="f35-leader" />
@@ -68,7 +68,7 @@ export default function IndicatorColors() {
       layouts={[
         {
           w: 400,
-          h: 520,
+          h: 500,
           max: 560,
           draw: () => (
             <>

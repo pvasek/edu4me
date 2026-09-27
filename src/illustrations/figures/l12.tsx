@@ -2,6 +2,7 @@ import type { ComponentType } from 'react'
 import type { FigureId } from '../catalog'
 import AirComposition from './l12/AirComposition'
 import BunsenBurner from './l12/BunsenBurner'
+import Dissolving from './l12/Dissolving'
 import FireTriangle from './l12/FireTriangle'
 import HeatingTestTube from './l12/HeatingTestTube'
 import LabEquipment from './l12/LabEquipment'
@@ -21,4 +22,5 @@ export const FIGURES_L12: Partial<Record<FigureId, ComponentType>> = {
   'fire-triangle': FireTriangle,
   'air-composition': AirComposition,
   'solubility-curve': SolubilityCurve,
+  dissolving: Dissolving,
 }

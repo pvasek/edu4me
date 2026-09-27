@@ -17,7 +17,7 @@ export function ReactionView({ equation }: { equation: string }) {
   if (!eq) return <Md text={`$${equation}$`} />
   const all = [...eq.left, ...eq.right]
   const maxSpan = Math.max(...all.map((t) => glyphFor(t.species).span), 1.5)
-  const s = Math.min(10, 56 / maxSpan)
+  const s = Math.min(13, 70 / maxSpan)
   const rows = tally(eq)
   const q = chargeTally(eq)
   const tArrow = 0.25 + eq.left.length * 0.18

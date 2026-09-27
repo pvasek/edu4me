@@ -709,3 +709,19 @@
 .f35-lake {
   fill: color-mix(in srgb, var(--teal) 35%, var(--surface));
 }
+.f35-zn {
+  fill: #8a93a3;
+  stroke: var(--edge);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.f35-ppt {
+  fill: #fbfaf6;
+  stroke: #1f2a44;
+  stroke-width: 0.5;
+}
+.f35-ppt-layer {
+  fill: #f4f1ea;
+  stroke: #1f2a44;
+  stroke-width: 0.8;
+}

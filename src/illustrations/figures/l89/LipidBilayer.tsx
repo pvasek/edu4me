@@ -60,7 +60,7 @@ export default function LipidBilayer() {
 function Scene() {
   const n = useNarrow()
   const hatch = useHatch()
-  const L = n ? { w: 360, h: 420, x0: 18, x1: 350, top: 150, ch: 214 } : { w: 620, h: 330, x0: 24, x1: 420, top: 88, ch: 290 }
+  const L = n ? { w: 360, h: 410, x0: 18, x1: 350, top: 130, ch: 214 } : { w: 620, h: 330, x0: 24, x1: 420, top: 88, ch: 290 }
   const bot = L.top + 154
   const mid = (L.top + bot) / 2
   const xs: number[] = []
@@ -75,10 +75,10 @@ function Scene() {
       <rect x={4} y={bot + 12} width={L.x1 - L.x0 + 36} height={64} rx={6} className="f89-water" />
       <rect x={4} y={L.top - 76} width={L.x1 - L.x0 + 36} height={64} rx={6} fill={hatch('w')} className="f89-hatch" />
       <rect x={4} y={bot + 12} width={L.x1 - L.x0 + 36} height={64} rx={6} fill={hatch('w')} className="f89-hatch" />
-      <text className="f89-lb" x={14} y={L.top - 54}>
+      <text className="f89-lb" x={n ? L.w - 14 : 14} y={L.top - 54} textAnchor={n ? 'end' : 'start'}>
         vně buňky (voda)
       </text>
-      <text className="f89-lb" x={14} y={bot + 68}>
+      <text className="f89-lb" x={n ? L.w - 14 : 14} y={bot + 68} textAnchor={n ? 'end' : 'start'}>
         cytoplazma (voda)
       </text>
 
@@ -134,16 +134,16 @@ function Scene() {
       <Fade delay={1.8}>
         {n ? (
           <>
-            <Lbl x={200} y={L.top - 90} tx={xs[xs.length - 2]} ty={L.top - 9} className="f89-b">
+            <Lbl x={30} y={34} tx={xs[1]} ty={L.top - 9} className="f89-b">
               polární hlavička
             </Lbl>
-            <Lbl x={346} y={20} tx={L.ch + 16} ty={L.top - 30} anchor="end" className="f89-b">
+            <Lbl x={L.ch} y={14} tx={L.ch} ty={L.top - 32} anchor="middle" className="f89-b">
               kanálový protein
             </Lbl>
-            <Lbl x={130} y={bot + 104} tx={xs[1]} ty={bot + 8} className="f89-b">
+            <Lbl x={30} y={bot + 104} tx={xs[1]} ty={bot + 8} className="f89-b">
               cholesterol
             </Lbl>
-            <Lbl x={346} y={bot + 124} tx={xs[xs.length - 2] + 4} ty={mid + 30} anchor="end" className="f89-b">
+            <Lbl x={346} y={bot + 104} tx={xs[xs.length - 1]} ty={bot - 20} anchor="end" className="f89-b">
               nepolární ocasy
             </Lbl>
           </>
