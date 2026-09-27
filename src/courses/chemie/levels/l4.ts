@@ -76,12 +76,7 @@ const l4_1: Lesson = {
         {
           type: 'diagram',
           id: 'conservation-of-mass',
-          caption: 'Uzavřená nádoba na vahách: před reakcí i po ní ukazuje váha totéž.',
-        },
-        {
-          type: 'formula',
-          text: '$m(reaktantů) = m(produktů)$',
-          caption: 'zákon zachování hmotnosti: v uzavřené soustavě se celková hmotnost při reakci nemění',
+          caption: 'Ocet a jedlá soda v baňce uzavřené balonkem: vzniklý $CO2$ balonek nafoukne, ale váha ukazuje před reakcí i po ní 152,4 g. V uzavřené soustavě se celková hmotnost při reakci nemění.',
         },
         {
           type: 'particles',
@@ -416,7 +411,7 @@ const l4_2: Lesson = {
         {
           type: 'reaction',
           equation: '2H2 + O2 -> 2H2O',
-          caption: 'Vyčísleno: vlevo i vpravo 4 atomy H a 2 atomy O.',
+          caption: 'Vyčísleno jen doplněním čísel před vzorce – vzorce látek zůstaly stejné.',
         },
         {
           type: 'compare',
@@ -517,13 +512,7 @@ const l4_2: Lesson = {
             { icon: 'lungs', title: '**Ky**slík', text: 'vyrovnej kyslík' },
             { icon: 'check', title: 'kontrola', text: 'zkontroluj všechny prvky a zkrať koeficienty na nejmenší celá čísla' },
           ],
-          caption: 'Pořadí vyčíslování',
-        },
-        {
-          type: 'callout',
-          variant: 'tip',
-          title: 'Pomůcka KoNeVoKy',
-          text: '**Ko**vy → **Ne**kovy → **Vo**dík → **Ky**slík. Kyslík je poslední, protože se objevuje skoro všude.',
+          caption: 'Pořadí vyčíslování – pomůcka **KoNeVoKy**. Kyslík je poslední, protože se objevuje skoro všude.',
         },
         {
           type: 'example',
@@ -540,7 +529,6 @@ const l4_2: Lesson = {
         {
           type: 'reaction',
           equation: 'N2 + 3H2 -> 2NH3',
-          caption: '2 atomy N a 6 atomů H na každé straně',
         },
         {
           type: 'example',
@@ -557,7 +545,6 @@ const l4_2: Lesson = {
         {
           type: 'reaction',
           equation: '4Al + 3O2 -> 2Al2O3',
-          caption: 'nejmenší společný násobek indexů 2 a 3 je 6 atomů kyslíku',
         },
         {
           type: 'callout',
@@ -622,7 +609,6 @@ const l4_2: Lesson = {
         {
           type: 'reaction',
           equation: '2H2O2 -> 2H2O + O2',
-          caption: 'rozklad peroxidu vodíku: 4 H a 4 O na každé straně',
         },
         {
           type: 'example',
@@ -641,7 +627,6 @@ const l4_2: Lesson = {
         {
           type: 'reaction',
           equation: '4NH3 + 5O2 -> 4NO + 6H2O',
-          caption: 'po vynásobení dvěma: N 4 = 4, H 12 = 12, O 10 = 10',
         },
         {
           type: 'callout',
@@ -697,7 +682,6 @@ const l4_2: Lesson = {
         {
           type: 'reaction',
           equation: 'CH4 + 2O2 -> CO2 + 2H2O',
-          caption: 'hoření methanu: C 1 = 1, H 4 = 4, O 4 = 4',
         },
         {
           type: 'example',
@@ -920,37 +904,21 @@ const l4_3: Lesson = {
         {
           type: 'diagram',
           id: 'reaction-types',
-          caption: 'Čtyři základní typy reakcí podle změny látek',
+          caption: 'Čtyři základní typy reakcí: barevné tvary ukazují, co se spojí, co se rozpadne a kdo si s kým vymění místo. Pod každým schématem je skutečná rovnice, u syntézy třeba hoření hořčíku v bleskovém prášku.',
         },
         {
-          type: 'iconlist',
+          type: 'list',
           items: [
-            {
-              icon: 'bond',
-              title: '**syntéza** (slučování): A + B → AB',
-              text: 'z více látek vzniká jedna; hoření hořčíku v bleskovém prášku $2Mg + O2 -> 2MgO$, vznik $FeS$ ze železa a síry',
-            },
-            {
-              icon: 'heat',
-              title: '**rozklad** (analýza): AB → A + B',
-              text: 'z jedné látky vzniká více látek; pálení vápence $CaCO3 -> CaO + CO2$, elektrolýza vody $2H2O -> 2H2 + O2$',
-            },
-            {
-              icon: 'arrow-cycle',
-              title: '**substituce** (nahrazování): A + BC → AC + B',
-              text: 'prvek „vystrčí“ jiný prvek ze sloučeniny; zinek vytěsní měď $Zn + CuCl2 -> ZnCl2 + Cu$, chlor vytěsní brom $Cl2 + 2KBr -> 2KCl + Br2$',
-            },
-            {
-              icon: 'mixture',
-              title: '**podvojná záměna**: AB + CD → AD + CB',
-              text: 'dvě sloučeniny si „vymění partnery“ jako dva páry při tanci; $AgNO3 + NaCl -> AgCl + NaNO3$',
-            },
+            '**syntéza** – z více látek vzniká jedna; další příklad: vznik $FeS$ ze železa a síry',
+            '**rozklad** – z jedné látky vzniká více látek; další příklad: elektrolýza vody $2H2O -> 2H2 + O2$',
+            '**substituce** – prvek „vystrčí“ jiný prvek ze sloučeniny; další příklad: chlor vytěsní brom $Cl2 + 2KBr -> 2KCl + Br2$',
+            '**podvojná záměna** – dvě sloučeniny si „vymění partnery“ jako dva páry při tanci',
           ],
         },
         {
           type: 'reaction',
           equation: 'Fe + 2HCl -> FeCl2 + H2',
-          caption: 'železné piliny v kyselině chlorovodíkové šumí',
+          caption: 'Prohlédni si částice: s kým je chlor spojený vlevo a s kým vpravo?',
         },
         {
           type: 'example',
@@ -1046,7 +1014,7 @@ const l4_3: Lesson = {
         {
           type: 'reaction',
           equation: 'HCl + NaOH -> NaCl + H2O',
-          caption: 'neutralizace: kyselina + hydroxid → sůl + voda (podrobně v úrovni 5)',
+          caption: 'neutralizace kyseliny chlorovodíkové hydroxidem sodným (podrobně v úrovni 5)',
         },
         {
           type: 'callout',
@@ -1092,7 +1060,6 @@ const l4_3: Lesson = {
               tone: 'a',
               points: [
                 'teplo **uvolňuje**, okolí se ohřívá',
-                'produkty mají méně energie než reaktanty',
                 'hoření, neutralizace, ohřívací sáčky na ruce',
               ],
             },
@@ -1102,7 +1069,6 @@ const l4_3: Lesson = {
               tone: 'b',
               points: [
                 'teplo **spotřebovává**, musíš ho dodávat nebo se okolí ochladí',
-                'produkty mají více energie než reaktanty',
                 'rozklad vápence, fotosyntéza',
               ],
             },
@@ -1112,7 +1078,7 @@ const l4_3: Lesson = {
           type: 'diagram',
           id: 'energy-profile',
           props: { kind: 'exo' },
-          caption: 'Exotermní reakce: produkty mají méně energie než reaktanty, rozdíl odchází jako teplo.',
+          caption: 'Exotermní reakce: produkty mají méně energie než reaktanty, rozdíl odchází jako teplo. Kopec $E_{a}$ uprostřed (aktivační energie) probereš v úrovni 6.',
         },
         {
           type: 'diagram',
@@ -1173,14 +1139,22 @@ const l4_3: Lesson = {
           caption: 'výroba amoniaku: část amoniaku se zase rozkládá zpátky na dusík a vodík',
         },
         {
-          type: 'table',
-          headers: ['Reakce', 'Rychlost', 'Směr'],
-          rows: [
-            ['vznik sraženiny $AgCl$', 'okamžitá', 'prakticky nevratná'],
-            ['hoření dřeva', 'rychlá', 'nevratná'],
-            ['rezavění železa', 'pomalá', 'nevratná'],
-            ['$CaCO3 <=> CaO + CO2$ v uzavřené nádobě', 'závisí na teplotě', 'vratná'],
+          type: 'compare',
+          columns: [
+            {
+              title: 'nevratné →',
+              icon: 'flame',
+              tone: 'a',
+              points: ['hoření dřeva', 'rezavění železa', 'vznik sraženiny $AgCl$ (prakticky nevratný)'],
+            },
+            {
+              title: 'vratné ⇌',
+              icon: 'equilibrium',
+              tone: 'b',
+              points: ['$CaCO3 <=> CaO + CO2$ v uzavřené nádobě', 'rychlost závisí na teplotě'],
+            },
           ],
+          caption: 'Nevratná může být reakce rychlá (hoření) i pomalá (rezavění).',
         },
         {
           type: 'callout',
@@ -1232,7 +1206,7 @@ const l4_3: Lesson = {
         {
           type: 'diagram',
           id: 'redox-transfer',
-          caption: 'Při redoxní reakci přecházejí elektrony z jedné částice na druhou.',
+          caption: 'Při redoxní reakci přecházejí elektrony z jedné částice na druhou: atom zinku předá dva elektrony kationtu $Cu^{2+}$ – přesně to se děje v reakci z příkladu níže.',
         },
         {
           type: 'example',
@@ -1390,7 +1364,7 @@ const l4_4: Lesson = {
         {
           type: 'diagram',
           id: 'mole-scale',
-          caption: 'Tucet, balík, mol: jeden mol je obří balení 6,022·10^{23} částic.',
+          caption: 'Jeden mol od každé látky: 18 g vody, 58,5 g soli, 12 g uhlíku i balonek 22,4 dm^{3} plynu. Pokaždé je to 6,022·10^{23} částic. Proč každý mol váží jinak, zjistíš u molární hmotnosti.',
         },
         {
           type: 'keyterms',
@@ -1403,7 +1377,7 @@ const l4_4: Lesson = {
         {
           type: 'formula',
           text: '$n = N / N_{A}$',
-          caption: '$n$ látkové množství (mol), $N$ počet částic, $N_{A}$ = 6,022·10^{23} mol^{−1}',
+          caption: '$n$ látkové množství (mol), $N$ počet částic, $N_{A}$ Avogadrova konstanta',
         },
         {
           type: 'example',
@@ -1480,12 +1454,12 @@ const l4_4: Lesson = {
         {
           type: 'diagram',
           id: 'mole-bridge',
-          caption: 'Látkové množství je most: z něj se dostaneš k hmotnosti, k počtu částic i k objemu plynu.',
+          caption: 'Látkové množství $n$ je most: z hmotnosti se k němu dostaneš dělením $M$, z počtu částic dělením $N_{A}$, z objemu plynu dělením $V_{m}$ a u roztoku platí $n = c · V$. Opačným směrem násobíš.',
         },
         {
           type: 'formula',
           text: '$n = m / M$',
-          caption: '$m$ hmotnost (g), $M$ molární hmotnost (g/mol), $n$ látkové množství (mol)',
+          caption: '$m$ hmotnost (g), $M$ molární hmotnost (g/mol), $n$ látkové množství (mol). Trojúhelník $m$–$n$–$M$: zakryj, co hledáš, a zbude $m = n · M$, $n = m / M$ nebo $M = m / n$.',
         },
         {
           type: 'example',
@@ -1497,18 +1471,6 @@ const l4_4: Lesson = {
             '$M(Al2O3)$ = 2 · 27 + 3 · 16 = 54 + 48 = 102 g/mol',
           ],
           answer: '18 g/mol, 100 g/mol a 102 g/mol',
-        },
-        {
-          type: 'process',
-          layout: 'flow',
-          steps: [
-            { icon: 'balance-scale', title: 'hmotnost $m$', text: 'v gramech' },
-            { icon: 'calculator', title: '÷ $M$', text: 'molární hmotnost v g/mol' },
-            { icon: 'atom', title: 'látkové množství $n$', text: 'v molech' },
-            { icon: 'calculator', title: '× $N_{A}$', text: '6,022·10^{23} mol^{−1}' },
-            { icon: 'molecule', title: 'počet částic $N$' },
-          ],
-          caption: 'Opačným směrem násobíš $M$ a dělíš $N_{A}$. Trojúhelník $m$–$n$–$M$: zakryj, co hledáš, a zbude $m = n · M$, $n = m / M$ nebo $M = m / n$.',
         },
         {
           type: 'example',
@@ -1540,7 +1502,7 @@ const l4_4: Lesson = {
         {
           type: 'callout',
           variant: 'warning',
-          text: 'Chlor, kyslík, dusík i vodík tvoří dvouatomové molekuly. $M(Cl2)$ = 71 g/mol, ne 35,5 g/mol. Podobně $M(O2)$ = 32 g/mol.',
+          text: 'Chlor, kyslík, dusík i vodík tvoří dvouatomové molekuly, proto se jejich $A_{r}$ násobí dvěma: $M(Cl2)$ = 71 g/mol, ne 35,5 g/mol.',
         },
         {
           type: 'game',
@@ -1787,7 +1749,7 @@ const l4_4: Lesson = {
             { icon: 'balance-scale', title: 'vezmi 100 g látky', text: 'procenta se změní na gramy' },
             { icon: 'calculator', title: 'převeď na moly', text: '$n = m / A_{r}$ pro každý prvek' },
             { icon: 'chart', title: 'vyděl nejmenším číslem', text: 'dostaneš poměr atomů' },
-            { icon: 'check', title: 'dotáhni na celá čísla', text: '1,5 → ×2; 1,33 → ×3' },
+            { icon: 'check', title: 'dotáhni na celá čísla', text: 'vyjde-li desetinné číslo, vynásob (viz tip níže)' },
             { icon: 'pencil', title: 'napiš vzorec', text: 'z poměru a molární hmotnosti' },
           ],
           caption: 'Jak najít empirický (a molekulový) vzorec ze složení',
@@ -1965,17 +1927,6 @@ const l4_5: Lesson = {
           caption: 'po dosazení $n = m / M$: se vzorcem v tomto tvaru se počítá nejčastěji',
         },
         {
-          type: 'process',
-          layout: 'flow',
-          steps: [
-            { icon: 'balance-scale', title: 'hmotnost $m$', text: 'navážená látka v gramech' },
-            { icon: 'calculator', title: '$n = m / M$', text: 'převeď na moly' },
-            { icon: 'beaker', title: 'objem v dm^{3}', text: '250 cm^{3} = 0,250 dm^{3}' },
-            { icon: 'check', title: '$c = n / V$', text: 'koncentrace v mol/dm^{3}' },
-          ],
-          caption: 'Výpočet koncentrace krok za krokem',
-        },
-        {
           type: 'example',
           title: 'Solný roztok',
           problem: 'Rozpustíš 5,85 g $NaCl$ a doplníš vodou na objem 250 cm^{3}. Jaká je molární koncentrace? ($A_{r}$: Na 23, Cl 35,5)',
@@ -2050,7 +2001,7 @@ const l4_5: Lesson = {
         {
           type: 'diagram',
           id: 'meniscus',
-          caption: 'Doplňuj po rysku: spodní okraj menisku se dotýká rysky.',
+          caption: 'Hladinu odečítej s okem v její úrovni: u vody se čte spodní okraj vydutého menisku. Stejně doplňuješ odměrnou baňku – spodní okraj menisku se má dotknout rysky.',
         },
         {
           type: 'example',
@@ -2094,7 +2045,7 @@ const l4_5: Lesson = {
           type: 'iconlist',
           items: [
             { icon: 'syringe', title: 'fyziologický roztok', text: '0,9 % $NaCl$' },
-            { icon: 'hazard', title: 'koncentrovaná kyselina chlorovodíková', text: '36 % $HCl$' },
+            { icon: 'warning', title: 'koncentrovaná kyselina chlorovodíková', text: '36 % $HCl$' },
             { icon: 'warning', title: 'koncentrovaný čpavek', text: '25 % $NH3$' },
           ],
         },
@@ -2179,23 +2130,7 @@ const l4_5: Lesson = {
         {
           type: 'diagram',
           id: 'dilution',
-          caption: 'Přiléváš jen vodu: rozpuštěných částic je pořád stejně, jen ve větším objemu.',
-        },
-        {
-          type: 'formula',
-          text: '$c1 · V1 = c2 · V2$',
-          caption: 'před zředěním ($c1$, $V1$) a po zředění ($c2$, $V2$); obě strany jsou rovny $n$',
-        },
-        {
-          type: 'process',
-          layout: 'flow',
-          steps: [
-            { icon: 'calculator', title: 'spočítej $V1$', text: '$V1 = c2 · V2 / c1$' },
-            { icon: 'pipette', title: 'odměř', text: '$V1$ zásobního roztoku' },
-            { icon: 'flask', title: 'do odměrné baňky', text: 'o objemu $V2$' },
-            { icon: 'droplets', title: 'doplň vodou', text: 'po rysku a promíchej' },
-          ],
-          caption: 'Ředění zásobního roztoku',
+          caption: 'Pipetou odměříš $V1$ zásobního roztoku, převedeš ho do odměrné baňky o objemu $V2$ a doplníš vodou po rysku. Rozpuštěných částic je pořád stejně, jen ve větším objemu, proto $c1 · V1 = c2 · V2$ (obě strany jsou rovny $n$). Čísla na obrázku spočítáš v příkladu níže.',
         },
         {
           type: 'example',
@@ -2428,7 +2363,7 @@ const l4_6: Lesson = {
         {
           type: 'reaction',
           equation: 'N2 + 3H2 -> 2NH3',
-          caption: '1 mol $N2$ reaguje se 3 mol $H2$ a vzniknou 2 mol $NH3$',
+          caption: 'syntéza amoniaku: na obrázku molekuly, ale stejný poměr platí i pro moly',
         },
         {
           type: 'formula',
@@ -2491,7 +2426,7 @@ const l4_6: Lesson = {
           steps: [
             { icon: 'balance-scale', title: '$m(A)$', text: 'hmotnost zadané látky' },
             { icon: 'calculator', title: '$n(A)$', text: 'vyděl molární hmotností $M(A)$' },
-            { icon: 'equilibrium', title: '$n(B)$', text: 'přepočítej poměrem koeficientů' },
+            { icon: 'molecule', title: '$n(B)$', text: 'přepočítej poměrem koeficientů' },
             { icon: 'balance-scale', title: '$m(B)$', text: 'vynásob molární hmotností $M(B)$' },
           ],
           caption: '$m(A) -> n(A) -> n(B) -> m(B)$',
@@ -2627,7 +2562,7 @@ const l4_6: Lesson = {
         {
           type: 'reaction',
           equation: 'C3H8(g) + 5O2(g) -> 3CO2(g) + 4H2O(l)',
-          caption: '10 dm^{3} propanu + 50 dm^{3} kyslíku → 30 dm^{3} $CO2$',
+          caption: 'hoření propanu: kromě vody jsou všechny látky plyny',
         },
         {
           type: 'callout',
@@ -2664,7 +2599,7 @@ const l4_6: Lesson = {
         {
           type: 'diagram',
           id: 'limiting-reagent',
-          caption: 'Limitující reaktant dojde jako první, reaktant v nadbytku zbude.',
+          caption: 'Na sendvič patří 2 krajíce chleba a 1 plátek sýra. Z 8 krajíců a 3 plátků uděláš jen 3 sendviče: sýr dojde první, 2 krajíce zbudou. U molekul podle $2H2 + O2 -> 2H2O$ stačí 4 molekuly vodíku jen na 2 molekuly kyslíku: vodík je limitující a jedna $O2$ zbude.',
         },
         {
           type: 'keyterms',
@@ -2672,15 +2607,6 @@ const l4_6: Lesson = {
             { term: 'limitující reaktant', def: 'reaktant, který se spotřebuje jako první; určuje, kolik produktu vznikne' },
             { term: 'reaktant v nadbytku', def: 'reaktant, jehož část po reakci zbude nezreagovaná' },
           ],
-        },
-        {
-          type: 'particles',
-          arrows: true,
-          boxes: [
-            { label: 'před reakcí', items: [{ species: 'H2', count: 4 }, { species: 'O2', count: 3 }], state: 'gas', note: '4 $H2$, 3 $O2$' },
-            { label: 'po reakci', items: [{ species: 'H2O', count: 4 }, { species: 'O2', count: 1 }], state: 'gas', note: 'vodík došel, 1 $O2$ zbyla' },
-          ],
-          caption: 'Podle $2H2 + O2 -> 2H2O$ stačí 4 molekuly vodíku jen na 2 molekuly kyslíku: vodík je limitující.',
         },
         {
           type: 'process',
@@ -2811,7 +2737,7 @@ const l4_6: Lesson = {
         {
           type: 'diagram',
           id: 'haber-process',
-          caption: 'Výroba amoniaku: nezreagované plyny se vracejí zpět do reaktoru.',
+          caption: 'Výroba amoniaku: kompresor stlačí dusík s vodíkem do reaktoru s katalyzátorem, v chladiči amoniak zkapalní a nezreagované plyny se vracejí zpět do reaktoru.',
         },
         {
           type: 'callout',
@@ -2846,7 +2772,7 @@ const l4_6: Lesson = {
             { icon: 'pencil', title: 'rovnice', text: 'zapiš a vyčísli' },
             { icon: 'calculator', title: 'na moly', text: 'všechno, co znáš: $m/M$, $c·V$, $V/V_{m}$' },
             { icon: 'magnifier', title: 'limitující reaktant', text: 'jsou-li zadané dva reaktanty' },
-            { icon: 'equilibrium', title: 'poměr koeficientů', text: 'moly hledané látky' },
+            { icon: 'molecule', title: 'poměr koeficientů', text: 'moly hledané látky' },
             { icon: 'balance-scale', title: 'na hledanou veličinu', text: 'hmotnost, objem, koncentraci' },
             { icon: 'check', title: 'výtěžek a kontrola', text: 'je výsledek rozumný?' },
           ],

@@ -35,9 +35,8 @@ const l51: Lesson = {
         { type: 'formula', text: '$HCl -> H^+ + Cl^-$', caption: 'disociace chlorovodíku ve vodě (zjednodušený zápis)' },
         {
           type: 'p',
-          text: 'Holý proton $H^+$ ve vodě nevydrží. Okamžitě se naváže na volný elektronový pár kyslíku v molekule vody a vznikne **oxoniový kation** $H3O^+$. Přesnější zápis je proto:',
+          text: 'Holý proton $H^+$ ve vodě nevydrží. Okamžitě se naváže na volný elektronový pár kyslíku v molekule vody a vznikne **oxoniový kation** $H3O^+$.',
         },
-        { type: 'formula', text: '$HCl + H2O -> H3O^+ + Cl^-$' },
         {
           type: 'particles',
           boxes: [
@@ -45,7 +44,7 @@ const l51: Lesson = {
             { label: 'kyselina chlorovodíková', items: [{ species: 'H3O+', count: 3 }, { species: 'Cl^-', count: 3 }, { species: 'H2O', count: 3 }], state: 'solution' },
           ],
           arrows: true,
-          caption: 'Každá molekula $HCl$ předá proton molekule vody: vzniknou $H3O^+$ a $Cl^-$.',
+          caption: 'Přesnější zápis je proto $HCl + H2O -> H3O^+ + Cl^-$: každá molekula $HCl$ předá proton molekule vody.',
         },
         { type: 'molecule', molecules: ['H2O', 'H3O+'], labels: ['voda', 'oxoniový kation $H3O^+$'] },
         {
@@ -161,11 +160,6 @@ const l51: Lesson = {
           ],
         },
         {
-          type: 'callout',
-          variant: 'remember',
-          text: 'Koncovky podle oxidačního čísla I–VIII: **-ná, -natá, -itá, -ičitá, -ičná/-ečná, -ová, -istá, -ičelá**. Je to stejná řada jako u oxidů.',
-        },
-        {
           type: 'process',
           layout: 'flow',
           steps: [
@@ -217,7 +211,6 @@ const l51: Lesson = {
           ],
           caption: 'Oxid nekovu se stejným oxidačním číslem + $H2O$. Jsou-li všechny počty atomů sudé, vyděl je dvěma.',
         },
-        { type: 'reaction', equation: 'SO3 + H2O -> H2SO4', caption: 'oxid sírový + voda -> kyselina sírová' },
         {
           type: 'example',
           problem: 'Odvoď vzorec kyseliny dusičné.',
@@ -315,7 +308,7 @@ const l51: Lesson = {
             { icon: 'drop', title: 'Potom kyselina', text: 'lij ji pomalu, za stálého míchání' },
             { icon: 'heat', title: 'Hlídej teplo', text: 'roztok se silně zahřívá' },
           ],
-          caption: 'Ředění koncentrované kyseliny: *nejdřív voda, potom kyselina*.',
+          caption: 'Ředění koncentrované kyseliny krok za krokem',
         },
         {
           type: 'callout',
@@ -353,10 +346,7 @@ const l51: Lesson = {
           type: 'p',
           text: '**Kyselé deště** jsou mnohem kyselejší. Způsobuje je hlavně oxid siřičitý $SO2$ ze spalování uhlí, které obsahuje síru, a oxidy dusíku ($NO$, $NO2$) z motorů a elektráren. Ve vzduchu se mění na kyseliny.',
         },
-        { type: 'diagram', id: 'acid-rain', caption: 'Od komína a výfuku ke kyselému dešti: oxidy síry a dusíku se v oblacích mění na kyseliny.' },
-        { type: 'reaction', equation: 'SO2 + H2O -> H2SO3', caption: 'vzniká kyselina siřičitá' },
-        { type: 'reaction', equation: '2SO2 + O2 -> 2SO3', caption: 'a potom $SO3 + H2O -> H2SO4$ (kyselina sírová)' },
-        { type: 'reaction', equation: '4NO2 + O2 + 2H2O -> 4HNO3', caption: 'vzniká kyselina dusičná' },
+        { type: 'diagram', id: 'acid-rain', caption: 'Od komína a výfuku ke kyselému dešti: $SO2$ z továren a oxidy dusíku z aut se v oblacích mění na kyselinu siřičitou, sírovou a dusičnou (rovnice pod obrázkem). Déšť s pH pod 5,6 poškozuje lesy a okyseluje jezera.' },
         {
           type: 'iconlist',
           items: [
@@ -492,7 +482,6 @@ const l52: Lesson = {
           text: '**Hydroxidy** jsou sloučeniny kationtu kovu a **hydroxidových aniontů** $OH^-$. Hydroxidový anion je skupina z jednoho kyslíku a jednoho vodíku s nábojem −1.',
         },
         { type: 'molecule', molecules: ['OH-'], labels: ['hydroxidový anion $OH^-$'] },
-        { type: 'formula', text: '$NaOH$   $Ca(OH)2$   $Al(OH)3$', caption: 'kation kovu + tolik aniontů $OH^-$, kolik je náboj kationtu' },
         {
           type: 'p',
           text: 'Protože $OH^-$ má náboj −1, ==počet skupin OH se rovná oxidačnímu číslu kovu.== Víc skupin patří do **závorky**: $Ca(OH)2$. Název: **hydroxid** + koncovka podle oxidačního čísla kovu jako u oxidů (-ný, -natý, -itý…).',
@@ -615,13 +604,11 @@ const l52: Lesson = {
           type: 'molecule',
           molecules: ['NH3', 'NH4+'],
           labels: ['amoniak: volný elektronový pár na dusíku', 'amonný kation $NH4^+$'],
-          caption: 'Na dusíku v amoniaku je volný elektronový pár. Když na něj naváže $H^+$, vznikne $NH4^+$.',
         },
         {
           type: 'p',
           text: 'Volný elektronový pár dusíku si „přitáhne“ vodíkový kation z molekuly vody. Vznikne **amonný kation** $NH4^+$ a z vody zbude hydroxidový anion $OH^-$, který dělá roztok zásaditým.',
         },
-        { type: 'formula', text: '$NH3 + H2O <=> NH4^+ + OH^-$', caption: 'obousměrná šipka: takto zreaguje jen malá část molekul amoniaku' },
         {
           type: 'particles',
           boxes: [
@@ -629,6 +616,7 @@ const l52: Lesson = {
             { label: 'rovnováha', items: [{ species: 'NH3', count: 4 }, { species: 'H2O', count: 4 }, { species: 'NH4+', count: 1 }, { species: 'OH-', count: 1 }], state: 'solution', note: 'většina $NH3$ zůstane nezměněná' },
           ],
           arrows: true,
+          caption: '$NH3 + H2O <=> NH4^+ + OH^-$. Obousměrná šipka říká, že takto zreaguje jen malá část molekul amoniaku.',
         },
         {
           type: 'p',
@@ -668,12 +656,7 @@ const l52: Lesson = {
           type: 'p',
           text: '**Mýdlo** vzniká varem tuku s hydroxidem sodným nebo draselným (podrobně v úrovni 9). Totéž se děje v ucpaném odpadu: čistič s $NaOH$ promění mastnotu v rozpustné mýdlo a rozloží i vlasy.',
         },
-        { type: 'diagram', id: 'limestone-cycle', caption: 'Vápenný cyklus: vápenec $CaCO3$ -> pálené vápno $CaO$ -> hašené vápno $Ca(OH)2$ -> zpět vápenec.' },
-        {
-          type: 'p',
-          text: '**Pálené vápno** $CaO$ se vyrábí pálením vápence. S vodou reaguje bouřlivě a hodně se zahřeje, tomu se říká **hašení vápna**. Vznikne **hašené vápno** $Ca(OH)2$.',
-        },
-        { type: 'reaction', equation: 'Ca(OH)2 + CO2 -> CaCO3 + H2O', caption: 'tvrdnutí malty: hašené vápno pohlcuje oxid uhličitý ze vzduchu' },
+        { type: 'diagram', id: 'limestone-cycle', caption: 'Vápenný cyklus: pálením vápence $CaCO3$ vzniká **pálené vápno** $CaO$. S vodou reaguje bouřlivě a hodně se zahřeje (**hašení vápna**), vznikne **hašené vápno** $Ca(OH)2$. Malta z něj tvrdne tak, že pohlcuje oxid uhličitý ze vzduchu, a vzniká zpět vápenec.' },
         {
           type: 'callout',
           variant: 'tip',
@@ -716,7 +699,7 @@ const l52: Lesson = {
           title: 'Zásady jsou pro oči horší než kyseliny',
           text: 'Kyselina bílkoviny na povrchu srazí a vytvoří jakousi bariéru. Zásada tkáň rozpouští a proniká hlouběji. Zásada v oku může během několika minut natrvalo poškodit rohovku, proto jsou ochranné brýle při práci s $NaOH$ povinné.',
         },
-        { type: 'diagram', id: 'lab-safety', caption: 'Hydroxid sodný nese symbol žíraviny (GHS05). Najdeš ho i na obalu čističe odpadů.' },
+        { type: 'diagram', id: 'lab-safety', caption: 'Výstražné symboly GHS. Hydroxid sodný nese symbol žíraviny (GHS05) – klepni na něj. Najdeš ho i na obalu čističe odpadů.' },
         {
           type: 'iconlist',
           items: [
@@ -843,7 +826,6 @@ const l53: Lesson = {
           type: 'p',
           text: 'Čistá voda vede proud jen nepatrně, obsahuje tedy trochu iontů. Molekuly vody si totiž občas předají vodíkový kation: vznikne oxoniový kation a hydroxidový anion. Říká se tomu **autoprotolýza vody**.',
         },
-        { type: 'formula', text: '$H2O + H2O <=> H3O^+ + OH^-$' },
         {
           type: 'particles',
           boxes: [
@@ -851,7 +833,7 @@ const l53: Lesson = {
             { label: 'po předání protonu', items: [{ species: 'H2O', count: 6 }, { species: 'H3O+', count: 1 }, { species: 'OH-', count: 1 }], state: 'liquid', note: 've skutečnosti jen asi 1 z 500 milionů molekul' },
           ],
           arrows: true,
-          caption: 'Autoprotolýza: dvě molekuly vody si předají proton.',
+          caption: 'Autoprotolýza $H2O + H2O <=> H3O^+ + OH^-$: dvě molekuly vody si předají proton.',
         },
         { type: 'molecule', molecules: ['H3O+', 'OH-'], labels: ['oxoniový kation', 'hydroxidový anion'] },
         {
@@ -899,13 +881,7 @@ const l53: Lesson = {
         {
           type: 'diagram',
           id: 'ph-scale',
-          props: {
-            marks: [
-              { ph: 3, label: 'kyselý' },
-              { ph: 7, label: 'neutrální' },
-              { ph: 11, label: 'zásaditý' },
-            ],
-          },
+          props: { marks: [] },
           caption: 'pH < 7: roztok je **kyselý**. pH = 7: **neutrální** (při 25 °C). pH > 7: **zásaditý**.',
         },
         {
@@ -1092,18 +1068,18 @@ const l53: Lesson = {
           type: 'p',
           text: '**Acidobazické indikátory** jsou barviva, která mění barvu podle pH. Každý má svůj **barevný přechod**, tedy rozmezí pH, ve kterém barvu mění.',
         },
-        { type: 'diagram', id: 'indicator-colors', caption: 'Barvy běžných indikátorů v kyselém, neutrálním a zásaditém prostředí.' },
+        { type: 'diagram', id: 'indicator-colors', caption: 'Barvy lakmusu, fenolftaleinu, methyloranže, univerzálního indikátoru a výluhu z červeného zelí v kyselém, neutrálním a zásaditém roztoku.' },
         {
           type: 'table',
-          headers: ['Indikátor', 'Barva v kyselém', 'Přechod (pH)', 'Barva v zásaditém'],
+          headers: ['Indikátor', 'Barevný přechod (pH)'],
           rows: [
-            ['methyloranž', 'červená', '3,1–4,4', 'žlutá'],
-            ['lakmus', 'červená', 'asi 4,5–8,3', 'modrá'],
-            ['bromthymolová modř', 'žlutá', '6,0–7,6', 'modrá'],
-            ['fenolftalein', 'bezbarvý', '8,2–10,0', 'fialově růžový'],
-            ['univerzální indikátor', 'červená až oranžová', 'celá stupnice, pH 7 = zelená', 'modrá až fialová'],
+            ['methyloranž', '3,1–4,4'],
+            ['lakmus', 'asi 4,5–8,3'],
+            ['bromthymolová modř (žlutá → modrá)', '6,0–7,6'],
+            ['fenolftalein', '8,2–10,0'],
+            ['univerzální indikátor', 'celá stupnice, pH 7 = zelená'],
           ],
-          caption: 'Pod dolní hranicí přechodu má indikátor „kyselou“ barvu, nad horní hranicí „zásaditou“.',
+          caption: 'Pod dolní hranicí přechodu má indikátor „kyselou“ barvu, nad horní hranicí „zásaditou“. Obě barvy vidíš na obrázku nahoře.',
         },
         {
           type: 'p',
@@ -1227,23 +1203,13 @@ const l54: Lesson = {
           type: 'p',
           text: '**Neutralizace** je reakce kyseliny se zásadou (hydroxidem), při které vzniká **sůl** a **voda**. Kyselina a zásada se navzájem „vyruší“ a roztok přestane být kyselý i zásaditý.',
         },
-        { type: 'diagram', id: 'neutralization', caption: 'Kationty $H3O^+$ z kyseliny a anionty $OH^-$ ze zásady se spojí na vodu, v roztoku zůstane sůl.' },
-        { type: 'reaction', equation: 'HCl + NaOH -> NaCl + H2O', caption: 'kyselina chlorovodíková + hydroxid sodný -> chlorid sodný + voda' },
+        { type: 'diagram', id: 'neutralization', caption: 'Kyselina chlorovodíková + hydroxid sodný -> chlorid sodný + voda: kationty $H3O^+$ z kyseliny předají proton aniontům $OH^-$ ze zásady a vznikne voda. Ionty $Na^+$ a $Cl^-$ zůstanou v roztoku jako sůl.' },
         { type: 'reaction', equation: 'H2SO4 + 2NaOH -> Na2SO4 + 2H2O', caption: 'dvojsytná kyselina sírová potřebuje dva $NaOH$' },
         {
           type: 'p',
           text: 'Rozepiš látky, které jsou v roztoku rozštěpené na ionty, a uvidíš, co se doopravdy děje:',
         },
         { type: 'formula', text: '$H^+ + Cl^- + Na^+ + OH^- -> Na^+ + Cl^- + H2O$' },
-        {
-          type: 'particles',
-          boxes: [
-            { label: 'kyselina + zásada', items: [{ species: 'H3O+', count: 3 }, { species: 'Cl^-', count: 3 }, { species: 'Na^+', count: 3 }, { species: 'OH-', count: 3 }], state: 'solution' },
-            { label: 'roztok soli', items: [{ species: 'Na^+', count: 3 }, { species: 'Cl^-', count: 3 }, { species: 'H2O', count: 6 }], state: 'solution', note: '$Na^+$ a $Cl^-$ se nezměnily' },
-          ],
-          arrows: true,
-          caption: 'Každý $H3O^+$ se s jedním $OH^-$ změní na dvě molekuly vody.',
-        },
         {
           type: 'p',
           text: 'Ionty $Na^+$ a $Cl^-$ jsou na obou stranách beze změny, jsou to **ionty-diváci** (anglicky *spectator ions*). Když je škrtneš, zbude ==iontová rovnice neutralizace, stejná pro všechny silné kyseliny a zásady==:',
@@ -1281,7 +1247,7 @@ const l54: Lesson = {
           type: 'compare',
           columns: [
             { title: 'Antacida', icon: 'pill', tone: 'good', points: ['málo rozpustné hydroxidy ($Mg(OH)2$, $Al(OH)3$) nebo uhličitany', 'působí mírně', 'reagují jen tam, kde je kyselina'] },
-            { title: '$NaOH$', icon: 'hazard', tone: 'bad', points: ['dobře rozpustný a žíravý', 'poleptal by ústa i jícen', 'jako lék nepoužitelný'] },
+            { title: '$NaOH$', icon: 'warning', tone: 'bad', points: ['dobře rozpustný a žíravý', 'poleptal by ústa i jícen', 'jako lék nepoužitelný'] },
           ],
           caption: 'Proč se pálení žáhy neléčí hydroxidem sodným.',
         },
@@ -1289,15 +1255,7 @@ const l54: Lesson = {
           type: 'p',
           text: '**Vápnění půdy**: kyselé půdy, třeba pod smrkovými lesy nebo po kyselých deštích, se posypávají mletým vápencem $CaCO3$ nebo hašeným vápnem. Vápenec reaguje s kyselinou za vzniku oxidu uhličitého:',
         },
-        { type: 'formula', text: '$CaCO3 + 2H^+ -> Ca^{2+} + H2O + CO2$' },
-        {
-          type: 'iconlist',
-          items: [
-            { icon: 'pill', title: 'Antacida', text: 'zneutralizují nadbytek žaludeční kyseliny' },
-            { icon: 'leaf', title: 'Vápnění půdy', text: 'vápenec zlepší kyselé půdy' },
-            { icon: 'factory', title: 'Odsíření spalin', text: 'vápenec zachytí kyselý $SO2$ (lekce 5-1)' },
-          ],
-        },
+        { type: 'formula', text: '$CaCO3 + 2H^+ -> Ca^{2+} + H2O + CO2$', caption: 'Stejně vápenec zachytí kyselý $SO2$ při odsíření spalin (lekce 5-1).' },
         {
           type: 'callout',
           variant: 'mascot',
@@ -1345,7 +1303,7 @@ const l54: Lesson = {
             { icon: 'arrow-cycle', title: 'Zopakuj', text: 'titraci zopakuj a výsledky zprůměruj' },
           ],
         },
-        { type: 'diagram', id: 'meniscus', caption: 'Objem v byretě odečítej u spodního okraje menisku, s okem v jeho úrovni.' },
+        { type: 'diagram', id: 'meniscus', caption: 'Stejně jako v odměrném válci na obrázku odečítáš objem i v byretě: u spodního okraje menisku, s okem v jeho úrovni.' },
         {
           type: 'callout',
           variant: 'warning',
@@ -1386,7 +1344,7 @@ const l54: Lesson = {
           layout: 'flow',
           steps: [
             { icon: 'burette', title: '$n$ odměrného roztoku', text: '$n = c·V$ ze spotřeby v byretě' },
-            { icon: 'balance-scale', title: 'Poměr z rovnice', text: '1 : 1 u $HCl$, 1 : 2 u $H2SO4$' },
+            { icon: 'molecule', title: 'Poměr z rovnice', text: '1 : 1 u $HCl$, 1 : 2 u $H2SO4$' },
             { icon: 'flask', title: '$c$ vzorku', text: '$c = n/V$' },
           ],
         },
@@ -1413,7 +1371,6 @@ const l54: Lesson = {
           ],
           answer: '$c(H2SO4)$ = 0,25 mol/dm^{3}',
         },
-        { type: 'reaction', equation: 'H2SO4 + 2NaOH -> Na2SO4 + 2H2O', caption: 'poměr 1 : 2: na jednu $H2SO4$ připadají dvě $NaOH$' },
         {
           type: 'callout',
           variant: 'warning',
@@ -1453,7 +1410,7 @@ const l54: Lesson = {
           steps: [
             { icon: 'lemon', title: 'Začátek', text: 'pH je nízké a roste pomalu, přidaná zásada se hned spotřebuje' },
             { icon: 'speed', title: 'Skok pH', text: 'kolem bodu ekvivalence stačí kapka a pH se změní o několik jednotek' },
-            { icon: 'balance-scale', title: 'Bod ekvivalence', text: 'u silné kyseliny a silné zásady pH = 7, v baňce je jen roztok soli (třeba $NaCl$)' },
+            { icon: 'drop', title: 'Bod ekvivalence', text: 'u silné kyseliny a silné zásady pH = 7, v baňce je jen roztok soli (třeba $NaCl$)' },
             { icon: 'soap', title: 'Za bodem ekvivalence', text: 'nadbytek zásady, pH se ustálí vysoko' },
           ],
         },
@@ -1576,25 +1533,13 @@ const l55: Lesson = {
           type: 'p',
           text: '**Soli** jsou iontové sloučeniny z **kationtu kovu** (nebo amonného kationtu $NH4^+$) a **aniontu kyseliny**. Můžeš si je představit jako kyselinu, ve které vodík nahradil kov.',
         },
-        { type: 'diagram', id: 'salt-preparation', caption: 'Jak se v laboratoři připraví sůl.' },
-        {
-          type: 'iconlist',
-          items: [
-            { icon: 'beaker', title: 'kyselina + hydroxid', text: 'neutralizace: $HCl + NaOH -> NaCl + H2O$' },
-            { icon: 'coin', title: 'kyselina + neušlechtilý kov', text: '$Zn + 2HCl -> ZnCl2 + H2$' },
-            { icon: 'powder', title: 'kyselina + oxid kovu', text: '$CuO + H2SO4 -> CuSO4 + H2O$' },
-            { icon: 'mountain', title: 'kyselina + uhličitan', text: '$CaCO3 + 2HCl -> CaCl2 + H2O + CO2$' },
-            { icon: 'test-tube', title: 'srážení roztoků dvou solí', text: '$AgNO3 + NaCl -> AgCl(s) + NaNO3$' },
-            { icon: 'flame', title: 'kov + nekov (přímá syntéza)', text: '$2Na + Cl2 -> 2NaCl$' },
-          ],
-        },
-        { type: 'reaction', equation: 'Zn + 2HCl -> ZnCl2 + H2', caption: 'kyselina + kov: chlorid zinečnatý a bublinky vodíku' },
+        { type: 'diagram', id: 'salt-preparation', caption: 'Čtyři laboratorní cesty k soli: kyselina + neušlechtilý kov (unikají bublinky vodíku), kyselina + hydroxid (neutralizace), kyselina + uhličitan (šumí oxid uhličitý) a srážení roztoků dvou solí (vzniká bílá sraženina).' },
         {
           type: 'p',
           text: 'S kyselinou chlorovodíkovou za vzniku vodíku reagují jen **neušlechtilé kovy**, třeba zinek, železo nebo hořčík. Ušlechtilá měď, stříbro nebo zlato s ní nereagují. Proč, vysvětlí řada reaktivity kovů v úrovni 6.',
         },
-        { type: 'reaction', equation: 'CaCO3 + 2HCl -> CaCl2 + H2O + CO2', caption: 'kyselina + uhličitan: sůl, voda a bublinky oxidu uhličitého' },
-        { type: 'reaction', equation: 'CuO + H2SO4 -> CuSO4 + H2O', caption: 'kyselina + oxid kovu: modrý roztok síranu měďnatého' },
+        { type: 'reaction', equation: 'CuO + H2SO4 -> CuSO4 + H2O', caption: 'Pátá cesta – kyselina + oxid kovu: vzniká modrý roztok síranu měďnatého.' },
+        { type: 'reaction', equation: '2Na + Cl2 -> 2NaCl', caption: 'Šestá cesta – kov + nekov: přímá syntéza soli z prvků.' },
         {
           type: 'callout',
           variant: 'tip',
@@ -1649,12 +1594,7 @@ const l55: Lesson = {
           type: 'molecule',
           molecules: ['NO3-', 'SO4^2-', 'CO3^2-', 'PO4^3-'],
           labels: ['dusičnan $NO3^-$', 'síran $SO4^2-$', 'uhličitan $CO3^2-$', 'fosforečnan $PO4^3-$'],
-          caption: 'Nejčastější víceatomové anionty: náboj odpovídá počtu vodíků, které kyselina odevzdala.',
-        },
-        {
-          type: 'callout',
-          variant: 'remember',
-          text: '-ná -> -nan, -itá -> -itan, -ičitá -> -ičitan, -ičná/-ečná -> -ičnan/-ečnan, -ová -> -an, -istá -> -istan. ==Náboj aniontu se rovná počtu vodíků, které kyselina odevzdala.==',
+          caption: 'Nejčastější víceatomové anionty. ==Náboj aniontu se rovná počtu vodíků, které kyselina odevzdala.==',
         },
         {
           type: 'process',
@@ -1717,17 +1657,6 @@ const l55: Lesson = {
         {
           type: 'p',
           text: 'Když si anion kyseliny část vodíků ponechá, vznikne **hydrogensůl** (předpona **hydrogen-** nebo **dihydrogen-**). Každý ponechaný vodík zmenší záporný náboj aniontu o 1.',
-        },
-        {
-          type: 'process',
-          layout: 'flow',
-          steps: [
-            { icon: 'flask', title: '$H3PO4$', text: 'kyselina fosforečná' },
-            { icon: 'ion-minus', title: '$H2PO4^-$', text: 'dihydrogenfosforečnan, náboj −1' },
-            { icon: 'ion-minus', title: '$HPO4^2-$', text: 'hydrogenfosforečnan, náboj −2' },
-            { icon: 'ion-minus', title: '$PO4^3-$', text: 'fosforečnan, náboj −3' },
-          ],
-          caption: 'Každý odevzdaný $H^+$ přidá aniontu jeden záporný náboj.',
         },
         { type: 'molecule', molecules: ['H2CO3', 'HCO3-', 'CO3^2-'], labels: ['kyselina uhličitá', 'hydrogenuhličitan', 'uhličitan'] },
         {
@@ -1879,7 +1808,6 @@ const l55: Lesson = {
           ],
           arrows: true,
         },
-        { type: 'reaction', equation: 'BaCl2 + Na2SO4 -> BaSO4(s) + 2NaCl', caption: 'vzniká bílá sraženina síranu barnatého' },
         {
           type: 'example',
           problem: 'Vznikne sraženina, když smícháš roztoky $BaCl2$ a $Na2SO4$?',
@@ -2062,7 +1990,6 @@ const l56: Lesson = {
           type: 'p',
           text: 'A bílý dým z úvodu? Plynný chlorovodík předá proton plynnému amoniaku a vznikne jemný prášek chloridu amonného. Voda ani hydroxidové anionty k tomu nejsou potřeba.',
         },
-        { type: 'reaction', equation: 'HCl(g) + NH3(g) -> NH4Cl(s)', caption: 'proton přeskočí z $HCl$ na $NH3$ přímo v plynné fázi' },
         {
           type: 'particles',
           boxes: [
@@ -2070,11 +1997,12 @@ const l56: Lesson = {
             { label: 'bílý dým', items: [{ species: 'NH4Cl', count: 3 }], state: 'solid', note: 'drobné krystalky $NH4Cl$' },
           ],
           arrows: true,
+          caption: '$HCl(g) + NH3(g) -> NH4Cl(s)$: proton přeskočí z $HCl$ na $NH3$ přímo v plynné fázi.',
         },
         {
           type: 'callout',
           variant: 'remember',
-          text: '==Kyselina je donor protonu, zásada je akceptor protonu.== Kyselinou nebo zásadou látka není sama o sobě, rozhoduje, co v dané reakci dělá.',
+          text: '==Kyselinou nebo zásadou látka není sama o sobě.== Rozhoduje, co v dané reakci dělá: jestli proton odevzdá, nebo přijme.',
         },
         {
           type: 'check',
@@ -2220,7 +2148,7 @@ const l56: Lesson = {
         {
           type: 'formula',
           text: '$CH3COOH + H2O <=> CH3COO^- + H3O^+$',
-          caption: 'Kyselina octová je slabá: v roztoku o koncentraci 0,1 mol/dm^{3} je disociováno jen asi 1,3 % molekul.',
+          caption: 'Kyselina octová je slabá, proto obousměrná šipka. Jak velká část molekul se rozštěpí, spočítáš v příkladu níže.',
         },
         {
           type: 'compare',
@@ -2259,7 +2187,7 @@ const l56: Lesson = {
           type: 'diagram',
           id: 'titration-curve',
           props: { kind: 'weak-strong' },
-          caption: 'Titrace slabé kyseliny silnou zásadou: bod ekvivalence leží nad pH 7.',
+          caption: 'Kyselina octová titrovaná hydroxidem sodným: barevné pásy ukazují, že do skoku pH padne fenolftalein, ale ne methyloranž.',
         },
         {
           type: 'check',
@@ -2317,7 +2245,6 @@ const l56: Lesson = {
           items: [
             { icon: 'soap', title: 'Soda $Na2CO3$ na praní', text: 'její zásaditý roztok pomáhá rozpouštět mastnotu' },
             { icon: 'fertilizer', title: 'Amonná hnojiva', text: 'kationty $NH4^+$ půdu postupně okyselují' },
-            { icon: 'salt', title: 'Kuchyňská sůl $NaCl$', text: 'sůl silné kyseliny a silné zásady, roztok je neutrální' },
           ],
         },
         {
