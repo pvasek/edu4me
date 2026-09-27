@@ -93,14 +93,24 @@ function Water({ x, y }: { x: number; y: number }) {
       </Pop>
       <Fade d={0.6}>
         {dneg(90, 58, '2δ−')}
-        {dpos(36, 110)}
-        {dpos(144, 110)}
+        {dpos(44, 152)}
+        {dpos(136, 152)}
       </Fade>
-      {/* bond dipoles point to oxygen */}
-      <Dipole x1={38} y1={135} x2={66} y2={111} delay={0.9} />
-      <Dipole x1={142} y1={135} x2={114} y2={111} delay={0.9} />
+      {/* bond dipoles point to oxygen, drawn beside each bond */}
+      {[H1, H2].map((H, k) => {
+        const dx = O[0] - H[0]
+        const dy = O[1] - H[1]
+        const L = Math.hypot(dx, dy)
+        const s = k === 0 ? 1 : -1
+        const nx = (dy / L) * 15 * s
+        const ny = (-dx / L) * 15 * s
+        const at = (t: number) => [H[0] + dx * t + nx, H[1] + dy * t + ny] as const
+        const a = at(0.02)
+        const b = at(0.72)
+        return <Dipole key={k} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} delay={0.9} />
+      })}
       {/* their sum */}
-      <Dipole x1={90} y1={172} x2={90} y2={118} delay={1.5} big />
+      <Dipole x1={90} y1={174} x2={90} y2={122} delay={1.5} big />
       <T x={90} y={196} className="f35-note">
         dipóly se sečtou: polární
       </T>

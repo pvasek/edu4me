@@ -52,13 +52,13 @@ function Tube({ cx, surface, liquid, hg = false }: { cx: number; surface: string
 
 export default function Meniscus() {
   const W = 150 // water tube centre
-  const M = 440 // mercury tube centre
+  const M = 490 // mercury tube centre
   const wSurf = `M${W - 50} ${LEVEL - 16} Q${W} ${LEVEL + 16} ${W + 50} ${LEVEL - 16}`
   const mSurf = `M${M - 50} ${LEVEL + 12} Q${M} ${LEVEL - 12} ${M + 50} ${LEVEL + 12}`
   return (
     <Plate
       level={1}
-      w={620}
+      w={680}
       h={380}
       max={640}
       label="Odečítání objemu v odměrném válci (zvětšeno). Oko musí být v úrovni hladiny. Voda tvoří vydutý meniskus a objem se čte u jeho spodního okraje: 45 ml. Rtuť tvoří vypouklý meniskus a čte se u horního okraje. Oko nad hladinou nebo pod ní dává chybný údaj."
@@ -77,7 +77,7 @@ export default function Meniscus() {
           vypouklý meniskus
         </text>
       </Fade>
-      <path className="f12-hair f12-dash" d="M315 20 L315 360" />
+      <path className="f12-hair f12-dash" d="M345 20 L345 360" />
 
       <Tube cx={W} surface={wSurf} liquid={`${wSurf} L${W + 50} ${BOT} L${W - 50} ${BOT} Z`} />
       <Tube cx={M} surface={mSurf} liquid={`${mSurf} L${M + 50} ${BOT} L${M - 50} ${BOT} Z`} hg />
@@ -95,23 +95,23 @@ export default function Meniscus() {
       {/* wrong eye (parallax) */}
       <g className="f12-sec">
         <Pop delay={1.8}>
-          <Eye x={W + 96} y={LEVEL - 70} faded />
+          <Eye x={W + 96} y={LEVEL - 80} faded />
         </Pop>
-        <Draw d={`M${W + 78} ${LEVEL - 64} L${W} ${LEVEL} L${W - 36} ${LEVEL + 30}`} className="f12-sight f12-sight-off" delay={2} dur={0.7} />
-        <Lbl x={W + 118} y={LEVEL - 92} delay={2.1} line2="odečet je chybný" className="f12-bad-t">
-          oko nad hladinou:
+        <Draw d={`M${W + 78} ${LEVEL - 74} L${W} ${LEVEL} L${W - 36} ${LEVEL + 34}`} className="f12-sight f12-sight-off" delay={2} dur={0.7} />
+        <Lbl x={W + 66} y={LEVEL - 128} delay={2.1} line2="= chybný odečet" className="f12-bad-t">
+          oko nad hladinou
         </Lbl>
       </g>
 
       {/* readings */}
-      <Lbl x={W} y={LEVEL + 50} tx={W} ty={LEVEL} anchor="middle" className="f12-lab-strong" delay={1.5} line2="45 ml">
+      <Lbl x={W + 64} y={LEVEL + 46} tx={W + 2} ty={LEVEL + 1} className="f12-lab-strong" delay={1.5} line2="= 45 ml">
         spodní okraj
       </Lbl>
-      <Lbl x={M} y={LEVEL - 42} tx={M} ty={LEVEL} anchor="middle" className="f12-lab-strong f12-lab-on-hg" delay={1.7}>
+      <Lbl x={M + 64} y={LEVEL + 46} tx={M + 2} ty={LEVEL - 1} className="f12-lab-strong" delay={1.7}>
         horní okraj
       </Lbl>
-      <Lbl x={W + 76} y={LEVEL + 34} delay={1.6} sec>
-        oko v úrovni hladiny
+      <Lbl x={W + 64} y={LEVEL + 104} delay={1.6} line2="v úrovni hladiny" sec>
+        oko vždy
       </Lbl>
       <text className="f12-small" x={W - 50} y={BOT + 26}>
         ml

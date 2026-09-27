@@ -29,7 +29,8 @@ function leaks(s: Subject, raw: string): string | null {
     if (n.includes(' ')) for (const w of words) if (text.includes(w.slice(0, -1))) return w
   }
   // the shell names "(K, L, M, N)" are not the symbol of potassium
-  const noShells = raw.replace(/\([KLMN](, [KLMN])*\)|vrstvě K/g, '')
+  // nor is a one-letter Czech preposition ("S chlorem…")
+  const noShells = raw.replace(/\([KLMN](, [KLMN])*\)|vrstvě K/g, '').replace(/(^|[.!?] )[A-Z] (?=[a-zá-ž])/g, '$1')
   if (s.kind === 'element' && new RegExp(`(^|[^A-Za-z])${s.id}(?![a-z])`).test(noShells)) return s.id
   return null
 }

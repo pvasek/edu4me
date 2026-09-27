@@ -20,7 +20,7 @@ const NET: Mol[] = [
   { o: [298, 180], to: [{ ang: 10 }, { ang: 100 }] },
   { o: [214, 228], to: [0, 3] },
   { o: [96, 222], to: [0, 6] },
-  { o: [38, 150], to: [2, { ang: 130 }] },
+  { o: [38, 150], to: [{ ang: -120 }, { ang: 135 }] },
 ]
 
 const angTo = (a: Pt, b: Pt) => (Math.atan2(b[1] - a[1], b[0] - a[0]) * 180) / Math.PI
@@ -81,12 +81,22 @@ function Network({ x, y }: { x: number; y: number }) {
         <text x={NET[0].o[0] + 2} y={NET[0].o[1] + 32} className="f35-delta f35-dneg" textAnchor="middle">
           δ−
         </text>
-        <text x={hs[0][0][0] + 12} y={hs[0][0][1] - 8} className="f35-delta f35-dpos">
-          δ+
-        </text>
-        <text x={hs[0][1][0] - 14} y={hs[0][1][1] - 8} className="f35-delta f35-dpos" textAnchor="end">
-          δ+
-        </text>
+        {hs[0].map((h, k) => {
+          const o = NET[0].o
+          const L = Math.hypot(h[0] - o[0], h[1] - o[1])
+          // beside the H, perpendicular to the O–H bond, on the upper side
+          let px = -(h[1] - o[1]) / L
+          let py = (h[0] - o[0]) / L
+          if (py > 0) {
+            px = -px
+            py = -py
+          }
+          return (
+            <text key={k} x={h[0] + px * 17} y={h[1] + py * 17 + 6} className="f35-delta f35-dpos" textAnchor="middle">
+              δ+
+            </text>
+          )
+        })}
       </Fade>
     </g>
   )

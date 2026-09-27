@@ -119,21 +119,17 @@ function Hammer({ x, y }: { x: number; y: number }) {
       {layer(2, false)}
       {/* hammer swings in once */}
       <motion.g
-        style={{ transformBox: 'view-box', transformOrigin: `${x + 150}px ${y + 58}px` }}
+        style={{ transformBox: 'view-box', transformOrigin: `${x + 150}px ${y + 57}px` }}
         variants={{
           hidden: { rotate: -38 },
           show: { rotate: [-38, 6, 0], transition: { delay: 1.2, duration: 0.55, times: [0, 0.6, 1], ease: 'easeIn' } },
         }}
       >
-        <rect x={x + 40} y={y + 28} width={46} height={34} rx={3} className="f35-fill2" />
-        <rect x={x + 40} y={y + 28} width={46} height={34} rx={3} fill={pat(p, 'x')} />
-        <rect x={x + 86} y={y + 38} width={80} height={13} rx={5} className="f35-wood" />
-        <path d={`M${x + 92} ${y + 44} H${x + 160}`} className="f35-hair" />
+        <rect x={x + 30} y={y + 40} width={44} height={35} rx={3} className="f35-fill2" />
+        <rect x={x + 30} y={y + 40} width={44} height={35} rx={3} fill={pat(p, 'x')} />
+        <rect x={x + 74} y={y + 51} width={84} height={13} rx={5} className="f35-wood" />
+        <path d={`M${x + 80} ${y + 57} H${x + 152}`} className="f35-hair" />
       </motion.g>
-      <Fade d={2}>
-        <path d={`M${x + 24} ${y + 72} h40`} className="f35-arrow-line" />
-        <polygon points={`${x + 70},${y + 72} ${x + 62},${y + 68} ${x + 62},${y + 76}`} className="f35-arrow-head" />
-      </Fade>
       <Note x={x + 80} y={y + 214} anchor="middle" size={15}>
         vrstvy kationtů po sobě
       </Note>

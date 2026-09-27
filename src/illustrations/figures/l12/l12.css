@@ -655,7 +655,7 @@
 
 /* ------------------------------------------------------------ narrow screens */
 @container (max-width: 520px) {
-  .f12 {
+  .f12 > * {
     --f12-fs: 23px;
   }
   .f12-sec {
@@ -682,7 +682,7 @@
   }
 }
 @container (max-width: 380px) {
-  .f12 {
+  .f12 > * {
     --f12-fs: 26px;
   }
   .f12-cell {

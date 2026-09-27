@@ -480,3 +480,17 @@
 .f67-ion-t {
   font: 800 8px var(--font-body);
 }
+
+/* plotted curves */
+.f67-curve {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.f67-curve-1 {
+  stroke: var(--blue);
+}
+.f67-curve-2 {
+  stroke: var(--accent);
+}

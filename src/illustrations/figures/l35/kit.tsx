@@ -415,8 +415,25 @@ export function Note({
 }) {
   let lead: ReactNode = null
   if (tx !== undefined && ty !== undefined) {
-    const lx = anchor === 'start' ? x - 4 : anchor === 'end' ? x + 4 : x
-    const ly = anchor === 'middle' ? (ty < y ? y - (size ?? 16) + 1 : y + 5) : y - (size ?? 16) * 0.32
+    const fs = size ?? 16
+    const len = typeof children === 'string' ? children.length : 10
+    const w = len * fs * 0.42
+    const xl = anchor === 'start' ? x : anchor === 'end' ? x - w : x - w / 2
+    const xr = xl + w
+    const top = y - fs * 0.78
+    let lx: number
+    let ly: number
+    if (ty < top - 2) {
+      // target above: leave from the top edge
+      lx = Math.min(Math.max(tx, xl + 6), xr - 6)
+      ly = top
+    } else if (ty > y + 3) {
+      lx = Math.min(Math.max(tx, xl + 6), xr - 6)
+      ly = y + 5
+    } else {
+      lx = tx < xl ? xl - 4 : xr + 4
+      ly = y - fs * 0.32
+    }
     lead = (
       <>
         <line className="f35-leader" x1={lx} y1={ly} x2={tx} y2={ty} />

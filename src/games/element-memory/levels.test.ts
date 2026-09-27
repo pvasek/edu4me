@@ -3,7 +3,7 @@ import { BY_SYMBOL } from '../../courses/chemie/data/elements'
 import { GAME_BY_ID } from '../registry'
 import { binary, PARTNER, ELEMENT_NOM, type BinaryPartner } from '../shared/nomenclature'
 import { LEVELS, MIX } from './levels'
-import { dealRound, faceSize, memoryScore, plain, playedLevel } from './logic'
+import { dealRound, faceFont, memoryScore, plain, playedLevel } from './logic'
 
 function rng(seed = 1) {
   let s = seed
@@ -49,7 +49,8 @@ describe('element-memory level sets', () => {
         for (const p of L.pairs) {
           for (const t of [p.a, p.b]) {
             expect(plain(t).length, t).toBeLessThanOrEqual(46)
-            if (!L.long) expect(faceSize(t), t).not.toBe('xs')
+            // cqi = % of card width: long cards are ~100 px wide at 360 px, short ones ~76 px
+            expect(faceFont(t), t).toBeGreaterThanOrEqual(L.long ? 12 : 15)
           }
         }
       })
@@ -146,6 +147,7 @@ describe('element-memory rounds', () => {
   it('strips markup for labels', () => {
     expect(plain('$SO4^{2-}$')).toBe('SO42-')
     expect(plain('*m*(látky)')).toBe('m(látky)')
-    expect(faceSize('Na')).toBe('xl')
+    expect(faceFont('Na')).toBe(30)
+    expect(faceFont('kyselina chlorovodíková')).toBeLessThan(13)
   })
 })
