@@ -215,7 +215,7 @@ const L6: MemLevel = {
     { a: 'rovnovážná konstanta $K_{c}$', b: 'velká hodnota: převažují produkty' },
     { a: '$pK_{a}$', b: 'čím menší, tím silnější kyselina' },
     { a: 'pufr', b: 'směs, která odolává změně pH' },
-    { a: 'koroze', b: 'elektrochemické rozrušování kovu' },
+    { a: 'koroze', b: 'samovolné rozrušování kovu' },
   ],
 }
 
@@ -259,7 +259,7 @@ const L7: MemLevel = {
     use('Cu', 'elektrické kabely, mosaz a bronz'),
     use('Zn', 'pozinkování plechu'),
     use('Cr', 'lesklé pokovení a nerezová ocel'),
-    use('Pt', 'autokatalyzátory'),
+    use('Pt', 'katalyzátory ve výfuku aut'),
     use('Au', 'rozpustí ho jen lučavka královská'),
   ],
 }
@@ -310,8 +310,8 @@ const L9: MemLevel = {
     { a: 'laktóza', b: 'galaktóza + glukóza' },
     { a: 'maltóza', b: 'glukóza + glukóza' },
     { a: 'bílkovina', b: 'aminokyseliny spojené peptidovou vazbou' },
-    { a: 'DNA', b: 'deoxyribonukleotidy (A, T, G, C)' },
-    { a: 'RNA', b: 'ribonukleotidy (A, U, G, C)' },
+    { a: 'DNA', b: 'nukleotidy s deoxyribózou (A, T, G, C)' },
+    { a: 'RNA', b: 'nukleotidy s ribózou (A, U, G, C)' },
     { a: 'ATP', b: 'adenin + ribóza + 3 fosfáty', syms: ['P'] },
     { a: 'tuk (triacylglycerol)', b: 'glycerol + 3 mastné kyseliny' },
     { a: 'fosfolipid', b: 'glycerol + 2 mastné kyseliny + fosfát' },

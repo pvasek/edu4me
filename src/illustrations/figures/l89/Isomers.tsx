@@ -1,4 +1,4 @@
-import { Atom, ChemText, Draw, Fade, Figure, Mol, Panel, Panels, Plate, Pop, Slide, type MolAtom, type MolBond } from './kit'
+import { Atom, Draw, Fade, Figure, Mol, Panel, Panels, Plate, Pop, Slide, type MolAtom, type MolBond } from './kit'
 
 const LABEL =
   'Izomery mají stejný souhrnný vzorec, ale jinou stavbu. Řetězcová izomerie C4H10: butan (var −0,5 °C) a rozvětvený 2-methylpropan, isobutan (var −12 °C). Funkční izomerie C2H6O: ethanol se skupinou OH je kapalina s varem 78 °C, dimethylether se skupinou O mezi uhlíky je plyn s varem −24 °C. Cis/trans izomerie but-2-enu: methylové skupiny na stejné, nebo na opačné straně dvojné vazby. Optická izomerie: kyselina mléčná s chirálním uhlíkem existuje jako dva zrcadlové obrazy, které nejdou na sebe přiložit.'
@@ -7,10 +7,10 @@ export default function Isomers() {
   return (
     <Figure name="isomers" level={8} label={LABEL} max={680}>
       <Panels min={270}>
-        <Panel n={1} title={<>Řetězcová · <ChemText text="C_{4}H_{10}" /></>} delay={0}>
+        <Panel n={1} title="Řetězcová · C₄H₁₀" delay={0}>
           <Chain />
         </Panel>
-        <Panel n={2} title={<>Funkční · <ChemText text="C_{2}H_{6}O" /></>} delay={0.5}>
+        <Panel n={2} title="Funkční · C₂H₆O" delay={0.5}>
           <Functional />
         </Panel>
         <Panel n={3} title="Cis/trans · but-2-en" delay={1}>

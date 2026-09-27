@@ -441,7 +441,7 @@
   border-top: 1.5px dashed currentColor;
   margin-right: -28px;
 }
-@container (min-width: 560px) {
+@container (min-width: 600px) {
   .il-cycle-list {
     display: none;
   }
@@ -449,9 +449,9 @@
     display: block;
     position: relative;
     width: 100%;
-    max-width: 680px;
+    max-width: 720px;
     margin: 0 auto;
-    aspect-ratio: 600 / var(--ring-h, 580);
+    aspect-ratio: 720 / var(--ring-h, 560);
   }
   .il-cycle-ring > svg {
     position: absolute;
@@ -462,16 +462,42 @@
   }
   .il-cycle-ring .il-station {
     position: absolute;
-    width: 30%;
-    max-width: 190px;
-    transform: translate(-50%, -28px);
+    width: 25%;
+    gap: 10px;
+    align-items: start;
+  }
+  .il-cycle-ring .il-station-body {
+    padding-top: 4px;
+  }
+  .il-cycle-ring .il-at-right {
+    grid-template-columns: auto 1fr;
+    transform: translate(-28px, -28px);
+    text-align: left;
+  }
+  .il-cycle-ring .il-at-left {
+    grid-template-columns: 1fr auto;
+    transform: translate(calc(-100% + 28px), -28px);
+    text-align: right;
+  }
+  .il-cycle-ring .il-at-left > :first-child {
+    order: 2;
+  }
+  .il-cycle-ring .il-at-top,
+  .il-cycle-ring .il-at-bottom {
+    width: 32%;
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
-    gap: 6px;
+    gap: 4px;
   }
-  .il-cycle-ring .il-station-body {
-    padding: 0;
+  .il-cycle-ring .il-at-bottom {
+    transform: translate(-50%, -28px);
+  }
+  .il-cycle-ring .il-at-top {
+    transform: translate(-50%, calc(-100% + 28px));
+  }
+  .il-cycle-ring .il-at-top > :first-child {
+    order: 2;
   }
   .il-cycle-ring .il-station-text {
     font-size: 13.5px;

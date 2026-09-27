@@ -49,6 +49,7 @@
 
 .g-em-card {
   appearance: none;
+  container-type: inline-size;
   position: relative;
   aspect-ratio: 3 / 4;
   min-height: 64px;
@@ -133,39 +134,12 @@
   color: var(--muted);
 }
 .g-em-name {
-  font: 700 clamp(12.5px, 3.6vw, 17px) / 1.1 var(--font-display);
+  /* font-size is set inline in cqi (logic.ts → faceFont) */
+  font: 700 14px / 1.08 var(--font-display);
   text-align: center;
   overflow-wrap: break-word;
   hyphens: auto;
   max-width: 100%;
-}
-/* font size by text length (logic.ts → faceSize) */
-.g-em-fs-xl {
-  font-size: clamp(20px, 5.5vw, 26px);
-  font-weight: 800;
-}
-.g-em-fs-l {
-  font-size: clamp(15px, 4.4vw, 20px);
-}
-.g-em-fs-m {
-  font-size: clamp(13px, 3.7vw, 17px);
-}
-.g-em-fs-s {
-  font-size: clamp(12px, 3.3vw, 15.5px);
-  line-height: 1.08;
-}
-.g-em-fs-xs {
-  font-size: clamp(11.5px, 3.1vw, 14.5px);
-  line-height: 1.05;
-}
-.is-long .g-em-fs-m {
-  font-size: clamp(14px, 4.3vw, 19px);
-}
-.is-long .g-em-fs-s {
-  font-size: clamp(12.5px, 3.85vw, 16.5px);
-}
-.is-long .g-em-fs-xs {
-  font-size: clamp(11px, 3.45vw, 15px);
 }
 .g-em-sym.has-name {
   font-size: clamp(22px, 6.5vw, 32px);

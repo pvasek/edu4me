@@ -89,7 +89,7 @@ function bondWithChlorine(sym: string): string {
 
 /** [symbol, character, compounds (oxide/hydride), ion] – bond with Cl and electronegativity are computed. */
 const L3_ROWS: [string, string, Hint, string][] = [
-  ['H', 'Jsem nekov, i když v tabulce stojím nad alkalickými kovy. Svůj jediný elektron ve vazbách sdílím.', { label: 'Oxid', text: 'Můj oxid má vzorec $X2O$ a jeho molekuly drží pohromadě vodíkové vazby.' }, 'Ve vodě ze mě vzniká kation $X^+$, s reaktivními kovy tvořím hydridový anion $X^-$.'],
+  ['H', 'Jsem nekov, i když v tabulce stojím nad alkalickými kovy. Svůj jediný elektron ve vazbách sdílím.', { label: 'Oxid', text: 'Můj oxid má vzorec $X2O$ a za běžných podmínek je to kapalina.' }, 'Ve vodě ze mě vzniká kation $X^+$, s reaktivními kovy tvořím hydridový anion $X^-$.'],
   ['Li', 'Jsem nejlehčí kov a ve vazbách snadno odevzdám svůj jediný valenční elektron.', { label: 'Oxid', text: 'Můj oxid má vzorec $X2O$, mám v něm oxidační číslo I.' }, 'Tvořím kation $M^+$ s konfigurací helia.'],
   ['C', 'Jsem nekov se 4 valenčními elektrony a ve sloučeninách tvořím 4 kovalentní vazby.', { label: 'Oxid', text: 'Můj oxid $XO2$ je lineární molekula: vazby jsou polární, molekula ne.' }, 'Jednoduché ionty skoro netvořím, elektrony raději sdílím.'],
   ['N', 'Jsem nekov a moje dvouatomová molekula drží pohromadě trojnou vazbou.', { label: 'Oxid', text: 'Můj oxid s nejvyšším oxidačním číslem má vzorec $X2O5$.' }, 'S reaktivními kovy tvořím anion $X^{3-}$ s konfigurací neonu.'],

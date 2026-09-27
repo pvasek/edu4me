@@ -119,15 +119,15 @@ export function plain(md: string): string {
     .trim()
 }
 
-/** Font size class for a card face, from the text length and its longest word. */
-export function faceSize(md: string): 'xl' | 'l' | 'm' | 's' | 'xs' {
+/**
+ * Font size of a card face in `cqi` (% of the card width): smaller for longer texts,
+ * and never so big that the longest word would not fit on one line.
+ */
+export function faceFont(md: string): number {
   const t = plain(md)
   const longest = Math.max(...t.split(/[\s–-]/).map((w) => w.length))
-  if (t.length <= 4) return 'xl'
-  if (t.length <= 9 && longest <= 9) return 'l'
-  if (t.length <= 22 && longest <= 11) return 'm'
-  if (t.length <= 34 && longest <= 12) return 's'
-  return 'xs'
+  const base = t.length <= 4 ? 30 : t.length <= 9 ? 20 : t.length <= 22 ? 16.5 : t.length <= 34 ? 14.5 : 13.5
+  return Math.min(base, Math.floor((170 / longest) * 10) / 10)
 }
 
 /**

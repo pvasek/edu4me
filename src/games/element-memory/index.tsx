@@ -8,7 +8,7 @@ import { popIn, shake, spring, stagger } from '../../ui/motion'
 import { Bump, Feedback, Hud, LevelChip } from '../shared/GameKit'
 import { useFinishOnce, useLater, useNow } from '../shared/hooks'
 import type { GameProps } from '../types'
-import { dealRound, faceSize, memoryScore, plain, type MemCard, type MemRound, type RoundPair } from './logic'
+import { dealRound, faceFont, memoryScore, plain, type MemCard, type MemRound, type RoundPair } from './logic'
 import './element-memory.css'
 
 /** Feedback wiggle on the wrapper around the flipping card (runs after the flip lands). */
@@ -198,7 +198,7 @@ export default function ElementMemory({ levelId, onFinish }: GameProps) {
                     ) : (
                       <>
                         {tag && <span className="g-em-tag">{tag}</span>}
-                        <span className={`g-em-name g-em-fs-${faceSize(face)}`} lang="cs">
+                        <span className="g-em-name" lang="cs" style={{ fontSize: `max(10px, ${faceFont(face)}cqi)` }}>
                           <Md text={face} />
                         </span>
                       </>
