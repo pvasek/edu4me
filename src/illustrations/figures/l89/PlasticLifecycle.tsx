@@ -139,17 +139,7 @@ function Code({ x, y, n, abbr, delay }: { x: number; y: number; n: number; abbr:
   })
   return (
     <Pop delay={delay}>
-      {pts.map((p, k) => {
-        const q = pts[(k + 1) % 3]
-        const mx = p[0] + (q[0] - p[0]) * 0.78
-        const my = p[1] + (q[1] - p[1]) * 0.78
-        return (
-          <g key={k}>
-            <line x1={p[0] + (q[0] - p[0]) * 0.14} y1={p[1] + (q[1] - p[1]) * 0.14} x2={mx} y2={my} stroke="var(--edge)" strokeWidth={1.6} />
-            <polygon points={headAt(mx + (q[0] - p[0]) * 0.08, my + (q[1] - p[1]) * 0.08, p[0], p[1], 6)} fill="var(--edge)" />
-          </g>
-        )
-      })}
+      <polygon points={pts.map((p) => p.join(',')).join(' ')} fill="none" stroke="#3f7a4c" strokeWidth={2} strokeLinejoin="round" strokeDasharray="14 5" />
       <text className="f89-f f89-b" x={x} y={y + 8} textAnchor="middle" style={{ fontSize: 12 }}>
         {n}
       </text>
@@ -165,16 +155,16 @@ export default function PlasticLifecycle() {
     ropa: [50, 64],
     mono: [168, 64],
     poly: [300, 64],
-    prod: [420, 150],
-    use: [300, 236],
-    rec: [180, 150],
-    burn: [96, 372],
-    land: [240, 372],
-    sea: [384, 372],
+    prod: [420, 170],
+    use: [300, 270],
+    rec: [180, 170],
+    burn: [96, 408],
+    land: [240, 408],
+    sea: [384, 408],
   }
   return (
     <Figure name="plastic-lifecycle" level={9} label={LABEL} max={620}>
-      <Plate w={480} h={550}>
+      <Plate w={480} h={580}>
         <Node x={P.ropa[0]} y={P.ropa[1]} name="ropa" icon={I.barrel} delay={0.1} />
         <Node x={P.mono[0]} y={P.mono[1]} name="monomer" sub="ethen" icon={I.monomer} delay={0.35} />
         <Node x={P.poly[0]} y={P.poly[1]} name="polymer" sub="granulát PE" icon={I.polymer} delay={0.6} tone="var(--lv-soft)" />
@@ -188,7 +178,7 @@ export default function PlasticLifecycle() {
         <Link a={P.use} b={P.rec} delay={1.3} bend={-10} lv />
         <Link a={P.rec} b={P.poly} delay={1.55} bend={-10} lv />
         <Fade delay={1.9}>
-          <text className="f89-lb f89-lv f89-b" x={300} y={158} textAnchor="middle">
+          <text className="f89-lb f89-lv f89-b" x={300} y={176} textAnchor="middle">
             koloběh
           </text>
         </Fade>
@@ -197,19 +187,19 @@ export default function PlasticLifecycle() {
         <Node x={P.burn[0]} y={P.burn[1]} name="spalovna" sub="energie + CO₂" icon={I.fire} delay={2.0} />
         <Node x={P.land[0]} y={P.land[1]} name="skládka" sub="vydrží stovky let" icon={I.landfill} delay={2.2} />
         <Node x={P.sea[0]} y={P.sea[1]} name="mikroplasty" sub="pod 5 mm, v oceánu" icon={I.ocean} delay={2.4} />
-        <Link a={P.use} b={P.burn} delay={2.0} dashed />
-        <Link a={P.use} b={P.land} delay={2.2} dashed />
-        <Link a={P.use} b={P.sea} delay={2.4} dashed />
+        <Link a={[P.use[0], P.use[1] + 34]} b={P.burn} delay={2.0} dashed />
+        <Link a={[P.use[0], P.use[1] + 34]} b={P.land} delay={2.2} dashed />
+        <Link a={[P.use[0], P.use[1] + 34]} b={P.sea} delay={2.4} dashed />
 
         {/* recycling codes */}
-        <line className="f89-thin" x1={10} y1={460} x2={470} y2={460} style={{ opacity: 0.4 }} />
+        <line className="f89-thin" x1={10} y1={492} x2={470} y2={492} style={{ opacity: 0.4 }} />
         <Fade delay={2.7}>
-          <text className="f89-lb f89-sm" x={240} y={478} textAnchor="middle">
+          <text className="f89-lb f89-sm" x={240} y={510} textAnchor="middle">
             recyklační kódy na obalech
           </text>
         </Fade>
         {CODES.map((c, i) => (
-          <Code key={c} x={42 + i * 66} y={506} n={i + 1} abbr={c} delay={2.8 + i * 0.08} />
+          <Code key={c} x={42 + i * 66} y={536} n={i + 1} abbr={c} delay={2.8 + i * 0.08} />
         ))}
       </Plate>
     </Figure>

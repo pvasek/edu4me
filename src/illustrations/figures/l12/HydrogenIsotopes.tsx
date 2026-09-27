@@ -62,7 +62,7 @@ function Isotope({ i }: { i: number }) {
         </text>
       </g>
       <text className="f12-num" x={cx} y={300} textAnchor="middle">
-        1 p⁺ · {it.n} n⁰ · 1 e⁻
+        1 p⁺ · {it.n} n⁰<tspan className="f12-sec"> · 1 e⁻</tspan>
       </text>
       <text className="f12-small" x={cx} y={322} textAnchor="middle">
         {it.occ}

@@ -11,7 +11,6 @@ const TMAX = 5
 const sx = (t: number) => X0 + (t / TMAX) * (X1 - X0)
 const sy = (n: number) => Y0 - n * (Y0 - Y1)
 const FRAC = ['1', '½', '¼', '⅛', '¹⁄₁₆']
-const MAXSTEP = 4
 
 let CURVE = ''
 for (let i = 0; i <= 100; i++) {
@@ -84,7 +83,7 @@ function Chart({ step }: { step: number }) {
 function Sample({ step }: { step: number }) {
   const alive = 64 / Math.pow(2, step)
   return (
-    <svg className="f12-svg f12-box" viewBox="0 0 196 250" aria-hidden="true">
+    <svg className="f12-svg f12-box" viewBox="0 0 196 250" aria-hidden="true" style={{ ['--f12-fs' as string]: '17px' }}>
       <text className="f12-t f12-t-strong" x={98} y={22} textAnchor="middle">
         zbývá {alive} z 64
       </text>

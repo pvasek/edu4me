@@ -5,12 +5,12 @@ import { Board, Mini, drawV, riseV, useHatch } from './kit'
 const O = [60, 64] as const
 
 /** Teardrop lobe from the nucleus along screen angle `deg`. */
-const lobe = (deg: number, L: number, W: number) =>
+const lobe = (L: number, W: number) =>
   `M0 0 C${L * 0.2} ${-W} ${L} ${-W * 1.1} ${L} 0 C${L} ${W * 1.1} ${L * 0.2} ${W} 0 0 Z`
 
 function Lobe({ deg, L = 44, W = 17, phase }: { deg: number; L?: number; W?: number; phase: 'a' | 'b' }) {
   const h = useHatch()
-  const d = lobe(deg, L, W)
+  const d = lobe(L, W)
   return (
     <g transform={`translate(${O[0]} ${O[1]}) rotate(${deg})`}>
       <path className={phase === 'a' ? 'f12-lobe-a' : 'f12-lobe-b'} d={d} />

@@ -545,3 +545,14 @@
   font: 700 12px var(--font-mono);
   fill: #fffaf0;
 }
+.f67-catom {
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+/* label halo: lets a label sit over a line and stay readable */
+.f67-halo {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}

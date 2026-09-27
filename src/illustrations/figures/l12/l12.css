@@ -137,6 +137,12 @@
   font-size: var(--f12-fs);
   fill: var(--ink-soft);
 }
+.f12-lab .f12-t {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
 .f12-t-strong,
 .f12-lab-strong .f12-t {
   font-weight: 700;
@@ -650,7 +656,7 @@
 }
 .f12-n14 {
   fill: var(--surface-2);
-  stroke: var(--line);
+  stroke: color-mix(in srgb, var(--muted) 60%, transparent);
   stroke-width: 0.8;
   transition:
     fill 0.5s,
@@ -1367,7 +1373,7 @@
 }
 .f12-key-n {
   background: var(--surface-2);
-  border: 1px solid var(--line);
+  border: 1px solid var(--muted);
 }
 
 /* ------------------------------------------------------------ shells vs orbitals */
@@ -1387,7 +1393,8 @@
   fill: var(--f12-lv-t);
   animation: f12-twinkle 2.4s ease-in-out infinite;
 }
-.f12-orb-guide circle {
+.f12-orb-guide circle,
+.f12-orb-guide path {
   fill: none;
   stroke: var(--ink-soft);
   stroke-width: 0.8;

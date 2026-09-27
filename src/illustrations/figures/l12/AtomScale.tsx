@@ -78,13 +78,13 @@ function Body() {
 
       {/* scale bar under the pitch */}
       <Fade delay={1.5}>
-        <Arrow x1={CX} y1={404} x2={160} y2={404} head={7} animate={false} />
-        <Arrow x1={CX} y1={404} x2={460} y2={404} head={7} animate={false} />
-        <path className="f12-thin" d="M160 396 L160 412 M460 396 L460 412" />
-        <text className="f12-t f12-t-strong f12-bar-t" x={CX} y={398} textAnchor="middle">
+        <Arrow x1={CX} y1={416} x2={160} y2={416} head={7} animate={false} />
+        <Arrow x1={CX} y1={416} x2={460} y2={416} head={7} animate={false} />
+        <path className="f12-thin" d="M160 408 L160 424 M460 408 L460 424" />
+        <text className="f12-t f12-t-strong f12-bar-t" x={CX} y={410} textAnchor="middle">
           ≈ 100 m
         </text>
-        <text className="f12-t f12-sec" x={CX} y={438} textAnchor="middle">
+        <text className="f12-t f12-sec" x={CX} y={446} textAnchor="middle">
           jádro : atom ≈ 1 : 100 000
         </text>
       </Fade>
@@ -97,7 +97,7 @@ export default function AtomScale() {
     <Plate
       level={2}
       w={620}
-      h={446}
+      h={456}
       max={640}
       label="Atom zvětšený na velikost fotbalového stadionu, asi 100 metrů. Jádro by bylo uprostřed hřiště velké jako špendlíková hlavička, asi 1 milimetr, a elektrony by se pohybovaly až nad tribunami. Jádro je zhruba stotisíckrát menší než atom, všechno mezi tím je prázdný prostor."
     >

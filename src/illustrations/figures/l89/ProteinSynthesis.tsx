@@ -133,7 +133,7 @@ function Translation({ narrow }: { narrow: boolean }) {
         <text className="f89-lb f89-b f89-lv" x={505} y={60} textAnchor="middle">
           translace
         </text>
-        <Lbl x={narrow ? 342 : 378} y={narrow ? 168 : 140} tx={narrow ? undefined : cx(1) - 36} ty={narrow ? undefined : 158} className="f89-sm" anchor={narrow ? 'start' : 'end'}>
+        <Lbl x={narrow ? 342 : 378} y={narrow ? 118 : 140} tx={narrow ? undefined : cx(1) - 36} ty={narrow ? undefined : 158} className="f89-sm" anchor={narrow ? 'start' : 'end'}>
           rostoucí řetězec
         </Lbl>
         <Lbl x={604} y={214} tx={586} ty={232} className="f89-sm">

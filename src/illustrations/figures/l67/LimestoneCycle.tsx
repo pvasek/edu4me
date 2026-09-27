@@ -94,7 +94,7 @@ export default function LimestoneCycle() {
             ) : (
               <Eq x={x} y={y + 6} t={nd.t} anchor="middle" className="f67-eq-lg" />
             )}
-            <text x={x + nd.dx} y={y + nd.dy} textAnchor="middle" className="f67-lbl f67-b">
+            <text x={x + nd.dx} y={y + nd.dy} textAnchor="middle" className="f67-lbl f67-b f67-halo">
               {n && i === 3 ? '' : nd.name}
             </text>
           </Pop>
