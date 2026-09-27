@@ -123,6 +123,7 @@ export default function EquilibriumSeesaw() {
         initial={false}
         animate={{ rotate: k.tilt }}
         transition={spring.gentle}
+        style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
       >
         {/* invisible square centred on the pivot: rotation origin = pivot */}
         <rect x={PIV[0] - 200} y={PIV[1] - 200} width={400} height={400} fill="none" stroke="none" />

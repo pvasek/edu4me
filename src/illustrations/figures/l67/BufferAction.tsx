@@ -42,6 +42,7 @@ function Meter({ c, from, to }: { c: number; from: number; to: number }) {
         initial={{ rotate: deg(still ? to : from) }}
         animate={{ rotate: deg(go || still ? to : from) }}
         transition={{ type: 'spring', stiffness: 60, damping: 9, delay: go ? 1.3 : 0 }}
+        style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
       >
         {/* invisible square centred on the pivot so the rotation origin is the dial centre */}
         <rect x={c - R} y={cy - R} width={2 * R} height={2 * R} fill="none" stroke="none" />
