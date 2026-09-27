@@ -118,12 +118,14 @@ export default function Swipe({ levelId, onFinish }: GameProps) {
 
   return (
     <div className="g-sw">
-      <p className="g-sw-instr">Pravdivé tvrzení odhoď doprava, nepravdivé doleva. Nebo použij tlačítka či šipky.</p>
+      <div className="g-sw-top">
+        <p className="g-sw-instr">Pravdivé tvrzení odhoď doprava, nepravdivé doleva. Nebo použij tlačítka či šipky.</p>
+        <span className="chip chip-soft g-sw-level" title={level ? `Tvrzení z úrovně ${level}` : 'Tvrzení ze všech úrovní'}>
+          <Icon name="book" /> {level ? `Úroveň ${level}` : 'Vše'}
+        </span>
+      </div>
 
       <div className="g-sw-hud">
-        <span className="chip chip-soft" title={level ? `Tvrzení z úrovně ${level}` : 'Tvrzení ze všech úrovní'}>
-          {level ? `Úroveň ${level}` : 'Vše'}
-        </span>
         <span className="chip">
           <Icon name="book" /> {Math.min(pos + 1, cards.length)}/{cards.length}
         </span>

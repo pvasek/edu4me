@@ -18,14 +18,16 @@ const l4_1: Lesson = {
   sections: [
     {
       title: 'Co se děje při chemické reakci',
+      icon: 'flask',
       blocks: [
         {
           type: 'p',
-          text: 'Už z první úrovně víš, že při **chemické změně** vznikají nové látky, kdežto při fyzikální změně (tání, var, rozpouštění) látka zůstává sama sebou. Chemickou změnu teď nazveme přesně: je to **chemická reakce**.',
+          text: 'Při **chemické reakci** vznikají nové látky, kdežto při fyzikální změně (tání, var, rozpouštění) látka zůstává sama sebou. Vazby ve výchozích látkách se **štěpí** a **vznikají nové**. Atomy se neztrácejí ani nepřibývají, jen se přeskupí jako kostičky stavebnice do jiného modelu.',
         },
         {
-          type: 'p',
-          text: 'Při reakci se **štěpí** některé chemické vazby ve výchozích látkách a **vznikají nové** vazby. Atomy se nikam neztrácejí a nové nepřibývají. Jen se přeskupí do jiných kombinací, asi jako když z kostiček jedné stavebnice postavíš jiný model.',
+          type: 'reaction',
+          equation: '2H2 + O2 -> 2H2O',
+          caption: 'Vazby H–H a O=O se rozbijí, vzniknou vazby O–H. Atomů je před reakcí i po ní stejně.',
         },
         {
           type: 'keyterms',
@@ -36,16 +38,14 @@ const l4_1: Lesson = {
           ],
         },
         {
-          type: 'table',
-          headers: ['Znak reakce', 'Příklad z běžného života'],
-          rows: [
-            ['změna barvy', 'hnědnutí rozkrojeného jablka, rezavění železa'],
-            ['vznik plynu (bublinky)', 'šumivá tableta ve vodě, ocet a jedlá soda'],
-            ['vznik sraženiny (zákalu)', 'vodní kámen v konvici'],
-            ['uvolnění tepla nebo světla', 'hořící svíčka, ohňostroj'],
-            ['změna vůně nebo chuti', 'kynutí těsta, kysnutí mléka'],
+          type: 'iconlist',
+          items: [
+            { icon: 'apple', title: 'změna barvy', text: 'hnědnutí rozkrojeného jablka, rezavění železa' },
+            { icon: 'gas-cloud', title: 'vznik plynu (bublinky)', text: 'šumivá tableta ve vodě, ocet a jedlá soda' },
+            { icon: 'test-tube', title: 'vznik sraženiny (zákalu)', text: 'vodní kámen v konvici' },
+            { icon: 'flame', title: 'uvolnění tepla nebo světla', text: 'hořící svíčka, ohňostroj' },
+            { icon: 'bread', title: 'změna vůně nebo chuti', text: 'kynutí těsta, kysnutí mléka' },
           ],
-          caption: 'Podle čeho reakci obvykle poznáš',
         },
         {
           type: 'callout',
@@ -67,10 +67,16 @@ const l4_1: Lesson = {
     },
     {
       title: 'Zákon zachování hmotnosti',
+      icon: 'balance-scale',
       blocks: [
         {
           type: 'p',
-          text: 'Kolem roku 1756 zahříval ruský vědec **Michail Lomonosov** kovy v zatavených skleněných nádobách. Zjistil, že celková hmotnost nádoby se po reakci nezměnila. Nezávisle na něm to o pár let později (1774) přesným vážením potvrdil Francouz **Antoine Lavoisier**.',
+          text: 'Kolem roku 1756 zahříval ruský vědec **Michail Lomonosov** kovy v zatavených skleněných nádobách a celková hmotnost se po reakci nezměnila. Nezávisle na něm to roku 1774 přesným vážením potvrdil Francouz **Antoine Lavoisier**.',
+        },
+        {
+          type: 'diagram',
+          id: 'conservation-of-mass',
+          caption: 'Uzavřená nádoba na vahách: před reakcí i po ní ukazuje váha totéž.',
         },
         {
           type: 'formula',
@@ -78,36 +84,53 @@ const l4_1: Lesson = {
           caption: 'zákon zachování hmotnosti: v uzavřené soustavě se celková hmotnost při reakci nemění',
         },
         {
-          type: 'p',
-          text: 'Proč to platí? Protože se atomy jen přeskupují. Kolik atomů každého prvku vstoupí do reakce, tolik jich z ní také vyjde. A když se nezmění počet atomů, nemůže se změnit ani hmotnost.',
+          type: 'particles',
+          arrows: true,
+          boxes: [
+            { label: 'před reakcí: železo + síra', items: [{ species: 'Fe', count: 4 }, { species: 'S', count: 4 }], state: 'solid', note: '4 atomy Fe, 4 atomy S' },
+            { label: 'po reakci: sulfid železnatý', items: [{ species: 'FeS', count: 4 }], state: 'solid', note: '4 atomy Fe, 4 atomy S' },
+          ],
+          caption: 'Proč zákon platí? Atomy se jen přeskupí. Kolik jich do reakce vstoupí, tolik jich vyjde, a proto se nemění ani hmotnost.',
         },
         {
           type: 'example',
           title: 'Železo a síra',
-          problem: 'Smícháš 5,6 g železa a 3,2 g síry a směs zahřeješ. Obě látky zreagují beze zbytku na sulfid železnatý $FeS$. Kolik gramů $FeS$ vznikne?',
+          problem: 'Smícháš 5,6 g železa a 3,2 g síry a směs zahřeješ. Obě látky zreagují beze zbytku na sulfid železnatý $FeS$. Kolik gramů $FeS$ vznikne?',
           steps: [
             'Rovnice: $Fe + S -> FeS$',
             'Zákon zachování hmotnosti: $m(FeS) = m(Fe) + m(S)$',
-            'Dosadíme: $m(FeS)$ = 5,6 g + 3,2 g',
+            'Dosadíme: $m(FeS)$ = 5,6 g + 3,2 g',
           ],
-          answer: 'Vznikne 8,8 g sulfidu železnatého.',
+          answer: 'Vznikne 8,8 g sulfidu železnatého.',
         },
         {
           type: 'example',
           title: 'Když produkt odletí',
-          problem: 'Tepelným rozkladem 10 g vápence $CaCO3$ vzniklo 5,6 g oxidu vápenatého $CaO$. Druhým produktem je plynný $CO2$, který unikl. Kolik gramů $CO2$ vzniklo?',
+          problem: 'Tepelným rozkladem 10 g vápence $CaCO3$ vzniklo 5,6 g oxidu vápenatého $CaO$. Druhým produktem je plynný $CO2$, který unikl. Kolik gramů $CO2$ vzniklo?',
           steps: [
             'Rovnice: $CaCO3 -> CaO + CO2$',
             '$m(CaCO3) = m(CaO) + m(CO2)$',
-            '$m(CO2)$ = 10 g − 5,6 g',
+            '$m(CO2)$ = 10 g − 5,6 g',
           ],
-          answer: 'Uniklo 4,4 g oxidu uhličitého.',
+          answer: 'Uniklo 4,4 g oxidu uhličitého.',
         },
         {
-          type: 'callout',
-          variant: 'fact',
-          title: 'Svíčka hubne, ocelová vlna tloustne',
-          text: 'Hořící svíčka na váze ztrácí hmotnost, protože produkty ($CO2$ a vodní pára) odcházejí do vzduchu. Hořící ocelová vlna naopak ztěžkne: železo se slučuje s kyslíkem ze vzduchu na pevný oxid. V obou případech zákon platí, jen do vážení nezahrneš všechny látky.',
+          type: 'compare',
+          columns: [
+            {
+              title: 'Svíčka hubne',
+              icon: 'flame',
+              tone: 'a',
+              points: ['produkty ($CO2$ a vodní pára) odcházejí do vzduchu', 'váha ukáže méně'],
+            },
+            {
+              title: 'Ocelová vlna tloustne',
+              icon: 'rust',
+              tone: 'b',
+              points: ['železo se slučuje s kyslíkem ze vzduchu na pevný oxid', 'váha ukáže více'],
+            },
+          ],
+          caption: 'V obou případech zákon platí, jen do vážení nezahrneš všechny látky.',
         },
         {
           type: 'callout',
@@ -118,10 +141,10 @@ const l4_1: Lesson = {
           type: 'check',
           question: {
             kind: 'number',
-            q: 'Spálením 12 g hořčíku vzniklo 20 g oxidu hořečnatého $MgO$. Kolik gramů kyslíku se spotřebovalo?',
+            q: 'Spálením 12 g hořčíku vzniklo 20 g oxidu hořečnatého $MgO$. Kolik gramů kyslíku se spotřebovalo?',
             answer: 8,
             unit: 'g',
-            explain: 'Podle zákona zachování hmotnosti: $m(O2)$ = 20 g − 12 g = 8 g.',
+            explain: 'Podle zákona zachování hmotnosti: $m(O2)$ = 20 g − 12 g = 8 g.',
           },
         },
         {
@@ -137,34 +160,47 @@ const l4_1: Lesson = {
     },
     {
       title: 'Co všechno prozradí chemická rovnice',
+      icon: 'book',
       blocks: [
         {
           type: 'p',
           text: 'Chemická rovnice je nejkratší možný popis reakce. Vlevo jsou reaktanty, vpravo produkty, mezi nimi šipka. Čte se „reaguje za vzniku“ nebo prostě „dává“.',
         },
         {
-          type: 'formula',
-          text: '$2H2(g) + O2(g) -> 2H2O(l)$',
+          type: 'reaction',
+          equation: '2H2(g) + O2(g) -> 2H2O(l)',
           caption: 'hoření vodíku',
         },
         {
-          type: 'list',
-          items: [
-            '**Kvalitativní** význam (co reaguje): vodík reaguje s kyslíkem za vzniku vody.',
-            '**Kvantitativní** význam (kolik): dvě molekuly vodíku reagují s jednou molekulou kyslíku a vzniknou dvě molekuly vody.',
-            'Stejný poměr platí i pro obrovská množství částic. Jak se s nimi počítá, uvidíš v lekci o látkovém množství.',
+          type: 'compare',
+          columns: [
+            {
+              title: '**Kvalitativní** význam',
+              icon: 'magnifier',
+              tone: 'a',
+              points: ['co reaguje a co vzniká', 'vodík reaguje s kyslíkem za vzniku vody'],
+            },
+            {
+              title: '**Kvantitativní** význam',
+              icon: 'calculator',
+              tone: 'b',
+              points: [
+                'kolik částic reaguje',
+                'dvě molekuly vodíku reagují s jednou molekulou kyslíku a vzniknou dvě molekuly vody',
+                'stejný poměr platí i pro obrovská množství částic (lekce o látkovém množství)',
+              ],
+            },
           ],
         },
         {
-          type: 'table',
-          headers: ['Symbol', 'Význam', 'Příklad'],
-          rows: [
-            ['(s)', 'pevná látka (*solid*)', '$CaCO3(s)$'],
-            ['(l)', 'kapalina (*liquid*)', '$H2O(l)$'],
-            ['(g)', 'plyn (*gas*)', '$CO2(g)$'],
-            ['(aq)', 'rozpuštěno ve vodě (*aqueous*)', '$NaCl(aq)$'],
+          type: 'particles',
+          boxes: [
+            { label: '(s) pevná látka (*solid*)', items: [{ species: 'CaCO3', count: 6 }], state: 'solid', note: '$CaCO3(s)$' },
+            { label: '(l) kapalina (*liquid*)', items: [{ species: 'H2O', count: 6 }], state: 'liquid', note: '$H2O(l)$' },
+            { label: '(g) plyn (*gas*)', items: [{ species: 'CO2', count: 4 }], state: 'gas', note: '$CO2(g)$' },
+            { label: '(aq) rozpuštěno ve vodě (*aqueous*)', items: [{ species: 'Na^+', count: 3 }, { species: 'Cl^-', count: 3 }, { species: 'H2O', count: 6 }], state: 'solution', note: '$NaCl(aq)$' },
           ],
-          caption: 'Stavové symboly za vzorcem říkají, v jakém skupenství látka je',
+          caption: 'Stavové symboly za vzorcem říkají, v jakém skupenství látka je.',
         },
         {
           type: 'example',
@@ -197,14 +233,23 @@ const l4_1: Lesson = {
     },
     {
       title: 'Iontové rovnice',
+      icon: 'ion-plus',
       blocks: [
         {
           type: 'p',
-          text: 'Z lekce o iontové vazbě víš, že iontové látky jsou složené z kationtů a aniontů. Když se rozpustí ve vodě, ionty se od sebe oddělí a volně se pohybují v roztoku. $NaCl(aq)$ proto ve skutečnosti znamená $Na^+(aq)$ a $Cl^-(aq)$.',
+          text: 'Iontové látky jsou složené z kationtů a aniontů. Ve vodě se ionty od sebe oddělí a volně se pohybují: $NaCl(aq)$ proto ve skutečnosti znamená $Na^+(aq)$ a $Cl^-(aq)$.',
+        },
+        {
+          type: 'particles',
+          arrows: true,
+          boxes: [
+            { label: 'krystal $NaCl(s)$', items: [{ species: 'NaCl', count: 6 }], state: 'solid' },
+            { label: 'roztok $NaCl(aq)$', items: [{ species: 'Na^+', count: 6 }, { species: 'Cl^-', count: 6 }, { species: 'H2O', count: 8 }], state: 'solution', note: 'volné ionty $Na^+$ a $Cl^-$' },
+          ],
         },
         {
           type: 'p',
-          text: 'Pokud chceš ukázat, co se v roztoku **opravdu** děje, zapíšeš reakci jako **iontovou rovnici**. Rozpuštěné iontové látky rozepíšeš na ionty. Pevné látky, plyny a vodu necháš jako celé vzorce.',
+          text: 'V **iontové rovnici** rozpuštěné iontové látky rozepíšeš na ionty. Pevné látky, plyny a vodu necháš jako celé vzorce.',
         },
         {
           type: 'keyterms',
@@ -213,6 +258,20 @@ const l4_1: Lesson = {
             { term: 'ionty-diváci', def: 'ionty, které jsou na obou stranách rovnice stejné; reakce se neúčastní' },
             { term: 'zkrácená iontová rovnice', def: 'rovnice bez iontů-diváků; ukazuje jen to podstatné' },
           ],
+        },
+        {
+          type: 'reaction',
+          equation: 'Zn(s) + CuCl2(aq) -> ZnCl2(aq) + Cu(s)',
+          caption: 'zinkový plíšek v modrém roztoku chloridu měďnatého se pokryje mědí',
+        },
+        {
+          type: 'particles',
+          arrows: true,
+          boxes: [
+            { label: 'před reakcí', items: [{ species: 'Zn', count: 2 }, { species: 'Cu^2+', count: 2 }, { species: 'Cl^-', count: 4 }], state: 'solution' },
+            { label: 'po reakci', items: [{ species: 'Cu', count: 2 }, { species: 'Zn^2+', count: 2 }, { species: 'Cl^-', count: 4 }], state: 'solution', note: 'ionty $Cl^-$ se nezměnily: jsou to diváci' },
+          ],
+          caption: 'Doopravdy reagují jen zinek a ionty $Cu^{2+}$.',
         },
         {
           type: 'example',
@@ -348,16 +407,42 @@ const l4_2: Lesson = {
   sections: [
     {
       title: 'Koeficient, nebo index?',
+      icon: 'calculator',
       blocks: [
         {
           type: 'p',
           text: 'Rovnice $H2 + O2 -> H2O$ popisuje správné látky, ale nesedí: vlevo jsou dva atomy kyslíku, vpravo jen jeden. **Vyčíslit** rovnici znamená doplnit před vzorce taková čísla, aby na obou stranách byl stejný počet atomů každého prvku.',
         },
         {
-          type: 'keyterms',
-          items: [
-            { term: 'index', def: 'malé číslo vpravo dole ve vzorci; říká, kolik atomů je v jedné částici ($H2O$: 2 atomy H, 1 atom O)' },
-            { term: 'stechiometrický koeficient', def: 'číslo před vzorcem; říká, kolik částic dané látky reaguje nebo vzniká ($3H2O$: tři molekuly vody)' },
+          type: 'reaction',
+          equation: '2H2 + O2 -> 2H2O',
+          caption: 'Vyčísleno: vlevo i vpravo 4 atomy H a 2 atomy O.',
+        },
+        {
+          type: 'compare',
+          columns: [
+            {
+              title: 'index',
+              icon: 'molecule',
+              tone: 'a',
+              points: [
+                'malé číslo vpravo dole ve vzorci',
+                'říká, kolik atomů je v jedné částici',
+                '$H2O$: 2 atomy H, 1 atom O',
+                'při vyčíslování ho **nikdy neměníš**',
+              ],
+            },
+            {
+              title: 'stechiometrický koeficient',
+              icon: 'calculator',
+              tone: 'b',
+              points: [
+                'číslo před vzorcem',
+                'říká, kolik částic dané látky reaguje nebo vzniká',
+                '$3H2O$: tři molekuly vody',
+                'při vyčíslování ho **doplňuješ**',
+              ],
+            },
           ],
         },
         {
@@ -366,14 +451,19 @@ const l4_2: Lesson = {
           caption: 'u závorky násob ještě indexem za závorkou',
         },
         {
-          type: 'table',
-          headers: ['Zápis', 'Co znamená', 'Počet atomů'],
-          rows: [
-            ['$3H2O$', '3 molekuly vody', '6 H, 3 O'],
-            ['$2Fe2O3$', '2 „jednotky“ oxidu železitého', '4 Fe, 6 O'],
-            ['$4NH3$', '4 molekuly amoniaku', '4 N, 12 H'],
-            ['$2Al2O3$', '2 „jednotky“ oxidu hlinitého', '4 Al, 6 O'],
+          type: 'particles',
+          boxes: [
+            { label: '$3H2O$', items: [{ species: 'H2O', count: 3 }], note: '3 molekuly vody: 6 H, 3 O' },
+            { label: '$4NH3$', items: [{ species: 'NH3', count: 4 }], note: '4 molekuly amoniaku: 4 N, 12 H' },
+            { label: '$2Fe2O3$', items: [{ species: 'Fe2O3', count: 2 }], note: '2 „jednotky“ oxidu železitého: 4 Fe, 6 O' },
           ],
+          caption: 'Koeficient říká, kolik částic nakreslíš; index, z kolika atomů je každá složená.',
+        },
+        {
+          type: 'molecule',
+          molecules: ['H2O', 'H2O2'],
+          labels: ['voda $H2O$', 'peroxid vodíku $H2O2$'],
+          caption: 'Jiný index = jiná látka.',
         },
         {
           type: 'callout',
@@ -410,22 +500,24 @@ const l4_2: Lesson = {
     },
     {
       title: 'Postup krok za krokem',
+      icon: 'pencil',
       blocks: [
         {
           type: 'p',
-          text: 'Jednoduché rovnice vyčíslíš „od oka“. U složitějších se vyplatí pevné pořadí. Prvek, který je jen v jedné látce na každé straně, vyrovnej dřív; kyslík a vodík bývají ve více látkách, proto přicházejí na řadu nakonec.',
+          text: 'Jednoduché rovnice vyčíslíš „od oka“, u složitějších se vyplatí pevné pořadí. Kyslík a vodík bývají ve více látkách, proto přicházejí na řadu nakonec.',
         },
         {
-          type: 'list',
-          ordered: true,
-          items: [
-            'Napiš správné vzorce reaktantů a produktů.',
-            'Vyrovnej atomy **kovů**.',
-            'Vyrovnej atomy **nekovů** kromě vodíku a kyslíku.',
-            'Vyrovnej **vodík**.',
-            'Vyrovnej **kyslík**.',
-            'Zkontroluj všechny prvky a zkrať koeficienty na nejmenší celá čísla.',
+          type: 'process',
+          layout: 'flow',
+          steps: [
+            { icon: 'pencil', title: 'vzorce', text: 'napiš správné vzorce reaktantů a produktů' },
+            { icon: 'coin', title: '**Ko**vy', text: 'vyrovnej atomy kovů' },
+            { icon: 'periodic-table', title: '**Ne**kovy', text: 'kromě vodíku a kyslíku' },
+            { icon: 'balloon', title: '**Vo**dík', text: 'vyrovnej vodík' },
+            { icon: 'lungs', title: '**Ky**slík', text: 'vyrovnej kyslík' },
+            { icon: 'check', title: 'kontrola', text: 'zkontroluj všechny prvky a zkrať koeficienty na nejmenší celá čísla' },
           ],
+          caption: 'Pořadí vyčíslování',
         },
         {
           type: 'callout',
@@ -446,6 +538,11 @@ const l4_2: Lesson = {
           answer: '$N2 + 3H2 -> 2NH3$',
         },
         {
+          type: 'reaction',
+          equation: 'N2 + 3H2 -> 2NH3',
+          caption: '2 atomy N a 6 atomů H na každé straně',
+        },
+        {
           type: 'example',
           title: 'Hliník na vzduchu',
           problem: 'Hliník se na vzduchu pokrývá tenkou ochrannou vrstvou oxidu. Vyčísli $Al + O2 -> Al2O3$.',
@@ -456,6 +553,11 @@ const l4_2: Lesson = {
             'Kontrola: Al 4 = 4, O 3 × 2 = 6 a 2 × 3 = 6.',
           ],
           answer: '$4Al + 3O2 -> 2Al2O3$',
+        },
+        {
+          type: 'reaction',
+          equation: '4Al + 3O2 -> 2Al2O3',
+          caption: 'nejmenší společný násobek indexů 2 a 3 je 6 atomů kyslíku',
         },
         {
           type: 'callout',
@@ -486,10 +588,23 @@ const l4_2: Lesson = {
     },
     {
       title: 'Když vyjde zlomek',
+      icon: 'idea',
       blocks: [
         {
           type: 'p',
-          text: 'Někdy ti na kyslíku vyjde lichý počet atomů, a z molekul $O2$ ho neposkládáš. Pomůže trik: jako **mezikrok** klidně napiš zlomek, třeba $5/2 O2$. Nakonec vynásobíš celou rovnici dvěma.',
+          text: 'Někdy ti na kyslíku vyjde lichý počet atomů, a z molekul $O2$ ho neposkládáš. Pomůže trik: jako **mezikrok** napiš zlomek, třeba $5/2 O2$, a nakonec celou rovnici vynásob dvěma.',
+        },
+        {
+          type: 'process',
+          layout: 'flow',
+          steps: [
+            { icon: 'check', title: 'vyrovnej ostatní prvky', text: 'kyslík nech nakonec' },
+            { icon: 'calculator', title: 'sečti kyslík vpravo', text: 'vyšel lichý počet atomů?' },
+            { icon: 'pencil', title: 'napiš zlomek', text: 'např. $5/2 O2$' },
+            { icon: 'arrow-cycle', title: 'vynásob dvěma', text: 'všechny koeficienty' },
+            { icon: 'magnifier', title: 'zkontroluj', text: 'všechny atomy' },
+          ],
+          caption: 'Trik se zlomkem',
         },
         {
           type: 'example',
@@ -505,6 +620,11 @@ const l4_2: Lesson = {
           answer: '$2H2O2 -> 2H2O + O2$',
         },
         {
+          type: 'reaction',
+          equation: '2H2O2 -> 2H2O + O2',
+          caption: 'rozklad peroxidu vodíku: 4 H a 4 O na každé straně',
+        },
+        {
           type: 'example',
           title: 'Spalování amoniaku (výroba kyseliny dusičné)',
           problem: 'Vyčísli $NH3 + O2 -> NO + H2O$.',
@@ -517,6 +637,11 @@ const l4_2: Lesson = {
             'Kontrola: N 4 = 4, H 12 = 12, O 10 = 4 + 6.',
           ],
           answer: '$4NH3 + 5O2 -> 4NO + 6H2O$',
+        },
+        {
+          type: 'reaction',
+          equation: '4NH3 + 5O2 -> 4NO + 6H2O',
+          caption: 'po vynásobení dvěma: N 4 = 4, H 12 = 12, O 10 = 10',
         },
         {
           type: 'callout',
@@ -542,10 +667,16 @@ const l4_2: Lesson = {
     },
     {
       title: 'Vyčíslování hoření',
+      icon: 'flame',
       blocks: [
         {
           type: 'p',
-          text: 'Plynový sporák, zapalovač i kempinkový vařič spalují **uhlovodíky**, tedy sloučeniny uhlíku a vodíku. Při dokonalém hoření vždy vzniká oxid uhličitý a voda. Podrobně je poznáš v úrovni 8, teď nám stačí jejich vzorce.',
+          text: 'Plynový sporák, zapalovač i kempinkový vařič spalují **uhlovodíky**, sloučeniny uhlíku a vodíku. Při dokonalém hoření z nich vždy vzniká oxid uhličitý a voda. Podrobně je poznáš v úrovni 8.',
+        },
+        {
+          type: 'molecule',
+          molecules: ['CH4', 'C3H8', 'butane'],
+          labels: ['methan $CH4$ (zemní plyn)', 'propan $C3H8$ (plynová bomba)', 'butan $C4H10$ (zapalovač)'],
         },
         {
           type: 'formula',
@@ -564,6 +695,11 @@ const l4_2: Lesson = {
           answer: '$CH4 + 2O2 -> CO2 + 2H2O$',
         },
         {
+          type: 'reaction',
+          equation: 'CH4 + 2O2 -> CO2 + 2H2O',
+          caption: 'hoření methanu: C 1 = 1, H 4 = 4, O 4 = 4',
+        },
+        {
           type: 'example',
           title: 'Butan (zapalovač)',
           problem: 'Vyčísli hoření butanu $C4H10 + O2 -> CO2 + H2O$.',
@@ -577,10 +713,26 @@ const l4_2: Lesson = {
           answer: '$2C4H10 + 13O2 -> 8CO2 + 10H2O$',
         },
         {
-          type: 'callout',
-          variant: 'warning',
-          title: 'Nedokonalé hoření',
-          text: 'Když je málo kyslíku (ucpaný komín, karma v malé koupelně), vzniká místo $CO2$ jedovatý **oxid uhelnatý**: $2CH4 + 3O2 -> 2CO + 4H2O$. Nevidíš ho a necítíš, proto patří do bytu s plynovým spotřebičem detektor CO.',
+          type: 'compare',
+          columns: [
+            {
+              title: 'Dokonalé hoření',
+              icon: 'flame',
+              tone: 'good',
+              points: ['dost kyslíku', 'vzniká $CO2$ a $H2O$', '$CH4 + 2O2 -> CO2 + 2H2O$'],
+            },
+            {
+              title: 'Nedokonalé hoření',
+              icon: 'hazard',
+              tone: 'bad',
+              points: [
+                'málo kyslíku (ucpaný komín, karma v malé koupelně)',
+                'vzniká jedovatý **oxid uhelnatý** $CO$',
+                '$2CH4 + 3O2 -> 2CO + 4H2O$',
+                '$CO$ nevidíš ani necítíš: do bytu s plynovým spotřebičem patří detektor CO',
+              ],
+            },
+          ],
         },
         {
           type: 'game',
@@ -601,6 +753,7 @@ const l4_2: Lesson = {
     },
     {
       title: 'Kontrola a typické chyby',
+      icon: 'magnifier',
       blocks: [
         {
           type: 'p',
@@ -617,13 +770,18 @@ const l4_2: Lesson = {
           caption: 'Kontrola rovnice $2C4H10 + 13O2 -> 8CO2 + 10H2O$',
         },
         {
-          type: 'list',
+          type: 'reaction',
+          equation: 'Fe2O3 + 3CO -> 2Fe + 3CO2',
+          caption: 'Počítadlo atomů pod obrázkem dělá stejnou kontrolu: Fe 2 = 2, C 3 = 3, O vlevo 3 + 3 = 6 a vpravo 3 × 2 = 6.',
+        },
+        {
+          type: 'iconlist',
           items: [
-            'Změníš index místo koeficientu, a tím vznikne jiná látka.',
-            'Zapomeneš vynásobit index koeficientem ($3H2O$ má 6 atomů H, ne 2).',
-            'Přidáš do rovnice látku, která tam nepatří, jen aby to „sedělo“.',
-            'Necháš v rovnici zlomek nebo koeficienty, které jdou ještě zkrátit.',
-            'U iontové rovnice zapomeneš zkontrolovat náboje.',
+            { icon: 'cross', title: 'změněný index', text: 'místo koeficientu, a tím vznikne jiná látka' },
+            { icon: 'calculator', title: 'zapomenuté násobení', text: 'index se násobí koeficientem: $3H2O$ má 6 atomů H, ne 2' },
+            { icon: 'question', title: 'přidaná látka', text: 'která do rovnice nepatří, jen aby to „sedělo“' },
+            { icon: 'warning', title: 'zlomek ve výsledku', text: 'nebo koeficienty, které jdou ještě zkrátit' },
+            { icon: 'ion-plus', title: 'nezkontrolované náboje', text: 'u iontové rovnice' },
           ],
         },
         {
@@ -753,30 +911,46 @@ const l4_3: Lesson = {
   sections: [
     {
       title: 'Čtyři základní typy',
+      icon: 'molecule',
       blocks: [
         {
           type: 'p',
           text: 'Nejjednodušší třídění se dívá na to, **jak se mění počet a složení látek**. Stačí porovnat levou a pravou stranu rovnice.',
         },
         {
-          type: 'table',
-          headers: ['Typ', 'Schéma', 'Příklad'],
-          rows: [
-            ['**syntéza** (slučování)', 'A + B → AB', '$2Mg + O2 -> 2MgO$'],
-            ['**rozklad** (analýza)', 'AB → A + B', '$CaCO3 -> CaO + CO2$'],
-            ['**substituce** (nahrazování)', 'A + BC → AC + B', '$Zn + CuCl2 -> ZnCl2 + Cu$'],
-            ['**podvojná záměna**', 'AB + CD → AD + CB', '$AgNO3 + NaCl -> AgCl + NaNO3$'],
-          ],
+          type: 'diagram',
+          id: 'reaction-types',
           caption: 'Čtyři základní typy reakcí podle změny látek',
         },
         {
-          type: 'list',
+          type: 'iconlist',
           items: [
-            '**Syntéza**: z více látek vzniká jedna. Hoření hořčíku v bleskovém prášku, vznik $FeS$ ze železa a síry.',
-            '**Rozklad**: z jedné látky vzniká více látek. Pálení vápence v peci na $CaO$, elektrolýza vody $2H2O -> 2H2 + O2$.',
-            '**Substituce**: prvek „vystrčí“ jiný prvek ze sloučeniny. Zinek vytěsní měď, chlor vytěsní brom: $Cl2 + 2KBr -> 2KCl + Br2$.',
-            '**Podvojná záměna**: dvě sloučeniny si „vymění partnery“, jako dva páry při tanci.',
+            {
+              icon: 'bond',
+              title: '**syntéza** (slučování): A + B → AB',
+              text: 'z více látek vzniká jedna; hoření hořčíku v bleskovém prášku $2Mg + O2 -> 2MgO$, vznik $FeS$ ze železa a síry',
+            },
+            {
+              icon: 'heat',
+              title: '**rozklad** (analýza): AB → A + B',
+              text: 'z jedné látky vzniká více látek; pálení vápence $CaCO3 -> CaO + CO2$, elektrolýza vody $2H2O -> 2H2 + O2$',
+            },
+            {
+              icon: 'arrow-cycle',
+              title: '**substituce** (nahrazování): A + BC → AC + B',
+              text: 'prvek „vystrčí“ jiný prvek ze sloučeniny; zinek vytěsní měď $Zn + CuCl2 -> ZnCl2 + Cu$, chlor vytěsní brom $Cl2 + 2KBr -> 2KCl + Br2$',
+            },
+            {
+              icon: 'mixture',
+              title: '**podvojná záměna**: AB + CD → AD + CB',
+              text: 'dvě sloučeniny si „vymění partnery“ jako dva páry při tanci; $AgNO3 + NaCl -> AgCl + NaNO3$',
+            },
           ],
+        },
+        {
+          type: 'reaction',
+          equation: 'Fe + 2HCl -> FeCl2 + H2',
+          caption: 'železné piliny v kyselině chlorovodíkové šumí',
         },
         {
           type: 'example',
@@ -812,10 +986,19 @@ const l4_3: Lesson = {
     },
     {
       title: 'Podvojná záměna: sraženiny a neutralizace',
+      icon: 'test-tube',
       blocks: [
         {
           type: 'p',
-          text: 'Když smícháš dva roztoky iontových látek, podvojná záměna proběhne jen tehdy, když něco „odejde“ z roztoku: vznikne **nerozpustná sraženina**, **plyn** nebo **voda**.',
+          text: 'Když smícháš dva roztoky iontových látek, podvojná záměna proběhne jen tehdy, když něco „odejde“ z roztoku:',
+        },
+        {
+          type: 'iconlist',
+          items: [
+            { icon: 'powder', title: 'nerozpustná sraženina', text: 'např. bílý $AgCl$ nebo žlutý $PbI2$' },
+            { icon: 'gas-cloud', title: 'plyn', text: 'např. $CO2$ z octa a jedlé sody' },
+            { icon: 'drop', title: 'voda', text: 'při neutralizaci' },
+          ],
         },
         {
           type: 'keyterms',
@@ -823,6 +1006,24 @@ const l4_3: Lesson = {
             { term: 'srážecí reakce', def: 'podvojná záměna, při které vzniká nerozpustná pevná látka (sraženina); v rovnici ji označíš (s) nebo šipkou ↓' },
             { term: 'neutralizace', def: 'reakce kyseliny s hydroxidem za vzniku soli a vody' },
           ],
+        },
+        {
+          type: 'particles',
+          arrows: true,
+          boxes: [
+            {
+              label: 'roztoky $AgNO3$ a $NaCl$',
+              items: [{ species: 'Ag^+', count: 3 }, { species: 'NO3-', count: 3 }, { species: 'Na^+', count: 3 }, { species: 'Cl^-', count: 3 }],
+              state: 'solution',
+            },
+            {
+              label: 'po smíchání',
+              items: [{ species: 'AgCl', count: 3 }, { species: 'Na^+', count: 3 }, { species: 'NO3-', count: 3 }],
+              state: 'solution',
+              note: '$AgCl$ padá na dno jako bílá sraženina',
+            },
+          ],
+          caption: '$Ag^+$ a $Cl^-$ si „vymění partnery“ a vypadnou z roztoku.',
         },
         {
           type: 'example',
@@ -843,8 +1044,8 @@ const l4_3: Lesson = {
           text: 'Sloučeniny olova jsou jedovaté. Zlatý déšť patří jen do školní laboratoře: brýle, rukavice a odpad do označené nádoby, nikdy do výlevky.',
         },
         {
-          type: 'formula',
-          text: '$HCl + NaOH -> NaCl + H2O$',
+          type: 'reaction',
+          equation: 'HCl + NaOH -> NaCl + H2O',
           caption: 'neutralizace: kyselina + hydroxid → sůl + voda (podrobně v úrovni 5)',
         },
         {
@@ -876,16 +1077,35 @@ const l4_3: Lesson = {
     },
     {
       title: 'Teplo: exotermní a endotermní reakce',
+      icon: 'heat',
       blocks: [
         {
           type: 'p',
-          text: 'Reakce se liší i tím, co dělají s teplem. Když při reakci vznikají pevnější vazby, než jaké se rozbily, energie přebývá a uvolní se do okolí.',
+          text: 'Reakce se liší i tím, co dělají s teplem. Když vznikají pevnější vazby, než jaké se rozbily, energie přebývá a uvolní se do okolí.',
         },
         {
-          type: 'keyterms',
-          items: [
-            { term: 'exotermní reakce', def: 'teplo **uvolňuje**, okolí se ohřívá (hoření, neutralizace, ohřívací sáčky na ruce)' },
-            { term: 'endotermní reakce', def: 'teplo **spotřebovává**, musíš ho dodávat nebo se okolí ochladí (rozklad vápence, fotosyntéza)' },
+          type: 'compare',
+          columns: [
+            {
+              title: '**exotermní** reakce',
+              icon: 'heat',
+              tone: 'a',
+              points: [
+                'teplo **uvolňuje**, okolí se ohřívá',
+                'produkty mají méně energie než reaktanty',
+                'hoření, neutralizace, ohřívací sáčky na ruce',
+              ],
+            },
+            {
+              title: '**endotermní** reakce',
+              icon: 'cold',
+              tone: 'b',
+              points: [
+                'teplo **spotřebovává**, musíš ho dodávat nebo se okolí ochladí',
+                'produkty mají více energie než reaktanty',
+                'rozklad vápence, fotosyntéza',
+              ],
+            },
           ],
         },
         {
@@ -914,7 +1134,7 @@ const l4_3: Lesson = {
           type: 'check',
           question: {
             kind: 'tf',
-            q: 'Rozklad vápence na pálené vápno, který probíhá jen při stálém zahřívání na asi 900 °C, je exotermní reakce.',
+            q: 'Rozklad vápence na pálené vápno, který probíhá jen při stálém zahřívání na asi 900 °C, je exotermní reakce.',
             answer: false,
             explain: 'Teplo se musí neustále dodávat, reakce ho spotřebovává. Je tedy endotermní.',
           },
@@ -923,18 +1143,33 @@ const l4_3: Lesson = {
     },
     {
       title: 'Rychlé, pomalé a vratné reakce',
+      icon: 'stopwatch',
       blocks: [
         {
-          type: 'p',
-          text: 'Srážecí reakce nebo výbuch proběhnou okamžitě. Rezavění, kvašení vína nebo zvětrávání kamene trvají dny až staletí. Proč, a jak rychlost ovlivnit, se naučíš v úrovni 6 v lekci o rychlosti reakcí.',
+          type: 'compare',
+          columns: [
+            {
+              title: 'rychlé reakce',
+              icon: 'explosion',
+              tone: 'a',
+              points: ['vznik sraženiny $AgCl$: okamžitě', 'výbuch rachejtle: zlomek sekundy', 'hoření dřeva'],
+            },
+            {
+              title: 'pomalé reakce',
+              icon: 'rust',
+              tone: 'b',
+              points: ['rezavění železa: měsíce až roky', 'kvašení vína: dny', 'zvětrávání kamene: staletí'],
+            },
+          ],
+          caption: 'Proč jsou některé reakce pomalé a jak rychlost ovlivnit, se naučíš v úrovni 6 v lekci o rychlosti reakcí.',
         },
         {
           type: 'p',
-          text: 'Většina reakcí, se kterými se potkáš, jde prakticky jen jedním směrem. Spálený papír „neodhoříš“ zpátky. Některé reakce ale mohou probíhat oběma směry. Říkáme jim **vratné** a píšeme je s dvojitou šipkou ⇌.',
+          text: 'Většina reakcí jde prakticky jen jedním směrem: spálený papír „neodhoříš“ zpátky. Některé reakce ale mohou probíhat oběma směry. Říkáme jim **vratné** a píšeme je s dvojitou šipkou ⇌.',
         },
         {
-          type: 'formula',
-          text: '$N2 + 3H2 <=> 2NH3$',
+          type: 'reaction',
+          equation: 'N2 + 3H2 <=> 2NH3',
           caption: 'výroba amoniaku: část amoniaku se zase rozkládá zpátky na dusík a vodík',
         },
         {
@@ -971,18 +1206,33 @@ const l4_3: Lesson = {
     },
     {
       title: 'Velké rodiny: redoxní a acidobazické reakce',
+      icon: 'electron',
       blocks: [
         {
           type: 'p',
           text: 'Chemici třídí reakce také podle toho, **co si částice předávají**. Tak vznikají dvě velké rodiny, se kterými se budeš potkávat až do maturity.',
         },
         {
-          type: 'table',
-          headers: ['Rodina', 'Co se předává', 'Jak ji poznáš', 'Příklad'],
-          rows: [
-            ['**redoxní**', 'elektrony', 'mění se oxidační čísla', '$Zn + CuCl2 -> ZnCl2 + Cu$'],
-            ['**acidobazická**', 'protony $H^+$', 'reaguje kyselina se zásadou', '$HCl + NaOH -> NaCl + H2O$'],
+          type: 'compare',
+          columns: [
+            {
+              title: '**redoxní** reakce',
+              icon: 'electron',
+              tone: 'a',
+              points: ['předávají se **elektrony**', 'poznáš je tak, že se mění oxidační čísla', '$Zn + CuCl2 -> ZnCl2 + Cu$'],
+            },
+            {
+              title: '**acidobazické** reakce',
+              icon: 'ion-plus',
+              tone: 'b',
+              points: ['předávají se **protony** $H^+$', 'reaguje kyselina se zásadou', '$HCl + NaOH -> NaCl + H2O$'],
+            },
           ],
+        },
+        {
+          type: 'diagram',
+          id: 'redox-transfer',
+          caption: 'Při redoxní reakci přecházejí elektrony z jedné částice na druhou.',
         },
         {
           type: 'example',
@@ -997,9 +1247,24 @@ const l4_3: Lesson = {
           answer: 'Ano, jde o redoxní reakci (a zároveň o substituci).',
         },
         {
+          type: 'reaction',
+          equation: '2Mg + O2 -> 2MgO',
+          caption: 'Hoření hořčíku patří do pěti šuplíků najednou.',
+        },
+        {
+          type: 'iconlist',
+          items: [
+            { icon: 'bond', title: 'syntéza', text: 'z dvou látek vzniká jedna' },
+            { icon: 'heat', title: 'exotermní', text: 'uvolňuje teplo a oslnivé světlo' },
+            { icon: 'speed', title: 'rychlá', text: 'proběhne během okamžiku' },
+            { icon: 'cross', title: 'nevratná', text: 'z $MgO$ se hořčík sám zpátky nevrátí' },
+            { icon: 'electron', title: 'redoxní', text: 'hořčík 0 → II, kyslík 0 → −II' },
+          ],
+        },
+        {
           type: 'callout',
           variant: 'remember',
-          text: 'Jedna reakce může patřit do více šuplíků. Hoření hořčíku $2Mg + O2 -> 2MgO$ je syntéza, je exotermní, rychlá, nevratná a redoxní. Podrobně se redoxním reakcím věnuje úroveň 6, kyselinám a zásadám úroveň 5.',
+          text: 'Jedna reakce může patřit do více šuplíků. Podrobně se redoxním reakcím věnuje úroveň 6, kyselinám a zásadám úroveň 5.',
         },
         {
           type: 'game',
@@ -1116,10 +1381,16 @@ const l4_4: Lesson = {
   sections: [
     {
       title: 'Mol: chemický tucet',
+      icon: 'egg',
       blocks: [
         {
           type: 'p',
           text: 'Vejce kupuješ po tuctech (12 kusů), papír po balících (500 listů). Atomy a molekuly jsou tak malé, že chemici potřebují „balení“ s obrovským počtem kusů. Tím balením je **mol**.',
+        },
+        {
+          type: 'diagram',
+          id: 'mole-scale',
+          caption: 'Tucet, balík, mol: jeden mol je obří balení 6,022·10^{23} částic.',
         },
         {
           type: 'keyterms',
@@ -1137,10 +1408,10 @@ const l4_4: Lesson = {
         {
           type: 'example',
           title: 'Z molů na částice',
-          problem: 'Kolik molekul je ve 2,5 mol oxidu uhličitého?',
+          problem: 'Kolik molekul je ve 2,5 mol oxidu uhličitého?',
           steps: [
             'Vyjádříme počet částic: $N = n · N_{A}$',
-            'Dosadíme: $N$ = 2,5 mol · 6,022·10^{23} mol^{−1}',
+            'Dosadíme: $N$ = 2,5 mol · 6,022·10^{23} mol^{−1}',
             'Jednotky mol a mol^{−1} se vykrátí: $N$ = 15,055·10^{23}',
           ],
           answer: '$N$ ≈ 1,51·10^{24} molekul $CO2$',
@@ -1152,15 +1423,23 @@ const l4_4: Lesson = {
           steps: [
             '$n = N / N_{A}$',
             '$n$ = 3,011·10^{23} : 6,022·10^{23} mol^{−1}',
-            '$n$ = 0,5 mol',
+            '$n$ = 0,5 mol',
           ],
-          answer: 'Hřebík obsahuje 0,5 mol železa.',
+          answer: 'Hřebík obsahuje 0,5 mol železa.',
+        },
+        {
+          type: 'particles',
+          boxes: [
+            { label: 'molekuly $O2$', items: [{ species: 'O2', count: 4 }], state: 'gas', note: '4 molekuly = 8 atomů O' },
+            { label: 'molekuly $H2O$', items: [{ species: 'H2O', count: 4 }], state: 'liquid', note: '4 molekuly = 8 atomů H + 4 atomy O' },
+          ],
+          caption: 'Stejně je to s moly: 1 mol $O2$ = 2 mol atomů O; 1 mol $H2O$ = 2 mol atomů H + 1 mol atomů O.',
         },
         {
           type: 'callout',
           variant: 'warning',
           title: 'Vždy řekni, čeho mol',
-          text: '1 mol molekul $O2$ obsahuje **2 mol atomů** kyslíku. A 1 mol molekul $H2O$ obsahuje 2 mol atomů H a 1 mol atomů O. ==Než začneš počítat, ujasni si, jaké částice počítáš.==',
+          text: '1 mol molekul $O2$ obsahuje **2 mol atomů** kyslíku. ==Než začneš počítat, ujasni si, jaké částice počítáš.==',
         },
         {
           type: 'callout',
@@ -1174,28 +1453,34 @@ const l4_4: Lesson = {
             q: 'Jaké látkové množství odpovídá 1,2044·10^{24} molekulám vody?',
             answer: 2,
             unit: 'mol',
-            explain: '$n$ = 1,2044·10^{24} : 6,022·10^{23} mol^{−1} = 2 mol.',
+            explain: '$n$ = 1,2044·10^{24} : 6,022·10^{23} mol^{−1} = 2 mol.',
           },
         },
         {
           type: 'check',
           question: {
             kind: 'number',
-            q: 'Kolik atomů vodíku je v 1 mol molekul vody? Zapiš výsledek jako násobek 10^{23}.',
+            q: 'Kolik atomů vodíku je v 1 mol molekul vody? Zapiš výsledek jako násobek 10^{23}.',
             answer: 12.044,
             tolerance: 0.05,
             unit: '·10²³',
-            explain: 'Každá molekula $H2O$ má 2 atomy H, takže 2 mol atomů H: 2 · 6,022·10^{23} = 12,044·10^{23}.',
+            explain: 'Každá molekula $H2O$ má 2 atomy H, takže 2 mol atomů H: 2 · 6,022·10^{23} = 12,044·10^{23}.',
           },
         },
       ],
     },
     {
       title: 'Molární hmotnost',
+      icon: 'balance-scale',
       blocks: [
         {
           type: 'p',
-          text: 'Částice nespočítáš, ale můžeš je zvážit. Most mezi hmotností a látkovým množstvím tvoří **molární hmotnost** $M$: hmotnost jednoho molu látky.',
+          text: 'Částice nespočítáš, ale můžeš je zvážit. Most mezi hmotností a látkovým množstvím tvoří **molární hmotnost** $M$, hmotnost jednoho molu látky. V g/mol má stejnou číselnou hodnotu jako **relativní molekulová hmotnost** $M_{r}$, tedy součet relativních atomových hmotností $A_{r}$ všech atomů ve vzorci (najdeš je v periodické tabulce).',
+        },
+        {
+          type: 'diagram',
+          id: 'mole-bridge',
+          caption: 'Látkové množství je most: z něj se dostaneš k hmotnosti, k počtu částic i k objemu plynu.',
         },
         {
           type: 'formula',
@@ -1203,52 +1488,59 @@ const l4_4: Lesson = {
           caption: '$m$ hmotnost (g), $M$ molární hmotnost (g/mol), $n$ látkové množství (mol)',
         },
         {
-          type: 'p',
-          text: 'Molární hmotnost v g/mol má stejnou číselnou hodnotu jako **relativní molekulová hmotnost** $M_{r}$. Tu získáš sečtením relativních atomových hmotností $A_{r}$ všech atomů ve vzorci. Hodnoty $A_{r}$ najdeš v periodické tabulce.',
-        },
-        {
           type: 'example',
           title: 'Molární hmotnost ze vzorce',
           problem: 'Spočítej molární hmotnost vody, vápence a oxidu hlinitého. ($A_{r}$: H 1, C 12, O 16, Al 27, Ca 40)',
           steps: [
-            '$M(H2O)$ = 2 · 1 + 16 = 18 g/mol',
-            '$M(CaCO3)$ = 40 + 12 + 3 · 16 = 100 g/mol',
-            '$M(Al2O3)$ = 2 · 27 + 3 · 16 = 54 + 48 = 102 g/mol',
+            '$M(H2O)$ = 2 · 1 + 16 = 18 g/mol',
+            '$M(CaCO3)$ = 40 + 12 + 3 · 16 = 100 g/mol',
+            '$M(Al2O3)$ = 2 · 27 + 3 · 16 = 54 + 48 = 102 g/mol',
           ],
-          answer: '18 g/mol, 100 g/mol a 102 g/mol',
+          answer: '18 g/mol, 100 g/mol a 102 g/mol',
+        },
+        {
+          type: 'process',
+          layout: 'flow',
+          steps: [
+            { icon: 'balance-scale', title: 'hmotnost $m$', text: 'v gramech' },
+            { icon: 'calculator', title: '÷ $M$', text: 'molární hmotnost v g/mol' },
+            { icon: 'atom', title: 'látkové množství $n$', text: 'v molech' },
+            { icon: 'calculator', title: '× $N_{A}$', text: '6,022·10^{23} mol^{−1}' },
+            { icon: 'molecule', title: 'počet částic $N$' },
+          ],
+          caption: 'Opačným směrem násobíš $M$ a dělíš $N_{A}$. Trojúhelník $m$–$n$–$M$: zakryj, co hledáš, a zbude $m = n · M$, $n = m / M$ nebo $M = m / n$.',
         },
         {
           type: 'example',
           title: 'Z hmotnosti na moly a na částice',
-          problem: 'V láhvi sodovky je rozpuštěno 8,8 g $CO2$. Jaké je to látkové množství a kolik molekul to je? ($A_{r}$: C 12, O 16)',
+          problem: 'V láhvi sodovky je rozpuštěno 8,8 g $CO2$. Jaké je to látkové množství a kolik molekul to je? ($A_{r}$: C 12, O 16)',
           steps: [
-            '$M(CO2)$ = 12 + 2 · 16 = 44 g/mol',
-            '$n = m / M$ = 8,8 g : 44 g/mol = 0,2 mol',
-            '$N = n · N_{A}$ = 0,2 mol · 6,022·10^{23} mol^{−1} = 1,204·10^{23}',
+            '$M(CO2)$ = 12 + 2 · 16 = 44 g/mol',
+            '$n = m / M$ = 8,8 g : 44 g/mol = 0,2 mol',
+            '$N = n · N_{A}$ = 0,2 mol · 6,022·10^{23} mol^{−1} = 1,204·10^{23}',
           ],
-          answer: '0,2 mol, tedy asi 1,2·10^{23} molekul $CO2$',
+          answer: '0,2 mol, tedy asi 1,2·10^{23} molekul $CO2$',
         },
         {
           type: 'example',
           title: 'Z molů na hmotnost',
-          problem: 'Kolik gramů vápence $CaCO3$ odpovídá 0,25 mol?',
+          problem: 'Kolik gramů vápence $CaCO3$ odpovídá 0,25 mol?',
           steps: [
             '$m = n · M$',
-            '$M(CaCO3)$ = 100 g/mol',
-            '$m$ = 0,25 mol · 100 g/mol = 25 g',
+            '$M(CaCO3)$ = 100 g/mol',
+            '$m$ = 0,25 mol · 100 g/mol = 25 g',
           ],
-          answer: '$m$ = 25 g',
+          answer: '$m$ = 25 g',
         },
         {
-          type: 'callout',
-          variant: 'tip',
-          title: 'Trojúhelník m–n–M',
-          text: 'Nakresli si trojúhelník s $m$ nahoře a $n$, $M$ dole. Zakryj, co hledáš: $m = n · M$, $n = m / M$, $M = m / n$. Jednotky ti vždy prozradí, jestli násobíš, nebo dělíš.',
+          type: 'molecule',
+          molecules: ['Cl2', 'O2', 'N2', 'H2'],
+          labels: ['$M(Cl2)$ = 71 g/mol', '$M(O2)$ = 32 g/mol', '$M(N2)$ = 28 g/mol', '$M(H2)$ = 2 g/mol'],
         },
         {
           type: 'callout',
           variant: 'warning',
-          text: 'Chlor, kyslík, dusík i vodík tvoří dvouatomové molekuly. $M(Cl2)$ = 71 g/mol, ne 35,5 g/mol. Podobně $M(O2)$ = 32 g/mol.',
+          text: 'Chlor, kyslík, dusík i vodík tvoří dvouatomové molekuly. $M(Cl2)$ = 71 g/mol, ne 35,5 g/mol. Podobně $M(O2)$ = 32 g/mol.',
         },
         {
           type: 'game',
@@ -1263,164 +1555,197 @@ const l4_4: Lesson = {
             answer: 160,
             tolerance: 0.5,
             unit: 'g/mol',
-            explain: '$M$ = 2 · 56 + 3 · 16 = 112 + 48 = 160 g/mol.',
+            explain: '$M$ = 2 · 56 + 3 · 16 = 112 + 48 = 160 g/mol.',
           },
         },
         {
           type: 'check',
           question: {
             kind: 'number',
-            q: 'Jaké látkové množství je v 11,7 g kuchyňské soli $NaCl$? ($A_{r}$: Na 23, Cl 35,5)',
+            q: 'Jaké látkové množství je v 11,7 g kuchyňské soli $NaCl$? ($A_{r}$: Na 23, Cl 35,5)',
             answer: 0.2,
             tolerance: 0.005,
             unit: 'mol',
-            explain: '$M(NaCl)$ = 23 + 35,5 = 58,5 g/mol; $n$ = 11,7 g : 58,5 g/mol = 0,2 mol.',
+            explain: '$M(NaCl)$ = 23 + 35,5 = 58,5 g/mol; $n$ = 11,7 g : 58,5 g/mol = 0,2 mol.',
           },
         },
       ],
     },
     {
       title: 'Molární objem plynů',
+      icon: 'balloon',
       blocks: [
         {
           type: 'p',
-          text: 'U plynů se hodí měřit objem, ne hmotnost. A tady nás čeká překvapení: **Avogadrův zákon** říká, že stejné objemy různých plynů obsahují za stejné teploty a tlaku stejný počet molekul. Je jedno, jestli jde o lehoučký vodík, nebo těžký oxid uhličitý.',
+          text: 'U plynů se hodí měřit objem. **Avogadrův zákon** říká, že stejné objemy různých plynů obsahují za stejné teploty a tlaku stejný počet molekul, ať jde o lehoučký vodík, nebo těžký oxid uhličitý.',
+        },
+        {
+          type: 'particles',
+          boxes: [
+            { label: 'vodík $H2$', items: [{ species: 'H2', count: 6 }], state: 'gas' },
+            { label: 'kyslík $O2$', items: [{ species: 'O2', count: 6 }], state: 'gas' },
+            { label: 'oxid uhličitý $CO2$', items: [{ species: 'CO2', count: 6 }], state: 'gas' },
+          ],
+          caption: 'Stejný objem, teplota a tlak → stejný počet molekul.',
         },
         {
           type: 'p',
-          text: 'Jeden mol libovolného plynu proto za **normálních podmínek** (0 °C a 101,325 kPa) zaujímá stejný objem. Říkáme mu **molární objem** $V_{m}$.',
+          text: 'Jeden mol libovolného plynu proto za **normálních podmínek** (0 °C a 101,325 kPa) zaujímá stejný objem. Říkáme mu **molární objem** $V_{m}$.',
         },
         {
           type: 'formula',
           text: '$n = V / V_{m}$',
-          caption: '$V_{m}$ = 22,4 dm^{3}/mol za normálních podmínek (0 °C, 101,325 kPa)',
+          caption: '$V_{m}$ = 22,4 dm^{3}/mol za normálních podmínek (0 °C, 101,325 kPa)',
         },
         {
           type: 'example',
           title: 'Objem z hmotnosti',
-          problem: 'Jaký objem zaujímá 8,8 g $CO2$ za normálních podmínek?',
+          problem: 'Jaký objem zaujímá 8,8 g $CO2$ za normálních podmínek?',
           steps: [
-            '$n = m / M$ = 8,8 g : 44 g/mol = 0,2 mol',
-            '$V = n · V_{m}$ = 0,2 mol · 22,4 dm^{3}/mol',
-            '$V$ = 4,48 dm^{3}',
+            '$n = m / M$ = 8,8 g : 44 g/mol = 0,2 mol',
+            '$V = n · V_{m}$ = 0,2 mol · 22,4 dm^{3}/mol',
+            '$V$ = 4,48 dm^{3}',
           ],
-          answer: '$V$ ≈ 4,48 dm^{3} (skoro pět litrů)',
+          answer: '$V$ ≈ 4,48 dm^{3} (skoro pět litrů)',
         },
         {
           type: 'example',
           title: 'Hmotnost z objemu',
-          problem: 'Balonek obsahuje 5,6 dm^{3} vodíku (normální podmínky). Kolik vodík váží? ($A_{r}$(H) = 1)',
+          problem: 'Balonek obsahuje 5,6 dm^{3} vodíku (normální podmínky). Kolik vodík váží? ($A_{r}$(H) = 1)',
           steps: [
-            '$n = V / V_{m}$ = 5,6 dm^{3} : 22,4 dm^{3}/mol = 0,25 mol',
-            '$M(H2)$ = 2 g/mol',
-            '$m = n · M$ = 0,25 mol · 2 g/mol = 0,5 g',
+            '$n = V / V_{m}$ = 5,6 dm^{3} : 22,4 dm^{3}/mol = 0,25 mol',
+            '$M(H2)$ = 2 g/mol',
+            '$m = n · M$ = 0,25 mol · 2 g/mol = 0,5 g',
           ],
-          answer: '$m$ = 0,5 g vodíku',
+          answer: '$m$ = 0,5 g vodíku',
         },
         {
-          type: 'callout',
-          variant: 'warning',
-          title: 'Jen pro plyny!',
-          text: '22,4 dm^{3}/mol platí jen pro plyny. Jeden mol kapalné vody (18 g) zabere asi 18 cm^{3}, tedy víc než tisíckrát menší objem.',
+          type: 'compare',
+          columns: [
+            {
+              title: '1 mol plynu',
+              icon: 'balloon',
+              tone: 'good',
+              points: ['za normálních podmínek zabere 22,4 dm^{3}', 'platí pro jakýkoli plyn'],
+            },
+            {
+              title: '1 mol kapalné vody',
+              icon: 'drop',
+              tone: 'bad',
+              points: ['18 g zabere asi 18 cm^{3}', 'víc než tisíckrát menší objem', '22,4 dm^{3}/mol pro kapaliny neplatí'],
+            },
+          ],
+          caption: 'Pozor: molární objem 22,4 dm^{3}/mol platí jen pro plyny!',
         },
         {
           type: 'callout',
           variant: 'fact',
-          text: 'Mezinárodní unie IUPAC dnes jako standardní tlak doporučuje 100 kPa, pak vychází $V_{m}$ ≈ 22,7 dm^{3}/mol. Při pokojové teplotě 25 °C je to asi 24,5 dm^{3}/mol. V českých školách se běžně počítá s 22,4 dm^{3}/mol, pokud zadání neříká jinak.',
+          text: 'Mezinárodní unie IUPAC dnes jako standardní tlak doporučuje 100 kPa, pak vychází $V_{m}$ ≈ 22,7 dm^{3}/mol. Při pokojové teplotě 25 °C je to asi 24,5 dm^{3}/mol. V českých školách se běžně počítá s 22,4 dm^{3}/mol, pokud zadání neříká jinak.',
         },
         {
           type: 'check',
           question: {
             kind: 'number',
-            q: 'Jaký objem zaujímají 2 mol dusíku $N2$ za normálních podmínek?',
+            q: 'Jaký objem zaujímají 2 mol dusíku $N2$ za normálních podmínek?',
             answer: 44.8,
             tolerance: 0.2,
             unit: 'dm³',
-            explain: '$V = n · V_{m}$ = 2 mol · 22,4 dm^{3}/mol = 44,8 dm^{3}.',
+            explain: '$V = n · V_{m}$ = 2 mol · 22,4 dm^{3}/mol = 44,8 dm^{3}.',
           },
         },
         {
           type: 'check',
           question: {
             kind: 'number',
-            q: 'Kolik gramů váží 11,2 dm^{3} kyslíku $O2$ za normálních podmínek? ($A_{r}$(O) = 16)',
+            q: 'Kolik gramů váží 11,2 dm^{3} kyslíku $O2$ za normálních podmínek? ($A_{r}$(O) = 16)',
             answer: 16,
             tolerance: 0.2,
             unit: 'g',
-            explain: '$n$ = 11,2 : 22,4 = 0,5 mol; $m$ = 0,5 mol · 32 g/mol = 16 g.',
+            explain: '$n$ = 11,2 : 22,4 = 0,5 mol; $m$ = 0,5 mol · 32 g/mol = 16 g.',
           },
         },
       ],
     },
     {
       title: 'Stavová rovnice ideálního plynu',
+      icon: 'thermometer',
       blocks: [
         {
           type: 'p',
-          text: 'Co když plyn není za normálních podmínek? Pneumatika, bombička do šlehačky nebo potápěčská láhev mají jiný tlak i teplotu. Pak použiješ **stavovou rovnici ideálního plynu**, která spojuje tlak, objem, teplotu a látkové množství.',
+          text: 'Co když plyn není za normálních podmínek? Pak použiješ **stavovou rovnici ideálního plynu**, která spojuje tlak, objem, teplotu a látkové množství.',
+        },
+        {
+          type: 'iconlist',
+          items: [
+            { icon: 'car', title: 'pneumatika', text: 'vyšší tlak než venku' },
+            { icon: 'gas-cylinder', title: 'bombička do šlehačky', text: 'plyn stlačený do malého objemu' },
+            { icon: 'ocean', title: 'potápěčská láhev', text: 'vysoký tlak, studená voda' },
+          ],
         },
         {
           type: 'formula',
           text: '$pV = nRT$',
-          caption: '$p$ tlak (Pa), $V$ objem (m^{3}), $n$ látkové množství (mol), $T$ teplota (K), $R$ = 8,314 J·K^{−1}·mol^{−1}',
+          caption: '$p$ tlak (Pa), $V$ objem (m^{3}), $n$ látkové množství (mol), $T$ teplota (K), $R$ = 8,314 J·K^{−1}·mol^{−1}',
         },
         {
-          type: 'list',
+          type: 'iconlist',
           items: [
-            'Teplotu vždy převeď na kelviny: $T$ = $t$ + 273,15 (25 °C = 298,15 K).',
-            'Objem v m^{3}: 1 dm^{3} = 0,001 m^{3}.',
-            'Tlak v pascalech: 1 kPa = 1000 Pa. Pohodlná zkratka: když dosadíš tlak v kPa a objem v dm^{3}, jednotky také sedí.',
+            { icon: 'thermometer', title: 'teplota v kelvinech', text: '$T$ = $t$ + 273,15 (25 °C = 298,15 K)' },
+            { icon: 'beaker', title: 'objem v m^{3}', text: '1 dm^{3} = 0,001 m^{3}' },
+            { icon: 'gas-cloud', title: 'tlak v pascalech', text: '1 kPa = 1000 Pa' },
+            { icon: 'idea', title: 'pohodlná zkratka', text: 'když dosadíš tlak v kPa a objem v dm^{3}, jednotky také sedí' },
           ],
         },
         {
           type: 'example',
           title: 'Objem plynu při pokojové teplotě',
-          problem: 'Jaký objem zaujímají 2 mol plynu při 25 °C a tlaku 100 kPa?',
+          problem: 'Jaký objem zaujímají 2 mol plynu při 25 °C a tlaku 100 kPa?',
           steps: [
-            'Převod: $T$ = 25 + 273,15 = 298,15 K; $p$ = 100 000 Pa',
+            'Převod: $T$ = 25 + 273,15 = 298,15 K; $p$ = 100 000 Pa',
             'Vyjádříme objem: $V = nRT / p$',
-            '$V$ = 2 mol · 8,314 J·K^{−1}·mol^{−1} · 298,15 K : 100 000 Pa',
-            '$V$ = 0,0496 m^{3} = 49,6 dm^{3}',
+            '$V$ = 2 mol · 8,314 J·K^{−1}·mol^{−1} · 298,15 K : 100 000 Pa',
+            '$V$ = 0,0496 m^{3} = 49,6 dm^{3}',
           ],
-          answer: '$V$ ≈ 49,6 dm^{3}',
+          answer: '$V$ ≈ 49,6 dm^{3}',
         },
         {
           type: 'example',
           title: 'Bombička do šlehačky',
-          problem: 'Bombička do šlehačky obsahuje 8 g oxidu dusného $N2O$. Jaký objem by plyn zaujal při 20 °C a tlaku 101,3 kPa? ($A_{r}$: N 14, O 16)',
+          problem: 'Bombička do šlehačky obsahuje 8 g oxidu dusného $N2O$. Jaký objem by plyn zaujal při 20 °C a tlaku 101,3 kPa? ($A_{r}$: N 14, O 16)',
           steps: [
-            '$M(N2O)$ = 2 · 14 + 16 = 44 g/mol; $n$ = 8 g : 44 g/mol = 0,182 mol',
-            '$T$ = 20 + 273,15 = 293,15 K; $p$ = 101 300 Pa',
-            '$V = nRT / p$ = 0,182 mol · 8,314 J·K^{−1}·mol^{−1} · 293,15 K : 101 300 Pa',
-            '$V$ = 0,004 37 m^{3} = 4,37 dm^{3}',
+            '$M(N2O)$ = 2 · 14 + 16 = 44 g/mol; $n$ = 8 g : 44 g/mol = 0,182 mol',
+            '$T$ = 20 + 273,15 = 293,15 K; $p$ = 101 300 Pa',
+            '$V = nRT / p$ = 0,182 mol · 8,314 J·K^{−1}·mol^{−1} · 293,15 K : 101 300 Pa',
+            '$V$ = 0,004 37 m^{3} = 4,37 dm^{3}',
           ],
-          answer: 'Z malé bombičky by vzniklo asi 4,4 dm^{3} plynu, proto je v ní tak vysoký tlak.',
+          answer: 'Z malé bombičky by vzniklo asi 4,4 dm^{3} plynu, proto je v ní tak vysoký tlak.',
         },
         {
           type: 'callout',
           variant: 'warning',
           title: 'Nejčastější chyba',
-          text: 'Dosadit teplotu ve stupních Celsia. Při 0 °C by ti vyšlo, že plyn nemá žádný objem, a při −10 °C dokonce záporný. ==V rovnici $pV = nRT$ je teplota vždy v kelvinech.==',
+          text: 'Dosadit teplotu ve stupních Celsia. Při 0 °C by ti vyšlo, že plyn nemá žádný objem, a při −10 °C dokonce záporný. ==V rovnici $pV = nRT$ je teplota vždy v kelvinech.==',
         },
         {
           type: 'check',
           question: {
             kind: 'number',
-            q: 'V nádobě o objemu 10 dm^{3} je 0,5 mol plynu při teplotě 300 K. Jaký je tlak plynu v kPa?',
+            q: 'V nádobě o objemu 10 dm^{3} je 0,5 mol plynu při teplotě 300 K. Jaký je tlak plynu v kPa?',
             answer: 124.7,
             tolerance: 1,
             unit: 'kPa',
-            explain: '$p = nRT / V$ = 0,5 · 8,314 · 300 : 0,010 m^{3} = 124 710 Pa ≈ 124,7 kPa.',
+            explain: '$p = nRT / V$ = 0,5 · 8,314 · 300 : 0,010 m^{3} = 124 710 Pa ≈ 124,7 kPa.',
           },
         },
       ],
     },
     {
       title: 'Složení sloučeniny a empirický vzorec',
+      icon: 'crystal',
       blocks: [
         {
           type: 'p',
-          text: 'Hmotnostní zlomek znáš z roztoků. Stejně můžeš spočítat, jakou část hmotnosti sloučeniny tvoří jeden prvek. Hutník tak zjistí, kolik železa dostane z tuny rudy.',
+          text: 'Hmotnostní zlomek znáš z roztoků. Stejně spočítáš, jakou část hmotnosti sloučeniny tvoří jeden prvek. Hutník tak zjistí, kolik železa dostane z tuny rudy.',
         },
         {
           type: 'formula',
@@ -1436,22 +1761,44 @@ const l4_4: Lesson = {
             '$w(Fe)$ = 2 · 56 : 160 = 112 : 160',
             '$w(Fe)$ = 0,70',
           ],
-          answer: '$w(Fe)$ = 0,70 = 70 %. Z tuny čistého hematitu získáš 700 kg železa.',
+          answer: '$w(Fe)$ = 0,70 = 70 %. Z tuny čistého hematitu získáš 700 kg železa.',
         },
         {
-          type: 'keyterms',
-          items: [
-            { term: 'empirický (stechiometrický) vzorec', def: 'nejmenší celočíselný poměr atomů ve sloučenině, např. $CH2O$' },
-            { term: 'molekulový vzorec', def: 'skutečný počet atomů v molekule, např. glukóza $C6H12O6$; je to celistvý násobek empirického vzorce' },
+          type: 'compare',
+          columns: [
+            {
+              title: 'empirický (stechiometrický) vzorec',
+              icon: 'pencil',
+              tone: 'a',
+              points: ['nejmenší celočíselný poměr atomů ve sloučenině', 'např. $CH2O$'],
+            },
+            {
+              title: 'molekulový vzorec',
+              icon: 'molecule',
+              tone: 'b',
+              points: ['skutečný počet atomů v molekule', 'např. glukóza $C6H12O6$', 'je to celistvý násobek empirického vzorce'],
+            },
           ],
+        },
+        {
+          type: 'process',
+          layout: 'flow',
+          steps: [
+            { icon: 'balance-scale', title: 'vezmi 100 g látky', text: 'procenta se změní na gramy' },
+            { icon: 'calculator', title: 'převeď na moly', text: '$n = m / A_{r}$ pro každý prvek' },
+            { icon: 'chart', title: 'vyděl nejmenším číslem', text: 'dostaneš poměr atomů' },
+            { icon: 'check', title: 'dotáhni na celá čísla', text: '1,5 → ×2; 1,33 → ×3' },
+            { icon: 'pencil', title: 'napiš vzorec', text: 'z poměru a molární hmotnosti' },
+          ],
+          caption: 'Jak najít empirický (a molekulový) vzorec ze složení',
         },
         {
           type: 'example',
           title: 'Empirický vzorec ze složení',
-          problem: 'Analýza černého oxidu železa ukázala 72,4 % Fe a 27,6 % O. Urči empirický vzorec. ($A_{r}$: Fe 56, O 16)',
+          problem: 'Analýza černého oxidu železa ukázala 72,4 % Fe a 27,6 % O. Urči empirický vzorec. ($A_{r}$: Fe 56, O 16)',
           steps: [
-            'Vezmeme 100 g látky: je v ní 72,4 g Fe a 27,6 g O.',
-            'Převedeme na moly: $n(Fe)$ = 72,4 : 56 = 1,293 mol; $n(O)$ = 27,6 : 16 = 1,725 mol',
+            'Vezmeme 100 g látky: je v ní 72,4 g Fe a 27,6 g O.',
+            'Převedeme na moly: $n(Fe)$ = 72,4 : 56 = 1,293 mol; $n(O)$ = 27,6 : 16 = 1,725 mol',
             'Vydělíme nejmenším číslem: Fe 1,293 : 1,293 = 1; O 1,725 : 1,293 = 1,334',
             '1,334 je skoro 4/3, proto obě čísla vynásobíme třemi: Fe 3, O 4',
           ],
@@ -1460,14 +1807,19 @@ const l4_4: Lesson = {
         {
           type: 'example',
           title: 'Od empirického k molekulovému vzorci',
-          problem: 'Cukr obsahuje 40,0 % C, 6,7 % H a 53,3 % O. Jeho molární hmotnost je 180 g/mol. Urči empirický i molekulový vzorec. ($A_{r}$: H 1, C 12, O 16)',
+          problem: 'Cukr obsahuje 40,0 % C, 6,7 % H a 53,3 % O. Jeho molární hmotnost je 180 g/mol. Urči empirický i molekulový vzorec. ($A_{r}$: H 1, C 12, O 16)',
           steps: [
-            'Ve 100 g: $n(C)$ = 40,0 : 12 = 3,33 mol; $n(H)$ = 6,7 : 1 = 6,7 mol; $n(O)$ = 53,3 : 16 = 3,33 mol',
+            'Ve 100 g: $n(C)$ = 40,0 : 12 = 3,33 mol; $n(H)$ = 6,7 : 1 = 6,7 mol; $n(O)$ = 53,3 : 16 = 3,33 mol',
             'Vydělíme nejmenším (3,33): C 1, H 2,01 ≈ 2, O 1, empirický vzorec $CH2O$',
-            '$M(CH2O)$ = 12 + 2 + 16 = 30 g/mol',
+            '$M(CH2O)$ = 12 + 2 + 16 = 30 g/mol',
             'Kolikrát se vejde do 180? 180 : 30 = 6, proto vše násobíme šesti.',
           ],
           answer: 'Empirický vzorec $CH2O$, molekulový vzorec $C6H12O6$ (glukóza).',
+        },
+        {
+          type: 'molecule',
+          molecules: ['glucose'],
+          labels: ['glukóza $C6H12O6$ = 6 × $CH2O$'],
         },
         {
           type: 'callout',
@@ -1482,18 +1834,18 @@ const l4_4: Lesson = {
             answer: 88.9,
             tolerance: 0.2,
             unit: '%',
-            explain: '$w(O)$ = 16 : 18 = 0,889 = 88,9 %.',
+            explain: '$w(O)$ = 16 : 18 = 0,889 = 88,9 %.',
           },
         },
         {
           type: 'check',
           question: {
             kind: 'text',
-            q: 'Plyn obsahuje 75 % uhlíku a 25 % vodíku. Napiš jeho empirický vzorec. ($A_{r}$: H 1, C 12)',
+            q: 'Plyn obsahuje 75 % uhlíku a 25 % vodíku. Napiš jeho empirický vzorec. ($A_{r}$: H 1, C 12)',
             accept: ['CH4', 'H4C'],
             caseSensitive: true,
             placeholder: 'vzorec',
-            explain: '$n(C)$ = 75 : 12 = 6,25 mol, $n(H)$ = 25 : 1 = 25 mol; poměr 1 : 4, tedy $CH4$ (methan).',
+            explain: '$n(C)$ = 75 : 12 = 6,25 mol, $n(H)$ = 25 : 1 = 25 mol; poměr 1 : 4, tedy $CH4$ (methan).',
           },
         },
       ],

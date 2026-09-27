@@ -63,6 +63,11 @@
   max-width: 100%;
   overflow-wrap: anywhere;
 }
+.g-nm-prompt-formula.is-long {
+  padding: var(--space-3);
+  font-size: clamp(22px, 6.4vw, 34px);
+  line-height: 1.3;
+}
 .g-nm-prompt-name {
   padding: var(--space-2) var(--space-3);
   border-top: 3px double var(--line);
@@ -160,6 +165,15 @@
   width: 16px;
   height: 16px;
   stroke-width: 3;
+}
+
+/* condensed organic formulas as options */
+.g-nm-opts.is-formulas .g-nm-opt-label {
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+.g-nm-opts.is-formulas .g-nm-opt-label .chem {
+  letter-spacing: 0.01em;
 }
 
 /* ---------- formula builder ---------- */

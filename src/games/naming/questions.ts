@@ -6,8 +6,11 @@ import {
   PARTNER,
   ROMAN,
   adjective,
+  anionStem,
   binary,
+  complexIon,
   crossRule,
+  LIGANDS,
   feminine,
   hydrate,
   hydroxide,
@@ -15,15 +18,18 @@ import {
   salt,
   type BinaryPartner,
   type Compound,
+  type Ligand,
 } from '../shared/nomenclature'
 import { shuffle } from '../shared/util'
+import { ORGANIC, ORG_CAT_LABEL, type OrgCat, type OrganicItem } from './organic'
 
-export type Cat =
+export type InorgCat =
   | 'oxide'
   | 'halide'
   | 'sulfide'
   | 'hydride'
   | 'peroxide'
+  | 'nitride'
   | 'hydroxide'
   | 'acid'
   | 'binaryAcid'
@@ -31,6 +37,9 @@ export type Cat =
   | 'hydrogenSalt'
   | 'hydrate'
   | 'ion'
+  | 'complex'
+
+export type Cat = InorgCat | OrgCat
 
 export const CAT_LABEL: Record<Cat, string> = {
   oxide: 'oxid',
@@ -38,6 +47,7 @@ export const CAT_LABEL: Record<Cat, string> = {
   sulfide: 'sulfid',
   hydride: 'sloučenina s vodíkem',
   peroxide: 'peroxid',
+  nitride: 'nitrid',
   hydroxide: 'hydroxid',
   acid: 'kyslíkatá kyselina',
   binaryAcid: 'bezkyslíkatá kyselina',
@@ -45,11 +55,13 @@ export const CAT_LABEL: Record<Cat, string> = {
   hydrogenSalt: 'hydrogensůl',
   hydrate: 'hydrát',
   ion: 'ion',
+  complex: 'komplexní sloučenina',
+  ...ORG_CAT_LABEL,
 }
 
 export interface NItem {
   cat: Cat
-  /** Formula as stored (plain, e.g. 'Ca(OH)2'); for ions the markup is in `display`. */
+  /** Formula as stored (plain, e.g. 'Ca(OH)2', or condensed 'CH3-CH2-OH'); for ions the markup is in `display`. */
   formula: string
   name: string
   /** Wrong names built from typical mistakes, most typical first. */
@@ -59,14 +71,23 @@ export interface NItem {
   /** Markup shown as the formula (defaults to $formula$). */
   display?: string
   only?: 'toName' | 'toFormula'
+  /** Markup of wrong formulas: name → formula is then multiple choice instead of typing. */
+  wrongFormulas?: string[]
+  /** Needs level-7 knowledge (less common anions and acids): not used at level 5. */
+  adv?: boolean
 }
 
 export interface Question {
   dir: 'toName' | 'toFormula'
   item: NItem
-  /** 4 shuffled names for 'toName'. */
+  /** 4 shuffled options (names for 'toName', formula markup for a choice 'toFormula'); empty when the formula is typed. */
   options: string[]
+  /** The right option (name or formula markup). */
+  answer: string
 }
+
+/** Formula markup of an item. */
+export const markupOf = (it: NItem) => it.display ?? `$${it.formula}$`
 
 const endingOf = (el: string, ox: number) => (ox === 5 ? (ELEMENT_NOM[el]?.v ?? 'ičný') : ENDINGS[ox])
 const signed = (n: number) => (n > 0 ? `+${n}` : `−${-n}`)
@@ -89,7 +110,7 @@ export function wrongOx(el: string, ox: number): number[] {
 const ANION_SIB: Record<string, string[]> = {
   F: ['chlorid'],
   Cl: ['chlornan', 'chlorečnan'],
-  Br: ['bromnan', 'bromečnan'],
+  Br: ['bromnan', 'bromičnan'],
   I: ['jodnan', 'jodičnan'],
   O: ['peroxid', 'hydroxid'],
   S: ['síran', 'siřičitan'],
@@ -116,6 +137,7 @@ const ANION_SIB: Record<string, string[]> = {
   CrO4: ['dichroman', 'chromitan'],
   Cr2O7: ['chroman', 'dichromitan'],
   CN: ['kyanatan', 'karbid'],
+  S2O3: ['síran', 'siřičitan'],
 }
 
 const PARTNER_DESC: Record<BinaryPartner, string> = {
@@ -180,6 +202,7 @@ const SULFIDES: [string, number][] = [
   ['C', 4], ['Mn', 2], ['Ca', 2],
 ]
 const METAL_HYDRIDES: [string, number][] = [['Na', 1], ['Li', 1], ['K', 1], ['Ca', 2], ['Mg', 2], ['Al', 3]]
+const NITRIDES: [string, number][] = [['Li', 1], ['Mg', 2], ['Ca', 2], ['Ba', 2], ['Al', 3]]
 
 const NONMETAL_HYDRIDES: NItem[] = [
   ['HCl', 'chlorovodík', ['hydrid chlorný', 'kyselina chlorná', 'chlorid vodný'], 'Sloučeniny vodíku s halogeny jsou halogenovodíky: $HCl$ je chlorovodík. Jeho vodný roztok je kyselina chlorovodíková.'],
@@ -228,6 +251,11 @@ const HYDROXIDE_CATIONS: [string, number][] = [
   ['Fe', 3], ['Al', 3], ['Cr', 3], ['Pb', 2], ['Ni', 2], ['Co', 2], ['Mn', 2],
 ]
 
+/** Acids that only level 7 lessons use. */
+const ADV_ACIDS = new Set(['B', 'Se', 'I', 'Cr', 'Si'])
+/** Anions that only level 7 lessons use. */
+const ADV_ANIONS = new Set(['CrO4', 'Cr2O7', 'SiO3', 'CN', 'S2O3'])
+
 function acidItem(el: string, ox: number): NItem {
   const a = oxoacid(el, ox)
   const wrong = wrongOx(el, ox).map((o) => `kyselina ${feminine(adjective(el, o))}`)
@@ -237,6 +265,7 @@ function acidItem(el: string, ox: number): NItem {
     formula: a.formula,
     name: a.name,
     wrong: uniq(wrong, a.name),
+    ...(ADV_ACIDS.has(el) ? { adv: true } : {}),
     explain: `Vodík +I, kyslík −II: ${a.h} · (+1) + x + ${a.o} · (−2) = 0 → x = +${ox} (${ROMAN[ox]}) → koncovka **‑${end}**. ${
       a.h === 3 && ox % 2 === 1 ? `Výjimka: ${a.name} má 3 vodíky.` : ox % 2 ? 'Liché oxidační číslo → 1 vodík.' : 'Sudé oxidační číslo → 2 vodíky.'
     }`,
@@ -282,6 +311,7 @@ function saltItem(cat: Cat, c: Cation, a: Anion): NItem {
     formula: s.formula,
     name: s.name,
     wrong,
+    ...(ADV_ANIONS.has(a.formula) ? { adv: true } : {}),
     explain: `${cap(c.ion)} ${ionMarkup(c)} a ${a.ion} ${ionMarkup(a)} → ${
       nC === 1 && nA === 1 ? 'náboje se vyrovnají 1 : 1' : `křížové pravidlo ${nC} : ${nA}`
     } → $${s.formula}$.`,
@@ -363,17 +393,136 @@ function anionIonItem(a: Anion): NItem {
   }
 }
 
-const ION_CATIONS: [string, number][] = [['Na', 1], ['Ag', 1], ['Cu', 1], ['Cu', 2], ['Fe', 2], ['Fe', 3], ['Al', 3], ['Mg', 2], ['Ca', 2], ['Zn', 2], ['Pb', 2], ['Cr', 3]]
-const ION_ANIONS = ['Cl', 'O', 'S', 'OH', 'NO3', 'NO2', 'SO4', 'SO3', 'CO3', 'HCO3', 'PO4', 'ClO', 'ClO4', 'MnO4', 'Cr2O7']
+const ION_CATIONS: [string, number][] = [
+  ['Na', 1], ['Ag', 1], ['Cu', 1], ['Cu', 2], ['Fe', 2], ['Fe', 3], ['Al', 3], ['Mg', 2], ['Ca', 2], ['Zn', 2], ['Pb', 2],
+  ['Cr', 3], ['Mn', 2], ['Sn', 2], ['Pb', 4], ['Sn', 4],
+]
+const ION_ANIONS = [
+  'Cl', 'O', 'S', 'N', 'OH', 'NO3', 'NO2', 'SO4', 'SO3', 'CO3', 'HCO3', 'PO4', 'ClO', 'ClO3', 'ClO4', 'MnO4', 'CrO4', 'Cr2O7', 'S2O3', 'SiO3', 'CN',
+]
+
+// ------------------------------------------------------- coordination compounds (level 7)
+
+type CSpec = [metal: string, ox: number, ligand: Ligand, n: number]
+
+const LIGAND_SWAP: Record<Ligand, string> = { NH3: 'aqua', H2O: 'ammin', OH: 'oxido', F: 'chlorido', Cl: 'fluorido', CN: 'chlorido' }
+const OTHER_COUNT: Record<number, number> = { 2: 4, 4: 6, 6: 4 }
+
+/** Wrong adjectives/nouns of a complex: other oxidation number, other count, other ligand. */
+function complexVariants([m, ox, lig, n]: CSpec) {
+  const L = complexIon(m, ox, lig, n)
+  const pre = (k: number, name: string) => MULT[k] + name
+  const ligName = LIGANDS[lig].name
+  const o = wrongOx(m, ox)[0]
+  return {
+    L,
+    adjs: [pre(n, ligName) + adjective(m, o), pre(OTHER_COUNT[n], ligName) + adjective(m, ox), pre(n, LIGAND_SWAP[lig]) + adjective(m, ox)],
+    stems: [
+      pre(n, ligName) + anionStem(adjective(m, o)),
+      pre(OTHER_COUNT[n], ligName) + anionStem(adjective(m, ox)),
+      pre(n, LIGAND_SWAP[lig]) + anionStem(adjective(m, ox)),
+    ],
+  }
+}
+
+function cplxExplain([m, ox, lig, n]: CSpec, charge: number): string {
+  const neutral = LIGANDS[lig].charge === 0
+  return (
+    `Centrální atom $${m}$ má oxidační číslo ${ROMAN[ox]} (koncovka **‑${endingOf(m, ox)}**), kolem něj je ` +
+    `${n}× ligand ${neutral ? `$${lig}$` : `$${lig}^-$`} (**${MULT[n]}${LIGANDS[lig].name}**). ` +
+    `Náboj: ${ox} ${neutral ? '+ 0' : `− ${n}`} = ${charge > 0 ? '+' : '−'}${Math.abs(charge)}` +
+    (charge < 0 ? ', je to anion, proto koncovka **‑an**.' : ', je to kation.')
+  )
+}
+
+function complexIonItem(spec: CSpec): NItem {
+  const { L, adjs, stems } = complexVariants(spec)
+  const display = ionMarkup(L)
+  const wrong =
+    L.charge > 0
+      ? [`${adjs[0]} kation`, `${adjs[1]} kation`, `${L.stem}ový anion`, `${adjs[2]} kation`]
+      : [`${stems[0]}ový anion`, `${L.adj} kation`, `${stems[1]}ový anion`, `${stems[2]}ový anion`]
+  return {
+    cat: 'complex',
+    formula: L.formula,
+    display,
+    name: L.ion,
+    wrong: uniq(wrong, L.ion),
+    only: 'toName',
+    explain: cplxExplain(spec, L.charge),
+  }
+}
+
+/** Salt with a complex cation (and a simple anion) or a complex anion (and a simple cation). */
+function complexSaltItem(spec: CSpec, counter: Cation | Anion): NItem {
+  const { L, adjs, stems } = complexVariants(spec)
+  const isCat = L.charge > 0
+  const s = isCat ? salt(L, counter as Anion) : salt(counter as Cation, L)
+  const wrong = isCat
+    ? [`${(counter as Anion).stem} ${adjs[0]}`, `${(counter as Anion).stem} ${adjs[1]}`, `${(counter as Anion).stem} ${L.stem}`, `${(counter as Anion).stem} ${adjs[2]}`]
+    : [`${stems[0]} ${(counter as Cation).adj}`, `${L.adj} ${(counter as Cation).adj}`, `${stems[1]} ${(counter as Cation).adj}`, `${stems[2]} ${(counter as Cation).adj}`]
+  return {
+    cat: 'complex',
+    formula: s.formula,
+    name: s.name,
+    wrong: uniq(wrong, s.name),
+    explain: `${cplxExplain(spec, L.charge)} Komplexní ion se píše do hranatých závorek: $${s.formula}$.`,
+  }
+}
+
+const COMPLEX_IONS: CSpec[] = [
+  ['Cu', 2, 'NH3', 4], ['Cu', 2, 'H2O', 6], ['Ag', 1, 'NH3', 2], ['Fe', 3, 'H2O', 6], ['Fe', 2, 'CN', 6], ['Fe', 3, 'CN', 6],
+  ['Al', 3, 'OH', 4], ['Zn', 2, 'OH', 4], ['Al', 3, 'F', 6],
+]
+const COMPLEX_SALTS: [CSpec, () => Cation | Anion][] = [
+  [['Cu', 2, 'NH3', 4], () => anion('SO4')],
+  [['Ag', 1, 'NH3', 2], () => anion('Cl')],
+  [['Co', 3, 'NH3', 6], () => anion('Cl')],
+  [['Ni', 2, 'NH3', 6], () => anion('Cl')],
+  [['Cu', 2, 'H2O', 6], () => anion('SO4')],
+  [['Fe', 2, 'CN', 6], () => cation('K')],
+  [['Fe', 3, 'CN', 6], () => cation('K')],
+  [['Al', 3, 'OH', 4], () => cation('Na')],
+  [['Zn', 2, 'OH', 4], () => cation('Na')],
+  [['Al', 3, 'F', 6], () => cation('Na')],
+  [['Cu', 2, 'Cl', 4], () => cation('K')],
+]
+
+// ------------------------------------------------------------------ organic (level 8)
+
+/** Display markup of a condensed formula: bonds as dashes, ring note outside the formula. */
+export function orgMarkup(f: string): string {
+  const ring = f.endsWith(' (kruh)')
+  const core = (ring ? f.slice(0, -7) : f).replace(/-/g, '–')
+  return `$${core}$${ring ? ' (kruh)' : ''}`
+}
+
+function organicItem(o: OrganicItem): NItem {
+  return {
+    cat: o.cat,
+    formula: o.formula,
+    display: orgMarkup(o.formula),
+    name: o.name,
+    wrong: o.wrongNames,
+    wrongFormulas: o.wrongFormulas.map(orgMarkup),
+    explain: `${o.hint} Souhrnný vzorec $${o.molecular}$.`,
+  }
+}
+
+// ------------------------------------------------------------------------ pools & levels
 
 /** All items per category. */
 export function pool(): Record<Cat, NItem[]> {
+  const byOrg = Object.fromEntries(
+    (Object.keys(ORG_CAT_LABEL) as OrgCat[]).map((c) => [c, ORGANIC.filter((o) => o.cat === c).map(organicItem)]),
+  ) as Record<OrgCat, NItem[]>
   return {
     oxide: OXIDES.map(([el, ox]) => binaryItem('oxide', el, ox, 'O')),
     halide: HALIDES.map(([el, ox, x]) => binaryItem('halide', el, ox, x)),
     sulfide: SULFIDES.map(([el, ox]) => binaryItem('sulfide', el, ox, 'S')),
     hydride: [...METAL_HYDRIDES.map(([el, ox]) => binaryItem('hydride', el, ox, 'H')), ...NONMETAL_HYDRIDES],
     peroxide: PEROXIDES,
+    nitride: NITRIDES.map(([el, ox]) => binaryItem('nitride', el, ox, 'N')),
     hydroxide: HYDROXIDE_CATIONS.map(([f, ch]) => hydroxideItem(cation(f, ch))),
     acid: ACIDS.map(([el, ox]) => acidItem(el, ox)),
     binaryAcid: BINARY_ACIDS,
@@ -381,24 +530,72 @@ export function pool(): Record<Cat, NItem[]> {
     hydrogenSalt: HYDROGEN_SALTS.map(([f, ch, an]) => saltItem('hydrogenSalt', cation(f, ch), anion(an))),
     hydrate: HYDRATES.map(([f, ch, an, n]) => hydrateItem(cation(f, ch), anion(an), n)),
     ion: [...ION_CATIONS.map(([f, ch]) => cationIonItem(cation(f, ch))), ...ION_ANIONS.map((f) => anionIonItem(anion(f)))],
+    complex: [...COMPLEX_IONS.map(complexIonItem), ...COMPLEX_SALTS.map(([spec, counter]) => complexSaltItem(spec, counter()))],
+    ...byOrg,
   }
 }
 
-/** Category weights unlocked by level: l3–4 binary only, l5–6 + hydroxides/acids/salts, l7+ everything. */
-export function weightsFor(level: number): Partial<Record<Cat, number>> {
-  if (level <= 4) return { oxide: 3, halide: 2.5, sulfide: 1.5, hydride: 1 }
-  if (level <= 6)
-    return { oxide: 1, halide: 1, sulfide: 0.5, hydride: 0.5, hydroxide: 1.5, acid: 2, binaryAcid: 0.5, salt: 2, hydrogenSalt: 1, hydrate: 1 }
-  return {
-    oxide: 1.2, halide: 1, sulfide: 0.6, hydride: 0.6, peroxide: 0.6, hydroxide: 1, acid: 1.5, binaryAcid: 0.4,
-    salt: 1.5, hydrogenSalt: 0.8, hydrate: 0.8, ion: 1,
-  }
+export interface LevelSpec {
+  /** Category weights: which kinds of compounds the level trains, and how often. */
+  weights: Partial<Record<Cat, number>>
+  /** Items the level may use (default: all items of its categories). */
+  allow?: (it: NItem) => boolean
 }
 
-export function buildQuestions(level: number, n = 10, rnd: () => number = Math.random): Question[] {
+/** Levels the game supports (see spec/courses/chemie/games.md). */
+export const NAMING_LEVELS = [3, 5, 7, 8] as const
+
+/** Content per level. */
+export const LEVELS: Record<number, LevelSpec> = {
+  // Oxides, halides, sulfides, hydrides, peroxides, nitrides.
+  3: { weights: { oxide: 3, halide: 2.5, sulfide: 1.5, hydride: 1.2, peroxide: 1, nitride: 1 } },
+  // Oxoacids, hydroxides, salts, hydrogen salts, hydrates (without level-7 anions).
+  5: {
+    weights: { acid: 2.5, binaryAcid: 0.6, hydroxide: 2, salt: 2.5, hydrogenSalt: 1.5, hydrate: 1.2 },
+    allow: (it) => !it.adv,
+  },
+  // Everything inorganic, with ions and coordination compounds.
+  7: {
+    weights: {
+      oxide: 0.8, halide: 0.6, sulfide: 0.4, hydride: 0.3, peroxide: 0.4, nitride: 0.3, hydroxide: 0.6, acid: 1,
+      binaryAcid: 0.3, salt: 1.2, hydrogenSalt: 0.6, hydrate: 0.6, ion: 1.6, complex: 2.2,
+    },
+  },
+  // Organic nomenclature.
+  8: {
+    weights: {
+      alkane: 2, unsaturated: 1.8, cycloalkane: 0.8, arene: 1, alcohol: 1.5, aldehyde: 1, ketone: 1, carboxylic: 1.2,
+      ester: 1, amine: 1,
+    },
+  },
+}
+
+/** Free play ("Vše"): every category of every level. */
+export const MIX: LevelSpec = {
+  weights: Object.assign({}, ...NAMING_LEVELS.map((l) => LEVELS[l].weights)),
+}
+
+/** Spec for a level number; free play (undefined) or an unsupported level mixes all levels. */
+export const specFor = (level?: number): LevelSpec => (level !== undefined && LEVELS[level]) || MIX
+
+/** Items a level can ask about, per category. */
+export function itemsFor(level?: number): Partial<Record<Cat, NItem[]>> {
+  const spec = specFor(level)
   const all = pool()
-  const weights = weightsFor(level)
+  const out: Partial<Record<Cat, NItem[]>> = {}
+  for (const c of Object.keys(spec.weights) as Cat[]) out[c] = all[c].filter((it) => !spec.allow || spec.allow(it))
+  return out
+}
+
+/** Does the item need a multiple choice for name → formula? */
+export const formulaChoice = (it: NItem) => !!it.wrongFormulas
+
+export function buildQuestions(level?: number, n = 10, rnd: () => number = Math.random): Question[] {
+  const spec = specFor(level)
+  const all = itemsFor(level)
+  const weights = spec.weights
   const cats = Object.keys(weights) as Cat[]
+  const perCat = Math.max(3, Math.ceil(n / 3))
   const used = new Set<string>()
   const dirs = shuffle([...Array(Math.ceil(n / 2)).fill('toName'), ...Array(Math.floor(n / 2)).fill('toFormula')], rnd) as Question['dir'][]
   const out: Question[] = []
@@ -407,8 +604,8 @@ export function buildQuestions(level: number, n = 10, rnd: () => number = Math.r
     let dir = dirs[i]
     let item: NItem | undefined
     for (let attempt = 0; attempt < 50 && !item; attempt++) {
-      // weighted category pick, avoiding more than 3 of one kind
-      const avail = cats.filter((c) => (catCount.get(c) ?? 0) < 3)
+      // weighted category pick, avoiding too many of one kind
+      const avail = cats.filter((c) => (catCount.get(c) ?? 0) < perCat)
       const total = avail.reduce((s, c) => s + weights[c]!, 0)
       let r = rnd() * total
       let cat = avail[0]
@@ -419,7 +616,7 @@ export function buildQuestions(level: number, n = 10, rnd: () => number = Math.r
           break
         }
       }
-      const candidates = all[cat].filter((it) => !used.has(it.formula + it.name))
+      const candidates = (all[cat] ?? []).filter((it) => !used.has(it.formula + it.name))
       const pickIt = candidates[Math.floor(rnd() * candidates.length)]
       if (!pickIt) continue
       if (pickIt.only && pickIt.only !== dir) {
@@ -432,8 +629,14 @@ export function buildQuestions(level: number, n = 10, rnd: () => number = Math.r
     }
     if (!item) continue
     used.add(item.formula + item.name)
-    const options = dir === 'toName' ? shuffle([item.name, ...item.wrong.slice(0, 3)], rnd) : []
-    out.push({ dir, item, options })
+    if (dir === 'toName') {
+      out.push({ dir, item, options: shuffle([item.name, ...item.wrong.slice(0, 3)], rnd), answer: item.name })
+    } else if (formulaChoice(item)) {
+      const answer = markupOf(item)
+      out.push({ dir, item, options: shuffle([answer, ...item.wrongFormulas!.slice(0, 3)], rnd), answer })
+    } else {
+      out.push({ dir, item, options: [], answer: item.formula })
+    }
   }
   return out
 }

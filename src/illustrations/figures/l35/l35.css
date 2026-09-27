@@ -1,0 +1,500 @@
+/* =====================================================================
+   Engraved figures for levels 3–5 (src/illustrations/figures/l35).
+   Theme colours from tokens; subject colours (CPK, indicators) literal.
+   ===================================================================== */
+
+.f35 {
+  width: 100%;
+  container-type: inline-size;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  color: var(--ink);
+  --lv: #9c7a12;
+}
+.f35-l3 {
+  --lv: #9c7a12;
+}
+.f35-l4 {
+  --lv: #56834a;
+}
+.f35-l5 {
+  --lv: #2c7a72;
+}
+/* level colour as text/line on the paper, lighter on the night theme */
+.f35 {
+  --lv-ink: var(--lv);
+  --lv-soft: color-mix(in srgb, var(--lv) 16%, var(--surface));
+  --lv-mid: color-mix(in srgb, var(--lv) 38%, var(--surface));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .f35 {
+    --lv-ink: color-mix(in srgb, var(--lv) 55%, #fff);
+    --lv-soft: color-mix(in srgb, var(--lv) 26%, var(--surface));
+    --lv-mid: color-mix(in srgb, var(--lv) 50%, var(--surface));
+  }
+}
+:root[data-theme='dark'] .f35 {
+  --lv-ink: color-mix(in srgb, var(--lv) 55%, #fff);
+  --lv-soft: color-mix(in srgb, var(--lv) 26%, var(--surface));
+  --lv-mid: color-mix(in srgb, var(--lv) 50%, var(--surface));
+}
+
+.f35-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+/* two layouts: wide (≥ 460 px container) and narrow */
+.f35-when-narrow {
+  display: none;
+}
+@container (max-width: 459px) {
+  .f35-when-wide {
+    display: none;
+  }
+  .f35-when-narrow {
+    display: block;
+  }
+  .f35-sec {
+    display: none;
+  }
+}
+
+.f35-replay {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-soft);
+  border-radius: 99px;
+  padding: 6px 14px;
+  min-height: 36px;
+  font: italic 600 16px var(--font-display);
+  cursor: pointer;
+}
+.f35-replay:hover {
+  background: var(--surface-2);
+}
+
+/* ---------------------------------------------------------------- text */
+.f35-t {
+  font: 500 14px var(--font-body);
+  fill: var(--ink);
+}
+.f35-small {
+  font-size: 12.5px;
+}
+.f35-b {
+  font-weight: 700;
+}
+.f35-muted {
+  fill: var(--muted);
+}
+.f35-mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  fill: var(--ink);
+}
+.f35-note {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16px;
+  fill: var(--ink-soft);
+}
+.f35-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 19px;
+  fill: var(--lv-ink);
+}
+.f35-lvt {
+  fill: var(--lv-ink);
+}
+.f35-accent-t {
+  fill: var(--accent);
+}
+.f35-blue-t {
+  fill: var(--blue);
+}
+.f35-red-t {
+  fill: var(--bad);
+}
+.f35-sym {
+  font-family: var(--font-body);
+  font-weight: 700;
+  pointer-events: none;
+}
+.f35-delta {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 18px;
+}
+.f35-dneg {
+  fill: var(--bad);
+}
+.f35-dpos {
+  fill: var(--blue);
+}
+
+/* ---------------------------------------------------------------- lines */
+.f35-line {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.f35-thin {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.f35-hair {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 0.7;
+}
+.f35-fill {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+.f35-fill2 {
+  fill: var(--surface-2);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+.f35-lvfill {
+  fill: var(--lv-soft);
+  stroke: var(--lv-ink);
+  stroke-width: 1.5;
+}
+.f35-lvline {
+  fill: none;
+  stroke: var(--lv-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.f35-rule {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.f35-dashed {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 4;
+}
+.f35-hl {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.4;
+}
+.f35-leader {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+}
+.f35-leader-dot {
+  fill: var(--ink-soft);
+}
+.f35-arrow path,
+.f35-arrow line {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.f35-arrow polygon {
+  fill: var(--edge);
+}
+.f35-arrow-lv path,
+.f35-arrow-lv line {
+  fill: none;
+  stroke: var(--lv-ink);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.f35-arrow-lv polygon {
+  fill: var(--lv-ink);
+}
+.f35-arrow-bad path,
+.f35-arrow-bad line {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.f35-arrow-bad polygon {
+  fill: var(--bad);
+}
+.f35-arrow-blue path {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.f35-arrow-blue polygon {
+  fill: var(--blue);
+}
+.f35-arc {
+  fill: none;
+  stroke: var(--lv-ink);
+  stroke-width: 1.4;
+}
+
+/* ---------------------------------------------------------------- atoms */
+.f35-atom {
+  stroke: none;
+}
+.f35-atom-edge {
+  fill: none;
+  stroke: #1f2a44;
+  stroke-width: 1.4;
+}
+:root[data-theme='dark'] .f35-atom-edge {
+  stroke: #0d1120;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .f35-atom-edge {
+    stroke: #0d1120;
+  }
+}
+.f35-glint {
+  fill: none;
+  stroke: #fff;
+  stroke-opacity: 0.75;
+  stroke-linecap: round;
+}
+.f35-stick-o {
+  stroke: var(--edge);
+  stroke-linecap: round;
+}
+.f35-stick {
+  stroke: var(--surface-3);
+  stroke-linecap: round;
+}
+.f35-wedge {
+  fill: var(--edge);
+  stroke: var(--edge);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.f35-dash line {
+  stroke: var(--edge);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+}
+.f35-lp-fill {
+  fill: var(--lv-soft);
+}
+.f35-lp-edge {
+  fill: none;
+  stroke: var(--lv-ink);
+  stroke-width: 1.2;
+}
+.f35-lp-back .f35-lp-edge {
+  stroke-dasharray: 3 2.5;
+}
+.f35-e {
+  fill: var(--ink);
+}
+.f35-hbond {
+  fill: none;
+  stroke: var(--lv-ink);
+  stroke-width: 2;
+  stroke-dasharray: 0.1 4.2;
+  stroke-linecap: round;
+}
+
+/* ---------------------------------------------------------------- glass */
+.f35-glass {
+  fill: color-mix(in srgb, var(--info-soft) 35%, var(--surface));
+  stroke: none;
+}
+.f35-glass-edge {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.f35-glass-rim {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.f35-glass-glint {
+  fill: none;
+  stroke: var(--surface);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+.f35-surface {
+  stroke: var(--edge);
+  stroke-width: 1;
+  opacity: 0.6;
+}
+.f35-grad {
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.f35-bubble {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 0.9;
+  animation: f35-rise 2.1s ease-in infinite;
+  transform-box: fill-box;
+}
+@keyframes f35-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--rise, -40px));
+    opacity: 0;
+  }
+}
+
+/* ---------------------------------------------------------------- ambient loops */
+.f35-jiggle {
+  animation: f35-jiggle 2.8s ease-in-out infinite alternate;
+  transform-box: fill-box;
+}
+@keyframes f35-jiggle {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(1.5px, -1px) rotate(3deg);
+  }
+  100% {
+    transform: translate(-1px, 1.5px) rotate(-3deg);
+  }
+}
+.f35-drift {
+  animation: f35-drift 5s ease-in-out infinite;
+}
+@keyframes f35-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(var(--dx1, 8px), var(--dy1, -6px));
+  }
+  50% {
+    transform: translate(var(--dx2, 14px), var(--dy2, 4px));
+  }
+  75% {
+    transform: translate(var(--dx3, 4px), var(--dy3, 8px));
+  }
+}
+.f35-fall {
+  animation: f35-fall 1.6s linear infinite;
+}
+@keyframes f35-fall {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--fx, -10px), var(--fy, 70px));
+    opacity: 0;
+  }
+}
+.f35-smoke {
+  animation: f35-smoke 4s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes f35-smoke {
+  0% {
+    transform: translate(0, 6px) scale(0.6);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(18px, -26px) scale(1.25);
+    opacity: 0;
+  }
+}
+.f35-settle {
+  animation: f35-settle 3.2s ease-in infinite;
+}
+@keyframes f35-settle {
+  0% {
+    transform: translateY(-22px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+.f35-drip {
+  animation: f35-drip 1.8s ease-in infinite;
+}
+@keyframes f35-drip {
+  0% {
+    transform: translateY(0) scale(0.4);
+    opacity: 0;
+  }
+  25% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  90% {
+    transform: translateY(var(--drop, 30px));
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--drop, 30px));
+    opacity: 0;
+  }
+}
+.f35-grab {
+  cursor: grab;
+  touch-action: pan-y;
+}
+.f35-grab:active {
+  cursor: grabbing;
+}
+.f35-shadow {
+  fill: var(--ink);
+  opacity: 0.07;
+}

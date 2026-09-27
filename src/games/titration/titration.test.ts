@@ -10,14 +10,15 @@ import {
   pinkIntensity,
   randomSample,
   scoreSample,
+  type Sample,
 } from './titration'
 
 describe('titration maths', () => {
-  const s = { cHcl: 0.0873 }
+  const s: Sample = { acid: 'hcl', c: 0.0873 }
 
   it('computes the equivalence volume', () => {
     expect(equivalenceVolume(s)).toBeCloseTo(17.46, 10)
-    expect(equivalenceVolume({ cHcl: 0.1 })).toBeCloseTo(20, 10)
+    expect(equivalenceVolume({ acid: 'hcl', c: 0.1 })).toBeCloseTo(20, 10)
   })
 
   it('starts acidic, is neutral at equivalence and basic after', () => {
@@ -68,7 +69,7 @@ describe('titration maths', () => {
 })
 
 describe('titration scoring', () => {
-  const s = { cHcl: 0.0873 }
+  const s: Sample = { acid: 'hcl', c: 0.0873 }
 
   it('perfect run earns all points', () => {
     const r = scoreSample(s, 17.5, '17,5', '0,0875')

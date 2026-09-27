@@ -152,7 +152,7 @@ describe('oxoacids (H/X/O rule)', () => {
     ['H2CrO4', 'kyselina chromová', 'Cr', 6],
     ['H2SiO3', 'kyselina křemičitá', 'Si', 4],
     ['H3BO3', 'kyselina boritá', 'B', 3],
-    ['HBrO3', 'kyselina bromečná', 'Br', 5],
+    ['HBrO3', 'kyselina bromičná', 'Br', 5],
     ['HIO3', 'kyselina jodičná', 'I', 5],
     ['HIO4', 'kyselina jodistá', 'I', 7],
     ['H2SeO4', 'kyselina selenová', 'Se', 6],

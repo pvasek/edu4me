@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion, useAnimate, type Variants } from 'motion/react'
-import type { GameProps } from '../types'
+import { levelNum, type GameProps } from '../types'
 import { Md } from '../../core/markup'
 import { Icon } from '../../ui/Icon'
 import { Mascot, type Mood } from '../../ui/Mascot'
@@ -8,9 +8,9 @@ import { bump, fadeUp, popIn, shake, slide, spring } from '../../ui/motion'
 import { parseFormula } from '../../courses/chemie/data/formula'
 import { Feedback, Hud, PointsPop } from '../shared/GameKit'
 import { useFinishOnce } from '../shared/hooks'
-import { levelNumber, shuffle } from '../shared/util'
+import { shuffle } from '../shared/util'
 import { normalizeFormula } from '../shared/nomenclature'
-import { CAT_LABEL, buildQuestions, weightsFor, type Question } from './questions'
+import { CAT_LABEL, LEVELS, buildQuestions, markupOf, specFor, type Question } from './questions'
 import './naming.css'
 
 const BASE = 10
@@ -56,9 +56,10 @@ function judge(typed: string, formula: string): Verdict {
 const symbolsOf = (f: string) => [...new Set(f.match(/[A-Z][a-z]?/g) ?? [])]
 
 export default function Naming({ levelId, onFinish }: GameProps) {
-  const level = levelNumber(levelId, 7)
+  const n = levelNum(levelId)
+  const level = n !== undefined && LEVELS[n] ? n : undefined
   const [questions] = useState(() => buildQuestions(level))
-  const withHydrates = 'hydrate' in weightsFor(level)
+  const withHydrates = 'hydrate' in specFor(level).weights
   const maxScore = useMemo(() => questions.reduce((s, _, i) => s + BASE + bonusFor(i + 1), 0), [questions])
   const finish = useFinishOnce(onFinish)
 
@@ -74,6 +75,8 @@ export default function Naming({ levelId, onFinish }: GameProps) {
   const q: Question = questions[idx]
   const item = q.item
   const last = idx === questions.length - 1
+  const isChoice = q.options.length > 0
+  const withBrackets = item.formula.includes('[')
 
   const chips = useMemo(() => {
     const own = symbolsOf(item.formula)
@@ -101,9 +104,9 @@ export default function Naming({ levelId, onFinish }: GameProps) {
   const choose = useCallback(
     (name: string) => {
       if (result) return
-      settle(name === item.name ? 'correct' : 'wrong', { choice: name })
+      settle(name === q.answer ? 'correct' : 'wrong', { choice: name })
     },
-    [result, item, settle],
+    [result, q, settle],
   )
 
   function submitFormula() {
@@ -132,7 +135,7 @@ export default function Naming({ levelId, onFinish }: GameProps) {
 
   // Keys 1–4 for multiple choice.
   useEffect(() => {
-    if (result || q.dir !== 'toName') return
+    if (result || !q.options.length) return
     const onKey = (e: KeyboardEvent) => {
       if (e.altKey || e.ctrlKey || e.metaKey) return
       const n = Number(e.key)
@@ -147,7 +150,8 @@ export default function Naming({ levelId, onFinish }: GameProps) {
 
   const ok = result && (result.verdict === 'correct' || result.verdict === 'partial')
   const mood: Mood = !result ? 'think' : result.verdict === 'correct' ? (streak >= 3 ? 'cheer' : 'happy') : ok ? 'wow' : 'sad'
-  const formulaMarkup = item.display ?? `$${item.formula}$`
+  const formulaMarkup = markupOf(item)
+  const longFormula = formulaMarkup.length > 16
 
   return (
     <div className="g-nm">
@@ -158,13 +162,16 @@ export default function Naming({ levelId, onFinish }: GameProps) {
         rounds={questions.length}
         roundLabel="Otázka"
         extra={
-          <AnimatePresence>
-            {streak >= 2 && (
-              <motion.span className="chip g-nm-streak" key="streak" variants={popIn} initial="hidden" animate="show" exit="hidden">
-                <Icon name="flame" /> série {streak}×
-              </motion.span>
-            )}
-          </AnimatePresence>
+          <>
+            <LevelChip level={level} />
+            <AnimatePresence>
+              {streak >= 2 && (
+                <motion.span className="chip g-nm-streak" key="streak" variants={popIn} initial="hidden" animate="show" exit="hidden">
+                  <Icon name="flame" /> série {streak}×
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </>
         }
       />
 
@@ -192,22 +199,22 @@ export default function Naming({ levelId, onFinish }: GameProps) {
               {result && <PointsPop key={idx} points={result.points} />}
             </div>
             <motion.div
-              className={q.dir === 'toName' ? 'g-nm-prompt-formula' : 'g-nm-prompt-name'}
+              className={q.dir === 'toName' ? `g-nm-prompt-formula${longFormula ? ' is-long' : ''}` : 'g-nm-prompt-name'}
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ ...spring.bouncy, delay: 0.1 }}
             >
               {q.dir === 'toName' ? <Md text={formulaMarkup} /> : item.name}
             </motion.div>
-            <p className="g-nm-ask">{q.dir === 'toName' ? 'Jak se to jmenuje?' : 'Jaký je vzorec?'}</p>
+            <p className="g-nm-ask">{q.dir === 'toName' ? 'Jak se to jmenuje?' : isChoice ? 'Který vzorec to je?' : 'Jaký je vzorec?'}</p>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {q.dir === 'toName' ? (
-        <div className="g-nm-opts" role="group" aria-label="Možnosti">
+      {isChoice ? (
+        <div className={`g-nm-opts${q.dir === 'toFormula' ? ' is-formulas' : ''}`} role="group" aria-label="Možnosti">
           {q.options.map((o, i) => {
-            const isAnswer = o === item.name
+            const isAnswer = o === q.answer
             const isChoice = result?.choice === o
             const state = !result ? 'show' : isAnswer ? 'correct' : isChoice ? 'wrong' : 'dim'
             return (
@@ -226,7 +233,7 @@ export default function Naming({ levelId, onFinish }: GameProps) {
                 <span className="g-nm-key" aria-hidden="true">
                   {i + 1}
                 </span>
-                <span className="g-nm-opt-label">{o}</span>
+                <span className="g-nm-opt-label">{q.dir === 'toFormula' ? <Md text={o} /> : o}</span>
                 <AnimatePresence>
                   {result && (isAnswer || isChoice) && (
                     <motion.span className="g-nm-opt-icon" variants={popIn} initial="hidden" animate="show">
@@ -297,6 +304,8 @@ export default function Naming({ levelId, onFinish }: GameProps) {
               <div className="g-nm-pad-row g-nm-pad-misc">
                 <Chip label="(" onPress={press} kind="misc" />
                 <Chip label=")" onPress={press} kind="misc" />
+                {withBrackets && <Chip label="[" onPress={press} kind="misc" aria="hranatá závorka" />}
+                {withBrackets && <Chip label="]" onPress={press} kind="misc" aria="hranatá závorka zavřít" />}
                 {withHydrates && <Chip label="·" onPress={press} kind="misc" aria="tečka pro hydrát" />}
                 <Chip label="⌫" onPress={press} kind="del" aria="smazat poslední" />
               </div>
@@ -323,6 +332,16 @@ export default function Naming({ levelId, onFinish }: GameProps) {
   )
 }
 
+/** HUD chip: which level's content is being played. */
+function LevelChip({ level }: { level?: number }) {
+  return (
+    <span className="chip g-sh-hud-chip" title={level ? `Názvosloví z úrovně ${level}` : 'Názvosloví ze všech úrovní'}>
+      <Icon name={level ? 'book' : 'shuffle'} />
+      <span>{level ? `Úroveň ${level}` : 'Vše'}</span>
+    </span>
+  )
+}
+
 function Chip({ label, onPress, kind, aria }: { label: string; onPress: (t: string) => void; kind: string; aria?: string }) {
   return (
     <motion.button
@@ -340,7 +359,7 @@ function Chip({ label, onPress, kind, aria }: { label: string; onPress: (t: stri
 
 function Explain({ q, result }: { q: Question; result: Result }) {
   const item = q.item
-  const f = item.display ?? `$${item.formula}$`
+  const f = markupOf(item)
   let head: string
   switch (result.verdict) {
     case 'correct':

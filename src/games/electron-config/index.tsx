@@ -1,23 +1,30 @@
 import { useRef, useState } from 'react'
 import { motion } from 'motion/react'
 import { BY_Z, categoryVar } from '../../courses/chemie/data/elements'
-import { configMarkup, electronConfig, shorthandMarkup } from '../../courses/chemie/data/electronConfig'
+import { configMarkup } from '../../courses/chemie/data/electronConfig'
 import { Md } from '../../core/markup'
 import { Icon } from '../../ui/Icon'
 import { Mascot, type Mood } from '../../ui/Mascot'
 import { rise, shake, spring, stagger } from '../../ui/motion'
 import { Bump, Feedback, Hud, PointsPop } from '../shared/GameKit'
 import { useFinishOnce, useJolt } from '../shared/hooks'
-import { levelNumber } from '../shared/util'
-import type { GameProps } from '../types'
+import { pickLevel } from '../shared/util'
+import { levelNum, type GameProps } from '../types'
+import { LEVELS } from './levels'
 import {
   ecPoints,
+  electronsOf,
   emptyFilling,
   fillingMarkup,
   keyOf,
   pickTargets,
+  sameAsNoble,
   solution,
   tapOrbital,
+  targetConfig,
+  targetName,
+  targetShorthand,
+  targetSymbol,
   totalOf,
   validateFilling,
   type Filling,
@@ -34,10 +41,10 @@ function boxLabel(key: string, idx: number, o: Orbital) {
 }
 
 export default function ElectronConfig({ levelId, onFinish }: GameProps) {
-  const level = levelNumber(levelId)
+  const level = pickLevel(LEVELS, levelNum(levelId))
   const [targets] = useState(() => pickTargets(level))
   const [i, setI] = useState(0)
-  const [fill, setFill] = useState<Filling>(() => emptyFilling(targets[0].z))
+  const [fill, setFill] = useState<Filling>(() => emptyFilling(targets[0]))
   const [attempt, setAttempt] = useState(1)
   const [status, setStatus] = useState<'play' | 'won' | 'lost'>('play')
   const [verdict, setVerdict] = useState<Verdict | null>(null)
@@ -52,6 +59,11 @@ export default function ElectronConfig({ levelId, onFinish }: GameProps) {
 
   const target = targets[i]
   const el = BY_Z[target.z]
+  const q = target.charge ?? 0
+  const need = electronsOf(target)
+  const name = targetName(target)
+  const tmCation = q > 0 && target.z > 20
+  const noble = sameAsNoble(target)
   const total = totalOf(fill)
   const maxScore = targets.reduce((a, t) => a + ecPoints(1, t.bonus), 0)
 
@@ -65,7 +77,7 @@ export default function ElectronConfig({ levelId, onFinish }: GameProps) {
   }
 
   const check = () => {
-    const v = validateFilling(target.z, fill)
+    const v = validateFilling(target, fill)
     setVerdict(v)
     setChecks((c) => c + 1)
     if (v.ok) {
@@ -80,7 +92,7 @@ export default function ElectronConfig({ levelId, onFinish }: GameProps) {
     }
     jolt.shake()
     // a missing electron is not a real attempt
-    if (v.rule === 'count' && total < target.z) return
+    if (v.rule === 'count' && total < need) return
     if (attempt >= 3) setStatus('lost')
     else setAttempt(attempt + 1)
   }
@@ -92,7 +104,7 @@ export default function ElectronConfig({ levelId, onFinish }: GameProps) {
     }
     const ni = i + 1
     setI(ni)
-    setFill(emptyFilling(targets[ni].z))
+    setFill(emptyFilling(targets[ni]))
     setAttempt(1)
     setStatus('play')
     setVerdict(null)
@@ -101,13 +113,14 @@ export default function ElectronConfig({ levelId, onFinish }: GameProps) {
   }
 
   const bad = verdict && !verdict.ok ? verdict.where : undefined
-  const mood: Mood = status === 'won' ? 'cheer' : status === 'lost' ? 'sad' : verdict && !verdict.ok ? 'think' : total === target.z ? 'wow' : 'happy'
+  const mood: Mood = status === 'won' ? 'cheer' : status === 'lost' ? 'sad' : verdict && !verdict.ok ? 'think' : total === need ? 'wow' : 'happy'
+  const roundLabel = level === 2 ? 'Prvek' : level === 3 ? 'Ion' : 'Částice'
   const live = fillingMarkup(fill)
 
   return (
     <div className="g-sh-root g-ec">
       <p className="g-sh-instr">Ťukej na políčka orbitalů: 1× přidá ↑, 2× doplní ↓, 3× vyprázdní. Dodrž výstavbový princip, Pauliho princip a Hundovo pravidlo.</p>
-      <Hud score={score} round={i + 1} rounds={targets.length} roundLabel="Prvek" />
+      <Hud score={score} round={i + 1} rounds={targets.length} roundLabel={roundLabel} level={level ?? 'mix'} />
 
       <div ref={cardRef} className="card g-sh-prompt g-ec-task">
         <motion.span
@@ -120,15 +133,29 @@ export default function ElectronConfig({ levelId, onFinish }: GameProps) {
           transition={spring.bouncy}
         >
           <span className="g-ec-tile-z">{el.z}</span>
-          <span className="g-ec-tile-sym">{el.symbol}</span>
+          <span className="g-ec-tile-sym">
+            {el.symbol}
+            {q ? <sup className="g-ec-tile-q">{`${Math.abs(q) > 1 ? Math.abs(q) : ''}${q > 0 ? '+' : '−'}`}</sup> : null}
+          </span>
         </motion.span>
         <div className="g-sh-prompt-body">
           <span className="eyebrow">
-            Zaplň orbitaly{target.bonus ? ' · bonus ×1,5' : ''}
+            {q ? (q > 0 ? 'Zaplň orbitaly kationtu' : 'Zaplň orbitaly aniontu') : 'Zaplň orbitaly'}
+            {target.bonus ? ' · bonus ×1,5' : ''}
           </span>
-          <span className="g-ec-name">{el.name}</span>
+          <span className="g-ec-name">
+            {name}
+            {q ? (
+              <>
+                {' '}
+                <Md text={`$${targetSymbol(target)}$`} />
+              </>
+            ) : null}
+          </span>
           <span className="g-ec-sub">
-            Z = {el.z}, tedy <b>{el.z}</b> {el.z <= 4 ? 'elektrony' : 'elektronů'}
+            Z = {el.z}
+            {q ? `, náboj ${Math.abs(q) > 1 ? Math.abs(q) : ''}${q > 0 ? '+' : '−'}` : ''}, tedy <b>{need}</b>{' '}
+            {need <= 4 ? 'elektrony' : 'elektronů'}
           </span>
         </div>
         <Mascot mood={mood} size={56} />
@@ -138,11 +165,14 @@ export default function ElectronConfig({ levelId, onFinish }: GameProps) {
       {target.bonus && status === 'play' && attempt === 1 && (
         <p className="note g-ec-bonusnote">Bonus: tenhle prvek má zradu. Přemýšlej o stabilitě podslupky 3d!</p>
       )}
+      {tmCation && status === 'play' && attempt === 1 && (
+        <p className="note g-ec-bonusnote">Kation vzniká z atomu ztrátou elektronů. Z kterého orbitalu odcházejí nejdřív?</p>
+      )}
 
       <div className="g-ec-board">
         <div className="g-ec-meter" aria-live="polite">
-          <span className={`chip g-ec-count${total === el.z ? ' is-full' : total > el.z ? ' is-over' : ''}`}>
-            <Icon name="atom" /> Umístěno <Bump value={total} />/{el.z}
+          <span className={`chip g-ec-count${total === need ? ' is-full' : total > need ? ' is-over' : ''}`}>
+            <Icon name="atom" /> Umístěno <Bump value={total} />/{need}
           </span>
           <span className="g-ec-live">{live ? <Md text={`$${live}$`} /> : <span className="muted">zatím prázdné</span>}</span>
         </div>
@@ -150,7 +180,7 @@ export default function ElectronConfig({ levelId, onFinish }: GameProps) {
         <motion.div
           className="g-ec-diagram"
           role="group"
-          aria-label={`Orbitalový diagram pro ${el.name}`}
+          aria-label={`Orbitalový diagram: ${name}`}
           key={`d${i}`}
           variants={stagger(0.06, 0.1)}
           initial="hidden"
@@ -219,11 +249,19 @@ export default function ElectronConfig({ levelId, onFinish }: GameProps) {
         {status === 'won' && (
           <Feedback kind="good">
             <span>
-              Správně! {el.name}: <Md text={`$${configMarkup(electronConfig(el.z))}$`} />
+              Správně! {name}
+              {q ? (
+                <>
+                  {' '}
+                  <Md text={`$${targetSymbol(target)}$`} />
+                </>
+              ) : null}
+              : <Md text={`$${configMarkup(targetConfig(target))}$`} />
               <span className="g-ec-short">
                 {' '}
-                zkráceně <Md text={`$${shorthandMarkup(el.z)}$`} />
+                zkráceně <Md text={`$${targetShorthand(target)}$`} />
               </span>
+              {noble && <> – stejná konfigurace jako u {noble}.</>}
             </span>
           </Feedback>
         )}
@@ -237,7 +275,7 @@ export default function ElectronConfig({ levelId, onFinish }: GameProps) {
                 type="button"
                 className="btn btn-ghost"
                 onClick={() => {
-                  setFill(emptyFilling(target.z))
+                  setFill(emptyFilling(target))
                   setVerdict(null)
                 }}
               >
@@ -246,13 +284,13 @@ export default function ElectronConfig({ levelId, onFinish }: GameProps) {
             </>
           )}
           {status === 'lost' && (
-            <button type="button" className="btn" onClick={() => setFill(solution(target.z))}>
+            <button type="button" className="btn" onClick={() => setFill(solution(target))}>
               <Icon name="bulb" /> Ukázat řešení
             </button>
           )}
           {status !== 'play' && (
             <button type="button" className="btn btn-primary btn-lg" onClick={next} autoFocus>
-              {i + 1 >= targets.length ? 'Dokončit' : 'Další prvek'} <Icon name="arrowRight" />
+              {i + 1 >= targets.length ? 'Dokončit' : 'Další úkol'} <Icon name="arrowRight" />
             </button>
           )}
         </div>

@@ -1,54 +1,71 @@
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
-import { motion } from 'motion/react'
-import type { GameProps } from '../types'
+import { AnimatePresence, motion } from 'motion/react'
+import { levelNum, type GameProps } from '../types'
 import { Md } from '../../core/markup'
 import { Icon } from '../../ui/Icon'
 import { Mascot, type Mood } from '../../ui/Mascot'
 import {
+  ACIDS,
   BURETTE_MAX,
   C_NAOH,
   DROP,
   PINK_FROM,
-  SAMPLE_MAX,
   STREAM_RATE,
-  V_HCL,
+  V_SAMPLE,
   equivalenceVolume,
   flashDuration,
   fmt,
+  halfEquivalence,
   phAt,
   pinkIntensity,
-  randomSample,
+  sampleMax,
   scoreSample,
   type Sample,
   type SampleScore,
 } from './titration'
-import { ease, fadeUp, rise, shake, spring, stagger } from '../../ui/motion'
+import {
+  INDICATORS,
+  INDICATOR_CHOICE,
+  LEVELS,
+  RIGHT_INDICATOR,
+  indicatorExplain,
+  levelOfAcid,
+  pickSamples,
+  type IndicatorId,
+} from './samples'
+import { bump, ease, fadeUp, popIn, rise, shake, spring, stagger } from '../../ui/motion'
 import './titration.css'
 
-type Phase = 'titrate' | 'answer' | 'result'
+type Phase = 'indicator' | 'titrate' | 'answer' | 'result'
 interface Point {
   v: number
   ph: number
 }
 
-const SAMPLES = 2
-/** Phenolphthalein pink (indicator colour = subject data). */
+/** Phenolphthalein pink and methyl orange (indicator colours = subject data). */
 const PINK = '#ff3d9a'
+const ORANGE = '#f08a24'
 
 /* Apparatus geometry (SVG user units). */
 const SCALE_TOP = 30 // y of the 0 cm³ mark
 const PX_PER_CM3 = 6
 const TIP_Y = 392
 const FLASK_BOTTOM = 535
-const levelY = (v: number) => FLASK_BOTTOM - (V_HCL + v) * 1.0
+const levelY = (v: number) => FLASK_BOTTOM - (V_SAMPLE + v) * 1.0
 
 const round3 = (x: number) => Math.round(x * 1000) / 1000
 
-export default function Titration({ onFinish }: GameProps) {
-  const [samples] = useState<Sample[]>(() => Array.from({ length: SAMPLES }, () => randomSample()))
+const firstPhase = (s: Sample): Phase => (ACIDS[s.acid].chooseIndicator ? 'indicator' : 'titrate')
+
+export default function Titration({ levelId, onFinish }: GameProps) {
+  const n = levelNum(levelId)
+  const level = n !== undefined && LEVELS[n] ? n : undefined
+  const [samples] = useState<Sample[]>(() => pickSamples(level))
   const [idx, setIdx] = useState(0)
   const sample = samples[idx]
-  const [phase, setPhase] = useState<Phase>('titrate')
+  const acid = ACIDS[sample.acid]
+  const [phase, setPhase] = useState<Phase>(() => firstPhase(samples[0]))
+  const [indicator, setIndicator] = useState<IndicatorId | null>(null)
   const [v, setV] = useState(0)
   const vRef = useRef(0)
   const [points, setPoints] = useState<Point[]>([{ v: 0, ph: phAt(sample, 0) }])
@@ -173,7 +190,7 @@ export default function Titration({ onFinish }: GameProps) {
 
   const check = () => {
     if (!readInput.trim() || !concInput.trim()) return
-    const r = scoreSample(sample, vRef.current, readInput, concInput)
+    const r = scoreSample(sample, vRef.current, readInput, concInput, indicator === null || indicator === RIGHT_INDICATOR)
     setResult(r)
     setScore((s) => s + r.total)
     setPhase('result')
@@ -183,7 +200,7 @@ export default function Titration({ onFinish }: GameProps) {
     if (idx + 1 >= samples.length) {
       if (!finished.current) {
         finished.current = true
-        onFinish({ score, max: samples.length * SAMPLE_MAX })
+        onFinish({ score, max: samples.reduce((m, s) => m + sampleMax(s), 0) })
       }
       return
     }
@@ -197,7 +214,8 @@ export default function Titration({ onFinish }: GameProps) {
     setConcInput('')
     setShowHint(false)
     setResult(null)
-    setPhase('titrate')
+    setIndicator(null)
+    setPhase(firstPhase(samples[n]))
   }
 
   const holdKeyDown = (e: ReactKeyboardEvent) => {
@@ -220,7 +238,7 @@ export default function Titration({ onFinish }: GameProps) {
         : result.total >= 4
           ? 'happy'
           : 'sad'
-      : phase === 'answer'
+      : phase === 'answer' || phase === 'indicator'
         ? 'think'
         : pink > 0
           ? 'wow'
@@ -229,7 +247,9 @@ export default function Titration({ onFinish }: GameProps) {
             : 'think'
 
   const colourText =
-    pink === 0
+    phase === 'indicator'
+      ? 'Indikátor ještě chybí.'
+      : pink === 0
       ? flash || running
         ? 'Růžová se objevila… a zase mizí.'
         : 'Roztok v baňce je bezbarvý.'
@@ -240,10 +260,15 @@ export default function Titration({ onFinish }: GameProps) {
   return (
     <div className="g-ti">
       <p className="g-ti-instr">
-        Přidávej NaOH z byrety, dokud roztok v baňce nezůstane <strong>slabě růžový</strong>. Pak odečti objem a spočítej c(HCl).
+        {acid.chooseIndicator && <>Nejdřív vyber indikátor. Pak </>}
+        {acid.chooseIndicator ? 'přidávej' : 'Přidávej'} NaOH z byrety, dokud roztok v baňce nezůstane <strong>slabě růžový</strong>. Pak
+        odečti objem a spočítej c(<Md text={acid.formula} />).
       </p>
 
       <div className="g-ti-hud">
+        <span className="chip chip-soft" title={level ? `Vzorky z úrovně ${level}` : 'Vzorky ze všech úrovní'}>
+          <Icon name="book" /> {level ? `Úroveň ${level}` : `Vše · úroveň ${levelOfAcid(sample.acid)}`}
+        </span>
         <span className="chip">
           <Icon name="flask" /> Vzorek {idx + 1}/{samples.length}
         </span>
@@ -257,7 +282,11 @@ export default function Titration({ onFinish }: GameProps) {
           <Icon name="star" /> {score} b.
         </motion.span>
         <span className="chip chip-soft">c(NaOH) = {fmt(C_NAOH, 3)} mol/dm³</span>
-        <span className="chip chip-soft">V(HCl) = {fmt(V_HCL, 1)} cm³</span>
+        <span className="chip chip-soft">
+          <span>
+            V(<Md text={acid.formula} />) = {fmt(V_SAMPLE, 1)} cm³
+          </span>
+        </span>
       </div>
 
       <div className="g-ti-lab">
@@ -385,8 +414,11 @@ export default function Titration({ onFinish }: GameProps) {
                 className="g-ti-glass"
               />
               <path d="M56 380 H84" className="g-ti-glass" />
-              <text x="70" y="505" textAnchor="middle" className="g-ti-flask-label">
-                HCl + fenolftalein
+              <text x="70" y="499" textAnchor="middle" className="g-ti-flask-label">
+                {acid.plain} +
+              </text>
+              <text x="70" y="511" textAnchor="middle" className="g-ti-flask-label">
+                {indicator || !acid.chooseIndicator ? INDICATORS[RIGHT_INDICATOR].name : 'indikátor?'}
               </text>
             </motion.g>
           </svg>
@@ -412,9 +444,19 @@ export default function Titration({ onFinish }: GameProps) {
           </div>
 
           <Lens v={v} />
-          <Curve key={idx} points={points} v={v} ph={ph} />
+          <Curve key={idx} sample={sample} points={points} v={v} ph={ph} />
         </div>
       </div>
+
+      {phase === 'indicator' && (
+        <IndicatorPick
+          acidName={acid.name}
+          picked={indicator}
+          onPick={(id) => setIndicator((cur) => cur ?? id)}
+          explain={indicator ? indicatorExplain(sample.acid, indicator) : ''}
+          onStart={() => setPhase('titrate')}
+        />
+      )}
 
       {phase === 'titrate' && (
         <div className="g-ti-controls">
@@ -487,7 +529,9 @@ export default function Titration({ onFinish }: GameProps) {
               </span>
             </label>
             <label className="g-ti-field">
-              <span>c(HCl)</span>
+              <span>
+                c(<Md text={acid.formula} />)
+              </span>
               <span className="g-ti-input-row">
                 <input
                   className="g-ti-input"
@@ -503,9 +547,21 @@ export default function Titration({ onFinish }: GameProps) {
           </div>
           {showHint ? (
             <motion.div className="g-ti-hint" variants={fadeUp} initial="hidden" animate="show">
-              <Md text="$HCl + NaOH -> NaCl + H2O$ reagují v poměru 1 : 1, takže n(HCl) = n(NaOH)." />
+              <Md
+                text={
+                  acid.ratio === 1
+                    ? `${acid.equation}: reagují v poměru 1 : 1, takže n(${acid.formula}) = n(NaOH).`
+                    : `${acid.equation}: poměr 1 : 2, takže n(${acid.formula}) = n(NaOH) / 2.`
+                }
+              />
               <div className="g-ti-formula">
-                c(HCl) = c(NaOH) · V(NaOH) / V(HCl) = {fmt(C_NAOH, 3)} · V / {fmt(V_HCL, 1)}
+                <Md
+                  text={
+                    acid.ratio === 1
+                      ? `c(${acid.formula}) = c(NaOH) · V(NaOH) / V(${acid.formula}) = ${fmt(C_NAOH, 3)} · V / ${fmt(V_SAMPLE, 1)}`
+                      : `c(${acid.formula}) = c(NaOH) · V(NaOH) / (2 · V(${acid.formula})) = ${fmt(C_NAOH, 3)} · V / (2 · ${fmt(V_SAMPLE, 1)})`
+                  }
+                />
               </div>
             </motion.div>
           ) : (
@@ -529,9 +585,16 @@ export default function Titration({ onFinish }: GameProps) {
         >
           <div className="g-ti-result-head">
             <span className="g-ti-points">+{result.total} b.</span>
-            <span className="muted">z {SAMPLE_MAX}</span>
+            <span className="muted">z {result.max}</span>
           </div>
           <motion.ul className="g-ti-lines" variants={stagger(0.12, 0.15)} initial="hidden" animate="show">
+            {acid.chooseIndicator && (
+              <ResultLine ok={result.indicator > 0} pts={result.indicator} max={2}>
+                {result.indicator > 0
+                  ? 'Indikátor jsi vybral(a) správně: fenolftalein.'
+                  : 'Methyloranž by zežloutla dávno před bodem ekvivalence. Správně je fenolftalein.'}
+              </ResultLine>
+            )}
             <ResultLine ok={result.endpoint >= 4} pts={result.endpoint} max={5}>
               Bod ekvivalence byl při <strong>{fmt(equivalenceVolume(sample), 2)} cm³</strong>, ty jsi skončil(a) na{' '}
               <strong>{fmt(v, 2)} cm³</strong>
@@ -541,7 +604,9 @@ export default function Titration({ onFinish }: GameProps) {
               {result.readingOk ? 'Byretu jsi odečetl(a) správně.' : `Na byretě bylo ${fmt(v, 2)} cm³.`}
             </ResultLine>
             <ResultLine ok={result.calcOk} pts={result.calc} max={3}>
-              {result.calcOk ? 'Výpočet sedí!' : 'Výpočet nesedí.'} Skutečně: c(HCl) = <strong>{fmt(sample.cHcl, 4)} mol/dm³</strong>
+              {result.calcOk ? 'Výpočet sedí!' : result.ratioSlip ? 'Pozor na poměr 1 : 2!' : 'Výpočet nesedí.'} Skutečně: c(
+              <Md text={acid.formula} />) = <strong>{fmt(sample.c, 4)} mol/dm³</strong>
+              {result.ratioSlip && <> Na 1 mol kyseliny sírové spotřebuješ 2 mol NaOH, proto se dělí dvěma.</>}
             </ResultLine>
           </motion.ul>
           <button type="button" className="btn btn-primary btn-lg btn-block" onClick={next} autoFocus>
@@ -550,6 +615,87 @@ export default function Titration({ onFinish }: GameProps) {
         </motion.div>
       )}
     </div>
+  )
+}
+
+/** Choose the indicator before titrating a weak acid. */
+function IndicatorPick({
+  acidName,
+  picked,
+  onPick,
+  explain,
+  onStart,
+}: {
+  acidName: string
+  picked: IndicatorId | null
+  onPick: (id: IndicatorId) => void
+  explain: string
+  onStart: () => void
+}) {
+  const ok = picked === RIGHT_INDICATOR
+  return (
+    <motion.div className="g-ti-ind card" variants={fadeUp} initial="hidden" animate="show">
+      <div className="eyebrow">Volba indikátoru</div>
+      <p>
+        V baňce je <strong>{acidName}</strong>, slabá kyselina. Kterým indikátorem poznáš bod ekvivalence?
+      </p>
+      <div className="g-ti-ind-opts" role="group" aria-label="Indikátory">
+        {INDICATOR_CHOICE.map((id, i) => {
+          const ind = INDICATORS[id]
+          const right = picked !== null && id === RIGHT_INDICATOR
+          const wrong = picked === id && id !== RIGHT_INDICATOR
+          return (
+            <motion.button
+              key={id}
+              type="button"
+              className={`g-ti-ind-opt${right ? ' right' : ''}${wrong ? ' wrong' : ''}`}
+              onClick={() => onPick(id)}
+              disabled={picked !== null}
+              initial={{ opacity: 0, y: 12 }}
+              animate={
+                wrong
+                  ? { opacity: 1, y: 0, x: shake.x, transition: shake.transition }
+                  : right
+                    ? { opacity: 1, y: 0, scale: bump.scale, transition: bump.transition }
+                    : { opacity: 1, y: 0, transition: { ...spring.snappy, delay: 0.05 + i * 0.06 } }
+              }
+              whileTap={picked ? undefined : { scale: 0.97 }}
+            >
+              <span className="g-ti-ind-swatch" aria-hidden="true">
+                <span style={{ background: id === 'fenolftalein' ? 'transparent' : '#d7263d' }} />
+                <span style={{ background: id === 'fenolftalein' ? PINK : '#f5c518' }} />
+              </span>
+              <span className="g-ti-ind-text">
+                <strong>{ind.name}</strong>
+                <span className="muted">
+                  pH {fmt(ind.from, 1)}–{fmt(ind.to, 1)}, {ind.colours}
+                </span>
+              </span>
+              {(right || wrong) && (
+                <motion.span className="g-ti-ind-icon" variants={popIn} initial="hidden" animate="show">
+                  <Icon name={right ? 'check' : 'x'} />
+                </motion.span>
+              )}
+            </motion.button>
+          )
+        })}
+      </div>
+      <AnimatePresence>
+        {picked && (
+          <motion.div className="g-ti-ind-after" variants={fadeUp} initial="hidden" animate="show">
+            <p className={`g-ti-ind-explain ${ok ? 'ok' : 'bad'}`} role="status">
+              <Icon name={ok ? 'check' : 'alert'} />
+              <span>
+                <Md text={explain} />
+              </span>
+            </p>
+            <button type="button" className="btn btn-primary btn-lg btn-block" onClick={onStart} autoFocus>
+              Začít titrovat s fenolftaleinem <Icon name="arrowRight" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   )
 }
 
@@ -617,7 +763,9 @@ function Lens({ v }: { v: number }) {
 }
 
 /** Live titration curve pH = f(V). */
-function Curve({ points, v, ph }: { points: Point[]; v: number; ph: number }) {
+function Curve({ sample, points, v, ph }: { sample: Sample; points: Point[]; v: number; ph: number }) {
+  const half = halfEquivalence(sample)
+  const reached = half !== null && v >= half.v - 1e-9
   const W = 260
   const H = 150
   const L = 30
@@ -628,8 +776,30 @@ function Curve({ points, v, ph }: { points: Point[]; v: number; ph: number }) {
   const d = points.map((p, i) => `${i ? 'L' : 'M'}${x(p.v).toFixed(1)} ${y(p.ph).toFixed(1)}`).join(' ') + ` L${x(v).toFixed(1)} ${y(ph).toFixed(1)}`
   return (
     <div className="g-ti-curve">
-      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Titrační křivka, aktuálně pH ${fmt(ph, 1)}`}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        role="img"
+        aria-label={`Titrační křivka, aktuálně pH ${fmt(ph, 1)}${half && reached ? `. V polovině titrace bylo pH = pKa = ${fmt(half.pKa, 2)}` : ''}`}
+      >
         <rect x={L} y={y(10)} width={W - L - 8} height={y(PINK_FROM) - y(10)} className="g-ti-band" style={{ fill: PINK }} />
+        {half && (
+          <>
+            <rect
+              x={L}
+              y={y(INDICATORS.methyloranz.to)}
+              width={W - L - 8}
+              height={y(INDICATORS.methyloranz.from) - y(INDICATORS.methyloranz.to)}
+              className="g-ti-band"
+              style={{ fill: ORANGE }}
+            />
+            <text x={W - 10} y={y(INDICATORS.methyloranz.to) + 9} textAnchor="end" className="g-ti-axis small">
+              methyloranž
+            </text>
+          </>
+        )}
+        <text x={W - 10} y={y(10) + 9} textAnchor="end" className="g-ti-axis small">
+          fenolftalein
+        </text>
         {[0, 7, 14].map((p) => (
           <g key={p}>
             <line x1={L} x2={W - 8} y1={y(p)} y2={y(p)} className="g-ti-grid" />
@@ -645,6 +815,18 @@ function Curve({ points, v, ph }: { points: Point[]; v: number; ph: number }) {
         ))}
         <line x1={L} x2={L} y1={y(14)} y2={y(0)} className="g-ti-axisline" />
         <line x1={L} x2={W - 8} y1={y(0)} y2={y(0)} className="g-ti-axisline" />
+        <AnimatePresence>
+          {half && reached && (
+            <motion.g key="half" className="g-ti-half" variants={popIn} initial="hidden" animate="show">
+              <line x1={x(half.v)} x2={x(half.v)} y1={y(0)} y2={y(half.pKa)} className="g-ti-half-line" />
+              <line x1={L} x2={x(half.v)} y1={y(half.pKa)} y2={y(half.pKa)} className="g-ti-half-line" />
+              <circle cx={x(half.v)} cy={y(half.pKa)} r="3.5" className="g-ti-half-dot" />
+              <text x={x(half.v) + 6} y={y(half.pKa) + 13} className="g-ti-axis small g-ti-half-label">
+                ½ V: pH = pKₐ = {fmt(half.pKa, 2)}
+              </text>
+            </motion.g>
+          )}
+        </AnimatePresence>
         <motion.path d={d} className="g-ti-line" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.6, ease: ease.out }} />
         <motion.circle
           r="4.5"

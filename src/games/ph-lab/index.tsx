@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, animate, motion, useMotionValue, useTransform } from 'motion/react'
-import type { GameProps } from '../types'
+import { levelNum, type GameProps } from '../types'
 import { Md } from '../../core/markup'
 import { Icon } from '../../ui/Icon'
 import { Mascot } from '../../ui/Mascot'
@@ -8,19 +8,19 @@ import {
   CAPACITY,
   INDICATOR_STOPS,
   MISSION_MAX,
-  REAGENTS,
-  add,
   describePh,
   formatNum,
   indicatorColor,
   meterReading,
   phOf,
-  pickMissions,
+  pour as pourInto,
   scoreMission,
   type BeakerState,
+  type Mission,
   type MissionScore,
   type Reagent,
 } from './ph'
+import { ENZYMES, LEVELS, enzymeActivity, pickMissions, reagentsFor } from './missions'
 import { ease, fadeUp, popIn, shake, spring } from '../../ui/motion'
 import './ph-lab.css'
 
@@ -36,11 +36,19 @@ const B_BOTTOM = 262
 const PX_PER_ML = 0.72 // 250 cm³ -> 180 px
 const surfaceY = (vol: number) => B_BOTTOM - Math.min(vol, CAPACITY) * PX_PER_ML
 
-export default function PhLab({ onFinish }: GameProps) {
-  const [missions] = useState(pickMissions)
+/** "pH 7,4" for a single accepted reading, "pH 2,7–3,3" for a range. */
+const targetText = (m: Mission) => (m.min === m.max ? `pH ${formatNum(m.min)}` : `pH ${formatNum(m.min)}–${formatNum(m.max)}`)
+
+export default function PhLab({ levelId, onFinish }: GameProps) {
+  const n = levelNum(levelId)
+  const level = n !== undefined && LEVELS[n] ? n : undefined
+  const [missions] = useState(() => pickMissions(level))
   const [idx, setIdx] = useState(0)
   const mission = missions[idx]
+  const reagents = useMemo(() => reagentsFor(mission), [mission])
   const [beaker, setBeaker] = useState<BeakerState>(mission.start)
+  const [twin, setTwin] = useState<BeakerState | null>(mission.twin?.start ?? null)
+  const [used, setUsed] = useState<ReadonlySet<string>>(() => new Set())
   const [adds, setAdds] = useState(0)
   const [sel, setSel] = useState(0)
   const [drops, setDrops] = useState<Drop[]>([])
@@ -50,40 +58,43 @@ export default function PhLab({ onFinish }: GameProps) {
   const finished = useRef(false)
   const dropId = useRef(0)
 
+  const isEmpty = beaker.volume <= 0
   const ph = phOf(beaker)
   const reading = meterReading(ph)
   const color = indicatorColor(ph)
-  const reagent = REAGENTS[sel]
+  const reagent = reagents[Math.min(sel, reagents.length - 1)]
   const full = beaker.volume >= CAPACITY
   const room = CAPACITY - beaker.volume
+  const showEnzymes = !!LEVELS[mission.level].enzymes
 
   const pour = useCallback(
     (ml: number) => {
       if (result) return
-      setBeaker((b) => {
-        const amount = Math.min(ml, CAPACITY - b.volume)
-        if (amount <= 0) return b
-        return add(b, REAGENTS[sel].conc, amount)
-      })
-      if (beaker.volume >= CAPACITY) return
-      setAdds((n) => n + 1)
-      setBump((n) => n + 1)
+      const amount = Math.min(ml, CAPACITY - beaker.volume)
+      if (amount <= 0) return
+      setBeaker((b) => pourInto(b, reagent, amount))
+      setTwin((t) => (t ? pourInto(t, reagent, amount) : t))
+      setUsed((u) => (u.has(reagent.id) ? u : new Set([...u, reagent.id])))
+      setAdds((k) => k + 1)
+      setBump((k) => k + 1)
       const id = ++dropId.current
       setDrops((d) => [...d.slice(-4), { id, big: ml >= 10, fall: surfaceY(beaker.volume) - 44 }])
       window.setTimeout(() => setDrops((d) => d.filter((x) => x.id !== id)), 900)
     },
-    [result, sel, beaker.volume],
+    [result, reagent, beaker.volume],
   )
 
   const reset = () => {
     if (result) return
     setBeaker(mission.start)
+    setTwin(mission.twin?.start ?? null)
+    setUsed(new Set())
     setDrops([])
   }
 
   const measure = () => {
     if (result || adds === 0) return
-    const r = scoreMission(mission, ph, adds)
+    const r = scoreMission(mission, ph, adds, used)
     setResult(r)
     setScore((s) => s + r.total)
   }
@@ -96,10 +107,13 @@ export default function PhLab({ onFinish }: GameProps) {
       }
       return
     }
-    const n = idx + 1
-    setIdx(n)
-    setBeaker(missions[n].start)
+    const k = idx + 1
+    setIdx(k)
+    setBeaker(missions[k].start)
+    setTwin(missions[k].twin?.start ?? null)
+    setUsed(new Set())
     setAdds(0)
+    setSel(0)
     setResult(null)
     setDrops([])
   }
@@ -111,10 +125,10 @@ export default function PhLab({ onFinish }: GameProps) {
       if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA')) return
       if (result) return
       if (e.key === 'ArrowRight') {
-        setSel((s) => (s + 1) % REAGENTS.length)
+        setSel((s) => (s + 1) % reagents.length)
         e.preventDefault()
       } else if (e.key === 'ArrowLeft') {
-        setSel((s) => (s - 1 + REAGENTS.length) % REAGENTS.length)
+        setSel((s) => (s - 1 + reagents.length) % reagents.length)
         e.preventDefault()
       } else if (e.key === 'ArrowDown') {
         pour(e.shiftKey ? 10 : 1)
@@ -123,16 +137,20 @@ export default function PhLab({ onFinish }: GameProps) {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [pour, result])
+  }, [pour, result, reagents.length])
 
   const sy = surfaceY(beaker.volume)
   const mood = result ? (result.inRange ? 'cheer' : result.total > 0 ? 'think' : 'sad') : full ? 'wow' : 'happy'
+  const twinStart = mission.twin ? phOf(mission.twin.start) : 7
 
   return (
     <div className="g-ph">
       <p className="g-ph-instr">Vyber lahvičku, přikapávej do kádinky a trefi zadané pH. Čím méně přidání, tím líp.</p>
 
       <div className="g-ph-hud">
+        <span className="chip chip-soft" title={level ? `Mise z úrovně ${level}` : 'Mise ze všech úrovní'}>
+          <Icon name="book" /> {level ? `Úroveň ${level}` : 'Vše'}
+        </span>
         <span className="chip">
           <Icon name="target" /> Mise {idx + 1}/{missions.length}
         </span>
@@ -154,14 +172,15 @@ export default function PhLab({ onFinish }: GameProps) {
         <motion.div className="g-ph-mission card" key={mission.id} variants={fadeUp} initial="hidden" animate="show" exit="exit">
           <Mascot mood={mood} size={64} />
           <div className="g-ph-mission-body">
-            <div className="eyebrow">Mise {idx + 1}</div>
+            <div className="eyebrow">
+              Mise {idx + 1}
+              {level === undefined && ` · úroveň ${mission.level}`}
+            </div>
             <p className="g-ph-mission-text">
               <Md text={mission.text} />
             </p>
             <div className="g-ph-mission-meta">
-              <span className="chip">
-                Cíl: pH {formatNum(mission.min)}–{formatNum(mission.max)}
-              </span>
+              <span className="chip">Cíl: {targetText(mission)}</span>
               <span className="note g-ph-hint">{mission.hint}</span>
             </div>
           </div>
@@ -169,140 +188,163 @@ export default function PhLab({ onFinish }: GameProps) {
       </AnimatePresence>
 
       <div className="g-ph-lab">
-        <div className="g-ph-bench">
-          <svg
-            className="g-ph-beaker"
-            viewBox="0 0 220 280"
-            role="img"
-            aria-label={`Kádinka s ${Math.round(beaker.volume)} cm³ roztoku, univerzální indikátor ukazuje pH ${formatNum(reading)}`}
-          >
-            <defs>
-              <clipPath id="g-ph-clip">
-                <path d={`M44 ${B_TOP} V${B_BOTTOM - 12} Q44 ${B_BOTTOM} 56 ${B_BOTTOM} H164 Q176 ${B_BOTTOM} 176 ${B_BOTTOM - 12} V${B_TOP} Z`} />
-              </clipPath>
-            </defs>
+        <div className="g-ph-left">
+          <div className="g-ph-bench">
+            <svg
+              className="g-ph-beaker"
+              viewBox="0 0 220 280"
+              role="img"
+              aria-label={
+                isEmpty
+                  ? 'Prázdná kádinka'
+                  : `Kádinka s ${Math.round(beaker.volume)} cm³ roztoku, univerzální indikátor ukazuje pH ${formatNum(reading)}`
+              }
+            >
+              <defs>
+                <clipPath id="g-ph-clip">
+                  <path d={`M44 ${B_TOP} V${B_BOTTOM - 12} Q44 ${B_BOTTOM} 56 ${B_BOTTOM} H164 Q176 ${B_BOTTOM} 176 ${B_BOTTOM - 12} V${B_TOP} Z`} />
+                </clipPath>
+              </defs>
 
-            {/* dropper */}
-            <g className="g-ph-dropper">
-              <motion.rect
-                key={`dp${bump}`}
-                x="100"
-                y="-6"
-                width="20"
-                height="26"
-                rx="8"
-                className="g-ph-bulb"
-                style={{ originY: 1 }}
-                animate={bump ? { scaleX: [1, 1.18, 1], scaleY: [1, 0.78, 1] } : undefined}
-                transition={{ duration: 0.3 }}
-              />
-              <path d="M104 20 H116 L113 44 H107 Z" className="g-ph-glass" />
-            </g>
-
-            {/* liquid */}
-            <g clipPath="url(#g-ph-clip)">
-              <motion.g className="g-ph-liquid" initial={false} animate={{ y: sy }} transition={spring.gentle}>
+              {/* dropper */}
+              <g className="g-ph-dropper">
                 <motion.rect
-                  x="30"
-                  y="0"
-                  width="160"
-                  height="220"
-                  className="g-ph-fill"
-                  initial={false}
-                  animate={{ fill: color }}
-                  transition={spring.gentle}
+                  key={`dp${bump}`}
+                  x="100"
+                  y="-6"
+                  width="20"
+                  height="26"
+                  rx="8"
+                  className="g-ph-bulb"
+                  style={{ originY: 1 }}
+                  animate={bump ? { scaleX: [1, 1.18, 1], scaleY: [1, 0.78, 1] } : undefined}
+                  transition={{ duration: 0.3 }}
                 />
-                <path d="M30 0 Q57 -5 84 0 T138 0 T192 0 V6 H30 Z" className="g-ph-shine" />
-              </motion.g>
-            </g>
-
-            {/* drops */}
-            {drops.map((d) =>
-              d.big ? (
-                <motion.rect
-                  key={d.id}
-                  className="g-ph-stream"
-                  x="107"
-                  y="44"
-                  width="6"
-                  height={Math.max(0, d.fall)}
-                  rx="3"
-                  style={{ originY: 0 }}
-                  initial={{ scaleY: 0, opacity: 0.75 }}
-                  animate={{ scaleY: [0, 1, 1], opacity: [0.75, 0.75, 0] }}
-                  transition={{ duration: 0.7, times: [0, 0.35, 1] }}
-                />
-              ) : (
-                <motion.path
-                  key={d.id}
-                  className="g-ph-drop"
-                  d="M110 44 q-5 8 0 11 q5 -3 0 -11 z"
-                  initial={{ y: 0, opacity: 1 }}
-                  animate={{ y: d.fall, opacity: [1, 1, 0] }}
-                  transition={{ duration: 0.45, ease: [0.55, 0, 1, 0.45], times: [0, 0.9, 1] }}
-                />
-              ),
-            )}
-            {drops.map((d) => (
-              <motion.ellipse
-                key={`r${d.id}`}
-                className="g-ph-ripple"
-                cx="110"
-                cy={sy}
-                rx="18"
-                ry="4"
-                initial={{ scale: 0.3, opacity: 0 }}
-                animate={{ scale: [0.3, 1.6], opacity: [0.8, 0] }}
-                transition={{ delay: d.big ? 0.25 : 0.4, duration: 0.5 }}
-              />
-            ))}
-
-            {/* beaker glass */}
-            <path
-              className="g-ph-glass-outline"
-              d={`M36 ${B_TOP - 8} L44 ${B_TOP} V${B_BOTTOM - 12} Q44 ${B_BOTTOM} 56 ${B_BOTTOM} H164 Q176 ${B_BOTTOM} 176 ${B_BOTTOM - 12} V${B_TOP - 8}`}
-            />
-            {[50, 100, 150, 200, 250].map((v) => (
-              <g key={v} className="g-ph-grad">
-                <line x1="150" x2="174" y1={surfaceY(v)} y2={surfaceY(v)} />
-                <text x="146" y={surfaceY(v) + 4} textAnchor="end">
-                  {v}
-                </text>
+                <path d="M104 20 H116 L113 44 H107 Z" className="g-ph-glass" />
               </g>
-            ))}
-            <text x="60" y={B_BOTTOM - 10} className="g-ph-unit">
-              cm³
-            </text>
-          </svg>
 
-          <div className="g-ph-meter" role="status" aria-live="polite">
-            <div className="g-ph-meter-top">
-              <span className="g-ph-meter-label">pH-metr</span>
-              <span className="g-ph-meter-vol tabnum">{Math.round(beaker.volume * 10) / 10} cm³</span>
+              {/* liquid */}
+              <g clipPath="url(#g-ph-clip)">
+                <motion.g className="g-ph-liquid" initial={false} animate={{ y: sy }} transition={spring.gentle}>
+                  <motion.rect
+                    x="30"
+                    y="0"
+                    width="160"
+                    height="220"
+                    className="g-ph-fill"
+                    initial={false}
+                    animate={{ fill: color }}
+                    transition={spring.gentle}
+                  />
+                  <path d="M30 0 Q57 -5 84 0 T138 0 T192 0 V6 H30 Z" className="g-ph-shine" />
+                </motion.g>
+              </g>
+
+              {/* drops */}
+              {drops.map((d) =>
+                d.big ? (
+                  <motion.rect
+                    key={d.id}
+                    className="g-ph-stream"
+                    x="107"
+                    y="44"
+                    width="6"
+                    height={Math.max(0, d.fall)}
+                    rx="3"
+                    style={{ originY: 0 }}
+                    initial={{ scaleY: 0, opacity: 0.75 }}
+                    animate={{ scaleY: [0, 1, 1], opacity: [0.75, 0.75, 0] }}
+                    transition={{ duration: 0.7, times: [0, 0.35, 1] }}
+                  />
+                ) : (
+                  <motion.path
+                    key={d.id}
+                    className="g-ph-drop"
+                    d="M110 44 q-5 8 0 11 q5 -3 0 -11 z"
+                    initial={{ y: 0, opacity: 1 }}
+                    animate={{ y: d.fall, opacity: [1, 1, 0] }}
+                    transition={{ duration: 0.45, ease: [0.55, 0, 1, 0.45], times: [0, 0.9, 1] }}
+                  />
+                ),
+              )}
+              {drops.map((d) => (
+                <motion.ellipse
+                  key={`r${d.id}`}
+                  className="g-ph-ripple"
+                  cx="110"
+                  cy={sy}
+                  rx="18"
+                  ry="4"
+                  initial={{ scale: 0.3, opacity: 0 }}
+                  animate={{ scale: [0.3, 1.6], opacity: [0.8, 0] }}
+                  transition={{ delay: d.big ? 0.25 : 0.4, duration: 0.5 }}
+                />
+              ))}
+
+              {/* beaker glass */}
+              <path
+                className="g-ph-glass-outline"
+                d={`M36 ${B_TOP - 8} L44 ${B_TOP} V${B_BOTTOM - 12} Q44 ${B_BOTTOM} 56 ${B_BOTTOM} H164 Q176 ${B_BOTTOM} 176 ${B_BOTTOM - 12} V${B_TOP - 8}`}
+              />
+              {[50, 100, 150, 200, 250].map((v) => (
+                <g key={v} className="g-ph-grad">
+                  <line x1="150" x2="174" y1={surfaceY(v)} y2={surfaceY(v)} />
+                  <text x="146" y={surfaceY(v) + 4} textAnchor="end">
+                    {v}
+                  </text>
+                </g>
+              ))}
+              <text x="60" y={B_BOTTOM - 10} className="g-ph-unit">
+                cm³
+              </text>
+            </svg>
+
+            <div className="g-ph-meter" role="status" aria-live="polite">
+              <div className="g-ph-meter-top">
+                <span className="g-ph-meter-label">pH-metr</span>
+                <span className="g-ph-meter-vol tabnum">{Math.round(beaker.volume * 10) / 10} cm³</span>
+              </div>
+              <div className="g-ph-meter-lcd tabnum">{isEmpty ? '–,–' : <RollingNumber value={reading} />}</div>
+              <div className="g-ph-meter-desc">
+                <motion.span
+                  className="g-ph-swatch"
+                  initial={false}
+                  animate={{ backgroundColor: isEmpty ? 'var(--surface)' : color }}
+                  transition={spring.gentle}
+                  aria-hidden="true"
+                />
+                {isEmpty ? 'prázdná kádinka' : describePh(ph)}
+              </div>
+              <PhScale ph={isEmpty ? 7 : ph} min={mission.min} max={mission.max} />
             </div>
-            <div className="g-ph-meter-lcd tabnum">
-              <RollingNumber value={reading} />
-            </div>
-            <div className="g-ph-meter-desc">
+          </div>
+
+          {twin && mission.twin && (
+            <motion.div className="g-ph-twin card-flat" variants={fadeUp} initial="hidden" animate="show" role="status">
               <motion.span
                 className="g-ph-swatch"
                 initial={false}
-                animate={{ backgroundColor: color }}
+                animate={{ backgroundColor: indicatorColor(phOf(twin)) }}
                 transition={spring.gentle}
                 aria-hidden="true"
               />
-              {describePh(ph)}
-            </div>
-            <PhScale ph={ph} min={mission.min} max={mission.max} />
-          </div>
+              <span>
+                Kádinka vedle ({mission.twin.label}, {Math.round(mission.twin.start.volume)} cm³) dostává totéž: pH{' '}
+                <strong className="tabnum">{formatNum(meterReading(phOf(twin)))}</strong>
+                <span className="muted"> (na začátku {formatNum(meterReading(twinStart))})</span>
+              </span>
+            </motion.div>
+          )}
+
+          {showEnzymes && <Enzymes ph={isEmpty ? null : ph} />}
         </div>
 
         <div className="g-ph-controls">
           {!result ? (
             <>
               <div className="g-ph-bottles" role="radiogroup" aria-label="Lahvičky">
-                {REAGENTS.map((r, i) => (
-                  <Bottle key={r.id} r={r} selected={i === sel} onSelect={() => setSel(i)} />
+                {reagents.map((r, i) => (
+                  <Bottle key={r.id} r={r} selected={r === reagent} onSelect={() => setSel(i)} />
                 ))}
               </div>
               <div className="g-ph-add">
@@ -320,7 +362,7 @@ export default function PhLab({ onFinish }: GameProps) {
                   </>
                 ) : (
                   <>
-                    Přidáváš: <strong>{reagent.name}</strong> ({reagent.sub})
+                    Přidáváš: <strong><Md text={reagent.name} /></strong> (<Md text={reagent.sub} />)
                   </>
                 )}
               </p>
@@ -344,10 +386,25 @@ export default function PhLab({ onFinish }: GameProps) {
             >
               <div className="g-ph-verdict">
                 <Icon name={result.inRange ? 'check' : 'x'} />
-                {result.inRange
-                  ? `pH ${formatNum(result.reading)}. Trefa!`
-                  : `pH ${formatNum(result.reading)}. Cíl byl ${formatNum(mission.min)}–${formatNum(mission.max)}.`}
+                <span>
+                  <Md
+                    text={
+                      result.missing
+                        ? `pH ${formatNum(result.reading)}, ale chybí ${missingNames(mission, used, reagents)}. Úkol chtěl právě tuhle lahvičku.`
+                        : result.inRange
+                          ? `pH ${formatNum(result.reading)}. Trefa!`
+                          : `pH ${formatNum(result.reading)}. Cíl byl ${targetText(mission)}.`
+                    }
+                  />
+                </span>
               </div>
+              {twin && mission.twin && (
+                <p className="g-ph-compare">
+                  <Icon name="info" /> Tvůj roztok: {formatNum(phOf(mission.start), 2)} → {formatNum(ph, 2)} (změna o{' '}
+                  {formatNum(Math.abs(ph - phOf(mission.start)), 2)}). {cap(mission.twin.label)}: {formatNum(twinStart, 2)} →{' '}
+                  {formatNum(phOf(twin), 2)} (změna o {formatNum(Math.abs(phOf(twin) - twinStart), 2)}).
+                </p>
+              )}
               <ul className="g-ph-breakdown">
                 <li>
                   Přesnost: <strong>{result.accuracy}/7</strong>
@@ -397,14 +454,56 @@ function Bottle({ r, selected, onSelect }: { r: Reagent; selected: boolean; onSe
         <path d="M9 8 H23 V12 Q28 14 28 20 V35 Q28 39 24 39 H8 Q4 39 4 35 V20 Q4 14 9 12 Z" className="g-ph-bottle-body" />
         <rect x="6" y="22" width="20" height="9" rx="1.5" style={{ fill: r.kind === 'water' ? 'transparent' : indicatorColor(r.ph) }} />
       </motion.svg>
-      <span className="g-ph-bottle-name">{r.name}</span>
-      <span className="g-ph-bottle-sub">{r.sub}</span>
+      <span className="g-ph-bottle-name">
+        <Md text={r.name} />
+      </span>
+      <span className="g-ph-bottle-sub">
+        <Md text={r.sub} />
+      </span>
       {selected && (
         <motion.span className="g-ph-bottle-tick" aria-hidden="true" variants={popIn} initial="hidden" animate="show">
           <Icon name="check" />
         </motion.span>
       )}
     </motion.button>
+  )
+}
+
+/** Names (with markup) of the required bottles that were not used. */
+const missingNames = (m: Mission, used: ReadonlySet<string>, reagents: Reagent[]) =>
+  (m.needs ?? [])
+    .filter((id) => !used.has(id))
+    .map((id) => reagents.find((r) => r.id === id)?.name ?? id)
+    .join(' a ')
+const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1)
+
+/** Which digestive enzyme would work at the current pH (level 9). */
+function Enzymes({ ph }: { ph: number | null }) {
+  return (
+    <div className="g-ph-enz card-flat" aria-live="polite">
+      <div className="g-ph-enz-title">Který enzym by teď pracoval?</div>
+      <ul className="g-ph-enz-list">
+        {ENZYMES.map((e) => {
+          const a = ph === null ? 0 : enzymeActivity(e, ph)
+          const state = a >= 0.5 ? 'on' : a >= 0.15 ? 'weak' : 'off'
+          return (
+            <li key={e.id} className={`g-ph-enz-row is-${state}`}>
+              <span className="g-ph-enz-name">
+                <Icon name={state === 'on' ? 'check' : state === 'weak' ? 'info' : 'x'} />
+                <strong>{e.name}</strong>
+                <span className="muted">
+                  {e.where}, optimum pH {formatNum(e.opt)}
+                </span>
+              </span>
+              <span className="g-ph-enz-state">{state === 'on' ? 'pracuje' : state === 'weak' ? 'slabě' : 'nepracuje'}</span>
+              <span className="g-ph-enz-bar" aria-hidden="true">
+                <motion.span initial={false} animate={{ scaleX: a }} transition={spring.gentle} />
+              </span>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
   )
 }
 

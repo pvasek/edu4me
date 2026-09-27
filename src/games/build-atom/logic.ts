@@ -1,20 +1,8 @@
 import { BY_SYMBOL, BY_Z } from '../../courses/chemie/data/elements'
-import { pick, sample, shuffle } from '../shared/util'
+import { pickLevel, shuffle } from '../shared/util'
+import { LEVELS, PLANS, type AtomTask } from './levels'
 
-export interface AtomTask {
-  kind: 'atom' | 'ion' | 'isotope'
-  symbol: string
-  z: number
-  /** neutrons */
-  n: number
-  /** electrons */
-  e: number
-  /** mass number */
-  a: number
-  charge: number
-  /** isotope name, e.g. "deuterium" */
-  label?: string
-}
+export type { AtomTask }
 
 export const MAX_P = 20
 export const MAX_N = 24
@@ -23,57 +11,31 @@ export const MAX_E = 20
 /** Most common isotope's mass number (fine for Z <= 20). */
 export const commonA = (z: number) => Math.round(BY_Z[z].mass)
 
-function atom(symbol: string): AtomTask {
-  const z = BY_SYMBOL[symbol].z
-  const a = commonA(z)
-  return { kind: 'atom', symbol, z, n: a - z, e: z, a, charge: 0 }
+const idOf = (t: AtomTask) => `${t.kind}|${t.symbol}|${t.a}|${t.charge}`
+
+/**
+ * Six tasks for a round from the level's content set (./levels.ts), easier first.
+ * Without a level, or with one the game has no set for, the round mixes all levels.
+ */
+export function makeLevelTasks(level?: number, rng: () => number = Math.random): AtomTask[] {
+  const lv = pickLevel(LEVELS, level)
+  const plan = PLANS[lv ?? 'mix']
+  const used = new Set<string>()
+  const symbols = new Set<string>()
+  return plan.map((slot) => {
+    const fits = LEVELS[slot.level].filter((t) => t.kind === slot.kind && (!slot.where || slot.where(t)) && !used.has(idOf(t)))
+    // prefer an element that is not in the round yet
+    const fresh = fits.filter((t) => !symbols.has(t.symbol))
+    const t = shuffle(fresh.length ? fresh : fits, rng)[0]
+    used.add(idOf(t))
+    symbols.add(t.symbol)
+    return t
+  })
 }
 
-function ion(symbol: string, charge: number): AtomTask {
-  const t = atom(symbol)
-  return { ...t, kind: 'ion', e: t.z - charge, charge }
-}
-
-function isotope(symbol: string, a: number, label: string): AtomTask {
-  const z = BY_SYMBOL[symbol].z
-  return { kind: 'isotope', symbol, z, n: a - z, e: z, a, charge: 0, label }
-}
-
-const CATIONS: [string, number][] = [
-  ['Li', 1], ['Na', 1], ['K', 1], ['Be', 2], ['Mg', 2], ['Ca', 2], ['Al', 3],
-]
-const ANIONS: [string, number][] = [
-  ['F', -1], ['Cl', -1], ['O', -2], ['S', -2], ['N', -3],
-]
-const ISOTOPES: [string, number, string][] = [
-  ['H', 2, 'deuterium'],
-  ['H', 3, 'tritium'],
-  ['C', 14, 'uhlík-14'],
-  ['C', 13, 'uhlík-13'],
-  ['N', 15, 'dusík-15'],
-  ['O', 18, 'kyslík-18'],
-  ['Cl', 37, 'chlor-37'],
-  ['Li', 6, 'lithium-6'],
-  ['B', 10, 'bor-10'],
-  ['K', 40, 'draslík-40'],
-]
-const LIGHT = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne']
-const HEAVIER = ['Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar', 'K', 'Ca']
-
-/** Six tasks, easy to harder: atom, atom, cation, anion, isotope, surprise. */
+/** Six tasks mixing all levels (kept for older callers). */
 export function makeTasks(rng: () => number = Math.random): AtomTask[] {
-  const [iso1, iso2] = sample(ISOTOPES, 2, rng)
-  const cat = pick(CATIONS, rng)
-  const an = pick(ANIONS, rng)
-  const last = shuffle(
-    [
-      isotope(...iso2),
-      ion(...pick(CATIONS.filter((c) => c[0] !== cat[0]), rng)),
-      ion(...pick(ANIONS.filter((c) => c[0] !== an[0]), rng)),
-    ],
-    rng,
-  )[0]
-  return [atom(pick(LIGHT, rng)), atom(pick(HEAVIER, rng)), ion(...cat), ion(...an), isotope(...iso1), last]
+  return makeLevelTasks(undefined, rng)
 }
 
 /** "2+", "−", "3−", "" for 0. */
@@ -84,6 +46,18 @@ export function chargeText(q: number): string {
 }
 
 const elektronu = (n: number) => (n === 1 ? 'elektronu' : 'elektronů')
+
+/** " V $Al2O3$ je kyslík jako $O^{2-}$ …" – why the ion has that charge (level-3 tasks). */
+function partnerNote(t: AtomTask): string {
+  if (!t.partner) return ''
+  const o = t.partner
+  return ` Ve sloučenině $${o.formula}$ je ${BY_SYMBOL[o.other].name.toLowerCase()} jako $${o.other}^{${chargeText(o.otherCharge)}}$ a náboje se musí vyrovnat.`
+}
+
+/** Noble gas the ion shares its electron configuration with, e.g. "neon". */
+export function nobleText(t: AtomTask): string | null {
+  return t.noble ? `${BY_SYMBOL[t.noble].name.toLowerCase()} ($${t.noble}$)` : null
+}
 
 export interface AtomCheck {
   ok: boolean
@@ -106,12 +80,12 @@ export function checkAtom(t: AtomTask, p: number, n: number, e: number): AtomChe
       problems.push(`**Elektrony:** neutrální atom má stejně elektronů jako protonů, tedy ${t.z} (máš ${e}).`)
     } else if (t.charge > 0) {
       problems.push(
-        `**Elektrony:** kation $${t.symbol}^{${chargeText(t.charge)}}$ vznikl ztrátou ${t.charge} ${elektronu(t.charge)}: ${t.z} − ${t.charge} = ${t.e} (máš ${e}).`,
+        `**Elektrony:** kation $${t.symbol}^{${chargeText(t.charge)}}$ vznikl ztrátou ${t.charge} ${elektronu(t.charge)}: ${t.z} − ${t.charge} = ${t.e} (máš ${e}).${partnerNote(t)}`,
       )
     } else {
       const q = -t.charge
       problems.push(
-        `**Elektrony:** anion $${t.symbol}^{${chargeText(t.charge)}}$ vznikl přijetím ${q} ${elektronu(q)}: ${t.z} + ${q} = ${t.e} (máš ${e}).`,
+        `**Elektrony:** anion $${t.symbol}^{${chargeText(t.charge)}}$ vznikl přijetím ${q} ${elektronu(q)}: ${t.z} + ${q} = ${t.e} (máš ${e}).${partnerNote(t)}`,
       )
     }
   }

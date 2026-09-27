@@ -70,7 +70,7 @@ export const ELEMENT_NOM: Record<string, ElNom> = {
   S: { stem: 'siř', ox: [6, 4, 2], over: { 2: 'sirnatý', 6: 'sírový' } },
   Se: { stem: 'selen', ox: [4, 6] },
   Cl: { stem: 'chlor', v: 'ečný', ox: [1, 3, 5, 7, 4] },
-  Br: { stem: 'brom', v: 'ečný', ox: [1, 5, 3, 7] },
+  Br: { stem: 'brom', ox: [1, 5, 3, 7] },
   I: { stem: 'jod', ox: [1, 5, 7] },
 }
 

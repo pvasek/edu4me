@@ -139,13 +139,13 @@ const L5_MISSIONS = at(5, [
 /* ------------------------------ level 6 ------------------------------ */
 
 export const L6_REAGENTS: Reagent[] = [
-  mixReagent('ch3cooh', '$CH3COOH$', '0,1 mol/dm³, pK_a 4,76', 0, { ac: 0.1 }),
+  mixReagent('ch3cooh', '$CH3COOH$', '0,1 mol/dm³, pK_{a} 4,76', 0, { ac: 0.1 }),
   mixReagent('ch3coona', '$CH3COONa$', '0,1 mol/dm³', -0.1, { ac: 0.1 }),
-  mixReagent('nh3', '$NH3$', '0,1 mol/dm³, pK_b 4,75', 0, { am: 0.1 }),
+  mixReagent('nh3', '$NH3$', '0,1 mol/dm³, pK_{b} 4,75', 0, { am: 0.1 }),
   mixReagent('nh4cl', '$NH4Cl$', '0,1 mol/dm³', 0.1, { am: 0.1 }),
   { id: 'hcl', name: '$HCl$', sub: '0,1 mol/dm³', conc: 0.1, ph: 1, kind: 'acid' },
   { id: 'naoh', name: '$NaOH$', sub: '0,1 mol/dm³', conc: -0.1, ph: 13, kind: 'base' },
-  { id: 'voda', name: 'Destilovaná voda', sub: 'ředění', conc: 0, ph: 7, kind: 'water' },
+  { id: 'voda', name: 'Voda', sub: 'destilovaná', conc: 0, ph: 7, kind: 'water' },
 ]
 const r6 = (id: string) => L6_REAGENTS.find((r) => r.id === id)!
 
@@ -157,7 +157,7 @@ const L6_MISSIONS = at(6, [
   {
     id: 'buffer-acetate',
     category: 'buffer',
-    text: 'Připrav **acetátový pufr** o pH 4,76 (pH 4,7–4,8) z $CH3COOH$ a $CH3COONa$.',
+    text: 'Připrav **acetátový pufr** o pH 4,76 z $CH3COOH$ a $CH3COONa$.',
     hint: 'pH = pKₐ, když je kyseliny a soli stejně.',
     start: empty(),
     min: 4.7,
@@ -168,7 +168,7 @@ const L6_MISSIONS = at(6, [
   {
     id: 'buffer-ammonia',
     category: 'buffer',
-    text: 'Připrav **amonný pufr** o pH 9,25 (pH 9,2–9,3) z $NH3$ a $NH4Cl$.',
+    text: 'Připrav **amonný pufr** o pH 9,25 z $NH3$ a $NH4Cl$.',
     hint: 'pKₐ(NH₄⁺) = 14 − 4,75 = 9,25.',
     start: empty(),
     min: 9.2,
@@ -179,7 +179,7 @@ const L6_MISSIONS = at(6, [
   {
     id: 'buffer-506',
     category: 'buffer',
-    text: 'Připrav **acetátový pufr** o pH 5,06 (pH 5,0–5,1).',
+    text: 'Připrav **acetátový pufr** o pH 5,06.',
     hint: '5,06 = 4,76 + log 2. Kolikrát víc soli?',
     start: empty(),
     min: 5,
@@ -278,10 +278,10 @@ export const L9_REAGENTS: Reagent[] = [
   // NaH2PO4 20 mmol/dm³ + Na2HPO4 1,2 mmol/dm³
   mixReagent('moc', 'Moč', 'fosfátový pufr', -(0.02 + 2 * 0.0012), { pho: 0.0212 }),
   // sodium lactate 20 mmol/dm³ + lactic acid 0,5 mmol/dm³
-  mixReagent('pot', 'Pot', 'kyselina mléčná + laktát', -0.02, { lac: 0.0205 }),
-  mixReagent('nahco3', '$NaHCO3$', '0,1 mol/dm³ (jako ve slinivce)', -0.1, { co2: 0.1 }),
-  mixReagent('co2', '$CO2$ (sodovka)', '0,05 mol/dm³, pK_a 6,1', 0, { co2: 0.05 }),
-  { id: 'voda', name: 'Destilovaná voda', sub: 'ředění', conc: 0, ph: 7, kind: 'water' },
+  mixReagent('pot', 'Pot', 'laktátový pufr', -0.02, { lac: 0.0205 }),
+  mixReagent('nahco3', '$NaHCO3$', '0,1 mol/dm³', -0.1, { co2: 0.1 }),
+  mixReagent('co2', '$CO2$', 'sodovka 0,05 mol/dm³', 0, { co2: 0.05 }),
+  { id: 'voda', name: 'Voda', sub: 'destilovaná', conc: 0, ph: 7, kind: 'water' },
 ]
 const r9 = (id: string) => L9_REAGENTS.find((r) => r.id === id)!
 

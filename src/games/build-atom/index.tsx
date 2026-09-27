@@ -7,9 +7,11 @@ import { Mascot, type Mood } from '../../ui/Mascot'
 import { popIn, spring } from '../../ui/motion'
 import { Bump, Feedback, Hud, PointsPop } from '../shared/GameKit'
 import { useFinishOnce, useJolt } from '../shared/hooks'
-import type { GameProps } from '../types'
+import { pickLevel } from '../shared/util'
+import { levelNum, type GameProps } from '../types'
 import { BohrAtom } from './BohrAtom'
-import { MAX_E, MAX_N, MAX_P, chargeText, checkAtom, makeTasks, taskPoints, type AtomTask } from './logic'
+import { LEVELS } from './levels'
+import { MAX_E, MAX_N, MAX_P, chargeText, checkAtom, makeLevelTasks, nobleText, taskPoints, type AtomTask } from './logic'
 import './build-atom.css'
 
 type Particle = 'p' | 'n' | 'e'
@@ -21,7 +23,7 @@ const NAMES: Record<Particle, { one: string; label: string }> = {
 }
 
 /** Nuclide notation with A over Z on the left and the charge top right. */
-function Nuclide({ a, z, symbol, charge }: { a?: number; z?: number; symbol: string; charge?: number }) {
+function Nuclide({ a, z, symbol, charge }: { a?: number; z?: number; symbol: string; charge?: number | '?' }) {
   return (
     <span className="g-ba-nuc">
       {(a !== undefined || z !== undefined) && (
@@ -31,12 +33,31 @@ function Nuclide({ a, z, symbol, charge }: { a?: number; z?: number; symbol: str
         </span>
       )}
       <span className="g-ba-nuc-sym">{symbol}</span>
-      {charge ? <span className="g-ba-nuc-q">{chargeText(charge)}</span> : null}
+      {charge === '?' ? (
+        <span className="g-ba-nuc-q g-ba-nuc-ask" aria-label="náboj zjisti sám">
+          ?
+        </span>
+      ) : charge ? (
+        <span className="g-ba-nuc-q">{chargeText(charge)}</span>
+      ) : null}
     </span>
   )
 }
 
 function TaskTitle({ t }: { t: AtomTask }) {
+  if (t.partner) {
+    return (
+      <>
+        <span className="eyebrow">Postav ion</span>
+        <span className="g-ba-taskname">
+          <Nuclide a={t.a} symbol={t.symbol} charge="?" />
+        </span>
+        <span className="g-ba-tasktext">
+          <Md text={`Ion, který vzniká ${t.partner.from} ve sloučenině ${t.partner.with} ($${t.partner.formula}$).`} />
+        </span>
+      </>
+    )
+  }
   if (t.kind === 'isotope') {
     return (
       <>
@@ -53,6 +74,13 @@ function TaskTitle({ t }: { t: AtomTask }) {
       </span>
     </>
   )
+}
+
+function successText(t: AtomTask, attempt: number): string {
+  const who = t.label ? `Izotop ${t.label}` : t.kind === 'ion' ? `Ion $${t.symbol}^{${chargeText(t.charge)}}$` : BY_Z[t.z].name
+  const noble = nobleText(t)
+  const same = noble ? ` Má ${t.e} ${t.e <= 4 ? 'elektrony' : 'elektronů'} jako ${noble}, tedy konfiguraci vzácného plynu.` : ''
+  return `Přesně tak! ${who} = ${t.z} p, ${t.n} n, ${t.e} e.${same}${attempt === 1 ? ' Napoprvé!' : ''}`
 }
 
 /** A −/+ button that repeats while held (pointer) and steps once per keyboard click. */
@@ -100,8 +128,9 @@ function StepButton({ onStep, disabled, label, sign }: { onStep: () => void; dis
   )
 }
 
-export default function BuildAtom({ onFinish }: GameProps) {
-  const [tasks] = useState(() => makeTasks())
+export default function BuildAtom({ levelId, onFinish }: GameProps) {
+  const level = pickLevel(LEVELS, levelNum(levelId))
+  const [tasks] = useState(() => makeLevelTasks(level))
   const [i, setI] = useState(0)
   const [cnt, setCnt] = useState<Record<Particle, number>>({ p: 0, n: 0, e: 0 })
   const [attempt, setAttempt] = useState(1)
@@ -166,7 +195,7 @@ export default function BuildAtom({ onFinish }: GameProps) {
   return (
     <div className="g-sh-root g-ba">
       <p className="g-sh-instr">Přidávej protony, neutrony a elektrony, až postavíš zadanou částici. Pak ji zkontroluj.</p>
-      <Hud score={score} round={i + 1} rounds={tasks.length} roundLabel="Úkol" />
+      <Hud score={score} round={i + 1} rounds={tasks.length} roundLabel="Úkol" level={level ?? 'mix'} />
 
       <div ref={cardRef} className="card g-sh-prompt g-ba-task">
         <Mascot mood={mood} size={60} />
@@ -268,9 +297,7 @@ export default function BuildAtom({ onFinish }: GameProps) {
       <div className="g-ba-bottom" aria-live="polite">
         {status === 'won' && (
           <Feedback kind="good">
-            <Md
-              text={`Přesně tak! ${t.label ? `Izotop ${t.label}` : BY_Z[t.z].name} = ${t.z} p, ${t.n} n, ${t.e} e. ${attempt === 1 ? 'Napoprvé!' : ''}`}
-            />
+            <Md text={successText(t, attempt)} />
           </Feedback>
         )}
         {problems.length > 0 && (

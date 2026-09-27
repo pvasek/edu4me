@@ -5,6 +5,13 @@
   display: block;
   font: 800 clamp(30px, 8vw, 44px) / 1.1 var(--font-display);
 }
+.g-ba-tasktext {
+  font: 600 16px/1.4 var(--font-body);
+  color: var(--ink-soft);
+}
+.g-ba-nuc-ask {
+  color: var(--accent);
+}
 .g-ba-title {
   display: grid;
   gap: 2px;

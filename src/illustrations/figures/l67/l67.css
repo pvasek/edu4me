@@ -1,0 +1,480 @@
+/* =====================================================================
+   Engraved figures for levels 6–7 (src/illustrations/figures/l67).
+   Theme colours come from tokens (src/ui/theme.css); subject colours
+   (CPK atoms, flames, gases, metals) are literal. Classes prefixed f67-.
+   ===================================================================== */
+
+.f67 {
+  --lvl: #3f6699;
+  --lvl-ink: color-mix(in srgb, var(--lvl) 72%, var(--ink));
+  --lvl-soft: color-mix(in srgb, var(--lvl) 16%, var(--surface));
+  --e: var(--blue);
+  --glass: color-mix(in srgb, var(--info-soft) 45%, var(--surface));
+  --water: color-mix(in srgb, #6f9fd8 30%, var(--surface));
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  container-type: inline-size;
+}
+.f67-l7 {
+  --lvl: #555a9e;
+}
+
+.f67-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------------------------------------------------------------- controls */
+.f67-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.f67-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--surface);
+}
+.f67-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: 700 14px/1.1 var(--font-body);
+  min-height: 40px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.f67-seg .f67-btn + .f67-btn {
+  border-left: 1.5px solid var(--edge);
+}
+.f67-btn:hover {
+  background: var(--surface-2);
+}
+.f67-btn[aria-pressed='true'] {
+  background: var(--lvl);
+  color: var(--on-level);
+}
+.f67-btn-ghost {
+  border: 1.5px solid var(--line);
+  border-radius: var(--r);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+/* ---------------------------------------------------------------- text */
+.f67-lbl {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16.5px;
+  fill: var(--ink-soft);
+}
+.f67-b {
+  font-weight: 700;
+  fill: var(--ink);
+}
+.f67-big {
+  font-size: 19px;
+}
+.f67-sm {
+  font-size: 14.5px;
+}
+.f67-lvl-t {
+  fill: var(--lvl-ink);
+}
+.f67-acc-t {
+  fill: var(--accent);
+}
+.f67-blue-t {
+  fill: var(--blue);
+}
+.f67-red-t {
+  fill: var(--bad);
+}
+.f67-green-t {
+  fill: var(--good);
+}
+.f67-muted-t {
+  fill: var(--muted);
+}
+.f67-eq {
+  font: 600 14px var(--font-body);
+  fill: var(--ink);
+}
+.f67-eq-sm {
+  font-size: 12.5px;
+}
+.f67-eq-lg {
+  font-size: 16px;
+}
+.f67-num {
+  font: 400 13px var(--font-mono);
+  fill: var(--ink);
+}
+.f67-cap {
+  font: 700 10.5px var(--font-body);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  fill: var(--muted);
+}
+.f67-sym {
+  font: 700 22px var(--font-display);
+  fill: var(--ink);
+}
+.f67-dark-t {
+  fill: #1f2a44;
+}
+.f67-light-t {
+  fill: #fffaf0;
+}
+
+/* ---------------------------------------------------------------- lines */
+.f67-o {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.f67-thin {
+  stroke-width: 0.9;
+}
+.f67-thick {
+  stroke-width: 2.2;
+}
+.f67-fill {
+  fill: var(--surface);
+}
+.f67-fill2 {
+  fill: var(--surface-2);
+}
+.f67-fill3 {
+  fill: var(--surface-3);
+}
+.f67-glass {
+  fill: var(--glass);
+  fill-opacity: 0.55;
+}
+.f67-ln {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+}
+.f67-soft {
+  stroke: var(--line);
+}
+.f67-lvl-s {
+  stroke: var(--lvl-ink);
+}
+.f67-lvl-f {
+  fill: var(--lvl);
+}
+.f67-lvlsoft-f {
+  fill: var(--lvl-soft);
+}
+.f67-dash {
+  stroke-dasharray: 5 4;
+}
+.f67-dot2 {
+  stroke-dasharray: 1.5 4;
+}
+.f67-lead {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  fill: none;
+}
+.f67-dot {
+  fill: var(--ink-soft);
+}
+.f67-nohit {
+  pointer-events: none;
+}
+.f67-hl {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.4;
+}
+.f67-hl-dark {
+  opacity: 0.6;
+}
+.f67-hl-light {
+  stroke: #fffaf0;
+  stroke-width: 0.9;
+  opacity: 0.75;
+}
+.f67-hl-shade {
+  stroke: #10131c;
+  stroke-width: 0.8;
+  opacity: 0.35;
+}
+.f67-stip {
+  fill: var(--edge);
+  opacity: 0.35;
+}
+
+/* arrows */
+.f67-arr {
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.f67-arr-ink {
+  stroke: var(--edge);
+}
+.f67-arr-acc {
+  stroke: var(--accent);
+}
+.f67-arr-blue {
+  stroke: var(--blue);
+}
+.f67-arr-lvl {
+  stroke: var(--lvl-ink);
+}
+.f67-arr-red {
+  stroke: var(--bad);
+}
+.f67-arr-green {
+  stroke: var(--good);
+}
+.f67-arr-muted {
+  stroke: var(--muted);
+}
+.f67-mk-ink {
+  fill: var(--edge);
+}
+.f67-mk-acc {
+  fill: var(--accent);
+}
+.f67-mk-blue {
+  fill: var(--blue);
+}
+.f67-mk-lvl {
+  fill: var(--lvl-ink);
+}
+.f67-mk-red {
+  fill: var(--bad);
+}
+.f67-mk-green {
+  fill: var(--good);
+}
+.f67-mk-muted {
+  fill: var(--muted);
+}
+.f67-wide {
+  stroke-width: 2.6;
+}
+
+/* atoms */
+.f67-atom-b {
+  stroke: none;
+}
+.f67-atom-o {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.f67-atom-t {
+  font-family: var(--font-body);
+  font-weight: 800;
+  pointer-events: none;
+}
+.f67-atom-t-l {
+  fill: #fffaf0;
+}
+.f67-atom-t-d {
+  fill: #1f2a44;
+}
+.f67-bond {
+  stroke: var(--edge);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+/* badges */
+.f67-badge {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+}
+.f67-badge-t {
+  font: 800 15px var(--font-body);
+  fill: var(--ink);
+}
+.f67-tag {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.f67-tag-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+}
+
+/* pipes */
+.f67-pipe-o {
+  fill: none;
+  stroke: var(--edge);
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+}
+.f67-pipe-i {
+  fill: none;
+  stroke: var(--surface);
+  stroke-linecap: square;
+  stroke-linejoin: round;
+}
+.f67-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 2 9;
+  animation: f67-flow 1.1s linear infinite;
+}
+.f67-flow-rev {
+  animation-direction: reverse;
+}
+@keyframes f67-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+/* current in wires */
+.f67-wire {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.f67-current {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2.4;
+  stroke-dasharray: 3 11;
+  stroke-linecap: round;
+  animation: f67-flow 1s linear infinite;
+}
+
+/* bubbles */
+.f67-bubble {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+  animation: f67-rise 2.4s ease-in infinite;
+}
+@keyframes f67-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--rise, -40px));
+    opacity: 0;
+  }
+}
+
+/* flames and glow */
+.f67-flicker {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: f67-flicker 1.3s ease-in-out infinite alternate;
+}
+@keyframes f67-flicker {
+  0% {
+    transform: scale(1, 1) skewX(0deg);
+  }
+  30% {
+    transform: scale(0.95, 1.06) skewX(-2deg);
+  }
+  60% {
+    transform: scale(1.04, 0.95) skewX(2deg);
+  }
+  100% {
+    transform: scale(0.97, 1.03) skewX(-1deg);
+  }
+}
+.f67-glow {
+  animation: f67-glow 1.8s ease-in-out infinite alternate;
+}
+@keyframes f67-glow {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.f67-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: f67-spin 3s linear infinite;
+}
+@keyframes f67-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.f67-drift {
+  animation: f67-drift 4s ease-in-out infinite alternate;
+}
+@keyframes f67-drift {
+  from {
+    transform: translate(-2px, 1px);
+  }
+  to {
+    transform: translate(2px, -2px);
+  }
+}
+
+/* ---------------------------------------------------------------- narrow plates */
+@container (max-width: 440px) {
+  .f67-sec {
+    display: none;
+  }
+  .f67-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+
+/* electrons */
+.f67-e {
+  fill: #2f5fb3;
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.f67-e-t {
+  font: 800 8.5px var(--font-body);
+  fill: #fffaf0;
+  pointer-events: none;
+}
+.f67-flame-o {
+  stroke: color-mix(in srgb, var(--edge) 60%, transparent);
+  stroke-width: 0.8;
+}
+.f67-ion-t {
+  font: 800 8px var(--font-body);
+}

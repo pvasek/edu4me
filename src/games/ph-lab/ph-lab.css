@@ -356,3 +356,104 @@
   font: 800 28px/1 var(--font-display);
 }
 
+
+/* left column: bench + comparison beaker + enzymes */
+.g-ph-left {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.g-ph-twin {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: 15px;
+}
+.g-ph-compare {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+  margin: 0;
+  font-size: 15px;
+}
+.g-ph-compare svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+}
+
+/* enzymes (level 9) */
+.g-ph-enz {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3);
+}
+.g-ph-enz-title {
+  font: 700 12px/1.2 var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.g-ph-enz-list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.g-ph-enz-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px var(--space-2);
+  align-items: center;
+  font-size: 14px;
+}
+.g-ph-enz-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px var(--space-2);
+  min-width: 0;
+}
+.g-ph-enz-name svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+.g-ph-enz-state {
+  font-weight: 700;
+  text-align: right;
+}
+.g-ph-enz-bar {
+  grid-column: 1 / -1;
+  display: block;
+  height: 8px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.g-ph-enz-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--muted);
+  transform-origin: left center;
+}
+.g-ph-enz-row.is-on .g-ph-enz-bar > span {
+  background: var(--good);
+}
+.g-ph-enz-row.is-on .g-ph-enz-state,
+.g-ph-enz-row.is-on .g-ph-enz-name svg {
+  color: var(--good);
+}
+.g-ph-enz-row.is-weak .g-ph-enz-bar > span {
+  background: var(--warn);
+}
+.g-ph-enz-row.is-weak .g-ph-enz-state {
+  color: var(--warn);
+}
+.g-ph-enz-row.is-off .g-ph-enz-state {
+  color: var(--muted);
+}
