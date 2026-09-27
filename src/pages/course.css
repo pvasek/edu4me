@@ -103,9 +103,6 @@
 .atlas-row:not(.current) .atlas-lesson.next .atlas-lesson-title {
   font-weight: inherit;
 }
-.atlas-aside {
-  display: none;
-}
 .atlas-node {
   position: relative;
   z-index: 1;
@@ -126,12 +123,6 @@
 }
 .atlas-row.current .atlas-plate {
   box-shadow: var(--double-rule), var(--shadow-hard-lg);
-}
-.atlas-plate-head {
-  display: flex;
-  gap: var(--space-3);
-  justify-content: space-between;
-  align-items: flex-start;
 }
 .atlas-plate-titles {
   gap: 4px;
@@ -260,76 +251,61 @@
   align-items: center;
 }
 
-/* desktop: plates alternate around a central spine */
-@media (min-width: 980px) {
-  .atlas-spine {
-    left: 50%;
-  }
-  .atlas-row {
-    grid-template-columns: minmax(0, 1fr) 120px minmax(0, 1fr);
-  }
-  .atlas-node {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .atlas-left .atlas-plate {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  .atlas-right .atlas-plate {
-    grid-column: 3;
-    grid-row: 1;
+/* level plate header: titles + progress on the left, the plate's engraving on the right */
+.atlas-plate-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-4);
+  align-items: center;
+}
+.atlas-plate-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.atlas-plate-art {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  color: var(--level);
+  user-select: none;
+}
+.atlas-plate-art figcaption {
+  display: grid;
+  white-space: nowrap;
+  justify-items: center;
+  font: italic 700 17px var(--font-display);
+  color: color-mix(in srgb, var(--level) 75%, var(--ink));
+}
+.atlas-plate-art figcaption b {
+  font-style: normal;
+}
+.atlas-plate-art figcaption small {
+  font: 700 10px var(--font-body);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 3px double var(--line);
+  padding-top: 3px;
+  margin-top: 2px;
+}
+.atlas-progress {
+  margin-top: 6px;
+}
+
+/* wide screens: lessons in two columns so each plate stays short */
+@media (min-width: 860px) {
+  .atlas-lessons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-4);
+    grid-auto-flow: column;
+    grid-template-rows: repeat(4, auto);
   }
   .atlas {
     gap: var(--space-5);
-  }
-  .atlas-row + .atlas-row {
-    margin-top: -40px;
-  }
-  .atlas-aside {
-    display: grid;
-    grid-row: 1;
-    align-self: center;
-    justify-items: center;
-    gap: 2px;
-    color: var(--level);
-    pointer-events: none;
-    user-select: none;
-  }
-  .atlas-left .atlas-aside {
-    grid-column: 3;
-  }
-  .atlas-right .atlas-aside {
-    grid-column: 1;
-  }
-  .atlas-aside-z {
-    font: 500 22px var(--font-mono);
-    opacity: 0.55;
-  }
-  .atlas-aside-sym {
-    font: italic 700 190px/0.9 var(--font-display);
-    color: transparent;
-    -webkit-text-stroke: 2px var(--level);
-    background: repeating-linear-gradient(135deg, var(--level) 0 1.5px, transparent 1.5px 7px);
-    -webkit-background-clip: text;
-    background-clip: text;
-    opacity: 0.55;
-  }
-  .atlas-aside-name {
-    font: italic 700 26px var(--font-display);
-    opacity: 0.8;
-  }
-  .atlas-aside-sym-inline {
-    font-style: normal;
-  }
-  .atlas-aside-caption {
-    font: 700 12px var(--font-body);
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border-top: 3px double var(--line);
-    padding-top: 6px;
-    margin-top: 4px;
   }
 }
 
@@ -363,8 +339,34 @@
   .atlas-plate {
     padding: var(--space-4);
   }
+  /* phone: the engraving sits next to the eyebrow, the title gets the full width */
   .atlas-plate-head {
+    grid-template-columns: minmax(0, 1fr) 72px;
+    align-items: center;
+    gap: 6px var(--space-3);
+  }
+  .atlas-plate-titles {
+    display: contents;
+  }
+  .atlas-plate-eyebrow {
+    grid-column: 1;
+    grid-row: 1;
     flex-direction: column;
+    align-items: flex-start;
+  }
+  .atlas-plate-art {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .atlas-plate-head > .atlas-plate-titles > :not(.atlas-plate-eyebrow) {
+    grid-column: 1 / -1;
+  }
+  .atlas-plate-art svg {
+    width: 72px;
+    height: 72px;
+  }
+  .atlas-plate-art figcaption {
+    display: none;
   }
   .atlas-index-sym {
     width: 28px;

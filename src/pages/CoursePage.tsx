@@ -107,6 +107,8 @@ export function CoursePage() {
   )
 }
 
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
+
 function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: string; current: boolean; side: 'left' | 'right' }) {
   const { level, done, doneCount, passed, best } = s
   const nextIdx = done.indexOf(false)
@@ -143,23 +145,6 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
         {current && <Mascot mood="happy" size={58} className="atlas-mascot" />}
       </motion.div>
 
-      <motion.div
-        className="atlas-aside"
-        aria-hidden="true"
-        initial={{ opacity: 0, x: side === 'left' ? 30 : -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <LevelVignette level={level.number} size={230} />
-        <span className="atlas-aside-name">
-          {BY_SYMBOL[level.symbol]?.name} · <span className="atlas-aside-sym-inline">{level.symbol}</span>
-        </span>
-        <span className="atlas-aside-caption">
-          Tabule {['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'][level.number - 1]}
-        </span>
-      </motion.div>
-
       <motion.article
         className="atlas-plate card"
         variants={stagger(0.05, 0.1)}
@@ -169,23 +154,33 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
       >
         <motion.header className="atlas-plate-head" variants={rise}>
           <div className="stack atlas-plate-titles">
-            <span className="eyebrow">
-              Úroveň {level.number} · {level.stage}
-            </span>
+            <div className="atlas-plate-eyebrow">
+              <span className="eyebrow">
+                Úroveň {level.number} · {level.stage}
+              </span>
+              <span className={`atlas-status${passed ? ' passed' : ''}`}>{status}</span>
+            </div>
             <h2>
               <Link to={`/c/${courseId}/l/${level.id}`}>{level.title}</Link>
             </h2>
             <p className="muted">{level.subtitle}</p>
+            <div className="atlas-progress">
+              <Bar value={doneCount / level.lessons.length} color={level.color} label={`Postup úrovní ${level.number}`} />
+              <span className="muted tabnum">
+                {doneCount}/{level.lessons.length} lekcí · {level.lessons.reduce((a, l) => a + l.minutes, 0)} min
+              </span>
+            </div>
           </div>
-          <span className={`atlas-status${passed ? ' passed' : ''}`}>{status}</span>
+          <figure className="atlas-plate-art" aria-hidden="true">
+            <LevelVignette level={level.number} size={132} />
+            <figcaption>
+              <span>
+                {BY_SYMBOL[level.symbol]?.name} · <b>{level.symbol}</b>
+              </span>
+              <small>Tabule {ROMAN[level.number - 1]}</small>
+            </figcaption>
+          </figure>
         </motion.header>
-
-        <motion.div className="atlas-progress" variants={rise}>
-          <Bar value={doneCount / level.lessons.length} color={level.color} label={`Postup úrovní ${level.number}`} />
-          <span className="muted tabnum">
-            {doneCount}/{level.lessons.length} lekcí · {level.lessons.reduce((a, l) => a + l.minutes, 0)} min
-          </span>
-        </motion.div>
 
         <motion.ol className="atlas-lessons" variants={stagger(0.04)}>
           {level.lessons.map((ls, i) => (

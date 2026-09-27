@@ -38,7 +38,7 @@ Respect reduced motion (global CSS rule + `MotionConfig reducedMotion="user"`).
 | `iconlist` | `src/illustrations/blocks/IconList.tsx` | uses, examples, safety rules, "kde to potkáš" |
 | `compare` | `src/illustrations/blocks/Compare.tsx` | 2–3 things side by side (exo vs endo, σ vs π, DNA vs RNA) |
 | section `icon` | `ChemIcon` | every lesson section title |
-| level vignettes | `src/illustrations/vignettes/LevelVignette.tsx` | course atlas and level hero |
+| level vignettes | `src/illustrations/vignettes/LevelVignette.tsx` | course atlas (inside each level plate header) and level hero |
 
 ## Density rule for lessons
 
