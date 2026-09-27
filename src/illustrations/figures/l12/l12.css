@@ -1006,3 +1006,72 @@
 .f12-water .f12-badge {
   transform: none;
 }
+
+/* ------------------------------------------------------------ fire triangle */
+.f12-band {
+  fill: none;
+  stroke: var(--f12-lv-soft);
+  stroke-width: 34;
+  stroke-linecap: round;
+}
+.f12-band-edge {
+  fill: none;
+  stroke: var(--f12-lv);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 3 5;
+}
+.f12-side:hover .f12-band {
+  stroke: var(--f12-lv-mid);
+}
+.f12-side-t {
+  font: 700 19px var(--font-display);
+  letter-spacing: 0.22em;
+  fill: var(--ink);
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+.f12-heat {
+  fill: none;
+  stroke: #d0461f;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  animation: f12-twinkle 1.4s ease-in-out infinite;
+}
+.f12-ember {
+  fill: none;
+  stroke: #8a3a1a;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.f12-fire {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s;
+}
+.f12-fire-out {
+  transform: scale(0.15);
+  opacity: 0;
+}
+.f12-smoke path {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.f12-smoke {
+  opacity: 0;
+  transition: opacity 0.8s 0.3s;
+}
+.f12-smoke-on {
+  opacity: 0.7;
+}
+.f12-status {
+  margin: 0;
+  text-align: center;
+  font: italic 600 17px/1.35 var(--font-display);
+  color: var(--ink);
+  min-height: 2.7em;
+}

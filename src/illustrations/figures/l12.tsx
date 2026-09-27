@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
 import type { FigureId } from '../catalog'
 import BunsenBurner from './l12/BunsenBurner'
+import FireTriangle from './l12/FireTriangle'
 import HeatingTestTube from './l12/HeatingTestTube'
 import LabEquipment from './l12/LabEquipment'
 import Meniscus from './l12/Meniscus'
@@ -15,4 +16,5 @@ export const FIGURES_L12: Partial<Record<FigureId, ComponentType>> = {
   meniscus: Meniscus,
   'mixture-types': MixtureTypes,
   'water-treatment': WaterTreatment,
+  'fire-triangle': FireTriangle,
 }

@@ -12,15 +12,15 @@ import './molecules.css'
  */
 export function MoleculeView({ molecules, labels }: { molecules: MoleculeId[]; labels?: string[] }) {
   const mols = useMemo(() => molecules.slice(0, 4).map((id) => getMolecule(id)), [molecules])
-  const radii = mols.map(boundingRadius)
-  const rMax = Math.max(...radii, 0)
+  const frames = useMemo(() => mols.map(frameOf), [mols])
+  const hRef = Math.max(...frames.map((f) => f.hx), 0)
   const n = mols.length
   return (
     <div className="mol-view" data-n={n}>
       <div className="mol-grid">
         {mols.map((m, i) => (
           <div className="mol-cell" key={m.id + i}>
-            <Ball3D mol={m} viewR={Math.max(radii[i], rMax * 0.62, 2.1)} />
+            <Ball3D mol={m} frame={frames[i]} hRef={hRef} />
             <div className="mol-caption">
               <span className="mol-name">{m.name}</span>
               <span className="mol-formula">
@@ -47,8 +47,42 @@ const VB = 100 // viewBox half-size (user units)
 const SPIN = 0.32 // rad/s auto-rotation
 const LIGHT: [number, number] = [-0.6, -0.8]
 
-function boundingRadius(m: MoleculeData) {
-  return m.atoms.reduce((r, a) => Math.max(r, vlen(a.p) + ballRadius(a.el)), 0)
+interface Frame {
+  initial: Mat3
+  /** spin axis on screen: 'y' (vertical) or 'x' for elongated molecules */
+  axis: 'x' | 'y'
+  /** half-width / half-height (Å) swept while spinning */
+  hx: number
+  vy: number
+  R: number
+}
+
+/** Default view and the space the model needs while it spins. */
+function frameOf(m: MoleculeData): Frame {
+  const pts = m.atoms.map((a) => a.p)
+  const r = m.atoms.map((a) => ballRadius(a.el))
+  const pca = pts.length > 1 ? principalAxes(pts) : IDENTITY
+  const inPca = pts.map((p) => matVec(pca, p))
+  const ext = (k: 0 | 1) => Math.max(...inPca.map((q, i) => Math.abs(q[k]) + r[i]))
+  const elongated = ext(0) > 1.7 * ext(1)
+  const initial = orthonormalize(elongated ? matMul(rotX(0.5), pca) : matMul(rotX(0.42), matMul(rotY(-0.55), pca)))
+  const q = pts.map((p) => matVec(initial, p))
+  const R = Math.max(...pts.map((p, i) => vlen(p) + r[i]))
+  if (elongated)
+    return {
+      initial,
+      axis: 'x',
+      hx: Math.max(...q.map((v, i) => Math.abs(v[0]) + r[i])),
+      vy: Math.max(...q.map((v, i) => Math.hypot(v[1], v[2]) + r[i])),
+      R,
+    }
+  return {
+    initial,
+    axis: 'y',
+    hx: Math.max(...q.map((v, i) => Math.hypot(v[0], v[2]) + r[i])),
+    vy: Math.max(...q.map((v, i) => Math.abs(v[1]) + r[i])),
+    R,
+  }
 }
 
 interface Prepared {
@@ -58,10 +92,13 @@ interface Prepared {
   side: (number | null)[]
   D: number
   S: number
+  /** viewBox half-height in user units (half-width is VB) */
+  vbY: number
   initial: Mat3
+  axis: 'x' | 'y'
 }
 
-function prepare(m: MoleculeData, viewR: number): Prepared {
+function prepare(m: MoleculeData, fr: Frame, hRef: number): Prepared {
   const pts = m.atoms.map((a) => a.p)
   const r = m.atoms.map((a) => ballRadius(a.el))
   const side = m.bonds.map((b) => {
@@ -73,12 +110,11 @@ function prepare(m: MoleculeData, viewR: number): Prepared {
     }
     return null
   })
-  const D = viewR * 4
-  const fMax = D / (D - viewR)
-  const S = (VB * 0.94) / (viewR * fMax * 1.02)
-  const pca = pts.length > 1 ? principalAxes(pts) : IDENTITY
-  const initial = orthonormalize(matMul(rotX(0.42), matMul(rotY(-0.55), pca)))
-  return { pts, r, side, D, S, initial }
+  const hx = Math.max(fr.hx, hRef * 0.55, 1.8)
+  const vy = Math.min(Math.max(fr.vy, hx / 1.9, 1.4), hx * 1.15)
+  const D = Math.max(fr.R, 1.5) * 5
+  const S = VB / (hx * 1.12)
+  return { pts, r, side, D, S, vbY: (VB * vy) / hx, initial: fr.initial, axis: fr.axis }
 }
 
 interface Projected {
@@ -107,8 +143,8 @@ function highlight(x: number, y: number, r: number) {
   return `M${f(x + rr * Math.cos(a0))} ${f(y + rr * Math.sin(a0))}A${f(rr)} ${f(rr)} 0 0 1 ${f(x + rr * Math.cos(a1))} ${f(y + rr * Math.sin(a1))}`
 }
 
-function Ball3D({ mol, viewR }: { mol: MoleculeData; viewR: number }) {
-  const prep = useMemo(() => prepare(mol, viewR), [mol, viewR])
+function Ball3D({ mol, frame, hRef }: { mol: MoleculeData; frame: Frame; hRef: number }) {
+  const prep = useMemo(() => prepare(mol, frame, hRef), [mol, frame, hRef])
   const [rot, setRot] = useState<Mat3>(prep.initial)
   const [hover, setHover] = useState<number | null>(null)
   const [active, setActive] = useState<number | null>(null)
@@ -128,6 +164,8 @@ function Ball3D({ mol, viewR }: { mol: MoleculeData; viewR: number }) {
     lastTap: 0,
     kick: () => {},
   })
+  const axisRef = useRef(prep.axis)
+  axisRef.current = prep.axis
   const uid = useId().replace(/[^a-zA-Z0-9_-]/g, '')
 
   // reset when the molecule changes
@@ -159,7 +197,7 @@ function Ball3D({ mol, viewR }: { mol: MoleculeData; viewR: number }) {
         } else if (!reduce?.matches) {
           s.vx = 0
           s.vy = 0
-          s.rot = orthonormalize(matMul(rotY(SPIN * dt), s.rot))
+          s.rot = orthonormalize(matMul(axisRef.current === 'x' ? rotX(SPIN * dt) : rotY(SPIN * dt), s.rot))
           setRot(s.rot)
         }
       }
@@ -358,9 +396,9 @@ function Ball3D({ mol, viewR }: { mol: MoleculeData; viewR: number }) {
   const aria = `Model molekuly: ${mol.name}. ${describe(mol)}.`
 
   return (
-    <div className="mol-stage" ref={wrap}>
+    <div className="mol-stage" ref={wrap} style={{ aspectRatio: `${VB} / ${prep.vbY.toFixed(2)}` }}>
       <svg
-        viewBox={`${-VB} ${-VB} ${2 * VB} ${2 * VB}`}
+        viewBox={`${-VB} ${(-prep.vbY).toFixed(2)} ${2 * VB} ${(2 * prep.vbY).toFixed(2)}`}
         role="img"
         aria-label={aria}
         className="mol-svg"
@@ -381,7 +419,7 @@ function Ball3D({ mol, viewR }: { mol: MoleculeData; viewR: number }) {
       {tip && atom && (
         <div
           className="mol-tip"
-          style={{ left: `${((tip.x + VB) / (2 * VB)) * 100}%`, top: `${((tip.y - tip.rs + VB) / (2 * VB)) * 100}%` }}
+          style={{ left: `${((tip.x + VB) / (2 * VB)) * 100}%`, top: `${((tip.y - tip.rs + prep.vbY) / (2 * prep.vbY)) * 100}%` }}
         >
           {elementName(atom.el)} <b>{atom.el}</b>
           {atom.charge ? <sup>{chargeLabel(atom.charge)}</sup> : null}

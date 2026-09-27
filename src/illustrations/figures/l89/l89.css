@@ -416,3 +416,16 @@
 .f89-wide {
   grid-column: 1 / -1;
 }
+.f89-along {
+  offset-rotate: 0deg;
+  animation: f89-along var(--dur, 6s) linear infinite;
+  animation-delay: var(--del, 0s);
+}
+@keyframes f89-along {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}

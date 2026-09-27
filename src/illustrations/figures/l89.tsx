@@ -2,6 +2,8 @@ import type { ComponentType } from 'react'
 import type { FigureId } from '../catalog'
 import AdditionMechanism from './l89/AdditionMechanism'
 import Esterification from './l89/Esterification'
+import GlucoseRing from './l89/GlucoseRing'
+import PhotosynthesisRespiration from './l89/PhotosynthesisRespiration'
 import FractionalDistillation from './l89/FractionalDistillation'
 import HomologousSeries from './l89/HomologousSeries'
 import Isomers from './l89/Isomers'
@@ -19,4 +21,6 @@ export const FIGURES_L89: Partial<Record<FigureId, ComponentType>> = {
   'polymer-chain': PolymerChain,
   esterification: Esterification,
   micelle: Micelle,
+  'glucose-ring': GlucoseRing,
+  'photosynthesis-respiration': PhotosynthesisRespiration,
 }
