@@ -58,19 +58,25 @@
   background: var(--level);
 }
 
+/* Plates use the full width; each level's node sits in the gap above its
+   plate on the right, straddling the edges of the neighbouring plates. The
+   spine runs behind the plates, so it only shows between them. */
 .atlas {
+  --node: 84px;
+  --node-inset: 28px;
+  --node-overlap: 22px;
   position: relative;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: var(--node-overlap) 0 0;
   display: grid;
-  gap: var(--space-6);
+  gap: 10px;
 }
 .atlas-spine {
   position: absolute;
-  top: 52px;
-  bottom: 52px;
-  left: 52px;
+  top: calc(var(--node) / 2);
+  bottom: 60px;
+  right: calc(var(--node-inset) + var(--node) / 2);
   width: 0;
   border-left: 2px dotted var(--line);
 }
@@ -87,10 +93,8 @@
 .atlas-row {
   position: relative;
   display: grid;
-  grid-template-columns: 104px minmax(0, 1fr);
-  gap: var(--space-4);
   align-items: start;
-  scroll-margin-top: 150px;
+  scroll-margin-top: 130px;
 }
 .atlas-node .level-node-disc {
   text-decoration: none;
@@ -105,17 +109,39 @@
 }
 .atlas-node {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  justify-self: end;
+  margin: calc(-1 * var(--node-overlap)) var(--node-inset) calc(-1 * var(--node-overlap)) 0;
   display: grid;
   justify-items: center;
 }
+.atlas-node .level-node-disc,
+.atlas-node .ring {
+  width: var(--node);
+  height: var(--node);
+}
+.atlas-node .level-node-disc {
+  border-radius: 50%;
+  background: var(--paper);
+}
+.atlas-node .level-node-tile {
+  width: calc(var(--node) * 0.7);
+  height: calc(var(--node) * 0.7);
+  border-radius: 16px;
+  padding: 3px 6px;
+}
+.atlas-node .level-node-sym {
+  font-size: calc(var(--node) * 0.32);
+}
 .atlas-mascot {
   position: absolute;
-  top: 88px;
-  left: 50%;
-  translate: -50% 0;
+  top: 50%;
+  right: calc(100% + 6px);
+  translate: 0 -50%;
 }
 .atlas-plate {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: var(--space-4);
   border-top: 8px solid var(--level);
@@ -304,37 +330,21 @@
     grid-auto-flow: column;
     grid-template-rows: repeat(4, auto);
   }
-  .atlas {
-    gap: var(--space-5);
-  }
 }
 
 @media (max-width: 560px) {
-  .atlas-row {
-    grid-template-columns: 64px minmax(0, 1fr);
-    gap: var(--space-3);
-  }
-  .atlas-spine {
-    left: 32px;
-  }
-  .atlas-node .level-node-disc {
-    width: 64px;
-    height: 64px;
-  }
-  .atlas-node .ring {
-    width: 64px;
-    height: 64px;
+  .atlas {
+    --node: 64px;
+    --node-inset: 14px;
+    --node-overlap: 16px;
   }
   .atlas-node .level-node-tile {
-    width: 46px;
-    height: 46px;
-    padding: 3px 5px;
-  }
-  .atlas-node .level-node-sym {
-    font-size: 22px;
+    border-radius: 12px;
+    padding: 2px 4px;
   }
   .atlas-mascot {
-    display: none;
+    width: 48px;
+    height: 48px;
   }
   .atlas-plate {
     padding: var(--space-4);
