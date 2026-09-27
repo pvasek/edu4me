@@ -78,16 +78,17 @@ function Network({ x, y }: { x: number; y: number }) {
       ))}
       {/* partial charges on the central molecule */}
       <Fade d={1.3}>
-        <text x={NET[0].o[0] + 2} y={NET[0].o[1] + 32} className="f35-delta f35-dneg" textAnchor="middle">
+        <text x={NET[0].o[0] - 18} y={NET[0].o[1] + 8} className="f35-delta f35-dneg" textAnchor="end">
           δ−
         </text>
         {hs[0].map((h, k) => {
           const o = NET[0].o
           const L = Math.hypot(h[0] - o[0], h[1] - o[1])
-          // beside the H, perpendicular to the O–H bond, on the upper side
+          // beside the H, perpendicular to the O–H bond, away from the other H
           let px = -(h[1] - o[1]) / L
           let py = (h[0] - o[0]) / L
-          if (py > 0) {
+          const other = hs[0][1 - k]
+          if ((other[0] - h[0]) * px + (other[1] - h[1]) * py > 0) {
             px = -px
             py = -py
           }

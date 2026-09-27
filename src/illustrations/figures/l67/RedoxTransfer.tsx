@@ -115,6 +115,7 @@ export default function RedoxTransfer() {
       max={600}
       replay
       compact={compact}
+      boost={false}
       label="Přenos elektronů: atom zinku předá dva elektrony kationtu měďnatému. Zinek elektrony ztrácí, oxiduje se na Zn2+ a je redukčním činidlem. Kation Cu2+ elektrony přijímá, redukuje se na měď a je oxidačním činidlem. Pomůcka: ztráta = oxidace, zisk = redukce."
     >
       {/* electron shells */}

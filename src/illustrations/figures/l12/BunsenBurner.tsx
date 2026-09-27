@@ -109,7 +109,7 @@ export default function BunsenBurner() {
       <Lbl x={160} y={352} tx={A - 22} ty={COL + 6} anchor="end" line2="vzduchu">
         regulace
       </Lbl>
-      <Lbl x={126} y={398} tx={A - 6} ty={BASE - 12} anchor="end" lx={128} ly={394}>
+      <Lbl x={126} y={398} tx={A - 6} ty={BASE - 12} anchor="end" lx={128} ly={394} sec>
         tryska
       </Lbl>
       <Lbl x={120} y={445} tx={A - 40} ty={BASE + 14} anchor="end">

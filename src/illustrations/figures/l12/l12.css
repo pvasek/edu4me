@@ -661,6 +661,14 @@
   .f12-sec {
     display: none;
   }
+  .f12-title {
+    font-size: var(--f12-fs);
+  }
+  .f12-badge {
+    transform: scale(1.7);
+    transform-box: fill-box;
+    transform-origin: center;
+  }
   .f12-wide {
     display: none;
   }
@@ -819,4 +827,61 @@
 }
 .f12-bad-t .f12-t {
   fill: var(--bad);
+}
+
+/* ------------------------------------------------------------ mixture lenses */
+.f12-lens-liquid {
+  fill: var(--f12-water);
+}
+.f12-lens-gas {
+  fill: color-mix(in srgb, var(--info-soft) 30%, var(--surface));
+}
+.f12-lens-metal {
+  fill: color-mix(in srgb, var(--ink) 12%, var(--surface));
+}
+.f12-faint {
+  opacity: 0.5;
+}
+.f12-lens-ring {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2.4;
+}
+.f12-grain {
+  fill: color-mix(in srgb, #8a6a45 75%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.f12-oil {
+  fill: color-mix(in srgb, #e3b94a 65%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.f12-foam {
+  fill: color-mix(in srgb, var(--surface) 88%, var(--info-soft));
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.f12-drop {
+  fill: color-mix(in srgb, var(--blue) 45%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.6;
+}
+.f12-drift {
+  animation: f12-drift 3.2s ease-in-out infinite;
+}
+@keyframes f12-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2px, -2.5px);
+  }
+}
+.f12-Cu {
+  fill: #c7773d;
+}
+.f12-Zn {
+  fill: #8a93a3;
 }

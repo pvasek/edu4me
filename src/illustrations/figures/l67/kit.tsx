@@ -119,6 +119,7 @@ export function Figure({
   controls,
   replay = false,
   compact,
+  boost = true,
   children,
 }: {
   label: string
@@ -135,6 +136,8 @@ export function Figure({
   replay?: boolean
   /** from useCompact(): the container ref and its narrow flag */
   compact?: ReturnType<typeof useCompact>
+  /** enlarge text in narrow containers (off for figures with their own compact layout) */
+  boost?: boolean
   children: ReactNode
 }) {
   const own = useCompact()
@@ -145,7 +148,7 @@ export function Figure({
   const id = 'f67' + useId().replace(/[^a-zA-Z0-9_-]/g, '')
   const [run, setRun] = useState(0)
   return (
-    <div ref={box} className={`f67 f67-l${level} ${narrow ? 'f67-narrow' : ''} ${className}`}>
+    <div ref={box} className={`f67 f67-l${level} ${narrow ? (boost ? 'f67-narrow' : 'f67-compact') : ''} ${className}`}>
       <svg ref={svg} className="f67-svg" viewBox={`${x0} 0 ${w} ${h}`} role="img" aria-label={label} style={{ maxWidth: max }}>
         <Defs id={id} />
         <FigCtx.Provider value={{ id, seen, still, narrow, run }}>

@@ -128,8 +128,8 @@ export default function LiIonBattery() {
       <rect x={446} y={Y0} width={14} height={Y1 - Y0} fill="#b9bec7" className="f67-o" />
       <Separator />
       <Draw d={`M60 ${Y0} H460 V${Y1} H60Z`} className="f67-o f67-thick" />
-      <Sign x={40} y={Y0 + 18} s="−" r={10} />
-      <Sign x={480} y={Y0 + 18} s="+" r={10} />
+      <Sign x={40} y={Y1 - 16} s="−" r={10} />
+      <Sign x={480} y={Y1 - 16} s="+" r={10} />
 
       {/* Li+ at rest in the electrodes */}
       <g key={`rest-${mode}`}>
@@ -157,7 +157,8 @@ export default function LiIonBattery() {
         })}
       </g>
       <Fade delay={0.9}>
-        <text x={260} y={Y0 - 6} textAnchor="middle" className="f67-lbl f67-b f67-lvl-t">
+        <rect x={222} y={Y0 + 4} width={76} height={24} rx={4} className="f67-tag-lvl" />
+        <text x={260} y={Y0 + 22} textAnchor="middle" className="f67-lbl f67-b f67-lvl-t">
           <ChemText text={dis ? 'Li^{+} →' : '← Li^{+}'} />
         </text>
       </Fade>

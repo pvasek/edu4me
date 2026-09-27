@@ -124,9 +124,7 @@ export default function FuelCell() {
         <text x={470} y={134} textAnchor="end" className="f67-lbl f67-b">
           <ChemText text="O_{2}" />
         </text>
-        <text x={10} y={304} className="f67-lbl f67-sm f67-sec">
-          zbytek <ChemText text="H_{2}" />
-        </text>
+
         <text x={470} y={304} textAnchor="end" className="f67-lbl f67-sm f67-b">
           <ChemText text="H_{2}O" />
         </text>

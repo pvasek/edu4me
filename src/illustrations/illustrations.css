@@ -404,7 +404,7 @@
 .il-cycle-list {
   position: relative;
   display: grid;
-  padding-right: 34px;
+  padding: 0 34px 0 0;
 }
 .il-loop-rail {
   position: absolute;

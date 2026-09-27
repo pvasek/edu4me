@@ -494,3 +494,30 @@
 .f67-curve-2 {
   stroke: var(--accent);
 }
+
+/* compact plates (JS flag from useCompact): larger text so it stays legible
+   when a ~500-unit plate is squeezed into a phone column */
+.f67-narrow .f67-lbl {
+  font-size: 21px;
+}
+.f67-narrow .f67-lbl.f67-sm {
+  font-size: 18.5px;
+}
+.f67-narrow .f67-lbl.f67-big {
+  font-size: 23px;
+}
+.f67-narrow .f67-eq {
+  font-size: 17px;
+}
+.f67-narrow .f67-eq.f67-eq-lg {
+  font-size: 18.5px;
+}
+.f67-narrow .f67-eq.f67-eq-sm {
+  font-size: 15px;
+}
+.f67-narrow .f67-cap {
+  font-size: 13px;
+}
+.f67-narrow .f67-num {
+  font-size: 16px;
+}

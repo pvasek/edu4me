@@ -8,7 +8,6 @@ import { chargeLabel, cpk } from '../molecules/cpk'
  */
 export function GlyphG({ g, s, badge = true }: { g: Glyph; s: number; badge?: boolean }) {
   const order = g.atoms.map((_, i) => i).sort((a, b) => g.atoms[a].z - g.atoms[b].z)
-  const qR = g.span * s * 0.5
   return (
     <g className="pt-glyph">
       {g.bonds.map((b, k) => {
@@ -26,12 +25,20 @@ export function GlyphG({ g, s, badge = true }: { g: Glyph; s: number; badge?: bo
           </g>
         )
       })}
-      {badge && g.charge !== 0 && (
-        <g className="pt-q" transform={`translate(${(qR * 0.8).toFixed(1)} ${(-qR * 0.8).toFixed(1)})`}>
-          <circle r={Math.max(5.5, 3 + chargeLabel(g.charge).length * 2.4)} />
-          <text dy="0.35em">{chargeLabel(g.charge)}</text>
-        </g>
-      )}
+      {badge && <ChargeBadge g={g} s={s} />}
+    </g>
+  )
+}
+
+/** Small circled charge ("+", "2−") at the particle's upper right; not rotated with it. */
+export function ChargeBadge({ g, s }: { g: Glyph; s: number }) {
+  if (!g.charge) return null
+  const qR = Math.max(g.span * s * 0.5, 4)
+  const t = chargeLabel(g.charge)
+  return (
+    <g className="pt-q" transform={`translate(${(qR * 0.78).toFixed(1)} ${(-qR * 0.78).toFixed(1)})`}>
+      <circle r={t.length > 1 ? 6.2 : 5} />
+      <text dy="0.36em">{t}</text>
     </g>
   )
 }

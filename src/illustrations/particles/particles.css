@@ -1,0 +1,315 @@
+/* Particle scenes (specimen jars) and reaction pictures. */
+
+/* ------------------------------------------------------------ shared glyphs */
+.pt-scene,
+.pt-rx {
+  --pt-light: rgba(255, 255, 255, 0.75);
+}
+.pt-atom {
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.pt-atom-hl {
+  fill: var(--pt-light);
+  stroke: none;
+}
+.pt-bond {
+  stroke: var(--edge);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.pt-q circle {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.pt-q text {
+  font: 700 8px var(--font-mono);
+  fill: var(--ink);
+  text-anchor: middle;
+}
+
+/* ------------------------------------------------------------ scene */
+.pt-scene {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px 6px;
+  width: 100%;
+}
+.pt-box {
+  flex: 1 1 130px;
+  max-width: 210px;
+  min-width: 0;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  text-align: center;
+}
+.pt-jar {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.pt-arrow {
+  flex: 0 0 34px;
+  align-self: center;
+  margin-top: -30px;
+}
+.pt-arrow svg {
+  display: block;
+  width: 34px;
+  height: auto;
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pt-label {
+  font: italic 600 17px/1.2 var(--font-display);
+  color: var(--ink);
+  text-wrap: balance;
+}
+.pt-note {
+  font-size: 13.5px;
+  line-height: 1.35;
+  color: var(--muted);
+  text-wrap: balance;
+}
+
+/* jar drawing */
+.pt-hatch {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.45;
+}
+.pt-inside {
+  fill: color-mix(in srgb, var(--surface) 88%, var(--info-soft));
+}
+.pt-line {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+.pt-line-thin {
+  stroke-width: 0.8;
+  opacity: 0.7;
+}
+.pt-lid {
+  opacity: 0.9;
+}
+.pt-rim {
+  fill: var(--surface-2);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+}
+.pt-glare {
+  stroke: var(--surface);
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0.7;
+}
+.pt-liquid {
+  fill: color-mix(in srgb, var(--info-soft) 80%, var(--blue) 20%);
+  opacity: 0.75;
+}
+.pt-liq-hatch {
+  stroke: var(--blue);
+  stroke-width: 0.6;
+  opacity: 0.3;
+}
+.pt-surface {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.2;
+  opacity: 0.8;
+}
+.pt-solvent {
+  opacity: 0.4;
+}
+
+/* ambient motion (CSS loops; the global reduced-motion rule stops them at rest) */
+.pt-vib {
+  animation: pt-vib var(--dur, 0.4s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+@keyframes pt-vib {
+  from {
+    transform: translate(-0.9px, 0.5px);
+  }
+  to {
+    transform: translate(0.9px, -0.5px);
+  }
+}
+.pt-slide {
+  animation: pt-slide var(--dur, 4s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+@keyframes pt-slide {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(var(--dx, 3px), var(--dy, 1px)) rotate(var(--rot, 10deg));
+  }
+}
+.pt-fly {
+  animation: pt-fly var(--dur, 8s) linear var(--delay, 0s) infinite;
+}
+@keyframes pt-fly {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(var(--x1), var(--y1));
+  }
+  50% {
+    transform: translate(var(--x2), var(--y2));
+  }
+  75% {
+    transform: translate(var(--x3), var(--y3));
+  }
+}
+.pt-spin {
+  animation: pt-spin var(--sdur, 6s) linear infinite;
+}
+@keyframes pt-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ------------------------------------------------------------ reaction */
+.pt-rx {
+  container-type: inline-size;
+  display: grid;
+  gap: 14px;
+  width: 100%;
+}
+.pt-rx-eq {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 10px;
+}
+.pt-rx-side {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px 6px;
+  min-width: 0;
+}
+.pt-rx-group {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+.pt-rx-mols {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.pt-rx-formula {
+  font-size: 16px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.pt-rx-more {
+  font-size: 12px;
+  color: var(--muted);
+}
+.pt-rx-plus {
+  align-self: center;
+  font: 600 26px/1 var(--font-display);
+  color: var(--ink-soft);
+  padding-bottom: 18px;
+}
+.pt-rx-arrow {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+}
+.pt-rx-arrow svg {
+  display: block;
+  width: 60px;
+  height: 28px;
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@container (max-width: 560px) {
+  .pt-rx-eq {
+    flex-direction: column;
+  }
+  .pt-rx-arrow svg {
+    transform: rotate(90deg);
+    width: 44px;
+    height: 22px;
+    margin: 8px 0;
+  }
+}
+
+/* ledger: an old accounting book with a double rule */
+.pt-ledger {
+  justify-self: center;
+  min-width: min(100%, 250px);
+  padding: 6px 14px 8px;
+  border-top: 3px double var(--edge);
+  border-bottom: 3px double var(--edge);
+  background-image: repeating-linear-gradient(transparent 0 25px, var(--line) 25px 26px);
+  background-position: 0 23px;
+}
+.pt-ledger-head {
+  font: 600 11px/1.6 var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  text-align: center;
+  padding-bottom: 2px;
+}
+.pt-ledger-rows {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 18px;
+}
+.pt-ledger-row {
+  display: grid;
+  grid-template-columns: auto 2.2ch 1.5ch 2.2ch 1.4em;
+  align-items: baseline;
+  gap: 4px;
+  font: 15px/26px var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.pt-ledger-el {
+  font: 700 18px/26px var(--font-display);
+  color: var(--ink);
+}
+.pt-ledger-el.is-word {
+  font: italic 600 16px/26px var(--font-display);
+}
+.pt-ledger-n {
+  text-align: right;
+}
+.pt-ledger-eq {
+  text-align: center;
+  color: var(--muted);
+}
+.pt-ledger-mark {
+  font-weight: 700;
+}
+.pt-ledger-row.is-ok .pt-ledger-mark {
+  color: var(--good);
+}
+.pt-ledger-row.is-bad .pt-ledger-mark,
+.pt-ledger-row.is-bad .pt-ledger-eq {
+  color: var(--bad);
+}

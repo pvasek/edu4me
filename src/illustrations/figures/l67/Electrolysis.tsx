@@ -122,6 +122,7 @@ export default function Electrolysis() {
       h={h}
       max={640}
       compact={compact}
+      boost={false}
       label={m.label}
       controls={
         <Toggle<Mode>
