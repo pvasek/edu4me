@@ -123,12 +123,20 @@ function Scene() {
       <Draw d={arc} className="f89-curly-l" delay={1.1} dur={1.1} style={{ strokeDasharray: 'none' }} />
       <Fade delay={2.1}>
         <polygon points={`${c1.x + 12},${c1.y + 1} ${c1.x + 22},${c1.y - 3} ${c1.x + 20},${c1.y + 7}`} className="f89-lvfill" />
-        <text className="f89-lb f89-lv f89-sm" x={c1.x + 64} y={(c1.y + c5.y) / 2 + 4}>
-          C5–OH
-        </text>
-        <text className="f89-lb f89-lv f89-sm" x={c1.x + 64} y={(c1.y + c5.y) / 2 + 20}>
-          uzavře kruh
-        </text>
+        {n ? (
+          <text className="f89-lb f89-lv f89-sm" x={284} y={c5.y + 32} textAnchor="middle">
+            C5–OH uzavře kruh
+          </text>
+        ) : (
+          <>
+            <text className="f89-lb f89-lv f89-sm" x={c1.x + 84} y={(c1.y + c5.y) / 2 + 4}>
+              C5–OH
+            </text>
+            <text className="f89-lb f89-lv f89-sm" x={c1.x + 84} y={(c1.y + c5.y) / 2 + 20}>
+              uzavře kruh
+            </text>
+          </>
+        )}
       </Fade>
       {/* equilibria */}
       <Fade delay={2.3}>
@@ -139,8 +147,8 @@ function Scene() {
           </>
         ) : (
           <>
-            <Arrow x1={292} y1={124} x2={350} y2={100} className="f89-arr f89-arr-soft" both />
-            <Arrow x1={292} y1={184} x2={350} y2={220} className="f89-arr f89-arr-soft" both />
+            <Arrow x1={306} y1={128} x2={356} y2={104} className="f89-arr f89-arr-soft" both />
+            <Arrow x1={306} y1={184} x2={356} y2={214} className="f89-arr f89-arr-soft" both />
           </>
         )}
       </Fade>

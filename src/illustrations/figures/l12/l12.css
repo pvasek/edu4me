@@ -1077,3 +1077,63 @@
   color: var(--ink);
   min-height: 2.7em;
 }
+
+/* ------------------------------------------------------------ air composition */
+.f12-sweep {
+  fill: none;
+}
+.f12-air-n2 {
+  stroke: color-mix(in srgb, #3d6fd1 30%, var(--surface));
+}
+.f12-air-o2 {
+  stroke: color-mix(in srgb, #d9493b 38%, var(--surface));
+}
+.f12-air-ar {
+  stroke: color-mix(in srgb, #b3a58f 70%, var(--surface));
+}
+.f12-pie-t {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: calc(var(--f12-fs) * 1.15);
+  fill: var(--ink);
+}
+.f12-pie-v {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: calc(var(--f12-fs) * 1.6);
+  fill: var(--ink);
+}
+.f12-zoom {
+  fill: none;
+  stroke: var(--f12-lv);
+  stroke-width: 2.2;
+}
+.f12-inset-plain {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.f12-air-ar-bar {
+  fill: color-mix(in srgb, #b3a58f 70%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.f12-air-co2-bar {
+  fill: #3b3b3b;
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.f12-air-tr-bar {
+  fill: var(--f12-lv);
+}
+.f12-C {
+  fill: #3b3b3b;
+}
+.f12-Ar {
+  fill: #b3a58f;
+}
+.f12-legend-v {
+  font-size: calc(var(--f12-fs) * 0.9);
+  font-weight: 700;
+}

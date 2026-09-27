@@ -48,12 +48,12 @@ const LEFT = [
   [127, 204],
 ]
 const RIGHT = [
-  [330, 236],
-  [360, 236],
-  [390, 236],
-  [345, 210],
-  [375, 210],
-  [360, 184],
+  [316, 236],
+  [355, 236],
+  [394, 236],
+  [335, 208],
+  [374, 208],
+  [355, 180],
 ]
 
 function Flask({ brown }: { brown: number }) {
@@ -92,16 +92,18 @@ export default function EquilibriumSeesaw() {
     >
       {/* equation + flask */}
       <Fade>
-        <Eq x={40} y={62} t="N_{2}O_{4}(g)" className="f67-eq-lg" />
-        <text x={40} y={82} className="f67-lbl f67-sm">
+        <Eq x={240} y={24} t="N_{2}O_{4}(g) ⇌ 2NO_{2}(g)    ΔH = +57 kJ/mol" anchor="middle" className="f67-eq-lg" />
+        <text x={125} y={150} textAnchor="middle" className="f67-lbl f67-b">
+          <ChemText text="N_{2}O_{4}" />
+        </text>
+        <text x={125} y={168} textAnchor="middle" className="f67-lbl f67-sm">
           bezbarvý
         </text>
-        <Eq x={440} y={62} t="2NO_{2}(g)" anchor="end" className="f67-eq-lg" />
-        <text x={440} y={82} textAnchor="end" className="f67-lbl f67-sm">
-          hnědý
+        <text x={355} y={132} textAnchor="middle" className="f67-lbl f67-b">
+          <ChemText text="NO_{2}" />
         </text>
-        <text x={240} y={20} textAnchor="middle" className="f67-eq f67-eq-lg">
-          ⇌ · ΔH = +57 kJ/mol
+        <text x={355} y={150} textAnchor="middle" className="f67-lbl f67-sm">
+          hnědý
         </text>
         <Flask brown={k.brown} />
         <text x={240} y={162} textAnchor="middle" className="f67-lbl f67-sm f67-sec">
@@ -121,8 +123,9 @@ export default function EquilibriumSeesaw() {
         initial={false}
         animate={{ rotate: k.tilt }}
         transition={spring.gentle}
-        style={{ transformBox: 'view-box', transformOrigin: `${PIV[0]}px ${PIV[1]}px` }}
       >
+        {/* invisible square centred on the pivot: rotation origin = pivot */}
+        <rect x={PIV[0] - 200} y={PIV[1] - 200} width={400} height={400} fill="none" stroke="none" />
         <rect x={60} y={PIV[1] - 12} width={360} height={10} rx={2} className="f67-o f67-fill2" />
         <path d={`M62 ${PIV[1] - 12} V${PIV[1] - 20} M188 ${PIV[1] - 12} V${PIV[1] - 20} M292 ${PIV[1] - 12} V${PIV[1] - 20} M418 ${PIV[1] - 12} V${PIV[1] - 20}`} className="f67-o" />
         {LEFT.slice(0, k.nL).map(([x, y], i) => (

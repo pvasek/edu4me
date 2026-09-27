@@ -35,10 +35,13 @@ export function ChargeBadge({ g, s }: { g: Glyph; s: number }) {
   if (!g.charge) return null
   const qR = Math.max(g.span * s * 0.5, 4)
   const t = chargeLabel(g.charge)
+  const br = Math.max(3.6, Math.min(6, qR * 0.5)) * (t.length > 1 ? 1.2 : 1)
   return (
-    <g className="pt-q" transform={`translate(${(qR * 0.78).toFixed(1)} ${(-qR * 0.78).toFixed(1)})`}>
-      <circle r={t.length > 1 ? 6.2 : 5} />
-      <text dy="0.36em">{t}</text>
+    <g className="pt-q" transform={`translate(${(qR * 0.75).toFixed(1)} ${(-qR * 0.75).toFixed(1)})`}>
+      <circle r={br.toFixed(2)} />
+      <text dy="0.36em" style={{ fontSize: `${(br * (t.length > 1 ? 1.15 : 1.5)).toFixed(1)}px` }}>
+        {t}
+      </text>
     </g>
   )
 }

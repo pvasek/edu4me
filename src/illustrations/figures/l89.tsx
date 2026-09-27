@@ -4,6 +4,9 @@ import AdditionMechanism from './l89/AdditionMechanism'
 import Esterification from './l89/Esterification'
 import GlucoseRing from './l89/GlucoseRing'
 import PhotosynthesisRespiration from './l89/PhotosynthesisRespiration'
+import LipidBilayer from './l89/LipidBilayer'
+import PeptideBond from './l89/PeptideBond'
+import ProteinStructure from './l89/ProteinStructure'
 import FractionalDistillation from './l89/FractionalDistillation'
 import HomologousSeries from './l89/HomologousSeries'
 import Isomers from './l89/Isomers'
@@ -23,4 +26,7 @@ export const FIGURES_L89: Partial<Record<FigureId, ComponentType>> = {
   micelle: Micelle,
   'glucose-ring': GlucoseRing,
   'photosynthesis-respiration': PhotosynthesisRespiration,
+  'peptide-bond': PeptideBond,
+  'protein-structure': ProteinStructure,
+  'lipid-bilayer': LipidBilayer,
 }

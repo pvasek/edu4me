@@ -22,23 +22,32 @@ const level: LevelContent = {
       sections: [
         {
           title: 'Proč právě uhlík',
+          icon: 'atom',
           blocks: [
-            { type: 'p', text: '**Organická chemie** je chemie sloučenin uhlíku. Výjimkou je pár jednoduchých látek jako $CO$, $CO2$, uhličitany nebo kyanidy, které patří do anorganiky (potkal jsi je v úrovni 7). Organické látky jsou v jídle, v plastu tvého telefonu, v benzinu, v léku na bolest hlavy i ve tvé DNA.' },
-            { type: 'callout', variant: 'fact', title: 'Konec „životní síly“', text: 'Dřív se věřilo, že organické látky umí vyrobit jen živé organismy díky tajemné „životní síle“ (*vis vitalis*). V roce 1828 ale Friedrich Wöhler připravil v baňce močovinu z anorganického kyanatanu amonného. Tím začala moderní organická chemie.' },
-            { type: 'p', text: 'Tajemství uhlíku je v jeho elektronech. Má **4 valenční elektrony**, a tak tvoří **4 kovalentní vazby**. Říkáme, že je **čtyřvazný**. Vazby $C-C$ jsou navíc pevné, takže se uhlíky dokážou řetězit prakticky donekonečna.' },
-            { type: 'list', items: [
-              'Uhlíky tvoří **dlouhé řetězce**, rovné i rozvětvené.',
-              'Uzavírají se do **cyklů** (kruhů) různé velikosti.',
-              'Mezi sebou tvoří vazby **jednoduché**, **dvojné** i **trojné**.',
-              'Pevně se vážou i na jiné prvky: $H$, $O$, $N$, $S$ a halogeny.',
+            { type: 'p', text: '**Organická chemie** je chemie sloučenin uhlíku. Pár jednoduchých látek jako $CO$, $CO2$, uhličitany nebo kyanidy ale patří do anorganiky (potkal jsi je v úrovni 7).' },
+            { type: 'iconlist', items: [
+              { icon: 'bread', title: 'Jídlo', text: 'cukry, tuky, bílkoviny' },
+              { icon: 'phone', title: 'Plast telefonu' },
+              { icon: 'fuel', title: 'Benzin' },
+              { icon: 'pill', title: 'Léky', text: 'třeba ten na bolest hlavy' },
+              { icon: 'dna', title: 'Tvoje DNA' },
             ] },
-            { type: 'elements', symbols: ['C', 'H', 'O', 'N', 'S', 'Cl'], caption: 'Prvky, ze kterých se skládá drtivá většina organických molekul' },
+            { type: 'callout', variant: 'fact', title: 'Konec „životní síly“', text: 'Dřív se věřilo, že organické látky umí vyrobit jen živé organismy díky tajemné „životní síle“ (*vis vitalis*). V roce 1828 ale Friedrich Wöhler připravil v baňce močovinu z anorganického kyanatanu amonného. Tím začala moderní organická chemie.' },
+            { type: 'p', text: 'Uhlík má **4 valenční elektrony**, a tak tvoří **4 kovalentní vazby**: je **čtyřvazný**. Vazby $C-C$ jsou navíc pevné, takže se uhlíky řetězí prakticky donekonečna.' },
+            { type: 'molecule', molecules: ['CH4'], labels: ['methan $CH4$: čtyřstěn, 109,5°'], caption: 'Čtyři vazby uhlíku míří do vrcholů čtyřstěnu. Otoč si model prstem.' },
             { type: 'structure', art: s`
     H
     |
 H — C — H
     |
-    H`, caption: 'Methan $CH4$: čtyři vazby uhlíku míří do vrcholů čtyřstěnu (109,5°), na papíře je kreslíme do kříže' },
+    H`, caption: 'Methan na papíře: vazby kreslíme do kříže' },
+            { type: 'iconlist', items: [
+              { icon: 'bond', title: 'Dlouhé řetězce', text: 'rovné i rozvětvené' },
+              { icon: 'arrow-cycle', title: 'Cykly', text: 'kruhy různé velikosti' },
+              { icon: 'molecule', title: 'Násobné vazby', text: 'jednoduché, dvojné i trojné' },
+              { icon: 'atom', title: 'Jiné prvky', text: 'pevně se váže i na $H$, $O$, $N$, $S$ a halogeny' },
+            ] },
+            { type: 'elements', symbols: ['C', 'H', 'O', 'N', 'S', 'Cl'], caption: 'Prvky, ze kterých se skládá drtivá většina organických molekul' },
             { type: 'keyterms', items: [
               { term: 'Vaznost', def: 'počet kovalentních vazeb, které atom v molekule obvykle tvoří' },
               { term: 'Uhlovodíky', def: 'sloučeniny složené jen z uhlíku a vodíku, např. methan $CH4$' },
@@ -51,13 +60,15 @@ H — C — H
         },
         {
           title: 'Jak molekulu zapsat: čtyři druhy vzorců',
+          icon: 'pencil',
           blocks: [
-            { type: 'p', text: 'Jednu molekulu můžeš zapsat několika způsoby. Každý vzorec říká něco jiného a každý se hodí jinde. Ukážeme si je na ethanolu, alkoholu z piva a vína.' },
-            { type: 'keyterms', items: [
-              { term: 'Souhrnný (molekulový) vzorec', def: 'jen počty atomů: $C2H6O$. Neříká nic o tom, jak jsou atomy pospojované.' },
-              { term: 'Strukturní (konstituční) vzorec', def: 'všechny atomy i všechny vazby nakreslené čarami.' },
-              { term: 'Racionální (zkrácený) vzorec', def: 'atomy seskupené kolem jednotlivých uhlíků: $CH3-CH2-OH$ nebo $CH3CH2OH$.' },
-              { term: 'Vazebný (čárový) vzorec', def: 'jen kostra: každý konec a každý zlom čáry je uhlík, vodíky na uhlících se nepíšou.' },
+            { type: 'p', text: 'Jednu molekulu zapíšeš několika způsoby a každý se hodí jinde. Ukážeme si je na ethanolu, alkoholu z piva a vína.' },
+            { type: 'molecule', molecules: ['ethanol'], labels: ['ethanol $C2H6O$'], caption: 'Takhle molekula opravdu vypadá. Vzorce na papíře jsou jen její zkratky.' },
+            { type: 'iconlist', items: [
+              { icon: 'calculator', title: 'Souhrnný (molekulový) vzorec', text: 'jen počty atomů: $C2H6O$. Neříká nic o tom, jak jsou atomy pospojované.' },
+              { icon: 'bond', title: 'Strukturní (konstituční) vzorec', text: 'všechny atomy i všechny vazby nakreslené čarami' },
+              { icon: 'molecule', title: 'Racionální (zkrácený) vzorec', text: 'atomy seskupené kolem jednotlivých uhlíků: $CH3-CH2-OH$ nebo $CH3CH2OH$' },
+              { icon: 'pencil', title: 'Vazebný (čárový) vzorec', text: 'jen kostra: každý konec a každý zlom čáry je uhlík, vodíky na uhlících se nepíšou' },
             ] },
             { type: 'structure', art: s`
     H   H
@@ -79,8 +90,10 @@ H — C — C — O — H
         },
         {
           title: 'Uhlíkaté řetězce',
+          icon: 'bond',
           blocks: [
-            { type: 'p', text: 'Uhlíková „kostra“ molekuly se nazývá **uhlíkatý řetězec**. Podle jejího tvaru organické látky třídíme ještě dřív, než řešíme, jaké další atomy obsahují.' },
+            { type: 'p', text: 'Uhlíková „kostra“ molekuly je **uhlíkatý řetězec**. Podle jejího tvaru látky třídíme dřív, než řešíme další atomy.' },
+            { type: 'molecule', molecules: ['butane', 'isobutane', 'cyclohexane', 'benzene'], labels: ['butan: nerozvětvený', '2-methylpropan: rozvětvený', 'cyklohexan: alicyklický', 'benzen: aromatický'] },
             { type: 'table', headers: ['Hledisko', 'Typy', 'Příklad'], rows: [
               ['uzavření', '**acyklický** (otevřený) × **cyklický** (kruh)', 'butan × cyklohexan'],
               ['větvení', '**nerozvětvený** × **rozvětvený**', 'butan × 2-methylpropan'],
@@ -88,7 +101,7 @@ H — C — C — O — H
               ['druh cyklu', '**alicyklický** × **aromatický** (benzenové jádro)', 'cyklohexan × benzen'],
               ['atomy v cyklu', '**karbocyklický** (jen C) × **heterocyklický** (i N, O, S)', 'benzen × pyridin'],
             ], caption: 'Třídění uhlíkatých řetězců' },
-            { type: 'p', text: 'Jednotlivé uhlíky v řetězci rozlišujeme podle toho, na kolik **dalších uhlíků** jsou navázané. Budeš to potřebovat u názvosloví i u alkoholů.' },
+            { type: 'p', text: 'Jednotlivé uhlíky rozlišujeme podle toho, na kolik **dalších uhlíků** jsou navázané. Budeš to potřebovat u názvosloví i u alkoholů.' },
             { type: 'keyterms', items: [
               { term: 'Primární uhlík', def: 'vázaný na 1 další uhlík' },
               { term: 'Sekundární uhlík', def: 'vázaný na 2 další uhlíky' },
@@ -113,20 +126,16 @@ CH3 — C — CH2 — CH — CH3
         },
         {
           title: 'Izomery: stejný vzorec, jiná molekula',
+          icon: 'molecule',
           blocks: [
-            { type: 'p', text: '**Izomery** jsou látky se **stejným souhrnným vzorcem**, ale jinou strukturou. Mají proto jiné vlastnosti, jsou to prostě jiné látky.' },
-            { type: 'p', text: 'U **konstitučních izomerů** se liší pořadí, v jakém jsou atomy pospojované. Rozlišujeme tři typy:' },
-            { type: 'list', items: [
-              '**řetězcová** izomerie: jiný tvar uhlíkatého řetězce,',
-              '**polohová** izomerie: stejná skupina nebo násobná vazba na jiném místě řetězce,',
-              '**funkční (skupinová)** izomerie: úplně jiná funkční skupina.',
+            { type: 'p', text: '**Izomery** jsou látky se **stejným souhrnným vzorcem**, ale jinou strukturou, a proto i jinými vlastnostmi. U **konstitučních izomerů** se liší pořadí, v jakém jsou atomy pospojované.' },
+            { type: 'diagram', id: 'isomers', caption: 'Tři druhy konstituční izomerie: jiný řetězec, jiná poloha skupiny, jiná funkční skupina' },
+            { type: 'compare', columns: [
+              { title: 'Řetězcová', icon: 'bond', tone: 'a', points: ['jiný tvar uhlíkatého řetězce', 'butan × 2-methylpropan ($C4H10$)'] },
+              { title: 'Polohová', icon: 'magnifier', tone: 'b', points: ['stejná skupina nebo násobná vazba na jiném místě řetězce', 'propan-1-ol × propan-2-ol ($C3H8O$)'] },
+              { title: 'Funkční (skupinová)', icon: 'flask', tone: 'c', points: ['úplně jiná funkční skupina', 'ethanol × dimethylether ($C2H6O$)'] },
             ] },
-            { type: 'structure', art: s`
-CH3 — CH2 — CH2 — CH3
-
-CH3 — CH — CH3
-      |
-      CH3`, caption: 'Řetězcové izomery $C4H10$: butan a 2-methylpropan' },
+            { type: 'molecule', molecules: ['butane', 'isobutane'], labels: ['butan', '2-methylpropan'], caption: 'Řetězcové izomery $C4H10$: stejné atomy, jiná kostra' },
             { type: 'structure', art: s`
 CH3 — CH2 — CH2 — OH
 
@@ -134,22 +143,24 @@ CH3 — CH — CH3
       |
       OH`, caption: 'Polohové izomery $C3H8O$: propan-1-ol a propan-2-ol' },
             { type: 'table', headers: ['Vzorec', 'Izomer 1', 'Izomer 2', 'Typ'], rows: [
-              ['$C4H10$', 'butan, var −0,5 °C', '2-methylpropan, var −12 °C', 'řetězcová'],
-              ['$C3H8O$', 'propan-1-ol, var 97 °C', 'propan-2-ol, var 82 °C', 'polohová'],
-              ['$C2H6O$', 'ethanol $CH3CH2OH$, kapalina, var 78 °C', 'dimethylether $CH3OCH3$, plyn, var −24 °C', 'funkční'],
+              ['$C4H10$', 'butan, var −0,5 °C', '2-methylpropan, var −12 °C', 'řetězcová'],
+              ['$C3H8O$', 'propan-1-ol, var 97 °C', 'propan-2-ol, var 82 °C', 'polohová'],
+              ['$C2H6O$', 'ethanol $CH3CH2OH$, kapalina, var 78 °C', 'dimethylether $CH3OCH3$, plyn, var −24 °C', 'funkční'],
             ], caption: 'Izomery mají stejné složení, ale jiné vlastnosti' },
-            { type: 'callout', variant: 'fact', text: 'Izomerů přibývá závratně rychle. $C4H10$ má 2, $C5H12$ 3, $C6H14$ 5, $C10H22$ už 75 a $C20H42$ neuvěřitelných 366 319.' },
+            { type: 'callout', variant: 'fact', text: 'Izomerů přibývá závratně rychle. $C4H10$ má 2, $C5H12$ 3, $C6H14$ 5, $C10H22$ už 75 a $C20H42$ neuvěřitelných 366 319.' },
             { type: 'game', gameId: 'swipe', text: 'Pravda, nebo lež? Rozhoduj rychle a otestuj, co víš o vzorcích a izomerech.' },
             { type: 'check', question: { kind: 'choice', q: 'Ethanol $CH3CH2OH$ a dimethylether $CH3OCH3$ jsou izomery…', options: ['funkční', 'řetězcové', 'polohové', 'optické'], answer: 0, explain: 'Oba mají vzorec $C2H6O$, ale ethanol je alkohol ($-OH$) a dimethylether je ether ($C-O-C$). Liší se funkční skupinou.' } },
-            { type: 'check', question: { kind: 'tf', q: 'Izomery mají vždy stejnou teplotu varu, protože mají stejnou molární hmotnost.', answer: false, explain: 'Stejná molární hmotnost nestačí. Ethanol vře při 78 °C, dimethylether už při −24 °C, protože jen ethanol tvoří vodíkové můstky.' } },
+            { type: 'check', question: { kind: 'tf', q: 'Izomery mají vždy stejnou teplotu varu, protože mají stejnou molární hmotnost.', answer: false, explain: 'Stejná molární hmotnost nestačí. Ethanol vře při 78 °C, dimethylether už při −24 °C, protože jen ethanol tvoří vodíkové můstky.' } },
           ],
         },
         {
           title: 'Stereoizomerie: když rozhoduje prostor',
+          icon: 'magnifier',
           blocks: [
-            { type: 'p', text: 'U **stereoizomerů** jsou atomy pospojované stejně, liší se jen **uspořádáním v prostoru**. Na papíře vypadají skoro stejně, ale pro tvůj nos nebo enzymy v těle jde o úplně jiné molekuly.' },
+            { type: 'p', text: 'U **stereoizomerů** jsou atomy pospojované stejně, liší se jen **uspořádáním v prostoru**. Pro tvůj nos nebo enzymy v těle jde ale o úplně jiné molekuly.' },
+            { type: 'molecule', molecules: ['cis-but-2-ene', 'trans-but-2-ene'], labels: ['cis-but-2-en: methyly na stejné straně', 'trans-but-2-en: methyly na opačných stranách'] },
             { type: 'h', text: 'Cis/trans izomerie' },
-            { type: 'p', text: 'Kolem dvojné vazby se atomy nemohou volně otáčet (proč, uvidíš v lekci o alkenech). Když má každý uhlík dvojné vazby dva **různé** substituenty, vzniknou dva izomery: **cis** (stejné skupiny na stejné straně) a **trans** (na opačných stranách).' },
+            { type: 'p', text: 'Kolem dvojné vazby se atomy nemohou volně otáčet (proč, uvidíš v lekci o alkenech). Nese-li každý uhlík dvojné vazby dva **různé** substituenty, vzniká izomer **cis** (stejné skupiny na stejné straně) a **trans** (na opačných stranách).' },
             { type: 'structure', art: s`
  CH3     CH3       CH3     H
     \   /             \   /
@@ -158,16 +169,20 @@ CH3 — CH — CH3
    H     H           H     CH3
 
    cis-but-2-en    trans-but-2-en`, caption: 'Cis a trans izomer but-2-enu' },
-            { type: 'p', text: 'Cis a trans izomery mají různé fyzikální vlastnosti. Nenasycené mastné kyseliny v přírodních olejích jsou většinou cis. Trans-tuky, které vznikají hlavně při průmyslovém ztužování olejů, škodí srdci a cévám.' },
+            { type: 'callout', variant: 'fact', title: 'Trans-tuky', text: 'Cis a trans izomery mají různé fyzikální vlastnosti. Nenasycené mastné kyseliny v přírodních olejích jsou většinou cis. Trans-tuky, které vznikají hlavně při průmyslovém ztužování olejů, škodí srdci a cévám.' },
             { type: 'h', text: 'Optická izomerie a chiralita' },
-            { type: 'p', text: 'Uhlík, na kterém jsou navázané **čtyři různé** atomy nebo skupiny, se nazývá **chirální** (asymetrický). Molekula s ním existuje ve dvou podobách, které jsou si zrcadlovým obrazem, ale nejdou na sebe přiložit, jako tvoje levá a pravá ruka. Takové dvojici říkáme **enantiomery** (optické izomery).' },
+            { type: 'p', text: 'Uhlík se **čtyřmi různými** atomy nebo skupinami je **chirální** (asymetrický). Molekula s ním existuje ve dvou zrcadlových podobách, které nejdou na sebe přiložit, jako levá a pravá ruka. Takové dvojici říkáme **enantiomery** (optické izomery).' },
+            { type: 'molecule', molecules: ['lactic-acid'], labels: ['kyselina mléčná'], caption: 'Prostřední uhlík nese $H$, $OH$, $CH3$ a $COOH$: čtyři různé skupiny, chirální uhlík.' },
             { type: 'structure', art: s`
       H
       |
 CH3 — C — COOH
       |
       OH`, caption: 'Kyselina mléčná: na prostředním uhlíku jsou $H$, $OH$, $CH3$ a $COOH$, tedy čtyři různé skupiny. Je to chirální uhlík.' },
-            { type: 'p', text: 'Enantiomery mají stejnou teplotu varu i hustotu. Stáčejí ale rovinu polarizovaného světla na opačné strany (proto „optické“) a hlavně jinak reagují s jinými chirálními molekulami, třeba s receptory v nose nebo s enzymy.' },
+            { type: 'compare', columns: [
+              { title: 'Enantiomery mají stejnou', icon: 'check', tone: 'a', points: ['teplotu varu', 'hustotu'] },
+              { title: 'Enantiomery se liší', icon: 'magnifier', tone: 'b', points: ['stáčejí rovinu polarizovaného světla na opačné strany (proto „optické“)', 'jinak reagují s chirálními molekulami: s receptory v nose nebo s enzymy'] },
+            ] },
             { type: 'callout', variant: 'fact', title: 'Máta, nebo kmín?', text: 'Karvon existuje ve dvou enantiomerech. Jeden voní jako máta klasnatá, jeho zrcadlový obraz jako kmín. Tvůj nos je chirální detektor.' },
             { type: 'callout', variant: 'warning', title: 'Tragédie thalidomidu', text: 'Lék thalidomid (Contergan) se koncem 50. let podával těhotným proti nevolnosti. Jeden enantiomer uklidňuje, druhý poškozuje vývoj plodu, a v těle se navíc mění jeden v druhý. Narodily se tisíce dětí s vážnými vadami končetin. Od té doby se u léků musí zkoumat každý enantiomer zvlášť.' },
             { type: 'check', question: { kind: 'multi', q: 'Které molekuly obsahují chirální uhlík?', options: [
@@ -229,20 +244,23 @@ CH3 — C — COOH
       sections: [
         {
           title: 'Homologická řada alkanů',
+          icon: 'chart',
           blocks: [
-            { type: 'p', text: '**Alkany** jsou nasycené acyklické uhlovodíky: obsahují jen uhlík, vodík a jednoduché vazby. Jejich obecný vzorec je $C_{n}H_{2n+2}$.' },
-            { type: 'p', text: 'Když k řetězci přidáš jednu skupinu $-CH2-$, dostaneš další alkan. Řadě látek, které se liší právě o $CH2$, říkáme **homologická řada** a jejím členům **homology**. Homology mají podobné chemické vlastnosti a jejich fyzikální vlastnosti se mění postupně.' },
-            { type: 'table', headers: ['n', 'Název', 'Vzorec', 'Teplota varu', 'Při 25 °C'], rows: [
-              ['1', 'methan', '$CH4$', '−162 °C', 'plyn'],
-              ['2', 'ethan', '$C2H6$', '−89 °C', 'plyn'],
-              ['3', 'propan', '$C3H8$', '−42 °C', 'plyn'],
-              ['4', 'butan', '$C4H10$', '−1 °C', 'plyn'],
-              ['5', 'pentan', '$C5H12$', '36 °C', 'kapalina'],
-              ['6', 'hexan', '$C6H14$', '69 °C', 'kapalina'],
-              ['7', 'heptan', '$C7H16$', '98 °C', 'kapalina'],
-              ['8', 'oktan', '$C8H18$', '126 °C', 'kapalina'],
-              ['9', 'nonan', '$C9H20$', '151 °C', 'kapalina'],
-              ['10', 'dekan', '$C10H22$', '174 °C', 'kapalina'],
+            { type: 'p', text: '**Alkany** jsou nasycené acyklické uhlovodíky: jen uhlík, vodík a jednoduché vazby. Jejich obecný vzorec je $C_{n}H_{2n+2}$.' },
+            { type: 'molecule', molecules: ['CH4', 'C2H6', 'C3H8', 'butane'], labels: ['methan $CH4$', 'ethan $C2H6$', 'propan $C3H8$', 'butan $C4H10$'], caption: 'První čtyři alkany: každý je o jednu skupinu $-CH2-$ delší' },
+            { type: 'p', text: 'Řadě látek, které se liší právě o $CH2$, říkáme **homologická řada** a jejím členům **homology**. Mají podobné chemické vlastnosti a jejich fyzikální vlastnosti se mění postupně.' },
+            { type: 'diagram', id: 'homologous-series', caption: 'Homologická řada: s každým $-CH2-$ navíc stoupá teplota varu' },
+            { type: 'table', headers: ['n', 'Název', 'Vzorec', 'Teplota varu', 'Při 25 °C'], rows: [
+              ['1', 'methan', '$CH4$', '−162 °C', 'plyn'],
+              ['2', 'ethan', '$C2H6$', '−89 °C', 'plyn'],
+              ['3', 'propan', '$C3H8$', '−42 °C', 'plyn'],
+              ['4', 'butan', '$C4H10$', '−1 °C', 'plyn'],
+              ['5', 'pentan', '$C5H12$', '36 °C', 'kapalina'],
+              ['6', 'hexan', '$C6H14$', '69 °C', 'kapalina'],
+              ['7', 'heptan', '$C7H16$', '98 °C', 'kapalina'],
+              ['8', 'oktan', '$C8H18$', '126 °C', 'kapalina'],
+              ['9', 'nonan', '$C9H20$', '151 °C', 'kapalina'],
+              ['10', 'dekan', '$C10H22$', '174 °C', 'kapalina'],
             ], caption: 'Homologická řada nerozvětvených alkanů' },
             { type: 'callout', variant: 'tip', title: 'Jak si zapamatovat názvy', text: 'První čtyři mají historické názvy: **meth-, eth-, prop-, but-**. Od pěti uhlíků se používají řecké číslovky (u devítky latinská): **pent**-, **hex**-, **hept**-, **okt**-, **non**-, **dek**-. Stejně jako pentagon, hexagon nebo oktopus s osmi chapadly.' },
             { type: 'keyterms', items: [
@@ -255,16 +273,18 @@ CH3 — C — COOH
         },
         {
           title: 'Jak pojmenovat rozvětvený alkan',
+          icon: 'pencil',
           blocks: [
             { type: 'p', text: 'Nerozvětvený alkan se jmenuje podle počtu uhlíků. U rozvětveného postupuješ jako detektiv: najdi páteř, očísluj ji a pojmenuj větve.' },
-            { type: 'list', ordered: true, items: [
-              'Najdi **hlavní řetězec**: nejdelší souvislý řetězec uhlíků. Nemusí vést rovně! Když je víc stejně dlouhých, vyber ten s více větvemi.',
-              'Očísluj ho od konce, ke kterému je **nejblíž první větev**, aby čísla poloh (**lokanty**) byla co nejnižší.',
-              'Pojmenuj větve jako **alkyly** (methyl, ethyl…) a před každou napiš číslo uhlíku, na kterém visí.',
-              'Stejné větve spoj **násobící předponou** di-, tri-, tetra-. Každá dostane vlastní lokant: 2,2-dimethyl.',
-              'Různé větve seřaď **abecedně**, násobící předpony se nepočítají: ethyl před methyl.',
-              'Nakonec připoj název hlavního řetězce. Čísla odděl čárkou, číslo od písmene spojovníkem a celé to napiš jako jedno slovo.',
-            ] },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'magnifier', title: 'Hlavní řetězec', text: 'nejdelší souvislý řetězec uhlíků; nemusí vést rovně. Při shodě vyber ten s více větvemi.' },
+              { icon: 'calculator', title: 'Očíslování', text: 'od konce, ke kterému je **nejblíž první větev**, aby čísla poloh (**lokanty**) byla co nejnižší' },
+              { icon: 'bond', title: 'Větve jako alkyly', text: 'methyl, ethyl…, před každou číslo uhlíku, na kterém visí' },
+              { icon: 'molecule', title: 'Násobící předpony', text: 'stejné větve spoj předponou di-, tri-, tetra-; každá má vlastní lokant: 2,2-dimethyl' },
+              { icon: 'book', title: 'Abecedně', text: 'různé větve podle abecedy, násobící předpony se nepočítají: ethyl před methyl' },
+              { icon: 'check', title: 'Celý název', text: 'nakonec název hlavního řetězce; čísla odděl čárkou, číslo od písmene spojovníkem, vše jedním slovem' },
+            ], caption: 'Šest kroků k názvu rozvětveného alkanu' },
+            { type: 'molecule', molecules: ['isobutane'], labels: ['2-methylpropan: hlavní řetězec 3 uhlíky, methyl na C2'], caption: 'Nejjednodušší rozvětvený alkan' },
             { type: 'structure', art: s`
 CH3 — CH — CH2 — CH — CH3
       |          |
@@ -300,19 +320,27 @@ CH3 — CH — CH — CH2 — CH2 — CH3
         },
         {
           title: 'Vlastnosti a hoření alkanů',
+          icon: 'flame',
           blocks: [
-            { type: 'p', text: 'Alkany jsou **nepolární**. Ve vodě se nerozpouštějí a jsou lehčí než ona, proto benzin nebo olej plave na hladině. Rozpouštějí ale jiné nepolární látky, třeba tuky.' },
-            { type: 'p', text: 'Mezi molekulami alkanů působí jen slabé **disperzní (Londonovy) síly** (úroveň 3). Čím delší řetězec, tím větší plocha, kterou se molekuly dotýkají, a tím vyšší teplota varu. Alkany $C1–C4$ jsou plyny, zhruba $C5–C16$ kapaliny a delší pevné látky, třeba parafín.' },
+            { type: 'p', text: 'Alkany jsou **nepolární**: ve vodě se nerozpouštějí a plavou na ní (benzin na hladině), rozpouštějí ale tuky. Mezi molekulami působí jen slabé **disperzní (Londonovy) síly** (úroveň 3). Čím delší řetězec, tím větší styčná plocha a vyšší teplota varu.' },
+            { type: 'iconlist', items: [
+              { icon: 'gas-cloud', title: '$C1–C4$: plyny', text: 'methan až butan' },
+              { icon: 'drop', title: 'zhruba $C5–C16$: kapaliny', text: 'benzin, petrolej, nafta' },
+              { icon: 'crystal', title: 'delší: pevné látky', text: 'třeba parafín ve svíčce' },
+            ] },
             { type: 'table', headers: ['Izomer $C5H12$', 'Tvar molekuly', 'Teplota varu'], rows: [
-              ['pentan', 'dlouhý, rovný', '36 °C'],
-              ['2-methylbutan', 'jedna větev', '28 °C'],
-              ['2,2-dimethylpropan', 'téměř kulovitý', '10 °C'],
+              ['pentan', 'dlouhý, rovný', '36 °C'],
+              ['2-methylbutan', 'jedna větev', '28 °C'],
+              ['2,2-dimethylpropan', 'téměř kulovitý', '10 °C'],
             ], caption: 'Větvení snižuje teplotu varu' },
             { type: 'callout', variant: 'remember', text: '==Delší řetězec → vyšší teplota varu, víc větví → nižší teplota varu.== Rozvětvená molekula je kompaktnější a dotýká se sousedů menší plochou.' },
-            { type: 'p', text: 'Chemicky jsou alkany dost líné. Starý název **parafíny** pochází z latinského *parum affinis*, „málo slučivý“. S kyselinami, zásadami ani běžnými oxidovadly nereagují. Dvě reakce ale zvládají skvěle: hoření a radikálovou substituci.' },
-            { type: 'formula', text: '$CH4 + 2O2 -> CO2 + 2H2O$', caption: 'dokonalé hoření methanu, uvolní se asi 890 kJ na 1 mol methanu' },
-            { type: 'p', text: 'Když je kyslíku málo, hoření je **nedokonalé**. Vzniká jedovatý oxid uhelnatý nebo saze (čistý uhlík):' },
-            { type: 'formula', text: '$2CH4 + 3O2 -> 2CO + 4H2O$', caption: 'nedokonalé hoření methanu' },
+            { type: 'p', text: 'Chemicky jsou alkany líné: starý název **parafíny** pochází z latinského *parum affinis*, „málo slučivý“. S kyselinami, zásadami ani běžnými oxidovadly nereagují. Zvládají ale hoření a radikálovou substituci.' },
+            { type: 'reaction', equation: 'CH4 + 2O2 -> CO2 + 2H2O', caption: 'dokonalé hoření methanu, uvolní se asi 890 kJ na 1 mol methanu' },
+            { type: 'compare', columns: [
+              { title: 'Dokonalé hoření', icon: 'flame', tone: 'good', points: ['dost kyslíku', 'vzniká $CO2$ a $H2O$'] },
+              { title: 'Nedokonalé hoření', icon: 'warning', tone: 'bad', points: ['kyslíku je málo', 'vzniká jedovatý oxid uhelnatý $CO$ nebo saze (čistý uhlík)'] },
+            ] },
+            { type: 'reaction', equation: '2CH4 + 3O2 -> 2CO + 4H2O', caption: 'nedokonalé hoření methanu' },
             { type: 'callout', variant: 'warning', title: 'Tichý zabiják', text: 'Oxid uhelnatý $CO$ nevidíš ani necítíš a váže se na hemoglobin mnohem pevněji než kyslík. Špatně seřízený plynový kotel nebo karma v koupelně bez větrání může zabíjet. Detektor $CO$ za pár stovek korun zachraňuje životy.' },
             { type: 'example', title: 'Vyčíslení hoření', problem: 'Vyčísli rovnici dokonalého hoření butanu $C4H10$ (plyn v zapalovači).', steps: [
               'Kostra rovnice: $C4H10 + O2 -> CO2 + H2O$',
@@ -325,21 +353,24 @@ CH3 — CH — CH — CH2 — CH2 — CH3
         },
         {
           title: 'Radikálová substituce',
+          icon: 'sun',
           blocks: [
-            { type: 'p', text: 'Za světla nebo za vysoké teploty reagují alkany s halogeny. Atom vodíku se vymění za atom halogenu, jde tedy o **substituci** (nahrazení). Reakce probíhá přes radikály, a proto se nazývá **radikálová substituce** ($S_{R}$).' },
+            { type: 'p', text: 'Za světla nebo za vysoké teploty reagují alkany s halogeny: atom vodíku se vymění za atom halogenu. Jde o **substituci** (nahrazení) přes radikály, tedy **radikálovou substituci** ($S_{R}$).' },
+            { type: 'reaction', equation: 'CH4 + Cl2 -> CH3Cl + HCl', caption: 'chlorace methanu za UV záření ($hν$), vzniká chlormethan' },
             { type: 'keyterms', items: [
               { term: 'Radikál', def: 'částice s nepárovým elektronem, značí se tečkou: $Cl·$, $·CH3$. Je extrémně reaktivní.' },
               { term: 'Homolytické štěpení', def: 'vazba se rozpadne tak, že si každý atom vezme jeden elektron ze sdíleného páru.' },
               { term: 'Řetězová reakce', def: 'každý krok vytvoří nový radikál, který spustí další krok.' },
             ] },
-            { type: 'formula', text: '$CH4 + Cl2 -> CH3Cl + HCl$', caption: 'chlorace methanu za UV záření ($hν$), vzniká chlormethan' },
-            { type: 'example', title: 'Mechanismus chlorace methanu', problem: 'Jak přesně vzniká chlormethan z methanu a chloru?', steps: [
-              '**Iniciace (zahájení):** UV záření rozštěpí molekulu chloru homolyticky: $Cl2 -> 2Cl·$',
-              '**Propagace (šíření), krok 1:** radikál chloru utrhne methanu vodík: $Cl· + CH4 -> HCl + ·CH3$',
-              '**Propagace, krok 2:** methylový radikál si vezme atom chloru z další molekuly: $·CH3 + Cl2 -> CH3Cl + Cl·$. Nový $Cl·$ se vrací ke kroku 1 a řetěz běží dál.',
-              '**Terminace (ukončení):** dva radikály se srazí a spojí: $Cl· + Cl· -> Cl2$, $·CH3 + Cl· -> CH3Cl$ nebo $·CH3 + ·CH3 -> C2H6$.',
-            ], answer: 'Jediný foton spustí řetěz, který se mnohokrát zopakuje, než ho terminace zastaví. Produktem je chlormethan $CH3Cl$ a chlorovodík $HCl$.' },
-            { type: 'p', text: 'U jednoho vodíku to ale nekončí. Postupně se mohou vyměnit i další, a tak vzniká směs: chlormethan $CH3Cl$, dichlormethan $CH2Cl2$, trichlormethan $CHCl3$ (chloroform) a tetrachlormethan $CCl4$.' },
+            { type: 'diagram', id: 'substitution-mechanism', caption: 'Radikálová substituce: světlo rozštěpí $Cl2$ a radikály se pak střídají v řetězu' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'sun', title: 'Iniciace (zahájení)', text: 'UV záření rozštěpí molekulu chloru homolyticky: $Cl2 -> 2Cl·$' },
+              { icon: 'arrow-cycle', title: 'Propagace (šíření), krok 1', text: 'radikál chloru utrhne methanu vodík: $Cl· + CH4 -> HCl + ·CH3$' },
+              { icon: 'arrow-cycle', title: 'Propagace, krok 2', text: '$·CH3 + Cl2 -> CH3Cl + Cl·$; nový $Cl·$ se vrací ke kroku 1 a řetěz běží dál' },
+              { icon: 'cross', title: 'Terminace (ukončení)', text: 'dva radikály se srazí a spojí: $Cl· + Cl· -> Cl2$, $·CH3 + Cl· -> CH3Cl$ nebo $·CH3 + ·CH3 -> C2H6$' },
+            ], caption: 'Mechanismus chlorace methanu: jediný foton spustí řetěz, který se mnohokrát zopakuje, než ho terminace zastaví' },
+            { type: 'p', text: 'U jednoho vodíku to ale nekončí. Postupně se vymění i další, a tak vzniká směs chlorderivátů.' },
+            { type: 'molecule', molecules: ['CH3Cl', 'CH2Cl2', 'CCl4'], labels: ['chlormethan $CH3Cl$', 'dichlormethan $CH2Cl2$', 'tetrachlormethan $CCl4$'], caption: 'Mezi nimi vzniká i trichlormethan $CHCl3$ (chloroform).' },
             { type: 'callout', variant: 'fact', text: 'Chloroform patřil v 19. století k prvním celkovým anestetikům, uspávala se jím i britská královna Viktorie při porodu. Dnes se kvůli toxicitě pro játra a srdce v medicíně nepoužívá.' },
             { type: 'check', question: { kind: 'order', q: 'Seřaď kroky radikálové chlorace methanu.', items: [
               '$Cl2 -> 2Cl·$ (iniciace)',
@@ -352,24 +383,35 @@ CH3 — CH — CH — CH2 — CH2 — CH3
         },
         {
           title: 'Zemní plyn, ropa a oktanové číslo',
+          icon: 'oil-barrel',
           blocks: [
-            { type: 'p', text: 'Hlavním zdrojem alkanů jsou fosilní suroviny. **Zemní plyn** je převážně methan (obvykle přes 90 %) s příměsí ethanu, propanu a butanu. **Ropa** je hustá směs stovek uhlovodíků, hlavně alkanů a cykloalkanů s menším podílem aromátů.' },
-            { type: 'p', text: 'V rafinerii se ropa dělí **frakční destilací**. Zahřeje se a páry stoupají vysokou destilační kolonou. Nahoře, kde je chladněji, kondenzují krátké molekuly s nízkou teplotou varu, dole ty dlouhé.' },
-            { type: 'diagram', id: 'separation', props: { method: 'distillation' }, caption: 'Princip destilace: složky se oddělí podle teploty varu. Rafinerie používá obří kolonu s mnoha patry.' },
-            { type: 'table', headers: ['Frakce', 'Uhlíky', 'Teplota varu', 'Použití'], rows: [
-              ['rafinérský plyn', '$C1–C4$', 'pod 30 °C', 'topení, LPG (propan-butan)'],
-              ['benzin', '$C5–C10$', '30–180 °C', 'palivo do aut, rozpouštědla'],
-              ['petrolej', '$C10–C16$', '180–250 °C', 'letecké palivo (kerosin)'],
-              ['plynový olej', '$C14–C20$', '250–350 °C', 'motorová nafta, topný olej'],
-              ['mazut', 'nad $C20$', 'nad 350 °C', 'mazací oleje, parafín, asfalt'],
-            ], caption: 'Frakce ropy (hranice se mezi rafineriemi trochu liší)' },
-            { type: 'p', text: 'Dlouhých molekul je v ropě víc, než trh potřebuje, a benzinu málo. Proto se dlouhé řetězce štěpí **krakováním** na kratší alkany a alkeny, například $C10H22 -> C8H18 + C2H4$.' },
-            { type: 'p', text: 'V motoru se směs benzinu a vzduchu stlačí a zapálí jiskrou. Nevhodné palivo se ale vznítí samo příliš brzy a motor „klepe“ (detonační spalování), což ho ničí. Odolnost paliva proti klepání udává **oktanové číslo**.' },
-            { type: 'keyterms', items: [
-              { term: 'Oktanové číslo 100', def: 'isooktan (2,2,4-trimethylpentan): rozvětvený a velmi odolný' },
-              { term: 'Oktanové číslo 0', def: 'heptan: nerozvětvený, klepe hned' },
-              { term: 'Natural 95', def: 'benzin se v motoru chová jako směs 95 % isooktanu a 5 % heptanu' },
+            { type: 'p', text: 'Hlavním zdrojem alkanů jsou fosilní suroviny: zemní plyn a ropa. Ropa se v rafinerii dělí **frakční destilací** podle teplot varu.' },
+            { type: 'compare', columns: [
+              { title: 'Zemní plyn', icon: 'gas-cylinder', tone: 'a', points: ['převážně methan, obvykle přes 90 %', 'příměs ethanu, propanu a butanu'] },
+              { title: 'Ropa', icon: 'oil-barrel', tone: 'b', points: ['hustá směs stovek uhlovodíků', 'hlavně alkany a cykloalkany', 'menší podíl aromátů'] },
             ] },
+            { type: 'diagram', id: 'fractional-distillation', caption: 'Frakční destilace: páry stoupají kolonou. Nahoře, kde je chladněji, kondenzují krátké molekuly s nízkou teplotou varu, dole ty dlouhé.' },
+            { type: 'table', headers: ['Frakce', 'Uhlíky', 'Teplota varu', 'Použití'], rows: [
+              ['rafinérský plyn', '$C1–C4$', 'pod 30 °C', 'topení, LPG (propan-butan)'],
+              ['benzin', '$C5–C10$', '30–180 °C', 'palivo do aut, rozpouštědla'],
+              ['petrolej', '$C10–C16$', '180–250 °C', 'letecké palivo (kerosin)'],
+              ['plynový olej', '$C14–C20$', '250–350 °C', 'motorová nafta, topný olej'],
+              ['mazut', 'nad $C20$', 'nad 350 °C', 'mazací oleje, parafín, asfalt'],
+            ], caption: 'Frakce ropy (hranice se mezi rafineriemi trochu liší)' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'oil-barrel', title: 'Ropa', text: 'surovina z vrtu' },
+              { icon: 'heat', title: 'Zahřátí', text: 'ropa se v peci odpaří' },
+              { icon: 'factory', title: 'Frakční destilace', text: 'dělení podle teploty varu' },
+              { icon: 'catalyst', title: 'Krakování', text: 'dlouhé řetězce -> kratší alkany a alkeny' },
+              { icon: 'fuel', title: 'Úprava benzinu', text: 'přestavba na rozvětvené řetězce s vyšším oktanovým číslem' },
+            ], caption: 'Cesta ropy rafinerií' },
+            { type: 'p', text: 'Dlouhých molekul je v ropě víc, než trh potřebuje, a benzinu málo. Proto se dlouhé řetězce štěpí **krakováním** na kratší alkany a alkeny.' },
+            { type: 'reaction', equation: 'C10H22 -> C8H18 + C2H4', caption: 'krakování dekanu na oktan a ethen' },
+            { type: 'p', text: 'V motoru se směs benzinu a vzduchu stlačí a zapálí jiskrou. Nevhodné palivo se ale vznítí samo příliš brzy a motor „klepe“ (detonační spalování), což ho ničí. Odolnost paliva proti klepání udává **oktanové číslo**.' },
+            { type: 'compare', columns: [
+              { title: 'Oktanové číslo 100', icon: 'check', tone: 'good', points: ['isooktan (2,2,4-trimethylpentan)', 'rozvětvený a velmi odolný'] },
+              { title: 'Oktanové číslo 0', icon: 'cross', tone: 'bad', points: ['heptan', 'nerozvětvený, klepe hned'] },
+            ], caption: '**Natural 95**: benzin se v motoru chová jako směs 95 % isooktanu a 5 % heptanu' },
             { type: 'callout', variant: 'fact', text: 'Rozvětvené alkany a aromáty mají vysoké oktanové číslo, nerozvětvené nízké. Rafinerie proto řetězce záměrně přestavují. Dřív se oktanové číslo zvyšovalo jedovatým tetraethylolovem, olovnatý benzin je ale v EU od roku 2000 zakázaný.' },
             { type: 'check', question: { kind: 'choice', q: 'Která frakce odchází z destilační kolony nejvýše?', options: ['rafinérský plyn', 'benzin', 'petrolej', 'mazut'], answer: 0, explain: 'Nahoře je kolona nejchladnější a dostanou se tam jen látky s nejnižší teplotou varu, tedy nejkratší alkany $C1–C4$.' } },
             { type: 'check', question: { kind: 'tf', q: 'Heptan má oktanové číslo 100, protože má dlouhý nerozvětvený řetězec.', answer: false, explain: 'Je to naopak: nerozvětvený heptan klepe nejvíc a má oktanové číslo 0. Hodnotu 100 má rozvětvený isooktan.' } },
@@ -377,8 +419,10 @@ CH3 — CH — CH — CH2 — CH2 — CH3
         },
         {
           title: 'Cykloalkany a konformace',
+          icon: 'arrow-cycle',
           blocks: [
-            { type: 'p', text: 'Když se konce řetězce spojí, vznikne **cykloalkan**. Ubudou tím dva vodíky, takže obecný vzorec je $C_{n}H_{2n}$. Název dostane předponu **cyklo-**: cyklopropan, cyklobutan, cyklopentan, cyklohexan.' },
+            { type: 'p', text: 'Když se konce řetězce spojí, vznikne **cykloalkan**. Ubudou dva vodíky, takže obecný vzorec je $C_{n}H_{2n}$. Název dostane předponu **cyklo-**: cyklopropan, cyklobutan, cyklopentan, cyklohexan.' },
+            { type: 'molecule', molecules: ['cyclohexane'], labels: ['cyklohexan $C6H12$'], caption: 'Otoč si model: kruh není plochý, ale prohnutý do židličky.' },
             { type: 'structure', art: s`
       CH2
      /   \
@@ -387,9 +431,11 @@ CH3 — CH — CH — CH2 — CH2 — CH3
   H2C     CH2
      \   /
       CH2`, caption: 'Cyklohexan $C6H12$. Ve vazebném vzorci je to prostě šestiúhelník.' },
-            { type: 'p', text: 'Kolem jednoduché vazby se atomy mohou volně otáčet. Prostorové podoby, které se liší jen natočením kolem jednoduchých vazeb, se nazývají **konformace**. Nejsou to izomery, molekula mezi nimi přechází neustále, miliardkrát za sekundu.' },
-            { type: 'p', text: 'U ethanu je nejstabilnější **nezákrytová** konformace, kdy vodíky sousedních uhlíků míří „mezi sebe“. **Zákrytová** konformace, kdy jsou vodíky přesně za sebou, má o něco vyšší energii.' },
-            { type: 'p', text: 'Cyklohexan není plochý. Rovinný šestiúhelník by měl úhly 120° místo ideálních 109,5°. Kruh se proto zkroutí do tvaru **židličky**, ve které jsou úhly téměř čtyřstěnné a molekula není pnutá. Méně stabilní je konformace **vaničky**.' },
+            { type: 'p', text: 'Kolem jednoduché vazby se atomy volně otáčejí. Podoby, které se liší jen natočením kolem jednoduchých vazeb, jsou **konformace**. Nejsou to izomery, molekula mezi nimi přechází miliardkrát za sekundu.' },
+            { type: 'compare', columns: [
+              { title: 'Stabilnější', icon: 'check', tone: 'good', points: ['ethan: **nezákrytová** konformace, vodíky sousedních uhlíků míří „mezi sebe“', 'cyklohexan: **židlička**, úhly téměř čtyřstěnné, molekula není pnutá'] },
+              { title: 'Méně stabilní', icon: 'cross', tone: 'bad', points: ['ethan: **zákrytová** konformace, vodíky přesně za sebou, o něco vyšší energie', 'cyklohexan: **vanička**'] },
+            ], caption: 'Rovinný šestiúhelník by měl úhly 120° místo ideálních 109,5°, proto se cyklohexan zkroutí.' },
             { type: 'callout', variant: 'fact', text: 'Cyklopropan je trojúhelník s úhly 60°. Vazby jsou tak napnuté, že se kruh snadno otevírá, a cyklopropan je proto mnohem reaktivnější než ostatní cykloalkany.' },
             { type: 'game', gameId: 'quickfire', text: 'Blesková výzva: kolik vzorců a názvů alkanů zvládneš za 60 sekund?' },
             { type: 'check', question: { kind: 'choice', q: 'Jaký je souhrnný vzorec cyklopentanu?', options: ['$C5H10$', '$C5H12$', '$C5H8$', '$C6H12$'], answer: 0, explain: 'Cykloalkany mají vzorec $C_{n}H_{2n}$: pro n = 5 je to $C5H10$. $C5H12$ je pentan s otevřeným řetězcem.' } },
@@ -442,36 +488,39 @@ CH3 — CH — CH — CH2 — CH2 — CH3
       sections: [
         {
           title: 'Dvojná a trojná vazba',
+          icon: 'bond',
           blocks: [
-            { type: 'p', text: '**Alkeny** mají v řetězci dvojnou vazbu $C=C$ a obecný vzorec $C_{n}H_{2n}$ (s jednou dvojnou vazbou). **Alkyny** mají trojnou vazbu $C≡C$ a vzorec $C_{n}H_{2n-2}$. Oboje jsou **nenasycené** uhlovodíky: na násobnou vazbu jde ještě něco „přidat“.' },
+            { type: 'p', text: '**Alkeny** mají dvojnou vazbu $C=C$ a (s jednou dvojnou vazbou) vzorec $C_{n}H_{2n}$. **Alkyny** mají trojnou vazbu $C≡C$ a vzorec $C_{n}H_{2n-2}$. Oboje jsou **nenasycené** uhlovodíky: na násobnou vazbu jde ještě něco „přidat“.' },
+            { type: 'molecule', molecules: ['C2H6', 'C2H4', 'C2H2'], labels: ['ethan: čtyřstěny', 'ethen: plochý, 120°', 'ethyn: lineární, 180°'] },
             { type: 'structure', art: s`
 H       H
  \     /
   C = C          H — C ≡ C — H
  /     \
 H       H`, caption: 'Ethen $C2H4$ (plochá molekula, úhly 120°) a ethyn $C2H2$ (lineární, 180°)' },
-            { type: 'p', text: 'Dvojná vazba se skládá ze dvou různých vazeb. Pevná **σ-vazba** leží přímo na spojnici jader. Slabší **π-vazba** vzniká bočním překryvem orbitalů nad a pod rovinou molekuly. Trojná vazba má jednu σ-vazbu a dvě π-vazby.' },
+            { type: 'p', text: 'Dvojná vazba má pevnou **σ-vazbu** přímo na spojnici jader a slabší **π-vazbu** z bočního překryvu orbitalů nad a pod rovinou molekuly. Trojná vazba má jednu σ-vazbu a dvě π-vazby.' },
             { type: 'callout', variant: 'remember', text: 'π-elektrony jsou „venku“, slabě držené a snadno dostupné. ==Proto jsou alkeny a alkyny mnohem reaktivnější než alkany.== Otočením by se π-vazba přetrhla, a tak se kolem dvojné vazby nedá volně otáčet. Odtud cis/trans izomerie z první lekce.' },
-            { type: 'table', headers: ['', 'Alkan', 'Alken', 'Alkyn'], rows: [
-              ['vazba', '$C-C$', '$C=C$', '$C≡C$'],
-              ['délka vazby', '154 pm', '134 pm', '120 pm'],
-              ['tvar kolem uhlíku', 'čtyřstěn, 109,5°', 'rovina, 120°', 'přímka, 180°'],
-              ['příklad', 'ethan', 'ethen (ethylen)', 'ethyn (acetylen)'],
+            { type: 'compare', columns: [
+              { title: 'Alkan', icon: 'bond', tone: 'a', points: ['$C-C$, délka 154 pm', 'čtyřstěn, 109,5°', '$C_{n}H_{2n+2}$, nasycený', 'ethan'] },
+              { title: 'Alken', icon: 'bond', tone: 'b', points: ['$C=C$, délka 134 pm', 'rovina, 120°', '$C_{n}H_{2n}$', 'ethen (ethylen)'] },
+              { title: 'Alkyn', icon: 'bond', tone: 'c', points: ['$C≡C$, délka 120 pm', 'přímka, 180°', '$C_{n}H_{2n-2}$', 'ethyn (acetylen)'] },
             ], caption: 'Čím víc vazeb mezi uhlíky, tím jsou si blíž' },
-            { type: 'callout', variant: 'fact', text: 'Ethen je nejvyráběnější organická látka na světě, přes 150 milionů tun ročně. Rostliny ho samy tvoří jako hormon zrání. Ethyn (acetylen) hoří v kyslíku plamenem o teplotě přes 3 000 °C, a proto se používá ke sváření a řezání oceli.' },
+            { type: 'callout', variant: 'fact', text: 'Ethen je nejvyráběnější organická látka na světě, přes 150 milionů tun ročně. Rostliny ho samy tvoří jako hormon zrání. Ethyn (acetylen) hoří v kyslíku plamenem o teplotě přes 3 000 °C, a proto se používá ke sváření a řezání oceli.' },
+            { type: 'reaction', equation: '2C2H2 + 5O2 -> 4CO2 + 2H2O', caption: 'hoření acetylenu ve svařovacím hořáku' },
             { type: 'check', question: { kind: 'choice', q: 'Jaký obecný vzorec mají alkyny s jednou trojnou vazbou?', options: ['$C_{n}H_{2n-2}$', '$C_{n}H_{2n}$', '$C_{n}H_{2n+2}$', '$C_{n}H_{n}$'], answer: 0, explain: 'Každá π-vazba ubere dva vodíky. Trojná vazba má dvě π-vazby, takže oproti alkanu chybí 4 vodíky: $C_{n}H_{2n-2}$.' } },
             { type: 'check', question: { kind: 'tf', q: 'Kolem dvojné vazby $C=C$ se atomy mohou volně otáčet stejně jako kolem jednoduché vazby.', answer: false, explain: 'Otočení by rozbilo překryv orbitalů π-vazby. Proto je dvojná vazba „zamčená“ a existují cis/trans izomery.' } },
           ],
         },
         {
           title: 'Názvosloví alkenů a alkynů',
+          icon: 'pencil',
           blocks: [
             { type: 'p', text: 'Alkeny a alkyny pojmenuješ jako alkany, jen koncovku **-an** vyměníš za **-en** (dvojná vazba) nebo **-yn** (trojná vazba). Číslo před koncovkou říká, na kterém uhlíku násobná vazba začíná: but-1-en, but-2-en.' },
-            { type: 'list', items: [
-              'Hlavní řetězec vede přes násobnou vazbu.',
-              'Číslování volíš tak, aby **násobná vazba** dostala co nejnižší lokant. Má přednost před větvemi.',
-              'Dvě dvojné vazby označí koncovka **-dien**, tři **-trien**, a před ni se vloží „a“: buta-1,3-dien.',
-              'U ethenu, propenu, ethynu a propynu se lokant nepíše, jiná poloha násobné vazby tu neexistuje.',
+            { type: 'iconlist', items: [
+              { icon: 'magnifier', title: 'Hlavní řetězec', text: 'vede přes násobnou vazbu' },
+              { icon: 'calculator', title: 'Nejnižší lokant', text: 'dostane **násobná vazba**, má přednost před větvemi' },
+              { icon: 'bond', title: 'Víc násobných vazeb', text: 'dvě dvojné: **-dien**, tři: **-trien**, a před koncovku se vloží „a“: buta-1,3-dien' },
+              { icon: 'check', title: 'Bez lokantu', text: 'ethen, propen, ethyn a propyn: jiná poloha násobné vazby tu neexistuje' },
             ] },
             { type: 'structure', art: s`
 5     4    3    2    1
@@ -490,6 +539,7 @@ CH3 — CH — CH = CH — CH3
               'but-2-yn: trojná vazba mezi C2 a C3, tedy $CH3-C≡C-CH3$.',
               'Kontrola: uhlík s trojnou vazbou může mít už jen jednu další vazbu.',
             ], answer: 'Obě látky mají vzorec $C4H6$, jsou to polohové izomery.' },
+            { type: 'molecule', molecules: ['C2H4', 'propene', 'C2H2'], labels: ['ethen = ethylen', 'propen = propylen', 'ethyn = acetylen'] },
             { type: 'callout', variant: 'tip', title: 'Triviální názvy', text: 'Potkáš je všude: **ethylen** = ethen, **propylen** = propen, **acetylen** = ethyn, **butadien** = buta-1,3-dien (surovina pro syntetický kaučuk).' },
             { type: 'check', question: { kind: 'text', q: 'Pojmenuj alken $CH2=CH-CH2-CH3$.', accept: ['but-1-en', 'but 1 en', '1-buten', 'buten-1'], explain: 'Čtyři uhlíky a dvojná vazba mezi C1 a C2: but-1-en.' } },
             { type: 'check', question: { kind: 'choice', q: 'Jak se správně jmenuje $CH3-CH=CH-CH2-CH2-CH3$?', options: ['hex-2-en', 'hex-4-en', 'hex-3-en', 'pent-2-en'], answer: 0, explain: 'Řetězec má 6 uhlíků a číslujeme zleva, aby dvojná vazba dostala lokant 2, ne 4.' } },
@@ -497,9 +547,13 @@ CH3 — CH — CH = CH — CH3
         },
         {
           title: 'Elektrofilní adice',
+          icon: 'ion-plus',
           blocks: [
-            { type: 'p', text: 'Typickou reakcí alkenů je **adice**: π-vazba se rozpojí a na oba uhlíky se připojí nové atomy. Z dvojné vazby zbude jednoduchá. Nic se neodštěpuje, dvě molekuly se spojí v jednu.' },
+            { type: 'p', text: 'Typickou reakcí alkenů je **adice**: π-vazba se rozpojí, na oba uhlíky se připojí nové atomy a z dvojné vazby zbude jednoduchá. Nic se neodštěpuje, dvě molekuly se spojí v jednu.' },
+            { type: 'diagram', id: 'addition-mechanism', caption: 'Elektrofil napadne π-elektrony, vznikne karbokation a na něj se připojí anion' },
             { type: 'p', text: 'Oblak π-elektronů přitahuje částice s nedostatkem elektronů, **elektrofily** („milovníky elektronů“), například proton $H^+$. Proto mluvíme o **elektrofilní adici** ($A_{E}$).' },
+            { type: 'reaction', equation: 'C2H4 + H2 -> C2H6', caption: 'hydrogenace ethenu na ethan (katalyzátor $Ni$ nebo $Pt$)' },
+            { type: 'reaction', equation: 'C2H4 + Br2 -> C2H4Br2', caption: 'bromace: vzniká 1,2-dibromethan $CH2Br-CH2Br$' },
             { type: 'table', headers: ['Činidlo', 'Reakce', 'Produkt z ethenu'], rows: [
               ['$H2$ (katalyzátor $Ni$ nebo $Pt$)', 'hydrogenace', 'ethan $CH3-CH3$'],
               ['$Br2$', 'bromace (halogenace)', '1,2-dibromethan $CH2Br-CH2Br$'],
@@ -509,20 +563,22 @@ CH3 — CH — CH = CH — CH3
             { type: 'callout', variant: 'tip', title: 'Důkaz násobné vazby', text: 'K vzorku přidej pár kapek **bromové vody** (oranžovohnědé). Alken nebo alkyn brom aduje a roztok se **odbarví**, alkan barvu nezmění. Brom je leptavý a jedovatý: pracuje se v digestoři, s brýlemi a rukavicemi.' },
             { type: 'p', text: 'U nesymetrického alkenu, jako je propen, může vodík skončit na dvou různých uhlících. Který produkt převládne, určuje **Markovnikovovo pravidlo**.' },
             { type: 'callout', variant: 'remember', title: 'Markovnikovovo pravidlo', text: '==Vodík z činidla $HX$ se naváže na ten uhlík dvojné vazby, který už má víc vodíků.== Kdo má, tomu bude přidáno.' },
-            { type: 'example', title: 'Adice $HBr$ na propen krok za krokem', problem: 'Jaký produkt vznikne z propenu $CH2=CH-CH3$ a bromovodíku?', steps: [
-              'π-elektrony dvojné vazby „chytí“ proton z molekuly $HBr$. Vazba $H-Br$ se rozštěpí **heterolyticky**: oba elektrony si vezme brom a odejde jako $Br^-$.',
-              'Proton se naváže na krajní uhlík $CH2$, ten s více vodíky. Na prostředním uhlíku vznikne kladný náboj, **karbokation** $CH3-C^+H-CH3$.',
-              'Tento sekundární karbokation je stabilnější než primární $C^+H2-CH2-CH3$, který by vznikl opačně. Sousední alkylové skupiny kladný náboj „rozmělní“.',
-              'Anion $Br^-$ se naváže na kladně nabitý uhlík.',
-            ], answer: 'Hlavním produktem je **2-brompropan** $CH3-CHBr-CH3$. 1-brompropanu vznikne jen málo.' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'ion-plus', title: 'Útok na proton', text: 'π-elektrony „chytí“ proton z $HBr$. Vazba $H-Br$ se štěpí **heterolyticky**: oba elektrony si vezme brom a odejde jako $Br^-$.' },
+              { icon: 'bond', title: 'Karbokation', text: 'proton se naváže na krajní $CH2$ (s více vodíky); na prostředním uhlíku vznikne **karbokation** $CH3-C^+H-CH3$' },
+              { icon: 'check', title: 'Stabilnější cesta', text: 'sekundární karbokation je stabilnější než primární $C^+H2-CH2-CH3$: sousední alkyly kladný náboj „rozmělní“' },
+              { icon: 'ion-minus', title: 'Připojení $Br^-$', text: 'anion se naváže na kladně nabitý uhlík' },
+            ], caption: 'Adice $HBr$ na propen: hlavním produktem je **2-brompropan** $CH3-CHBr-CH3$, 1-brompropanu vznikne jen málo.' },
             { type: 'check', question: { kind: 'text', q: 'Který hlavní produkt vznikne adicí vody na propen (katalyzátor $H^+$)? Napiš název.', accept: ['propan-2-ol', 'propan 2 ol', '2-propanol', 'isopropanol', 'isopropylalkohol'], explain: 'Podle Markovnikova jde vodík na krajní $CH2$ a skupina $-OH$ na prostřední uhlík: vznikne propan-2-ol $CH3-CH(OH)-CH3$.' } },
             { type: 'check', question: { kind: 'choice', q: 'Co pozoruješ, když přidáš bromovou vodu ke cyklohexenu (cyklický alken)?', options: ['oranžová barva zmizí', 'vznikne bílá sraženina', 'roztok zmodrá', 'nic, bromová voda reaguje jen s alkany'], answer: 0, explain: 'Cyklohexen má dvojnou vazbu, na kterou se brom aduje. Barevný brom se spotřebuje a roztok se odbarví.' } },
           ],
         },
         {
           title: 'Polymerace: z malých molekul obři',
+          icon: 'plastic-bottle',
           blocks: [
-            { type: 'p', text: 'Molekuly alkenů se umí adovat i samy na sebe. Tisíce malých molekul, **monomerů**, se spojí do jedné obří **makromolekuly**, **polymeru**. Tomuto ději říkáme **adiční polymerace**.' },
+            { type: 'p', text: 'Molekuly alkenů se umí adovat i samy na sebe. Tisíce malých **monomerů** se spojí do jedné obří **makromolekuly**, **polymeru**. Tomuto ději říkáme **adiční polymerace**.' },
+            { type: 'diagram', id: 'polymer-chain', caption: 'π-vazby monomerů se rozpojí a molekuly se spojí do dlouhého řetězce' },
             { type: 'formula', text: '$n CH2=CH2 -> -[CH2-CH2]_{n}-$', caption: 'polymerace ethenu na polyethylen (PE)' },
             { type: 'structure', art: s`
   H   H   H   H   H   H
@@ -530,23 +586,26 @@ CH3 — CH — CH = CH — CH3
 — C — C — C — C — C — C —
   |   |   |   |   |   |
   H   H   H   H   H   H`, caption: 'Výřez řetězce polyethylenu: pořád se opakuje jednotka $-CH2-CH2-$' },
-            { type: 'table', headers: ['Monomer', 'Polymer', 'Použití'], rows: [
-              ['ethen $CH2=CH2$', 'polyethylen (PE)', 'sáčky, fólie, lahve, kanystry'],
-              ['propen $CH2=CH-CH3$', 'polypropylen (PP)', 'kelímky, krabičky, díly aut, textil'],
-              ['chlorethen (vinylchlorid) $CH2=CHCl$', 'polyvinylchlorid (PVC)', 'okna, trubky, podlahy, kabely'],
-              ['styren $CH2=CH-C6H5$', 'polystyren (PS)', 'tácky, pěnový polystyren na zateplení'],
-              ['tetrafluorethen $CF2=CF2$', 'polytetrafluorethylen (PTFE, teflon)', 'nepřilnavé pánve, těsnění'],
-            ], caption: 'Nejdůležitější polymery z alkenů' },
+            { type: 'molecule', molecules: ['C2H4', 'propene', 'vinyl-chloride', 'styrene'], labels: ['ethen -> PE', 'propen -> PP', 'chlorethen (vinylchlorid) -> PVC', 'styren -> PS'], caption: 'Monomery nejdůležitějších plastů' },
+            { type: 'iconlist', items: [
+              { icon: 'plastic-bottle', title: 'Polyethylen (PE)', text: 'z ethenu $CH2=CH2$: sáčky, fólie, lahve, kanystry' },
+              { icon: 'car', title: 'Polypropylen (PP)', text: 'z propenu $CH2=CH-CH3$: kelímky, krabičky, díly aut, textil' },
+              { icon: 'water-tap', title: 'Polyvinylchlorid (PVC)', text: 'z chlorethenu (vinylchloridu) $CH2=CHCl$: okna, trubky, podlahy, kabely' },
+              { icon: 'cold', title: 'Polystyren (PS)', text: 'ze styrenu $CH2=CH-C6H5$: tácky, pěnový polystyren na zateplení' },
+              { icon: 'egg', title: 'Teflon (PTFE)', text: 'polytetrafluorethylen z tetrafluorethenu $CF2=CF2$: nepřilnavé pánve, těsnění' },
+            ] },
             { type: 'callout', variant: 'fact', text: 'Polyethylen objevili v roce 1933 v britské firmě ICI víceméně náhodou: v aparatuře pod vysokým tlakem se objevila bílá vosková hmota. Dnes je to nejvyráběnější plast na světě.' },
             { type: 'p', text: 'Kondenzační polymeraci, recyklaci plastů a mikroplasty probereme v poslední lekci této úrovně.' },
-            { type: 'check', question: { kind: 'number', q: 'Řetězec polyethylenu má molární hmotnost 280 000 g/mol. Z kolika molekul ethenu ($M$ = 28 g/mol) vznikl?', answer: 10000, explain: 'Při adiční polymeraci se nic neodštěpuje, takže 280 000 : 28 = 10 000 monomerů.' } },
+            { type: 'check', question: { kind: 'number', q: 'Řetězec polyethylenu má molární hmotnost 280 000 g/mol. Z kolika molekul ethenu ($M$ = 28 g/mol) vznikl?', answer: 10000, explain: 'Při adiční polymeraci se nic neodštěpuje, takže 280 000 : 28 = 10 000 monomerů.' } },
             { type: 'check', question: { kind: 'tf', q: 'Při adiční polymeraci ethenu se odštěpuje voda.', answer: false, explain: 'Při adiční polymeraci se jen rozpojují π-vazby a monomery se spojují. Žádný vedlejší produkt nevzniká.' } },
           ],
         },
         {
           title: 'Benzen a aromaticita',
+          icon: 'molecule',
           blocks: [
-            { type: 'p', text: '**Benzen** $C6H6$ je bezbarvá kapalina (var 80 °C) s typickým zápachem. Šest uhlíků tvoří plochý šestiúhelník a na každém sedí jeden vodík. Podle vzorce by to měl být superreaktivní „trien“, ale bromovou vodu vůbec neodbarví. Proč?' },
+            { type: 'p', text: '**Benzen** $C6H6$ je bezbarvá kapalina (var 80 °C) s typickým zápachem: šest uhlíků v plochém šestiúhelníku, na každém jeden vodík. Podle vzorce by to měl být superreaktivní „trien“, ale bromovou vodu vůbec neodbarví. Proč?' },
+            { type: 'molecule', molecules: ['benzene'], labels: ['benzen $C6H6$: plochý kruh'] },
             { type: 'structure', art: s`
       CH
     //  \
@@ -556,32 +615,37 @@ CH3 — CH — CH = CH — CH3
     \\  /
       CH`, caption: 'Kekulého vzorec benzenu. Dvojné vazby ale ve skutečnosti nejsou na pevných místech.' },
             { type: 'callout', variant: 'fact', title: 'Had, který se kouše do ocasu', text: 'August Kekulé tvrdil, že ho kruhový tvar benzenu napadl v roce 1865, když podřimoval u krbu a zdál se mu had, který si kouše vlastní ocas.' },
-            { type: 'p', text: 'Měření ukázala, že všech šest vazeb $C-C$ v benzenu je **stejně dlouhých** (139 pm), něco mezi jednoduchou (154 pm) a dvojnou (134 pm). Šest π-elektronů totiž nepatří ke konkrétním vazbám, ale je **delokalizovaných** nad celým kruhem. Proto se benzen často kreslí jako šestiúhelník s kružnicí uvnitř.' },
+            { type: 'p', text: 'Všech šest vazeb $C-C$ je **stejně dlouhých** (139 pm), něco mezi jednoduchou (154 pm) a dvojnou (134 pm). Šest π-elektronů je totiž **delokalizovaných** nad celým kruhem, proto se benzen kreslí i jako šestiúhelník s kružnicí uvnitř.' },
             { type: 'keyterms', items: [
               { term: 'Aromatický systém', def: 'plochý cyklus s delokalizovanými π-elektrony, jako v benzenu jich bývá 6 (obecně $4n + 2$, tzv. Hückelovo pravidlo)' },
               { term: 'Areny', def: 'aromatické uhlovodíky, tedy uhlovodíky s benzenovým jádrem' },
               { term: 'Fenyl', def: 'skupina $C6H5-$, benzen bez jednoho vodíku' },
             ] },
-            { type: 'p', text: 'Delokalizace dělá z benzenu mimořádně stabilní molekulu. Adice by aromatický systém zničila, a tak benzen s elektrofily reaguje jinak, **elektrofilní substitucí** ($S_{E}$). Vodík na jádře se vymění za jinou skupinu a aromatický kruh zůstane zachovaný.' },
-            { type: 'example', title: 'Nitrace benzenu', problem: 'Jak vzniká nitrobenzen z benzenu a nitrační směsi (koncentrovaná $HNO3$ + koncentrovaná $H2SO4$)?', steps: [
-              'Kyselina sírová pomůže z kyseliny dusičné vytvořit elektrofil, **nitroniový kation** $NO2^+$.',
-              '$NO2^+$ napadne π-elektrony jádra a naváže se na jeden uhlík. Vznikne kladně nabitý meziprodukt, ve kterém je aromaticita dočasně porušená.',
-              'Z téhož uhlíku se odštěpí proton $H^+$. Elektrony se vrátí do kruhu a aromaticita je zpět.',
-              'Celkově: $C6H6 + HNO3 -> C6H5NO2 + H2O$',
-            ], answer: 'Vznikne **nitrobenzen** $C6H5NO2$: vodík na jádře nahradila nitroskupina $-NO2$.' },
-            { type: 'formula', text: '$C6H6 + Br2 -> C6H5Br + HBr$', caption: 'bromace benzenu, katalyzátor $FeBr3$: vzniká brombenzen (opět substituce, ne adice)' },
+            { type: 'compare', columns: [
+              { title: 'Alken (cyklohexen)', icon: 'bond', tone: 'a', points: ['π-elektrony v jedné dvojné vazbě', 'elektrofilní **adice**', 'bromová voda se odbarví'] },
+              { title: 'Benzen', icon: 'molecule', tone: 'b', points: ['6 delokalizovaných π-elektronů, mimořádně stabilní', 'elektrofilní **substituce**, kruh zůstane', 'bromovou vodu neodbarví'] },
+            ], caption: 'Adice by aromatický systém zničila, a tak benzen reaguje **elektrofilní substitucí** ($S_{E}$): vodík na jádře se vymění za jinou skupinu.' },
+            { type: 'reaction', equation: 'C6H6 + HNO3 -> C6H5NO2 + H2O', caption: 'nitrace benzenu nitrační směsí (koncentrovaná $HNO3$ + koncentrovaná $H2SO4$)' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'catalyst', title: 'Vznik elektrofilu', text: 'kyselina sírová pomůže z $HNO3$ vytvořit **nitroniový kation** $NO2^+$' },
+              { icon: 'ion-plus', title: 'Útok na jádro', text: '$NO2^+$ se naváže na jeden uhlík; v kladném meziproduktu je aromaticita dočasně porušená' },
+              { icon: 'arrow-cycle', title: 'Návrat aromaticity', text: 'z téhož uhlíku se odštěpí $H^+$ a elektrony se vrátí do kruhu' },
+            ], caption: 'Vznikne **nitrobenzen** $C6H5NO2$: vodík na jádře nahradila nitroskupina $-NO2$.' },
+            { type: 'reaction', equation: 'C6H6 + Br2 -> C6H5Br + HBr', caption: 'bromace benzenu, katalyzátor $FeBr3$: vzniká brombenzen (opět substituce, ne adice)' },
             { type: 'check', question: { kind: 'choice', q: 'Proč benzen neodbarví bromovou vodu, i když podle Kekulého vzorce má „tři dvojné vazby“?', options: [
               'Jeho π-elektrony jsou delokalizované a adice by zničila stabilní aromatický systém',
               'Benzen je nasycený uhlovodík',
               'Brom se v benzenu nerozpouští',
-              'Benzen obsahuje jen jednoduché vazby dlouhé 154 pm',
+              'Benzen obsahuje jen jednoduché vazby dlouhé 154 pm',
             ], answer: 0, explain: 'Aromatický systém je tak stabilní, že benzen adici „odmítá“. S bromem reaguje jen za katalýzy $FeBr3$, a to substitucí.' } },
           ],
         },
         {
           title: 'Důležité areny a jejich rizika',
+          icon: 'hazard',
           blocks: [
-            { type: 'p', text: 'Nahradíš-li v benzenu jeden vodík methylem, dostaneš **toluen** (methylbenzen) $C6H5-CH3$. Je to běžné rozpouštědlo barev a lepidel a surovina pro výrobu výbušniny TNT. Dvě methylové skupiny na jádře má **xylen** (dimethylbenzen).' },
+            { type: 'p', text: 'Na benzenové jádro lze navěsit další skupiny nebo k němu připojit další kruh. Tak vzniká rodina **arenů**.' },
+            { type: 'molecule', molecules: ['toluene', 'naphthalene', 'styrene'], labels: ['toluen (methylbenzen)', 'naftalen $C10H8$', 'styren (vinylbenzen)'] },
             { type: 'structure', art: s`
       CH3
       |
@@ -592,12 +656,21 @@ CH3 — CH — CH = CH — CH3
   HC     CH
     \\  /
       CH`, caption: 'Toluen (methylbenzen)' },
-            { type: 'p', text: '**Naftalen** $C10H8$ má dva benzenové kruhy se společnou stranou. Je to bílá krystalická látka s pronikavým pachem, kterou si dřív lidé dávali do skříní proti molům. **Styren** (vinylbenzen) $C6H5-CH=CH2$ je surovina pro polystyren.' },
-            { type: 'callout', variant: 'warning', title: 'Benzen je karcinogen', text: 'Benzen poškozuje kostní dřeň a prokazatelně způsobuje leukemii. Dřív byl běžným rozpouštědlem, dnes ho nahradil méně nebezpečný toluen. V benzinu ho v EU smí být nejvýš 1 % objemu. A neplést si: benzen je čistá látka $C6H6$, benzin je směs uhlovodíků z ropy.' },
-            { type: 'callout', variant: 'fact', text: 'Při nedokonalém hoření (cigaretový kouř, výfukové plyny, připálené maso z grilu) vznikají **polycyklické aromatické uhlovodíky** s několika spojenými benzenovými kruhy. Nejznámější z nich, benzo[a]pyren, patří mezi silné karcinogeny.' },
+            { type: 'iconlist', items: [
+              { icon: 'beaker', title: 'Toluen $C6H5-CH3$', text: 'methylbenzen: rozpouštědlo barev a lepidel, surovina pro výbušninu TNT' },
+              { icon: 'molecule', title: 'Xylen', text: 'dimethylbenzen: dvě methylové skupiny na jádře' },
+              { icon: 'crystal', title: 'Naftalen $C10H8$', text: 'dva benzenové kruhy se společnou stranou; bílé krystaly s pronikavým pachem, dřív proti molům do skříní' },
+              { icon: 'plastic-bottle', title: 'Styren $C6H5-CH=CH2$', text: 'vinylbenzen, surovina pro polystyren' },
+            ] },
+            { type: 'iconlist', items: [
+              { icon: 'hazard', title: 'Benzen je karcinogen', text: 'poškozuje kostní dřeň a prokazatelně způsobuje leukemii' },
+              { icon: 'flask', title: 'Náhrada toluenem', text: 'dřív běžné rozpouštědlo, dnes ho nahradil méně nebezpečný toluen' },
+              { icon: 'gas-cloud', title: 'Polycyklické aromáty', text: 'několik spojených benzenových kruhů; vznikají při nedokonalém hoření (cigaretový kouř, výfuky, připálené maso z grilu). Benzo[a]pyren je silný karcinogen.' },
+            ] },
+            { type: 'callout', variant: 'warning', title: 'Benzen × benzin', text: 'Neplést si: benzen je čistá látka $C6H6$, benzin je směs uhlovodíků z ropy. Benzenu smí být v benzinu v EU nejvýš 1 % objemu.' },
             { type: 'game', gameId: 'swipe', text: 'Pravda, nebo lež? Otestuj, co víš o alkenech, alkynech a arenech.' },
             { type: 'check', question: { kind: 'multi', q: 'Které látky patří mezi areny?', options: ['toluen', 'naftalen', 'cyklohexan', 'styren', 'hex-1-en'], answers: [0, 1, 3], explain: 'Toluen, naftalen i styren mají benzenové jádro. Cyklohexan je alicyklický a hex-1-en je obyčejný alken.' } },
-            { type: 'check', question: { kind: 'tf', q: 'Benzin a benzen jsou dva názvy pro tutéž látku.', answer: false, explain: 'Benzen je jedna konkrétní aromatická látka $C6H6$. Benzin je palivo, směs hlavně alkanů $C5–C10$, benzenu smí obsahovat nejvýš 1 %.' } },
+            { type: 'check', question: { kind: 'tf', q: 'Benzin a benzen jsou dva názvy pro tutéž látku.', answer: false, explain: 'Benzen je jedna konkrétní aromatická látka $C6H6$. Benzin je palivo, směs hlavně alkanů $C5–C10$, benzenu smí obsahovat nejvýš 1 %.' } },
           ],
         },
       ],
@@ -652,9 +725,10 @@ CH3 — CH — CH = CH — CH3
       sections: [
         {
           title: 'Funkční skupina: co dělá molekulu',
+          icon: 'magnifier',
           blocks: [
-            { type: 'p', text: 'Když v uhlovodíku nahradíš vodík jiným atomem nebo skupinou atomů, vznikne **derivát uhlovodíku**. Ta nová část se nazývá **funkční (charakteristická) skupina** a právě ona rozhoduje o tom, jak se látka chová.' },
-            { type: 'p', text: 'Uhlovodíková část je jen „nosič“. Methanol, ethanol i propanol se chovají podobně, protože všechny mají skupinu $-OH$. Obecně píšeme $R-OH$, kde $R$ je libovolný uhlovodíkový zbytek.' },
+            { type: 'p', text: 'Nahradíš-li v uhlovodíku vodík jiným atomem nebo skupinou, vznikne **derivát uhlovodíku**. Nová část je **funkční (charakteristická) skupina** a rozhoduje o tom, jak se látka chová. Uhlovodíkový zbytek je jen „nosič“: methanol, ethanol i propanol se chovají podobně, protože mají skupinu $-OH$ (obecně $R-OH$).' },
+            { type: 'molecule', molecules: ['CH3Cl', 'ethanol', 'acetic-acid', 'methylamine'], labels: ['$-Cl$: halogenderivát', '$-OH$: alkohol', '$-COOH$: karboxylová kyselina', '$-NH2$: amin'], caption: 'Stejný „nosič“, jiná skupina, jiné chování' },
             { type: 'table', headers: ['Skupina', 'Třída', 'Přípona / předpona', 'Příklad'], rows: [
               ['$-F$, $-Cl$, $-Br$, $-I$', 'halogenderiváty', 'fluor-, chlor-, brom-, jod-', 'chlormethan $CH3Cl$'],
               ['$-OH$ na uhlíku řetězce', 'alkoholy', '-ol / hydroxy-', 'ethanol $CH3CH2OH$'],
@@ -681,22 +755,30 @@ CH3 — CH — CH = CH — CH3
         },
         {
           title: 'Halogenderiváty',
+          icon: 'ozone',
           blocks: [
-            { type: 'p', text: '**Halogenderiváty** vzniknou náhradou vodíku atomem halogenu. Halogen se v názvu vyjadřuje vždy předponou **fluor-, chlor-, brom-, jod-** s lokantem. Více stejných halogenů dostane násobící předponu.' },
-            { type: 'list', items: [
-              '$CH3Cl$ chlormethan',
-              '$CH2Cl2$ dichlormethan, rozpouštědlo',
-              '$CHCl3$ trichlormethan (chloroform)',
-              '$CH3-CHBr-CH3$ 2-brompropan',
-              '$CH2=CHCl$ chlorethen (vinylchlorid), monomer PVC',
-              '$CF2=CF2$ tetrafluorethen, monomer teflonu',
+            { type: 'p', text: '**Halogenderiváty** vzniknou náhradou vodíku atomem halogenu. Halogen se v názvu vyjadřuje vždy předponou **fluor-, chlor-, brom-, jod-** s lokantem, více stejných halogenů dostane násobící předponu.' },
+            { type: 'molecule', molecules: ['CH3Cl', 'vinyl-chloride', 'CCl2F2'], labels: ['chlormethan', 'chlorethen (vinylchlorid)', 'dichlordifluormethan (freon)'] },
+            { type: 'iconlist', items: [
+              { icon: 'molecule', title: '$CH3Cl$', text: 'chlormethan' },
+              { icon: 'beaker', title: '$CH2Cl2$', text: 'dichlormethan, rozpouštědlo' },
+              { icon: 'syringe', title: '$CHCl3$', text: 'trichlormethan (chloroform)' },
+              { icon: 'bond', title: '$CH3-CHBr-CH3$', text: '2-brompropan' },
+              { icon: 'water-tap', title: '$CH2=CHCl$', text: 'chlorethen (vinylchlorid), monomer PVC' },
+              { icon: 'egg', title: '$CF2=CF2$', text: 'tetrafluorethen, monomer teflonu' },
             ] },
             { type: 'formula', text: '$C^{δ+}-X^{δ-}$', caption: 'vazba uhlík–halogen je polární, uhlík nese částečný kladný náboj' },
-            { type: 'p', text: 'Halogen je elektronegativnější než uhlík, a tak je vazba $C-X$ **polární**. Na kladně polarizovaném uhlíku stojí jejich reaktivita (uvidíš na další obrazovce). Halogenderiváty se nemísí s vodou a ty s více halogeny bývají nehořlavé a těžší než voda.' },
+            { type: 'p', text: 'Halogen je elektronegativnější než uhlík, a tak je vazba $C-X$ **polární** a na kladně polarizovaném uhlíku stojí reaktivita halogenderivátů. S vodou se nemísí a ty s více halogeny bývají nehořlavé a těžší než voda.' },
             { type: 'callout', variant: 'fact', text: 'Teflon (PTFE) je tak nereaktivní a kluzký, že na něm skoro nic neulpí. Objevil ho v roce 1938 Roy Plunkett, když mu v tlakové lahvi s tetrafluorethenem samovolně vznikl bílý prášek.' },
-            { type: 'p', text: '**Freony** (chlorfluorované uhlovodíky, CFC), např. dichlordifluormethan $CCl2F2$, byly ideální náplní ledniček a sprejů: nejedovaté, nehořlavé a velmi stálé. Právě stálost je ale zradila. Vydrží tak dlouho, že vystoupají až do stratosféry, kde z nich UV záření odštěpí radikál chloru.' },
+            { type: 'diagram', id: 'ozone-layer', caption: 'Ozonová vrstva ve stratosféře nás chrání před UV zářením. Freony ji rozkládají.' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'cold', title: 'Ledničky a spreje', text: '**freony** (chlorfluorované uhlovodíky, CFC), např. $CCl2F2$: nejedovaté, nehořlavé a velmi stálé' },
+              { icon: 'cloud', title: 'Cesta vzhůru', text: 'vydrží tak dlouho, že vystoupají až do stratosféry' },
+              { icon: 'sun', title: 'UV záření', text: 'odštěpí z freonu radikál chloru $Cl·$' },
+              { icon: 'ozone', title: 'Rozklad ozonu', text: 'jediný atom chloru zničí až 100 000 molekul ozonu; nad Antarktidou vznikla ozonová díra' },
+              { icon: 'earth', title: 'Montrealský protokol (1987)', text: 'výrobu freonů zakázal; ozonová díra nad Antarktidou by se měla zacelit kolem roku 2066' },
+            ], caption: 'Proč freony ničí ozonovou vrstvu' },
             { type: 'formula', text: '$Cl· + O3 -> ClO· + O2$ a $ClO· + O -> Cl· + O2$', caption: 'radikál chloru rozkládá ozon a sám se přitom neustále obnovuje' },
-            { type: 'callout', variant: 'warning', title: 'Freony a ozonová vrstva', text: 'Jediný atom chloru dokáže zničit až 100 000 molekul ozonu, který nás chrání před UV zářením. Nad Antarktidou tak vznikla ozonová díra. Montrealský protokol z roku 1987 výrobu freonů zakázal a ozonová vrstva se pomalu obnovuje, nad Antarktidou by se měla zacelit kolem roku 2066.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč freony poškozují ozonovou vrstvu?', options: [
               'UV záření z nich uvolní radikály chloru, které katalyticky rozkládají ozon',
               'Jsou jedovaté pro fytoplankton v oceánech',
@@ -708,17 +790,15 @@ CH3 — CH — CH = CH — CH3
         },
         {
           title: 'Substituce, nebo eliminace?',
+          icon: 'question',
           blocks: [
-            { type: 'p', text: 'Kladně polarizovaný uhlík v halogenderivátu láká částice, které mají volný elektronový pár nebo záporný náboj, například $OH^-$. Takovým částicím říkáme **nukleofily** („milovníci jader“).' },
-            { type: 'p', text: 'Nukleofil napadne uhlík a vytlačí z něj halogen jako anion. To je **nukleofilní substituce** ($S_{N}$). Zahříváním bromethanu s vodným roztokem $NaOH$ tak vznikne ethanol:' },
-            { type: 'formula', text: '$CH3-CH2-Br + OH^- -> CH3-CH2-OH + Br^-$', caption: 'nukleofilní substituce: halogen vystřídá skupina $-OH$' },
-            { type: 'p', text: 'Když ale halogenderivát zahřeješ s hydroxidem draselným rozpuštěným v **ethanolu** (ne ve vodě), chová se $OH^-$ spíš jako zásada. Utrhne proton ze sousedního uhlíku, halogen odejde a vznikne dvojná vazba. To je **eliminace** ($E$), opak adice.' },
-            { type: 'formula', text: '$CH3-CH2-Br + KOH -> CH2=CH2 + KBr + H2O$', caption: 'eliminace v horkém ethanolovém roztoku $KOH$: vzniká ethen' },
-            { type: 'table', headers: ['', 'Substituce ($S_{N}$)', 'Eliminace ($E$)'], rows: [
-              ['podmínky', 'vodný roztok $NaOH$, zahřívání', 'horký roztok $KOH$ v ethanolu'],
-              ['co se stane', 'halogen nahradí skupina $-OH$', 'odštěpí se $HX$, vznikne $C=C$'],
-              ['produkt z bromethanu', 'ethanol', 'ethen'],
+            { type: 'p', text: 'Kladně polarizovaný uhlík láká částice s volným elektronovým párem nebo záporným nábojem, například $OH^-$. Takovým částicím říkáme **nukleofily** („milovníci jader“).' },
+            { type: 'compare', columns: [
+              { title: 'Nukleofilní substituce ($S_{N}$)', icon: 'drop', tone: 'a', points: ['vodný roztok $NaOH$, zahřívání', 'nukleofil $OH^-$ napadne uhlík a vytlačí halogen jako anion', 'z bromethanu vznikne **ethanol**'] },
+              { title: 'Eliminace ($E$)', icon: 'heat', tone: 'b', points: ['horký roztok $KOH$ v **ethanolu** (ne ve vodě)', '$OH^-$ jako zásada utrhne proton ze sousedního uhlíku, odštěpí se $HX$', 'vznikne dvojná vazba $C=C$: z bromethanu **ethen**; opak adice'] },
             ] },
+            { type: 'reaction', equation: 'C2H5Br + NaOH -> C2H5OH + NaBr', caption: 'substituce: halogen vystřídá skupina $-OH$ (iontově $CH3-CH2-Br + OH^- -> CH3-CH2-OH + Br^-$)' },
+            { type: 'reaction', equation: 'C2H5Br + KOH -> C2H4 + KBr + H2O', caption: 'eliminace v horkém ethanolovém roztoku $KOH$: vzniká ethen' },
             { type: 'callout', variant: 'mascot', text: 'Stejná činidla, jiný výsledek! Voda a mírnější podmínky vedou k substituci, alkohol a horko k eliminaci. Mechanismy si pořádně rozebereme v poslední lekci.' },
             { type: 'check', question: { kind: 'choice', q: 'Co vznikne z 2-brompropanu v horkém ethanolovém roztoku $KOH$?', options: ['propen', 'propan-2-ol', 'propan', '2,2-dibrompropan'], answer: 0, explain: 'Horký ethanolový $KOH$ vede k eliminaci: odštěpí se $HBr$ a vznikne dvojná vazba, tedy propen.' } },
             { type: 'check', question: { kind: 'tf', q: 'Nukleofil je částice s nedostatkem elektronů, která napadá místa s vysokou elektronovou hustotou.', answer: false, explain: 'To je popis elektrofilu. Nukleofil má volný elektronový pár nebo záporný náboj a napadá kladně polarizovaný uhlík.' } },
@@ -726,15 +806,15 @@ CH3 — CH — CH = CH — CH3
         },
         {
           title: 'Alkoholy: stavba, názvy a vodíkové můstky',
+          icon: 'glass',
           blocks: [
             { type: 'p', text: '**Alkoholy** mají **hydroxylovou skupinu** $-OH$ navázanou na uhlík s jednoduchými vazbami. Název tvoří přípona **-ol** s lokantem: methanol, ethanol, propan-1-ol, propan-2-ol, butan-2-ol.' },
-            { type: 'p', text: 'Podle toho, na kolik dalších uhlíků je navázaný uhlík nesoucí $-OH$, rozlišujeme alkoholy **primární**, **sekundární** a **terciární**.' },
-            { type: 'structure', art: s`
-CH3 — CH2 — OH       primární
-
-CH3 — CH — CH3       sekundární
-      |
-      OH`, caption: 'Ethanol (primární) a propan-2-ol (sekundární)' },
+            { type: 'molecule', molecules: ['methanol', 'ethanol', 'propan-2-ol'], labels: ['methanol $CH3OH$', 'ethanol $C2H5OH$', 'propan-2-ol'] },
+            { type: 'compare', columns: [
+              { title: 'Primární', tone: 'a', points: ['uhlík s $-OH$ nese 1 další uhlík', 'ethanol $CH3-CH2-OH$, propan-1-ol'] },
+              { title: 'Sekundární', tone: 'b', points: ['uhlík s $-OH$ nese 2 další uhlíky', 'propan-2-ol $CH3-CH(OH)-CH3$, butan-2-ol'] },
+              { title: 'Terciární', tone: 'c', points: ['uhlík s $-OH$ nese 3 další uhlíky', '2-methylpropan-2-ol'] },
+            ], caption: 'Rozhoduje, na kolik dalších uhlíků je navázaný uhlík nesoucí $-OH$' },
             { type: 'structure', art: s`
       CH3
       |
@@ -742,40 +822,60 @@ CH3 — C — CH3        terciární
       |
       OH`, caption: '2-methylpropan-2-ol: uhlík se skupinou $-OH$ nese tři další uhlíky' },
             { type: 'p', text: 'Molekuly s více skupinami $-OH$ jsou **dioly** a **trioly**. **Ethan-1,2-diol** (ethylenglykol) je sladký a jedovatý a plní se jím chladiče aut jako nemrznoucí směs. **Propan-1,2,3-triol** je glycerol.' },
-            { type: 'p', text: 'Skupina $-OH$ tvoří **vodíkové můstky** (úroveň 3). Proto mají alkoholy mnohem vyšší teploty varu než alkany s podobnou molární hmotností a ty krátké se s vodou mísí v libovolném poměru. S délkou řetězce ale rozpustnost klesá, protože převládne nepolární uhlovodíkový „ocas“.' },
+            { type: 'molecule', molecules: ['ethylene-glycol', 'glycerol'], labels: ['ethan-1,2-diol (ethylenglykol)', 'propan-1,2,3-triol (glycerol)'] },
+            { type: 'p', text: 'Skupina $-OH$ tvoří **vodíkové můstky** (úroveň 3). Alkoholy proto vřou mnohem výš než alkany s podobnou molární hmotností a ty krátké se s vodou mísí v libovolném poměru. S délkou řetězce rozpustnost klesá, protože převládne nepolární uhlovodíkový „ocas“.' },
+            { type: 'diagram', id: 'hydrogen-bonds', caption: 'Vodíkové můstky (úroveň 3): stejně drží pohromadě i molekuly alkoholů přes skupiny $-OH$' },
             { type: 'table', headers: ['Látka', 'M (g/mol)', 'Teplota varu', 'Ve vodě'], rows: [
-              ['propan $C3H8$', '44', '−42 °C', 'nerozpustný'],
-              ['ethanol $C2H5OH$', '46', '78 °C', 'mísí se neomezeně'],
-              ['butan-1-ol $C4H9OH$', '74', '118 °C', 'omezeně, asi 7 g ve 100 g vody'],
-              ['hexan-1-ol $C6H13OH$', '102', '157 °C', 'téměř nerozpustný'],
+              ['propan $C3H8$', '44', '−42 °C', 'nerozpustný'],
+              ['ethanol $C2H5OH$', '46', '78 °C', 'mísí se neomezeně'],
+              ['butan-1-ol $C4H9OH$', '74', '118 °C', 'omezeně, asi 7 g ve 100 g vody'],
+              ['hexan-1-ol $C6H13OH$', '102', '157 °C', 'téměř nerozpustný'],
             ], caption: 'Vodíkové můstky zvyšují teplotu varu, dlouhý řetězec snižuje rozpustnost' },
             { type: 'check', question: { kind: 'choice', q: 'Který alkohol je terciární?', options: ['2-methylpropan-2-ol', 'butan-2-ol', 'propan-1-ol', '2-methylpropan-1-ol'], answer: 0, explain: 'V 2-methylpropan-2-olu nese uhlík se skupinou $-OH$ tři methyly. Butan-2-ol je sekundární, propan-1-ol i 2-methylpropan-1-ol primární.' } },
-            { type: 'check', question: { kind: 'tf', q: 'Ethanol má mnohem vyšší teplotu varu než propan hlavně díky vodíkovým můstkům.', answer: true, explain: 'Molární hmotnost mají skoro stejnou (46 a 44 g/mol), ale molekuly ethanolu drží pohromadě vodíkové můstky.' } },
+            { type: 'check', question: { kind: 'tf', q: 'Ethanol má mnohem vyšší teplotu varu než propan hlavně díky vodíkovým můstkům.', answer: true, explain: 'Molární hmotnost mají skoro stejnou (46 a 44 g/mol), ale molekuly ethanolu drží pohromadě vodíkové můstky.' } },
           ],
         },
         {
           title: 'Významné alkoholy a jejich oxidace',
+          icon: 'flask',
           blocks: [
-            { type: 'p', text: '**Ethanol** vzniká **alkoholovým kvašením** cukrů pomocí kvasinek bez přístupu vzduchu. Kvasinky vydrží zhruba do 15 % alkoholu, silnější nápoje se proto destilují.' },
-            { type: 'formula', text: '$C6H12O6 -> 2C2H5OH + 2CO2$', caption: 'alkoholové kvašení glukosy' },
-            { type: 'p', text: 'Ethanol se používá jako rozpouštědlo, k dezinfekci (nejlépe účinkuje asi 70% roztok) a jako biopalivo přidávané do benzinu. V těle tlumí nervovou soustavu a zatěžuje játra. Na kocovině se podílí i jeho jedovatý oxidační produkt ethanal (acetaldehyd).' },
-            { type: 'p', text: 'V laboratoři i v těle se alkoholy **oxidují**. Co vznikne, záleží na typu alkoholu:' },
+            { type: 'p', text: '**Ethanol** vzniká **alkoholovým kvašením** cukrů pomocí kvasinek bez přístupu vzduchu. Kvasinky vydrží zhruba do 15 % alkoholu, silnější nápoje se proto destilují.' },
+            { type: 'reaction', equation: 'C6H12O6 -> 2C2H5OH + 2CO2', caption: 'alkoholové kvašení glukosy' },
+            { type: 'iconlist', items: [
+              { icon: 'beaker', title: 'Rozpouštědlo' },
+              { icon: 'gloves', title: 'Dezinfekce', text: 'nejlépe účinkuje asi 70% roztok' },
+              { icon: 'fuel', title: 'Biopalivo', text: 'přidává se do benzinu' },
+              { icon: 'warning', title: 'V těle', text: 'tlumí nervovou soustavu a zatěžuje játra; na kocovině se podílí i jedovatý oxidační produkt ethanal (acetaldehyd)' },
+            ] },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'glass', title: 'Primární alkohol', text: 'ethanol' },
+              { icon: 'flask', title: 'Aldehyd', text: 'ethanal' },
+              { icon: 'lemon', title: 'Karboxylová kyselina', text: 'kyselina octová' },
+            ], caption: 'V laboratoři i v těle se alkoholy **oxidují**. Co vznikne, záleží na typu alkoholu.' },
             { type: 'table', headers: ['Alkohol', 'Oxidací vzniká', 'Příklad'], rows: [
               ['primární', 'aldehyd, dál karboxylová kyselina', 'ethanol -> ethanal -> kyselina octová'],
               ['sekundární', 'keton', 'propan-2-ol -> propanon (aceton)'],
               ['terciární', 'za mírných podmínek nic', '2-methylpropan-2-ol se nemění'],
             ], caption: 'Oxidace alkoholů, např. dichromanem draselným v kyselém prostředí' },
             { type: 'callout', variant: 'fact', title: 'Dechová zkouška', text: 'Staré detekční trubičky obsahovaly oranžový dichroman draselný $K2Cr2O7$. Ethanol z dechu ho zredukoval na zelené ionty $Cr^3+$: čím víc zelené, tím víc alkoholu. Dnešní přístroje měří elektrochemicky.' },
-            { type: 'callout', variant: 'warning', title: 'Methanol zabíjí', text: '**Methanol** $CH3OH$ vypadá, voní i chutná jako ethanol. Stejné enzymy ho ale v těle oxidují na methanal (formaldehyd) a kyselinu mravenčí, které ničí zrakový nerv a okyselují krev. Asi 10 ml může způsobit trvalou slepotu, 30 ml i smrt. Protijedem je překvapivě ethanol (nebo lék fomepizol): obsadí enzym a methanol se vyloučí nezměněný.' },
+            { type: 'callout', variant: 'warning', title: 'Methanol zabíjí', text: '**Methanol** $CH3OH$ se od ethanolu liší jen o skupinu $CH2$, ale v těle je to prudký jed.' },
+            { type: 'iconlist', items: [
+              { icon: 'glass', title: 'Nerozeznáš ho', text: 'vypadá, voní i chutná jako ethanol' },
+              { icon: 'enzyme', title: 'Zrádná oxidace', text: 'stejné enzymy ho oxidují na methanal (formaldehyd) a kyselinu mravenčí' },
+              { icon: 'hazard', title: 'Slepota i smrt', text: 'ty ničí zrakový nerv a okyselují krev; asi 10 ml může způsobit trvalou slepotu, 30 ml i smrt' },
+              { icon: 'pill', title: 'Protijed', text: 'překvapivě ethanol (nebo lék fomepizol): obsadí enzym a methanol se vyloučí nezměněný' },
+            ] },
             { type: 'p', text: '**Glycerol** (propan-1,2,3-triol) je sladká, hustá a nejedovatá kapalina. Váže vlhkost, a proto je v krémech i zubních pastách. Je součástí tuků (úroveň 9) a jeho ester s kyselinou dusičnou, nitroglycerin, je výbušnina i lék na srdce.' },
-            { type: 'check', question: { kind: 'number', q: 'Kolik gramů ethanolu nejvýš vznikne kvašením 360 g glukosy? ($M$(glukosa) = 180 g/mol, $M$(ethanol) = 46 g/mol)', answer: 184, unit: 'g', explain: '360 g glukosy je 2 mol. Z každého molu vzniknou 2 mol ethanolu, tedy 4 mol · 46 g/mol = 184 g.' } },
+            { type: 'check', question: { kind: 'number', q: 'Kolik gramů ethanolu nejvýš vznikne kvašením 360 g glukosy? ($M$(glukosa) = 180 g/mol, $M$(ethanol) = 46 g/mol)', answer: 184, unit: 'g', explain: '360 g glukosy je 2 mol. Z každého molu vzniknou 2 mol ethanolu, tedy 4 mol · 46 g/mol = 184 g.' } },
             { type: 'check', question: { kind: 'choice', q: 'Co vznikne oxidací propan-2-olu?', options: ['propanon (aceton)', 'propanal', 'kyselina propanová', 'propen'], answer: 0, explain: 'Propan-2-ol je sekundární alkohol, a ty se oxidují na ketony.' } },
           ],
         },
         {
           title: 'Fenoly a ethery',
+          icon: 'test-tube',
           blocks: [
             { type: 'p', text: '**Fenoly** mají skupinu $-OH$ navázanou přímo na benzenové jádro. Nejjednodušší je **fenol** $C6H5OH$, bílá krystalická látka s typickým pachem.' },
+            { type: 'molecule', molecules: ['phenol', 'diethyl-ether'], labels: ['fenol $C6H5OH$', 'diethylether $C2H5-O-C2H5$'] },
             { type: 'structure', art: s`
       OH
       |
@@ -786,10 +886,15 @@ CH3 — C — CH3        terciární
   HC     CH
     \\  /
       CH`, caption: 'Fenol' },
-            { type: 'p', text: 'Fenol je **slabá kyselina**, mnohem silnější než alkoholy. S hydroxidem sodným reaguje na sůl, fenolát sodný, což ethanol nedokáže. Záporný náboj fenolátového aniontu se totiž rozprostře do aromatického kruhu a tím se stabilizuje.' },
-            { type: 'formula', text: '$C6H5OH + NaOH -> C6H5ONa + H2O$', caption: 'fenol reaguje se zásadou na fenolát sodný' },
+            { type: 'p', text: 'Fenol je **slabá kyselina**, mnohem silnější než alkoholy: s hydroxidem sodným dá sůl, fenolát sodný, což ethanol nedokáže. Záporný náboj fenolátu se totiž rozprostře do aromatického kruhu a tím se stabilizuje.' },
+            { type: 'reaction', equation: 'C6H5OH + NaOH -> C6H5ONa + H2O', caption: 'fenol reaguje se zásadou na fenolát sodný' },
             { type: 'callout', variant: 'fact', text: 'Joseph Lister v roce 1867 začal na operačním sále dezinfikovat nástroje i rány roztokem fenolu (tehdy „kyselina karbolová“) a úmrtnost po operacích prudce klesla. Fenol je ale jedovatý a leptá kůži. Dnes se používají šetrnější fenoly, třeba thymol z tymiánu v ústních vodách.' },
-            { type: 'p', text: '**Ethery** mají kyslík mezi dvěma uhlovodíkovými zbytky: $R-O-R′$. Nejznámější je **diethylether** (systematicky ethoxyethan) $CH3-CH2-O-CH2-CH3$. Jejich molekuly spolu netvoří vodíkové můstky, protože nemají vodík na kyslíku. Diethylether proto vře už při 35 °C.' },
+            { type: 'p', text: '**Ethery** mají kyslík mezi dvěma uhlovodíkovými zbytky: $R-O-R′$. Nejznámější je **diethylether** (systematicky ethoxyethan) $CH3-CH2-O-CH2-CH3$.' },
+            { type: 'compare', columns: [
+              { title: 'Alkohol', icon: 'glass', tone: 'a', points: ['$-OH$ na uhlíku řetězce', 'vodíkové můstky: ethanol vře při 78 °C', 's vodným $NaOH$ prakticky nereaguje'] },
+              { title: 'Fenol', icon: 'test-tube', tone: 'b', points: ['$-OH$ na benzenovém jádře', 'slabá kyselina', 's $NaOH$ tvoří fenolát'] },
+              { title: 'Ether', icon: 'gas-cloud', tone: 'c', points: ['$R-O-R′$, bez vodíku na kyslíku', 'netvoří vodíkové můstky: diethylether vře už při 35 °C', 'kyselý vodík nemá vůbec'] },
+            ] },
             { type: 'callout', variant: 'warning', text: 'Diethylether sloužil od roku 1846 jako jedno z prvních anestetik při operacích. Jeho páry jsou ale extrémně hořlavé a těžší než vzduch a při dlouhém stání na vzduchu v něm vznikají výbušné peroxidy. V laboratoři pracuj jen v digestoři a daleko od plamene.' },
             { type: 'check', question: { kind: 'multi', q: 'Které látky reagují s roztokem $NaOH$ na sůl?', options: ['fenol', 'ethanol', 'diethylether', 'kyselina octová'], answers: [0, 3], explain: 'Fenol i kyselina octová jsou kyseliny a se zásadou tvoří soli. Ethanol je tak slabá kyselina, že s vodným $NaOH$ prakticky nereaguje, a ether nemá kyselý vodík vůbec.' } },
           ],
@@ -841,21 +946,26 @@ CH3 — C — CH3        terciární
       sections: [
         {
           title: 'Aldehydy a ketony',
+          icon: 'flask',
           blocks: [
             { type: 'p', text: '**Karbonylová skupina** je uhlík spojený dvojnou vazbou s kyslíkem, $C=O$. Kyslík je elektronegativnější, a tak je vazba silně polární: uhlík nese náboj $δ+$, kyslík $δ-$.' },
-            { type: 'p', text: 'Když je karbonyl **na konci řetězce** a nese vodík, jde o **aldehyd** se skupinou $-CHO$ a příponou **-al**. Když je **uvnitř řetězce** mezi dvěma uhlíky, jde o **keton** s příponou **-on**. Uhlík karbonylu se do řetězce vždy počítá.' },
+            { type: 'compare', columns: [
+              { title: 'Aldehyd', tone: 'a', points: ['karbonyl **na konci řetězce**, nese vodík: skupina $-CHO$', 'přípona **-al**', 'ethanal $CH3CHO$'] },
+              { title: 'Keton', tone: 'b', points: ['karbonyl **uvnitř řetězce** mezi dvěma uhlíky', 'přípona **-on**', 'propanon (aceton) $CH3COCH3$'] },
+            ], caption: 'Uhlík karbonylu se do řetězce vždy počítá.' },
+            { type: 'molecule', molecules: ['formaldehyde', 'acetaldehyde', 'acetone'], labels: ['methanal (formaldehyd)', 'ethanal (acetaldehyd)', 'propanon (aceton)'] },
             { type: 'structure', art: s`
       O                  O
       ‖                  ‖
 CH3 — C — H        CH3 — C — CH3`, caption: 'Ethanal (aldehyd, vlevo) a propanon neboli aceton (keton, vpravo)' },
-            { type: 'table', headers: ['Vzorec', 'Systematický název', 'Triviální název', 'Kde ho potkáš'], rows: [
-              ['$HCHO$', 'methanal', 'formaldehyd', 'formalín, pryskyřice, dřevotřísky'],
-              ['$CH3CHO$', 'ethanal', 'acetaldehyd', 'meziprodukt odbourávání alkoholu'],
-              ['$C6H5CHO$', 'benzaldehyd', '–', 'vůně mandlí a marcipánu'],
-              ['$CH3COCH3$', 'propanon', 'aceton', 'odlakovač, rozpouštědlo'],
-              ['$CH3COCH2CH3$', 'butanon', 'methylethylketon', 'rozpouštědlo lepidel a barev'],
-            ], caption: 'Nejdůležitější aldehydy a ketony' },
-            { type: 'p', text: 'Aldehydy a ketony jsou polární, ale mezi sebou netvoří vodíkové můstky, protože nemají vodík na kyslíku. Jejich teploty varu proto leží mezi alkany a alkoholy: propanal vře při 48 °C, butan při −1 °C a propan-1-ol při 97 °C, přitom mají všechny skoro stejnou molární hmotnost.' },
+            { type: 'iconlist', items: [
+              { icon: 'tree', title: 'Methanal $HCHO$', text: 'formaldehyd: formalín, pryskyřice, dřevotřísky' },
+              { icon: 'glass', title: 'Ethanal $CH3CHO$', text: 'acetaldehyd: meziprodukt odbourávání alkoholu' },
+              { icon: 'sugar', title: 'Benzaldehyd $C6H5CHO$', text: 'vůně mandlí a marcipánu' },
+              { icon: 'drop', title: 'Propanon $CH3COCH3$', text: 'aceton: odlakovač, rozpouštědlo' },
+              { icon: 'beaker', title: 'Butanon $CH3COCH2CH3$', text: 'methylethylketon: rozpouštědlo lepidel a barev' },
+            ] },
+            { type: 'p', text: 'Aldehydy a ketony jsou polární, ale mezi sebou netvoří vodíkové můstky, protože nemají vodík na kyslíku. Jejich teploty varu proto leží mezi alkany a alkoholy: propanal vře při 48 °C, butan při −1 °C a propan-1-ol při 97 °C, přitom mají všechny skoro stejnou molární hmotnost.' },
             { type: 'callout', variant: 'warning', title: 'Formaldehyd', text: 'Methanal je štiplavý plyn a jeho asi 37% vodný roztok, **formalín**, se používá ke konzervaci biologických preparátů. Formaldehyd je ale karcinogenní a dráždí oči i dýchací cesty. Uvolňuje se i z levného nábytku z dřevotřísky, proto nový nábytek dobře větrej.' },
             { type: 'callout', variant: 'fact', text: 'Aceton vzniká i v tvém těle, když dlouho hladovíš nebo při neléčené cukrovce. Tělo pak spaluje hlavně tuky a vznikají tzv. ketolátky. Dech může nasládle vonět po acetonu.' },
             { type: 'check', question: { kind: 'text', q: 'Napiš systematický název látky $CH3-CH2-CHO$.', accept: ['propanal'], explain: 'Tři uhlíky včetně uhlíku skupiny $-CHO$ a přípona -al: propanal.' } },
@@ -864,20 +974,21 @@ CH3 — C — H        CH3 — C — CH3`, caption: 'Ethanal (aldehyd, vlevo) a 
         },
         {
           title: 'Důkaz aldehydů a nukleofilní adice',
+          icon: 'test-tube',
           blocks: [
             { type: 'p', text: 'Aldehydy se snadno **oxidují** na karboxylové kyseliny, chovají se tedy jako **redukční činidla**. Ketony se za mírných podmínek neoxidují. Na tomto rozdílu stojí dvě klasické zkoušky.' },
-            { type: 'table', headers: ['Zkouška', 'Činidlo', 'Aldehyd', 'Keton'], rows: [
-              ['Tollensova', 'amoniakální roztok $AgNO3$ s ionty $[Ag(NH3)2]^+$', 'na stěně zkumavky se vyloučí **stříbrné zrcátko** $Ag$', 'beze změny'],
-              ['Fehlingova', 'modrý roztok s ionty $Cu^2+$', 'vznikne **cihlově červená** sraženina $Cu2O$', 'zůstane modrý'],
+            { type: 'compare', columns: [
+              { title: 'Tollensova zkouška', icon: 'ring', tone: 'a', points: ['amoniakální roztok $AgNO3$ s ionty $[Ag(NH3)2]^+$', 'aldehyd: na stěně zkumavky se vyloučí **stříbrné zrcátko** $Ag$', 'keton: beze změny'] },
+              { title: 'Fehlingova zkouška', icon: 'burner', tone: 'b', points: ['modrý roztok s ionty $Cu^2+$', 'aldehyd: vznikne **cihlově červená** sraženina $Cu2O$', 'keton: zůstane modrý'] },
             ], caption: 'Zkoušky na aldehydy (obě se provádějí za zahřátí)' },
             { type: 'formula', text: '$R-CHO -> R-COOH$', caption: 'aldehyd se oxiduje na kyselinu, činidlo se přitom redukuje: $Ag^{I} -> Ag^{0}$, $Cu^{II} -> Cu^{I}$' },
             { type: 'callout', variant: 'warning', text: 'Stříbrné zrcátko je krásný pokus, ale Tollensovo činidlo se vždy připravuje čerstvé a po pokusu se hned zlikviduje. Stáním z něj mohou vzniknout výbušné sloučeniny stříbra. Pracuj s ochrannými brýlemi.' },
-            { type: 'p', text: 'Druhou typickou reakcí karbonylu je **nukleofilní adice** ($A_{N}$). Uhlík $δ+$ láká nukleofily. Nukleofil se naváže na uhlík, π-vazba $C=O$ se rozpojí a kyslík nakonec přijme proton.' },
-            { type: 'example', title: 'Nukleofilní adice obecně', problem: 'Jak probíhá adice nukleofilu $Nu^-$ na karbonylovou skupinu?', steps: [
-              'Nukleofil $Nu^-$ napadne kladně polarizovaný uhlík $C^{δ+}$.',
-              'Elektrony π-vazby se přesunou na kyslík a vznikne $O^-$.',
-              'Kyslík přijme proton $H^+$ z okolí a vznikne skupina $-OH$.',
-            ], answer: 'Z $C=O$ vznikne uhlík nesoucí $-OH$ i $-Nu$. Takto se k aldehydům aduje třeba kyanovodík nebo alkoholy. Adice skupiny $-OH$ na aldehydovou skupinu uzavírá do kruhu i molekuly cukrů (úroveň 9).' },
+            { type: 'p', text: 'Druhou typickou reakcí karbonylu je **nukleofilní adice** ($A_{N}$): uhlík $δ+$ láká nukleofily.' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'ion-minus', title: 'Útok nukleofilu', text: '$Nu^-$ napadne kladně polarizovaný uhlík $C^{δ+}$' },
+              { icon: 'electron', title: 'Elektrony na kyslík', text: 'elektrony π-vazby $C=O$ se přesunou na kyslík a vznikne $O^-$' },
+              { icon: 'ion-plus', title: 'Protonace', text: 'kyslík přijme proton $H^+$ z okolí a vznikne skupina $-OH$' },
+            ], caption: 'Z $C=O$ vznikne uhlík nesoucí $-OH$ i $-Nu$. Takto se k aldehydům aduje třeba kyanovodík nebo alkoholy; adice skupiny $-OH$ na aldehydovou skupinu uzavírá do kruhu i molekuly cukrů (úroveň 9).' },
             { type: 'p', text: '**Redukcí** (adicí vodíku) se aldehydy mění zpátky na primární alkoholy a ketony na sekundární alkoholy. Je to přesný opak oxidace z minulé lekce.' },
             { type: 'check', question: { kind: 'tf', q: 'Aceton dává pozitivní Tollensovu zkoušku (stříbrné zrcátko).', answer: false, explain: 'Aceton je keton a ketony se za mírných podmínek neoxidují, takže stříbro nevyredukují.' } },
             { type: 'check', question: { kind: 'choice', q: 'Co pozoruješ při Fehlingově zkoušce s ethanalem?', options: ['vznikne cihlově červená sraženina', 'vyloučí se stříbrné zrcátko', 'roztok se odbarví a vzniknou bublinky', 'nic, roztok zůstane modrý'], answer: 0, explain: 'Ethanal je aldehyd. Zredukuje modré ionty $Cu^2+$ na červenohnědý oxid měďný $Cu2O$.' } },
@@ -885,25 +996,28 @@ CH3 — C — H        CH3 — C — CH3`, caption: 'Ethanal (aldehyd, vlevo) a 
         },
         {
           title: 'Karboxylové kyseliny',
+          icon: 'lemon',
           blocks: [
-            { type: 'p', text: '**Karboxylové kyseliny** mají skupinu $-COOH$ (**karboxyl**): karbonyl a hydroxyl na jednom uhlíku. Systematický název je „kyselina“ + název uhlovodíku + **-ová**. Uhlík karboxylu se do řetězce počítá.' },
+            { type: 'p', text: '**Karboxylové kyseliny** mají skupinu $-COOH$ (**karboxyl**): karbonyl a hydroxyl na jednom uhlíku. Systematický název je „kyselina“ + název uhlovodíku + **-ová**, uhlík karboxylu se do řetězce počítá.' },
+            { type: 'molecule', molecules: ['formic-acid', 'acetic-acid'], labels: ['kyselina methanová (mravenčí)', 'kyselina ethanová (octová)'] },
             { type: 'structure', art: s`
       O
       ‖
 CH3 — C — O — H`, caption: 'Kyselina ethanová (octová) $CH3COOH$' },
-            { type: 'table', headers: ['Vzorec', 'Systematický název', 'Triviální název', 'Výskyt'], rows: [
-              ['$HCOOH$', 'kyselina methanová', 'mravenčí', 'jed mravenců, žahavé chlupy kopřiv'],
-              ['$CH3COOH$', 'kyselina ethanová', 'octová', 'ocet (5–8 %)'],
-              ['$CH3CH2CH2COOH$', 'kyselina butanová', 'máselná', 'žluklé máslo, pot'],
-              ['$C6H5COOH$', 'kyselina benzoová', 'benzoová', 'konzervant E 210'],
-              ['$(COOH)2$', 'kyselina ethandiová', 'šťavelová', 'šťovík, rebarbora'],
-              ['$C17H35COOH$', 'kyselina oktadekanová', 'stearová', 'tuky, svíčky'],
-            ], caption: 'Důležité karboxylové kyseliny' },
-            { type: 'p', text: 'Kyseliny s dlouhým řetězcem (zhruba 12–20 uhlíků) se nazývají **mastné kyseliny**. Nasycené jsou palmitová $C15H31COOH$ a stearová $C17H35COOH$, **olejová** $C17H33COOH$ má jednu dvojnou vazbu v poloze cis. Jsou stavebními kameny tuků (úroveň 9).' },
+            { type: 'iconlist', items: [
+              { icon: 'leaf', title: 'Kyselina methanová (mravenčí) $HCOOH$', text: 'jed mravenců, žahavé chlupy kopřiv' },
+              { icon: 'drop', title: 'Kyselina ethanová (octová) $CH3COOH$', text: 'ocet (5–8 %)' },
+              { icon: 'milk', title: 'Kyselina butanová (máselná) $CH3CH2CH2COOH$', text: 'žluklé máslo, pot' },
+              { icon: 'bread', title: 'Kyselina benzoová $C6H5COOH$', text: 'konzervant E 210' },
+              { icon: 'cabbage', title: 'Kyselina ethandiová (šťavelová) $(COOH)2$', text: 'šťovík, rebarbora' },
+              { icon: 'flame', title: 'Kyselina oktadekanová (stearová) $C17H35COOH$', text: 'tuky, svíčky' },
+            ] },
+            { type: 'p', text: 'Kyseliny s dlouhým řetězcem (zhruba 12–20 uhlíků) jsou **mastné kyseliny**. Nasycené jsou palmitová $C15H31COOH$ a stearová $C17H35COOH$, **olejová** $C17H33COOH$ má jednu dvojnou vazbu v poloze cis. Jsou stavebními kameny tuků (úroveň 9).' },
+            { type: 'molecule', molecules: ['palmitic-acid'], labels: ['kyselina palmitová: dlouhý uhlovodíkový ocas a karboxyl na konci'] },
             { type: 'p', text: 'Karboxylové kyseliny jsou **slabé kyseliny**: ve vodě odštěpí proton jen malá část molekul. Vzniklý anion, **karboxylát**, je stabilizovaný, protože se záporný náboj rozdělí mezi oba kyslíky.' },
             { type: 'formula', text: '$CH3COOH + H2O <=> CH3COO^- + H3O^+$', caption: 'kyselina octová je slabá kyselina, p$K_{A}$ ≈ 4,8' },
-            { type: 'p', text: 'Se zásadami tvoří soli, **karboxyláty**: z kyseliny octové a $NaOH$ vznikne ethanoát sodný (octan sodný). Karboxylové kyseliny jsou silnější než kyselina uhličitá, takže vytěsní $CO2$ z uhličitanů i hydrogenuhličitanů. Proto ocet s jedlou sodou tak šumí.' },
-            { type: 'formula', text: '$CH3COOH + NaHCO3 -> CH3COONa + H2O + CO2$', caption: 'bezpečný domácí pokus: ocet + jedlá soda' },
+            { type: 'p', text: 'Se zásadami tvoří soli, **karboxyláty**: z kyseliny octové a $NaOH$ vznikne ethanoát sodný (octan sodný). Jsou silnější než kyselina uhličitá, takže vytěsní $CO2$ z uhličitanů i hydrogenuhličitanů. Proto ocet s jedlou sodou tak šumí.' },
+            { type: 'reaction', equation: 'CH3COOH + NaHCO3 -> CH3COONa + H2O + CO2', caption: 'bezpečný domácí pokus: ocet + jedlá soda' },
             { type: 'callout', variant: 'remember', text: 'Pořadí kyselosti: ==alkohol < fenol < karboxylová kyselina==. Ethanol s $NaOH$ nereaguje, fenol ano, ale jen karboxylová kyselina je dost silná na to, aby vytěsnila $CO2$ z jedlé sody.' },
             { type: 'check', question: { kind: 'text', q: 'Jak se systematicky jmenuje kyselina mravenčí?', accept: ['kyselina methanová', 'methanová kyselina', 'methanová'], explain: 'Kyselina mravenčí $HCOOH$ má jediný uhlík, tedy kyselina methanová.' } },
             { type: 'check', question: { kind: 'choice', q: 'Která látka vytěsní $CO2$ z jedlé sody?', options: ['kyselina octová', 'fenol', 'ethanol', 'aceton'], answer: 0, explain: 'Jen karboxylové kyseliny jsou silnější než kyselina uhličitá. Fenol je na to příliš slabý a ethanol ani aceton kyselé nejsou.' } },
@@ -911,9 +1025,12 @@ CH3 — C — O — H`, caption: 'Kyselina ethanová (octová) $CH3COOH$' },
         },
         {
           title: 'Esterifikace a vůně ovoce',
+          icon: 'apple',
           blocks: [
             { type: 'p', text: 'Kyselina a alkohol spolu za katalýzy kyselinou sírovou reagují na **ester** a vodu. Reakce se nazývá **esterifikace** a je **vratná**: ustaví se chemická rovnováha (úroveň 6).' },
-            { type: 'formula', text: '$CH3COOH + CH3CH2OH <=> CH3COOCH2CH3 + H2O$', caption: 'kyselina octová + ethanol ⇌ ethyl-ethanoát (ethylacetát) + voda' },
+            { type: 'diagram', id: 'esterification', caption: 'Kyselina dá skupinu $-OH$, alkohol vodík: spojí se ve vodu a zbytky v ester' },
+            { type: 'reaction', equation: 'CH3COOH + C2H5OH <=> CH3COOC2H5 + H2O', caption: 'kyselina octová + ethanol ⇌ ethyl-ethanoát (ethylacetát) + voda' },
+            { type: 'molecule', molecules: ['acetic-acid', 'ethanol', 'ethyl-acetate'], labels: ['kyselina octová', 'ethanol', 'ethyl-ethanoát (ethylacetát)'] },
             { type: 'structure', art: s`
       O
       ‖
@@ -924,27 +1041,37 @@ CH3 — C — O — CH2 — CH3`, caption: 'Ethyl-ethanoát: vlevo část z kyse
               'Zbytek kyseliny $CH3CO-$ a zbytek alkoholu $-OCH3$ se spojí: $CH3COOCH3$.',
               'Název: nejdřív alkyl z alkoholu (**methyl**), spojovník a pak anion kyseliny (kyselina ethanová dá **ethanoát**).',
             ], answer: '**Methyl-ethanoát** (methylacetát) $CH3COOCH3$' },
-            { type: 'p', text: 'Rovnováha esterifikace leží zhruba uprostřed: ze stejného látkového množství kyseliny a alkoholu vzniknou jen asi 2/3 esteru. Výtěžek zvýšíš podle Le Chatelierova principu: přidáš nadbytek alkoholu nebo budeš odebírat vodu. Koncentrovaná $H2SO4$ ji navíc sama váže.' },
-            { type: 'table', headers: ['Ester', 'Vůně'], rows: [
-              ['ethyl-ethanoát', 'ovocná, typická pro odlakovače'],
-              ['3-methylbutyl-ethanoát', 'banán'],
-              ['ethyl-butanoát', 'ananas'],
-              ['oktyl-ethanoát', 'pomeranč'],
-              ['methyl-salicylát', 'hřejivá mast na svaly'],
-            ], caption: 'Estery jsou těkavé a často voní' },
+            { type: 'p', text: 'Rovnováha leží zhruba uprostřed: ze stejného látkového množství kyseliny a alkoholu vzniknou jen asi 2/3 esteru. Výtěžek zvýšíš podle Le Chatelierova principu nadbytkem alkoholu nebo odebíráním vody, kterou navíc sama váže koncentrovaná $H2SO4$.' },
+            { type: 'iconlist', items: [
+              { icon: 'drop', title: 'ethyl-ethanoát', text: 'ovocná vůně, typická pro odlakovače' },
+              { icon: 'apple', title: '3-methylbutyl-ethanoát', text: 'banán' },
+              { icon: 'leaf', title: 'ethyl-butanoát', text: 'ananas' },
+              { icon: 'lemon', title: 'oktyl-ethanoát', text: 'pomeranč' },
+              { icon: 'muscle', title: 'methyl-salicylát', text: 'hřejivá mast na svaly' },
+            ] },
             { type: 'callout', variant: 'fact', text: 'Umělé ovocné aroma v bonbonech bývá jen jeden nebo pár esterů. Skutečná vůně jahody se ale skládá ze stovek látek, a proto „jahodová“ žvýkačka nikdy nevoní úplně jako jahoda.' },
             { type: 'check', question: { kind: 'text', q: 'Pojmenuj ester $HCOOCH2CH3$, který vzniká z kyseliny methanové a ethanolu.', accept: ['ethyl-methanoát', 'ethylmethanoát', 'ethyl methanoát', 'ethyl-formiát', 'ethylformiát'], explain: 'Alkyl z alkoholu je ethyl, anion kyseliny methanové je methanoát: ethyl-methanoát (ethylformiát).' } },
-            { type: 'check', question: { kind: 'tf', q: 'Esterifikace je nevratná reakce, takže z kyseliny a alkoholu vždy vznikne 100 % esteru.', answer: false, explain: 'Esterifikace je rovnovážná. Bez zásahu vznikají zhruba 2/3 esteru, víc jen s nadbytkem alkoholu nebo odebíráním vody.' } },
+            { type: 'check', question: { kind: 'tf', q: 'Esterifikace je nevratná reakce, takže z kyseliny a alkoholu vždy vznikne 100 % esteru.', answer: false, explain: 'Esterifikace je rovnovážná. Bez zásahu vznikají zhruba 2/3 esteru, víc jen s nadbytkem alkoholu nebo odebíráním vody.' } },
           ],
         },
         {
           title: 'Hydrolýza esterů, mýdla a deriváty kyselin',
+          icon: 'soap',
           blocks: [
-            { type: 'p', text: 'Opakem esterifikace je **hydrolýza** esteru: voda ester rozštěpí zpět na kyselinu a alkohol. V kyselém prostředí je vratná stejně jako esterifikace.' },
-            { type: 'p', text: 'V **zásaditém** prostředí (s $NaOH$ nebo $KOH$) je hydrolýza **nevratná**. Vzniklá kyselina se hned zneutralizuje na karboxylát a ten už s alkoholem nereaguje.' },
-            { type: 'formula', text: '$CH3COOCH2CH3 + NaOH -> CH3COONa + CH3CH2OH$', caption: 'alkalická hydrolýza ethyl-ethanoátu' },
-            { type: 'p', text: 'Tuky jsou estery glycerolu s mastnými kyselinami. Když je vaříš s louhem ($NaOH$), vznikne glycerol a sodné soli mastných kyselin, tedy **mýdlo**. Alkalické hydrolýze esterů se proto říká **zmýdelnění**. Sodná mýdla jsou tuhá, draselná mazlavá.' },
-            { type: 'p', text: 'Anion mýdla má **hydrofilní** (vodu milující) hlavičku $-COO^-$ a dlouhý **hydrofobní** uhlovodíkový ocas. Ocasy se zanoří do mastnoty, hlavičky zůstanou ve vodě a mastnota se ve formě drobných kuliček, **micel**, spláchne.' },
+            { type: 'p', text: 'Opakem esterifikace je **hydrolýza** esteru: voda ester rozštěpí zpět na kyselinu a alkohol.' },
+            { type: 'compare', columns: [
+              { title: 'V kyselém prostředí', icon: 'equilibrium', tone: 'a', points: ['ester + voda ⇌ kyselina + alkohol', '**vratná** stejně jako esterifikace'] },
+              { title: 'V zásaditém prostředí', icon: 'soap', tone: 'b', points: ['s $NaOH$ nebo $KOH$', '**nevratná**: vzniklá kyselina se hned zneutralizuje na karboxylát a ten už s alkoholem nereaguje'] },
+            ] },
+            { type: 'reaction', equation: 'CH3COOC2H5 + NaOH -> CH3COONa + C2H5OH', caption: 'alkalická hydrolýza ethyl-ethanoátu' },
+            { type: 'p', text: 'Tuky jsou estery glycerolu s mastnými kyselinami. Varem s louhem ($NaOH$) vznikne glycerol a sodné soli mastných kyselin, tedy **mýdlo**, a proto se alkalické hydrolýze esterů říká **zmýdelnění**. Sodná mýdla jsou tuhá, draselná mazlavá.' },
+            { type: 'diagram', id: 'micelle', caption: 'Micela: hydrofobní ocasy uvnitř drží mastnotu, hydrofilní hlavičky míří do vody' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'soap', title: 'Anion mýdla', text: '**hydrofilní** (vodu milující) hlavička $-COO^-$ a dlouhý **hydrofobní** uhlovodíkový ocas' },
+              { icon: 'drop', title: 'Ocasy do mastnoty', text: 'zanoří se do tuku, hlavičky zůstanou ve vodě' },
+              { icon: 'molecule', title: 'Micely', text: 'mastnota se uzavře do drobných kuliček' },
+              { icon: 'water-tap', title: 'Spláchnutí', text: 'voda micely i s mastnotou odnese' },
+            ], caption: 'Jak mýdlo myje' },
             { type: 'table', headers: ['Derivát', 'Skupina', 'Příklad'], rows: [
               ['ester', '$-COO-R$', 'ethyl-ethanoát $CH3COOC2H5$'],
               ['amid', '$-CONH2$', 'ethanamid $CH3CONH2$'],
@@ -1002,6 +1129,7 @@ CH3 — C — O — CH2 — CH3`, caption: 'Ethyl-ethanoát: vlevo část z kyse
       sections: [
         {
           title: 'Aminy: organické zásady',
+          icon: 'fish',
           blocks: [
             { type: 'p', text: '**Aminy** si představ jako amoniak $NH3$, ve kterém jsou vodíky nahrazené uhlovodíkovými zbytky. Podle počtu uhlíků navázaných na **dusík** jsou **primární** ($R-NH2$), **sekundární** ($R2NH$) a **terciární** ($R3N$).' },
             { type: 'structure', art: s`
@@ -1010,9 +1138,10 @@ CH3 — C — O — CH2 — CH3`, caption: 'Ethyl-ethanoát: vlevo část z kyse
 CH3 — N — H         CH3 — N — CH3`, caption: 'Methylamin (primární amin) a trimethylamin (terciární amin)' },
             { type: 'callout', variant: 'warning', title: 'Pozor na rozdíl', text: 'U alkoholů rozhoduje, kolik uhlíků nese **uhlík** se skupinou $-OH$. U aminů počítáš uhlíky navázané přímo na **dusík**. Třeba $(CH3)3C-NH2$ má dusík na terciárním uhlíku, a přesto je to primární amin.' },
             { type: 'p', text: 'Názvy tvoříme přidáním **-amin** k názvu uhlovodíkového zbytku: methylamin $CH3NH2$, dimethylamin $(CH3)2NH$, trimethylamin $(CH3)3N$, ethylamin $CH3CH2NH2$. Aromatický **anilin** (fenylamin) $C6H5NH2$ je surovina pro výrobu barviv.' },
-            { type: 'p', text: 'Dusík má **volný elektronový pár**, kterým přijme proton. Aminy jsou proto **zásady** podle Brønsteda (úroveň 5), stejně jako amoniak. Jednoduché alkylaminy jsou dokonce o něco silnější zásady než amoniak.' },
+            { type: 'molecule', molecules: ['NH3', 'methylamine'], labels: ['amoniak $NH3$', 'methylamin $CH3NH2$'], caption: 'Jeden vodík amoniaku vystřídal methyl, volný elektronový pár na dusíku zůstal' },
+            { type: 'p', text: 'Volným elektronovým párem dusík přijme proton. Aminy jsou proto **zásady** podle Brønsteda (úroveň 5), stejně jako amoniak, a jednoduché alkylaminy jsou dokonce o něco silnější zásady než on.' },
             { type: 'formula', text: '$CH3NH2 + H2O <=> CH3NH3^+ + OH^-$', caption: 'methylamin ve vodě: vznikne methylamoniový kation a roztok je zásaditý' },
-            { type: 'formula', text: '$CH3NH2 + HCl -> CH3NH3^+ Cl^-$', caption: 's kyselinou vznikne sůl, methylamonium-chlorid' },
+            { type: 'reaction', equation: 'CH3NH2 + HCl -> CH3NH3Cl', caption: 's kyselinou vznikne sůl, methylamonium-chlorid $CH3NH3^+ Cl^-$' },
             { type: 'callout', variant: 'fact', title: 'Proč se ryba zakapává citronem', text: 'Pach rybiny způsobuje hlavně trimethylamin. Kyselina citronová ho převede na sůl, která netěká, a zápach zmizí. Podobně páchnou i aminy z rozkladu bílkovin: putrescin a kadaverin (doslova „mrtvolin“).' },
             { type: 'check', question: { kind: 'choice', q: 'Proč jsou aminy zásadité?', options: [
               'Dusík má volný elektronový pár, kterým váže proton $H^+$',
@@ -1025,15 +1154,25 @@ CH3 — N — H         CH3 — N — CH3`, caption: 'Methylamin (primární ami
         },
         {
           title: 'Amidy a nitrosloučeniny',
+          icon: 'explosion',
           blocks: [
             { type: 'p', text: '**Amidy** jsou deriváty karboxylových kyselin, v nichž je $-OH$ z karboxylu nahrazené skupinou $-NH2$. Název dostanou koncovkou **-amid**: methanamid (formamid) $HCONH2$, ethanamid (acetamid) $CH3CONH2$.' },
             { type: 'structure', art: s`
       O
       ‖
 CH3 — C — NH2`, caption: 'Ethanamid (acetamid)' },
-            { type: 'p', text: 'Na rozdíl od aminů jsou amidy prakticky **neutrální**. Volný pár dusíku je „zaměstnaný“ sousední skupinou $C=O$ a proton už ochotně nepřijímá. Amidová vazba $-CO-NH-$ drží pohromadě bílkoviny (peptidová vazba, úroveň 9) i nylon.' },
-            { type: 'p', text: '**Močovina** $CO(NH2)2$ je diamid kyseliny uhličité. Právě jí Wöhler v roce 1828 odstartoval organickou chemii. Tělo se v ní zbavuje dusíku z bílkovin a v zemědělství je to nejpoužívanější dusíkaté hnojivo, obsahuje 46 % dusíku.' },
-            { type: 'p', text: '**Nitrosloučeniny** mají skupinu $-NO2$ navázanou přímo na uhlík a v názvu předponu **nitro-**. **Nitrobenzen** $C6H5NO2$ je jedovatá kapalina, která voní po hořkých mandlích. Jeho redukcí se vyrábí anilin.' },
+            { type: 'compare', columns: [
+              { title: 'Amin', icon: 'fish', tone: 'a', points: ['$R-NH2$', 'volný pár dusíku ochotně přijme proton', '**zásaditý**'] },
+              { title: 'Amid', icon: 'protein', tone: 'b', points: ['$R-CONH2$', 'volný pár je „zaměstnaný“ sousední skupinou $C=O$', 'prakticky **neutrální**', 'amidová vazba $-CO-NH-$ drží bílkoviny (peptidová vazba, úroveň 9) i nylon'] },
+            ] },
+            { type: 'p', text: '**Nitrosloučeniny** mají skupinu $-NO2$ navázanou přímo na uhlík a v názvu předponu **nitro-**.' },
+            { type: 'molecule', molecules: ['urea', 'nitrobenzene'], labels: ['močovina $CO(NH2)2$', 'nitrobenzen $C6H5NO2$'] },
+            { type: 'iconlist', items: [
+              { icon: 'flask', title: 'Močovina', text: 'diamid kyseliny uhličité; právě jí Wöhler v roce 1828 odstartoval organickou chemii' },
+              { icon: 'blood', title: 'Močovina v těle', text: 'tělo se v ní zbavuje dusíku z bílkovin' },
+              { icon: 'fertilizer', title: 'Hnojivo', text: 'nejpoužívanější dusíkaté hnojivo, obsahuje 46 % dusíku' },
+              { icon: 'hazard', title: 'Nitrobenzen', text: 'jedovatá kapalina, voní po hořkých mandlích; jeho redukcí se vyrábí anilin' },
+            ] },
             { type: 'formula', text: '$C6H2(NO2)3CH3$', caption: '2,4,6-trinitrotoluen (TNT): toluen se třemi nitroskupinami na benzenovém jádře' },
             { type: 'callout', variant: 'fact', title: 'TNT a nitroglycerin', text: '**TNT** je překvapivě stabilní: dá se tavit, odlévat do tvarů a bez rozbušky nevybuchne. **Nitroglycerin** naopak vybuchne i při otřesu. A pozor na název: nitroglycerin není nitrosloučenina, ale ester glycerolu s kyselinou dusičnou (glycerol-trinitrát), protože skupiny $-NO2$ jsou v něm vázané přes kyslík.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď vzorec k názvu.', pairs: [
@@ -1046,21 +1185,23 @@ CH3 — C — NH2`, caption: 'Ethanamid (acetamid)' },
         },
         {
           title: 'Činidla a typy reakcí: velký přehled',
+          icon: 'idea',
           blocks: [
-            { type: 'p', text: 'Za celou úroveň jsi potkal spoustu reakcí. Dobrá zpráva: dají se roztřídit podle dvou otázek. **Co se s molekulou děje?** (typ reakce) a **jaká částice útočí?** (mechanismus).' },
-            { type: 'keyterms', items: [
-              { term: 'Homolytické štěpení', def: 'každý atom si vezme jeden elektron z vazby a vzniknou **radikály** (typicky za světla nebo za vysoké teploty)' },
-              { term: 'Heterolytické štěpení', def: 'oba elektrony si vezme jeden atom a vzniknou **ionty**' },
-              { term: 'Radikál', def: 'částice s nepárovým elektronem: $Cl·$, $Br·$, $·CH3$' },
-              { term: 'Elektrofil', def: 'částice s nedostatkem elektronů, hledá místa bohatá na elektrony (π-vazbu, benzenové jádro): $H^+$, $NO2^+$, polarizovaná molekula $Br2$' },
-              { term: 'Nukleofil', def: 'částice s volným elektronovým párem nebo záporným nábojem, hledá kladně polarizovaný uhlík: $OH^-$, $CN^-$, $H2O$, $NH3$' },
+            { type: 'p', text: 'Za celou úroveň jsi potkal spoustu reakcí. Roztřídíš je podle dvou otázek: **Co se s molekulou děje?** (typ reakce) a **jaká částice útočí?** (mechanismus).' },
+            { type: 'compare', columns: [
+              { title: 'Homolytické štěpení', icon: 'sun', tone: 'a', points: ['každý atom si vezme jeden elektron z vazby', 'vzniknou **radikály**', 'typicky za světla nebo za vysoké teploty'] },
+              { title: 'Heterolytické štěpení', icon: 'ion-plus', tone: 'b', points: ['oba elektrony si vezme jeden atom', 'vzniknou **ionty**'] },
             ] },
-            { type: 'list', items: [
-              '**Substituce** ($S$): jeden atom nebo skupina se vymění za jinou.',
-              '**Adice** ($A$): dvě molekuly se spojí v jednu a zanikne násobná vazba.',
-              '**Eliminace** ($E$): z molekuly se odštěpí malá molekula a vznikne násobná vazba.',
-              '**Přesmyk**: atomy uvnitř molekuly se přeskupí a vznikne izomer, např. butan se v rafinerii mění na 2-methylpropan.',
-            ] },
+            { type: 'compare', columns: [
+              { title: 'Radikál', icon: 'electron', tone: 'a', points: ['částice s nepárovým elektronem', '$Cl·$, $Br·$, $·CH3$'] },
+              { title: 'Elektrofil', icon: 'ion-plus', tone: 'b', points: ['nedostatek elektronů', 'hledá místa bohatá na elektrony: π-vazbu, benzenové jádro', '$H^+$, $NO2^+$, polarizovaná molekula $Br2$'] },
+              { title: 'Nukleofil', icon: 'ion-minus', tone: 'c', points: ['volný elektronový pár nebo záporný náboj', 'hledá kladně polarizovaný uhlík', '$OH^-$, $CN^-$, $H2O$, $NH3$'] },
+            ], caption: 'Tři druhy činidel' },
+            { type: 'compare', columns: [
+              { title: 'Substituce ($S$)', icon: 'arrow-cycle', tone: 'a', points: ['jeden atom nebo skupina se vymění za jinou', '$CH4 + Cl2 -> CH3Cl + HCl$'] },
+              { title: 'Adice ($A$)', icon: 'bond', tone: 'b', points: ['dvě molekuly se spojí v jednu a zanikne násobná vazba', '$CH2=CH2 + HBr -> CH3CH2Br$'] },
+              { title: 'Eliminace ($E$)', icon: 'droplets', tone: 'c', points: ['z molekuly se odštěpí malá molekula a vznikne násobná vazba', '$CH3CH2Br -> CH2=CH2 + HBr$'] },
+            ], caption: 'Čtvrtým typem je **přesmyk**: atomy uvnitř molekuly se přeskupí a vznikne izomer, např. butan se v rafinerii mění na 2-methylpropan.' },
             { type: 'table', headers: ['Reakce', 'Typ', 'Mechanismus', 'Příklad'], rows: [
               ['halogenace alkanů', 'substituce', 'radikálový ($Cl·$)', '$CH4 + Cl2 -> CH3Cl + HCl$'],
               ['adice na alkeny', 'adice', 'elektrofilní ($H^+$, $Br2$)', '$CH2=CH2 + HBr -> CH3CH2Br$'],
@@ -1086,20 +1227,20 @@ CH3 — C — NH2`, caption: 'Ethanamid (acetamid)' },
         },
         {
           title: 'Polymery: adiční a kondenzační',
+          icon: 'factory',
           blocks: [
             { type: 'p', text: '**Polymery** jsou obří molekuly složené z tisíců opakujících se jednotek. Podle toho, jak vznikají, rozlišujeme dva hlavní typy polymerace.' },
-            { type: 'table', headers: ['', 'Adiční polymerace', 'Kondenzační polymerace'], rows: [
-              ['monomer', 'má dvojnou vazbu $C=C$', 'má dvě funkční skupiny, např. $-COOH$ a $-OH$ nebo $-NH2$'],
-              ['vedlejší produkt', 'žádný', 'malá molekula, obvykle $H2O$'],
-              ['vazba v řetězci', '$C-C$', 'esterová nebo amidová'],
-              ['příklady', 'PE, PP, PVC, PS, teflon', 'polyestery (PET), polyamidy (nylon)'],
+            { type: 'compare', columns: [
+              { title: 'Adiční polymerace', icon: 'bond', tone: 'a', points: ['monomer má dvojnou vazbu $C=C$', 'vedlejší produkt: žádný', 'vazba v řetězci: $C-C$', 'PE, PP, PVC, PS, teflon'] },
+              { title: 'Kondenzační polymerace', icon: 'droplets', tone: 'b', points: ['monomer má dvě funkční skupiny, např. $-COOH$ a $-OH$ nebo $-NH2$', 'odštěpí se malá molekula, obvykle $H2O$', 'vazba v řetězci: esterová nebo amidová', 'polyestery (PET), polyamidy (nylon)'] },
             ], caption: 'Dva způsoby, jak postavit polymer' },
+            { type: 'diagram', id: 'polymer-chain', caption: 'Polymer: tisíce monomerů spojených do jednoho dlouhého řetězce' },
             { type: 'p', text: '**Nylon 6,6** vzniká z hexan-1,6-diaminu a kyseliny hexandiové (adipové). Aminoskupina jednoho monomeru reaguje s karboxylem druhého, odštěpí se voda a vznikne **amidová vazba**. Každý monomer má skupiny na obou koncích, takže řetězec může růst oběma směry.' },
             { type: 'structure', art: s`
        O            O
        ‖            ‖
 [ NH — C — (CH2)4 — C — NH — (CH2)6 ]n`, caption: 'Opakující se jednotka nylonu 6,6: dvě amidové vazby $-CO-NH-$. Čísla 6,6 udávají počet uhlíků v obou monomerech.' },
-            { type: 'p', text: '**PET** (polyethylentereftalát) je **polyester**. Vzniká z ethan-1,2-diolu a kyseliny tereftalové (benzen-1,4-dikarboxylové), mezi kterými se tvoří esterové vazby. Dělají se z něj lahve na nápoje i fleecové oblečení.' },
+            { type: 'p', text: '**PET** (polyethylentereftalát) je **polyester** z ethan-1,2-diolu a kyseliny tereftalové (benzen-1,4-dikarboxylové), mezi kterými se tvoří esterové vazby. Dělají se z něj lahve na nápoje i fleecové oblečení.' },
             { type: 'structure', art: s`
       O          O
       ‖          ‖
@@ -1111,8 +1252,13 @@ CH3 — C — NH2`, caption: 'Ethanamid (acetamid)' },
         },
         {
           title: 'Plasty, recyklace a mikroplasty',
+          icon: 'recycle',
           blocks: [
-            { type: 'p', text: 'Plasty dělíme na **termoplasty**, které teplem měknou a dají se znovu tvarovat (PE, PP, PET, PVC), a **reaktoplasty**, jejichž řetězce jsou propojené pevnými příčnými vazbami a teplem už nezměknou (bakelit, epoxidové pryskyřice). Recyklovat se dají hlavně termoplasty.' },
+            { type: 'compare', columns: [
+              { title: 'Termoplasty', icon: 'heat', tone: 'good', points: ['teplem měknou a dají se znovu tvarovat', 'PE, PP, PET, PVC', 'recyklovat se dají hlavně ony'] },
+              { title: 'Reaktoplasty', icon: 'cross', tone: 'bad', points: ['řetězce propojené pevnými příčnými vazbami', 'teplem už nezměknou', 'bakelit, epoxidové pryskyřice'] },
+            ], caption: 'Dvě skupiny plastů podle chování v teple' },
+            { type: 'diagram', id: 'plastic-lifecycle', caption: 'Život plastu: z ropy přes výrobek do tříděného odpadu a recyklace, nebo do přírody jako mikroplast' },
             { type: 'table', headers: ['Kód', 'Zkratka', 'Plast', 'Typické výrobky'], rows: [
               ['1', 'PET', 'polyethylentereftalát', 'lahve od nápojů'],
               ['2', 'HDPE (PE-HD)', 'polyethylen o vysoké hustotě', 'lahve od drogerie, kanystry'],
@@ -1122,9 +1268,20 @@ CH3 — C — NH2`, caption: 'Ethanamid (acetamid)' },
               ['6', 'PS', 'polystyren', 'tácky, pěnový polystyren'],
               ['7', 'O', 'ostatní plasty a směsi', 'např. polykarbonát, PLA'],
             ], caption: 'Recyklační kódy najdeš v trojúhelníku ze šipek na obalu' },
-            { type: 'callout', variant: 'tip', title: 'Plasty a třídění', text: 'Plasty patří do **žlutého kontejneru**. Lahve sešlápni a vylij z nich zbytky. Nejlépe se recykluje čisté PET, ze kterého vznikají vlákna i nové lahve. Každý plast se ale recyklací trochu zhorší, protože se řetězce zkracují. Nejlepší plastový odpad je ten, který vůbec nevznikne.' },
+            { type: 'iconlist', items: [
+              { icon: 'recycle', title: 'Žlutý kontejner', text: 'sem patří plasty' },
+              { icon: 'plastic-bottle', title: 'Sešlápni a vylij', text: 'lahve sešlápni a vylij z nich zbytky' },
+              { icon: 'star', title: 'Nejlépe čisté PET', text: 'vznikají z něj vlákna i nové lahve' },
+              { icon: 'arrow-cycle', title: 'Každá recyklace ubere', text: 'řetězce se zkracují a plast se trochu zhorší' },
+              { icon: 'leaf', title: 'Nejlepší plastový odpad', text: 'je ten, který vůbec nevznikne' },
+            ] },
             { type: 'callout', variant: 'warning', title: 'Nepal plasty', text: 'Při hoření PVC vzniká leptavý chlorovodík a jedovaté dioxiny. Plasty proto nikdy nepal v kamnech ani na zahradě.' },
-            { type: 'p', text: '**Mikroplasty** jsou kousky plastu menší než 5 mm. Vznikají rozpadem odpadu, oděrem pneumatik nebo praním syntetického oblečení. Najdeme je v oceánech, v pitné vodě i v lidské krvi a vědci teprve zjišťují, co v těle způsobují.' },
+            { type: 'p', text: '**Mikroplasty** jsou kousky plastu menší než 5 mm, které vznikají hlavně třemi cestami (viz níže). Najdeme je v oceánech, v pitné vodě i v lidské krvi a vědci teprve zjišťují, co v těle způsobují.' },
+            { type: 'iconlist', items: [
+              { icon: 'plastic-bottle', title: 'Rozpad odpadu' },
+              { icon: 'car', title: 'Oděr pneumatik' },
+              { icon: 'water-tap', title: 'Praní syntetického oblečení' },
+            ] },
             { type: 'callout', variant: 'fact', text: 'Existují i **biodegradovatelné** plasty, třeba polyester kyselina polymléčná (PLA) vyráběná z kukuřičného škrobu. Rozloží se ale jen v průmyslové kompostárně za vyšší teploty, ne v lese ani v moři.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď recyklační kód k plastu.', pairs: [
               ['1', 'PET'],
@@ -1132,7 +1289,7 @@ CH3 — C — NH2`, caption: 'Ethanamid (acetamid)' },
               ['5', 'PP'],
               ['6', 'PS'],
             ], explain: 'Kódy: 1 PET, 2 HDPE, 3 PVC, 4 LDPE, 5 PP, 6 PS, 7 ostatní.' } },
-            { type: 'check', question: { kind: 'tf', q: 'Mikroplasty jsou částice plastu menší než 5 mm.', answer: true, explain: 'Taková je běžná definice. Nejmenší částice, nanoplasty, jsou ještě o několik řádů menší.' } },
+            { type: 'check', question: { kind: 'tf', q: 'Mikroplasty jsou částice plastu menší než 5 mm.', answer: true, explain: 'Taková je běžná definice. Nejmenší částice, nanoplasty, jsou ještě o několik řádů menší.' } },
           ],
         },
       ],

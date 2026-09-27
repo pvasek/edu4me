@@ -153,7 +153,7 @@ export default function MixtureTypes() {
     >
       {ITEMS.map((it) => (
         <motion.div className="f12-cell" key={it.name} variants={riseV(0)}>
-          {it.draw()}
+          <it.draw />
           <span className="f12-kind">{it.kind}</span>
           <p className="f12-cap">{it.name}</p>
           <p className="f12-note">

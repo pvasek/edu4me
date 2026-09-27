@@ -181,7 +181,7 @@ export default function Dilution() {
               <T x={430} y={356} className="f35-mono f35-b f35-lvt" size={12.5}>
                 <ChemText text="c_{2} = 0,40 mol/dm^{3}" />
               </T>
-              <Equation x={200} y={352} w={250} />
+              <Equation x={196} y={352} w={300} />
             </>
           ),
         },
@@ -227,7 +227,7 @@ export default function Dilution() {
               <T x={170} y={538} className="f35-mono f35-b f35-lvt" size={13}>
                 <ChemText text="c_{2} = 0,40 mol/dm^{3}" />
               </T>
-              <Equation x={170} y={596} w={300} />
+              <Equation x={170} y={596} w={316} />
             </>
           ),
         },

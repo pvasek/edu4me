@@ -95,7 +95,7 @@ function Scene() {
   const L = n
     ? {
         w: 340,
-        h: 640,
+        h: 610,
         chl: { x: 170, y: 150 },
         mit: { x: 170, y: 440 },
         sun: { x: 40, y: 40 },
@@ -105,7 +105,7 @@ function Scene() {
         backL: { x: 58, y: 318, a: 'start' as const },
         eqChl: { x: 170, y: 230 },
         eqMit: { x: 170, y: 515 },
-        atp: [170, 560, 170, 600],
+        atp: [170, 548, 170, 574],
       }
     : {
         w: 660,
@@ -140,7 +140,7 @@ function Scene() {
         <Mitochondrion {...L.mit} />
       </Pop>
       <Fade delay={0.9}>
-        <text className="f89-lb f89-b" x={L.chl.x} y={L.chl.y - 64} textAnchor="middle">
+        <text className="f89-lb f89-b" x={L.chl.x + (n ? 0 : 30)} y={L.chl.y - 64} textAnchor="middle">
           chloroplast · fotosyntéza
         </text>
         <text className="f89-lb f89-b" x={L.mit.x} y={L.mit.y - 60} textAnchor="middle">
@@ -160,10 +160,10 @@ function Scene() {
           <ChemText text="6 CO_{2} + 6 H_{2}O" />
         </text>
       </Fade>
-      <g style={{ opacity: 0.9 }}>
+      <Fade delay={2.4}>
         <Tokens d={L.go} color="#f1d67a" />
         <Tokens d={L.back} color="#9fc0e6" />
-      </g>
+      </Fade>
 
       {/* equations */}
       <Fade delay={2.6}>

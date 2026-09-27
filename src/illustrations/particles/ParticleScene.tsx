@@ -13,7 +13,13 @@ import './particles.css'
  * and rest in place when motion is reduced.
  */
 export function ParticleScene({ boxes, arrows }: { boxes: ParticleBox[]; arrows?: boolean }) {
-  const scale = useMemo(() => Math.min(...boxes.map(maxScale), 10), [boxes])
+  // boxes that show the same species share one scale (ice → water → steam);
+  // unrelated boxes each use the largest scale that fits
+  const scales = useMemo(() => {
+    const own = boxes.map((b) => Math.min(maxScale(b), 10))
+    const sets = boxes.map((b) => new Set(b.items.map((it) => it.species)))
+    return own.map((_, i) => Math.min(...own.filter((__, j) => [...sets[i]].some((x) => sets[j].has(x)))))
+  }, [boxes])
   return (
     <motion.div
       className="pt-scene"
@@ -26,7 +32,7 @@ export function ParticleScene({ boxes, arrows }: { boxes: ParticleBox[]; arrows?
         <Fragment key={i}>
           {arrows && i > 0 && <SceneArrow />}
           <motion.div className="pt-box" variants={rise}>
-            <Jar box={b} index={i} scale={scale} />
+            <Jar box={b} index={i} scale={scales[i]} />
             <div className="pt-label">
               <Md text={b.label} />
             </div>
@@ -88,8 +94,8 @@ function maxScale(box: ParticleBox): number {
     return best
   }
   if (state === 'liquid') return Math.sqrt((IW * IH * 0.5) / (n * span * span))
-  if (state === 'solution') return Math.sqrt((IW * IH * 0.16) / (n * span * span))
-  return Math.sqrt((IW * IH * 0.15) / (n * span * span))
+  if (state === 'solution') return Math.sqrt((IW * IH * 0.26) / (n * span * span))
+  return Math.sqrt((IW * IH * 0.22) / (n * span * span))
 }
 
 interface Placed {
@@ -165,13 +171,12 @@ function layout(box: ParticleBox, index: number, s: number): { parts: Placed[]; 
         cols = c
       }
     }
-    const rows = Math.ceil(n / cols)
     const x0 = (IN.x0 + IN.x1) / 2 - ((cols - 1) * cell) / 2
     glyphs.forEach((g, k) => {
       const row = Math.floor(k / cols)
       let col = k % cols
       if (row % 2) col = cols - 1 - col
-      const y = IN.y1 - span / 2 - (rows - 1 - row) * cell - 2
+      const y = IN.y1 - span / 2 - row * cell - 2
       parts.push({
         g,
         x: x0 + col * cell,

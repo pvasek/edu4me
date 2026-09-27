@@ -74,42 +74,42 @@ const grid = (n: number, cols: number, x: number, y: number, dx: number, dy: num
 /** Sandwich analogy: 8 bread + 3 cheese → 3 sandwiches, 2 bread left. `ox, oy` = origin, `wide` side by side. */
 function Analogy({ ox, oy, wide }: { ox: number; oy: number; wide: boolean }) {
   const bx = wide ? 0 : 0
-  const rx = wide ? 284 : 0
+  const rx = wide ? 300 : 0
   const ry = wide ? 0 : 162
   return (
     <g transform={`translate(${ox} ${oy})`}>
-      <Box x={bx} y={30} w={wide ? 232 : 320} h={122} title="máš">
-        {grid(8, 4, bx + 24, 62, 30, 34).map(([x, y], i) => (
+      <Box x={bx} y={30} w={wide ? 250 : 320} h={122} title="máš">
+        {grid(8, 4, bx + 24, 68, 30, 34).map(([x, y], i) => (
           <Pop key={i} d={0.1 + i * 0.04}>
             <Bread x={x} y={y} />
           </Pop>
         ))}
-        {grid(3, 1, bx + (wide ? 160 : 190), 58, 0, 30).map(([x, y], i) => (
+        {grid(3, 1, bx + (wide ? 156 : 190), 58, 0, 30).map(([x, y], i) => (
           <Pop key={i} d={0.5 + i * 0.06}>
             <Cheese x={x} y={y} />
           </Pop>
         ))}
-        <text x={bx + (wide ? 184 : 214)} y={64} className="f35-t f35-small">
+        <text x={bx + (wide ? 176 : 212)} y={63} className="f35-t f35-small">
           3 plátky
         </text>
         <text x={bx + 24} y={146} className="f35-t f35-small f35-muted">
           8 krajíců
         </text>
         <Fade d={1.8}>
-          <text x={bx + (wide ? 184 : 214)} y={100} className="f35-note f35-lvt" style={{ fontSize: 15, fontWeight: 700 }}>
-            dojde první:
-          </text>
-          <text x={bx + (wide ? 184 : 214)} y={117} className="f35-note f35-lvt" style={{ fontSize: 15, fontWeight: 700 }}>
+          <text x={bx + (wide ? 176 : 212)} y={100} className="f35-note f35-lvt" style={{ fontSize: 15, fontWeight: 700 }}>
             limitující
+          </text>
+          <text x={bx + (wide ? 176 : 212)} y={116} className="f35-t f35-muted" style={{ fontSize: 11 }}>
+            (dojde první)
           </text>
         </Fade>
       </Box>
       {wide ? (
-        <Arrow x1={240} y1={92} x2={276} y2={92} className="f35-arrow-lv" delay={0.8} />
+        <Arrow x1={258} y1={92} x2={292} y2={92} className="f35-arrow-lv" delay={0.8} />
       ) : (
         <Arrow x1={160} y1={156} x2={160} y2={186} className="f35-arrow-lv" delay={0.8} />
       )}
-      <Box x={rx} y={30 + ry} w={wide ? 236 : 320} h={122} title="vyrobíš">
+      <Box x={rx} y={30 + ry} w={wide ? 240 : 320} h={122} title="vyrobíš">
         {grid(3, 3, rx + 30, 76 + ry, 38, 0).map(([x, y], i) => (
           <Pop key={i} d={1.1 + i * 0.15}>
             <Sandwich x={x} y={y} />
@@ -136,17 +136,17 @@ function Analogy({ ox, oy, wide }: { ox: number; oy: number; wide: boolean }) {
 
 /** Molecular version: 4 H₂ + 3 O₂ → 4 H₂O + 1 O₂ left. */
 function Molecular({ ox, oy, wide }: { ox: number; oy: number; wide: boolean }) {
-  const rx = wide ? 284 : 0
+  const rx = wide ? 300 : 0
   const ry = wide ? 0 : 162
   return (
     <g transform={`translate(${ox} ${oy})`}>
-      <Box x={0} y={30} w={wide ? 232 : 320} h={122} title="4 H₂ + 3 O₂">
+      <Box x={0} y={30} w={wide ? 250 : 320} h={122} title="4 H₂ + 3 O₂">
         {grid(4, 2, 34, 66, 40, 36).map(([x, y], i) => (
           <Pop key={i} d={0.3 + i * 0.05}>
             <H2 x={x} y={y} />
           </Pop>
         ))}
-        {grid(3, 1, wide ? 150 : 180, 58, 0, 32).map(([x, y], i) => (
+        {grid(3, 1, wide ? 170 : 180, 58, 0, 32).map(([x, y], i) => (
           <Pop key={i} d={0.6 + i * 0.06}>
             <O2 x={x} y={y} />
           </Pop>
@@ -158,11 +158,11 @@ function Molecular({ ox, oy, wide }: { ox: number; oy: number; wide: boolean }) 
         </Fade>
       </Box>
       {wide ? (
-        <Arrow x1={240} y1={92} x2={276} y2={92} className="f35-arrow-lv" delay={1} />
+        <Arrow x1={258} y1={92} x2={292} y2={92} className="f35-arrow-lv" delay={1} />
       ) : (
         <Arrow x1={160} y1={156} x2={160} y2={186} className="f35-arrow-lv" delay={1} />
       )}
-      <Box x={rx} y={30 + ry} w={wide ? 236 : 320} h={122} title="4 H₂O + zbytek">
+      <Box x={rx} y={30 + ry} w={wide ? 240 : 320} h={122} title="4 H₂O + zbytek">
         {grid(4, 2, rx + 30, 70 + ry, 40, 38).map(([x, y], i) => (
           <Pop key={i} d={1.3 + i * 0.12}>
             <H2O x={x} y={y} />
@@ -190,8 +190,8 @@ export default function LimitingReagent() {
       label="Limitující reaktant na příkladu sendvičů: na jeden sendvič potřebuješ 2 krajíce chleba a 1 plátek sýra. Z 8 krajíců a 3 plátků uděláš 3 sendviče, sýr dojde první a je limitující, 2 krajíce zbudou v nadbytku. Stejně u molekul: podle 2 H2 + O2 → 2 H2O dají 4 H2 a 3 O2 čtyři molekuly vody, vodík je limitující a 1 O2 zbude."
       layouts={[
         {
-          w: 540,
-          h: 382,
+          w: 560,
+          h: 360,
           max: 680,
           when: 'wide',
           draw: () => (
@@ -200,7 +200,7 @@ export default function LimitingReagent() {
                 recept: 2 krajíce + 1 sýr → 1 sendvič
               </T>
               <Analogy ox={10} oy={4} wide />
-              <line x1={10} x2={530} y1={176} y2={176} className="f35-rule" />
+              <line x1={10} x2={550} y1={176} y2={176} className="f35-rule" />
               <T x={10} y={206} anchor="start" className="f35-title">
                 <ChemText text="rovnice: 2 H_{2} + O_{2} → 2 H_{2}O" />
               </T>

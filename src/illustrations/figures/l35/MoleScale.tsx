@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { spring } from '../../../ui/motion'
-import { Beaker, ChemText, Fade, Figure, Pop, T, pat, usePid } from './kit'
+import { Beaker, ChemText, Fade, Figure, Pop, pat, usePid } from './kit'
 
 /** Deterministic pseudo-random numbers. */
 function rnd(i: number) {

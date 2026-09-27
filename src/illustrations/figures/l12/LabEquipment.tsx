@@ -209,7 +209,7 @@ export default function LabEquipment() {
     >
         {ITEMS.map((it, i) => (
           <motion.div className="f12-cell" key={it.name} variants={riseV(0)}>
-            <Mini w={100} h={118}>{it.draw()}</Mini>
+            <Mini w={100} h={118}><it.draw /></Mini>
             <span className="f12-cap-no">{ROMAN[i]}.</span>
             <p className="f12-cap">{it.name}</p>
             <p className="f12-note">{it.use}</p>

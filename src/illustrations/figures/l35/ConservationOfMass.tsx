@@ -59,9 +59,9 @@ function Scene({ x, y, after }: { x: number; y: number; after: boolean }) {
             [14, -24],
           ].map(([dx, dy], i) => (
             <g key={i}>
-              <circle cx={cx + dx - 5} cy={top + dy} r={3.4} fill="#d9493b" className="f35-atom-edge" style={{ strokeWidth: 0.8 }} />
-              <circle cx={cx + dx} cy={top + dy} r={3.8} fill="#3b3b3b" className="f35-atom-edge" style={{ strokeWidth: 0.8 }} />
-              <circle cx={cx + dx + 5} cy={top + dy} r={3.4} fill="#d9493b" className="f35-atom-edge" style={{ strokeWidth: 0.8 }} />
+              <circle cx={cx + dx - 5} cy={top + dy} r={3.4} className="f35-atom-edge" style={{ strokeWidth: 0.8, fill: '#d9493b' }} />
+              <circle cx={cx + dx} cy={top + dy} r={3.8} className="f35-atom-edge" style={{ strokeWidth: 0.8, fill: '#3b3b3b' }} />
+              <circle cx={cx + dx + 5} cy={top + dy} r={3.4} className="f35-atom-edge" style={{ strokeWidth: 0.8, fill: '#d9493b' }} />
             </g>
           ))}
         </motion.g>

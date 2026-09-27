@@ -28,8 +28,6 @@ function Goggles({ x, y }: { x: number; y: number }) {
 }
 
 export default function HeatingTestTube() {
-  const clip = useFigId()
-  const h = useHatch()
   return (
     <Plate
       level={1}
@@ -47,6 +45,16 @@ export default function HeatingTestTube() {
         </ol>
       }
     >
+      <Body />
+    </Plate>
+  )
+}
+
+function Body() {
+  const clip = useFigId()
+  const h = useHatch()
+  return (
+    <>
       <defs>
         <clipPath id={clip}>
           <path d={TUBE} transform={T} />
@@ -151,6 +159,6 @@ export default function HeatingTestTube() {
           </g>
         </g>
       </Pop>
-    </Plate>
+    </>
   )
 }

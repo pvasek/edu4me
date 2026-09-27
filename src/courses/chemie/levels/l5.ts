@@ -50,7 +50,7 @@ const l51: Lesson = {
         { type: 'molecule', molecules: ['H2O', 'H3O+'], labels: ['voda', 'oxoniový kation $H3O^+$'] },
         {
           type: 'p',
-          text: 'Co z kyseliny zbude po odtržení vodíku, je **anion kyseliny**, tady $Cl^-$. Kyseliny s více vodíky je odevzdávají postupně: $H2SO4 -> H^+ + HSO4^-$ a potom $HSO4^- <=> H^+ + SO4^2-$. Druhý krok neproběhne úplně, proto obousměrná šipka.',
+          text: 'Zbytek po odtržení vodíku je **anion kyseliny**, tady $Cl^-$. Víc vodíků odevzdává kyselina postupně: $H2SO4 -> H^+ + HSO4^-$, potom $HSO4^- <=> H^+ + SO4^2-$ (druhý krok neproběhne úplně).',
         },
         { type: 'molecule', molecules: ['H2SO4', 'SO4^2-'], labels: ['kyselina sírová', 'síranový anion'], caption: 'Po odtržení obou vodíků zbude z $H2SO4$ anion $SO4^2-$.' },
         {
@@ -495,7 +495,7 @@ const l52: Lesson = {
         { type: 'formula', text: '$NaOH$   $Ca(OH)2$   $Al(OH)3$', caption: 'kation kovu + tolik aniontů $OH^-$, kolik je náboj kationtu' },
         {
           type: 'p',
-          text: 'Protože $OH^-$ má náboj −1, ==počet skupin OH se rovná oxidačnímu číslu kovu.== Víc skupin dáváme do **závorky** s indexem: $Ca(OH)2$. Název tvoří slovo **hydroxid** a přídavné jméno s koncovkou podle oxidačního čísla kovu, stejně jako u oxidů: -ný, -natý, -itý…',
+          text: 'Protože $OH^-$ má náboj −1, ==počet skupin OH se rovná oxidačnímu číslu kovu.== Víc skupin patří do **závorky**: $Ca(OH)2$. Název: **hydroxid** + koncovka podle oxidačního čísla kovu jako u oxidů (-ný, -natý, -itý…).',
         },
         {
           type: 'table',
@@ -632,7 +632,7 @@ const l52: Lesson = {
         },
         {
           type: 'p',
-          text: 'Vodnému roztoku amoniaku se říká **čpavková voda**, hovorově **čpavek**, a najdeš ho v některých čističích oken. Starší název „hydroxid amonný“ ($NH4OH$) nepoužívej, takové molekuly v roztoku neexistují.',
+          text: 'Roztoku amoniaku se říká **čpavková voda** (hovorově **čpavek**), je v některých čističích oken. Název „hydroxid amonný“ ($NH4OH$) nepoužívej, takové molekuly neexistují.',
         },
         {
           type: 'callout',
@@ -841,7 +841,7 @@ const l53: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Úplně čistá voda vede elektrický proud jen nepatrně, takže obsahuje trochu iontů. Molekuly vody si totiž občas předají vodíkový kation: jedna se změní na oxoniový kation, druhá na hydroxidový anion. Tomuto ději se říká **autoprotolýza vody**.',
+          text: 'Čistá voda vede proud jen nepatrně, obsahuje tedy trochu iontů. Molekuly vody si totiž občas předají vodíkový kation: vznikne oxoniový kation a hydroxidový anion. Říká se tomu **autoprotolýza vody**.',
         },
         { type: 'formula', text: '$H2O + H2O <=> H3O^+ + OH^-$' },
         {
@@ -856,7 +856,7 @@ const l53: Lesson = {
         { type: 'molecule', molecules: ['H3O+', 'OH-'], labels: ['oxoniový kation', 'hydroxidový anion'] },
         {
           type: 'p',
-          text: 'Molární koncentraci iontu píšeme do hranatých závorek: $[H3O^+]$ je koncentrace oxoniových kationtů v mol/dm^{3}, totéž $c$ jako v lekci 4-5. V čisté vodě při 25 °C je $[H3O^+] = [OH^-] = 10^{-7}$ mol/dm^{3}, zhruba jeden oxoniový kation na 500 milionů molekul vody.',
+          text: '$[H3O^+]$ značí molární koncentraci oxoniových kationtů v mol/dm^{3} (totéž $c$ jako v lekci 4-5). V čisté vodě při 25 °C je $[H3O^+] = [OH^-] = 10^{-7}$ mol/dm^{3}.',
         },
         { type: 'formula', text: '$[H3O^+]·[OH^-] = 1,0·10^{-14}$', caption: '**iontový součin vody** $K_{v}$ při 25 °C' },
         {
@@ -915,7 +915,7 @@ const l53: Lesson = {
         },
         {
           type: 'p',
-          text: 'U **silných kyselin**, jako je $HCl$ nebo $HNO3$, se ve zředěném roztoku rozštěpí všechny molekuly. Koncentrace $H3O^+$ je pak rovna koncentraci kyseliny. (Silné a slabé kyseliny podrobně rozlišíme v lekci 5-6.)',
+          text: 'U **silných kyselin**, jako je $HCl$ nebo $HNO3$, se ve zředěném roztoku rozštěpí všechny molekuly, takže $[H3O^+]$ se rovná koncentraci kyseliny. (Podrobně v lekci 5-6.)',
         },
         {
           type: 'particles',
@@ -986,6 +986,13 @@ const l53: Lesson = {
             'pH = 14 − pOH = 14 − 3 = 11.',
           ],
           answer: 'pH = 11',
+        },
+        {
+          type: 'particles',
+          boxes: [
+            { label: 'roztok $Ca(OH)2$', items: [{ species: 'Ca^{2+}', count: 2 }, { species: 'OH-', count: 4 }, { species: 'H2O', count: 5 }], state: 'solution', note: 'z každé jednotky dva $OH^-$' },
+          ],
+          caption: '$Ca(OH)2 -> Ca^{2+} + 2OH^-$: koncentrace $OH^-$ je dvojnásobná.',
         },
         {
           type: 'example',
@@ -1266,7 +1273,7 @@ const l54: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Žaludeční šťáva obsahuje kyselinu chlorovodíkovou. Když se jí část dostane do jícnu, pálí to: **pálení žáhy**. **Antacida**, léky proti překyselení, obsahují slabě rozpustné zásady, které nadbytek kyseliny zneutralizují.',
+          text: 'Kyselina chlorovodíková ze žaludku v jícnu pálí: to je **pálení žáhy**. **Antacida**, léky proti překyselení, obsahují slabě rozpustné zásady, které nadbytek kyseliny zneutralizují.',
         },
         { type: 'reaction', equation: 'Mg(OH)2 + 2HCl -> MgCl2 + 2H2O', caption: 'hydroxid hořečnatý neutralizuje žaludeční kyselinu' },
         { type: 'reaction', equation: 'Al(OH)3 + 3HCl -> AlCl3 + 3H2O', caption: 'hydroxid hlinitý dělá totéž' },
@@ -1406,6 +1413,7 @@ const l54: Lesson = {
           ],
           answer: '$c(H2SO4)$ = 0,25 mol/dm^{3}',
         },
+        { type: 'reaction', equation: 'H2SO4 + 2NaOH -> Na2SO4 + 2H2O', caption: 'poměr 1 : 2: na jednu $H2SO4$ připadají dvě $NaOH$' },
         {
           type: 'callout',
           variant: 'warning',
@@ -1620,7 +1628,7 @@ const l55: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Název soli má **podstatné jméno podle aniontu** a **přídavné jméno podle kationtu**. Soli bezkyslíkatých kyselin znáš z lekce 3-6: chlorid sodný, sulfid železnatý. U kyslíkatých kyselin se koncovka kyseliny změní takto:',
+          text: 'Název soli = **podstatné jméno podle aniontu** + **přídavné jméno podle kationtu**. Soli bezkyslíkatých kyselin znáš z lekce 3-6 (chlorid sodný). U kyslíkatých kyselin se koncovka změní takto:',
         },
         {
           type: 'table',
@@ -1708,7 +1716,7 @@ const l55: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Kyselina s více vodíky nemusí odevzdat všechny najednou. Když si anion část vodíků ponechá, vznikne **hydrogensůl** s předponou **hydrogen-** nebo **dihydrogen-**. Každý ponechaný vodík zmenší záporný náboj aniontu o 1.',
+          text: 'Když si anion kyseliny část vodíků ponechá, vznikne **hydrogensůl** (předpona **hydrogen-** nebo **dihydrogen-**). Každý ponechaný vodík zmenší záporný náboj aniontu o 1.',
         },
         {
           type: 'process',
@@ -1776,13 +1784,20 @@ const l55: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Některé soli krystalizují s pevně vázanými molekulami vody, **krystalovou vodou**. Takovým sloučeninám říkáme **hydráty** a ve vzorci se voda připojuje tečkou: $CuSO4·5H2O$. Název: číslovková předpona + **hydrát** + název soli ve 2. pádě, tedy **pentahydrát síranu měďnatého**.',
+          text: 'Některé soli krystalizují s pevně vázanou **krystalovou vodou**, říkáme jim **hydráty**. Ve vzorci se voda připojuje tečkou: $CuSO4·5H2O$ je **pentahydrát síranu měďnatého** (předpona + hydrát + název soli ve 2. pádě).',
         },
         {
           type: 'callout',
           variant: 'remember',
           title: 'Řecké předpony',
           text: 'mono- (1), di- (2), tri- (3), tetra- (4), penta- (5), hexa- (6), hepta- (7), okta- (8), nona- (9), deka- (10); pro půl molekuly vody hemi-.',
+        },
+        {
+          type: 'particles',
+          boxes: [
+            { label: 'krystal $CuSO4·5H2O$', items: [{ species: 'Cu^{2+}', count: 2 }, { species: 'SO4^2-', count: 2 }, { species: 'H2O', count: 10 }], state: 'solid', note: 'molekuly vody jsou pevně vázané v krystalu' },
+          ],
+          caption: 'Na každou vzorcovou jednotku $CuSO4$ připadá pět molekul krystalové vody.',
         },
         {
           type: 'table',
@@ -1912,7 +1927,7 @@ const l55: Lesson = {
         },
         {
           type: 'p',
-          text: '**Průmyslová hnojiva** dodávají rostlinám dusík, fosfor a draslík, proto se jim říká NPK. Obsahují soli jako dusičnan amonný $NH4NO3$, síran amonný $(NH4)2SO4$, dihydrogenfosforečnan vápenatý $Ca(H2PO4)2$ nebo chlorid draselný $KCl$.',
+          text: '**Průmyslová hnojiva** (NPK) dodávají rostlinám dusík, fosfor a draslík. Obsahují třeba dusičnan amonný $NH4NO3$, síran amonný $(NH4)2SO4$, $Ca(H2PO4)2$ nebo $KCl$.',
         },
         {
           type: 'callout',
@@ -2024,7 +2039,7 @@ const l56: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Arrheniova teorie funguje jen ve vodě a špatně vysvětluje, proč je zásadou amoniak. V roce 1923 proto Dán Johannes **Brønsted** a Angličan Thomas **Lowry** nezávisle na sobě navrhli obecnější definici. Jejím klíčem je předávání **protonu**, tedy kationtu $H^+$.',
+          text: 'Arrheniova teorie funguje jen ve vodě a amoniak vysvětluje špatně. V roce 1923 proto Dán Johannes **Brønsted** a Angličan Thomas **Lowry** nezávisle navrhli obecnější definici založenou na předávání **protonu** $H^+$.',
         },
         {
           type: 'compare',
@@ -2111,9 +2126,12 @@ const l56: Lesson = {
           answer: 'Konjugované páry jsou $NH4^+$/$NH3$ a $H2O$/$OH^-$.',
         },
         {
-          type: 'callout',
-          variant: 'tip',
-          text: 'Čím silnější kyselina, tím slabší je její konjugovaná zásada. Chloridový anion $Cl^-$ proton skoro vůbec nepřijímá, protože $HCl$ ho odevzdává velmi ochotně.',
+          type: 'compare',
+          columns: [
+            { title: '$HCl$: silná kyselina', icon: 'lightning', tone: 'a', points: ['odevzdává $H^+$ velmi ochotně', 'její konjugovaná zásada $Cl^-$ proton skoro vůbec nepřijímá'] },
+            { title: '$NH4^+$: slabá kyselina', icon: 'equilibrium', tone: 'b', points: ['odevzdává $H^+$ neochotně', 'její konjugovaná zásada $NH3$ proton ochotně přijímá'] },
+          ],
+          caption: 'Čím silnější kyselina, tím slabší je její konjugovaná zásada.',
         },
         {
           type: 'check',
@@ -2235,7 +2253,7 @@ const l56: Lesson = {
         },
         {
           type: 'p',
-          text: 'Rozdíl je vidět i na titrační křivce. Slabá kyselina začíná na vyšším pH, skok je menší a bod ekvivalence leží v zásadité oblasti, u kyseliny octové asi při pH 8,7. Proto se pro ni hodí fenolftalein, a ne methyloranž.',
+          text: 'Slabá kyselina má i jinou titrační křivku: začíná výš, skok je menší a bod ekvivalence leží v zásadité oblasti (u kyseliny octové asi při pH 8,7). Proto se hodí fenolftalein, a ne methyloranž.',
         },
         {
           type: 'diagram',
@@ -2277,7 +2295,7 @@ const l56: Lesson = {
         },
         {
           type: 'p',
-          text: 'Rozhoduje, z jak silné kyseliny a zásady sůl vznikla. Anion slabé kyseliny je znatelně silná konjugovaná zásada a bere vodě protony. Kation slabé zásady, třeba $NH4^+$, je naopak kyselina a protony vodě předává.',
+          text: 'Rozhoduje, z jak silné kyseliny a zásady sůl vznikla. Anion slabé kyseliny je konjugovaná zásada a bere vodě protony; kation slabé zásady, třeba $NH4^+$, protony vodě předává.',
         },
         {
           type: 'table',
@@ -2341,7 +2359,7 @@ const l56: Lesson = {
         },
         {
           type: 'p',
-          text: 'Každá Brønstedova zásada je zároveň Lewisovou zásadou, protože proton přijímá právě volným elektronovým párem. Lewisova teorie se hodí hlavně pro komplexní sloučeniny kovů (úroveň 7) a pro organické reakce (úroveň 8).',
+          text: 'Každá Brønstedova zásada je i Lewisovou zásadou: proton přijímá právě volným elektronovým párem. Lewisova teorie se hodí hlavně pro komplexy kovů (úroveň 7) a organické reakce (úroveň 8).',
         },
         {
           type: 'compare',

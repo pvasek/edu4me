@@ -668,3 +668,44 @@
 .f35-warn-t {
   fill: var(--warn);
 }
+.f35-shape-edge {
+  fill: none;
+  stroke: #1f2a44;
+  stroke-width: 1.3;
+  stroke-linejoin: round;
+}
+.f35-lens {
+  fill: none;
+  stroke: var(--lv-ink);
+  stroke-width: 2;
+  stroke-dasharray: 5 3;
+}
+.f35-puff {
+  fill: var(--surface-3);
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.f35-cloud2 {
+  fill: color-mix(in srgb, var(--ink) 13%, var(--surface));
+}
+.f35-rain {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+.f35-tree {
+  fill: color-mix(in srgb, var(--green) 55%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.3;
+  stroke-linejoin: round;
+}
+.f35-tree-dead path {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.f35-lake {
+  fill: color-mix(in srgb, var(--teal) 35%, var(--surface));
+}

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { motion } from 'motion/react'
-import { Arrow, Ball, ChemText, CPK, Figure, Pop, T, pat, usePid } from './kit'
+import { Arrow, Ball, ChemText, CPK, Figure, Pop, pat, usePid } from './kit'
 
 const C = 200
 const R = 48
@@ -121,10 +121,11 @@ function Links() {
         const b1 = P(end, -7)
         const b2 = P(start, -7)
         const mid = (start + end) / 2
-        const la = P(mid, 24)
-        const lb = P(mid, -24)
-        const toN = l.div ? `÷ ${l.div}` : '= c · V'
-        const fromN = l.div ? `· ${l.div}` : '÷ V → c'
+        const toN = l.div ? `÷ ${l.div}` : 'n = c · V'
+        const fromN = l.div ? `· ${l.div}` : 'c = n ÷ V'
+        const off = (t: string) => 14 + t.replace(/[_^{}]/g, '').length * 3.1
+        const la = P(mid, off(toN))
+        const lb = P(mid, -off(fromN))
         return (
           <g key={i}>
             <Arrow x1={a1[0]} y1={a1[1]} x2={a2[0]} y2={a2[1]} className="f35-arrow-lv" delay={0.8 + i * 0.1} head={9} />
@@ -164,7 +165,7 @@ export default function MoleBridge() {
                 <text x={C} y={C + 30} textAnchor="middle" className="f35-mono f35-b">
                   mol
                 </text>
-                <text x={C} y={C - 22} textAnchor="middle" className="f35-t f35-muted" style={{ fontSize: 10.5 }}>
+                <text x={C} y={C + R + 20} textAnchor="middle" className="f35-note" style={{ fontSize: 14 }}>
                   látkové množství
                 </text>
               </Pop>

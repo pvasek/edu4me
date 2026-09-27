@@ -64,7 +64,8 @@ function frameOf(m: MoleculeData): Frame {
   const pca = pts.length > 1 ? principalAxes(pts) : IDENTITY
   const inPca = pts.map((p) => matVec(pca, p))
   const ext = (k: 0 | 1) => Math.max(...inPca.map((q, i) => Math.abs(q[k]) + r[i]))
-  const elongated = ext(0) > 1.7 * ext(1)
+  // long non-linear molecules (chains, steroids) tumble around their long axis
+  const elongated = ext(0) > 1.7 * ext(1) && ext(1) - Math.max(...r) > 0.5
   const initial = orthonormalize(elongated ? matMul(rotX(0.5), pca) : matMul(rotX(0.42), matMul(rotY(-0.55), pca)))
   const q = pts.map((p) => matVec(initial, p))
   const R = Math.max(...pts.map((p, i) => vlen(p) + r[i]))
@@ -184,9 +185,15 @@ function Ball3D({ mol, frame, hRef }: { mol: MoleculeData; frame: Frame; hRef: n
     let last = 0
     const reduce = typeof window.matchMedia === 'function' ? window.matchMedia('(prefers-reduced-motion: reduce)') : null
     const tick = (t: number) => {
+      raf = 0
+      // idle auto-spin is throttled to ~30 fps; drag and inertia run every frame
+      const idle = !s.dragging && Math.abs(s.vx) + Math.abs(s.vy) <= 0.05
+      if (idle && last && t - last < 30) {
+        raf = requestAnimationFrame(tick)
+        return
+      }
       const dt = last ? Math.min(0.05, (t - last) / 1000) : 0
       last = t
-      raf = 0
       if (!s.dragging && dt > 0) {
         if (Math.abs(s.vx) + Math.abs(s.vy) > 0.05) {
           s.rot = orthonormalize(matMul(matMul(rotY(s.vx * dt), rotX(s.vy * dt)), s.rot))

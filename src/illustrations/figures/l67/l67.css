@@ -43,15 +43,13 @@
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
-  border: 1.5px solid var(--edge);
-  border-radius: var(--r);
-  overflow: hidden;
-  background: var(--surface);
+  gap: 6px;
 }
 .f67-btn {
   appearance: none;
-  border: 0;
-  background: transparent;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
   color: var(--ink);
   font: 700 14px/1.1 var(--font-body);
   min-height: 40px;
@@ -59,14 +57,12 @@
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
 }
-.f67-seg .f67-btn + .f67-btn {
-  border-left: 1.5px solid var(--edge);
-}
 .f67-btn:hover {
   background: var(--surface-2);
 }
 .f67-btn[aria-pressed='true'] {
   background: var(--lvl);
+  border-color: var(--lvl);
   color: var(--on-level);
 }
 .f67-btn-ghost {
@@ -523,4 +519,25 @@
 }
 .f67-narrow .f67-lbl.f67-keep {
   font-size: 15.5px;
+}
+.f67-needle {
+  fill: var(--bad);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.f67-drop {
+  fill: #6f9fd8;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.f67-num-b {
+  font-weight: 700;
+}
+.f67-narrow .f67-eq.f67-keep {
+  font-size: 14.5px;
+}
+.f67-gas {
+  fill: var(--surface);
+  stroke: var(--muted);
+  stroke-width: 1;
 }
