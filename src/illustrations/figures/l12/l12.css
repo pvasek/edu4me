@@ -1185,7 +1185,7 @@
   stroke-dasharray: 3 3;
 }
 .f12-tank-water {
-  fill: color-mix(in srgb, var(--blue) 12%, var(--surface));
+  fill: color-mix(in srgb, var(--info-soft) 85%, var(--surface));
   stroke: var(--line);
   stroke-width: 1;
 }
@@ -1236,4 +1236,68 @@
 }
 .f12-au-nuc {
   fill: var(--ink);
+}
+
+/* ------------------------------------------------------------ atom scale */
+.f12-stand {
+  fill: var(--surface-2);
+}
+.f12-pitch-a {
+  fill: color-mix(in srgb, var(--green) 34%, var(--surface));
+}
+.f12-pitch-b {
+  fill: color-mix(in srgb, var(--green) 26%, var(--surface));
+}
+.f12-pitch-lines,
+.f12-pitch-lines * {
+  fill: none;
+  stroke: #fffaf0;
+  stroke-width: 1.6;
+  opacity: 0.9;
+}
+.f12-nuc-dot {
+  fill: var(--ink);
+}
+.f12-nuc-pulse {
+  fill: none;
+  stroke: var(--f12-lv);
+  stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: f12-pulse 2s ease-out infinite;
+}
+@keyframes f12-pulse {
+  0% {
+    transform: scale(0.4);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+.f12-orbit {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1;
+  stroke-dasharray: 2 6;
+  opacity: 0.7;
+}
+.f12-lens-bg {
+  fill: var(--surface);
+}
+.f12-pin {
+  stroke: #8a93a3;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.f12-pinhead {
+  fill: #c9ced6;
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.f12-bar-t {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 6px;
 }

@@ -1,6 +1,9 @@
 import type { ComponentType } from 'react'
 import type { FigureId } from '../catalog'
 import Corrosion from './l67/Corrosion'
+import OstwaldProcess from './l67/OstwaldProcess'
+import ContactProcess from './l67/ContactProcess'
+import HaberProcess from './l67/HaberProcess'
 import BlastFurnace from './l67/BlastFurnace'
 import EquilibriumSeesaw from './l67/EquilibriumSeesaw'
 import BufferAction from './l67/BufferAction'
@@ -23,4 +26,7 @@ export const FIGURES_L67: Partial<Record<FigureId, ComponentType>> = {
   'buffer-action': BufferAction,
   'equilibrium-seesaw': EquilibriumSeesaw,
   'blast-furnace': BlastFurnace,
+  'haber-process': HaberProcess,
+  'contact-process': ContactProcess,
+  'ostwald-process': OstwaldProcess,
 }

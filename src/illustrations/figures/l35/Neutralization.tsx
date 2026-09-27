@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { ease } from '../../../ui/motion'
-import { Atom, Beaker, ChemText, CurveArrow, Figure, Note, Pop, T, vFade } from './kit'
+import { Arrow, Atom, Beaker, ChemText, CurveArrow, Figure, Note, Pop, T, vFade } from './kit'
 
 type Pt = [number, number]
 const pol = (c: Pt, ang: number, len: number): Pt => [c[0] + Math.cos((ang * Math.PI) / 180) * len, c[1] + Math.sin((ang * Math.PI) / 180) * len]
@@ -170,11 +170,10 @@ export default function Neutralization() {
                 <ChemText text="HCl + NaOH → NaCl + H_{2}O" />
               </T>
               <Scene x={70} y={50} />
-              <Note x={70} y={250} tx={110} ty={120} size={15}>
+              <Note x={16} y={252} tx={110} ty={120} size={15}>
                 <ChemText text="ionty-diváci Na^{+}, Cl^{−}" />
               </Note>
-              <line x1={160} y1={188} x2={57} y2={300} className="f35-hair" />
-              <line x1={196} y1={188} x2={283} y2={300} className="f35-hair" />
+              <Arrow x1={178} y1={196} x2={178} y2={292} className="f35-arrow-lv" delay={1} />
               <Zoom x={55} y={300} />
             </>
           ),

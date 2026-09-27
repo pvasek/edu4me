@@ -92,14 +92,34 @@ export default function AcidRain() {
           w: 420,
           h: 440,
           max: 600,
-          draw: () => <Plate />,
+          when: 'wide',
+          draw: () => (
+            <>
+              <Scene />
+              <Equations y={318} split={false} />
+            </>
+          ),
+        },
+        {
+          w: 340,
+          h: 440,
+          max: 420,
+          when: 'narrow',
+          draw: () => (
+            <>
+              <g transform="scale(0.81)">
+                <Scene />
+              </g>
+              <Equations y={262} split />
+            </>
+          ),
         },
       ]}
     />
   )
 }
 
-function Plate() {
+function Scene() {
   const pid = usePid()
   return (
     <>
@@ -150,22 +170,28 @@ function Plate() {
           okyselené jezero
         </Note>
       </Fade>
-      {/* equations */}
-      <line x1={10} x2={410} y1={318} y2={318} className="f35-rule" />
+    </>
+  )
+}
+
+function Equations({ y, split }: { y: number; split: boolean }) {
+  const W = split ? 340 : 420
+  const lines = split
+    ? ['SO_{2} + H_{2}O → H_{2}SO_{3}', '2 SO_{2} + O_{2} → 2 SO_{3}', 'SO_{3} + H_{2}O → H_{2}SO_{4}', '4 NO_{2} + O_{2} + 2 H_{2}O → 4 HNO_{3}']
+    : ['SO_{2} + H_{2}O → H_{2}SO_{3}', '2 SO_{2} + O_{2} → 2 SO_{3};  SO_{3} + H_{2}O → H_{2}SO_{4}', '4 NO_{2} + O_{2} + 2 H_{2}O → 4 HNO_{3}']
+  return (
+    <g>
+      <line x1={10} x2={W - 10} y1={y} y2={y} className="f35-rule" />
       <Fade d={2}>
-        {[
-          'SO_{2} + H_{2}O → H_{2}SO_{3}',
-          '2 SO_{2} + O_{2} → 2 SO_{3};  SO_{3} + H_{2}O → H_{2}SO_{4}',
-          '4 NO_{2} + O_{2} + 2 H_{2}O → 4 HNO_{3}',
-        ].map((e, i) => (
-          <text key={i} x={210} y={346 + i * 26} textAnchor="middle" className="f35-mono" style={{ fontSize: 12.5 }}>
+        {lines.map((e, i) => (
+          <text key={i} x={W / 2} y={y + 28 + i * 26} textAnchor="middle" className="f35-mono" style={{ fontSize: 12.5 }}>
             <ChemText text={e} />
           </text>
         ))}
-        <text x={210} y={428} textAnchor="middle" className="f35-note" style={{ fontSize: 14 }}>
+        <text x={W / 2} y={y + 28 + lines.length * 26 + 2} textAnchor="middle" className="f35-note" style={{ fontSize: 14 }}>
           kyselina siřičitá · sírová · dusičná
         </text>
       </Fade>
-    </>
+    </g>
   )
 }

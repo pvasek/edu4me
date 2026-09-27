@@ -73,7 +73,7 @@ function Helix({ cx, y0, dy, R }: { cx: number; y0: number; dy: number; R: numbe
   return (
     <g>
       {back.map((s, i) => (
-        <path key={`b${i}`} d={s.d} stroke="var(--edge)" strokeWidth={4 + s.z * 1.5} strokeLinecap="round" opacity={0.35} fill="none" />
+        <path key={`b${i}`} d={s.d} stroke="color-mix(in srgb, var(--edge) 38%, var(--surface))" strokeWidth={4 + s.z * 1.5} strokeLinecap="round" fill="none" />
       ))}
       {[...rungs]
         .sort((a, b) => a.z - b.z)
@@ -142,9 +142,9 @@ function Ladder({ x, y }: { x: number; y: number }) {
         const purine = (q: Base) => q === 'A' || q === 'G'
         const wl = purine(b) ? 84 : 62
         const wr = purine(p) ? 84 : 62
-        const gap = 162 - wl - wr // space for H-bonds
         const hb = b === 'A' || b === 'T' ? 2 : 3
-        const hx = L + 18 + wl
+        const hx = L + 19 + wl
+        const hx2 = R - 19 - wr
         return (
           <Pop key={k} delay={0.4 + k * 0.12}>
             <rect x={L + 16} y={yy - 9} width={wl} height={18} rx={3} fill={COL[b]} stroke="var(--edge)" strokeWidth={1} />
@@ -158,7 +158,7 @@ function Ladder({ x, y }: { x: number; y: number }) {
             </text>
             {Array.from({ length: hb }, (_, j) => {
               const oy = hb === 2 ? (j ? 4 : -4) : (j - 1) * 5.5
-              return <line key={j} x1={hx} y1={yy + oy} x2={hx + gap - 4} y2={yy + oy} stroke="var(--ink)" strokeWidth={1.3} strokeDasharray="2 2" />
+              return <line key={j} x1={hx} y1={yy + oy} x2={hx2} y2={yy + oy} stroke="var(--ink)" strokeWidth={1.3} strokeDasharray="2 2" />
             })}
             <Sugar x={L} y={yy} />
             <Sugar x={R} y={yy} />

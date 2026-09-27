@@ -14,7 +14,7 @@ function Ion({ x, y, na }: { x: number; y: number; na: boolean }) {
   return (
     <g>
       <circle className={`f12-atom ${na ? 'f12-Na' : 'f12-Cl'}`} cx={x} cy={y} r={r} />
-      <path className="f12-shine" d={`M${x - r * 0.55} ${y - r * 0.15} A${r * 0.6} ${r * 0.6} 0 0 1 ${x - r * 0.1} ${y - r * 0.6}`} />
+      <path className="f12-shine" d={`M${x - r * 0.78} ${y - r * 0.2} A${r * 0.8} ${r * 0.8} 0 0 1 ${x - r * 0.2} ${y - r * 0.78}`} opacity={0.6} />
       <text className="f12-charge" x={x + r * 0.05} y={y + 0.5} style={{ fontSize: na ? 11 : 14 }}>
         {na ? '+' : '−'}
       </text>
@@ -78,7 +78,14 @@ function Body() {
     const x = 40 + rand() * 530
     const y = 44 + rand() * 310
     if (avoid.some(([ax, ay, ar]) => Math.hypot(x - ax, y - ay) < ar)) continue
-    if (x < 230 && y > 215) continue
+    if (x < 230 && y > 196) continue
+    // keep label areas clear
+    const boxes = [
+      [336, 58, 570, 116],
+      [390, 292, 600, 356],
+      [400, 26, 600, 66],
+    ]
+    if (boxes.some(([x0, y0, x1, y1]) => x > x0 - 12 && x < x1 + 12 && y > y0 - 12 && y < y1 + 12)) continue
     if (placed.some(([px, py]) => Math.hypot(px - x, py - y) < 40)) continue
     placed.push([x, y])
     free.push(
@@ -90,7 +97,7 @@ function Body() {
   return (
     <>
       <rect className="f12-tank-water" x={8} y={16} width={584} height={358} rx={10} />
-      <rect className="f12-hatch" x={8} y={16} width={584} height={358} rx={10} fill={h('h')} opacity={0.5} />
+      <rect className="f12-hatch" x={8} y={16} width={584} height={358} rx={10} fill={h('w')} opacity={0.2} />
       {free}
       {/* waters attacking the crystal surface */}
       <Water x={GX + 3 * STEP} y={GY - 26} rot={0} s={0.9} />

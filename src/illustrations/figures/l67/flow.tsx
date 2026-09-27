@@ -107,7 +107,8 @@ export function Compressor({ x, y, r = 26 }: { x: number; y: number; r?: number 
 export function Cooler({ x, y, w, h }: { x: number; y: number; w: number; h: number }) {
   const { id } = useFig()
   let coil = `M${x + 8} ${y + 10}`
-  for (let k = 0; k < 4; k++) coil += ` H${x + w - 10} q6 0 6 ${(h - 20) / 8} t-6 ${(h - 20) / 8} H${x + 10} q-6 0 -6 ${(h - 20) / 8} t6 ${(h - 20) / 8}`
+  const dd = (h - 20) / 12
+  for (let k = 0; k < 3; k++) coil += ` H${x + w - 14} q8 0 8 ${dd} t-8 ${dd} H${x + 14} q-8 0 -8 ${dd} t8 ${dd}`
   return (
     <g>
       <rect x={x} y={y} width={w} height={h} rx={6} fill="#6f9fd8" fillOpacity={0.22} />

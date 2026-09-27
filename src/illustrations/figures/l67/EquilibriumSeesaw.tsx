@@ -92,7 +92,7 @@ export default function EquilibriumSeesaw() {
     >
       {/* equation + flask */}
       <Fade>
-        <Eq x={240} y={24} t="N_{2}O_{4}(g) ⇌ 2NO_{2}(g)    ΔH = +57 kJ/mol" anchor="middle" className="f67-eq-lg" />
+        <Eq x={240} y={24} t="N_{2}O_{4}(g) ⇌ 2NO_{2}(g) · ΔH = +57 kJ/mol" anchor="middle" className="f67-eq-lg" />
         <text x={125} y={150} textAnchor="middle" className="f67-lbl f67-b">
           <ChemText text="N_{2}O_{4}" />
         </text>

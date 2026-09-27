@@ -63,7 +63,7 @@ function Transcription() {
         <text className="f89-lb f89-b" x={30} y={126}>
           DNA
         </text>
-        <text className="f89-lb f89-sm" x={206} y={236} textAnchor="middle">
+        <text className="f89-lb f89-sm" x={176} y={262} textAnchor="middle">
           RNA-polymeráza
         </text>
         <text className="f89-lb f89-b f89-lv" x={150} y={98} textAnchor="middle">
@@ -79,7 +79,7 @@ function Trna({ x, anti, aa, color, faded }: { x: number; anti: string; aa?: str
   return (
     <g opacity={faded ? 0.55 : 1}>
       <path d={`M${x - 20} 276 H${x + 20} V292 H${x - 20}Z`} fill="#e7d3a6" stroke="var(--edge)" strokeWidth={1.1} />
-      <path d={`M${x - 6} 276 V238 H${x - 22} V224 H${x - 6} V214 H${x + 6} V224 H${x + 22} V238 H${x + 6} V276`} fill="#e7d3a6" stroke="var(--edge)" strokeWidth={1.1} />
+      <path d={`M${x - 6} 276 V238 H${x - 18} V224 H${x - 6} V214 H${x + 6} V224 H${x + 18} V238 H${x + 6} V276`} fill="#e7d3a6" stroke="var(--edge)" strokeWidth={1.1} />
       <Letters x={x - 12} y={288} s={anti} />
       {aa && (
         <g>
@@ -96,7 +96,7 @@ function Trna({ x, anti, aa, color, faded }: { x: number; anti: string; aa?: str
 
 function Translation() {
   const hatch = useHatch()
-  const cx = (i: number) => 442 + i * 42
+  const cx = (i: number) => 430 + i * 50
   return (
     <g>
       {/* ribosome: large subunit above, small below the mRNA */}
@@ -112,7 +112,7 @@ function Translation() {
       {/* leaving tRNA */}
       <Slide delay={2.6} dx={20} dy={30} dur={0.8}>
         <g transform="translate(-28 -48)">
-          <Trna x={442} anti="UAC" color="#c9a86a" faded />
+          <Trna x={430} anti="UAC" color="#c9a86a" faded />
         </g>
       </Slide>
       {/* P site: tRNA carrying the chain Met–Ala */}
@@ -136,13 +136,13 @@ function Translation() {
         <Lbl x={378} y={140} tx={cx(1) - 36} ty={158} className="f89-sm" anchor="end">
           rostoucí řetězec
         </Lbl>
-        <Lbl x={650} y={214} tx={590} ty={236} anchor="end" className="f89-sm">
+        <Lbl x={604} y={214} tx={586} ty={232} className="f89-sm">
           ribozom
         </Lbl>
-        <Lbl x={650} y={272} tx={cx(2) + 20} ty={284} anchor="end" className="f89-sm">
+        <Lbl x={604} y={268} tx={cx(2) + 22} ty={284} className="f89-sm">
           antikodon
         </Lbl>
-        <Lbl x={650} y={176} tx={cx(2) + 22} ty={228} anchor="end" className="f89-sm">
+        <Lbl x={604} y={176} tx={cx(2) + 18} ty={230} className="f89-sm">
           tRNA
         </Lbl>
         <path className="f89-thin" d={`M${cx(2) - 18} 326 v5 h36 v-5`} />

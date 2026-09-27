@@ -12,7 +12,7 @@ const ROWS: Row[] = [
   { name: 'lakmus', range: 'přechod 4,5–8,3', colors: ['#d03a33', '#8a5aa8', '#3558b8'] },
   { name: 'fenolftalein', range: 'přechod 8,2–10,0', colors: [CLEAR, CLEAR, '#d6399b'] },
   { name: 'methyloranž', range: 'přechod 3,1–4,4', colors: ['#d8342c', '#f0b52e', '#f0c93a'] },
-  { name: 'univerzální indikátor', range: 'celá stupnice', colors: [PH_COLORS[2], PH_COLORS[7], PH_COLORS[12]] },
+  { name: 'univerzální indikátor', range: 'pH 7 = zelená', colors: [PH_COLORS[2], PH_COLORS[7], PH_COLORS[12]] },
 ]
 const COLS = [
   { x: 186, head: 'kyselé', ph: 'pH 2' },
@@ -97,7 +97,7 @@ export default function IndicatorColors() {
                         indikátor
                       </text>
                     )}
-                    <text x={12} y={y + (r.name === 'univerzální indikátor' ? 70 : 55)} className="f35-t f35-muted" style={{ fontSize: 11 }}>
+                    <text x={12} y={y + (r.name === 'univerzální indikátor' ? 70 : 55)} className="f35-t f35-muted" style={{ fontSize: 12.5 }}>
                       {r.range}
                     </text>
                     {r.colors.map((c, k) => (

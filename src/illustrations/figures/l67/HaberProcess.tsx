@@ -58,9 +58,9 @@ export default function HaberProcess() {
         </text>
         <text x={18} y={160} className="f67-lbl f67-b">
           <ChemText text="H_{2}" />
-          <tspan className="f67-sec" dx={6} style={{ fontWeight: 600 }}>
-            ze zemního plynu
-          </tspan>
+        </text>
+        <text x={18} y={178} className="f67-lbl f67-sm f67-sec">
+          ze zemního plynu
         </text>
         <text x={190} y={148} textAnchor="middle" className="f67-lbl">
           kompresor
@@ -101,7 +101,7 @@ export default function HaberProcess() {
 
       <Pop delay={1.6}>
         <rect x={20} y={436} width={440} height={56} rx={6} className="f67-tag-lvl" />
-        <Eq x={240} y={458} t="N_{2} + 3H_{2} ⇌ 2NH_{3}    ΔH = −92 kJ/mol" anchor="middle" className="f67-eq-lg" />
+        <Eq x={240} y={458} t="N_{2} + 3H_{2} ⇌ 2NH_{3} · ΔH = −92 kJ/mol" anchor="middle" className="f67-eq-lg" />
         <text x={240} y={480} textAnchor="middle" className="f67-lbl f67-sm">
           vysoký tlak zvyšuje výtěžek, 450 °C je kompromis s rychlostí
         </text>

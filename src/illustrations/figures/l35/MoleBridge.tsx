@@ -71,7 +71,7 @@ const LINKS: Link[] = [
   { at: [86, 62], word: 'hmotnost', sym: 'm', unit: 'g', div: 'M', icon: <IconBalance /> },
   { at: [314, 62], word: 'počet částic', sym: 'N', unit: '', div: 'N_{A}', icon: <IconParticles /> },
   { at: [86, 338], word: 'objem plynu', sym: 'V', unit: 'dm^{3}', div: 'V_{m}', icon: <IconGas /> },
-  { at: [314, 338], word: 'roztok', sym: 'c · V', unit: '', div: '', icon: <IconFlask /> },
+  { at: [314, 338], word: 'roztok', sym: 'c', unit: 'mol/dm^{3}', div: '', icon: <IconFlask /> },
 ]
 
 function Card({ l, i }: { l: Link; i: number }) {
@@ -121,8 +121,8 @@ function Links() {
         const b1 = P(end, -7)
         const b2 = P(start, -7)
         const mid = (start + end) / 2
-        const toN = l.div ? `÷ ${l.div}` : 'n = c · V'
-        const fromN = l.div ? `· ${l.div}` : 'c = n ÷ V'
+        const toN = l.div ? `÷ ${l.div}` : '· V'
+        const fromN = l.div ? `· ${l.div}` : '÷ V'
         const off = (t: string) => 14 + t.replace(/[_^{}]/g, '').length * 3.1
         const la = P(mid, off(toN))
         const lb = P(mid, -off(fromN))
@@ -165,9 +165,6 @@ export default function MoleBridge() {
                 <text x={C} y={C + 30} textAnchor="middle" className="f35-mono f35-b">
                   mol
                 </text>
-                <text x={C} y={C + R + 20} textAnchor="middle" className="f35-note" style={{ fontSize: 14 }}>
-                  látkové množství
-                </text>
               </Pop>
               {LINKS.map((l, i) => (
                 <Card key={i} l={l} i={i} />
@@ -186,7 +183,10 @@ export default function MoleBridge() {
                   },
                 }}
               />
-              <line x1={20} x2={380} y1={396} y2={396} className="f35-rule" />
+              <line x1={20} x2={380} y1={400} y2={400} className="f35-rule" />
+              <text x={200} y={386} textAnchor="middle" className="f35-note" style={{ fontSize: 15 }}>
+                n = látkové množství · roztok: n = c · V
+              </text>
               <text x={200} y={418} textAnchor="middle" className="f35-mono" style={{ fontSize: 12.5 }}>
                 <ChemText text="N_{A} = 6,022·10^{23} mol^{−1}" />
               </text>

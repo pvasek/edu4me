@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
 import type { FigureId } from '../catalog'
 import AirComposition from './l12/AirComposition'
+import AtomScale from './l12/AtomScale'
 import BunsenBurner from './l12/BunsenBurner'
 import Dissolving from './l12/Dissolving'
 import FireTriangle from './l12/FireTriangle'
@@ -8,6 +9,7 @@ import HeatingTestTube from './l12/HeatingTestTube'
 import LabEquipment from './l12/LabEquipment'
 import Meniscus from './l12/Meniscus'
 import MixtureTypes from './l12/MixtureTypes'
+import RutherfordExperiment from './l12/RutherfordExperiment'
 import SolubilityCurve from './l12/SolubilityCurve'
 import WaterTreatment from './l12/WaterTreatment'
 
@@ -23,4 +25,6 @@ export const FIGURES_L12: Partial<Record<FigureId, ComponentType>> = {
   'air-composition': AirComposition,
   'solubility-curve': SolubilityCurve,
   dissolving: Dissolving,
+  'rutherford-experiment': RutherfordExperiment,
+  'atom-scale': AtomScale,
 }
