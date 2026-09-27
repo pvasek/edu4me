@@ -94,7 +94,7 @@ function Trna({ x, anti, aa, color, faded }: { x: number; anti: string; aa?: str
   )
 }
 
-function Translation() {
+function Translation({ narrow }: { narrow: boolean }) {
   const hatch = useHatch()
   const cx = (i: number) => 430 + i * 50
   return (
@@ -133,7 +133,7 @@ function Translation() {
         <text className="f89-lb f89-b f89-lv" x={505} y={60} textAnchor="middle">
           translace
         </text>
-        <Lbl x={378} y={140} tx={cx(1) - 36} ty={158} className="f89-sm" anchor="end">
+        <Lbl x={narrow ? 342 : 378} y={narrow ? 168 : 140} tx={narrow ? undefined : cx(1) - 36} ty={narrow ? undefined : 158} className="f89-sm" anchor={narrow ? 'start' : 'end'}>
           rostoucí řetězec
         </Lbl>
         <Lbl x={604} y={214} tx={586} ty={232} className="f89-sm">
@@ -163,7 +163,7 @@ function Scene() {
   const rib = n ? 'translate(-330 250)' : ''
   // mRNA leaves the nucleus through a pore and threads through the ribosome (y 302 in ribosome space)
   const path = n
-    ? 'M122 214 H236 C290 214 312 250 296 300 C280 350 60 360 40 420 C30 460 30 540 60 552 H330'
+    ? 'M122 214 H236 C290 214 318 250 322 300 V536 C322 548 318 552 306 552 H14'
     : 'M102 214 H216 C262 214 276 250 300 280 C314 298 330 302 350 302 H660'
   return (
     <Plate w={n ? 340 : 670} h={n ? 640 : 390}>
@@ -187,16 +187,16 @@ function Scene() {
         </Fade>
       </g>
       <Fade delay={1.6}>
-        <text className="f89-lb f89-b f89-lv" x={n ? 250 : 300} y={n ? 350 : 256} textAnchor={n ? 'middle' : 'start'}>
+        <text className="f89-lb f89-b f89-lv" x={n ? 240 : 300} y={n ? 356 : 256} textAnchor={n ? 'middle' : 'start'}>
           mRNA
         </text>
-        <text className="f89-lb f89-sm" x={n ? 250 : 300} y={n ? 368 : 274} textAnchor={n ? 'middle' : 'start'}>
+        <text className="f89-lb f89-sm" x={n ? 240 : 300} y={n ? 374 : 274} textAnchor={n ? 'middle' : 'start'}>
           pórem ven
         </text>
       </Fade>
       <g transform={rib}>
         <Fade delay={1.8}>
-          <Translation />
+          <Translation narrow={n} />
         </Fade>
       </g>
     </Plate>

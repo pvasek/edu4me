@@ -638,6 +638,7 @@
 .f12-hl-wrap > .f12-box {
   flex: 0 1 190px;
   min-width: 150px;
+  max-width: 230px;
 }
 .f12-c14 {
   fill: var(--f12-lv);
@@ -1300,4 +1301,115 @@
   paint-order: stroke;
   stroke: var(--surface);
   stroke-width: 6px;
+}
+
+/* ------------------------------------------------------------ isotopes */
+.f12-orbit2 {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+.f12-rays path {
+  fill: none;
+  stroke: var(--f12-lv);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  animation: f12-twinkle 1.3s ease-in-out infinite;
+}
+.f12-nota-s {
+  font-family: var(--font-mono);
+  font-size: calc(var(--f12-fs) * 0.85);
+  font-weight: 700;
+  fill: var(--ink-soft);
+}
+.f12-nota-h {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: calc(var(--f12-fs) * 2);
+  fill: var(--ink);
+}
+
+/* ------------------------------------------------------------ half-life */
+.f12-decay {
+  fill: none;
+  stroke: var(--f12-lv);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+.f12-frac {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: calc(var(--f12-fs) * 1.25);
+  fill: var(--ink);
+}
+.f12-now {
+  fill: var(--surface);
+  stroke: var(--f12-lv);
+  stroke-width: 3;
+}
+.f12-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 500 14px var(--font-body);
+  color: var(--ink);
+}
+.f12-key i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+.f12-key-c {
+  background: var(--f12-lv);
+  border: 1px solid var(--edge);
+}
+.f12-key-n {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+
+/* ------------------------------------------------------------ shells vs orbitals */
+.f12-shell {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.2;
+}
+.f12-shell-t {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  font-size: calc(var(--f12-fs) * 1.1);
+  fill: var(--ink);
+}
+.f12-cloud {
+  fill: var(--f12-lv-t);
+  animation: f12-twinkle 2.4s ease-in-out infinite;
+}
+.f12-orb-guide circle {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 0.8;
+  stroke-dasharray: 2 4;
+  opacity: 0.8;
+}
+.f12-cfg {
+  font-size: calc(var(--f12-fs) * 0.95);
+  font-weight: 700;
+}
+.f12-axis-back {
+  stroke-dasharray: 3 3;
+}
+.f12-equator {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+  stroke-dasharray: 3 3;
+}
+.f12-cap-orb {
+  font-size: 22px;
+}
+.f12-cap sub {
+  font-size: 0.65em;
 }

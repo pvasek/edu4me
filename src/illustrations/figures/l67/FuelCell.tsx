@@ -81,7 +81,7 @@ export default function FuelCell() {
       <Fade delay={1}>
         <path d={`M190 ${Y0} V52 H224 M256 52 H290 V${Y0}`} className="f67-current" />
       </Fade>
-      <circle cx={240} cy={48} r={27} fill="#f3d36b" className="f67-glow" opacity={0.45} />
+      <circle cx={240} cy={48} r={27} fill="#f3d36b" fillOpacity={0.35} className="f67-glow" />
       <circle cx={240} cy={48} r={16} className="f67-o f67-fill" />
       <path d="M232 60 V52 Q236 40 240 52 Q244 40 248 52 V60" className="f67-o f67-thin" style={{ stroke: '#c9962c' }} />
       <path d="M230 62 H250 V72 H230Z" className="f67-o f67-fill3" />

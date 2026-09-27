@@ -91,7 +91,7 @@ export default function LiIonBattery() {
       </Fade>
       {dis ? (
         <g>
-          <circle cx={260} cy={48} r={26} fill="#f3d36b" className="f67-glow" opacity={0.45} />
+          <circle cx={260} cy={48} r={26} fill="#f3d36b" fillOpacity={0.35} className="f67-glow" />
           <circle cx={260} cy={48} r={16} className="f67-o f67-fill" />
           <path d="M252 60 V52 Q256 40 260 52 Q264 40 268 52 V60" className="f67-o f67-thin" style={{ stroke: '#c9962c' }} />
           <path d="M250 62 H270 V72 H250Z" className="f67-o f67-fill3" />

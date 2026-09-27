@@ -5,11 +5,15 @@ import AtomScale from './l12/AtomScale'
 import BunsenBurner from './l12/BunsenBurner'
 import Dissolving from './l12/Dissolving'
 import FireTriangle from './l12/FireTriangle'
+import HalfLife from './l12/HalfLife'
 import HeatingTestTube from './l12/HeatingTestTube'
+import HydrogenIsotopes from './l12/HydrogenIsotopes'
 import LabEquipment from './l12/LabEquipment'
 import Meniscus from './l12/Meniscus'
 import MixtureTypes from './l12/MixtureTypes'
+import OrbitalShapes from './l12/OrbitalShapes'
 import RutherfordExperiment from './l12/RutherfordExperiment'
+import ShellsVsOrbitals from './l12/ShellsVsOrbitals'
 import SolubilityCurve from './l12/SolubilityCurve'
 import WaterTreatment from './l12/WaterTreatment'
 
@@ -27,4 +31,8 @@ export const FIGURES_L12: Partial<Record<FigureId, ComponentType>> = {
   dissolving: Dissolving,
   'rutherford-experiment': RutherfordExperiment,
   'atom-scale': AtomScale,
+  'hydrogen-isotopes': HydrogenIsotopes,
+  'half-life': HalfLife,
+  'shells-vs-orbitals': ShellsVsOrbitals,
+  'orbital-shapes': OrbitalShapes,
 }

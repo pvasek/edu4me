@@ -210,7 +210,7 @@ export default function LimitingReagent() {
         },
         {
           w: 340,
-          h: 740,
+          h: 700,
           max: 420,
           when: 'narrow',
           draw: () => (

@@ -1,6 +1,8 @@
 import type { ComponentType } from 'react'
 import type { FigureId } from '../catalog'
 import Corrosion from './l67/Corrosion'
+import HalogenColors from './l67/HalogenColors'
+import FlameTests from './l67/FlameTests'
 import OstwaldProcess from './l67/OstwaldProcess'
 import ContactProcess from './l67/ContactProcess'
 import HaberProcess from './l67/HaberProcess'
@@ -29,4 +31,6 @@ export const FIGURES_L67: Partial<Record<FigureId, ComponentType>> = {
   'haber-process': HaberProcess,
   'contact-process': ContactProcess,
   'ostwald-process': OstwaldProcess,
+  'flame-tests': FlameTests,
+  'halogen-colors': HalogenColors,
 }

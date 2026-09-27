@@ -11,6 +11,8 @@ import DnaHelix from './l89/DnaHelix'
 import EnzymeLockKey from './l89/EnzymeLockKey'
 import GreenhouseEffect from './l89/GreenhouseEffect'
 import ProteinSynthesis from './l89/ProteinSynthesis'
+import OzoneLayer from './l89/OzoneLayer'
+import PlasticLifecycle from './l89/PlasticLifecycle'
 import FractionalDistillation from './l89/FractionalDistillation'
 import HomologousSeries from './l89/HomologousSeries'
 import Isomers from './l89/Isomers'
@@ -37,4 +39,6 @@ export const FIGURES_L89: Partial<Record<FigureId, ComponentType>> = {
   'dna-helix': DnaHelix,
   'protein-synthesis': ProteinSynthesis,
   'greenhouse-effect': GreenhouseEffect,
+  'ozone-layer': OzoneLayer,
+  'plastic-lifecycle': PlasticLifecycle,
 }

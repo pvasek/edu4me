@@ -78,7 +78,7 @@ function Network({ x, y }: { x: number; y: number }) {
       ))}
       {/* partial charges on the central molecule */}
       <Fade d={1.3}>
-        <text x={NET[0].o[0] - 18} y={NET[0].o[1] + 8} className="f35-delta f35-dneg" textAnchor="end">
+        <text x={NET[0].o[0] - 1} y={NET[0].o[1] + 38} className="f35-delta f35-dneg" textAnchor="middle">
           δ−
         </text>
         {hs[0].map((h, k) => {

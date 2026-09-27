@@ -7,7 +7,7 @@ const SUN = '#e0a526'
 const IR = '#c8452f'
 
 /** Wavy path from p1 to p2. */
-function wave(x1: number, y1: number, x2: number, y2: number, amp = 5, wl = 14) {
+function wave(x1: number, y1: number, x2: number, y2: number, amp = 3.2, wl = 20) {
   const len = Math.hypot(x2 - x1, y2 - y1)
   const ux = (x2 - x1) / len
   const uy = (y2 - y1) / len
@@ -106,10 +106,10 @@ function Scene() {
   return (
     <>
       {/* atmosphere layer */}
-      <rect x={0} y={130} width={480} height={96} fill="color-mix(in srgb, #5b9bd5 16%, var(--surface))" />
-      <rect x={0} y={130} width={480} height={96} fill={hatch('w')} className="f89-hatch" />
-      <line className="f89-thin" x1={0} y1={130} x2={480} y2={130} style={{ strokeDasharray: '6 4' }} />
-      <text className="f89-lb f89-b" x={472} y={148} textAnchor="end">
+      <rect x={0} y={112} width={480} height={124} fill="color-mix(in srgb, #5b9bd5 16%, var(--surface))" />
+      <rect x={0} y={112} width={480} height={124} fill={hatch('w')} className="f89-hatch" />
+      <line className="f89-thin" x1={0} y1={112} x2={480} y2={112} style={{ strokeDasharray: '6 4' }} />
+      <text className="f89-lb f89-b" x={472} y={132} textAnchor="end">
         atmosféra
       </text>
 
@@ -124,26 +124,26 @@ function Scene() {
 
       {/* greenhouse gases */}
       <Pop delay={0.3}>
-        <CO2 x={300} y={170} />
-        <CH4 x={380} y={196} />
-        <H2O x={430} y={168} />
-        <CO2 x={200} y={200} />
+        <CO2 x={300} y={192} />
+        <CH4 x={380} y={200} />
+        <H2O x={438} y={190} />
+        <CO2 x={196} y={208} />
       </Pop>
       <Fade delay={0.5}>
-        <text className="f89-f f89-sm" x={300} y={196} textAnchor="middle">
+        <text className="f89-f f89-sm" x={300} y={218} textAnchor="middle">
           CO₂
         </text>
-        <text className="f89-f f89-sm" x={380} y={222} textAnchor="middle">
+        <text className="f89-f f89-sm" x={352} y={216} textAnchor="middle">
           CH₄
         </text>
-        <text className="f89-f f89-sm" x={430} y={196} textAnchor="middle">
+        <text className="f89-f f89-sm" x={440} y={222} textAnchor="middle">
           H₂O
         </text>
       </Fade>
 
       {/* ground */}
       <path d={ground} fill="#9bb56a" opacity={0.8} />
-      <path d="M0 340 Q120 318 200 312 V420 H0 Z" fill="#5b9bd5" opacity={0.55} />
+      <path d="M0 340 Q60 328 118 322 Q132 370 108 420 H0 Z" fill="#5b9bd5" opacity={0.55} />
       <path d={ground} fill={hatch('d')} className="f89-hatch" />
       <path d="M0 340 Q240 300 480 340" className="f89-ln" />
       <text className="f89-lb f89-b" x={16} y={404}>
@@ -172,11 +172,11 @@ function Scene() {
 
       {/* outgoing infrared */}
       <WaveArrow x1={270} y1={312} x2={250} y2={48} delay={1.8} />
-      <WaveArrow x1={318} y1={314} x2={302} y2={182} delay={2.1} />
-      <WaveArrow x1={396} y1={320} x2={384} y2={210} delay={2.3} />
+      <WaveArrow x1={318} y1={314} x2={304} y2={204} delay={2.1} />
+      <WaveArrow x1={400} y1={322} x2={386} y2={216} delay={2.3} />
       {/* re-emitted back to the ground */}
-      <WaveArrow x1={318} y1={182} x2={350} y2={316} delay={3.1} flow />
-      <WaveArrow x1={430} y1={184} x2={444} y2={322} delay={3.3} flow />
+      <WaveArrow x1={316} y1={200} x2={352} y2={318} delay={3.1} flow />
+      <WaveArrow x1={440} y1={206} x2={450} y2={326} delay={3.3} flow />
 
       <Fade delay={2.6}>
         <text className="f89-lb f89-b" x={262} y={62} style={{ fill: IR }}>
@@ -187,10 +187,10 @@ function Scene() {
         </text>
       </Fade>
       <Fade delay={3.6}>
-        <text className="f89-lb f89-sm" x={472} y={250} textAnchor="end">
+        <text className="f89-lb f89-sm" x={472} y={150} textAnchor="end">
           plyny záření pohltí
         </text>
-        <text className="f89-lb f89-sm" x={472} y={266} textAnchor="end">
+        <text className="f89-lb f89-sm" x={472} y={166} textAnchor="end">
           a část vyzáří zpět
         </text>
         {/* thermometer */}
