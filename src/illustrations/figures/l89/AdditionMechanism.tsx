@@ -85,7 +85,7 @@ function Step1() {
         <line className="f89-bond" x1={94} y1={44} x2={120} y2={44} />
         <S x={138} y={50}>Br</S>
         <text className="f89-f f89-sm f89-muted" x={82} y={30} textAnchor="middle">δ+</text>
-        <text className="f89-f f89-sm f89-muted" x={138} y={28} textAnchor="middle">δ−</text>
+        <text className="f89-f f89-sm f89-muted" x={168} y={44} textAnchor="middle">δ−</text>
       </Pop>
       <Curly from={[82, 101]} to={[80, 58]} bend={-22} delay={0.9} />
       <Curly from={[108, 40]} to={[140, 30]} bend={16} delay={1.35} side={-1} />
@@ -125,7 +125,7 @@ function Step2() {
       <Curly from={[106, 57]} to={[114, 94]} bend={-14} delay={d + 1.0} />
       <Fade delay={d + 0.8}>
         <text className="f89-lb f89-sm f89-muted" x={130} y={150} textAnchor="middle">
-          <tspan style={{ textDecoration: 'line-through' }}>primární C⁺H₂–CH₂–CH₃</tspan> méně stabilní
+          primární C⁺H₂–CH₂–CH₃ by byl méně stabilní
         </text>
       </Fade>
     </Plate>
