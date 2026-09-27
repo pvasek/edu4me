@@ -7,8 +7,8 @@
  */
 export type Inline = string
 
-import type { ChemIcon, FigureId, MoleculeId } from '../illustrations/catalog'
-export type { ChemIcon, FigureId, MoleculeId }
+import type { ChemIcon, FigureId, MoleculeId, SpecimenId } from '../illustrations/catalog'
+export type { ChemIcon, FigureId, MoleculeId, SpecimenId }
 
 export type CalloutVariant = 'tip' | 'warning' | 'fact' | 'remember' | 'mascot'
 
@@ -51,12 +51,24 @@ export type Block =
   | { type: 'iconlist'; items: IconItem[] }
   /** 2–3 columns side by side. */
   | { type: 'compare'; columns: CompareColumn[]; caption?: Inline }
+  /** Cards with a big picture on the front; tap to flip and read the back. */
+  | { type: 'flipcards'; cards: FlipCard[]; caption?: Inline }
   | { type: 'game'; gameId: GameId; text?: Inline }
 
 export interface IconItem {
   icon: ChemIcon
   title: Inline
   text?: Inline
+}
+
+export interface FlipCard {
+  /** Big engraved drawing on the front (preferred) … */
+  art?: SpecimenId
+  /** … or an icon when no drawing exists. */
+  icon?: ChemIcon
+  title: Inline
+  /** Text on the back of the card. */
+  text: Inline
 }
 
 export interface CompareColumn {

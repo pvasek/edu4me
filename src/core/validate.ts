@@ -1,10 +1,11 @@
 import type { Block, LevelContent, LevelOutline, Question } from './types'
 import { BY_SYMBOL } from '../courses/chemie/data/elements'
-import { CHEM_ICONS, FIGURES, MOLECULES } from '../illustrations/catalog'
+import { CHEM_ICONS, FIGURES, MOLECULES, SPECIMENS } from '../illustrations/catalog'
 import { parseFormula } from '../courses/chemie/data/formula'
 
 const ICONS = new Set<string>(CHEM_ICONS)
-const VISUAL = new Set<string>(['diagram', 'molecule', 'particles', 'reaction', 'process', 'iconlist', 'compare', 'elements', 'structure'])
+const SPECS = new Set<string>(SPECIMENS)
+const VISUAL = new Set<string>(['flipcards', 'diagram', 'molecule', 'particles', 'reaction', 'process', 'iconlist', 'compare', 'elements', 'structure'])
 const MOLS = new Set<string>(MOLECULES)
 
 const DIAGRAMS = new Set<string>([...FIGURES, 'bohr', 'states', 'ph-scale', 'periodic-mini', 'energy-profile', 'titration-curve', 'orbitals', 'separation', 'galvanic', 'rate-curve', 'lab-safety'])
@@ -49,6 +50,12 @@ function checkBlock(b: Block, err: (m: string) => void) {
   if (b.type === 'molecule') for (const m of b.molecules) if (!MOLS.has(m)) err(`unknown molecule ${m}`)
   if (b.type === 'iconlist' || b.type === 'process')
     for (const it of b.type === 'iconlist' ? b.items : b.steps) if (!ICONS.has(it.icon)) err(`unknown icon ${it.icon}`)
+  if (b.type === 'flipcards')
+    for (const c of b.cards) {
+      if (!c.art && !c.icon) err(`flip card "${c.title}" needs art or icon`)
+      if (c.art && !SPECS.has(c.art)) err(`unknown specimen ${c.art}`)
+      if (c.icon && !ICONS.has(c.icon)) err(`unknown icon ${c.icon}`)
+    }
   if (b.type === 'compare') for (const c of b.columns) if (c.icon && !ICONS.has(c.icon)) err(`unknown icon ${c.icon}`)
   if (b.type === 'particles')
     for (const box of b.boxes) for (const it of box.items) if (!speciesOk(it.species)) err(`unknown species ${it.species}`)

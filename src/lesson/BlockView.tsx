@@ -10,6 +10,7 @@ import { QuestionView } from './QuestionView'
 import { IconList } from '../illustrations/blocks/IconList'
 import { Compare } from '../illustrations/blocks/Compare'
 import { Process } from '../illustrations/blocks/Process'
+import { FlipCards } from '../illustrations/blocks/FlipCards'
 import { MoleculeView } from '../illustrations/molecules/MoleculeView'
 import { ParticleScene } from '../illustrations/particles/ParticleScene'
 import { ReactionView } from '../illustrations/particles/ReactionView'
@@ -261,6 +262,17 @@ export function BlockView({
       )
     case 'iconlist':
       return <IconList items={block.items} />
+    case 'flipcards':
+      return (
+        <figure className="b-visual b-visual-plain">
+          <FlipCards cards={block.cards} />
+          {block.caption && (
+            <figcaption>
+              <Md text={block.caption} />
+            </figcaption>
+          )}
+        </figure>
+      )
     case 'compare':
       return (
         <figure className="b-visual b-visual-plain">

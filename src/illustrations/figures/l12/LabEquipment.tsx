@@ -12,7 +12,7 @@ function Ticks({ x, y0, y1, step, long = 3 }: { x: number; y0: number; y1: numbe
   return <g>{out}</g>
 }
 
-function Beaker() {
+export function Beaker() {
   return (
     <>
       <path className="f12-glass" d="M27 44 L27 106 Q27 110 31 110 L69 110 Q73 110 73 106 L73 42 L27 42 Z" />
@@ -24,7 +24,7 @@ function Beaker() {
   )
 }
 
-function Erlenmeyer() {
+export function Erlenmeyer() {
   return (
     <>
       <path className="f12-glass" d="M44 22 L44 44 L23 104 Q21 110 28 110 L72 110 Q79 110 77 104 L56 44 L56 22 Z" />
@@ -35,7 +35,7 @@ function Erlenmeyer() {
   )
 }
 
-function TestTube() {
+export function TestTube() {
   return (
     <>
       <path className="f12-glass" d="M42 16 L42 98 A8 8 0 0 0 58 98 L58 16 Z" />
@@ -46,7 +46,7 @@ function TestTube() {
   )
 }
 
-function Cylinder() {
+export function Cylinder() {
   return (
     <>
       <path className="f12-glass" d="M40 12 L40 100 L60 100 L60 12 Z" />
@@ -59,7 +59,7 @@ function Cylinder() {
   )
 }
 
-function Pipette() {
+export function Pipette() {
   return (
     <>
       <path className="f12-glass" d="M47.5 4 L47.5 36 Q39 40 39 52 Q39 64 47.5 68 L48.6 106 L50 112 L51.4 106 L52.5 68 Q61 64 61 52 Q61 40 52.5 36 L52.5 4 Z" />
@@ -71,7 +71,7 @@ function Pipette() {
   )
 }
 
-function Burette() {
+export function Burette() {
   return (
     <>
       <path className="f12-glass" d="M45 4 L45 88 L55 88 L55 4 Z" />
@@ -85,7 +85,7 @@ function Burette() {
   )
 }
 
-function Funnel() {
+export function Funnel() {
   return (
     <>
       <path className="f12-glass" d="M20 30 L80 30 L54 68 L46 68 Z" />
@@ -105,7 +105,7 @@ function Funnel() {
   )
 }
 
-function Burner() {
+export function Burner() {
   return (
     <>
       <Flame x={50} y={46} h={36} kind="blue" />
@@ -119,7 +119,7 @@ function Burner() {
   )
 }
 
-function Stand() {
+export function Stand() {
   const h = useHatch()
   return (
     <>
@@ -136,7 +136,7 @@ function Stand() {
   )
 }
 
-function Mortar() {
+export function Mortar() {
   const h = useHatch()
   return (
     <>
@@ -153,7 +153,7 @@ function Mortar() {
   )
 }
 
-function Dish() {
+export function Dish() {
   const h = useHatch()
   return (
     <>
@@ -170,7 +170,7 @@ function Dish() {
   )
 }
 
-function WatchGlass() {
+export function WatchGlass() {
   return (
     <>
       <path className="f12-glass" d="M10 90 Q50 118 90 90 Q50 102 10 90 Z" />
@@ -178,6 +178,59 @@ function WatchGlass() {
       <path className="f12-thin" d="M46 90 l3 -4 l4 2 l-1 3 Z M56 91 l2 -3 l3 1 l-1 3 Z M40 91.5 l2 -2 l2 1.5 Z" style={{ fill: 'color-mix(in srgb, var(--yellow) 45%, var(--surface))' }} />
       <path className="f12-shine" d="M18 93 Q30 100 42 101" opacity={0.6} />
       <Draw d="M10 90 Q50 118 90 90" />
+    </>
+  )
+}
+
+export function WashBottle() {
+  return (
+    <>
+      <path className="f12-glass" d="M30 52 Q30 42 40 40 L60 40 Q70 42 70 52 L70 104 Q70 110 64 110 L36 110 Q30 110 30 104 Z" />
+      <Liquid d="M30.8 72 L69.2 72 L69.2 104 Q69.2 109.2 64 109.2 L36 109.2 Q30.8 109.2 30.8 104 Z" />
+      <Hx d="M41 31 L59 31 L59 40 L41 40 Z" kind="x" tone="var(--f12-metal)" className="f12-line" />
+      <path className="f12-line" d="M48 31 L48 16 Q48 9 56 9 L78 9 L85 17 M52 31 L52 18 Q52 13 57 13 L76 13 L82 20" />
+      <circle cx={86} cy={24} r={1.8} style={{ fill: 'var(--f12-water-2)' }} />
+      <Draw d="M30 52 Q30 42 40 40 L60 40 Q70 42 70 52 L70 104 Q70 110 64 110 L36 110 Q30 110 30 104 Z" />
+      <path className="f12-shine" d="M35 56 L35 100" opacity={0.5} />
+    </>
+  )
+}
+
+export function TubeHolder() {
+  const h = useHatch()
+  return (
+    <>
+      <path className="f12-line" d="M8 72 L62 60 L64 66 L10 78 Z" style={{ fill: 'var(--f12-wood)' }} />
+      <path className="f12-hatch" d="M8 72 L62 60 L64 66 L10 78 Z" fill={h('d')} />
+      <path className="f12-line" d="M58 58 Q70 50 82 54 L84 60 Q72 58 64 66" style={{ fill: 'var(--f12-metal)' }} />
+      <path className="f12-line" d="M62 68 Q72 74 84 70 L84 64" />
+      <path className="f12-glass" d="M72 34 L72 96 A6 6 0 0 0 84 96 L84 34 Z" />
+      <Draw d="M72 34 L72 96 A6 6 0 0 0 84 96 L84 34" />
+      <path className="f12-shine" d="M75 40 L75 92" opacity={0.55} />
+    </>
+  )
+}
+
+export function GlassRod() {
+  return (
+    <>
+      <path className="f12-glass" d="M26 104 L74 14 L78 16 L30 106 Z" />
+      <Draw d="M26 104 L74 14 A2.3 2.3 0 0 1 78 16 L30 106 A2.3 2.3 0 0 1 26 104 Z" />
+      <path className="f12-shine" d="M34 94 L70 26" opacity={0.6} />
+    </>
+  )
+}
+
+export function WireGauze() {
+  const h = useHatch()
+  return (
+    <>
+      <path className="f12-line" d="M10 70 L60 56 L90 70 L40 84 Z" style={{ fill: 'var(--f12-metal)' }} />
+      <path className="f12-hatch" d="M10 70 L60 56 L90 70 L40 84 Z" fill={h('x')} />
+      <ellipse className="f12-line" cx={50} cy={70} rx={20} ry={7} style={{ fill: 'var(--surface-2)' }} />
+      <path className="f12-hatch" d="M30 70 A20 7 0 0 0 70 70 A20 7 0 0 0 30 70 Z" fill={h('s')} />
+      <Draw d="M10 70 L60 56 L90 70 L40 84 Z" />
+      <path className="f12-thin" d="M14 74 L14 110 M86 74 L86 110 M40 88 L40 112" />
     </>
   )
 }

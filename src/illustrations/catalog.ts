@@ -78,3 +78,10 @@ export const FIGURES = [
   'enzyme-lock-key', 'dna-helix', 'protein-synthesis', 'greenhouse-effect', 'ozone-layer', 'plastic-lifecycle',
 ] as const
 export type FigureId = (typeof FIGURES)[number]
+
+/** Individual engraved objects (big pictures on flip cards). */
+export const SPECIMENS = [
+  'beaker', 'erlenmeyer-flask', 'test-tube', 'graduated-cylinder', 'pipette', 'burette', 'funnel', 'burner',
+  'stand', 'mortar', 'evaporating-dish', 'watch-glass', 'wash-bottle', 'test-tube-holder', 'glass-rod', 'wire-gauze',
+] as const
+export type SpecimenId = (typeof SPECIMENS)[number]

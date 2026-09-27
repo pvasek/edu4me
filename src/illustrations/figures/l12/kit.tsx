@@ -158,6 +158,26 @@ export function Mini({ w, h, className = '', children }: { w: number; h: number;
   )
 }
 
+/**
+ * A single drawing outside a Board (e.g. on a flip card): provides the hatch
+ * patterns and draws itself in when scrolled into view.
+ */
+export function Specimen({ w = 100, h = 118, level = 1, children }: { w?: number; h?: number; level?: Level; children: ReactNode }) {
+  const id = useFigId()
+  return (
+    <div className={`f12 f12-l${level} f12-specimen`}>
+      <HatchCtx.Provider value={id}>
+        <svg className="f12-defs" aria-hidden="true" focusable="false">
+          <HatchDefs id={id} />
+        </svg>
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger(0.06, 0.05)}>
+          <Mini w={w} h={h}>{children}</Mini>
+        </motion.div>
+      </HatchCtx.Provider>
+    </div>
+  )
+}
+
 // ------------------------------------------------------------------ variants
 
 export const stagger = (step = 0.06, delay = 0): Variants => ({
