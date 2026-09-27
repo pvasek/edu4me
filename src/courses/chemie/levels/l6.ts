@@ -16,15 +16,15 @@ const level: LevelContent = {
       sections: [
         {
           title: 'Oxidace a redukce: kdo elektrony dává a kdo je bere',
+          icon: 'electron',
           blocks: [
-            { type: 'p', text: 'Kdysi se „oxidací“ myslelo jen slučování s kyslíkem. Dnes víme, že podstatou je něco obecnějšího: **přenos elektronů** mezi částicemi.' },
-            { type: 'keyterms', items: [
-              { term: '**Oxidace**', def: 'děj, při kterém částice **odevzdává elektrony**; její oxidační číslo **roste**.' },
-              { term: '**Redukce**', def: 'děj, při kterém částice **přijímá elektrony**; její oxidační číslo **klesá**.' },
-              { term: '**Redoxní reakce**', def: 'reakce, při které se mění oxidační čísla atomů. Oxidace a redukce probíhají vždy současně.' },
-            ] },
-            { type: 'p', text: 'Podívej se na vznik kuchyňské soli ze sodíku a chloru: $2Na + Cl2 -> 2NaCl$. Každý atom sodíku předá jeden elektron chloru.' },
-            { type: 'formula', text: 'oxidace: $Na -> Na^+ + e^-$ · redukce: $Cl2 + 2e^- -> 2Cl^-$', caption: 'sodík elektron ztrácí (0 -> I), chlor ho získává (0 -> −I)' },
+            { type: 'p', text: 'Kdysi se „oxidací“ myslelo jen slučování s kyslíkem. Dnes víme, že podstatou je obecnější děj: **přenos elektronů** mezi částicemi. Reakce, při které se mění oxidační čísla atomů, je **redoxní reakce**.' },
+            { type: 'diagram', id: 'redox-transfer', caption: 'Elektron přeskakuje z atomu, který se oxiduje, na atom, který se redukuje. Oba děje probíhají vždy současně.' },
+            { type: 'compare', columns: [
+              { title: '**Oxidace**', icon: 'ion-plus', tone: 'a', points: ['částice **odevzdává elektrony**', 'oxidační číslo **roste**', '$Na -> Na^+ + e^-$ (0 -> I)'] },
+              { title: '**Redukce**', icon: 'ion-minus', tone: 'b', points: ['částice **přijímá elektrony**', 'oxidační číslo **klesá**', '$Cl2 + 2e^- -> 2Cl^-$ (0 -> −I)'] },
+            ], caption: 'Oxidace a redukce jsou dvě půlky jedné výměny elektronů.' },
+            { type: 'reaction', equation: '2Na + Cl2 -> 2NaCl', caption: 'Vznik kuchyňské soli: každý atom sodíku předá jeden elektron chloru.' },
             { type: 'p', text: 'Elektrony se v reakci nemohou ztratit ani vzniknout z ničeho. ==Kolik elektronů jedna částice odevzdá, tolik jich jiná musí přijmout.== Proto oxidace nikdy neprobíhá bez redukce.' },
             { type: 'callout', variant: 'remember', title: 'Jak si to zapamatovat', text: '**O**xidace = **o**dchod elektronů, oxidační číslo jde nahoru. **R**edukce **r**edukuje (snižuje) oxidační číslo, protože elektrony přibývají. Anglicky se říká *OIL RIG*: *Oxidation Is Loss, Reduction Is Gain*.' },
             { type: 'callout', variant: 'mascot', text: 'Elektron je jako horký brambor: někdo ho musí pustit, aby ho jiný mohl chytit. Nikdy nezmizí jen tak do vzduchu!' },
@@ -33,36 +33,38 @@ const level: LevelContent = {
         },
         {
           title: 'Oxidační a redukční činidlo',
+          icon: 'arrow-cycle',
           blocks: [
-            { type: 'p', text: 'Látka, která jiné látce elektrony **bere**, a tím ji oxiduje, se nazývá **oxidační činidlo** (oxidovadlo). Sama se přitom **redukuje**.' },
-            { type: 'p', text: 'Látka, která elektrony **dodává**, a tím jinou látku redukuje, je **redukční činidlo** (redukovadlo). Sama se přitom **oxiduje**.' },
+            { type: 'compare', columns: [
+              { title: '**Oxidační činidlo** (oxidovadlo)', icon: 'ion-minus', tone: 'a', points: ['elektrony jiné látce **bere**, a tím ji oxiduje', 'samo se přitom **redukuje**', 'vysoké oxidační číslo nebo silně elektronegativní prvek', '$O2$, $O3$ (ozon), $Cl2$, $F2$, $KMnO4$ (manganistan draselný), $K2Cr2O7$ (dichroman draselný), $HNO3$, $H2O2$'] },
+              { title: '**Redukční činidlo** (redukovadlo)', icon: 'ion-plus', tone: 'b', points: ['elektrony jiné látce **dodává**, a tím ji redukuje', 'samo se přitom **oxiduje**', 'elektrony ochotně odevzdává', '$H2$, $C$ (koks), $CO$, neušlechtilé kovy $Na$, $Mg$, $Al$, $Zn$, dále $Fe^{2+}$, $Sn^{2+}$, $I^-$, $H2S$'] },
+            ], caption: 'Silná oxidační a redukční činidla' },
             { type: 'callout', variant: 'warning', title: 'Častá past', text: 'Oxidační činidlo se **neoxiduje**, ale redukuje! Jmenuje se podle toho, co dělá druhým, ne podle toho, co se děje s ním.' },
+            { type: 'reaction', equation: 'Zn + CuSO4 -> ZnSO4 + Cu', caption: 'Zinkový plíšek v modré skalici se pokryje červenohnědou mědí.' },
             { type: 'example', title: 'Zinek v modré skalici', problem: 'Do roztoku $CuSO4$ ponoříme zinkový plíšek: $Zn + CuSO4 -> ZnSO4 + Cu$. Urči, co se oxiduje, co se redukuje, a najdi obě činidla.', steps: [
               'Oxidační čísla: $Zn^{0}$ -> $Zn^{II}$ (v $ZnSO4$); $Cu^{II}$ (v $CuSO4$) -> $Cu^{0}$. Síran se nemění.',
               'Zinek ztrácí 2 elektrony: $Zn -> Zn^{2+} + 2e^-$, oxiduje se.',
               'Měď přijímá 2 elektrony: $Cu^{2+} + 2e^- -> Cu$, redukuje se.',
               'Zinek dodává elektrony, je tedy redukční činidlo. Ionty $Cu^{2+}$ elektrony berou, jsou oxidační činidlo.',
             ], answer: 'Oxiduje se $Zn$ (redukční činidlo), redukuje se $Cu^{2+}$ (oxidační činidlo). Na plíšku se vylučuje červenohnědá měď.' },
-            { type: 'table', headers: ['Silná oxidační činidla', 'Silná redukční činidla'], rows: [
-              ['$O2$, $O3$ (ozon)', '$H2$'],
-              ['$Cl2$, $F2$', '$C$ (koks), $CO$'],
-              ['$KMnO4$ (manganistan draselný)', 'neušlechtilé kovy: $Na$, $Mg$, $Al$, $Zn$'],
-              ['$K2Cr2O7$ (dichroman draselný)', '$Fe^{2+}$, $Sn^{2+}$'],
-              ['$HNO3$, $H2O2$', '$I^-$, $H2S$'],
-            ], caption: 'Oxidační činidla mají atomy ve vysokém oxidačním čísle nebo silně elektronegativní prvky. Redukční činidla elektrony ochotně dávají.' },
+            { type: 'molecule', molecules: ['H2O2'], labels: ['peroxid vodíku: kyslík v oxidačním čísle −I'] },
             { type: 'callout', variant: 'fact', text: 'Peroxid vodíku $H2O2$ umí obojí. Kyslík v něm má oxidační číslo −I, takže může jít nahoru (na 0 v $O2$) i dolů (na −II ve vodě).' },
             { type: 'check', question: { kind: 'choice', q: 'Ve vysoké peci probíhá $Fe2O3 + 3CO -> 2Fe + 3CO2$. Které činidlo je redukční?', options: ['$CO$', '$Fe2O3$', '$CO2$', '$Fe$'], answer: 0, explain: 'Uhlík v $CO$ jde z II na IV, oxiduje se, a tím redukuje železo z III na 0. Oxid uhelnatý je tedy redukční činidlo.' } },
           ],
         },
         {
           title: 'Poloreakce: reakce rozdělená na dvě půlky',
+          icon: 'balance-scale',
           blocks: [
             { type: 'p', text: 'Redoxní reakci můžeš rozdělit na dvě **poloreakce**: oxidaci a redukci. Každá ukazuje jen jednu stranu výměny, i s elektrony.' },
-            { type: 'list', items: [
-              'V poloreakci musí sedět počet atomů **i** celkový náboj na obou stranách.',
-              'Elektrony píšeme jako $e^-$: u oxidace vpravo (vznikají), u redukce vlevo (spotřebovávají se).',
-              'Než poloreakce sečteš, vynásob je tak, aby se počty elektronů rovnaly.',
-            ] },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'electron', title: 'Rozděl', text: 'zvlášť oxidace a zvlášť redukce' },
+              { icon: 'ion-minus', title: 'Doplň $e^-$', text: 'u oxidace vpravo (vznikají), u redukce vlevo (spotřebovávají se)' },
+              { icon: 'balance-scale', title: 'Vyrovnej', text: 'atomy **i** celkový náboj na obou stranách' },
+              { icon: 'calculator', title: 'Vynásob', text: 'aby se počty elektronů v obou poloreakcích rovnaly' },
+              { icon: 'check', title: 'Sečti', text: 'elektrony se vyruší' },
+            ], caption: 'Jak sestavit a sečíst poloreakce' },
+            { type: 'reaction', equation: 'Cu + 2AgNO3 -> Cu(NO3)2 + 2Ag', caption: 'Měděný drátek v roztoku $AgNO3$ se pokryje krystalky stříbra (zapsáno molekulově).' },
             { type: 'example', title: 'Měď v roztoku dusičnanu stříbrného', problem: 'Měděný drátek v roztoku $AgNO3$ se pokryje stříbrnými krystalky. Sestav poloreakce a celkovou iontovou rovnici.', steps: [
               'Oxidace: $Cu -> Cu^{2+} + 2e^-$',
               'Redukce: $Ag^+ + e^- -> Ag$',
@@ -76,15 +78,16 @@ const level: LevelContent = {
         },
         {
           title: 'Vyčíslení redoxních rovnic pomocí oxidačních čísel',
+          icon: 'calculator',
           blocks: [
             { type: 'p', text: 'U složitějších rovnic nestačí zkoušet koeficienty naslepo. Využijeme toho, že ==počet odevzdaných elektronů se musí rovnat počtu přijatých==.' },
-            { type: 'list', ordered: true, items: [
-              'Urči oxidační čísla všech atomů a najdi ty, které se mění.',
-              'Zapiš změnu jako elektrony: kolik jich jeden atom odevzdá a kolik druhý přijme.',
-              'Najdi nejmenší společný násobek a podle něj urči koeficienty u oxidovaných a redukovaných látek.',
-              'Dopočítej ostatní atomy (kovy, zbytky kyselin), potom vodík a nakonec kyslík přes vodu.',
-              'Zkontroluj kyslíky: když sedí, je rovnice správně.',
-            ] },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'magnifier', title: 'Oxidační čísla', text: 'urči je u všech atomů a najdi ty, které se mění' },
+              { icon: 'electron', title: 'Elektrony', text: 'kolik jich jeden atom odevzdá a kolik druhý přijme' },
+              { icon: 'calculator', title: 'Nejmenší společný násobek', text: 'podle něj koeficienty u oxidovaných a redukovaných látek' },
+              { icon: 'balance-scale', title: 'Ostatní atomy', text: 'kovy a zbytky kyselin, potom vodík a nakonec kyslík přes vodu' },
+              { icon: 'check', title: 'Kontrola kyslíků', text: 'když sedí, je rovnice správně' },
+            ], caption: 'Metoda oxidačních čísel krok za krokem' },
             { type: 'example', title: 'Manganistan a kyselina chlorovodíková', problem: 'Vyčísli rovnici $KMnO4 + HCl -> KCl + MnCl2 + Cl2 + H2O$ (takto se v laboratoři připravuje chlor).', steps: [
               'Změny: $Mn^{VII} -> Mn^{II}$ (přijme 5 $e^-$), $Cl^{−I} -> Cl^{0}$ (odevzdá 1 $e^-$ na atom, tedy 2 $e^-$ na molekulu $Cl2$).',
               'Nejmenší společný násobek 5 a 2 je 10: 2 × 5 $e^-$ = 5 × 2 $e^-$.',
@@ -92,6 +95,7 @@ const level: LevelContent = {
               'Chlor vpravo: 2 (v $KCl$) + 4 (v $MnCl2$) + 10 (v $Cl2$) = 16, tedy $16HCl$.',
               'Vodík: 16 atomů H vlevo dává $8H2O$ vpravo. Kyslík: vlevo 2 × 4 = 8, vpravo 8. Sedí.',
             ], answer: '$2KMnO4 + 16HCl -> 2KCl + 2MnCl2 + 5Cl2 + 8H2O$' },
+            { type: 'reaction', equation: '2KMnO4 + 16HCl -> 2KCl + 2MnCl2 + 5Cl2 + 8H2O', caption: 'Vyčíslená rovnice: atomy každého prvku sedí na obou stranách.' },
             { type: 'example', title: 'Manganistan a síran železnatý v kyselém prostředí', problem: 'Vyčísli $KMnO4 + FeSO4 + H2SO4 -> K2SO4 + MnSO4 + Fe2(SO4)3 + H2O$.', steps: [
               'Změny: $Mn^{VII} -> Mn^{II}$ (přijme 5 $e^-$), $Fe^{II} -> Fe^{III}$ (odevzdá 1 $e^-$). Železo vpravo je ale po dvou atomech v $Fe2(SO4)3$, takže počítáme 2 $Fe^{II}$ -> 2 $Fe^{III}$, tj. 2 $e^-$.',
               'Nejmenší společný násobek 5 a 2 je 10: $2KMnO4$ a $10FeSO4$, vpravo $2MnSO4$ a $5Fe2(SO4)3$.',
@@ -106,16 +110,19 @@ const level: LevelContent = {
         },
         {
           title: 'Redoxní děje kolem nás',
+          icon: 'earth',
           blocks: [
-            { type: 'p', text: 'Redoxní reakce nejsou jen v laboratoři. Probíhají v kamnech, v tvých buňkách i na karoserii auta.' },
-            { type: 'table', headers: ['Děj', 'Rovnice (zjednodušeně)', 'Co se oxiduje / redukuje'], rows: [
-              ['hoření zemního plynu', '$CH4 + 2O2 -> CO2 + 2H2O$', '$C^{−IV} -> C^{IV}$, $O^{0} -> O^{−II}$'],
-              ['buněčné dýchání', '$C6H12O6 + 6O2 -> 6CO2 + 6H2O$', 'uhlík z glukózy se oxiduje, kyslík redukuje'],
-              ['rezavění železa', '$4Fe + 3O2 + 2xH2O -> 2Fe2O3·xH2O$', '$Fe^{0} -> Fe^{III}$, $O^{0} -> O^{−II}$'],
-              ['bělení chlornanem', 'chlornan $ClO^-$ oxiduje barvivo', '$Cl^{I} -> Cl^{−I}$, barvivo se oxiduje'],
+            { type: 'p', text: 'Redoxní reakce probíhají v kamnech, v tvých buňkách i na karoserii auta.' },
+            { type: 'iconlist', items: [
+              { icon: 'flame', title: 'Hoření zemního plynu', text: '$CH4 + 2O2 -> CO2 + 2H2O$: $C^{−IV} -> C^{IV}$, $O^{0} -> O^{−II}$' },
+              { icon: 'lungs', title: 'Buněčné dýchání', text: 'uhlík z glukózy se oxiduje na $CO2$, kyslík se redukuje' },
+              { icon: 'rust', title: 'Rezavění železa', text: '$4Fe + 3O2 + 2xH2O -> 2Fe2O3·xH2O$: $Fe^{0} -> Fe^{III}$, $O^{0} -> O^{−II}$' },
+              { icon: 'soap', title: 'Bělení chlornanem', text: 'chlornan $ClO^-$ oxiduje barvivo, sám se redukuje: $Cl^{I} -> Cl^{−I}$' },
             ] },
-            { type: 'p', text: 'Dýchání je vlastně „pomalé hoření“. Energii z glukózy ale buňka neuvolní naráz jako plamen, nýbrž po malých krocích, které řídí enzymy.' },
-            { type: 'p', text: 'Zajímavý případ je **disproporcionace**: jeden prvek se současně oxiduje i redukuje. Například při zavádění chloru do louhu vzniká bělicí roztok: $Cl2 + 2NaOH -> NaCl + NaClO + H2O$. Jeden atom chloru jde z 0 na −I, druhý z 0 na I.' },
+            { type: 'reaction', equation: 'C6H12O6 + 6O2 -> 6CO2 + 6H2O', caption: 'Buněčné dýchání: glukóza se oxiduje, kyslík redukuje.' },
+            { type: 'p', text: 'Dýchání je vlastně „pomalé hoření“. Buňka ale energii z glukózy neuvolní naráz jako plamen, nýbrž po malých krocích řízených enzymy.' },
+            { type: 'callout', variant: 'fact', title: 'Disproporcionace', text: 'Jeden prvek se může současně oxidovat i redukovat. Při zavádění chloru do louhu vzniká bělicí roztok a jeden atom chloru jde z 0 na −I (v $NaCl$), druhý z 0 na I (v $NaClO$).' },
+            { type: 'reaction', equation: 'Cl2 + 2NaOH -> NaCl + NaClO + H2O', caption: 'Disproporcionace chloru: vzniká chlorid i chlornan sodný.' },
             { type: 'callout', variant: 'warning', title: 'Nikdy nemíchej čisticí prostředky!', text: 'Bělidla s chlornanem (například SAVO) se nesmí míchat s kyselými čističi. Uvolňuje se jedovatý chlor. Stejně nebezpečné je mísit je s prostředky obsahujícími amoniak.' },
             { type: 'game', gameId: 'swipe', text: 'Oxiduje se, nebo redukuje? Otestuj si v rychlé hře „Pravda, nebo lež?“, jak ti redoxní děje jdou od ruky.' },
             { type: 'check', question: { kind: 'tf', q: 'Při dýchání se uhlík z glukózy oxiduje na $CO2$.', answer: true, explain: 'Uhlík v glukóze má průměrné oxidační číslo 0, v $CO2$ má IV. Oxidační číslo roste, uhlík se tedy oxiduje.' } },
@@ -166,15 +173,16 @@ const level: LevelContent = {
       sections: [
         {
           title: 'Řada napětí kovů: kdo komu dá elektrony',
+          icon: 'coin',
           blocks: [
-            { type: 'p', text: 'Kovy se liší tím, jak ochotně odevzdávají elektrony a mění se na kationty. Seřadíme-li je podle této ochoty, dostaneme **Beketovovu řadu napětí kovů** (elektrochemickou řadu napětí).' },
+            { type: 'p', text: 'Kovy se liší tím, jak ochotně odevzdávají elektrony a mění se na kationty. Seřazené podle této ochoty tvoří **Beketovovu řadu napětí kovů** (elektrochemickou řadu napětí).' },
             { type: 'formula', text: 'Li K Ba Ca Na Mg Al Mn Zn Cr Fe Cd Co Ni Sn Pb **H** Cu Ag Hg Au', caption: 'vlevo neušlechtilé kovy (silná redukční činidla), vpravo ušlechtilé kovy' },
             { type: 'elements', symbols: ['Zn', 'Fe', 'H', 'Cu', 'Ag', 'Au'], caption: 'Čím víc vlevo, tím snáz kov odevzdává elektrony a tím rychleji koroduje.' },
-            { type: 'list', items: [
-              '**Neušlechtilé kovy** (vlevo od vodíku) vytěsňují vodík z kyselin: $Zn + 2HCl -> ZnCl2 + H2$.',
-              '**Ušlechtilé kovy** (vpravo od vodíku) s kyselinou chlorovodíkovou ani zředěnou sírovou nereagují.',
-              'Kov vytěsní z roztoku soli **každý kov, který stojí napravo od něj**: $Fe + CuSO4 -> FeSO4 + Cu$.',
+            { type: 'compare', columns: [
+              { title: '**Neušlechtilé kovy** (vlevo od H)', icon: 'ion-plus', tone: 'a', points: ['ochotně odevzdávají elektrony', 'vytěsňují vodík z kyselin: $Zn + 2HCl -> ZnCl2 + H2$', 'příklady: $Mg$, $Al$, $Zn$, $Fe$'] },
+              { title: '**Ušlechtilé kovy** (vpravo od H)', icon: 'ring', tone: 'b', points: ['elektrony odevzdávají neochotně', 's kyselinou chlorovodíkovou ani zředěnou sírovou nereagují', 'příklady: $Cu$, $Ag$, $Au$'] },
             ] },
+            { type: 'reaction', equation: 'Fe + CuSO4 -> FeSO4 + Cu', caption: 'Kov vytěsní z roztoku soli **každý kov, který stojí napravo od něj**.' },
             { type: 'callout', variant: 'fact', text: 'Hřebík ponořený do modré skalice se za pár minut potáhne červenou mědí. Kdysi se tomu říkalo „proměna železa v měď“ a alchymisté v tom viděli důkaz, že přeměna kovů je možná.' },
             { type: 'callout', variant: 'warning', text: 'Oxidující kyseliny jako $HNO3$ rozpustí i měď nebo stříbro, jen při tom nevzniká vodík, ale oxidy dusíku. Pravidlo o vytěsňování vodíku platí pro neoxidující kyseliny.' },
             { type: 'check', question: { kind: 'tf', q: 'Měď se rozpouští ve zředěné kyselině chlorovodíkové za vývoje vodíku.', answer: false, explain: 'Měď stojí v řadě napětí vpravo od vodíku, je ušlechtilá a vodík z neoxidujících kyselin nevytěsní.' } },
@@ -182,16 +190,16 @@ const level: LevelContent = {
         },
         {
           title: 'Galvanický článek',
+          icon: 'battery',
           blocks: [
-            { type: 'p', text: 'Když zinek ponoříš přímo do roztoku $CuSO4$, elektrony přeskočí ze zinku na měď přímo a energie se uvolní jen jako teplo. Trik **galvanického článku** je v tom, že obě poloreakce oddělíme a elektrony pošleme drátem. Tak získáme elektrický proud.' },
+            { type: 'p', text: 'Zinek v roztoku $CuSO4$ předá elektrony mědi přímo a energie se uvolní jen jako teplo. **Galvanický článek** obě poloreakce oddělí do dvou **poločlánků** (kov ponořený do roztoku svých iontů, např. $Zn$ v $ZnSO4$) a elektrony pošle drátem. Tak vzniká elektrický proud.' },
             { type: 'diagram', id: 'galvanic', caption: 'Daniellův článek: zinková elektroda v $ZnSO4$, měděná v $CuSO4$, spojené drátem a solným můstkem' },
-            { type: 'keyterms', items: [
-              { term: '**Poločlánek**', def: 'kov ponořený do roztoku svých iontů, například $Zn$ v $ZnSO4$.' },
-              { term: '**Anoda**', def: 'elektroda, na které probíhá **oxidace**. V galvanickém článku je to záporný pól: $Zn -> Zn^{2+} + 2e^-$.' },
-              { term: '**Katoda**', def: 'elektroda, na které probíhá **redukce**. V galvanickém článku je to kladný pól: $Cu^{2+} + 2e^- -> Cu$.' },
-              { term: '**Solný můstek**', def: 'trubička nebo proužek papíru s roztokem soli (např. $KNO3$). Uzavírá obvod a pouští ionty, aby se v poločláncích nehromadil náboj.' },
-            ] },
-            { type: 'p', text: 'Elektrony tečou vnějším drátem **od anody ke katodě**, tedy od zinku k mědi. Zinková elektroda postupně ubývá a na měděné přibývá měď.' },
+            { type: 'process', layout: 'cycle', steps: [
+              { icon: 'ion-minus', title: '**Anoda** (−): oxidace', text: '$Zn -> Zn^{2+} + 2e^-$, zinková elektroda ubývá' },
+              { icon: 'plug', title: 'Elektrony drátem', text: 'vnějším obvodem **od anody ke katodě**, od zinku k mědi' },
+              { icon: 'ion-plus', title: '**Katoda** (+): redukce', text: '$Cu^{2+} + 2e^- -> Cu$, na měděné elektrodě přibývá měď' },
+              { icon: 'salt', title: '**Solný můstek**', text: 'roztok soli (např. $KNO3$) pouští ionty, uzavírá obvod a brání hromadění náboje' },
+            ], caption: 'Jak pracuje galvanický článek' },
             { type: 'formula', text: '$Zn(s) | Zn^{2+}(aq) || Cu^{2+}(aq) | Cu(s)$', caption: 'zkrácený zápis článku: anoda vlevo, katoda vpravo, || je solný můstek' },
             { type: 'callout', variant: 'remember', title: 'Anoda a katoda', text: '**A**noda – **o**xidace (obě začínají samohláskou), **k**atoda – **r**edukce (obě souhláskou). Platí to v článku i při elektrolýze. Mění se jen znaménko pólu.' },
             { type: 'check', question: { kind: 'choice', q: 'Co by se stalo, kdybys z Daniellova článku vytáhl solný můstek?', options: ['proud by přestal téct, protože obvod není uzavřený', 'napětí by se zdvojnásobilo', 'elektrony by začaly téct opačně', 'zinek by se začal vylučovat na měděné elektrodě'], answer: 0, explain: 'Solný můstek uzavírá obvod pro ionty. Bez něj by se v poločláncích okamžitě nahromadil náboj a reakce by se zastavila.' } },
@@ -199,8 +207,9 @@ const level: LevelContent = {
         },
         {
           title: 'Standardní elektrodový potenciál a napětí článku',
+          icon: 'lightning',
           blocks: [
-            { type: 'p', text: 'Jak silně „táhne“ poločlánek elektrony, vyjadřuje **standardní elektrodový potenciál** E°. Měří se proti **standardní vodíkové elektrodě**, které jsme dohodou přiřadili 0 V. Standardní podmínky: 25 °C, koncentrace iontů 1 mol/dm³, tlak plynů 100 kPa.' },
+            { type: 'p', text: 'Jak silně poločlánek „táhne“ elektrony, vyjadřuje **standardní elektrodový potenciál** E°. Měří se proti **standardní vodíkové elektrodě**, které dohodou patří 0 V. Standardní podmínky: 25 °C, koncentrace iontů 1 mol/dm³, tlak plynů 100 kPa.' },
             { type: 'table', headers: ['Poločlánek (redukce)', 'E° / V'], rows: [
               ['$Li^+ + e^- -> Li$', '−3,04'],
               ['$K^+ + e^- -> K$', '−2,93'],
@@ -216,29 +225,38 @@ const level: LevelContent = {
               ['$Cl2 + 2e^- -> 2Cl^-$', '+1,36'],
               ['$Au^{3+} + 3e^- -> Au$', '+1,50'],
             ], caption: 'Elektrochemická řada: čím zápornější E°, tím silnější redukční činidlo je kov; čím kladnější, tím silnější oxidační činidlo je oxidovaná forma.' },
-            { type: 'p', text: 'Katodou článku je vždy poločlánek s **kladnějším** potenciálem. Napětí článku je rozdíl potenciálů:' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'magnifier', title: 'Najdi E°', text: 'obou poločlánků v tabulce' },
+              { icon: 'ion-plus', title: 'Urči katodu', text: 'katodou je vždy poločlánek s **kladnějším** potenciálem' },
+              { icon: 'calculator', title: 'Odečti', text: 'E°(katoda) − E°(anoda)' },
+              { icon: 'check', title: 'Zkontroluj', text: 'napětí musí vyjít kladně' },
+            ], caption: 'Napětí článku ve čtyřech krocích' },
             { type: 'formula', text: 'E°_{článku} = E°_{katoda} − E°_{anoda}', caption: 'výsledek musí vyjít kladně, jinak jsi prohodil elektrody' },
             { type: 'example', title: 'Daniellův článek', problem: 'Jaké je standardní napětí článku $Zn | Zn^{2+} || Cu^{2+} | Cu$?', steps: [
               'Kladnější potenciál má měď (+0,34 V), je tedy katodou. Zinek (−0,76 V) je anodou.',
               'E° = E°(katoda) − E°(anoda) = 0,34 V − (−0,76 V)',
               'E° = 0,34 V + 0,76 V = 1,10 V',
             ], answer: 'Daniellův článek dává napětí 1,10 V.' },
+            { type: 'reaction', equation: 'Zn + 2AgNO3 -> Zn(NO3)2 + 2Ag', caption: 'Článek zinek–stříbro: dvojka u stříbra vyrovnává elektrony, potenciál ale nemění.' },
             { type: 'callout', variant: 'warning', title: 'Nenásob potenciály!', text: 'I když v rovnici $Zn + 2Ag^+ -> Zn^{2+} + 2Ag$ stojí u stříbra dvojka, E° stříbra nenásobíš. Potenciál nezávisí na tom, kolik látky reaguje, stejně jako výška schodu nezávisí na počtu lidí, co po něm jdou.' },
             { type: 'check', question: { kind: 'number', q: 'Spočítej standardní napětí článku sestaveného ze zinkového a stříbrného poločlánku.', answer: 1.56, tolerance: 0.01, unit: 'V', explain: 'Katodou je stříbro: E° = 0,80 V − (−0,76 V) = 1,56 V.' } },
           ],
         },
         {
           title: 'Baterie, akumulátory a palivový článek',
+          icon: 'phone',
           blocks: [
             { type: 'p', text: 'Každá baterie je galvanický článek, jen „zabalený na sucho“. Liší se tím, jaké látky reagují a jestli jde reakci obrátit nabíjením.' },
-            { type: 'table', headers: ['Zdroj', 'Co reaguje', 'Napětí článku', 'Dobíjecí?'], rows: [
-              ['alkalická baterie', '$Zn$ a $MnO2$ v $KOH$', '1,5 V', 'ne (primární článek)'],
-              ['olověný akumulátor', '$Pb$, $PbO2$ a $H2SO4$', '2 V (v autě 6 článků = 12 V)', 'ano'],
-              ['Li-ion akumulátor', 'ionty $Li^+$ mezi grafitem a oxidem kovu', 'asi 3,7 V', 'ano'],
-              ['vodíkový palivový článek', '$2H2 + O2 -> 2H2O$', '1,23 V (teoreticky)', 'palivo se stále doplňuje'],
+            { type: 'iconlist', items: [
+              { icon: 'battery', title: 'Alkalická baterie', text: '$Zn$ a $MnO2$ v $KOH$; 1,5 V; nedobíjecí (primární článek)' },
+              { icon: 'car', title: 'Olověný akumulátor', text: '$Pb$, $PbO2$ a $H2SO4$; 2 V na článek, v autě 6 článků = 12 V; dobíjecí' },
+              { icon: 'phone', title: 'Li-ion akumulátor', text: 'ionty $Li^+$ putují mezi grafitem a oxidem kovu; asi 3,7 V; dobíjecí' },
+              { icon: 'gas-cylinder', title: 'Vodíkový palivový článek', text: '$2H2 + O2 -> 2H2O$; teoreticky 1,23 V; palivo se stále doplňuje' },
             ] },
-            { type: 'p', text: '**Li-ion baterie v telefonu**: při vybíjení putují ionty $Li^+$ elektrolytem z grafitové elektrody do oxidu kovu (například $LiCoO2$) a elektrony jdou přes obvod telefonu. Nabíječka dodá energii a pošle ionty zpátky do grafitu. Nabíjení je tedy vlastně elektrolýza.' },
-            { type: 'p', text: '**Olověný akumulátor** v autě vybíjením mění obě elektrody na $PbSO4$: $Pb + PbO2 + 2H2SO4 -> 2PbSO4 + 2H2O$. Při nabíjení z alternátoru reakce běží opačně.' },
+            { type: 'diagram', id: 'li-ion-battery', caption: 'Li-ion baterie: při vybíjení putují ionty $Li^+$ elektrolytem z grafitu do oxidu kovu (např. $LiCoO2$) a elektrony jdou obvodem telefonu. Nabíječka je pošle zpátky.' },
+            { type: 'p', text: 'Při nabíjení dodá nabíječka energii a vrátí ionty $Li^+$ do grafitu. ==Nabíjení akumulátoru je vlastně elektrolýza.==' },
+            { type: 'reaction', equation: 'Pb + PbO2 + 2H2SO4 -> 2PbSO4 + 2H2O', caption: 'Olověný akumulátor při vybíjení: obě elektrody se mění na $PbSO4$. Při nabíjení z alternátoru běží reakce opačně.' },
+            { type: 'diagram', id: 'fuel-cell', caption: 'Palivový článek: vodík a kyslík se slučují na vodu a energie odchází jako proud, ne jako teplo plamene.' },
             { type: 'callout', variant: 'fact', text: 'Lithium je nejlehčí kov a má nejzápornější potenciál (−3,04 V). Proto dává Li-ion baterie hodně energie na gram, a proto zvítězila v telefonech i elektromobilech.' },
             { type: 'callout', variant: 'warning', text: 'Nafouklou nebo poškozenou Li-ion baterii nikdy nepropichuj, nerozebírej a nenabíjej. Hrozí zkrat, přehřátí a požár. Odevzdej ji do sběru baterií.' },
             { type: 'check', question: { kind: 'multi', q: 'Která tvrzení o Li-ion baterii jsou pravdivá?', options: ['Při vybíjení se ionty $Li^+$ pohybují elektrolytem mezi elektrodami.', 'Nabíjení je vynucený děj, při kterém dodáváme elektrickou energii.', 'Obsahuje kovový olověný plech ponořený do kyseliny sírové.', 'Vysoké napětí souvisí s velmi záporným potenciálem lithia.'], answers: [0, 1, 3], explain: 'Olovo a kyselina sírová patří do olověného akumulátoru. Li-ion článek „přesouvá“ ionty lithia a díky lithiu má vysoké napětí.' } },
@@ -246,19 +264,24 @@ const level: LevelContent = {
         },
         {
           title: 'Elektrolýza a Faradayův zákon',
+          icon: 'plug',
           blocks: [
-            { type: 'p', text: '**Elektrolýza** je opak galvanického článku: vnějším zdrojem napětí vynutíme redoxní reakci, která by sama neproběhla. Katoda je teď připojená k zápornému pólu, anoda ke kladnému. Na katodě ale pořád probíhá redukce a na anodě oxidace.' },
+            { type: 'compare', columns: [
+              { title: 'Galvanický článek', icon: 'battery', tone: 'a', points: ['reakce běží **samovolně**', 'chemická energie -> elektrická', 'anoda je záporný pól, katoda kladný', 'anoda: oxidace, katoda: redukce'] },
+              { title: '**Elektrolýza**', icon: 'lightning', tone: 'b', points: ['reakci **vynutí vnější zdroj** napětí', 'elektrická energie -> chemická', 'katoda je připojená k zápornému pólu, anoda ke kladnému', 'anoda: oxidace, katoda: redukce'] },
+            ], caption: 'Elektrolýza je opak galvanického článku. Na katodě ale pořád probíhá redukce a na anodě oxidace.' },
+            { type: 'diagram', id: 'electrolysis', caption: 'Elektrolyzér: kationty putují ke katodě (−) a redukují se, anionty k anodě (+) a oxidují se.' },
             { type: 'table', headers: ['Elektrolyt', 'Katoda (−), redukce', 'Anoda (+), oxidace'], rows: [
               ['tavenina $NaCl$', '$Na^+ + e^- -> Na$', '$2Cl^- -> Cl2 + 2e^-$'],
               ['roztok $NaCl$ (solanka)', '$2H2O + 2e^- -> H2 + 2OH^-$', '$2Cl^- -> Cl2 + 2e^-$'],
               ['roztok $CuSO4$ (inertní elektrody)', '$Cu^{2+} + 2e^- -> Cu$', '$2H2O -> O2 + 4H^+ + 4e^-$'],
             ] },
-            { type: 'list', items: [
-              'Z vodného roztoku se na katodě vylučují jen **ušlechtilejší kovy** ($Cu$, $Ag$). Místo $Na$, $K$, $Mg$ nebo $Al$ se redukuje voda na vodík.',
-              'Na anodě se z roztoku oxidují halogenidy ($Cl^-$, $Br^-$, $I^-$). Ionty jako $SO4^{2-}$ nebo $NO3^-$ se neoxidují, místo nich vzniká kyslík z vody.',
-              'Elektrolýzou solanky se vyrábí chlor, vodík a hydroxid sodný zároveň.',
-              '**Hliník** se vyrábí elektrolýzou $Al2O3$ rozpuštěného v roztaveném kryolitu $Na3AlF6$ při asi 950 °C. Spotřebuje obrovské množství elektřiny, proto se recyklace plechovek tolik vyplatí (stačí asi 5 % energie).',
-              '**Pokovování**: předmět zapojíme jako katodu do roztoku soli kovu. Tak se niklují, chromují nebo stříbří šperky a součástky.',
+            { type: 'reaction', equation: '2NaCl + 2H2O -> 2NaOH + H2 + Cl2', caption: 'Elektrolýzou solanky se vyrábí chlor, vodík a hydroxid sodný zároveň.' },
+            { type: 'iconlist', items: [
+              { icon: 'drop', title: 'Katoda v roztoku', text: 'vylučují se jen **ušlechtilejší kovy** ($Cu$, $Ag$). Místo $Na$, $K$, $Mg$ nebo $Al$ se redukuje voda na vodík.' },
+              { icon: 'gas-cloud', title: 'Anoda v roztoku', text: 'oxidují se halogenidy ($Cl^-$, $Br^-$, $I^-$). Místo $SO4^{2-}$ nebo $NO3^-$ vzniká kyslík z vody.' },
+              { icon: 'recycle', title: 'Hliník', text: 'elektrolýza $Al2O3$ v roztaveném kryolitu $Na3AlF6$ při asi 950 °C. Spotřebuje obrovské množství elektřiny, recyklace plechovek stojí jen asi 5 % energie.' },
+              { icon: 'ring', title: 'Pokovování', text: 'předmět je katodou v roztoku soli kovu. Tak se niklují, chromují nebo stříbří šperky a součástky.' },
             ] },
             { type: 'p', text: 'Kolik látky se vyloučí, určuje prošlý náboj. Náboj jednoho molu elektronů je **Faradayova konstanta** F = 96 485 C/mol.' },
             { type: 'formula', text: 'Q = I · t   ⟶   n = Q / (z · F)   ⟶   m = n · M', caption: 'I – proud (A), t – čas (s), z – počet elektronů na jeden ion, F = 96 485 C/mol' },
@@ -275,15 +298,17 @@ const level: LevelContent = {
         },
         {
           title: 'Koroze a jak jí zabránit',
+          icon: 'rust',
           blocks: [
             { type: 'p', text: '**Koroze** železa je elektrochemický děj. Na kapce vody na karoserii vznikne miniaturní galvanický článek: jedno místo železa je anodou, jiné katodou.' },
+            { type: 'diagram', id: 'corrosion', caption: 'Kapka vody na železe: uprostřed se železo oxiduje, na okraji kapky se redukuje kyslík a mezi nimi roste rez.' },
             { type: 'formula', text: 'anoda: $Fe -> Fe^{2+} + 2e^-$ · katoda: $O2 + 2H2O + 4e^- -> 4OH^-$', caption: '$Fe^{2+}$ a $OH^-$ se spojí a dál oxidují na rez $Fe2O3·xH2O$' },
-            { type: 'p', text: 'Posypová sůl v zimě korozi výrazně zrychluje: ionty zvyšují vodivost vody, a článek na karoserii tak pracuje rychleji. Proto rezaví hlavně spodky aut a blatníky.' },
-            { type: 'list', items: [
-              '**Nátěr, lak, olej**: oddělí železo od vody a kyslíku.',
-              '**Pozinkování**: zinek je neušlechtilejší než železo, oxiduje se přednostně a železo chrání, i když se povrch poškrábe.',
-              '**Obětovaná anoda**: bloky hořčíku nebo zinku přišroubované k lodím a potrubí korodují místo oceli.',
-              '**Nerezová ocel**: přidaný chrom vytvoří tenkou ochrannou vrstvu oxidu (pasivace).',
+            { type: 'p', text: 'Posypová sůl v zimě korozi výrazně zrychluje: ionty zvyšují vodivost vody a článek na karoserii pracuje rychleji. Proto rezaví hlavně spodky aut a blatníky.' },
+            { type: 'iconlist', items: [
+              { icon: 'droplets', title: 'Nátěr, lak, olej', text: 'oddělí železo od vody a kyslíku' },
+              { icon: 'coin', title: 'Pozinkování', text: 'zinek je neušlechtilejší než železo, oxiduje se přednostně a chrání železo, i když se povrch poškrábe' },
+              { icon: 'ocean', title: 'Obětovaná anoda', text: 'bloky hořčíku nebo zinku přišroubované k lodím a potrubí korodují místo oceli' },
+              { icon: 'water-tap', title: 'Nerezová ocel', text: 'přidaný chrom vytvoří tenkou ochrannou vrstvu oxidu (pasivace)' },
             ] },
             { type: 'callout', variant: 'fact', title: 'Pocínovaná konzerva', text: 'Cín je ušlechtilejší než železo. Dokud je vrstva celá, chrání. Jakmile se ale poškrábe, železo se stane anodou a rezaví dokonce rychleji než bez cínu. U zinku je to naopak.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč chrání zinková vrstva železo i tehdy, když je poškrábaná?', options: ['zinek je neušlechtilejší, a tak se oxiduje místo železa', 'zinek je ušlechtilejší, a proto nekoroduje', 'zinek reaguje s kyslíkem na nerozpustný kyslík', 'zinek odpuzuje vodu'], answer: 0, explain: 'Zinek má zápornější potenciál než železo (−0,76 V proti −0,44 V), stává se anodou a obětuje se.' } },
@@ -327,14 +352,18 @@ const level: LevelContent = {
       sections: [
         {
           title: 'Soustava, okolí a reakční teplo',
+          icon: 'thermometer',
           blocks: [
-            { type: 'p', text: 'V termochemii si svět rozdělíme na dvě části. **Soustava** je to, co zkoumáme (reagující látky v kádince). **Okolí** je všechno ostatní: kádinka, vzduch, tvoje ruka.' },
-            { type: 'keyterms', items: [
-              { term: '**Exotermní děj**', def: 'soustava teplo **uvolňuje** do okolí, okolí se ohřívá. Příklad: hoření, neutralizace, rezavění.' },
-              { term: '**Endotermní děj**', def: 'soustava teplo z okolí **pohlcuje**, okolí se ochlazuje. Příklad: rozklad vápence, fotosyntéza, rozpouštění $NH4NO3$.' },
-              { term: '**Reakční teplo**', def: 'teplo, které soustava vymění s okolím, když reakce proběhne podle rovnice.' },
+            { type: 'p', text: 'V termochemii si svět rozdělíme na dvě části. **Soustava** je to, co zkoumáme (reagující látky v kádince), **okolí** je všechno ostatní. Teplo, které soustava vymění s okolím, když reakce proběhne podle rovnice, je **reakční teplo**.' },
+            { type: 'compare', columns: [
+              { title: '**Exotermní děj**', icon: 'heat', tone: 'a', points: ['soustava teplo **uvolňuje** do okolí', 'okolí se ohřívá', 'hoření, neutralizace, rezavění'] },
+              { title: '**Endotermní děj**', icon: 'cold', tone: 'b', points: ['soustava teplo z okolí **pohlcuje**', 'okolí se ochlazuje', 'rozklad vápence, fotosyntéza, rozpouštění $NH4NO3$'] },
             ] },
-            { type: 'p', text: 'Soustava může být **otevřená** (vyměňuje s okolím látky i energii, třeba hrnec bez pokličky), **uzavřená** (jen energii) nebo **izolovaná** (nic, ideální termoska).' },
+            { type: 'iconlist', items: [
+              { icon: 'steam', title: '**Otevřená** soustava', text: 'vyměňuje s okolím látky i energii, třeba hrnec bez pokličky' },
+              { icon: 'flask', title: '**Uzavřená** soustava', text: 'vyměňuje jen energii, třeba zazátkovaná baňka' },
+              { icon: 'thermometer', title: '**Izolovaná** soustava', text: 'nevyměňuje nic, ideální termoska' },
+            ] },
             { type: 'callout', variant: 'fact', title: 'Ohřívače a chladicí sáčky', text: 'Jednorázový ohřívač rukou obsahuje železný prášek, který na vzduchu rychle „rezaví“, a to je exotermní oxidace. Chladicí sáček na zranění obsahuje dusičnan amonný a vodu. Když přepážku zlomíš, sůl se rozpouští a teplo si bere z okolí, z tvého kotníku.' },
             { type: 'callout', variant: 'mascot', text: 'Opakovaně použitelný ohřívač s kovovou destičkou je taky chemie: přesycený roztok octanu sodného po „cvaknutí“ krystalizuje a uvolní teplo. Doma ho „nabiješ“ povařením ve vodě.' },
             { type: 'check', question: { kind: 'choice', q: 'Když rozpustíš dusičnan amonný ve vodě, kádinka zchladne. Jaký je to děj?', options: ['endotermní, soustava pohlcuje teplo z okolí', 'exotermní, soustava uvolňuje teplo', 'endotermní, soustava uvolňuje chlad', 'žádný, teplota se mění jen náhodou'], answer: 0, explain: 'Rozpouštění $NH4NO3$ si teplo bere z okolí, proto kádinka studí. Chlad není látka ani energie, která by se „uvolňovala“.' } },
@@ -342,17 +371,18 @@ const level: LevelContent = {
         },
         {
           title: 'Reakční entalpie a termochemické rovnice',
+          icon: 'heat',
           blocks: [
-            { type: 'p', text: 'Teplo vyměněné při stálém tlaku se nazývá **změna entalpie** ΔH, u reakce **reakční entalpie**. Udává se v kJ/mol, tedy na jeden „molární obrat“: na tolik molů látek, kolik jich uvádí rovnice.' },
+            { type: 'p', text: 'Teplo vyměněné při stálém tlaku je **změna entalpie** ΔH, u reakce **reakční entalpie**. Udává se v kJ/mol, tedy na jeden „molární obrat“: na tolik molů látek, kolik jich uvádí rovnice.' },
             { type: 'formula', text: 'ΔH < 0: exotermní · ΔH > 0: endotermní', caption: 'znaménko se dívá z pohledu soustavy: co soustava ztratí, má minus' },
             { type: 'diagram', id: 'energy-profile', props: { kind: 'exo' }, caption: 'Exotermní reakce: produkty mají nižší entalpii než reaktanty, rozdíl odchází jako teplo do okolí.' },
             { type: 'diagram', id: 'energy-profile', props: { kind: 'endo' }, caption: 'Endotermní reakce: produkty mají vyšší entalpii, energii musí dodat okolí.' },
-            { type: 'p', text: '**Termochemická rovnice** obsahuje skupenství všech látek a hodnotu ΔH:' },
-            { type: 'formula', text: '$CH4(g) + 2O2(g) -> CO2(g) + 2H2O(l)$, ΔH = −890 kJ/mol' },
-            { type: 'list', items: [
-              'Obrátíš-li rovnici, **změní se znaménko** ΔH: rozklad vody je endotermní přesně o tolik, o kolik je vznik vody exotermní.',
-              'Vynásobíš-li rovnici číslem, **vynásobíš i ΔH**.',
-              'Na skupenství záleží: vznik $H2O(l)$ uvolní víc tepla než vznik $H2O(g)$, protože kondenzace páry je také exotermní.',
+            { type: 'reaction', equation: 'CH4 + 2O2 -> CO2 + 2H2O', caption: 'Hoření methanu v plynovém sporáku' },
+            { type: 'formula', text: '$CH4(g) + 2O2(g) -> CO2(g) + 2H2O(l)$, ΔH = −890 kJ/mol', caption: '**termochemická rovnice**: skupenství všech látek a hodnota ΔH' },
+            { type: 'iconlist', items: [
+              { icon: 'arrow-cycle', title: 'Obrácení rovnice', text: '**změní se znaménko** ΔH: rozklad vody je endotermní přesně o tolik, o kolik je vznik vody exotermní' },
+              { icon: 'calculator', title: 'Násobení rovnice', text: 'vynásobíš-li rovnici číslem, **vynásobíš i ΔH**' },
+              { icon: 'steam', title: 'Skupenství', text: 'vznik $H2O(l)$ uvolní víc tepla než vznik $H2O(g)$, protože i kondenzace páry je exotermní' },
             ] },
             { type: 'example', title: 'Kolik tepla dá plynový sporák', problem: 'Kolik tepla se uvolní spálením 8,0 g methanu? $M(CH4) = 16 g/mol$, ΔH = −890 kJ/mol.', steps: [
               'n($CH4$) = m / M = 8,0 g / 16 g/mol = 0,50 mol',
@@ -364,12 +394,14 @@ const level: LevelContent = {
         },
         {
           title: 'Slučovací a spalné teplo',
+          icon: 'flame',
           blocks: [
             { type: 'p', text: 'Abychom nemuseli měřit každou reakci zvlášť, tabelují se dva druhy „vzorových“ reakcí za standardních podmínek (25 °C, 100 kPa), značené kroužkem: ΔH°.' },
-            { type: 'keyterms', items: [
-              { term: '**Standardní slučovací teplo** ΔH°_{sl}', def: 'reakční entalpie vzniku **1 mol sloučeniny z prvků** v jejich standardním stavu. Pro prvky samotné ($O2$, $H2$, $C$ jako grafit) je rovno nule.' },
-              { term: '**Standardní spalné teplo** ΔH°_{sp}', def: 'reakční entalpie **spálení 1 mol látky** v kyslíku na konečné produkty ($CO2(g)$, $H2O(l)$).' },
+            { type: 'compare', columns: [
+              { title: '**Standardní slučovací teplo** ΔH°_{sl}', icon: 'bond', tone: 'a', points: ['vznik **1 mol sloučeniny z prvků** v jejich standardním stavu', 'pro prvky samotné ($O2$, $H2$, $C$ jako grafit) je rovno **nule**', 'záporné = sloučenina je energeticky „níž“ než prvky'] },
+              { title: '**Standardní spalné teplo** ΔH°_{sp}', icon: 'flame', tone: 'b', points: ['**spálení 1 mol látky** v kyslíku', 'na konečné produkty $CO2(g)$ a $H2O(l)$', 'udává, kolik tepla palivo dá'] },
             ] },
+            { type: 'reaction', equation: 'C + O2 -> CO2', caption: 'Tahle reakce je vznikem $CO2$ z prvků i spálením grafitu: ΔH°_{sl}($CO2$) = ΔH°_{sp}(C) = −393,5 kJ/mol.' },
             { type: 'table', headers: ['Látka', 'ΔH°_{sl} / kJ·mol^{−1}', 'Látka', 'ΔH°_{sl} / kJ·mol^{−1}'], rows: [
               ['$CO2(g)$', '−393,5', '$CH4(g)$', '−74,8'],
               ['$H2O(l)$', '−285,8', '$C3H8(g)$', '−103,8'],
@@ -388,9 +420,10 @@ const level: LevelContent = {
         },
         {
           title: 'Hessův zákon',
+          icon: 'mountain',
           blocks: [
-            { type: 'p', text: '**Hessův zákon**: reakční entalpie závisí jen na počátečním a konečném stavu, ne na cestě mezi nimi. Je to jako výstup na horu: rozdíl nadmořských výšek je stejný, ať jdeš po silnici, nebo po žebříku.' },
-            { type: 'p', text: 'Díky tomu můžeme spočítat ΔH i reakce, kterou nejde přímo změřit. Rovnice sčítáme jako algebraické výrazy a jejich ΔH sčítáme také.' },
+            { type: 'p', text: '**Hessův zákon**: reakční entalpie závisí jen na počátečním a konečném stavu, ne na cestě mezi nimi. Je to jako výstup na horu: rozdíl výšek je stejný po silnici i po žebříku. Rovnice proto můžeme sčítat jako algebraické výrazy a jejich ΔH sčítat také.' },
+            { type: 'diagram', id: 'hess-cycle', caption: 'Z počátečního do konečného stavu vedou dvě cesty. Součet ΔH je na obou stejný, a tak dopočítáš i reakci, kterou nejde změřit.' },
             { type: 'structure', art: [
               '      ΔH₁ = −393,5 kJ/mol',
               ' C + O2 ───────────────► CO2',
@@ -399,20 +432,28 @@ const level: LevelContent = {
               '    ▼                    │',
               ' CO + ½ O2 ──────────────┘',
             ].join('\n'), caption: 'Uhlík lze spálit na $CO2$ přímo, nebo oklikou přes $CO$. Obě cesty mají stejnou celkovou ΔH.' },
+            { type: 'reaction', equation: '2C + O2 -> 2CO', caption: 'Cílová reakce: hoření uhlíku jen na $CO$ přímo změřit nejde, vždy vznikne i trochu $CO2$.' },
             { type: 'example', title: 'Vznik oxidu uhelnatého', problem: 'Hoření uhlíku na čistý $CO$ nejde změřit, vždy vznikne i trochu $CO2$. Vypočítej ΔH reakce $C + 1/2 O2 -> CO$, znáš-li: (1) $C + O2 -> CO2$, ΔH₁ = −393,5 kJ/mol; (2) $CO + 1/2 O2 -> CO2$, ΔH₂ = −283,0 kJ/mol.', steps: [
               'Podle cyklu: ΔH₁ = ΔH + ΔH₂, protože obě cesty vedou z $C + O2$ do $CO2$.',
               'Algebraicky: rovnici (1) necháme, rovnici (2) obrátíme: $CO2 -> CO + 1/2 O2$, ΔH = +283,0 kJ/mol.',
               'Sečteme: $C + O2 + CO2 -> CO2 + CO + 1/2 O2$, po zkrácení $C + 1/2 O2 -> CO$.',
               'ΔH = ΔH₁ − ΔH₂ = −393,5 + 283,0 = −110,5 kJ/mol',
             ], answer: 'ΔH = −110,5 kJ/mol, což je slučovací teplo $CO$ z tabulky.' },
-            { type: 'callout', variant: 'tip', title: 'Postup na Hessův zákon', text: 'Najdi v zadaných rovnicích látky z cílové rovnice. Rovnici obrať, když je látka na špatné straně, a vynásob, když nesedí koeficient. Mezilátky se musí po sečtení vyrušit.' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'magnifier', title: 'Najdi', text: 'látky z cílové rovnice v zadaných rovnicích' },
+              { icon: 'arrow-cycle', title: 'Obrať', text: 'rovnici, když je látka na špatné straně (ΔH změní znaménko)' },
+              { icon: 'calculator', title: 'Vynásob', text: 'rovnici i její ΔH, když nesedí koeficient' },
+              { icon: 'check', title: 'Sečti', text: 'mezilátky se musí vyrušit' },
+            ], caption: 'Postup na Hessův zákon' },
             { type: 'check', question: { kind: 'number', q: 'Známe (1) $S(s) + O2(g) -> SO2(g)$, ΔH = −296,8 kJ/mol; (2) $SO2(g) + 1/2 O2(g) -> SO3(g)$, ΔH = −98,9 kJ/mol. Jaké je ΔH reakce $S(s) + 3/2 O2(g) -> SO3(g)$?', answer: -395.7, tolerance: 0.3, unit: 'kJ/mol', explain: 'Obě rovnice sečteme, $SO2$ se vyruší: ΔH = −296,8 + (−98,9) = −395,7 kJ/mol.' } },
           ],
         },
         {
           title: 'Vazebné energie',
+          icon: 'bond',
           blocks: [
-            { type: 'p', text: 'Proč se při reakci teplo uvolňuje nebo spotřebovává? Při reakci se vazby **trhají** a nové **vznikají**. ==Trhání vazeb energii spotřebuje, vznik vazeb energii uvolní.==' },
+            { type: 'p', text: 'Proč se při reakci teplo uvolňuje nebo spotřebovává? Vazby se **trhají** a nové **vznikají**. ==Trhání vazeb energii spotřebuje, vznik vazeb energii uvolní.==' },
+            { type: 'reaction', equation: 'H2 + Cl2 -> 2HCl', caption: 'Roztrhne se 1 vazba H–H a 1 vazba Cl–Cl, vzniknou 2 vazby H–Cl.' },
             { type: 'table', headers: ['Vazba', 'E / kJ·mol^{−1}', 'Vazba', 'E / kJ·mol^{−1}'], rows: [
               ['H–H', '436', 'O=O', '498'],
               ['Cl–Cl', '243', 'O–H', '463'],
@@ -427,19 +468,24 @@ const level: LevelContent = {
               'ΔH ≈ 679 − 864 = −185 kJ/mol',
             ], answer: 'ΔH ≈ −185 kJ/mol, reakce je exotermní. Směs vodíku a chloru na přímém světle dokonce vybuchuje.' },
             { type: 'callout', variant: 'warning', text: 'Vazebné energie jsou průměry z mnoha molekul, proto dávají jen odhad. Když máš k dispozici slučovací tepla, jsou přesnější.' },
+            { type: 'molecule', molecules: ['N2', 'H2', 'NH3'], labels: ['trojná vazba N≡N', 'vazba H–H', 'tři vazby N–H'], caption: 'Při syntéze amoniaku se trhá N≡N a H–H, vznikají vazby N–H.' },
             { type: 'check', question: { kind: 'number', q: 'Odhadni z vazebných energií ΔH syntézy amoniaku $N2(g) + 3H2(g) -> 2NH3(g)$.', answer: -93, tolerance: 3, unit: 'kJ/mol', explain: 'Trháme N≡N a 3 × H–H: 945 + 3 · 436 = 2 253 kJ/mol. Vzniká 6 vazeb N–H: 6 · 391 = 2 346 kJ/mol. ΔH ≈ 2 253 − 2 346 = −93 kJ/mol (tabulková hodnota je −92 kJ/mol).' } },
           ],
         },
         {
           title: 'Výhled: entropie a Gibbsova energie',
+          icon: 'crystal',
           blocks: [
-            { type: 'p', text: 'Proč chladicí sáček funguje sám od sebe, když je rozpouštění endotermní? Entalpie není jediné, co rozhoduje. Důležitá je i **entropie** S, míra neuspořádanosti, lépe řečeno počtu způsobů, jak mohou částice rozdělit energii.' },
-            { type: 'p', text: 'Krystal dusičnanu amonného je uspořádaný, ionty v roztoku se volně pohybují. Entropie při rozpouštění výrazně roste a to „přetlačí“ nevýhodnou entalpii.' },
+            { type: 'p', text: 'Proč chladicí sáček funguje sám od sebe, když je rozpouštění endotermní? Rozhoduje i **entropie** S, míra neuspořádanosti, lépe řečeno počtu způsobů, jak mohou částice rozdělit energii.' },
+            { type: 'particles', boxes: [
+              { label: 'krystal $NH4NO3$', items: [{ species: 'NH4+', count: 6 }, { species: 'NO3-', count: 6 }], state: 'solid', note: 'ionty v pravidelné mřížce' },
+              { label: 'roztok', items: [{ species: 'NH4+', count: 6 }, { species: 'NO3-', count: 6 }, { species: 'H2O', count: 8 }], state: 'solution', note: 'ionty se volně pohybují' },
+            ], arrows: true, caption: 'Při rozpouštění entropie výrazně roste a „přetlačí“ nevýhodnou entalpii.' },
             { type: 'formula', text: 'ΔG = ΔH − T · ΔS', caption: 'Gibbsova energie; děj probíhá samovolně, když ΔG < 0' },
-            { type: 'list', items: [
-              'ΔH < 0 a ΔS > 0: děj je samovolný vždy (hoření dřeva, výbuch střelného prachu).',
-              'ΔH > 0 a ΔS > 0: samovolný až za dost vysoké teploty (tání ledu nad 0 °C, rozklad vápence).',
-              'ΔH < 0 a ΔS < 0: samovolný jen za nízké teploty (mrznutí vody pod 0 °C).',
+            { type: 'compare', columns: [
+              { title: 'ΔH < 0, ΔS > 0', icon: 'check', tone: 'good', points: ['samovolný **vždy**', 'hoření dřeva, výbuch střelného prachu'] },
+              { title: 'ΔH > 0, ΔS > 0', icon: 'heat', tone: 'a', points: ['samovolný až za **dost vysoké teploty**', 'tání ledu nad 0 °C, rozklad vápence'] },
+              { title: 'ΔH < 0, ΔS < 0', icon: 'cold', tone: 'b', points: ['samovolný jen za **nízké teploty**', 'mrznutí vody pod 0 °C'] },
             ] },
             { type: 'callout', variant: 'fact', text: 'Samovolný neznamená rychlý. Přeměna diamantu na grafit má ΔG < 0, a přesto tvůj prsten vydrží miliony let. O rychlosti rozhoduje něco jiného, uvidíš v další lekci.' },
             { type: 'check', question: { kind: 'tf', q: 'Každý děj, který probíhá samovolně, musí být exotermní.', answer: false, explain: 'Rozpouštění $NH4NO3$ nebo tání ledu jsou samovolné a přitom endotermní. Rozhoduje ΔG = ΔH − TΔS, ve kterém hraje roli i entropie.' } },
@@ -484,28 +530,39 @@ const level: LevelContent = {
       sections: [
         {
           title: 'Co je rychlost reakce',
+          icon: 'stopwatch',
           blocks: [
             { type: 'p', text: '**Rychlost reakce** v udává, jak rychle ubývá reaktantů nebo přibývá produktů. Měříme ji jako změnu koncentrace za jednotku času.' },
             { type: 'formula', text: 'v = − Δc(reaktant) / Δt = Δc(produkt) / Δt', caption: 'jednotka mol·dm^{−3}·s^{−1}; minus u reaktantu proto, že jeho koncentrace klesá' },
             { type: 'diagram', id: 'rate-curve', caption: 'Koncentrace reaktantu klesá nejdřív rychle, pak čím dál pomaleji. Rychlost je strmost křivky a s časem se zmenšuje.' },
-            { type: 'p', text: 'Proč reakce zpomaluje? Reaktantů ubývá, jejich částice se srážejí méně často, a tak je i méně úspěšných srážek.' },
+            { type: 'particles', boxes: [
+              { label: 'na začátku', items: [{ species: 'H2O2', count: 8 }], state: 'solution' },
+              { label: 'o chvíli později', items: [{ species: 'H2O2', count: 4 }, { species: 'H2O', count: 4 }, { species: 'O2', count: 2 }], state: 'solution' },
+            ], arrows: true, caption: 'Rozklad $2H2O2 -> 2H2O + O2$: reaktantu ubývá, jeho částice se srážejí méně často a reakce zpomaluje.' },
             { type: 'example', title: 'Rozklad peroxidu vodíku', problem: 'Koncentrace $H2O2$ klesla za 60 s z 0,80 mol/dm³ na 0,50 mol/dm³. Jaká byla průměrná rychlost rozkladu?', steps: [
               'Δc = 0,50 − 0,80 = −0,30 mol/dm³',
               'v = −Δc / Δt = 0,30 mol/dm³ / 60 s',
               'v = 0,0050 mol·dm^{−3}·s^{−1}',
             ], answer: 'Průměrná rychlost byla 0,0050 mol·dm^{−3}·s^{−1} (5,0·10^{−3} mol·dm^{−3}·s^{−1}).' },
-            { type: 'callout', variant: 'tip', text: 'Rychlost reakce se v praxi měří tím, co jde snadno sledovat: objem vzniklého plynu, úbytek hmotnosti, změna barvy nebo vodivosti.' },
+            { type: 'p', text: 'V praxi měříš rychlost tím, co jde snadno sledovat:' },
+            { type: 'iconlist', items: [
+              { icon: 'balloon', title: 'Objem plynu', text: 'kolik plynu vznikne za minutu' },
+              { icon: 'balance-scale', title: 'Úbytek hmotnosti', text: 'unikající plyn odlehčí baňku' },
+              { icon: 'test-tube', title: 'Změna barvy', text: 'jak rychle roztok bledne nebo tmavne' },
+              { icon: 'plug', title: 'Vodivost', text: 'mění se, když ubývá nebo přibývá iontů' },
+            ] },
             { type: 'check', question: { kind: 'number', q: 'Koncentrace produktu vzrostla za 30 s z 0 na 0,12 mol/dm³. Jaká byla průměrná rychlost jeho vzniku?', answer: 0.004, tolerance: 0.0002, unit: 'mol·dm⁻³·s⁻¹', explain: 'v = Δc / Δt = 0,12 mol/dm³ / 30 s = 0,004 mol·dm^{−3}·s^{−1}.' } },
           ],
         },
         {
           title: 'Srážková teorie a aktivační energie',
+          icon: 'explosion',
           blocks: [
-            { type: 'p', text: 'Aby molekuly zreagovaly, musí se srazit. Většina srážek je ale neúčinná: molekuly se od sebe jen odrazí. **Účinná srážka** musí splnit dvě podmínky.' },
-            { type: 'list', ordered: true, items: [
-              'Částice musí mít při srážce dost energie, alespoň tolik, kolik je **aktivační energie** E_{a}.',
-              'Částice se musí srazit ve **správné orientaci**, tou částí molekuly, kde vzniká nová vazba.',
-            ] },
+            { type: 'p', text: 'Aby molekuly zreagovaly, musí se srazit. Většina srážek je ale neúčinná: molekuly se od sebe jen odrazí.' },
+            { type: 'compare', columns: [
+              { title: '**Účinná srážka**', icon: 'check', tone: 'good', points: ['částice mají dost energie, alespoň tolik, kolik je **aktivační energie** E_{a}', 'srazí se ve **správné orientaci**, tou částí molekuly, kde vzniká nová vazba', 'vznikne aktivovaný komplex, pak produkty'] },
+              { title: 'Neúčinná srážka', icon: 'cross', tone: 'bad', points: ['energie je menší než E_{a}', 'nebo se částice potkají špatnou stranou', 'molekuly se jen odrazí'] },
+            ], caption: 'Účinná srážka musí splnit obě podmínky najednou.' },
             { type: 'keyterms', items: [
               { term: '**Aktivační energie** E_{a}', def: 'nejmenší energie, kterou musí srážející se částice mít, aby reakce proběhla. Je to „kopec“, přes který se musí dostat.' },
               { term: '**Aktivovaný komplex**', def: 'nestálé uskupení atomů na vrcholu energetického kopce: staré vazby se trhají, nové vznikají.' },
@@ -518,14 +575,20 @@ const level: LevelContent = {
         },
         {
           title: 'Co reakci zrychlí',
+          icon: 'speed',
           blocks: [
-            { type: 'table', headers: ['Faktor', 'Proč působí', 'Příklad'], rows: [
-              ['vyšší **koncentrace** (u plynů tlak)', 'víc částic v objemu, častější srážky', 'doutnající tříska v čistém kyslíku vzplane'],
-              ['vyšší **teplota**', 'částice jsou rychlejší a mnohem víc jich má energii ≥ E_{a}', 'v lednici se jídlo kazí pomaleji'],
-              ['větší **povrch** (rozmělnění)', 'víc částic je „na ráně“ ke srážce', 'moučný prach vybuchuje, pytel mouky ne'],
-              ['**katalyzátor**', 'otevře cestu s nižší aktivační energií', 'katalyzátor ve výfuku, enzymy'],
-              ['**povaha látek**', 'různě pevné vazby, různé E_{a}', 'sodík s vodou bouřlivě, železo pomalu'],
+            { type: 'iconlist', items: [
+              { icon: 'gas-cloud', title: 'Vyšší **koncentrace** (u plynů tlak)', text: 'víc částic v objemu, častější srážky. Doutnající tříska v čistém kyslíku vzplane.' },
+              { icon: 'thermometer', title: 'Vyšší **teplota**', text: 'částice jsou rychlejší a mnohem víc jich má energii ≥ E_{a}. V lednici se jídlo kazí pomaleji.' },
+              { icon: 'powder', title: 'Větší **povrch** (rozmělnění)', text: 'víc částic je „na ráně“ ke srážce. Moučný prach vybuchuje, pytel mouky ne.' },
+              { icon: 'catalyst', title: '**Katalyzátor**', text: 'otevře cestu s nižší aktivační energií. Katalyzátor ve výfuku, enzymy.' },
+              { icon: 'periodic-table', title: '**Povaha látek**', text: 'různě pevné vazby, různé E_{a}. Sodík s vodou reaguje bouřlivě, železo pomalu.' },
             ] },
+            { type: 'particles', boxes: [
+              { label: 'zředěná kyselina', items: [{ species: 'H3O+', count: 3 }, { species: 'H2O', count: 9 }], state: 'solution', note: 'málo srážek' },
+              { label: 'koncentrovaná kyselina', items: [{ species: 'H3O+', count: 9 }, { species: 'H2O', count: 6 }], state: 'solution', note: 'víc srážek za sekundu' },
+            ], caption: 'Víc částic v témže objemu = častější srážky = rychlejší reakce.' },
+            { type: 'diagram', id: 'maxwell-boltzmann', caption: 'Rozdělení energií molekul: při vyšší teplotě se křivka posune doprava a mnohem víc molekul má energii alespoň E_{a}.' },
             { type: 'p', text: 'Nejsilněji působí teplota. Pro mnoho reakcí kolem pokojové teploty platí **van ’t Hoffovo pravidlo**:' },
             { type: 'formula', text: 'zvýšení teploty o 10 °C -> rychlost vzroste 2× až 4×', caption: 'při ohřátí o n × 10 °C vzroste rychlost γ^{n}krát, kde γ je 2 až 4' },
             { type: 'example', title: 'Kuře v lednici a na stole', problem: 'Reakce, které kazí maso, zrychlí při zvýšení teploty o 10 °C asi dvakrát. Kolikrát rychleji se kazí maso na stole (25 °C) než v lednici (5 °C)?', steps: [
@@ -539,31 +602,41 @@ const level: LevelContent = {
         },
         {
           title: 'Katalyzátory a enzymy',
+          icon: 'catalyst',
           blocks: [
             { type: 'p', text: '**Katalyzátor** je látka, která reakci zrychlí, ale sama se v ní trvale nespotřebuje. Otevře jinou reakční cestu s **nižší aktivační energií**.' },
             { type: 'diagram', id: 'energy-profile', props: { kind: 'exo', catalyst: true }, caption: 'Katalyzovaná cesta (nižší kopec) má menší aktivační energii. Počáteční i konečný stav, a tedy i ΔH, zůstávají stejné.' },
-            { type: 'list', items: [
-              'Katalyzátor **nemění ΔH** reakce ani její výtěžek v rovnováze (víc v další lekci).',
-              '**Homogenní katalýza**: katalyzátor je ve stejné fázi jako reaktanty (např. kyselina v roztoku při esterifikaci).',
-              '**Heterogenní katalýza**: katalyzátor je pevný a reakce probíhá na jeho povrchu (platina ve výfuku, železo při výrobě amoniaku).',
-              '**Inhibitor** reakci naopak zpomaluje, například konzervační látky v potravinách.',
+            { type: 'compare', columns: [
+              { title: 'Bez katalyzátoru', icon: 'mountain', tone: 'b', points: ['vysoký kopec E_{a}', 'málo účinných srážek', 'reakce běží pomalu'] },
+              { title: 'S katalyzátorem', icon: 'catalyst', tone: 'good', points: ['jiná cesta s nižší E_{a}', 'zrychlí přímou i zpětnou reakci', '**nemění ΔH** ani výtěžek v rovnováze (víc v další lekci)', 'sám se nespotřebuje'] },
             ] },
-            { type: 'p', text: '**Katalyzátor ve výfuku** je keramická voštinka potažená platinou, palladiem a rhodiem. Za provozní teploty (asi od 300 °C) přeměňuje jedovaté plyny na neškodné:' },
-            { type: 'formula', text: '$2CO + O2 -> 2CO2$ · $2CO + 2NO -> 2CO2 + N2$', caption: 'trojcestný katalyzátor odstraňuje $CO$, oxidy dusíku i nespálené uhlovodíky' },
+            { type: 'iconlist', items: [
+              { icon: 'flask', title: '**Homogenní katalýza**', text: 'katalyzátor je ve stejné fázi jako reaktanty, např. kyselina v roztoku při esterifikaci' },
+              { icon: 'factory', title: '**Heterogenní katalýza**', text: 'pevný katalyzátor, reakce běží na jeho povrchu: platina ve výfuku, železo při výrobě amoniaku' },
+              { icon: 'enzyme', title: '**Enzymy**', text: 'bílkovinné katalyzátory v živých organismech, nesmírně účinné a specifické' },
+              { icon: 'bread', title: '**Inhibitor**', text: 'reakci naopak zpomaluje, například konzervační látky v potravinách' },
+            ] },
+            { type: 'p', text: '**Katalyzátor ve výfuku** je keramická voštinka potažená platinou, palladiem a rhodiem. Za provozní teploty (asi od 300 °C) mění jedovaté plyny na neškodné.' },
+            { type: 'reaction', equation: '2CO + 2NO -> 2CO2 + N2', caption: 'Trojcestný katalyzátor odstraňuje $CO$ ($2CO + O2 -> 2CO2$), oxidy dusíku i nespálené uhlovodíky.' },
             { type: 'callout', variant: 'fact', text: 'Olovo ze starého benzínu povrch katalyzátoru „otráví“ a zablokuje. I proto se olovnatý benzín přestal prodávat, u nás v roce 2001.' },
-            { type: 'p', text: '**Enzymy** jsou bílkovinné katalyzátory v živých organismech. Jsou nesmírně účinné a specifické: každý urychluje jen svou reakci. Katalasa v játrech nebo v bramboře rozkládá peroxid vodíku: $2H2O2 -> 2H2O + O2$. Proto rána po nalití peroxidu pění.' },
+            { type: 'reaction', equation: '2H2O2 -> 2H2O + O2', caption: 'Enzym katalasa v játrech nebo v bramboře rozkládá peroxid vodíku. Proto rána po nalití peroxidu pění.' },
             { type: 'callout', variant: 'warning', text: 'Enzymy nejlépe pracují kolem 37 °C. Při vysoké teplotě se bílkovina nevratně poškodí (denaturuje) a enzym přestane fungovat. Proto je velmi vysoká horečka nebezpečná.' },
             { type: 'check', question: { kind: 'multi', q: 'Co katalyzátor dělá?', options: ['snižuje aktivační energii', 'zrychluje přímou i zpětnou reakci', 'mění reakční entalpii ΔH', 'se v reakci trvale spotřebovává', 'otevírá jinou reakční cestu'], answers: [0, 1, 4], explain: 'Katalyzátor otevře cestu s nižší E_{a}, a tak zrychlí obě směry reakce. ΔH nemění a na konci zůstane nespotřebovaný.' } },
           ],
         },
         {
           title: 'Rychlostní rovnice a řád reakce',
+          icon: 'chart',
           blocks: [
             { type: 'p', text: 'Jak přesně závisí rychlost na koncentracích, popisuje **rychlostní (kinetická) rovnice**. Pro reakci látek A a B má tvar:' },
             { type: 'formula', text: 'v = k · $[A]^{m}$ · $[B]^{n}$', caption: 'k – rychlostní konstanta, m a n – dílčí řády reakce, m + n – celkový řád' },
             { type: 'keyterms', items: [
               { term: '**Rychlostní konstanta** k', def: 'číslo charakteristické pro reakci; nezávisí na koncentracích, ale roste s teplotou a s přítomností katalyzátoru.' },
-              { term: '**Řád reakce**', def: 'exponent u koncentrace v rychlostní rovnici. Řád 1: dvojnásobná koncentrace = dvojnásobná rychlost. Řád 2: dvojnásobná koncentrace = čtyřnásobná rychlost.' },
+              { term: '**Řád reakce**', def: 'exponent u koncentrace v rychlostní rovnici.' },
+            ] },
+            { type: 'compare', columns: [
+              { title: '1. řád: v = k · $[A]$', icon: 'speed', tone: 'a', points: ['dvojnásobná koncentrace', '-> **dvojnásobná** rychlost (2^{1} = 2)'] },
+              { title: '2. řád: v = k · $[A]^2$', icon: 'explosion', tone: 'b', points: ['dvojnásobná koncentrace', '-> **čtyřnásobná** rychlost (2^{2} = 4)'] },
             ] },
             { type: 'callout', variant: 'warning', title: 'Řád se zjišťuje pokusem', text: 'Řády reakce **nemusí** odpovídat koeficientům v rovnici. Rozklad $2N2O5 -> 4NO2 + O2$ je prvního řádu: v = k · $[N2O5]$, i když v rovnici stojí dvojka.' },
             { type: 'table', headers: ['Pokus', '$[A]$ / mol·dm^{−3}', '$[B]$ / mol·dm^{−3}', 'v / mol·dm^{−3}·s^{−1}'], rows: [
@@ -577,7 +650,7 @@ const level: LevelContent = {
               'Rychlostní rovnice: v = k · $[A]^2$ · $[B]$, celkový řád 3.',
               'Z pokusu 1: k = v / ($[A]^2$ · $[B]$) = 2,0·10^{−4} / (0,10^{2} · 0,10) = 0,20 dm^{6}·mol^{−2}·s^{−1}.',
             ], answer: 'v = 0,20 · $[A]^2$ · $[B]$; reakce je 2. řádu vzhledem k A, 1. řádu vzhledem k B.' },
-            { type: 'p', text: 'Skutečný příklad: oxidace $2NO + O2 -> 2NO2$ má rychlostní rovnici v = k · $[NO]^2$ · $[O2]$. Ztrojnásobíš-li koncentraci $NO$, reakce se zrychlí 3^{2} = 9krát.' },
+            { type: 'reaction', equation: '2NO + O2 -> 2NO2', caption: 'Skutečný příklad: v = k · $[NO]^2$ · $[O2]$. Ztrojnásobíš-li koncentraci $NO$, reakce se zrychlí 3^{2} = 9krát.' },
             { type: 'check', question: { kind: 'number', q: 'Rychlostní rovnice je v = k · $[A]^2$ · $[B]$. Kolikrát se změní rychlost, když koncentraci A zdvojnásobíš a koncentraci B snížíš na polovinu?', answer: 2, tolerance: 0, unit: '×', explain: 'Faktor pro A: 2^{2} = 4, faktor pro B: 0,5. Celkem 4 · 0,5 = 2, reakce se zrychlí dvakrát.' } },
           ],
         },
@@ -620,10 +693,16 @@ const level: LevelContent = {
       sections: [
         {
           title: 'Vratné reakce a dynamická rovnováha',
+          icon: 'equilibrium',
           blocks: [
-            { type: 'p', text: 'Mnoho reakcí může běžet oběma směry. Takovým reakcím říkáme **vratné** a píšeme je s dvojitou šipkou. Příkladem je hnědý oxid dusičitý $NO2$, jehož molekuly se spojují po dvou na bezbarvý dimer $N2O4$ (tetraoxid didusíku):' },
-            { type: 'formula', text: '$N2O4(g) <=> 2NO2(g)$', caption: 'bezbarvý $N2O4$ ⇌ hnědý $NO2$' },
+            { type: 'p', text: 'Mnoho reakcí může běžet oběma směry. Takové reakce jsou **vratné** a píšeme je s dvojitou šipkou. Příkladem je hnědý oxid dusičitý $NO2$, jehož molekuly se spojují po dvou na bezbarvý dimer $N2O4$ (tetraoxid didusíku).' },
+            { type: 'reaction', equation: 'N2O4 <=> 2NO2', caption: 'bezbarvý $N2O4$ ⇌ hnědý $NO2$' },
+            { type: 'molecule', molecules: ['NO2'], labels: ['$NO2$: lomená molekula s nepárovým elektronem, proto se ráda páruje'] },
             { type: 'p', text: 'Na začátku běží přímá reakce rychle, protože reaktantů je hodně. Jak přibývá produktů, zrychluje se zpětná reakce. Nakonec jsou obě rychlosti **stejné**.' },
+            { type: 'particles', boxes: [
+              { label: 'na začátku', items: [{ species: 'N2O4', count: 6 }], state: 'gas' },
+              { label: 'v rovnováze', items: [{ species: 'N2O4', count: 3 }, { species: 'NO2', count: 6 }], state: 'gas', note: 'stále se rozpadají i spojují, stejně rychle' },
+            ], arrows: true, caption: 'V rovnováze se počty částic už nemění, i když reakce běží dál oběma směry.' },
             { type: 'diagram', id: 'rate-curve', caption: 'Koncentrace se po čase ustálí. Neznamená to, že se reakce zastavila: přímá i zpětná reakce běží stejně rychle.' },
             { type: 'keyterms', items: [
               { term: '**Chemická rovnováha**', def: 'stav, kdy je rychlost přímé reakce rovna rychlosti zpětné reakce; koncentrace látek se nemění.' },
@@ -637,13 +716,20 @@ const level: LevelContent = {
         },
         {
           title: 'Le Chatelierův princip: změna koncentrace',
+          icon: 'balance-scale',
           blocks: [
             { type: 'p', text: 'Co se stane, když rovnováhu „zatřeseš“? Odpověď dává **Le Chatelierův princip** (princip pohyblivé rovnováhy).' },
             { type: 'callout', variant: 'remember', title: 'Le Chatelierův princip', text: '==Porušíme-li rovnováhu vnějším zásahem, soustava se posune tak, aby účinek zásahu zmenšila.==' },
-            { type: 'list', items: [
-              '**Přidáš reaktant** -> soustava ho část spotřebuje -> rovnováha se posune **doprava** (k produktům).',
-              '**Odebereš produkt** -> soustava ho doplní -> rovnováha se posune **doprava**.',
-              '**Přidáš produkt** -> rovnováha se posune **doleva**.',
+            { type: 'diagram', id: 'equilibrium-seesaw', caption: 'Rovnováha jako houpačka: přidáš na jednu stranu, a soustava přelije část látky na druhou.' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'flask', title: 'Zásah', text: 'přidáš reaktant' },
+              { icon: 'arrow-cycle', title: 'Reakce soustavy', text: 'část přidaného reaktantu spotřebuje' },
+              { icon: 'equilibrium', title: 'Posun', text: 'rovnováha se posune **doprava**' },
+              { icon: 'check', title: 'Nová rovnováha', text: 'víc produktu než předtím' },
+            ], caption: 'Jak uvažovat podle Le Chateliera' },
+            { type: 'compare', columns: [
+              { title: 'Posun **doprava** (k produktům)', icon: 'arrow-cycle', tone: 'a', points: ['**přidáš reaktant** -> soustava ho část spotřebuje', '**odebereš produkt** -> soustava ho doplní'] },
+              { title: 'Posun **doleva** (k reaktantům)', icon: 'arrow-cycle', tone: 'b', points: ['**přidáš produkt**', 'odebereš reaktant'] },
             ] },
             { type: 'p', text: 'Pěkně je to vidět na rovnováze žlutého chromanu a oranžového dichromanu:' },
             { type: 'formula', text: '$2CrO4^{2-}(aq) + 2H^+(aq) <=> Cr2O7^{2-}(aq) + H2O(l)$', caption: 'žlutý chroman ⇌ oranžový dichroman' },
@@ -653,18 +739,28 @@ const level: LevelContent = {
             ], answer: 'Po kyselině oranžová (dichroman), po hydroxidu zpátky žlutá (chroman). Barvu lze přepínat sem a tam.' },
             { type: 'callout', variant: 'warning', text: 'Sloučeniny šestimocného chromu jsou jedovaté a karcinogenní. Tento pokus předvádí jen učitel, v rukavicích a s ochrannými brýlemi.' },
             { type: 'callout', variant: 'tip', text: 'V průmyslu se produkt často průběžně **odebírá** (oddestiluje, zkapalní, vysráží). Rovnováha se pak neustále posouvá doprava a reakce „dojede“ téměř do konce.' },
+            { type: 'reaction', equation: 'CH3COOH + C2H5OH <=> CH3COOC2H5 + H2O', caption: 'Esterifikace: kyselina octová + ethanol ⇌ ethylacetát + voda' },
             { type: 'check', question: { kind: 'choice', q: 'Při esterifikaci $CH3COOH + C2H5OH <=> CH3COOC2H5 + H2O$ odstraňujeme vznikající vodu. Co se stane?', options: ['rovnováha se posune doprava a vznikne víc esteru', 'rovnováha se posune doleva', 'rovnováha se nezmění, voda je jen vedlejší produkt', 'reakce se zastaví'], answer: 0, explain: 'Odebráním produktu soustava vodu doplňuje, a proto posouvá rovnováhu k produktům. Esteru přibývá.' } },
           ],
         },
         {
           title: 'Tlak, teplota a katalyzátor',
+          icon: 'gas-cylinder',
           blocks: [
-            { type: 'p', text: '**Tlak** ovlivňuje jen rovnováhy s plyny. Zvýšíš-li tlak (zmenšíš objem), soustava se ho snaží snížit: posune se na stranu s **menším počtem molů plynu**. Má-li plyn na obou stranách stejně molů, tlak rovnováhu neposune.' },
+            { type: 'p', text: '**Tlak** ovlivňuje jen rovnováhy s plyny. Zvýšíš-li tlak (zmenšíš objem), soustava se posune na stranu s **menším počtem molů plynu**. Má-li plyn na obou stranách stejně molů, tlak rovnováhu neposune.' },
+            { type: 'particles', boxes: [
+              { label: '$N2 + 3H2$: 4 moly plynu', items: [{ species: 'N2', count: 2 }, { species: 'H2', count: 6 }], state: 'gas' },
+              { label: '$2NH3$: 2 moly plynu', items: [{ species: 'NH3', count: 4 }], state: 'gas', note: 'méně molekul = nižší tlak' },
+            ], arrows: true, caption: 'Pod vyšším tlakem se vyplatí mít méně molekul plynu, rovnováha se posune k amoniaku.' },
             { type: 'example', title: 'Počítání molů plynu', problem: 'Kam se posune rovnováha $N2(g) + 3H2(g) <=> 2NH3(g)$ při zvýšení tlaku? A rovnováha $H2(g) + I2(g) <=> 2HI(g)$?', steps: [
               'Syntéza amoniaku: vlevo 1 + 3 = 4 moly plynu, vpravo 2. Vyšší tlak posune rovnováhu doprava.',
               'Vznik jodovodíku: vlevo 1 + 1 = 2, vpravo 2. Počty jsou stejné, tlak polohu rovnováhy nezmění.',
             ], answer: 'Amoniak: doprava, k $NH3$. Jodovodík: beze změny.' },
-            { type: 'p', text: '**Teplota** posouvá rovnováhu podle ΔH. Zvýšení teploty podporuje **endotermní** směr (soustava teplo „spotřebuje“), snížení teploty podporuje **exotermní** směr.' },
+            { type: 'p', text: '**Teplota** posouvá rovnováhu podle ΔH. Jako jediný zásah mění i hodnotu rovnovážné konstanty K.' },
+            { type: 'compare', columns: [
+              { title: 'Zvýšení teploty', icon: 'heat', tone: 'a', points: ['podporuje **endotermní** směr (soustava teplo „spotřebuje“)', '$N2O4 <=> 2NO2$ (ΔH > 0): přibude hnědého $NO2$'] },
+              { title: 'Snížení teploty', icon: 'cold', tone: 'b', points: ['podporuje **exotermní** směr', '$N2O4 <=> 2NO2$: přibude bezbarvého $N2O4$'] },
+            ] },
             { type: 'table', headers: ['Zásah', 'Posun rovnováhy', 'Změní se K?'], rows: [
               ['přidání reaktantu, odebrání produktu', 'doprava', 'ne'],
               ['přidání produktu, odebrání reaktantu', 'doleva', 'ne'],
@@ -680,32 +776,45 @@ const level: LevelContent = {
         },
         {
           title: 'Haber–Bosch a kontaktní proces',
+          icon: 'factory',
           blocks: [
-            { type: 'p', text: 'Průmysl musí hledat kompromis mezi **výtěžkem** (poloha rovnováhy) a **rychlostí** (jak rychle se k ní dojde). Nejslavnějším příkladem je výroba amoniaku Haberovým–Boschovým procesem.' },
-            { type: 'formula', text: '$N2(g) + 3H2(g) <=> 2NH3(g)$, ΔH = −92 kJ/mol' },
-            { type: 'list', items: [
-              '**Tlak asi 20 MPa** (200× víc než atmosférický): vpravo jsou jen 2 moly plynu místo 4, vysoký tlak tedy zvyšuje výtěžek. Vyšší tlak by už byl příliš drahý a nebezpečný.',
-              '**Teplota 400–450 °C**: reakce je exotermní, nízká teplota by dala víc amoniaku, ale reakce by byla nesnesitelně pomalá. Je to kompromis.',
-              '**Železný katalyzátor**: zrychlí ustavení rovnováhy, výtěžek nezmění.',
-              '**Odebírání amoniaku**: směs se ochladí, amoniak zkapalní a odteče. Nezreagovaný dusík a vodík (asi 85 % při jednom průchodu) se vrací zpět do reaktoru.',
-            ] },
+            { type: 'p', text: 'Průmysl hledá kompromis mezi **výtěžkem** (poloha rovnováhy) a **rychlostí** (jak rychle se k ní dojde). Nejslavnějším příkladem je výroba amoniaku Haberovým–Boschovým procesem.' },
+            { type: 'reaction', equation: 'N2 + 3H2 <=> 2NH3', caption: 'Syntéza amoniaku, ΔH = −92 kJ/mol' },
+            { type: 'diagram', id: 'haber-process', caption: 'Haberův–Boschův proces: kompresor, reaktor s železným katalyzátorem, chladič a zpětné vedení plynů.' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'wind', title: 'Suroviny', text: 'dusík ze vzduchu, vodík ze zemního plynu' },
+              { icon: 'gas-cylinder', title: 'Tlak asi 20 MPa', text: '200× víc než atmosférický: vpravo jsou jen 2 moly plynu místo 4, výtěžek roste. Vyšší tlak by byl příliš drahý a nebezpečný.' },
+              { icon: 'catalyst', title: 'Železný katalyzátor, 400–450 °C', text: 'nízká teplota by dala víc amoniaku, ale reakce by byla nesnesitelně pomalá; je to kompromis. Katalyzátor zrychlí ustavení rovnováhy, výtěžek nezmění.' },
+              { icon: 'cold', title: 'Odebírání amoniaku', text: 'směs se ochladí, amoniak zkapalní a odteče' },
+              { icon: 'recycle', title: 'Recyklace', text: 'nezreagovaný dusík a vodík (asi 85 % při jednom průchodu) se vrací do reaktoru' },
+            ], caption: 'Výroba amoniaku krok za krokem' },
+            { type: 'molecule', molecules: ['NH3'], labels: ['amoniak, základ dusíkatých hnojiv'] },
             { type: 'callout', variant: 'fact', text: 'Z amoniaku se vyrábějí hnojiva, která živí zhruba polovinu lidstva. Odhaduje se, že asi polovina atomů dusíku v tvém těle prošla někdy továrnou na amoniak.' },
-            { type: 'p', text: 'Podobně se optimalizuje **kontaktní způsob výroby kyseliny sírové**. Klíčovým krokem je oxidace oxidu siřičitého:' },
-            { type: 'formula', text: '$2SO2(g) + O2(g) <=> 2SO3(g)$, ΔH = −197 kJ/mol', caption: 'katalyzátor $V2O5$, teplota asi 450 °C, tlak jen mírně nad atmosférickým' },
-            { type: 'p', text: 'Tady stačí tlak jen o málo vyšší než atmosférický, protože přeměna je i tak přes 99 %. Vzniklý $SO3$ se pohlcuje v koncentrované kyselině sírové a teprve pak se ředí vodou.' },
+            { type: 'p', text: 'Podobně se optimalizuje **kontaktní způsob výroby kyseliny sírové**. Klíčovým krokem je oxidace oxidu siřičitého s katalyzátorem $V2O5$ při asi 450 °C:' },
+            { type: 'reaction', equation: '2SO2 + O2 <=> 2SO3', caption: 'ΔH = −197 kJ/mol; tlak jen mírně nad atmosférickým' },
+            { type: 'p', text: 'Vyšší tlak tu není potřeba, protože přeměna je i tak přes 99 %. Vzniklý $SO3$ se pohlcuje v koncentrované kyselině sírové a teprve pak se ředí vodou.' },
             { type: 'callout', variant: 'warning', text: '$SO3$ se nezavádí přímo do vody. Reakce je tak exotermní, že voda vře a vzniká žíravá mlha kyseliny sírové. I v laboratoři platí u kyseliny sírové: nejdřív voda, potom kyselina.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč se amoniak nevyrábí při pokojové teplotě, když by tam byl rovnovážný výtěžek nejvyšší?', options: ['reakce by byla příliš pomalá', 'při nízké teplotě by rovnováha byla vlevo', 'katalyzátor funguje jen za vysokého tlaku', 'amoniak by se rozložil'], answer: 0, explain: 'Nízká teplota posouvá exotermní rovnováhu doprava, ale rychlost reakce by byla zanedbatelná. Teplota 400–450 °C je kompromis mezi výtěžkem a rychlostí.' } },
           ],
         },
         {
           title: 'Rovnováhy v láhvi a v krvi',
+          icon: 'blood',
           blocks: [
-            { type: 'p', text: 'V uzavřené láhvi perlivého nápoje je oxid uhličitý pod tlakem a v rovnováze s rozpuštěným plynem:' },
+            { type: 'p', text: 'V uzavřené láhvi perlivého nápoje je oxid uhličitý pod tlakem v rovnováze s rozpuštěným plynem:' },
             { type: 'formula', text: '$CO2(g) <=> CO2(aq)$' },
-            { type: 'p', text: 'Po otevření klesne tlak $CO2$ nad hladinou. Rovnováha se posune doleva, plyn vychází z roztoku a tvoří bublinky. Rozpouštění $CO2$ je exotermní, proto v teple limonáda vyčpí rychleji než vychlazená.' },
-            { type: 'p', text: 'Ve tvé krvi přenáší kyslík **hemoglobin** (Hb). Zjednodušeně:' },
+            { type: 'particles', boxes: [
+              { label: 'zavřená láhev', items: [{ species: 'CO2', count: 7 }, { species: 'H2O', count: 8 }], state: 'solution', note: 'vysoký tlak $CO2$ nad hladinou' },
+              { label: 'otevřená láhev', items: [{ species: 'CO2', count: 2 }, { species: 'H2O', count: 8 }], state: 'solution', note: 'plyn uniká v bublinkách' },
+            ], arrows: true, caption: 'Po otevření klesne tlak $CO2$ nad hladinou a rovnováha se posune doleva.' },
+            { type: 'p', text: 'Rozpouštění $CO2$ je exotermní, proto v teple limonáda vyčpí rychleji než vychlazená. Ve tvé krvi zase přenáší kyslík **hemoglobin** (Hb):' },
             { type: 'formula', text: '$Hb + 4O2 <=> Hb(O2)4$', caption: 'v plicích hodně kyslíku -> rovnováha vpravo; ve tkáních málo kyslíku -> rovnováha vlevo' },
-            { type: 'p', text: 'V plicích je koncentrace kyslíku vysoká a hemoglobin se jím nasytí. Ve svalech je kyslíku málo, rovnováha se posune doleva a hemoglobin kyslík uvolní přesně tam, kde je ho potřeba.' },
+            { type: 'process', layout: 'cycle', steps: [
+              { icon: 'lungs', title: 'Plíce', text: 'kyslíku je hodně, rovnováha vpravo, hemoglobin se nasytí' },
+              { icon: 'heart', title: 'Krevní oběh', text: 'srdce žene okysličenou krev do těla' },
+              { icon: 'muscle', title: 'Svaly', text: 'kyslíku je málo, rovnováha se posune doleva a Hb ho uvolní přesně tam, kde je potřeba' },
+              { icon: 'blood', title: 'Zpět k plicím', text: 'odkysličená krev se vrací pro další kyslík' },
+            ], caption: 'Le Chatelier v tvém krevním oběhu' },
             { type: 'callout', variant: 'warning', title: 'Oxid uhelnatý', text: 'Oxid uhelnatý se na hemoglobin váže asi 200× pevněji než kyslík a vytlačí ho. Otrava $CO$ z vadných karem nebo kotlů je proto smrtelně nebezpečná. Léčí se dýcháním čistého kyslíku, který podle Le Chateliera $CO$ z hemoglobinu postupně vytlačí.' },
             { type: 'callout', variant: 'fact', text: 'Ve velkých horách je vzduch řidší a kyslíku méně. Tělo si během několika týdnů vytvoří víc hemoglobinu, aby rovnováhu „nakrmilo“. Proto sportovci trénují ve vysokohorských kempech.' },
             { type: 'game', gameId: 'swipe', text: 'Doprava, doleva, nebo nikam? Procvič si Le Chatelierův princip v rychlé hře „Pravda, nebo lež?“.' },
@@ -756,25 +865,28 @@ const level: LevelContent = {
       sections: [
         {
           title: 'Rovnovážná konstanta K_{c}',
+          icon: 'balance-scale',
           blocks: [
             { type: 'p', text: 'Poloha rovnováhy se dá vyjádřit jedním číslem, **rovnovážnou konstantou**. Pro obecnou reakci $aA + bB <=> cC + dD$ platí **Guldbergův–Waageův zákon** (zákon působení aktivních hmot):' },
             { type: 'formula', text: 'K_{c} = $[C]^{c}·[D]^{d} / ([A]^{a}·[B]^{b})$', caption: 'hranaté závorky = rovnovážné koncentrace v mol/dm³; koeficienty z rovnice jsou exponenty' },
-            { type: 'list', items: [
-              'Produkty jsou v čitateli, reaktanty ve jmenovateli.',
-              'Čisté pevné látky a čisté kapaliny (i voda jako rozpouštědlo) se do výrazu **nepíšou**, jejich „koncentrace“ se nemění.',
-              'K_{c} závisí **jen na teplotě**. Koncentrace, tlak ani katalyzátor ji nezmění.',
-              'Pro obrácenou reakci platí K′ = 1 / K_{c}.',
+            { type: 'iconlist', items: [
+              { icon: 'flask', title: 'Produkty nahoře', text: 'produkty jsou v čitateli, reaktanty ve jmenovateli' },
+              { icon: 'crystal', title: 'Bez pevných látek', text: 'čisté pevné látky a čisté kapaliny (i voda jako rozpouštědlo) se do výrazu **nepíšou**, jejich „koncentrace“ se nemění' },
+              { icon: 'thermometer', title: 'Jen teplota', text: 'K_{c} závisí **jen na teplotě**; koncentrace, tlak ani katalyzátor ji nezmění' },
+              { icon: 'arrow-cycle', title: 'Obrácená reakce', text: 'K′ = 1 / K_{c}' },
             ] },
-            { type: 'table', headers: ['Hodnota K_{c}', 'Co to znamená', 'Příklad'], rows: [
-              ['K ≫ 1 (např. 10^{10})', 'rovnováha je silně vpravo, reakce proběhne téměř úplně', 'neutralizace silné kyseliny'],
-              ['K ≈ 1', 'v rovnováze jsou srovnatelná množství reaktantů i produktů', 'esterifikace (K ≈ 4)'],
-              ['K ≪ 1 (např. 10^{−10})', 'rovnováha je silně vlevo, produktů je jen stopa', 'rozpouštění $AgCl$'],
-            ] },
+            { type: 'compare', columns: [
+              { title: 'K ≫ 1 (např. 10^{10})', icon: 'check', tone: 'good', points: ['rovnováha je silně **vpravo**', 'reakce proběhne téměř úplně', 'neutralizace silné kyseliny'] },
+              { title: 'K ≈ 1', icon: 'equilibrium', tone: 'a', points: ['srovnatelná množství reaktantů i produktů', 'esterifikace (K ≈ 4)'] },
+              { title: 'K ≪ 1 (např. 10^{−10})', icon: 'cross', tone: 'bad', points: ['rovnováha je silně **vlevo**', 'produktů je jen stopa', 'rozpouštění $AgCl$'] },
+            ], caption: 'Co prozradí velikost K' },
+            { type: 'reaction', equation: 'H2 + I2 <=> 2HI', caption: 'Rovnováha vodíku, jodu a jodovodíku při 450 °C' },
             { type: 'example', title: 'Výpočet K_{c} z rovnovážných koncentrací', problem: 'Pro $H2(g) + I2(g) <=> 2HI(g)$ byly při 450 °C naměřeny rovnovážné koncentrace $[H2]$ = 0,020 mol/dm³, $[I2]$ = 0,020 mol/dm³, $[HI]$ = 0,14 mol/dm³. Vypočítej K_{c}.', steps: [
               'Výraz: K_{c} = $[HI]^2 / ([H2]·[I2])$',
               'Dosadíme: K_{c} = 0,14^{2} / (0,020 · 0,020) = 0,0196 / 0,000 40',
               'K_{c} = 49 (jednotky se tu vykrátí)',
             ], answer: 'K_{c} = 49, v rovnováze převažuje jodovodík.' },
+            { type: 'molecule', molecules: ['acetic-acid', 'ethanol', 'ethyl-acetate'], labels: ['kyselina octová', 'ethanol', 'ethylacetát (ester)'], caption: 'Esterifikace: K_{c} ≈ 4' },
             { type: 'example', title: 'Kolik esteru vznikne?', problem: 'Smícháme 1,00 mol kyseliny octové a 1,00 mol ethanolu. Pro $CH3COOH + C2H5OH <=> CH3COOC2H5 + H2O$ je K_{c} = 4,0. Kolik molů esteru bude v rovnováze?', steps: [
               'Označíme x = počet molů esteru v rovnováze. Vznikne i x mol vody a ubude x mol kyseliny i alkoholu.',
               'V rovnováze: kyselina 1,00 − x, alkohol 1,00 − x, ester x, voda x. Objem se ve výrazu vykrátí.',
@@ -788,9 +900,14 @@ const level: LevelContent = {
         },
         {
           title: 'Slabé kyseliny: K_{a} a pK_{a}',
+          icon: 'lemon',
           blocks: [
-            { type: 'p', text: 'Z úrovně 5 víš, že slabá kyselina se ve vodě ionizuje jen částečně. Teď to umíme vyjádřit přesně. Ionizace je rovnováha:' },
+            { type: 'p', text: 'Z úrovně 5 víš, že slabá kyselina se ve vodě ionizuje jen částečně. Teď to umíme vyjádřit přesně, protože ionizace je rovnováha:' },
             { type: 'formula', text: '$HA + H2O <=> H3O^+ + A^-$' },
+            { type: 'particles', boxes: [
+              { label: 'silná kyselina $HCl$', items: [{ species: 'H3O+', count: 6 }, { species: 'Cl^-', count: 6 }], state: 'solution', note: 'ionizovaná téměř úplně' },
+              { label: 'slabá kyselina $CH3COOH$', items: [{ species: 'acetic-acid', count: 5 }, { species: 'H3O+', count: 1 }, { species: 'CH3COO^-', count: 1 }], state: 'solution', note: 'ionizovaná jen z malé části' },
+            ], caption: 'Stejná koncentrace, ale velmi různý počet iontů $H3O^+$' },
             { type: 'formula', text: 'K_{a} = $[H3O^+]·[A^-] / [HA]$ · pK_{a} = −log K_{a}', caption: '**disociační konstanta kyseliny**; voda je rozpouštědlo, a proto ve výrazu chybí' },
             { type: 'table', headers: ['Kyselina', 'Vzorec', 'K_{a}', 'pK_{a}'], rows: [
               ['fosforečná (1. stupeň)', '$H3PO4$', '7,1·10^{−3}', '2,15'],
@@ -801,20 +918,24 @@ const level: LevelContent = {
               ['amonný kation', '$NH4^+$', '5,6·10^{−10}', '9,25'],
             ], caption: 'Hodnoty při 25 °C. Silné kyseliny ($HCl$, $HNO3$) mají K_{a} tak velké, že se v tabulkách neuvádí.' },
             { type: 'callout', variant: 'remember', text: '==Čím menší pK_{a} (a větší K_{a}), tím silnější kyselina.== Rozdíl o 1 v pK_{a} znamená desetkrát jinou K_{a}.' },
-            { type: 'p', text: 'Ke každé kyselině patří **konjugovaná zásada** $A^-$. Čím slabší je kyselina, tím silnější je její konjugovaná zásada. Pro konjugovaný pár ve vodě při 25 °C platí pK_{a} + pK_{b} = 14.' },
+            { type: 'compare', columns: [
+              { title: 'Silná kyselina', icon: 'hazard', tone: 'a', points: ['ionizuje se téměř úplně', '$[H3O^+]$ = c', 'K_{a} obrovská, konjugovaná zásada ($Cl^-$) velmi slabá'] },
+              { title: 'Slabá kyselina', icon: 'lemon', tone: 'b', points: ['ionizuje se jen částečně, ustaví se rovnováha', 'malá K_{a}, větší pK_{a}', 'čím slabší kyselina, tím silnější její **konjugovaná zásada** $A^-$'] },
+            ], caption: 'Pro konjugovaný pár ve vodě při 25 °C platí pK_{a} + pK_{b} = 14.' },
             { type: 'check', question: { kind: 'choice', q: 'Která z kyselin v tabulce je nejsilnější?', options: ['$H3PO4$', '$HF$', '$CH3COOH$', '$NH4^+$'], answer: 0, explain: 'Kyselina fosforečná má nejmenší pK_{a} (2,15), a tedy největší K_{a}.' } },
           ],
         },
         {
           title: 'pH slabé kyseliny',
+          icon: 'calculator',
           blocks: [
             { type: 'p', text: 'U silné kyseliny platí $[H3O^+]$ = c, takže pH = −log c. Slabá kyselina se ionizuje jen z malé části, a pH proto vychází vyšší.' },
-            { type: 'list', ordered: true, items: [
-              'Z každé ionizované molekuly vznikne jeden $H3O^+$ a jeden $A^-$, takže $[H3O^+]$ = $[A^-]$ = x.',
-              'Ionizuje se jen malý podíl, proto $[HA]$ ≈ c (výchozí koncentrace).',
-              'Dosadíme do K_{a}: K_{a} = x^{2} / c, tedy x = √(K_{a} · c).',
-              'Zlogaritmujeme a vynásobíme −1:',
-            ] },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'ion-plus', title: 'Ionty', text: 'z každé ionizované molekuly vznikne jeden $H3O^+$ a jeden $A^-$: $[H3O^+]$ = $[A^-]$ = x' },
+              { icon: 'molecule', title: 'Zbytek kyseliny', text: 'ionizuje se jen malý podíl, proto $[HA]$ ≈ c (výchozí koncentrace)' },
+              { icon: 'calculator', title: 'Dosaď do K_{a}', text: 'K_{a} = x^{2} / c, tedy x = √(K_{a} · c)' },
+              { icon: 'chart', title: 'Zlogaritmuj', text: 'a vynásob −1' },
+            ], caption: 'Odvození přibližného vzorce' },
             { type: 'formula', text: 'pH = ½ · (pK_{a} − log c)', caption: 'přibližný vzorec pro slabou kyselinu o koncentraci c (v mol/dm³)' },
             { type: 'example', title: 'Kyselina octová', problem: 'Vypočítej pH roztoku kyseliny octové o koncentraci 0,10 mol/dm³ (pK_{a} = 4,76) a porovnej ho s $HCl$ o stejné koncentraci.', steps: [
               'log c = log 0,10 = −1',
@@ -826,20 +947,22 @@ const level: LevelContent = {
               'log 1,0 = 0',
               'pH = ½ · (4,76 − 0) = 2,38',
             ], answer: 'pH octa je asi 2,4, což odpovídá měření pH papírkem.' },
+            { type: 'diagram', id: 'ph-scale', props: { marks: [{ ph: 1, label: '$HCl$ 0,10 mol/dm³' }, { ph: 2.38, label: 'ocet' }, { ph: 2.88, label: '$CH3COOH$ 0,10 mol/dm³' }] }, caption: 'Stejná koncentrace, ale slabá kyselina má pH téměř o dvě jednotky vyšší.' },
             { type: 'callout', variant: 'warning', title: 'Kdy vzorec platí', text: 'Přibližný vzorec je dobrý, když se kyselina ionizuje méně než asi z 5 % a roztok není extrémně zředěný. U poměrně silných kyselin ($H3PO4$) nebo velmi zředěných roztoků je potřeba přesnější výpočet.' },
             { type: 'check', question: { kind: 'number', q: 'Vypočítej pH roztoku kyseliny octové o koncentraci 0,010 mol/dm³ (pK_{a} = 4,76).', answer: 3.38, tolerance: 0.02, explain: 'pH = ½ · (4,76 − log 0,010) = ½ · (4,76 + 2) = 3,38.' } },
           ],
         },
         {
           title: 'Pufry: tlumiče změn pH',
+          icon: 'test-tube',
           blocks: [
             { type: 'p', text: '**Pufr** (tlumivý roztok) je roztok, jehož pH se po přidání malého množství kyseliny nebo zásady téměř nezmění. Tvoří ho **slabá kyselina a její konjugovaná zásada** (sůl), nebo slabá zásada a její sůl.' },
-            { type: 'list', items: [
-              'acetátový pufr: $CH3COOH$ + $CH3COONa$ (pH kolem 4,8)',
-              'amonný pufr: $NH3$ + $NH4Cl$ (pH kolem 9,3)',
-              'fosfátový pufr: $NaH2PO4$ + $Na2HPO4$ (pH kolem 7,2)',
+            { type: 'iconlist', items: [
+              { icon: 'lemon', title: 'Acetátový pufr', text: '$CH3COOH$ + $CH3COONa$, pH kolem 4,8' },
+              { icon: 'flask', title: 'Amonný pufr', text: '$NH3$ + $NH4Cl$, pH kolem 9,3' },
+              { icon: 'cell', title: 'Fosfátový pufr', text: '$NaH2PO4$ + $Na2HPO4$, pH kolem 7,2' },
             ] },
-            { type: 'p', text: 'Jak to funguje? Pufr má „zásobu“ obou forem. Přidanou kyselinu zachytí zásada, přidanou zásadu zachytí kyselina:' },
+            { type: 'diagram', id: 'buffer-action', caption: 'Pufr má zásobu obou forem: přidanou kyselinu zachytí zásada, přidanou zásadu zachytí kyselina.' },
             { type: 'formula', text: '$CH3COO^- + H3O^+ -> CH3COOH + H2O$ · $CH3COOH + OH^- -> CH3COO^- + H2O$', caption: 'silná kyselina či zásada se mění na slabou, a pH se proto skoro nehne' },
             { type: 'formula', text: 'pH = pK_{a} + log ($[A^-] / [HA]$)', caption: '**Hendersonova–Hasselbalchova rovnice**' },
             { type: 'example', title: 'pH acetátového pufru', problem: 'Pufr obsahuje 0,10 mol/dm³ $CH3COOH$ a 0,20 mol/dm³ $CH3COONa$. Jaké má pH? (pK_{a} = 4,76)', steps: [
@@ -860,19 +983,22 @@ const level: LevelContent = {
         },
         {
           title: 'Krevní pufr',
+          icon: 'blood',
           blocks: [
             { type: 'p', text: 'pH krve se udržuje v úzkém rozmezí **7,35–7,45**. Pokles pod 7,35 se nazývá **acidóza**, vzestup nad 7,45 **alkalóza**. Obojí je vážný zdravotní stav.' },
+            { type: 'diagram', id: 'ph-scale', props: { marks: [{ ph: 7.4, label: 'krev 7,35–7,45' }] }, caption: 'Zdravá krev je nepatrně zásaditá a její pH se smí pohnout jen o pár setin.' },
             { type: 'p', text: 'Hlavním krevním pufrem je **hydrogenuhličitanový pufr**. Oxid uhličitý z buněk se rozpouští v krvi:' },
+            { type: 'reaction', equation: 'CO2 + H2O <=> H2CO3', caption: 'Rozpuštěný $CO2$ tvoří kyselinu uhličitou.' },
             { type: 'formula', text: '$CO2 + H2O <=> H2CO3 <=> H^+ + HCO3^-$' },
             { type: 'example', title: 'Proč má krev pH 7,4', problem: 'V krvi je poměr $[HCO3^-] / [H2CO3]$ asi 20 : 1. Pro krev se počítá s účinnou hodnotou pK_{a} = 6,1 (zahrnuje i rozpuštěný $CO2$). Vypočítej pH.', steps: [
               'pH = pK_{a} + log ($[HCO3^-] / [H2CO3]$)',
               'pH = 6,1 + log 20 = 6,1 + 1,30',
               'pH = 7,40',
             ], answer: 'pH krve vychází 7,40, přesně uprostřed zdravého rozmezí.' },
-            { type: 'list', items: [
-              '**Plíce** regulují $CO2$: rychlejším dýcháním se ho vydýchá víc, rovnováha se posune doleva a pH stoupne.',
-              '**Ledviny** během hodin až dní upravují množství $HCO3^-$ a vylučují přebytečné $H^+$.',
-              'Při sprintu vzniká ve svalech kyselina mléčná; hydrogenuhličitan ji zachytí a vznikající $CO2$ vydýcháš. Proto po sprintu tak funíš.',
+            { type: 'iconlist', items: [
+              { icon: 'lungs', title: 'Plíce (minuty)', text: 'regulují $CO2$: rychlejším dýcháním se ho vydýchá víc, rovnováha se posune doleva a pH stoupne' },
+              { icon: 'funnel', title: 'Ledviny (hodiny až dny)', text: 'upravují množství $HCO3^-$ a vylučují přebytečné $H^+$' },
+              { icon: 'muscle', title: 'Sprint', text: 've svalech vzniká kyselina mléčná; hydrogenuhličitan ji zachytí a vznikající $CO2$ vydýcháš. Proto po sprintu tak funíš.' },
             ] },
             { type: 'callout', variant: 'fact', title: 'Hyperventilace', text: 'Při panice člověk rychle a zhluboka dýchá a vydýchá příliš mnoho $CO2$. pH krve stoupne (alkalóza), brní prsty a točí se hlava. Pomáhá zklidnit a zpomalit dech.' },
             { type: 'check', question: { kind: 'choice', q: 'Co se stane s pH krve při hyperventilaci?', options: ['stoupne, protože ubude $CO2$ a rovnováha se posune doleva', 'klesne, protože přibude $CO2$', 'nezmění se, krev je pufr', 'klesne, protože přibude kyslíku'], answer: 0, explain: 'Vydýcháním $CO2$ ubývá kyseliny uhličité i iontů $H^+$, pH proto roste. Pufr změnu tlumí, ale nedokáže ji úplně zastavit.' } },
@@ -880,6 +1006,7 @@ const level: LevelContent = {
         },
         {
           title: 'Součin rozpustnosti',
+          icon: 'crystal',
           blocks: [
             { type: 'p', text: 'Rovnováha se ustavuje i mezi málo rozpustnou solí a jejím nasyceným roztokem. Pevnou látku do výrazu nepíšeme, zbude jen **součin rozpustnosti** K_{s}.' },
             { type: 'formula', text: '$AgCl(s) <=> Ag^+(aq) + Cl^-(aq)$ · K_{s} = $[Ag^+]·[Cl^-]$ = 1,8·10^{−10}', caption: 'hodnota při 25 °C' },
@@ -895,7 +1022,10 @@ const level: LevelContent = {
               ['$AgBr$', '5,0·10^{−13}'],
               ['$AgI$', '8,3·10^{−17}'],
             ], caption: 'U solí stejného typu (jeden kation, jeden anion) platí: menší K_{s} = méně rozpustná sůl.' },
-            { type: 'p', text: 'Přidáš-li do nasyceného roztoku $AgCl$ další chlorid (třeba $NaCl$), rovnováha se podle Le Chateliera posune doleva a část $AgCl$ se vysráží. Říká se tomu **vliv společného iontu**.' },
+            { type: 'particles', boxes: [
+              { label: 'nasycený roztok $AgCl$', items: [{ species: 'AgCl', count: 5 }, { species: 'Ag^+', count: 2 }, { species: 'Cl^-', count: 2 }], state: 'solution' },
+              { label: 'po přidání $NaCl$', items: [{ species: 'AgCl', count: 6 }, { species: 'Ag^+', count: 1 }, { species: 'Cl^-', count: 4 }, { species: 'Na^+', count: 3 }], state: 'solution', note: 'část $AgCl$ se vysráží' },
+            ], arrows: true, caption: '**Vliv společného iontu**: přidaný chlorid posune rovnováhu podle Le Chateliera doleva.' },
             { type: 'callout', variant: 'fact', text: 'Ionty barya jsou jedovaté, a přesto pacienti před rentgenem polykají kaši síranu barnatého. $BaSO4$ je tak nerozpustný, že se ho vstřebá zanedbatelně, a přitom krásně zobrazí trávicí trubici.' },
             { type: 'game', gameId: 'quickfire', text: 'Konstanty, pufry, pK_{a}? Vyzkoušej si celou úroveň v bleskové výzvě na čas.' },
             { type: 'check', question: { kind: 'choice', q: 'Která ze solí v tabulce je ve vodě nejméně rozpustná?', options: ['$AgI$', '$AgCl$', '$CaCO3$', '$BaSO4$'], answer: 0, explain: 'Všechny soli jsou stejného typu, lze je tedy porovnat přímo podle K_{s}. Nejmenší má $AgI$ (8,3·10^{−17}).' } },
