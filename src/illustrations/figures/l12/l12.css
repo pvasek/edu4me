@@ -1189,3 +1189,51 @@
   stroke: var(--line);
   stroke-width: 1;
 }
+
+/* ------------------------------------------------------------ rutherford */
+.f12-screen {
+  fill: none;
+  stroke: color-mix(in srgb, var(--green) 40%, var(--surface));
+  stroke-width: 9;
+}
+.f12-trail {
+  fill: none;
+  stroke: var(--f12-lv);
+  stroke-width: 1.1;
+  stroke-dasharray: 4 3;
+  opacity: 0.55;
+}
+.f12-trail-hot {
+  opacity: 0.95;
+  stroke-width: 1.5;
+}
+.f12-alpha {
+  fill: var(--f12-lv);
+  stroke: var(--surface);
+  stroke-width: 1;
+}
+.f12-flash {
+  fill: #fff27a;
+  stroke: #e0b43a;
+  stroke-width: 1.5;
+}
+.f12-radium {
+  fill: #b7f06a;
+  stroke: var(--edge);
+  stroke-width: 1;
+  animation: f12-twinkle 1.1s ease-in-out infinite;
+}
+.f12-gold {
+  fill: #d4a72c;
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.f12-au-atom {
+  fill: color-mix(in srgb, #d4a72c 14%, var(--surface));
+  stroke: color-mix(in srgb, #d4a72c 60%, var(--surface));
+  stroke-width: 1;
+  stroke-dasharray: 2 2;
+}
+.f12-au-nuc {
+  fill: var(--ink);
+}
