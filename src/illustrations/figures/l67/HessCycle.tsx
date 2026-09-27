@@ -9,7 +9,7 @@ const Y_CO = yOf(-110.5)
 const Y_CO2 = yOf(-393.5)
 
 export default function HessCycle() {
-  const route = `M300 ${Y_C} V${Y_CO} H380 V${Y_CO2}`
+  const route = `M262 ${Y_C} V${Y_CO} H400 V${Y_CO2}`
   return (
     <Figure
       level={6}
@@ -24,14 +24,12 @@ export default function HessCycle() {
         <text x={30} y={32} textAnchor="end" className="f67-lbl f67-b f67-big">
           H
         </text>
-        <text x={34} y={Y_CO2 + 18} textAnchor="end" className="f67-lbl f67-sm f67-sec" transform={`rotate(-90 34 ${Y_CO2 + 18})`}>
-          entalpie
-        </text>
+
       </Fade>
 
       {/* levels */}
       <Draw d={`M60 ${Y_C} H430`} className="f67-o f67-thick" delay={0.2} />
-      <Draw d={`M250 ${Y_CO} H430`} className="f67-o f67-thick" delay={0.35} />
+      <Draw d={`M232 ${Y_CO} H430`} className="f67-o f67-thick" delay={0.35} />
       <Draw d={`M60 ${Y_CO2} H430`} className="f67-o f67-thick" delay={0.5} />
       <Fade delay={0.4}>
         <Eq x={64} y={Y_C - 10} t="C(s) + O_{2}(g)" className="f67-eq-lg" />
@@ -60,23 +58,28 @@ export default function HessCycle() {
       </Fade>
 
       {/* route 2: via CO */}
-      <DrawArrow d={`M300 ${Y_C + 4} V${Y_CO - 4}`} tone="lvl" delay={1.6} className="f67-wide" />
-      <DrawArrow d={`M380 ${Y_CO + 4} V${Y_CO2 - 4}`} tone="lvl" delay={2.1} className="f67-wide" />
+      <DrawArrow d={`M262 ${Y_C + 4} V${Y_CO - 4}`} tone="lvl" delay={1.6} className="f67-wide" />
+      <DrawArrow d={`M400 ${Y_CO + 4} V${Y_CO2 - 4}`} tone="lvl" delay={2.1} className="f67-wide" />
       <Fade delay={1.9}>
-        <text x={292} y={(Y_C + Y_CO) / 2 + 6} textAnchor="end" className="f67-lbl f67-b f67-lvl-t">
+        <text x={254} y={(Y_C + Y_CO) / 2 - 2} textAnchor="end" className="f67-lbl f67-b f67-lvl-t">
           ΔH = ?
         </text>
-        <text x={372} y={(Y_CO + Y_CO2) / 2 - 4} textAnchor="end" className="f67-lbl f67-b f67-lvl-t">
+        <text x={392} y={(Y_CO + Y_CO2) / 2 - 4} textAnchor="end" className="f67-lbl f67-b f67-lvl-t">
           <ChemText text="ΔH_{2} = −283,0" />
         </text>
-        <text x={372} y={(Y_CO + Y_CO2) / 2 + 14} textAnchor="end" className="f67-lbl f67-sm">
+        <text x={392} y={(Y_CO + Y_CO2) / 2 + 14} textAnchor="end" className="f67-lbl f67-sm">
           kJ/mol
         </text>
-        <text x={372} y={(Y_CO + Y_CO2) / 2 - 26} textAnchor="end" className="f67-cap f67-lvl-t">
+        <text x={392} y={(Y_CO + Y_CO2) / 2 - 26} textAnchor="end" className="f67-cap f67-lvl-t">
           cesta 2
         </text>
       </Fade>
-      <Travel path={route} dur={4} rest={[300, Y_C]}>
+      <Fade delay={3.2}>
+        <text x={254} y={(Y_C + Y_CO) / 2 + 18} textAnchor="end" className="f67-lbl f67-b f67-lvl-t">
+          = −110,5 kJ/mol
+        </text>
+      </Fade>
+      <Travel path={route} dur={4} rest={[262, Y_C]}>
         <circle r={5} className="f67-lvl-f f67-o f67-thin" />
       </Travel>
 

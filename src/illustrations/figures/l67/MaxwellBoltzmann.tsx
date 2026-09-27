@@ -5,8 +5,8 @@ const X0 = 56
 const X1 = 452
 const YB = 292
 const EMAX = 8
-const EA = 4.4
-const EA_CAT = 2.9
+const EA = 3.8
+const EA_CAT = 2.4
 const sx = (e: number) => X0 + (e / EMAX) * (X1 - X0)
 const sy = (f: number) => YB - f * 520
 
@@ -88,7 +88,7 @@ export default function MaxwellBoltzmann() {
         <text x={sx(EA_CAT) - 6} y={92} textAnchor="middle" className="f67-lbl f67-sm f67-green-t f67-sec">
           <ChemText text="E_{a} s katalyzátorem" />
         </text>
-        <Lbl x={sx(5.9)} y={150} tx={sx(5.1)} ty={YB - 12} anchor="middle" className="f67-b">
+        <Lbl x={sx(5.9)} y={150} tx={sx(4.6)} ty={YB - 14} lx={sx(5.4)} ly={194} anchor="middle" className="f67-b">
           účinné srážky
         </Lbl>
         <text x={sx(5.9)} y={168} textAnchor="middle" className="f67-lbl f67-sm">

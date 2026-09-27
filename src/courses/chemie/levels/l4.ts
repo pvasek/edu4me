@@ -22,7 +22,7 @@ const l4_1: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Při **chemické reakci** vznikají nové látky, kdežto při fyzikální změně (tání, var, rozpouštění) látka zůstává sama sebou. Vazby ve výchozích látkách se **štěpí** a **vznikají nové**. Atomy se neztrácejí ani nepřibývají, jen se přeskupí jako kostičky stavebnice do jiného modelu.',
+          text: 'Při **chemické reakci** vznikají nové látky; při fyzikální změně (tání, var, rozpouštění) látka zůstává sama sebou. Vazby ve výchozích látkách se **štěpí** a **vznikají nové**, atomy se jen přeskupí jako kostičky stavebnice.',
         },
         {
           type: 'reaction',
@@ -71,7 +71,7 @@ const l4_1: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Kolem roku 1756 zahříval ruský vědec **Michail Lomonosov** kovy v zatavených skleněných nádobách a celková hmotnost se po reakci nezměnila. Nezávisle na něm to roku 1774 přesným vážením potvrdil Francouz **Antoine Lavoisier**.',
+          text: 'Roku 1756 zahříval **Michail Lomonosov** kovy v zatavených nádobách a celková hmotnost se nezměnila. Roku 1774 to přesným vážením potvrdil **Antoine Lavoisier**.',
         },
         {
           type: 'diagram',
@@ -411,7 +411,7 @@ const l4_2: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Rovnice $H2 + O2 -> H2O$ popisuje správné látky, ale nesedí: vlevo jsou dva atomy kyslíku, vpravo jen jeden. **Vyčíslit** rovnici znamená doplnit před vzorce taková čísla, aby na obou stranách byl stejný počet atomů každého prvku.',
+          text: 'Rovnice $H2 + O2 -> H2O$ nesedí: vlevo jsou 2 atomy O, vpravo 1. **Vyčíslit** ji znamená doplnit před vzorce čísla tak, aby na obou stranách byl stejný počet atomů každého prvku.',
         },
         {
           type: 'reaction',
@@ -592,7 +592,7 @@ const l4_2: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Někdy ti na kyslíku vyjde lichý počet atomů, a z molekul $O2$ ho neposkládáš. Pomůže trik: jako **mezikrok** napiš zlomek, třeba $5/2 O2$, a nakonec celou rovnici vynásob dvěma.',
+          text: 'Vyjde-li ti lichý počet atomů kyslíku, z molekul $O2$ ho neposkládáš. Trik: jako **mezikrok** napiš zlomek, třeba $5/2 O2$, a pak celou rovnici vynásob dvěma.',
         },
         {
           type: 'process',
@@ -671,7 +671,7 @@ const l4_2: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Plynový sporák, zapalovač i kempinkový vařič spalují **uhlovodíky**, sloučeniny uhlíku a vodíku. Při dokonalém hoření z nich vždy vzniká oxid uhličitý a voda. Podrobně je poznáš v úrovni 8.',
+          text: 'Sporák, zapalovač i vařič spalují **uhlovodíky**, sloučeniny uhlíku a vodíku (podrobně v úrovni 8). Při dokonalém hoření z nich vzniká oxid uhličitý a voda.',
         },
         {
           type: 'molecule',
@@ -1165,7 +1165,7 @@ const l4_3: Lesson = {
         },
         {
           type: 'p',
-          text: 'Většina reakcí jde prakticky jen jedním směrem: spálený papír „neodhoříš“ zpátky. Některé reakce ale mohou probíhat oběma směry. Říkáme jim **vratné** a píšeme je s dvojitou šipkou ⇌.',
+          text: 'Většina reakcí jde jen jedním směrem: spálený papír „neodhoříš“. **Vratné** reakce ale běží oběma směry a píšou se s dvojitou šipkou ⇌.',
         },
         {
           type: 'reaction',
@@ -1210,7 +1210,7 @@ const l4_3: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Chemici třídí reakce také podle toho, **co si částice předávají**. Tak vznikají dvě velké rodiny, se kterými se budeš potkávat až do maturity.',
+          text: 'Reakce se dají třídit i podle toho, **co si částice předávají**. Tak vznikají dvě velké rodiny.',
         },
         {
           type: 'compare',
@@ -1385,7 +1385,7 @@ const l4_4: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Vejce kupuješ po tuctech (12 kusů), papír po balících (500 listů). Atomy a molekuly jsou tak malé, že chemici potřebují „balení“ s obrovským počtem kusů. Tím balením je **mol**.',
+          text: 'Vejce kupuješ po tuctech (12 kusů), papír po balících. Pro drobounké atomy a molekuly mají chemici obří „balení“: **mol**.',
         },
         {
           type: 'diagram',
@@ -1475,7 +1475,7 @@ const l4_4: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Částice nespočítáš, ale můžeš je zvážit. Most mezi hmotností a látkovým množstvím tvoří **molární hmotnost** $M$, hmotnost jednoho molu látky. V g/mol má stejnou číselnou hodnotu jako **relativní molekulová hmotnost** $M_{r}$, tedy součet relativních atomových hmotností $A_{r}$ všech atomů ve vzorci (najdeš je v periodické tabulce).',
+          text: 'Částice nespočítáš, ale můžeš je zvážit. **Molární hmotnost** $M$ je hmotnost jednoho molu látky. V g/mol se číselně rovná **relativní molekulové hmotnosti** $M_{r}$, součtu $A_{r}$ všech atomů ve vzorci (z periodické tabulky).',
         },
         {
           type: 'diagram',
@@ -1577,7 +1577,7 @@ const l4_4: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'U plynů se hodí měřit objem. **Avogadrův zákon** říká, že stejné objemy různých plynů obsahují za stejné teploty a tlaku stejný počet molekul, ať jde o lehoučký vodík, nebo těžký oxid uhličitý.',
+          text: 'U plynů se měří objem. **Avogadrův zákon**: stejné objemy různých plynů obsahují za stejné teploty a tlaku stejný počet molekul, ať jde o lehoučký vodík, nebo těžký $CO2$.',
         },
         {
           type: 'particles',
@@ -1745,7 +1745,7 @@ const l4_4: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Hmotnostní zlomek znáš z roztoků. Stejně spočítáš, jakou část hmotnosti sloučeniny tvoří jeden prvek. Hutník tak zjistí, kolik železa dostane z tuny rudy.',
+          text: 'Hmotnostní zlomek spočítáš i pro prvek ve sloučenině. Hutník tak zjistí, kolik železa dostane z tuny rudy.',
         },
         {
           type: 'formula',
@@ -1944,7 +1944,7 @@ const l4_5: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Hmotnostní zlomek $w$ z první úrovně říká, kolik gramů látky je ve 100 g roztoku. Reakce ale probíhají mezi **částicemi**, a tak chemik používá **molární koncentraci**: kolik molů látky je v 1 dm^{3} roztoku.',
+          text: 'Hmotnostní zlomek $w$ říká, kolik gramů látky je ve 100 g roztoku. Reakce ale probíhají mezi **částicemi**, proto chemik používá **molární koncentraci**: počet molů látky v 1 dm^{3} roztoku.',
         },
         {
           type: 'particles',
@@ -2088,7 +2088,7 @@ const l4_5: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Koncentrované kyseliny, čpavek i roztoky z lékárny se prodávají s údajem v procentech (hmotnostní zlomek). Pro výpočty reakcí ale potřebuješ mol/dm^{3}. Mostem mezi nimi je **hustota** roztoku $ρ$, která převede objem na hmotnost.',
+          text: 'Kyseliny, čpavek i roztoky z lékárny mají údaj v procentech (hmotnostní zlomek), pro výpočty ale potřebuješ mol/dm^{3}. Mostem je **hustota** roztoku $ρ$, která převede objem na hmotnost.',
         },
         {
           type: 'iconlist',
@@ -2423,7 +2423,7 @@ const l4_6: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Z lekce o rovnicích víš, že koeficienty udávají poměr **počtu částic**. A protože mol je jen „balení“ částic, udávají koeficienty i ==poměr látkových množství==.',
+          text: 'Koeficienty udávají poměr **počtu částic**. A protože mol je jen „balení“ částic, udávají i ==poměr látkových množství==.',
         },
         {
           type: 'reaction',
@@ -2837,7 +2837,7 @@ const l4_6: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Na písemce i u maturity se kroky kombinují: reaktant je zadaný jako roztok, produktem je plyn a k tomu výtěžek. Nelekej se. Každá úloha se rozpadne na kroky, které už umíš.',
+          text: 'Na písemce se kroky kombinují: roztok, plyn, výtěžek. Každá úloha se ale rozpadne na kroky, které už umíš.',
         },
         {
           type: 'process',

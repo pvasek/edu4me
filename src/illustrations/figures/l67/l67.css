@@ -521,3 +521,6 @@
 .f67-narrow .f67-num {
   font-size: 16px;
 }
+.f67-narrow .f67-lbl.f67-keep {
+  font-size: 15.5px;
+}

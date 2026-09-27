@@ -9,7 +9,7 @@
   --lv-t: color-mix(in srgb, var(--lv) 72%, var(--ink));
   --lv-soft: color-mix(in srgb, var(--lv) 16%, var(--surface));
   --lv-mid: color-mix(in srgb, var(--lv) 45%, var(--surface));
-  --water: color-mix(in srgb, var(--blue) 14%, var(--surface));
+  --water: color-mix(in srgb, #5b9bd5 20%, var(--surface));
   --water-line: color-mix(in srgb, var(--blue) 45%, transparent);
   --glass: color-mix(in srgb, var(--info-soft) 55%, var(--surface));
   width: 100%;

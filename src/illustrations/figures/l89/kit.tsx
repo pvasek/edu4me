@@ -469,11 +469,8 @@ function crescent(r: number) {
   const th = Math.acos(0.25)
   const a1 = Math.PI / 4 - th
   const a2 = Math.PI / 4 + th
-  const d = 0.5 * r
-  const o = -d / Math.SQRT2
   const A = [r * Math.cos(a1), r * Math.sin(a1)]
   const B = [r * Math.cos(a2), r * Math.sin(a2)]
-  void o
   return `M${A[0].toFixed(2)} ${A[1].toFixed(2)} A${r} ${r} 0 0 1 ${B[0].toFixed(2)} ${B[1].toFixed(2)} A${r} ${r} 0 0 0 ${A[0].toFixed(2)} ${A[1].toFixed(2)}Z`
 }
 
@@ -608,6 +605,7 @@ export function placeH(existing: number[], n: number): number[] {
     return [bis - 0.62, bis + 0.62]
   }
   if (existing.length === 1 && n === 1) return [existing[0] + (Math.PI * 2) / 3]
+  if (existing.length === 1 && n === 2) return [existing[0] + (Math.PI * 2) / 3, existing[0] - (Math.PI * 2) / 3]
   const out: number[] = []
   for (let k = 0; k < n; k++) {
     let best = 0

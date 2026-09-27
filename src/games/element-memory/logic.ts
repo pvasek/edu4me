@@ -125,7 +125,9 @@ export function plain(md: string): string {
  */
 export function faceFont(md: string): number {
   const t = plain(md)
-  const longest = Math.max(...t.split(/[\s–-]/).map((w) => w.length))
+  // formulas ($…$) never wrap, so each counts as one word
+  const words = md.split(/(\$[^$]*\$)/).flatMap((part) => (part.startsWith('$') ? [plain(part)] : plain(part).split(/[\s–-]/)))
+  const longest = Math.max(...words.map((w) => w.length))
   const base = t.length <= 4 ? 30 : t.length <= 9 ? 20 : t.length <= 22 ? 16.5 : t.length <= 34 ? 14.5 : 13.5
   return Math.min(base, Math.floor((170 / longest) * 10) / 10)
 }

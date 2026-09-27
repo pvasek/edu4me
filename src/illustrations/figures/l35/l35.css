@@ -609,3 +609,19 @@
 .f35-lv-liquid {
   fill: color-mix(in srgb, var(--lv) 35%, var(--surface));
 }
+.f35-crystal {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.f35-coal {
+  fill: #3b3b3b;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+}
+.f35-solute {
+  fill: var(--lv-ink);
+  stroke: var(--surface);
+  stroke-width: 0.8;
+}

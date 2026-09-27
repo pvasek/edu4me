@@ -29,11 +29,11 @@ function Polymerisation() {
   const narrow = useNarrow()
   const mono = narrow ? [50, 120, 190, 260] : [40, 100, 160, 220]
   const my = narrow ? 50 : 86
-  const cy = narrow ? 170 : 86
+  const cy = narrow ? 196 : 86
   const c0 = narrow ? 40 : 338
   const nC = narrow ? 9 : 8
   const w = narrow ? 320 : 620
-  const h = narrow ? 240 : 170
+  const h = narrow ? 266 : 170
   const cs = Array.from({ length: nC }, (_, i) => c0 + i * 30)
   return (
     <Plate w={w} h={h}>
@@ -112,7 +112,7 @@ function tanglePoints(): [number, number][] {
 
 function Tangle() {
   const pts = tanglePoints()
-  const focus = pts[34]
+  const focus = pts.reduce((b, p) => (p[0] - p[1] * 0.3 > b[0] - b[1] * 0.3 ? p : b), pts[0])
   const lens = { x: 238, y: 72, r: 52 }
   const beads = Array.from({ length: 6 }, (_, i) => [lens.x - 40 + i * 16, lens.y + (i % 2 ? -8 : 8)] as const)
   return (
@@ -121,15 +121,15 @@ function Tangle() {
       <Fade delay={3.6}>
         {pts.map((p, i) => (i % 3 === 0 ? <circle key={i} cx={p[0]} cy={p[1]} r={2} fill="var(--edge)" /> : null))}
         <circle cx={focus[0]} cy={focus[1]} r={9} className="f89-thin" />
-        <line className="f89-lead" x1={focus[0] + 6} y1={focus[1] - 7} x2={lens.x - 38} y2={lens.y + 34} />
-        <line className="f89-lead" x1={focus[0] + 9} y1={focus[1]} x2={lens.x - 30} y2={lens.y + 42} />
+        <line className="f89-lead" x1={focus[0] + 3} y1={focus[1] - 9} x2={lens.x - 44} y2={lens.y - 28} />
+        <line className="f89-lead" x1={focus[0] + 6} y1={focus[1] + 7} x2={lens.x - 26} y2={lens.y + 45} />
         <circle cx={lens.x} cy={lens.y} r={lens.r} className="f89-glass" />
         <line className="f89-ln" x1={lens.x + 37} y1={lens.y + 37} x2={lens.x + 52} y2={lens.y + 52} style={{ strokeWidth: 5 }} />
-        <path d={beads.map((b, i) => `${i ? 'L' : 'M'}${b[0]} ${b[1]}`).join(' ')} className="f89-bond" />
+        <path d={beads.map((b, i) => `${i ? 'L' : 'M'}${b[0]} ${b[1]}`).join(' ')} className="f89-bond" fill="none" />
         {beads.map((b, i) => (
           <Atom key={i} x={b[0]} y={b[1]} el="C" r={6.5} label={false} fill={i % 2 ? '#8a6aa0' : '#6d4f82'} />
         ))}
-        <text className="f89-lb f89-sm" x={lens.x} y={lens.y - 22} textAnchor="middle">
+        <text className="f89-lb f89-sm" x={lens.x - 6} y={lens.y + lens.r + 20} textAnchor="middle">
           1 kulička = –CH₂–CH₂–
         </text>
         <text className="f89-lb f89-sm" x={110} y={214} textAnchor="middle">
@@ -198,7 +198,7 @@ function Units() {
           <text className="f89-sym" style={{ fontSize: 13 }} x={121} y={-24} textAnchor="middle">
             O
           </text>
-          <text className="f89-lb f89-lv" x={240} y={12}>
+          <text className="f89-lb f89-lv" x={214} y={14}>
             n
           </text>
         </g>

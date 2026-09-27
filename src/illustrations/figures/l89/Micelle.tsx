@@ -48,7 +48,7 @@ function Scene() {
   const hatch = useHatch()
   const L = n
     ? { w: 340, h: 520, mol: { hx: 36, hy: 56, tx: 316, ty: 56 }, water: [8, 160, 324, 352], c: { x: 170, y: 330 } }
-    : { w: 500, h: 340, mol: { hx: 64, hy: 44, tx: 64, ty: 290 }, water: [150, 12, 342, 318], c: { x: 322, y: 170 } }
+    : { w: 500, h: 340, mol: { hx: 40, hy: 40, tx: 40, ty: 290 }, water: [176, 12, 316, 318], c: { x: 334, y: 170 } }
   const { hx, hy, tx, ty } = L.mol
   const horiz = hy === ty
   const N = 22
@@ -90,19 +90,22 @@ function Scene() {
           </>
         ) : (
           <>
-            <Lbl x={hx + 24} y={hy - 6} className="f89-b f89-lv">
-              hlavička –COO⁻
-            </Lbl>
-            <Lbl x={hx + 24} y={hy + 12} className="f89-sm">
-              polární, hydrofilní
-            </Lbl>
-            <Lbl x={hx - 22} y={200} className="f89-b" anchor="end" size={16}>
-              ocas
-            </Lbl>
-            <text className="f89-lb f89-sm" x={12} y={318}>
-              nepolární, hydrofobní
+            <text className="f89-lb f89-b f89-lv" x={hx + 24} y={hy - 4}>
+              hlavička
             </text>
-            <text className="f89-f f89-sm" x={12} y={334}>
+            <text className="f89-lb f89-sm" x={hx + 24} y={hy + 13}>
+              polární, hydrofilní
+            </text>
+            <text className="f89-lb f89-b" x={hx + 16} y={170}>
+              ocas
+            </text>
+            <text className="f89-lb f89-sm" x={hx + 16} y={187}>
+              nepolární,
+            </text>
+            <text className="f89-lb f89-sm" x={hx + 16} y={203}>
+              hydrofobní
+            </text>
+            <text className="f89-f f89-sm" x={6} y={322}>
               CH₃(CH₂)₁₄COO⁻
             </text>
           </>

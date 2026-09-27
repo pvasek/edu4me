@@ -1,4 +1,4 @@
-import { Atom, ChemText, Draw, DrawArrow, Eq, Fade, Figure, Lbl, Liquid, Pop, Travel, pat, useFig } from './kit'
+import { Arrow, Atom, ChemText, Draw, DrawArrow, Eq, Fade, Figure, Lbl, Liquid, Pop, Travel, pat, useFig } from './kit'
 
 const STEEL = '#9aa0aa'
 const RUST = '#9a4a1e'
@@ -44,12 +44,12 @@ function Vignette({ x, title, lines, delay, children }: { x: number; title: stri
   return (
     <Pop delay={delay}>
       <rect x={x} y={330} width={136} height={156} rx={6} className="f67-o f67-thin f67-fill" />
-      <text x={x + 68} y={352} textAnchor="middle" className="f67-lbl f67-b">
+      <text x={x + 68} y={352} textAnchor="middle" className="f67-lbl f67-b f67-keep">
         {title}
       </text>
       {children}
       {lines.map((l, i) => (
-        <text key={i} x={x + 68} y={452 + i * 17} textAnchor="middle" className="f67-lbl f67-sm">
+        <text key={i} x={x + 68} y={452 + i * 17} textAnchor="middle" className="f67-lbl f67-sm f67-keep">
           <ChemText text={l} />
         </text>
       ))}
@@ -147,10 +147,8 @@ export default function Corrosion() {
         <rect x={22} y={396} width={112} height={8} className="f67-lvl-f f67-o f67-thin" />
         <WaterDrop x={50} y={372} />
         <O2 x={104} y={368} />
-        <path d="M58 380 L66 390 L74 380 M96 378 L104 390 L112 378" className="f67-arr f67-arr-muted" />
-        <Lbl x={128} y={442} tx={120} ty={400} anchor="end" className="f67-sm f67-lvl-t" sec>
-          barva
-        </Lbl>
+        <Arrow d="M56 380 L64 392 L72 380" tone="muted" />
+        <Arrow d="M98 378 L106 392 L114 378" tone="muted" />
       </Vignette>
       <Vignette x={162} title="pozinkování" lines={['zinek se obětuje,', 'i v rýze']} delay={2.0}>
         <Metal d="M174 404 H286 V428 H174Z" />
@@ -161,9 +159,7 @@ export default function Corrosion() {
         <text x={230} y={372} textAnchor="middle" className="f67-eq f67-eq-sm">
           <ChemText text="Zn → Zn^{2+}" />
         </text>
-        <Lbl x={176} y={442} tx={196} ty={400} className="f67-sm" sec>
-          Zn
-        </Lbl>
+
       </Vignette>
       <Vignette x={314} title="obětovaná anoda" lines={['Mg nebo Zn koroduje', 'místo oceli']} delay={2.2}>
         <Liquid d="M326 386 H438 V436 H326Z" color="#6f9fd8" opacity={0.25} />
