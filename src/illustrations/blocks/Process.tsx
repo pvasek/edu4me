@@ -146,10 +146,10 @@ function Flow({ steps }: { steps: IconItem[] }) {
 const W = 720
 const R = 165
 const TOP = 112
-const BOTTOM = 118
-const H = TOP + 2 * R + BOTTOM
 const CX = W / 2
 const CY = TOP + R
+/** a station sits at the very bottom only for an even count; its text needs room below */
+const ringHeight = (n: number) => TOP + 2 * R + (n % 2 === 0 ? 118 : 36)
 
 function polar(deg: number, r = R) {
   const a = (deg * Math.PI) / 180
@@ -160,6 +160,7 @@ const f = (v: number) => v.toFixed(1)
 /** Stations on a closed ring (wide) / a looped vertical list (narrow). */
 function Cycle({ steps }: { steps: IconItem[] }) {
   const n = steps.length
+  const H = ringHeight(n)
   const angle = (i: number) => -90 + (360 / n) * i
   const gap = (38 / R) * (180 / Math.PI)
   const arcs = steps.map((_, i) => {

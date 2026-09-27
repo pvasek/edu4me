@@ -15,7 +15,7 @@
   width: var(--medal);
   height: var(--medal);
   border-radius: 50%;
-  color: var(--tone);
+  color: color-mix(in srgb, var(--tone) 78%, var(--ink));
   background:
     repeating-linear-gradient(135deg, color-mix(in srgb, var(--tone) 16%, transparent) 0 1px, transparent 1px 4px),
     color-mix(in srgb, var(--tone) 9%, var(--surface));
@@ -151,8 +151,6 @@
 }
 .il-plate-head .il-medal {
   --tone: inherit;
-  color: var(--tone);
-  border-color: var(--tone);
 }
 .il-plate-title {
   font: italic 700 22px/1.1 var(--font-display);
@@ -186,7 +184,7 @@
   width: 14px;
   height: 14px;
   margin-top: 0.28em;
-  color: var(--tone);
+  color: color-mix(in srgb, var(--tone) 78%, var(--ink));
 }
 .il-vs {
   display: flex;
