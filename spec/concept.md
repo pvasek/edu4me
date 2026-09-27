@@ -16,7 +16,7 @@ Chemistry is the first course. Physics, biology and mathematics are planned and 
 ## Learning principles
 
 1. **Small steps.** Lessons of 12–19 minutes, split into 3–6 short sections. One idea per paragraph.
-2. **Active every 2–3 minutes.** Every section ends with a check question; nobody reads a wall of text.
+2. **Read in one go, then practise.** A lesson is one scrolling, picture-heavy page (section nav + reading progress), followed by one quiz that covers every section. Few clicks, no wall of text: visuals carry most of the explanation.
 3. **Retrieval practice.** A quiz at the end of every lesson, a level test at the end of every level, and games that draw on the questions of all unlocked levels.
 4. **Spiral curriculum.** Topics come back at a deeper level (e.g. acids in level 5 → Ka and buffers in level 6), following the Czech ZŠ → gymnázium progression.
 5. **Concrete before abstract.** Every lesson starts from something the learner has seen: a kitchen, a phone battery, a swimming pool.

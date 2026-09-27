@@ -114,7 +114,7 @@ export interface Lesson {
   goals: Inline[]
   /** Short intro spoken by the mascot. */
   hook: Inline
-  /** Each section is one "page" of the lesson player. */
+  /** Sections are read on one scrolling page; `check` blocks feed the end-of-lesson quiz. */
   sections: LessonSection[]
   summary: Inline[]
   /** End-of-lesson quiz, 5–8 questions. */

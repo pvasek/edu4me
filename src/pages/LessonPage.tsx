@@ -1,25 +1,25 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { courseById, findLevel } from '../core/registry'
 import { useLevelContent } from '../core/useLevelContent'
 import { completeLesson, getProgress, starsFor } from '../core/progress'
-import type { Lesson } from '../core/types'
-import { Md } from '../core/markup'
+import type { Lesson, LessonSection } from '../core/types'
+import { Md, plain } from '../core/markup'
 import { BlockView } from '../lesson/BlockView'
 import { QuizRunner } from '../lesson/QuizRunner'
+import { buildLessonQuiz } from '../lesson/lessonQuiz'
 import { Loading } from '../ui/Loading'
 import { Mascot, MascotSays } from '../ui/Mascot'
 import { Icon } from '../ui/Icon'
 import { ElementTile } from '../ui/ElementTile'
 import { Confetti, Stars } from '../ui/Confetti'
 import { NotFound } from './NotFound'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react'
 import { rise, slide, spring, stagger } from '../ui/motion'
 import { ChemIconView } from '../illustrations/ChemIcon'
 import { Bar, CountUp } from '../ui/anim'
 import '../lesson/lesson.css'
 
-type Step = { kind: 'intro' } | { kind: 'section'; i: number } | { kind: 'summary' } | { kind: 'quiz' } | { kind: 'done'; score: number; max: number; xp: number }
 
 export default function LessonPage() {
   const { courseId, levelId, lessonId } = useParams()
@@ -40,28 +40,25 @@ function lessonElements(lesson: Lesson) {
   return [...s]
 }
 
+type Step = { kind: 'read' } | { kind: 'quiz' } | { kind: 'done'; score: number; max: number; xp: number }
+
 function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: string; levelId: string; levelColor: string; lesson: Lesson }) {
   const navigate = useNavigate()
-  const [step, setStep] = useState<Step>({ kind: 'intro' })
+  const [step, setStep] = useState<Step>({ kind: 'read' })
   const [dir, setDir] = useState(1)
-  const [answered, setAnswered] = useState<Record<string, boolean>>({})
   const course = courseById(courseId)!
   const level = findLevel(course, levelId)!
   const idx = level.lessons.findIndex((l) => l.id === lesson.id)
   const nextOutline = level.lessons[idx + 1]
   const elements = useMemo(() => lessonElements(lesson), [lesson])
+  const quiz = useMemo(() => buildLessonQuiz(lesson), [lesson])
   const alreadyDone = Boolean(getProgress().lessons[`${courseId}:${lesson.id}`])
 
-  const totalSteps = lesson.sections.length + 3
-  const stepIndex =
-    step.kind === 'intro' ? 0 : step.kind === 'section' ? step.i + 1 : step.kind === 'summary' ? lesson.sections.length + 1 : totalSteps - 1
-  const progress = step.kind === 'done' ? 1 : stepIndex / (totalSteps - 1)
-
-  const order = (s: Step) => (s.kind === 'intro' ? 0 : s.kind === 'section' ? s.i + 1 : s.kind === 'summary' ? 100 : s.kind === 'quiz' ? 101 : 102)
+  const order = { read: 0, quiz: 1, done: 2 }
   const go = (s: Step) => {
-    setDir(order(s) >= order(step) ? 1 : -1)
+    setDir(order[s.kind] >= order[step.kind] ? 1 : -1)
     setStep(s)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 0 })
   }
 
   const exit = `/c/${courseId}/l/${levelId}`
@@ -72,71 +69,58 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
         <Link to={exit} className="icon-btn" aria-label="Zavřít lekci">
           <Icon name="x" />
         </Link>
-        <Bar value={progress} color={levelColor} className="lesson-progress" label="Postup lekcí" />
-        <span className="lesson-bar-step tabnum">
-          {Math.min(stepIndex + 1, totalSteps)}/{totalSteps}
-        </span>
+        {step.kind === 'read' ? (
+          <ReadProgress color={levelColor} />
+        ) : (
+          <Bar value={step.kind === 'done' ? 1 : 0.5} color={levelColor} className="lesson-progress" label="Postup lekcí" />
+        )}
+        <span className="lesson-bar-step">{step.kind === 'read' ? 'Výklad' : step.kind === 'quiz' ? 'Kvíz' : 'Hotovo'}</span>
+        {step.kind === 'read' && <SectionNav sections={lesson.sections} />}
       </div>
 
       <div className="lesson-body">
         <AnimatePresence mode="wait" custom={dir} initial={false}>
-        <motion.div
-          key={step.kind === 'section' ? `s${step.i}` : step.kind}
-          custom={dir}
-          variants={slide}
-          initial="enter"
-          animate="center"
-          exit="exit"
-        >
-        {step.kind === 'intro' && (
-          <section className="lesson-intro stack">
-            <span className="eyebrow">
-              Úroveň {level.number} · Lekce {idx + 1}
-            </span>
-            <h1>
-              <Md text={lesson.title} />
-            </h1>
-            <MascotSays mood="wow" size={84}>
-              <Md text={lesson.hook} />
-            </MascotSays>
-            <div className="card goals">
-              <h3>Po této lekci budeš umět</h3>
-              <ul>
-                {lesson.goals.map((g, i) => (
-                  <li key={i}>
-                    <Icon name="check" /> <Md text={g} />
-                  </li>
-                ))}
-              </ul>
-              <div className="row muted">
-                <Icon name="clock" width={16} height={16} /> {level.lessons[idx]?.minutes} min · {lesson.sections.length} částí · kvíz{' '}
-                {lesson.quiz.length} otázek
+        <motion.div key={step.kind} custom={dir} variants={slide} initial="enter" animate="center" exit="exit">
+        {step.kind === 'read' && (
+          <article className="lesson-read">
+            <header className="lesson-intro stack">
+              <span className="eyebrow">
+                Úroveň {level.number} · Lekce {idx + 1}
+              </span>
+              <h1>
+                <Md text={lesson.title} />
+              </h1>
+              <MascotSays mood="wow" size={84}>
+                <Md text={lesson.hook} />
+              </MascotSays>
+              <div className="card goals">
+                <h3>Po této lekci budeš umět</h3>
+                <ul>
+                  {lesson.goals.map((g, i) => (
+                    <li key={i}>
+                      <Icon name="check" /> <Md text={g} />
+                    </li>
+                  ))}
+                </ul>
+                <div className="row muted">
+                  <Icon name="clock" width={16} height={16} /> {level.lessons[idx]?.minutes} min · {lesson.sections.length} částí · na konci
+                  kvíz {quiz.length} otázek
+                </div>
               </div>
-            </div>
-            <div className="bottom-bar">
-              <button className="btn btn-primary btn-lg" onClick={() => go({ kind: 'section', i: 0 })}>
-                Jdeme na to <Icon name="arrowRight" />
-              </button>
-            </div>
-          </section>
-        )}
+            </header>
 
-        {step.kind === 'section' &&
-          (() => {
-            const sec = lesson.sections[step.i]
-            const checks = sec.blocks.map((b, bi) => (b.type === 'check' ? `${step.i}-${bi}` : null)).filter(Boolean) as string[]
-            const pending = checks.filter((k) => !(k in answered)).length
-            return (
-              <section className="lesson-section" key={step.i}>
-                <span className="eyebrow">
-                  Část {step.i + 1} z {lesson.sections.length}
-                </span>
+            {lesson.sections.map((sec, si) => (
+              <section className="lesson-section" key={si} id={`cast-${si + 1}`} data-section={si}>
+                <div className="fleuron" aria-hidden="true">
+                  {si + 1}
+                </div>
                 <h2 className="lesson-section-title">
                   {sec.icon && (
                     <motion.span
                       className="lesson-section-icon"
                       initial={{ scale: 0, rotate: -30 }}
-                      animate={{ scale: 1, rotate: 0 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true }}
                       transition={spring.bouncy}
                     >
                       <ChemIconView name={sec.icon} size={30} />
@@ -144,67 +128,55 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
                   )}
                   <Md text={sec.title} />
                 </h2>
-                <motion.div className="lesson-blocks" variants={stagger(0.06, 0.15)} initial="hidden" animate="show">
-                  {sec.blocks.map((b, bi) => (
-                    <motion.div key={bi} variants={rise}>
-                      <BlockView
-                        block={b}
-                        courseId={courseId}
-                        levelId={levelId}
-                        onCheck={(ok) => setAnswered((a) => ({ ...a, [`${step.i}-${bi}`]: ok }))}
-                      />
-                    </motion.div>
-                  ))}
-                </motion.div>
-                <div className="bottom-bar">
-                  <button className="btn btn-ghost" onClick={() => go(step.i === 0 ? { kind: 'intro' } : { kind: 'section', i: step.i - 1 })}>
-                    <Icon name="arrowLeft" /> Zpět
-                  </button>
-                  <button
-                    className="btn btn-primary btn-lg"
-                    disabled={pending > 0}
-                    onClick={() => go(step.i + 1 < lesson.sections.length ? { kind: 'section', i: step.i + 1 } : { kind: 'summary' })}
-                  >
-                    {pending > 0 ? `Nejdřív odpověz (${pending})` : 'Pokračovat'} <Icon name="arrowRight" />
-                  </button>
+                <div className="lesson-blocks">
+                  {sec.blocks
+                    .filter((b) => b.type !== 'check')
+                    .map((b, bi) => (
+                      <motion.div key={bi} variants={rise} initial="hidden" whileInView="show" viewport={{ once: true, margin: '0px 0px -60px 0px' }}>
+                        <BlockView block={b} courseId={courseId} levelId={levelId} />
+                      </motion.div>
+                    ))}
                 </div>
               </section>
-            )
-          })()}
+            ))}
 
-        {step.kind === 'summary' && (
-          <section className="lesson-summary stack">
-            <span className="eyebrow">Shrnutí</span>
-            <h2>Co si odnést</h2>
-            <div className="card notebook">
-              <motion.ul variants={stagger(0.12, 0.2)} initial="hidden" animate="show">
-                {lesson.summary.map((s, i) => (
-                  <motion.li key={i} variants={rise}>
-                    <Md text={s} />
-                  </motion.li>
-                ))}
-              </motion.ul>
-              <span className="note notebook-note">zapiš si to!</span>
-            </div>
-            <MascotSays mood="think">
-              Teď si to ověříme. Kvíz má <strong>{lesson.quiz.length} otázek</strong>, za každou správnou odpověď dostaneš XP.
-            </MascotSays>
-            <div className="bottom-bar">
-              <button className="btn btn-ghost" onClick={() => go({ kind: 'section', i: lesson.sections.length - 1 })}>
-                <Icon name="arrowLeft" /> Zpět
-              </button>
-              <button className="btn btn-primary btn-lg" onClick={() => go({ kind: 'quiz' })}>
-                Spustit kvíz <Icon name="play" />
-              </button>
-            </div>
-          </section>
+            <section className="lesson-summary stack" id="shrnuti">
+              <div className="fleuron" aria-hidden="true">
+                ❦
+              </div>
+              <h2>Co si odnést</h2>
+              <div className="card notebook">
+                <motion.ul variants={stagger(0.12, 0.1)} initial="hidden" whileInView="show" viewport={{ once: true }}>
+                  {lesson.summary.map((s, i) => (
+                    <motion.li key={i} variants={rise}>
+                      <Md text={s} />
+                    </motion.li>
+                  ))}
+                </motion.ul>
+                <span className="note notebook-note">zapiš si to!</span>
+              </div>
+              <MascotSays mood="think">
+                Teď si to ověříme. Kvíz má <strong>{quiz.length} otázek</strong> z celé lekce, za každou správnou odpověď dostaneš XP.
+              </MascotSays>
+              <div className="bottom-bar">
+                <button className="btn btn-primary btn-lg" onClick={() => go({ kind: 'quiz' })}>
+                  Spustit kvíz <Icon name="play" />
+                </button>
+              </div>
+            </section>
+          </article>
         )}
 
         {step.kind === 'quiz' && (
           <section className="stack">
-            <span className="eyebrow">Kvíz</span>
+            <div className="row lesson-quiz-head">
+              <span className="eyebrow">Kvíz · {plain(lesson.title)}</span>
+              <button className="btn btn-sm btn-ghost" onClick={() => go({ kind: 'read' })}>
+                <Icon name="arrowLeft" /> Zpět k výkladu
+              </button>
+            </div>
             <QuizRunner
-              questions={lesson.quiz}
+              questions={quiz}
               onDone={(score, max) => {
                 const xp = completeLesson(courseId, lesson.id, score, max, elements)
                 go({ kind: 'done', score, max, xp })
@@ -262,5 +234,59 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
         </AnimatePresence>
       </div>
     </main>
+  )
+}
+
+/** Reading progress: fills as the learner scrolls through the lesson. */
+function ReadProgress({ color }: { color: string }) {
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, { stiffness: 260, damping: 40, restDelta: 0.001 })
+  return (
+    <div className="progress lesson-progress" style={{ ['--bar' as string]: color }} aria-hidden="true">
+      <motion.span className="lesson-read-fill" style={{ scaleX }} />
+    </div>
+  )
+}
+
+/** Icon chips for each section; highlights the one being read, tap to jump. */
+function SectionNav({ sections }: { sections: LessonSection[] }) {
+  const [active, setActive] = useState(0)
+  const navRef = useRef<HTMLElement>(null)
+  useEffect(() => {
+    const els = [...document.querySelectorAll<HTMLElement>('.lesson-section[data-section]')]
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset.section))
+      },
+      { rootMargin: '-35% 0px -60% 0px' },
+    )
+    els.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [sections])
+  useEffect(() => {
+    navRef.current?.querySelector<HTMLElement>('.is-active')?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' })
+  }, [active])
+  const jump = (i: number) => {
+    document.getElementById(`cast-${i + 1}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+  return (
+    <nav className="lesson-nav" ref={navRef} aria-label="Části lekce">
+      {sections.map((s, i) => (
+        <button
+          key={i}
+          type="button"
+          className={`lesson-nav-chip${i === active ? ' is-active' : ''}`}
+          onClick={() => jump(i)}
+          aria-current={i === active ? 'location' : undefined}
+          title={plain(s.title)}
+        >
+          <span className="tabnum">{i + 1}</span>
+          {s.icon && <ChemIconView name={s.icon} size={20} />}
+          <span className="lesson-nav-label">
+            <Md text={s.title} />
+          </span>
+        </button>
+      ))}
+    </nav>
   )
 }

@@ -28,7 +28,6 @@ export function validateLevel(outline: LevelOutline, content: LevelContent): str
     const kinds = new Set(lesson.quiz.map((q) => q.kind))
     if (kinds.size < 3) at('quiz should mix at least 3 question kinds')
     lesson.sections.forEach((s, si) => {
-      if (!s.blocks.some((b) => b.type === 'check')) at(`section ${si + 1} "${s.title}" has no check question`)
       if (!s.icon) at(`section ${si + 1} "${s.title}" has no icon`)
       else if (!ICONS.has(s.icon)) at(`section ${si + 1}: unknown icon ${s.icon}`)
       if (!s.blocks.some((b) => VISUAL.has(b.type))) at(`section ${si + 1} "${s.title}" has no visual block`)

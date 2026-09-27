@@ -59,7 +59,8 @@ One animation system for the whole app: **[Motion](https://motion.dev) (`motion/
 | Use | Tool | Preset |
 |---|---|---|
 | Page entrance | `<Page>` (`ui/anim.tsx`) | `fadeUp` + stagger of children |
-| Lesson steps and quiz questions | `AnimatePresence mode="wait"` | `slide` with a direction (forward/back) |
+| Lesson phases (read → quiz → results) and quiz questions | `AnimatePresence mode="wait"` | `slide` with a direction (forward/back) |
+| Lesson blocks while reading | `whileInView` (once) | `rise`; reading progress bar is a scroll-linked `useSpring` |
 | Lesson blocks, summaries, lists | stagger container | `stagger()` + `rise` |
 | Nodes, tiles, badges, stars, rewards | | `popIn`, `spring.bouncy` |
 | Right answer / wrong answer | `animate` keyframes | `bump` / `shake` |

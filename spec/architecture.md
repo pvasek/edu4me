@@ -47,7 +47,7 @@ src/
 | `#/` | Home: greeting, continue card, stats, courses |
 | `#/c/chemie` | Course map: the winding path of 9 levels |
 | `#/c/chemie/l/l3` | Level: lesson path, level test, level games |
-| `#/c/chemie/l/l3/l3-2` | Lesson player |
+| `#/c/chemie/l/l3/l3-2` | Lesson: one scrolling page (read) → one quiz → results |
 | `#/c/chemie/l/l3/vyzva` | Level test |
 | `#/c/chemie/hry` | All mini-games |
 | `#/c/chemie/hry/balance?uroven=l4` | Game shell (intro → play → results) |

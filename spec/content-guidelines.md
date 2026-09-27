@@ -38,7 +38,7 @@ Rules:
 id, title                 – exactly as in the course outline
 goals: 2–4 items          – "Po lekci budeš umět…" style, concrete and checkable
 hook: 1–3 sentences       – the mascot's opening line: a question, a paradox or an everyday situation
-sections: 3–6             – each section is one screen of the lesson player
+sections: 3–6             – all sections are read on one scrolling page (with a section nav)
 summary: 4–7 items        – the takeaways, written as full short sentences
 quiz: 6–8 questions       – covering all sections, mixed kinds, rising difficulty
 ```
@@ -48,7 +48,7 @@ Each **section** has a title and 4–12 blocks. Good rhythm for a section:
 2. a visual (`diagram`, `elements`, `table`, `structure`, `formula`)
 3. a worked `example` when there is a calculation or a procedure
 4. a `callout` (tip, warning, fact, remember or mascot)
-5. **at least one `check` question** at the end of every section, so the learner is active every 2–3 minutes
+5. **one `check` question** at the end of the section (recommended, not required). Checks are *not* shown inline: they are collected into the single end-of-lesson quiz (one per section, in reading order, then the `quiz` questions; at most 12 in total)
 
 A section may embed a `game` block pointing at a related mini-game (at most once per lesson).
 
@@ -93,7 +93,7 @@ A section may embed a `game` block pointing at a related mini-game (at most once
   - `iconlist` – `{ items: [{ icon, title, text? }] }` 3–8 cards.
   - `compare` – `{ columns: [{ title, icon?, tone?, points: [...] }] }` 2–3 columns.
 - Every section may set `icon` (a `ChemIcon`) shown next to its title – set it on every section.
-- `check` – one inline question (see below).
+- `check` – a question about this section; it becomes part of the end-of-lesson quiz (see below).
 - `game` – `{ gameId, text }`: a card inviting the learner to a mini-game.
 
 ## Questions
