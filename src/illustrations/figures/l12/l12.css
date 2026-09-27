@@ -1420,3 +1420,186 @@
 .f12-cap sub {
   font-size: 0.65em;
 }
+
+/* ------------------------------------------------------------ radiation penetration */
+.f12-rp-greek {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: calc(var(--f12-fs) * 2);
+  fill: var(--f12-lv-t);
+}
+.f12-rp-q {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: calc(var(--f12-fs) * 0.9);
+  fill: var(--ink);
+}
+.f12-rp-nuc-s {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: calc(var(--f12-fs) * 1.25);
+  fill: var(--ink);
+}
+.f12-rp-nuc-n {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: calc(var(--f12-fs) * 0.62);
+  fill: var(--ink-soft);
+}
+.f12-rp-paper {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.f12-rp-beam {
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-dasharray: 7 5;
+}
+.f12-rp-a {
+  stroke: var(--f12-lv);
+}
+.f12-rp-b {
+  stroke: var(--blue);
+}
+.f12-rp-wave {
+  fill: none;
+  stroke: var(--violet);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.f12-rp-weak {
+  stroke-width: 1.4;
+  opacity: 0.6;
+}
+.f12-rp-glow {
+  stroke: color-mix(in srgb, var(--violet) 40%, var(--surface));
+  stroke-width: 3.6;
+}
+.f12-rp-stop line {
+  stroke: #e0781a;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+/* ------------------------------------------------------------ nuclear fission */
+.f12-fis-n {
+  stroke: none;
+}
+.f12-fis-u {
+  fill: color-mix(in srgb, var(--green) 45%, var(--surface));
+}
+.f12-fis-ba {
+  fill: color-mix(in srgb, var(--f12-lv) 45%, var(--surface));
+}
+.f12-fis-kr {
+  fill: color-mix(in srgb, var(--blue) 45%, var(--surface));
+}
+.f12-fis-ring {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.4;
+}
+.f12-fis-p {
+  fill: var(--f12-p);
+  stroke: var(--edge);
+  stroke-width: 0.5;
+}
+.f12-fis-nn {
+  fill: var(--f12-n);
+  stroke: var(--edge);
+  stroke-width: 0.5;
+}
+.f12-fis-sym {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: calc(var(--f12-fs) * 0.95);
+  fill: var(--ink);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.f12-fis-burst circle {
+  fill: #fff27a;
+  stroke: #e0b43a;
+  stroke-width: 1.2;
+}
+.f12-fis-burst path {
+  fill: none;
+  stroke: #e0781a;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.f12-fis-burst {
+  animation: f12-twinkle 1.3s ease-in-out infinite;
+}
+.f12-fis-arr path {
+  stroke: var(--ink-soft);
+  stroke-width: 1.4;
+}
+.f12-fis-arr polygon {
+  fill: var(--ink-soft);
+}
+.f12-fis-more {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 30px;
+  fill: var(--ink-soft);
+}
+.f12-fis-eq {
+  margin: 0;
+  text-align: center;
+  font: 600 16px/1.4 var(--font-body);
+  color: var(--ink);
+}
+.f12-rp-hide {
+  display: none;
+}
+
+/* ------------------------------------------------------------ heating curve */
+.f12-hc-curve {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.f12-hc-plateau {
+  fill: none;
+  stroke: color-mix(in srgb, var(--f12-lv) 45%, transparent);
+  stroke-width: 11;
+  stroke-linecap: round;
+}
+.f12-hc-dot {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+.f12-hc-ref {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  stroke-dasharray: 4 4;
+}
+.f12-hc-lab {
+  font-weight: 700;
+  fill: var(--f12-lv-t);
+}
+.f12-hc-box {
+  fill: var(--surface);
+  stroke: var(--line);
+  stroke-width: 1.2;
+}
+.f12-hc-p {
+  fill: color-mix(in srgb, var(--blue) 45%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.f12-hc-trail {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+  stroke-linecap: round;
+}

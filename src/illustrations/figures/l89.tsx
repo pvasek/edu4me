@@ -19,6 +19,12 @@ import Isomers from './l89/Isomers'
 import Micelle from './l89/Micelle'
 import PolymerChain from './l89/PolymerChain'
 import SubstitutionMechanism from './l89/SubstitutionMechanism'
+import PolymerizationTypes from './l89/PolymerizationTypes'
+import MassSpectrum from './l89/MassSpectrum'
+import IrSpectrum from './l89/IrSpectrum'
+import NmrSpectrum from './l89/NmrSpectrum'
+import AtpCycle from './l89/AtpCycle'
+import CellularRespiration from './l89/CellularRespiration'
 
 /** Figures for levels 8–9 (organic chemistry, biochemistry, environment). */
 export const FIGURES_L89: Partial<Record<FigureId, ComponentType>> = {
@@ -41,4 +47,10 @@ export const FIGURES_L89: Partial<Record<FigureId, ComponentType>> = {
   'greenhouse-effect': GreenhouseEffect,
   'ozone-layer': OzoneLayer,
   'plastic-lifecycle': PlasticLifecycle,
+  'polymerization-types': PolymerizationTypes,
+  'mass-spectrum': MassSpectrum,
+  'ir-spectrum': IrSpectrum,
+  'nmr-spectrum': NmrSpectrum,
+  'atp-cycle': AtpCycle,
+  'cellular-respiration': CellularRespiration,
 }

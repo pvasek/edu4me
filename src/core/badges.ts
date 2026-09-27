@@ -1,5 +1,8 @@
 import type { ProgressState } from './progress'
 import type { IconName } from '../ui/Icon'
+import { chemie } from '../courses/chemie'
+
+const CHEMIE_LESSONS = chemie.levels.reduce((n, l) => n + l.lessons.length, 0)
 
 export interface Badge {
   id: string
@@ -29,7 +32,7 @@ export const BADGES: Badge[] = [
   { id: 'first-lesson', title: 'První pokus', description: 'Dokonči svou první lekci.', icon: 'flask', color: 'var(--accent)', earned: (p) => lessonsDone(p) >= 1 },
   { id: 'lessons-10', title: 'Laborant', description: 'Dokonči 10 lekcí.', icon: 'book', color: 'var(--blue)', earned: (p) => lessonsDone(p) >= 10 },
   { id: 'lessons-30', title: 'Chemik', description: 'Dokonči 30 lekcí.', icon: 'book', color: 'var(--violet)', earned: (p) => lessonsDone(p) >= 30 },
-  { id: 'lessons-all', title: 'Profesor', description: 'Dokonči všech 54 lekcí chemie.', icon: 'trophy', color: 'var(--yellow)', earned: (p) => lessonsDone(p) >= 54 },
+  { id: 'lessons-all', title: 'Profesor', description: `Dokonči všech ${CHEMIE_LESSONS} lekcí chemie.`, icon: 'trophy', color: 'var(--yellow)', earned: (p) => lessonsDone(p) >= CHEMIE_LESSONS },
   { id: 'perfect-1', title: 'Bez chyby', description: 'Zvládni kvíz lekce na 100 %.', icon: 'target', color: 'var(--green)', earned: (p) => p.perfectQuizzes >= 1 },
   { id: 'perfect-10', title: 'Ostrostřelec', description: '10 kvízů na 100 %.', icon: 'target', color: 'var(--teal)', earned: (p) => p.perfectQuizzes >= 10 },
   { id: 'streak-3', title: 'Rozjezd', description: 'Uč se 3 dny v řadě.', icon: 'flame', color: 'var(--accent)', earned: (p) => p.streak.best >= 3 },

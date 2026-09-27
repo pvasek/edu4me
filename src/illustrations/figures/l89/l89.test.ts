@@ -25,6 +25,12 @@ const IDS = [
   'greenhouse-effect',
   'ozone-layer',
   'plastic-lifecycle',
+  'polymerization-types',
+  'mass-spectrum',
+  'ir-spectrum',
+  'nmr-spectrum',
+  'atp-cycle',
+  'cellular-respiration',
 ] as const
 
 describe('level 8–9 figures', () => {

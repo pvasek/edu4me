@@ -34,7 +34,7 @@ Course (Chemie)
     └── Mini-games linked to the level
 ```
 
-Why 9 levels × 6 lessons: 9 levels map cleanly onto the stages of the Czech curriculum (ZŠ basics → gymnázium general, inorganic, organic and biochemistry). A learner sees the whole map on one screen, and 6 lessons fit on one level page without scrolling fatigue. At ~15 minutes per lesson the course is ~14 hours of lessons plus games and tests: realistic for a school year of occasional use, or a summer of daily use.
+Why 9 levels with 6–8 lessons: 9 levels map cleanly onto the stages of the Czech curriculum (ZŠ basics → gymnázium general, inorganic, organic and biochemistry). A learner sees the whole map on one screen; levels that carry more pre-university content (physical, organic and biochemistry) get 7–8 lessons instead of overloading 6. At ~16 minutes per lesson the course is ~17 hours of lessons plus games and tests: realistic for a school year of occasional use, or a summer of daily use.
 
 ## Multi-course design
 

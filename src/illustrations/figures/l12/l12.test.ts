@@ -23,6 +23,9 @@ const IDS: FigureId[] = [
   'half-life',
   'shells-vs-orbitals',
   'orbital-shapes',
+  'radiation-penetration',
+  'nuclear-fission',
+  'heating-curve',
 ]
 
 describe('level 1–2 figures', () => {

@@ -25,6 +25,12 @@ const MINE = [
   'nitrogen-cycle',
   'carbon-cycle',
   'aluminium-electrolysis',
+  'electroplating',
+  'calorimeter',
+  'gibbs-quadrants',
+  'reaction-orders',
+  'ion-tests',
+  'gas-tests',
 ] as const
 
 describe('level 6–7 figures', () => {

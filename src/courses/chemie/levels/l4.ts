@@ -10,9 +10,9 @@ const l4_1: Lesson = {
   title: 'Chemická reakce a zákon zachování hmotnosti',
   goals: [
     'Poznat chemickou reakci podle jejích znaků a pojmenovat reaktanty a produkty',
-    'Vysvětlit zákon zachování hmotnosti a použít ho v jednoduchém výpočtu',
+    'Vysvětlit zákon zachování hmotnosti a zákon stálých poměrů slučovacích a použít je ve výpočtu',
     'Přečíst chemickou rovnici kvalitativně i kvantitativně, včetně stavových symbolů',
-    'Zapsat úplnou a zkrácenou iontovou rovnici jednoduché reakce',
+    'Zapsat úplnou a zkrácenou iontovou rovnici a najít v ní ionty-diváky',
   ],
   hook: 'Spálíš v krbu kilo dřeva a zbyde hrstka popela. Kam zmizelo skoro celé kilo? Spoiler: nikam. Chemie nic neztrácí, jen to umí pořádně schovat.',
   sections: [
@@ -149,6 +149,82 @@ const l4_1: Lesson = {
             q: 'Když při reakci v otevřené kádince unikne plyn, zákon zachování hmotnosti přestane platit.',
             answer: false,
             explain: 'Zákon platí vždy. Kádinka jen „zhubne“ o hmotnost plynu, který unikl. Kdybychom ho zachytili, součet hmotností by seděl.',
+          },
+        },
+      ],
+    },
+    {
+      title: 'Zákon stálých poměrů slučovacích',
+      icon: 'crystal',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Kolem roku 1799 si francouzský chemik **Joseph Louis Proust** všiml, že uhličitan měďnatý má vždy stejné složení, ať ho připravil v laboratoři, nebo vykopal v dole. Z toho vyvodil **zákon stálých poměrů slučovacích**: ==prvky se ve sloučenině slučují vždy v tomtéž hmotnostním poměru.==',
+        },
+        {
+          type: 'formula',
+          text: '$m(H) : m(O)$ = 1 : 8',
+          caption: 'hmotnostní poměr vodíku a kyslíku ve vodě – ať pochází z kohoutku, z ledovce, nebo z komety',
+        },
+        {
+          type: 'table',
+          headers: ['Sloučenina', 'Hmotnostní poměr prvků', 'Proč právě tak'],
+          rows: [
+            ['voda $H2O$', 'H : O = 1 : 8', '2 · 1 : 16 = 2 : 16'],
+            ['sulfid železnatý $FeS$', 'Fe : S = 7 : 4', '56 : 32'],
+            ['oxid hořečnatý $MgO$', 'Mg : O = 3 : 2', '24 : 16'],
+            ['oxid uhličitý $CO2$', 'C : O = 3 : 8', '12 : 2 · 16 = 12 : 32'],
+          ],
+          caption: 'Poměr vyplývá ze vzorce a z relativních atomových hmotností (H 1, C 12, O 16, Mg 24, S 32, Fe 56).',
+        },
+        {
+          type: 'compare',
+          columns: [
+            {
+              title: 'Sloučenina',
+              icon: 'bond',
+              tone: 'a',
+              points: ['stálé složení', 'v $FeS$ je vždy 7 g železa na 4 g síry', 'nadbytek jednoho prvku se nesloučí a zbude'],
+            },
+            {
+              title: 'Směs',
+              icon: 'mixture',
+              tone: 'b',
+              points: ['libovolné složení', 'železné piliny se sírou smícháš v jakémkoli poměru', 'složky oddělíš fyzikálně, třeba magnetem'],
+            },
+          ],
+        },
+        {
+          type: 'example',
+          title: 'Co zbude?',
+          problem: 'Zahřeješ 21 g železa se 16 g síry. Železo a síra se v sulfidu železnatém slučují v hmotnostním poměru 7 : 4. Kolik $FeS$ vznikne a co zbude?',
+          steps: [
+            '21 g železa potřebuje 21 g · 4/7 = 12 g síry.',
+            'Síry máš 16 g, takže 16 g − 12 g = 4 g síry zbude nezreagované.',
+            'Zákon zachování hmotnosti: $m(FeS)$ = 21 g + 12 g = 33 g.',
+            'Kontrola: 33 g $FeS$ + 4 g síry = 37 g = 21 g + 16 g.',
+          ],
+          answer: 'Vznikne 33 g $FeS$ a zbudou 4 g síry. Látce, která se spotřebuje celá, budeš v poslední lekci říkat limitující reaktant.',
+        },
+        {
+          type: 'callout',
+          variant: 'remember',
+          text: 'Proč zákon platí? Sloučenina má stálý vzorec: v $FeS$ připadá na každý atom železa jeden atom síry. Hmotnostní poměr je proto dán poměrem atomů a jejich hmotností – přesně podle Daltonovy atomové teorie z úrovně 2.',
+        },
+        {
+          type: 'callout',
+          variant: 'fact',
+          text: 'Proustův krajan Claude Louis Berthollet tvrdil, že složení sloučenin se může plynule měnit. Spor trval léta a vyhrál ho Proust. Dnes víme, že některé pevné látky (třeba oxid železnatý) mívají složení mírně proměnlivé, pro běžné sloučeniny ale zákon platí.',
+        },
+        {
+          type: 'check',
+          question: {
+            kind: 'number',
+            q: 'Kolik gramů kyslíku je v 45 g vody? Vodík a kyslík jsou ve vodě v hmotnostním poměru 1 : 8.',
+            answer: 40,
+            tolerance: 0.1,
+            unit: 'g',
+            explain: 'Voda má 1 + 8 = 9 dílů, z toho 8 dílů kyslíku: 45 g · 8/9 = 40 g kyslíku (a 5 g vodíku).',
           },
         },
       ],
@@ -320,8 +396,9 @@ const l4_1: Lesson = {
     'Při chemické reakci zanikají výchozí látky (reaktanty) a vznikají nové látky (produkty).',
     'Znaky reakce jsou změna barvy, vznik plynu nebo sraženiny, teplo či světlo; rozhoduje ale vznik nové látky.',
     'Zákon zachování hmotnosti (Lomonosov, Lavoisier): celková hmotnost reaktantů se rovná celkové hmotnosti produktů.',
+    'Zákon stálých poměrů slučovacích (Proust): prvky se ve sloučenině slučují ve stálém hmotnostním poměru, ve vodě například 1 : 8.',
     'Chemická rovnice říká, co reaguje a v jakém poměru částic; stavové symboly (s), (l), (g), (aq) udávají skupenství.',
-    'V iontové rovnici rozepíšeš rozpuštěné iontové látky na ionty; po škrtnutí iontů-diváků dostaneš zkrácenou iontovou rovnici.',
+    'V iontové rovnici rozepíšeš rozpuštěné iontové látky na ionty; ionty-diváci jsou na obou stranách stejné, po jejich škrtnutí dostaneš zkrácenou iontovou rovnici.',
   ],
   quiz: [
     {
@@ -386,6 +463,14 @@ const l4_1: Lesson = {
       answer: 0,
       explain: 'Chloridové ionty jsou diváci. Zůstane přechod železa na $Fe^{2+}$ a iontů $Cu^{2+}$ na měď; náboje sedí (+2 = +2).',
     },
+    {
+      kind: 'number',
+      q: 'Hořčík se s kyslíkem slučuje v hmotnostním poměru 3 : 2. Kolik gramů oxidu hořečnatého vznikne, když necháš zreagovat 6 g hořčíku a 6 g kyslíku?',
+      answer: 10,
+      tolerance: 0.1,
+      unit: 'g',
+      explain: '6 g hořčíku potřebuje 6 · 2/3 = 4 g kyslíku; 2 g kyslíku zbudou. Vznikne 6 g + 4 g = 10 g $MgO$.',
+    },
   ],
 }
 
@@ -394,9 +479,9 @@ const l4_2: Lesson = {
   title: 'Vyčíslování chemických rovnic',
   goals: [
     'Rozlišit koeficient a index a vědět, co smíš při vyčíslování měnit',
-    'Vyčíslit rovnici krok za krokem: kovy, nekovy, vodík, nakonec kyslík',
-    'Vyčíslit rovnici hoření uhlovodíku, i když cestou vyjde zlomek',
-    'Zkontrolovat vyčíslenou rovnici sečtením atomů na obou stranách',
+    'Vyčíslit rovnici krok za krokem (kovy, nekovy, vodík, kyslík) a zkontrolovat ji sečtením atomů',
+    'Vyčíslit rovnici hoření uhlovodíku, i když cestou vyjde zlomek, který odstraníš vynásobením dvěma',
+    'Vyčíslit iontovou rovnici tak, aby seděly atomy i součet nábojů',
   ],
   hook: 'Rovnice je jako účtenka: co je vlevo, musí sedět s tím, co je vpravo. Žádný atom nesmí zmizet ani se objevit z ničeho. Pojď si zahrát na chemického účetního.',
   sections: [
@@ -736,6 +821,76 @@ const l4_2: Lesson = {
       ],
     },
     {
+      title: 'Vyčíslování iontových rovnic',
+      icon: 'ion-plus',
+      blocks: [
+        {
+          type: 'p',
+          text: 'V iontové rovnici (poznal jsi ji v první lekci této úrovně) musí sedět **dvě** věci: počet atomů každého prvku a **součet nábojů** vlevo a vpravo. Náboj se při reakci neztrácí ani nevzniká z ničeho.',
+        },
+        {
+          type: 'formula',
+          text: 'součet nábojů vlevo = součet nábojů vpravo',
+          caption: 'náboj iontu násob jeho koeficientem: $3Fe^{2+}$ nese celkem 3 · (+2) = +6',
+        },
+        {
+          type: 'example',
+          title: 'Leptání plošných spojů',
+          problem: 'Výrobci desek plošných spojů odleptávají nepotřebnou měď roztokem chloridu železitého. Zkrácená iontová rovnice je $Fe^{3+} + Cu -> Fe^{2+} + Cu^{2+}$. Vyčísli ji.',
+          steps: [
+            'Atomy: Fe 1 = 1, Cu 1 = 1. Na první pohled hotovo.',
+            'Náboje: vlevo +3 + 0 = +3, vpravo +2 + 2 = +4. Nesedí!',
+            'Náboje srovnáš koeficienty: zkus $2Fe^{3+}$ a $2Fe^{2+}$. Vlevo 2 · (+3) = +6, vpravo 2 · (+2) + 2 = +6.',
+            'Kontrola atomů: Fe 2 = 2, Cu 1 = 1.',
+          ],
+          answer: '$2Fe^{3+} + Cu -> 2Fe^{2+} + Cu^{2+}$',
+        },
+        {
+          type: 'reaction',
+          equation: '2Fe^3+ + Cu -> 2Fe^2+ + Cu^2+',
+          caption: 'Počítadlo pod obrázkem kontroluje jen atomy. Náboje (+6 = +6) musíš zkontrolovat sám.',
+        },
+        {
+          type: 'example',
+          title: 'Hliník v kyselině',
+          problem: 'Vyčísli zkrácenou iontovou rovnici $Al + H^+ -> Al^{3+} + H2$.',
+          steps: [
+            'Náboj: jeden $Al^{3+}$ nese +3, každý $H^+$ jen +1. Vodík navíc vzniká po dvou atomech ($H2$).',
+            'Nejmenší společný násobek čísel 3 (náboj hliníku) a 2 (atomy v $H2$) je 6.',
+            'Náboj +6 dají $2Al^{3+}$ vpravo a $6H^+$ vlevo, tedy $2Al$ vlevo.',
+            'Šest atomů vodíku vpravo: $3H2$.',
+            'Kontrola: Al 2 = 2, H 6 = 6, náboj +6 = +6.',
+          ],
+          answer: '$2Al + 6H^+ -> 2Al^{3+} + 3H2$',
+        },
+        {
+          type: 'reaction',
+          equation: '2Al + 6H^+ -> 2Al^3+ + 3H2',
+          caption: 'hliník se rozpouští v kyselině za vývoje vodíku',
+        },
+        {
+          type: 'callout',
+          variant: 'warning',
+          text: 'Rovnice, ve které sedí atomy, ale nesedí náboje, je **špatně**. Klasická past je právě $Fe^{3+} + Cu -> Fe^{2+} + Cu^{2+}$: atomy souhlasí, náboje ne.',
+        },
+        {
+          type: 'callout',
+          variant: 'tip',
+          text: 'Kontrola nábojů zároveň hlídá předané elektrony: atom mědi odevzdá 2 elektrony a každý ze dvou iontů $Fe^{3+}$ jeden přijme. Takové redoxní rovnice budeš vyčíslovat pomocí oxidačních čísel v úrovni 6.',
+        },
+        {
+          type: 'check',
+          question: {
+            kind: 'number',
+            q: 'Vyčísli srážení fosforečnanu vápenatého (podobné fosforečnany vápníku tvoří kosti a zuby): $Ca^{2+} + PO4^{3-} -> Ca3(PO4)2$. Jaký koeficient patří před $PO4^{3-}$?',
+            answer: 2,
+            tolerance: 0,
+            explain: '$3Ca^{2+} + 2PO4^{3-} -> Ca3(PO4)2$. Atomy: Ca 3 = 3, P 2 = 2, O 8 = 8. Náboje: 3 · (+2) + 2 · (−3) = 0, stejně jako u neutrální sraženiny vpravo.',
+          },
+        },
+      ],
+    },
+    {
       title: 'Kontrola a typické chyby',
       icon: 'magnifier',
       blocks: [
@@ -813,6 +968,7 @@ const l4_2: Lesson = {
     'Při různých indexech pomáhá nejmenší společný násobek; zlomek je dovolený jen jako mezikrok.',
     'Při dokonalém hoření uhlovodíku vzniká $CO2$ a $H2O$; vyčísluješ uhlík, vodík a nakonec kyslík.',
     'Výsledné koeficienty jsou nejmenší celá čísla a každou rovnici kontroluješ sečtením atomů.',
+    'V iontové rovnici musí sedět atomy i součet nábojů na obou stranách.',
   ],
   quiz: [
     {
@@ -874,10 +1030,15 @@ const l4_2: Lesson = {
     },
     {
       kind: 'choice',
-      q: 'Při kontrole zjistíš, že ti vyšla rovnice $C3H8 + 5O2 -> 3CO2 + 4H2O$. Kolik atomů kyslíku je na pravé straně?',
-      options: ['10', '7', '5', '14'],
+      q: 'Měděný drátek v roztoku dusičnanu stříbrného obroste stříbrem. Která zkrácená iontová rovnice je správně vyčíslená?',
+      options: [
+        '$Cu + 2Ag^+ -> Cu^{2+} + 2Ag$',
+        '$Cu + Ag^+ -> Cu^{2+} + Ag$',
+        '$Cu + 2Ag^+ -> Cu^{2+} + Ag$',
+        '$2Cu + Ag^+ -> 2Cu^{2+} + Ag$',
+      ],
       answer: 0,
-      explain: '3 × 2 + 4 × 1 = 10, stejně jako vlevo 5 × 2 = 10. Rovnice je v pořádku.',
+      explain: 'Atomy: Cu 1 = 1, Ag 2 = 2. Náboje: vlevo 2 · (+1) = +2, vpravo +2. Ve druhé možnosti sedí atomy, ale ne náboje (+1 ≠ +2).',
     },
   ],
 }
@@ -886,8 +1047,8 @@ const l4_3: Lesson = {
   id: 'l4-3',
   title: 'Typy chemických reakcí',
   goals: [
-    'Zařadit reakci mezi syntézu, rozklad, substituci a podvojnou záměnu',
-    'Poznat srážecí reakci a neutralizaci jako druhy podvojné záměny',
+    'Zařadit reakci mezi syntézu, rozklad, substituci a podvojnou záměnu (srážecí, neutralizační, s vývojem plynu)',
+    'Předpovědět podle řady reaktivity kovů, zda kov vytěsní vodík z kyseliny nebo jiný kov z roztoku soli',
     'Rozlišit reakce exotermní a endotermní, rychlé a pomalé, vratné a nevratné',
     'Podle změny oxidačních čísel poznat redoxní reakci',
   ],
@@ -973,6 +1134,7 @@ const l4_3: Lesson = {
           items: [
             { term: 'srážecí reakce', def: 'podvojná záměna, při které vzniká nerozpustná pevná látka (sraženina); v rovnici ji označíš (s) nebo šipkou ↓' },
             { term: 'neutralizace', def: 'reakce kyseliny s hydroxidem za vzniku soli a vody' },
+            { term: 'reakce s vývojem plynu', def: 'podvojná záměna, při které jeden produkt uniká jako plyn, třeba $CO2$ z uhličitanu a kyseliny' },
           ],
         },
         {
@@ -1023,6 +1185,11 @@ const l4_3: Lesson = {
           text: 'Nalij ocet na jedlou sodu a začne to šumět. Nejdřív proběhne podvojná záměna a vzniklá kyselina uhličitá se hned rozloží na vodu a $CO2$ (podrobněji v úrovni 5). Je to bezpečný domácí pokus, jen si pod to dej talíř.',
         },
         {
+          type: 'reaction',
+          equation: 'CaCO3 + 2HCl -> CaCl2 + H2O + CO2',
+          caption: 'reakce s vývojem plynu: vápenec (i vodní kámen) v kyselině šumí, protože uniká $CO2$',
+        },
+        {
           type: 'check',
           question: {
             kind: 'choice',
@@ -1044,6 +1211,78 @@ const l4_3: Lesson = {
       ],
     },
     {
+      title: 'Řada reaktivity kovů: předpověz, co se stane',
+      icon: 'coin',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Proč železný hřebík vytěsní měď z roztoku chloridu měďnatého, ale měděný drát železo z roztoku chloridu železnatého ne? Kovy se liší tím, jak ochotně reagují a mění se na kationty. Seřazené podle toho tvoří **řadu reaktivity kovů**, v českých učebnicích **Beketovovu řadu** (řadu napětí kovů).',
+        },
+        {
+          type: 'formula',
+          text: 'K  Ca  Na  Mg  Al  Zn  Fe  Sn  Pb  **H**  Cu  Ag  Au',
+          caption: 'zjednodušená řada: vlevo nejreaktivnější (neušlechtilé) kovy, vpravo nejméně reaktivní (ušlechtilé); vodík slouží jako hraniční kámen',
+        },
+        {
+          type: 'elements',
+          symbols: ['K', 'Na', 'Mg', 'Zn', 'Fe', 'Cu', 'Ag', 'Au'],
+          caption: 'Od draslíku, který se uchovává pod petrolejem, po zlato, které se v přírodě najde ryzí',
+        },
+        {
+          type: 'iconlist',
+          items: [
+            { icon: 'drop', title: 'Kov a voda', text: 'nejreaktivnější kovy (K, Na, Ca) reagují už se studenou vodou za vzniku vodíku' },
+            { icon: 'test-tube', title: 'Kov a kyselina', text: 'kov **vlevo od vodíku** vytěsní vodík z kyseliny chlorovodíkové; Cu, Ag a Au s ní nereagují' },
+            { icon: 'arrow-cycle', title: 'Kov a roztok soli', text: 'kov vytěsní z roztoku soli **každý kov, který stojí napravo od něj**' },
+          ],
+        },
+        {
+          type: 'example',
+          title: 'Proběhne reakce?',
+          problem: 'Rozhodni podle řady reaktivity: a) zinek v roztoku chloridu měďnatého, b) měď v roztoku chloridu zinečnatého, c) měď v kyselině chlorovodíkové, d) hořčík v kyselině chlorovodíkové.',
+          steps: [
+            'a) Zn stojí vlevo od Cu, měď vytěsní: $Zn + CuCl2 -> ZnCl2 + Cu$.',
+            'b) Cu stojí vpravo od Zn, zinek nevytěsní. Reakce neproběhne.',
+            'c) Cu stojí vpravo od H, vodík z kyseliny nevytěsní. Nic se nestane.',
+            'd) Mg stojí daleko vlevo od H: $Mg + 2HCl -> MgCl2 + H2$, bouřlivě šumí.',
+          ],
+          answer: 'Proběhnou reakce a) a d).',
+        },
+        {
+          type: 'reaction',
+          equation: 'Cu + 2AgNO3 -> Cu(NO3)2 + 2Ag',
+          caption: 'Stříbrný stromeček: měděný drátek v roztoku dusičnanu stříbrného obroste lesklými krystalky stříbra a roztok zmodrá od iontů $Cu^{2+}$. Měď stojí v řadě vlevo od stříbra.',
+        },
+        {
+          type: 'callout',
+          variant: 'warning',
+          title: 'Může, neznamená rychle',
+          text: 'Hliník stojí v řadě hodně vlevo, a přesto z něj vaříme. Chrání ho tenká vrstvička oxidu $Al2O3$. Řada říká, **jestli** reakce může proběhnout, ne jak rychle. Proč kovy reagují právě v tomto pořadí (předávání elektronů), vysvětlí úroveň 6.',
+        },
+        {
+          type: 'callout',
+          variant: 'fact',
+          text: 'Proto se zlato a stříbro v přírodě najdou ryzí, kdežto sodík nebo draslík nikdy: okamžitě by zreagovaly se vzduchem a vodou. Ušlechtilé kovy byly také první kovy, které lidé znali.',
+        },
+        {
+          type: 'check',
+          question: {
+            kind: 'multi',
+            q: 'Které reakce podle řady reaktivity proběhnou?',
+            options: [
+              'železo v roztoku chloridu měďnatého',
+              'měď v roztoku chloridu železnatého',
+              'zinek v kyselině chlorovodíkové',
+              'stříbro v kyselině chlorovodíkové',
+              'hořčík v roztoku chloridu zinečnatého',
+            ],
+            answers: [0, 2, 4],
+            explain: 'Fe stojí vlevo od Cu, Zn vlevo od H a Mg vlevo od Zn, takže tyto reakce proběhnou. Měď železo nevytěsní a stříbro je ušlechtilé, s kyselinou chlorovodíkovou nereaguje.',
+          },
+        },
+      ],
+    },
+    {
       title: 'Teplo: exotermní a endotermní reakce',
       icon: 'heat',
       blocks: [
@@ -1060,7 +1299,7 @@ const l4_3: Lesson = {
               tone: 'a',
               points: [
                 'teplo **uvolňuje**, okolí se ohřívá',
-                'hoření, neutralizace, ohřívací sáčky na ruce',
+                'hoření, neutralizace, jednorázový ohřívací sáček na ruce (železný prášek rezaví)',
               ],
             },
             {
@@ -1266,7 +1505,8 @@ const l4_3: Lesson = {
   summary: [
     'Syntéza spojuje látky v jednu, rozklad jednu látku štěpí na více látek.',
     'Při substituci prvek vytěsní jiný prvek ze sloučeniny, při podvojné záměně si dvě sloučeniny vymění partnery.',
-    'Srážecí reakce a neutralizace jsou druhy podvojné záměny.',
+    'Srážecí reakce, neutralizace a reakce s vývojem plynu jsou druhy podvojné záměny.',
+    'Řada reaktivity kovů předpovídá substituce: kov vlevo od vodíku ho vytěsní z kyseliny a kov vytěsní z roztoku soli každý kov napravo od něj.',
     'Exotermní reakce teplo uvolňují, endotermní ho spotřebovávají.',
     'Vratné reakce probíhají oběma směry a zapisují se dvojitou šipkou ⇌.',
     'Při redoxních reakcích se předávají elektrony a mění se oxidační čísla, při acidobazických se předávají protony.',
@@ -1295,12 +1535,12 @@ const l4_3: Lesson = {
       kind: 'match',
       q: 'Přiřaď děj ke správnému popisu.',
       pairs: [
-        ['ohřívací sáček na ruce', 'exotermní reakce'],
+        ['jednorázový ohřívací sáček se železným práškem', 'exotermní reakce'],
         ['pálení vápence', 'endotermní reakce'],
         ['$N2 + 3H2 <=> 2NH3$', 'vratná reakce'],
         ['rezavění plotu', 'pomalá reakce'],
       ],
-      explain: 'Sáček hřeje (uvolňuje teplo), vápenec se musí zahřívat (teplo spotřebovává), ⇌ značí vratnost a rez vzniká měsíce.',
+      explain: 'Sáček hřeje, protože železo v něm rychle rezaví a uvolňuje teplo, vápenec se musí zahřívat (teplo spotřebovává), ⇌ značí vratnost a rez vzniká měsíce.',
     },
     {
       kind: 'choice',
@@ -1329,15 +1569,15 @@ const l4_3: Lesson = {
     },
     {
       kind: 'choice',
-      q: 'Podle čeho poznáš redoxní reakci?',
+      q: 'Železný hřebík ponoříš do roztoku chloridu měďnatého a měděný drátek do roztoku chloridu železnatého. Co pozoruješ?',
       options: [
-        'mění se oxidační čísla některých prvků',
-        'vzniká sraženina',
-        'reakce uvolňuje teplo',
-        'mezi reaktanty je vždy kyslík',
+        'Hřebík se pokryje mědí, na drátku se nic nestane.',
+        'Drátek se pokryje železem, na hřebíku se nic nestane.',
+        'Obě reakce proběhnou.',
+        'Neproběhne žádná reakce.',
       ],
       answer: 0,
-      explain: 'Při redoxní reakci se předávají elektrony, a proto se mění oxidační čísla. Kyslík u ní být nemusí, viz $Zn + CuCl2$.',
+      explain: 'Železo stojí v řadě reaktivity vlevo od mědi, a proto ji z roztoku vytěsní. Obráceně to nejde: měď je méně reaktivní než železo.',
     },
   ],
 }
@@ -1348,7 +1588,7 @@ const l4_4: Lesson = {
   goals: [
     'Převádět mezi počtem částic, látkovým množstvím a hmotností látky',
     'Spočítat molární hmotnost sloučeniny z relativních atomových hmotností',
-    'Spočítat objem plynu za normálních podmínek i ze stavové rovnice $pV = nRT$',
+    'Spočítat objem plynu přes molární objem (22,4 dm^{3}/mol za normálních, 24 dm^{3}/mol za pokojových podmínek) i ze stavové rovnice $pV = nRT$',
     'Určit hmotnostní zlomek prvku ve sloučenině a empirický vzorec ze složení',
   ],
   hook: 'V jednom doušku vody (asi 18 g) je víc molekul, než je zrnek písku na všech plážích světa. Chemici takové obří počty nepočítají po kouscích. Mají na to svůj „chemický tucet“: mol.',
@@ -1582,6 +1822,39 @@ const l4_4: Lesson = {
           answer: '$m$ = 0,5 g vodíku',
         },
         {
+          type: 'p',
+          text: 'Laboratoř ale nemá 0 °C. Při **pokojových (laboratorních) podmínkách**, tedy 20 °C a 101,325 kPa, je plyn o něco roztaženější a jeden mol zabere asi **24 dm^{3}**. S touto hodnotou počítají i mezinárodní úlohy (IGCSE) se zadáním „při pokojové teplotě“.',
+        },
+        {
+          type: 'compare',
+          columns: [
+            {
+              title: 'normální podmínky',
+              icon: 'ice',
+              tone: 'a',
+              points: ['0 °C (273,15 K) a 101,325 kPa', '$V_{m}$ = 22,4 dm^{3}/mol', 'běžné v českých učebnicích a tabulkách'],
+            },
+            {
+              title: 'pokojové podmínky',
+              icon: 'thermometer',
+              tone: 'b',
+              points: ['20 °C (293,15 K) a 101,325 kPa', '$V_{m}$ ≈ 24 dm^{3}/mol', 'zadání „při pokojové teplotě“'],
+            },
+          ],
+          caption: 'Proč zrovna 24? Zahřátím z 273 K na 293 K se plyn roztáhne: 22,4 · 293 / 273 ≈ 24,0 dm^{3}/mol.',
+        },
+        {
+          type: 'example',
+          title: 'Šumivá tableta',
+          problem: 'Šumivá tableta uvolní ve sklenici vody při pokojové teplotě 0,60 dm^{3} $CO2$. Kolik gramů $CO2$ to je? ($V_{m}$ = 24 dm^{3}/mol; $A_{r}$: C 12, O 16)',
+          steps: [
+            '$n = V / V_{m}$ = 0,60 dm^{3} : 24 dm^{3}/mol = 0,025 mol',
+            '$M(CO2)$ = 44 g/mol',
+            '$m = n · M$ = 0,025 mol · 44 g/mol = 1,1 g',
+          ],
+          answer: 'Tableta uvolní asi 1,1 g $CO2$.',
+        },
+        {
           type: 'compare',
           columns: [
             {
@@ -1602,7 +1875,7 @@ const l4_4: Lesson = {
         {
           type: 'callout',
           variant: 'fact',
-          text: 'Mezinárodní unie IUPAC dnes jako standardní tlak doporučuje 100 kPa, pak vychází $V_{m}$ ≈ 22,7 dm^{3}/mol. Při pokojové teplotě 25 °C je to asi 24,5 dm^{3}/mol. V českých školách se běžně počítá s 22,4 dm^{3}/mol, pokud zadání neříká jinak.',
+          text: 'Hodnot molárního objemu koluje víc: IUPAC dnes jako standardní tlak doporučuje 100 kPa, pak při 0 °C vychází 22,7 dm^{3}/mol; při 25 °C a 101,3 kPa je to asi 24,5 dm^{3}/mol. ==Vždy použij hodnotu, kterou dává zadání== – bez ní počítej s 22,4 dm^{3}/mol, nebo rovnou s $pV = nRT$.',
         },
         {
           type: 'check',
@@ -1619,11 +1892,11 @@ const l4_4: Lesson = {
           type: 'check',
           question: {
             kind: 'number',
-            q: 'Kolik gramů váží 11,2 dm^{3} kyslíku $O2$ za normálních podmínek? ($A_{r}$(O) = 16)',
-            answer: 16,
-            tolerance: 0.2,
-            unit: 'g',
-            explain: '$n$ = 11,2 : 22,4 = 0,5 mol; $m$ = 0,5 mol · 32 g/mol = 16 g.',
+            q: 'Jaký objem zaujímá 0,25 mol kyslíku při pokojových podmínkách ($V_{m}$ = 24 dm^{3}/mol)?',
+            answer: 6,
+            tolerance: 0.05,
+            unit: 'dm³',
+            explain: '$V = n · V_{m}$ = 0,25 mol · 24 dm^{3}/mol = 6,0 dm^{3}. Za normálních podmínek by to bylo jen 5,6 dm^{3}.',
           },
         },
       ],
@@ -1681,6 +1954,19 @@ const l4_4: Lesson = {
             '$V$ = 0,004 37 m^{3} = 4,37 dm^{3}',
           ],
           answer: 'Z malé bombičky by vzniklo asi 4,4 dm^{3} plynu, proto je v ní tak vysoký tlak.',
+        },
+        {
+          type: 'example',
+          title: 'Který plyn to je?',
+          problem: 'Neznámý plyn o hmotnosti 0,64 g zaujímá v injekční stříkačce 250 cm^{3} při 27 °C a tlaku 99,8 kPa. Urči jeho molární hmotnost. Který z plynů $O2$, $CO2$, $SO2$ to je? ($A_{r}$: C 12, O 16, S 32)',
+          steps: [
+            'Převody: $V$ = 250 cm^{3} = 0,250 dm^{3} = 2,50·10^{−4} m^{3}; $T$ = 27 + 273,15 = 300,15 K; $p$ = 99 800 Pa',
+            '$n = pV / RT$ = 99 800 Pa · 2,50·10^{−4} m^{3} : (8,314 J·K^{−1}·mol^{−1} · 300,15 K)',
+            '$n$ = 24,95 : 2495 = 0,0100 mol',
+            '$M = m / n$ = 0,64 g : 0,0100 mol = 64 g/mol',
+            'Porovnání: $M(O2)$ = 32, $M(CO2)$ = 44, $M(SO2)$ = 32 + 2 · 16 = 64 g/mol',
+          ],
+          answer: '$M$ = 64 g/mol, plyn je oxid siřičitý $SO2$.',
         },
         {
           type: 'callout',
@@ -1816,8 +2102,8 @@ const l4_4: Lesson = {
   summary: [
     'Látkové množství $n$ se měří v molech; 1 mol obsahuje $N_{A}$ = 6,022·10^{23} částic a platí $n = N / N_{A}$.',
     'Molární hmotnost $M$ (g/mol) sečteš z relativních atomových hmotností; platí $n = m / M$.',
-    'Jeden mol každého plynu zaujímá za normálních podmínek 22,4 dm^{3}, platí $n = V / V_{m}$.',
-    'Pro plyn za jiných podmínek použiješ $pV = nRT$ s teplotou v kelvinech a tlakem v pascalech.',
+    'Jeden mol každého plynu zaujímá za normálních podmínek (0 °C) 22,4 dm^{3}, za pokojových podmínek (20 °C) asi 24 dm^{3}; platí $n = V / V_{m}$.',
+    'Pro plyn za jiných podmínek použiješ $pV = nRT$: teplotu převeď na kelviny, tlak na pascaly a objem na m^{3} (nebo dosaď kPa s dm^{3}).',
     'Hmotnostní zlomek prvku ve sloučenině je $w(X) = x · A_{r}(X) / M_{r}$.',
     'Empirický vzorec získáš převedením hmotností prvků na moly a hledáním nejmenšího celočíselného poměru.',
   ],
@@ -1865,10 +2151,10 @@ const l4_4: Lesson = {
     },
     {
       kind: 'choice',
-      q: 'Jaký objem zaujme 0,5 mol $CO2$ za normálních podmínek?',
-      options: ['11,2 dm^{3}', '22,4 dm^{3}', '44,8 dm^{3}', '22 dm^{3}'],
+      q: 'Jaký objem zaujme 0,5 mol $CO2$ při pokojové teplotě 20 °C a normálním tlaku?',
+      options: ['12 dm^{3}', '11,2 dm^{3}', '24 dm^{3}', '22 dm^{3}'],
       answer: 0,
-      explain: '$V = n · V_{m}$ = 0,5 · 22,4 = 11,2 dm^{3}. Druh plynu nehraje roli.',
+      explain: 'Při 20 °C je $V_{m}$ ≈ 24 dm^{3}/mol: $V$ = 0,5 · 24 = 12 dm^{3}. Hodnota 11,2 dm^{3} by platila při 0 °C. Druh plynu nehraje roli.',
     },
     {
       kind: 'number',
@@ -1893,10 +2179,10 @@ const l4_5: Lesson = {
   id: 'l4-5',
   title: 'Koncentrace roztoků a ředění',
   goals: [
-    'Spočítat molární koncentraci roztoku a hmotnost látky potřebnou k jeho přípravě',
+    'Spočítat molární i hmotnostní koncentraci roztoku a převádět mezi nimi ($γ = c · M$)',
+    'Připravit standardní roztok v odměrné baňce a spočítat potřebnou navážku',
     'Převést hmotnostní zlomek na molární koncentraci pomocí hustoty a zpět',
-    'Vypočítat ředění podle vztahu $c1V1 = c2V2$',
-    'Spočítat koncentraci roztoku vzniklého smícháním dvou roztoků',
+    'Vypočítat ředění podle vztahu $c1V1 = c2V2$ a koncentraci po smíchání dvou roztoků',
   ],
   hook: 'Na lahvičce fyziologického roztoku stojí „0,9 %“, na lahvi v laborce „1 mol/dm^{3}“. Obojí říká, kolik látky je v roztoku, jen každé jiným jazykem. Dnes se naučíš oba a hlavně mezi nimi překládat.',
   sections: [
@@ -1969,12 +2255,99 @@ const l4_5: Lesson = {
       ],
     },
     {
+      title: 'Hmotnostní koncentrace',
+      icon: 'glass',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Na etiketách minerálek, v rozborech vody nebo v krevních testech se složení často udává v gramech či miligramech na litr. To je **hmotnostní koncentrace**: hmotnost rozpuštěné látky v 1 dm^{3} roztoku.',
+        },
+        {
+          type: 'formula',
+          text: '$γ = m / V$',
+          caption: '$γ$ (gama) hmotnostní koncentrace v g/dm^{3} nebo mg/dm^{3}, $m$ hmotnost rozpuštěné látky, $V$ objem roztoku; některé učebnice ji značí $ρ$ s indexem látky',
+        },
+        {
+          type: 'formula',
+          text: '$γ = c · M$',
+          caption: 'převod na molární koncentraci a zpět: $c = γ / M$',
+        },
+        {
+          type: 'iconlist',
+          items: [
+            { icon: 'water-tap', title: 'Pitná voda', text: 'dusičnany nejvýše 50 mg/dm^{3}' },
+            { icon: 'blood', title: 'Krev nalačno', text: 'glukosa asi 0,7–1,0 g/dm^{3} (3,9–5,6 mmol/dm^{3})' },
+            { icon: 'ocean', title: 'Mořská voda', text: 'asi 35 g rozpuštěných solí v 1 dm^{3}' },
+            { icon: 'glass', title: 'Sladká limonáda', text: 'kolem 100 g cukru v 1 dm^{3}' },
+          ],
+        },
+        {
+          type: 'example',
+          title: 'Cukr v plechovce',
+          problem: 'Sladká limonáda obsahuje 106 g cukru v 1 dm^{3}. Kolik gramů cukru vypiješ v plechovce o objemu 330 cm^{3}? Jaká je molární koncentrace cukru, když ho počítáme jako sacharosu ($M$ = 342 g/mol)?',
+          steps: [
+            '$m = γ · V$ = 106 g/dm^{3} · 0,330 dm^{3} = 35 g',
+            'To je asi sedm kostek cukru po 5 g.',
+            '$c = γ / M$ = 106 g/dm^{3} : 342 g/mol = 0,31 mol/dm^{3}',
+          ],
+          answer: 'V plechovce je asi 35 g cukru; $c$ ≈ 0,31 mol/dm^{3}.',
+        },
+        {
+          type: 'example',
+          title: 'Dusičnany ve studni',
+          problem: 'Ve 250 cm^{3} vody ze studny se našlo 15 mg dusičnanových iontů $NO3^-$. Vyhovuje voda limitu 50 mg/dm^{3}? Jaká je molární koncentrace dusičnanů? ($M(NO3^-)$ = 62 g/mol)',
+          steps: [
+            '$γ = m / V$ = 15 mg : 0,250 dm^{3} = 60 mg/dm^{3}',
+            '60 mg/dm^{3} > 50 mg/dm^{3}: limit je překročen.',
+            '$c = γ / M$ = 0,060 g/dm^{3} : 62 g/mol = 9,7·10^{−4} mol/dm^{3}',
+          ],
+          answer: '$γ$ = 60 mg/dm^{3}, voda limit překračuje (a nesmí se z ní připravovat kojenecká strava); $c$ ≈ 0,97 mmol/dm^{3}.',
+        },
+        {
+          type: 'compare',
+          columns: [
+            {
+              title: 'hustota $ρ$',
+              icon: 'balance-scale',
+              tone: 'a',
+              points: ['hmotnost **celého roztoku** v jednotce objemu', 'fyziologický roztok: asi 1005 g/dm^{3}'],
+            },
+            {
+              title: 'hmotnostní koncentrace $γ$',
+              icon: 'salt',
+              tone: 'b',
+              points: ['hmotnost jen **rozpuštěné látky** v jednotce objemu', 'fyziologický roztok: 9 g/dm^{3} $NaCl$'],
+            },
+          ],
+          caption: 'Stejná jednotka, jiná veličina. A pozor i na hmotnostní zlomek: ten je bez jednotky (g na g roztoku).',
+        },
+        {
+          type: 'check',
+          question: {
+            kind: 'number',
+            q: 'Ve 200 cm^{3} roztoku je rozpuštěno 3,0 g glukosy. Jaká je hmotnostní koncentrace glukosy v g/dm^{3}?',
+            answer: 15,
+            tolerance: 0.1,
+            unit: 'g/dm³',
+            explain: '$γ = m / V$ = 3,0 g : 0,200 dm^{3} = 15 g/dm^{3}.',
+          },
+        },
+      ],
+    },
+    {
       title: 'Jak připravit roztok o dané koncentraci',
       icon: 'flask',
       blocks: [
         {
           type: 'p',
           text: 'Laborant dostane úkol: „Připrav 250 cm^{3} roztoku $NaCl$ o koncentraci 0,5 mol/dm^{3}.“ Nejdřív počítá, pak váží. Vzorec otočí: $m = c · V · M$.',
+        },
+        {
+          type: 'keyterms',
+          items: [
+            { term: '**standardní (odměrný) roztok**', def: 'roztok o přesně známé koncentraci; porovnávají se s ním jiné vzorky, třeba při titraci (úroveň 5)' },
+            { term: '**odměrná baňka**', def: 'baňka s dlouhým úzkým hrdlem a ryskou; po doplnění po rysku obsahuje přesně udaný objem (kalibrovaná na 20 °C)' },
+          ],
         },
         {
           type: 'example',
@@ -2002,6 +2375,12 @@ const l4_5: Lesson = {
           type: 'diagram',
           id: 'meniscus',
           caption: 'Hladinu odečítej s okem v její úrovni: u vody se čte spodní okraj vydutého menisku. Stejně doplňuješ odměrnou baňku – spodní okraj menisku se má dotknout rysky.',
+        },
+        {
+          type: 'callout',
+          variant: 'tip',
+          title: 'Proč odměrná baňka, a ne kádinka?',
+          text: 'Stupnice kádinky se může splést i o 5 %, odměrná baňka na 250 cm^{3} jen asi o 0,15 cm^{3}. Látku ale nejdřív rozpusť v kádince: rozpouštění může roztok zahřát nebo ochladit a baňka měří přesně jen při 20 °C. Poslední kapky doplňuj střičkou nebo kapátkem.',
         },
         {
           type: 'example',
@@ -2261,7 +2640,8 @@ const l4_5: Lesson = {
   summary: [
     'Molární koncentrace $c = n / V$ udává počet molů rozpuštěné látky v 1 dm^{3} roztoku.',
     'Hmotnost látky na přípravu roztoku spočítáš jako $m = c · V · M$; u hydrátů počítej s molární hmotností hydrátu.',
-    'Roztok o přesné koncentraci se připravuje v odměrné baňce doplněním po rysku.',
+    'Standardní roztok o přesně známé koncentraci se připravuje v odměrné baňce doplněním po rysku.',
+    'Hmotnostní koncentrace $γ = m / V$ (g/dm^{3}, mg/dm^{3}) se používá v rozborech vody a krve; s molární koncentrací ji spojuje $γ = c · M$.',
     'Hmotnostní zlomek a molární koncentraci převádíš přes hustotu: $c = w · ρ / M$.',
     'Při ředění se látkové množství nemění: $c1V1 = c2V2$. Při ředění kyselin platí nejdřív voda, potom kyselina.',
     'Při směšování roztoků sečteš látková množství a objemy; výsledek leží mezi výchozími koncentracemi.',
@@ -2283,11 +2663,22 @@ const l4_5: Lesson = {
     },
     {
       kind: 'number',
-      q: 'Kolik gramů glukosy $C6H12O6$ ($M$ = 180 g/mol) potřebuješ na 500 cm^{3} roztoku o koncentraci 0,2 mol/dm^{3}?',
-      answer: 18,
-      tolerance: 0.2,
-      unit: 'g',
-      explain: '$n$ = 0,2 · 0,500 = 0,100 mol; $m$ = 0,100 · 180 = 18 g.',
+      q: 'Ve 250 cm^{3} vody z vodovodu je 20 mg vápenatých iontů. Jaká je hmotnostní koncentrace vápníku v mg/dm^{3}?',
+      answer: 80,
+      tolerance: 0.5,
+      unit: 'mg/dm³',
+      explain: '$γ = m / V$ = 20 mg : 0,250 dm^{3} = 80 mg/dm^{3}. Tak se obsah minerálních látek udává i na etiketách minerálek (mg/l).',
+    },
+    {
+      kind: 'match',
+      q: 'Přiřaď k veličině její typickou jednotku.',
+      pairs: [
+        ['molární koncentrace $c$', 'mol/dm^{3}'],
+        ['hmotnostní koncentrace $γ$', 'g/dm^{3}'],
+        ['hmotnostní zlomek $w$', 'bez jednotky (nebo %)'],
+        ['hustota $ρ$', 'g/cm^{3}'],
+      ],
+      explain: '$c = n / V$, $γ = m(látky) / V$, $w = m(látky) / m(roztoku)$ a $ρ = m(roztoku) / V$. Hustota a hmotnostní koncentrace mají podobné jednotky, ale jiný význam.',
     },
     {
       kind: 'order',
@@ -2308,14 +2699,6 @@ const l4_5: Lesson = {
       tolerance: 2,
       unit: 'cm³',
       explain: '$V2$ = 3,0 · 100 : 0,50 = 600 cm^{3}. Přidat musíš 600 − 100 = 500 cm^{3} vody.',
-    },
-    {
-      kind: 'number',
-      q: 'Roztok $NaCl$ má $w$ = 20 % a hustotu 1,15 g/cm^{3}. Jaká je jeho molární koncentrace? ($A_{r}$: Na 23, Cl 35,5)',
-      answer: 3.93,
-      tolerance: 0.05,
-      unit: 'mol/dm³',
-      explain: '$c = w · ρ / M$ = 0,20 · 1150 g/dm^{3} : 58,5 g/mol = 3,93 mol/dm^{3}.',
     },
     {
       kind: 'multi',
@@ -2345,15 +2728,15 @@ const l4_6: Lesson = {
   id: 'l4-6',
   title: 'Výpočty z chemických rovnic',
   goals: [
-    'Vyčíst z vyčíslené rovnice poměr látkových množství reaktantů a produktů',
-    'Vypočítat hmotnost nebo objem produktu z hmotnosti reaktantu (m → n → n → m)',
+    'Vyčíst z vyčíslené rovnice poměr látkových množství a vypočítat hmotnost nebo objem produktu (m → n → n → m)',
     'Určit limitující reaktant a spočítat, kolik látky zbude v nadbytku',
-    'Spočítat výtěžek reakce a řešit úlohy o více krocích',
+    'Spočítat výtěžek a atomovou ekonomii reakce a čistotu vzorku',
+    'Řešit úlohy o více krocích s roztoky, plyny, výtěžkem a nečistými vzorky',
   ],
   hook: 'Recept na palačinky: 2 vejce na 250 ml mléka. Máš 6 vajec, ale jen půl litru mléka. Kolik dávek upečeš? Když na to přijdeš, umíš počítat jako chemik. Rovnice je recept a mol je jeho odměrka.',
   sections: [
     {
-      title: 'Rovnice jako recept',
+      title: 'Rovnice jako recept: z hmotnosti na hmotnost',
       icon: 'book',
       blocks: [
         {
@@ -2400,23 +2783,6 @@ const l4_6: Lesson = {
           caption: 'Koeficienty nejsou gramy: poměr 1 : 3 : 2 platí pro moly, ne pro hmotnosti.',
         },
         {
-          type: 'check',
-          question: {
-            kind: 'number',
-            q: 'Kolik molů kyslíku spotřebuje dokonalé spálení 2 mol methanu podle rovnice $CH4 + 2O2 -> CO2 + 2H2O$?',
-            answer: 4,
-            tolerance: 0,
-            unit: 'mol',
-            explain: 'Poměr $n(O2) : n(CH4)$ = 2 : 1, takže 2 mol · 2 = 4 mol $O2$.',
-          },
-        },
-      ],
-    },
-    {
-      title: 'Z hmotnosti na hmotnost',
-      icon: 'calculator',
-      blocks: [
-        {
           type: 'p',
           text: 'Váhy neměří moly, ale gramy. Většina úloh proto zní: známe hmotnost jedné látky, hledáme hmotnost jiné. Postup má vždy stejné čtyři kroky.',
         },
@@ -2430,11 +2796,6 @@ const l4_6: Lesson = {
             { icon: 'balance-scale', title: '$m(B)$', text: 'vynásob molární hmotností $M(B)$' },
           ],
           caption: '$m(A) -> n(A) -> n(B) -> m(B)$',
-        },
-        {
-          type: 'reaction',
-          equation: 'CaCO3 -> CaO + CO2',
-          caption: 'pálení vápna: poměr 1 : 1 : 1',
         },
         {
           type: 'example',
@@ -2462,7 +2823,7 @@ const l4_6: Lesson = {
             'Poměr $n(Fe) : n(Fe2O3)$ = 2 : 1, tedy $n(Fe)$ = 10 000 mol',
             '$m(Fe)$ = 10 000 mol · 56 g/mol = 560 000 g',
           ],
-          answer: '$m(Fe)$ = 560 kg (což sedí s $w(Fe)$ = 70 % z minulé lekce).',
+          answer: '$m(Fe)$ = 560 kg (což sedí s $w(Fe)$ = 70 % z lekce o látkovém množství).',
         },
         {
           type: 'callout',
@@ -2471,16 +2832,15 @@ const l4_6: Lesson = {
           text: 'Když dosadíš hmotnost v kg a molární hmotnost v kg/kmol (stejné číslo jako v g/mol), vyjdou ti kilomoly a výsledek rovnou v kilogramech. Přepočet na gramy si ušetříš.',
         },
         {
-          type: 'example',
-          title: 'Kolik kyslíku spotřebuje hořák',
-          problem: 'Kolik gramů kyslíku spotřebuje dokonalé spálení 8 g methanu? ($A_{r}$: H 1, C 12, O 16)',
-          steps: [
-            'Rovnice: $CH4 + 2O2 -> CO2 + 2H2O$',
-            '$n(CH4)$ = 8 g : 16 g/mol = 0,5 mol',
-            '$n(O2)$ = 2 · 0,5 mol = 1,0 mol',
-            '$m(O2)$ = 1,0 mol · 32 g/mol = 32 g',
-          ],
-          answer: '$m(O2)$ = 32 g, tedy čtyřikrát víc než methanu.',
+          type: 'check',
+          question: {
+            kind: 'number',
+            q: 'Kolik molů kyslíku spotřebuje dokonalé spálení 2 mol methanu podle rovnice $CH4 + 2O2 -> CO2 + 2H2O$?',
+            answer: 4,
+            tolerance: 0,
+            unit: 'mol',
+            explain: 'Poměr $n(O2) : n(CH4)$ = 2 : 1, takže 2 mol · 2 = 4 mol $O2$.',
+          },
         },
         {
           type: 'check',
@@ -2491,17 +2851,6 @@ const l4_6: Lesson = {
             tolerance: 0.1,
             unit: 'g',
             explain: '$n(Mg)$ = 6 : 24 = 0,25 mol, $n(MgO)$ = 0,25 mol, $m$ = 0,25 · 40 = 10 g.',
-          },
-        },
-        {
-          type: 'check',
-          question: {
-            kind: 'number',
-            q: 'Kolik gramů vody vznikne spálením 4 g vodíku podle $2H2 + O2 -> 2H2O$? ($A_{r}$: H 1, O 16)',
-            answer: 36,
-            tolerance: 0.2,
-            unit: 'g',
-            explain: '$n(H2)$ = 4 : 2 = 2 mol, $n(H2O)$ = 2 mol, $m$ = 2 · 18 = 36 g.',
           },
         },
       ],
@@ -2674,7 +3023,7 @@ const l4_6: Lesson = {
       ],
     },
     {
-      title: 'Výtěžek reakce',
+      title: 'Výtěžek a atomová ekonomie',
       icon: 'chart',
       blocks: [
         {
@@ -2755,6 +3104,120 @@ const l4_6: Lesson = {
             explain: '$η$ = 504 : 560 · 100 % = 90 %.',
           },
         },
+        {
+          type: 'p',
+          text: 'I při stoprocentním výtěžku může velká část atomů skončit ve **vedlejších produktech**, které nechceš. Kolik hmotnosti surovin se opravdu promění v žádaný produkt, měří **atomová ekonomie**. Je to jedno z měřítek **zelené chemie** (úroveň 9).',
+        },
+        {
+          type: 'formula',
+          text: 'atomová ekonomie = $M$(žádaný produkt) : Σ $M$(reaktanty) · 100 %',
+          caption: 'molární hmotnosti násob koeficienty z vyčíslené rovnice; Σ znamená součet',
+        },
+        {
+          type: 'example',
+          title: 'Kolik z vápence zůstane',
+          problem: 'Jaká je atomová ekonomie výroby páleného vápna $CaCO3 -> CaO + CO2$? ($A_{r}$: C 12, O 16, Ca 40)',
+          steps: [
+            'Žádaný produkt: $M(CaO)$ = 56 g/mol',
+            'Reaktanty: $M(CaCO3)$ = 100 g/mol',
+            'Atomová ekonomie = 56 : 100 · 100 % = 56 %',
+          ],
+          answer: '56 %. Zbylých 44 % hmotnosti vápence odchází jako $CO2$, i kdyby výtěžek byl 100 %. Vápenky proto patří k velkým zdrojům skleníkových plynů.',
+        },
+        {
+          type: 'compare',
+          columns: [
+            {
+              title: 'výtěžek $η$',
+              icon: 'balance-scale',
+              tone: 'a',
+              points: ['měří, jak dobře proběhl konkrétní pokus', 'zjistíš ho až vážením produktu', 'zlepšíš pečlivější prací nebo recyklací nezreagovaných látek'],
+            },
+            {
+              title: 'atomová ekonomie',
+              icon: 'recycle',
+              tone: 'good',
+              points: ['vlastnost samotné rovnice', 'spočítáš ji předem, bez pokusu', 'zlepšíš jen volbou jiné reakce; syntéza A + B → C má vždy 100 %'],
+            },
+          ],
+        },
+        {
+          type: 'check',
+          question: {
+            kind: 'number',
+            q: 'Kyslík lze vyrábět rozkladem peroxidu vodíku: $2H2O2 -> 2H2O + O2$. Jaká je atomová ekonomie, je-li žádaným produktem kyslík? ($A_{r}$: H 1, O 16)',
+            answer: 47.1,
+            tolerance: 0.3,
+            unit: '%',
+            explain: 'Žádaný produkt: $M(O2)$ = 32 g/mol. Reaktanty: 2 · 34 = 68 g/mol. 32 : 68 · 100 % = 47,1 %.',
+          },
+        },
+      ],
+    },
+    {
+      title: 'Čistota vzorku',
+      icon: 'magnifier',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Suroviny z přírody ani chemikálie z obchodu nejsou nikdy stoprocentně čisté. Vápenec obsahuje jíl a písek, železná ruda hlušinu. **Čistota** vzorku je hmotnostní zlomek hledané látky ve vzorku.',
+        },
+        {
+          type: 'formula',
+          text: 'čistota = $m$(čisté látky) : $m$(vzorku) · 100 %',
+        },
+        {
+          type: 'particles',
+          boxes: [
+            { label: 'vzorek vápence', items: [{ species: 'CaCO3', count: 8 }, { species: 'SiO2', count: 2 }], state: 'solid', note: '80 % $CaCO3$, zbytek písek' },
+          ],
+          caption: 'S kyselinou reaguje jen uhličitan vápenatý; písek zůstane beze změny.',
+        },
+        {
+          type: 'example',
+          title: 'Jak čistý je vápenec?',
+          problem: 'Vzorek vápence o hmotnosti 12,5 g reagoval s nadbytkem kyseliny chlorovodíkové a uvolnil 2,24 dm^{3} $CO2$ (normální podmínky). Nečistoty s kyselinou nereagují. Jaká je čistota vzorku? $CaCO3 + 2HCl -> CaCl2 + H2O + CO2$ ($A_{r}$: C 12, O 16, Ca 40)',
+          steps: [
+            '$n(CO2) = V / V_{m}$ = 2,24 dm^{3} : 22,4 dm^{3}/mol = 0,100 mol',
+            'Poměr 1 : 1, tedy $n(CaCO3)$ = 0,100 mol',
+            '$m(CaCO3)$ = 0,100 mol · 100 g/mol = 10,0 g',
+            'Čistota = 10,0 g : 12,5 g · 100 % = 80 %',
+          ],
+          answer: 'Vzorek obsahuje 80 % $CaCO3$.',
+        },
+        {
+          type: 'example',
+          title: 'Kolik železa z tuny rudy',
+          problem: 'Železná ruda obsahuje 80 % $Fe2O3$, zbytek je hlušina. Kolik kilogramů železa lze teoreticky získat z 1 tuny rudy? $Fe2O3 + 3CO -> 2Fe + 3CO2$ ($A_{r}$: Fe 56, O 16)',
+          steps: [
+            'Čistá látka: $m(Fe2O3)$ = 0,80 · 1000 kg = 800 kg',
+            '$n(Fe2O3)$ = 800 kg : 160 kg/kmol = 5,0 kmol',
+            '$n(Fe)$ = 2 · 5,0 kmol = 10 kmol; $m(Fe)$ = 10 kmol · 56 kg/kmol = 560 kg',
+          ],
+          answer: 'Z tuny rudy získáš nejvýš 560 kg železa.',
+        },
+        {
+          type: 'callout',
+          variant: 'warning',
+          title: 'Nejdřív čistota, pak moly',
+          text: 'Do $n = m / M$ dosazuj jen hmotnost **čisté látky**, nikdy celého vzorku. Jinak ti vyjde víc produktu, než je možné.',
+        },
+        {
+          type: 'callout',
+          variant: 'fact',
+          text: 'Čistota se hlídá u léků (předepisuje ji lékopis), v potravinách i ve zlatnictví: zlato o ryzosti 999,9 obsahuje 99,99 % zlata.',
+        },
+        {
+          type: 'check',
+          question: {
+            kind: 'number',
+            q: 'Vzorek technického hořčíku o hmotnosti 2,5 g uvolnil s nadbytkem kyseliny chlorovodíkové 2,24 dm^{3} vodíku (normální podmínky). Jaká je čistota hořčíku? $Mg + 2HCl -> MgCl2 + H2$ ($A_{r}$(Mg) = 24)',
+            answer: 96,
+            tolerance: 0.5,
+            unit: '%',
+            explain: '$n(H2)$ = 0,100 mol = $n(Mg)$; $m(Mg)$ = 0,100 · 24 = 2,4 g; čistota = 2,4 : 2,5 · 100 % = 96 %.',
+          },
+        },
       ],
     },
     {
@@ -2770,7 +3233,7 @@ const l4_6: Lesson = {
           layout: 'flow',
           steps: [
             { icon: 'pencil', title: 'rovnice', text: 'zapiš a vyčísli' },
-            { icon: 'calculator', title: 'na moly', text: 'všechno, co znáš: $m/M$, $c·V$, $V/V_{m}$' },
+            { icon: 'calculator', title: 'na moly', text: 'všechno, co znáš: $m/M$, $c·V$, $V/V_{m}$; u nečistého vzorku jen čistou látku' },
             { icon: 'magnifier', title: 'limitující reaktant', text: 'jsou-li zadané dva reaktanty' },
             { icon: 'molecule', title: 'poměr koeficientů', text: 'moly hledané látky' },
             { icon: 'balance-scale', title: 'na hledanou veličinu', text: 'hmotnost, objem, koncentraci' },
@@ -2838,10 +3301,10 @@ const l4_6: Lesson = {
   ],
   summary: [
     'Koeficienty ve vyčíslené rovnici udávají poměr látkových množství, ne hmotností.',
-    'Základní postup je $m(A) -> n(A) -> n(B) -> m(B)$; u plynů končíš objemem přes $V_{m}$ nebo $pV = nRT$.',
-    'U plynných reakcí za stejné teploty a tlaku odpovídá poměr objemů poměru koeficientů.',
+    'Základní postup je $m(A) -> n(A) -> n(B) -> m(B)$; u plynů končíš objemem přes $V_{m}$ nebo $pV = nRT$ a poměr objemů plynů odpovídá poměru koeficientů.',
     'Limitující reaktant má nejmenší podíl $n$ / koeficient; z něj počítáš množství produktu.',
-    'Výtěžek $η$ je podíl skutečného a teoretického množství produktu v procentech.',
+    'Výtěžek $η$ je podíl skutečného a teoretického množství produktu v procentech; atomová ekonomie je podíl molární hmotnosti žádaného produktu a součtu molárních hmotností reaktantů.',
+    'Čistota vzorku je hmotnostní zlomek čisté látky ve vzorku; do výpočtu z rovnice dosazuješ jen hmotnost čisté látky.',
     'Složitou úlohu rozlož na kroky: rovnice, převod na moly, poměr, převod na hledanou veličinu, výtěžek, kontrola.',
   ],
   quiz: [
@@ -2853,19 +3316,19 @@ const l4_6: Lesson = {
     },
     {
       kind: 'number',
-      q: 'Kolik molů kyslíku potřebuješ na spálení 3 mol propanu podle $C3H8 + 5O2 -> 3CO2 + 4H2O$?',
-      answer: 15,
-      tolerance: 0,
-      unit: 'mol',
-      explain: 'Poměr $n(O2) : n(C3H8)$ = 5 : 1, tedy 3 · 5 = 15 mol.',
+      q: 'Jaká je atomová ekonomie výroby železa ve vysoké peci podle $Fe2O3 + 3CO -> 2Fe + 3CO2$, je-li žádaným produktem železo? ($A_{r}$: C 12, O 16, Fe 56)',
+      answer: 45.9,
+      tolerance: 0.3,
+      unit: '%',
+      explain: 'Žádaný produkt: 2 · 56 = 112 g/mol. Reaktanty: 160 + 3 · 28 = 244 g/mol. 112 : 244 · 100 % = 45,9 %. Zbytek odchází jako $CO2$.',
     },
     {
       kind: 'number',
-      q: 'Kolik gramů $CO2$ vznikne spálením 16 g methanu podle $CH4 + 2O2 -> CO2 + 2H2O$? ($A_{r}$: H 1, C 12, O 16)',
-      answer: 44,
-      tolerance: 0.3,
-      unit: 'g',
-      explain: '$n(CH4)$ = 16 : 16 = 1 mol, $n(CO2)$ = 1 mol, $m$ = 1 · 44 = 44 g.',
+      q: 'Z 20 g nečistého zinku se s nadbytkem kyseliny chlorovodíkové uvolnilo 6,72 dm^{3} vodíku (normální podmínky). Jaká je čistota zinku? $Zn + 2HCl -> ZnCl2 + H2$ ($A_{r}$(Zn) = 65)',
+      answer: 97.5,
+      tolerance: 0.5,
+      unit: '%',
+      explain: '$n(H2)$ = 6,72 : 22,4 = 0,300 mol = $n(Zn)$; $m(Zn)$ = 0,300 · 65 = 19,5 g; čistota = 19,5 : 20 · 100 % = 97,5 %.',
     },
     {
       kind: 'number',
@@ -2926,102 +3389,104 @@ const boss: Question[] = [
     explain: '$2C2H2 + 5O2 -> 4CO2 + 2H2O$: přes mezikrok $5/2 O2$ a vynásobení dvěma. Součet 2 + 5 + 4 + 2 = 13.',
   },
   {
+    kind: 'number',
+    q: 'Vodík a kyslík se ve vodě slučují v hmotnostním poměru 1 : 8. Kolik gramů vody vznikne, když necháš zreagovat 5 g vodíku a 50 g kyslíku?',
+    answer: 45,
+    tolerance: 0.2,
+    unit: 'g',
+    explain: '5 g vodíku potřebuje 5 · 8 = 40 g kyslíku; 10 g kyslíku zbude. Podle zákona zachování hmotnosti vznikne 5 g + 40 g = 45 g vody.',
+  },
+  {
     kind: 'choice',
-    q: 'Jak nejlépe zařadíš reakci $Mg + 2HCl -> MgCl2 + H2$?',
+    q: 'Která zkrácená iontová rovnice je správně vyčíslená?',
     options: [
-      'substituce a zároveň redoxní reakce',
-      'podvojná záměna, není redoxní',
-      'syntéza a zároveň redoxní reakce',
-      'substituce, není redoxní',
+      '$2Fe^{3+} + Fe -> 3Fe^{2+}$',
+      '$Fe^{3+} + Fe -> 2Fe^{2+}$',
+      '$Al + 3H^+ -> Al^{3+} + H2$',
+      '$Ag^+ + Cu -> Ag + Cu^{2+}$',
     ],
     answer: 0,
-    explain: 'Hořčík nahradí vodík ve sloučenině s chlorem (substituce). Oxidační číslo hořčíku roste z 0 na II a vodíku klesá z I na 0, jde tedy i o redoxní reakci.',
-  },
-  {
-    kind: 'choice',
-    q: 'Ve kterém vzorku je nejvíce atomů? ($A_{r}$: H 1, C 12, N 14, O 16)',
-    options: ['17 g $NH3$', '2 g $H2$', '18 g $H2O$', '44 g $CO2$'],
-    answer: 0,
-    explain: 'Všechny vzorky odpovídají 1 mol molekul. Molekula $NH3$ má 4 atomy, $H2O$ a $CO2$ po 3, $H2$ jen 2. Nejvíc atomů je tedy v amoniaku.',
-  },
-  {
-    kind: 'number',
-    q: 'Lékařská kyslíková láhev má objem 10 dm^{3} a obsahuje čistý kyslík pod tlakem 15 MPa při 300 K. Kolik kilogramů kyslíku obsahuje? ($R$ = 8,314 J·K^{−1}·mol^{−1}, $A_{r}$(O) = 16)',
-    answer: 1.92,
-    tolerance: 0.03,
-    unit: 'kg',
-    explain: '$n = pV / RT$ = 15 000 000 Pa · 0,010 m^{3} : (8,314 · 300) = 60,1 mol; $m$ = 60,1 · 32 g/mol = 1924 g ≈ 1,92 kg.',
-  },
-  {
-    kind: 'text',
-    q: 'Uhlovodík obsahuje 85,7 % uhlíku a 14,3 % vodíku, jeho molární hmotnost je 56 g/mol. Napiš jeho molekulový vzorec. ($A_{r}$: H 1, C 12)',
-    accept: ['C4H8'],
-    caseSensitive: true,
-    placeholder: 'vzorec',
-    explain: '$n(C)$ = 85,7 : 12 = 7,14; $n(H)$ = 14,3 : 1 = 14,3; poměr 1 : 2, empirický vzorec $CH2$ (14 g/mol). 56 : 14 = 4, tedy $C4H8$.',
-  },
-  {
-    kind: 'number',
-    q: 'Roztok $NaCl$ má $w$ = 10 % a hustotu 1,07 g/cm^{3}. Jaká je jeho molární koncentrace? ($A_{r}$: Na 23, Cl 35,5)',
-    answer: 1.83,
-    tolerance: 0.03,
-    unit: 'mol/dm³',
-    explain: '1 dm^{3} váží 1070 g, z toho 107 g $NaCl$ = 107 : 58,5 = 1,83 mol. $c$ = 1,83 mol/dm^{3}.',
-  },
-  {
-    kind: 'number',
-    q: 'Kolik dm^{3} $CO2$ (normální podmínky) vznikne, když 200 cm^{3} kyseliny chlorovodíkové o $c$ = 0,50 mol/dm^{3} zreaguje s nadbytkem vápence? $CaCO3 + 2HCl -> CaCl2 + H2O + CO2$',
-    answer: 1.12,
-    tolerance: 0.02,
-    unit: 'dm³',
-    explain: '$n(HCl)$ = 0,50 · 0,200 = 0,10 mol; $n(CO2)$ = 0,10 : 2 = 0,050 mol; $V$ = 0,050 · 22,4 = 1,12 dm^{3}.',
-  },
-  {
-    kind: 'number',
-    q: 'Necháš zreagovat 10 g vodíku a 64 g kyslíku podle $2H2 + O2 -> 2H2O$. Kolik gramů vody vznikne? ($A_{r}$: H 1, O 16)',
-    answer: 72,
-    tolerance: 0.5,
-    unit: 'g',
-    explain: '$n(H2)$ = 5 mol (podíl 2,5), $n(O2)$ = 2 mol (podíl 2). Limituje kyslík: vznikne 4 mol vody = 72 g a 2 g vodíku zbudou.',
-  },
-  {
-    kind: 'number',
-    q: 'Aluminotermie (svařování kolejnic): $2Al + Fe2O3 -> Al2O3 + 2Fe$. Z 54 g hliníku a nadbytku $Fe2O3$ jsi získal 100,8 g železa. Jaký byl výtěžek? ($A_{r}$: O 16, Al 27, Fe 56)',
-    answer: 90,
-    tolerance: 0.5,
-    unit: '%',
-    explain: '$n(Al)$ = 2 mol, teoreticky $n(Fe)$ = 2 mol = 112 g. $η$ = 100,8 : 112 · 100 % = 90 %.',
+    explain: 'V první rovnici sedí atomy (Fe 3 = 3) i náboje (+6 = +6). Ve druhé sedí atomy, ale ne náboje (+3 ≠ +4), ve třetí nesedí vodík (3 ≠ 2) a ve čtvrté náboje (+1 ≠ +2).',
   },
   {
     kind: 'multi',
-    q: 'Které výroky jsou pravdivé?',
+    q: 'Které reakce podle řady reaktivity kovů proběhnou?',
     options: [
-      '1 mol $H2O$ a 1 mol $CO2$ obsahují stejný počet molekul',
-      '1 mol $H2O$ a 1 mol $CO2$ mají stejnou hmotnost',
-      '1 mol vody zaujímá za normálních podmínek 22,4 dm^{3}',
-      '1 mol $O2$ obsahuje 2 mol atomů kyslíku',
-      '1 mol $CO2$ zaujímá za normálních podmínek asi 22,4 dm^{3}',
+      'zinek v roztoku chloridu měďnatého',
+      'měď v roztoku chloridu zinečnatého',
+      'hořčík v kyselině chlorovodíkové',
+      'stříbro v kyselině chlorovodíkové',
+      'železo v roztoku dusičnanu stříbrného',
     ],
-    answers: [0, 3, 4],
-    explain: 'Mol je vždy stejný počet částic, ale hmotnosti se liší (18 g × 44 g). Molární objem 22,4 dm^{3}/mol platí jen pro plyny, voda je za 0 °C kapalina či led.',
+    answers: [0, 2, 4],
+    explain: 'Kov vytěsní z roztoku soli kov, který stojí v řadě napravo od něj (Zn → Cu, Fe → Ag), a vodík z kyseliny vytěsní jen kov vlevo od vodíku (Mg). Měď zinek nevytěsní a stříbro je ušlechtilé.',
   },
   {
-    kind: 'order',
-    q: 'Seřaď kroky úlohy: „Kolik gramů produktu získáš z roztoku reaktantu o známé koncentraci a objemu, je-li výtěžek 85 %?“',
-    items: [
-      'zapsat a vyčíslit rovnici',
-      'spočítat látkové množství reaktantu jako $c · V$',
-      'podle koeficientů spočítat teoretické látkové množství produktu',
-      'převést na teoretickou hmotnost produktu přes $M$',
-      'vynásobit teoretickou hmotnost výtěžkem 0,85',
-    ],
-    explain: 'Rovnice → moly reaktantu → moly produktu → hmotnost → výtěžek. Tady hledáš skutečný produkt, proto výtěžkem násobíš.',
+    kind: 'number',
+    q: 'Lékařská kyslíková láhev má objem 10 dm^{3} a obsahuje čistý kyslík pod tlakem 15 MPa při 300 K. Kolik kilogramů kyslíku obsahuje? ($R$ = 8,314 J·K^{−1}·mol^{−1}, $A_{r}$(O) = 16)',
+    answer: 1.92,
+    tolerance: 0.03,
+    unit: 'kg',
+    explain: '$n = pV / RT$ = 15 000 000 Pa · 0,010 m^{3} : (8,314 · 300) = 60,1 mol; $m$ = 60,1 · 32 g/mol = 1924 g ≈ 1,92 kg.',
+  },
+  {
+    kind: 'text',
+    q: 'Uhlovodík obsahuje 85,7 % uhlíku a 14,3 % vodíku, jeho molární hmotnost je 56 g/mol. Napiš jeho molekulový vzorec. ($A_{r}$: H 1, C 12)',
+    accept: ['C4H8'],
+    caseSensitive: true,
+    placeholder: 'vzorec',
+    explain: '$n(C)$ = 85,7 : 12 = 7,14; $n(H)$ = 14,3 : 1 = 14,3; poměr 1 : 2, empirický vzorec $CH2$ (14 g/mol). 56 : 14 = 4, tedy $C4H8$.',
+  },
+  {
+    kind: 'number',
+    q: 'Roztok $NaCl$ má $w$ = 10 % a hustotu 1,07 g/cm^{3}. Jaká je jeho molární koncentrace? ($A_{r}$: Na 23, Cl 35,5)',
+    answer: 1.83,
+    tolerance: 0.03,
+    unit: 'mol/dm³',
+    explain: '1 dm^{3} váží 1070 g, z toho 107 g $NaCl$ = 107 : 58,5 = 1,83 mol. $c$ = 1,83 mol/dm^{3}.',
   },
   {
     kind: 'tf',
-    q: 'Když 50 cm^{3} roztoku o koncentraci 6,0 mol/dm^{3} zředíš na 1,5 mol/dm^{3}, musíš přidat 150 cm^{3} vody.',
+    q: 'Když 50 cm^{3} roztoku glukosy o hmotnostní koncentraci 90 g/dm^{3} zředíš vodou na 250 cm^{3}, bude mít nový roztok hmotnostní koncentraci 18 g/dm^{3}.',
     answer: true,
-    explain: '$V2$ = 6,0 · 50 : 1,5 = 200 cm^{3}; přidáš 200 − 50 = 150 cm^{3} vody.',
+    explain: 'Glukosy je 90 g/dm^{3} · 0,050 dm^{3} = 4,5 g a ta se rozptýlí do 0,250 dm^{3}: 4,5 : 0,250 = 18 g/dm^{3}. Objem vzrostl pětkrát, koncentrace klesla pětkrát.',
+  },
+  {
+    kind: 'number',
+    q: 'Kolik dm^{3} $CO2$ vznikne při pokojové teplotě ($V_{m}$ = 24 dm^{3}/mol), když 200 cm^{3} kyseliny chlorovodíkové o $c$ = 0,50 mol/dm^{3} zreaguje s nadbytkem vápence? $CaCO3 + 2HCl -> CaCl2 + H2O + CO2$',
+    answer: 1.2,
+    tolerance: 0.02,
+    unit: 'dm³',
+    explain: '$n(HCl)$ = 0,50 · 0,200 = 0,10 mol; $n(CO2)$ = 0,10 : 2 = 0,050 mol; $V$ = 0,050 · 24 = 1,2 dm^{3}.',
+  },
+  {
+    kind: 'number',
+    q: 'Necháš zreagovat 10 g vodíku a 64 g kyslíku podle $2H2 + O2 -> 2H2O$. Kolik gramů vody vznikne? ($A_{r}$: H 1, O 16)',
+    answer: 72,
+    tolerance: 0.5,
+    unit: 'g',
+    explain: '$n(H2)$ = 5 mol (podíl 2,5), $n(O2)$ = 2 mol (podíl 2). Limituje kyslík: vznikne 4 mol vody = 72 g a 2 g vodíku zbudou.',
+  },
+  {
+    kind: 'number',
+    q: 'Aluminotermie (svařování kolejnic): $2Al + Fe2O3 -> Al2O3 + 2Fe$. Hliníkový prášek má čistotu 90 %. Kolik gramů železa teoreticky získáš z 60 g prášku a nadbytku $Fe2O3$? ($A_{r}$: O 16, Al 27, Fe 56)',
+    answer: 112,
+    tolerance: 0.5,
+    unit: 'g',
+    explain: 'Čistý hliník: 0,90 · 60 g = 54 g = 2,0 mol. Poměr 1 : 1, tedy 2,0 mol Fe = 112 g.',
+  },
+  {
+    kind: 'multi',
+    q: 'Která tvrzení o výtěžku a atomové ekonomii platí?',
+    options: [
+      'Reakce se stoprocentním výtěžkem může mít nízkou atomovou ekonomii.',
+      'Syntéza typu A + B → C má atomovou ekonomii 100 %.',
+      'Atomovou ekonomii zvýšíš pečlivější prací při filtraci.',
+      'Výtěžek spočítáš z rovnice ještě před pokusem, bez vážení produktu.',
+      'Výroba $CaO$ rozkladem vápence má atomovou ekonomii 56 %.',
+    ],
+    answers: [0, 1, 4],
+    explain: 'Atomová ekonomie je vlastnost rovnice (56 : 100 u vápence, 100 % u syntézy), pečlivost ji nezmění. Výtěžek naopak zjistíš až z hmotnosti skutečně získaného produktu.',
   },
 ]
 

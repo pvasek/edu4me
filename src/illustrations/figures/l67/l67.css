@@ -570,3 +570,126 @@
     opacity: 0.35;
   }
 }
+
+/* ---------------------------------------------------------------- electroplating */
+.f67-coat {
+  fill: none;
+  stroke: #c7773d;
+  stroke-width: 3.2;
+  stroke-linejoin: round;
+}
+
+/* ---------------------------------------------------------------- calorimeter */
+.f67-foam {
+  fill: color-mix(in srgb, var(--surface) 88%, var(--ink));
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.f67-foam-in {
+  fill: var(--surface);
+  stroke: none;
+}
+.f67-stir {
+  animation: f67-stir 1.6s ease-in-out infinite alternate;
+}
+@keyframes f67-stir {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+.f67-eq.f67-eq-xl {
+  font-size: 20px;
+  font-weight: 700;
+}
+.f67-narrow .f67-eq.f67-eq-xl {
+  font-size: 21px;
+}
+
+/* ---------------------------------------------------------------- gibbs quadrants */
+.f67-quad {
+  fill-opacity: 0.6;
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.f67-ice {
+  fill: color-mix(in srgb, #9cc8ea 55%, var(--surface));
+}
+.f67-ice-2 {
+  fill: color-mix(in srgb, #9cc8ea 30%, var(--surface));
+}
+.f67-ice-3 {
+  fill: color-mix(in srgb, #6f9fd8 60%, var(--surface));
+}
+.f67-snow {
+  stroke: var(--blue);
+  stroke-width: 1.8;
+}
+.f67-puddle {
+  fill: #6f9fd8;
+  fill-opacity: 0.45;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+
+/* ---------------------------------------------------------------- ion tests */
+.f67-ppt-light {
+  stroke: color-mix(in srgb, var(--edge) 55%, transparent);
+  stroke-width: 0.8;
+}
+.f67-flake {
+  animation: f67-settle 3.4s ease-in infinite;
+}
+@keyframes f67-settle {
+  0% {
+    transform: translateY(-14px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(26px);
+    opacity: 0;
+  }
+}
+.f67-eq.f67-b-eq {
+  font-weight: 800;
+}
+.f67-glint {
+  stroke: var(--surface);
+  stroke-width: 2.2;
+  opacity: 0.8;
+}
+
+/* ---------------------------------------------------------------- gas tests */
+.f67-splint-o {
+  stroke: var(--edge);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+.f67-splint {
+  stroke: #d9b27a;
+  stroke-width: 3.8;
+  stroke-linecap: round;
+}
+.f67-burst {
+  fill: none;
+  stroke: #e0781a;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.f67-deliv-o {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 7;
+  stroke-linejoin: round;
+}
+.f67-deliv {
+  fill: none;
+  stroke: var(--glass);
+  stroke-width: 4;
+  stroke-linejoin: round;
+}

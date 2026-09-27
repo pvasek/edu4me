@@ -30,7 +30,7 @@ Lessons, level tests and games show 1–3 stars: ≥ 90 % → 3, ≥ 60 % → 2,
 ## Badges (odznaky)
 
 26 badges in `src/core/badges.ts`:
-- progress: První pokus, Laborant (10 lessons), Chemik (30), Profesor (all 54);
+- progress: První pokus, Laborant (10 lessons), Chemik (30), Profesor (all lessons, counted from the course outline);
 - mastery: Bez chyby (a perfect quiz), Ostrostřelec (10 perfect quizzes), Tři hvězdy (3 stars in a game);
 - habit: Rozjezd (3-day streak), Týden v laborce (7), Věčný plamen (30);
 - XP: Tisícovka (1 000), Reaktor (5 000);

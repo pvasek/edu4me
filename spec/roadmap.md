@@ -5,7 +5,7 @@
 - [x] Concept, architecture, style guide, content guidelines, gamification spec
 - [x] Chemistry syllabus aligned with RVP ZV, RVP G, IGCSE and A-level/AP
 - [x] App shell: home, course map, level pages, lesson player, level tests, profile
-- [x] All 54 lessons fully written, with quizzes and 9 level tests
+- [x] All lessons fully written, with quizzes and 9 level tests
 - [x] 14 mini-games, 11 lesson diagrams
 - [x] XP, ranks, streaks, 26 badges, element album, export/import of progress
 - [x] Light and dark theme, mobile first
@@ -18,9 +18,15 @@
 - [x] 103 molecules as rotatable 3D ball-and-stick models
 - [x] Particle scenes (states, mixtures, solutions, before → after) and particle-drawn equations with atom ledgers
 - [x] 71 engraved technical figures (apparatus, industrial processes, cycles, biomolecules) + 9 level vignettes
-- [x] All 54 lessons rewritten picture-first: ≥ 1 visual per section (validated), ~⅓ less paragraph text
+- [x] All lessons rewritten picture-first: ≥ 1 visual per section (validated), ~⅓ less paragraph text
 - [x] Every game has its own content for each level it supports (see games.md level matrix)
 - [x] Course atlas with full per-level detail; 2D game stages for all games
+
+## v0.3 (done)
+
+- [x] Lessons are one scrolling page (section nav + reading progress) followed by one quiz
+- [x] Compact course atlas: level nodes between plates, engraving in the plate header
+- [x] Syllabus revision 2 (curriculum audit against RVP ZV/G, IGCSE, A-level/AP): 9 new lessons (nuclear chemistry, VSEPR + hybridisation, electrolysis + Faraday, entropy + Gibbs, tests for ions and gases, polymers, spectroscopy, metabolism, energy + climate), 63 lessons in total; deeper coverage of existing lessons; 17 new figures
 
 ## Next
 

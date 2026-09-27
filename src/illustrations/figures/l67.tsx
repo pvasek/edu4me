@@ -20,6 +20,12 @@ import HessCycle from './l67/HessCycle'
 import LiIonBattery from './l67/LiIonBattery'
 import MaxwellBoltzmann from './l67/MaxwellBoltzmann'
 import RedoxTransfer from './l67/RedoxTransfer'
+import Electroplating from './l67/Electroplating'
+import Calorimeter from './l67/Calorimeter'
+import GibbsQuadrants from './l67/GibbsQuadrants'
+import ReactionOrders from './l67/ReactionOrders'
+import IonTests from './l67/IonTests'
+import GasTests from './l67/GasTests'
 
 /** Figures for levels 6–7 (engraved technical plates, see ./l67/). */
 export const FIGURES_L67: Partial<Record<FigureId, ComponentType>> = {
@@ -43,4 +49,10 @@ export const FIGURES_L67: Partial<Record<FigureId, ComponentType>> = {
   'aluminium-electrolysis': AluminiumElectrolysis,
   'nitrogen-cycle': NitrogenCycle,
   'carbon-cycle': CarbonCycle,
+  electroplating: Electroplating,
+  calorimeter: Calorimeter,
+  'gibbs-quadrants': GibbsQuadrants,
+  'reaction-orders': ReactionOrders,
+  'ion-tests': IonTests,
+  'gas-tests': GasTests,
 }

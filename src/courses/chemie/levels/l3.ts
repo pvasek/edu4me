@@ -10,8 +10,8 @@ const l31: Lesson = {
   id: 'l3-1',
   title: 'Proč se atomy spojují: elektronegativita',
   goals: [
-    'Vysvětlit, proč vznik chemické vazby snižuje energii soustavy',
-    'Popsat vztah mezi délkou vazby a vazebnou energií',
+    'Z křivky energie a vzdálenosti vysvětlit, proč vznik vazby snižuje energii a co je délka vazby',
+    'Popsat, jak délka a energie vazby závisí na velikosti atomů a na násobnosti vazby',
     'Určit, jak se mění elektronegativita v periodické tabulce',
     'Z rozdílu elektronegativit ΔX odhadnout, zda je vazba nepolární, polární, nebo iontová',
   ],
@@ -52,16 +52,16 @@ const l31: Lesson = {
           type: 'structure',
           art: art(
             'E ↑',
+            '  │\\   odpuzování jader',
             '  │ \\',
-            '  │  \\',
-            '0 ┼───\\──────────────────',
-            '  │    \\           ___',
-            '  │     \\       __/',
-            '  │      \\_____/',
-            '  │         ↑ délka vazby',
-            '  └──────────────────────→ r',
+            '0 ┼──\\────────────────────────→ r',
+            '  │   \\               ______',
+            '  │    \\          ___/  přitahování',
+            '  │     \\_      _/',
+            '  │       \\____/',
+            '  │          ↑ 74 pm; −436 kJ/mol',
           ),
-          caption: 'Energie dvojice atomů podle jejich vzdálenosti r. Vazba vzniká v minimu křivky; hloubka minima odpovídá vazebné energii.',
+          caption: 'Křivka energie a vzdálenosti pro dva atomy vodíku. Vpravo jsou atomy daleko od sebe (E = 0). Při přibližování převládá přitahování a energie klesá. Vlevo převládne odpuzování jader a energie prudce roste. Minimum leží ve vzdálenosti rovné délce vazby (74 pm) a jeho hloubka je vazebná energie (436 kJ/mol).',
         },
         {
           type: 'keyterms',
@@ -105,29 +105,50 @@ const l31: Lesson = {
           type: 'table',
           headers: ['Vazba', 'Délka (pm)', 'Vazebná energie (kJ/mol)'],
           rows: [
-            ['$H–H$', '74', '436'],
-            ['$H–Cl$', '127', '431'],
-            ['$Cl–Cl$', '199', '242'],
             ['$C–C$', '154', '348'],
             ['$C=C$', '134', '614'],
             ['$C≡C$', '120', '839'],
+            ['$N–N$', '145', '163'],
+            ['$N=N$', '125', '418'],
             ['$N≡N$', '110', '945'],
           ],
-          caption: 'Přibližné délky a energie některých vazeb.',
+          caption: 'Násobnost vazby: mezi stejnými atomy je jednoduchá vazba nejdelší a nejslabší, trojná nejkratší a nejpevnější.',
         },
         {
           type: 'molecule',
           molecules: ['H2', 'Cl2', 'N2'],
-          labels: ['$H–H$: 74 pm', '$Cl–Cl$: 199 pm', '$N≡N$: 110 pm, 945 kJ/mol'],
+          labels: ['$H–H$: 74 pm, 436 kJ/mol', '$Cl–Cl$: 199 pm, 242 kJ/mol', '$N≡N$: 110 pm, 945 kJ/mol'],
           caption: 'Porovnej, jak daleko jsou od sebe jádra v molekulách vodíku, chloru a dusíku.',
+        },
+        {
+          type: 'table',
+          headers: ['Vazba', 'Délka (pm)', 'Vazebná energie (kJ/mol)'],
+          rows: [
+            ['$H–F$', '92', '568'],
+            ['$H–Cl$', '127', '431'],
+            ['$H–Br$', '141', '366'],
+            ['$H–I$', '161', '298'],
+          ],
+          caption: 'Velikost atomu: ve skupině halogenů směrem dolů atomy rostou, vazba $H–X$ se prodlužuje a slábne.',
         },
         {
           type: 'list',
           items: [
-            '**Menší atomy, kratší vazba:** malé atomy vodíku jsou u sebe blízko, velké atomy chloru daleko.',
+            '**Větší atomy, delší vazba:** sdílený pár je dál od jader a drží je slaběji.',
             '**Kratší bývá pevnější:** sdílené elektrony jsou blíž oběma jádrům.',
-            '==**Násobné vazby jsou kratší a pevnější než jednoduché**==, jako trojná vazba v dusíku. Co je dvojná a trojná vazba, uvidíš hned v další lekci.',
+            '==**Délka vazby klesá s násobností: jednoduchá > dvojná > trojná.**== Co je dvojná a trojná vazba, uvidíš hned v další lekci.',
           ],
+        },
+        {
+          type: 'example',
+          title: 'Je dvojná vazba dvakrát pevnější?',
+          problem: 'Porovnej energii vazby $C=C$ s dvojnásobkem energie vazby $C–C$.',
+          steps: [
+            'Dvojnásobek jednoduché vazby: 2 · 348 kJ/mol = 696 kJ/mol.',
+            'Skutečná dvojná vazba $C=C$: 614 kJ/mol.',
+            '614 < 696, druhá vazba tedy přidá jen 614 − 348 = 266 kJ/mol, méně než první.',
+          ],
+          answer: 'Ne. Dvojná vazba je pevnější než jednoduchá, ale ne dvakrát, protože druhá vazba je slabší než první (proč, vysvětlí vazby σ a π v další lekci).',
         },
         {
           type: 'callout',
@@ -294,7 +315,8 @@ const l31: Lesson = {
   ],
   summary: [
     'Při vzniku chemické vazby energie soustavy klesá a uvolňuje se; k rozštěpení vazby ji musíme dodat.',
-    'Délka vazby je vzdálenost jader; kratší vazby bývají pevnější a násobné vazby jsou kratší a pevnější než jednoduché.',
+    'Délka vazby je vzdálenost jader v minimu křivky energie; roste s velikostí atomů ($H–F$ < $H–Cl$ < $H–Br$ < $H–I$) a klesá s násobností (jednoduchá > dvojná > trojná).',
+    'Kratší vazby bývají pevnější; dvojná vazba je pevnější než jednoduchá, ale ne dvakrát.',
     'Elektronegativita je schopnost atomu ve vazbě přitahovat elektrony; nejvyšší má fluor (3,98).',
     'Elektronegativita roste v periodě zleva doprava a ve skupině zdola nahoru.',
     'Podle ΔX rozlišujeme vazbu nepolární (pod 0,4), polární (0,4–1,7) a iontovou (od 1,7).',
@@ -363,25 +385,31 @@ const l31: Lesson = {
       answer: true,
       explain: 'ΔX = 3,44 − 1,31 = 2,13, tedy víc než 1,7. Oxid hořečnatý $MgO$ je iontová sloučenina.',
     },
+    {
+      kind: 'order',
+      q: 'Seřaď vazby od nejslabší po nejpevnější.',
+      items: ['$H–I$', '$H–Br$', '$H–Cl$', '$H–F$'],
+      explain: 'Od jodu k fluoru se atom halogenu zmenšuje, vazba se zkracuje a sílí: 298 < 366 < 431 < 568 kJ/mol.',
+    },
   ],
 }
 
 // ─────────────────────────────────────────────────────────────
-// l3-2 Kovalentní vazba a tvary molekul
+// l3-2 Kovalentní vazba a Lewisovy vzorce
 // ─────────────────────────────────────────────────────────────
 const l32: Lesson = {
   id: 'l3-2',
-  title: 'Kovalentní vazba a tvary molekul',
+  title: 'Kovalentní vazba a Lewisovy vzorce',
   goals: [
-    'Nakreslit valenční (Lewisův) vzorec jednoduché molekuly včetně volných elektronových párů',
     'Rozlišit jednoduchou, dvojnou a trojnou vazbu a spočítat v nich vazby σ a π',
-    'Vysvětlit vznik koordinační vazby v $NH4^+$ a $H3O^+$',
-    'Podle modelu VSEPR určit tvar molekuly a rozhodnout, zda je polární',
+    'Krok za krokem nakreslit Lewisův (valenční) vzorec molekuly i iontu',
+    'Vysvětlit koordinační vazbu v $NH4^+$, $H3O^+$ a $CO$ a spočítat formální náboj atomu',
+    'Popsat rezonanci v $O3$, $NO3^-$ a $CO3^2-$ a poznat výjimky z oktetu v $BF3$, $PCl5$ a $SF6$',
   ],
-  hook: 'Molekula vody je zalomená jako bumerang, oxid uhličitý rovný jako špejle. Právě ten malý rozdíl ve tvaru rozhoduje o tom, jestli z látky bude oceán, nebo plyn v bublinkách limonády.',
+  hook: 'Molekulu nakreslíš na papír za pár vteřin: čárky jsou vazby, tečky volné páry. Jenže u ozonu tě nákres nachytá: jedna vazba vyjde dvojná, druhá jednoduchá, a měření přitom ukazuje dvě úplně stejné. Dnes se naučíš kreslit elektrony tak, aby tě žádná molekula nepřechytračila.',
   sections: [
     {
-      title: 'Sdílený elektronový pár',
+      title: 'Sdílené elektronové páry',
       icon: 'electron',
       blocks: [
         {
@@ -394,14 +422,8 @@ const l32: Lesson = {
           caption: 'Vznik molekuly vodíku. Sdílený pár kreslíme dvojtečkou, nebo častěji čárkou.',
         },
         {
-          type: 'molecule',
-          molecules: ['H2', 'Cl2'],
-          labels: ['vodík $H–H$', 'chlor $Cl–Cl$'],
-          caption: 'Dvě nejjednodušší molekuly s jednou kovalentní vazbou. Otoč si je myší nebo prstem.',
-        },
-        {
           type: 'p',
-          text: 'Páry, které se na vazbě nepodílejí, jsou **volné** (nevazebné) **elektronové páry**. Ve **valenčním vzorci** (Lewisově vzorci) je kreslíme jako dvojici teček nebo čárku u symbolu atomu.',
+          text: 'Páry, které se na vazbě nepodílejí, jsou **volné** (nevazebné) **elektronové páry**. Ve **valenčním** neboli **Lewisově vzorci** je kreslíme jako dvojici teček nebo čárku u symbolu. Atomy 2. periody se snaží mít kolem sebe osm elektronů (**oktetové pravidlo**), vodíku stačí dva jako heliu.',
         },
         {
           type: 'structure',
@@ -412,38 +434,19 @@ const l32: Lesson = {
           type: 'keyterms',
           items: [
             { term: 'vazebný elektronový pár', def: 'dvojice elektronů sdílená dvěma atomy, tvoří kovalentní vazbu' },
-            { term: 'vaznost', def: 'počet kovalentních vazeb, které atom tvoří: H 1, O 2, N 3, C 4' },
+            { term: 'volný elektronový pár', def: 'dvojice valenčních elektronů, která patří jen jednomu atomu' },
+            { term: 'vaznost', def: 'počet kovalentních vazeb, které atom obvykle tvoří: H 1, O 2, N 3, C 4' },
           ],
         },
         {
-          type: 'callout',
-          variant: 'remember',
-          text: 'Vodíku stačí dva elektrony (jako heliu), ostatním atomům 2. periody osm. Tomuto pravidlu se říká **oktetové pravidlo**.',
-        },
-        {
-          type: 'check',
-          question: {
-            kind: 'number',
-            q: 'Kolik volných elektronových párů má každý z atomů chloru v molekule $Cl2$?',
-            answer: 3,
-            explain: 'Chlor má 7 valenčních elektronů. Jeden jde do vazby, zbylých 6 tvoří 3 volné páry. S vazebným párem má chlor oktet.',
-          },
-        },
-      ],
-    },
-    {
-      title: 'Jednoduchá, dvojná a trojná vazba',
-      icon: 'bond',
-      blocks: [
-        {
           type: 'p',
-          text: 'Atomy mohou sdílet i víc párů: **jednoduchá vazba** je jeden sdílený pár, **dvojná vazba** dva a **trojná vazba** tři. Kyslík v $O2$ je spojen dvojnou vazbou, dusík v $N2$ trojnou.',
+          text: 'Atomy mohou sdílet i víc párů: **jednoduchá vazba** je jeden sdílený pár, **dvojná vazba** dva a **trojná vazba** tři. Kyslík v $O2$ je spojen dvojnou vazbou, dusík v $N2$ trojnou. Čím víc sdílených párů, tím je vazba kratší a pevnější.',
         },
         {
           type: 'molecule',
           molecules: ['Cl2', 'O2', 'N2'],
           labels: ['jednoduchá $Cl–Cl$', 'dvojná $O=O$', 'trojná $N≡N$'],
-          caption: 'Čím víc sdílených párů, tím blíž jsou atomy u sebe.',
+          caption: 'Otoč si je myší nebo prstem: čím víc sdílených párů, tím blíž jsou atomy u sebe.',
         },
         {
           type: 'structure',
@@ -495,23 +498,25 @@ const l32: Lesson = {
       ],
     },
     {
-      title: 'Jak nakreslit valenční vzorec',
+      title: 'Lewisův vzorec krok za krokem',
       icon: 'pencil',
       blocks: [
         {
           type: 'p',
-          text: 'Valenční vzorec sestavíš v pěti krocích. Stačí znát počet valenčních elektronů, který vyčteš z čísla skupiny.',
+          text: 'Lewisův vzorec sestavíš podle pevného postupu. Potřebuješ jen počet valenčních elektronů, který vyčteš z čísla skupiny: 1. a 2. skupina má 1 a 2, skupiny 13 až 18 mají o deset méně, než je číslo skupiny.',
         },
         {
           type: 'process',
           layout: 'flow',
           steps: [
-            { icon: 'calculator', title: 'Sečti elektrony', text: 'valenční elektrony všech atomů vyděl dvěma: dostaneš počet párů' },
-            { icon: 'atom', title: 'Vyber centrální atom', text: 'ten, který tvoří nejvíc vazeb (bývá nejméně elektronegativní); vodík nikdy není uprostřed' },
+            { icon: 'calculator', title: 'Sečti valenční elektrony', text: 'všech atomů; u aniontu přičti, u kationtu odečti náboj. Vyděl dvěma: máš počet párů' },
+            { icon: 'atom', title: 'Postav kostru', text: 'centrální je atom s nejvyšší vazností (bývá nejméně elektronegativní); vodík nikdy není uprostřed' },
             { icon: 'bond', title: 'Spoj jednoduchými vazbami', text: 'centrální atom s každým okolním atomem' },
-            { icon: 'electron', title: 'Doplň volné páry', text: 'okolním atomům do oktetu, vodíku jen dvojici' },
-            { icon: 'check', title: 'Zbytek doprostřed', text: 'zbylé páry dej centrálnímu atomu; chybí-li mu oktet, udělej z volného páru souseda dvojnou nebo trojnou vazbu' },
+            { icon: 'electron', title: 'Doplň volné páry', text: 'okolním atomům do oktetu, vodíku nic; zbylé páry dej centrálnímu atomu' },
+            { icon: 'arrow-cycle', title: 'Dořeš oktet', text: 'chybí-li centrálnímu atomu oktet, udělej z volného páru souseda dvojnou nebo trojnou vazbu' },
+            { icon: 'check', title: 'Zkontroluj', text: 'počet elektronů, oktety a formální náboje (uvidíš za chvíli)' },
           ],
+          caption: 'Šest kroků k Lewisovu vzorci.',
         },
         {
           type: 'structure',
@@ -520,8 +525,8 @@ const l32: Lesson = {
         },
         {
           type: 'example',
-          title: 'Valenční vzorec oxidu uhličitého',
-          problem: 'Nakresli valenční vzorec $CO2$.',
+          title: 'Oxid uhličitý',
+          problem: 'Nakresli Lewisův vzorec $CO2$.',
           steps: [
             'Valenční elektrony: C má 4, každý O má 6, celkem 4 + 2 · 6 = 16 elektronů, tedy 8 párů.',
             'Centrální atom je uhlík. Kostra $O–C–O$ spotřebuje 2 páry.',
@@ -532,29 +537,36 @@ const l32: Lesson = {
           answer: '$O=C=O$ se dvěma volnými páry na každém kyslíku',
         },
         {
-          type: 'structure',
-          art: art(' ··         ··', ' O  =  C  =  O', ' ··         ··'),
-          caption: 'Valenční vzorec $CO2$: dvě dvojné vazby, uhlík bez volných párů.',
+          type: 'example',
+          title: 'Kyanovodík',
+          problem: 'Nakresli Lewisův vzorec $HCN$.',
+          steps: [
+            'Valenční elektrony: 1 (H) + 4 (C) + 5 (N) = 10 elektronů, tedy 5 párů.',
+            'Vodík nemůže být uprostřed, centrální je uhlík. Kostra $H–C–N$ spotřebuje 2 páry.',
+            'Dusík dostane 3 volné páry, celkem je rozdáno 5 párů.',
+            'Uhlík má jen 2 vazby. Dva volné páry dusíku proto převedeme na vazby: vznikne trojná vazba $C≡N$.',
+            'Kontrola: C má 4 vazby (8 elektronů), N 3 vazby a 1 volný pár (8 elektronů), H jednu vazbu (2 elektrony).',
+          ],
+          answer: '$H–C≡N$ s jedním volným párem na dusíku',
         },
         {
-          type: 'molecule',
-          molecules: ['BF3', 'SF6'],
-          labels: ['$BF3$', '$SF6$'],
-          caption: 'Dvě výjimky z oktetu ve 3D: bor má jen tři vazby, síra celých šest.',
+          type: 'structure',
+          art: art('H — C ≡ N:'),
+          caption: 'Kyanovodík: jedna jednoduchá a jedna trojná vazba. Prudký jed, který voní po hořkých mandlích.',
         },
         {
           type: 'callout',
-          variant: 'warning',
-          title: 'Výjimky z oktetu',
-          text: 'Oktetové pravidlo neplatí vždy. Bor v $BF3$ má kolem sebe jen 6 elektronů. Prvky 3. a vyšší periody mohou mít elektronů víc než osm, třeba síra v $SF6$ má kolem sebe 12 elektronů.',
+          variant: 'tip',
+          title: 'Ion kreslíš stejně',
+          text: 'U iontu jen v prvním kroku uprav počet elektronů: za každý záporný náboj jeden elektron přidej, za každý kladný jeden uber. Hotový vzorec dej do hranaté závorky a náboj napiš vpravo nahoru.',
         },
         {
           type: 'check',
           question: {
             kind: 'number',
-            q: 'Kolik valenčních elektronů celkem rozmísťuješ ve valenčním vzorci amoniaku $NH3$?',
+            q: 'Kolik elektronů celkem rozmísťuješ v Lewisově vzorci amonného kationtu $NH4^+$?',
             answer: 8,
-            explain: 'Dusík (15. skupina) má 5 valenčních elektronů a tři vodíky po jednom: 5 + 3 = 8 elektronů, tedy 4 páry (3 vazebné a 1 volný).',
+            explain: 'Dusík má 5 valenčních elektronů a čtyři vodíky po jednom, to je 9. Kladný náboj znamená o jeden elektron méně: 9 − 1 = 8 elektronů, tedy 4 vazebné páry.',
           },
         },
       ],
@@ -590,19 +602,29 @@ const l32: Lesson = {
           caption: 'Amonný kation $NH4^+$ a oxoniový kation $H3O^+$. Šipka míří od donoru k akceptoru. Kladný náboj patří celému iontu.',
         },
         {
-          type: 'molecule',
-          molecules: ['NH4+', 'H3O+'],
-          labels: ['$NH4^+$: tetraedr', '$H3O^+$: trigonální pyramida'],
-          caption: 'Poznáš ve 3D modelu, která vazba vznikla koordinačně?',
-        },
-        {
           type: 'p',
           text: '==Jakmile koordinační vazba vznikne, nijak se neliší od ostatních.== V amonném kationtu jsou všechny čtyři vazby $N–H$ stejně dlouhé a stejně pevné; liší se jen to, odkud elektrony přišly.',
         },
         {
+          type: 'p',
+          text: 'Koordinační vazbu najdeš i v **oxidu uhelnatém** $CO$. Uhlík a kyslík sdílejí dva páry „obyčejně“ a třetí pár dodá celý kyslík. Vznikne trojná vazba a na každém atomu zůstane jeden volný pár.',
+        },
+        {
+          type: 'structure',
+          art: art(':C ≡ O:'),
+          caption: 'Oxid uhelnatý: 4 + 6 = 10 elektronů, tedy 5 párů. Tři tvoří trojnou vazbu, z toho jeden je koordinační (oba elektrony od kyslíku).',
+        },
+        {
+          type: 'molecule',
+          molecules: ['NH4+', 'H3O+', 'CO'],
+          labels: ['amonný kation $NH4^+$', 'oxoniový kation $H3O^+$', 'oxid uhelnatý $CO$'],
+          caption: 'Tři částice s koordinační vazbou. Poznáš ve 3D modelu, která vazba vznikla koordinačně? Nepoznáš, a to je přesně ono.',
+        },
+        {
           type: 'callout',
           variant: 'fact',
-          text: 'Koordinační vazby drží pohromadě i hemoglobin v tvé krvi: atom železa v něm váže kyslík právě touto vazbou. Víc o takových sloučeninách (komplexech) uslyšíš v úrovni 7.',
+          title: 'Proč je $CO$ tak jedovatý',
+          text: 'Atom železa v hemoglobinu tvé krve váže kyslík koordinační vazbou. Oxid uhelnatý se na stejné místo váže volným párem uhlíku, a to asi 200krát pevněji než kyslík. Krev pak kyslík nepřenáší. O takových sloučeninách (komplexech) uslyšíš víc v úrovni 7.',
         },
         {
           type: 'check',
@@ -610,45 +632,413 @@ const l32: Lesson = {
             kind: 'tf',
             q: 'V amonném kationtu $NH4^+$ se vazba, která vznikla koordinačně, liší délkou od ostatních tří vazeb $N–H$.',
             answer: false,
-            explain: 'Všechny čtyři vazby jsou po vzniku rovnocenné, ion má tvar pravidelného čtyřstěnu. Koordinační vazba se liší jen původem elektronů.',
+            explain: 'Všechny čtyři vazby jsou po vzniku rovnocenné. Koordinační vazba se liší jen původem elektronů.',
           },
         },
       ],
     },
     {
-      title: 'Tvary molekul: model VSEPR',
-      icon: 'molecule',
+      title: 'Formální náboj',
+      icon: 'balance-scale',
+      blocks: [
+        {
+          type: 'p',
+          text: 'V amonném kationtu dal dusík do vazeb víc, než kolik z nich „má“. Tuhle nerovnováhu vyjadřuje **formální náboj**: počítáme, jako by se každý vazebný pár dělil mezi oba atomy přesně napůl.',
+        },
+        {
+          type: 'formula',
+          text: 'formální náboj = V − N − B/2',
+          caption: 'V = valenční elektrony volného atomu, N = elektrony ve volných párech atomu, B/2 = počet vazeb atomu (polovina vazebných elektronů)',
+        },
+        {
+          type: 'table',
+          headers: ['Částice', 'Atom', 'V', 'N', 'Vazby', 'Formální náboj'],
+          rows: [
+            ['$NH4^+$', 'N', '5', '0', '4', '5 − 0 − 4 = **+1**'],
+            ['$H3O^+$', 'O', '6', '2', '3', '6 − 2 − 3 = **+1**'],
+            ['$CO$', 'C', '4', '2', '3', '4 − 2 − 3 = **−1**'],
+            ['$CO$', 'O', '6', '2', '3', '6 − 2 − 3 = **+1**'],
+          ],
+          caption: 'Vodíky mají ve všech případech formální náboj 0 (1 − 0 − 1).',
+        },
+        {
+          type: 'list',
+          items: [
+            '**Součet** formálních nábojů se rovná náboji částice, u molekuly je 0.',
+            'Nejlepší vzorec má formální náboje **co nejmenší**, ideálně všude 0.',
+            'Když už záporný formální náboj být musí, patří **elektronegativnějšímu** atomu.',
+          ],
+        },
+        {
+          type: 'structure',
+          art: art(' ··      ··              ··', ' O = C = O      :O ≡ C — O:', ' ··      ··              ··', ' 0   0   0      +1   0  −1', ' vzorec A        vzorec B'),
+          caption: 'Dva vzorce $CO2$, oba s oktety. Pod atomy jsou formální náboje.',
+        },
+        {
+          type: 'example',
+          title: 'Který vzorec oxidu uhličitého je lepší?',
+          problem: 'Oba vzorce $CO2$ nahoře splňují oktetové pravidlo. Rozhodni pomocí formálních nábojů, který je správný.',
+          steps: [
+            'Vzorec A, kyslík: 6 − 4 − 2 = 0; uhlík: 4 − 0 − 4 = 0.',
+            'Vzorec B, kyslík s trojnou vazbou: 6 − 2 − 3 = +1; uhlík: 4 − 0 − 4 = 0; kyslík s jednoduchou vazbou: 6 − 6 − 1 = −1.',
+            'Oba součty jsou 0, ale vzorec A má všechny formální náboje nulové.',
+          ],
+          answer: 'Správný je vzorec A, $O=C=O$. Měření to potvrzuje: obě vazby $C=O$ jsou stejně dlouhé.',
+        },
+        {
+          type: 'callout',
+          variant: 'warning',
+          title: 'Formální náboj není oxidační číslo',
+          text: 'Formální náboj dělí vazebné páry napůl. Oxidační číslo, které poznáš v lekci o chemických vzorcích, je naopak celé přiděluje elektronegativnějšímu atomu. Uhlík v $CO$ má formální náboj −1, ale oxidační číslo +II.',
+        },
+        {
+          type: 'check',
+          question: {
+            kind: 'number',
+            q: 'Jaký formální náboj má kyslík v hydroxidovém aniontu $OH^-$? Kyslík v něm má jednu vazbu a tři volné páry.',
+            answer: -1,
+            explain: 'V = 6, N = 6 (tři volné páry), 1 vazba: 6 − 6 − 1 = −1. Záporný náboj aniontu tedy „sedí“ na kyslíku.',
+          },
+        },
+      ],
+    },
+    {
+      title: 'Rezonance: když jeden vzorec nestačí',
+      icon: 'arrow-cycle',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Podle postupu vyjde ozonu $O3$ jedna vazba dvojná a druhá jednoduchá. Měření ale ukazuje, že ==obě vazby $O–O$ jsou stejně dlouhé (128 pm)==, někde mezi jednoduchou (148 pm) a dvojnou (121 pm).',
+        },
+        {
+          type: 'structure',
+          art: art(' ··    ··    ··       ··    ··    ··', ' O  =  O  —  O:  ↔   :O  —  O  =  O', ' ··          ··       ··          ··', ' 0    +1    −1       −1    +1     0'),
+          caption: 'Dvě rezonanční struktury ozonu se liší jen polohou dvojné vazby. Dole jsou formální náboje.',
+        },
+        {
+          type: 'p',
+          text: 'Žádný z obou vzorců sám o sobě neplatí. Skutečná molekula je **rezonanční hybrid**, jakýsi „průměr“ všech **rezonančních** (mezních) **struktur**. Elektrony vazby π nepatří jedné vazbě, ale jsou **delokalizované** přes celou částici. Mezi struktury píšeme obousměrnou šipku ↔.',
+        },
+        {
+          type: 'diagram',
+          id: 'resonance',
+          caption: 'Tři rezonanční struktury dusičnanového aniontu $NO3^-$ a jejich hybrid. Skutečný ion má všechny tři vazby N–O stejně dlouhé a záporný náboj rozprostřený rovnoměrně na tři kyslíky.',
+        },
+        {
+          type: 'example',
+          title: 'Uhličitanový anion',
+          problem: 'Nakresli Lewisův vzorec $CO3^2-$ a vysvětli, proč jsou v něm všechny tři vazby C–O stejné.',
+          steps: [
+            'Elektrony: 4 (C) + 3 · 6 (O) + 2 (náboj 2−) = 24, tedy 12 párů.',
+            'Kostra: uhlík uprostřed, tři jednoduché vazby C–O spotřebují 3 páry.',
+            'Každý kyslík dostane 3 volné páry, to je 9 párů. Rozdáno je všech 12, ale uhlík má jen 6 elektronů.',
+            'Jeden volný pár kyslíku převedeme na dvojnou vazbu C=O a uhlík má oktet.',
+            'Formální náboje: C 0, kyslík s dvojnou vazbou 0, oba kyslíky s jednoduchou vazbou −1. Součet −2 odpovídá náboji.',
+            'Dvojná vazba může vést ke kterémukoli ze tří kyslíků, existují tedy 3 rezonanční struktury.',
+          ],
+          answer: 'Skutečný ion je hybrid tří struktur: všechny vazby C–O jsou stejné, něco mezi jednoduchou a dvojnou, a náboj 2− se dělí mezi tři kyslíky.',
+        },
+        {
+          type: 'molecule',
+          molecules: ['O3', 'NO3-', 'CO3^2-'],
+          labels: ['ozon $O3$', 'dusičnanový anion $NO3^-$', 'uhličitanový anion $CO3^2-$'],
+          caption: 'Tři částice, které popíšeš jen rezonancí. Ve 3D modelu mají všechny vazby k okolním kyslíkům stejně dlouhé.',
+        },
+        {
+          type: 'callout',
+          variant: 'warning',
+          title: 'Molekula nepřeskakuje',
+          text: 'Rezonance neznamená, že se ozon rychle přepíná mezi dvěma vzorci. Je to jako s mezkem: kříženec koně a oslice není chvíli kůň a chvíli osel, ale pořád mezek. Rezonanční struktury jsou jen naše pomůcka, jak na papíře zakreslit delokalizované elektrony.',
+        },
+        {
+          type: 'check',
+          question: {
+            kind: 'tf',
+            q: 'V dusičnanovém aniontu $NO3^-$ je jedna vazba N–O kratší než ostatní dvě, protože je dvojná.',
+            answer: false,
+            explain: 'Dvojná vazba je delokalizovaná přes všechny tři kyslíky. Skutečný ion je rezonanční hybrid a všechny tři vazby N–O jsou stejně dlouhé.',
+          },
+        },
+      ],
+    },
+    {
+      title: 'Výjimky z oktetu',
+      icon: 'warning',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Oktetové pravidlo je šikovná pomůcka, ale ne zákon přírody. Výjimky mají tři podoby.',
+        },
+        {
+          type: 'iconlist',
+          items: [
+            { icon: 'ion-minus', title: 'Méně než oktet', text: 'bor v $BF3$ má kolem sebe jen 6 elektronů, beryllium v $BeCl2$ jen 4' },
+            { icon: 'ion-plus', title: 'Rozšířený oktet', text: 'fosfor v $PCl5$ má 10 elektronů, síra v $SF6$ dokonce 12' },
+            { icon: 'electron', title: 'Lichý počet elektronů', text: '$NO$ (11 elektronů) a $NO2$ (17 elektronů) mají jeden nepárový elektron, jsou to **radikály**' },
+          ],
+        },
+        {
+          type: 'molecule',
+          molecules: ['BF3', 'PCl5', 'SF6'],
+          labels: ['$BF3$: 6 elektronů kolem B', '$PCl5$: 10 elektronů kolem P', '$SF6$: 12 elektronů kolem S'],
+          caption: 'Tři výjimky z oktetu ve 3D. Jaký mají tvar, rozebereme v příští lekci.',
+        },
+        {
+          type: 'example',
+          title: 'Chlorid fosforečný',
+          problem: 'Nakresli Lewisův vzorec $PCl5$ a spočítej elektrony kolem fosforu.',
+          steps: [
+            'Elektrony: 5 (P) + 5 · 7 (Cl) = 40, tedy 20 párů.',
+            'Kostra: fosfor uprostřed a pět vazeb P–Cl, to je 5 párů.',
+            'Každý chlor dostane 3 volné páry: 15 párů. Celkem 20, vše je rozdané a každý chlor má oktet.',
+            'Fosfor má kolem sebe 5 vazebných párů, tedy 10 elektronů.',
+          ],
+          answer: 'Fosfor v $PCl5$ má rozšířený oktet: 10 elektronů.',
+        },
+        {
+          type: 'p',
+          text: 'Proč smí fosfor a síra mít víc než osm elektronů? Jsou větší, vejde se kolem nich víc sousedů a jejich valenční vrstva má víc orbitalů. Prvky 2. periody (C, N, O, F) mají jen čtyři valenční orbitaly (2s a tři 2p), a proto ==kolem nich nikdy nebude víc než osm elektronů.==',
+        },
+        {
+          type: 'structure',
+          art: art('    F     H', '    |     |', 'F — B  ←  N — H', '    |     |', '    F     H'),
+          caption: 'Bor v $BF3$ má volné místo pro jeden pár. Amoniak mu ho ochotně nabídne a vznikne koordinační vazba; bor pak má oktet.',
+        },
+        {
+          type: 'callout',
+          variant: 'tip',
+          title: 'Proč v $BF3$ nekreslíme dvojnou vazbu',
+          text: 'Z volného páru fluoru by šla udělat dvojná vazba B=F a bor by měl oktet. Fluor by ale nesl formální náboj +1, a to nejelektronegativnějšímu prvku nesedí. Vzorec se třemi jednoduchými vazbami má všechny formální náboje 0, a proto je lepší.',
+        },
+        {
+          type: 'check',
+          question: {
+            kind: 'choice',
+            q: 'Kolik elektronů má kolem sebe atom síry v molekule $SF6$?',
+            options: ['12', '8', '6', '10'],
+            answer: 0,
+            explain: 'Síra tvoří šest vazeb S–F a každá je jeden sdílený pár: 6 · 2 = 12 elektronů. Je to rozšířený oktet, možný jen u prvků 3. a vyšší periody.',
+          },
+        },
+      ],
+    },
+  ],
+  summary: [
+    'Kovalentní vazbu tvoří sdílený elektronový pár; atomy tím obvykle získají oktet (vodík dvojici).',
+    'Jednoduchá vazba je σ, dvojná σ + π a trojná σ + 2π; vazba π je slabší než σ.',
+    'Lewisův vzorec sestavíš takto: sečti valenční elektrony, postav kostru, doplň volné páry a chybějící oktet dořeš násobnou vazbou.',
+    'Koordinační vazbu tvoří pár, který dodá jediný atom (donor), např. v $NH4^+$, $H3O^+$ a $CO$.',
+    'Formální náboj = V − N − B/2; nejlepší vzorec má formální náboje co nejmenší a jejich součet se rovná náboji částice.',
+    'Když jeden vzorec nestačí, je skutečná částice rezonančním hybridem: v $O3$, $NO3^-$ a $CO3^2-$ jsou vazby ke kyslíkům stejné.',
+    'Výjimky z oktetu: bor v $BF3$ má kolem sebe 6 elektronů, fosfor v $PCl5$ 10 a síra v $SF6$ 12.',
+  ],
+  quiz: [
+    {
+      kind: 'choice',
+      q: 'Kolik vazeb σ a π obsahuje molekula $CO2$ ($O=C=O$)?',
+      options: ['2 σ a 2 π', '4 σ', '2 σ a 1 π', '1 σ a 3 π'],
+      answer: 0,
+      explain: 'Každá dvojná vazba se skládá z jedné vazby σ a jedné π. Dvě dvojné vazby dávají 2 σ a 2 π.',
+    },
+    {
+      kind: 'number',
+      q: 'Kolik volných elektronových párů má atom dusíku v molekule amoniaku $NH3$?',
+      answer: 1,
+      explain: 'Dusík má 5 valenčních elektronů: 3 použije na vazby s vodíky, zbylé 2 tvoří jeden volný pár.',
+    },
+    {
+      kind: 'tf',
+      q: 'Molekula ozonu se neustále přepíná mezi dvěma rezonančními strukturami.',
+      answer: false,
+      explain: 'Ozon je pořád jeden a tentýž rezonanční hybrid s dvěma stejnými vazbami. Rezonanční struktury jsou jen způsob, jak zakreslit delokalizované elektrony.',
+    },
+    {
+      kind: 'multi',
+      q: 'Ve kterých částicích najdeš koordinační vazbu?',
+      options: ['$NH4^+$', '$H3O^+$', '$CO$', '$CH4$', '$NH3$'],
+      answers: [0, 1, 2],
+      explain: 'V $NH4^+$ a $H3O^+$ poskytl volný pár dusík nebo kyslík iontu $H^+$, v $CO$ dodal jeden pár trojné vazby kyslík. $CH4$ a $NH3$ mají jen obyčejné kovalentní vazby.',
+    },
+    {
+      kind: 'match',
+      q: 'Přiřaď k molekule počet elektronů kolem centrálního atomu.',
+      pairs: [
+        ['$BF3$', '6'],
+        ['$CH4$', '8'],
+        ['$PCl5$', '10'],
+        ['$SF6$', '12'],
+      ],
+      explain: 'Každá vazba znamená 2 elektrony u centrálního atomu. Bor má jen 3 vazby, uhlík oktet, fosfor a síra rozšířený oktet.',
+    },
+    {
+      kind: 'choice',
+      q: 'Jaký formální náboj má kyslík, který je v dusičnanovém aniontu $NO3^-$ vázán jednoduchou vazbou (má 3 volné páry)?',
+      options: ['−1', '0', '+1', '−2'],
+      answer: 0,
+      explain: '6 − 6 − 1 = −1. Dva takové kyslíky mají −1, dusík +1 a kyslík s dvojnou vazbou 0: součet −1 odpovídá náboji iontu.',
+    },
+    {
+      kind: 'tf',
+      q: 'Atom dusíku může mít ve sloučenině kolem sebe 10 elektronů, podobně jako fosfor v $PCl5$.',
+      answer: false,
+      explain: 'Dusík je prvek 2. periody a má jen čtyři valenční orbitaly (2s a 2p). Víc než oktet mít nemůže, proto $NCl5$ neexistuje.',
+    },
+    {
+      kind: 'choice',
+      q: 'Kolik elektronů sdílejí dva atomy spojené trojnou vazbou?',
+      options: ['2', '3', '4', '6'],
+      answer: 3,
+      explain: 'Trojná vazba jsou tři sdílené elektronové páry, tedy 6 elektronů.',
+    },
+  ],
+}
+
+// ─────────────────────────────────────────────────────────────
+// l3-7 Tvary molekul: VSEPR, hybridizace a polarita
+// ─────────────────────────────────────────────────────────────
+const l37: Lesson = {
+  id: 'l3-7',
+  title: 'Tvary molekul: VSEPR, hybridizace a polarita',
+  goals: [
+    'Podle modelu VSEPR určit tvar molekuly a vazebné úhly pro 2 až 6 elektronových oblastí',
+    'Vysvětlit, proč volné elektronové páry zmenšují vazebné úhly',
+    'Přiřadit centrálnímu atomu hybridizaci sp, sp² nebo sp³ a spojit ji s vazbami σ a π v ethanu, ethenu a ethynu',
+    'Z polarity vazeb a tvaru molekuly rozhodnout, zda je molekula polární',
+  ],
+  hook: 'Voda i oxid uhličitý jsou tříatomové molekuly s polárními vazbami. Přesto je voda polární kapalina, ve které se rozpustí sůl, a $CO2$ nepolární plyn v bublinkách limonády. Celý rozdíl je ve tvaru: voda je zalomená jako bumerang, $CO2$ rovný jako špejle.',
+  sections: [
+    {
+      title: 'Model VSEPR: elektronové páry se odpuzují',
+      icon: 'magnet',
       blocks: [
         {
           type: 'p',
           text: 'Tvar molekuly předpovíš modelem **VSEPR** (z anglického *Valence Shell Electron Pair Repulsion*, odpuzování elektronových párů valenční vrstvy). ==Elektronové páry kolem centrálního atomu se odpuzují, a proto se od sebe vzdálí co nejvíc.==',
         },
         {
-          type: 'process',
-          layout: 'flow',
-          steps: [
-            { icon: 'calculator', title: 'Spočítej elektronové oblasti', text: 'každá vazba (jednoduchá, dvojná i trojná) je jedna oblast, každý volný pár také' },
-            { icon: 'magnet', title: 'Rozmísti je co nejdál', text: '2 oblasti v přímce, 3 do trojúhelníku, 4 do čtyřstěnu (tetraedru)' },
-            { icon: 'magnifier', title: 'Popiš tvar podle atomů', text: 'volné páry „nevidíme“, ale tlačí na vazby' },
-            { icon: 'electron', title: 'Oprav úhly', text: 'volné páry odpuzují silněji než vazebné, proto vazebné úhly zmenšují' },
+          type: 'keyterms',
+          items: [
+            { term: 'elektronová oblast', def: 'místo s elektrony kolem centrálního atomu: každá vazba (jednoduchá, dvojná i trojná) je jedna oblast, každý volný pár také' },
+            { term: 'vazebný úhel', def: 'úhel mezi dvěma vazbami vycházejícími z jednoho atomu' },
+            { term: 'tvar molekuly', def: 'rozmístění atomů v prostoru; volné páry do něj nezahrnujeme, i když ho ovlivňují' },
           ],
         },
         {
-          type: 'diagram',
-          id: 'vsepr-shapes',
-          caption: 'Pět základních tvarů molekul s vazebnými úhly: podle počtu vazebných oblastí a volných párů na centrálním atomu. Klínová vazba míří před rovinu nákresu, čárkovaná za ni.',
+          type: 'process',
+          layout: 'flow',
+          steps: [
+            { icon: 'pencil', title: 'Nakresli Lewisův vzorec', text: 'postupem z minulé lekce' },
+            { icon: 'calculator', title: 'Spočítej oblasti', text: 'na centrálním atomu: vazby (násobná = jedna) + volné páry' },
+            { icon: 'atom', title: 'Rozmísti oblasti', text: '2 přímka, 3 trojúhelník, 4 čtyřstěn, 5 trigonální bipyramida, 6 oktaedr' },
+            { icon: 'magnifier', title: 'Pojmenuj tvar', text: 'podle poloh atomů; volné páry místo zabírají, ale do tvaru se nepočítají' },
+            { icon: 'electron', title: 'Oprav úhly', text: 'každý volný pár úhly mezi vazbami o kousek stlačí' },
+          ],
+          caption: 'Jak určit tvar molekuly v pěti krocích.',
+        },
+        {
+          type: 'p',
+          text: 'Proč volný pár odpuzuje víc než vazebný? Vazebný pár drží dvě jádra a je protažený mezi ně. Volný pár drží jen jedno jádro, je blíž centrálnímu atomu a rozprostře se do širšího prostoru.',
+        },
+        {
+          type: 'formula',
+          text: 'volný–volný > volný–vazebný > vazebný–vazebný',
+          caption: 'síla odpuzování mezi elektronovými páry',
         },
         {
           type: 'molecule',
           molecules: ['CH4', 'NH3', 'H2O'],
-          labels: ['methan $CH4$', 'amoniak $NH3$', 'voda $H2O$'],
-          caption: 'Otoč si je: ve všech třech míří čtyři elektronové oblasti do rohů čtyřstěnu, proto mají úhly v methanu 109,5°, ne 90°, jak by se zdálo z plochého nákresu. Čím víc volných párů, tím víc stlačí vazebný úhel.',
+          labels: ['methan: 109,5°', 'amoniak: 107°', 'voda: 104,5°'],
+          caption: 'Ve všech třech míří čtyři elektronové oblasti do rohů čtyřstěnu. Každý volný pár ale stlačí vazebné úhly o kousek víc.',
+        },
+        {
+          type: 'example',
+          title: 'Tvar amoniaku',
+          problem: 'Urči tvar molekuly $NH3$ a odhadni vazebný úhel.',
+          steps: [
+            'Lewisův vzorec: dusík má 3 vazby $N–H$ a 1 volný pár.',
+            'Elektronové oblasti: 3 + 1 = 4, míří tedy do rohů čtyřstěnu.',
+            'Atomy: dusík nahoře, tři vodíky pod ním v podstavě. Volný pár zabírá čtvrtý roh, ale do tvaru ho nepočítáme.',
+            'Volný pár tlačí na vazby silněji, úhel $H–N–H$ se zmenší ze 109,5° asi na 107°.',
+          ],
+          answer: 'trigonální pyramida s úhly asi 107°',
         },
         {
           type: 'callout',
           variant: 'tip',
           title: 'Balonkový pokus',
           text: 'Nafoukni čtyři stejné balonky a svaž je uzly k sobě. Samy se natočí do rohů čtyřstěnu jako vazby v methanu. Se dvěma balonky dostaneš přímku, se třemi trojúhelník. Balonky se „odpuzují“ stejně jako elektronové páry.',
+        },
+        {
+          type: 'check',
+          question: {
+            kind: 'choice',
+            q: 'Proč je vazebný úhel ve vodě (104,5°) menší než v methanu (109,5°)?',
+            options: [
+              'Dva volné páry kyslíku odpuzují vazebné páry silněji, než se odpuzují vazebné páry mezi sebou.',
+              'Molekula vody má jen dvě elektronové oblasti.',
+              'Atomy vodíku se ve vodě navzájem přitahují.',
+              'Kyslík je menší než uhlík, a tak se k němu vazby nevejdou.',
+            ],
+            answer: 0,
+            explain: 'Voda i methan mají 4 elektronové oblasti. Kyslík má ale 2 volné páry, které se roztahují víc než vazby a úhel $H–O–H$ stlačí.',
+          },
+        },
+      ],
+    },
+    {
+      title: 'Dvě až čtyři oblasti',
+      icon: 'molecule',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Většina molekul, které potkáš, má kolem centrálního atomu dvě, tři nebo čtyři elektronové oblasti. Podle toho, kolik z nich jsou volné páry, vznikne pět základních tvarů.',
+        },
+        {
+          type: 'diagram',
+          id: 'vsepr-shapes',
+          caption: 'Pět základních tvarů molekul s vazebnými úhly. Klínová vazba míří před rovinu nákresu, čárkovaná za ni.',
+        },
+        {
+          type: 'table',
+          headers: ['Oblasti', 'Vazby + volné páry', 'Tvar', 'Úhel', 'Příklady'],
+          rows: [
+            ['2', '2 + 0', 'lineární', '180°', '$BeCl2$, $CO2$'],
+            ['3', '3 + 0', 'trojúhelníková (rovinná)', '120°', '$BF3$, $SO3$'],
+            ['3', '2 + 1', 'lomená', 'asi 119°', '$SO2$'],
+            ['4', '4 + 0', 'tetraedrická', '109,5°', '$CH4$, $CCl4$, $NH4^+$'],
+            ['4', '3 + 1', 'trigonální pyramida', '107°', '$NH3$, $H3O^+$'],
+            ['4', '2 + 2', 'lomená', '104,5°', '$H2O$'],
+          ],
+          caption: 'Tvary pro dvě až čtyři elektronové oblasti.',
+        },
+        {
+          type: 'molecule',
+          molecules: ['BeCl2', 'BF3', 'CH4'],
+          labels: ['$BeCl2$: lineární, 180°', '$BF3$: trojúhelník, 120°', '$CH4$: tetraedr, 109,5°'],
+          caption: 'Tři tvary bez volných párů. Chlorid beryllitý má tvar přímky v plynném stavu; pevný tvoří dlouhé řetězce.',
+        },
+        {
+          type: 'example',
+          title: 'Proč je $CO2$ rovný a $SO2$ zalomený',
+          problem: 'Urči tvar molekul $CO2$ a $SO2$.',
+          steps: [
+            '$CO2$: uhlík má dvě dvojné vazby a žádný volný pár. Dvojná vazba je jedna oblast, oblasti jsou tedy 2.',
+            'Dvě oblasti míří na opačné strany: $CO2$ je lineární, 180°.',
+            '$SO2$: síra má dvě vazby ke kyslíkům (rezonance z minulé lekce) a navíc jeden volný pár. Oblasti jsou 3.',
+            'Tři oblasti tvoří trojúhelník, ale jeden roh zabírá volný pár. Atomy tvoří „V“.',
+          ],
+          answer: '$CO2$ je lineární (180°), $SO2$ lomený (asi 119°)',
+        },
+        {
+          type: 'molecule',
+          molecules: ['CO2', 'SO2'],
+          labels: ['$CO2$: lineární', '$SO2$: lomená'],
+        },
+        {
+          type: 'callout',
+          variant: 'warning',
+          title: 'Uspořádání oblastí není tvar molekuly',
+          text: 'Ve vodě míří čtyři oblasti do rohů čtyřstěnu, ale molekula tetraedrická není: atomy tvoří lomený tvar. Tvar vždy pojmenuj jen podle atomů.',
         },
         {
           type: 'check',
@@ -668,17 +1058,221 @@ const l32: Lesson = {
       ],
     },
     {
-      title: 'Polární vazba není totéž co polární molekula',
+      title: 'Pět a šest oblastí',
+      icon: 'crystal',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Prvky 3. a vyšší periody mohou mít rozšířený oktet, a tedy 5 nebo 6 elektronových oblastí. Pět oblastí tvoří **trigonální bipyramidu**: tři vazby leží v rovině „rovníku“ se 120° a dvě míří nahoru a dolů, k rovníku kolmo (90°). Šest oblastí tvoří **oktaedr** (osmistěn) a všechny sousední úhly jsou 90°.',
+        },
+        {
+          type: 'molecule',
+          molecules: ['PCl5', 'SF6', 'XeF4'],
+          labels: ['$PCl5$: trigonální bipyramida', '$SF6$: oktaedr', '$XeF4$: čtvercová'],
+          caption: 'Otoč si je a najdi úhly 90° a 120°. Ve $XeF4$ jsou nad a pod rovinou čtverce dva volné páry xenonu, které model neukazuje.',
+        },
+        {
+          type: 'table',
+          headers: ['Oblasti', 'Vazby + volné páry', 'Tvar', 'Úhly', 'Příklad'],
+          rows: [
+            ['5', '5 + 0', '**trigonální bipyramida**', '90° a 120°', '$PCl5$'],
+            ['5', '4 + 1', 'houpačka', 'o něco menší než 90° a 120°', '$SF4$'],
+            ['5', '3 + 2', 'tvar T', 'asi 90°', '$ClF3$'],
+            ['6', '6 + 0', '**oktaedrická**', '90°', '$SF6$'],
+            ['6', '5 + 1', 'čtvercová pyramida', 'asi 90°', '$BrF5$'],
+            ['6', '4 + 2', '**čtvercová** (rovinná)', '90°', '$XeF4$'],
+          ],
+          caption: 'Tučně jsou tvary, které potřebuješ znát. Ostatní řádky ukazují, že stejná pravidla fungují i dál.',
+        },
+        {
+          type: 'p',
+          text: 'Kam se volné páry posadí? V bipyramidě do roviny rovníku, kde mají víc místa. V oktaedru jsou si všechny rohy rovné, ale ==dva volné páry se postaví naproti sobě==, co nejdál od sebe. Proto je $XeF4$ plochý čtverec.',
+        },
+        {
+          type: 'example',
+          title: 'Tvar tetrafluoridu xenonu',
+          problem: 'Urči tvar molekuly $XeF4$.',
+          steps: [
+            'Elektrony: 8 (Xe) + 4 · 7 (F) = 36, tedy 18 párů.',
+            'Čtyři vazby $Xe–F$ spotřebují 4 páry, každý fluor dostane 3 volné páry (12 párů). Zbývají 2 páry a patří xenonu.',
+            'Xenon má 4 vazby + 2 volné páry = 6 oblastí, míří do rohů oktaedru.',
+            'Volné páry obsadí protilehlé rohy (nahoře a dole), čtyři fluory leží v jedné rovině.',
+          ],
+          answer: 'čtvercová (rovinná) molekula s úhly 90°',
+        },
+        {
+          type: 'callout',
+          variant: 'fact',
+          title: 'Vzácný plyn, a přece sloučenina',
+          text: 'Ještě v roce 1961 stálo v učebnicích, že vzácné plyny žádné sloučeniny netvoří. O rok později připravil Neil Bartlett první sloučeninu xenonu a brzy nato vznikl i $XeF4$. Fluorid sírový $SF6$ zase izoluje vysokonapěťové vypínače v rozvodnách, je ale nejsilnějším známým skleníkovým plynem.',
+        },
+        {
+          type: 'check',
+          question: {
+            kind: 'choice',
+            q: 'Jaký tvar má molekula $SF6$?',
+            options: ['oktaedrická', 'trigonální bipyramida', 'čtvercová', 'šestiúhelník v rovině'],
+            answer: 0,
+            explain: 'Síra má 6 vazeb a žádný volný pár. Šest oblastí míří do rohů oktaedru a všechny sousední úhly $F–S–F$ jsou 90°.',
+          },
+        },
+      ],
+    },
+    {
+      title: 'Hybridizace orbitalů',
+      icon: 'atom',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Uhlík má konfiguraci 1s^{2} 2s^{2} 2p^{2}: jen dva nepárové elektrony a orbitaly p svírají 90°. Methan přitom má čtyři úplně stejné vazby s úhly 109,5°. Rozpor vysvětluje **hybridizace**: orbitaly atomu se před vznikem vazeb „smíchají“ na nové, stejné hybridní orbitaly, které míří tam, kam je potřeba.',
+        },
+        {
+          type: 'process',
+          layout: 'flow',
+          steps: [
+            { icon: 'electron', title: 'Excitace', text: 'jeden elektron 2s přeskočí do prázdného 2p: 2s^{1} 2p^{3}, uhlík má 4 nepárové elektrony' },
+            { icon: 'mixture', title: 'Smíchání', text: 'orbital 2s a tři 2p dají čtyři stejné hybridní orbitaly sp³' },
+            { icon: 'atom', title: 'Natočení', text: 'orbitaly sp³ se od sebe vzdálí do rohů čtyřstěnu, 109,5°' },
+            { icon: 'bond', title: 'Vazby σ', text: 'každý orbital sp³ se překryje s orbitalem 1s vodíku' },
+          ],
+          caption: 'Jak vzniknou čtyři stejné vazby v methanu.',
+        },
+        {
+          type: 'diagram',
+          id: 'hybridization',
+          caption: 'Hybridizace uhlíku: sp³ (čtyři orbitaly do čtyřstěnu, methan), sp² (tři orbitaly v rovině se 120° a kolmý nehybridizovaný orbital p, ethen) a sp (dva orbitaly v přímce a dva kolmé orbitaly p, ethyn).',
+        },
+        {
+          type: 'table',
+          headers: ['Oblasti', 'Hybridizace', 'Uspořádání', 'Úhel', 'Příklady'],
+          rows: [
+            ['2', 'sp', 'lineární', '180°', '$BeCl2$, $CO2$, $C2H2$'],
+            ['3', 'sp²', 'trojúhelník', '120°', '$BF3$, $C2H4$'],
+            ['4', 'sp³', 'tetraedr', '109,5°', '$CH4$, $NH3$, $H2O$'],
+            ['5', 'sp³d', 'trigonální bipyramida', '90° a 120°', '$PCl5$'],
+            ['6', 'sp³d²', 'oktaedr', '90°', '$SF6$, $XeF4$'],
+          ],
+          caption: 'Hybridizace sp³d a sp³d² ber jen jako zmínku: je to zjednodušený popis a moderní výpočty ukazují, že se orbitaly d na vazbách podílejí málo.',
+        },
+        {
+          type: 'callout',
+          variant: 'remember',
+          text: '==Počet elektronových oblastí = počet hybridních orbitalů.== Stačí spočítat oblasti: 2 znamenají sp, 3 sp², 4 sp³. Hybridní orbitaly tvoří vazby σ a nesou volné páry; vazby π vznikají z orbitalů p, které se hybridizace neúčastnily.',
+        },
+        {
+          type: 'check',
+          question: {
+            kind: 'choice',
+            q: 'Jakou hybridizaci má bor v molekule $BF3$?',
+            options: ['sp²', 'sp', 'sp³', 'sp³d'],
+            answer: 0,
+            explain: 'Bor má 3 vazby a žádný volný pár, tedy 3 elektronové oblasti. Tři hybridní orbitaly znamenají sp², rovinný trojúhelník se 120°.',
+          },
+        },
+      ],
+    },
+    {
+      title: 'Ethan, ethen a ethyn: σ a π v praxi',
+      icon: 'bond',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Uhlík umí všechny tři hybridizace, a proto je organická chemie tak pestrá (úroveň 8). V **ethanu** má každý uhlík hybridizaci sp³ a atomy spojuje jednoduchá vazba σ. V **ethenu** je uhlík sp²: tři hybridní orbitaly tvoří vazby σ a zbylé orbitaly p se překryjí bokem nad a pod rovinou molekuly ve vazbu π. V **ethynu** je uhlík sp a dva zbylé orbitaly p dají dvě vazby π.',
+        },
+        {
+          type: 'molecule',
+          molecules: ['C2H6', 'C2H4', 'C2H2'],
+          labels: ['ethan: sp³, 109,5°', 'ethen: sp², 120°', 'ethyn: sp, 180°'],
+          caption: 'Ethan je prostorový, ethen celý leží v jedné rovině a ethyn je rovný jako tyčka.',
+        },
+        {
+          type: 'table',
+          headers: ['Molekula', 'Hybridizace C', 'Vazba C–C', 'Vazby σ', 'Vazby π', 'Tvar'],
+          rows: [
+            ['ethan $C2H6$', 'sp³', 'jednoduchá', '7', '0', 'tetraedr kolem každého C'],
+            ['ethen $C2H4$', 'sp²', 'dvojná', '5', '1', 'rovinný'],
+            ['ethyn $C2H2$', 'sp', 'trojná', '3', '2', 'lineární'],
+          ],
+          caption: 'Vazby σ: všechny vazby $C–H$ plus jedna vazba σ mezi uhlíky.',
+        },
+        {
+          type: 'example',
+          title: 'Propen',
+          problem: 'Urči hybridizaci všech uhlíků v propenu $CH2=CH–CH3$ a spočítej vazby σ a π.',
+          steps: [
+            'Uhlík $CH2=$: 3 oblasti (dvě vazby $C–H$ a dvojná vazba), tedy sp².',
+            'Prostřední uhlík $=CH–$: také 3 oblasti, sp².',
+            'Uhlík $–CH3$: 4 jednoduché vazby, tedy sp³.',
+            'Vazby σ: 6 vazeb $C–H$ + 2 vazby $C–C$ = 8. Vazba π je jen jedna, ve dvojné vazbě.',
+          ],
+          answer: 'sp², sp², sp³; 8 vazeb σ a 1 vazba π',
+        },
+        {
+          type: 'callout',
+          variant: 'fact',
+          title: 'Dvojná vazba se neotáčí',
+          text: 'Kolem jednoduché vazby σ se obě poloviny ethanu volně otáčejí. U ethenu by otočení roztrhlo boční překryv vazby π, a tak je molekula tuhá a plochá. Díky tomu existují izomery *cis* a *trans* (úroveň 8). A ještě jedna perlička: ethen je rostlinný hormon, který urychluje zrání ovoce. Proto banány v sáčku s jablkem zežloutnou rychleji.',
+        },
+        {
+          type: 'check',
+          question: {
+            kind: 'number',
+            q: 'Kolik vazeb σ obsahuje molekula ethenu $C2H4$?',
+            answer: 5,
+            explain: 'Čtyři vazby $C–H$ jsou σ a dvojná vazba $C=C$ má jednu σ a jednu π. Celkem 5 vazeb σ a 1 vazba π.',
+          },
+        },
+      ],
+    },
+    {
+      title: 'Polární vazba a polární molekula',
       icon: 'drop',
       blocks: [
         {
           type: 'p',
-          text: 'Molekula je **polární**, když má jeden konec trochu záporný a druhý trochu kladný. Každá polární vazba je jako malá šipka (dipól), ale záleží i na tvaru: ==pokud se šipky díky symetrii vyruší, molekula je nepolární.==',
+          text: 'Molekula je **polární**, když má jeden konec trochu záporný a druhý trochu kladný. Každá polární vazba je jako malá šipka (dipól) mířící k elektronegativnějšímu atomu. ==Šipky se sčítají podle tvaru molekuly: když se díky souměrnosti vyruší, molekula je nepolární.==',
+        },
+        {
+          type: 'keyterms',
+          items: [
+            { term: 'dipólový moment μ', def: 'míra polarity: součin částečného náboje a vzdálenosti nábojů, μ = q · d. Udává se v jednotkách debye (D), 1 D ≈ 3,34 · 10^{−30} C·m' },
+            { term: 'nepolární molekula', def: 'molekula s dipólovým momentem 0: nepolární vazby, nebo souměrný tvar' },
+          ],
         },
         {
           type: 'diagram',
           id: 'polarity',
           caption: 'Dipóly vazeb se sčítají jako šipky. V $HCl$ míří dipól k chloru. V lomené $H2O$ míří oba dipóly ke kyslíku a sečtou se: voda je polární. V lineárním $CO2$ táhnou obě polární vazby stejně silně na opačné strany a vyruší se: molekula je nepolární.',
+        },
+        {
+          type: 'table',
+          headers: ['Molekula', 'Tvar', 'μ (D)', 'Polární?'],
+          rows: [
+            ['$CO2$', 'lineární', '0', 'ne'],
+            ['$H2O$', 'lomená', '1,85', 'ano'],
+            ['$BF3$', 'trojúhelníková', '0', 'ne'],
+            ['$NH3$', 'trigonální pyramida', '1,47', 'ano'],
+            ['$CCl4$', 'tetraedrická', '0', 'ne'],
+            ['$CH2Cl2$', 'tetraedrická, různí sousedé', '1,60', 'ano'],
+          ],
+          caption: 'Dipólové momenty několika molekul.',
+        },
+        {
+          type: 'molecule',
+          molecules: ['CCl4', 'CH2Cl2'],
+          labels: ['$CCl4$: μ = 0', '$CH2Cl2$: μ = 1,6 D'],
+          caption: 'Tetrachlormethan a dichlormethan: oba mají tvar čtyřstěnu, liší se souměrností.',
+        },
+        {
+          type: 'example',
+          title: '$CCl4$ proti $CH2Cl2$',
+          problem: 'Proč je tetrachlormethan $CCl4$ nepolární, ale dichlormethan $CH2Cl2$ polární?',
+          steps: [
+            'Vazba $C–Cl$ je polární (ΔX = 3,16 − 2,55 = 0,61), vazba $C–H$ téměř nepolární (ΔX = 0,35).',
+            'V $CCl4$ míří čtyři stejné dipóly do rohů pravidelného čtyřstěnu a navzájem se vyruší: μ = 0.',
+            'V $CH2Cl2$ táhnou dva dipóly $C–Cl$ na jednu stranu a na druhé straně jsou jen slabě polární vazby $C–H$. Dipóly se nevyruší.',
+          ],
+          answer: '$CCl4$ je souměrný a nepolární, $CH2Cl2$ nesouměrný a polární (μ = 1,6 D)',
         },
         {
           type: 'compare',
@@ -693,15 +1287,15 @@ const l32: Lesson = {
               title: 'Polární molekula',
               icon: 'molecule',
               tone: 'b',
-              points: ['vlastnost celé molekuly', 'rozhoduje ΔX i tvar', 'dipóly vazeb se nesmí vyrušit: $H2O$, $NH3$, $HCl$'],
+              points: ['vlastnost celé molekuly', 'rozhoduje ΔX i tvar', 'dipóly vazeb se nesmí vyrušit: $H2O$, $NH3$, $CH2Cl2$'],
             },
           ],
         },
         {
-          type: 'molecule',
-          molecules: ['CO2', 'CCl4', 'H2O', 'NH3'],
-          labels: ['nepolární (lineární)', 'nepolární (tetraedr)', 'polární (lomená)', 'polární (pyramida)'],
-          caption: '**Nepolární**: $H2$, $Cl2$, $CO2$, $CH4$, $CCl4$, $BF3$ (nepolární vazby, nebo souměrný tvar). **Polární**: $H2O$, $NH3$, $HCl$ (polární vazby a nesouměrný tvar).',
+          type: 'callout',
+          variant: 'tip',
+          title: 'Rychlý test',
+          text: 'Má centrální atom volné páry (jako $H2O$, $NH3$), nebo různé sousedy (jako $CH2Cl2$)? Pak je molekula s polárními vazbami skoro jistě polární. Souměrné molekuly bez volných párů se stejnými sousedy ($CO2$, $BF3$, $CH4$, $CCl4$, $SF6$) jsou nepolární.',
         },
         {
           type: 'callout',
@@ -714,41 +1308,28 @@ const l32: Lesson = {
           question: {
             kind: 'multi',
             q: 'Které molekuly jsou polární?',
-            options: ['$H2O$', '$CO2$', '$NH3$', '$CH4$', '$HCl$'],
+            options: ['$H2O$', '$CO2$', '$NH3$', '$CH4$', '$CH2Cl2$'],
             answers: [0, 2, 4],
-            explain: '$H2O$ (lomená), $NH3$ (pyramida) a $HCl$ mají nesouměrně rozložený náboj. $CO2$ a $CH4$ jsou souměrné, dipóly jejich vazeb se vyruší.',
+            explain: '$H2O$ (lomená), $NH3$ (pyramida) a $CH2Cl2$ (různí sousedé) mají nesouměrně rozložený náboj. $CO2$ a $CH4$ jsou souměrné, dipóly jejich vazeb se vyruší.',
           },
         },
       ],
     },
   ],
   summary: [
-    'Kovalentní vazbu tvoří sdílený elektronový pár; atomy tím obvykle získají oktet (vodík dvojici).',
-    'Jednoduchá vazba je σ, dvojná σ + π a trojná σ + 2π; vazba π je slabší než σ.',
-    'Valenční vzorec ukazuje vazebné i volné elektronové páry; vodík nikdy není centrální atom.',
-    'Koordinační vazba vzniká, když oba elektrony dodá donor, např. v $NH4^+$ a $H3O^+$.',
-    'Podle VSEPR se elektronové oblasti odpuzují: lineární 180°, trojúhelníková 120°, tetraedrická 109,5°, pyramida 107°, lomená 104,5°.',
-    'Molekula s polárními vazbami může být nepolární, pokud je souměrná, jako $CO2$; voda je lomená, a proto polární.',
+    'Podle modelu VSEPR se elektronové oblasti kolem centrálního atomu odpuzují a zaujmou co nejvzdálenější polohy; násobná vazba je jedna oblast.',
+    'Dvě oblasti dávají přímku (180°), tři trojúhelník (120°), čtyři tetraedr (109,5°), pět trigonální bipyramidu (90° a 120°) a šest oktaedr (90°).',
+    'Volné páry odpuzují silněji než vazebné, proto má $NH3$ úhel 107° a $H2O$ 104,5°; tvar pojmenujeme jen podle atomů, a tak je $XeF4$ čtvercový.',
+    'Počet oblastí určuje hybridizaci: 2 sp, 3 sp², 4 sp³ (5 sp³d, 6 sp³d²).',
+    'Uhlík v ethanu je sp³, v ethenu sp² s jednou vazbou π a v ethynu sp se dvěma vazbami π.',
+    'Molekula je polární, když se dipóly vazeb nevyruší: $H2O$ a $CH2Cl2$ jsou polární, $CO2$ a $CCl4$ nepolární.',
   ],
   quiz: [
-    {
-      kind: 'choice',
-      q: 'Kolik vazeb σ a π obsahuje molekula $CO2$ ($O=C=O$)?',
-      options: ['2 σ a 2 π', '4 σ', '2 σ a 1 π', '1 σ a 3 π'],
-      answer: 0,
-      explain: 'Každá dvojná vazba se skládá z jedné vazby σ a jedné π. Dvě dvojné vazby dávají 2 σ a 2 π.',
-    },
     {
       kind: 'tf',
       q: 'Každá molekula, která obsahuje polární vazby, je polární.',
       answer: false,
-      explain: 'Rozhoduje i tvar. V souměrných molekulách jako $CO2$ nebo $CH4$ se dipóly vazeb vyruší a molekula je nepolární.',
-    },
-    {
-      kind: 'number',
-      q: 'Kolik volných elektronových párů má atom dusíku v molekule amoniaku $NH3$?',
-      answer: 1,
-      explain: 'Dusík má 5 valenčních elektronů: 3 použije na vazby s vodíky, zbylé 2 tvoří jeden volný pár.',
+      explain: 'Rozhoduje i tvar. V souměrných molekulách jako $CO2$ nebo $CCl4$ se dipóly vazeb vyruší a molekula je nepolární.',
     },
     {
       kind: 'order',
@@ -757,25 +1338,22 @@ const l32: Lesson = {
       explain: '$H2O$ 104,5° < $NH3$ 107° < $CH4$ 109,5° < $BF3$ 120° < $CO2$ 180°. Čím víc volných párů, tím víc úhel stlačí.',
     },
     {
-      kind: 'multi',
-      q: 'Ve kterých částicích najdeš koordinační vazbu?',
-      options: ['$NH4^+$', '$H3O^+$', '$CH4$', '$NH3$', '$H2O$'],
-      answers: [0, 1],
-      explain: 'Amonný a oxoniový kation vznikly tak, že $NH3$ nebo $H2O$ poskytly volný pár iontu $H^+$. Ostatní molekuly mají jen obyčejné kovalentní vazby.',
-    },
-    {
       kind: 'text',
-      q: 'Jaký tvar má molekula vody? Napiš jedním slovem.',
-      accept: ['lomená', 'lomený', 'lomeny'],
-      placeholder: 'tvar',
-      explain: 'Kyslík má dvě vazby a dva volné páry. Čtyři oblasti míří do rohů čtyřstěnu, ale atomy tvoří jen „V“ s úhlem 104,5°.',
+      q: 'Jakou hybridizaci mají atomy uhlíku v ethynu $C2H2$?',
+      accept: ['sp'],
+      placeholder: 'např. sp³',
+      explain: 'Každý uhlík v ethynu má 2 elektronové oblasti (vazbu $C–H$ a trojnou vazbu), tedy hybridizaci sp a lineární tvar.',
     },
     {
-      kind: 'choice',
-      q: 'Kolik elektronů sdílejí dva atomy spojené trojnou vazbou?',
-      options: ['2', '3', '4', '6'],
-      answer: 3,
-      explain: 'Trojná vazba jsou tři sdílené elektronové páry, tedy 6 elektronů.',
+      kind: 'match',
+      q: 'Přiřaď k molekule její tvar.',
+      pairs: [
+        ['$BeCl2$', 'lineární'],
+        ['$PCl5$', 'trigonální bipyramida'],
+        ['$SF6$', 'oktaedrická'],
+        ['$XeF4$', 'čtvercová'],
+      ],
+      explain: '$BeCl2$ má 2 oblasti, $PCl5$ 5, $SF6$ 6 bez volných párů. $XeF4$ má 6 oblastí, ale dvě z nich jsou volné páry naproti sobě.',
     },
     {
       kind: 'choice',
@@ -789,6 +1367,25 @@ const l32: Lesson = {
       answer: 0,
       explain: 'ΔX mezi C a O je 0,89, vazby jsou tedy polární. Protože ale míří přesně na opačné strany, jejich účinky se sečtou na nulu.',
     },
+    {
+      kind: 'multi',
+      q: 'Ve kterých molekulách má centrální atom hybridizaci sp³?',
+      options: ['$CH4$', '$NH3$', '$H2O$', '$BF3$', '$CO2$'],
+      answers: [0, 1, 2],
+      explain: '$CH4$, $NH3$ i $H2O$ mají 4 elektronové oblasti (vazby + volné páry), tedy sp³. $BF3$ má 3 oblasti (sp²) a $CO2$ 2 (sp).',
+    },
+    {
+      kind: 'number',
+      q: 'Kolik vazeb π obsahuje molekula ethynu $C2H2$?',
+      answer: 2,
+      explain: 'Trojná vazba $C≡C$ se skládá z jedné vazby σ a dvou vazeb π. Vazby $C–H$ jsou jen σ.',
+    },
+    {
+      kind: 'tf',
+      q: 'Volný elektronový pár zabírá kolem centrálního atomu víc místa než vazebný pár.',
+      answer: true,
+      explain: 'Volný pár drží jen jedno jádro, je blíž centrálnímu atomu a rozprostře se víc. Proto odpuzuje silněji a vazebné úhly zmenšuje.',
+    },
   ],
 }
 
@@ -800,9 +1397,9 @@ const l33: Lesson = {
   title: 'Iontová a kovová vazba',
   goals: [
     'Popsat vznik iontů a iontové vazby a sestavit vzorec iontové sloučeniny z nábojů iontů',
-    'Vysvětlit vlastnosti iontových látek pomocí krystalové mřížky',
-    'Vysvětlit vodivost, kujnost a lesk kovů modelem elektronového plynu',
-    'Rozlišit molekulové látky, kovalentní krystaly, iontové a kovové látky',
+    'Vysvětlit vlastnosti iontových látek krystalovou mřížkou a mřížkovou energií',
+    'Vysvětlit vodivost, kujnost a lesk kovů i vlastnosti slitin modelem elektronového plynu',
+    'Porovnat molekulové látky, kovalentní krystaly, iontové a kovové látky a zařadit látku podle vlastností',
   ],
   hook: 'Kuchyňská sůl taje až při 801 °C, ale ve vodě se rozpustí za pár vteřin. Měděný drát ohneš prsty, krystal soli se rozpadne na kousky. Kdo za tím stojí? Vazby, které nejsou kovalentní.',
   sections: [
@@ -1021,7 +1618,35 @@ const l33: Lesson = {
         },
         {
           type: 'p',
-          text: 'Ionty $Mg^{2+}$ a $O^{2-}$ nesou dvojnásobné náboje a jsou menší, takže se přitahují mnohem silněji a $MgO$ taje o dva tisíce stupňů výš než $NaCl$. Vyrábějí se z něj žáruvzdorné vyzdívky pecí.',
+          text: 'Jak pevně drží ionty v krystalu pohromadě, vyjadřuje **mřížková energie**: energie, která se uvolní, když se z volných iontů v plynném stavu poskládá krystal. Stejně velkou energii je potřeba dodat, abychom krystal rozebrali zpátky na volné ionty.',
+        },
+        {
+          type: 'table',
+          headers: ['Látka', 'Náboje iontů', 'Mřížková energie (kJ/mol)', 'Teplota tání'],
+          rows: [
+            ['$NaF$', '1+ a 1−', '923', '996 °C'],
+            ['$NaCl$', '1+ a 1−', '786', '801 °C'],
+            ['$NaI$', '1+ a 1−', '704', '661 °C'],
+            ['$CaO$', '2+ a 2−', '3401', '2613 °C'],
+            ['$MgO$', '2+ a 2−', '3791', '2852 °C'],
+          ],
+          caption: 'Od fluoridu k jodidu roste velikost aniontu a mřížková energie klesá. Dvojnásobné náboje ji zvýší zhruba čtyř- až pětinásobně.',
+        },
+        {
+          type: 'callout',
+          variant: 'remember',
+          text: '==Mřížková energie roste s nábojem iontů a klesá s jejich velikostí.== Větší náboje se přitahují silněji, malé ionty se k sobě dostanou blíž. Čím větší mřížková energie, tím vyšší teplota tání a tvrdší krystal. Proto se z $MgO$ vyrábějí žáruvzdorné vyzdívky pecí.',
+        },
+        {
+          type: 'example',
+          title: 'Seřaď podle teploty tání',
+          problem: 'Seřaď $KCl$, $NaCl$ a $MgO$ podle teploty tání od nejnižší.',
+          steps: [
+            '$MgO$ má ionty s náboji 2+ a 2−, ostatní jen 1+ a 1−. Jeho mřížková energie je daleko největší.',
+            '$KCl$ a $NaCl$ mají stejné náboje i stejný anion. Kation $K^+$ je ale větší než $Na^+$ (má o vrstvu víc), ionty jsou dál od sebe.',
+            'Mřížková energie $KCl$ je proto menší než $NaCl$.',
+          ],
+          answer: '$KCl$ (770 °C) < $NaCl$ (801 °C) < $MgO$ (2852 °C)',
         },
         {
           type: 'structure',
@@ -1080,6 +1705,30 @@ const l33: Lesson = {
           ],
         },
         {
+          type: 'p',
+          text: '**Slitina** je kov smíšený s jiným kovem nebo s nekovem, třeba s uhlíkem. Cizí atomy mají jinou velikost a narušují pravidelné vrstvy kationtů. Vrstvy po sobě hůř kloužou, a proto jsou slitiny obvykle **tvrdší a pevnější** než čisté kovy.',
+        },
+        {
+          type: 'particles',
+          boxes: [
+            { label: 'Čisté železo', items: [{ species: 'Fe', count: 12 }], state: 'solid', note: 'pravidelné vrstvy snadno kloužou' },
+            { label: 'Ocel', items: [{ species: 'Fe', count: 12 }, { species: 'C', count: 3 }], state: 'solid', note: 'malé atomy uhlíku v mezerách brzdí posun vrstev' },
+            { label: 'Mosaz', items: [{ species: 'Cu', count: 8 }, { species: 'Zn', count: 4 }], state: 'solid', note: 'větší atomy zinku nahrazují část atomů mědi' },
+          ],
+          caption: 'Čistý kov a dvě slitiny v částicovém modelu.',
+        },
+        {
+          type: 'iconlist',
+          items: [
+            { icon: 'factory', title: 'Ocel', text: 'železo a do 2 % uhlíku: mosty, karoserie, nástroje' },
+            { icon: 'water-tap', title: 'Nerezová ocel', text: 'železo, chrom a nikl: nerezaví, příbory a dřezy' },
+            { icon: 'trophy', title: 'Bronz', text: 'měď a cín: zvony, sochy, bronzové medaile' },
+            { icon: 'coin', title: 'Mosaz', text: 'měď a zinek: kliky, trubky, žesťové nástroje' },
+            { icon: 'speed', title: 'Dural', text: 'hliník, měď a hořčík: lehký a pevný, letadla a rámy kol' },
+            { icon: 'ring', title: 'Zlato 14 karátů', text: 'zlato se stříbrem a mědí: čisté zlato by bylo na šperky příliš měkké' },
+          ],
+        },
+        {
           type: 'callout',
           variant: 'fact',
           text: 'Zlato se dá vytepat na plátek tenký asi desetitisícinu milimetru. Takovým „plátkovým zlatem“ se zlatí sochy, rámy obrazů, a dokonce i dorty.',
@@ -1124,14 +1773,30 @@ const l33: Lesson = {
         },
         {
           type: 'table',
-          headers: ['Typ látky', 'Částice', 'Co je drží', 'Teplota tání', 'Vede proud?', 'Příklady'],
+          headers: ['Vlastnost', 'Molekulová', 'Kovalentní krystal', 'Iontová', 'Kovová'],
           rows: [
-            ['molekulová', 'molekuly', 'slabé síly mezi molekulami', 'nízká', 'ne', '$H2O$, $CO2$, $I2$'],
-            ['kovalentní krystal', 'atomy', 'kovalentní vazby v celém krystalu', 'velmi vysoká', 'ne (grafit ano)', 'diamant, grafit, $SiO2$'],
-            ['iontová', 'kationty a anionty', 'iontová vazba', 'vysoká', 'jen tavenina a roztok', '$NaCl$, $MgO$, $CaF2$'],
-            ['kovová', 'kationty a elektronový plyn', 'kovová vazba', 'různá', 'ano, i pevná', '$Fe$, $Cu$, $Al$'],
+            ['částice', 'molekuly', 'atomy', 'kationty a anionty', 'kationty v elektronovém plynu'],
+            ['co je drží', 'slabé síly mezi molekulami', 'kovalentní vazby v celém krystalu', 'iontová vazba', 'kovová vazba'],
+            ['teplota tání', 'nízká', 'velmi vysoká', 'vysoká', 'různá, většinou vysoká'],
+            ['vodivost pevné látky', 'ne', 'ne (grafit ano)', 'ne', 'ano'],
+            ['vodivost taveniny', 'ne', 'ne', 'ano', 'ano'],
+            ['mechanické vlastnosti', 'měkké', 'velmi tvrdé', 'tvrdé, ale křehké', 'kujné a tažné'],
+            ['rozpustnost ve vodě', 'polární ano, nepolární ne', 'nerozpustné', 'často ano', 'nerozpustné (alkalické kovy s vodou reagují)'],
+            ['příklady', '$H2O$, $CO2$, $I2$, cukr', 'diamant, grafit, $SiO2$', '$NaCl$, $MgO$, $CaF2$', '$Fe$, $Cu$, $Al$, ocel'],
           ],
-          caption: 'Srovnání látek podle typu vazby.',
+          caption: 'Čtyři typy pevných látek podle vazby, která drží jejich částice pohromadě.',
+        },
+        {
+          type: 'example',
+          title: 'Detektivka s neznámou látkou',
+          problem: 'Bílá krystalická látka taje asi při 1700 °C. Proud nevede v pevném stavu ani v tavenině a ve vodě se nerozpouští. Jaký je to typ látky?',
+          steps: [
+            'Vysoká teplota tání vylučuje molekulovou látku.',
+            'Tavenina nevede, v látce tedy nejsou ionty: iontová látka to není.',
+            'Pevná látka nevede, nejsou v ní volné elektrony: kov to není.',
+            'Zbývá kovalentní krystal, v němž jsou všechny atomy propojené kovalentními vazbami.',
+          ],
+          answer: 'kovalentní krystal, například oxid křemičitý $SiO2$ (křemen)',
         },
         {
           type: 'callout',
@@ -1165,9 +1830,9 @@ const l33: Lesson = {
     'Iontová vazba je elektrostatické přitahování kationtů a aniontů; vzniká hlavně mezi kovem a nekovem (ΔX ≥ 1,7).',
     'Iontová sloučenina je neutrální, vzorec udává nejmenší poměr iontů, např. $CaCl2$ nebo $Al2O3$.',
     'Iontové látky tvoří krystalové mřížky bez molekul; mají vysoké teploty tání, jsou křehké a vedou proud jen v tavenině nebo roztoku.',
-    'Kovová vazba drží kationty kovu v elektronovém plynu; volné elektrony vysvětlují vodivost, kujnost a lesk.',
-    'Molekulové látky mají nízké teploty tání, kovalentní krystaly (diamant, grafit, $SiO2$) velmi vysoké.',
-    'Grafit vede proud díky pohyblivým elektronům ve vrstvách, diamant ne.',
+    'Mřížková energie roste s nábojem iontů a klesá s jejich velikostí, proto $MgO$ taje mnohem výš než $NaCl$.',
+    'Kovová vazba drží kationty kovu v elektronovém plynu; volné elektrony vysvětlují vodivost, kujnost a lesk. Slitiny jsou tvrdší než čisté kovy, protože cizí atomy brzdí posun vrstev.',
+    'Molekulové látky mají nízké teploty tání, kovalentní krystaly (diamant, grafit, $SiO2$) velmi vysoké; grafit jako jediný z nich vede proud.',
   ],
   quiz: [
     {
@@ -1227,6 +1892,12 @@ const l33: Lesson = {
       answer: true,
       explain: '$SiO2$ je kovalentní krystal: atomy Si a O jsou propojené vazbami v celém krystalu. Vzorec udává jen poměr 1 : 2.',
     },
+    {
+      kind: 'order',
+      q: 'Seřaď iontové látky podle mřížkové energie od nejmenší po největší.',
+      items: ['$KI$', '$NaCl$', '$NaF$', '$MgO$'],
+      explain: '$KI$ má největší ionty, $NaF$ nejmenší ionty s náboji 1. $MgO$ má dvojnásobné náboje, a proto daleko největší mřížkovou energii.',
+    },
   ],
 }
 
@@ -1239,8 +1910,8 @@ const l34: Lesson = {
   goals: [
     'Rozlišit vazby uvnitř molekul a síly mezi molekulami',
     'Popsat Londonovy disperzní síly, dipól–dipólové síly a vodíkovou vazbu',
-    'Vysvětlit vysokou teplotu varu vody a to, proč led plave',
-    'Použít pravidlo „podobné se rozpouští v podobném“ a vysvětlit povrchové napětí',
+    'Určit, která síla u látky převládá, a odhadnout pořadí teplot varu (alkany, sloučeniny vodíku 14.–17. skupiny)',
+    'Vysvětlit, proč led plave, a použít pravidlo „podobné se rozpouští v podobném“',
   ],
   hook: 'Sulfan (sirovodík) $H2S$ je za pokojové teploty plyn, a přitom má těžší molekulu než voda. Kdyby se voda chovala „podle pravidel“, vřela by asi při −80 °C a na Zemi by nebyl jediný rybník. Co ji drží pohromadě?',
   sections: [
@@ -1345,10 +2016,28 @@ const l34: Lesson = {
           caption: 'Čím víc elektronů, tím silnější Londonovy síly a tím vyšší teplota varu.',
         },
         {
+          type: 'p',
+          text: 'Stejný trend uvidíš u **alkanů**, uhlovodíků s jednoduchými vazbami (podrobně v úrovni 8). Jejich molekuly jsou nepolární, působí mezi nimi jen Londonovy síly. S každým dalším uhlíkem přibude 8 elektronů a molekula se prodlouží.',
+        },
+        {
+          type: 'table',
+          headers: ['Alkan', 'Elektronů v molekule', 'Teplota varu', 'Při 25 °C'],
+          rows: [
+            ['methan $CH4$', '10', '−162 °C', 'plyn'],
+            ['ethan $C2H6$', '18', '−89 °C', 'plyn'],
+            ['propan $C3H8$', '26', '−42 °C', 'plyn'],
+            ['butan $C4H10$', '34', '−0,5 °C', 'plyn'],
+            ['pentan $C5H12$', '42', '36 °C', 'kapalina'],
+            ['hexan $C6H14$', '50', '69 °C', 'kapalina'],
+            ['oktan $C8H18$', '66', '126 °C', 'kapalina'],
+          ],
+          caption: 'Čím delší řetězec, tím silnější Londonovy síly a vyšší teplota varu. Proto je propan-butan v bombě plyn a oktan v benzínu kapalina.',
+        },
+        {
           type: 'molecule',
-          molecules: ['F2', 'Cl2', 'Br2', 'I2'],
-          labels: ['$F2$', '$Cl2$', '$Br2$', '$I2$'],
-          caption: 'Molekuly halogenů: od fluoru k jodu jsou čím dál větší a mají víc elektronů.',
+          molecules: ['butane', 'isobutane'],
+          labels: ['butan: var −0,5 °C', 'methylpropan: var −12 °C'],
+          caption: 'Stejný vzorec $C4H10$, stejný počet elektronů, jiný tvar. Protáhlý butan se sousedů dotýká větší plochou než kompaktní rozvětvený methylpropan (isobutan), a proto vře výš.',
         },
         {
           type: 'p',
@@ -1418,23 +2107,49 @@ const l34: Lesson = {
       ],
     },
     {
-      title: 'Teploty varu hydridů: výjimečná voda',
+      title: 'Která síla rozhoduje o teplotě varu',
       icon: 'thermometer',
       blocks: [
         {
           type: 'p',
-          text: 'U sloučenin vodíku s prvky 16. a 17. skupiny roste od 3. periody dolů teplota varu: přibývá elektronů a sílí Londonovy síly. První člen každé řady ale z trendu divoce vybočuje.',
+          text: 'Mezi molekulami obvykle působí několik sil najednou: Londonovy vždy, dipól–dipólové u polárních molekul a vodíkové vazby, když je vodík vázán na F, O nebo N. Kterou z nich brát jako rozhodující, zjistíš v několika krocích.',
+        },
+        {
+          type: 'process',
+          layout: 'flow',
+          steps: [
+            { icon: 'electron', title: 'Londonovy síly vždy', text: 'rostou s počtem elektronů a s plochou, kterou se molekuly dotýkají' },
+            { icon: 'magnet', title: 'Je molekula polární?', text: 'přidej dipól–dipólové síly' },
+            { icon: 'drop', title: 'Je vodík na F, O nebo N?', text: 'přidej vodíkové vazby; u malých molekul téměř vždy převládnou' },
+            { icon: 'balance-scale', title: 'Porovnej', text: 'u podobně velkých molekul rozhoduje druh sil, u velmi rozdílných často počet elektronů' },
+          ],
+          caption: 'Jak odhadnout, která mezimolekulová síla převládá.',
+        },
+        {
+          type: 'example',
+          title: 'Polarita, nebo velikost?',
+          problem: 'Vysvětli pořadí teplot varu: fluor $F2$ (−188 °C) < chlorovodík $HCl$ (−85 °C) < jodovodík $HI$ (−35 °C).',
+          steps: [
+            '$F2$ i $HCl$ mají 18 elektronů, Londonovy síly jsou podobné. $HCl$ je ale polární a přidají se dipól–dipólové síly, proto vře výš.',
+            '$HI$ je méně polární než $HCl$ (ΔX 0,46 proti 0,96), má však 54 elektronů místo 18.',
+            'Mnohem silnější Londonovy síly u $HI$ převáží slabší dipóly, a tak vře výš než $HCl$.',
+          ],
+          answer: 'U stejně velkých molekul rozhodla polarita, u velmi rozdílných velikost molekul (Londonovy síly).',
         },
         {
           type: 'table',
-          headers: ['16. skupina', 'Teplota varu', '17. skupina', 'Teplota varu'],
+          headers: ['Perioda', '14. skupina', '15. skupina', '16. skupina', '17. skupina'],
           rows: [
-            ['$H2O$', '100 °C', '$HF$', '20 °C'],
-            ['$H2S$', '−60 °C', '$HCl$', '−85 °C'],
-            ['$H2Se$', '−41 °C', '$HBr$', '−67 °C'],
-            ['$H2Te$', '−2 °C', '$HI$', '−35 °C'],
+            ['2.', '$CH4$ −162 °C', '$NH3$ −33 °C', '$H2O$ 100 °C', '$HF$ 20 °C'],
+            ['3.', '$SiH4$ −112 °C', '$PH3$ −88 °C', '$H2S$ −60 °C', '$HCl$ −85 °C'],
+            ['4.', '$GeH4$ −88 °C', '$AsH3$ −62 °C', '$H2Se$ −41 °C', '$HBr$ −67 °C'],
+            ['5.', '$SnH4$ −52 °C', '$SbH3$ −17 °C', '$H2Te$ −2 °C', '$HI$ −35 °C'],
           ],
-          caption: 'Voda a fluorovodík vřou mnohem výš, než by odpovídalo trendu.',
+          caption: 'Teploty varu sloučenin vodíku s prvky 14.–17. skupiny. Ve 14. skupině roste teplota varu pravidelně, v ostatních první člen z trendu divoce vybočuje.',
+        },
+        {
+          type: 'p',
+          text: 'Molekuly $CH4$ až $SnH4$ jsou souměrné tetraedry, a tedy nepolární. Působí mezi nimi jen Londonovy síly, které rostou s počtem elektronů, a teplota varu stoupá bez výjimky. V 15., 16. a 17. skupině vybočují $NH3$, $H2O$ a $HF$: jako jediné tvoří **vodíkové vazby**.',
         },
         {
           type: 'molecule',
@@ -1595,10 +2310,10 @@ const l34: Lesson = {
     'Mezimolekulové síly jsou mnohem slabší než kovalentní vazby; při tání a varu molekulových látek se překonávají jen ony.',
     'Londonovy disperzní síly působí mezi všemi molekulami a sílí s počtem elektronů; dipól–dipólové síly působí mezi polárními molekulami.',
     'Vodíková vazba vzniká, když je vodík vázaný na F, O nebo N; je to nejsilnější mezimolekulová síla.',
-    'Díky vodíkovým vazbám vře voda při 100 °C, zatímco $H2S$ už při −60 °C.',
+    'U podobně velkých molekul rozhoduje druh sil, u velmi rozdílných počet elektronů: teplota varu alkanů roste s délkou řetězce a $HI$ vře výš než $HCl$.',
+    'Ve 14. skupině roste teplota varu hydridů pravidelně; $NH3$, $H2O$ a $HF$ z trendu vybočují díky vodíkovým vazbám, proto voda vře při 100 °C a $H2S$ už při −60 °C.',
     'Led má řídkou mřížku z vodíkových vazeb, je méně hustý než voda a plave; voda je nejhustší při 4 °C.',
-    'Podobné se rozpouští v podobném: polární látky ve vodě, nepolární v nepolárních rozpouštědlech.',
-    'Povrchové napětí vzniká, protože molekuly na hladině jsou taženy dovnitř kapaliny.',
+    'Podobné se rozpouští v podobném: polární látky ve vodě, nepolární v nepolárních rozpouštědlech; vodíkové vazby dávají vodě i velké povrchové napětí.',
   ],
   quiz: [
     {
@@ -1660,10 +2375,10 @@ const l34: Lesson = {
     },
     {
       kind: 'choice',
-      q: 'Co se nejlépe rozpustí ve vodě?',
-      options: ['kuchyňská sůl', 'rostlinný olej', 'parafín ze svíčky', 'motorový olej'],
+      q: 'Který z alkanů je za pokojové teploty (25 °C) kapalina?',
+      options: ['pentan $C5H12$', 'methan $CH4$', 'propan $C3H8$', 'butan $C4H10$'],
       answer: 0,
-      explain: 'Sůl je iontová a její ionty se silně přitahují s polárními molekulami vody. Oleje a parafín jsou nepolární.',
+      explain: 'Pentan má ze všech nejvíc elektronů, nejsilnější Londonovy síly a vře až při 36 °C. Methan, propan i butan vřou pod 0 °C.',
     },
   ],
 }
@@ -2134,10 +2849,10 @@ const l36: Lesson = {
   id: 'l3-6',
   title: 'Názvosloví dvouprvkových sloučenin',
   goals: [
-    'Pojmenovat oxidy, peroxidy, halogenidy, sulfidy, hydridy, nitridy a karbidy a napsat jejich vzorce',
-    'Poznat peroxid a vysvětlit, proč se jeho vzorec nekrátí',
-    'Používat triviální názvy voda, amoniak, methan a sirovodík a jejich systematické protějšky',
-    'Poznat v běžném životě sloučeniny jako $CO2$, $SiO2$, $Fe2O3$, $NaCl$ a $CaO$',
+    'Pojmenovat oxidy, peroxidy, halogenidy, sulfidy, hydridy, nitridy a karbidy, napsat jejich vzorce a vysvětlit, proč se vzorec peroxidu nekrátí',
+    'Používat triviální názvy (voda, amoniak, methan, sulfan) a poznat běžné sloučeniny jako $CO2$, $SiO2$, $Fe2O3$ nebo $CaO$',
+    'Rozlišit názvem sloučeniny prvků s více oxidačními čísly, např. $FeO$ × $Fe2O3$ a $CuCl$ × $CuCl2$',
+    'Pojmenovat jednoduché kationty a anionty včetně amonného, hydroxidového a kyanidového',
   ],
   hook: 'Písek, rez, kuchyňská sůl, bublinky v limonádě i pálené vápno na stavbě jsou dvouprvkové sloučeniny. S tím, co už umíš, jim dáš jméno i vzorec za pár vteřin. Pojďme z tebe udělat názvoslovného mistra!',
   sections: [
@@ -2399,7 +3114,7 @@ const l36: Lesson = {
       ],
     },
     {
-      title: 'Hydridy a sloučeniny vodíku',
+      title: 'Hydridy, nitridy a karbidy',
       icon: 'gas-cylinder',
       blocks: [
         {
@@ -2420,12 +3135,6 @@ const l36: Lesson = {
           ],
         },
         {
-          type: 'molecule',
-          molecules: ['H2O', 'NH3', 'CH4', 'H2S'],
-          labels: ['$H2O$', '$NH3$', '$CH4$', '$H2S$'],
-          caption: 'Molekuly sloučenin vodíku s nekovy. Jak se jmenují, najdeš v tabulce.',
-        },
-        {
           type: 'table',
           headers: ['Vzorec', 'Triviální název', 'Systematický název'],
           rows: [
@@ -2436,11 +3145,7 @@ const l36: Lesson = {
             ['$PH3$', 'fosfin', 'fosfan'],
             ['$SiH4$', '–', 'silan'],
           ],
-          caption: 'V praxi říkáme voda a amoniak, u $H2S$ se běžně používá název sulfan i sirovodík.',
-        },
-        {
-          type: 'p',
-          text: 'Sloučeniny vodíku s halogeny jsou **fluorovodík** $HF$, **chlorovodík** $HCl$, **bromovodík** $HBr$ a **jodovodík** $HI$. Jejich vodné roztoky jsou kyseliny, například kyselina chlorovodíková; o nich v úrovni 5.',
+          caption: 'V praxi říkáme voda a amoniak, u $H2S$ se běžně používá název sulfan i sirovodík. Podobně jako chlorovodík se jmenují fluorovodík $HF$, bromovodík $HBr$ a jodovodík $HI$; jejich vodné roztoky jsou kyseliny (úroveň 5).',
         },
         {
           type: 'callout',
@@ -2448,34 +3153,8 @@ const l36: Lesson = {
           text: 'Sulfan (sirovodík) páchne po zkažených vejcích a je velmi jedovatý. Ve vyšší koncentraci ochromí čich, takže ho náhle přestaneš cítit, i když ho ve vzduchu přibývá. Vzniká v kanalizaci, u sopek a v sirných pramenech.',
         },
         {
-          type: 'callout',
-          variant: 'fact',
-          text: 'Methan je hlavní složkou zemního plynu a sám nemá žádný zápach. Plyn ve sporáku cítíš jen proto, že se do něj úmyslně přidávají páchnoucí látky. Únik plynu tak rychle poznáš.',
-        },
-        {
-          type: 'check',
-          question: {
-            kind: 'match',
-            q: 'Přiřaď k vzorci název.',
-            pairs: [
-              ['$NH3$', 'amoniak'],
-              ['$CH4$', 'methan'],
-              ['$H2S$', 'sulfan'],
-              ['$NaH$', 'hydrid sodný'],
-              ['$HCl$', 'chlorovodík'],
-            ],
-            explain: 'Hydrid je jen sloučenina, kde má vodík −I, tedy s kovem. Sloučeniny s nekovy mají vlastní názvy.',
-          },
-        },
-      ],
-    },
-    {
-      title: 'Nitridy a karbidy',
-      icon: 'diamond',
-      blocks: [
-        {
           type: 'p',
-          text: '**Nitridy** obsahují dusík s oxidačním číslem −III, **karbidy** uhlík s −IV. Často jsou mimořádně tvrdé a odolné, proto se z nich vyrábějí brusiva, řezné nástroje a keramika.',
+          text: '**Nitridy** obsahují dusík s oxidačním číslem −III, **karbidy** uhlík s −IV. Často jsou mimořádně tvrdé a odolné: $TiN$ je zlatavý povlak vrtáků, karbid křemičitý $SiC$ (karborundum) je na brusných papírech a kotoučích.',
         },
         {
           type: 'example',
@@ -2497,46 +3176,120 @@ const l36: Lesson = {
           answer: 'karbid hlinitý',
         },
         {
-          type: 'table',
-          headers: ['Sloučenina', 'Vlastnosti a použití'],
-          rows: [
-            ['$Li3N$ nitrid lithný', 'vzniká z lithia a dusíku už za běžné teploty'],
-            ['$AlN$ nitrid hlinitý', 'keramika v elektronice, dobře odvádí teplo'],
-            ['$TiN$ nitrid titanitý', 'zlatavý tvrdý povlak vrtáků'],
-            ['$SiC$ karbid křemičitý', 'karborundum: brusné papíry a kotouče'],
-          ],
-        },
-        {
           type: 'callout',
           variant: 'fact',
           title: 'Karbidka',
-          text: 'Karbid vápenatý $CaC2$ je výjimka: obsahuje dvojici atomů uhlíku, podobně jako peroxid dvojici kyslíků, a proto neodpovídá oxidačnímu číslu −IV. S vodou uvolňuje hořlavý plyn acetylen, který svítil jeskyňářům v karbidových lampách. Acetylen je výbušný, s karbidem proto jen pod dohledem.',
+          text: 'Karbid vápenatý $CaC2$ je výjimka: obsahuje dvojici atomů uhlíku, podobně jako peroxid dvojici kyslíků, a proto neodpovídá oxidačnímu číslu −IV. S vodou uvolňuje hořlavý plyn acetylen $C2H2$, který svítil jeskyňářům v karbidových lampách. Acetylen je výbušný, s karbidem proto jen pod dohledem.',
         },
         {
           type: 'reaction',
           equation: 'CaC2 + 2H2O -> C2H2 + Ca(OH)2',
           caption: 'Karbid vápenatý a voda dávají acetylen $C2H2$.',
         },
+        {
+          type: 'check',
+          question: {
+            kind: 'match',
+            q: 'Přiřaď k vzorci název.',
+            pairs: [
+              ['$NH3$', 'amoniak'],
+              ['$H2S$', 'sulfan'],
+              ['$NaH$', 'hydrid sodný'],
+              ['$Li3N$', 'nitrid lithný'],
+              ['$SiC$', 'karbid křemičitý'],
+            ],
+            explain: 'Hydrid je sloučenina, kde má vodík −I, tedy s kovem; sloučeniny vodíku s nekovy mají vlastní názvy. Nitrid má $N^{−III}$, karbid $C^{−IV}$.',
+          },
+        },
+      ],
+    },
+    {
+      title: 'Více oxidačních čísel a názvy iontů',
+      icon: 'ion-plus',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Mnoho kovů, hlavně přechodných, tvoří sloučeniny s různými oxidačními čísly. Železo se s kyslíkem slučuje jako $Fe^{II}$ i $Fe^{III}$, měď s chlorem jako $Cu^{I}$ i $Cu^{II}$. ==Jediné, co tyto látky v názvu rozliší, je koncovka.==',
+        },
+        {
+          type: 'compare',
+          columns: [
+            {
+              title: 'oxid železnatý $FeO$',
+              icon: 'powder',
+              tone: 'a',
+              points: ['železo II, koncovka -natý', 'černý prášek', 'na vzduchu se snadno oxiduje dál'],
+            },
+            {
+              title: 'oxid železitý $Fe2O3$',
+              icon: 'rust',
+              tone: 'b',
+              points: ['železo III, koncovka -itý', 'červenohnědý: rez, hematit', 'pigment do barev a cihel'],
+            },
+          ],
+          caption: 'Stejné prvky, jiné oxidační číslo, úplně jiná látka.',
+        },
+        {
+          type: 'table',
+          headers: ['Prvek', 'Nižší oxidační číslo', 'Vyšší oxidační číslo'],
+          rows: [
+            ['Fe', '$FeCl2$ chlorid železnatý', '$FeCl3$ chlorid železitý'],
+            ['Cu', '$CuCl$ chlorid měďný', '$CuCl2$ chlorid měďnatý'],
+            ['Cu', '$Cu2O$ oxid měďný (červený)', '$CuO$ oxid měďnatý (černý)'],
+            ['Sn', '$SnCl2$ chlorid cínatý', '$SnCl4$ chlorid cíničitý'],
+            ['Pb', '$PbO$ oxid olovnatý', '$PbO2$ oxid olovičitý'],
+          ],
+          caption: 'Dvojice sloučenin, které se liší jen oxidačním číslem kovu.',
+        },
+        {
+          type: 'example',
+          title: 'Dva chloridy mědi',
+          problem: 'Pojmenuj $CuCl$ a $CuCl2$.',
+          steps: [
+            '$CuCl$: jeden chlor má −I, měď tedy +I. Koncovka pro I je -ný.',
+            '$CuCl2$: dva chlory mají −2, měď tedy +II. Koncovka pro II je -natý.',
+          ],
+          answer: '$CuCl$ je chlorid měďný, $CuCl2$ chlorid měďnatý',
+        },
+        {
+          type: 'p',
+          text: '**Kation** jednoho prvku pojmenuješ přídavným jménem se stejnou koncovkou jako ve sloučenině: $Na^+$ je sodný kation, $Fe^{2+}$ železnatý a $Fe^{3+}$ železitý kation. **Anion** jednoho prvku dostane koncovku **-idový**: $Cl^-$ chloridový, $O^{2-}$ oxidový, $S^{2-}$ sulfidový anion.',
+        },
+        {
+          type: 'table',
+          headers: ['Ion', 'Název', 'Sloučenina s tímto iontem'],
+          rows: [
+            ['$NH4^+$', 'amonný kation', '$NH4Cl$ chlorid amonný (salmiak)'],
+            ['$H3O^+$', 'oxoniový kation', 'je v každém roztoku kyseliny (úroveň 5)'],
+            ['$OH^-$', 'hydroxidový anion', '$NaOH$ hydroxid sodný (úroveň 5)'],
+            ['$CN^-$', 'kyanidový anion', '$KCN$ kyanid draselný'],
+            ['$O2^2-$', 'peroxidový anion', '$Na2O2$ peroxid sodný'],
+          ],
+          caption: 'Víceatomové ionty s vlastními názvy. Sloučeniny s nimi se jmenují stejně jako dvouprvkové: podstatné jméno podle aniontu, přídavné podle kationtu.',
+        },
+        {
+          type: 'molecule',
+          molecules: ['NH4+', 'H3O+', 'OH-'],
+          labels: ['amonný kation', 'oxoniový kation', 'hydroxidový anion'],
+        },
+        {
+          type: 'callout',
+          variant: 'warning',
+          text: 'Kyanidy jsou prudce jedovaté: už desetiny gramu kyanidu draselného zastaví v buňkách dýchání. Patří jen do přísně zabezpečených laboratoří.',
+        },
         { type: 'game', gameId: 'naming', text: 'Teď už víš všechno potřebné. Vyzkoušej si v trenažéru převody vzorec ↔ název u oxidů, halogenidů a dalších sloučenin.' },
         {
           type: 'check',
           question: {
-            kind: 'text',
-            q: 'Napiš vzorec nitridu lithného.',
-            accept: ['Li3N'],
-            caseSensitive: true,
-            placeholder: 'vzorec',
-            explain: '$Li^{I}$ a $N^{−III}$: do kříže dostane lithium index 3 a dusík index 1. Vzorec je $Li3N$.',
-          },
-        },
-        {
-          type: 'check',
-          question: {
-            kind: 'text',
-            q: 'Pojmenuj sloučeninu $SiC$.',
-            accept: ['karbid křemičitý'],
-            placeholder: 'název',
-            explain: 'Karbid má −IV, křemík tedy +IV. Koncovka pro IV je -ičitý: karbid křemičitý.',
+            kind: 'match',
+            q: 'Přiřaď k iontu jeho název.',
+            pairs: [
+              ['$NH4^+$', 'amonný kation'],
+              ['$OH^-$', 'hydroxidový anion'],
+              ['$CN^-$', 'kyanidový anion'],
+              ['$Fe^{3+}$', 'železitý kation'],
+            ],
+            explain: 'Kationty kovů mají koncovku podle náboje (III: -itý), anionty jednoho prvku koncovku -idový. Amonný, hydroxidový a kyanidový jsou názvy, které si stačí zapamatovat.',
           },
         },
       ],
@@ -2548,6 +3301,8 @@ const l36: Lesson = {
     'Peroxidy obsahují skupinu –O–O– s kyslíkem −I a jejich vzorec se nekrátí: $H2O2$, $Na2O2$, $BaO2$.',
     'Sloučeniny vodíku s nekovy mají vlastní názvy: voda, amoniak (azan), methan, sulfan (sirovodík), chlorovodík.',
     'Z běžného života znáš $CO2$ (oxid uhličitý), $SiO2$ (písek), $Fe2O3$ (oxid železitý), $NaCl$ (sůl) a $CaO$ (pálené vápno).',
+    'Prvky s více oxidačními čísly rozliší koncovka: $FeO$ je oxid železnatý, $Fe2O3$ oxid železitý, $CuCl$ chlorid měďný a $CuCl2$ chlorid měďnatý.',
+    'Kationty mají koncovku podle oxidačního čísla ($Fe^{3+}$ železitý kation), anionty jednoho prvku koncovku -idový ($Cl^-$ chloridový); víceatomové ionty jsou amonný $NH4^+$, oxoniový $H3O^+$, hydroxidový $OH^-$ a kyanidový $CN^-$.',
   ],
   quiz: [
     {
@@ -2560,10 +3315,10 @@ const l36: Lesson = {
     },
     {
       kind: 'text',
-      q: 'Pojmenuj sloučeninu $CaO$.',
-      accept: ['oxid vápenatý'],
+      q: 'Pojmenuj sloučeninu $FeO$.',
+      accept: ['oxid železnatý'],
       placeholder: 'název',
-      explain: 'Vápník je ve 2. skupině, má +II, a koncovka -natý se připojí ke kmeni vápen-: oxid vápenatý, neboli pálené vápno.',
+      explain: 'Kyslík má −II, jediný atom železa tedy +II. Koncovka pro II je -natý: oxid železnatý. Rez $Fe2O3$ je oxid železitý.',
     },
     {
       kind: 'tf',
@@ -2597,18 +3352,18 @@ const l36: Lesson = {
     },
     {
       kind: 'choice',
-      q: 'Který vzorec nitridu hořečnatého je správný?',
-      options: ['$Mg3N2$', '$MgN$', '$Mg2N3$', '$MgN2$'],
+      q: 'Který vzorec patří chloridu cíničitému?',
+      options: ['$SnCl4$', '$SnCl2$', '$Sn2Cl$', '$SnCl$'],
       answer: 0,
-      explain: '$Mg^{II}$ a $N^{−III}$: do kříže dostane hořčík index 3 a dusík 2. Kontrola: 3 · 2 − 2 · 3 = 0.',
+      explain: '-ičitý znamená IV: $Sn^{IV}$ a $Cl^{−I}$ dávají $SnCl4$. $SnCl2$ je chlorid cínatý.',
     },
     {
       kind: 'text',
-      q: 'Napiš vzorec fluoridu vápenatého.',
-      accept: ['CaF2'],
+      q: 'Napiš vzorec chloridu amonného (salmiaku).',
+      accept: ['NH4Cl'],
       caseSensitive: true,
       placeholder: 'vzorec',
-      explain: '$Ca^{II}$ a $F^{−I}$ dávají $CaF2$. Jako nerost fluorit se používá třeba při výrobě speciálních optických čoček.',
+      explain: 'Amonný kation $NH4^+$ má náboj 1+, chloridový anion $Cl^-$ 1−. Poměr 1 : 1 dává $NH4Cl$.',
     },
   ],
 }
@@ -2638,10 +3393,32 @@ const boss: Question[] = [
   },
   {
     kind: 'choice',
-    q: 'Jaký tvar má oxoniový kation $H3O^+$?',
-    options: ['trigonální pyramida', 'trojúhelníková (rovinná)', 'tetraedrická', 'lomená'],
+    q: 'Všechny tři vazby C–O v uhličitanovém aniontu $CO3^2-$ jsou stejně dlouhé. Jak to vysvětlíš?',
+    options: [
+      'Ion je rezonanční hybrid: elektrony dvojné vazby jsou delokalizované přes všechny tři kyslíky.',
+      'Dvojná vazba mezi uhlíkem a kyslíky velmi rychle přeskakuje.',
+      'Uhlík je vázán se všemi třemi kyslíky dvojnými vazbami.',
+      'Všechny tři vazby jsou jednoduché a náboj nese uhlík.',
+    ],
     answer: 0,
-    explain: 'Kyslík má 3 vazby a 1 volný pár, stejně jako dusík v $NH3$. Čtyři elektronové oblasti, ale jen tři atomy kolem: trigonální pyramida.',
+    explain: 'Lewisův vzorec má jednu dvojnou a dvě jednoduché vazby, ale existují 3 rovnocenné rezonanční struktury. Skutečný ion je jejich hybrid, nic nepřeskakuje. Tři dvojné vazby by uhlíku daly 12 elektronů.',
+  },
+  {
+    kind: 'match',
+    q: 'Přiřaď k atomu jeho hybridizaci.',
+    pairs: [
+      ['uhlík v ethanu $C2H6$', 'sp³'],
+      ['bor v $BF3$', 'sp²'],
+      ['uhlík v $HCN$', 'sp'],
+      ['síra v $SF6$', 'sp³d²'],
+    ],
+    explain: 'Hybridizaci určuje počet elektronových oblastí: 4 sp³, 3 sp², 2 sp (uhlík v $HCN$ má jednoduchou a trojnou vazbu), 6 sp³d².',
+  },
+  {
+    kind: 'tf',
+    q: 'V molekule $PCl5$ svírají všechny sousední vazby $Cl–P–Cl$ stejný úhel.',
+    answer: false,
+    explain: 'Trigonální bipyramida má dva druhy poloh: tři chlory v rovině svírají 120°, dva osové chlory jsou k nim kolmo (90°).',
   },
   {
     kind: 'choice',
@@ -2676,20 +3453,6 @@ const boss: Question[] = [
     explain: 'Tři kyslíky mají −6, dva dusíky tedy dohromady +6, každý +III. Koncovka -itý: oxid dusitý.',
   },
   {
-    kind: 'text',
-    q: 'Napiš vzorec oxidu chromitého.',
-    accept: ['Cr2O3'],
-    caseSensitive: true,
-    placeholder: 'vzorec',
-    explain: '-itý znamená III: $Cr^{III}$ a $O^{−II}$ dávají křížovým pravidlem $Cr2O3$.',
-  },
-  {
-    kind: 'tf',
-    q: 'Vodíkové vazby mezi molekulami vody jsou pevnější než kovalentní vazby $O–H$ uvnitř molekul.',
-    answer: false,
-    explain: 'Vodíková vazba je sice nejsilnější mezimolekulová síla, ale zhruba 10–20krát slabší než kovalentní vazba. Proto se voda varem nerozkládá.',
-  },
-  {
     kind: 'multi',
     q: 'Které vzorce jsou zapsány správně?',
     options: ['oxid osmičelý $OsO4$', 'nitrid hořečnatý $Mg3N2$', 'peroxid barnatý $BaO$', 'sulfid stříbrný $AgS$', 'hydrid vápenatý $CaH2$'],
@@ -2709,6 +3472,7 @@ const level: LevelContent = {
   lessons: {
     'l3-1': l31,
     'l3-2': l32,
+    'l3-7': l37,
     'l3-3': l33,
     'l3-4': l34,
     'l3-5': l35,

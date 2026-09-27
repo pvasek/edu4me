@@ -12,6 +12,8 @@ const IDS: FigureId[] = [
   'hydrogen-bonds',
   'bond-type-scale',
   'polarity',
+  'hybridization',
+  'resonance',
   'conservation-of-mass',
   'mole-bridge',
   'mole-scale',

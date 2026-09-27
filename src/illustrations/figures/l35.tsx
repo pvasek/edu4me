@@ -5,6 +5,7 @@ import BondTypeScale from './l35/BondTypeScale'
 import ConservationOfMass from './l35/ConservationOfMass'
 import Dilution from './l35/Dilution'
 import HydrogenBonds from './l35/HydrogenBonds'
+import Hybridization from './l35/Hybridization'
 import IndicatorColors from './l35/IndicatorColors'
 import IonicLattice from './l35/IonicLattice'
 import LimitingReagent from './l35/LimitingReagent'
@@ -14,6 +15,7 @@ import MoleScale from './l35/MoleScale'
 import Neutralization from './l35/Neutralization'
 import Polarity from './l35/Polarity'
 import ReactionTypes from './l35/ReactionTypes'
+import Resonance from './l35/Resonance'
 import SaltPreparation from './l35/SaltPreparation'
 import VseprShapes from './l35/VseprShapes'
 
@@ -26,6 +28,8 @@ export const FIGURES_L35: Partial<Record<FigureId, ComponentType>> = {
   'hydrogen-bonds': HydrogenBonds,
   'bond-type-scale': BondTypeScale,
   polarity: Polarity,
+  hybridization: Hybridization,
+  resonance: Resonance,
   // reactions & calculations (level 4)
   'conservation-of-mass': ConservationOfMass,
   'mole-bridge': MoleBridge,

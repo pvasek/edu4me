@@ -725,3 +725,80 @@
   stroke: #1f2a44;
   stroke-width: 0.8;
 }
+
+/* ---------------------------------------------------------------- hybridization */
+.f35-hy-s {
+  fill: color-mix(in srgb, var(--blue) 34%, var(--surface));
+}
+.f35-hy-p {
+  fill: color-mix(in srgb, var(--accent) 34%, var(--surface));
+}
+.f35-hy-h {
+  fill: var(--lv-mid);
+}
+.f35-hy-edge {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+}
+.f35-hy-back {
+  opacity: 0.55;
+}
+.f35-hy-back .f35-hy-edge {
+  stroke-dasharray: 3 2.5;
+}
+.f35-hy-rest .f35-hy-edge {
+  stroke-dasharray: 3 2.5;
+}
+.f35-hy-rest {
+  opacity: 0.8;
+}
+.f35-hy-plane {
+  fill: color-mix(in srgb, var(--lv) 8%, transparent);
+  stroke: var(--lv-ink);
+  stroke-width: 0.9;
+  stroke-dasharray: 2 4;
+}
+
+/* ---------------------------------------------------------------- resonance */
+.f35-rs-bond,
+.f35-rs-part {
+  stroke: var(--edge);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.f35-rs-part {
+  stroke: var(--lv-ink);
+  stroke-dasharray: 4 3.5;
+  stroke-linecap: butt;
+}
+.f35-rs-atom {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 18px;
+  fill: var(--ink);
+}
+.f35-rs-qp,
+.f35-rs-qn {
+  fill: var(--surface);
+  stroke-width: 1.1;
+}
+.f35-rs-qp {
+  stroke: var(--blue);
+}
+.f35-rs-qn {
+  stroke: var(--bad);
+}
+.f35-rs-qt {
+  font: 800 11px var(--font-body);
+  fill: var(--ink);
+}
+.f35-rs-frac {
+  font: 700 14px var(--font-body);
+  fill: var(--bad);
+}
+.f35-rs-cloud ellipse {
+  fill: color-mix(in srgb, var(--lv) 16%, transparent);
+  stroke: none;
+}

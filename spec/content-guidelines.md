@@ -48,7 +48,7 @@ Each **section** has a title and 4–12 blocks. Good rhythm for a section:
 2. a visual (`diagram`, `elements`, `table`, `structure`, `formula`)
 3. a worked `example` when there is a calculation or a procedure
 4. a `callout` (tip, warning, fact, remember or mascot)
-5. **one `check` question** at the end of the section (recommended, not required). Checks are *not* shown inline: they are collected into the single end-of-lesson quiz (one per section, in reading order, then the `quiz` questions; at most 12 in total)
+5. **one `check` question** at the end of the section (recommended, not required). Checks are *not* shown inline: they are collected into the single end-of-lesson quiz (one per section, in reading order, then the `quiz` questions; 12 questions, or up to 14 so that every section contributes one)
 
 A section may embed a `game` block pointing at a related mini-game (at most once per lesson).
 

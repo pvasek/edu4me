@@ -57,25 +57,26 @@ export const FIGURES = [
   // lab & matter (levels 1–2)
   'lab-equipment', 'bunsen-burner', 'heating-test-tube', 'meniscus', 'mixture-types', 'water-treatment',
   'fire-triangle', 'air-composition', 'solubility-curve', 'dissolving', 'rutherford-experiment', 'atom-scale',
-  'hydrogen-isotopes', 'half-life', 'shells-vs-orbitals', 'orbital-shapes',
+  'hydrogen-isotopes', 'half-life', 'shells-vs-orbitals', 'orbital-shapes', 'radiation-penetration', 'nuclear-fission', 'heating-curve',
   // bonding (level 3)
-  'vsepr-shapes', 'ionic-lattice', 'metallic-bond', 'hydrogen-bonds', 'bond-type-scale', 'polarity',
+  'vsepr-shapes', 'ionic-lattice', 'metallic-bond', 'hydrogen-bonds', 'bond-type-scale', 'polarity', 'hybridization', 'resonance',
   // reactions & calculations (level 4)
   'conservation-of-mass', 'mole-bridge', 'mole-scale', 'dilution', 'limiting-reagent', 'reaction-types',
   // acids & bases (level 5)
   'neutralization', 'indicator-colors', 'acid-rain', 'salt-preparation',
   // energy, rates, equilibrium (level 6)
   'redox-transfer', 'electrolysis', 'li-ion-battery', 'fuel-cell', 'corrosion', 'hess-cycle',
-  'maxwell-boltzmann', 'equilibrium-seesaw', 'buffer-action',
+  'maxwell-boltzmann', 'equilibrium-seesaw', 'buffer-action', 'electroplating', 'calorimeter', 'gibbs-quadrants', 'reaction-orders',
   // elements (level 7)
   'blast-furnace', 'haber-process', 'contact-process', 'ostwald-process', 'limestone-cycle', 'carbon-allotropes',
-  'flame-tests', 'halogen-colors', 'nitrogen-cycle', 'carbon-cycle', 'aluminium-electrolysis',
+  'flame-tests', 'halogen-colors', 'nitrogen-cycle', 'carbon-cycle', 'aluminium-electrolysis', 'ion-tests', 'gas-tests',
   // organic (level 8)
   'fractional-distillation', 'homologous-series', 'isomers', 'addition-mechanism', 'substitution-mechanism',
-  'polymer-chain', 'esterification', 'micelle',
+  'polymer-chain', 'esterification', 'micelle', 'polymerization-types', 'mass-spectrum', 'ir-spectrum', 'nmr-spectrum',
   // life & world (level 9)
   'glucose-ring', 'photosynthesis-respiration', 'peptide-bond', 'protein-structure', 'lipid-bilayer',
   'enzyme-lock-key', 'dna-helix', 'protein-synthesis', 'greenhouse-effect', 'ozone-layer', 'plastic-lifecycle',
+  'atp-cycle', 'cellular-respiration',
 ] as const
 export type FigureId = (typeof FIGURES)[number]
 
