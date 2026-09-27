@@ -23,7 +23,7 @@ export default function HaberProcess() {
       {/* reactor → cooler → separator */}
       <Pipe d="M335 256 V300 H292" gas={NH3} delay={0.9} />
       <Pipe d="M200 328 H172" gas={NH3} delay={1.1} />
-      <Pipe d="M140 382 V416 H24" gas={NH3} delay={1.3} />
+      <Pipe d="M140 382 V398 H24" gas={NH3} delay={1.3} />
       {/* recycle loop */}
       <Pipe d="M140 270 V106" gas={MIX} delay={1.3} reverse={false} />
       <circle cx={110} cy={100} r={8} className="f67-o f67-fill3" />
@@ -88,7 +88,7 @@ export default function HaberProcess() {
         <text x={246} y={388} textAnchor="middle" className="f67-lbl f67-sm f67-sec">
           <ChemText text="NH_{3} zkapalní" />
         </text>
-        <text x={24} y={408} className="f67-lbl f67-b" style={{ fill: NH3 }}>
+        <text x={24} y={424} className="f67-lbl f67-b" style={{ fill: NH3 }}>
           <ChemText text="kapalný NH_{3}" />
         </text>
         <text x={130} y={214} textAnchor="end" className="f67-lbl f67-b">

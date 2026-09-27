@@ -20,18 +20,38 @@ export interface Step {
 }
 
 /** Numbered list of equations with notes (below the flow sheet). */
-export function StepList({ x, y, steps, gap = 42, delay = 1.2 }: { x: number; y: number; steps: Step[]; gap?: number; delay?: number }) {
+export function StepList({
+  x,
+  y,
+  steps,
+  gap = 44,
+  delay = 1.2,
+  cols = 1,
+  colW = 230,
+}: {
+  x: number
+  y: number
+  steps: Step[]
+  gap?: number
+  delay?: number
+  cols?: number
+  colW?: number
+}) {
   return (
     <g>
-      {steps.map((s, i) => (
-        <Fade key={i} delay={delay + i * 0.2}>
-          <Badge x={x + 10} y={y + i * gap - 5} n={i + 1} />
-          <Eq x={x + 28} y={y + i * gap} t={s.eq} />
-          <text x={x + 28} y={y + i * gap + 18} className="f67-lbl f67-sm">
-            <ChemText text={s.note} />
-          </text>
-        </Fade>
-      ))}
+      {steps.map((s, i) => {
+        const cx = x + (i % cols) * colW
+        const cy = y + Math.floor(i / cols) * gap
+        return (
+          <Fade key={i} delay={delay + i * 0.2}>
+            <Badge x={cx + 10} y={cy - 5} n={i + 1} />
+            <Eq x={cx + 26} y={cy} t={s.eq} />
+            <text x={cx + 26} y={cy + 19} className="f67-lbl f67-sm">
+              <ChemText text={s.note} />
+            </text>
+          </Fade>
+        )
+      })}
     </g>
   )
 }

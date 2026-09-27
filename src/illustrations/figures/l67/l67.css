@@ -541,3 +541,7 @@
   stroke: var(--muted);
   stroke-width: 1;
 }
+.f67-badge-n {
+  font: 700 12px var(--font-mono);
+  fill: #fffaf0;
+}

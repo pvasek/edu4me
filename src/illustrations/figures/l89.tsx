@@ -7,6 +7,10 @@ import PhotosynthesisRespiration from './l89/PhotosynthesisRespiration'
 import LipidBilayer from './l89/LipidBilayer'
 import PeptideBond from './l89/PeptideBond'
 import ProteinStructure from './l89/ProteinStructure'
+import DnaHelix from './l89/DnaHelix'
+import EnzymeLockKey from './l89/EnzymeLockKey'
+import GreenhouseEffect from './l89/GreenhouseEffect'
+import ProteinSynthesis from './l89/ProteinSynthesis'
 import FractionalDistillation from './l89/FractionalDistillation'
 import HomologousSeries from './l89/HomologousSeries'
 import Isomers from './l89/Isomers'
@@ -29,4 +33,8 @@ export const FIGURES_L89: Partial<Record<FigureId, ComponentType>> = {
   'peptide-bond': PeptideBond,
   'protein-structure': ProteinStructure,
   'lipid-bilayer': LipidBilayer,
+  'enzyme-lock-key': EnzymeLockKey,
+  'dna-helix': DnaHelix,
+  'protein-synthesis': ProteinSynthesis,
+  'greenhouse-effect': GreenhouseEffect,
 }
