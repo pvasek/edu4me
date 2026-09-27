@@ -118,8 +118,8 @@ export default function Esterification() {
 function Scene() {
   const n = useNarrow()
   const L = n
-    ? { w: 340, h: 490, acid: { x: 26, y: 92 }, plus1: { x: 128, y: 100 }, eth: { x: 152, y: 92 }, arr: [170, 170, 170, 226], cat: { x: 184, y: 196 }, ester: { x: 26, y: 300 }, plus2: { x: 176, y: 308 }, water: { x: 234, y: 304 }, vig: { x: 60, y: 448 } }
-    : { w: 600, h: 226, acid: { x: 22, y: 128 }, plus1: { x: 124, y: 136 }, eth: { x: 146, y: 128 }, arr: [252, 132, 322, 132], cat: { x: 287, y: 116 }, ester: { x: 352, y: 128 }, plus2: { x: 492, y: 136 }, water: { x: 548, y: 132 }, vig: { x: 390, y: 48 } }
+    ? { w: 340, h: 490, acid: { x: 40, y: 92 }, plus1: { x: 142, y: 100 }, eth: { x: 170, y: 92 }, arr: [186, 170, 186, 226], cat: { x: 200, y: 196 }, ester: { x: 40, y: 300 }, plus2: { x: 204, y: 308 }, water: { x: 262, y: 304 }, vig: { x: 90, y: 448 } }
+    : { w: 600, h: 240, acid: { x: 22, y: 142 }, plus1: { x: 124, y: 150 }, eth: { x: 146, y: 142 }, arr: [252, 146, 322, 146], cat: { x: 287, y: 130 }, ester: { x: 352, y: 142 }, plus2: { x: 492, y: 150 }, water: { x: 548, y: 146 }, vig: { x: 390, y: 62 } }
   const ring = { x: (L.acid.x + 64 + L.eth.x) / 2, y: L.acid.y + 10 }
   const [ax1, ay1, ax2, ay2] = L.arr
   const vertical = ax1 === ax2

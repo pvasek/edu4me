@@ -73,7 +73,7 @@ export default function MaxwellBoltzmann() {
         <text x={pk1[0] + 10} y={pk1[1] - 6} className="f67-lbl f67-b f67-big f67-blue-t">
           <ChemText text="T_{1}" />
         </text>
-        <text x={pk2[0] + 36} y={pk2[1] - 4} className="f67-lbl f67-b f67-big f67-acc-t">
+        <text x={pk2[0] - 8} y={pk2[1] - 12} className="f67-lbl f67-b f67-big f67-acc-t f67-halo">
           <ChemText text="T_{2} > T_{1}" />
         </text>
       </Fade>

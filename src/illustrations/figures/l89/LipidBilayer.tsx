@@ -83,7 +83,7 @@ function Scene() {
       </text>
 
       {/* hydrophobic core */}
-      <rect x={L.x0 - 12} y={L.top + 12} width={L.x1 - L.x0 + 24} height={bot - L.top - 24} fill="#e8c35a" opacity={0.12} />
+      <rect x={L.x0 - 12} y={L.top + 12} width={L.x1 - L.x0 + 24} height={bot - L.top - 24} fill="color-mix(in srgb, #e8c35a 14%, var(--surface))" />
 
       {xs.map((x, i) => (
         <Pop key={`u${x}`} delay={0.1 + i * 0.04}>

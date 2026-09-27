@@ -116,12 +116,12 @@ export default function AluminiumElectrolysis() {
         <Lbl x={480} y={416} tx={446} ty={366} anchor="end" className="f67-sm">
           uhlíková vyzdívka = katoda (−)
         </Lbl>
-        <Lbl x={330} y={44} tx={300} ty={192} anchor="end" className="f67-sm" sec>
+        <Lbl x={466} y={132} tx={430} ty={190} anchor="end" className="f67-sm" sec>
           kůra
         </Lbl>
-        <text x={196} y={44} textAnchor="end" className="f67-lbl f67-sm f67-sec">
+        <Lbl x={196} y={44} tx={186} ty={206} anchor="end" className="f67-sm" sec>
           <ChemText text="CO_{2} unikají" />
-        </text>
+        </Lbl>
       </Fade>
 
       <Pop delay={1.4}>

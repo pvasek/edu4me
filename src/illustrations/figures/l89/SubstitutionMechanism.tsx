@@ -3,7 +3,7 @@ import { Arrow, Atom, ChemText, Curly, Draw, Fade, Figure, Mol, Panel, Panels, P
 const LABEL =
   'Radikálová substituce: chlorace methanu za světla. Iniciace: UV záření rozštěpí molekulu chloru homolyticky na dva radikály chloru, Cl2 → 2 Cl·. Propagace 1: radikál chloru utrhne methanu vodík, Cl· + CH4 → HCl + ·CH3. Propagace 2: methylový radikál vezme atom chloru z další molekuly Cl2, ·CH3 + Cl2 → CH3Cl + Cl·, a nový radikál chloru řetěz opakuje. Terminace: dva radikály se spojí, Cl· + Cl· → Cl2, ·CH3 + Cl· → CH3Cl nebo ·CH3 + ·CH3 → C2H6.'
 
-const STEP = 1.9
+const STEP = 1.5
 
 export default function SubstitutionMechanism() {
   return (

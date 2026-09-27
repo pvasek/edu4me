@@ -4,7 +4,7 @@ import { Curly, Fade, Figure, Panel, Panels, Plate, Pop } from './kit'
 const LABEL =
   'Elektrofilní adice bromovodíku na propen krok za krokem. 1: π-elektrony dvojné vazby chytí proton z HBr, vazba H–Br se štěpí heterolyticky a brom odchází jako Br−. 2: proton se naváže na krajní uhlík CH2 s více vodíky a na prostředním uhlíku vznikne stabilnější sekundární karbokation CH3–CH+–CH3. 3: anion Br− se naváže na kladně nabitý uhlík. Hlavním produktem je podle Markovnikovova pravidla 2-brompropan CH3–CHBr–CH3.'
 
-const STEP = 2.2
+const STEP = 1.8
 
 export default function AdditionMechanism() {
   return (

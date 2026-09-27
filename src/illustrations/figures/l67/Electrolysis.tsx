@@ -24,8 +24,8 @@ const MODES = {
     anT: 'SO_{4}^{2-}',
     katEq: 'Cu^{2+} + 2e^{-} → Cu',
     anEq: '2H_{2}O → O_{2} + 4H^{+} + 4e^{-}',
-    katProd: 'vylučuje se měď',
-    anProd: 'unikají bublinky O₂',
+    katProd: 'měď',
+    anProd: 'kyslík',
     liquid: '#3b8fe0',
     note: 'roztok CuSO₄',
     label:
@@ -207,7 +207,7 @@ export default function Electrolysis() {
             <Lbl x={506} y={112} tx={AX + 9} ty={140} anchor="end" className="f67-b">
               anoda (+)
             </Lbl>
-            <Lbl x={14} y={200} tx={KX - 26} ty={mode === 'nacl' ? 172 : 230} className="f67-sm">
+            <Lbl x={14} y={200} tx={mode === 'nacl' ? KX - 26 : KX - 12} ty={mode === 'nacl' ? 172 : 230} className="f67-sm">
               {m.katProd}
             </Lbl>
             <Lbl x={506} y={200} tx={AX + 9} ty={230} anchor="end" className="f67-sm">

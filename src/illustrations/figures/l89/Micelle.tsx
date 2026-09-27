@@ -149,7 +149,7 @@ function Scene() {
             </g>
           )
         })}
-        <Lbl x={L.c.x} y={L.c.y + 5} anchor="middle" className="f89-b" size={15}>
+        <Lbl x={L.c.x} y={L.c.y + 5} anchor="middle" className="f89-b f89-on-oil" size={15}>
           mastnota
         </Lbl>
         <Lbl x={wx + ww - 12} y={wy + wh - 12} anchor="end" size={15} className="f89-lb">

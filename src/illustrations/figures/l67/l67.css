@@ -553,6 +553,20 @@
 .f67-halo {
   paint-order: stroke;
   stroke: var(--surface);
-  stroke-width: 5px;
+  stroke-width: 8px;
   stroke-linejoin: round;
+}
+.f67-flash {
+  animation: f67-flash 3.2s steps(1) infinite;
+}
+@keyframes f67-flash {
+  0%,
+  86%,
+  92% {
+    opacity: 1;
+  }
+  88%,
+  95% {
+    opacity: 0.35;
+  }
 }

@@ -152,7 +152,7 @@ export default function NitrogenCycle() {
         <text x={330} y={442} textAnchor="middle" className="f67-lbl f67-b f67-halo">
           amonizace (rozkladači)
         </text>
-        <text x={500} y={120} textAnchor="end" className="f67-lbl f67-b f67-lvl-t f67-halo">
+        <text x={512} y={96} textAnchor="end" className="f67-lbl f67-b f67-lvl-t f67-halo">
           denitrifikace
         </text>
       </Fade>

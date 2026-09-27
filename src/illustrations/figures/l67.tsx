@@ -1,6 +1,9 @@
 import type { ComponentType } from 'react'
 import type { FigureId } from '../catalog'
 import Corrosion from './l67/Corrosion'
+import CarbonCycle from './l67/CarbonCycle'
+import NitrogenCycle from './l67/NitrogenCycle'
+import AluminiumElectrolysis from './l67/AluminiumElectrolysis'
 import CarbonAllotropes from './l67/CarbonAllotropes'
 import LimestoneCycle from './l67/LimestoneCycle'
 import HalogenColors from './l67/HalogenColors'
@@ -37,4 +40,7 @@ export const FIGURES_L67: Partial<Record<FigureId, ComponentType>> = {
   'halogen-colors': HalogenColors,
   'limestone-cycle': LimestoneCycle,
   'carbon-allotropes': CarbonAllotropes,
+  'aluminium-electrolysis': AluminiumElectrolysis,
+  'nitrogen-cycle': NitrogenCycle,
+  'carbon-cycle': CarbonCycle,
 }

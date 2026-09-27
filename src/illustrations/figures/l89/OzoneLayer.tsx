@@ -42,10 +42,10 @@ function Scene() {
   return (
     <>
       {/* altitude column */}
-      <rect x={40} y={KM(50)} width={130} height={KM(0) - KM(50)} fill="color-mix(in srgb, #5b9bd5 10%, var(--surface))" />
-      <rect x={40} y={KM(12)} width={130} height={KM(0) - KM(12)} fill="color-mix(in srgb, #5b9bd5 20%, var(--surface))" />
-      <rect x={40} y={KM(35)} width={130} height={KM(15) - KM(35)} fill="var(--lv)" opacity={0.18} />
-      <rect x={40} y={KM(35)} width={130} height={KM(15) - KM(35)} fill={hatch('lv')} className="f89-hatch" />
+      <rect x={40} y={KM(50)} width={150} height={KM(0) - KM(50)} fill="color-mix(in srgb, #5b9bd5 10%, var(--surface))" />
+      <rect x={40} y={KM(12)} width={150} height={KM(0) - KM(12)} fill="color-mix(in srgb, #5b9bd5 20%, var(--surface))" />
+      <rect x={40} y={KM(35)} width={150} height={KM(15) - KM(35)} fill="var(--lv)" opacity={0.18} />
+      <rect x={40} y={KM(35)} width={150} height={KM(15) - KM(35)} fill={hatch('lv')} className="f89-hatch" />
       <line className="f89-ln" x1={40} y1={KM(50)} x2={40} y2={KM(0)} />
       {[0, 10, 20, 30, 40, 50].map((k) => (
         <g key={k}>
@@ -58,29 +58,29 @@ function Scene() {
       <text className="f89-f f89-sm f89-muted" x={30} y={KM(50) - 14} textAnchor="end">
         km
       </text>
-      <line className="f89-guide" x1={40} y1={KM(12)} x2={170} y2={KM(12)} />
-      <text className="f89-lb f89-sm" x={166} y={KM(6)} textAnchor="end">
+      <line className="f89-guide" x1={40} y1={KM(12)} x2={190} y2={KM(12)} />
+      <text className="f89-lb f89-sm" x={186} y={KM(6)} textAnchor="end">
         troposféra
       </text>
-      <text className="f89-lb f89-sm" x={166} y={KM(44)} textAnchor="end">
+      <text className="f89-lb f89-sm" x={186} y={KM(44)} textAnchor="end">
         stratosféra
       </text>
-      <text className="f89-lb f89-b f89-lv" x={166} y={KM(33)} textAnchor="end">
+      <text className="f89-lb f89-b f89-lv" x={186} y={KM(17)} textAnchor="end">
         ozonová vrstva
       </text>
       <Pop delay={0.4}>
-        <O3 x={70} y={KM(28)} />
-        <O3 x={120} y={KM(22)} />
-        <O3 x={90} y={KM(18)} />
+        <O3 x={132} y={KM(30)} />
+        <O3 x={166} y={KM(25)} />
+        <O3 x={140} y={KM(21)} />
       </Pop>
       {/* ground */}
-      <rect x={40} y={KM(0)} width={130} height={10} fill="#9bb56a" stroke="var(--edge)" strokeWidth={1} />
+      <rect x={40} y={KM(0)} width={150} height={10} fill="#9bb56a" stroke="var(--edge)" strokeWidth={1} />
 
       {/* UV rays: most absorbed in the ozone layer, a little reaches the ground */}
       {[
-        { x: 66, end: KM(30), label: 'UV-C' },
-        { x: 104, end: KM(24), label: 'UV-B' },
-        { x: 146, end: KM(0) - 2, label: 'UV-A' },
+        { x: 80, end: KM(30), label: 'UV-C' },
+        { x: 110, end: KM(24), label: 'UV-B' },
+        { x: 50, end: KM(0) - 2, label: 'UV-A' },
       ].map((r, i) => (
         <g key={r.label}>
           <Draw d={`M${r.x} ${KM(50) + 6} L${r.x} ${r.end}`} className="f89-ln" delay={0.6 + i * 0.2} dur={0.8} style={{ stroke: UV, strokeWidth: 2.4 }} />
@@ -97,7 +97,7 @@ function Scene() {
         </g>
       ))}
       <Fade delay={1.9}>
-        <text className="f89-lb f89-sm" x={105} y={434} textAnchor="middle">
+        <text className="f89-lb f89-sm" x={115} y={434} textAnchor="middle">
           k zemi projde jen málo UV
         </text>
       </Fade>

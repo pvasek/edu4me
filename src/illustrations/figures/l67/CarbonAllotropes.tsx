@@ -36,8 +36,23 @@ function project(p: V3, yaw: number, pitch: number): V3 {
 }
 
 /** Ball-and-stick drawing of a 3D point set, depth sorted and depth shaded. */
-function BallStick({ pts, bonds, cx, cy, s, yaw, pitch, r = 4.5, faint = true }: { pts: V3[]; bonds: [number, number][]; cx: number; cy: number; s: number; yaw: number; pitch: number; r?: number; faint?: boolean }) {
+const CUBE_E: [V3, V3][] = (() => {
+  const c: V3[] = []
+  for (const x of [-2, 2]) for (const y of [-2, 2]) for (const z of [-2, 2]) c.push([x, y, z])
+  const e: [V3, V3][] = []
+  c.forEach((p, i) => c.forEach((q, j) => j > i && [0, 1, 2].filter((k) => p[k] !== q[k]).length === 1 && e.push([p, q])))
+  return e
+})()
+
+function BallStick({ pts, bonds, cx, cy, s, yaw, pitch, r = 4.5, faint = true, cube = false }: { pts: V3[]; bonds: [number, number][]; cx: number; cy: number; s: number; yaw: number; pitch: number; r?: number; faint?: boolean; cube?: boolean }) {
   const P = pts.map((p) => project(p, yaw, pitch))
+  const cubeLines = cube
+    ? CUBE_E.map(([a, b], k) => {
+        const A = project(a, yaw, pitch)
+        const B = project(b, yaw, pitch)
+        return <line key={`c${k}`} x1={cx + A[0] * s} y1={cy + A[1] * s} x2={cx + B[0] * s} y2={cy + B[1] * s} className="f67-o f67-thin f67-dash" style={{ opacity: 0.35 }} />
+      })
+    : null
   const zs = P.map((p) => p[2])
   const zmin = Math.min(...zs)
   const zmax = Math.max(...zs)
@@ -46,6 +61,7 @@ function BallStick({ pts, bonds, cx, cy, s, yaw, pitch, r = 4.5, faint = true }:
   const bs = [...bonds].sort((a, b) => zs[a[0]] + zs[a[1]] - zs[b[0]] - zs[b[1]])
   return (
     <g>
+      {cubeLines}
       {bs.map(([a, b], k) => {
         const d = depth((zs[a] + zs[b]) / 2)
         return (
@@ -260,7 +276,7 @@ function Plates({ n }: { n: boolean }) {
   return (
     <>
       <Panel x={P[0][0]} y={P[0][1]} title="diamant" lines={['4 vazby, prostorová síť', 'nejtvrdší, nevede proud']} delay={0}>
-        <BallStick pts={DIAMOND.pts} bonds={DIAMOND.bonds} cx={mid(0)[0]} cy={mid(0)[1]} s={17} yaw={0.55 + spin * 0.6} pitch={0.42} r={5.5} />
+        <BallStick pts={DIAMOND.pts} bonds={DIAMOND.bonds} cx={mid(0)[0]} cy={mid(0)[1]} s={16} yaw={0.55 + spin * 0.6} pitch={0.42} r={5.5} cube />
       </Panel>
       <Panel x={P[1][0]} y={P[1][1]} title="grafit" lines={['vrstvy šestiúhelníků', 'měkký, vede proud']} delay={0.15}>
         <Graphite cx={mid(1)[0] - 6} cy={mid(1)[1]} />

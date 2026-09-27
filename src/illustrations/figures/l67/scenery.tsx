@@ -3,7 +3,7 @@ import { ChemText, pat, useFig } from './kit'
 
 export function Soil({ x, y, w, h }: { x: number; y: number; w: number; h: number }) {
   const { id } = useFig()
-  const top = `M${x} ${y} q20 -4 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0`
+  const top = `M${x} ${y} q20 -4 40 0` + ' t40 0'.repeat(Math.max(0, Math.ceil(w / 40) - 1))
   return (
     <g>
       <path d={`${top} V${y + h} H${x}Z`} fill="#9b7447" fillOpacity={0.28} />
