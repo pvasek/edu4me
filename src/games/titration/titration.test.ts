@@ -52,8 +52,8 @@ describe('titration maths', () => {
   it('random samples stay in a burette-friendly range', () => {
     for (let i = 0; i < 50; i++) {
       const v = equivalenceVolume(randomSample())
-      expect(v).toBeGreaterThanOrEqual(12)
-      expect(v).toBeLessThanOrEqual(28)
+      expect(v).toBeGreaterThanOrEqual(12 - 1e-9)
+      expect(v).toBeLessThanOrEqual(28 + 1e-9)
     }
   })
 

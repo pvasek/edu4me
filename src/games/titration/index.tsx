@@ -821,7 +821,7 @@ function Curve({ sample, points, v, ph }: { sample: Sample; points: Point[]; v: 
               <line x1={x(half.v)} x2={x(half.v)} y1={y(0)} y2={y(half.pKa)} className="g-ti-half-line" />
               <line x1={L} x2={x(half.v)} y1={y(half.pKa)} y2={y(half.pKa)} className="g-ti-half-line" />
               <circle cx={x(half.v)} cy={y(half.pKa)} r="3.5" className="g-ti-half-dot" />
-              <text x={x(half.v) + 6} y={y(half.pKa) + 13} className="g-ti-axis small g-ti-half-label">
+              <text x={x(half.v) + 6} y={y(half.pKa) - 6} className="g-ti-axis small g-ti-half-label">
                 ½ V: pH = pKₐ = {fmt(half.pKa, 2)}
               </text>
             </motion.g>

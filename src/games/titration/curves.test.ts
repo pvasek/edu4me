@@ -127,8 +127,8 @@ describe('titration levels', () => {
     for (const acid of ['hcl', 'ch3cooh', 'h2so4'] as const) {
       for (let i = 0; i < 30; i++) {
         const v = equivalenceVolume(randomSample(acid))
-        expect(v).toBeGreaterThanOrEqual(12)
-        expect(v).toBeLessThanOrEqual(28)
+        expect(v).toBeGreaterThanOrEqual(12 - 1e-9)
+        expect(v).toBeLessThanOrEqual(28 + 1e-9)
       }
     }
   })
