@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import { motion } from 'motion/react'
 import { Fade, Plate, Sub, cz, drawV, useHatch } from './kit'
 
@@ -11,10 +11,10 @@ export const SOLUBILITY = {
 } as const
 type Key = keyof typeof SOLUBILITY
 
-const SERIES: { key: Key; cls: string; name: ReactNode; plain: string; dash?: string }[] = [
-  { key: 'sugar', cls: 'f12-sugar', name: 'cukr', plain: 'cukr (sacharóza)', dash: '8 4' },
-  { key: 'kno3', cls: 'f12-kno3', name: <>KNO<Sub>3</Sub></>, plain: 'dusičnan draselný KNO₃' },
-  { key: 'nacl', cls: 'f12-nacl', name: 'NaCl', plain: 'kuchyňská sůl NaCl', dash: '2 4' },
+const SERIES: { key: Key; cls: string; name: ReactNode; short: string; plain: string }[] = [
+  { key: 'sugar', cls: 'f12-sugar', name: 'cukr', short: 'cukr', plain: 'cukr (sacharóza)' },
+  { key: 'kno3', cls: 'f12-kno3', name: <>KNO<Sub>3</Sub></>, short: 'KNO₃', plain: 'dusičnan draselný KNO₃' },
+  { key: 'nacl', cls: 'f12-nacl', name: 'NaCl', short: 'NaCl', plain: 'kuchyňská sůl NaCl' },
 ]
 
 /** Monotone cubic (Fritsch–Carlson) interpolation through the table points. */
@@ -77,7 +77,7 @@ const fmtG = (g: number) => (g >= 100 ? cz(g, 0) : cz(g, 1))
 
 export default function SolubilityCurve() {
   const [t, setT] = useState<number | null>(null)
-  const svgRef = useRef<SVGSVGElement | null>(null)
+  const tt = t ?? 20
   const onMove = (e: React.PointerEvent<SVGSVGElement>) => {
     const svg = e.currentTarget
     const ctm = svg.getScreenCTM()
@@ -94,22 +94,34 @@ export default function SolubilityCurve() {
       h={410}
       max={660}
       label={`Křivky rozpustnosti: kolik gramů látky se rozpustí ve 100 g vody při teplotě 0 až 100 °C. ${table}. Rozpustnost dusičnanu draselného s teplotou strmě stoupá, u kuchyňské soli je křivka téměř vodorovná.`}
-      svgProps={{ onPointerMove: onMove, onPointerLeave: () => setT(null), ref: svgRef as never, style: { touchAction: 'pan-y' } }}
+      svgProps={{ onPointerMove: onMove, onPointerLeave: () => setT(null), style: { touchAction: 'pan-y' } }}
       after={
         <>
           <div className="f12-legend" aria-hidden="true">
             {SERIES.map((s) => (
               <span key={s.key} className={s.cls}>
-                <i style={s.dash ? { borderTopStyle: s.dash === '2 4' ? 'dotted' : 'dashed' } : undefined} />
+                <svg width={28} height={14} viewBox="-14 -7 28 14">
+                  <line className="f12-series" x1={-13} x2={13} y1={0} y2={0} />
+                  <Marker key2={s.key} x={0} y={0} />
+                </svg>
                 {s.plain}
               </span>
             ))}
           </div>
           <label className="f12-range">
             teplota
-            <input type="range" min={0} max={100} step={1} value={t ?? 20} onChange={(e) => setT(Number(e.target.value))} />
-            <output>{t ?? 20} °C</output>
+            <input type="range" min={0} max={100} step={1} value={tt} onChange={(e) => setT(Number(e.target.value))} />
+            <output>{tt} °C</output>
           </label>
+          <p className="f12-readline" aria-live="polite">
+            Při {tt} °C se ve 100 g vody rozpustí:{' '}
+            {SERIES.map((s, i) => (
+              <span key={s.key}>
+                {i ? ' · ' : ''}
+                {s.short} <b>{fmtG(interp(SOLUBILITY[s.key], tt))} g</b>
+              </span>
+            ))}
+          </p>
         </>
       }
     >
@@ -166,7 +178,7 @@ function Chart({ t }: { t: number | null }) {
       {/* curves */}
       {SERIES.map((s, i) => (
         <g key={s.key} className={s.cls}>
-          <motion.path className="f12-series" d={curve(SOLUBILITY[s.key])} variants={drawV(0.2 + i * 0.3, 1.4)} style={s.dash ? { strokeDasharray: undefined } : undefined} />
+          <motion.path className="f12-series" d={curve(SOLUBILITY[s.key])} variants={drawV(0.2 + i * 0.3, 1.4)} />
           {TEMPS.map((tt, j) => (
             <motion.g key={tt} variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { delay: 0.5 + i * 0.3 + j * 0.12 } } }}>
               <Marker key2={s.key} x={sx(tt)} y={sy(SOLUBILITY[s.key][j])} />
@@ -209,6 +221,7 @@ function ReadOut({ t }: { t: number }) {
           <Marker key2={v.key} x={x} y={sy(v.g)} on />
         </g>
       ))}
+      <g className="f12-sec">
       <rect className="f12-tip" x={bx} y={by} width={bw} height={100} rx={6} />
       <text className="f12-tip-h" x={bx + 12} y={by + 24}>
         {t} °C
@@ -224,6 +237,7 @@ function ReadOut({ t }: { t: number }) {
           </text>
         </g>
       ))}
+      </g>
     </g>
   )
 }

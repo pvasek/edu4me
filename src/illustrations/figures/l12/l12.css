@@ -1137,3 +1137,33 @@
   font-size: calc(var(--f12-fs) * 0.9);
   font-weight: 700;
 }
+
+/* ------------------------------------------------------------ solubility read-out */
+.f12-tip-h {
+  font: 700 16px var(--font-mono);
+  fill: var(--ink);
+}
+.f12-tip-t {
+  font: 500 14px var(--font-body);
+  fill: var(--ink);
+}
+.f12-tip-v {
+  font: 700 14px var(--font-mono);
+  fill: var(--ink);
+}
+.f12-readout .f12-tip-v {
+  text-anchor: end;
+}
+.f12-readline {
+  margin: 0;
+  text-align: center;
+  font: 500 14px/1.4 var(--font-body);
+  color: var(--ink-soft);
+}
+.f12-readline b {
+  font-family: var(--font-mono);
+  color: var(--ink);
+}
+.f12-legend svg {
+  overflow: visible;
+}
