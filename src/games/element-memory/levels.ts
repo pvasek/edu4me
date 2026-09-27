@@ -313,7 +313,7 @@ const L9: MemLevel = {
     { a: 'DNA', b: 'nukleotidy s deoxyribózou (A, T, G, C)' },
     { a: 'RNA', b: 'nukleotidy s ribózou (A, U, G, C)' },
     { a: 'ATP', b: 'adenin + ribóza + 3 fosfáty', syms: ['P'] },
-    { a: 'tuk (triacylglycerol)', b: 'glycerol + 3 mastné kyseliny' },
+    { a: 'tuk', b: 'glycerol + 3 mastné kyseliny' },
     { a: 'fosfolipid', b: 'glycerol + 2 mastné kyseliny + fosfát' },
     { a: 'vosk', b: 'mastná kyselina + vyšší alkohol' },
     { a: 'mýdlo', b: 'sodná sůl mastné kyseliny' },

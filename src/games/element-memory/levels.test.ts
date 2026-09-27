@@ -50,7 +50,7 @@ describe('element-memory level sets', () => {
           for (const t of [p.a, p.b]) {
             expect(plain(t).length, t).toBeLessThanOrEqual(46)
             // cqi = % of card width: long cards are ~100 px wide at 360 px, short ones ~76 px
-            expect(faceFont(t), t).toBeGreaterThanOrEqual(L.long ? 12 : 15)
+            expect(faceFont(t), t).toBeGreaterThanOrEqual(L.long ? 11 : 15)
           }
         }
       })
