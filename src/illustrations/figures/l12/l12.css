@@ -1025,7 +1025,9 @@
   stroke: var(--f12-lv-mid);
 }
 .f12-side-t {
-  font: 700 19px var(--font-display);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: calc(var(--f12-fs) * 1.1);
   letter-spacing: 0.22em;
   fill: var(--ink);
   text-anchor: middle;
