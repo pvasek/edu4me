@@ -44,7 +44,7 @@ const l31: Lesson = {
             { icon: 'atom', title: 'Daleko od sebe', text: 'dva atomy vodíku se ještě neovlivňují' },
             { icon: 'magnet', title: 'Přibližují se', text: 'elektron každého atomu přitahuje i jádro souseda, energie klesá' },
             { icon: 'bond', title: 'Energetické minimum', text: 'nejvýhodnější vzdálenost: vznikla vazba s určitou délkou' },
-            { icon: 'explosion', title: 'Příliš blízko', text: 'kladná jádra se začnou odpuzovat a energie prudce roste' },
+            { icon: 'ion-plus', title: 'Příliš blízko', text: 'kladná jádra se začnou odpuzovat a energie prudce roste' },
           ],
           caption: 'Co se děje, když se k sobě blíží dva atomy vodíku.',
         },
@@ -119,14 +119,14 @@ const l31: Lesson = {
           type: 'molecule',
           molecules: ['H2', 'Cl2', 'N2'],
           labels: ['$H–H$: 74 pm', '$Cl–Cl$: 199 pm', '$N≡N$: 110 pm, 945 kJ/mol'],
-          caption: 'Malé atomy vodíku jsou u sebe blízko, velké atomy chloru daleko. Trojná vazba dusíku je krátká a velmi pevná.',
+          caption: 'Porovnej, jak daleko jsou od sebe jádra v molekulách vodíku, chloru a dusíku.',
         },
         {
-          type: 'iconlist',
+          type: 'list',
           items: [
-            { icon: 'atom', title: 'Menší atomy, kratší vazba', text: 'vazba $H–H$ je mnohem kratší než $Cl–Cl$' },
-            { icon: 'bond', title: 'Kratší bývá pevnější', text: 'sdílené elektrony jsou blíž oběma jádrům' },
-            { icon: 'lightning', title: '==Násobné vazby jsou kratší a pevnější než jednoduché==', text: 'co je dvojná a trojná vazba, uvidíš hned v další lekci' },
+            '**Menší atomy, kratší vazba:** malé atomy vodíku jsou u sebe blízko, velké atomy chloru daleko.',
+            '**Kratší bývá pevnější:** sdílené elektrony jsou blíž oběma jádrům.',
+            '==**Násobné vazby jsou kratší a pevnější než jednoduché**==, jako trojná vazba v dusíku. Co je dvojná a trojná vazba, uvidíš hned v další lekci.',
           ],
         },
         {
@@ -159,19 +159,19 @@ const l31: Lesson = {
           type: 'diagram',
           id: 'periodic-mini',
           props: { highlight: 'trends' },
-          caption: 'Elektronegativita roste v periodě zleva doprava a ve skupině zdola nahoru.',
+          caption: 'Elektronegativita roste v periodě zleva doprava a ve skupině zdola nahoru. Tmavší políčko znamená vyšší elektronegativitu.',
         },
         {
           type: 'p',
           text: 'Používá se **Paulingova stupnice** podle chemika Linuse Paulinga; hodnoty nemají jednotku. Nejvyšší má fluor (3,98), nejnižší cesium a francium (kolem 0,8).',
         },
         {
-          type: 'iconlist',
+          type: 'list',
           items: [
-            { icon: 'nucleus', title: 'V periodě **roste** zleva doprava', text: 'jádro má víc protonů a valenční elektrony přitahuje silněji' },
-            { icon: 'atom', title: 'Ve skupině **klesá** shora dolů', text: 'valenční elektrony jsou dál od jádra a vnitřní vrstvy je stíní' },
-            { icon: 'coin', title: 'Kovy nízkou, nekovy vysokou', text: 'kovy mají většinou méně než 2' },
-            { icon: 'balloon', title: 'Vzácné plyny bez hodnoty', text: 'vazby téměř netvoří, proto se jim hodnota obvykle neuvádí' },
+            'V periodě zleva doprava **roste**, protože jádro má víc protonů a valenční elektrony přitahuje silněji.',
+            'Ve skupině shora dolů **klesá**, protože valenční elektrony jsou dál od jádra a vnitřní vrstvy je stíní.',
+            'Kovy mají elektronegativitu nízkou (většinou méně než 2), nekovy vysokou.',
+            'Vzácné plyny vazby téměř netvoří, proto se jim hodnota obvykle neuvádí.',
           ],
         },
         {
@@ -187,14 +187,9 @@ const l31: Lesson = {
           caption: 'Hodnoty elektronegativity podle Paulinga, které se ti v této úrovni budou hodit.',
         },
         {
-          type: 'elements',
-          symbols: ['F', 'O', 'Cl', 'N'],
-          caption: 'Čtyři nejelektronegativnější prvky: F (3,98), O (3,44), Cl (3,16) a N (3,04).',
-        },
-        {
           type: 'callout',
           variant: 'tip',
-          text: 'Nejelektronegativnější kout tabulky je vpravo nahoře (vzácné plyny nepočítáme). Čím blíž má prvek k fluoru, tím silněji si elektrony ve vazbě přitahuje.',
+          text: 'Nejelektronegativnější kout tabulky je vpravo nahoře. Čím blíž má prvek k fluoru, tím silněji si elektrony ve vazbě přitahuje.',
         },
         {
           type: 'check',
@@ -219,7 +214,7 @@ const l31: Lesson = {
         {
           type: 'diagram',
           id: 'bond-type-scale',
-          caption: 'Stupnice ΔX: od nepolární vazby přes polární až k iontové. Hranice 0,4 a 1,7 jsou jen orientační.',
+          caption: 'Stupnice ΔX: pod 0,4 nepolární vazba, od 0,4 do 1,7 polární, od 1,7 iontová. Hranice jsou jen orientační. Oblaky ukazují, jak se elektrony posouvají k elektronegativnějšímu atomu, až vzniknou ionty.',
         },
         {
           type: 'compare',
@@ -228,19 +223,19 @@ const l31: Lesson = {
               title: 'Nepolární kovalentní',
               icon: 'bond',
               tone: 'a',
-              points: ['ΔX menší než 0,4', 'elektrony sdílené zhruba rovnoměrně', '$H2$, $Cl2$, vazba $C–H$'],
+              points: ['elektrony sdílené zhruba rovnoměrně', '$H2$, $Cl2$, vazba $C–H$'],
             },
             {
               title: 'Polární kovalentní',
               icon: 'magnet',
               tone: 'b',
-              points: ['ΔX 0,4–1,7', 'elektrony posunuté k elektronegativnějšímu atomu', '$HCl$, $H2O$, vazba $N–H$'],
+              points: ['elektrony posunuté k elektronegativnějšímu atomu', '$HCl$, $H2O$, vazba $N–H$'],
             },
             {
               title: 'Iontová',
               icon: 'ion-plus',
               tone: 'c',
-              points: ['ΔX 1,7 a více', 'elektrony prakticky předané, vznikají ionty', '$NaCl$, $KBr$, $MgO$'],
+              points: ['elektrony prakticky předané, vznikají ionty', '$NaCl$, $KBr$, $MgO$'],
             },
           ],
         },
@@ -249,9 +244,10 @@ const l31: Lesson = {
           text: 'U polární vazby nese elektronegativnější atom **částečný záporný náboj** δ− a druhý **částečný kladný náboj** δ+. Nejsou to celé náboje jako u iontů, jen posun elektronů. Vazbě se dvěma „póly“ říkáme **dipól**.',
         },
         {
-          type: 'structure',
-          art: art(' δ+       δ−', ' H  ————  Cl', '   ───→', ' elektrony jsou blíž chloru'),
-          caption: 'Polární vazba v chlorovodíku. Šipka ukazuje, kam se posouvá elektronová hustota.',
+          type: 'molecule',
+          molecules: ['HCl'],
+          labels: ['$H^{δ+}–Cl^{δ−}$'],
+          caption: 'Polární vazba v chlorovodíku: elektronegativnější chlor si přitahuje sdílený pár k sobě.',
         },
         {
           type: 'example',
@@ -259,12 +255,6 @@ const l31: Lesson = {
           problem: 'Urči typ vazby v molekule $HCl$.',
           steps: ['X(Cl) = 3,16 a X(H) = 2,20', 'ΔX = 3,16 − 2,20 = 0,96', '0,4 ≤ 0,96 < 1,7, vazba je tedy polární kovalentní', 'Elektronegativnější chlor nese δ−, vodík δ+.'],
           answer: 'polární kovalentní vazba, $H^{δ+}–Cl^{δ−}$',
-        },
-        {
-          type: 'molecule',
-          molecules: ['HCl'],
-          labels: ['$H^{δ+}–Cl^{δ−}$'],
-          caption: 'Molekula chlorovodíku: chlor si přitahuje sdílený pár k sobě.',
         },
         {
           type: 'example',
@@ -422,8 +412,6 @@ const l32: Lesson = {
           type: 'keyterms',
           items: [
             { term: 'vazebný elektronový pár', def: 'dvojice elektronů sdílená dvěma atomy, tvoří kovalentní vazbu' },
-            { term: 'volný elektronový pár', def: 'dvojice valenčních elektronů, která patří jen jednomu atomu a vazbu netvoří' },
-            { term: 'valenční vzorec', def: 'vzorec, který ukazuje všechny vazby i volné elektronové páry' },
             { term: 'vaznost', def: 'počet kovalentních vazeb, které atom tvoří: H 1, O 2, N 3, C 4' },
           ],
         },
@@ -551,8 +539,8 @@ const l32: Lesson = {
         {
           type: 'molecule',
           molecules: ['BF3', 'SF6'],
-          labels: ['$BF3$: jen 6 elektronů kolem B', '$SF6$: 12 elektronů kolem S'],
-          caption: 'Výjimky z oktetu.',
+          labels: ['$BF3$', '$SF6$'],
+          caption: 'Dvě výjimky z oktetu ve 3D: bor má jen tři vazby, síra celých šest.',
         },
         {
           type: 'callout',
@@ -605,7 +593,7 @@ const l32: Lesson = {
           type: 'molecule',
           molecules: ['NH4+', 'H3O+'],
           labels: ['$NH4^+$: tetraedr', '$H3O^+$: trigonální pyramida'],
-          caption: 'Ve 3D modelu nepoznáš, která vazba vznikla koordinačně: všechny jsou stejné.',
+          caption: 'Poznáš ve 3D modelu, která vazba vznikla koordinačně?',
         },
         {
           type: 'p',
@@ -648,31 +636,13 @@ const l32: Lesson = {
         {
           type: 'diagram',
           id: 'vsepr-shapes',
-          caption: 'Základní tvary molekul podle počtu elektronových oblastí a volných párů.',
-        },
-        {
-          type: 'molecule',
-          molecules: ['BeCl2', 'CO2', 'BF3'],
-          labels: ['lineární, 180°', 'lineární, 180°', 'trojúhelníková (rovinná), 120°'],
-          caption: 'Dvě a tři elektronové oblasti, žádné volné páry na centrálním atomu.',
+          caption: 'Pět základních tvarů molekul s vazebnými úhly: podle počtu vazebných oblastí a volných párů na centrálním atomu. Klínová vazba míří před rovinu nákresu, čárkovaná za ni.',
         },
         {
           type: 'molecule',
           molecules: ['CH4', 'NH3', 'H2O'],
-          labels: ['tetraedr, 109,5° (0 volných párů)', 'trigonální pyramida, 107° (1 volný pár)', 'lomená, 104,5° (2 volné páry)'],
-          caption: 'Čtyři elektronové oblasti míří do rohů čtyřstěnu; úhly v methanu mají 109,5°, ne 90°, jak by se zdálo z plochého nákresu. Čím víc volných párů, tím víc stlačí vazebný úhel.',
-        },
-        {
-          type: 'table',
-          headers: ['Tvar', 'Příklad', 'Vazebné oblasti', 'Volné páry', 'Vazebný úhel'],
-          rows: [
-            ['lineární', '$CO2$, $BeCl2$', '2', '0', '180°'],
-            ['trojúhelníková (rovinná)', '$BF3$', '3', '0', '120°'],
-            ['tetraedrická', '$CH4$', '4', '0', '109,5°'],
-            ['trigonální pyramida', '$NH3$', '3', '1', '107°'],
-            ['lomená', '$H2O$', '2', '2', '104,5°'],
-          ],
-          caption: 'Základní tvary molekul podle VSEPR.',
+          labels: ['methan $CH4$', 'amoniak $NH3$', 'voda $H2O$'],
+          caption: 'Otoč si je: ve všech třech míří čtyři elektronové oblasti do rohů čtyřstěnu, proto mají úhly v methanu 109,5°, ne 90°, jak by se zdálo z plochého nákresu. Čím víc volných párů, tím víc stlačí vazebný úhel.',
         },
         {
           type: 'callout',
@@ -708,17 +678,7 @@ const l32: Lesson = {
         {
           type: 'diagram',
           id: 'polarity',
-          caption: 'Dipóly vazeb se sčítají jako šipky: v souměrné molekule se vyruší, v nesouměrné sečtou.',
-        },
-        {
-          type: 'structure',
-          art: art('δ−     δ+     δ−', 'O  =   C   =  O', '←──         ──→', 'dipóly se vyruší'),
-          caption: '$CO2$ je lineární: obě polární vazby táhnou stejně silně na opačné strany. Molekula je nepolární.',
-        },
-        {
-          type: 'structure',
-          art: art('       δ−', '       O', '     /   \\', '    H     H', '   δ+     δ+', '  dipóly se sečtou ↑'),
-          caption: '$H2O$ je lomená: oba dipóly míří „nahoru“ ke kyslíku a sečtou se. Molekula je polární.',
+          caption: 'Dipóly vazeb se sčítají jako šipky. V $HCl$ míří dipól k chloru. V lomené $H2O$ míří oba dipóly ke kyslíku a sečtou se: voda je polární. V lineárním $CO2$ táhnou obě polární vazby stejně silně na opačné strany a vyruší se: molekula je nepolární.',
         },
         {
           type: 'compare',
@@ -962,7 +922,7 @@ const l33: Lesson = {
         {
           type: 'diagram',
           id: 'ionic-lattice',
-          caption: 'Prostorová mřížka $NaCl$: ionty $Na^+$ a $Cl^-$ se střídají ve všech třech směrech.',
+          caption: 'Prostorová mřížka $NaCl$: malé kationty $Na^+$ a velké anionty $Cl^-$ se střídají ve všech třech směrech. Zvýrazněné hrany ohraničují elementární buňku. Tažením mřížkou otočíš.',
         },
         {
           type: 'p',
@@ -992,8 +952,6 @@ const l33: Lesson = {
         {
           type: 'keyterms',
           items: [
-            { term: 'krystalová mřížka', def: 'pravidelné prostorové uspořádání částic v krystalu' },
-            { term: 'vzorcová jednotka', def: 'skupina iontů v poměru daném vzorcem, např. jeden $Na^+$ a jeden $Cl^-$' },
             { term: 'koordinační číslo', def: 'počet nejbližších sousedů částice v krystalu; v $NaCl$ je 6' },
           ],
         },
@@ -1023,7 +981,7 @@ const l33: Lesson = {
           items: [
             { icon: 'thermometer', title: 'Vysoké teploty tání', text: 'přitažlivé síly působí mezi všemi ionty v krystalu: $NaCl$ taje při 801 °C, $MgO$ až při 2852 °C' },
             { icon: 'mortar', title: 'Tvrdé, ale křehké', text: 'úderem krystal nepromáčkneš, ale rozštípneš' },
-            { icon: 'plug', title: 'Vedou proud jen v tavenině nebo v roztoku', text: 'v pevném krystalu jsou ionty pevně na místech, po roztavení nebo rozpuštění se mohou pohybovat' },
+            { icon: 'plug', title: 'Vedou proud jen v tavenině nebo v roztoku' },
             { icon: 'drop', title: 'Často se rozpouštějí ve vodě', text: 'ale zdaleka ne všechny' },
           ],
         },
@@ -1098,33 +1056,28 @@ const l33: Lesson = {
         {
           type: 'diagram',
           id: 'metallic-bond',
-          caption: 'Kationty kovu v moři volně pohyblivých elektronů.',
+          caption: 'Vlevo kationty kovu v moři volně pohyblivých elektronů. Vpravo kujnost: po úderu kladivem vrstvy kationtů po sobě kloužou a kov se ohne, ale nerozbije.',
         },
         {
           type: 'p',
-          text: '==**Kovová vazba** je přitahování mezi kationty kovu a elektronovým plynem.== Elektrony nepatří žádnému konkrétnímu atomu, jsou **delokalizované**.',
+          text: '==**Kovová vazba** je přitahování mezi kationty kovu a elektronovým plynem.== Elektrony nepatří žádnému konkrétnímu atomu, jsou **delokalizované**. Elektronový plyn vysvětluje typické vlastnosti kovů:',
         },
         {
-          type: 'iconlist',
+          type: 'list',
           items: [
-            { icon: 'plug', title: 'Elektrická vodivost', text: 'volné elektrony se v napětí pohybují jedním směrem' },
-            { icon: 'heat', title: 'Tepelná vodivost', text: 'pohyblivé elektrony rychle přenášejí energii' },
-            { icon: 'ring', title: 'Kujnost a tažnost', text: 'vrstvy kationtů po sobě kloužou a elektronový plyn je stále drží pohromadě' },
-            { icon: 'sun', title: 'Kovový lesk', text: 'volné elektrony pohlcují a znovu vyzařují světlo' },
+            '**Elektrická vodivost:** volné elektrony se v napětí pohybují jedním směrem.',
+            '**Tepelná vodivost:** pohyblivé elektrony rychle přenášejí energii.',
+            '**Kujnost a tažnost:** elektronový plyn drží vrstvy kationtů pohromadě, i když po sobě kloužou.',
+            '**Kovový lesk:** volné elektrony pohlcují a znovu vyzařují světlo.',
           ],
         },
         {
           type: 'iconlist',
           items: [
-            { icon: 'thermometer', title: 'Rtuť: −39 °C', text: 'za pokojové teploty kapalná' },
-            { icon: 'heat', title: 'Gallium: 30 °C', text: 'roztaví se v dlani' },
-            { icon: 'bulb', title: 'Wolfram: 3422 °C', text: 'dělala se z něj vlákna žárovek' },
+            { icon: 'thermometer', title: 'Rtuť taje při −39 °C', text: 'za pokojové teploty je kapalná' },
+            { icon: 'heat', title: 'Gallium taje při 30 °C', text: 'roztaví se v dlani' },
+            { icon: 'bulb', title: 'Wolfram taje při 3422 °C', text: 'dělala se z něj vlákna žárovek' },
           ],
-        },
-        {
-          type: 'elements',
-          symbols: ['Cu', 'Al', 'Fe', 'Au', 'Hg', 'Ga', 'W'],
-          caption: 'Kovy s kovovou vazbou: teploty tání se liší obrovsky, od kapalné rtuti po žáruvzdorný wolfram.',
         },
         {
           type: 'callout',
@@ -1153,37 +1106,13 @@ const l33: Lesson = {
       icon: 'diamond',
       blocks: [
         {
-          type: 'compare',
-          columns: [
-            {
-              title: 'Kovalentní vazba',
-              icon: 'bond',
-              tone: 'a',
-              points: ['sdílené elektronové páry', 'nekov + nekov', 'molekuly, nebo síť atomů v celém krystalu'],
-            },
-            {
-              title: 'Iontová vazba',
-              icon: 'ion-plus',
-              tone: 'b',
-              points: ['přitahování kationtů a aniontů', 'kov + nekov, ΔX ≥ 1,7', 'krystalová mřížka bez molekul'],
-            },
-            {
-              title: 'Kovová vazba',
-              icon: 'coin',
-              tone: 'c',
-              points: ['kationty v elektronovém plynu', 'atomy kovů', 'delokalizované elektrony'],
-            },
-          ],
-          caption: 'Tři typy chemické vazby vedle sebe.',
-        },
-        {
           type: 'p',
-          text: '**Molekulové látky** ($H2O$, $CO2$, $I2$, cukr) mají pevné vazby jen uvnitř molekul a mezi molekulami slabé síly (další lekce), proto tají a vřou při nízkých teplotách. V **kovalentních (atomových) krystalech** jsou kovalentně propojeny všechny atomy: ==roztavit je znamená rozbít pevné kovalentní vazby, proto tají až při velmi vysokých teplotách.==',
+          text: 'Kovalentní vazba (sdílené elektronové páry mezi nekovy) tvoří dva různé druhy pevných látek. **Molekulové látky** ($H2O$, $CO2$, $I2$, cukr) mají pevné vazby jen uvnitř molekul a mezi molekulami slabé síly (další lekce), proto tají a vřou při nízkých teplotách. V **kovalentních (atomových) krystalech** jsou kovalentně propojeny všechny atomy: ==roztavit je znamená rozbít pevné kovalentní vazby, proto tají až při velmi vysokých teplotách.==',
         },
         {
           type: 'diagram',
           id: 'carbon-allotropes',
-          caption: 'Diamant, grafit a další podoby uhlíku: stejné atomy, jiné uspořádání.',
+          caption: 'Podoby uhlíku: diamant, grafit, grafen, fulleren $C60$ a nanotrubice. Všechno je čistý uhlík, liší se jen propojení atomů.',
         },
         {
           type: 'iconlist',
@@ -1213,7 +1142,7 @@ const l33: Lesson = {
         {
           type: 'callout',
           variant: 'fact',
-          text: 'Diamant i grafit jsou čistý uhlík, liší se jen uspořádáním atomů. Jediná vrstva grafitu se jmenuje grafen a za jeho objev dostali Andre Geim a Konstantin Novoselov v roce 2010 Nobelovu cenu.',
+          text: 'Za objev grafenu, jediné vrstvy grafitu, dostali Andre Geim a Konstantin Novoselov v roce 2010 Nobelovu cenu.',
         },
         {
           type: 'check',
@@ -1418,8 +1347,8 @@ const l34: Lesson = {
         {
           type: 'molecule',
           molecules: ['F2', 'Cl2', 'Br2', 'I2'],
-          labels: ['plyn', 'plyn', 'kapalina', 'pevná látka'],
-          caption: 'Halogeny: čím větší molekula, tím silněji se k sobě molekuly lepí.',
+          labels: ['$F2$', '$Cl2$', '$Br2$', '$I2$'],
+          caption: 'Molekuly halogenů: od fluoru k jodu jsou čím dál větší a mají víc elektronů.',
         },
         {
           type: 'p',
@@ -1458,22 +1387,13 @@ const l34: Lesson = {
         {
           type: 'diagram',
           id: 'hydrogen-bonds',
-          caption: 'Vodíkové vazby (tečkovaně): vodík δ+ jedné molekuly míří k volnému páru atomu O, N nebo F sousední molekuly.',
-        },
-        {
-          type: 'iconlist',
-          items: [
-            { icon: 'bond', title: 'Podmínka 1', text: 'vodík vázaný na F, O nebo N (vazby $F–H$, $O–H$, $N–H$)' },
-            { icon: 'electron', title: 'Podmínka 2', text: 'na sousední molekule atom F, O nebo N s volným elektronovým párem' },
-            { icon: 'dna', title: 'Kde ji najdeš', text: 'voda, amoniak, fluorovodík, alkohol, bílkoviny, DNA' },
-            { icon: 'drop', title: 'Až 4 na molekulu vody', text: 'dvě přes své vodíky a dvě přes volné páry kyslíku' },
-          ],
+          caption: 'Vodíkové vazby ve vodě (tečkovaně): vodík δ+ jedné molekuly přitahuje volný elektronový pár kyslíku sousední molekuly. Každá molekula vody jich může vytvořit až čtyři – dvě přes své vodíky a dvě přes volné páry kyslíku. V ledu tvoří molekuly pravidelnou síť se šestiúhelníkovými dutinami.',
         },
         {
           type: 'molecule',
           molecules: ['H2O', 'NH3', 'HF'],
           labels: ['$O–H$', '$N–H$', '$F–H$'],
-          caption: 'Molekuly, mezi kterými vznikají vodíkové vazby.',
+          caption: 'Vodíkové vazby tvoří voda, amoniak a fluorovodík, ale také alkoholy, bílkoviny nebo DNA.',
         },
         {
           type: 'callout',
@@ -1519,8 +1439,8 @@ const l34: Lesson = {
         {
           type: 'molecule',
           molecules: ['H2O', 'H2S'],
-          labels: ['voda: vře při 100 °C', 'sulfan: vře při −60 °C'],
-          caption: 'Obě molekuly jsou lomené a polární. Liší se centrálním atomem.',
+          labels: ['voda $H2O$', 'sulfan $H2S$'],
+          caption: 'Porovnej obě molekuly: tvar mají podobný, liší se centrálním atomem.',
         },
         {
           type: 'example',
@@ -1625,7 +1545,7 @@ const l34: Lesson = {
         {
           type: 'diagram',
           id: 'dissolving',
-          caption: 'Rozpouštění: molekuly rozpouštědla obklopí částice rozpouštěné látky a odnesou je do roztoku.',
+          caption: 'Rozpouštění soli ve vodě: polární molekuly vody obklopí ionty na povrchu krystalu – $Na^+$ kyslíkem, $Cl^-$ vodíky – a odnesou je do roztoku.',
         },
         {
           type: 'iconlist',
@@ -1773,13 +1693,12 @@ const l35: Lesson = {
           type: 'molecule',
           molecules: ['HCl', 'H2O'],
           labels: ['$H^{I}Cl^{−I}$', '$H2^{I}O^{−II}$'],
-          caption: 'Elektronegativnější chlor a kyslík si „vezmou“ vazebné páry.',
+          caption: 'Elektronegativnější chlor a kyslík si „vezmou“ vazebné páry. Oxidační čísla se píšou římskými číslicemi vpravo nahoru.',
         },
         {
           type: 'p',
           text: 'V $HCl$ má chlor s přiděleným párem o elektron víc než jeho atom: −I; vodík o elektron přišel: +I. V $H2O$ si kyslík vezme oba vazebné páry, dostane −II a každý vodík +I.',
         },
-        { type: 'formula', text: '$H^{I}Cl^{−I}$ a $H2^{I}O^{−II}$', caption: 'oxidační čísla se píšou římskými číslicemi vpravo nahoru' },
         {
           type: 'iconlist',
           items: [
@@ -1968,11 +1887,6 @@ const l35: Lesson = {
           variant: 'remember',
           title: 'Jak si koncovky zapamatovat',
           text: 'Odříkej je rytmicky jako rozpočitadlo: **ný – na-tý – i-tý – i-či-tý, ič-ný – o-vý – is-tý – i-če-lý**. A přidej si kotvu ze 3. periody: $Na2O$, $MgO$, $Al2O3$, $SiO2$, $P4O10$, $SO3$, $Cl2O7$ jsou oxid sodný, hořečnatý, hlinitý, křemičitý, fosforečný, sírový a chloristý. ==Skupina po skupině roste oxidační číslo od I do VII a koncovky jdou přesně za sebou.==',
-        },
-        {
-          type: 'elements',
-          symbols: ['Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Os'],
-          caption: 'Prvky 3. periody ve svých nejvyšších oxidačních číslech I až VII a osmium s rekordním VIII.',
         },
         {
           type: 'molecule',
@@ -2254,23 +2168,18 @@ const l36: Lesson = {
           caption: 'Oxid vápenatý $CaO$ rozebraný na dvě části názvu.',
         },
         {
-          type: 'iconlist',
-          items: [
-            { icon: 'rust', title: 'oxid: $O^{−II}$', text: '$CaO$ oxid vápenatý' },
-            { icon: 'pill', title: 'peroxid: skupina $O2$ (–O–O–), každý O −I', text: '$H2O2$ peroxid vodíku' },
-            { icon: 'salt', title: 'fluorid, chlorid, bromid, jodid: F, Cl, Br, I −I', text: '$KBr$ bromid draselný' },
-            { icon: 'mountain', title: 'sulfid: $S^{−II}$', text: '$PbS$ sulfid olovnatý' },
-            { icon: 'gas-cylinder', title: 'hydrid: $H^{−I}$', text: '$NaH$ hydrid sodný' },
-            { icon: 'factory', title: 'nitrid: $N^{−III}$', text: '$Li3N$ nitrid lithný' },
-            { icon: 'diamond', title: 'karbid: $C^{−IV}$', text: '$SiC$ karbid křemičitý' },
+          type: 'table',
+          headers: ['Podstatné jméno', 'Záporná složka', 'Příklad'],
+          rows: [
+            ['oxid', '$O^{−II}$', '$CaO$ oxid vápenatý'],
+            ['peroxid', 'skupina $O2$ (–O–O–), každý O −I', '$H2O2$ peroxid vodíku'],
+            ['fluorid, chlorid, bromid, jodid', 'F, Cl, Br, I −I', '$KBr$ bromid draselný'],
+            ['sulfid', '$S^{−II}$', '$PbS$ sulfid olovnatý'],
+            ['hydrid', '$H^{−I}$', '$NaH$ hydrid sodný'],
+            ['nitrid', '$N^{−III}$', '$Li3N$ nitrid lithný'],
+            ['karbid', '$C^{−IV}$', '$SiC$ karbid křemičitý'],
           ],
-        },
-        {
-          type: 'keyterms',
-          items: [
-            { term: 'dvouprvková sloučenina', def: 'sloučenina složená z atomů dvou prvků' },
-            { term: 'halogenidy', def: 'souhrnný název pro fluoridy, chloridy, bromidy a jodidy' },
-          ],
+          caption: 'Fluoridy, chloridy, bromidy a jodidy se souhrnně nazývají **halogenidy**.',
         },
         {
           type: 'callout',
@@ -2311,7 +2220,7 @@ const l36: Lesson = {
             { icon: 'powder', title: '$CaO$ oxid vápenatý', text: 'pálené vápno na stavbě' },
             { icon: 'ring', title: '$Al2O3$ oxid hlinitý', text: 'ochranná vrstvička na hliníku, rubín a safír' },
             { icon: 'volcano', title: '$SO2$ oxid siřičitý', text: 'sopky, spalování uhlí, kyselé deště' },
-            { icon: 'milk', title: '$N2O$ oxid dusný', text: '„rajský plyn“ v bombičkách do šlehačky' },
+            { icon: 'gas-cylinder', title: '$N2O$ oxid dusný', text: '„rajský plyn“ v bombičkách do šlehačky' },
           ],
         },
         {
@@ -2368,7 +2277,7 @@ const l36: Lesson = {
     },
     {
       title: 'Peroxidy',
-      icon: 'pill',
+      icon: 'drop',
       blocks: [
         {
           type: 'p',
@@ -2395,7 +2304,7 @@ const l36: Lesson = {
             },
             {
               title: 'Peroxid',
-              icon: 'pill',
+              icon: 'drop',
               tone: 'b',
               points: ['skupina –O–O–, $O^{−I}$', '**vzorec se nikdy nekrátí**: skupina O–O musí zůstat celá', '$H2O2$ (H +I), $Na2O2$ (ne $NaO$), $BaO2$ (Ba +II)'],
             },
@@ -2437,10 +2346,10 @@ const l36: Lesson = {
           type: 'iconlist',
           items: [
             { icon: 'salt', title: '$NaCl$ chlorid sodný', text: 'kuchyňská sůl' },
-            { icon: 'car', title: '$CaCl2$ chlorid vápenatý', text: 'posyp silnic, pohlcovače vlhkosti' },
+            { icon: 'ice', title: '$CaCl2$ chlorid vápenatý', text: 'posyp silnic, pohlcovače vlhkosti' },
             { icon: 'toothpaste', title: '$SnF2$ fluorid cínatý', text: 'zubní pasty chránící sklovinu' },
             { icon: 'crystal', title: '$CaF2$ fluorid vápenatý', text: 'nerost fluorit (kazivec)' },
-            { icon: 'magnifier', title: '$AgBr$ bromid stříbrný', text: 'klasický fotografický film' },
+            { icon: 'sun', title: '$AgBr$ bromid stříbrný', text: 'klasický fotografický film' },
             { icon: 'pill', title: '$KI$ jodid draselný', text: 'jodové tablety pro případ jaderné havárie' },
           ],
         },
@@ -2448,15 +2357,10 @@ const l36: Lesson = {
           type: 'iconlist',
           items: [
             { icon: 'mountain', title: '$PbS$ sulfid olovnatý', text: 'galenit, hlavní ruda olova' },
-            { icon: 'powder', title: '$ZnS$ sulfid zinečnatý', text: 'sfalerit, ruda zinku' },
+            { icon: 'mountain', title: '$ZnS$ sulfid zinečnatý', text: 'sfalerit, ruda zinku' },
             { icon: 'pencil', title: '$HgS$ sulfid rtuťnatý', text: 'rumělka, historický červený pigment' },
             { icon: 'ring', title: '$Ag2S$ sulfid stříbrný', text: 'černý povlak na stříbrných šperkech' },
           ],
-        },
-        {
-          type: 'elements',
-          symbols: ['F', 'Cl', 'Br', 'I', 'S'],
-          caption: 'Halogeny tvoří halogenidy (−I), síra sulfidy (−II).',
         },
         {
           type: 'example',
@@ -2518,7 +2422,8 @@ const l36: Lesson = {
         {
           type: 'molecule',
           molecules: ['H2O', 'NH3', 'CH4', 'H2S'],
-          labels: ['voda (oxidan)', 'amoniak (azan)', 'methan', 'sulfan (sirovodík)'],
+          labels: ['$H2O$', '$NH3$', '$CH4$', '$H2S$'],
+          caption: 'Molekuly sloučenin vodíku s nekovy. Jak se jmenují, najdeš v tabulce.',
         },
         {
           type: 'table',
@@ -2592,12 +2497,13 @@ const l36: Lesson = {
           answer: 'karbid hlinitý',
         },
         {
-          type: 'iconlist',
-          items: [
-            { icon: 'battery', title: '$Li3N$ nitrid lithný', text: 'vzniká z lithia a dusíku už za běžné teploty' },
-            { icon: 'phone', title: '$AlN$ nitrid hlinitý', text: 'keramika v elektronice, dobře odvádí teplo' },
-            { icon: 'factory', title: '$TiN$ nitrid titanitý', text: 'zlatavý tvrdý povlak vrtáků' },
-            { icon: 'mortar', title: '$SiC$ karbid křemičitý', text: 'karborundum: brusné papíry a kotouče' },
+          type: 'table',
+          headers: ['Sloučenina', 'Vlastnosti a použití'],
+          rows: [
+            ['$Li3N$ nitrid lithný', 'vzniká z lithia a dusíku už za běžné teploty'],
+            ['$AlN$ nitrid hlinitý', 'keramika v elektronice, dobře odvádí teplo'],
+            ['$TiN$ nitrid titanitý', 'zlatavý tvrdý povlak vrtáků'],
+            ['$SiC$ karbid křemičitý', 'karborundum: brusné papíry a kotouče'],
           ],
         },
         {

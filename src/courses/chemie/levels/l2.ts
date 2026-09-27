@@ -55,11 +55,11 @@ const level: LevelContent = {
             ] },
             { type: 'compare', columns: [
               { title: '**Atom**', icon: 'atom', tone: 'a', points: ['nejmenší částice chemického prvku', 'navenek **elektricky neutrální** (nemá náboj)', '$He$, $Ne$, $Fe$, $Na$'] },
-              { title: '**Molekula**', icon: 'molecule', tone: 'b', points: ['dva nebo více atomů pevně spojených (chemicky vázaných)', 'také neutrální', '$H2$, $O2$, $H2O$, $CO2$'] },
+              { title: '**Molekula**', icon: 'molecule', tone: 'b', points: ['dva nebo více atomů pevně spojených (chemicky vázaných)', 'také neutrální'] },
               { title: '**Ion**', icon: 'ion-plus', tone: 'c', points: ['částice s **elektrickým nábojem**', 'vzniká z atomu nebo molekuly, která získala, nebo ztratila elektrony', '$Na^+$, $Cl^-$'] },
             ] },
             { type: 'molecule', molecules: ['H2', 'O2', 'H2O', 'CO2'], labels: ['$H2$', '$O2$', '$H2O$', '$CO2$'], caption: 'Molekuly: skupinky pevně spojených atomů. Otoč si je!' },
-            { type: 'p', text: '**Elektrony** jsou drobné záporně nabité částice v obalu atomu, podrobně je poznáš v příští lekci. Když atom elektron **ztratí**, vznikne kladný **kation**. Když elektron **přijme**, vznikne záporný **anion**.' },
+            { type: 'p', text: '**Elektrony** jsou drobné záporně nabité částice v obalu atomu, podrobně je poznáš v příští lekci. Podle toho, jestli atom elektrony ztratí, nebo přijme, vznikne jeden ze dvou druhů iontů:' },
             { type: 'compare', columns: [
               { title: 'Kation', icon: 'ion-plus', tone: 'a', points: ['**kladný** náboj', 'atom elektrony **ztratil**', '$Na^+$, $Ca^{2+}$, $Fe^{3+}$'] },
               { title: 'Anion', icon: 'ion-minus', tone: 'b', points: ['**záporný** náboj', 'atom elektrony **přijal**', '$Cl^-$, $O^2-$, $S^2-$'] },
@@ -192,12 +192,12 @@ const level: LevelContent = {
           icon: 'magnifier',
           blocks: [
             { type: 'p', text: 'Průměr atomu je řádově 10^{−10} m, průměr jádra jen asi 10^{−15} m. ==Jádro je tedy zhruba stotisíckrát menší než celý atom.==' },
-            { type: 'diagram', id: 'atom-scale', caption: 'Atom a jeho jádro v měřítku: skoro všechno mezi nimi je prázdný prostor' },
+            { type: 'diagram', id: 'atom-scale', caption: 'Atom zvětšený na fotbalový stadion (asi 100 m): jádro by bylo uprostřed hřiště velké jako špendlíková hlavička a elektrony by se pohybovaly až nad tribunami. Všechno mezi tím je prázdný prostor.' },
             { type: 'compare', columns: [
-              { title: 'Celý atom', icon: 'atom', tone: 'a', points: ['průměr ≈ 10^{−10} m', 'objem tvoří hlavně obal s elektrony', 'skoro celý je prázdný prostor'] },
-              { title: 'Jádro', icon: 'nucleus', tone: 'b', points: ['průměr ≈ 10^{−15} m', 'asi 100 000× menší než atom', 'nese **přes 99,9 %** hmotnosti atomu'] },
+              { title: 'Celý atom', icon: 'atom', tone: 'a', points: ['objem tvoří hlavně obal s elektrony', 'skoro celý je prázdný prostor'] },
+              { title: 'Jádro', icon: 'nucleus', tone: 'b', points: ['zabírá nepatrnou část objemu', 'nese **přes 99,9 %** hmotnosti atomu'] },
             ] },
-            { type: 'callout', variant: 'fact', title: 'Atom velký jako stadion', text: 'Zvětši atom na fotbalový stadion. Jádro by bylo uprostřed hřiště velké jako špendlíková hlavička a elektrony by se pohybovaly až nad tribunami. Jaderná hmota je tak hustá, že čajová lžička by vážila asi miliardu tun.' },
+            { type: 'callout', variant: 'fact', title: 'Nejhustší hmota', text: 'Jaderná hmota je tak hustá, že čajová lžička by vážila asi miliardu tun.' },
             { type: 'example', problem: 'Jádro nějakého atomu zvětšíme na kuličku o průměru 1 cm. Jak velký by byl celý atom, je-li asi 100 000× větší než jádro?', steps: [
               'Průměr atomu = 100 000 · 1 cm = 100 000 cm.',
               '100 000 cm = 1 000 m.',
@@ -272,14 +272,14 @@ const level: LevelContent = {
             ] },
             { type: 'formula', text: '$A = Z + N$, tedy $N = A − Z$', caption: 'nukleonové číslo = protony + neutrony' },
             { type: 'p', text: 'Zápisu konkrétního druhu atomu s oběma čísly se říká **nuklid**.' },
-            { type: 'formula', text: '$^{23}_{11}Na$', caption: 'A = 23 nahoře, Z = 11 dole: sodík s 11 protony a 12 neutrony' },
-            { type: 'diagram', id: 'bohr', props: { z: 11 }, caption: 'Atom sodíku: 11 protonů a 12 neutronů v jádře, 11 elektronů v obalu' },
+            { type: 'formula', text: '$^{23}_{11}Na$', caption: 'nuklid sodíku: A = 23 nahoře, Z = 11 dole' },
             { type: 'callout', variant: 'remember', title: 'Teď už přesně', text: '**Chemický prvek** je látka složená z atomů se stejným protonovým číslem. Změníš-li počet protonů, změníš prvek.' },
             { type: 'example', problem: 'Kolik protonů, neutronů a elektronů má atom $^{23}_{11}Na$?', steps: [
               'Protony: $Z = 11$.',
               'Neutrony: $N = A − Z = 23 − 11 = 12$.',
               'Elektrony: atom je neutrální, takže počet elektronů = $Z = 11$.',
             ], answer: '11 protonů, 12 neutronů, 11 elektronů' },
+            { type: 'diagram', id: 'bohr', props: { z: 11 }, caption: 'Kontrola obrázkem: atom $^{23}_{11}Na$ v Bohrově modelu' },
             { type: 'check', question: { kind: 'number', q: 'Kolik neutronů má atom $^{35}_{17}Cl$?', answer: 18, tolerance: 0, explain: '$N = A − Z = 35 − 17 = 18$.' } },
           ],
         },
@@ -288,16 +288,11 @@ const level: LevelContent = {
           icon: 'atom',
           blocks: [
             { type: 'p', text: '**Izotopy** jsou atomy téhož prvku (stejné $Z$), které se liší počtem neutronů, a tedy i nukleonovým číslem $A$. Chemicky se chovají skoro stejně, protože mají stejně elektronů.' },
-            { type: 'diagram', id: 'hydrogen-isotopes', caption: 'Tři izotopy vodíku: vždy 1 proton a 1 elektron, ale 0, 1 nebo 2 neutrony' },
-            { type: 'compare', columns: [
-              { title: 'protium $^{1}_{1}H$', icon: 'atom', tone: 'a', points: ['1 proton, 0 neutronů', 'výskyt 99,98 %'] },
-              { title: 'deuterium (D) $^{2}_{1}H$', icon: 'atom', tone: 'b', points: ['1 proton, 1 neutron', 'výskyt 0,02 %'] },
-              { title: 'tritium (T) $^{3}_{1}H$', icon: 'hazard', tone: 'c', points: ['1 proton, 2 neutrony', 'jen stopy, **radioaktivní**'] },
-            ], caption: 'Vlastní jména mají jen izotopy vodíku' },
-            { type: 'iconlist', items: [
-              { icon: 'atom', title: 'uhlík-12 $^{12}_{6}C$', text: '6 neutronů, 98,9 %' },
-              { icon: 'atom', title: 'uhlík-13 $^{13}_{6}C$', text: '7 neutronů, 1,1 %' },
-              { icon: 'hazard', title: 'uhlík-14 $^{14}_{6}C$', text: '8 neutronů, nepatrná stopa, radioaktivní' },
+            { type: 'diagram', id: 'hydrogen-isotopes', caption: 'Tři izotopy vodíku – jako jediné mají vlastní jména: protium, deuterium (D) a tritium (T). Vždy 1 proton a 1 elektron, ale 0, 1 nebo 2 neutrony. Tritium je radioaktivní.' },
+            { type: 'table', caption: 'Izotopy uhlíku', headers: ['Nuklid', 'Neutronů', 'Výskyt v přírodě'], rows: [
+              ['uhlík-12 $^{12}_{6}C$', '6', '98,9 %'],
+              ['uhlík-13 $^{13}_{6}C$', '7', '1,1 %'],
+              ['uhlík-14 $^{14}_{6}C$', '8', 'nepatrná stopa, radioaktivní'],
             ] },
             { type: 'callout', variant: 'fact', title: 'Těžká voda', text: 'Voda z deuteria, $D2O$, se jmenuje těžká voda. Vypadá úplně stejně jako obyčejná, ale kostka ledu z těžké vody v obyčejné vodě neplave, klesne ke dnu.' },
             { type: 'callout', variant: 'warning', title: 'Pozor', text: 'Izotopy se liší **jen počtem neutronů**. Kdyby se lišily počtem protonů, byly by to atomy různých prvků.' },
@@ -375,7 +370,7 @@ const level: LevelContent = {
               { icon: 'cell', title: 'Léčba nádorů', text: 'kobalt-60 ozařuje nádory' },
               { icon: 'syringe', title: 'Diagnostika a štítná žláza', text: 'technecium-99m a jod-131' },
               { icon: 'factory', title: 'Jaderné elektrárny', text: 'Temelín a Dukovany využívají uran-235' },
-              { icon: 'fire-extinguisher', title: 'Hlásiče kouře', text: 'obsahují americium-241' },
+              { icon: 'warning', title: 'Hlásiče kouře', text: 'obsahují americium-241' },
             ] },
             { type: 'callout', variant: 'warning', title: 'Bezpečnost', text: 'Radioaktivní záření poškozuje živé buňky. Chrání tě **vzdálenost**, **čas** (co nejkratší) a **stínění**. Se zářiči pracují jen vyškolení odborníci.' },
             { type: 'check', question: { kind: 'number', q: 'Máš 80 g jodu-131 s poločasem přeměny 8 dní. Kolik gramů jodu-131 zbude po 24 dnech?', answer: 10, tolerance: 0, unit: 'g', explain: '24 dní jsou 3 poločasy: 80 g -> 40 g -> 20 g -> 10 g.' } },
@@ -426,13 +421,7 @@ const level: LevelContent = {
               ['L', '2', '8', '8'],
               ['M', '3', '18', '8'],
               ['N', '4', '32', '1–2 (jen K a Ca)'],
-            ] },
-            { type: 'process', layout: 'flow', steps: [
-              { icon: 'nucleus', title: 'K: 2', text: 'nejblíž jádru' },
-              { icon: 'electron', title: 'L: 8' },
-              { icon: 'electron', title: 'M: zatím 8' },
-              { icon: 'electron', title: 'N: zbytek', text: 'jen K a Ca' },
-            ], caption: 'Model **2-8-8-2** pro prvních 20 prvků: vrstvy se plní odvnitř ven' },
+            ], caption: 'Poslední sloupec je model **2-8-8-2** pro prvních 20 prvků: vrstvy se plní odvnitř ven, od K nejblíž jádru.' },
             { type: 'callout', variant: 'warning', title: 'Proč jen 8 v M?', text: 'Vrstva M pojme až 18 elektronů. U draslíku a vápníku ale 19. a 20. elektron obsadí nejdřív vrstvu N. Proč, vysvětlí až orbitaly v příští lekci.' },
             { type: 'check', question: { kind: 'choice', q: 'Jak jsou rozmístěny elektrony v atomu hořčíku ($Z = 12$)?', options: ['2, 8, 2', '2, 10', '8, 4', '2, 2, 8'], answer: 0, explain: 'Zaplňuj odvnitř: K pojme 2, L 8, zbylé 2 elektrony jdou do M.' } },
           ],
@@ -446,7 +435,7 @@ const level: LevelContent = {
               { icon: 'electron', title: 'K: 2 elektrony' },
               { icon: 'electron', title: 'L: až 8' },
               { icon: 'electron', title: 'M: až 8' },
-              { icon: 'check', title: 'N: zbytek', text: 'nejvýš 2' },
+              { icon: 'electron', title: 'N: zbytek', text: 'nejvýš 2' },
             ], caption: 'Postup pro prvky se $Z$ ≤ 20' },
             { type: 'example', problem: 'Rozmísti elektrony atomu hliníku ($Z = 13$) do vrstev.', steps: [
               '13 elektronů celkem.',
@@ -562,7 +551,7 @@ const level: LevelContent = {
           icon: 'gas-cloud',
           blocks: [
             { type: 'p', text: 'Ve 20. letech 20. století fyzici zjistili, že u elektronu nelze zároveň přesně určit polohu i rychlost (**Heisenbergův princip neurčitosti**). Nemá proto smysl kreslit mu přesnou dráhu.' },
-            { type: 'diagram', id: 'shells-vs-orbitals', caption: 'Bohrova dráha a orbital: místo přesné čáry oblak pravděpodobnosti' },
+            { type: 'diagram', id: 'shells-vs-orbitals', caption: 'Tentýž atom uhlíku dvakrát. Vlevo Bohrův model: elektrony na přesných drahách ve vrstvách K a L. Vpravo kvantový model: tečky ukazují, kde se elektrony nejspíš vyskytují – v orbitalech 1s, 2s a 2p.' },
             { type: 'compare', columns: [
               { title: 'Bohrův model', icon: 'atom', tone: 'a', points: ['elektron obíhá po přesné dráze', 'vrstvy K, L, M…', 'jednoduchý a užitečný, jako plánek metra'] },
               { title: 'Kvantový model', icon: 'gas-cloud', tone: 'b', points: ['přesnou dráhu určit nelze', 'popisuje, **kde se elektron s jakou pravděpodobností vyskytuje**', 'oblast s velkou pravděpodobností výskytu (obvykle 90 %) je **orbital**'] },
@@ -581,13 +570,13 @@ const level: LevelContent = {
           icon: 'magnet',
           blocks: [
             { type: 'p', text: 'Každý elektron v atomu popisují čtyři **kvantová čísla**. Jsou jako jeho adresa: vrstva, typ orbitalu, konkrétní orbital a „otočení“ elektronu.' },
-            { type: 'iconlist', items: [
-              { icon: 'mountain', title: 'hlavní $n$ = 1, 2, 3, …', text: 'energie a velikost orbitalu, číslo vrstvy' },
-              { icon: 'molecule', title: 'vedlejší $l$ = 0 až $n$ − 1', text: 'tvar orbitalu: 0 = s, 1 = p, 2 = d, 3 = f' },
-              { icon: 'magnet', title: 'magnetické $m$ = −$l$ až +$l$', text: 'orientace orbitalu v prostoru, a tím počet orbitalů v podslupce' },
-              { icon: 'arrow-cycle', title: 'spinové $s$ = +½, −½', text: 'spin elektronu, kreslíme šipkou ↑ nebo ↓' },
+            { type: 'table', headers: ['Kvantové číslo', 'Hodnoty', 'Co určuje'], rows: [
+              ['hlavní $n$', '1, 2, 3, …', 'energie a velikost orbitalu, číslo vrstvy'],
+              ['vedlejší $l$', '0 až $n$ − 1', 'tvar orbitalu: 0 = s, 1 = p, 2 = d, 3 = f'],
+              ['magnetické $m$', '−$l$ až +$l$', 'orientace orbitalu v prostoru, a tím počet orbitalů v podslupce'],
+              ['spinové $s$', '+½, −½', 'spin elektronu, kreslíme šipkou ↑ nebo ↓'],
             ] },
-            { type: 'diagram', id: 'orbital-shapes', caption: 'Orbital s je koule (v každé vrstvě jeden). Tři orbitaly p jsou činky (prostorové osmičky) podél os x, y, z. Pět orbitalů d jsou čtyřlístky (jeden je činka s prstencem), sedm orbitalů f má složité tvary.' },
+            { type: 'diagram', id: 'orbital-shapes', caption: 'Na obrázku je orbital s – koule (v každé vrstvě jeden), tři orbitaly p – činky (prostorové osmičky) podél os x, y, z – a jeden z pěti orbitalů d, čtyřlístek mezi osami x a y. Čtyři orbitaly d jsou takové čtyřlístky, pátý je činka s prstencem; sedm orbitalů f má složité tvary.' },
             { type: 'table', headers: ['Podslupka', 'Počet orbitalů', 'Max. elektronů', 'Objevuje se od vrstvy'], rows: [
               ['s', '1', '2', '$n$ = 1'],
               ['p', '3', '6', '$n$ = 2'],
@@ -604,15 +593,6 @@ const level: LevelContent = {
           icon: 'chart',
           blocks: [
             { type: 'p', text: '**Výstavbový princip** (anglicky *Aufbau*) říká, že elektrony obsazují orbitaly postupně **od nejnižší energie**. Energie ale neroste přesně po vrstvách, podslupky se překrývají.' },
-            { type: 'process', layout: 'flow', steps: [
-              { icon: 'electron', title: '1s', text: 'n + l = 1' },
-              { icon: 'electron', title: '2s', text: 'n + l = 2' },
-              { icon: 'electron', title: '2p', text: 'n + l = 3' },
-              { icon: 'electron', title: '3s', text: 'n + l = 3' },
-              { icon: 'electron', title: '3p', text: 'n + l = 4' },
-              { icon: 'electron', title: '4s', text: 'n + l = 4' },
-              { icon: 'electron', title: '3d', text: 'n + l = 5' },
-            ], caption: 'Prvních sedm podslupek. Při stejném součtu n + l jde dřív ta s menším n.' },
             { type: 'formula', text: '1s -> 2s -> 2p -> 3s -> 3p -> 4s -> 3d -> 4p -> 5s -> 4d -> 5p -> 6s -> 4f -> 5d -> 6p -> 7s', caption: 'celé pořadí zaplňování orbitalů' },
             { type: 'p', text: 'Pořadí se nemusíš učit nazpaměť. Stačí **pravidlo n + l**: dřív se zaplní podslupka s menším součtem $n + l$, při stejném součtu ta s menším $n$. Orbital 4s má součet 4 + 0 = 4, orbital 3d 3 + 2 = 5, proto se 4s zaplní dřív.' },
             { type: 'structure', art: [
@@ -677,8 +657,8 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Výstavbový princip má pár výjimek, nejznámější jsou **chrom** a **měď**. Zaplněná (d^{10}) nebo přesně z poloviny zaplněná (d^{5}) podslupka d je zvlášť stabilní, a tak jeden elektron „přeskočí“ ze 4s do 3d.' },
             { type: 'compare', columns: [
-              { title: 'Chrom ($Z = 24$)', icon: 'crystal', tone: 'a', points: ['podle pravidla by bylo: [Ar] 4s^{2} 3d^{4}', 've skutečnosti: **[Ar] 4s^{1} 3d^{5}**', 'napůl zaplněná 3d^{5}'] },
-              { title: 'Měď ($Z = 29$)', icon: 'coin', tone: 'b', points: ['podle pravidla by bylo: [Ar] 4s^{2} 3d^{9}', 've skutečnosti: **[Ar] 4s^{1} 3d^{10}**', 'zcela zaplněná 3d^{10}'] },
+              { title: 'Chrom ($Z = 24$)', tone: 'a', points: ['podle pravidla by bylo: [Ar] 4s^{2} 3d^{4}', 've skutečnosti: **[Ar] 4s^{1} 3d^{5}**', 'napůl zaplněná 3d^{5}'] },
+              { title: 'Měď ($Z = 29$)', tone: 'b', points: ['podle pravidla by bylo: [Ar] 4s^{2} 3d^{9}', 've skutečnosti: **[Ar] 4s^{1} 3d^{10}**', 'zcela zaplněná 3d^{10}'] },
             ] },
             { type: 'diagram', id: 'orbitals', props: { z: 24 }, caption: 'Chrom: šest nepárových elektronů, pět v 3d a jeden ve 4s' },
             { type: 'compare', columns: [
@@ -758,7 +738,7 @@ const level: LevelContent = {
               { title: '**Perioda**', icon: 'chart', tone: 'a', points: ['vodorovný řádek, je jich sedm', 'číslo periody = počet elektronových vrstev', 'sodík ve 3. periodě má vrstvy K, L, M'] },
               { title: '**Skupina**', icon: 'periodic-table', tone: 'b', points: ['svislý sloupec, podle IUPAC číslované 1–18', 'v českých školách i starší značení: **hlavní skupiny** I.A–VIII.A (skupiny 1, 2 a 13–18) a vedlejší skupiny B', 'římské číslo u hlavních skupin = počet valenčních elektronů'] },
             ] },
-            { type: 'diagram', id: 'periodic-mini', props: { highlight: 'groups' }, caption: 'Skupiny (sloupce) a periody (řádky)' },
+            { type: 'diagram', id: 'periodic-mini', props: { highlight: 'groups' }, caption: 'Čísla skupin 1–18 jsou nad sloupci, periody jsou řádky. Barvy ukazují rodiny prvků; klepnutím na název v legendě je zvýrazníš.' },
             { type: 'iconlist', items: [
               { icon: 'explosion', title: '1 (I.A): alkalické kovy', text: 'Li, Na, K, Rb, Cs, Fr · ns^{1}' },
               { icon: 'bone', title: '2 (II.A): kovy alkalických zemin', text: 'Be, Mg, Ca, Sr, Ba, Ra · ns^{2}' },
@@ -767,7 +747,6 @@ const level: LevelContent = {
               { icon: 'bulb', title: '18 (VIII.A): vzácné plyny', text: 'He, Ne, Ar, Kr, Xe, Rn · ns^{2} np^{6} (He 1s^{2})' },
             ] },
             { type: 'callout', variant: 'warning', title: 'Pozor na vodík', text: 'Vodík stojí v 1. skupině, ale alkalický kov to není, je to plyn a nekov. Be a Mg se někdy mezi kovy alkalických zemin nepočítají, podle IUPAC k nim ale patří.' },
-            { type: 'elements', symbols: ['Li', 'Na', 'K', 'F', 'Cl', 'Br', 'I', 'He', 'Ne', 'Ar'], caption: 'Alkalické kovy, halogeny a vzácné plyny' },
             { type: 'example', problem: 'Síra má konfiguraci [Ne] 3s^{2} 3p^{4}. Ve které periodě a skupině leží?', steps: [
               'Nejvyšší $n$ je 3, atom má tři vrstvy -> 3. perioda.',
               'Valenční elektrony: 2 + 4 = 6 -> VI.A, tedy skupina 16.',
@@ -798,7 +777,7 @@ const level: LevelContent = {
           icon: 'coin',
           blocks: [
             { type: 'p', text: 'Asi čtyři pětiny prvků jsou **kovy**, leží vlevo a uprostřed tabulky. **Nekovy** jsou vpravo nahoře (plus vodík). Mezi nimi vede „schodovitá“ hranice, podél níž leží **polokovy**.' },
-            { type: 'diagram', id: 'periodic-mini', props: { highlight: 'metals' }, caption: 'Kovy, polokovy a nekovy' },
+            { type: 'diagram', id: 'periodic-mini', props: { highlight: 'metals' }, caption: 'Kovy, polokovy a nekovy. Schodovitá čára odděluje kovy od polokovů a nekovů.' },
             { type: 'compare', columns: [
               { title: 'Kovy', icon: 'coin', tone: 'a', points: ['kovový lesk', 'dobře vedou teplo a elektřinu', 'kujné, tažné', 'při 25 °C pevné, kromě rtuti', 'tvoří **kationty**'] },
               { title: 'Nekovy', icon: 'gas-cloud', tone: 'b', points: ['bez lesku, často barevné', 'většinou nevodí (izolanty)', 'pevné nekovy jsou křehké', 'plyny i pevné látky, brom je kapalina', 'tvoří **anionty**'] },
@@ -818,13 +797,13 @@ const level: LevelContent = {
               { title: 'V periodě zleva doprava', icon: 'nucleus', tone: 'a', points: ['přibývají protony v jádře', 'elektrony jdou pořád do stejné vrstvy', 'jádro je přitahuje silněji, atom se **zmenšuje**'] },
               { title: 'Ve skupině shora dolů', icon: 'atom', tone: 'b', points: ['přibývají elektronové vrstvy', 'valenční elektrony jsou dál od jádra a stíněné vnitřními vrstvami', 'atom se **zvětšuje**'] },
             ] },
-            { type: 'iconlist', items: [
-              { icon: 'magnifier', title: 'Atomový poloměr', text: 'velikost atomu; v periodě klesá, ve skupině roste' },
-              { icon: 'lightning', title: 'Ionizační energie', text: 'energie na odtržení elektronu (z lekce o vrstvách); v periodě roste, ve skupině klesá' },
-              { icon: 'magnet', title: 'Elektronegativita', text: '(anglicky *electronegativity*) schopnost atomu přitahovat elektrony ve vazbě; v periodě roste, ve skupině klesá. Nejvyšší má fluor (3,98), podrobně v úrovni 3.' },
-              { icon: 'coin', title: 'Kovový charakter', text: 'jak snadno atom ztrácí elektrony a chová se jako kov; roste doleva a dolů' },
+            { type: 'keyterms', items: [
+              { term: 'Atomový poloměr', def: 'velikost atomu' },
+              { term: 'Ionizační energie', def: 'energie na odtržení elektronu (z lekce o vrstvách)' },
+              { term: 'Elektronegativita', def: '(anglicky *electronegativity*) schopnost atomu přitahovat elektrony ve vazbě. Nejvyšší má fluor (3,98), podrobně v úrovni 3.' },
+              { term: 'Kovový charakter', def: 'jak snadno atom ztrácí elektrony a chová se jako kov' },
             ] },
-            { type: 'diagram', id: 'periodic-mini', props: { highlight: 'trends' }, caption: 'Směry, kterými rostou jednotlivé vlastnosti' },
+            { type: 'diagram', id: 'periodic-mini', props: { highlight: 'trends' }, caption: 'Šipky ukazují, kterým směrem jednotlivé vlastnosti rostou; tmavší políčko znamená vyšší elektronegativitu.' },
             { type: 'table', headers: ['Prvek', 'Li', 'Na', 'K'], rows: [
               ['atomový poloměr (pm)', '152', '186', '227'],
               ['1. ionizační energie (kJ/mol)', '520', '496', '419'],
