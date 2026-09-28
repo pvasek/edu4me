@@ -9,6 +9,10 @@
 .cv-backdrop {
   position: absolute;
   inset: 0;
+}
+.cv-shade {
+  position: absolute;
+  inset: 0;
   background: color-mix(in srgb, var(--ink) 55%, transparent);
   backdrop-filter: blur(3px);
 }
@@ -56,11 +60,14 @@
   color: var(--ink);
   cursor: pointer;
 }
-.cv-track {
-  display: grid;
-  align-items: center;
+.cv-view {
   min-height: 0;
-  overflow-y: auto;
+  overflow: hidden;
+  margin: 0 -16px;
+}
+.cv-track {
+  display: flex;
+  height: 100%;
   touch-action: none;
   cursor: grab;
 }
@@ -68,11 +75,13 @@
   cursor: grabbing;
 }
 .cv-card {
+  flex: none;
   display: grid;
   justify-items: center;
   align-content: center;
   gap: 10px;
-  padding: 24px 8px;
+  padding: 24px 24px;
+  overflow: hidden;
   text-align: center;
   user-select: none;
 }
@@ -155,4 +164,10 @@
   text-align: center;
   font: 600 12px var(--font-body);
   color: var(--muted);
+}
+@media (min-width: 720px) {
+  .cv-view {
+    margin: 0 -20px;
+    height: min(440px, calc(100dvh - 240px));
+  }
 }
