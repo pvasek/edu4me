@@ -85,8 +85,6 @@
 }
 .notebook {
   position: relative;
-  background-image: repeating-linear-gradient(transparent 0 31px, var(--line) 31px 32px);
-  background-position: 0 14px;
   padding-left: 44px;
 }
 .notebook::before {
@@ -103,8 +101,10 @@
   margin: 0;
   padding-left: 18px;
   display: grid;
-  gap: 4px;
-  line-height: 32px;
+  gap: 0;
+}
+.notebook li {
+  --rule: 32px;
 }
 .notebook-note {
   position: absolute;

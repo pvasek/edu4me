@@ -148,7 +148,7 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
               <div className="card notebook">
                 <motion.ul variants={stagger(0.12, 0.1)} initial="hidden" whileInView="show" viewport={{ once: true }}>
                   {lesson.summary.map((s, i) => (
-                    <motion.li key={i} variants={rise}>
+                    <motion.li key={i} variants={rise} className="ruled">
                       <Md text={s} />
                     </motion.li>
                   ))}

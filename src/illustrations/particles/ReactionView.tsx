@@ -51,7 +51,7 @@ export function ReactionView({ equation }: { equation: string }) {
       </div>
       <motion.div className="pt-ledger" variants={fade(tProd + 0.35)}>
         <div className="pt-ledger-head">Počet atomů · vlevo = vpravo</div>
-        <div className="pt-ledger-rows">
+        <div className="pt-ledger-rows ruled">
           {rows.map((r) => (
             <LedgerRow key={r.el} name={r.el} left={r.left} right={r.right} />
           ))}

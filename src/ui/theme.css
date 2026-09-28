@@ -443,3 +443,15 @@ sup {
   height: 0;
   border-top: 3px double var(--line);
 }
+
+/* Ruled paper (notebook, ledger). The rules belong to the text, not to the
+   container: every line box of a .ruled element gets exactly one rule under
+   it, so lines can never cut through text, whatever the padding, gaps or
+   wrapping. Set --rule to the line height you want (the text uses it too). */
+.ruled {
+  --rule: 32px;
+  line-height: var(--rule);
+  background-image: linear-gradient(to top, var(--line) 1px, transparent 1px);
+  background-size: 100% var(--rule);
+  background-repeat: repeat-y;
+}
