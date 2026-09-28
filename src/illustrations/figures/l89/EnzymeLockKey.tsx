@@ -1,30 +1,25 @@
-import { Draw, Fade, Figure, Lbl, Panel, Panels, Plate, Slide, useHatch } from './kit'
+import { StepFilm } from '../../sequence/StepFigure'
+import { Draw, Fade, Figure, Lbl, Plate, Slide, useHatch } from './kit'
 
 const LABEL =
   'Enzym a substrát podle modelu zámku a klíče a indukovaného přizpůsobení. 1: substrát se blíží k aktivnímu centru enzymu, prohlubni, jejíž tvar mu odpovídá. 2: vznikne komplex enzym–substrát, aktivní centrum se mírně změní a substrát obejme. 3: reakce proběhne, produkty se uvolní a enzym zůstane nezměněný pro další molekulu. 4: inhibitor obsadí aktivní centrum a substrát se nemůže navázat. E + S ⇌ ES → E + P.'
 
-const STEP = 1.1
 const ENZ = '#6aa7a0'
 const SUB = '#e8c35a'
 const INH = '#d9736a'
 
 export default function EnzymeLockKey() {
   return (
-    <Figure name="enzyme-lock-key" level={9} label={LABEL} max={660} replay>
-      <Panels min={260}>
-        <Panel n={1} title="E + S: zámek a klíč" delay={0} sub="Substrát tvarem pasuje do aktivního centra.">
-          <P1 />
-        </Panel>
-        <Panel n={2} title="Komplex ES" delay={STEP} sub="Indukované přizpůsobení: centrum substrát „obejme“.">
-          <P2 />
-        </Panel>
-        <Panel n={3} title="E + P: produkty odcházejí" delay={STEP * 2} sub="Enzym zůstane nezměněný a může znovu.">
-          <P3 />
-        </Panel>
-        <Panel n={4} title="Inhibitor blokuje" delay={STEP * 3} sub="Cizí molekula obsadí centrum, substrát se nevejde.">
-          <P4 />
-        </Panel>
-      </Panels>
+    <Figure name="enzyme-lock-key" level={9} label={LABEL} max={560} interactive>
+      <StepFilm
+        label={LABEL}
+        steps={[
+          { title: 'E + S: zámek a klíč', caption: 'Substrát tvarem pasuje do aktivního centra enzymu.', art: <P1 /> },
+          { title: 'Komplex ES', caption: 'Indukované přizpůsobení: aktivní centrum substrát „obejme“.', art: <P2 /> },
+          { title: 'E + P: produkty odcházejí', caption: 'Reakce proběhla, produkty se uvolní a enzym zůstane nezměněný.', art: <P3 /> },
+          { title: 'Inhibitor blokuje', caption: 'Cizí molekula obsadí aktivní centrum a substrát se už nevejde.', art: <P4 /> },
+        ]}
+      />
     </Figure>
   )
 }
@@ -78,7 +73,7 @@ function P1() {
 }
 
 function P2() {
-  const d = STEP
+  const d = 0
   return (
     <Plate w={280} h={190}>
       <Enzyme fit />
@@ -97,7 +92,7 @@ function P2() {
 }
 
 function P3() {
-  const d = STEP * 2
+  const d = 0
   return (
     <Plate w={280} h={190}>
       <Enzyme />
@@ -128,7 +123,7 @@ function P3() {
 }
 
 function P4() {
-  const d = STEP * 3
+  const d = 0
   return (
     <Plate w={280} h={190}>
       <Enzyme />

@@ -1,4 +1,5 @@
-import { Arrow, Atom, ChemText, Fade, Figure, Mol, Panel, Panels, Plate, Pop, Slide, useNarrow } from './kit'
+import { StepStrip } from '../../sequence/StepFigure'
+import { Arrow, Atom, ChemText, Fade, Figure, Mol, Plate, Pop, Slide, useNarrow } from './kit'
 
 const LABEL =
   'Dva typy polymerace. Adiční polymerace: mnoho molekul monomeru ethenu CH2=CH2 se spojí, dvojné vazby C=C se otevřou a vznikne dlouhý řetězec poly(ethenu). Opakující se jednotka je [–CH2–CH2–]n a nic se přitom neodštěpí. Kondenzační polymerace: dikarboxylová kyselina (kyselina tereftalová HOOC–C6H4–COOH) a diol (ethan-1,2-diol HO–CH2–CH2–OH) se spojují esterovými vazbami –CO–O–; při vzniku každé vazby se odštěpí malá molekula vody. Tak vzniká polyester PET.'
@@ -6,14 +7,14 @@ const LABEL =
 export default function PolymerizationTypes() {
   return (
     <Figure name="polymerization-types" level={8} label={LABEL} max={680}>
-      <Panels min={300}>
-        <Panel n={1} title="Adiční polymerace" delay={0} className="f89-wide">
-          <Addition />
-        </Panel>
-        <Panel n={2} title="Kondenzační polymerace" delay={0.5} className="f89-wide">
-          <Condensation />
-        </Panel>
-      </Panels>
+      {/* one method per row: each plate uses the whole width */}
+      <StepStrip
+        min={600}
+        steps={[
+          { title: 'Adiční polymerace', art: <Addition /> },
+          { title: 'Kondenzační polymerace', art: <Condensation /> },
+        ]}
+      />
     </Figure>
   )
 }
@@ -43,17 +44,17 @@ function Addition() {
   const unitX = (cs[2] + cs[3]) / 2
   return (
     <Plate w={L.w} h={L.h}>
-      <Fade delay={0.1}>
+      <Fade delay={0.05} dur={0.3}>
         <text className="f89-lb f89-lv" x={mid} y={L.my - 42} textAnchor="middle">
           monomery
         </text>
       </Fade>
       {L.mono.map((x, i) => (
-        <Pop key={x} delay={0.15 + i * 0.12}>
+        <Pop key={x} delay={0.05 + i * 0.04}>
           <Ethene x={x} y={L.my} />
         </Pop>
       ))}
-      <Fade delay={0.6}>
+      <Fade delay={0.15} dur={0.3}>
         <text className="f89-f" x={mid} y={L.my + 44} textAnchor="middle">
           <ChemText text="n CH_{2}=CH_{2}" />
         </text>
@@ -61,7 +62,7 @@ function Addition() {
           ethen
         </text>
       </Fade>
-      <Fade delay={0.8}>
+      <Fade delay={0.15} dur={0.3}>
         <Arrow x1={ax1} y1={ay1} x2={ax2} y2={ay2} className="f89-arr f89-arr-lv" />
         <text className="f89-lb f89-lv f89-sm" x={vertical ? ax1 + 14 : (ax1 + ax2) / 2} y={vertical ? ay1 + 14 : ay1 - 12} textAnchor={vertical ? 'start' : 'middle'}>
           C=C se otevře
@@ -70,12 +71,12 @@ function Addition() {
           nic se neodštěpí
         </text>
       </Fade>
-      <Fade delay={1.0}>
+      <Fade delay={0.2} dur={0.3}>
         <line className="f89-guide" x1={cs[0] - 24} y1={cy} x2={cs[0]} y2={cy} />
         <line className="f89-guide" x1={cs[L.nC - 1]} y1={cy} x2={cs[L.nC - 1] + 24} y2={cy} />
       </Fade>
       {cs.map((x, i) => (
-        <Pop key={x} delay={1.0 + i * 0.09}>
+        <Pop key={x} delay={0.15 + i * 0.03}>
           {i < L.nC - 1 && <line className="f89-bond" x1={x} y1={cy} x2={cs[i + 1]} y2={cy} />}
           <line className="f89-bond" x1={x} y1={cy} x2={x} y2={cy - 17} />
           <line className="f89-bond" x1={x} y1={cy} x2={x} y2={cy + 17} />
@@ -84,7 +85,7 @@ function Addition() {
           <Atom x={x} y={cy} el="C" r={8.5} />
         </Pop>
       ))}
-      <Fade delay={1.9}>
+      <Fade delay={0.3} dur={0.3}>
         <text className="f89-lb f89-b" x={n ? 170 : (cs[0] + cs[L.nC - 1]) / 2} y={cy - 44} textAnchor="middle">
           poly(ethen) – polyethylen
         </text>
@@ -216,7 +217,7 @@ function Condensation() {
   const midX = L.w / 2
   return (
     <Plate w={L.w} h={L.h}>
-      <Pop delay={0.6}>
+      <Pop delay={0.05}>
         <text className="f89-lb f89-lv f89-sm" x={L.acid.x + acidW / 2} y={L.acid.y - 24} textAnchor="middle">
           monomer 1 · dikarboxylová kyselina
         </text>
@@ -225,12 +226,12 @@ function Condensation() {
           kyselina tereftalová
         </text>
       </Pop>
-      <Fade delay={0.8}>
+      <Fade delay={0.1} dur={0.3}>
         <text className="f89-sym" x={L.plus.x} y={L.plus.y + 4} textAnchor="middle">
           +
         </text>
       </Fade>
-      <Pop delay={0.9}>
+      <Pop delay={0.1}>
         <text className="f89-lb f89-lv f89-sm" x={L.diol.x + diolW / 2} y={L.diol.y - 24} textAnchor="middle">
           monomer 2 · diol
         </text>
@@ -239,28 +240,28 @@ function Condensation() {
           ethan-1,2-diol
         </text>
       </Pop>
-      <Fade delay={1.2}>
+      <Fade delay={0.15} dur={0.3}>
         <Arrow x1={midX} y1={L.arr} x2={midX} y2={L.arr + (n ? 40 : 34)} className="f89-arr f89-arr-lv" />
         <text className="f89-lb f89-lv f89-sm" x={midX + 14} y={L.arr + (n ? 18 : 16)}>
           OH + H → H₂O
         </text>
       </Fade>
-      <Fade delay={1.5}>
+      <Fade delay={0.15} dur={0.3}>
         <text className="f89-lb f89-b" x={midX} y={cy - (n ? 66 : 70)} textAnchor="middle">
           polyester PET
         </text>
       </Fade>
-      <Pop delay={1.6}>
+      <Pop delay={0.15}>
         <Formula toks={chainToks} x={cx0} y={cy} size={size} />
       </Pop>
       {/* a water molecule leaves every new ester link */}
       {links.map((x, i) => (
-        <Slide key={x} delay={2.1 + i * 0.25} dy={22} dur={0.8}>
+        <Slide key={x} delay={0.15 + i * 0.05} dy={22} dur={0.4}>
           <Water x={x} y={cy - 38} />
           <line className="f89-guide" x1={x} y1={cy - 28} x2={x} y2={cy - size - 2} style={{ strokeDasharray: '2 3' }} />
         </Slide>
       ))}
-      <Fade delay={2.1 + links.length * 0.25}>
+      <Fade delay={0.3} dur={0.3}>
         <text className="f89-lb f89-lv" x={n ? links[links.length - 1] + 18 : links[links.length - 1] + 20} y={cy - 36}>
           {n ? 'H₂O' : 'voda se odštěpí'}
         </text>

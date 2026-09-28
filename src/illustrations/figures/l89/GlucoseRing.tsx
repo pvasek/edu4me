@@ -109,10 +109,10 @@ function Scene() {
   const arc = `M${c5.x + 6} ${c5.y - 8} C${c5.x + 60} ${c5.y - 40} ${c1.x + 70} ${c1.y + 20} ${c1.x + 16} ${c1.y + 2}`
   return (
     <Plate w={L.w} h={L.h}>
-      <Pop delay={0.2}>
+      <Pop delay={0.12}>
         <Fischer {...f} />
       </Pop>
-      <Fade delay={0.6}>
+      <Fade delay={0.36}>
         <text className="f89-lb f89-b" x={f.x} y={f.y + 5 * 38 + 36} textAnchor="middle">
           otevřený řetězec
         </text>
@@ -120,8 +120,8 @@ function Scene() {
           Fischerova projekce · &lt; 1 %
         </text>
       </Fade>
-      <Draw d={arc} className="f89-curly-l" delay={1.1} dur={1.1} style={{ strokeDasharray: 'none' }} />
-      <Fade delay={2.1}>
+      <Draw d={arc} className="f89-curly-l" delay={0.66} dur={0.8} style={{ strokeDasharray: 'none' }} />
+      <Fade delay={1.26}>
         <polygon points={`${c1.x + 12},${c1.y + 1} ${c1.x + 22},${c1.y - 3} ${c1.x + 20},${c1.y + 7}`} className="f89-lvfill" />
         {n ? (
           <text className="f89-lb f89-lv f89-sm" x={284} y={c5.y + 32} textAnchor="middle">
@@ -139,7 +139,7 @@ function Scene() {
         )}
       </Fade>
       {/* equilibria */}
-      <Fade delay={2.3}>
+      <Fade delay={1.38}>
         {n ? (
           <>
             <Arrow x1={140} y1={318} x2={100} y2={346} className="f89-arr f89-arr-soft" both />
@@ -156,7 +156,7 @@ function Scene() {
         { p: L.a, beta: false, name: 'α-glukóza', note: 'OH na C1 dole · 36 %' },
         { p: L.b, beta: true, name: 'β-glukóza', note: 'OH na C1 nahoře · 64 %' },
       ].map((g, i) => (
-        <Pop key={g.name} delay={2.5 + i * 0.3}>
+        <Pop key={g.name} delay={1.5 + i * 0.18}>
           <g transform={`translate(${g.p.x} ${g.p.y}) scale(${L.s}) translate(${-g.p.x} ${-g.p.y})`}>
             <Haworth x={g.p.x} y={g.p.y} beta={g.beta} />
           </g>

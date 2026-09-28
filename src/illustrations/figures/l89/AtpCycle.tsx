@@ -101,8 +101,8 @@ function AtpSketch({ x, y, gap, narrow }: { x: number; y: number; gap: number; n
       {/* backbone bonds */}
       <line className="f89-bond" x1={pent[0][0]} y1={pent[0][1]} x2={rib[4][0]} y2={rib[4][1]} />
       <line className="f89-bond" x1={rib[1][0]} y1={rib[1][1]} x2={px[0] - pr} y2={y} />
-      <Draw d={wave(px[0] + pr, px[1] - pr, y)} className="f89-lvstroke" delay={2.4} dur={0.5} style={{ strokeWidth: 2.4 }} />
-      <Draw d={wave(px[1] + pr, px[2] - pr, y)} className="f89-lvstroke" delay={2.6} dur={0.5} style={{ strokeWidth: 2.4 }} />
+      <Draw d={wave(px[0] + pr, px[1] - pr, y)} className="f89-lvstroke" delay={1.45} dur={0.5} style={{ strokeWidth: 2.4 }} />
+      <Draw d={wave(px[1] + pr, px[2] - pr, y)} className="f89-lvstroke" delay={1.55} dur={0.5} style={{ strokeWidth: 2.4 }} />
       <polygon points={pts(hex)} style={{ fill: 'var(--cat-nonmetal)', stroke: 'var(--edge)', strokeWidth: 1.4 }} />
       <polygon points={pts(pent)} style={{ fill: 'var(--cat-nonmetal)', stroke: 'var(--edge)', strokeWidth: 1.4 }} />
       <polygon points={pts(rib)} style={{ fill: 'var(--cat-transition)', stroke: 'var(--edge)', strokeWidth: 1.4 }} />
@@ -164,21 +164,21 @@ function Scene() {
   return (
     <Plate w={L.w} h={L.h}>
       {/* the cycle */}
-      <ArcArrow cx={c.x} cy={c.y} r={c.r} a={205} b={335} delay={0.5} />
-      <ArcArrow cx={c.x} cy={c.y} r={c.r} a={25} b={155} delay={1.3} />
-      <Pop delay={0.2}>
+      <ArcArrow cx={c.x} cy={c.y} r={c.r} a={205} b={335} delay={0.3} />
+      <ArcArrow cx={c.x} cy={c.y} r={c.r} a={25} b={155} delay={0.75} />
+      <Pop delay={0.1}>
         <Node x={c.x - c.r} y={c.y} w={nodeW} strong>
           <text className="f89-sym" x={c.x - c.r} y={c.y + 7} textAnchor="middle" style={{ fontSize: 22 }}>
             ATP
           </text>
         </Node>
       </Pop>
-      <Pop delay={0.9}>
+      <Pop delay={0.55}>
         <Node x={c.x + c.r} y={c.y} w={nodeW}>
           <F x={c.x + c.r} y={c.y + 5} t="ADP + P_{i}" className="f89-f f89-b" size={n ? 14 : 15} />
         </Node>
       </Pop>
-      <Fade delay={0.9}>
+      <Fade delay={0.55}>
         <text className="f89-lb f89-b" x={c.x} y={c.y - 30} textAnchor="middle">
           hydrolýza
         </text>
@@ -190,32 +190,32 @@ function Scene() {
       </Fade>
 
       {/* energy out: work */}
-      <Fade delay={1.1}>
+      <Fade delay={0.65}>
         <Box {...L.out} tone="out" title={n ? 'energie se uvolní ≈ 30 kJ/mol' : 'energie se uvolní'} lines={n ? ['svaly · transport · syntéza látek', '→ práce buňky'] : ['≈ 30 kJ na 1 mol ATP', '• svaly – stah vláken', '• aktivní transport přes membránu', '• syntéza bílkovin a DNA']} />
       </Fade>
-      <Draw d={L.outPath} className="f89-lvstroke" delay={1.2} dur={0.6} style={{ strokeWidth: 2.6 }} />
-      <Fade delay={1.7} dur={0.2}>
+      <Draw d={L.outPath} className="f89-lvstroke" delay={0.7} dur={0.6} style={{ strokeWidth: 2.6 }} />
+      <Fade delay={1.25} dur={0.2}>
         <polygon points={headAt(outHead[0], outHead[1], outHead[2], outHead[3], 12)} className="f89-lvfill" />
         <Bolt x={n ? 196 : 300} y={n ? 98 : 50} />
       </Fade>
 
       {/* energy in: food */}
-      <Fade delay={1.9}>
+      <Fade delay={1.1}>
         <Box {...L.inn} tone="in" title="energie z potravy" lines={n ? ['glukóza → buněčné dýchání'] : ['glukóza + O₂ → buněčné dýchání', 'v mitochondriích']} />
       </Fade>
-      <Draw d={L.inPath} className="f89-lvstroke" delay={2.0} dur={0.6} style={{ strokeWidth: 2.6 }} />
-      <Fade delay={2.5} dur={0.2}>
+      <Draw d={L.inPath} className="f89-lvstroke" delay={1.15} dur={0.6} style={{ strokeWidth: 2.6 }} />
+      <Fade delay={1.7} dur={0.2}>
         <polygon points={headAt(inHead[0], inHead[1], inHead[2], inHead[3], 12)} className="f89-lvfill" />
       </Fade>
 
       {/* ATP structure */}
-      <Fade delay={2.2}>
+      <Fade delay={1.25}>
         <line className="f89-thin" x1={n ? 12 : 20} y1={n ? 380 : 324} x2={n ? 328 : 640} y2={n ? 380 : 324} style={{ opacity: 0.4 }} />
         <text className="f89-lb f89-b" x={n ? 20 : 24} y={n ? 404 : 350}>
           molekula ATP
         </text>
       </Fade>
-      <Pop delay={2.3}>
+      <Pop delay={1.3}>
         <AtpSketch {...L.sketch} narrow={n} />
       </Pop>
     </Plate>

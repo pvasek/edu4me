@@ -7,6 +7,7 @@ import { createContext, useContext, useId, useState, type CSSProperties, type Re
 import { motion, type Variants } from 'motion/react'
 import { ease, spring } from '../../../ui/motion'
 import { ChemText } from '../../../diagrams/util'
+import { ReplayButton } from '../../sequence/StepFigure'
 import './l35.css'
 
 export { ChemText }
@@ -43,7 +44,7 @@ export const onAtom = (el: string) => (LIGHT_ATOMS.has(el) || !(el in CPK) ? '#1
 
 // ------------------------------------------------------------------ motion
 
-const VIEW = { once: true, amount: 0.25 } as const
+const VIEW = { once: true, amount: 0.4 } as const
 
 /** Line draws itself in. `custom` = delay in s. */
 export const vDraw: Variants = {
@@ -119,37 +120,71 @@ export interface FigLayout {
 /**
  * Root of every figure: a container-query wrapper with one or two svg layouts
  * (wide / narrow). Children animate in when the svg scrolls into view.
+ * `replay` adds the shared "Přehrát znovu" button (keep the entrance ≤ ~2.5 s).
+ * `interactive` hosts a <StepFilm> / <StepStrip> passed as children instead of
+ * layouts: the wrapper is then a plain container (the film carries role="img" + label).
  */
 export function Figure({
   label,
   level,
-  layouts,
+  layouts = [],
   replay = false,
+  interactive = false,
+  max,
   className = '',
+  children,
 }: {
   label: string
   level: 3 | 4 | 5
-  layouts: FigLayout[]
+  layouts?: FigLayout[]
   replay?: boolean
+  /** hosts a <StepFilm> (which has buttons and carries role="img" itself) */
+  interactive?: boolean
+  /** css max-width of an interactive figure */
+  max?: number
   className?: string
+  children?: ReactNode
 }) {
-  const base = 'f35' + useId().replace(/[^a-zA-Z0-9_-]/g, '')
   const [run, setRun] = useState(0)
+  if (interactive)
+    return (
+      <div className={`f35 f35-l${level} ${className}`} style={max ? { maxWidth: max, marginInline: 'auto' } : undefined}>
+        {children}
+      </div>
+    )
   return (
     <div className={`f35 f35-l${level} ${className}`}>
+      <Svgs key={run} layouts={layouts} label={label} />
+      {replay && <ReplayButton onClick={() => setRun((r) => r + 1)} />}
+    </div>
+  )
+}
+
+/**
+ * One frame of a <StepFilm> (or one panel of a <StepStrip>): the same wide / narrow
+ * svg layouts as a Figure, drawn in as soon as the frame is mounted (a film mounts
+ * each frame when it is shown). Keep a frame's entrance ≤ ~1.2 s.
+ */
+export function Frame({ layouts }: { layouts: FigLayout[] }) {
+  return <Svgs layouts={layouts} />
+}
+
+function Svgs({ layouts, label }: { layouts: FigLayout[]; label?: string }) {
+  const base = 'f35' + useId().replace(/[^a-zA-Z0-9_-]/g, '')
+  const a11y = label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': true, focusable: false }
+  const motionProps = label ? { initial: 'hidden', whileInView: 'show', viewport: VIEW } : { initial: 'hidden', animate: 'show' }
+  return (
+    <>
       {layouts.map((l, i) => {
         const p = `${base}-${i}`
         return (
-          <PidCtx.Provider value={p} key={`${i}-${run}`}>
+          <PidCtx.Provider value={p} key={i}>
             <motion.svg
               className={`f35-svg f35-when-${l.when ?? 'all'}`}
               viewBox={`0 0 ${l.w} ${l.h}`}
-              role="img"
-              aria-label={label}
+              {...a11y}
               style={{ maxWidth: `${l.max ?? 620}px` }}
-              initial="hidden"
-              whileInView="show"
-              viewport={VIEW}
+              {...motionProps}
             >
               <Defs />
               {l.draw()}
@@ -157,12 +192,7 @@ export function Figure({
           </PidCtx.Provider>
         )
       })}
-      {replay && (
-        <button type="button" className="f35-replay" onClick={() => setRun((r) => r + 1)}>
-          <span aria-hidden="true">↻</span> Přehrát znovu
-        </button>
-      )}
-    </div>
+    </>
   )
 }
 

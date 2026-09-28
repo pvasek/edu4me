@@ -117,10 +117,10 @@ function Scene() {
       </Fade>
 
       {/* the spectrum draws in from 4000 to 500 cm⁻¹ */}
-      <Draw d={curve} className="f89-ln" delay={0.4} dur={2.4} style={{ strokeWidth: 1.7 }} />
+      <Draw d={curve} className="f89-ln" delay={0.3} dur={1.5} style={{ strokeWidth: 1.7 }} />
 
       {/* broad O–H band */}
-      <Fade delay={1.3}>
+      <Fade delay={1.0}>
         <path className="f89-ln" style={{ stroke: 'var(--lv)', strokeWidth: 1.6 }} d={`M${oh.a} ${oh.y - 6} V${oh.y} H${oh.b} V${oh.y - 6}`} />
         <F x={(oh.a + oh.b) / 2} y={oh.y + 17} t="O–H" className="f89-f f89-b f89-lv" />
         <text className="f89-f f89-sm f89-muted" x={(oh.a + oh.b) / 2} y={oh.y + 32} textAnchor="middle">
@@ -135,7 +135,7 @@ function Scene() {
         const ty = n ? 40 : 44
         const lastY = ty + 16 * t.lines.length
         return (
-          <Fade key={t.bond} delay={1.8 + i * 0.3}>
+          <Fade key={t.bond} delay={1.3 + i * 0.2}>
             <line className="f89-lead" x1={x} y1={t.anchor === 'middle' ? lastY + 6 : ty - 12} x2={x} y2={yMin - 3} style={{ strokeDasharray: '3 3' }} />
             <circle className="f89-dot" cx={x} cy={yMin - 3} r={2.2} />
             <F x={x + t.dx} y={ty} t={t.bond} anchor={t.anchor} className="f89-f f89-b f89-lv" />

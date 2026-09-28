@@ -3,6 +3,8 @@
  * Engraving line art, hatching instead of gradients, CPK atoms, italic
  * leader-line labels and a small set of scroll-triggered motion primitives.
  * Everything animates to a complete, readable final state.
+ * Steps of a process go in a <StepFilm>, compared variants in a <StepStrip>
+ * (src/illustrations/sequence/StepFigure); a single picture animates in ≤ ~2.5 s.
  */
 import {
   createContext,
@@ -18,6 +20,7 @@ import {
 import { motion, useInView } from 'motion/react'
 import { ease, spring } from '../../../ui/motion'
 import { ChemText } from '../../../diagrams/util'
+import { ReplayButton } from '../../sequence/StepFigure'
 import './l89.css'
 
 export { ChemText }
@@ -48,7 +51,7 @@ const NARROW = 460
 /**
  * Root of every figure: one `role="img"` region with a Czech description,
  * scroll-into-view trigger, narrow-layout detection and an optional
- * "Přehrát znovu" button for processes.
+ * shared "Přehrát znovu" button for a single-picture animation.
  */
 export function Figure({
   name,
@@ -56,6 +59,7 @@ export function Figure({
   level,
   max = 640,
   replay = false,
+  interactive = false,
   children,
 }: {
   name: string
@@ -63,6 +67,8 @@ export function Figure({
   level: 8 | 9
   max?: number
   replay?: boolean
+  /** hosts a <StepFilm> (which has buttons and carries role="img" itself) */
+  interactive?: boolean
   children: ReactNode
 }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -82,18 +88,14 @@ export function Figure({
   const style = { '--lv': LEVEL_COLOR[level], '--f89-max': `${max}px` } as CSSProperties
   return (
     <div ref={ref} className={`f89 f89-${name}${narrow ? ' f89-narrow' : ''}`} style={style} data-figure={name}>
-      <div className="f89-art" role="img" aria-label={label}>
+      <div className="f89-art" {...(interactive ? {} : { role: 'img', 'aria-label': label })}>
         <OnCtx.Provider value={on}>
           <NarrowCtx.Provider value={narrow}>
             <Fragment key={run}>{children}</Fragment>
           </NarrowCtx.Provider>
         </OnCtx.Provider>
       </div>
-      {replay && (
-        <button type="button" className="f89-replay" onClick={() => setRun((r) => r + 1)}>
-          <span aria-hidden="true">↻</span> Přehrát znovu
-        </button>
-      )}
+      {replay && <ReplayButton onClick={() => setRun((r) => r + 1)} />}
     </div>
   )
 }
@@ -132,51 +134,6 @@ export function Plate({ w, h, className = '', children, style }: { w: number; h:
         {children}
       </svg>
     </HatchCtx.Provider>
-  )
-}
-
-/** Grid of step panels (wraps to one column on phones). */
-export function Panels({ children, min = 230, className = '' }: { children: ReactNode; min?: number; className?: string }) {
-  return (
-    <div className={`f89-grid ${className}`} style={{ '--min': `${min}px` } as CSSProperties}>
-      {children}
-    </div>
-  )
-}
-
-/** One panel: optional numbered caption above an engraved plate. */
-export function Panel({
-  n,
-  title,
-  sub,
-  delay = 0,
-  children,
-  className = '',
-}: {
-  n?: number | string
-  title?: ReactNode
-  sub?: ReactNode
-  delay?: number
-  children: ReactNode
-  className?: string
-}) {
-  const on = useOn()
-  return (
-    <motion.div
-      className={`f89-panel ${className}`}
-      initial={{ opacity: 0, y: 12 }}
-      animate={on ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-      transition={{ duration: 0.45, delay, ease: ease.out }}
-    >
-      {title && (
-        <div className="f89-cap">
-          {n !== undefined && <span className="f89-num">{n}</span>}
-          <span className="f89-cap-t">{title}</span>
-        </div>
-      )}
-      {children}
-      {sub && <p className="f89-sub">{sub}</p>}
-    </motion.div>
   )
 }
 

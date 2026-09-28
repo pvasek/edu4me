@@ -3,9 +3,10 @@
  * Hatches, labels with leader lines, draw-in / pop-in variants and the
  * figure wrapper (a container-query box so small screens get a compact look).
  */
-import { createContext, useContext, useId, type CSSProperties, type ReactNode } from 'react'
+import { createContext, useContext, useId, useState, type CSSProperties, type ReactNode } from 'react'
 import { motion, type Variants } from 'motion/react'
 import { ease, spring } from '../../../ui/motion'
+import { ReplayButton } from '../../sequence/StepFigure'
 import './l12.css'
 
 // ------------------------------------------------------------------ hatches
@@ -61,6 +62,7 @@ type Level = 1 | 2
  * One-svg figure: <div class="f12"> (container for queries) > <motion.svg role="img">.
  * Children animate with variants `hidden` → `show` when the figure scrolls into view.
  * `after` renders below the svg (controls, notes), outside the image role.
+ * `replay` adds the shared "Přehrát znovu" button (keep the entrance ≤ ~2.5 s).
  */
 export function Plate({
   label,
@@ -71,6 +73,7 @@ export function Plate({
   className = '',
   children,
   after,
+  replay = false,
   svgProps,
 }: {
   label: string
@@ -81,20 +84,23 @@ export function Plate({
   className?: string
   children: ReactNode
   after?: ReactNode
+  replay?: boolean
   svgProps?: React.SVGProps<SVGSVGElement>
 }) {
   const id = useFigId()
+  const [run, setRun] = useState(0)
   return (
     <div className={`f12 f12-l${level} ${className}`} style={{ maxWidth: max }}>
       <HatchCtx.Provider value={id}>
         <motion.svg
+          key={run}
           className="f12-svg"
           viewBox={`0 0 ${w} ${h}`}
           role="img"
           aria-label={label}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.25 }}
+          viewport={{ once: true, amount: 0.4 }}
           {...(svgProps as object)}
         >
           <HatchDefs id={id} />
@@ -102,11 +108,16 @@ export function Plate({
         </motion.svg>
       </HatchCtx.Provider>
       {after}
+      {replay && <ReplayButton onClick={() => setRun((r) => r + 1)} />}
     </div>
   )
 }
 
-/** Multi-part figure (HTML grid of small svgs, or a wide + a narrow layout): the box is the image. */
+/**
+ * Multi-part figure (HTML grid of small svgs, or a wide + a narrow layout): the box is the image.
+ * `interactive` hosts a <StepFilm> / <StepStrip> instead: the box is then a plain container
+ * (the film carries role="img" + the label itself, because it contains buttons).
+ */
 export function Board({
   label,
   level,
@@ -115,6 +126,8 @@ export function Board({
   grid = '',
   children,
   after,
+  replay = false,
+  interactive = false,
 }: {
   label: string
   level: Level
@@ -124,8 +137,20 @@ export function Board({
   grid?: string
   children: ReactNode
   after?: ReactNode
+  /** shared "Přehrát znovu" button (keep the entrance ≤ ~2.5 s) */
+  replay?: boolean
+  /** hosts a <StepFilm> (which has buttons and carries role="img" itself) */
+  interactive?: boolean
 }) {
   const id = useFigId()
+  const [run, setRun] = useState(0)
+  if (interactive)
+    return (
+      <div className={`f12 f12-l${level} ${className}`} style={{ maxWidth: max }}>
+        <HatchCtx.Provider value={id}>{children}</HatchCtx.Provider>
+        {after}
+      </div>
+    )
   return (
     <div className={`f12 f12-l${level} ${className}`} style={{ maxWidth: max }}>
       <HatchCtx.Provider value={id}>
@@ -133,19 +158,38 @@ export function Board({
           <HatchDefs id={id} />
         </svg>
         <motion.div
+          key={run}
           className={`f12-board ${grid}`}
           role="img"
           aria-label={label}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.3 }}
           variants={stagger(0.07, 0.05)}
         >
           {children}
         </motion.div>
       </HatchCtx.Provider>
       {after}
+      {replay && <ReplayButton onClick={() => setRun((r) => r + 1)} />}
     </div>
+  )
+}
+
+/**
+ * One frame of a <StepFilm> (or one panel of a <StepStrip>): an engraved svg with its
+ * own hatch patterns that draws itself in as soon as it is mounted (a film mounts
+ * each frame when it is shown). Keep a frame's entrance ≤ ~1.2 s.
+ */
+export function Frame({ w, h, className = '', children }: { w: number; h: number; className?: string; children: ReactNode }) {
+  const id = useFigId()
+  return (
+    <HatchCtx.Provider value={id}>
+      <motion.svg className={`f12-svg ${className}`} viewBox={`0 0 ${w} ${h}`} aria-hidden="true" focusable="false" initial="hidden" animate="show">
+        <HatchDefs id={id} />
+        {children}
+      </motion.svg>
+    </HatchCtx.Provider>
   )
 }
 

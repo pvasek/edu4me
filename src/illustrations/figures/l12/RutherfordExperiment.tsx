@@ -83,15 +83,15 @@ function Inset() {
     <g>
       <rect className="f12-inset-plain" x={404} y={250} width={228} height={206} rx={6} />
       <g>{atoms}</g>
-      <Draw d="M404 318 L632 318" className="f12-trail" delay={1.2} dur={0.7} />
-      <Draw d="M404 362 L632 362" className="f12-trail" delay={1.3} dur={0.7} />
-      <Draw d="M404 406 L632 406" className="f12-trail" delay={1.4} dur={0.7} />
-      <Draw d="M404 336 L508 336 Q520 334 534 322 L630 262" className="f12-trail f12-trail-hot" delay={1.6} dur={0.8} />
-      <Draw d="M404 426 L512 426 Q516 427 512 430 L404 444" className="f12-trail f12-trail-hot" delay={1.8} dur={0.9} />
+      <Draw d="M404 318 L632 318" className="f12-trail" delay={0.96} dur={0.7} />
+      <Draw d="M404 362 L632 362" className="f12-trail" delay={1.04} dur={0.7} />
+      <Draw d="M404 406 L632 406" className="f12-trail" delay={1.12} dur={0.7} />
+      <Draw d="M404 336 L508 336 Q520 334 534 322 L630 262" className="f12-trail f12-trail-hot" delay={1.28} dur={0.8} />
+      <Draw d="M404 426 L512 426 Q516 427 512 430 L404 444" className="f12-trail f12-trail-hot" delay={1.44} dur={0.9} />
       <text className="f12-t f12-t-strong" x={418} y={274}>
         fólie zblízka
       </text>
-      <Lbl x={626} y={448} tx={571} ty={429} anchor="end" delay={2} sec>
+      <Lbl x={626} y={448} tx={571} ty={429} anchor="end" delay={1.6} sec>
         jádro
       </Lbl>
     </g>
@@ -107,7 +107,7 @@ function Body() {
       <path className="f12-thin" d={`M${CX - RR - 7} ${CY - 17} A${RR + 7} ${RR + 7} 0 1 1 ${CX - RR - 7} ${CY + 17}`} fill="none" />
 
       {/* static trails */}
-      <Fade delay={0.9}>
+      <Fade delay={0.72}>
         {PATHS.map((p, i) => (
           <path key={i} className={`f12-trail ${p.kind !== 'straight' ? 'f12-trail-hot' : ''}`} d={d(p.pts)} />
         ))}
@@ -120,30 +120,30 @@ function Body() {
       {/* gold foil */}
       <rect className="f12-gold" x={CX - 2.5} y={CY - 52} width={5} height={104} />
       <rect className="f12-hatch" x={CX - 2.5} y={CY - 52} width={5} height={104} fill={h('d')} />
-      <Pop delay={0.6}>
+      <Pop delay={0.48}>
         <circle className="f12-zoom" cx={CX} cy={CY + 34} r={14} />
       </Pop>
-      <Draw d={`M${CX + 12} ${CY + 42} L404 262`} className="f12-thin f12-dash" delay={1} dur={0.6} />
+      <Draw d={`M${CX + 12} ${CY + 42} L404 262`} className="f12-thin f12-dash" delay={0.8} dur={0.6} />
 
       <Particles />
       <Inset />
 
-      <Lbl x={48} y={250} anchor="middle" delay={0.3} line2="(radium)" line2Sec>
+      <Lbl x={48} y={250} anchor="middle" delay={0.24} line2="(radium)" line2Sec>
         zdroj α
       </Lbl>
-      <Lbl x={CX} y={40} tx={CX} ty={CY - 54} anchor="middle" className="f12-lab-strong" delay={0.5}>
+      <Lbl x={CX} y={40} tx={CX} ty={CY - 54} anchor="middle" className="f12-lab-strong" delay={0.4}>
         zlatá fólie
       </Lbl>
-      <Lbl x={390} y={176} tx={CX + RR - 2} ty={CY + 1} className="f12-lab-strong" delay={1.4}>
+      <Lbl x={390} y={176} tx={CX + RR - 2} ty={CY + 1} className="f12-lab-strong" delay={1.12}>
         většina proletí
       </Lbl>
-      <Lbl x={390} y={98} tx={onRing(-35)[0] + 2} ty={onRing(-35)[1]} delay={1.6}>
+      <Lbl x={390} y={98} tx={onRing(-35)[0] + 2} ty={onRing(-35)[1]} delay={1.28}>
         některé se odchýlí
       </Lbl>
-      <Lbl x={14} y={70} tx={onRing(205)[0]} ty={onRing(205)[1]} delay={1.8} line2="odrazí zpět">
+      <Lbl x={14} y={70} tx={onRing(205)[0]} ty={onRing(205)[1]} delay={1.44} line2="odrazí zpět">
         vzácně se
       </Lbl>
-      <Lbl x={214} y={352} tx={onRing(110)[0]} ty={onRing(110)[1] + 4} anchor="end" delay={1.2} line2="se záblesky" line2Sec>
+      <Lbl x={214} y={352} tx={onRing(110)[0]} ty={onRing(110)[1] + 4} anchor="end" delay={0.96} line2="se záblesky" line2Sec>
         stínítko
       </Lbl>
     </>

@@ -30,13 +30,13 @@ function WaveArrow({ x1, y1, x2, y2, delay, color = IR, flow = false }: { x1: nu
   const d = wave(x1, y1, x2, y2)
   return (
     <g>
-      <Draw d={d} className="f89-ln" delay={delay} dur={0.9} style={{ stroke: color, strokeWidth: 2.2 }} />
+      <Draw d={d} className="f89-ln" delay={delay} dur={0.7} style={{ stroke: color, strokeWidth: 2.2 }} />
       {flow && (
-        <Fade delay={delay + 1}>
+        <Fade delay={delay + 0.8}>
           <path d={d} className="f89-flow" fill="none" stroke="#fff" strokeOpacity={0.55} strokeWidth={1.2} />
         </Fade>
       )}
-      <Fade delay={delay + 0.8} dur={0.2}>
+      <Fade delay={delay + 0.6} dur={0.2}>
         <polygon points={headAt(x2, y2, x1, y1, 11)} fill={color} />
       </Fade>
     </g>
@@ -46,8 +46,8 @@ function WaveArrow({ x1, y1, x2, y2, delay, color = IR, flow = false }: { x1: nu
 function Beam({ x1, y1, x2, y2, delay }: { x1: number; y1: number; x2: number; y2: number; delay: number }) {
   return (
     <g>
-      <Draw d={`M${x1} ${y1} L${x2} ${y2}`} className="f89-ln" delay={delay} dur={0.7} style={{ stroke: SUN, strokeWidth: 3 }} />
-      <Fade delay={delay + 0.6} dur={0.2}>
+      <Draw d={`M${x1} ${y1} L${x2} ${y2}`} className="f89-ln" delay={delay} dur={0.5} style={{ stroke: SUN, strokeWidth: 3 }} />
+      <Fade delay={delay + 0.45} dur={0.2}>
         <polygon points={headAt(x2, y2, x1, y1, 12)} fill={SUN} />
       </Fade>
     </g>
@@ -92,7 +92,7 @@ function H2O({ x, y }: { x: number; y: number }) {
 
 export default function GreenhouseEffect() {
   return (
-    <Figure name="greenhouse-effect" level={9} label={LABEL} max={620}>
+    <Figure name="greenhouse-effect" level={9} label={LABEL} max={620} replay>
       <Plate w={480} h={420}>
         <Scene />
       </Plate>
@@ -114,7 +114,7 @@ function Scene() {
       </text>
 
       {/* sun */}
-      <Pop delay={0.1}>
+      <Pop delay={0.06}>
         {Array.from({ length: 12 }, (_, i) => {
           const a = (i / 12) * Math.PI * 2
           return <line key={i} x1={56 + Math.cos(a) * 30} y1={56 + Math.sin(a) * 30} x2={56 + Math.cos(a) * 40} y2={56 + Math.sin(a) * 40} stroke={SUN} strokeWidth={2.2} strokeLinecap="round" />
@@ -123,13 +123,13 @@ function Scene() {
       </Pop>
 
       {/* greenhouse gases */}
-      <Pop delay={0.3}>
+      <Pop delay={0.17}>
         <CO2 x={300} y={192} />
         <CH4 x={380} y={200} />
         <H2O x={438} y={190} />
         <CO2 x={196} y={208} />
       </Pop>
-      <Fade delay={0.5}>
+      <Fade delay={0.28}>
         <text className="f89-f f89-sm" x={300} y={218} textAnchor="middle">
           CO₂
         </text>
@@ -151,11 +151,11 @@ function Scene() {
       </text>
 
       {/* incoming short-wave light */}
-      <Beam x1={78} y1={80} x2={170} y2={316} delay={0.6} />
-      <Beam x1={84} y1={74} x2={236} y2={308} delay={0.8} />
+      <Beam x1={78} y1={80} x2={170} y2={316} delay={0.33} />
+      <Beam x1={84} y1={74} x2={236} y2={308} delay={0.44} />
       {/* part reflected */}
-      <Draw d="M86 88 L118 138 L150 96" className="f89-ln" delay={1.0} dur={0.7} style={{ stroke: SUN, strokeWidth: 2, strokeDasharray: '5 4' }} />
-      <Fade delay={1.6}>
+      <Draw d="M86 88 L118 138 L150 96" className="f89-ln" delay={0.55} dur={0.5} style={{ stroke: SUN, strokeWidth: 2, strokeDasharray: '5 4' }} />
+      <Fade delay={0.88}>
         <polygon points={headAt(150, 96, 118, 138, 10)} fill={SUN} />
         <text className="f89-lb f89-sm" x={156} y={96}>
           část se odrazí
@@ -166,19 +166,19 @@ function Scene() {
       </Fade>
 
       {/* ground warms */}
-      <Fade delay={1.5}>
+      <Fade delay={0.83}>
         <ellipse cx={210} cy={318} rx={60} ry={8} fill={IR} opacity={0.3} />
       </Fade>
 
       {/* outgoing infrared */}
-      <WaveArrow x1={270} y1={312} x2={250} y2={48} delay={1.8} />
-      <WaveArrow x1={318} y1={314} x2={304} y2={204} delay={2.1} />
-      <WaveArrow x1={400} y1={322} x2={386} y2={216} delay={2.3} />
+      <WaveArrow x1={270} y1={312} x2={250} y2={48} delay={0.99} />
+      <WaveArrow x1={318} y1={314} x2={304} y2={204} delay={1.16} />
+      <WaveArrow x1={400} y1={322} x2={386} y2={216} delay={1.26} />
       {/* re-emitted back to the ground */}
-      <WaveArrow x1={316} y1={200} x2={352} y2={318} delay={3.1} flow />
-      <WaveArrow x1={440} y1={206} x2={450} y2={326} delay={3.3} flow />
+      <WaveArrow x1={316} y1={200} x2={352} y2={318} delay={1.71} flow />
+      <WaveArrow x1={440} y1={206} x2={450} y2={326} delay={1.81} flow />
 
-      <Fade delay={2.6}>
+      <Fade delay={1.43}>
         <text className="f89-lb f89-b" x={262} y={62} style={{ fill: IR }}>
           infračervené záření
         </text>
@@ -186,7 +186,7 @@ function Scene() {
           část uniká do vesmíru
         </text>
       </Fade>
-      <Fade delay={3.6}>
+      <Fade delay={1.98}>
         <text className="f89-lb f89-sm" x={472} y={150} textAnchor="end">
           plyny záření pohltí
         </text>

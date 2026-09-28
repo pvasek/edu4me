@@ -1,4 +1,5 @@
-import { Atom, Draw, Fade, Figure, Mol, Panel, Panels, Plate, Pop, Slide, type MolAtom, type MolBond } from './kit'
+import { StepStrip } from '../../sequence/StepFigure'
+import { Atom, Draw, Fade, Figure, Mol, Plate, Pop, Slide, type MolAtom, type MolBond } from './kit'
 
 const LABEL =
   'Izomery mají stejný souhrnný vzorec, ale jinou stavbu. Řetězcová izomerie C4H10: butan (var −0,5 °C) a rozvětvený 2-methylpropan, isobutan (var −12 °C). Funkční izomerie C2H6O: ethanol se skupinou OH je kapalina s varem 78 °C, dimethylether se skupinou O mezi uhlíky je plyn s varem −24 °C. Cis/trans izomerie but-2-enu: methylové skupiny na stejné, nebo na opačné straně dvojné vazby. Optická izomerie: kyselina mléčná s chirálním uhlíkem existuje jako dva zrcadlové obrazy, které nejdou na sebe přiložit.'
@@ -6,20 +7,15 @@ const LABEL =
 export default function Isomers() {
   return (
     <Figure name="isomers" level={8} label={LABEL} max={680}>
-      <Panels min={270}>
-        <Panel n={1} title="Řetězcová · C₄H₁₀" delay={0}>
-          <Chain />
-        </Panel>
-        <Panel n={2} title="Funkční · C₂H₆O" delay={0.5}>
-          <Functional />
-        </Panel>
-        <Panel n={3} title="Cis/trans · but-2-en" delay={1}>
-          <CisTrans />
-        </Panel>
-        <Panel n={4} title="Optická · zrcadlové obrazy" delay={1.5}>
-          <Chiral />
-        </Panel>
-      </Panels>
+      <StepStrip
+        min={270}
+        steps={[
+          { title: 'Řetězcová · C₄H₁₀', art: <Chain /> },
+          { title: 'Funkční · C₂H₆O', art: <Functional /> },
+          { title: 'Cis/trans · but-2-en', art: <CisTrans /> },
+          { title: 'Optická · zrcadlové obrazy', art: <Chiral /> },
+        ]}
+      />
     </Figure>
   )
 }
@@ -52,13 +48,13 @@ function Chain() {
   ]
   return (
     <Plate w={300} h={200}>
-      <Pop delay={0.2}>
+      <Pop delay={0.05}>
         <Mol atoms={butane} bonds={[[0, 1], [1, 2], [2, 3]]} />
       </Pop>
-      <Pop delay={0.45}>
+      <Pop delay={0.15}>
         <Mol atoms={iso} bonds={[[0, 1], [0, 2], [0, 3]]} />
       </Pop>
-      <Fade delay={0.7}>
+      <Fade delay={0.2} dur={0.35}>
         <text className="f89-sym" x={150} y={104} textAnchor="middle" style={{ fontSize: 22 }}>
           ≠
         </text>
@@ -82,15 +78,15 @@ function Functional() {
   ]
   return (
     <Plate w={300} h={200}>
-      <Pop delay={0.7}>
+      <Pop delay={0.05}>
         <Mol atoms={ethanol} bonds={[[0, 1], [1, 2]]} />
       </Pop>
-      <Pop delay={0.95}>
+      <Pop delay={0.15}>
         <Mol atoms={ether} bonds={[[0, 1], [1, 2]]} />
       </Pop>
-      <Draw d="M84 112 C80 90 96 72 116 78 C130 84 120 112 104 116 C96 118 88 118 84 112Z" className="f89-ring" delay={1.3} />
-      <Draw d="M206 88 C206 72 234 72 234 88 C234 102 206 102 206 88Z" className="f89-ring" delay={1.4} />
-      <Fade delay={1.3}>
+      <Draw d="M84 112 C80 90 96 72 116 78 C130 84 120 112 104 116 C96 118 88 118 84 112Z" className="f89-ring" delay={0.15} dur={0.45} />
+      <Draw d="M206 88 C206 72 234 72 234 88 C234 102 206 102 206 88Z" className="f89-ring" delay={0.15} dur={0.45} />
+      <Fade delay={0.2} dur={0.35}>
         <text className="f89-lb f89-lv f89-sm" x={122} y={70}>
           –OH
         </text>
@@ -125,14 +121,14 @@ function Alkene({ x, trans }: { x: number; trans: boolean }) {
 function CisTrans() {
   return (
     <Plate w={300} h={200}>
-      <Pop delay={1.2}>
+      <Pop delay={0.05}>
         <Alkene x={72} trans={false} />
       </Pop>
-      <Pop delay={1.45}>
+      <Pop delay={0.15}>
         <Alkene x={222} trans />
       </Pop>
       {/* the double bond axis: groups cannot rotate */}
-      <Fade delay={1.8}>
+      <Fade delay={0.2} dur={0.35}>
         <line className="f89-guide" x1={20} y1={100} x2={124} y2={100} style={{ stroke: 'var(--lv)' }} />
         <line className="f89-guide" x1={170} y1={100} x2={274} y2={100} style={{ stroke: 'var(--lv)' }} />
         <path className="f89-lvstroke" d="M40 50 Q72 36 104 50" style={{ strokeWidth: 1.4 }} />
@@ -201,13 +197,13 @@ function Chiral() {
       <text className="f89-lb f89-sm" x={150} y={26} textAnchor="middle">
         zrcadlo
       </text>
-      <Pop delay={1.7}>
+      <Pop delay={0.05}>
         <Lactic m={false} />
       </Pop>
-      <Slide delay={2.1} dx={-50} dur={0.8}>
+      <Slide delay={0.1} dx={-50} dur={0.5}>
         <Lactic m />
       </Slide>
-      <Fade delay={2.6}>
+      <Fade delay={0.2} dur={0.35}>
         <text className="f89-lb f89-b" x={150} y={178} textAnchor="middle">
           enantiomery kyseliny mléčné
         </text>

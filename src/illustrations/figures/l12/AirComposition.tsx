@@ -18,9 +18,9 @@ const arc = (a0: number, a1: number, r: number) => {
 const wedge = (a0: number, a1: number) => `M${CX} ${CY} L${pt(a0, R).join(' ')} ${arc(a0, a1, R).replace(/^M[^A]*/, '')} Z`
 
 const SECTORS: { a0: number; a1: number; cls: string; hatch: HatchKind; delay: number }[] = [
-  { a0: 0, a1: 281.09, cls: 'f12-air-n2', hatch: 'd', delay: 0.1 },
-  { a0: 281.09, a1: 356.51, cls: 'f12-air-o2', hatch: 'x', delay: 0.9 },
-  { a0: 356.51, a1: 360, cls: 'f12-air-ar', hatch: 's', delay: 1.2 },
+  { a0: 0, a1: 281.09, cls: 'f12-air-n2', hatch: 'd', delay: 0.07 },
+  { a0: 281.09, a1: 356.51, cls: 'f12-air-o2', hatch: 'x', delay: 0.63 },
+  { a0: 356.51, a1: 360, cls: 'f12-air-ar', hatch: 's', delay: 0.84 },
 ]
 
 function Mol({ kind }: { kind: 'N2' | 'O2' | 'Ar' | 'CO2' }) {
@@ -72,19 +72,19 @@ function Body() {
       {SECTORS.map((s) => (
         <motion.path key={s.cls} className={`f12-sweep ${s.cls}`} d={arc(s.a0, s.a1, R / 2)} style={{ strokeWidth: R }} variants={drawV(s.delay, s.a1 - s.a0 > 100 ? 1 : 0.4)} />
       ))}
-      <Fade delay={1.3}>
+      <Fade delay={0.91}>
         {SECTORS.map((s) => (
           <path key={s.cls} className="f12-hatch" d={wedge(s.a0, s.a1)} fill={h(s.hatch)} />
         ))}
       </Fade>
-      <Fade delay={1.2}>
+      <Fade delay={0.84}>
         {SECTORS.map((s) => (
           <path key={s.cls} className="f12-line" d={wedge(s.a0, s.a1)} />
         ))}
       </Fade>
       <Draw d={`M${CX} ${CY - R - 5} ${arc(0, 359.9, R + 5).replace(/^M[^A]*/, '')}`} className="f12-thin" dur={1.6} />
 
-      <Fade delay={1.5}>
+      <Fade delay={1.05}>
         <text className="f12-pie-t" x={226} y={262} textAnchor="middle">
           dusík
         </text>
@@ -100,17 +100,17 @@ function Body() {
       </Fade>
 
       {/* zoom on the last 1 % */}
-      <Pop delay={1.7}>
+      <Pop delay={1.19}>
         <circle className="f12-zoom" cx={mx} cy={my} r={13} />
       </Pop>
-      <Draw d={`M${mx + 9} ${my - 9} L372 42 M${mx + 9} ${my + 9} L372 150`} className="f12-thin f12-dash" delay={1.8} dur={0.6} />
-      <Pop delay={2}>
+      <Draw d={`M${mx + 9} ${my - 9} L372 42 M${mx + 9} ${my + 9} L372 150`} className="f12-thin f12-dash" delay={1.26} dur={0.6} />
+      <Pop delay={1.4}>
         <g>
           <rect className="f12-inset-plain" x={372} y={36} width={236} height={120} rx={6} />
           <text className="f12-t f12-t-strong" x={386} y={62}>
             zbylé ≈ 1 %
           </text>
-          <motion.g variants={{ hidden: { scaleX: 0 }, show: { scaleX: 1, transition: { delay: 2.3, duration: 0.8 } } }} style={{ transformBox: 'fill-box', transformOrigin: '0% 50%' }}>
+          <motion.g variants={{ hidden: { scaleX: 0 }, show: { scaleX: 1, transition: { delay: 1.61, duration: 0.8 } } }} style={{ transformBox: 'fill-box', transformOrigin: '0% 50%' }}>
             <rect className="f12-air-ar-bar" x={386} y={76} width={196} height={26} />
             <rect className="f12-hatch" x={386} y={76} width={196} height={26} fill={h('s')} />
             <rect className="f12-air-co2-bar" x={582} y={76} width={9} height={26} />
@@ -119,7 +119,7 @@ function Body() {
           <text className="f12-t" x={390} y={126}>
             argon 0,93 %
           </text>
-          <Lbl x={594} y={140} tx={586} ty={104} anchor="end" delay={2.6} sec>
+          <Lbl x={594} y={140} tx={586} ty={104} anchor="end" delay={1.82} sec>
             CO₂ 0,04 %
           </Lbl>
         </g>
@@ -127,7 +127,7 @@ function Body() {
 
       {/* legend with molecules */}
       {ROWS.map((r, i) => (
-        <Pop key={r.kind} delay={1.8 + i * 0.12}>
+        <Pop key={r.kind} delay={1.26 + i * 0.08}>
           <g transform={`translate(0 ${206 + i * 44})`}>
             <g transform="translate(396 0)">
               <Mol kind={r.kind} />

@@ -165,41 +165,41 @@ export default function PlasticLifecycle() {
   return (
     <Figure name="plastic-lifecycle" level={9} label={LABEL} max={620}>
       <Plate w={480} h={580}>
-        <Node x={P.ropa[0]} y={P.ropa[1]} name="ropa" icon={I.barrel} delay={0.1} />
-        <Node x={P.mono[0]} y={P.mono[1]} name="monomer" sub="ethen" icon={I.monomer} delay={0.35} />
-        <Node x={P.poly[0]} y={P.poly[1]} name="polymer" sub="granulát PE" icon={I.polymer} delay={0.6} tone="var(--lv-soft)" />
-        <Node x={P.prod[0]} y={P.prod[1]} name="výrobek" sub="lahev, fólie" icon={I.bottle} delay={0.85} />
-        <Node x={P.use[0]} y={P.use[1]} name="použití" icon={I.bag} delay={1.1} />
-        <Node x={P.rec[0]} y={P.rec[1]} name="recyklace" sub="žlutý kontejner" icon={I.recycle} delay={1.35} tone="var(--good-soft)" />
-        <Link a={P.ropa} b={P.mono} delay={0.3} />
-        <Link a={P.mono} b={P.poly} delay={0.55} />
-        <Link a={P.poly} b={P.prod} delay={0.8} bend={-10} />
-        <Link a={P.prod} b={P.use} delay={1.05} bend={-10} />
-        <Link a={P.use} b={P.rec} delay={1.3} bend={-10} lv />
-        <Link a={P.rec} b={P.poly} delay={1.55} bend={-10} lv />
-        <Fade delay={1.9}>
+        <Node x={P.ropa[0]} y={P.ropa[1]} name="ropa" icon={I.barrel} delay={0.06} />
+        <Node x={P.mono[0]} y={P.mono[1]} name="monomer" sub="ethen" icon={I.monomer} delay={0.21} />
+        <Node x={P.poly[0]} y={P.poly[1]} name="polymer" sub="granulát PE" icon={I.polymer} delay={0.36} tone="var(--lv-soft)" />
+        <Node x={P.prod[0]} y={P.prod[1]} name="výrobek" sub="lahev, fólie" icon={I.bottle} delay={0.51} />
+        <Node x={P.use[0]} y={P.use[1]} name="použití" icon={I.bag} delay={0.66} />
+        <Node x={P.rec[0]} y={P.rec[1]} name="recyklace" sub="žlutý kontejner" icon={I.recycle} delay={0.81} tone="var(--good-soft)" />
+        <Link a={P.ropa} b={P.mono} delay={0.18} />
+        <Link a={P.mono} b={P.poly} delay={0.33} />
+        <Link a={P.poly} b={P.prod} delay={0.48} bend={-10} />
+        <Link a={P.prod} b={P.use} delay={0.63} bend={-10} />
+        <Link a={P.use} b={P.rec} delay={0.78} bend={-10} lv />
+        <Link a={P.rec} b={P.poly} delay={0.93} bend={-10} lv />
+        <Fade delay={1.14}>
           <text className="f89-lb f89-lv f89-b" x={300} y={176} textAnchor="middle">
             koloběh
           </text>
         </Fade>
 
         {/* end of life */}
-        <Node x={P.burn[0]} y={P.burn[1]} name="spalovna" sub="energie + CO₂" icon={I.fire} delay={2.0} />
-        <Node x={P.land[0]} y={P.land[1]} name="skládka" sub="vydrží stovky let" icon={I.landfill} delay={2.2} />
-        <Node x={P.sea[0]} y={P.sea[1]} name="mikroplasty" sub="pod 5 mm, v oceánu" icon={I.ocean} delay={2.4} />
-        <Link a={[P.use[0], P.use[1] + 34]} b={P.burn} delay={2.0} dashed />
-        <Link a={[P.use[0], P.use[1] + 34]} b={P.land} delay={2.2} dashed />
-        <Link a={[P.use[0], P.use[1] + 34]} b={P.sea} delay={2.4} dashed />
+        <Node x={P.burn[0]} y={P.burn[1]} name="spalovna" sub="energie + CO₂" icon={I.fire} delay={1.2} />
+        <Node x={P.land[0]} y={P.land[1]} name="skládka" sub="vydrží stovky let" icon={I.landfill} delay={1.32} />
+        <Node x={P.sea[0]} y={P.sea[1]} name="mikroplasty" sub="pod 5 mm, v oceánu" icon={I.ocean} delay={1.44} />
+        <Link a={[P.use[0], P.use[1] + 34]} b={P.burn} delay={1.2} dashed />
+        <Link a={[P.use[0], P.use[1] + 34]} b={P.land} delay={1.32} dashed />
+        <Link a={[P.use[0], P.use[1] + 34]} b={P.sea} delay={1.44} dashed />
 
         {/* recycling codes */}
         <line className="f89-thin" x1={10} y1={492} x2={470} y2={492} style={{ opacity: 0.4 }} />
-        <Fade delay={2.7}>
+        <Fade delay={1.62}>
           <text className="f89-lb f89-sm" x={240} y={510} textAnchor="middle">
             recyklační kódy na obalech
           </text>
         </Fade>
         {CODES.map((c, i) => (
-          <Code key={c} x={42 + i * 66} y={536} n={i + 1} abbr={c} delay={2.8 + i * 0.08} />
+          <Code key={c} x={42 + i * 66} y={536} n={i + 1} abbr={c} delay={1.6 + i * 0.05} />
         ))}
       </Plate>
     </Figure>

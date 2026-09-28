@@ -1,7 +1,8 @@
-import { useState, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { motion } from 'motion/react'
 import { ease } from '../../../ui/motion'
-import { Lbl, Plate, Water, rng, useHatch } from './kit'
+import { StepFilm } from '../../sequence/StepFigure'
+import { Board, Frame, Lbl, Water, rng, useHatch } from './kit'
 
 const RNA = 8.5
 const RCL = 13
@@ -22,8 +23,8 @@ function Ion({ x, y, na }: { x: number; y: number; na: boolean }) {
   )
 }
 
-/** Ion with its shell of water molecules; flies in from (fx, fy). */
-function Hydrated({ x, y, na, fx, fy, delay }: { x: number; y: number; na: boolean; fx: number; fy: number; delay: number }) {
+/** Ion with its shell of water molecules; flies in from (fx, fy) (no flight when `still`). */
+function Hydrated({ x, y, na, fx, fy, delay, still = false }: { x: number; y: number; na: boolean; fx: number; fy: number; delay: number; still?: boolean }) {
   const n = na ? 6 : 7
   const d = na ? 18.5 : 25
   const shell: ReactNode[] = []
@@ -34,7 +35,7 @@ function Hydrated({ x, y, na, fx, fy, delay }: { x: number; y: number; na: boole
     shell.push(
       <motion.g
         key={i}
-        variants={{ hidden: { opacity: 0, scale: 0.4 }, show: { opacity: 1, scale: 1, transition: { delay: delay + 0.5 + i * 0.1, duration: 0.4 } } }}
+        variants={still ? undefined : { hidden: { opacity: 0, scale: 0.4 }, show: { opacity: 1, scale: 1, transition: { delay: delay + 0.35 + i * 0.05, duration: 0.35 } } }}
         style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
       >
         <Water x={x + Math.cos(a) * d} y={y + Math.sin(a) * d} rot={na ? th - 90 : th + 90} s={0.9} />
@@ -43,7 +44,7 @@ function Hydrated({ x, y, na, fx, fy, delay }: { x: number; y: number; na: boole
   }
   return (
     <motion.g
-      variants={{ hidden: { x: fx - x, y: fy - y }, show: { x: 0, y: 0, transition: { delay, duration: 1.8, ease: ease.inOut } } }}
+      variants={still ? undefined : { hidden: { x: fx - x, y: fy - y }, show: { x: 0, y: 0, transition: { delay, duration: 1, ease: ease.inOut } } }}
     >
       {shell}
       <Ion x={x} y={y} na={na} />
@@ -51,10 +52,11 @@ function Hydrated({ x, y, na, fx, fy, delay }: { x: number; y: number; na: boole
   )
 }
 
-function Body() {
+/** step 1: water surrounds the crystal, 2: Na⁺ torn off, 3: Cl⁻ torn off */
+function Body({ step }: { step: 1 | 2 | 3 }) {
   const h = useHatch()
   const lattice: ReactNode[] = []
-  const gone = new Set(['5,0', '4,0'])
+  const gone = new Set(step === 1 ? [] : step === 2 ? ['5,0'] : ['5,0', '4,0'])
   for (let r = 0; r < 4; r++)
     for (let c = 0; c < 6; c++) {
       const x = GX + c * STEP
@@ -104,44 +106,67 @@ function Body() {
       <Water x={GX + 2 * STEP} y={GY - 30} rot={180} s={0.9} />
       <Water x={GX + 6 * STEP - 4} y={GY + STEP + 2} rot={-90} s={0.9} />
       <g>{lattice}</g>
-      <Hydrated x={300} y={130} na fx={GX + 5 * STEP} fy={GY} delay={0.6} />
-      <Hydrated x={466} y={236} na={false} fx={GX + 4 * STEP} fy={GY} delay={1.4} />
+      {step >= 2 && <Hydrated x={300} y={130} na fx={GX + 5 * STEP} fy={GY} delay={0.2} still={step === 3} />}
+      {step === 3 && <Hydrated x={466} y={236} na={false} fx={GX + 4 * STEP} fy={GY} delay={0.2} />}
 
-      <Lbl x={44} y={214} tx={GX + STEP} ty={GY - 8} className="f12-lab-strong" delay={0.3}>
+      <Lbl x={44} y={214} tx={GX + STEP} ty={GY - 8} className="f12-lab-strong" delay={0.1}>
         krystal NaCl
       </Lbl>
-      <Lbl x={346} y={82} tx={312} ty={116} className="f12-lab-strong" delay={2.4} line2="kyslíkem k iontu" line2Sec>
-        Na⁺ obalený vodou
-      </Lbl>
-      <Lbl x={586} y={318} tx={480} ty={262} anchor="end" className="f12-lab-strong" delay={3.2} line2="vodíky k iontu" line2Sec>
-        Cl⁻ obalený vodou
-      </Lbl>
-      <Lbl x={586} y={50} anchor="end" delay={0.8} sec>
+      {step >= 2 && (
+        <Lbl x={346} y={82} tx={312} ty={116} className="f12-lab-strong" delay={step === 2 ? 0.9 : 0} line2="kyslíkem k iontu" line2Sec>
+          Na⁺ obalený vodou
+        </Lbl>
+      )}
+      {step === 3 && (
+        <Lbl x={586} y={318} tx={480} ty={262} anchor="end" className="f12-lab-strong" delay={0.9} line2="vodíky k iontu" line2Sec>
+          Cl⁻ obalený vodou
+        </Lbl>
+      )}
+      <Lbl x={586} y={50} anchor="end" delay={0.2} sec>
         molekula vody H₂O
       </Lbl>
     </>
   )
 }
 
+const LABEL =
+  'Rozpouštění kuchyňské soli ve vodě: molekuly vody obklopují ionty na povrchu krystalu chloridu sodného a odtrhávají je. Kation sodíku Na⁺ obklopí molekuly vody kyslíkem, anion chloru Cl⁻ vodíky. Obalené ionty se rozptýlí v roztoku.'
+
 export default function Dissolving() {
-  const [run, setRun] = useState(0)
   return (
-    <div className="f12-stack">
-      <Plate
-        key={run}
-        level={1}
-        w={600}
-        h={390}
-        max={640}
-        label="Rozpouštění kuchyňské soli ve vodě: molekuly vody obklopují ionty na povrchu krystalu chloridu sodného a odtrhávají je. Kation sodíku Na⁺ obklopí molekuly vody kyslíkem, anion chloru Cl⁻ vodíky. Obalené ionty se rozptýlí v roztoku."
-      >
-        <Body />
-      </Plate>
-      <div className="f12-controls">
-        <button type="button" className="f12-btn" onClick={() => setRun((n) => n + 1)}>
-          Přehrát znovu
-        </button>
-      </div>
-    </div>
+    <Board level={1} max={640} label={LABEL} interactive>
+      <StepFilm
+        label={LABEL}
+        steps={[
+          {
+            title: 'Voda obklopí krystal',
+            caption: 'Molekuly vody narážejí do iontů na povrchu krystalu soli.',
+            art: (
+              <Frame w={600} h={390}>
+                <Body step={1} />
+              </Frame>
+            ),
+          },
+          {
+            title: 'Odtrhne se Na⁺',
+            caption: 'Molekuly vody odtrhnou kation sodíku a obklopí ho kyslíkem.',
+            art: (
+              <Frame w={600} h={390}>
+                <Body step={2} />
+              </Frame>
+            ),
+          },
+          {
+            title: 'Odtrhne se Cl⁻',
+            caption: 'Anion chloru obklopí molekuly vody vodíky. Obalené ionty se rozptýlí v roztoku.',
+            art: (
+              <Frame w={600} h={390}>
+                <Body step={3} />
+              </Frame>
+            ),
+          },
+        ]}
+      />
+    </Board>
   )
 }

@@ -9,6 +9,7 @@ import { createContext, useContext, useEffect, useId, useRef, useState, type Rea
 import { motion, useInView, useReducedMotion, type Variants } from 'motion/react'
 import { ease, spring } from '../../../ui/motion'
 import { ChemText } from '../../../diagrams/util'
+import { ReplayButton } from '../../sequence/StepFigure'
 import './l67.css'
 
 export { ChemText }
@@ -110,21 +111,23 @@ export function useCompact(limit = 440) {
 
 export function Figure({
   label,
-  w,
-  h,
+  w = 0,
+  h = 0,
   x0 = 0,
   max = 640,
   level,
   className = '',
   controls,
   replay = false,
+  interactive = false,
   compact,
   boost = true,
   children,
 }: {
   label: string
-  w: number
-  h: number
+  /** viewBox size (not needed with `interactive`) */
+  w?: number
+  h?: number
   /** viewBox min-x (lets a compact layout crop the side margins) */
   x0?: number
   max?: number
@@ -132,8 +135,13 @@ export function Figure({
   className?: string
   /** HTML controls under the plate (toggles) */
   controls?: ReactNode
-  /** show a "Přehrát znovu" button that re-runs the entrance */
+  /** show the shared "Přehrát znovu" button that re-runs the entrance (keep it ≤ ~2.5 s) */
   replay?: boolean
+  /**
+   * hosts a <StepFilm> / <StepStrip> (children are HTML, each step drawn with <Frame>):
+   * the wrapper is then not a role="img" (the film carries role="img" + label itself)
+   */
+  interactive?: boolean
   /** from useCompact(): the container ref and its narrow flag */
   compact?: ReturnType<typeof useCompact>
   /** enlarge text in narrow containers (off for figures with their own compact layout) */
@@ -143,12 +151,22 @@ export function Figure({
   const own = useCompact()
   const { ref: box, narrow } = compact ?? own
   const svg = useRef<SVGSVGElement>(null)
-  const seen = useInView(svg, { once: true, amount: 0.25 })
+  const seen = useInView(svg, { once: true, amount: 0.4 })
   const still = !!useReducedMotion()
   const id = 'f67' + useId().replace(/[^a-zA-Z0-9_-]/g, '')
   const [run, setRun] = useState(0)
+  const cls = `f67 f67-l${level} ${narrow ? (boost ? 'f67-narrow' : 'f67-compact') : ''} ${className}`
+  if (interactive)
+    return (
+      <div ref={box} className={cls}>
+        <div className="f67-host" style={{ maxWidth: max }}>
+          <FigCtx.Provider value={{ id, seen: true, still, narrow, run }}>{children}</FigCtx.Provider>
+        </div>
+        {controls && <div className="f67-controls">{controls}</div>}
+      </div>
+    )
   return (
-    <div ref={box} className={`f67 f67-l${level} ${narrow ? (boost ? 'f67-narrow' : 'f67-compact') : ''} ${className}`}>
+    <div ref={box} className={cls}>
       <svg ref={svg} className="f67-svg" viewBox={`${x0} 0 ${w} ${h}`} role="img" aria-label={label} style={{ maxWidth: max }}>
         <Defs id={id} />
         <FigCtx.Provider value={{ id, seen, still, narrow, run }}>
@@ -160,14 +178,34 @@ export function Figure({
       {(controls || replay) && (
         <div className="f67-controls">
           {controls}
-          {replay && (
-            <button type="button" className="f67-btn f67-btn-ghost" onClick={() => setRun((r) => r + 1)}>
-              <span aria-hidden="true">↻</span> Přehrát znovu
-            </button>
-          )}
+          {replay && <ReplayButton onClick={() => setRun((r) => r + 1)} />}
         </div>
       )}
     </div>
+  )
+}
+
+/**
+ * One frame of a <StepFilm> (or one panel of a <StepStrip>) inside an `interactive`
+ * Figure: an engraved svg plate with its own patterns that draws itself in as soon as
+ * it is mounted (a film mounts each frame when it is shown). Keep a frame's entrance
+ * ≤ ~1.2 s. Frames of one film share the same viewBox.
+ */
+export function Frame({ w, h, x0 = 0, className = '', children }: { w: number; h: number; x0?: number; className?: string; children: ReactNode }) {
+  const host = useFig()
+  const id = 'f67' + useId().replace(/[^a-zA-Z0-9_-]/g, '')
+  const ref = useRef<SVGSVGElement>(null)
+  // ambient loops (useLive) run only while the frame is on screen
+  const seen = useInView(ref, { amount: 0.2 })
+  return (
+    <svg ref={ref} className={`f67-svg ${className}`} viewBox={`${x0} 0 ${w} ${h}`} aria-hidden="true" focusable="false">
+      <Defs id={id} />
+      <FigCtx.Provider value={{ ...host, id, seen }}>
+        <motion.g initial="hidden" animate="show">
+          {children}
+        </motion.g>
+      </FigCtx.Provider>
+    </svg>
   )
 }
 

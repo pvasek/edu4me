@@ -80,12 +80,12 @@ function Analogy({ ox, oy, wide }: { ox: number; oy: number; wide: boolean }) {
     <g transform={`translate(${ox} ${oy})`}>
       <Box x={bx} y={30} w={wide ? 250 : 320} h={122} title="máš">
         {grid(8, 4, bx + 24, 68, 30, 34).map(([x, y], i) => (
-          <Pop key={i} d={0.1 + i * 0.04}>
+          <Pop key={i} d={0.06 + i * 0.02}>
             <Bread x={x} y={y} />
           </Pop>
         ))}
         {grid(3, 1, bx + (wide ? 156 : 190), 58, 0, 30).map(([x, y], i) => (
-          <Pop key={i} d={0.5 + i * 0.06}>
+          <Pop key={i} d={0.3 + i * 0.04}>
             <Cheese x={x} y={y} />
           </Pop>
         ))}
@@ -95,7 +95,7 @@ function Analogy({ ox, oy, wide }: { ox: number; oy: number; wide: boolean }) {
         <text x={bx + 24} y={146} className="f35-t f35-small f35-muted">
           8 krajíců
         </text>
-        <Fade d={1.8}>
+        <Fade d={1.08}>
           <text x={bx + (wide ? 176 : 212)} y={100} className="f35-note f35-lvt" style={{ fontSize: 15, fontWeight: 700 }}>
             limitující
           </text>
@@ -105,20 +105,20 @@ function Analogy({ ox, oy, wide }: { ox: number; oy: number; wide: boolean }) {
         </Fade>
       </Box>
       {wide ? (
-        <Arrow x1={258} y1={92} x2={292} y2={92} className="f35-arrow-lv" delay={0.8} />
+        <Arrow x1={258} y1={92} x2={292} y2={92} className="f35-arrow-lv" delay={0.48} />
       ) : (
-        <Arrow x1={160} y1={156} x2={160} y2={186} className="f35-arrow-lv" delay={0.8} />
+        <Arrow x1={160} y1={156} x2={160} y2={186} className="f35-arrow-lv" delay={0.48} />
       )}
       <Box x={rx} y={30 + ry} w={wide ? 240 : 320} h={122} title="vyrobíš">
         {grid(3, 3, rx + 30, 76 + ry, 38, 0).map(([x, y], i) => (
-          <Pop key={i} d={1.1 + i * 0.15}>
+          <Pop key={i} d={0.66 + i * 0.09}>
             <Sandwich x={x} y={y} />
           </Pop>
         ))}
         <text x={rx + 16} y={112 + ry} className="f35-t f35-small">
           3 sendviče
         </text>
-        <Pop d={1.8}>
+        <Pop d={1.08}>
           <rect x={rx + (wide ? 146 : 200)} y={46 + ry} width={78} height={60} rx={6} className="f35-left" />
           <Bread x={rx + (wide ? 168 : 222)} y={74 + ry} />
           <Bread x={rx + (wide ? 200 : 254)} y={74 + ry} />
@@ -142,33 +142,33 @@ function Molecular({ ox, oy, wide }: { ox: number; oy: number; wide: boolean }) 
     <g transform={`translate(${ox} ${oy})`}>
       <Box x={0} y={30} w={wide ? 250 : 320} h={122} title="4 H₂ + 3 O₂">
         {grid(4, 2, 34, 66, 40, 36).map(([x, y], i) => (
-          <Pop key={i} d={0.3 + i * 0.05}>
+          <Pop key={i} d={0.18 + i * 0.03}>
             <H2 x={x} y={y} />
           </Pop>
         ))}
         {grid(3, 1, wide ? 170 : 180, 58, 0, 32).map(([x, y], i) => (
-          <Pop key={i} d={0.6 + i * 0.06}>
+          <Pop key={i} d={0.36 + i * 0.04}>
             <O2 x={x} y={y} />
           </Pop>
         ))}
-        <Fade d={2}>
+        <Fade d={1.2}>
           <text x={24} y={144} className="f35-note f35-lvt" style={{ fontSize: 15, fontWeight: 700 }}>
             <ChemText text="H_{2} limitující" />
           </text>
         </Fade>
       </Box>
       {wide ? (
-        <Arrow x1={258} y1={92} x2={292} y2={92} className="f35-arrow-lv" delay={1} />
+        <Arrow x1={258} y1={92} x2={292} y2={92} className="f35-arrow-lv" delay={0.6} />
       ) : (
-        <Arrow x1={160} y1={156} x2={160} y2={186} className="f35-arrow-lv" delay={1} />
+        <Arrow x1={160} y1={156} x2={160} y2={186} className="f35-arrow-lv" delay={0.6} />
       )}
       <Box x={rx} y={30 + ry} w={wide ? 240 : 320} h={122} title="4 H₂O + zbytek">
         {grid(4, 2, rx + 30, 70 + ry, 40, 38).map(([x, y], i) => (
-          <Pop key={i} d={1.3 + i * 0.12}>
+          <Pop key={i} d={0.78 + i * 0.07}>
             <H2O x={x} y={y} />
           </Pop>
         ))}
-        <Pop d={2}>
+        <Pop d={1.2}>
           <rect x={rx + (wide ? 146 : 200)} y={46 + ry} width={78} height={60} rx={6} className="f35-left" />
           <O2 x={rx + (wide ? 185 : 239)} y={76 + ry} />
           <text x={rx + (wide ? 185 : 239)} y={124 + ry} textAnchor="middle" className="f35-note f35-warn-t" style={{ fontSize: 15, fontWeight: 700 }}>

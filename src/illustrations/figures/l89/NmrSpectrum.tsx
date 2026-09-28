@@ -174,8 +174,8 @@ function Scene() {
         const peakTop = Math.min(...Array.from({ length: 201 }, (_, k) => Y(intensity(g, g.d - 0.2 + k * 0.002))))
         return (
           <g key={g.key}>
-            <Draw d={path(g)} className="f89-ln" delay={0.9 + i * 0.5} dur={0.9} style={{ stroke: g.color, strokeWidth: 1.6 }} />
-            <Fade delay={1.4 + i * 0.5}>
+            <Draw d={path(g)} className="f89-ln" delay={0.7 + i * 0.35} dur={0.7} style={{ stroke: g.color, strokeWidth: 1.6 }} />
+            <Fade delay={1.2 + i * 0.35}>
               <text className="f89-f f89-b" x={X(g.d)} y={peakTop - 30} textAnchor="middle" style={{ fill: g.color }}>
                 {n ? g.n : `${g.name} · ${g.n}`}
               </text>

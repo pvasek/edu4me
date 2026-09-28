@@ -1,4 +1,5 @@
-import { Arrow, Atom, Draw, F, Fade, Figure, Mol, Panel, Panels, Plate, Pop, rng, smooth, useNarrow } from './kit'
+import { StepStrip } from '../../sequence/StepFigure'
+import { Arrow, Atom, Draw, F, Fade, Figure, Mol, Plate, Pop, rng, smooth, useNarrow } from './kit'
 
 const LABEL =
   'Adiční polymerace ethenu: tisíce malých molekul ethenu CH2=CH2 se spojí, dvojné vazby se rozpojí a vznikne dlouhý řetězec polyethylenu, ve kterém se opakuje jednotka –CH2–CH2–. Při přiblížení je makromolekula zamotané klubko, ve kterém každá kulička představuje jednu opakující se jednotku. Pro srovnání opakující se jednotky PVC –CH2–CHCl– a PET, polyesteru z lahví.'
@@ -6,17 +7,16 @@ const LABEL =
 export default function PolymerChain() {
   return (
     <Figure name="polymer-chain" level={8} label={LABEL} max={700}>
-      <Panels min={270}>
-        <Panel n={1} title="Monomery → polymer" delay={0} className="f89-wide">
-          <Polymerisation />
-        </Panel>
-        <Panel n={2} title="Makromolekula zblízka" delay={1.6}>
-          <Tangle />
-        </Panel>
-        <Panel n={3} title="Další opakující se jednotky" delay={2.2}>
-          <Units />
-        </Panel>
-      </Panels>
+      {/* the first panel spans the full width (l89.css) */}
+      <StepStrip
+        min={270}
+        className="f89-strip-lead"
+        steps={[
+          { title: 'Monomery → polymer', art: <Polymerisation /> },
+          { title: 'Makromolekula zblízka', art: <Tangle /> },
+          { title: 'Další opakující se jednotky', art: <Units /> },
+        ]}
+      />
     </Figure>
   )
 }
@@ -38,28 +38,28 @@ function Polymerisation() {
   return (
     <Plate w={w} h={h}>
       {mono.map((x, i) => (
-        <Pop key={x} delay={0.15 + i * 0.12}>
+        <Pop key={x} delay={0.05 + i * 0.04}>
           <Ethene x={x} y={my} />
         </Pop>
       ))}
-      <Fade delay={0.6}>
+      <Fade delay={0.15} dur={0.3}>
         <text className="f89-lb f89-sm" x={narrow ? 155 : 130} y={my + 44} textAnchor="middle">
           n × ethen CH₂=CH₂
         </text>
       </Fade>
-      <Fade delay={0.8}>
+      <Fade delay={0.15} dur={0.3}>
         {narrow ? <Arrow x1={160} y1={96} x2={160} y2={130} className="f89-arr f89-arr-lv" /> : <Arrow x1={264} y1={86} x2={316} y2={86} className="f89-arr f89-arr-lv" />}
         <text className="f89-lb f89-lv f89-sm" x={narrow ? 172 : 290} y={narrow ? 118 : 74} textAnchor={narrow ? 'start' : 'middle'}>
           tlak, katalyzátor
         </text>
       </Fade>
       {/* chain: dashed ends show it continues */}
-      <Fade delay={1.0}>
+      <Fade delay={0.2} dur={0.3}>
         <line className="f89-guide" x1={cs[0] - 26} y1={cy} x2={cs[0]} y2={cy} />
         <line className="f89-guide" x1={cs[nC - 1]} y1={cy} x2={cs[nC - 1] + 26} y2={cy} />
       </Fade>
       {cs.map((x, i) => (
-        <Pop key={x} delay={1.0 + i * 0.1}>
+        <Pop key={x} delay={0.15 + i * 0.03}>
           {i < nC - 1 && <line className="f89-bond" x1={x} y1={cy} x2={cs[i + 1]} y2={cy} />}
           <line className="f89-bond" x1={x} y1={cy} x2={x} y2={cy - 17} />
           <line className="f89-bond" x1={x} y1={cy} x2={x} y2={cy + 17} />
@@ -69,7 +69,7 @@ function Polymerisation() {
         </Pop>
       ))}
       {/* repeat unit bracket */}
-      <Fade delay={1.9}>
+      <Fade delay={0.3} dur={0.3}>
         <path className="f89-ln" style={{ stroke: 'var(--lv)', strokeWidth: 2 }} d={`M${cs[2] - 12} ${cy - 30} h-5 v60 h5 M${cs[3] + 12} ${cy - 30} h5 v60 h-5`} />
         <text className="f89-lb f89-lv" x={cs[3] + 21} y={cy + 34}>
           n
@@ -117,8 +117,8 @@ function Tangle() {
   const beads = Array.from({ length: 6 }, (_, i) => [lens.x - 40 + i * 16, lens.y + (i % 2 ? -8 : 8)] as const)
   return (
     <Plate w={300} h={220}>
-      <Draw d={smooth(pts)} className="f89-ln" delay={1.9} dur={2.2} style={{ strokeWidth: 2.2, stroke: 'var(--lv)' }} />
-      <Fade delay={3.6}>
+      <Draw d={smooth(pts)} className="f89-ln" delay={0} dur={0.6} style={{ strokeWidth: 2.2, stroke: 'var(--lv)' }} />
+      <Fade delay={0.25} dur={0.35}>
         {pts.map((p, i) => (i % 3 === 0 ? <circle key={i} cx={p[0]} cy={p[1]} r={2} fill="var(--edge)" /> : null))}
         <circle cx={focus[0]} cy={focus[1]} r={9} className="f89-thin" />
         <line className="f89-lead" x1={focus[0] + 3} y1={focus[1] - 9} x2={lens.x - 44} y2={lens.y - 28} />
@@ -143,7 +143,7 @@ function Tangle() {
 function Units() {
   return (
     <Plate w={300} h={220}>
-      <Pop delay={2.6}>
+      <Pop delay={0.05}>
         <text className="f89-lb f89-b" x={16} y={30}>
           PVC
         </text>
@@ -169,7 +169,7 @@ function Units() {
         </text>
         <F x={200} y={78} t="–[CH_{2}–CHCl]_{n}–" size={12.5} />
       </Pop>
-      <Pop delay={2.9}>
+      <Pop delay={0.15}>
         <text className="f89-lb f89-b" x={16} y={146}>
           PET
         </text>

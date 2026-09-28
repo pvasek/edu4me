@@ -1,5 +1,6 @@
-import { useEffect, useState, type ReactNode } from 'react'
-import { ChemText, Fade, Figure, Pop, useCompact, useLive } from './kit'
+import { useEffect, useState } from 'react'
+import { StepStrip } from '../../sequence/StepFigure'
+import { Figure, Frame, useLive } from './kit'
 
 type V3 = [number, number, number]
 const PHI = (1 + Math.sqrt(5)) / 2
@@ -237,82 +238,59 @@ function Tube({ cx, cy, spin }: { cx: number; cy: number; spin: number }) {
   )
 }
 
-function Panel({ x, y, title, lines, delay, children }: { x: number; y: number; title: string; lines: string[]; delay: number; children: ReactNode }) {
-  return (
-    <Pop delay={delay}>
-      <rect x={x} y={y} width={160} height={238} rx={6} className="f67-o f67-thin f67-fill" />
-      <rect x={x + 4} y={y + 4} width={152} height={230} rx={4} className="f67-o f67-thin" style={{ opacity: 0.35 }} />
-      <text x={x + 80} y={y + 28} textAnchor="middle" className="f67-lbl f67-b f67-big f67-keep">
-        <ChemText text={title} />
-      </text>
-      {children}
-      {lines.map((l, i) => (
-        <text key={i} x={x + 80} y={y + 198 + i * 18} textAnchor="middle" className="f67-lbl f67-sm f67-keep">
-          <ChemText text={l} />
-        </text>
-      ))}
-    </Pop>
+/** One allotrope model on its own small plate (the models spin slowly while on screen). */
+function Model({ kind }: { kind: 'diamond' | 'graphite' | 'graphene' | 'c60' | 'tube' }) {
+  const spin = useSpin(0.4)
+  const [cx, cy] = [80, 68]
+  return kind === 'diamond' ? (
+    <BallStick pts={DIAMOND.pts} bonds={DIAMOND.bonds} cx={cx} cy={cy} s={16} yaw={0.55 + spin * 0.6} pitch={0.42} r={5.5} cube />
+  ) : kind === 'graphite' ? (
+    <Graphite cx={cx - 6} cy={cy} />
+  ) : kind === 'graphene' ? (
+    <Graphene cx={cx} cy={cy} />
+  ) : kind === 'c60' ? (
+    <BallStick pts={C60.pts} bonds={C60.bonds} cx={cx} cy={cy} s={11.5} yaw={0.3 + spin} pitch={0.35} r={3.8} />
+  ) : (
+    <Tube cx={cx} cy={cy} spin={spin * 1.5} />
   )
 }
 
-function Plates({ n }: { n: boolean }) {
-  const spin = useSpin(0.4)
-  const P = n
-    ? [
-        [10, 10],
-        [176, 10],
-        [10, 258],
-        [176, 258],
-        [93, 506],
-      ]
-    : [
-        [8, 10],
-        [176, 10],
-        [344, 10],
-        [92, 258],
-        [260, 258],
-      ]
-  const mid = (i: number): [number, number] => [P[i][0] + 80, P[i][1] + 112]
-  return (
-    <>
-      <Panel x={P[0][0]} y={P[0][1]} title="diamant" lines={['4 vazby, prostorová síť', 'nejtvrdší, nevede proud']} delay={0}>
-        <BallStick pts={DIAMOND.pts} bonds={DIAMOND.bonds} cx={mid(0)[0]} cy={mid(0)[1]} s={16} yaw={0.55 + spin * 0.6} pitch={0.42} r={5.5} cube />
-      </Panel>
-      <Panel x={P[1][0]} y={P[1][1]} title="grafit" lines={['vrstvy šestiúhelníků', 'měkký, vede proud']} delay={0.15}>
-        <Graphite cx={mid(1)[0] - 6} cy={mid(1)[1]} />
-      </Panel>
-      <Panel x={P[2][0]} y={P[2][1]} title="grafen" lines={['jediná vrstva grafitu', 'velmi pevný, vodivý']} delay={0.3}>
-        <Graphene cx={mid(2)[0]} cy={mid(2)[1]} />
-      </Panel>
-      <Panel x={P[3][0]} y={P[3][1]} title="fulleren C_{60}" lines={['kulovitá molekula', 'jako fotbalový míč']} delay={0.45}>
-        <BallStick pts={C60.pts} bonds={C60.bonds} cx={mid(3)[0]} cy={mid(3)[1]} s={11.5} yaw={0.3 + spin} pitch={0.35} r={3.8} />
-      </Panel>
-      <Panel x={P[4][0]} y={P[4][1]} title="nanotrubice" lines={['srolovaný grafen', 'pevnější než ocel']} delay={0.6}>
-        <Tube cx={mid(4)[0]} cy={mid(4)[1]} spin={spin * 1.5} />
-      </Panel>
-      <Fade delay={1}>
-        <text x={n ? 173 : 256} y={n ? 764 : 514} textAnchor="middle" className="f67-cap f67-sec">
-          všechno je čistý uhlík, liší se jen propojení atomů
-        </text>
-      </Fade>
-    </>
-  )
-}
+const ALLOTROPES = [
+  { kind: 'diamond', title: 'diamant', lines: ['4 vazby, prostorová síť', 'nejtvrdší, nevede proud'] },
+  { kind: 'graphite', title: 'grafit', lines: ['vrstvy šestiúhelníků', 'měkký, vede proud'] },
+  { kind: 'graphene', title: 'grafen', lines: ['jediná vrstva grafitu', 'velmi pevný, vodivý'] },
+  { kind: 'c60', title: 'fulleren C₆₀', lines: ['kulovitá molekula', 'jako fotbalový míč'] },
+  { kind: 'tube', title: 'nanotrubice', lines: ['srolovaný grafen', 'pevnější než ocel'] },
+] as const
+
+const LABEL =
+  'Alotropy uhlíku jako modely: diamant je prostorová síť, kde je každý atom uhlíku vázán na čtyři další (nejtvrdší, nevede proud). Grafit tvoří vrstvy šestiúhelníků vzdálené 0,335 nm, je měkký a vede proud. Grafen je jediná vrstva grafitu. Fulleren C60 je kulovitá molekula jako fotbalový míč. Nanotrubice je srolovaný grafen, pevnější než ocel.'
 
 export default function CarbonAllotropes() {
-  const compact = useCompact()
-  const n = compact.narrow
   return (
-    <Figure
-      level={7}
-      w={n ? 346 : 512}
-      h={n ? 770 : 520}
-      max={680}
-      compact={compact}
-      boost={false}
-      label="Alotropy uhlíku jako modely: diamant je prostorová síť, kde je každý atom uhlíku vázán na čtyři další (nejtvrdší, nevede proud). Grafit tvoří vrstvy šestiúhelníků vzdálené 0,335 nm, je měkký a vede proud. Grafen je jediná vrstva grafitu. Fulleren C60 je kulovitá molekula jako fotbalový míč. Nanotrubice je srolovaný grafen, pevnější než ocel."
-    >
-      <Plates n={n} />
+    <Figure level={7} label={LABEL} max={680} interactive>
+      <div className="f67-stripbox" role="img" aria-label={LABEL}>
+        <StepStrip
+          min={170}
+          phoneColumns={2}
+          steps={ALLOTROPES.map((a) => ({
+            title: a.title,
+            caption: (
+              <>
+                {a.lines[0]}
+                <br />
+                {a.lines[1]}
+              </>
+            ),
+            art: (
+              <Frame w={160} h={138}>
+                <Model kind={a.kind} />
+              </Frame>
+            ),
+          }))}
+        />
+        <p className="f67-strip-note">všechno je čistý uhlík, liší se jen propojení atomů</p>
+      </div>
     </Figure>
   )
 }

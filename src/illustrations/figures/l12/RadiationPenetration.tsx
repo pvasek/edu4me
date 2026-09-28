@@ -110,12 +110,12 @@ function Flying() {
       {inView && !reduce ? (
         <>
           {[0, 0.9].map((dl) => (
-            <Fly key={`a${dl}`} x0={SRC1 + 10} x1={PAPER - 8} dur={1.4} delay={1.6 + dl}>
+            <Fly key={`a${dl}`} x0={SRC1 + 10} x1={PAPER - 8} dur={1.4} delay={1.28 + dl}>
               <Alpha x={0} y={RA} />
             </Fly>
           ))}
           {[0, 0.8].map((dl) => (
-            <Fly key={`b${dl}`} x0={SRC1 + 8} x1={AL0 - 8} dur={1.6} delay={1.8 + dl}>
+            <Fly key={`b${dl}`} x0={SRC1 + 8} x1={AL0 - 8} dur={1.6} delay={1.44 + dl}>
               <Beta x={0} y={RB} />
             </Fly>
           ))}
@@ -159,63 +159,63 @@ function Body({ narrow }: { narrow: boolean }) {
     <>
       {/* source blocks (lead with a slit and a radioactive sample) */}
       {[RA, RB, RG].map((y, i) => (
-        <Pop key={y} delay={0.1 + i * 0.1}>
+        <Pop key={y} delay={0.08 + i * 0.08}>
           <Hx d={`M${SRC0} ${y - 24} H${SRC1} V${y - 5} H${SRC0 + 22} V${y + 5} H${SRC1} V${y + 24} H${SRC0}Z`} kind="x" tone="var(--f12-metal-2)" />
           <circle className="f12-radium" cx={SRC0 + 17} cy={y} r={4.5} />
         </Pop>
       ))}
-      <Row y={RA} greek="α" charge="+2" cap1="jádro helia" cap2="2 p⁺ + 2 n⁰" delay={0.3} narrow={narrow} />
-      <Row y={RB} greek="β" charge="−1" cap1="elektron" cap2="vyletí z jádra" delay={0.4} narrow={narrow} />
-      <Row y={RG} greek="γ" charge="0" cap1="elektromagnetické" cap2="záření, bez náboje" delay={0.5} narrow={narrow} />
+      <Row y={RA} greek="α" charge="+2" cap1="jádro helia" cap2="2 p⁺ + 2 n⁰" delay={0.24} narrow={narrow} />
+      <Row y={RB} greek="β" charge="−1" cap1="elektron" cap2="vyletí z jádra" delay={0.32} narrow={narrow} />
+      <Row y={RG} greek="γ" charge="0" cap1="elektromagnetické" cap2="záření, bez náboje" delay={0.4} narrow={narrow} />
 
       {/* barriers */}
-      <Pop delay={0.2}>
+      <Pop delay={0.16}>
         <rect className="f12-rp-paper" x={PAPER} y={TOP} width={5} height={BOT - TOP} />
       </Pop>
-      <Pop delay={0.3}>
+      <Pop delay={0.24}>
         <Hx d={`M${AL0} ${TOP} H${AL1} V${BOT} H${AL0}Z`} kind="d" tone="#a3a8b3" />
       </Pop>
-      <Pop delay={0.4}>
+      <Pop delay={0.32}>
         <Hx d={`M${PB0} ${TOP} H${PB1} V${BOT} H${PB0}Z`} kind="x" tone="var(--f12-metal-2)" />
         <rect className="f12-hatch" x={PB0} y={TOP} width={PB1 - PB0} height={BOT - TOP} fill={h('s')} />
       </Pop>
 
       {/* beams */}
-      <Draw d={`M${SRC1} ${RA} H${PAPER}`} className="f12-rp-beam f12-rp-a" delay={0.8} dur={0.5} />
-      <Draw d={`M${SRC1} ${RB} H${AL0}`} className="f12-rp-beam f12-rp-b" delay={1} dur={0.7} />
-      <Draw d={wave(SRC1, PB0, RG, 8)} className="f12-rp-wave" delay={1.2} dur={1} />
-      <Draw d={wave(PB1, 664, RG, 3.2)} className="f12-rp-wave f12-rp-weak" delay={2.1} dur={0.5} />
-      <Fade delay={2.2}>
+      <Draw d={`M${SRC1} ${RA} H${PAPER}`} className="f12-rp-beam f12-rp-a" delay={0.64} dur={0.5} />
+      <Draw d={`M${SRC1} ${RB} H${AL0}`} className="f12-rp-beam f12-rp-b" delay={0.8} dur={0.7} />
+      <Draw d={wave(SRC1, PB0, RG, 8)} className="f12-rp-wave" delay={0.96} dur={1} />
+      <Draw d={wave(PB1, 664, RG, 3.2)} className="f12-rp-wave f12-rp-weak" delay={1.68} dur={0.5} />
+      <Fade delay={1.76}>
         <path d={wave(SRC1, PB0, RG, 8)} className="f12-rp-wave f12-rp-glow f12-flow" />
       </Fade>
-      <Stop x={PAPER - 2} y={RA} delay={1.3} />
-      <Stop x={AL0 - 2} y={RB} delay={1.7} />
+      <Stop x={PAPER - 2} y={RA} delay={1.04} />
+      <Stop x={AL0 - 2} y={RB} delay={1.36} />
       <Flying />
 
       {/* nuclide notation above the beams */}
-      <Fade delay={0.9}>
+      <Fade delay={0.72}>
         <Nuclide x={284} y={RA - 22} a="4" z="2" sym="He" />
         <Nuclide x={290} y={RB - 22} a="0" z="−1" sym="e" />
         <Nuclide x={292} y={RG - 24} a="0" z="0" sym="γ" />
       </Fade>
 
       {/* barrier names */}
-      <Lbl x={PAPER + 2} y={56} anchor="middle" className="f12-lab-strong" delay={0.4}>
+      <Lbl x={PAPER + 2} y={56} anchor="middle" className="f12-lab-strong" delay={0.32}>
         papír
       </Lbl>
-      <Lbl x={(AL0 + AL1) / 2} y={56} anchor="middle" className="f12-lab-strong" delay={0.5}>
+      <Lbl x={(AL0 + AL1) / 2} y={56} anchor="middle" className="f12-lab-strong" delay={0.4}>
         hliník
       </Lbl>
-      <Lbl x={(PB0 + PB1) / 2} y={56} anchor="middle" className="f12-lab-strong" delay={0.6}>
+      <Lbl x={(PB0 + PB1) / 2} y={56} anchor="middle" className="f12-lab-strong" delay={0.48}>
         olovo, beton
       </Lbl>
-      <Lbl x={PAPER + 2} y={380} anchor="middle" delay={1.4} line2="list papíru" line2Sec>
+      <Lbl x={PAPER + 2} y={380} anchor="middle" delay={1.12} line2="list papíru" line2Sec>
         zastaví α
       </Lbl>
-      <Lbl x={(AL0 + AL1) / 2} y={380} anchor="middle" delay={1.8} line2="několik mm" line2Sec>
+      <Lbl x={(AL0 + AL1) / 2} y={380} anchor="middle" delay={1.44} line2="několik mm" line2Sec>
         zastaví β
       </Lbl>
-      <Lbl x={(PB0 + PB1) / 2} y={380} anchor="middle" delay={2.2} line2="silná vrstva" line2Sec>
+      <Lbl x={(PB0 + PB1) / 2} y={380} anchor="middle" delay={1.76} line2="silná vrstva" line2Sec>
         zeslabí γ
       </Lbl>
     </>

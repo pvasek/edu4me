@@ -1,0 +1,222 @@
+/* Shared step figures: film (one picture, steps in place) and strip (panels side by side). */
+.sf {
+  --sf-accent: var(--level, var(--accent));
+  width: 100%;
+}
+
+/* ------------------------------------------------------------------ film */
+.sf-film {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  min-width: 0;
+  outline: none;
+}
+.sf-stage {
+  display: grid;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.sf-stage > * {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+.sf-sizer {
+  display: grid;
+  visibility: hidden;
+  pointer-events: none;
+}
+.sf-sizer > * {
+  grid-area: 1 / 1;
+}
+.sf-frame {
+  min-width: 0;
+}
+.sf-bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  min-width: 0;
+}
+.sf-segs {
+  display: flex;
+  gap: 5px;
+  min-width: 0;
+}
+.sf-seg {
+  flex: 1 1 0;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.sf-seg-track {
+  display: block;
+  width: 100%;
+  height: 6px;
+  border-radius: 6px;
+  background: var(--surface-3);
+  overflow: hidden;
+}
+.sf-seg-fill {
+  display: block;
+  height: 100%;
+  background: var(--sf-accent);
+  transform-origin: 0 50%;
+}
+.sf-seg.cur .sf-seg-track {
+  outline: 1.5px solid color-mix(in srgb, var(--sf-accent) 60%, transparent);
+  outline-offset: 1px;
+}
+.sf-seg:focus-visible .sf-seg-track {
+  outline: 2px solid var(--blue);
+}
+.sf-caps {
+  display: grid;
+}
+.sf-cap {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.sf-cap.on {
+  visibility: visible;
+  opacity: 1;
+}
+.sf-ctrl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+}
+.sf-btn {
+  min-width: 40px;
+  min-height: 38px;
+  padding: 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 15px var(--font-body);
+  cursor: pointer;
+}
+.sf-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.sf-btn:not(:disabled):hover {
+  border-color: var(--sf-accent);
+  color: var(--sf-accent);
+}
+.sf-play {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  flex: 0 1 170px;
+  min-width: 0;
+  justify-content: center;
+  font-size: 14px;
+  white-space: nowrap;
+}
+/* narrow screens: the counter goes, the play button shrinks */
+@media (max-width: 380px) {
+  .sf-ctrl {
+    gap: 6px;
+  }
+  .sf-btn {
+    padding: 4px 10px;
+  }
+  .sf-count {
+    display: none;
+  }
+}
+.sf-count {
+  font: 600 12px var(--font-mono);
+  color: var(--muted);
+  min-width: 36px;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------------ shared captions */
+.sf-cap-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sf-num {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--sf-accent);
+  color: var(--on-level, #fff);
+  font: 700 13px var(--font-body);
+}
+.sf-title {
+  font: italic 700 18px/1.2 var(--font-display);
+  color: var(--ink);
+}
+.sf-text {
+  margin: 4px 0 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+/* ------------------------------------------------------------------ strip */
+.sf-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--sf-min, 200px)), 1fr));
+  gap: 14px 16px;
+}
+@media (max-width: 480px) {
+  .sf-strip {
+    grid-template-columns: repeat(var(--sf-phone, 1), minmax(0, 1fr));
+    gap: 12px 10px;
+  }
+  .sf-strip .sf-title {
+    font-size: 16px;
+  }
+  .sf-strip .sf-text {
+    font-size: 13.5px;
+  }
+}
+.sf-panel {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  min-width: 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+.sf-panel-art {
+  min-width: 0;
+}
+
+/* ------------------------------------------------------------------ replay */
+.sf-replay {
+  justify-self: center;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 36px;
+  padding: 4px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--ink-soft);
+  font: 600 14px var(--font-body);
+  cursor: pointer;
+}
+.sf-replay:hover {
+  color: var(--sf-accent, var(--accent));
+  border-color: var(--sf-accent, var(--accent));
+}

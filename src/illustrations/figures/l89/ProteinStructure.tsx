@@ -1,4 +1,5 @@
-import { Draw, Fade, Figure, Panel, Panels, Plate, Pop, smooth, useHatch } from './kit'
+import { StepStrip } from '../../sequence/StepFigure'
+import { Draw, Fade, Figure, Plate, Pop, smooth, useHatch } from './kit'
 
 const LABEL =
   'Čtyři úrovně struktury bílkovin. Primární struktura je pořadí aminokyselin v řetězci od N-konce k C-konci. Sekundární struktura: řetězec se stáčí do α-šroubovice nebo skládá do β-skládaného listu, obojí drží vodíkové vazby. Terciární struktura je celkový prostorový tvar jednoho řetězce, který drží i disulfidové můstky. Kvartérní struktura je spojení více řetězců, například hemoglobin ze čtyř podjednotek, každá s hemem s iontem železa.'
@@ -6,20 +7,15 @@ const LABEL =
 export default function ProteinStructure() {
   return (
     <Figure name="protein-structure" level={9} label={LABEL} max={680}>
-      <Panels min={270}>
-        <Panel n={1} title="Primární" delay={0} sub="pořadí aminokyselin">
-          <Primary />
-        </Panel>
-        <Panel n={2} title="Sekundární" delay={0.7} sub="α-šroubovice a β-skládaný list, drží je vodíkové vazby">
-          <Secondary />
-        </Panel>
-        <Panel n={3} title="Terciární" delay={1.4} sub="prostorový tvar celého řetězce">
-          <Tertiary />
-        </Panel>
-        <Panel n={4} title="Kvartérní" delay={2.1} sub="více řetězců dohromady, např. hemoglobin">
-          <Quaternary />
-        </Panel>
-      </Panels>
+      <StepStrip
+        min={270}
+        steps={[
+          { title: 'Primární', caption: 'pořadí aminokyselin', art: <Primary /> },
+          { title: 'Sekundární', caption: 'α-šroubovice a β-skládaný list, drží je vodíkové vazby', art: <Secondary /> },
+          { title: 'Terciární', caption: 'prostorový tvar celého řetězce', art: <Tertiary /> },
+          { title: 'Kvartérní', caption: 'více řetězců dohromady, např. hemoglobin', art: <Quaternary /> },
+        ]}
+      />
     </Figure>
   )
 }
@@ -31,16 +27,16 @@ function Primary() {
   const pts = AA.map((_, i) => [30 + i * 32, 92 + Math.sin(i * 0.9) * 22] as [number, number])
   return (
     <Plate w={290} h={170}>
-      <Draw d={smooth(pts)} className="f89-ln" delay={0.2} dur={1} style={{ strokeWidth: 2 }} />
+      <Draw d={smooth(pts)} className="f89-ln" delay={0} dur={0.5} style={{ strokeWidth: 2 }} />
       {pts.map(([x, y], i) => (
-        <Pop key={i} delay={0.3 + i * 0.08}>
+        <Pop key={i} delay={0.05 + i * 0.03}>
           <circle cx={x} cy={y} r={14} fill={AA_COL[i]} stroke="var(--edge)" strokeWidth={1.2} />
           <text className="f89-t" x={x} y={y + 4} textAnchor="middle" style={{ fill: '#1f2a44', fontWeight: 700, fontSize: 10.5 }}>
             {AA[i]}
           </text>
         </Pop>
       ))}
-      <Fade delay={1}>
+      <Fade delay={0.25} dur={0.35}>
         <text className="f89-lb f89-sm" x={pts[0][0]} y={pts[0][1] - 24} textAnchor="middle">
           N-konec
         </text>
@@ -88,12 +84,12 @@ function Secondary() {
   return (
     <Plate w={290} h={170}>
       {h.back.map((d, i) => (
-        <Draw key={`b${i}`} d={d} className="f89-ln" delay={0.9 + i * 0.05} dur={0.4} style={{ strokeWidth: 2.5, stroke: 'color-mix(in srgb, var(--lv) 45%, var(--surface))' }} />
+        <Draw key={`b${i}`} d={d} className="f89-ln" delay={0.05 + i * 0.03} dur={0.3} style={{ strokeWidth: 2.5, stroke: 'color-mix(in srgb, var(--lv) 45%, var(--surface))' }} />
       ))}
       {h.front.map((d, i) => (
-        <Draw key={`f${i}`} d={d} className="f89-ln" delay={0.95 + i * 0.05} dur={0.4} style={{ strokeWidth: 5, stroke: 'var(--lv)' }} />
+        <Draw key={`f${i}`} d={d} className="f89-ln" delay={0.08 + i * 0.03} dur={0.3} style={{ strokeWidth: 5, stroke: 'var(--lv)' }} />
       ))}
-      <Fade delay={1.6}>
+      <Fade delay={0.25} dur={0.35}>
         {[0, 1, 2].map((k) => (
           <line key={k} className="f89-guide" x1={56 + k * 12} y1={50 + k * 29} x2={56 + k * 12} y2={76 + k * 29} style={{ stroke: 'var(--blue)', strokeWidth: 1.4, strokeDasharray: '2 3' }} />
         ))}
@@ -111,14 +107,14 @@ function Secondary() {
         const tipX = dir > 0 ? x2 + 8 : x1 - 8
         const baseX = dir > 0 ? x2 - 10 : x1 + 10
         return (
-          <Pop key={s} delay={1.2 + s * 0.15}>
+          <Pop key={s} delay={0.05 + s * 0.05}>
             <polyline points={zig.join(' ')} fill="none" stroke="#c98a3a" strokeWidth={9} strokeLinejoin="round" opacity={0.85} />
             <polyline points={zig.join(' ')} fill="none" stroke="var(--edge)" strokeWidth={0.9} strokeLinejoin="round" />
             <polygon points={`${tipX},${y} ${baseX},${y - 11} ${baseX},${y + 11}`} fill="#c98a3a" stroke="var(--edge)" strokeWidth={1} />
           </Pop>
         )
       })}
-      <Fade delay={1.9}>
+      <Fade delay={0.25} dur={0.35}>
         {[0, 1].map((s) =>
           [0, 1, 2].map((k) => <line key={`${s}${k}`} x1={170 + k * 34} y1={62 + s * 40} x2={170 + k * 34} y2={82 + s * 40} stroke="var(--blue)" strokeWidth={1.4} strokeDasharray="2 3" />),
         )}
@@ -155,8 +151,8 @@ function Tertiary() {
     <Plate w={290} h={170}>
       <ellipse cx={150} cy={96} rx={112} ry={64} fill={hatch('d')} className="f89-hatch" />
       <ellipse cx={150} cy={96} rx={112} ry={64} className="f89-guide" />
-      <Draw d={smooth(pts)} className="f89-ln" delay={1.6} dur={1.6} style={{ strokeWidth: 5, stroke: 'var(--lv)' }} />
-      <Fade delay={2.8}>
+      <Draw d={smooth(pts)} className="f89-ln" delay={0} dur={0.6} style={{ strokeWidth: 5, stroke: 'var(--lv)' }} />
+      <Fade delay={0.3} dur={0.3}>
         {/* disulfide bridge */}
         <line x1={118} y1={80} x2={160} y2={96} stroke="#c49a1a" strokeWidth={2.4} strokeDasharray="3 3" />
         <circle cx={118} cy={80} r={5} fill="#e0b43a" stroke="var(--edge)" />
@@ -183,7 +179,7 @@ function Quaternary() {
   return (
     <Plate w={290} h={170}>
       {subs.map((s, i) => (
-        <Pop key={i} delay={2.4 + i * 0.15}>
+        <Pop key={i} delay={0.05 + i * 0.05}>
           <path
             d={smooth(
               Array.from({ length: 9 }, (_, k) => {
@@ -220,7 +216,7 @@ function Quaternary() {
           </text>
         </Pop>
       ))}
-      <Fade delay={3.2}>
+      <Fade delay={0.25} dur={0.35}>
         <text className="f89-lb f89-sm" x={250} y={164} textAnchor="middle">
           hem s Fe²⁺
         </text>

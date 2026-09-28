@@ -229,7 +229,8 @@ sup {
   line-height: 0;
 }
 .chem {
-  white-space: nowrap;
+  /* wraps only at the spaces after operators, see breakable() in markup.tsx */
+  white-space: normal;
   font-feature-settings: 'lnum';
 }
 .hand {

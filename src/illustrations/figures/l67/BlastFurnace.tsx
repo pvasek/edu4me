@@ -124,18 +124,18 @@ export default function BlastFurnace() {
         <Charge />
       </Pop>
       <Lining />
-      <Draw d={inner} className="f67-o f67-thick" delay={0.1} />
+      <Draw d={inner} className="f67-o f67-thick" delay={0.06} />
 
       {/* top: hopper, bell, gas offtakes */}
-      <Pop delay={0.3}>
+      <Pop delay={0.18}>
         <path d={`M${CX - 30} 36 L${CX - 10} 62 H${CX + 10} L${CX + 30} 36`} className="f67-o f67-fill2" />
         <path d={`M${CX - 26} 82 L${CX} 64 L${CX + 26} 82Z`} className="f67-o f67-fill3" />
         <path d={`M${CX} 64 V40`} className="f67-o" />
         <rect x={CX - 62} y={72} width={124} height={10} className="f67-o f67-fill3" />
       </Pop>
-      <Pipe d={`M${CX + 52} 76 H${CX + 86} V24`} gas="#9aa0aa" w={10} delay={0.5} />
-      <Pipe d={`M${CX - 52} 76 H${CX - 86} V24`} gas="#9aa0aa" w={10} delay={0.5} />
-      <Fade delay={0.8}>
+      <Pipe d={`M${CX + 52} 76 H${CX + 86} V24`} gas="#9aa0aa" w={10} delay={0.3} />
+      <Pipe d={`M${CX - 52} 76 H${CX - 86} V24`} gas="#9aa0aa" w={10} delay={0.3} />
+      <Fade delay={0.48}>
         <text x={CX + 98} y={30} className="f67-lbl f67-b">
           {n ? 'plyn' : 'vysokopecní plyn'}
         </text>
@@ -159,9 +159,9 @@ export default function BlastFurnace() {
       ))}
 
       {/* hot air blast + tuyeres */}
-      <Pipe d={`M8 468 H${CX - 72}`} gas="#e8892a" w={12} delay={0.6} />
-      <Pipe d={`M${CX + 112} 468 H${CX + 72}`} gas="#e8892a" w={12} delay={0.6} />
-      <Fade delay={1}>
+      <Pipe d={`M8 468 H${CX - 72}`} gas="#e8892a" w={12} delay={0.36} />
+      <Pipe d={`M${CX + 112} 468 H${CX + 72}`} gas="#e8892a" w={12} delay={0.36} />
+      <Fade delay={0.6}>
         <Flame x={CX - 60} y={468} h={20} w={6} />
         <Flame x={CX + 60} y={468} h={20} w={6} />
         <text x={8} y={432} className="f67-lbl f67-b f67-acc-t">
@@ -173,13 +173,13 @@ export default function BlastFurnace() {
       </Fade>
 
       {/* taps */}
-      <Pipe d={`M${CX - 72} 504 L22 526`} gas={SLAG} w={8} delay={0.8} />
-      <Pipe d={`M${CX + 72} 540 L${CX + 122} 560`} gas={IRON} w={8} delay={0.8} />
-      <Pop delay={1.2}>
+      <Pipe d={`M${CX - 72} 504 L22 526`} gas={SLAG} w={8} delay={0.48} />
+      <Pipe d={`M${CX + 72} 540 L${CX + 122} 560`} gas={IRON} w={8} delay={0.48} />
+      <Pop delay={0.72}>
         <path d={`M${CX + 120} 562 H${CX + 170} L${CX + 162} 602 H${CX + 128}Z`} className="f67-o f67-fill3" />
         <path d={`M${CX + 124} 572 H${CX + 166} L${CX + 162} 594 H${CX + 128}Z`} fill={IRON} className="f67-glow" />
       </Pop>
-      <Fade delay={1.3}>
+      <Fade delay={0.78}>
         <Lbl x={12} y={560} tx={40} ty={522} className="f67-b">
           struska
         </Lbl>
@@ -187,7 +187,7 @@ export default function BlastFurnace() {
           na silnice, do cementu
         </text>
         {n ? (
-          <text x={CX + 145} y={622} textAnchor="middle" className="f67-lbl f67-b">
+          <text x={332} y={622} textAnchor="end" className="f67-lbl f67-b">
             surové železo
           </text>
         ) : (
@@ -208,7 +208,7 @@ export default function BlastFurnace() {
       {/* reactions by zone */}
       {ROWS.map((r, i) =>
         n ? (
-          <Fade key={r.y} delay={1.2 + i * 0.25}>
+          <Fade key={r.y} delay={0.72 + i * 0.15}>
             <Badge x={r.t[0] + 12} y={r.t[1] - 4} n={i + 1} />
             <Badge x={16} y={652 + i * 38} n={i + 1} />
             <Eq x={32} y={657 + i * 38} t={r.eq} />
@@ -217,7 +217,7 @@ export default function BlastFurnace() {
             </text>
           </Fade>
         ) : (
-          <Fade key={r.y} delay={1.2 + i * 0.25}>
+          <Fade key={r.y} delay={0.72 + i * 0.15}>
             <line className="f67-lead" x1={CX + 132} y1={r.y - 5} x2={r.t[0]} y2={r.t[1]} />
             <circle className="f67-dot" cx={r.t[0]} cy={r.t[1]} r={2.2} />
             <Eq x={CX + 136} y={r.y} t={r.eq} className="f67-keep" />

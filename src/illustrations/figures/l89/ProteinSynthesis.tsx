@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+import { StepFilm } from '../../sequence/StepFigure'
 import { Draw, Fade, Figure, Lbl, Plate, Pop, Slide, useHatch, useNarrow } from './kit'
 
 const LABEL =
@@ -9,10 +11,34 @@ const CODONS = ['AUG', 'GCA', 'UUC', 'GGA', 'UAA']
 
 export default function ProteinSynthesis() {
   return (
-    <Figure name="protein-synthesis" level={9} label={LABEL} max={700} replay>
-      <Scene />
+    <Figure name="protein-synthesis" level={9} label={LABEL} max={700} interactive>
+      <StepFilm
+        label={LABEL}
+        steps={[
+          {
+            title: 'Transkripce v jádře',
+            caption: 'RNA-polymeráza rozplete DNA a podle vlákna 3′-TAC CGT AAG-5′ vytvoří mRNA 5′-AUG GCA UUC-3′.',
+            art: <Scene step={0} />,
+          },
+          {
+            title: 'mRNA opouští jádro',
+            caption: 'mRNA projde pórem jaderného obalu do cytoplazmy a navlékne se na ribozom.',
+            art: <Scene step={1} />,
+          },
+          {
+            title: 'Translace na ribozomu',
+            caption: 'Ribozom čte mRNA po kodonech, tRNA s antikodonem přináší aminokyselinu a řetězec Met–Ala–Phe roste.',
+            art: <Scene step={2} />,
+          },
+        ]}
+      />
     </Figure>
   )
+}
+
+/** Fades in on the frame that introduces the part; drawn still on later frames. */
+function In({ now, delay = 0, children }: { now: boolean; delay?: number; children: ReactNode }) {
+  return now ? <Fade delay={delay}>{children}</Fade> : <g>{children}</g>
 }
 
 function Nucleus() {
@@ -59,7 +85,7 @@ function Transcription() {
       </text>
       {/* RNA polymerase */}
       <ellipse cx={206} cy={196} rx={30} ry={24} fill="#8fb8d8" opacity={0.45} stroke="var(--edge)" strokeWidth={1} />
-      <Fade delay={0.3}>
+      <g>
         <text className="f89-lb f89-b" x={30} y={126}>
           DNA
         </text>
@@ -69,7 +95,7 @@ function Transcription() {
         <text className="f89-lb f89-b f89-lv" x={150} y={98} textAnchor="middle">
           transkripce
         </text>
-      </Fade>
+      </g>
     </g>
   )
 }
@@ -94,7 +120,8 @@ function Trna({ x, anti, aa, color, faded }: { x: number; anti: string; aa?: str
   )
 }
 
-function Translation({ narrow }: { narrow: boolean }) {
+/** Ribosome on the mRNA; the tRNAs and labels come in on the translation frame (step 2). */
+function Translation({ narrow, step }: { narrow: boolean; step: number }) {
   const hatch = useHatch()
   const cx = (i: number) => 430 + i * 50
   return (
@@ -110,96 +137,113 @@ function Translation({ narrow }: { narrow: boolean }) {
           <line className="f89-thin" x1={cx(i) - 18} y1={306} x2={cx(i) + 18} y2={306} style={{ opacity: 0.5 }} />
         </g>
       ))}
-      {/* leaving tRNA */}
-      <Slide delay={2.6} dx={20} dy={30} dur={0.8}>
-        <g transform="translate(-28 -48)">
-          <Trna x={430} anti="UAC" color="#c9a86a" faded />
-        </g>
-      </Slide>
-      {/* P site: tRNA carrying the chain Met–Ala */}
-      <Pop delay={2.0}>
-        <Trna x={cx(1)} anti="CGU" aa="Ala" color="#b98a5a" />
-        <line className="f89-bond" x1={cx(1) - 8} y1={186} x2={cx(1) - 20} y2={172} />
-        <circle cx={cx(1) - 28} cy={164} r={11} fill="#c9a86a" stroke="var(--edge)" strokeWidth={1.2} />
-        <text className="f89-t" x={cx(1) - 28} y={167.5} textAnchor="middle" style={{ fontSize: 9.5, fontWeight: 700, fill: '#1f2a44' }}>
-          Met
-        </text>
-      </Pop>
-      {/* A site: incoming tRNA with Phe */}
-      <Slide delay={2.8} dx={70} dy={-60} dur={0.9}>
-        <Trna x={cx(2)} anti="AAG" aa="Phe" color="#9bb56a" />
-      </Slide>
-      <Draw d={`M${cx(1) + 11} 194 H${cx(2) - 11}`} className="f89-lvstroke" delay={3.8} dur={0.4} style={{ strokeDasharray: '3 3' }} />
-      <Fade delay={3.4}>
-        <text className="f89-lb f89-b f89-lv" x={505} y={60} textAnchor="middle">
-          translace
-        </text>
-        <Lbl x={narrow ? 342 : 378} y={narrow ? 118 : 140} tx={narrow ? undefined : cx(1) - 36} ty={narrow ? undefined : 158} className="f89-sm" anchor={narrow ? 'start' : 'end'}>
-          rostoucí řetězec
-        </Lbl>
-        <Lbl x={604} y={214} tx={586} ty={232} className="f89-sm">
-          ribozom
-        </Lbl>
-        <Lbl x={604} y={268} tx={cx(2) + 22} ty={284} className="f89-sm">
-          antikodon
-        </Lbl>
-        <Lbl x={604} y={176} tx={cx(2) + 18} ty={230} className="f89-sm">
-          tRNA
-        </Lbl>
-        <path className="f89-thin" d={`M${cx(2) - 18} 326 v5 h36 v-5`} />
-        <text className="f89-lb f89-sm" x={cx(2)} y={348} textAnchor="middle">
-          kodon
-        </text>
-        <text className="f89-f f89-sm f89-muted" x={505} y={372} textAnchor="middle">
-          AUG = start (Met) · UAA = stop
-        </text>
-      </Fade>
+      {step === 2 && (
+        <>
+          {/* leaving tRNA */}
+          <Slide delay={0.5} dx={20} dy={30} dur={0.6}>
+            <g transform="translate(-28 -48)">
+              <Trna x={430} anti="UAC" color="#c9a86a" faded />
+            </g>
+          </Slide>
+          {/* P site: tRNA carrying the chain Met–Ala */}
+          <Pop delay={0.1}>
+            <Trna x={cx(1)} anti="CGU" aa="Ala" color="#b98a5a" />
+            <line className="f89-bond" x1={cx(1) - 8} y1={186} x2={cx(1) - 20} y2={172} />
+            <circle cx={cx(1) - 28} cy={164} r={11} fill="#c9a86a" stroke="var(--edge)" strokeWidth={1.2} />
+            <text className="f89-t" x={cx(1) - 28} y={167.5} textAnchor="middle" style={{ fontSize: 9.5, fontWeight: 700, fill: '#1f2a44' }}>
+              Met
+            </text>
+          </Pop>
+          {/* A site: incoming tRNA with Phe */}
+          <Slide delay={0.3} dx={70} dy={-60} dur={0.7}>
+            <Trna x={cx(2)} anti="AAG" aa="Phe" color="#9bb56a" />
+          </Slide>
+          <Draw d={`M${cx(1) + 11} 194 H${cx(2) - 11}`} className="f89-lvstroke" delay={1.0} dur={0.3} style={{ strokeDasharray: '3 3' }} />
+        </>
+      )}
+      {step === 2 && (
+        <Fade delay={0.6}>
+          <text className="f89-lb f89-b f89-lv" x={505} y={60} textAnchor="middle">
+            translace
+          </text>
+          <Lbl x={narrow ? 342 : 378} y={narrow ? 118 : 140} tx={narrow ? undefined : cx(1) - 36} ty={narrow ? undefined : 158} className="f89-sm" anchor={narrow ? 'start' : 'end'}>
+            rostoucí řetězec
+          </Lbl>
+          <Lbl x={604} y={214} tx={586} ty={232} className="f89-sm">
+            ribozom
+          </Lbl>
+          <Lbl x={604} y={268} tx={cx(2) + 22} ty={284} className="f89-sm">
+            antikodon
+          </Lbl>
+          <Lbl x={604} y={176} tx={cx(2) + 18} ty={230} className="f89-sm">
+            tRNA
+          </Lbl>
+          <path className="f89-thin" d={`M${cx(2) - 18} 326 v5 h36 v-5`} />
+          <text className="f89-lb f89-sm" x={cx(2)} y={348} textAnchor="middle">
+            kodon
+          </text>
+          <text className="f89-f f89-sm f89-muted" x={505} y={372} textAnchor="middle">
+            AUG = start (Met) · UAA = stop
+          </text>
+        </Fade>
+      )}
     </g>
   )
 }
 
-function Scene() {
+/** The whole cell; `step` 0 = transcription, 1 = mRNA leaves the nucleus, 2 = translation. */
+function Scene({ step }: { step: number }) {
   const n = useNarrow()
   const nuc = n ? 'translate(20 0)' : ''
   const rib = n ? 'translate(-330 250)' : ''
-  // mRNA leaves the nucleus through a pore and threads through the ribosome (y 302 in ribosome space)
+  // the transcript under the letters, then its way out through a pore into the ribosome (y 302 in ribosome space)
+  const transcript = n ? 'M122 214 H236' : 'M102 214 H216'
   const path = n
     ? 'M122 214 H236 C290 214 318 250 322 300 V536 C322 548 318 552 306 552 H14'
     : 'M102 214 H216 C262 214 276 250 300 280 C314 298 330 302 350 302 H660'
+  const mrna = { className: 'f89-ln', style: { stroke: 'var(--lv)', strokeWidth: 2.6 } }
   return (
     <Plate w={n ? 340 : 670} h={n ? 640 : 390}>
       <g transform={nuc}>
-        <Pop delay={0.1}>
+        {step === 0 ? (
+          <Pop delay={0.1}>
+            <Transcription />
+          </Pop>
+        ) : (
           <Transcription />
-        </Pop>
-        <Fade delay={0.2}>
-          <text className="f89-lb f89-b" x={18} y={42}>
-            jádro
-          </text>
-        </Fade>
+        )}
+        <text className="f89-lb f89-b" x={18} y={42}>
+          jádro
+        </text>
       </g>
-      <Draw d={path} className="f89-ln" delay={0.8} dur={1.4} style={{ stroke: 'var(--lv)', strokeWidth: 2.6 }} />
+      {step === 0 && <Draw d={transcript} {...mrna} delay={0.5} dur={0.6} />}
+      {step === 1 && <Draw d={path} {...mrna} delay={0.1} dur={1.0} />}
+      {step === 2 && <path d={path} fill="none" {...mrna} />}
       <g transform={nuc}>
-        <Fade delay={0.9}>
+        <In now={step === 0} delay={0.6}>
           <Letters x={102} y={210} s={MRNA} lv />
           <text className="f89-f f89-sm f89-muted" x={90} y={210} textAnchor="end">
             5′
           </text>
-        </Fade>
+        </In>
       </g>
-      <Fade delay={1.6}>
-        <text className="f89-lb f89-b f89-lv" x={n ? 240 : 300} y={n ? 356 : 256} textAnchor={n ? 'middle' : 'start'}>
-          mRNA
-        </text>
-        <text className="f89-lb f89-sm" x={n ? 240 : 300} y={n ? 374 : 274} textAnchor={n ? 'middle' : 'start'}>
-          pórem ven
-        </text>
-      </Fade>
-      <g transform={rib}>
-        <Fade delay={1.8}>
-          <Translation narrow={n} />
-        </Fade>
-      </g>
+      {step >= 1 && (
+        <In now={step === 1} delay={0.6}>
+          <text className="f89-lb f89-b f89-lv" x={n ? 240 : 300} y={n ? 356 : 256} textAnchor={n ? 'middle' : 'start'}>
+            mRNA
+          </text>
+          <text className="f89-lb f89-sm" x={n ? 240 : 300} y={n ? 374 : 274} textAnchor={n ? 'middle' : 'start'}>
+            pórem ven
+          </text>
+        </In>
+      )}
+      {step >= 1 && (
+        <g transform={rib}>
+          <In now={step === 1} delay={0.5}>
+            <Translation narrow={n} step={step} />
+          </In>
+        </g>
+      )}
     </Plate>
   )
 }

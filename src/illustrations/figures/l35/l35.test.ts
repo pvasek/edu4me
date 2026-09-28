@@ -41,7 +41,8 @@ describe('level 3–5 figures', () => {
       const html = renderToStaticMarkup(createElement(FIGURES_L35[id]!))
       expect(html).toContain('<svg')
       expect(html).toContain('role="img"')
-      const labels = [...html.matchAll(/aria-label="([^"]*)"/g)].map((m) => m[1])
+      // only image descriptions (a StepFilm's buttons carry short labels of their own)
+      const labels = [...html.matchAll(/role="img"[^>]*aria-label="([^"]*)"|aria-label="([^"]*)"[^>]*role="img"/g)].map((m) => m[1] ?? m[2])
       expect(labels.length).toBeGreaterThan(0)
       for (const l of labels) {
         expect(l.length).toBeGreaterThan(40)

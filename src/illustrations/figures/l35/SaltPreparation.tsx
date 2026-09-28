@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react'
-import { Beaker, Bubbles, ChemText, Erlenmeyer, Figure, Pop, T, TestTube, pat, usePid } from './kit'
+import { StepStrip } from '../../sequence/StepFigure'
+import { Beaker, Bubbles, ChemText, Erlenmeyer, Figure, Frame, Pop, TestTube, pat, usePid } from './kit'
 
 const ACID = 'color-mix(in srgb, var(--info-soft) 80%, var(--surface))'
 
@@ -146,66 +147,33 @@ function Precipitate({ cx, y }: { cx: number; y: number }) {
 interface V {
   title: string
   draw: (cx: number, y: number) => ReactNode
-  eq: string[]
+  /** the equation, plain text with Unicode sub/superscripts */
+  eq: string
 }
 const VIGNETTES: V[] = [
-  { title: 'kyselina + kov', draw: (cx, y) => <AcidMetal cx={cx} y={y} />, eq: ['Zn + 2 HCl → ZnCl_{2} + H_{2}↑'] },
-  { title: 'kyselina + zásada', draw: (cx, y) => <AcidBase cx={cx} y={y} />, eq: ['HCl + NaOH → NaCl + H_{2}O'] },
-  { title: 'kyselina + uhličitan', draw: (cx, y) => <AcidCarbonate cx={cx} y={y} />, eq: ['CaCO_{3} + 2 HCl →', 'CaCl_{2} + H_{2}O + CO_{2}↑'] },
-  { title: 'srážení', draw: (cx, y) => <Precipitate cx={cx} y={y} />, eq: ['AgNO_{3} + NaCl →', 'AgCl↓ + NaNO_{3}'] },
+  { title: 'kyselina + kov', draw: (cx, y) => <AcidMetal cx={cx} y={y} />, eq: 'Zn + 2 HCl → ZnCl₂ + H₂↑' },
+  { title: 'kyselina + zásada', draw: (cx, y) => <AcidBase cx={cx} y={y} />, eq: 'HCl + NaOH → NaCl + H₂O' },
+  { title: 'kyselina + uhličitan', draw: (cx, y) => <AcidCarbonate cx={cx} y={y} />, eq: 'CaCO₃ + 2 HCl → CaCl₂ + H₂O + CO₂↑' },
+  { title: 'srážení', draw: (cx, y) => <Precipitate cx={cx} y={y} />, eq: 'AgNO₃ + NaCl → AgCl↓ + NaNO₃' },
 ]
 
-function Panel({ v, x, y, i }: { v: V; x: number; y: number; i: number }) {
-  const cx = x + 115
-  return (
-    <g>
-      <rect x={x + 6} y={y + 6} width={218} height={250} rx={8} className="f35-box" />
-      <T x={cx} y={y + 30} className="f35-title" size={18}>
-        {v.title}
-      </T>
-      <Pop d={0.15 + i * 0.2}>{v.draw(cx, y + 28)}</Pop>
-      {v.eq.map((e, k) => (
-        <text key={k} x={cx} y={y + 222 + k * 17 - (v.eq.length - 1) * 8} textAnchor="middle" className="f35-mono" style={{ fontSize: 12 }}>
-          <ChemText text={e} />
-        </text>
-      ))}
-    </g>
-  )
-}
+const LABEL =
+  'Čtyři způsoby přípravy solí: kyselina + kov (Zn + 2 HCl → ZnCl2 + H2, unikají bublinky vodíku), kyselina + zásada (neutralizace HCl + NaOH → NaCl + H2O), kyselina + uhličitan (CaCO3 + 2 HCl → CaCl2 + H2O + CO2, šumí oxid uhličitý) a srážení (AgNO3 + NaCl → AgCl + NaNO3, vzniká bílá sraženina).'
 
 export default function SaltPreparation() {
   return (
-    <Figure
-      level={5}
-      label="Čtyři způsoby přípravy solí: kyselina + kov (Zn + 2 HCl → ZnCl2 + H2, unikají bublinky vodíku), kyselina + zásada (neutralizace HCl + NaOH → NaCl + H2O), kyselina + uhličitan (CaCO3 + 2 HCl → CaCl2 + H2O + CO2, šumí oxid uhličitý) a srážení (AgNO3 + NaCl → AgCl + NaNO3, vzniká bílá sraženina)."
-      layouts={[
-        {
-          w: 460,
-          h: 526,
-          max: 620,
-          when: 'wide',
-          draw: () => (
-            <>
-              {VIGNETTES.map((v, i) => (
-                <Panel key={v.title} v={v} i={i} x={(i % 2) * 230} y={Math.floor(i / 2) * 262} />
-              ))}
-            </>
-          ),
-        },
-        {
-          w: 260,
-          h: 1050,
-          max: 400,
-          when: 'narrow',
-          draw: () => (
-            <>
-              {VIGNETTES.map((v, i) => (
-                <Panel key={v.title} v={v} i={i} x={15} y={i * 262} />
-              ))}
-            </>
-          ),
-        },
-      ]}
-    />
+    <Figure level={5} label={LABEL} max={680} interactive>
+      <div role="img" aria-label={LABEL}>
+        <StepStrip
+          min={150}
+          phoneColumns={2}
+          steps={VIGNETTES.map((v) => ({
+            title: v.title,
+            caption: <span className="f35-eqline">{v.eq}</span>,
+            art: <Frame layouts={[{ w: 200, h: 168, max: 240, draw: () => <Pop d={0.1}>{v.draw(100, -8)}</Pop> }]} />,
+          }))}
+        />
+      </div>
+    </Figure>
   )
 }

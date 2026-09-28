@@ -109,7 +109,7 @@ function Vignette({ x, y }: P) {
 
 export default function Esterification() {
   return (
-    <Figure name="esterification" level={8} label={LABEL} max={700}>
+    <Figure name="esterification" level={8} label={LABEL} max={700} replay>
       <Scene />
     </Figure>
   )
@@ -125,16 +125,16 @@ function Scene() {
   const vertical = ax1 === ax2
   return (
     <Plate w={L.w} h={L.h}>
-      <Pop delay={0.2}>
+      <Pop delay={0.12}>
         <Acid {...L.acid} hl />
         <Names x={L.acid.x + 36} y={L.acid.y + 50} name="kyselina octová" f="CH_{3}COOH" />
       </Pop>
-      <Fade delay={0.3}>
+      <Fade delay={0.18}>
         <text className="f89-sym" x={L.plus1.x} y={L.plus1.y} textAnchor="middle">
           +
         </text>
       </Fade>
-      <Pop delay={0.45}>
+      <Pop delay={0.27}>
         <Ethanol {...L.eth} hl />
         <Names x={L.eth.x + 40} y={L.eth.y + 50} name="ethanol" f="CH_{3}CH_{2}OH" />
       </Pop>
@@ -142,15 +142,15 @@ function Scene() {
       <Draw
         d={`M${ring.x - 44} ${ring.y} C${ring.x - 44} ${ring.y - 22} ${ring.x + 44} ${ring.y - 22} ${ring.x + 44} ${ring.y} C${ring.x + 44} ${ring.y + 22} ${ring.x - 44} ${ring.y + 22} ${ring.x - 44} ${ring.y}Z`}
         className="f89-ring"
-        delay={1.0}
-        dur={0.8}
+        delay={0.6}
+        dur={0.6}
       />
-      <Fade delay={1.2}>
+      <Fade delay={0.72}>
         <text className="f89-lb f89-lv f89-sm" x={ring.x} y={ring.y - 22} textAnchor="middle">
           OH + H
         </text>
       </Fade>
-      <Fade delay={1.5}>
+      <Fade delay={0.9}>
         {vertical ? (
           <>
             <Arrow x1={ax1 - 5} y1={ay1} x2={ax2 - 5} y2={ay2} />
@@ -169,22 +169,22 @@ function Scene() {
           vratná reakce
         </text>
       </Fade>
-      <Pop delay={2.0}>
+      <Pop delay={1.2}>
         <Ester {...L.ester} />
         <Names x={L.ester.x + 54} y={L.ester.y + 50} name="ethyl-ethanoát" f="CH_{3}COOCH_{2}CH_{3}" />
       </Pop>
-      <Fade delay={2.1}>
+      <Fade delay={1.26}>
         <text className="f89-sym" x={L.plus2.x} y={L.plus2.y} textAnchor="middle">
           +
         </text>
       </Fade>
-      <Slide delay={2.2} dx={ring.x - L.water.x} dy={ring.y - L.water.y} dur={0.9}>
+      <Slide delay={1.32} dx={ring.x - L.water.x} dy={ring.y - L.water.y} dur={0.9}>
         <Water {...L.water} />
       </Slide>
-      <Fade delay={2.9}>
+      <Fade delay={1.74}>
         <Names x={L.water.x} y={L.water.y + 46} name="voda" f="H_{2}O" />
       </Fade>
-      <Fade delay={3.1}>
+      <Fade delay={1.86}>
         <Vignette {...L.vig} />
       </Fade>
     </Plate>

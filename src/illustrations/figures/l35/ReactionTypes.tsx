@@ -57,8 +57,8 @@ function Scheme({ toks, cx, y, delay }: { toks: Tok[]; cx: number; y: number; de
     } else if (t === '→') {
       out.push(
         <g key={i} className="f35-arrow-lv">
-          <motion.path d={`M${x + 4} ${y} H${x + w - 8}`} variants={vDraw} custom={delay + 0.35} />
-          <motion.polygon points={`${x + w - 3},${y} ${x + w - 11},${y - 4.5} ${x + w - 11},${y + 4.5}`} variants={vFade} custom={delay + 0.7} />
+          <motion.path d={`M${x + 4} ${y} H${x + w - 8}`} variants={vDraw} custom={delay + 0.21} />
+          <motion.polygon points={`${x + w - 3},${y} ${x + w - 11},${y - 4.5} ${x + w - 11},${y + 4.5}`} variants={vFade} custom={delay + 0.42} />
         </g>,
       )
     } else {
@@ -109,7 +109,7 @@ function PanelView({ p, x, y, i }: { p: Panel; x: number; y: number; i: number }
       <text x={cx} y={y + 52} textAnchor="middle" className="f35-note" style={{ fontSize: 14 }}>
         ({p.alt})
       </text>
-      <Scheme toks={p.toks} cx={cx} y={y + 90} delay={0.2 + i * 0.35} />
+      <Scheme toks={p.toks} cx={cx} y={y + 90} delay={0.1 + i * 0.1} />
       <T x={cx} y={y + 134} className="f35-mono f35-b" size={13.5}>
         {p.general}
       </T>

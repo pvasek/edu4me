@@ -19,7 +19,7 @@ function Burner({ x, y, m, i }: { x: number; y: number; m: (typeof METALS)[numbe
   const cone = `M${x - 6} ${b} Q${x - 7} ${b - 18} ${x} ${b - 30} Q${x + 7} ${b - 18} ${x + 6} ${b}Z`
   return (
     <g>
-      <Fade delay={0.6 + i * 0.12}>
+      <Fade delay={0.36 + i * 0.07}>
         <ellipse cx={x} cy={b - h * 0.5} rx={w * 1.6} ry={h * 0.58} fill={m.col} fillOpacity={0.13} className="f67-glow" style={{ animationDelay: `${-i * 0.3}s` }} />
         <g className="f67-flicker" style={{ animationDelay: `${-i * 0.23}s` }}>
           <path d={flame} fill={m.col} fillOpacity={0.88} className="f67-flame-o" />
@@ -29,7 +29,7 @@ function Burner({ x, y, m, i }: { x: number; y: number; m: (typeof METALS)[numbe
         <path d={`M${x + 32} ${b - 64} L${x + 8} ${b - 44}`} className="f67-o f67-thin" style={{ stroke: '#8d939c' }} />
         <circle cx={x + 5} cy={b - 42} r={3} fill="#e8e4d8" className="f67-o f67-thin" />
       </Fade>
-      <Pop delay={0.1 + i * 0.06}>
+      <Pop delay={0.06 + i * 0.04}>
         <rect x={x - 7} y={b} width={14} height={60} className="f67-o f67-fill2" />
         <rect x={x - 7} y={b} width={14} height={60} fill={pat(id, 'd')} />
         <rect x={x - 9} y={b + 36} width={18} height={10} rx={2} className="f67-o f67-fill3" />
@@ -39,7 +39,7 @@ function Burner({ x, y, m, i }: { x: number; y: number; m: (typeof METALS)[numbe
           {m.el}
         </text>
       </Pop>
-      <Fade delay={0.9 + i * 0.1}>
+      <Fade delay={0.54 + i * 0.06}>
         {m.name.map((t, k) => (
           <text key={k} x={x} y={b + 142 + k * 17} textAnchor="middle" className="f67-lbl f67-sm f67-b f67-keep">
             {t}

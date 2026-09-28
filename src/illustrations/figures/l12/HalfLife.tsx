@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
-import { motion, useInView } from 'motion/react'
-import { Fade, cz, drawV, rng } from './kit'
+import { motion } from 'motion/react'
+import { StepFilm } from '../../sequence/StepFigure'
+import { Board, Fade, cz, drawV, rng } from './kit'
 
 const HL = 5730
 const X0 = 58
@@ -59,15 +59,15 @@ function Chart({ step }: { step: number }) {
 
       {/* halvings */}
       {[1, 2, 3, 4].map((k) => (
-        <Fade key={k} delay={0.9 + k * 0.2}>
+        <Fade key={k} delay={0.5 + k * 0.1}>
           <path className="f12-cross" d={`M${sx(k)} ${Y0} L${sx(k)} ${sy(Math.pow(0.5, k))} L${X0} ${sy(Math.pow(0.5, k))}`} />
           <text className="f12-frac" x={sx(k) + 6} y={sy(Math.pow(0.5, k)) - 8}>
             {FRAC[k]}
           </text>
         </Fade>
       ))}
-      <motion.path className="f12-decay" d={CURVE} variants={drawV(0.2, 1.4)} />
-      <Fade delay={1.6}>
+      <motion.path className="f12-decay" d={CURVE} variants={drawV(0.1, 0.9)} />
+      <Fade delay={0.8}>
         <text className="f12-t" x={sx(2.1)} y={sy(0.86)}>
           poločas přeměny C-14
         </text>
@@ -75,7 +75,14 @@ function Chart({ step }: { step: number }) {
           = 5 730 let
         </text>
       </Fade>
-      <motion.circle className="f12-now" r={7} initial={false} animate={{ cx: sx(step), cy: sy(Math.pow(0.5, step)) }} transition={{ type: 'spring', stiffness: 120, damping: 18 }} />
+      {/* the marker slides on from the previous half-life */}
+      <motion.circle
+        className="f12-now"
+        r={7}
+        initial={{ cx: sx(Math.max(0, step - 1)), cy: sy(Math.pow(0.5, Math.max(0, step - 1))) }}
+        animate={{ cx: sx(step), cy: sy(Math.pow(0.5, step)) }}
+        transition={{ type: 'spring', stiffness: 120, damping: 18, delay: 0.15 }}
+      />
     </motion.svg>
   )
 }
@@ -100,41 +107,47 @@ function Sample({ step }: { step: number }) {
   )
 }
 
-export default function HalfLife() {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, amount: 0.4 })
-  const [step, setStep] = useState(0)
-  const [run, setRun] = useState(0)
-  useEffect(() => {
-    if (!inView) return
-    setStep(0)
-    const timers = [1, 2, 3, 4].map((k) => window.setTimeout(() => setStep(k), 900 + k * 1400))
-    return () => timers.forEach(clearTimeout)
-  }, [inView, run])
+const LABEL =
+  'Poločas přeměny uhlíku-14 je 5 730 let. Graf ukazuje, že po každém poločasu zbývá polovina jader: po 5 730 letech polovina, po 11 460 letech čtvrtina, po 17 190 letech osmina a po 22 920 letech šestnáctina. Vedle je vzorek 64 jader uhlíku-14, ze kterých se po každém poločasu polovina přemění na dusík-14: 64, 32, 16, 8 a 4.'
+
+/** One frame: the chart with the marker at `step` half-lives and the sample beside it. */
+function Frame({ step }: { step: number }) {
   return (
-    <div className="f12 f12-l2" style={{ maxWidth: 680 }} ref={ref}>
-      <motion.div
-        className="f12-hl-wrap"
-        role="img"
-        aria-label="Poločas přeměny uhlíku-14 je 5 730 let. Graf ukazuje, že po každém poločasu zbývá polovina jader: po 5 730 letech polovina, po 11 460 letech čtvrtina, po 17 190 letech osmina a po 22 920 letech šestnáctina. Vedle je vzorek 64 jader uhlíku-14, ze kterých se po každém poločasu polovina přemění na dusík-14: 64, 32, 16, 8 a 4."
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <Chart step={step} />
-        <Sample step={step} />
-      </motion.div>
-      <div className="f12-controls">
-        <span className="f12-key">
-          <i className="f12-key-c" /> uhlík-14
-        </span>
-        <span className="f12-key">
-          <i className="f12-key-n" /> dusík-14 (po přeměně β)
-        </span>
-        <button type="button" className="f12-btn" onClick={() => setRun((n) => n + 1)}>
-          Přehrát znovu
-        </button>
-      </div>
-    </div>
+    // the curve draws in on the first frame; later frames only move the marker and the sample
+    <motion.div className="f12-hl-wrap" initial={step === 0 ? 'hidden' : 'show'} animate="show">
+      <Chart step={step} />
+      <Sample step={step} />
+    </motion.div>
+  )
+}
+
+const STEPS = [
+  { title: 'Na začátku', caption: 'Vzorek obsahuje 64 jader uhlíku-14.' },
+  { title: '1 poločas · 5 730 let', caption: 'Polovina jader se přeměnila na dusík-14, zbývá 32 z 64.' },
+  { title: '2 poločasy · 11 460 let', caption: 'Ze zbylých jader se přeměnila zase polovina: zbývá čtvrtina, 16 z 64.' },
+  { title: '3 poločasy · 17 190 let', caption: 'Zbývá osmina, 8 z 64.' },
+  { title: '4 poločasy · 22 920 let', caption: 'Zbývá šestnáctina, 4 z 64. Za každý poločas ubude polovina toho, co zbývá.' },
+]
+
+export default function HalfLife() {
+  return (
+    <Board
+      level={2}
+      max={680}
+      label={LABEL}
+      interactive
+      after={
+        <div className="f12-controls">
+          <span className="f12-key">
+            <i className="f12-key-c" /> uhlík-14
+          </span>
+          <span className="f12-key">
+            <i className="f12-key-n" /> dusík-14 (po přeměně β)
+          </span>
+        </div>
+      }
+    >
+      <StepFilm label={LABEL} steps={STEPS.map((s, k) => ({ ...s, ms: 2600, art: <Frame step={k} /> }))} />
+    </Board>
   )
 }

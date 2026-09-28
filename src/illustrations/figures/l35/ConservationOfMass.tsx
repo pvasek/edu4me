@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import { spring } from '../../../ui/motion'
-import { Arrow, Bubbles, ChemText, Erlenmeyer, Fade, Figure, Note, Pop, T, pat, usePid } from './kit'
+import { StepFilm } from '../../sequence/StepFigure'
+import { Bubbles, ChemText, Erlenmeyer, Fade, Figure, Frame, Note, Pop, pat, usePid } from './kit'
 
 const MASS = '152,4 g'
 
@@ -29,9 +30,6 @@ function Scene({ x, y, after }: { x: number; y: number; after: boolean }) {
   const top = y + 116
   return (
     <g>
-      <T x={cx} y={y + 20} className="f35-title">
-        {after ? 'po reakci' : 'před reakcí'}
-      </T>
       <Erlenmeyer cx={cx} y={top} w={96} h={112} neckW={22} level={36}>
         {after && <Bubbles xs={[cx - 30, cx - 16, cx - 2, cx + 12, cx + 26, cx - 22, cx + 4, cx + 20]} y={top + 108} h={34} r={2.4} />}
         {after && <rect x={cx - 48} y={top + 112 - 36 - 5} width={96} height={6} className="f35-foam" />}
@@ -39,7 +37,7 @@ function Scene({ x, y, after }: { x: number; y: number; after: boolean }) {
       {after ? (
         <motion.g
           style={{ transformBox: 'fill-box', transformOrigin: '50% 100%' }}
-          variants={{ hidden: { scale: 0.3, opacity: 0.4 }, show: { scale: 1, opacity: 1, transition: { ...spring.gentle, delay: 0.9 } } }}
+          variants={{ hidden: { scale: 0.3, opacity: 0.4 }, show: { scale: 1, opacity: 1, transition: { ...spring.gentle, delay: 0.25 } } }}
         >
           <path
             d={`M${cx - 7} ${top - 2} C${cx - 10} ${top - 12} ${cx - 42} ${top - 30} ${cx - 40} ${top - 62} C${cx - 38} ${top - 92} ${cx + 38} ${top - 92} ${cx + 40} ${top - 62} C${cx + 42} ${top - 30} ${cx + 10} ${top - 12} ${cx + 7} ${top - 2}Z`}
@@ -94,13 +92,13 @@ function Labels({ x, y, after }: { x: number; y: number; after: boolean }) {
   const cx = x + 110
   const top = y + 116
   return after ? (
-    <Fade d={1.6} className="f35-sec">
+    <Fade d={0.7}>
       <Note x={cx + 58} y={top - 70} tx={cx + 30} ty={top - 56}>
         <ChemText text="CO_{2}" />
       </Note>
     </Fade>
   ) : (
-    <Fade d={0.6} className="f35-sec">
+    <Fade d={0.3}>
       <Note x={cx - 54} y={top + 38} anchor="end" tx={cx - 26} ty={top + 92}>
         ocet
       </Note>
@@ -111,61 +109,56 @@ function Labels({ x, y, after }: { x: number; y: number; after: boolean }) {
   )
 }
 
-export default function ConservationOfMass() {
-  const eq = (x: number, y: number) => (
-    <Pop d={1.8}>
-      <rect x={x - 150} y={y - 22} width={300} height={34} rx={6} className="f35-lvfill" />
-      <text x={x} y={y} textAnchor="middle" className="f35-t f35-b" style={{ fontSize: 16 }}>
-        m(reaktantů) = m(produktů)
-      </text>
-    </Pop>
-  )
+const LABEL =
+  'Zákon zachování hmotnosti: uzavřená baňka s octem a balonkem s jedlou sodou stojí na váze, která ukazuje 152,4 g. Po reakci vzniklý oxid uhličitý nafoukne balonek, ale váha ukazuje stále 152,4 g. Hmotnost reaktantů se rovná hmotnosti produktů.'
+
+/** One frame: the same flask on the same balance, before or after the reaction. */
+function Plate({ after }: { after: boolean }) {
   return (
-    <Figure
-      level={4}
-      label="Zákon zachování hmotnosti: uzavřená baňka s octem a balonkem s jedlou sodou stojí na váze, která ukazuje 152,4 g. Po reakci vzniklý oxid uhličitý nafoukne balonek, ale váha ukazuje stále 152,4 g. Hmotnost reaktantů se rovná hmotnosti produktů."
-      replay
+    <Frame
       layouts={[
         {
-          w: 560,
-          h: 346,
-          max: 680,
-          when: 'wide',
+          w: 320,
+          h: 340,
+          max: 440,
           draw: () => (
             <>
-              <Scene x={0} y={0} after={false} />
-              <Labels x={0} y={0} after={false} />
-              <Arrow x1={236} y1={176} x2={318} y2={176} className="f35-arrow-lv" delay={0.5} head={11} />
-              <T x={277} y={164} className="f35-note">
-                reakce
-              </T>
-              <T x={277} y={198} className="f35-t f35-small f35-muted">
-                uzavřená soustava
-              </T>
-              <Scene x={336} y={0} after />
-              <Labels x={336} y={0} after />
-              {eq(280, 330)}
-            </>
-          ),
-        },
-        {
-          w: 340,
-          h: 672,
-          max: 420,
-          when: 'narrow',
-          draw: () => (
-            <>
-              <Scene x={60} y={0} after={false} />
-              <Arrow x1={170} y1={294} x2={170} y2={330} className="f35-arrow-lv" delay={0.5} head={11} />
-              <T x={184} y={318} anchor="start" className="f35-note">
-                reakce v uzavřené baňce
-              </T>
-              <Scene x={60} y={332} after />
-              {eq(170, 656)}
+              <Scene x={50} y={-10} after={after} />
+              <Labels x={50} y={-10} after={after} />
+              {after && (
+                <Pop d={0.8}>
+                  <rect x={10} y={298} width={300} height={34} rx={6} className="f35-lvfill" />
+                  <text x={160} y={320} textAnchor="middle" className="f35-t f35-b" style={{ fontSize: 16 }}>
+                    m(reaktantů) = m(produktů)
+                  </text>
+                </Pop>
+              )}
             </>
           ),
         },
       ]}
     />
+  )
+}
+
+export default function ConservationOfMass() {
+  return (
+    <Figure level={4} label={LABEL} max={440} interactive>
+      <StepFilm
+        label={LABEL}
+        steps={[
+          {
+            title: 'Před reakcí',
+            caption: 'V uzavřené baňce je ocet, v balonku na hrdle jedlá soda. Váha ukazuje 152,4 g.',
+            art: <Plate after={false} />,
+          },
+          {
+            title: 'Po reakci',
+            caption: 'Vzniklý oxid uhličitý nafoukl balonek, ale váha ukazuje stále 152,4 g.',
+            art: <Plate after />,
+          },
+        ]}
+      />
+    </Figure>
   )
 }

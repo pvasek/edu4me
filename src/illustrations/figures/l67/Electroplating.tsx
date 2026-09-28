@@ -46,13 +46,13 @@ function Spoon() {
           <rect x={KX - 40} y={SURF} width={80} height={200} />
         </clipPath>
       </defs>
-      <Pop delay={0.3}>
+      <Pop delay={0.24}>
         <path d={`M${KX - 3.5} ${TOP} H${KX + 3.5} L${KX + 4.5} 238 H${KX - 4.5}Z`} fill="#b9bec7" className="f67-o" />
         <path d={bowl} fill="#b9bec7" className="f67-o" />
         <path d={bowl} fill={pat(id, 'hi')} opacity={0.5} />
       </Pop>
       {/* the copper coat grows on the wet part */}
-      <Fade delay={2.2}>
+      <Fade delay={1.76}>
         <g clipPath={`url(#${id}-wet)`}>
           <path d={`M${KX - 3.5} ${TOP} H${KX + 3.5} L${KX + 4.5} 238 H${KX - 4.5}Z`} className="f67-coat" />
           <path d={bowl} className="f67-coat" />
@@ -68,7 +68,7 @@ function Anode() {
   // straight above the liquid, eaten away (jagged) below it
   const d = `M${AX - 10} ${TOP} H${AX + 10} V${SURF + 6} L${AX + 8} 196 L${AX + 9.5} 214 L${AX + 6.5} 238 L${AX + 8.5} 262 L${AX + 5.5} 286 L${AX + 6} 300 H${AX - 6} L${AX - 7.5} 280 L${AX - 5.5} 256 L${AX - 8.5} 232 L${AX - 6} 208 L${AX - 9} 186 L${AX - 10} ${SURF + 6}Z`
   return (
-    <Pop delay={0.35}>
+    <Pop delay={0.28}>
       <path d={d} fill={CU} className="f67-o" />
       <path d={d} fill={pat(id, 'x')} opacity={0.5} />
       <path d={`M${AX - 5} ${TOP + 6} V${SURF - 4}`} className="f67-o f67-thin" style={{ stroke: '#f2c8a0' }} />
@@ -103,8 +103,8 @@ export default function Electroplating() {
       <Ions />
 
       {/* drift of the copper ions */}
-      <DrawArrow d={`M${AX - 30} 308 H${KX + 34}`} tone="lvl" delay={1.6} />
-      <Fade delay={1.8}>
+      <DrawArrow d={`M${AX - 30} 308 H${KX + 34}`} tone="lvl" delay={1.28} />
+      <Fade delay={1.44}>
         <text x={262} y={300} textAnchor="middle" className="f67-lbl f67-sm f67-b f67-lvl-t">
           <ChemText text="Cu^{2+} ke katodě" />
         </text>
@@ -134,7 +134,7 @@ export default function Electroplating() {
       <path d="M222 40 H252 M268 40 H298" className="f67-ln" />
       <Sign x={KX + 24} y={TOP - 16} s="−" r={10} />
       <Sign x={AX - 24} y={TOP - 16} s="+" r={10} />
-      <Fade delay={1}>
+      <Fade delay={0.8}>
         <text x={KX - 10} y={70} textAnchor="end" className="f67-lbl f67-b f67-blue-t">
           e⁻ ↓
         </text>
@@ -147,7 +147,7 @@ export default function Electroplating() {
       </Lbl>
 
       {/* labels */}
-      <Fade delay={0.9}>
+      <Fade delay={0.72}>
         {n ? (
           <>
             <text x={KX - 10} y={100} textAnchor="end" className="f67-lbl f67-b">
@@ -188,14 +188,14 @@ export default function Electroplating() {
       </Fade>
 
       {/* half-reactions */}
-      <Pop delay={1.4}>
+      <Pop delay={1.12}>
         <rect x={bx[0][0]} y={bx[0][1]} width={bx[0][2]} height={54} rx={6} className="f67-tag-lvl" />
         <text x={bx[0][0] + bx[0][2] / 2} y={bx[0][1] + 19} textAnchor="middle" className="f67-cap f67-lvl-t">
           katoda (−) · měď se vylučuje
         </text>
         <Eq x={bx[0][0] + bx[0][2] / 2} y={bx[0][1] + 42} t="Cu^{2+} + 2e^{-} → Cu" anchor="middle" className="f67-eq-lg" />
       </Pop>
-      <Pop delay={1.6}>
+      <Pop delay={1.28}>
         <rect x={bx[1][0]} y={bx[1][1]} width={bx[1][2]} height={54} rx={6} className="f67-tag" />
         <text x={bx[1][0] + bx[1][2] / 2} y={bx[1][1] + 19} textAnchor="middle" className="f67-cap">
           anoda (+) · měď se rozpouští

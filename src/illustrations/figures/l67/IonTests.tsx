@@ -38,7 +38,7 @@ function TestTube({ x, t, i }: { x: number; t: Tube; i: number }) {
           <path d={`${body}Z`} />
         </clipPath>
       </defs>
-      <Pop delay={0.1 + i * 0.07}>
+      <Pop delay={0.06 + i * 0.04}>
         <path d={`${body}Z`} className="f67-glass" />
         <g clipPath={`url(#${clip})`}>
           {/* liquid, clouded by the suspension */}
@@ -64,10 +64,10 @@ function TestTube({ x, t, i }: { x: number; t: Tube; i: number }) {
         <path d={`M${x - R - 3} ${TT} H${x + R + 3}`} className="f67-o" />
         <path d={`M${x - R + 4} ${TT + 8} V${TB - R - 6}`} className="f67-o f67-thin f67-glint" />
       </Pop>
-      <Fade delay={0.5 + i * 0.07}>
+      <Fade delay={0.3 + i * 0.04}>
         <Eq x={x} y={TT - 10} t={t.ion} anchor="middle" className="f67-eq-lg f67-b-eq" />
       </Fade>
-      <Fade delay={0.8 + i * 0.07}>
+      <Fade delay={0.48 + i * 0.04}>
         <Eq x={x} y={TB + 46} t={t.ppt} anchor="middle" className="f67-eq-sm f67-keep" />
         {t.name.map((s, k) => (
           <text key={k} x={x} y={TB + 64 + k * 15} textAnchor="middle" className="f67-lbl f67-sm f67-b f67-keep">
@@ -83,7 +83,7 @@ function TestTube({ x, t, i }: { x: number; t: Tube; i: number }) {
 function Rack({ x0, x1 }: { x0: number; x1: number }) {
   const { id } = useFig()
   return (
-    <Pop delay={0.05}>
+    <Pop delay={0.03}>
       <rect x={x0} y={TB + 4} width={x1 - x0} height={10} rx={2} fill="#b98a52" className="f67-o" />
       <rect x={x0} y={TB + 4} width={x1 - x0} height={10} rx={2} fill={pat(id, 'd')} />
       <path d={`M${x0 + 6} ${TB + 14} V${TB + 24} M${x1 - 6} ${TB + 14} V${TB + 24}`} className="f67-o f67-thick" style={{ stroke: '#8a5a33' }} />
@@ -95,7 +95,7 @@ function Rack({ x0, x1 }: { x0: number; x1: number }) {
 function Board({ x0, x1 }: { x0: number; x1: number }) {
   const { id } = useFig()
   return (
-    <Pop delay={0.15}>
+    <Pop delay={0.09}>
       <rect x={x0} y={TT + 26} width={x1 - x0} height={12} rx={2} fill="#b98a52" className="f67-o" />
       <rect x={x0} y={TT + 26} width={x1 - x0} height={12} rx={2} fill={pat(id, 'd')} />
       <path d={`M${x0 + 4} ${TT + 38} V${TB + 4} M${x1 - 4} ${TT + 38} V${TB + 4}`} className="f67-o f67-thick" style={{ stroke: '#8a5a33' }} />
@@ -107,7 +107,7 @@ function Group({ x0, x1, reagent, delay }: { x0: number; x1: number; reagent: st
   return (
     <g>
       <Draw d={`M${x0 + 4} 44 V36 H${x1 - 4} V44`} className="f67-o f67-thin" delay={delay} />
-      <Fade delay={delay + 0.2}>
+      <Fade delay={delay + 0.12}>
         <Eq x={(x0 + x1) / 2} y={26} t={`+ ${reagent}`} anchor="middle" className="f67-eq-lg f67-b-eq" />
       </Fade>
     </g>
@@ -159,7 +159,7 @@ export default function IonTests() {
       ))}
       {groups.map((g, k) => (
         <g key={k} transform={`translate(0 ${pos[g.a][1]})`}>
-          <Group x0={pos[g.a][0] - 30} x1={pos[g.b][0] + 30} reagent={g.r} delay={0.4 + k * 0.2} />
+          <Group x0={pos[g.a][0] - 30} x1={pos[g.b][0] + 30} reagent={g.r} delay={0.24 + k * 0.12} />
         </g>
       ))}
     </Figure>

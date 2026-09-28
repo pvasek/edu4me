@@ -179,7 +179,7 @@ export default function MoleBridge() {
                     cx: [86, 86, C, C, 314, 314],
                     cy: [62, 62, C, C, 62, 62],
                     opacity: [0, 1, 1, 1, 1, 0],
-                    transition: { delay: 1.8, duration: 2.6, times: [0, 0.08, 0.42, 0.58, 0.92, 1] },
+                    transition: { delay: 0.9, duration: 1.5, times: [0, 0.08, 0.42, 0.58, 0.92, 1] },
                   },
                 }}
               />

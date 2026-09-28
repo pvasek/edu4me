@@ -52,14 +52,14 @@ function Jar({ x, y, k }: { x: number; y: number; k: number }) {
   const j = JARS[k]
   return (
     <g transform={`translate(0 ${y})`}>
-      <Pop delay={0.1 + k * 0.12}>
+      <Pop delay={0.06 + k * 0.07}>
         <Contents x={x} k={k} />
         {/* gas jar with ground-glass stopper */}
         <path d={`M${x - 38} ${TOP + 6} V${BOT - 4} Q${x - 38} ${BOT + 2} ${x - 32} ${BOT + 2} H${x + 32} Q${x + 38} ${BOT + 2} ${x + 38} ${BOT - 4} V${TOP + 6}`} className="f67-o f67-thick" />
         <rect x={x - 44} y={TOP - 2} width={88} height={8} rx={2} className="f67-o f67-fill2" />
         <path d={`M${x - 28} ${TOP + 22} V${BOT - 20}`} className="f67-o f67-thin" style={{ opacity: 0.45 }} />
       </Pop>
-      <Fade delay={0.6 + k * 0.12}>
+      <Fade delay={0.36 + k * 0.07}>
         <text x={x} y={BOT + 30} textAnchor="middle" className="f67-eq f67-eq-lg">
           <ChemText text={j.f} />
         </text>
@@ -110,8 +110,8 @@ export default function HalogenColors() {
       {JARS.map((_, k) => (
         <Jar key={k} x={pos[k][0]} y={pos[k][1]} k={k} />
       ))}
-      <DrawArrow d={`M24 ${ty} H${W - 20}`} tone="lvl" delay={1.2} className="f67-wide" />
-      <Fade delay={1.5}>
+      <DrawArrow d={`M24 ${ty} H${W - 20}`} tone="lvl" delay={0.72} className="f67-wide" />
+      <Fade delay={0.9}>
         {n ? (
           <>
             <text x={W / 2} y={ty - 30} textAnchor="middle" className="f67-lbl f67-b f67-lvl-t">

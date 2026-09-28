@@ -110,48 +110,48 @@ export default function PeptideBond() {
   const px = 40
   const r2 = 218
   return (
-    <Figure name="peptide-bond" level={9} label={LABEL} max={600}>
+    <Figure name="peptide-bond" level={9} label={LABEL} max={600} replay>
       <Plate w={480} h={392}>
-        <Pop delay={0.2}>
+        <Pop delay={0.1}>
           <Glycine x={gx} y={r1} hl />
           <text className="f89-lb f89-sm" x={gx + 60} y={r1 + 46} textAnchor="middle">
             glycin
           </text>
         </Pop>
-        <Fade delay={0.3}>
+        <Fade delay={0.15}>
           <S x={228} y={r1 + 6}>+</S>
         </Fade>
-        <Pop delay={0.4}>
+        <Pop delay={0.2}>
           <Alanine x={ax} y={r1} hl />
           <text className="f89-lb f89-sm" x={ax + 130} y={r1 + 46} textAnchor="middle">
             alanin
           </text>
         </Pop>
         {/* the atoms that leave as water */}
-        <Draw d={`M${gx + 124} ${r1 - 16} H${ax + 12} Q${ax + 20} ${r1 - 16} ${ax + 20} ${r1} Q${ax + 20} ${r1 + 16} ${ax + 12} ${r1 + 16} H${gx + 124} Q${gx + 116} ${r1 + 16} ${gx + 116} ${r1} Q${gx + 116} ${r1 - 16} ${gx + 124} ${r1 - 16}Z`} className="f89-ring" delay={0.9} dur={0.8} />
-        <Fade delay={1.5}>
+        <Draw d={`M${gx + 124} ${r1 - 16} H${ax + 12} Q${ax + 20} ${r1 - 16} ${ax + 20} ${r1} Q${ax + 20} ${r1 + 16} ${ax + 12} ${r1 + 16} H${gx + 124} Q${gx + 116} ${r1 + 16} ${gx + 116} ${r1} Q${gx + 116} ${r1 - 16} ${gx + 124} ${r1 - 16}Z`} className="f89-ring" delay={0.45} dur={0.6} />
+        <Fade delay={0.75}>
           <Arrow x1={330} y1={r1 + 58} x2={330} y2={r2 - 44} />
           <text className="f89-lb f89-lv" x={340} y={r1 + 86}>
             kondenzace, − H₂O
           </text>
         </Fade>
-        <Pop delay={1.9}>
+        <Pop delay={0.95}>
           <Dipeptide x={px} y={r2} />
           <text className="f89-lb f89-sm" x={px + 130} y={r2 + 64} textAnchor="middle">
             dipeptid glycylalanin (Gly-Ala)
           </text>
         </Pop>
-        <Draw d={`M${px + 92} ${r2 - 48} H${px + 146} V${r2 + 48} H${px + 92} Z`} className="f89-ln" style={{ stroke: 'var(--lv)', strokeWidth: 2 }} delay={2.4} dur={0.7} />
-        <Fade delay={2.9}>
+        <Draw d={`M${px + 92} ${r2 - 48} H${px + 146} V${r2 + 48} H${px + 92} Z`} className="f89-ln" style={{ stroke: 'var(--lv)', strokeWidth: 2 }} delay={1.2} dur={0.5} />
+        <Fade delay={1.45}>
           <rect x={px + 92} y={r2 - 48} width={54} height={96} fill="var(--lv)" opacity={0.12} />
           <text className="f89-lb f89-lv f89-b" x={px + 119} y={r2 - 56} textAnchor="middle">
             peptidová vazba
           </text>
         </Fade>
-        <Fade delay={2.1}>
+        <Fade delay={1.05}>
           <S x={px + 292} y={r2 + 6}>+</S>
         </Fade>
-        <Slide delay={2.2} dx={-110} dy={r1 - r2} dur={0.9}>
+        <Slide delay={1.1} dx={-110} dy={r1 - r2} dur={0.7}>
           <S x={px + 336} y={r2 + 6} lv>
             H{sub('2')}O
           </S>
@@ -159,7 +159,7 @@ export default function PeptideBond() {
 
         {/* a short chain */}
         <line className="f89-thin" x1={10} y1={300} x2={470} y2={300} style={{ opacity: 0.4 }} />
-        <Fade delay={3.1}>
+        <Fade delay={1.55}>
           <text className="f89-lb f89-b" x={16} y={326}>
             polypeptid
           </text>
@@ -174,7 +174,7 @@ export default function PeptideBond() {
         {CHAIN.map(([name, color], i) => {
           const x = 78 + i * 53
           return (
-            <Pop key={name} delay={3.3 + i * 0.12}>
+            <Pop key={name} delay={1.65 + i * 0.06}>
               <circle cx={x} cy={354} r={19} fill={color} stroke="var(--edge)" strokeWidth={1.3} />
               <text className="f89-t" x={x} y={358} textAnchor="middle" style={{ fill: '#1f2a44', fontWeight: 700 }}>
                 {name}
@@ -183,7 +183,7 @@ export default function PeptideBond() {
             </Pop>
           )
         })}
-        <Fade delay={4.2}>
+        <Fade delay={2.1} dur={0.3}>
           <text className="f89-lb f89-sm f89-lv" x={464} y={326} textAnchor="end">
             ▬ = peptidová vazba
           </text>

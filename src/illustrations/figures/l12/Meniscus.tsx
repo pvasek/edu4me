@@ -39,7 +39,7 @@ function Tube({ cx, surface, liquid, hg = false }: { cx: number; surface: string
   return (
     <g>
       <path className="f12-glass" d={`M${L} ${TOP} L${R} ${TOP} L${R} ${BOT} L${L} ${BOT} Z`} />
-      {hg ? <Liquid d={liquid} delay={0.3} tone="var(--f12-hg)" kind="x" className="f12-liq f12-hg" /> : <Liquid d={liquid} delay={0.3} />}
+      {hg ? <Liquid d={liquid} delay={0.24} tone="var(--f12-hg)" kind="x" className="f12-liq f12-hg" /> : <Liquid d={liquid} delay={0.24} />}
       <path className="f12-liq-top" d={surface} />
       {ticks}
       <Draw d={`M${L - 5} ${TOP} L${L - 5} ${BOT} M${R + 5} ${TOP} L${R + 5} ${BOT} M${L} ${TOP} L${L} ${BOT} M${R} ${TOP} L${R} ${BOT}`} dur={0.8} />
@@ -83,34 +83,34 @@ export default function Meniscus() {
       <Tube cx={M} surface={mSurf} liquid={`${mSurf} L${M + 50} ${BOT} L${M - 50} ${BOT} Z`} hg />
 
       {/* sight lines */}
-      <Draw d={`M${W + 76} ${LEVEL} L${W - 58} ${LEVEL}`} className="f12-sight" delay={1.1} dur={0.8} />
-      <Draw d={`M${M + 76} ${LEVEL} L${M - 58} ${LEVEL}`} className="f12-sight" delay={1.3} dur={0.8} />
-      <Pop delay={0.9}>
+      <Draw d={`M${W + 76} ${LEVEL} L${W - 58} ${LEVEL}`} className="f12-sight" delay={0.88} dur={0.8} />
+      <Draw d={`M${M + 76} ${LEVEL} L${M - 58} ${LEVEL}`} className="f12-sight" delay={1.04} dur={0.8} />
+      <Pop delay={0.72}>
         <Eye x={W + 96} y={LEVEL} />
       </Pop>
-      <Pop delay={1.1}>
+      <Pop delay={0.88}>
         <Eye x={M + 96} y={LEVEL} />
       </Pop>
 
       {/* wrong eye (parallax) */}
       <g className="f12-sec">
-        <Pop delay={1.8}>
+        <Pop delay={1.44}>
           <Eye x={W + 96} y={LEVEL - 80} faded />
         </Pop>
-        <Draw d={`M${W + 78} ${LEVEL - 74} L${W} ${LEVEL} L${W - 36} ${LEVEL + 34}`} className="f12-sight f12-sight-off" delay={2} dur={0.7} />
-        <Lbl x={W + 66} y={LEVEL - 128} delay={2.1} line2="= chybný odečet" className="f12-bad-t">
+        <Draw d={`M${W + 78} ${LEVEL - 74} L${W} ${LEVEL} L${W - 36} ${LEVEL + 34}`} className="f12-sight f12-sight-off" delay={1.6} dur={0.7} />
+        <Lbl x={W + 66} y={LEVEL - 128} delay={1.68} line2="= chybný odečet" className="f12-bad-t">
           oko nad hladinou
         </Lbl>
       </g>
 
       {/* readings */}
-      <Lbl x={W + 64} y={LEVEL + 46} tx={W + 2} ty={LEVEL + 1} className="f12-lab-strong" delay={1.5} line2="= 45 ml">
+      <Lbl x={W + 64} y={LEVEL + 46} tx={W + 2} ty={LEVEL + 1} className="f12-lab-strong" delay={1.2} line2="= 45 ml">
         spodní okraj
       </Lbl>
-      <Lbl x={M + 64} y={LEVEL + 46} tx={M + 2} ty={LEVEL - 1} className="f12-lab-strong" delay={1.7}>
+      <Lbl x={M + 64} y={LEVEL + 46} tx={M + 2} ty={LEVEL - 1} className="f12-lab-strong" delay={1.36}>
         horní okraj
       </Lbl>
-      <Lbl x={W + 64} y={LEVEL + 104} delay={1.6} line2="v úrovni hladiny" sec>
+      <Lbl x={W + 64} y={LEVEL + 104} delay={1.28} line2="v úrovni hladiny" sec>
         oko vždy
       </Lbl>
       <text className="f12-small" x={W - 50} y={BOT + 26}>

@@ -94,35 +94,35 @@ function Chart({ d }: { d: Dims }) {
       </text>
 
       {/* plateaus highlighted under the line */}
-      <Fade delay={2.4}>
+      <Fade delay={1.56}>
         <path className="f12-hc-plateau" d={`M${P[1][0]} ${P[1][1]} H${P[2][0]} M${P[3][0]} ${P[3][1]} H${P[4][0]}`} />
       </Fade>
-      <motion.path className="f12-hc-curve" d={curve} variants={drawV(0.3, 2.4)} />
+      <motion.path className="f12-hc-curve" d={curve} variants={drawV(0.2, 1.6)} />
       {P.slice(1, 5).map((p, i) => (
-        <Pop key={i} delay={0.6 + i * 0.45}>
+        <Pop key={i} delay={0.39 + i * 0.29}>
           <circle className="f12-hc-dot" cx={p[0]} cy={p[1]} r={3.6} />
         </Pop>
       ))}
 
       {/* segment names */}
-      <Fade delay={0.5}>
+      <Fade delay={0.33}>
         <text className="f12-t f12-t-strong" x={P[1][0] + 4} y={P[1][1] + 26}>
           led
         </text>
       </Fade>
-      <Fade delay={1.5}>
+      <Fade delay={0.98}>
         <text className="f12-t f12-t-strong" x={mid(2)[0] + 12} y={mid(2)[1] + 10}>
           voda
         </text>
       </Fade>
-      <Fade delay={2.6}>
+      <Fade delay={1.69}>
         <text className="f12-t f12-t-strong" x={P[5][0] - 14} y={P[5][1] + 6} textAnchor="end">
           pára
         </text>
       </Fade>
 
       {/* plateau labels */}
-      <Fade delay={1}>
+      <Fade delay={0.65}>
         <text className="f12-t f12-hc-lab" x={mid(1)[0]} y={P[1][1] - 30} textAnchor="middle">
           tání
         </text>
@@ -130,7 +130,7 @@ function Chart({ d }: { d: Dims }) {
           led + voda
         </text>
       </Fade>
-      <Fade delay={2.2}>
+      <Fade delay={1.43}>
         <text className="f12-t f12-hc-lab" x={mid(3)[0]} y={P[3][1] - 26} textAnchor="middle">
           var
         </text>
@@ -140,18 +140,18 @@ function Chart({ d }: { d: Dims }) {
       </Fade>
 
       {/* particle insets */}
-      <Pop delay={0.8}>
+      <Pop delay={0.52}>
         <Particles x={X0 + box * 0.5 + 14} y={sy(0) - box * 0.5 - 62} s={box} state="solid" />
       </Pop>
-      <Pop delay={1.8}>
+      <Pop delay={1.17}>
         <Particles x={mid(2)[0] + box * 0.5 + 18} y={mid(2)[1] + box + 16} s={box} state="liquid" />
       </Pop>
-      <Pop delay={2.8}>
+      <Pop delay={1.82}>
         <Particles x={P[4][0] + (narrow ? -box * 0.2 : 4)} y={P[4][1] + box * 0.5 + 30} s={box} state="gas" />
       </Pop>
 
       {/* note */}
-      <Fade delay={3}>
+      <Fade delay={1.95}>
         <path className="f12-hc-plateau" d={`M${X0 + 4} ${d.h - (narrow ? 42 : 20)} h26`} />
         <text className="f12-t" x={X0 + 38} y={d.h - (narrow ? 36 : 14)}>
           {narrow ? 'plató: teplota se nemění –' : 'plató: teplota se nemění – energie jde na změnu skupenství'}

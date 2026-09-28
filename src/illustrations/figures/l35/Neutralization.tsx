@@ -102,14 +102,14 @@ function Zoom({ x, y }: { x: number; y: number }) {
       <motion.g
         variants={{
           hidden: { x: 0, y: 0 },
-          show: { x: to[0] - from[0], y: to[1] - from[1], transition: { delay: 1.4, duration: 1.1, ease: ease.inOut } },
+          show: { x: to[0] - from[0], y: to[1] - from[1], transition: { delay: 0.8, duration: 0.9, ease: ease.inOut } },
         }}
       >
         <Atom x={from[0]} y={from[1]} r={9} el="H" sym={false} />
       </motion.g>
-      <CurveArrow x1={from[0] + 4} y1={from[1] - 16} cx={(from[0] + to[0]) / 2} cy={y + 34} x2={to[0] - 6} y2={to[1] - 14} className="f35-arrow-lv" delay={1.2} />
+      <CurveArrow x1={from[0] + 4} y1={from[1] - 16} cx={(from[0] + to[0]) / 2} cy={y + 34} x2={to[0] - 6} y2={to[1] - 14} className="f35-arrow-lv" delay={0.6} />
       {/* charges before, names after */}
-      <motion.g variants={{ hidden: { opacity: 1 }, show: { opacity: 0, transition: { delay: 2.4, duration: 0.3 } } }}>
+      <motion.g variants={{ hidden: { opacity: 1 }, show: { opacity: 0, transition: { delay: 1.7, duration: 0.25 } } }}>
         <text x={O1[0]} y={y + 150} textAnchor="middle" className="f35-t f35-b">
           <ChemText text="H_{3}O^{+}" />
         </text>
@@ -117,7 +117,7 @@ function Zoom({ x, y }: { x: number; y: number }) {
           <ChemText text="OH^{−}" />
         </text>
       </motion.g>
-      <motion.g variants={vFade} custom={2.6}>
+      <motion.g variants={vFade} custom={1.85}>
         <text x={O1[0]} y={y + 150} textAnchor="middle" className="f35-t f35-b">
           <ChemText text="H_{2}O" />
         </text>
@@ -173,7 +173,7 @@ export default function Neutralization() {
               <Note x={16} y={252} tx={110} ty={120} size={15}>
                 <ChemText text="ionty-diváci Na^{+}, Cl^{−}" />
               </Note>
-              <Arrow x1={178} y1={196} x2={178} y2={292} className="f35-arrow-lv" delay={1} />
+              <Arrow x1={178} y1={196} x2={178} y2={292} className="f35-arrow-lv" delay={0.4} />
               <Zoom x={55} y={300} />
             </>
           ),

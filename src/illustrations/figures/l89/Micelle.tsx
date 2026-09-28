@@ -65,11 +65,11 @@ function Scene() {
   return (
     <Plate w={L.w} h={L.h}>
       {/* single soap anion, enlarged */}
-      <Draw d={tail(horiz ? hx + 16 : hx, horiz ? hy : hy + 16, tx, ty, 15, 6)} className="f89-ln" dur={1.1} style={{ strokeWidth: 2.2 }} />
+      <Draw d={tail(horiz ? hx + 16 : hx, horiz ? hy : hy + 16, tx, ty, 15, 6)} className="f89-ln" dur={0.8} style={{ strokeWidth: 2.2 }} />
       <Pop delay={0.3}>
         <Head x={hx} y={hy} r={16} label />
       </Pop>
-      <Fade delay={0.9}>
+      <Fade delay={0.6}>
         {horiz ? (
           <>
             <text className="f89-lb f89-lv f89-b" x={hx - 14} y={hy - 26}>
@@ -119,7 +119,7 @@ function Scene() {
 
       <g className="f89-bob">
         {/* oil droplet */}
-        <Pop delay={0.9}>
+        <Pop delay={0.6}>
           <circle cx={L.c.x} cy={L.c.y} r={oilR} fill="#e8c35a" opacity={0.75} />
           <circle cx={L.c.x} cy={L.c.y} r={oilR} fill={hatch('dd')} className="f89-hatch" />
         </Pop>
@@ -129,14 +129,14 @@ function Scene() {
           const s = Math.sin(a)
           const hr = oilR + 32
           return (
-            <Pop key={i} delay={1.3 + i * 0.05}>
+            <Pop key={i} delay={0.8 + i * 0.03}>
               <path d={tail(L.c.x + c * (hr - 7), L.c.y + s * (hr - 7), L.c.x + c * (oilR - 26), L.c.y + s * (oilR - 26), 7, 2.6)} className="f89-thin" style={{ strokeWidth: 1.3 }} />
               <Head x={L.c.x + c * hr} y={L.c.y + s * hr} />
             </Pop>
           )
         })}
       </g>
-      <Fade delay={2.6}>
+      <Fade delay={1.7}>
         {ions.map(([fx, fy], i) => {
           const x = wx + 14 + fx * (ww - 28)
           const y = wy + 14 + fy * (wh - 28)

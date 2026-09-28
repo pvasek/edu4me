@@ -64,21 +64,6 @@
   }
 }
 
-.f35-replay {
-  appearance: none;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--ink-soft);
-  border-radius: 99px;
-  padding: 6px 14px;
-  min-height: 36px;
-  font: italic 600 16px var(--font-display);
-  cursor: pointer;
-}
-.f35-replay:hover {
-  background: var(--surface-2);
-}
-
 /* ---------------------------------------------------------------- text */
 .f35-t {
   font: 500 14px var(--font-body);
@@ -801,4 +786,10 @@
 .f35-rs-cloud ellipse {
   fill: color-mix(in srgb, var(--lv) 16%, transparent);
   stroke: none;
+}
+
+/* equation under a StepStrip panel */
+.f35-eqline {
+  font: 500 13px/1.35 var(--font-mono);
+  color: var(--ink);
 }

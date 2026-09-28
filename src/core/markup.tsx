@@ -24,6 +24,15 @@ function arrows(s: string) {
   return s
 }
 
+/**
+ * Long equations may wrap, but only between terms: a no-break space glues each
+ * operator (+, →, ⇌, =) to the term before it, so a line ends with the operator
+ * and a species is never split (species contain no spaces).
+ */
+function breakable(s: string) {
+  return s.replace(/ ([+→⇌⇄←=]) /g, '\u00a0$1 ')
+}
+
 let keySeed = 0
 const k = () => `m${keySeed++}`
 
@@ -70,7 +79,7 @@ export function parse(text: string): ReactNode[] {
         flush()
         out.push(
           <span className="chem" key={k()}>
-            {scripts(arrows(text.slice(i + 1, end)), true)}
+            {scripts(breakable(arrows(text.slice(i + 1, end))), true)}
           </span>,
         )
         i = end + 1

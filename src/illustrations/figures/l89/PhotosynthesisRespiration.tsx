@@ -127,19 +127,19 @@ function Scene() {
       <Pop delay={0.1}>
         <Sun {...L.sun} />
       </Pop>
-      <Draw d={`M${L.sun.x + 24} ${L.sun.y + 22} l10 4 l-4 8 l12 5 l-4 8 l14 6`} className="f89-ln" style={{ stroke: '#d9a21b', strokeWidth: 2.2 }} delay={0.4} dur={0.6} />
-      <Fade delay={0.5}>
+      <Draw d={`M${L.sun.x + 24} ${L.sun.y + 22} l10 4 l-4 8 l12 5 l-4 8 l14 6`} className="f89-ln" style={{ stroke: '#d9a21b', strokeWidth: 2.2 }} delay={0.3} dur={0.6} />
+      <Fade delay={0.35}>
         <text className="f89-lb f89-sm" x={L.sun.x + 38} y={L.sun.y - 6}>
           světlo
         </text>
       </Fade>
-      <Pop delay={0.3}>
+      <Pop delay={0.2}>
         <Chloroplast {...L.chl} />
       </Pop>
-      <Pop delay={0.6}>
+      <Pop delay={0.4}>
         <Mitochondrion {...L.mit} />
       </Pop>
-      <Fade delay={0.9}>
+      <Fade delay={0.6}>
         <text className="f89-lb f89-b" x={L.chl.x + (n ? 0 : 30)} y={L.chl.y - 64} textAnchor="middle">
           chloroplast · fotosyntéza
         </text>
@@ -148,9 +148,9 @@ function Scene() {
         </text>
       </Fade>
 
-      <Draw d={L.go} className="f89-lvstroke" delay={1.2} dur={1} style={{ strokeWidth: 2.6 }} />
-      <Draw d={L.back} className="f89-ln" delay={1.8} dur={1} style={{ strokeWidth: 2.6, stroke: 'var(--blue)' }} />
-      <Fade delay={2.1}>
+      <Draw d={L.go} className="f89-lvstroke" delay={0.8} dur={0.7} style={{ strokeWidth: 2.6 }} />
+      <Draw d={L.back} className="f89-ln" delay={1.1} dur={0.7} style={{ strokeWidth: 2.6, stroke: 'var(--blue)' }} />
+      <Fade delay={1.6}>
         <ArrowHead d={L.go} cls="f89-lvfill" />
         <ArrowHead d={L.back} fill="var(--blue)" />
         <text className="f89-f f89-lv f89-b" x={L.goL.x} y={L.goL.y} textAnchor={L.goL.a}>
@@ -160,13 +160,13 @@ function Scene() {
           <ChemText text="6 CO_{2} + 6 H_{2}O" />
         </text>
       </Fade>
-      <Fade delay={2.4}>
+      <Fade delay={1.8}>
         <Tokens d={L.go} color="#f1d67a" />
         <Tokens d={L.back} color="#9fc0e6" />
       </Fade>
 
       {/* equations */}
-      <Fade delay={2.6}>
+      <Fade delay={1.5}>
         <text className="f89-f f89-sm" x={L.eqChl.x} y={L.eqChl.y} textAnchor="middle">
           <ChemText text="6CO_{2} + 6H_{2}O → C_{6}H_{12}O_{6} + 6O_{2}" />
         </text>
@@ -180,7 +180,7 @@ function Scene() {
           exotermní · energie do ATP
         </text>
       </Fade>
-      <Fade delay={2.9}>
+      <Fade delay={1.7}>
         <Arrow x1={ax1} y1={ay1} x2={ax2} y2={ay2} className="f89-arr" />
         <path d={`M${ax2 + (n ? -6 : 2)} ${ay2 + (n ? 6 : -14)} l-6 12 h7 l-4 11 l11 -15 h-7 l4 -8z`} fill="#f2c94c" stroke="#b07d12" strokeWidth={1} />
         <text className="f89-lb f89-b" x={n ? ax2 + 14 : ax2 - 6} y={n ? ay2 + 24 : ay2 + 36} textAnchor={n ? 'start' : 'middle'}>

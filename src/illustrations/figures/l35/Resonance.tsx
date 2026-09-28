@@ -137,12 +137,12 @@ function Structures({ xs, cy, R, gap }: { xs: number[]; cy: number; R: number; g
   return (
     <g>
       {xs.map((x, i) => (
-        <Pop key={i} d={0.2 + i * 0.3}>
+        <Pop key={i} d={0.17 + i * 0.26}>
           <Lewis cx={x} cy={cy} dbl={i} R={R} />
         </Pop>
       ))}
       {[0, 1].map((i) => (
-        <DoubleArrow key={i} x={(xs[i] + xs[i + 1]) / 2} y={cy - 4} w={gap} d={0.5 + i * 0.3} />
+        <DoubleArrow key={i} x={(xs[i] + xs[i + 1]) / 2} y={cy - 4} w={gap} d={0.42 + i * 0.26} />
       ))}
     </g>
   )
@@ -157,21 +157,21 @@ function Wide() {
         rezonanční struktury
       </T>
       <Structures xs={[112, 290, 468]} cy={98} R={42} gap={34} />
-      <Fade d={1.2}>
+      <Fade d={1.02}>
         <T x={290} y={184} className="f35-t f35-small f35-muted f35-sec">
           liší se jen polohou dvojné vazby a elektronů; atomy zůstávají na místě
         </T>
       </Fade>
-      <Arrow x1={290} y1={194} x2={256} y2={214} className="f35-arrow-lv" head={8} delay={1.3} />
-      <Pop d={1.6}>
+      <Arrow x1={290} y1={194} x2={256} y2={214} className="f35-arrow-lv" head={8} delay={1.1} />
+      <Pop d={1.36}>
         <HybridNO3 cx={170} cy={318} />
       </Pop>
-      <Fade d={1.5}>
+      <Fade d={1.27}>
         <T x={170} y={226} className="f35-title">
           rezonanční hybrid
         </T>
       </Fade>
-      <Fade d={2}>
+      <Fade d={1.7}>
         {NOTES.map((n, i) => (
           <g key={i}>
             <circle cx={300} cy={284 + i * 30} r={3} className="f35-pointer" />
@@ -192,16 +192,16 @@ function Narrow() {
         rezonanční struktury
       </T>
       <Structures xs={[56, 160, 264]} cy={82} R={32} gap={18} />
-      <Arrow x1={160} y1={150} x2={160} y2={178} className="f35-arrow-lv" head={8} delay={1.3} />
-      <Fade d={1.5}>
+      <Arrow x1={160} y1={150} x2={160} y2={178} className="f35-arrow-lv" head={8} delay={1.1} />
+      <Fade d={1.27}>
         <T x={160} y={202} className="f35-title">
           rezonanční hybrid
         </T>
       </Fade>
-      <Pop d={1.6}>
+      <Pop d={1.36}>
         <HybridNO3 cx={160} cy={296} />
       </Pop>
-      <Fade d={2}>
+      <Fade d={1.7}>
         {NOTES.map((n, i) => (
           <T key={i} x={160} y={380 + i * 22} className="f35-note" size={15}>
             {n}

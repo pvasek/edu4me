@@ -64,7 +64,7 @@ function Scene() {
 
       {/* bars */}
       {PEAKS.map((k, j) => (
-        <Grow key={k.mz} axis="y" origin="50% 100%" delay={0.5 + j * 0.15} dur={0.7}>
+        <Grow key={k.mz} axis="y" origin="50% 100%" delay={0.3 + j * 0.1} dur={0.6}>
           <rect
             x={X(k.mz) - L.bw / 2}
             y={Y(k.i)}
@@ -78,7 +78,7 @@ function Scene() {
       ))}
 
       {/* fragment labels */}
-      <Fade delay={1.5}>
+      <Fade delay={1.1}>
         {/* base peak */}
         <text className="f89-lb f89-lv f89-b" x={X(31)} y={Y(100) - 28} textAnchor="middle">
           základní pík
@@ -122,7 +122,7 @@ function Scene() {
         </text>
       </Fade>
 
-      <Inset {...L.inset} delay={2.2} />
+      <Inset {...L.inset} delay={1.3} />
     </Plate>
   )
 }
@@ -147,7 +147,7 @@ function Inset({ x, y, w, h, delay }: { x: number; y: number; w: number; h: numb
         { i: 33, mz: 52, t: 'M+2' },
       ].map((b, k) => (
         <g key={b.mz}>
-          <Grow axis="y" origin="50% 100%" delay={delay + 0.3 + k * 0.2} dur={0.6}>
+          <Grow axis="y" origin="50% 100%" delay={delay + 0.2 + k * 0.15} dur={0.5}>
             <rect x={bx[k] - 5} y={H(b.i)} width={10} height={base - H(b.i)} fill="#4fae5a" stroke="var(--edge)" strokeWidth={1} />
             <rect x={bx[k] - 5} y={H(b.i)} width={10} height={base - H(b.i)} fill={hatch('s')} className="f89-hatch" />
           </Grow>

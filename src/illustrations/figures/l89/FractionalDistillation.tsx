@@ -49,7 +49,7 @@ function Tower() {
   return (
     <>
         {/* temperature scale */}
-        <Grow axis="y" origin="50% 100%" dur={1.2} delay={0.2}>
+        <Grow axis="y" origin="50% 100%" dur={1} delay={0.1}>
           {TEMP.map((c, i) => (
             <rect key={c} x={50} y={60 + i * 47.5} width={9} height={47.5} fill={c} />
           ))}
@@ -69,7 +69,7 @@ function Tower() {
 
         {/* trays with bubble caps and condensed liquid */}
         {TRAYS.map((y, i) => (
-          <Pop key={y} delay={0.9 + (TRAYS.length - i) * 0.07}>
+          <Pop key={y} delay={0.5 + (TRAYS.length - i) * 0.05}>
             <rect x={x1 + 2} y={y - 5} width={x2 - x1 - 4} height={5} fill={liquidAt(y)} opacity={0.75} />
             <rect x={x1 + 2} y={y - 5} width={x2 - x1 - 4} height={5} fill={hatch('h')} className="f89-hatch" />
             <line className="f89-ln" x1={x1} y1={y} x2={x2} y2={y} />
@@ -97,7 +97,7 @@ function Tower() {
           ))}
         </g>
 
-        <Draw d={`M${x1} ${top + 20} Q${x1} ${top - 8} ${cx} ${top - 8} Q${x2} ${top - 8} ${x2} ${top + 20} V${bot} H${x1} Z`} dur={1.3} />
+        <Draw d={`M${x1} ${top + 20} Q${x1} ${top - 8} ${cx} ${top - 8} Q${x2} ${top - 8} ${x2} ${top + 20} V${bot} H${x1} Z`} dur={1} />
         {/* skirt */}
         <rect x={x1 - 6} y={bot} width={x2 - x1 + 12} height={14} className="f89-box" />
         <rect x={x1 - 6} y={bot} width={x2 - x1 + 12} height={14} fill={hatch('x')} className="f89-hatch" />
@@ -126,13 +126,13 @@ function Tower() {
 
         {/* draw-offs: from the bottom up */}
         {FRACTIONS.map((f, i) => {
-          const delay = 1.6 + (FRACTIONS.length - 1 - i) * 0.35
+          const delay = 0.9 + (FRACTIONS.length - 1 - i) * 0.18
           const isGas = i === 0
           const d = isGas ? `M${cx} ${top - 8} V${f.y} H206` : `M${x2} ${f.y} H206`
           return (
             <g key={f.name}>
-              <Draw d={d} delay={delay} dur={0.5} className="f89-ln f89-pipe" />
-              <Fade delay={delay + 0.35}>
+              <Draw d={d} delay={delay} dur={0.4} className="f89-ln f89-pipe" />
+              <Fade delay={delay + 0.3}>
                 <polygon points={`206,${f.y} 199,${f.y - 4} 199,${f.y + 4}`} fill="var(--edge)" />
                 {/* sample vial */}
                 <rect x={210} y={f.y - 9} width={13} height={18} rx={3} fill={f.color} stroke="var(--edge)" strokeWidth={1.1} />
@@ -152,7 +152,7 @@ function Tower() {
         })}
 
         {/* residue → vacuum distillation products */}
-        <Fade delay={3.4}>
+        <Fade delay={1.9}>
           <path className="f89-thin" d="M216 494 V548 M216 526 H236 M216 548 H236" />
           <polygon points="240,526 233,522.5 233,529.5" fill="var(--edge)" />
           <polygon points="240,548 233,544.5 233,551.5" fill="var(--edge)" />

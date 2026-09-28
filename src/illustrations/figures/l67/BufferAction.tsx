@@ -41,7 +41,7 @@ function Meter({ c, from, to }: { c: number; from: number; to: number }) {
       <motion.g
         initial={{ rotate: deg(still ? to : from) }}
         animate={{ rotate: deg(go || still ? to : from) }}
-        transition={{ type: 'spring', stiffness: 60, damping: 9, delay: go ? 1.3 : 0 }}
+        transition={{ type: 'spring', stiffness: 60, damping: 9, delay: go ? 1.04 : 0 }}
         style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
       >
         {/* invisible square centred on the pivot so the rotation origin is the dial centre */}
@@ -74,7 +74,7 @@ function Dropper({ c, ion }: { c: number; ion: string }) {
         className="f67-drop"
         initial={{ y: 0, opacity: 0 }}
         animate={go ? { y: [0, 0, 22], opacity: [0, 1, 0] } : { y: 0, opacity: 0 }}
-        transition={{ duration: 0.9, delay: 0.7, times: [0, 0.2, 1], ease: 'easeIn' }}
+        transition={{ duration: 0.9, delay: 0.56, times: [0, 0.2, 1], ease: 'easeIn' }}
       />
     </g>
   )
@@ -108,12 +108,12 @@ function BufferTokens({ c, mode }: { c: number; mode: Mode }) {
   return (
     <g>
       {pos.map(([x, y], i) => (
-        <Token key={i} x={x} y={y} a={isA(i)} swap={i === target} delay={2.0} />
+        <Token key={i} x={x} y={y} a={isA(i)} swap={i === target} delay={1.6} />
       ))}
       <motion.g
         initial={{ x: start[0], y: start[1], opacity: 0 }}
         animate={go ? { x: [start[0], start[0], tp[0]], y: [start[1], start[1], tp[1]], opacity: [0, 1, 1, 0] } : { opacity: 0 }}
-        transition={{ duration: 1.4, delay: 0.9, ease: ease.inOut }}
+        transition={{ duration: 1.4, delay: 0.72, ease: ease.inOut }}
       >
         <circle r={6} fill={mode === 'acid' ? '#d23a2e' : '#3d6fd1'} className="f67-o f67-thin" />
         <text y={3} textAnchor="middle" className="f67-e-t" style={{ fontSize: 9 }}>
@@ -169,7 +169,7 @@ function WaterIons({ c, mode }: { c: number; mode: Mode }) {
   return (
     <g>
       {pts.map(([x, y], i) => (
-        <Pop key={i} delay={1.9 + i * 0.08}>
+        <Pop key={i} delay={1.52 + i * 0.06}>
           <circle cx={x} cy={y} r={6} fill={mode === 'acid' ? '#d23a2e' : '#3d6fd1'} className="f67-o f67-thin" />
           <text x={x} y={y + 3} textAnchor="middle" className="f67-e-t" style={{ fontSize: 9 }}>
             {mode === 'acid' ? '+' : '−'}
@@ -210,10 +210,10 @@ export default function BufferAction() {
         <Pop>
           <Beaker c={130} />
         </Pop>
-        <Pop delay={0.1}>
+        <Pop delay={0.08}>
           <Beaker c={370} />
         </Pop>
-        <Fade delay={0.2}>
+        <Fade delay={0.16}>
           <Meter c={130} from={d.water[0]} to={d.water[1]} />
           <Meter c={370} from={d.buffer[0]} to={d.buffer[1]} />
           <Dropper c={130} ion={d.ion} />
@@ -222,7 +222,7 @@ export default function BufferAction() {
         <WaterIons c={130} mode={mode} />
         <BufferTokens c={370} mode={mode} />
 
-        <Fade delay={0.4}>
+        <Fade delay={0.32}>
           <text x={130} y={32} textAnchor="middle" className="f67-lbl f67-b f67-big">
             voda
           </text>
@@ -230,7 +230,7 @@ export default function BufferAction() {
             acetátový pufr
           </text>
         </Fade>
-        <Fade delay={2.2}>
+        <Fade delay={1.76}>
           <text x={130} y={362} textAnchor="middle" className="f67-lbl f67-b f67-red-t">
             ΔpH = {sign(dw)}
           </text>
@@ -244,7 +244,7 @@ export default function BufferAction() {
             pH se skoro nehne
           </text>
         </Fade>
-        <Pop delay={2.4}>
+        <Pop delay={1.92}>
           <rect x={30} y={396} width={440} height={42} rx={6} className="f67-tag-lvl" />
           <Eq x={250} y={423} t={d.eq} anchor="middle" className="f67-eq-lg" />
         </Pop>

@@ -16,13 +16,13 @@ function Cups({ cx, oy }: { cx: number; oy: number }) {
   return (
     <g>
       {/* cups */}
-      <Pop delay={0.1}>
+      <Pop delay={0.06}>
         <path d={`${outer}Z`} className="f67-foam" />
         <path d={`${outer}Z`} fill={pat(id, 'dots')} />
         <path d={outer} className="f67-o f67-thick" />
         <path d={`M${cx - 80} ${oy + 84} H${cx - 72} M${cx + 72} ${oy + 84} H${cx + 80}`} className="f67-o f67-thick" />
       </Pop>
-      <Pop delay={0.2}>
+      <Pop delay={0.11}>
         <path d={`${inner}Z`} className="f67-foam f67-foam-in" />
         <Liquid d={liquid} color="#6f9fd8" opacity={0.4} />
         <path d={inner} className="f67-o" />
@@ -34,7 +34,7 @@ function Cups({ cx, oy }: { cx: number; oy: number }) {
         <circle cx={sx} cy={oy + 14} r={6} className="f67-o" style={{ stroke: '#8d939c', strokeWidth: 2.2 }} />
       </g>
       {/* thermometer with a rising column */}
-      <Pop delay={0.3}>
+      <Pop delay={0.17}>
         <rect x={tx - 5} y={oy + 2} width={10} height={250} rx={5} className="f67-o f67-glass" />
         <circle cx={tx} cy={oy + 254} r={8} fill="#d9493b" className="f67-o" />
         {[40, 60, 80, 100, 120].map((y) => (
@@ -48,10 +48,10 @@ function Cups({ cx, oy }: { cx: number; oy: number }) {
         height={218}
         fill="#d9493b"
         style={{ transformBox: 'fill-box', transformOrigin: '50% 100%' }}
-        variants={{ hidden: { scaleY: 0.45 }, show: { scaleY: 1, transition: { duration: 1.4, delay: 1.2, ease: ease.inOut } } }}
+        variants={{ hidden: { scaleY: 0.45 }, show: { scaleY: 1, transition: { duration: 1, delay: 0.66, ease: ease.inOut } } }}
       />
       {/* lid with two holes */}
-      <Pop delay={0.35}>
+      <Pop delay={0.19}>
         <path
           d={`M${cx - 84} ${oy + 70} H${sx - 5} V${oy + 82} H${cx - 84}Z M${sx + 5} ${oy + 70} H${tx - 7} V${oy + 82} H${sx + 5}Z M${tx + 7} ${oy + 70} H${cx + 84} V${oy + 82} H${tx + 7}Z`}
           className="f67-o f67-foam"
@@ -89,7 +89,7 @@ function Graph({ gx, gy }: { gx: number; gy: number }) {
     <g>
       <DrawArrow d={`M${X0} ${YB} H${X1 + 10}`} />
       <DrawArrow d={`M${X0} ${YB} V${YT - 8}`} />
-      <Fade delay={0.3}>
+      <Fade delay={0.17}>
         <text x={X0 - 8} y={YT} textAnchor="end" className="f67-lbl f67-b f67-big">
           T
         </text>
@@ -103,14 +103,14 @@ function Graph({ gx, gy }: { gx: number; gy: number }) {
           <ChemText text="T_{2}" />
         </text>
       </Fade>
-      <Fade delay={1.6}>
+      <Fade delay={0.88}>
         <path d={`M${X0} ${sy(T1)} H${sx(0.62)}`} className="f67-o f67-thin f67-dash" />
         <path d={`M${X0} ${sy(T2)} H${xm + 50}`} className="f67-o f67-thin f67-dash" />
         <path d={`M${xm} ${YB} V${sy(T1)}`} className="f67-o f67-thin f67-dot2" />
       </Fade>
-      <Draw d={d} className="f67-curve f67-curve-2" delay={1.2} />
-      <DrawArrow d={`M${xm - 14} ${sy(T1) - 3} V${sy(T2) + 3}`} tone="red" both delay={2} />
-      <Fade delay={2.3}>
+      <Draw d={d} className="f67-curve f67-curve-2" delay={0.66} />
+      <DrawArrow d={`M${xm - 14} ${sy(T1) - 3} V${sy(T2) + 3}`} tone="red" both delay={1.1} />
+      <Fade delay={1.26}>
         <text x={xm - 20} y={(sy(T1) + sy(T2)) / 2 + 6} textAnchor="end" className="f67-lbl f67-b f67-big f67-red-t">
           ΔT
         </text>
@@ -124,7 +124,7 @@ function Graph({ gx, gy }: { gx: number; gy: number }) {
 
 function Formula({ x, y, w }: { x: number; y: number; w: number }) {
   return (
-    <Pop delay={2.4}>
+    <Pop delay={1.32}>
       <rect x={x} y={y} width={w} height={96} rx={6} className="f67-tag-lvl" />
       <text x={x + w / 2} y={y + 20} textAnchor="middle" className="f67-cap f67-lvl-t">
         teplo předané roztoku
@@ -156,7 +156,7 @@ export default function Calorimeter() {
       label="Kalorimetr z kelímků: dva do sebe zasunuté polystyrenové kelímky s víčkem, kterým prochází teploměr a míchadlo; uvnitř je roztok, ve kterém probíhá reakce. Graf teploty v čase ukazuje, že po smíchání teplota rychle stoupne z T1 na T2, rozdíl je ΔT. Teplo předané roztoku se spočítá jako q = m · c · ΔT, kde m je hmotnost roztoku a c měrná tepelná kapacita, pro vodu 4,18 J/(g·K)."
     >
       <Cups cx={cx} oy={oy} />
-      <Fade delay={0.6}>
+      <Fade delay={0.33}>
         <Lbl x={cx - 36} y={oy + 30} tx={cx - 32} ty={oy + 14} anchor="end">
           míchadlo
         </Lbl>

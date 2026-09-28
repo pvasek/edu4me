@@ -40,7 +40,7 @@ function Electron({ i, g }: { i: number; g: ReturnType<typeof geometry> }) {
     <motion.g
       initial={{ x: still ? end[0] : g.from[i][0], y: still ? end[1] : g.from[i][1] }}
       animate={go ? { x: pts.map((p) => p[0]), y: pts.map((p) => p[1]) } : { x: end[0], y: end[1] }}
-      transition={go ? { duration: 1.25, delay: 1.5 + i * 0.35, ease: ease.inOut } : { duration: 0 }}
+      transition={go ? { duration: 1, delay: 0.7 + i * 0.25, ease: ease.inOut } : { duration: 0 }}
     >
       <circle r={7.5} className="f67-e" />
       <text y={3.6} textAnchor="middle" className="f67-e-t">
@@ -130,12 +130,12 @@ export default function RedoxTransfer() {
         <circle cx={cx} cy={cy} r={L.shell} className="f67-o f67-thin f67-dash" />
         <Atom x={cx} y={cy} r={L.shell * 0.56} el="Cu" text="" />
       </Pop>
-      <Swap x={zx} y={zy} a="Zn" b="Zn^2+" delay={2.6} />
-      <Swap x={cx} y={cy} a="Cu^2+" b="Cu" delay={3.0} />
+      <Swap x={zx} y={zy} a="Zn" b="Zn^2+" delay={1.6} />
+      <Swap x={cx} y={cy} a="Cu^2+" b="Cu" delay={1.85} />
 
       {/* the hop */}
-      <DrawArrow d={g.arc} tone="blue" delay={0.8} className="f67-wide" />
-      <Fade delay={1.2}>
+      <DrawArrow d={g.arc} tone="blue" delay={0.3} className="f67-wide" />
+      <Fade delay={0.6}>
         <text x={g.mid} y={g.arcTop - 9} textAnchor="middle" className="f67-lbl f67-b f67-blue-t f67-big">
           2 e⁻
         </text>
@@ -144,7 +144,7 @@ export default function RedoxTransfer() {
       <Electron i={1} g={g} />
 
       {/* labels at the atoms */}
-      <Fade delay={0.6}>
+      <Fade delay={0.4}>
         <Lbl x={zx - L.shell - 6} y={zy - L.shell - 16} tx={zx - L.shell * 0.6} ty={zy - L.shell * 0.8} sec>
           valenční vrstva
         </Lbl>
@@ -159,15 +159,15 @@ export default function RedoxTransfer() {
       </Fade>
 
       {/* the two half-reactions */}
-      <Pop delay={1.0}>
+      <Pop delay={0.7}>
         <Half x={boxes[0][0]} y={boxes[0][1]} w={boxes[0][2]} cap="oxidace · ztráta e⁻" eq="Zn → Zn^{2+} + 2e^{-}" note="zinek = redukční činidlo" lvl />
       </Pop>
-      <Pop delay={1.2}>
+      <Pop delay={0.85}>
         <Half x={boxes[1][0]} y={boxes[1][1]} w={boxes[1][2]} cap="redukce · zisk e⁻" eq="Cu^{2+} + 2e^{-} → Cu" note="Cu^{2+} = oxidační činidlo" />
       </Pop>
 
       {/* mnemonic cartouche */}
-      <Fade delay={3.2}>
+      <Fade delay={1.9}>
         <path d={`M${mx - hw + 14} ${cy2 - 18} H${mx + hw - 14} L${mx + hw} ${cy2} L${mx + hw - 14} ${cy2 + 18} H${mx - hw + 14} L${mx - hw} ${cy2} Z`} className="f67-o f67-fill2" />
         <path d={`M${mx - hw + 19} ${cy2 - 14} H${mx + hw - 19} L${mx + hw - 8} ${cy2} L${mx + hw - 19} ${cy2 + 14} H${mx - hw + 19} L${mx - hw + 8} ${cy2} Z`} className="f67-o f67-thin" />
         <text x={mx} y={cy2 + 6} textAnchor="middle" className="f67-lbl f67-b f67-big">

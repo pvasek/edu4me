@@ -99,7 +99,10 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
                 <ul>
                   {lesson.goals.map((g, i) => (
                     <li key={i}>
-                      <Icon name="check" /> <Md text={g} />
+                      <Icon name="check" />
+                      <span>
+                        <Md text={g} />
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -127,7 +130,9 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
                       <ChemIconView name={sec.icon} size={30} />
                     </motion.span>
                   )}
-                  <Md text={sec.title} />
+                  <span className="lesson-section-name">
+                    <Md text={sec.title} />
+                  </span>
                 </h2>
                 <div className="lesson-blocks">
                   {sec.blocks

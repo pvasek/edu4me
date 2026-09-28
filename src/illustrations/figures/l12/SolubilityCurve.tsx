@@ -164,7 +164,7 @@ function Chart({ t }: { t: number | null }) {
       </g>
 
       {/* the KNO3 crystallisation example from the lesson (60 → 20 °C) */}
-      <Fade delay={2} className="f12-sec">
+      <Fade delay={1.7} className="f12-sec">
         <path className="f12-hatch" d={`M${sx(20)} ${sy(110)} L${sx(60)} ${sy(110)} L${sx(60)} ${sy(31.6)} L${sx(20)} ${sy(31.6)} Z`} fill={h('d')} />
         <path className="f12-cross" d={`M${sx(60)} ${sy(110)} L${sx(20)} ${sy(110)} L${sx(20)} ${sy(31.6)}`} />
         <text className="f12-t" x={sx(21)} y={sy(165)}>
@@ -180,7 +180,7 @@ function Chart({ t }: { t: number | null }) {
         <g key={s.key} className={s.cls}>
           <motion.path className="f12-series" d={curve(SOLUBILITY[s.key])} variants={drawV(0.2 + i * 0.3, 1.4)} />
           {TEMPS.map((tt, j) => (
-            <motion.g key={tt} variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { delay: 0.5 + i * 0.3 + j * 0.12 } } }}>
+            <motion.g key={tt} variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { delay: 0.42 + i * 0.26 + j * 0.1 } } }}>
               <Marker key2={s.key} x={sx(tt)} y={sy(SOLUBILITY[s.key][j])} />
             </motion.g>
           ))}
@@ -188,7 +188,7 @@ function Chart({ t }: { t: number | null }) {
       ))}
 
       {/* direct labels */}
-      <Fade delay={1.6}>
+      <Fade delay={1.36}>
         <text className="f12-t f12-t-strong" x={sx(94)} y={sy(487) + 6} textAnchor="end">
           cukr
         </text>

@@ -97,13 +97,13 @@ function Recipe({ k, cx, y, d }: { k: Kind; cx: number; y: number; d: number }) 
         {items}
         {k.rest > 0 && <line x1={rx - 11} x2={rx - 11} y1={y} y2={y + 28} className="f35-rule" />}
       </Pop>
-      <Arrow x1={cx} y1={y + 36} x2={cx} y2={y + 62} className="f35-arrow-lv" head={7} delay={d + 0.3} />
-      <Fade d={d + 0.4}>
+      <Arrow x1={cx} y1={y + 36} x2={cx} y2={y + 62} className="f35-arrow-lv" head={7} delay={d + 0.15} />
+      <Fade d={d + 0.2}>
         <T x={cx + 8} y={y + 54} anchor="start" className="f35-note" size={14}>
           mísení
         </T>
       </Fade>
-      <Pop d={d + 0.7}>
+      <Pop d={d + 0.35}>
         {Array.from({ length: hyb }, (_, i) => (
           <Icon key={i} x={hx0 + i * 17} y={y + 84} k="h" />
         ))}
@@ -111,7 +111,7 @@ function Recipe({ k, cx, y, d }: { k: Kind; cx: number; y: number; d: number }) 
           <Icon key={`r${i}`} x={hx0 + (hyb - 1) * 17 + 22 + i * 20} y={y + 84} k="p" faint />
         ))}
       </Pop>
-      <Fade d={d + 0.9}>
+      <Fade d={d + 0.45}>
         <T x={cx} y={y + 118} className="f35-t f35-small f35-muted">
           <ChemText text={`${hyb} × ${k.name}${k.rest ? ` + ${k.rest} p` : ''}`} />
         </T>
@@ -139,8 +139,8 @@ function Geometry({ i, cx, cy, d }: { i: number; cx: number; cy: number; d: numb
           <Atom x={cx} y={cy} r={7} el="C" sym={false} />
           <Hyb x={cx} y={cy} ang={28} L={L * 0.92} W={16} />
         </Pop>
-        <Arc d={`M${cx + 30 * Math.cos(rad(a1))} ${cy + 30 * Math.sin(rad(a1))} A30 30 0 0 1 ${cx} ${cy - 30}`} delay={d + 0.5} />
-        <Fade d={d + 0.8}>
+        <Arc d={`M${cx + 30 * Math.cos(rad(a1))} ${cy + 30 * Math.sin(rad(a1))} A30 30 0 0 1 ${cx} ${cy - 30}`} delay={d + 0.25} />
+        <Fade d={d + 0.4}>
           <T x={cx - 40} y={cy - 32} className="f35-mono f35-b f35-lvt" size={13}>
             109,5°
           </T>
@@ -166,8 +166,8 @@ function Geometry({ i, cx, cy, d }: { i: number; cx: number; cy: number; d: numb
           <Atom x={cx} y={cy} r={7} el="C" sym={false} />
           <Hyb x={cx} y={cy} ang={90} L={L} sy={sy} W={17} />
         </Pop>
-        <Arc d={`M${B[0]} ${B[1]} A30 ${30 * sy} 0 0 0 ${A[0]} ${A[1]}`} delay={d + 0.5} />
-        <Fade d={d + 0.8}>
+        <Arc d={`M${B[0]} ${B[1]} A30 ${30 * sy} 0 0 0 ${A[0]} ${A[1]}`} delay={d + 0.25} />
+        <Fade d={d + 0.4}>
           <T x={cx - 44} y={cy + 30} className="f35-mono f35-b f35-lvt" size={13}>
             120°
           </T>
@@ -185,8 +185,8 @@ function Geometry({ i, cx, cy, d }: { i: number; cx: number; cy: number; d: numb
         <Hyb x={cx} y={cy} ang={0} L={L} />
         <Atom x={cx} y={cy} r={7} el="C" sym={false} />
       </Pop>
-      <Arc d={`M${cx - 46} ${cy + 4} A46 46 0 0 0 ${cx + 46} ${cy + 4}`} delay={d + 0.5} />
-      <Fade d={d + 0.8}>
+      <Arc d={`M${cx - 46} ${cy + 4} A46 46 0 0 0 ${cx + 46} ${cy + 4}`} delay={d + 0.25} />
+      <Fade d={d + 0.4}>
         <T x={cx} y={cy + 66} className="f35-mono f35-b f35-lvt" size={13}>
           180°
         </T>
@@ -197,15 +197,15 @@ function Geometry({ i, cx, cy, d }: { i: number; cx: number; cy: number; d: numb
 
 function Column({ i, x, y }: { i: number; x: number; y: number }) {
   const k = KINDS[i]
-  const d = 0.15 + i * 0.35
+  const d = 0.1 + i * 0.1
   return (
     <g transform={`translate(${x} ${y})`}>
       <T x={90} y={24} className="f35-title" size={22}>
         <ChemText text={k.name} />
       </T>
       <Recipe k={k} cx={90} y={38} d={d} />
-      <Geometry i={i} cx={90} cy={i === 1 ? 236 : 230} d={d + 1.1} />
-      <Fade d={d + 1.4}>
+      <Geometry i={i} cx={90} cy={i === 1 ? 236 : 230} d={d + 0.55} />
+      <Fade d={d + 0.7}>
         <T x={90} y={316} className="f35-note" size={16}>
           {`${k.angle} · ${k.shape}`}
         </T>
@@ -221,15 +221,15 @@ function Column({ i, x, y }: { i: number; x: number; y: number }) {
 /** Narrow layout: one row per hybridisation, recipe left, geometry right. */
 function Row({ i, y }: { i: number; y: number }) {
   const k = KINDS[i]
-  const d = 0.15 + i * 0.35
+  const d = 0.1 + i * 0.1
   return (
     <g transform={`translate(0 ${y})`}>
       <T x={80} y={22} className="f35-title" size={22}>
         <ChemText text={k.name} />
       </T>
       <Recipe k={k} cx={80} y={34} d={d} />
-      <Geometry i={i} cx={236} cy={i === 1 ? 88 : 84} d={d + 1.1} />
-      <Fade d={d + 1.4}>
+      <Geometry i={i} cx={236} cy={i === 1 ? 88 : 84} d={d + 0.55} />
+      <Fade d={d + 0.7}>
         <T x={236} y={172} className="f35-note" size={15}>
           {`${k.angle} · ${k.shape}`}
         </T>
@@ -243,7 +243,7 @@ function Row({ i, y }: { i: number; y: number }) {
 
 function Legend({ x, y }: { x: number; y: number }) {
   return (
-    <Fade d={0.2}>
+    <Fade d={0.1}>
       <g transform={`translate(${x} ${y})`}>
         <Icon x={0} y={0} k="s" />
         <T x={14} y={5} anchor="start" className="f35-t f35-small">

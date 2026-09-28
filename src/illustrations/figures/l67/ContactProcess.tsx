@@ -38,15 +38,15 @@ export default function ContactProcess() {
       {/* pipes */}
       <Pipe d="M45 34 V70" gas={SO3} w={8} delay={0} />
       <Pipe d="M85 34 V70" gas="#c9c2ae" w={8} delay={0} />
-      <Pipe d="M110 110 H146 Q160 110 160 96 V62 Q160 48 174 48 H190" gas={SO2} delay={0.4} />
-      <Pipe d="M260 214 H340" gas={SO3} delay={0.8} />
-      <Pipe d="M466 30 H370 V58" gas={ACID} w={8} delay={0.8} />
-      <Pipe d="M370 290 V336 H300" gas={ACID} delay={1.1} />
-      <Pipe d="M150 318 H240 V332" gas="#6f9fd8" w={8} delay={1.2} />
-      <Pipe d="M220 378 H30" gas={ACID} delay={1.4} />
+      <Pipe d="M110 110 H146 Q160 110 160 96 V62 Q160 48 174 48 H190" gas={SO2} delay={0.28} />
+      <Pipe d="M260 214 H340" gas={SO3} delay={0.56} />
+      <Pipe d="M466 30 H370 V58" gas={ACID} w={8} delay={0.56} />
+      <Pipe d="M370 290 V336 H300" gas={ACID} delay={0.77} />
+      <Pipe d="M150 318 H240 V332" gas="#6f9fd8" w={8} delay={0.84} />
+      <Pipe d="M220 378 H30" gas={ACID} delay={0.98} />
 
       {/* 1 sulfur burner */}
-      <Pop delay={0.2}>
+      <Pop delay={0.14}>
         <rect x={20} y={70} width={90} height={80} rx={4} className="f67-o f67-thick f67-fill3" />
         <Flame x={50} y={140} h={40} w={12} color="#3d6fd1" inner="#9fb8e8" />
         <Flame x={78} y={140} h={30} w={9} color="#3d6fd1" inner="#9fb8e8" />
@@ -55,7 +55,7 @@ export default function ContactProcess() {
       <BurnerHatch />
 
       {/* 2 converter */}
-      <Pop delay={0.5}>
+      <Pop delay={0.35}>
         <Vessel x={190} y={36} w={70} h={200}>
           <Bed x={190} y={70} w={70} color="#d9a33a" />
           <Bed x={190} y={120} w={70} color="#d9a33a" />
@@ -65,7 +65,7 @@ export default function ContactProcess() {
       </Pop>
 
       {/* 3 absorption tower */}
-      <Pop delay={0.8}>
+      <Pop delay={0.56}>
         <Vessel x={340} y={58} w={60} h={232}>
           <Packing />
           <Liquid d="M340 256 H400 V290 H340Z" color={ACID} opacity={0.6} />
@@ -75,14 +75,14 @@ export default function ContactProcess() {
       </Pop>
 
       {/* 4 dilution tank */}
-      <Pop delay={1.1}>
+      <Pop delay={0.77}>
         <Vessel x={220} y={332} w={80} h={56}>
           <Liquid d="M220 350 H300 V388 H220Z" color={ACID} opacity={0.55} />
         </Vessel>
         <Badge x={220} y={336} n={4} />
       </Pop>
 
-      <Fade delay={0.9}>
+      <Fade delay={0.63}>
         <text x={45} y={24} textAnchor="middle" className="f67-lbl f67-b">
           síra
         </text>
@@ -126,7 +126,7 @@ export default function ContactProcess() {
       </Fade>
 
       <StepList x={16} y={n ? 426 : 426} steps={STEPS} cols={n ? 1 : 2} colW={232} gap={n ? 44 : 50} />
-      <Fade delay={2.2}>
+      <Fade delay={1.54}>
         <text x={240} y={n ? 612 : 530} textAnchor="middle" className="f67-lbl f67-sm f67-red-t">
           <ChemText text="✕ SO_{3} ne přímo do vody: vznikla by kyselá mlha" />
         </text>

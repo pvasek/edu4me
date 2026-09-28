@@ -20,7 +20,7 @@ function Mini({ i, x, y, w }: { i: number; x: number; y: number; w: number }) {
     const a = 0.04 + (k / 40) * 0.92
     d += `${k ? 'L' : 'M'}${sx(a).toFixed(1)} ${sy(o.f(a)).toFixed(1)}`
   }
-  const dl = 0.2 + i * 0.3
+  const dl = 0.12 + i * 0.18
   return (
     <g>
       <text x={x + w / 2} y={y + 18} textAnchor="middle" className="f67-lbl f67-b f67-big f67-lvl-t">
@@ -28,7 +28,7 @@ function Mini({ i, x, y, w }: { i: number; x: number; y: number; w: number }) {
       </text>
       <DrawArrow d={`M${X0} ${YB} H${X1 + 6}`} delay={dl} />
       <DrawArrow d={`M${X0} ${YB} V${YT - 12}`} delay={dl} />
-      <Fade delay={dl + 0.2}>
+      <Fade delay={dl + 0.12}>
         <text x={X0 - 6} y={YT - 4} textAnchor="end" className="f67-lbl f67-b">
           v
         </text>
@@ -36,8 +36,8 @@ function Mini({ i, x, y, w }: { i: number; x: number; y: number; w: number }) {
           [A]
         </text>
       </Fade>
-      <Draw d={d} className="f67-curve f67-curve-1" delay={dl + 0.4} />
-      <Fade delay={dl + 1}>
+      <Draw d={d} className="f67-curve f67-curve-1" delay={dl + 0.24} />
+      <Fade delay={dl + 0.6}>
         <Eq x={x + w / 2 + 6} y={y + 164} t={o.eq} anchor="middle" className="f67-eq-lg" />
         <text x={x + w / 2 + 6} y={y + 184} textAnchor="middle" className="f67-lbl f67-sm f67-sec">
           {o.note}
@@ -67,9 +67,9 @@ function Decay({ x, y, w }: { x: number; y: number; w: number }) {
       <text x={x + 8} y={y + 18} className="f67-cap f67-lvl-t">
         1. řád: koncentrace v čase
       </text>
-      <DrawArrow d={`M${X0} ${YB} H${X1 + 8}`} delay={1.2} />
-      <DrawArrow d={`M${X0} ${YB} V${YT - 16}`} delay={1.2} />
-      <Fade delay={1.4}>
+      <DrawArrow d={`M${X0} ${YB} H${X1 + 8}`} delay={0.72} />
+      <DrawArrow d={`M${X0} ${YB} V${YT - 16}`} delay={0.72} />
+      <Fade delay={0.84}>
         <text x={X0 + 8} y={YT - 8} className="f67-lbl f67-b">
           [A]
         </text>
@@ -81,7 +81,7 @@ function Decay({ x, y, w }: { x: number; y: number; w: number }) {
         const c = Math.pow(0.5, k)
         const px = X0 + k * T
         return (
-          <Fade key={k} delay={2 + k * 0.25}>
+          <Fade key={k} delay={1.2 + k * 0.15}>
             {k > 0 && <path d={`M${X0} ${sy(c)} H${px} V${YB}`} className="f67-o f67-thin f67-dash" />}
             <circle cx={px} cy={sy(c)} r={4} className="f67-lvl-f f67-o f67-thin" />
             <text x={X0 - 8} y={sy(c) + 5} textAnchor="end" className="f67-eq f67-eq-sm">
@@ -90,12 +90,12 @@ function Decay({ x, y, w }: { x: number; y: number; w: number }) {
           </Fade>
         )
       })}
-      <Draw d={d} className="f67-curve f67-curve-2" delay={1.5} />
+      <Draw d={d} className="f67-curve f67-curve-2" delay={0.9} />
       {[0, 1, 2].map((k) => {
         const a = X0 + k * T + 3
         const b = X0 + (k + 1) * T - 3
         return (
-          <Fade key={k} delay={2.4 + k * 0.25}>
+          <Fade key={k} delay={1.44 + k * 0.15}>
             <DrawArrow d={`M${a} ${YB + 16} H${b}`} tone="lvl" both />
             <text x={(a + b) / 2} y={YB + 38} textAnchor="middle" className="f67-lbl f67-b f67-lvl-t">
               <ChemText text="t_{½}" />
@@ -103,7 +103,7 @@ function Decay({ x, y, w }: { x: number; y: number; w: number }) {
           </Fade>
         )
       })}
-      <Fade delay={3.2}>
+      <Fade delay={1.92}>
         <text x={X1} y={YT + 10} textAnchor="end" className="f67-lbl f67-sm">
           stejné poločasy
         </text>

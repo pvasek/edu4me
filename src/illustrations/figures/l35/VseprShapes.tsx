@@ -87,7 +87,7 @@ const SHAPES: Shape[] = [
 
 function Cell({ s, x, y, i }: { s: Shape; x: number; y: number; i: number }) {
   const c = s.center.at
-  const d = 0.15 + i * 0.18
+  const d = 0.1 + i * 0.06
   // back bonds first, then the centre, then front bonds
   const order = [...s.arms].sort((a, b) => rank(a.kind) - rank(b.kind))
   return (
@@ -114,8 +114,8 @@ function Cell({ s, x, y, i }: { s: Shape; x: number; y: number; i: number }) {
             <Arm key={`w${k}`} c={c} a={a} rc={s.center.r} />
           ))}
       </Pop>
-      <AngleArc x={c[0]} y={c[1]} r={s.arc.r} a1={s.arc.a1} a2={s.arc.a2} delay={d + 0.45} />
-      <Fade d={d + 0.8}>
+      <AngleArc x={c[0]} y={c[1]} r={s.arc.r} a1={s.arc.a1} a2={s.arc.a2} delay={d + 0.27} />
+      <Fade d={d + 0.48}>
         <T x={s.arc.at[0]} y={s.arc.at[1]} className="f35-mono f35-b f35-lvt">
           {s.arc.label}
         </T>
@@ -164,7 +164,7 @@ function Legend({ x, y }: { x: number; y: number }) {
       <T x={80} y={26} className="f35-title" style={{ fill: 'var(--ink-soft)' }}>
         klíč
       </T>
-      <Fade d={0.3}>
+      <Fade d={0.18}>
         {row(0, <Bond a={[6, 0]} b={[38, 0]} kind="single" w={4.2} />, 'vazba v rovině')}
         {row(1, <Bond a={[6, 0]} b={[38, 0]} kind="wedge" w={4.2} />, 'před rovinou')}
         {row(2, <Bond a={[6, 0]} b={[38, 0]} kind="dash" w={4.2} />, 'za rovinou')}

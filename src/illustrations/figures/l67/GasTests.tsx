@@ -142,13 +142,13 @@ function Cell({ i, x, y }: { i: number; x: number; y: number }) {
   const cx = CW / 2
   return (
     <g transform={`translate(${x} ${y})`}>
-      <Fade delay={0.1 + i * 0.12}>
+      <Fade delay={0.06 + i * 0.07}>
         <text x={12} y={26} className="f67-eq f67-eq-xl f67-lvl-t">
           <ChemText text={c.f} />
         </text>
       </Fade>
-      <Pop delay={0.2 + i * 0.15}>{c.art(cx)}</Pop>
-      <Fade delay={0.6 + i * 0.15}>
+      <Pop delay={0.12 + i * 0.09}>{c.art(cx)}</Pop>
+      <Fade delay={0.36 + i * 0.09}>
         <text x={cx} y={CH - 38} textAnchor="middle" className="f67-lbl f67-b">
           {c.name}
         </text>

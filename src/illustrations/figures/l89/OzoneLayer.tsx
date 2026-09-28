@@ -29,7 +29,7 @@ function Rad({ x, y }: { x: number; y: number }) {
 
 export default function OzoneLayer() {
   return (
-    <Figure name="ozone-layer" level={9} label={LABEL} max={620}>
+    <Figure name="ozone-layer" level={9} label={LABEL} max={620} replay>
       <Plate w={480} h={450}>
         <Scene />
       </Plate>
@@ -68,7 +68,7 @@ function Scene() {
       <text className="f89-lb f89-b f89-lv" x={186} y={KM(17)} textAnchor="end">
         ozonová vrstva
       </text>
-      <Pop delay={0.4}>
+      <Pop delay={0.18}>
         <O3 x={132} y={KM(30)} />
         <O3 x={166} y={KM(25)} />
         <O3 x={140} y={KM(21)} />
@@ -83,8 +83,8 @@ function Scene() {
         { x: 50, end: KM(0) - 2, label: 'UV-A' },
       ].map((r, i) => (
         <g key={r.label}>
-          <Draw d={`M${r.x} ${KM(50) + 6} L${r.x} ${r.end}`} className="f89-ln" delay={0.6 + i * 0.2} dur={0.8} style={{ stroke: UV, strokeWidth: 2.4 }} />
-          <Fade delay={1.3 + i * 0.2}>
+          <Draw d={`M${r.x} ${KM(50) + 6} L${r.x} ${r.end}`} className="f89-ln" delay={0.27 + i * 0.09} dur={0.48} style={{ stroke: UV, strokeWidth: 2.4 }} />
+          <Fade delay={0.59 + i * 0.09}>
             <text className="f89-f f89-sm" x={r.x} y={KM(50) - 2} textAnchor="middle" style={{ fill: UV }}>
               {r.label}
             </text>
@@ -96,14 +96,14 @@ function Scene() {
           </Fade>
         </g>
       ))}
-      <Fade delay={1.9}>
+      <Fade delay={0.85}>
         <text className="f89-lb f89-sm" x={115} y={434} textAnchor="middle">
           k zemi projde jen málo UV
         </text>
       </Fade>
 
       {/* catalytic cycle */}
-      <Pop delay={1.6}>
+      <Pop delay={0.72}>
         <g>
           {[
             [-16, 0, 'Cl'],
@@ -130,26 +130,26 @@ function Scene() {
           CCl₂F₂
         </text>
       </Pop>
-      <Draw d="M258 36 l8 6 l-6 5 l9 6 l-6 5 l10 6" className="f89-ln" delay={2.0} dur={0.5} style={{ stroke: UV, strokeWidth: 2 }} />
-      <Fade delay={2.1}>
+      <Draw d="M258 36 l8 6 l-6 5 l9 6 l-6 5 l10 6" className="f89-ln" delay={0.9} dur={0.3} style={{ stroke: UV, strokeWidth: 2 }} />
+      <Fade delay={0.95}>
         <text className="f89-f f89-sm" x={250} y={30} textAnchor="end" style={{ fill: UV }}>
           UV
         </text>
       </Fade>
-      <Draw d="M300 84 V130" className="f89-ln" delay={2.3} dur={0.4} />
-      <Fade delay={2.6}>
+      <Draw d="M300 84 V130" className="f89-ln" delay={1.03} dur={0.24} />
+      <Fade delay={1.17}>
         <polygon points={headAt(300, 132, 300, 110, 9)} fill="var(--edge)" />
       </Fade>
 
       {/* cycle: Cl· (top) → ClO· (bottom) → Cl· */}
-      <Pop delay={2.8}>
+      <Pop delay={1.26}>
         <Atom x={300} y={152} el="Cl" r={11} />
         <Rad x={316} y={142} />
         <text className="f89-lb f89-b" x={274} y={150} textAnchor="end">
           Cl·
         </text>
       </Pop>
-      <Pop delay={3.3}>
+      <Pop delay={1.48}>
         <line className="f89-bond" x1={292} y1={296} x2={312} y2={296} />
         <Atom x={290} y={296} el="Cl" r={11} />
         <Atom x={314} y={296} el="O" r={8} />
@@ -158,9 +158,9 @@ function Scene() {
           ClO·
         </text>
       </Pop>
-      <Draw d="M318 162 C380 180 380 270 330 286" className="f89-lvstroke" delay={3.0} dur={0.7} style={{ strokeWidth: 2.4 }} />
-      <Draw d="M280 286 C226 262 226 180 284 162" className="f89-lvstroke" delay={3.6} dur={0.7} style={{ strokeWidth: 2.4 }} />
-      <Fade delay={3.7}>
+      <Draw d="M318 162 C380 180 380 270 330 286" className="f89-lvstroke" delay={1.35} dur={0.42} style={{ strokeWidth: 2.4 }} />
+      <Draw d="M280 286 C226 262 226 180 284 162" className="f89-lvstroke" delay={1.62} dur={0.42} style={{ strokeWidth: 2.4 }} />
+      <Fade delay={1.67}>
         <polygon points={headAt(330, 286, 380, 270, 11)} className="f89-lvfill" />
         <text className="f89-f f89-b" x={372} y={214}>
           + O₃
@@ -170,7 +170,7 @@ function Scene() {
           → + O₂
         </text>
       </Fade>
-      <Fade delay={4.3}>
+      <Fade delay={1.94}>
         <polygon points={headAt(284, 162, 226, 180, 11)} className="f89-lvfill" />
         <text className="f89-f f89-b" x={236} y={214} textAnchor="end">
           + O
@@ -187,7 +187,7 @@ function Scene() {
       </Fade>
 
       {/* Montreal protocol */}
-      <Fade delay={4.7}>
+      <Fade delay={2.1} dur={0.35}>
         <rect x={196} y={350} width={276} height={78} rx={6} className="f89-soft" style={{ strokeWidth: 1.2 }} />
         <text className="f89-lb f89-b" x={210} y={372}>
           Montrealský protokol (1987)

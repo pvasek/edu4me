@@ -331,3 +331,23 @@
     display: block;
   }
 }
+
+/* Lesson grids never grow wider than the screen: a single shrinkable column,
+   so wide content (tables, formulas, figures) scrolls or wraps inside its
+   own block instead of widening the whole page. */
+.lesson-read,
+.lesson-section,
+.lesson-blocks,
+.lesson-intro,
+.lesson-summary {
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+}
+.lesson-body {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.goals li > span,
+.lesson-section-name {
+  min-width: 0;
+}

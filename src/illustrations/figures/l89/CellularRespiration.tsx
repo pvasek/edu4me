@@ -103,8 +103,8 @@ function Krebs({ x, y, r, delay }: { x: number; y: number; r: number; delay: num
   return (
     <g>
       <circle cx={x} cy={y} r={r} style={{ fill: 'color-mix(in srgb, var(--lv) 10%, transparent)' }} />
-      <Draw d={`M${x + r} ${y} A${r} ${r} 0 1 1 ${x + r - 0.01} ${y - 0.5}`} className="f89-lvstroke" delay={delay} dur={1.1} style={{ strokeWidth: 2.6 }} />
-      <Fade delay={delay + 1}>
+      <Draw d={`M${x + r} ${y} A${r} ${r} 0 1 1 ${x + r - 0.01} ${y - 0.5}`} className="f89-lvstroke" delay={delay} dur={0.6} style={{ strokeWidth: 2.6 }} />
+      <Fade delay={delay + 0.5}>
         {heads.map((h) => (
           <polygon key={h} points={h} className="f89-lvfill" />
         ))}
@@ -176,14 +176,14 @@ function Wide() {
       </Fade>
 
       {/* 1 glycolysis */}
-      <Pop delay={0.2}>
+      <Pop delay={0.1}>
         <Glucose x={100} y={74} />
         <text className="f89-lb f89-b" x={126} y={72}>
           glukóza
         </text>
         <F x={126} y={90} t="C_{6}H_{12}O_{6}" anchor="start" className="f89-f f89-sm" />
       </Pop>
-      <Fade delay={0.5}>
+      <Fade delay={0.3}>
         <Arrow x1={100} y1={98} x2={100} y2={196} className="f89-arr f89-arr-lv" />
         <Stage x={108} y={134} n={1}>
           glykolýza
@@ -191,7 +191,7 @@ function Wide() {
         <Chip x={134} y={154} t="+ 2 ATP" />
         <Chip x={134} y={172} t="+ 2 NADH" />
       </Fade>
-      <Pop delay={0.9}>
+      <Pop delay={0.45}>
         <text className="f89-lb f89-b" x={100} y={220} textAnchor="middle">
           2 pyruvát
         </text>
@@ -199,7 +199,7 @@ function Wide() {
       </Pop>
 
       {/* mitochondrion */}
-      <Fade delay={1.0}>
+      <Fade delay={0.5}>
         <Mitochondrion {...m} folds={[424, 470, 516, 562]} foldH={50} />
         <text className="f89-lb f89-b" x={684} y={58} textAnchor="end">
           mitochondrie
@@ -213,7 +213,7 @@ function Wide() {
       </Fade>
 
       {/* 2 oxidative decarboxylation */}
-      <Fade delay={1.4}>
+      <Fade delay={0.7}>
         <Arrow x1={140} y1={214} x2={306} y2={214} className="f89-arr f89-arr-lv" />
         <Stage x={292} y={120} n={2}>
           oxidační
@@ -231,8 +231,8 @@ function Wide() {
       </Fade>
 
       {/* 3 Krebs cycle */}
-      <Krebs {...kr} delay={1.9} />
-      <Fade delay={2.6}>
+      <Krebs {...kr} delay={0.9} />
+      <Fade delay={1.2}>
         <Badge x={kr.x} y={kr.y - kr.r - 16} n={3} />
         <Arrow x1={kr.x + 22} y1={kr.y - kr.r + 4} x2={kr.x + 40} y2={m.y - 20} className="f89-arr f89-arr-soft" dashed />
         <Chip x={kr.x + 46} y={m.y - 14} t="4 CO_{2}" muted />
@@ -247,7 +247,7 @@ function Wide() {
       </Fade>
 
       {/* 4 respiratory chain */}
-      <Fade delay={3.1}>
+      <Fade delay={1.4}>
         <Stage x={284} y={380} n={4}>
           dýchací řetězec + ATP-syntáza
         </Stage>
@@ -260,7 +260,7 @@ function Wide() {
       </Fade>
 
       {/* total */}
-      <Fade delay={3.5}>
+      <Fade delay={1.6}>
         <Total x={24} y={446} w={652} narrow={false} />
         <F x={676} y={446} t="C_{6}H_{12}O_{6} + 6 O_{2} → 6 CO_{2} + 6 H_{2}O" anchor="end" className="f89-f f89-sm" />
       </Fade>
@@ -279,32 +279,32 @@ function Narrow() {
           cytoplazma
         </text>
       </Fade>
-      <Pop delay={0.2}>
+      <Pop delay={0.1}>
         <Glucose x={40} y={44} />
         <text className="f89-lb f89-b" x={64} y={42}>
           glukóza
         </text>
         <F x={64} y={60} t="C_{6}H_{12}O_{6}" anchor="start" className="f89-f f89-sm" />
       </Pop>
-      <Fade delay={0.5}>
+      <Fade delay={0.3}>
         <Arrow x1={40} y1={68} x2={40} y2={140} className="f89-arr f89-arr-lv" />
         <Stage x={50} y={98} n={1}>
           glykolýza
         </Stage>
         <Chip x={76} y={118} t="+ 2 ATP  + 2 NADH" />
       </Fade>
-      <Pop delay={0.9}>
+      <Pop delay={0.45}>
         <text className="f89-lb f89-b" x={22} y={162}>
           2 pyruvát
         </text>
       </Pop>
-      <Fade delay={1.0}>
+      <Fade delay={0.5}>
         <Mitochondrion {...m} folds={[128, 170, 212]} foldH={40} />
         <text className="f89-lb f89-b" x={326} y={194} textAnchor="end">
           mitochondrie
         </text>
       </Fade>
-      <Fade delay={1.4}>
+      <Fade delay={0.7}>
         <Arrow x1={40} y1={172} x2={40} y2={250} className="f89-arr f89-arr-lv" />
         <Stage x={50} y={244} n={2}>
           oxidační dekarboxylace
@@ -316,8 +316,8 @@ function Narrow() {
         <Chip x={170} y={288} t="2 CO_{2}↑" muted />
         <Arrow x1={70} y1={296} x2={kr.x - 14} y2={kr.y - kr.r - 2} className="f89-arr f89-arr-lv" />
       </Fade>
-      <Krebs {...kr} delay={1.9} />
-      <Fade delay={2.6}>
+      <Krebs {...kr} delay={0.9} />
+      <Fade delay={1.2}>
         <Badge x={kr.x - kr.r - 6} y={kr.y - kr.r + 2} n={3} />
         <Chip x={160} y={342} t="4 CO_{2}↑" muted />
         <Chip x={160} y={362} t="+ 6 NADH" />
@@ -328,7 +328,7 @@ function Narrow() {
           e⁻
         </text>
       </Fade>
-      <Fade delay={3.1}>
+      <Fade delay={1.4}>
         <Stage x={40} y={464} n={4}>
           dýchací řetězec
         </Stage>
@@ -338,7 +338,7 @@ function Narrow() {
         <F x={66} y={506} t="O_{2} → H_{2}O" anchor="start" className="f89-f f89-b" />
         <Chip x={196} y={506} t="≈ 26–28 ATP" />
       </Fade>
-      <Fade delay={3.5}>
+      <Fade delay={1.6}>
         <Total x={16} y={634} w={308} narrow />
         <F x={170} y={710} t="C_{6}H_{12}O_{6} + 6 O_{2} → 6 CO_{2} + 6 H_{2}O" className="f89-f f89-sm" />
       </Fade>

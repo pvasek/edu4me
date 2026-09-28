@@ -34,69 +34,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-/* ---------------------------------------------------------------- panels */
-.f89-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min, 230px)), 1fr));
-  gap: 14px 16px;
-  width: 100%;
-}
-.f89-panel {
-  display: grid;
-  align-content: start;
-  gap: 4px;
-  min-width: 0;
-  padding-top: 8px;
-  border-top: 1px solid var(--line);
-}
-.f89-cap {
-  display: flex;
-  gap: 8px;
-  align-items: baseline;
-  font: italic 700 17px/1.2 var(--font-display);
-  color: var(--ink);
-}
-.f89-num {
-  flex: none;
-  display: inline-grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--lv);
-  color: var(--on-level);
-  border: 1px solid var(--edge);
-  font: 700 12.5px/1 var(--font-body);
-  font-style: normal;
-  transform: translateY(-2px);
-}
-.f89-sub {
-  margin: 0;
-  font: 14px/1.45 var(--font-body);
-  color: var(--ink-soft);
-}
-.f89-sub b {
-  color: var(--ink);
-}
-.f89-replay {
-  justify-self: center;
-  display: inline-flex;
-  gap: 6px;
-  align-items: center;
-  min-height: 36px;
-  padding: 4px 14px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  background: transparent;
-  color: var(--ink-soft);
-  font: 500 14px var(--font-body);
-  cursor: pointer;
-}
-.f89-replay:hover {
-  color: var(--lv-t);
-  border-color: var(--lv);
-}
-
 /* ---------------------------------------------------------------- hatches */
 .f89-hl {
   stroke: var(--edge);
@@ -408,12 +345,10 @@
   .f89-sec {
     display: none;
   }
-  .f89-cap {
-    font-size: 16px;
-  }
 }
 
-.f89-wide {
+/* a StepStrip whose first panel is a wide overview (PolymerChain) */
+.f89-strip-lead > .sf-panel:first-child {
   grid-column: 1 / -1;
 }
 .f89-along {

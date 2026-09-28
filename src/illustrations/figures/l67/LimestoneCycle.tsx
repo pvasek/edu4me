@@ -62,16 +62,16 @@ export default function LimestoneCycle() {
     >
       <path d={circle} className="f67-o f67-thin f67-dash" style={{ opacity: 0.35 }} />
       {arcs.map((d, i) => (
-        <DrawArrow key={i} d={d} tone="lvl" delay={0.4 + i * 0.35} className="f67-wide" />
+        <DrawArrow key={i} d={d} tone="lvl" delay={0.32 + i * 0.28} className="f67-wide" />
       ))}
       <Travel path={circle} dur={10} rest={pt(-45)}>
         <circle r={5} className="f67-lvl-f f67-o f67-thin" />
       </Travel>
 
-      <Pop delay={0.2}>
+      <Pop delay={0.16}>
         <Kiln />
       </Pop>
-      <Fade delay={0.6}>
+      <Fade delay={0.48}>
         <text x={250} y={352} textAnchor="middle" className="f67-lbl f67-b">
           vápenka
         </text>
@@ -83,7 +83,7 @@ export default function LimestoneCycle() {
       {NODES.map((nd, i) => {
         const [x, y] = pt(nd.a)
         return (
-          <Pop key={i} delay={0.2 + i * 0.15}>
+          <Pop key={i} delay={0.16 + i * 0.12}>
             <circle cx={x} cy={y} r={NR} className="f67-fill" />
             <circle cx={x} cy={y} r={NR} className="f67-o f67-thick f67-lvl-s" />
             <circle cx={x} cy={y} r={NR - 4} className="f67-o f67-thin" />
@@ -105,7 +105,7 @@ export default function LimestoneCycle() {
       {[0, 1, 2, 3].map((i) => {
         const [x, y] = pt(NODES[i].a + 45, R)
         return (
-          <Fade key={i} delay={0.9 + i * 0.3}>
+          <Fade key={i} delay={0.72 + i * 0.24}>
             <Badge x={x} y={y} n={i + 1} />
           </Fade>
         )
@@ -115,13 +115,13 @@ export default function LimestoneCycle() {
         <StepList x={58} y={510} steps={STEPS} gap={42} />
       ) : (
         <>
-          <Fade delay={1.1}>
+          <Fade delay={0.88}>
             <text x={366} y={70} className="f67-lbl f67-b">
               pálení, asi 900 °C
             </text>
             <Eq x={366} y={92} t="CaCO_{3} → CaO + CO_{2}" />
           </Fade>
-          <Fade delay={1.4}>
+          <Fade delay={1.12}>
             <text x={366} y={430} className="f67-lbl f67-b">
               hašení vodou
             </text>
@@ -130,7 +130,7 @@ export default function LimestoneCycle() {
               silně exotermní
             </text>
           </Fade>
-          <Fade delay={1.7}>
+          <Fade delay={1.36}>
             <text x={134} y={444} textAnchor="end" className="f67-lbl f67-b">
               + písek a voda
             </text>
@@ -138,7 +138,7 @@ export default function LimestoneCycle() {
               ve vodě: vápenná voda
             </text>
           </Fade>
-          <Fade delay={2.0}>
+          <Fade delay={1.6}>
             <text x={12} y={52} className="f67-lbl f67-b">
               <ChemText text="tuhnutí: + CO_{2} ze vzduchu" />
             </text>

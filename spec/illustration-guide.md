@@ -26,6 +26,18 @@ Illustrations **come alive when they scroll into view** (`whileInView`, `viewpor
 - interactive where it teaches: hover/tap a part to highlight it and show its label; drag to rotate molecules; a "Přehrát znovu" button for processes.
 Respect reduced motion (global CSS rule + `MotionConfig reducedMotion="user"`).
 
+## Steps: one picture that changes, or a strip without animation
+
+A process shown in steps is always built with the shared components in `src/illustrations/sequence/StepFigure.tsx` – never with ad-hoc panels and chained delays (on a phone stacked panels mean the animation plays where the learner isn't looking).
+
+| Situation | Component | Behaviour |
+|---|---|---|
+| One scene changing over time (enzyme + substrate, a reaction mechanism, dissolving, decay, electron transfer) | `StepFilm` | ONE stage; frames replace each other in place. Numbered title + one-sentence caption, step segments (tap to jump), ‹ ›, Přehrát / Pauza / Přehrát znovu. Autoplays once when ≥ 60 % is visible, pauses off-screen; tap the picture for the next step. Reduced motion: no autoplay. |
+| Variants or states compared side by side (isomers, allotropes, protein structure levels, two methods) | `StepStrip` | All panels numbered and fully drawn, no step-by-step animation; `phoneColumns={2}` for small panels. |
+| A single picture with an animation | the figure itself + `ReplayButton` | Allowed only if the figure fits a phone screen (≤ ~600 px tall at 390 px) and the animation finishes in ≤ ~2.5 s. Longer or taller reveals are shortened or turned into a `StepFilm`. |
+
+Rules for film frames: every frame uses the same viewBox and layout (so the change reads as one picture), no delays chained across steps, a frame's own entrance ≤ ~1.2 s. A figure hosting a film passes `interactive` to its kit `Figure` (the film carries `role="img"` and the description itself, because it contains buttons).
+
 ## Asset types
 
 | Block | Renderer | Use it for |

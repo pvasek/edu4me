@@ -43,11 +43,11 @@ function Bohr() {
     <g>
       {shells.map((s, i) => (
         <g key={s.L}>
-          <Draw d={`M${BX - s.r} ${CY} A${s.r} ${s.r} 0 1 1 ${BX + s.r} ${CY} A${s.r} ${s.r} 0 1 1 ${BX - s.r} ${CY}`} className="f12-shell" delay={0.2 + i * 0.3} dur={1} />
+          <Draw d={`M${BX - s.r} ${CY} A${s.r} ${s.r} 0 1 1 ${BX + s.r} ${CY} A${s.r} ${s.r} 0 1 1 ${BX - s.r} ${CY}`} className="f12-shell" delay={0.16 + i * 0.24} dur={1} />
           <text className="f12-shell-t" x={BX + s.r * 0.72 + 6} y={CY - s.r * 0.72 - 4}>
             {s.L}
           </text>
-          <Pop delay={1 + i * 0.3}>
+          <Pop delay={0.8 + i * 0.24}>
             <g className="f12-spin" style={{ transformOrigin: `${BX}px ${CY}px`, animationDuration: `${s.dur}s` }}>
               {Array.from({ length: s.n }, (_, k) => {
                 const a = (k / s.n) * Math.PI * 2 + i * 0.4
@@ -57,7 +57,7 @@ function Bohr() {
           </Pop>
         </g>
       ))}
-      <Pop delay={0.1}>
+      <Pop delay={0.08}>
         <Nucleus x={BX} y={CY} />
       </Pop>
     </g>
@@ -99,7 +99,7 @@ export default function ShellsVsOrbitals() {
     >
       <Bohr />
       <Cloud />
-      <Arrow x1={276} y1={CY} x2={338} y2={CY} className="f12-arrow f12-arrow-lv" delay={1.2} />
+      <Arrow x1={276} y1={CY} x2={338} y2={CY} className="f12-arrow f12-arrow-lv" delay={0.96} />
 
       <text className="f12-title" x={BX} y={290} textAnchor="middle">
         Bohrův model
@@ -120,13 +120,13 @@ export default function ShellsVsOrbitals() {
         1s² 2s² 2p²
       </text>
 
-      <Lbl x={RX + 70} y={CY - 84} tx={RX + 12} ty={CY - 14} delay={1.8} className="f12-lab-strong">
+      <Lbl x={RX + 70} y={CY - 84} tx={RX + 12} ty={CY - 14} delay={1.44} className="f12-lab-strong">
         1s
       </Lbl>
-      <Lbl x={RX + 92} y={CY + 96} tx={RX + 70} ty={CY + 66} delay={2} className="f12-lab-strong">
+      <Lbl x={RX + 92} y={CY + 96} tx={RX + 70} ty={CY + 66} delay={1.6} className="f12-lab-strong">
         2s
       </Lbl>
-      <Lbl x={RX - 100} y={CY - 70} tx={RX - 52} ty={CY - 16} anchor="end" delay={2.2} className="f12-lab-strong" line2="(činky)" line2Sec>
+      <Lbl x={RX - 100} y={CY - 70} tx={RX - 52} ty={CY - 16} anchor="end" delay={1.76} className="f12-lab-strong" line2="(činky)" line2Sec>
         2p
       </Lbl>
     </Plate>

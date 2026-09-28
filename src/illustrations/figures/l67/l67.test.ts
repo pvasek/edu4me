@@ -47,7 +47,9 @@ describe('level 6–7 figures', () => {
       const html = renderToStaticMarkup(createElement(FIGURES_L67[id]!))
       expect(html).toContain('<svg')
       expect(html).toContain('role="img"')
-      const label = /aria-label="([^"]*)"/.exec(html)?.[1] ?? ''
+      // the image description (a StepFilm's buttons carry short labels of their own)
+      const m = /role="img"[^>]*aria-label="([^"]*)"|aria-label="([^"]*)"[^>]*role="img"/.exec(html)
+      const label = m?.[1] ?? m?.[2] ?? ''
       expect(label.length).toBeGreaterThan(40)
       // Czech description (diacritics present)
       expect(label).toMatch(/[áčďéěíňóřšťúůýž]/)

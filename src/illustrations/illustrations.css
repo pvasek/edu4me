@@ -52,6 +52,7 @@
 }
 .il-spec {
   position: relative;
+  min-width: 0;
   display: grid;
   justify-items: center;
   align-content: start;
@@ -78,6 +79,8 @@
 }
 .il-spec-title {
   font: italic 700 19px/1.15 var(--font-display);
+  overflow-wrap: anywhere;
+  hyphens: auto;
   color: var(--ink);
   text-wrap: balance;
 }
@@ -90,11 +93,14 @@
 .il-spec-body {
   display: grid;
   gap: 4px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 /* phones: a single column of horizontal cards */
 @container (max-width: 359px) {
   .il-spec {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto minmax(0, 1fr);
     justify-items: start;
     align-items: center;
     text-align: left;

@@ -51,6 +51,7 @@ Scale: h1 clamp(36–56 px) italic, h2 clamp(28–38) italic, h3 24, body 17–1
 - Depth: a soft ink offset shadow (`--shadow-hard` = 3px 3px 0 at 22 % ink). Buttons move toward the shadow when pressed.
 - Shading: engraving hatches (`.hatch`, SVG `<pattern>` of thin diagonal lines) instead of gradients.
 - Ornaments: `.fleuron` double-rule divider for major breaks; handwritten notes in the margin.
+- Ruled paper (notebook summary, atom ledger): only via the `.ruled` utility (set `--rule` to the line height). It draws one rule under every line box of the text element itself, so rules never cut through text. Never paint ruled lines on a container background with a hand-tuned offset.
 
 ## Motion
 
@@ -61,6 +62,7 @@ One animation system for the whole app: **[Motion](https://motion.dev) (`motion/
 | Page entrance | `<Page>` (`ui/anim.tsx`) | `fadeUp` + stagger of children |
 | Lesson phases (read → quiz → results) and quiz questions | `AnimatePresence mode="wait"` | `slide` with a direction (forward/back) |
 | Lesson blocks while reading | `whileInView` (once) | `rise`; reading progress bar is a scroll-linked `useSpring` |
+| Processes in steps (figures) | `StepFilm` (one stage, autoplay once in view) / `StepStrip` (static) | crossfade 0.35 s between frames; see illustration-guide "Steps" |
 | Lesson blocks, summaries, lists | stagger container | `stagger()` + `rise` |
 | Nodes, tiles, badges, stars, rewards | | `popIn`, `spring.bouncy` |
 | Right answer / wrong answer | `animate` keyframes | `bump` / `shake` |

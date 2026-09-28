@@ -55,23 +55,23 @@ function Burst({ x, y, r = 14 }: { x: number; y: number; r?: number }) {
 
 /** One fission of generation 2: U-235 hit from the left, splits, sends 3 neutrons to the right. */
 function Fission2({ cx, cy, i }: { cx: number; cy: number; i: number }) {
-  const d = 2.4 + i * 0.25
+  const d = 1.3 + i * 0.14
   return (
     <g>
-      <Pop delay={d - 0.9}>
+      <Pop delay={d - 0.5}>
         <Nucleus x={cx} y={cy} r={20} kind="u" seed={10 + i} />
       </Pop>
       <Pop delay={d}>
         <Burst x={cx + 28} y={cy} r={11} />
       </Pop>
-      <Pop delay={d + 0.15}>
+      <Pop delay={d + 0.08}>
         <Nucleus x={cx + 52} y={cy - 26} r={12} kind="ba" seed={20 + i} />
         <Nucleus x={cx + 50} y={cy + 26} r={10} kind="kr" seed={30 + i} />
       </Pop>
       {[-30, 0, 30].map((dy, k) => (
         <g key={k}>
-          <Arrow x1={cx + 42} y1={cy + dy * 0.2} x2={cx + 108} y2={cy + dy} head={7} className="f12-arrow f12-fis-arr" delay={d + 0.3 + k * 0.08} />
-          <Pop delay={d + 0.8 + k * 0.08}>
+          <Arrow x1={cx + 42} y1={cy + dy * 0.2} x2={cx + 108} y2={cy + dy} head={7} className="f12-arrow f12-fis-arr" delay={d + 0.17 + k * 0.04} />
+          <Pop delay={d + 0.44 + k * 0.04}>
             <Neutron x={cx + 118} y={cy + dy} r={5.5} />
           </Pop>
         </g>
@@ -86,50 +86,50 @@ function Body() {
   return (
     <>
       {/* incoming neutron */}
-      <Pop delay={0.1}>
+      <Pop delay={0.06}>
         <Neutron x={24} y={210} />
       </Pop>
-      <Arrow x1={34} y1={210} x2={80} y2={210} className="f12-arrow f12-fis-arr" delay={0.2} />
-      <Lbl x={4} y={180} delay={0.1} className="f12-lab-strong">
+      <Arrow x1={34} y1={210} x2={80} y2={210} className="f12-arrow f12-fis-arr" delay={0.11} />
+      <Lbl x={4} y={180} delay={0.06} className="f12-lab-strong">
         neutron
       </Lbl>
 
       {/* the first fission */}
-      <Pop delay={0.3}>
+      <Pop delay={0.17}>
         <Nucleus x={114} y={210} r={30} kind="u" text="^{235}U" seed={3} />
       </Pop>
-      <Pop delay={0.9}>
+      <Pop delay={0.5}>
         <Burst x={160} y={210} r={16} />
       </Pop>
-      <Pop delay={1.05}>
+      <Pop delay={0.58}>
         <Nucleus x={212} y={136} r={24} kind="ba" text="^{141}Ba" seed={4} />
       </Pop>
-      <Pop delay={1.15}>
+      <Pop delay={0.63}>
         <Nucleus x={206} y={286} r={21} kind="kr" text="^{92}Kr" seed={5} />
       </Pop>
-      <Pop delay={1.25}>
+      <Pop delay={0.69}>
         <Neutron x={232} y={188} />
         <Neutron x={246} y={210} />
         <Neutron x={232} y={232} />
       </Pop>
-      <Lbl x={100} y={156} tx={156} ty={196} anchor="middle" delay={1}>
+      <Lbl x={100} y={156} tx={156} ty={196} anchor="middle" delay={0.55}>
         + energie
       </Lbl>
-      <Lbl x={126} y={276} tx={150} ty={224} anchor="middle" className="f12-lab-strong" delay={1.1}>
+      <Lbl x={126} y={276} tx={150} ty={224} anchor="middle" className="f12-lab-strong" delay={0.61}>
         štěpení
       </Lbl>
-      <Lbl x={206} y={336} anchor="middle" delay={1.3} sec>
+      <Lbl x={206} y={336} anchor="middle" delay={0.72} sec>
         úlomky jádra
       </Lbl>
 
       {/* neutrons of generation 1 hit three more U-235 */}
-      <Arrow x1={240} y1={182} x2={332} y2={108} className="f12-arrow f12-fis-arr" delay={1.5} />
-      <Arrow x1={256} y1={210} x2={332} y2={210} className="f12-arrow f12-fis-arr" delay={1.6} />
-      <Arrow x1={240} y1={238} x2={332} y2={312} className="f12-arrow f12-fis-arr" delay={1.7} />
+      <Arrow x1={240} y1={182} x2={332} y2={108} className="f12-arrow f12-fis-arr" delay={0.83} />
+      <Arrow x1={256} y1={210} x2={332} y2={210} className="f12-arrow f12-fis-arr" delay={0.88} />
+      <Arrow x1={240} y1={238} x2={332} y2={312} className="f12-arrow f12-fis-arr" delay={0.94} />
       {G1.map((y, i) => (
         <Fission2 key={y} cx={356} cy={y} i={i} />
       ))}
-      <Fade delay={3.8}>
+      <Fade delay={2.09}>
         {G1.map((y) => (
           <text key={y} className="f12-fis-more" x={500} y={y + 8}>
             …
@@ -138,11 +138,11 @@ function Body() {
       </Fade>
 
       {/* chain reaction bracket */}
-      <Draw d="M322 44 V36 H528 V44" className="f12-thin" delay={2.2} dur={0.6} />
-      <Lbl x={425} y={26} anchor="middle" className="f12-lab-strong" delay={2.4}>
+      <Draw d="M322 44 V36 H528 V44" className="f12-thin" delay={1.21} dur={0.6} />
+      <Lbl x={425} y={26} anchor="middle" className="f12-lab-strong" delay={1.32}>
         řetězová reakce
       </Lbl>
-      <Lbl x={425} y={396} anchor="middle" delay={3.4} sec>
+      <Lbl x={425} y={396} anchor="middle" delay={1.87} sec>
         3 neutrony → 3 štěpení → 9 neutronů …
       </Lbl>
     </>

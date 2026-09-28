@@ -20,7 +20,7 @@ export default function HessCycle() {
     >
       {/* axis */}
       <DrawArrow d={`M40 ${Y_CO2 + 22} V26`} tone="ink" />
-      <Fade delay={0.3}>
+      <Fade delay={0.18}>
         <text x={30} y={32} textAnchor="end" className="f67-lbl f67-b f67-big">
           H
         </text>
@@ -28,10 +28,10 @@ export default function HessCycle() {
       </Fade>
 
       {/* levels */}
-      <Draw d={`M60 ${Y_C} H430`} className="f67-o f67-thick" delay={0.2} />
-      <Draw d={`M232 ${Y_CO} H430`} className="f67-o f67-thick" delay={0.35} />
-      <Draw d={`M60 ${Y_CO2} H430`} className="f67-o f67-thick" delay={0.5} />
-      <Fade delay={0.4}>
+      <Draw d={`M60 ${Y_C} H430`} className="f67-o f67-thick" delay={0.12} />
+      <Draw d={`M232 ${Y_CO} H430`} className="f67-o f67-thick" delay={0.21} />
+      <Draw d={`M60 ${Y_CO2} H430`} className="f67-o f67-thick" delay={0.3} />
+      <Fade delay={0.24}>
         <Eq x={64} y={Y_C - 10} t="C(s) + O_{2}(g)" className="f67-eq-lg" />
         <Eq x={426} y={Y_CO - 10} t="CO(g) + ½ O_{2}(g)" anchor="end" className="f67-eq-lg" />
         <Eq x={64} y={Y_CO2 + 22} t="CO_{2}(g)" className="f67-eq-lg" />
@@ -44,8 +44,8 @@ export default function HessCycle() {
       </Fade>
 
       {/* route 1: straight down */}
-      <DrawArrow d={`M120 ${Y_C + 4} V${Y_CO2 - 4}`} tone="ink" delay={0.9} className="f67-wide" />
-      <Fade delay={1.3}>
+      <DrawArrow d={`M120 ${Y_C + 4} V${Y_CO2 - 4}`} tone="ink" delay={0.54} className="f67-wide" />
+      <Fade delay={0.78}>
         <text x={132} y={(Y_C + Y_CO2) / 2 - 12} className="f67-cap">
           cesta 1
         </text>
@@ -58,9 +58,9 @@ export default function HessCycle() {
       </Fade>
 
       {/* route 2: via CO */}
-      <DrawArrow d={`M262 ${Y_C + 4} V${Y_CO - 4}`} tone="lvl" delay={1.6} className="f67-wide" />
-      <DrawArrow d={`M400 ${Y_CO + 4} V${Y_CO2 - 4}`} tone="lvl" delay={2.1} className="f67-wide" />
-      <Fade delay={1.9}>
+      <DrawArrow d={`M262 ${Y_C + 4} V${Y_CO - 4}`} tone="lvl" delay={0.96} className="f67-wide" />
+      <DrawArrow d={`M400 ${Y_CO + 4} V${Y_CO2 - 4}`} tone="lvl" delay={1.26} className="f67-wide" />
+      <Fade delay={1.14}>
         <text x={254} y={(Y_C + Y_CO) / 2 - 2} textAnchor="end" className="f67-lbl f67-b f67-lvl-t">
           ΔH = ?
         </text>
@@ -74,7 +74,7 @@ export default function HessCycle() {
           cesta 2
         </text>
       </Fade>
-      <Fade delay={3.2}>
+      <Fade delay={1.92}>
         <text x={254} y={(Y_C + Y_CO) / 2 + 18} textAnchor="end" className="f67-lbl f67-b f67-lvl-t">
           = −110,5 kJ/mol
         </text>
@@ -84,7 +84,7 @@ export default function HessCycle() {
       </Travel>
 
       {/* result */}
-      <Pop delay={2.8}>
+      <Pop delay={1.68}>
         <rect x={20} y={Y_CO2 + 40} width={420} height={78} rx={6} className="f67-tag-lvl" />
         <text x={230} y={Y_CO2 + 60} textAnchor="middle" className="f67-cap f67-lvl-t">
           obě cesty mají stejné ΔH
