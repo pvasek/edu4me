@@ -1,4 +1,5 @@
-import { lazy, type ComponentType, type LazyExoticComponent } from 'react'
+import { type ComponentType, type LazyExoticComponent } from 'react'
+import { lazyWithReload } from '../core/staleBuild'
 import type { GameId } from '../core/types'
 import type { GameMeta, GameProps } from './types'
 
@@ -193,18 +194,18 @@ export const gamesForLevel = (n: number) => GAMES.filter((g) => n in g.levels)
 export const GAME_BY_ID = Object.fromEntries(GAMES.map((g) => [g.id, g])) as Record<GameId, GameMeta>
 
 export const GAME_COMPONENTS: Record<GameId, LazyExoticComponent<ComponentType<GameProps>>> = {
-  'periodic-find': lazy(() => import('./periodic-find')),
-  'element-memory': lazy(() => import('./element-memory')),
-  'who-am-i': lazy(() => import('./who-am-i')),
-  'build-atom': lazy(() => import('./build-atom')),
-  'electron-config': lazy(() => import('./electron-config')),
-  'ion-builder': lazy(() => import('./ion-builder')),
-  naming: lazy(() => import('./naming')),
-  balance: lazy(() => import('./balance')),
-  'molar-mass': lazy(() => import('./molar-mass')),
-  quickfire: lazy(() => import('./quickfire')),
-  swipe: lazy(() => import('./swipe')),
-  'ph-lab': lazy(() => import('./ph-lab')),
-  titration: lazy(() => import('./titration')),
-  'functional-groups': lazy(() => import('./functional-groups')),
+  'periodic-find': lazyWithReload(() => import('./periodic-find')),
+  'element-memory': lazyWithReload(() => import('./element-memory')),
+  'who-am-i': lazyWithReload(() => import('./who-am-i')),
+  'build-atom': lazyWithReload(() => import('./build-atom')),
+  'electron-config': lazyWithReload(() => import('./electron-config')),
+  'ion-builder': lazyWithReload(() => import('./ion-builder')),
+  naming: lazyWithReload(() => import('./naming')),
+  balance: lazyWithReload(() => import('./balance')),
+  'molar-mass': lazyWithReload(() => import('./molar-mass')),
+  quickfire: lazyWithReload(() => import('./quickfire')),
+  swipe: lazyWithReload(() => import('./swipe')),
+  'ph-lab': lazyWithReload(() => import('./ph-lab')),
+  titration: lazyWithReload(() => import('./titration')),
+  'functional-groups': lazyWithReload(() => import('./functional-groups')),
 }

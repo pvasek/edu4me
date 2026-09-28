@@ -1,4 +1,6 @@
-import { lazy, Suspense, useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
+import { lazyWithReload } from './core/staleBuild'
+import { RouteErrorBoundary } from './ui/RouteErrorBoundary'
 import { HashRouter, Route, Routes, useLocation } from 'react-router-dom'
 import { MotionConfig } from 'motion/react'
 import { AppHeader } from './ui/AppHeader'
@@ -10,12 +12,12 @@ import { CoursePage } from './pages/CoursePage'
 import { LevelPage } from './pages/LevelPage'
 import { NotFound } from './pages/NotFound'
 
-const LessonPage = lazy(() => import('./pages/LessonPage'))
-const LevelTestPage = lazy(() => import('./pages/LevelTestPage'))
-const GamesPage = lazy(() => import('./pages/GamesPage'))
-const GamePage = lazy(() => import('./pages/GamePage'))
-const ProfilePage = lazy(() => import('./pages/ProfilePage'))
-const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
+const LessonPage = lazyWithReload(() => import('./pages/LessonPage'))
+const LevelTestPage = lazyWithReload(() => import('./pages/LevelTestPage'))
+const GamesPage = lazyWithReload(() => import('./pages/GamesPage'))
+const GamePage = lazyWithReload(() => import('./pages/GamePage'))
+const ProfilePage = lazyWithReload(() => import('./pages/ProfilePage'))
+const PrivacyPage = lazyWithReload(() => import('./pages/PrivacyPage'))
 
 function ThemeSync() {
   const { theme } = useProgress().settings
@@ -40,6 +42,7 @@ export function App() {
       <ThemeSync />
       <ScrollTop />
       <AppHeader />
+      <RouteErrorBoundary>
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -54,6 +57,7 @@ export function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
+      </RouteErrorBoundary>
       <Toasts />
     </HashRouter>
     </MotionConfig>

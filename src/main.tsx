@@ -16,6 +16,10 @@ import './ui/theme.css'
 import './ui/app.css'
 import { App } from './App'
 import { initSync } from './core/persistence/sync'
+import { installStaleBuildRecovery } from './core/staleBuild'
+
+// after a deploy, old tabs reload to the new version instead of showing a blank page
+installStaleBuildRecovery()
 
 // progress is saved locally at once; this restores an optional cloud sync (Google Drive)
 initSync()

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { LevelContent, LevelOutline } from './types'
+import { isChunkError, reloadForNewVersion } from './staleBuild'
 
 const cache = new Map<string, LevelContent>()
 
@@ -21,7 +22,11 @@ export function useLevelContent(level: LevelOutline | undefined) {
         cache.set(level.id, c)
         if (alive) setContent(c)
       })
-      .catch(() => alive && setError(true))
+      .catch((e: unknown) => {
+        // a new version was deployed and this level's old chunk is gone: reload (keeps the loading state)
+        if (isChunkError(e) && reloadForNewVersion()) return
+        if (alive) setError(true)
+      })
     return () => {
       alive = false
     }
