@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { courseById, findLevel } from '../core/registry'
 import { useLevelContent } from '../core/useLevelContent'
@@ -17,7 +17,7 @@ import { NotFound } from './NotFound'
 import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react'
 import { rise, slide, spring, stagger } from '../ui/motion'
 import { ChemIconView } from '../illustrations/ChemIcon'
-import { Bar, CountUp } from '../ui/anim'
+import { CountUp } from '../ui/anim'
 import '../lesson/lesson.css'
 
 
@@ -70,12 +70,13 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
           <Icon name="x" />
         </Link>
         {step.kind === 'read' ? (
-          <ReadProgress color={levelColor} />
+          <SectionNav sections={lesson.sections} />
         ) : (
-          <Bar value={step.kind === 'done' ? 1 : 0.5} color={levelColor} className="lesson-progress" label="Postup lekcí" />
+          <span className="lesson-bar-title">
+            <b>{step.kind === 'quiz' ? 'Kvíz' : 'Hotovo'}</b> · <Md text={lesson.title} />
+          </span>
         )}
-        <span className="lesson-bar-step">{step.kind === 'read' ? 'Výklad' : step.kind === 'quiz' ? 'Kvíz' : 'Hotovo'}</span>
-        {step.kind === 'read' && <SectionNav sections={lesson.sections} />}
+        {step.kind === 'read' ? <ReadLine /> : <span className="lesson-line" aria-hidden="true"><span className="lesson-line-fill" /></span>}
       </div>
 
       <div className="lesson-body">
@@ -237,21 +238,27 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
   )
 }
 
-/** Reading progress: fills as the learner scrolls through the lesson. */
-function ReadProgress({ color }: { color: string }) {
+/** Reading progress, drawn as the header's bottom line: fills as the learner scrolls. */
+function ReadLine() {
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, { stiffness: 260, damping: 40, restDelta: 0.001 })
   return (
-    <div className="progress lesson-progress" style={{ ['--bar' as string]: color }} aria-hidden="true">
-      <motion.span className="lesson-read-fill" style={{ scaleX }} />
-    </div>
+    <span className="lesson-line" aria-hidden="true">
+      <motion.span className="lesson-line-fill" style={{ scaleX }} />
+    </span>
   )
 }
 
-/** Icon chips for each section; highlights the one being read, tap to jump. */
+/**
+ * Where am I in the lesson: icon chips on wide screens, a dropdown on phones.
+ * Both highlight the section being read and jump to a section on tap.
+ */
 function SectionNav({ sections }: { sections: LessonSection[] }) {
   const [active, setActive] = useState(0)
+  const [open, setOpen] = useState(false)
   const navRef = useRef<HTMLElement>(null)
+  const pickRef = useRef<HTMLDivElement>(null)
+  const menuId = useId()
   useEffect(() => {
     const els = [...document.querySelectorAll<HTMLElement>('.lesson-section[data-section]')]
     const io = new IntersectionObserver(
@@ -266,27 +273,89 @@ function SectionNav({ sections }: { sections: LessonSection[] }) {
   useEffect(() => {
     navRef.current?.querySelector<HTMLElement>('.is-active')?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' })
   }, [active])
+  useEffect(() => {
+    if (!open) return
+    const close = (e: PointerEvent) => {
+      if (!pickRef.current?.contains(e.target as Node)) setOpen(false)
+    }
+    const esc = (e: globalThis.KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    document.addEventListener('pointerdown', close)
+    document.addEventListener('keydown', esc)
+    return () => {
+      document.removeEventListener('pointerdown', close)
+      document.removeEventListener('keydown', esc)
+    }
+  }, [open])
   const jump = (i: number) => {
+    setOpen(false)
     document.getElementById(`cast-${i + 1}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
+  const cur = sections[active]
   return (
-    <nav className="lesson-nav" ref={navRef} aria-label="Části lekce">
-      {sections.map((s, i) => (
-        <button
-          key={i}
-          type="button"
-          className={`lesson-nav-chip${i === active ? ' is-active' : ''}`}
-          onClick={() => jump(i)}
-          aria-current={i === active ? 'location' : undefined}
-          title={plain(s.title)}
-        >
-          <span className="tabnum">{i + 1}</span>
-          {s.icon && <ChemIconView name={s.icon} size={20} />}
-          <span className="lesson-nav-label">
-            <Md text={s.title} />
+    <>
+      <nav className="lesson-nav" ref={navRef} aria-label="Části lekce">
+        {sections.map((s, i) => (
+          <button
+            key={i}
+            type="button"
+            className={`lesson-nav-chip${i === active ? ' is-active' : ''}`}
+            onClick={() => jump(i)}
+            aria-current={i === active ? 'location' : undefined}
+            title={plain(s.title)}
+          >
+            <span className="tabnum">{i + 1}</span>
+            {s.icon && <ChemIconView name={s.icon} size={20} />}
+            <span className="lesson-nav-label">
+              <Md text={s.title} />
+            </span>
+          </button>
+        ))}
+      </nav>
+
+      <div className="lesson-pick" ref={pickRef}>
+        <button type="button" className="lesson-pick-btn" aria-expanded={open} aria-controls={menuId} onClick={() => setOpen((o) => !o)}>
+          <span className="lesson-pick-num tabnum">
+            {active + 1}/{sections.length}
           </span>
+          {cur?.icon && <ChemIconView name={cur.icon} size={20} />}
+          <span className="lesson-pick-title">
+            <Md text={cur?.title ?? ''} />
+          </span>
+          <motion.span className="lesson-pick-caret" aria-hidden="true" animate={{ rotate: open ? 180 : 0 }}>
+            ▾
+          </motion.span>
         </button>
-      ))}
-    </nav>
+        <AnimatePresence>
+          {open && (
+            <motion.ul
+              id={menuId}
+              className="lesson-pick-menu"
+              aria-label="Části lekce"
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.16 }}
+            >
+              {sections.map((s, i) => (
+                <li key={i}>
+                  <button
+                    type="button"
+                    className={`lesson-pick-item${i === active ? ' is-active' : ''}`}
+                    aria-current={i === active ? 'location' : undefined}
+                    onClick={() => jump(i)}
+                  >
+                    <span className="tabnum">{i + 1}</span>
+                    {s.icon && <ChemIconView name={s.icon} size={22} />}
+                    <span>
+                      <Md text={s.title} />
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </motion.ul>
+          )}
+        </AnimatePresence>
+      </div>
+    </>
   )
 }
