@@ -1,7 +1,5 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import {
-  exportProgress,
-  importProgress,
   liveStreak,
   rankFromXp,
   rankTitle,
@@ -18,6 +16,7 @@ import { motion } from 'motion/react'
 import { Bar, CountUp, Page } from '../ui/anim'
 import { popIn, stagger } from '../ui/motion'
 import { ElementTile } from '../ui/ElementTile'
+import { SaveSyncCard } from '../ui/SaveSyncCard'
 
 export default function ProfilePage() {
   const p = useProgress()
@@ -25,7 +24,6 @@ export default function ProfilePage() {
   const [picked, setPicked] = useState<ChemElement | null>(null)
   const [confirmReset, setConfirmReset] = useState(false)
   const [msg, setMsg] = useState('')
-  const fileRef = useRef<HTMLInputElement>(null)
   const owned = new Set(p.elements)
 
   const days = Array.from({ length: 28 }, (_, i) => {
@@ -34,21 +32,6 @@ export default function ProfilePage() {
     const key = today(d)
     return { key, xp: p.days[key] ?? 0, label: d.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'numeric' }) }
   })
-
-  const download = () => {
-    const blob = new Blob([exportProgress()], { type: 'application/json' })
-    const a = document.createElement('a')
-    a.href = URL.createObjectURL(blob)
-    a.download = `edu4me-postup-${today()}.json`
-    a.click()
-    setTimeout(() => URL.revokeObjectURL(a.href), 1000)
-  }
-
-  const upload = async (f: File | undefined) => {
-    if (!f) return
-    const ok = importProgress(await f.text())
-    setMsg(ok ? 'Postup byl nahrán.' : 'Soubor se nepodařilo načíst. Je to export z edu4me?')
-  }
 
   return (
     <Page className="profile">
@@ -190,6 +173,11 @@ export default function ProfilePage() {
       </section>
 
       <section className="stack">
+        <h2>Záloha a synchronizace</h2>
+        <SaveSyncCard />
+      </section>
+
+      <section className="stack">
         <h2>Nastavení</h2>
         <div className="card-flat settings">
           <div className="row">
@@ -200,17 +188,7 @@ export default function ProfilePage() {
               </button>
             ))}
           </div>
-          <p className="muted">
-            Postup se ukládá jen v tomto prohlížeči. Pro přenos do jiného zařízení si ho stáhni a tam nahraj.
-          </p>
           <div className="row">
-            <button type="button" className="btn btn-sm" onClick={download}>
-              <Icon name="download" /> Stáhnout postup
-            </button>
-            <button type="button" className="btn btn-sm" onClick={() => fileRef.current?.click()}>
-              <Icon name="upload" /> Nahrát postup
-            </button>
-            <input ref={fileRef} type="file" accept="application/json" hidden onChange={(e) => upload(e.target.files?.[0])} />
             {!confirmReset ? (
               <button type="button" className="btn btn-sm btn-ghost" onClick={() => setConfirmReset(true)}>
                 Smazat postup

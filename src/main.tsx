@@ -15,6 +15,10 @@ import '@fontsource/jetbrains-mono/700.css'
 import './ui/theme.css'
 import './ui/app.css'
 import { App } from './App'
+import { initSync } from './core/persistence/sync'
+
+// progress is saved locally at once; this restores an optional cloud sync (Google Drive)
+initSync()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

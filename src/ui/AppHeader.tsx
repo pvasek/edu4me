@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom'
 import { liveStreak, rankFromXp, setSettings, useProgress } from '../core/progress'
 import { Icon } from './Icon'
+import { SyncDot } from './SyncDot'
 
 export function AppHeader() {
   const p = useProgress()
@@ -44,6 +45,7 @@ export function AppHeader() {
           <Icon name="bolt" style={{ color: 'var(--yellow)' }} />
           {p.xp} XP
         </span>
+        <SyncDot />
         <button
           type="button"
           className="icon-btn"

@@ -15,6 +15,7 @@ const LevelTestPage = lazy(() => import('./pages/LevelTestPage'))
 const GamesPage = lazy(() => import('./pages/GamesPage'))
 const GamePage = lazy(() => import('./pages/GamePage'))
 const ProfilePage = lazy(() => import('./pages/ProfilePage'))
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
 
 function ThemeSync() {
   const { theme } = useProgress().settings
@@ -43,6 +44,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/profil" element={<ProfilePage />} />
+          <Route path="/soukromi" element={<PrivacyPage />} />
           <Route path="/c/:courseId" element={<CoursePage />} />
           <Route path="/c/:courseId/hry" element={<GamesPage />} />
           <Route path="/c/:courseId/hry/:gameId" element={<GamePage />} />

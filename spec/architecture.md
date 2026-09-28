@@ -19,6 +19,8 @@ src/
     markup.tsx             inline markup (**bold**, $H2SO4$, ^{sup}, ->)
     check.ts               answer checking (tolerant numbers, formulas, diacritics)
     progress.ts            local progress store: XP, streak, lessons, games, album
+    progressMerge.ts       schema migration + conflict-free merge of two progress copies
+    persistence/           local storage, sync engine, remote backends (Google Drive) – see spec/persistence.md
     badges.ts              badge definitions
     registry.ts            list of courses
     validate.ts            content rules used by tests

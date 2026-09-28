@@ -820,3 +820,14 @@ a.course-card:hover {
   display: grid;
   gap: 12px;
 }
+
+/* privacy page */
+.privacy {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.privacy ul {
+  display: grid;
+  gap: 10px;
+  padding-left: 20px;
+}

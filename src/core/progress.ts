@@ -1,14 +1,24 @@
 import { useSyncExternalStore } from 'react'
 import { BADGES } from './badges'
+import { emptyProgress, mergeProgress, migrate, sameProgress, sumXp } from './progressMerge'
+import { getDeviceId, onOtherTabSave, readLocal, readMeta, requestPersist, writeLocal } from './persistence/local'
+
+export { emptyProgress }
 
 /**
- * Learner progress, stored locally in the browser (no account needed).
- * Keys that refer to course content are namespaced "courseId:id" so that
- * future courses share one store.
+ * Learner progress. Always saved in this browser (see ./persistence/local.ts);
+ * optionally synced to a remote store (see ./persistence/sync.ts). Keys that refer
+ * to course content are namespaced "courseId:id" so that future courses share one
+ * store. Architecture and merge rules: spec/persistence.md.
  */
 export interface ProgressState {
-  version: 1
+  version: 2
+  /** changes on "reset progress"; a newer epoch wins when merging */
+  epoch: number
+  /** total XP = sum of xpBy (kept for convenience) */
   xp: number
+  /** XP earned per device (a grow-only counter, so devices can be merged) */
+  xpBy: Record<string, number>
   lessons: Record<string, { completedAt: string; best: number; max: number }>
   levels: Record<string, { passedAt: string; best: number; max: number }>
   games: Record<string, { best: number; max: number; plays: number; stars: number }>
@@ -18,36 +28,22 @@ export interface ProgressState {
   streak: { current: number; best: number; lastDay: string | null }
   days: Record<string, number>
   settings: { theme: 'system' | 'light' | 'dark'; name: string }
+  /** when settings last changed (ISO), so the newest wins when merging */
+  settingsAt: string
 }
 
-const KEY = 'edu4me-progress-v1'
-
-export const emptyProgress = (): ProgressState => ({
-  version: 1,
-  xp: 0,
-  lessons: {},
-  levels: {},
-  games: {},
-  elements: [],
-  badges: {},
-  perfectQuizzes: 0,
-  streak: { current: 0, best: 0, lastDay: null },
-  days: {},
-  settings: { theme: 'system', name: '' },
-})
-
 function load(): ProgressState {
-  try {
-    const raw = localStorage.getItem(KEY)
-    if (!raw) return emptyProgress()
-    return { ...emptyProgress(), ...JSON.parse(raw) }
-  } catch {
-    return emptyProgress()
-  }
+  return migrate(readLocal()) ?? emptyProgress()
 }
 
 let state: ProgressState = typeof window === 'undefined' ? emptyProgress() : load()
 const listeners = new Set<() => void>()
+
+/** Called after every local change; the sync engine uses it to push to a remote store. */
+let commitHook: (() => void) | null = null
+export function setCommitHook(fn: (() => void) | null) {
+  commitHook = fn
+}
 
 /** Events the UI can show as toasts (new badge, level up…). */
 export type ProgressEvent = { type: 'badge'; id: string } | { type: 'xp'; amount: number }
@@ -59,7 +55,7 @@ export function onProgressEvent(fn: (e: ProgressEvent) => void) {
   }
 }
 
-function commit(next: ProgressState, events: ProgressEvent[] = []) {
+function commit(next: ProgressState, events: ProgressEvent[] = [], opts: { fromSync?: boolean } = {}) {
   // award badges whose condition became true
   for (const b of BADGES) {
     if (!next.badges[b.id] && b.earned(next)) {
@@ -67,15 +63,30 @@ function commit(next: ProgressState, events: ProgressEvent[] = []) {
       events.push({ type: 'badge', id: b.id })
     }
   }
+  const firstLesson = Object.keys(state.lessons).length === 0 && Object.keys(next.lessons).length > 0
   state = next
-  try {
-    localStorage.setItem(KEY, JSON.stringify(state))
-  } catch {
-    /* storage full or blocked – progress stays in memory */
-  }
+  writeLocal(state)
   listeners.forEach((l) => l())
   events.forEach((e) => eventListeners.forEach((l) => l(e)))
+  if (!opts.fromSync) commitHook?.()
+  // once there is something worth keeping, ask the browser not to evict it
+  if (firstLesson && !readMeta().persistAsked) void requestPersist()
 }
+
+/**
+ * Merges progress from elsewhere (another tab, a backup file, a remote store) into
+ * the current state. Never loses progress. Returns the merged state.
+ */
+export function mergeIn(other: unknown, opts: { fromSync?: boolean } = {}): ProgressState | null {
+  const incoming = migrate(other)
+  if (!incoming) return null
+  const merged = mergeProgress(state, incoming)
+  if (!sameProgress(merged, state)) commit(merged, [], opts)
+  return state
+}
+
+// another tab saved: merge it in so the two tabs never overwrite each other
+if (typeof window !== 'undefined') onOtherTabSave((data) => mergeIn(data, { fromSync: true }))
 
 export function getProgress() {
   return state
@@ -109,6 +120,8 @@ export function liveStreak(p: ProgressState) {
 
 function withActivity(p: ProgressState, xp: number): ProgressState {
   const t = today()
+  const dev = getDeviceId()
+  const xpBy = { ...p.xpBy, [dev]: (p.xpBy[dev] ?? 0) + xp }
   let { current, best, lastDay } = p.streak
   if (lastDay !== t) {
     current = lastDay === yesterday() ? current + 1 : 1
@@ -117,7 +130,8 @@ function withActivity(p: ProgressState, xp: number): ProgressState {
   }
   return {
     ...p,
-    xp: p.xp + xp,
+    xpBy,
+    xp: sumXp(xpBy),
     streak: { current, best, lastDay },
     days: { ...p.days, [t]: (p.days[t] ?? 0) + xp },
   }
@@ -207,26 +221,25 @@ export function finishGame(gameId: string, score: number, max: number, collected
 }
 
 export function setSettings(s: Partial<ProgressState['settings']>) {
-  commit({ ...state, settings: { ...state.settings, ...s } })
+  commit({ ...state, settings: { ...state.settings, ...s }, settingsAt: new Date().toISOString() })
 }
 
 export function exportProgress(): string {
   return JSON.stringify(state, null, 2)
 }
 
+/** Loads a backup file. It is MERGED with the current progress, so nothing is lost. */
 export function importProgress(json: string): boolean {
   try {
-    const data = JSON.parse(json)
-    if (data?.version !== 1 || typeof data.xp !== 'number') return false
-    commit({ ...emptyProgress(), ...data })
-    return true
+    return mergeIn(JSON.parse(json)) !== null
   } catch {
     return false
   }
 }
 
+/** Starts over. The new epoch makes the reset win over older copies (other devices, Drive). */
 export function resetProgress() {
-  commit({ ...emptyProgress(), settings: state.settings })
+  commit({ ...emptyProgress(), epoch: Date.now(), settings: state.settings, settingsAt: state.settingsAt })
 }
 
 /** Player level from XP: each level needs 50 XP more than the previous one. */
