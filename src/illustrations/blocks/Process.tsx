@@ -1,5 +1,6 @@
-import type { CSSProperties } from 'react'
-import { motion, type Variants } from 'motion/react'
+import { createContext, useContext, useRef, type CSSProperties, type KeyboardEvent } from 'react'
+import { AnimatePresence, motion, type Variants } from 'motion/react'
+import { CardViewer, useCardViewer } from '../../ui/CardViewer'
 import type { IconItem } from '../../core/types'
 import { Md } from '../../core/markup'
 import { ChemIconView } from '../ChemIcon'
@@ -37,6 +38,9 @@ const fade: Variants = {
 
 type Placement = 'top' | 'bottom' | 'left' | 'right'
 
+/** Opens step i in the card viewer. */
+const OpenCtx = createContext<(i: number) => void>(() => {})
+
 function Station({
   step,
   i,
@@ -48,8 +52,25 @@ function Station({
   className?: string
   style?: CSSProperties
 }) {
+  const open = useContext(OpenCtx)
+  const onKey = (e: KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      open(i)
+    }
+  }
   return (
-    <motion.li className={`il-station ${className}`} style={style} custom={i} variants={station}>
+    <motion.li
+      className={`il-station ${className}`}
+      style={style}
+      custom={i}
+      variants={station}
+      role="button"
+      tabIndex={0}
+      aria-haspopup="dialog"
+      onClick={() => open(i)}
+      onKeyDown={onKey}
+    >
       <motion.span custom={i} variants={medal} style={{ display: 'block', position: 'relative' }}>
         <Medal icon={step.icon}>
           <span className="il-station-no" aria-hidden="true">
@@ -246,9 +267,25 @@ function Cycle({ steps }: { steps: IconItem[] }) {
 
 /** 3–7 steps with icons, as a flow (→) or a closed cycle. */
 export function Process({ layout, steps }: { layout: 'flow' | 'cycle'; steps: IconItem[] }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const viewer = useCardViewer()
   return (
-    <div className={`il-process il-process-${layout}`} role="group" aria-label={layout === 'cycle' ? 'Koloběh' : 'Postup'}>
-      {layout === 'cycle' && steps.length > 2 ? <Cycle steps={steps} /> : <Flow steps={steps} />}
+    <div ref={ref} className={`il-process il-process-${layout}`} role="group" aria-label={layout === 'cycle' ? 'Koloběh' : 'Postup'}>
+      <OpenCtx.Provider value={(i) => viewer.openAt(i, ref.current)}>
+        {layout === 'cycle' && steps.length > 2 ? <Cycle steps={steps} /> : <Flow steps={steps} />}
+      </OpenCtx.Provider>
+      <AnimatePresence>
+        {viewer.open !== null && (
+          <CardViewer
+            cards={steps.map((s, i) => ({ icon: s.icon, kicker: `Krok ${i + 1} z ${steps.length}`, title: s.title, text: s.text }))}
+            index={viewer.open}
+            onIndex={viewer.setOpen}
+            onClose={viewer.close}
+            tone={viewer.tone}
+            label={layout === 'cycle' ? 'Koloběh – detail kroku' : 'Postup – detail kroku'}
+          />
+        )}
+      </AnimatePresence>
     </div>
   )
 }

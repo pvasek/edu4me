@@ -11,11 +11,11 @@ export function Medal({
   children,
 }: {
   icon: ChemIcon
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'sm' | 'md' | 'lg' | 'xl'
   tone?: string
   children?: ReactNode
 }) {
-  const iconSize = size === 'sm' ? 24 : size === 'lg' ? 34 : 30
+  const iconSize = size === 'sm' ? 24 : size === 'lg' ? 34 : size === 'xl' ? 64 : 30
   const style = tone ? ({ '--tone': tone } as CSSProperties) : undefined
   return (
     <span className={`il-medal${size === 'md' ? '' : ` il-medal-${size}`}`} style={style}>

@@ -38,6 +38,10 @@ A process shown in steps is always built with the shared components in `src/illu
 
 Rules for film frames: every frame uses the same viewBox and layout (so the change reads as one picture), no delays chained across steps, a frame's own entrance ≤ ~1.2 s. A figure hosting a film passes `interactive` to its kit `Figure` (the film carries `role="img"` and the description itself, because it contains buttons).
 
+## Card detail view
+
+Card sets (`iconlist` cards, `process` steps) open in the shared `CardViewer` (`src/ui/CardViewer.tsx`) when tapped: full-screen sheet on phones (swipe left/right between cards, swipe down to close), centered dialog on wide screens; always-visible close, counter, ‹ › and dots; keys ← → Esc. New card-like blocks use the same viewer instead of their own. On phones `iconlist` shows one column of compact horizontal cards; the big view is one tap away.
+
 ## Asset types
 
 | Block | Renderer | Use it for |
