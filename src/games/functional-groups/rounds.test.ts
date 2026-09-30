@@ -5,7 +5,7 @@ import { buildRounds } from './rounds'
 
 describe('functional groups: levels', () => {
   it('has a content plan for exactly the registry levels', () => {
-    expect(Object.keys(LEVELS).map(Number).sort()).toEqual(Object.keys(GAME_BY_ID['functional-groups'].levels).map(Number).sort())
+    expect(Object.keys(LEVELS).map(Number).sort()).toEqual(Object.keys(GAME_BY_ID['functional-groups'].courses.chemie!).map(Number).sort())
   })
 
   it('unsupported level or free play mixes', () => {

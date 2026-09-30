@@ -5,7 +5,8 @@ import { parseFormula } from '../courses/chemie/data/formula'
 
 const ICONS = new Set<string>(CHEM_ICONS)
 const SPECS = new Set<string>(SPECIMENS)
-const VISUAL = new Set<string>(['flipcards', 'diagram', 'molecule', 'particles', 'reaction', 'process', 'iconlist', 'compare', 'elements', 'structure'])
+const VISUAL = new Set<string>(['flipcards', 'diagram', 'molecule', 'particles', 'reaction', 'process', 'iconlist', 'compare', 'elements', 'structure', 'graph', 'circuit', 'forces', 'rays', 'wave'])
+const CIRCUIT_KINDS = new Set<string>(['resistor', 'lamp', 'switch', 'switch-open', 'ammeter', 'voltmeter', 'ohmmeter', 'diode', 'led', 'capacitor', 'coil', 'motor', 'fuse', 'rheostat', 'ldr', 'thermistor', 'bell', 'wire'])
 const MOLS = new Set<string>(MOLECULES)
 
 const DIAGRAMS = new Set<string>([...FIGURES, 'bohr', 'states', 'ph-scale', 'periodic-mini', 'energy-profile', 'titration-curve', 'orbitals', 'separation', 'galvanic', 'rate-curve', 'lab-safety'])
@@ -62,7 +63,47 @@ function checkBlock(b: Block, err: (m: string) => void) {
     const e = checkEquation(b.equation)
     if (e) err(e)
   }
+  if (b.type === 'graph') checkGraph(b, err)
+  if (b.type === 'circuit') {
+    if (!b.parts.length) err('circuit without parts')
+    for (const part of b.parts) {
+      const comps = 'parallel' in part ? part.parallel.flat() : [part]
+      if ('parallel' in part && part.parallel.length < 2) err('parallel group needs 2+ branches')
+      for (const c of comps) if (!CIRCUIT_KINDS.has(c.kind)) err(`unknown circuit component ${c.kind}`)
+    }
+  }
+  if (b.type === 'forces') {
+    if (!b.forces.length) err('force diagram without forces')
+    for (const f of b.forces) if (!Number.isFinite(f.angle) || !(f.size > 0)) err(`bad force arrow ${f.label}`)
+    if (b.surface === 'incline' && !(b.angle && b.angle > 0 && b.angle < 90)) err('incline needs an angle between 0 and 90°')
+  }
+  if (b.type === 'rays') {
+    if (!(b.object > 0)) err('rays: object distance must be > 0')
+    if (b.element !== 'plane-mirror' && !(b.focal > 0)) err('rays: focal length must be > 0')
+    if (b.element !== 'plane-mirror' && Math.abs(b.object - b.focal) < 1e-9 && (b.element === 'convex-lens' || b.element === 'concave-mirror'))
+      err('rays: object at the focus has no image – pick another distance')
+  }
+  if (b.type === 'wave') {
+    if (!b.waves.length) err('wave block without waves')
+    for (const w of b.waves) if (!(w.amplitude > 0) || !(w.wavelength > 0)) err('wave needs amplitude > 0 and wavelength > 0')
+  }
   for (const t of texts(b)) checkMarkup(t, err)
+}
+
+function checkGraph(b: Extract<Block, { type: 'graph' }>, err: (m: string) => void) {
+  for (const [name, a] of [['x', b.x] as const, ['y', b.y] as const]) {
+    if (!(a.max > a.min)) err(`graph ${name} axis: max must be > min`)
+    if (a.step !== undefined && !(a.step > 0 && (a.max - a.min) / a.step <= 40)) err(`graph ${name} axis: step too small`)
+  }
+  if (!b.series.length) err('graph without series')
+  b.series.forEach((sr, i) => {
+    if (sr.points.length < 2 && sr.style !== 'dots') err(`graph series ${i + 1} needs 2+ points`)
+    for (const [x, y] of sr.points) {
+      if (!Number.isFinite(x) || !Number.isFinite(y)) err(`graph series ${i + 1}: non-numeric point`)
+      else if (x < b.x.min - 1e-9 || x > b.x.max + 1e-9 || y < b.y.min - 1e-9 || y > b.y.max + 1e-9)
+        err(`graph series ${i + 1}: point [${x}, ${y}] outside the axes`)
+    }
+  })
 }
 
 function checkQuestion(q: Question, err: (m: string) => void) {

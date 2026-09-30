@@ -105,7 +105,7 @@ describe('curves are monotonic for every acid', () => {
 
 describe('titration levels', () => {
   it('has content for exactly the registry levels', () => {
-    expect(Object.keys(LEVELS).map(Number)).toEqual(Object.keys(GAME_BY_ID.titration.levels).map(Number))
+    expect(Object.keys(LEVELS).map(Number)).toEqual(Object.keys(GAME_BY_ID.titration.courses.chemie!).map(Number))
   })
 
   it('L5 is HCl only, L6 is vinegar and sulfuric acid', () => {

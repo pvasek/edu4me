@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, animate, motion, useMotionValue, useTransform, type PanInfo } from 'motion/react'
 import { levelNum, type GameProps } from '../types'
 import { Md } from '../../core/markup'
-import { chemie } from '../../courses/chemie'
+import { courseById } from '../../core/registry'
 import { Icon } from '../../ui/Icon'
 import { Mascot, MascotSays, type Mood } from '../../ui/Mascot'
 import { ease, popIn, shake, spring } from '../../ui/motion'
@@ -19,10 +19,11 @@ interface Toast {
   explain?: string
 }
 
-export default function Swipe({ levelId, onFinish }: GameProps) {
+export default function Swipe({ courseId, levelId, onFinish }: GameProps) {
+  const course = courseById(courseId)!
   const [phase, setPhase] = useState<Phase>('loading')
   const [cards, setCards] = useState<SwipeCard[]>([])
-  const level = levelNum(playLevel(levelId))
+  const level = levelNum(playLevel(levelId, courseId))
   const [pos, setPos] = useState(0)
   const [exitDir, setExitDir] = useState<1 | -1>(1)
   const [toast, setToast] = useState<Toast | null>(null)
@@ -34,7 +35,7 @@ export default function Swipe({ levelId, onFinish }: GameProps) {
 
   useEffect(() => {
     let alive = true
-    swipeDeck(chemie, levelId)
+    swipeDeck(course, levelId)
       .catch(() => [])
       .then((picked) => {
         if (!alive) return

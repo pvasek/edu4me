@@ -37,7 +37,7 @@ function leaks(s: Subject, raw: string): string | null {
 
 describe('who-am-i level sets', () => {
   it('has a set for every level listed in the registry', () => {
-    expect(levels).toEqual(Object.keys(GAME_BY_ID['who-am-i'].levels).map(Number))
+    expect(levels).toEqual(Object.keys(GAME_BY_ID['who-am-i'].courses.chemie!).map(Number))
   })
 
   for (const lv of levels) {

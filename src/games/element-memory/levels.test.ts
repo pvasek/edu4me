@@ -18,7 +18,7 @@ const faceKey = (text: string, el?: string) => `${el ?? ''}|${plain(text).toLowe
 
 describe('element-memory level sets', () => {
   it('has a set for every level in the registry and nothing else', () => {
-    expect(Object.keys(LEVELS).map(Number).sort()).toEqual(Object.keys(GAME_BY_ID['element-memory'].levels).map(Number).sort())
+    expect(Object.keys(LEVELS).map(Number).sort()).toEqual(Object.keys(GAME_BY_ID['element-memory'].courses.chemie!).map(Number).sort())
   })
 
   for (const [lv, L] of Object.entries(LEVELS)) {

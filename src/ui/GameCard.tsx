@@ -1,4 +1,4 @@
-import { useProgress } from '../core/progress'
+import { gameKey, useProgress } from '../core/progress'
 import type { GameMeta } from '../games/types'
 import { Icon, type IconName } from './Icon'
 import { MLink } from './anim'
@@ -9,11 +9,15 @@ export const KIND: Record<GameMeta['kind'], { title: string; icon: IconName; col
   build: { title: 'Stavebnice', icon: 'sparkle', color: 'var(--cat-transition)' },
   quiz: { title: 'Kvízy a trenažéry', icon: 'bolt', color: 'var(--cat-noble)' },
   lab: { title: 'Virtuální laboratoř', icon: 'flask', color: 'var(--cat-post)' },
+  motion: { title: 'Pohyb a síly', icon: 'target', color: 'var(--cat-alkali)' },
+  energy: { title: 'Energie a látky', icon: 'flame', color: 'var(--cat-alkaline)' },
+  circuit: { title: 'Elektřina', icon: 'bolt', color: 'var(--cat-metalloid)' },
+  optics: { title: 'Světlo a vlny', icon: 'sun', color: 'var(--cat-halogen)' },
 }
 
 export function GameCard({ game, courseId, levelId, note }: { game: GameMeta; courseId: string; levelId?: string; note?: string }) {
   const p = useProgress()
-  const rec = p.games[game.id]
+  const rec = p.games[gameKey(courseId, game.id)]
   const k = KIND[game.kind]
   return (
     <MLink

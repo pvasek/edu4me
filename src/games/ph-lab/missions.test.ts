@@ -23,7 +23,7 @@ function solve(m: Mission, limit: number): number | null {
 
 describe('pH lab levels', () => {
   it('has content for exactly the registry levels', () => {
-    expect(Object.keys(LEVELS).map(Number)).toEqual(Object.keys(GAME_BY_ID['ph-lab'].levels).map(Number))
+    expect(Object.keys(LEVELS).map(Number)).toEqual(Object.keys(GAME_BY_ID['ph-lab'].courses.chemie!).map(Number))
   })
 
   it('mission ids are unique and every category has a mission', () => {

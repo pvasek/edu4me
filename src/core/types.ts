@@ -54,6 +54,84 @@ export type Block =
   /** Cards with a big picture on the front; tap to flip and read the back. */
   | { type: 'flipcards'; cards: FlipCard[]; caption?: Inline }
   | { type: 'game'; gameId: GameId; text?: Inline }
+  // ── physics: parametric technical drawings (rendered in src/illustrations/physics/) ──
+  /** A graph drawn from data points: motion graphs, heating curves, I–U characteristics, decay… */
+  | { type: 'graph'; x: GraphAxis; y: GraphAxis; series: GraphSeries[]; marks?: GraphMark[]; caption?: Inline }
+  /** A circuit diagram with standard symbols: a source and a series of parts (parts can be parallel groups). */
+  | { type: 'circuit'; source: CircuitSource; parts: CircuitPart[]; caption?: Inline }
+  /** A free-body / force diagram: a body with labelled force arrows. */
+  | { type: 'forces'; body?: ForceBody; surface?: 'none' | 'ground' | 'incline' | 'water' | 'ceiling'; angle?: number; forces: ForceArrow[]; resultant?: boolean; caption?: Inline }
+  /** A ray diagram for a lens or mirror; the image is computed from the imaging equation. */
+  | { type: 'rays'; element: 'convex-lens' | 'concave-lens' | 'concave-mirror' | 'convex-mirror' | 'plane-mirror'; focal: number; object: number; height?: number; caption?: Inline }
+  /** One or more waves (transverse, longitudinal or standing), optionally with their sum and λ/A marks. */
+  | { type: 'wave'; kind?: 'transverse' | 'longitudinal' | 'standing'; waves: WaveSpec[]; sum?: boolean; marks?: ('wavelength' | 'amplitude' | 'nodes')[]; caption?: Inline }
+
+export type Tone = 'a' | 'b' | 'c' | 'd'
+
+export interface GraphAxis {
+  /** quantity symbol or name, e.g. "t" or "čas" */
+  label: Inline
+  /** unit shown in the axis label, e.g. "s" */
+  unit?: string
+  min: number
+  max: number
+  /** tick spacing (default: a sensible step) */
+  step?: number
+}
+export interface GraphSeries {
+  label?: Inline
+  /** [x, y] points in axis units, in order of x (a line through them) */
+  points: [number, number][]
+  style?: 'line' | 'dashed' | 'dots' | 'smooth'
+  tone?: Tone
+  /** shade the area under the line (e.g. distance under a v–t graph) */
+  area?: boolean
+}
+/** An annotation: x+y = labelled point, only x = vertical guide, only y = horizontal guide. */
+export interface GraphMark {
+  x?: number
+  y?: number
+  label: Inline
+}
+
+export type CircuitComponentKind =
+  | 'resistor' | 'lamp' | 'switch' | 'switch-open' | 'ammeter' | 'voltmeter' | 'ohmmeter'
+  | 'diode' | 'led' | 'capacitor' | 'coil' | 'motor' | 'fuse' | 'rheostat' | 'ldr' | 'thermistor' | 'bell' | 'wire'
+export interface CircuitComponent {
+  kind: CircuitComponentKind
+  /** short label, e.g. "R₁", "Ž", "2 Ω" */
+  label?: string
+}
+/** A series element, or a parallel group whose branches are series lists. */
+export type CircuitPart = CircuitComponent | { parallel: CircuitComponent[][] }
+export interface CircuitSource {
+  kind: 'cell' | 'battery' | 'dc' | 'ac'
+  label?: string
+}
+
+export type ForceBody = 'box' | 'ball' | 'car' | 'person' | 'point' | 'plane' | 'boat' | 'skydiver' | 'lamp' | 'satellite'
+export interface ForceArrow {
+  /** e.g. "F_{G}", "F_{t}", "N" */
+  label: Inline
+  /** direction in degrees: 0 = right, 90 = up, 180 = left, 270 = down (on an incline: relative to the horizontal) */
+  angle: number
+  /** relative length (1–5), or newtons when all arrows use the same scale */
+  size: number
+  tone?: Tone
+  /** where the arrow starts (default: the centre of the body) */
+  from?: 'center' | 'bottom' | 'top' | 'left' | 'right'
+}
+
+export interface WaveSpec {
+  /** relative amplitude (e.g. 1) */
+  amplitude: number
+  /** wavelength in the same arbitrary units as the drawing width (the drawing shows ~2–3 wavelengths) */
+  wavelength: number
+  /** phase shift in wavelengths (0–1) */
+  phase?: number
+  label?: Inline
+  tone?: Tone
+}
 
 export interface IconItem {
   icon: ChemIcon
@@ -142,8 +220,10 @@ export interface LevelOutline {
   /** Stage in the real school system, shown as a tag. */
   stage: string
   color: string
-  /** Element symbol used as the level "badge" on the map. */
+  /** Level emblem shown on the map and awarded by the level test: an element symbol (chemistry) or a unit/constant (physics). */
   symbol: string
+  /** Name of the emblem when it isn't a chemical element, e.g. "newton". */
+  emblemName?: string
   lessons: LessonOutline[]
   load: () => Promise<LevelContent>
 }
@@ -153,8 +233,12 @@ export interface Course {
   title: string
   tagline: string
   color: string
+  /** icon used in navigation and on course cards */
+  icon?: ChemIcon
   available: boolean
   levels: LevelOutline[]
+  /** what the level tests award: chemical elements (album of 118) or the level emblems (units/constants) */
+  album?: { kind: 'elements' | 'emblems'; title: string }
 }
 
 export type GameId =
@@ -172,3 +256,12 @@ export type GameId =
   | 'ph-lab'
   | 'titration'
   | 'functional-groups'
+  // physics
+  | 'unit-convert'
+  | 'motion-graph'
+  | 'force-sum'
+  | 'float-sink'
+  | 'energy-chain'
+  | 'circuit-builder'
+  | 'ray-optics'
+  | 'projectile'

@@ -15,9 +15,9 @@ export interface QfItem {
 export const MIN_POOL = 24
 
 /** The level the round is played at, or undefined for "Vše" (also for levels the game does not list). */
-export function playLevel(levelId?: string): string | undefined {
+export function playLevel(levelId?: string, courseId = 'chemie'): string | undefined {
   const n = levelNum(levelId)
-  return n !== undefined && n in GAME_BY_ID.quickfire.levels ? levelId : undefined
+  return n !== undefined && n in (GAME_BY_ID.quickfire.courses[courseId] ?? {}) ? levelId : undefined
 }
 
 const usable = (q: Question): q is QfQuestion => (q.kind === 'choice' && q.options.length >= 2) || q.kind === 'tf'
@@ -28,6 +28,6 @@ const usable = (q: Question): q is QfQuestion => (q.kind === 'choice' && q.optio
  * Without a level, every level of the course.
  */
 export async function quickfirePool(course: Course, levelId?: string, rng: () => number = Math.random): Promise<QfItem[]> {
-  const items = await loadLevelPool(course, playLevel(levelId), { kinds: ['choice', 'tf'], accept: usable, min: MIN_POOL, rng })
+  const items = await loadLevelPool(course, playLevel(levelId, course.id), { kinds: ['choice', 'tf'], accept: usable, min: MIN_POOL, rng })
   return items.map((i) => ({ question: i.question as QfQuestion, review: i.review }))
 }

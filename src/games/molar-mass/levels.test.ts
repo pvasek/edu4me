@@ -45,7 +45,7 @@ function generated(): Map<string, string> {
 
 describe('molar-mass level sets', () => {
   it('has a set for every level in the registry', () => {
-    expect(Object.keys(LEVELS).map(Number).sort()).toEqual(Object.keys(GAME_BY_ID['molar-mass'].levels).map(Number).sort())
+    expect(Object.keys(LEVELS).map(Number).sort()).toEqual(Object.keys(GAME_BY_ID['molar-mass'].courses.chemie!).map(Number).sort())
   })
 
   for (const [lv, set] of Object.entries(LEVELS)) {

@@ -37,7 +37,7 @@ function rank(m: number[][]): number {
 
 describe('equation levels', () => {
   it('match the levels in the registry', () => {
-    expect(Object.keys(GAME_BY_ID.balance.levels).map(Number)).toEqual([...BALANCE_LEVELS])
+    expect(Object.keys(GAME_BY_ID.balance.courses.chemie!).map(Number)).toEqual([...BALANCE_LEVELS])
     expect(Object.keys(LEVELS).map(Number)).toEqual([...BALANCE_LEVELS])
   })
 

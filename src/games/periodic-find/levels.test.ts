@@ -26,7 +26,7 @@ function leaks(p: FindPrompt): boolean {
 
 describe('periodic-find level sets', () => {
   it('has a set for every level listed in the registry', () => {
-    expect(levels).toEqual(Object.keys(GAME_BY_ID['periodic-find'].levels).map(Number))
+    expect(levels).toEqual(Object.keys(GAME_BY_ID['periodic-find'].courses.chemie!).map(Number))
   })
 
   for (const lv of levels) {

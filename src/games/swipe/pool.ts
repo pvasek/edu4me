@@ -16,9 +16,9 @@ export interface SwipeCard {
 export const ROUND = 12
 
 /** The level the round is played at, or undefined for "Vše" (also for levels the game does not list). */
-export function playLevel(levelId?: string): string | undefined {
+export function playLevel(levelId?: string, courseId = 'chemie'): string | undefined {
   const n = levelNum(levelId)
-  return n !== undefined && n in GAME_BY_ID.swipe.levels ? levelId : undefined
+  return n !== undefined && n in (GAME_BY_ID.swipe.courses[courseId] ?? {}) ? levelId : undefined
 }
 
 /**
@@ -27,7 +27,7 @@ export function playLevel(levelId?: string): string | undefined {
  * deck and are marked as review. Without a level, a mix of all levels.
  */
 export async function swipeDeck(course: Course, levelId?: string, rng: () => number = Math.random): Promise<SwipeCard[]> {
-  const items = await loadLevelPool(course, playLevel(levelId), { kinds: ['tf'], min: ROUND, rng })
+  const items = await loadLevelPool(course, playLevel(levelId, course.id), { kinds: ['tf'], min: ROUND, rng })
   const own = shuffle(items.filter((i) => !i.review), rng)
   const review = items.filter((i) => i.review)
   const picked = [...own, ...review].slice(0, ROUND)

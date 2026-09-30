@@ -41,7 +41,7 @@ function fillFrom(t: EcTarget, counts: Record<string, number>): Filling {
 
 describe('electron-config level sets', () => {
   it('has a set for every level listed in the registry', () => {
-    expect(Object.keys(LEVELS)).toEqual(Object.keys(GAME_BY_ID['electron-config'].levels))
+    expect(Object.keys(LEVELS)).toEqual(Object.keys(GAME_BY_ID['electron-config'].courses.chemie!))
   })
 
   for (const [lv, set] of Object.entries(LEVELS)) {

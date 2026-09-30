@@ -18,7 +18,7 @@ const NOBLE_Z: Record<string, number> = { He: 2, Ne: 10, Ar: 18 }
 
 describe('build-atom level sets', () => {
   it('has a set for every level listed in the registry', () => {
-    expect(Object.keys(LEVELS)).toEqual(Object.keys(GAME_BY_ID['build-atom'].levels))
+    expect(Object.keys(LEVELS)).toEqual(Object.keys(GAME_BY_ID['build-atom'].courses.chemie!))
   })
 
   for (const [lv, set] of Object.entries(LEVELS)) {

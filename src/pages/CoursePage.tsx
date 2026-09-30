@@ -112,7 +112,7 @@ const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'
 function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: string; current: boolean; side: 'left' | 'right' }) {
   const { level, done, doneCount, passed, best } = s
   const nextIdx = done.indexOf(false)
-  const games = gamesForLevel(level.number)
+  const games = gamesForLevel(courseId, level.number)
   const status = passed ? 'Splněno' : doneCount === 0 ? 'Nezačato' : doneCount === level.lessons.length ? 'Čeká na výzvu' : 'Rozpracováno'
   const cta =
     nextIdx !== -1
@@ -215,7 +215,7 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
           <motion.div className="atlas-game-chips" variants={stagger(0.04)}>
             {games.map((g) => (
               <motion.span key={g.id} variants={popIn}>
-                <Link to={`/c/${courseId}/hry/${g.id}?uroven=${level.id}`} className="chip atlas-game-chip" title={g.levels[level.number]}>
+                <Link to={`/c/${courseId}/hry/${g.id}?uroven=${level.id}`} className="chip atlas-game-chip" title={g.courses[courseId]?.[level.number]}>
                   <Icon name="gamepad" /> {g.title}
                 </Link>
               </motion.span>

@@ -106,8 +106,8 @@ export function LevelPage() {
       <section className="stack">
         <h2>Procvič si hrou</h2>
         <div className="game-grid">
-          {gamesForLevel(level.number).map((g) => (
-            <GameCard key={g.id} game={g} courseId={course.id} levelId={level.id} note={g.levels[level.number]} />
+          {gamesForLevel(course.id, level.number).map((g) => (
+            <GameCard key={g.id} game={g} courseId={course.id} levelId={level.id} note={g.courses[course.id]?.[level.number]} />
           ))}
         </div>
       </section>

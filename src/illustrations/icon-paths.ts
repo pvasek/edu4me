@@ -9,6 +9,7 @@
  * Fills are listed before the outlines that sit on top of them.
  */
 import type { ChemIcon } from './catalog'
+import { PHYSICS_ICON_PATHS } from './icon-paths-physics'
 
 export type IconFill = 'soft' | 'solid' | 'hatch'
 export interface IconShape {
@@ -56,6 +57,7 @@ const drop = (x: number, top: number, r: number) =>
   `M${x} ${top}c${r * 0.6} ${r * 0.85} ${r} ${r * 1.45} ${r} ${r * 2.05}a${r} ${r} 0 0 1-${r * 2} 0c0-${r * 0.6} ${r * 0.4}-${r * 1.2} ${r}-${r * 2.05}Z`
 
 export const ICON_PATHS: Record<ChemIcon, IconDef> = {
+  ...PHYSICS_ICON_PATHS,
   // ───────────────────────── lab equipment ─────────────────────────
   flask: [
     hatch('M6.96 14.5h10.08l2.36 4.1A1.6 1.6 0 0 1 18 21H6a1.6 1.6 0 0 1-1.4-2.4Z'),

@@ -3,7 +3,7 @@ import { AnimatePresence, animate, motion, useMotionValue } from 'motion/react'
 import { levelNum, type GameProps } from '../types'
 import { shuffle } from '../../core/check'
 import { Md } from '../../core/markup'
-import { chemie } from '../../courses/chemie'
+import { courseById } from '../../core/registry'
 import { Icon } from '../../ui/Icon'
 import { Mascot, MascotSays, type Mood } from '../../ui/Mascot'
 import { bump, ease, popIn, rise, shake, slide, spring } from '../../ui/motion'
@@ -35,12 +35,13 @@ interface Feedback {
   gain: number
 }
 
-export default function Quickfire({ levelId, onFinish }: GameProps) {
+export default function Quickfire({ courseId, levelId, onFinish }: GameProps) {
+  const course = courseById(courseId)!
   const [phase, setPhase] = useState<Phase>('loading')
   const pool = useRef<QfItem[]>([])
   const [item, setItem] = useState<QfItem | null>(null)
   const question = item?.question ?? null
-  const level = levelNum(playLevel(levelId))
+  const level = levelNum(playLevel(levelId, courseId))
   const [qKey, setQKey] = useState(0)
   const [left, setLeft] = useState(DURATION)
   const [score, setScore] = useState(0)
@@ -81,7 +82,7 @@ export default function Quickfire({ levelId, onFinish }: GameProps) {
   // Load the question pool.
   useEffect(() => {
     let alive = true
-    quickfirePool(chemie, levelId)
+    quickfirePool(course, levelId)
       .catch(() => [])
       .then((items) => {
         if (!alive) return

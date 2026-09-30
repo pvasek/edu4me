@@ -22,7 +22,7 @@ export function fakeCourse(): Course {
     load,
   })
   return {
-    id: 'fake',
+    id: 'chemie',
     title: 'Fake',
     tagline: '',
     color: '#000',

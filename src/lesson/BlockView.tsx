@@ -295,7 +295,7 @@ export function BlockView({
       )
     case 'game': {
       const g = GAME_BY_ID[block.gameId]
-      if (!g) return null
+      if (!g || !g.courses[courseId]) return null // game not (yet) available in this course
       return (
         <Link className="b-game" to={`/c/${courseId}/hry/${g.id}?uroven=${levelId}`}>
           <span className="b-game-icon">

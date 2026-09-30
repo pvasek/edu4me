@@ -197,6 +197,9 @@ export function starsFor(score: number, max: number) {
   return r >= 0.9 ? 3 : r >= 0.6 ? 2 : 1
 }
 
+/** Progress key of a game in a course (chemistry keeps its original un-prefixed keys). */
+export const gameKey = (courseId: string, gameId: string) => (courseId === 'chemie' ? gameId : `${courseId}:${gameId}`)
+
 export function finishGame(gameId: string, score: number, max: number, collected: string[] = []) {
   const ratio = max > 0 ? Math.min(1, score / max) : 0
   const xp = Math.round(XP.gameBase + XP.gameMax * ratio)

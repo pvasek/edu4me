@@ -1,7 +1,7 @@
 import { Suspense, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { courseById } from '../core/registry'
-import { finishGame, useProgress } from '../core/progress'
+import { finishGame, gameKey, useProgress } from '../core/progress'
 import { GAME_BY_ID, GAME_COMPONENTS } from '../games/registry'
 import type { GameResult } from '../games/types'
 import type { GameId } from '../core/types'
@@ -30,12 +30,14 @@ export default function GamePage() {
   const p = useProgress()
   const [phase, setPhase] = useState<Phase>({ kind: 'intro' })
   const [runs, setRuns] = useState(0)
-  if (!course || !meta) return <NotFound />
-  const Game = GAME_COMPONENTS[meta.id]
-  const levels = course.levels.filter((l) => l.number in meta.levels)
+  const supported = course && meta ? meta.courses[course.id] : undefined
+  const Game = meta ? GAME_COMPONENTS[meta.id] : undefined
+  if (!course || !meta || !supported || !Game) return <NotFound />
+  const levels = course.levels.filter((l) => l.number in supported)
   const levelId = search.get('uroven') ?? undefined
-  const level = course.levels.find((l) => l.id === levelId && l.number in meta.levels)
-  const rec = p.games[meta.id]
+  const level = course.levels.find((l) => l.id === levelId && l.number in supported)
+  const key = gameKey(course.id, meta.id)
+  const rec = p.games[key]
 
   const start = () => {
     setRuns((r) => r + 1)
@@ -64,10 +66,10 @@ export default function GamePage() {
         <motion.section className="game-intro stack" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={spring.gentle}>
           <MascotSays mood="cheer">
             {meta.blurb}
-            {level && meta.levels[level.number] && (
+            {level && supported[level.number] && (
               <>
                 {' '}
-                <strong>Úroveň {level.number}:</strong> {meta.levels[level.number]}.
+                <strong>Úroveň {level.number}:</strong> {supported[level.number]}.
               </>
             )}
             {!level && levels.length > 1 && ' Bez zvolené úrovně se mísí všechny úrovně.'}
@@ -94,7 +96,7 @@ export default function GamePage() {
                     className={`chip level-chip${level?.id === l.id ? ' on' : ''}`}
                     style={{ ['--c' as string]: l.color }}
                     onClick={() => setSearch({ uroven: l.id })}
-                    title={meta.levels[l.number]}
+                    title={supported[l.number]}
                   >
                     {l.number}. {l.title}
                   </button>
@@ -121,9 +123,10 @@ export default function GamePage() {
             <Suspense fallback={<Loading text="Připravuju hru…" />}>
               <Game
                 key={phase.run}
+                courseId={course.id}
                 levelId={level?.id}
-                onFinish={(result) => {
-                  const r = finishGame(meta.id, result.score, result.max, result.collected)
+                onFinish={(result: GameResult) => {
+                  const r = finishGame(key, result.score, result.max, result.collected)
                   setPhase({ kind: 'result', result, ...r })
                 }}
               />

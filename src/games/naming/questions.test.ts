@@ -112,7 +112,7 @@ function formulaFromName(it: NItem): string {
 
 describe('naming question pool', () => {
   it('matches the registry levels', () => {
-    expect(Object.keys(GAME_BY_ID.naming.levels).map(Number)).toEqual([...NAMING_LEVELS])
+    expect(Object.keys(GAME_BY_ID.naming.courses.chemie!).map(Number)).toEqual([...NAMING_LEVELS])
     expect(Object.keys(LEVELS).map(Number)).toEqual([...NAMING_LEVELS])
   })
 

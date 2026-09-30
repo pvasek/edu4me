@@ -10,6 +10,8 @@ export interface GameResult {
 }
 
 export interface GameProps {
+  /** Course the game was opened from. */
+  courseId: string
   /** Level the game was opened from, if any (games may tune difficulty/content to it). */
   levelId?: string
   /** Call exactly once when a round ends. The shell shows results, awards XP and offers replay. */
@@ -22,14 +24,14 @@ export interface GameMeta {
   /** One sentence, Czech, shown on the game card. */
   blurb: string
   /** Skill family, used for grouping and colour. */
-  kind: 'periodic' | 'build' | 'quiz' | 'lab'
+  kind: 'periodic' | 'build' | 'quiz' | 'lab' | 'motion' | 'energy' | 'circuit' | 'optics'
   /**
-   * Levels (by number) the game supports, each with a short Czech description
-   * of what the game trains at that level. Every listed level has its own
-   * content set in the game (see spec/courses/chemie/games.md).
-   * Playing without a level ("Vše") mixes all of them.
+   * Courses the game belongs to → levels (by number) it supports there, each
+   * with a short Czech description of what it trains at that level. Every
+   * listed level has its own content set in the game (see
+   * spec/courses/<course>/games.md). Playing without a level ("Vše") mixes them.
    */
-  levels: Partial<Record<number, string>>
+  courses: Partial<Record<string, Partial<Record<number, string>>>>
 }
 
 /** Level number from a level id like "l5"; undefined for free play. */

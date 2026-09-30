@@ -11,7 +11,7 @@ const RARE_ANIONS = new Set(['MnO4', 'Cr2O7', 'CrO4', 'ClO3', 'S2O3', 'SiO3'])
 
 describe('ion-builder levels', () => {
   it('match the registry', () => {
-    expect(Object.keys(GAME_BY_ID['ion-builder'].levels).map(Number)).toEqual([...ION_LEVELS])
+    expect(Object.keys(GAME_BY_ID['ion-builder'].courses.chemie!).map(Number)).toEqual([...ION_LEVELS])
     expect(Object.keys(LEVELS).map(Number)).toEqual([...ION_LEVELS])
   })
 

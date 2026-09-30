@@ -25,6 +25,11 @@ export const CHEM_ICONS = [
   'dna', 'cell', 'protein', 'enzyme', 'heart', 'lungs', 'stomach', 'muscle', 'bone', 'blood',
   // learning
   'idea', 'question', 'warning', 'check', 'cross', 'calculator', 'chart', 'book', 'star', 'trophy',
+  // physics (drawings in icon-paths-physics.ts)
+  'ruler', 'clock', 'weight', 'vector', 'lever', 'pulley', 'spring', 'pendulum', 'gauge', 'ship', 'feather', 'parachute',
+  'rocket', 'planet', 'orbit', 'satellite', 'galaxy', 'telescope', 'microscope', 'lens', 'mirror', 'prism', 'rainbow',
+  'eye', 'camera', 'laser', 'wave', 'sound', 'ear', 'music', 'compass', 'coil', 'motor', 'socket', 'solar-panel',
+  'wind-turbine', 'radiation',
 ] as const
 export type ChemIcon = (typeof CHEM_ICONS)[number]
 
@@ -77,6 +82,24 @@ export const FIGURES = [
   'glucose-ring', 'photosynthesis-respiration', 'peptide-bond', 'protein-structure', 'lipid-bilayer',
   'enzyme-lock-key', 'dna-helix', 'protein-synthesis', 'greenhouse-effect', 'ozone-layer', 'plastic-lifecycle',
   'atp-cycle', 'cellular-respiration',
+  // ── physics (src/illustrations/figures/fz1…fz4, see spec/courses/fyzika/figures.md) ──
+  // levels 1–3
+  'measuring-instruments', 'vernier-caliper', 'displacement-volume', 'density-column', 'brownian-motion', 'thermometer-scales',
+  'thermal-expansion', 'electroscope', 'magnet-field', 'earth-magnetism', 'center-of-gravity', 'lever-types', 'pulley-systems',
+  'hydraulic-press', 'hydrostatic-pressure', 'archimedes-principle', 'float-sink', 'barometer', 'pendulum-energy',
+  // levels 4–6
+  'heat-transfer', 'four-stroke-engine', 'heat-pump', 'sound-wave', 'ear-anatomy', 'echo-sonar', 'eclipses', 'moon-phases',
+  'reflection-law', 'curved-mirrors', 'refraction', 'total-internal-reflection', 'eye-anatomy', 'vision-defects',
+  'prism-dispersion', 'color-mixing', 'em-spectrum', 'field-lines-charges', 'resistance-wire', 'home-wiring', 'pn-diode',
+  // levels 7–9
+  'oersted', 'solenoid-field', 'dc-motor', 'generator', 'transformer', 'power-grid', 'power-plants', 'nuclear-reactor',
+  'solar-system', 'seasons', 'star-life-cycle', 'projectile-motion', 'circular-motion', 'momentum-collision', 'gravity-field',
+  'kepler-orbits', 'torque-balance', 'spring-pendulum', 'interference-ripples', 'standing-waves', 'doppler-effect',
+  // levels 10–12
+  'gas-molecules-pressure', 'heat-engine-cycle', 'stress-strain', 'surface-tension', 'phase-diagram', 'parallel-plate-field',
+  'capacitor', 'lorentz-force', 'mass-spectrometer', 'faraday-lenz', 'em-wave', 'double-slit', 'diffraction-grating',
+  'polarization', 'light-clock', 'photoelectric-effect', 'energy-levels', 'laser-cavity', 'binding-energy', 'standard-model',
+  'hr-diagram', 'big-bang-timeline',
 ] as const
 export type FigureId = (typeof FIGURES)[number]
 
