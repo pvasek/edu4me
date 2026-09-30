@@ -242,6 +242,108 @@ export const GAMES: GameMeta[] = [
       },
     },
   },
+  // physics
+  {
+    id: 'unit-convert',
+    title: 'Převody jednotek',
+    blurb: 'Převáděj jednotky a předpony rychle a bez chyby.',
+    kind: 'quiz',
+    courses: {
+      fyzika: {
+        1: 'délka, objem, hmotnost, čas a předpony',
+        2: 'rychlost km/h ↔ m/s a síla',
+        3: 'tlak, práce, výkon a energie',
+        6: 'proud, napětí, odpor a kWh',
+        8: 'vědecký zápis a odvozené jednotky',
+      },
+    },
+  },
+  {
+    id: 'float-sink',
+    title: 'Plave, nebo klesne?',
+    blurb: 'Odhadni, co se v kapalině stane s tělesem, a ověř to výpočtem.',
+    kind: 'lab',
+    courses: {
+      fyzika: {
+        1: 'hustota: plave, nebo klesne',
+        3: 'vztlaková síla, Archimédův zákon a ponor',
+      },
+    },
+  },
+  {
+    id: 'motion-graph',
+    title: 'Graf pohybu',
+    blurb: 'Přiřaď příběh pohybu ke správnému grafu a čti z něj.',
+    kind: 'motion',
+    courses: {
+      fyzika: {
+        2: 'grafy s–t a v–t rovnoměrného pohybu',
+        8: 'zrychlený pohyb: směrnice a plocha pod grafem',
+      },
+    },
+  },
+  {
+    id: 'force-sum',
+    title: 'Výslednice sil',
+    blurb: 'Slož síly a najdi výslednici, nebo sílu, která těleso udrží v klidu.',
+    kind: 'motion',
+    courses: {
+      fyzika: {
+        2: 'síly na jedné přímce a rovnováha',
+        8: 'skládání pod úhlem, rozklad sil a nakloněná rovina',
+      },
+    },
+  },
+  {
+    id: 'energy-chain',
+    title: 'Energetický řetězec',
+    blurb: 'Seřaď přeměny energie od zdroje až po užitek.',
+    kind: 'energy',
+    courses: {
+      fyzika: {
+        3: 'přeměny mechanické energie',
+        4: 'teplo, skupenství a tepelné motory',
+        7: 'elektrárny a zdroje energie',
+        10: 'tepelné stroje a účinnost',
+      },
+    },
+  },
+  {
+    id: 'circuit-builder',
+    title: 'Stavitel obvodů',
+    blurb: 'Postav obvod, změř proud a napětí a rozsviť žárovky.',
+    kind: 'circuit',
+    courses: {
+      fyzika: {
+        6: 'sériové a paralelní zapojení, Ohmův zákon',
+        11: 'Kirchhoffovy zákony a vnitřní odpor zdroje',
+      },
+    },
+  },
+  {
+    id: 'ray-optics',
+    title: 'Paprsky',
+    blurb: 'Najdi, kde vznikne obraz, a urči, jaký bude.',
+    kind: 'optics',
+    courses: {
+      fyzika: {
+        5: 'odraz, lom a obraz v čočce a zrcadle',
+        12: 'zobrazovací rovnice a zvětšení',
+      },
+    },
+  },
+  {
+    id: 'projectile',
+    title: 'Vrh',
+    blurb: 'Nastav úhel a rychlost a zasáhni cíl.',
+    kind: 'motion',
+    courses: {
+      fyzika: {
+        8: 'vodorovný a šikmý vrh',
+        9: 'vrh na Měsíci a planetách, oběžná rychlost',
+      },
+    },
+  },
 ]
 
 /** Levels (by number) a game supports in a course, with what it trains there; undefined = not in that course. */
@@ -270,4 +372,12 @@ export const GAME_COMPONENTS: Partial<Record<GameId, LazyExoticComponent<Compone
   'ph-lab': lazyWithReload(() => import('./ph-lab')),
   titration: lazyWithReload(() => import('./titration')),
   'functional-groups': lazyWithReload(() => import('./functional-groups')),
+  'unit-convert': lazyWithReload(() => import('./unit-convert')),
+  'float-sink': lazyWithReload(() => import('./float-sink')),
+  'motion-graph': lazyWithReload(() => import('./motion-graph')),
+  'force-sum': lazyWithReload(() => import('./force-sum')),
+  'energy-chain': lazyWithReload(() => import('./energy-chain')),
+  'circuit-builder': lazyWithReload(() => import('./circuit-builder')),
+  'ray-optics': lazyWithReload(() => import('./ray-optics')),
+  'projectile': lazyWithReload(() => import('./projectile')),
 }

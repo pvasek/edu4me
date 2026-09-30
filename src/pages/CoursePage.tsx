@@ -1,11 +1,10 @@
 import { useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { motion, useScroll, useSpring } from 'motion/react'
-import { courseById } from '../core/registry'
+import { courseById, emblemName } from '../core/registry'
 import { useProgress, type ProgressState } from '../core/progress'
 import type { Course, LevelOutline } from '../core/types'
 import { gamesForLevel } from '../games/registry'
-import { BY_SYMBOL } from '../courses/chemie/data/elements'
 import { ChemIconView } from '../illustrations/ChemIcon'
 import { LevelVignette } from '../illustrations/vignettes/LevelVignette'
 import { Icon } from '../ui/Icon'
@@ -54,7 +53,7 @@ export function CoursePage() {
     <Page>
       <motion.section className="course-head" variants={rise}>
         <div className="stack">
-          <span className="eyebrow">Kurz · 9 úrovní · {total} lekcí</span>
+          <span className="eyebrow">Kurz · {stats.length} úrovní · {total} lekcí</span>
           <h1>{course.title}</h1>
           <p className="lead">{course.tagline}</p>
           <div className="course-head-progress">
@@ -68,9 +67,11 @@ export function CoursePage() {
           <Link to={`/c/${course.id}/hry`} className="btn">
             <Icon name="gamepad" /> Mini-hry
           </Link>
-          <Link to="/profil" className="btn">
-            <Icon name="atom" /> Album prvků
-          </Link>
+          {course.album && (
+            <Link to="/profil" className="btn">
+              <Icon name="atom" /> {course.album.kind === 'elements' ? 'Album prvků' : 'Sbírka'}
+            </Link>
+          )}
         </div>
       </motion.section>
 
@@ -172,10 +173,10 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
             </div>
           </div>
           <figure className="atlas-plate-art" aria-hidden="true">
-            <LevelVignette level={level.number} size={132} />
+            <LevelVignette course={courseId} level={level.number} size={132} />
             <figcaption>
               <span>
-                {BY_SYMBOL[level.symbol]?.name} · <b>{level.symbol}</b>
+                {emblemName(level)} · <b>{level.symbol}</b>
               </span>
               <small>Tabule {ROMAN[level.number - 1]}</small>
             </figcaption>
@@ -205,7 +206,7 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
                 <Icon name="trophy" width={15} height={15} />
               </span>
               <span className="atlas-lesson-title">Závěrečná výzva</span>
-              <span className="atlas-lesson-min tabnum">{best ? `${best.best}/${best.max}` : '12 otázek'}</span>
+              <span className="atlas-lesson-min tabnum">{best ? `${best.best}/${best.max}` : 'výzva'}</span>
             </Link>
           </motion.li>
         </motion.ol>

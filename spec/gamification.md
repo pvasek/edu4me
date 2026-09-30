@@ -17,7 +17,7 @@ Implementation: `XP` constants in `src/core/progress.ts`.
 
 ## Ranks (hodnosti)
 
-The rank rises with XP; rank *n* → *n + 1* costs 100 + 50·(n − 1) XP. Titles: Zvědavec, Pozorovatel, Laborant, Mladý chemik, Analytik, Syntetik, Badatel, Chemik, Vědec, Profesor, Nobelista. The rank number is shown in the round avatar in the header.
+The rank rises with XP; rank *n* → *n + 1* costs 100 + 50·(n − 1) XP. Titles (course-neutral): Zvědavec, Pozorovatel, Průzkumník, Experimentátor, Analytik, Objevitel, Badatel, Znalec, Vědec, Profesor, Nobelista. The rank number is shown in the round avatar in the header.
 
 ## Streak (série)
 
@@ -29,14 +29,15 @@ Lessons, level tests and games show 1–3 stars: ≥ 90 % → 3, ≥ 60 % → 2,
 
 ## Badges (odznaky)
 
-26 badges in `src/core/badges.ts`:
+Badges in `src/core/badges.ts` (a badge with `course` is shown only once that course is published):
 - progress: První pokus, Laborant (10 lessons), Chemik (30), Profesor (all lessons, counted from the course outline);
 - mastery: Bez chyby (a perfect quiz), Ostrostřelec (10 perfect quizzes), Tři hvězdy (3 stars in a game);
 - habit: Rozjezd (3-day streak), Týden v laborce (7), Věčný plamen (30);
 - XP: Tisícovka (1 000), Reaktor (5 000);
-- games: Hráč (5 different games), Herní maniak (all 14);
+- games: Hráč (5 different games), Herní maniak (all chemistry games);
 - album: Sběratel (20 elements), Kurátor (50), Mendělejev (all 118);
-- one badge per level test (Pán látek … Biochemik).
+- one badge per chemistry level test (Pán látek … Biochemik);
+- physics: První měření (first physics lesson), Fyzik (all physics lessons), one badge per physics level test (Měřič … Kvantový fyzik).
 
 New badges pop up as a toast.
 
@@ -48,6 +49,10 @@ The periodic table as a sticker album. Learners collect an element when they:
 - find or use it in a game (`collected` in the game result).
 
 Empty cells are dashed outlines; collected ones light up in their category colour. Tapping a cell shows details. Collecting all 118 is the long-term goal ("Mendělejev" badge).
+
+## Emblem collections (sbírky)
+
+A course whose `album.kind` is `emblems` (physics: "Sbírka jednotek a konstant") awards the level's emblem for passing its level test: a unit or constant (m, N, Pa, J, c, Ω, T, g, G, K, e, h) with its name (`LevelOutline.emblemName`). Emblems are stored in `progress.elements` as `course:symbol` (e.g. `fyzika:N`), so they never count towards the element album. They are shown as engraved medals (`EmblemTile`) on the profile, the level page and the level test. `LevelTile` picks the element tile or the medal by course.
 
 ## Mascot: Atomík
 

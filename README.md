@@ -2,11 +2,14 @@
 
 **▶ Live: [pvasek.github.io/edu4me](https://pvasek.github.io/edu4me/)**
 
-Playful Czech learning app for teenagers. The first course is **Chemie**: from "what is a substance" to pre-university chemistry, in 9 levels, 63 lessons, 14 mini-games and a periodic table you collect like a sticker album.
+Playful Czech learning app for teenagers. Two courses:
+
+- **Chemie**: from "what is a substance" to pre-university chemistry, in 9 levels, 63 lessons, 14 mini-games and a periodic table you collect like a sticker album.
+- **Fyzika**: from measuring and forces to relativity, quanta and cosmology, in 12 levels, 80 lessons (ZŠ 6. třída → gymnázium / A-level), 10 mini-games and a collection of units and constants.
 
 - Runs fully in the browser, deployed on GitHub Pages; progress is saved locally (export/import available).
 - Built with Vite, React 19 and TypeScript. No backend, no tracking.
-- Designed to host more courses (physics, biology and maths are planned).
+- Designed to host more courses (biology and maths are planned).
 
 ## Start
 
@@ -23,4 +26,4 @@ Pushing to `main` (or the current default branch `claude/chemistry-class-curricu
 
 ## Documentation
 
-Everything about the product, design and content is in [`spec/`](spec/README.md): concept, architecture, style guide, content guidelines, gamification and the full chemistry syllabus.
+Everything about the product, design and content is in [`spec/`](spec/README.md): concept, architecture, style guide, content guidelines, gamification and the full chemistry and physics syllabi.

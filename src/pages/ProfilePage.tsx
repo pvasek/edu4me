@@ -8,7 +8,8 @@ import {
   today,
   useProgress,
 } from '../core/progress'
-import { BADGES } from '../core/badges'
+import { albumElements, BADGES } from '../core/badges'
+import { albumItemId, COURSES, emblemName } from '../core/registry'
 import { ELEMENTS, CATEGORY_LABEL, categoryVar, tablePosition, type ChemElement } from '../courses/chemie/data/elements'
 import { Icon } from '../ui/Icon'
 import { Mascot } from '../ui/Mascot'
@@ -16,6 +17,7 @@ import { motion } from 'motion/react'
 import { Bar, CountUp, Page } from '../ui/anim'
 import { popIn, stagger } from '../ui/motion'
 import { ElementTile } from '../ui/ElementTile'
+import { EmblemTile } from '../ui/EmblemTile'
 import { SaveSyncCard } from '../ui/SaveSyncCard'
 
 export default function ProfilePage() {
@@ -24,7 +26,13 @@ export default function ProfilePage() {
   const [picked, setPicked] = useState<ChemElement | null>(null)
   const [confirmReset, setConfirmReset] = useState(false)
   const [msg, setMsg] = useState('')
-  const owned = new Set(p.elements)
+  const owned = new Set(albumElements(p))
+  const have = new Set(p.elements)
+  const badgeGroups = [
+    { id: 'all', title: 'Obecné', badges: BADGES.filter((b) => !b.course) },
+    ...COURSES.filter((c) => c.available).map((c) => ({ id: c.id, title: c.title, badges: BADGES.filter((b) => b.course === c.id) })),
+  ].filter((g) => g.badges.length)
+  const emblemCourses = COURSES.filter((c) => c.available && c.album?.kind === 'emblems')
 
   const days = Array.from({ length: 28 }, (_, i) => {
     const d = new Date()
@@ -101,27 +109,57 @@ export default function ProfilePage() {
 
       <section className="stack">
         <h2>Odznaky</h2>
-        <motion.div className="badge-grid" variants={stagger(0.04)} initial="hidden" whileInView="show" viewport={{ once: true }}>
-          {BADGES.map((b) => {
-            const got = Boolean(p.badges[b.id])
-            return (
-              <motion.div
-                key={b.id}
-                variants={popIn}
-                whileHover={got ? { rotate: [0, -6, 6, 0], transition: { duration: 0.5 } } : undefined}
-                className={`badge${got ? ' got' : ''}`}
-                style={{ ['--b-color' as string]: b.color, ['--b-ink' as string]: b.color.startsWith('#') ? 'var(--on-level)' : 'var(--surface)' }}
-              >
-                <span className="badge-medal">
-                  <Icon name={got ? b.icon : 'lock'} width={26} height={26} />
-                </span>
-                <strong>{b.title}</strong>
-                <span className="muted">{b.description}</span>
-              </motion.div>
-            )
-          })}
-        </motion.div>
+        {badgeGroups.map((g) => (
+          <div key={g.id} className="stack">
+            {badgeGroups.length > 1 && (
+              <h3 className="badge-group-title">
+                {g.title} <span className="muted tabnum">{g.badges.filter((b) => p.badges[b.id]).length} / {g.badges.length}</span>
+              </h3>
+            )}
+            <motion.div className="badge-grid" variants={stagger(0.04)} initial="hidden" whileInView="show" viewport={{ once: true }}>
+              {g.badges.map((b) => {
+                const got = Boolean(p.badges[b.id])
+                return (
+                  <motion.div
+                    key={b.id}
+                    variants={popIn}
+                    whileHover={got ? { rotate: [0, -6, 6, 0], transition: { duration: 0.5 } } : undefined}
+                    className={`badge${got ? ' got' : ''}`}
+                    style={{ ['--b-color' as string]: b.color, ['--b-ink' as string]: b.color.startsWith('#') ? 'var(--on-level)' : 'var(--surface)' }}
+                  >
+                    <span className="badge-medal">
+                      <Icon name={got ? b.icon : 'lock'} width={26} height={26} />
+                    </span>
+                    <strong>{b.title}</strong>
+                    <span className="muted">{b.description}</span>
+                  </motion.div>
+                )
+              })}
+            </motion.div>
+          </div>
+        ))}
       </section>
+
+      {emblemCourses.map((c) => (
+        <section key={c.id} className="stack">
+          <div className="row">
+            <h2>
+              {c.title}: {c.album!.title.toLowerCase()}
+            </h2>
+            <span className="chip tabnum">
+              {c.levels.filter((l) => have.has(albumItemId(c, l.symbol))).length} / {c.levels.length}
+            </span>
+          </div>
+          <p className="muted">Za každou zvládnutou závěrečnou výzvu získáš znak úrovně: jednotku nebo konstantu, kterou úroveň proslavila.</p>
+          <motion.div className="emblem-shelf" variants={stagger(0.03)} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            {c.levels.map((l) => (
+              <motion.div key={l.id} variants={popIn}>
+                <EmblemTile symbol={l.symbol} name={emblemName(l)} color={l.color} number={l.number} size="sm" dim={!have.has(albumItemId(c, l.symbol))} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </section>
+      ))}
 
       <section className="stack">
         <div className="row">

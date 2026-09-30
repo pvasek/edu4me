@@ -15,7 +15,7 @@ export const fyzika: Course = {
   tagline: 'Od měření a sil přes elektřinu a světlo až po atom a vesmír.',
   color: '#3f6699',
   icon: 'pendulum',
-  available: false,
+  available: true,
   album: { kind: 'emblems', title: 'Sbírka jednotek a konstant' },
   levels: [
     {

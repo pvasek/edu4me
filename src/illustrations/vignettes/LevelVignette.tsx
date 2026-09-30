@@ -1,5 +1,7 @@
 import { useId, type CSSProperties, type ReactNode } from 'react'
 import '../illustrations.css'
+import { fyzika } from '../../courses/fyzika'
+import { PhysicsVignette } from './PhysicsVignette'
 
 /** Level colours in course order (mirrors src/courses/chemie/index.ts). */
 const LEVEL_COLORS = ['#b8483a', '#bd6a26', '#9c7a12', '#56834a', '#2c7a72', '#3f6699', '#555a9e', '#7a5290', '#a84d6c']
@@ -32,11 +34,14 @@ interface Ctx {
 
 /** Engraved vignette for a course level (1–9), ~200×200, readable at 120 px. */
 export function LevelVignette({
+  course = 'chemie',
   level,
   size = 200,
   color,
   className,
 }: {
+  /** course id; each course has its own set of scenes */
+  course?: string
   level: number
   size?: number
   /** override the level colour */
@@ -44,6 +49,8 @@ export function LevelVignette({
   className?: string
 }) {
   const uid = useId().replace(/:/g, '')
+  if (course === 'fyzika')
+    return <PhysicsVignette level={level} size={size} color={color ?? fyzika.levels[level - 1]?.color ?? '#3f6699'} className={className} />
   const idx = Math.min(9, Math.max(1, Math.round(level))) - 1
   const L = color ?? LEVEL_COLORS[idx]
   const c: Ctx = { L, hi: `url(#vi${uid})`, hl: `url(#vl${uid})`, hx: `url(#vx${uid})` }

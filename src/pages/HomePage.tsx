@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import { COURSES, nextLesson } from '../core/registry'
+import { albumElements } from '../core/badges'
 import { liveStreak, rankFromXp, rankTitle, useProgress } from '../core/progress'
 import { MascotSays } from '../ui/Mascot'
 import { Icon } from '../ui/Icon'
 import { motion } from 'motion/react'
 import { Bar, CountUp, MLink, Page } from '../ui/anim'
 import { pressable, rise, stagger } from '../ui/motion'
-import { ElementTile } from '../ui/ElementTile'
+import { LevelTile } from '../ui/LevelTile'
 
 function greeting() {
   const h = new Date().getHours()
@@ -18,10 +19,20 @@ function greeting() {
 
 export function HomePage() {
   const p = useProgress()
-  const chem = COURSES[0]
-  const next = nextLesson(chem, p.lessons)
-  const doneCount = Object.keys(p.lessons).filter((k) => k.startsWith('chemie:')).length
-  const total = chem.levels.reduce((a, l) => a + l.lessons.length, 0)
+  const courses = COURSES.filter((c) => c.available)
+  const lessonsOf = (id: string) => Object.keys(p.lessons).filter((k) => k.startsWith(`${id}:`)).length
+  // continue where the learner was last active: the course with the most recent finished lesson
+  const lastAt = (id: string) =>
+    Object.entries(p.lessons)
+      .filter(([k]) => k.startsWith(`${id}:`))
+      .reduce((a, [, v]) => (v.completedAt > a ? v.completedAt : a), '')
+  const ordered = [...courses].sort((a, b) => lastAt(b.id).localeCompare(lastAt(a.id)))
+  const cont = ordered.map((c) => ({ course: c, next: nextLesson(c, p.lessons) })).find((x) => x.next)
+  const next = cont?.next
+  const nextCourse = cont?.course
+  const doneCount = courses.reduce((a, c) => a + lessonsOf(c.id), 0)
+  const total = courses.reduce((a, c) => a + c.levels.reduce((n, l) => n + l.lessons.length, 0), 0)
+  const courseDone = nextCourse ? lessonsOf(nextCourse.id) : 0
   const { rank, into, need } = rankFromXp(p.xp)
   const streak = liveStreak(p)
   const name = p.settings.name ? `, ${p.settings.name}` : ''
@@ -32,11 +43,11 @@ export function HomePage() {
         <div className="home-hero-text">
           <span className="eyebrow">edu4me · hravé učení</span>
           <h1>
-            Chemie, která <span className="scribble">dává smysl</span>.
+            Učení, které <span className="scribble">dává smysl</span>.
           </h1>
           <p className="lead">
-            Od první zkumavky až po organiku a biochemii. 9 úrovní, 54 lekcí, 14 miniher a periodická tabulka, kterou si
-            budeš sbírat jako alba samolepek.
+            {courses.map((c, i) => (i ? c.title.toLowerCase() : c.title)).join(' a ')}: krátké lekce s obrázky, kvízy a minihrami. {total} lekcí od základní
+            školy až po maturitu, sbírky prvků a jednotek a odznaky za každý krok.
           </p>
         </div>
         <MascotSays mood={doneCount ? 'happy' : 'wow'} size={88}>
@@ -45,26 +56,26 @@ export function HomePage() {
             {name}
           </strong>{' '}
           {doneCount === 0
-            ? 'Já jsem Atomík. Provedu tě chemií krok za krokem. Začneme?'
+            ? 'Já jsem Atomík. Provedu tě krok za krokem. Začneme?'
             : next
               ? `Máš za sebou ${doneCount} ${doneCount === 1 ? 'lekci' : doneCount < 5 ? 'lekce' : 'lekcí'}. Jdeme na další!`
               : 'Zvládl/a jsi celý kurz. Klobouk dolů!'}
         </MascotSays>
       </section>
 
-      {next && (
+      {next && nextCourse && (
         <MLink
           {...pressable}
-          to={`/c/chemie/l/${next.level.id}/${next.lesson.id}`}
+          to={`/c/${nextCourse.id}/l/${next.level.id}/${next.lesson.id}`}
           className="continue-card card"
           style={{ ['--level' as string]: next.level.color }}
         >
           <div className="continue-badge">
-            <ElementTile symbol={next.level.symbol} size="sm" hideName />
+            <LevelTile course={nextCourse} level={next.level} size="sm" hideName />
           </div>
           <div className="continue-text">
             <span className="eyebrow">
-              {doneCount ? 'Pokračuj' : 'Začni tady'} · Úroveň {next.level.number}
+              {courseDone ? 'Pokračuj' : 'Začni tady'} · {nextCourse.title} · Úroveň {next.level.number}
             </span>
             <h2>{next.lesson.title}</h2>
             <span className="muted">
@@ -72,7 +83,7 @@ export function HomePage() {
             </span>
           </div>
           <span className="btn btn-primary btn-lg continue-go">
-            <Icon name="play" /> {doneCount ? 'Pokračovat' : 'Začít'}
+            <Icon name="play" /> {courseDone ? 'Pokračovat' : 'Začít'}
           </span>
         </MLink>
       )}
@@ -106,7 +117,7 @@ export function HomePage() {
         <Link to="/profil" className="stat card-flat stat-link">
           <span className="stat-label">Album prvků</span>
           <strong className="stat-value tabnum">
-            <CountUp value={p.elements.length} /> / 118
+            <CountUp value={albumElements(p).length} /> / 118
           </strong>
           <span className="stat-sub">
             Otevřít album <Icon name="arrowRight" width={14} height={14} />

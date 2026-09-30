@@ -16,3 +16,7 @@ This folder is the single source of truth for *what* edu4me is and *how* it shou
 | [syllabus.md](courses/chemie/syllabus.md) | Full syllabus: 9 levels, 63 lessons, curriculum alignment (RVP ZV, RVP G, IGCSE, A-level/AP) |
 | [games.md](courses/chemie/games.md) | The 14 mini-games: rules, scoring, where they appear |
 | [engagement-ideas.md](courses/chemie/engagement-ideas.md) | Ideas to make chemistry interesting: hooks, experiments, stories, future features |
+| **courses/fyzika/** | |
+| [syllabus.md](courses/fyzika/syllabus.md) | Full syllabus: 12 levels, 80 lessons, curriculum alignment (RVP ZV 2026, RVP G, IGCSE 0625, A-level/AP), ordering principles |
+| [figures.md](courses/fyzika/figures.md) | The named physics figures (fz1–fz4) and reusable chemistry figures |
+| [games.md](courses/fyzika/games.md) | Physics mini-games per level and their rules |

@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { courseById, findLevel } from '../core/registry'
+import { albumItemId, courseById, emblemName, findLevel } from '../core/registry'
 import { useLevelContent } from '../core/useLevelContent'
 import { finishLevelTest, PASS_RATIO, starsFor } from '../core/progress'
 import { QuizRunner } from '../lesson/QuizRunner'
 import { Loading } from '../ui/Loading'
 import { Mascot, MascotSays } from '../ui/Mascot'
 import { Icon } from '../ui/Icon'
-import { ElementTile } from '../ui/ElementTile'
+import { LevelTile } from '../ui/LevelTile'
 import { Confetti, Stars } from '../ui/Confetti'
 import { NotFound } from './NotFound'
 import { CountUp } from '../ui/anim'
@@ -39,11 +39,19 @@ export default function LevelTestPage() {
             <span className="eyebrow">Úroveň {level.number}</span>
             <h1>Závěrečná výzva</h1>
             <MascotSays mood="cheer" size={90}>
-              <strong>{content.boss.length} otázek</strong> napříč celou úrovní. Na odznak potřebuješ aspoň <strong>{need} správně</strong>.
-              Odměnou je prvek <strong>{level.symbol}</strong> do alba!
+              <strong>{content.boss.length} otázek</strong> napříč celou úrovní. Na odznak potřebuješ aspoň <strong>{need} správně</strong>.{' '}
+              {course.album?.kind === 'emblems' ? (
+                <>
+                  Odměnou je znak <strong>{emblemName(level)}</strong> do sbírky!
+                </>
+              ) : (
+                <>
+                  Odměnou je prvek <strong>{level.symbol}</strong> do alba!
+                </>
+              )}
             </MascotSays>
             <div className="row">
-              <ElementTile symbol={level.symbol} size="lg" />
+              <LevelTile course={course} level={level} size="lg" />
             </div>
             <div className="bottom-bar">
               <button className="btn btn-primary btn-lg" onClick={() => setPhase('quiz')}>
@@ -57,7 +65,7 @@ export default function LevelTestPage() {
             key={run}
             questions={content.boss}
             onDone={(score, max) => {
-              const r = finishLevelTest(course.id, level.id, score, max, level.symbol)
+              const r = finishLevelTest(course.id, level.id, score, max, albumItemId(course, level.symbol))
               setPhase({ score, max, ...r })
             }}
           />

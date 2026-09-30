@@ -765,6 +765,11 @@ a.course-card:hover {
 .badge strong {
   font: 700 15px var(--font-display);
 }
+.emblem-shelf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 .album-scroll {
   overflow-x: auto;
   padding-bottom: 8px;
@@ -830,4 +835,14 @@ a.course-card:hover {
   display: grid;
   gap: 10px;
   padding-left: 20px;
+}
+.badge-group-title {
+  font-size: 1.1rem;
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin-top: 6px;
+}
+.badge-group-title .muted {
+  font: 600 0.85rem var(--font-body);
 }

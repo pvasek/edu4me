@@ -258,5 +258,5 @@ export function rankFromXp(xp: number) {
   return { rank: lvl, into: left, need }
 }
 
-export const RANK_TITLES = ['Zvědavec', 'Pozorovatel', 'Laborant', 'Mladý chemik', 'Analytik', 'Syntetik', 'Badatel', 'Chemik', 'Vědec', 'Profesor', 'Nobelista']
+export const RANK_TITLES = ['Zvědavec', 'Pozorovatel', 'Průzkumník', 'Experimentátor', 'Analytik', 'Objevitel', 'Badatel', 'Znalec', 'Vědec', 'Profesor', 'Nobelista']
 export const rankTitle = (rank: number) => RANK_TITLES[Math.min(rank - 1, RANK_TITLES.length - 1)]

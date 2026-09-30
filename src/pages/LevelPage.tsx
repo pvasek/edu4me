@@ -4,7 +4,7 @@ import { useProgress } from '../core/progress'
 import { PathMap } from '../ui/PathMap'
 import { Icon } from '../ui/Icon'
 import { Mascot } from '../ui/Mascot'
-import { ElementTile } from '../ui/ElementTile'
+import { LevelTile } from '../ui/LevelTile'
 import { gamesForLevel } from '../games/registry'
 import { NotFound } from './NotFound'
 import { ChemIconView } from '../illustrations/ChemIcon'
@@ -75,9 +75,9 @@ export function LevelPage() {
       </nav>
       <section className="level-hero card">
         <div className="level-hero-art">
-          <LevelVignette level={level.number} size={190} />
+          <LevelVignette course={course.id} level={level.number} size={190} />
           <span className="level-hero-tile">
-            <ElementTile symbol={level.symbol} size="sm" />
+            <LevelTile course={course} level={level} size="sm" />
           </span>
         </div>
         <div className="stack">

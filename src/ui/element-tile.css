@@ -88,3 +88,32 @@ button.el-tile:hover {
 .el-missing {
   font-family: var(--font-mono);
 }
+
+/* emblem (physics units and constants): an engraved medal in the level colour */
+.em-tile {
+  --el-bg: color-mix(in srgb, var(--em) 22%, var(--surface));
+  background:
+    radial-gradient(circle at 50% 46%, transparent 0 38%, color-mix(in srgb, var(--em) 55%, transparent) 38.5% 40%, transparent 40.5%),
+    repeating-linear-gradient(45deg, color-mix(in srgb, var(--em) 14%, transparent) 0 1px, transparent 1px 5px),
+    var(--el-bg);
+  color: var(--ink);
+  text-align: center;
+}
+.em-tile .el-z {
+  text-align: left;
+  color: var(--em);
+}
+.em-tile .el-sym {
+  font-style: italic;
+  font-family: var(--font-display);
+  justify-self: center;
+}
+.em-tile .em-long {
+  font-size: 28px;
+}
+.el-sm .em-long {
+  font-size: 19px;
+}
+.el-lg .em-long {
+  font-size: 46px;
+}

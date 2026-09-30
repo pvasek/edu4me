@@ -1,10 +1,29 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { liveStreak, rankFromXp, setSettings, useProgress } from '../core/progress'
+import { COURSES, courseById } from '../core/registry'
+import { ChemIconView } from '../illustrations/ChemIcon'
 import { Icon } from './Icon'
 import { SyncDot } from './SyncDot'
 
+const LAST_COURSE = 'edu4me-last-course'
+
+/** The course the learner is in (from the URL) or was in last. */
+function useCurrentCourse() {
+  const { pathname } = useLocation()
+  const fromUrl = courseById(/^\/c\/([^/]+)/.exec(pathname)?.[1])
+  let last: string | null = null
+  try {
+    if (fromUrl) localStorage.setItem(LAST_COURSE, fromUrl.id)
+    else last = localStorage.getItem(LAST_COURSE)
+  } catch {
+    /* storage blocked */
+  }
+  return fromUrl ?? courseById(last ?? undefined) ?? COURSES.find((c) => c.available)!
+}
+
 export function AppHeader() {
   const p = useProgress()
+  const course = useCurrentCourse()
   const streak = liveStreak(p)
   const { rank } = rankFromXp(p.xp)
   const dark =
@@ -27,11 +46,11 @@ export function AppHeader() {
           </span>
         </Link>
         <nav className="app-nav" aria-label="Hlavní navigace">
-          <NavLink to="/c/chemie" className="nav-link">
-            <Icon name="flask" />
-            <span>Chemie</span>
+          <NavLink to={`/c/${course.id}`} end={false} className="nav-link">
+            {course.icon ? <ChemIconView name={course.icon} size={20} /> : <Icon name="flask" />}
+            <span>{course.title}</span>
           </NavLink>
-          <NavLink to="/c/chemie/hry" className="nav-link">
+          <NavLink to={`/c/${course.id}/hry`} className="nav-link">
             <Icon name="gamepad" />
             <span>Hry</span>
           </NavLink>

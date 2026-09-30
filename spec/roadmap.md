@@ -28,11 +28,19 @@
 - [x] Compact course atlas: level nodes between plates, engraving in the plate header
 - [x] Syllabus revision 2 (curriculum audit against RVP ZV/G, IGCSE, A-level/AP): 9 new lessons (nuclear chemistry, VSEPR + hybridisation, electrolysis + Faraday, entropy + Gibbs, tests for ions and gases, polymers, spectroscopy, metabolism, energy + climate), 63 lessons in total; deeper coverage of existing lessons; 17 new figures
 
+## v0.4: Physics course
+
+- [x] Physics syllabus from RVP ZV (2026 revision), RVP G, IGCSE 0625 and A-level/AP, reordered so every lesson builds on the previous ones (12 levels, 80 lessons)
+- [x] Multi-course engine: games registered per course, course-aware header, home, atlas, level pages, badges and albums (elements for chemistry, units/constants for physics)
+- [x] Parametric physics blocks drawn from data: `graph`, `circuit`, `forces`, `rays`, `wave`
+- [x] 83 named physics figures, 37 physics icons, 12 level vignettes
+- [x] 8 physics mini-games (unit conversion, motion graphs, force sum, float/sink, energy chain, circuit builder, ray optics, projectile) + quickfire and swipe
+
 ## Next
 
 - Split the figure library into per-level chunks (the lesson bundle is ~160 kB gzip).
 
-- **Review pass by a chemistry teacher** of all content (typos, terminology, difficulty balance).
+- **Review pass by a chemistry and a physics teacher** of all content (typos, terminology, difficulty balance).
 - Spaced-repetition review mode built from the question pool.
 - Offline support (PWA: manifest + service worker) so the app works on the bus.
 - Glossary ("Slovníček") generated from all `keyterms` blocks, with search.
@@ -42,8 +50,7 @@
 
 ## Future courses
 
-1. **Fyzika**: mechanics, energy, electricity, optics, modern physics.
-2. **Biologie**: cell, genetics, human body, ecology.
-3. **Matematika**: functions, equations, geometry, probability.
+1. **Biologie**: cell, genetics, human body, ecology.
+2. **Matematika**: functions, equations, geometry, probability.
 
 Each course reuses the engine; the spec folder gets `spec/courses/<id>/` with its own syllabus and games.

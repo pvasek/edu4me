@@ -1,5 +1,7 @@
-import type { Course } from './types'
+import type { Course, LevelOutline } from './types'
 import { chemie } from '../courses/chemie'
+import { fyzika } from '../courses/fyzika'
+import { BY_SYMBOL } from '../courses/chemie/data/elements'
 
 /**
  * All courses. To add a course: create src/courses/<id>/index.ts exporting a
@@ -7,7 +9,7 @@ import { chemie } from '../courses/chemie'
  */
 export const COURSES: Course[] = [
   chemie,
-  { id: 'fyzika', title: 'Fyzika', tagline: 'Síly, energie, elektřina a vesmír.', color: '#3f6699', available: false, levels: [] },
+  fyzika,
   { id: 'biologie', title: 'Biologie', tagline: 'Od buňky po ekosystémy.', color: '#56834a', available: false, levels: [] },
   { id: 'matematika', title: 'Matematika', tagline: 'Čísla, funkce a geometrie hravě.', color: '#7a5290', available: false, levels: [] },
 ]
@@ -24,3 +26,9 @@ export function nextLesson(course: Course, done: Record<string, unknown>) {
     for (const lesson of level.lessons) if (!done[`${course.id}:${lesson.id}`]) return { level, lesson }
   return null
 }
+
+/** Id stored in progress.elements for a level's emblem: the element symbol in chemistry, "course:symbol" elsewhere. */
+export const albumItemId = (course: Course, symbol: string) => (course.album?.kind === 'emblems' ? `${course.id}:${symbol}` : symbol)
+
+/** Human name of a level's emblem ("newton", "Kyslík"). */
+export const emblemName = (level: LevelOutline) => level.emblemName ?? BY_SYMBOL[level.symbol]?.name ?? level.symbol

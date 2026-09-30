@@ -40,6 +40,9 @@ src/
       index.ts             outline: levels, lessons, colours, games, lazy loaders
       levels/l1.ts … l9.ts full lesson content per level (one JS chunk each)
       data/                elements, electron configuration, formula parser
+    fyzika/
+      index.ts             outline: 12 levels, 80 lessons, emblems (units/constants)
+      levels/l1.ts … l12.ts
 ```
 
 ## Routes
@@ -47,13 +50,13 @@ src/
 | Path | Page |
 |---|---|
 | `#/` | Home: greeting, continue card, stats, courses |
-| `#/c/chemie` | Course map: the winding path of 9 levels |
+| `#/c/chemie`, `#/c/fyzika` | Course atlas: all levels with their lessons |
 | `#/c/chemie/l/l3` | Level: lesson path, level test, level games |
 | `#/c/chemie/l/l3/l3-2` | Lesson: one scrolling page (read) → one quiz → results |
 | `#/c/chemie/l/l3/vyzva` | Level test |
 | `#/c/chemie/hry` | All mini-games |
 | `#/c/chemie/hry/balance?uroven=l4` | Game shell (intro → play → results) |
-| `#/profil` | Profile: rank, badges, element album, settings, export/import |
+| `#/profil` | Profile: rank, badges, emblem collections, element album, save & sync, settings |
 
 ## Content model
 
@@ -67,9 +70,9 @@ A game is a React component `({ levelId, onFinish }) => JSX` registered in `src/
 
 **Add a lesson or edit content**: edit `src/courses/chemie/levels/lN.ts`, keep ids in sync with `index.ts`, run `npm test` (the validator lists any rule violations).
 
-**Add a game**: create `src/games/<id>/index.tsx`, add the id to `GameId` in `core/types.ts`, register metadata and the lazy import in `games/registry.ts`, list it in the level outlines where it belongs, and document it in `spec/courses/<course>/games.md`.
+**Add a game**: create `src/games/<id>/index.tsx`, add the id to `GameId` in `core/types.ts`, register metadata (with `courses: { <courseId>: { <level number>: 'what it trains' } }`) and the lazy import in `games/registry.ts`, and document it in `spec/courses/<course>/games.md`. A game may serve several courses; it gets `courseId` in its props. Game progress is stored under `gameKey(courseId, gameId)` (chemistry keeps un-prefixed ids).
 
-**Add a course**: create `src/courses/<id>/index.ts` exporting a `Course` (levels with `load()` functions), add it to `COURSES` in `core/registry.ts` with `available: true`, add `spec/courses/<id>/syllabus.md`. Course-specific diagrams go in `src/diagrams` (add the id to `DiagramId`).
+**Add a course**: create `src/courses/<id>/index.ts` exporting a `Course` (levels with `load()` functions), add it to `COURSES` in `core/registry.ts` with `available: true`, add `spec/courses/<id>/syllabus.md`. Give the course an `icon` (header), an `album` (`elements` or `emblems`) and per-level `symbol` (+ `emblemName`), add scenes for its levels to `LevelVignette`, course badges to `core/badges.ts`, and `src/courses/<id>/progress-ids.json` + test. Named figures go in `src/illustrations/figures/<group>/` (id in `catalog.ts`).
 
 ## Local development
 
