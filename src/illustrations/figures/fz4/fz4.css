@@ -1,0 +1,1738 @@
+/* =====================================================================
+   Engraved physics figures for levels 10–12 (src/illustrations/figures/fz4).
+   Theme colours come from tokens (src/ui/theme.css); subject colours
+   (CPK atoms, flames, gases, metals) are literal. Classes prefixed fz4-.
+   ===================================================================== */
+
+.fz4 {
+  --lvl: var(--level, #a84d6c);
+  --lvl-ink: color-mix(in srgb, var(--lvl) 72%, var(--ink));
+  --lvl-soft: color-mix(in srgb, var(--lvl) 16%, var(--surface));
+  --e: var(--blue);
+  --glass: color-mix(in srgb, var(--info-soft) 45%, var(--surface));
+  --water: color-mix(in srgb, #6f9fd8 30%, var(--surface));
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  container-type: inline-size;
+}
+.fz4-l11 {
+  --lvl: var(--level, #1f6f8b);
+}
+.fz4-l12 {
+  --lvl: var(--level, #8b3a62);
+}
+
+.fz4-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------------------------------------------------------------- controls */
+.fz4-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.fz4-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.fz4-btn {
+  appearance: none;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 14px/1.1 var(--font-body);
+  min-height: 40px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.fz4-btn:hover {
+  background: var(--surface-2);
+}
+.fz4-btn[aria-pressed="true"] {
+  background: var(--lvl);
+  border-color: var(--lvl);
+  color: var(--on-level);
+}
+.fz4-host {
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------- text */
+.fz4-lbl {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16.5px;
+  fill: var(--ink-soft);
+}
+.fz4-b {
+  font-weight: 700;
+  fill: var(--ink);
+}
+.fz4-big {
+  font-size: 19px;
+}
+.fz4-sm {
+  font-size: 14.5px;
+}
+.fz4-lvl-t {
+  fill: var(--lvl-ink);
+}
+.fz4-acc-t {
+  fill: var(--accent);
+}
+.fz4-blue-t {
+  fill: var(--blue);
+}
+.fz4-red-t {
+  fill: var(--bad);
+}
+.fz4-green-t {
+  fill: var(--good);
+}
+.fz4-muted-t {
+  fill: var(--muted);
+}
+.fz4-eq {
+  font: 600 14px var(--font-body);
+  fill: var(--ink);
+}
+.fz4-eq-sm {
+  font-size: 12.5px;
+}
+.fz4-eq-lg {
+  font-size: 16px;
+}
+.fz4-num {
+  font: 400 13px var(--font-mono);
+  fill: var(--ink);
+}
+.fz4-cap {
+  font: 700 10.5px var(--font-body);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  fill: var(--muted);
+}
+.fz4-sym {
+  font: 700 22px var(--font-display);
+  fill: var(--ink);
+}
+.fz4-dark-t {
+  fill: #1f2a44;
+}
+.fz4-light-t {
+  fill: #fffaf0;
+}
+
+/* ---------------------------------------------------------------- lines */
+:where(.fz4-o:not([fill])) {
+  fill: none;
+}
+.fz4-o {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.fz4-thin {
+  stroke-width: 0.9;
+}
+.fz4-thick {
+  stroke-width: 2.2;
+}
+.fz4-fill {
+  fill: var(--surface);
+}
+.fz4-fill2 {
+  fill: var(--surface-2);
+}
+.fz4-fill3 {
+  fill: var(--surface-3);
+}
+.fz4-glass {
+  fill: var(--glass);
+  fill-opacity: 0.55;
+}
+.fz4-ln {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+}
+.fz4-soft {
+  stroke: var(--line);
+}
+.fz4-lvl-s {
+  stroke: var(--lvl-ink);
+}
+.fz4-lvl-f {
+  fill: var(--lvl);
+}
+.fz4-lvlsoft-f {
+  fill: var(--lvl-soft);
+}
+.fz4-dash {
+  stroke-dasharray: 5 4;
+}
+.fz4-dot2 {
+  stroke-dasharray: 1.5 4;
+}
+.fz4-lead {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  fill: none;
+}
+.fz4-dot {
+  fill: var(--ink-soft);
+}
+.fz4-nohit {
+  pointer-events: none;
+}
+.fz4-hl {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.4;
+}
+.fz4-hl-dark {
+  opacity: 0.6;
+}
+.fz4-hl-light {
+  stroke: #fffaf0;
+  stroke-width: 0.9;
+  opacity: 0.75;
+}
+.fz4-hl-shade {
+  stroke: #10131c;
+  stroke-width: 0.8;
+  opacity: 0.35;
+}
+.fz4-stip {
+  fill: var(--edge);
+  opacity: 0.35;
+}
+
+/* arrows */
+.fz4-arr {
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.fz4-arr-ink {
+  stroke: var(--edge);
+}
+.fz4-arr-acc {
+  stroke: var(--accent);
+}
+.fz4-arr-blue {
+  stroke: var(--blue);
+}
+.fz4-arr-lvl {
+  stroke: var(--lvl-ink);
+}
+.fz4-arr-red {
+  stroke: var(--bad);
+}
+.fz4-arr-green {
+  stroke: var(--good);
+}
+.fz4-arr-muted {
+  stroke: var(--muted);
+}
+.fz4-mk-ink {
+  fill: var(--edge);
+}
+.fz4-mk-acc {
+  fill: var(--accent);
+}
+.fz4-mk-blue {
+  fill: var(--blue);
+}
+.fz4-mk-lvl {
+  fill: var(--lvl-ink);
+}
+.fz4-mk-red {
+  fill: var(--bad);
+}
+.fz4-mk-green {
+  fill: var(--good);
+}
+.fz4-mk-muted {
+  fill: var(--muted);
+}
+.fz4-wide {
+  stroke-width: 2.6;
+}
+
+/* atoms */
+.fz4-atom-b {
+  stroke: none;
+}
+.fz4-atom-o {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.fz4-atom-t {
+  font-family: var(--font-body);
+  font-weight: 800;
+  pointer-events: none;
+}
+.fz4-atom-t-l {
+  fill: #fffaf0;
+}
+.fz4-atom-t-d {
+  fill: #1f2a44;
+}
+.fz4-bond {
+  stroke: var(--edge);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+/* badges */
+.fz4-badge {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+}
+.fz4-badge-t {
+  font: 800 15px var(--font-body);
+  fill: var(--ink);
+}
+.fz4-tag {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.fz4-tag-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+}
+
+/* pipes */
+.fz4-pipe-o {
+  fill: none;
+  stroke: var(--edge);
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+}
+.fz4-pipe-i {
+  fill: none;
+  stroke: var(--surface);
+  stroke-linecap: square;
+  stroke-linejoin: round;
+}
+.fz4-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 2 9;
+  animation: fz4-flow 1.1s linear infinite;
+}
+.fz4-flow-rev {
+  animation-direction: reverse;
+}
+@keyframes fz4-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+/* current in wires */
+.fz4-wire {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.fz4-current {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2.4;
+  stroke-dasharray: 3 11;
+  stroke-linecap: round;
+  animation: fz4-flow 1s linear infinite;
+}
+
+/* bubbles */
+.fz4-bubble {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+  animation: fz4-rise 2.4s ease-in infinite;
+}
+@keyframes fz4-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--rise, -40px));
+    opacity: 0;
+  }
+}
+
+/* flames and glow */
+.fz4-flicker {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: fz4-flicker 1.3s ease-in-out infinite alternate;
+}
+@keyframes fz4-flicker {
+  0% {
+    transform: scale(1, 1) skewX(0deg);
+  }
+  30% {
+    transform: scale(0.95, 1.06) skewX(-2deg);
+  }
+  60% {
+    transform: scale(1.04, 0.95) skewX(2deg);
+  }
+  100% {
+    transform: scale(0.97, 1.03) skewX(-1deg);
+  }
+}
+.fz4-glow {
+  animation: fz4-glow 1.8s ease-in-out infinite alternate;
+}
+@keyframes fz4-glow {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fz4-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: fz4-spin 3s linear infinite;
+}
+@keyframes fz4-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.fz4-drift {
+  animation: fz4-drift 4s ease-in-out infinite alternate;
+}
+@keyframes fz4-drift {
+  from {
+    transform: translate(-2px, 1px);
+  }
+  to {
+    transform: translate(2px, -2px);
+  }
+}
+
+/* ---------------------------------------------------------------- narrow plates */
+@container (max-width: 440px) {
+  .fz4-sec {
+    display: none;
+  }
+  .fz4-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+
+/* electrons */
+.fz4-e {
+  fill: #2f5fb3;
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.fz4-e-t {
+  font: 800 8.5px var(--font-body);
+  fill: #fffaf0;
+  pointer-events: none;
+}
+.fz4-flame-o {
+  stroke: color-mix(in srgb, var(--edge) 60%, transparent);
+  stroke-width: 0.8;
+}
+.fz4-ion-t {
+  font: 800 8px var(--font-body);
+}
+
+/* plotted curves */
+.fz4-curve {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.fz4-curve-1 {
+  stroke: var(--blue);
+}
+.fz4-curve-2 {
+  stroke: var(--accent);
+}
+
+/* compact plates (JS flag from useCompact): larger text so it stays legible
+   when a ~500-unit plate is squeezed into a phone column */
+.fz4-narrow .fz4-lbl {
+  font-size: 21px;
+}
+.fz4-narrow .fz4-lbl.fz4-sm {
+  font-size: 18.5px;
+}
+.fz4-narrow .fz4-lbl.fz4-big {
+  font-size: 23px;
+}
+.fz4-narrow .fz4-eq {
+  font-size: 17px;
+}
+.fz4-narrow .fz4-eq.fz4-eq-lg {
+  font-size: 18.5px;
+}
+.fz4-narrow .fz4-eq.fz4-eq-sm {
+  font-size: 15px;
+}
+.fz4-narrow .fz4-cap {
+  font-size: 13px;
+}
+.fz4-narrow .fz4-num {
+  font-size: 16px;
+}
+.fz4-narrow .fz4-lbl.fz4-keep {
+  font-size: 15.5px;
+}
+.fz4-needle {
+  fill: var(--bad);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.fz4-drop {
+  fill: #6f9fd8;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.fz4-num-b {
+  font-weight: 700;
+}
+.fz4-narrow .fz4-eq.fz4-keep {
+  font-size: 14.5px;
+}
+.fz4-gas {
+  fill: var(--surface);
+  stroke: var(--muted);
+  stroke-width: 1;
+}
+.fz4-badge-n {
+  font: 700 12px var(--font-mono);
+  fill: #fffaf0;
+}
+.fz4-catom {
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+/* label halo: lets a label sit over a line and stay readable */
+.fz4-halo {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 8px;
+  stroke-linejoin: round;
+}
+.fz4-flash {
+  animation: fz4-flash 3.2s steps(1) infinite;
+}
+@keyframes fz4-flash {
+  0%,
+  86%,
+  92% {
+    opacity: 1;
+  }
+  88%,
+  95% {
+    opacity: 0.35;
+  }
+}
+
+/* a StepStrip inside an interactive Figure */
+.fz4-stripbox {
+  display: grid;
+  gap: 10px;
+}
+.fz4-strip-note {
+  margin: 0;
+  text-align: center;
+  font: italic 600 17px/1.3 var(--font-display);
+  color: var(--ink-soft);
+}
+
+/* ---------------------------------------------------------------- physics (fz4) */
+.fz4-sym-t {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 19px;
+  fill: var(--ink);
+}
+.fz4-narrow .fz4-sym-t {
+  font-size: 22px;
+}
+.fz4-tone-lvl {
+  fill: var(--lvl-ink);
+}
+.fz4-tone-red {
+  fill: var(--bad);
+}
+.fz4-tone-green {
+  fill: var(--good);
+}
+.fz4-tone-blue {
+  fill: var(--blue);
+}
+.fz4-tone-acc {
+  fill: var(--accent);
+}
+.fz4-tone-muted {
+  fill: var(--muted);
+}
+.fz4-vec {
+  stroke-width: 2.8;
+}
+.fz4-axis {
+  stroke-width: 1.4;
+}
+.fz4-endon circle {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.4;
+}
+.fz4-endon path {
+  stroke: var(--edge);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.fz4-endon-acc circle:first-child {
+  stroke: var(--accent);
+}
+.fz4-endon-acc path {
+  stroke: var(--accent);
+}
+.fz4 .fz4-endon .fz4-endon-dot {
+  fill: var(--accent);
+  stroke: none;
+}
+.fz4-endon-ink .fz4-endon-dot {
+  fill: var(--edge);
+}
+.fz4-pole-t {
+  font: 800 17px var(--font-body);
+  fill: #fffaf0;
+  pointer-events: none;
+}
+.fz4-field {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.fz4-field-soft {
+  opacity: 0.55;
+}
+.fz4-coil {
+  fill: none;
+  stroke: #b8672e;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.fz4-coil-back {
+  fill: none;
+  stroke: #8a4a20;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  opacity: 0.7;
+}
+.fz4-iron {
+  fill: color-mix(in srgb, #8a93a3 55%, var(--surface));
+}
+.fz4-current {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.4;
+  stroke-dasharray: 3 10;
+  stroke-linecap: round;
+  animation: fz4-flow 1s linear infinite;
+}
+.fz4-wave-crest {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.5;
+}
+.fz4-wave-trough {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  opacity: 0.7;
+}
+.fz4-sky {
+  fill: color-mix(in srgb, var(--blue) 10%, var(--surface));
+}
+.fz4-row {
+  fill: var(--surface-2);
+}
+.fz4-hatchfill {
+  fill-opacity: 0.35;
+}
+.fz4 .fz4-wire {
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.fz4-wire-under {
+  opacity: 0.45;
+}
+.fz4-needle {
+  fill: #c0463a;
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  stroke-linejoin: round;
+}
+.fz4-needle-s {
+  fill: #eef0f4;
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  stroke-linejoin: round;
+}
+.fz4-skin {
+  fill: #e6bf98;
+}
+.fz4 {
+  --fz4-n: #c0463a;
+  --fz4-s: #3f6fb5;
+}
+.fz4-pole-lbl {
+  font: 800 22px var(--font-body);
+}
+.fz4-clip {
+  fill: none;
+  stroke: color-mix(in srgb, #7d8696 80%, var(--ink));
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.fz4 .fz4-wire-thin {
+  stroke-width: 2;
+}
+.fz4-axle {
+  stroke-width: 3.5;
+  stroke: color-mix(in srgb, #7d8696 70%, var(--ink));
+}
+.fz4-copper {
+  fill: #c7773d;
+}
+.fz4-brush {
+  fill: #4a4a50;
+}
+.fz4 .fz4-coil-band {
+  stroke-width: 4.5;
+  stroke-linejoin: round;
+}
+.fz4-current-rev {
+  animation-direction: reverse;
+}
+.fz4-curve-lvl {
+  stroke: var(--lvl-ink);
+}
+.fz4-bulb-glow {
+  fill: #f2c94c;
+  opacity: 0.45;
+}
+.fz4 .fz4-flux {
+  stroke-width: 1.8;
+}
+.fz4-steam {
+  stroke: var(--muted);
+}
+.fz4-win {
+  fill: #f2d27a;
+}
+.fz4-bolt {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.fz4-water-out {
+  stroke: #3b8fe0;
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+}
+.fz4-wind {
+  stroke: var(--muted);
+}
+.fz4-spin-slow {
+  transform-box: view-box;
+  animation: fz4-spin 5s linear infinite;
+}
+.fz4-sun {
+  fill: #f2c94c;
+  stroke: #d9a21b;
+  stroke-width: 1.2;
+}
+.fz4-sunray {
+  stroke: #d9a21b;
+  stroke-width: 2;
+}
+.fz4-panel {
+  fill: color-mix(in srgb, #3f6fb5 60%, var(--surface));
+}
+.fz4-num-badge circle {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.fz4-num-badge text {
+  font-family: var(--font-body);
+  font-weight: 800;
+  fill: var(--on-level);
+  pointer-events: none;
+}
+.fz4-legend .fz4-lbl {
+  font-size: 15.5px;
+}
+.fz4-legend-lg .fz4-lbl {
+  font-size: 27px;
+}
+.fz4-vessel {
+  fill: color-mix(in srgb, #6fb3d9 35%, var(--surface));
+}
+.fz4-fuel {
+  stroke: #c9a22c;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.fz4-ctrl {
+  fill: #3b3b44;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.fz4-core-glow {
+  fill: #5fa8ff;
+  opacity: 0.25;
+}
+.fz4-utube {
+  fill: none;
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+.fz4-cool-tube {
+  stroke: #6fb3d9;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.fz4-cloud {
+  fill: var(--surface);
+}
+.fz4-orbit {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.2;
+}
+.fz4-rock {
+  fill: var(--muted);
+}
+.fz4-sun-halo {
+  fill: #f2c94c;
+  opacity: 0.25;
+}
+.fz4-sun-t {
+  fill: #8a5a10;
+}
+:root[data-theme="dark"] .fz4-sun-t {
+  fill: #f2c94c;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .fz4-sun-t {
+    fill: #f2c94c;
+  }
+}
+.fz4-saturn-ring {
+  fill: none;
+  stroke-width: 2.4;
+  stroke: #b8995a;
+}
+.fz4-band {
+  stroke: #a86f3c;
+  stroke-width: 1.4;
+  opacity: 0.55;
+}
+.fz4-orbit-strong {
+  stroke: var(--muted);
+  stroke-width: 1.3;
+}
+.fz4-earth {
+  fill: #3d7fd1;
+}
+.fz4-land {
+  fill: #5c9a6b;
+}
+.fz4-night {
+  fill: #0e1424;
+  opacity: 0.62;
+}
+.fz4 .fz4-earth-axis {
+  stroke-width: 1.6;
+}
+.fz4-beam {
+  fill: #f2c94c;
+  opacity: 0.28;
+}
+.fz4-lit {
+  stroke: #e0a41b;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.fz4-angle {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.2;
+}
+.fz4-ang-t {
+  font-style: normal;
+  font-family: var(--font-body);
+  font-size: 14px;
+  fill: var(--ink);
+}
+.fz4 .fz4-on-sun {
+  fill: #5a3a00;
+}
+.fz4-nebula {
+  fill: color-mix(in srgb, #b46aa8 40%, var(--surface));
+  stroke: color-mix(in srgb, #b46aa8 70%, var(--ink));
+  stroke-width: 1;
+}
+.fz4-star-dot {
+  fill: #fffaf0;
+  stroke: var(--edge);
+  stroke-width: 0.5;
+}
+.fz4-halo-blue {
+  fill: #9cc4ff;
+  opacity: 0.3;
+}
+.fz4-bluestar {
+  fill: #cfe0ff;
+}
+.fz4-halo-red {
+  fill: #e0703a;
+  opacity: 0.22;
+}
+.fz4-redstar {
+  fill: #d9603b;
+}
+.fz4-pn {
+  fill: color-mix(in srgb, #4fae9a 35%, transparent);
+  stroke: #3f8f7f;
+  stroke-width: 3;
+}
+.fz4-pn-in {
+  fill: color-mix(in srgb, #b46aa8 25%, transparent);
+  stroke: none;
+}
+.fz4-wd {
+  fill: #fffaf0;
+}
+.fz4-sn {
+  fill: #f2b84c;
+}
+.fz4-sn-core {
+  fill: #fff4c8;
+}
+.fz4-pulsar {
+  stroke: #7fa8ff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
+.fz4-disk {
+  fill: none;
+  stroke: #e0873a;
+  stroke-width: 4;
+}
+.fz4-disk-front {
+  fill: none;
+  stroke: #f0a65a;
+  stroke-width: 4;
+}
+.fz4-bh {
+  fill: #07080c;
+  stroke: #e0873a;
+  stroke-width: 1;
+}
+.fz4-traj {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.6;
+  stroke-dasharray: 2 5;
+  stroke-linecap: round;
+}
+.fz4-ball {
+  fill: var(--lvl);
+}
+.fz4-ang-sym .fz4-ang-t {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 19px;
+}
+.fz4-string {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.2;
+}
+.fz4-ghost {
+  fill: none;
+  stroke-dasharray: 2 3;
+  opacity: 0.7;
+}
+.fz4-sym-sm {
+  font-size: 16px;
+}
+.fz4-cart-t {
+  font: 800 11px var(--font-body);
+  fill: #1f2a44;
+  pointer-events: none;
+}
+.fz4-gfield {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.2;
+}
+.fz4-row-0 {
+  fill: transparent;
+}
+.fz4 .fz4-on-earth {
+  fill: #fffaf0;
+}
+.fz4-dash-soft {
+  stroke-dasharray: 4 5;
+}
+.fz4-sym-t {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.fz4-it {
+  font-style: italic;
+}
+.fz4-sector {
+  fill: var(--lvl);
+  fill-opacity: 0.28;
+}
+.fz4-planet {
+  fill: #3d7fd1;
+}
+.fz4-wood {
+  fill: #c9a26b;
+}
+.fz4-hair {
+  stroke: #6b4a2b;
+  stroke-width: 3;
+}
+.fz4-crane {
+  fill: #e0b43a;
+}
+.fz4-load {
+  fill: #8a93a3;
+}
+.fz4-coilspring {
+  stroke-width: 1.8;
+  vector-effect: non-scaling-stroke;
+}
+.fz4-spring {
+  transform-box: view-box;
+  transform-origin: 110px 36px;
+  animation: fz4-stretch 1.1s ease-in-out infinite alternate;
+}
+@keyframes fz4-stretch {
+  from {
+    transform: scaleY(0.737);
+  }
+  to {
+    transform: scaleY(1.263);
+  }
+}
+.fz4-mass {
+  animation: fz4-bounce 1.1s ease-in-out infinite alternate;
+}
+@keyframes fz4-bounce {
+  from {
+    transform: translateY(-30px);
+  }
+  to {
+    transform: translateY(30px);
+  }
+}
+.fz4-massbox {
+  fill: #8a93a3;
+}
+.fz4-swing {
+  transform-box: view-box;
+  transform-origin: 322px 36px;
+  animation: fz4-swing 1.25s ease-in-out infinite alternate;
+}
+@keyframes fz4-swing {
+  from {
+    transform: rotate(-20deg);
+  }
+  to {
+    transform: rotate(20deg);
+  }
+}
+.fz4-bob {
+  fill: var(--lvl);
+}
+.fz4-anti {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.fz4-node {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 1.8;
+  stroke-dasharray: 6 5;
+}
+.fz4-ripple {
+  opacity: 0.4;
+}
+.fz4-tank {
+  fill: color-mix(in srgb, #6f9fd8 18%, var(--surface));
+}
+.fz4-pathline {
+  stroke: var(--ink);
+  stroke-width: 1.3;
+}
+.fz4-source {
+  fill: var(--accent);
+}
+.fz4-envelope {
+  fill: none;
+  stroke: var(--lvl);
+  stroke-width: 1.1;
+  stroke-dasharray: 3 4;
+  opacity: 0.7;
+}
+.fz4-string-v {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.fz4-nodept {
+  fill: var(--edge);
+}
+.fz4-antipt {
+  fill: var(--lvl);
+}
+.fz4-amb {
+  fill: #f4f1ea;
+}
+.fz4-amb-stripe {
+  stroke: #c0463a;
+  stroke-width: 5;
+}
+.fz4-cross {
+  stroke: #c0463a;
+  stroke-width: 5;
+}
+.fz4-siren {
+  fill: #3d6fd1;
+}
+.fz4-front {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.6;
+}
+
+/* ---------------------------------------------------------------- fz4 (levels 10–12) */
+.fz4-b-eq {
+  font-weight: 800;
+}
+.fz4-wall {
+  stroke-width: 2;
+}
+.fz4-steel {
+  fill: color-mix(in srgb, #8a93a3 45%, var(--surface));
+}
+.fz4-needle-l {
+  stroke: var(--bad);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.fz4-gauge-t {
+  font: 700 8px var(--font-body);
+  fill: var(--muted);
+}
+.fz4-mol {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.fz4 .fz4-hit {
+  stroke-width: 2.2;
+}
+.fz4-sankey {
+  stroke: none;
+  fill-opacity: 0.75;
+}
+.fz4-sankey-hot {
+  fill: #d9603b;
+}
+.fz4-sankey-cold {
+  fill: #3f7fc4;
+}
+.fz4-sankey-work {
+  fill: var(--lvl);
+}
+.fz4-res-hot {
+  fill: color-mix(in srgb, #d9603b 24%, var(--surface));
+}
+.fz4-res-cold {
+  fill: color-mix(in srgb, #3f7fc4 22%, var(--surface));
+}
+.fz4-qs {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.fz4-region {
+  fill: var(--lvl);
+  fill-opacity: 0.16;
+}
+.fz4-pt {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.fz4-break {
+  stroke: var(--bad);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+.fz4 .fz4-leg {
+  stroke-width: 1.6;
+}
+.fz4-bug {
+  fill: #6b4a2b;
+}
+.fz4-leaf {
+  fill: color-mix(in srgb, #4f9a5a 45%, var(--surface));
+}
+.fz4-shine {
+  fill: none;
+  stroke: #fffaf0;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+.fz4-pt2 {
+  fill: var(--surface);
+  stroke: var(--lvl-ink);
+  stroke-width: 2;
+}
+.fz4-up {
+  font-style: normal;
+  font-family: var(--font-body);
+  font-size: 0.75em;
+  font-weight: 600;
+}
+.fz4-plate-p {
+  fill: color-mix(in srgb, #c0463a 35%, var(--surface));
+}
+.fz4-plate-n {
+  fill: color-mix(in srgb, #3f6fb5 35%, var(--surface));
+}
+.fz4-charge-t {
+  font: 800 16px var(--font-body);
+}
+.fz4-equi {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 1.3;
+  stroke-dasharray: 6 5;
+}
+.fz4-ghost-q {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.1;
+  stroke-dasharray: 2 3;
+}
+.fz4-proton {
+  fill: var(--accent);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.fz4-proton-t {
+  font: 800 14px var(--font-body);
+  fill: var(--accent-ink);
+  pointer-events: none;
+}
+.fz4 .fz4-thin-arr {
+  stroke-width: 1.1;
+}
+.fz4-dielectric {
+  fill: color-mix(in srgb, #b46aa8 22%, var(--surface));
+}
+.fz4-dip-t {
+  font: 800 10px var(--font-body);
+}
+.fz4-cell-long {
+  stroke: var(--edge);
+  stroke-width: 2.4;
+}
+.fz4-cell-short {
+  stroke: var(--edge);
+  stroke-width: 5;
+}
+.fz4-cap-sym {
+  stroke: var(--edge);
+  stroke-width: 3.2;
+  fill: none;
+}
+.fz4-eflow {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2.6;
+  stroke-dasharray: 2 10;
+  stroke-linecap: round;
+  animation: fz4-flow 1.2s linear infinite;
+}
+/* indices in symbols: upright sans, so a subscript 0 never reads as "o" */
+.fz4-qs tspan[font-size],
+.fz4-sym-t tspan[font-size] {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-weight: 700;
+}
+.fz4-bfield {
+  fill: color-mix(in srgb, var(--blue) 7%, var(--surface));
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.fz4 .fz4-endon-ink circle:first-child {
+  stroke-width: 1;
+  opacity: 0.8;
+}
+.fz4-orbit-path {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.6;
+  stroke-dasharray: 7 5;
+}
+.fz4-plane {
+  fill: var(--lvl);
+  fill-opacity: 0.18;
+  stroke: var(--lvl-ink);
+  stroke-width: 0.9;
+  stroke-dasharray: 4 3;
+}
+.fz4-angle-arc {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.2;
+}
+.fz4-slit {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: butt;
+}
+.fz4-slit.fz4-plate-p {
+  stroke: color-mix(in srgb, #c0463a 60%, var(--ink));
+}
+.fz4-slit.fz4-plate-n {
+  stroke: color-mix(in srgb, #3f6fb5 60%, var(--ink));
+}
+.fz4-filament {
+  fill: none;
+  stroke: #e0873a;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.fz4-ionbeam {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.4;
+  stroke-dasharray: 6 4;
+}
+.fz4-ionpath {
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.fz4-ion {
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.fz4-ion-t {
+  font: 800 9px var(--font-body);
+  fill: #fffaf0;
+  pointer-events: none;
+}
+.fz4-winding {
+  fill: none;
+  stroke: #c7773d;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+}
+.fz4-winding-back {
+  fill: none;
+  stroke: #8a4a20;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  opacity: 0.6;
+}
+.fz4-stem {
+  fill: none;
+  stroke-width: 1;
+  opacity: 0.55;
+}
+.fz4-stem-e {
+  stroke: var(--bad);
+}
+.fz4-stem-b {
+  stroke: var(--blue);
+}
+.fz4-wave-e {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2.8;
+  stroke-linejoin: round;
+}
+.fz4-wave-b {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2.8;
+  stroke-linejoin: round;
+}
+.fz4-front-red {
+  fill: none;
+  stroke: #d9403a;
+  stroke-width: 1.2;
+}
+.fz4-front-soft {
+  opacity: 0.32;
+}
+.fz4-barrier {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 6;
+  stroke-linecap: butt;
+}
+.fz4-ray-ink {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.3;
+}
+.fz4-dl {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.fz4-graph-red {
+  fill: none;
+  stroke: #d9403a;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.fz4-bulb {
+  fill: #f6e7a6;
+}
+.fz4-white-beam {
+  fill: color-mix(in srgb, #f6e7a6 55%, var(--surface));
+  stroke: var(--line);
+  stroke-width: 0.8;
+}
+.fz4-ray-white {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 2.2;
+}
+.fz4-ray-col {
+  fill: none;
+  stroke-width: 1.1;
+  opacity: 0.75;
+}
+.fz4 .fz4-ray-key {
+  stroke-width: 2;
+  opacity: 1;
+}
+.fz4-grating {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 5;
+  stroke-dasharray: 2 2;
+}
+.fz4-white {
+  fill: #fffaf0;
+}
+.fz4-frame-ring {
+  fill: var(--surface-3);
+}
+.fz4-filter {
+  fill: color-mix(in srgb, #8a93a3 30%, var(--surface));
+  fill-opacity: 0.9;
+}
+.fz4-filter-lines {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1;
+  opacity: 0.55;
+}
+.fz4-evec {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2.2;
+}
+.fz4-evec-h {
+  fill: var(--bad);
+}
+.fz4-beam-band {
+  opacity: 0.45;
+}
+.fz4-ghost-clock {
+  opacity: 0.35;
+}
+.fz4-mirror {
+  fill: color-mix(in srgb, #8a93a3 55%, var(--surface));
+}
+.fz4-photon-path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-dasharray: 4 4;
+}
+.fz4-photon-glow {
+  fill: #f2c94c;
+  opacity: 0.35;
+}
+.fz4-photon {
+  fill: #f2c94c;
+  stroke: #b8860b;
+  stroke-width: 1;
+}
+.fz4-photon-wave {
+  fill: none;
+  stroke: #7d3fb8;
+  stroke-width: 1.8;
+}
+.fz4-photon-head {
+  fill: #7d3fb8;
+}
+.fz4-shine-soft {
+  opacity: 0.5;
+}
+.fz4-cathode {
+  fill: none;
+  stroke: #8a93a3;
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+.fz4-anode {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.fz4-meter-t {
+  font: 800 11px var(--font-body);
+  fill: var(--ink);
+}
+.fz4-level {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.8;
+}
+.fz4 .fz4-level-thin {
+  stroke-width: 0.9;
+}
+.fz4 .fz4-level-inf {
+  stroke-dasharray: 6 4;
+}
+.fz4 .fz4-trans {
+  fill: none;
+  stroke-width: 2.4;
+}
+.fz4-spectrum-bg {
+  fill: #15151c;
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.fz4-laser-photon {
+  fill: none;
+  stroke: #d9403a;
+  stroke-width: 1.8;
+}
+.fz4-laser-head {
+  fill: #d9403a;
+}
+.fz4-gainrod {
+  fill: color-mix(in srgb, #e07a8a 30%, var(--surface));
+}
+.fz4-mirror-full {
+  fill: color-mix(in srgb, #8a93a3 70%, var(--surface));
+}
+.fz4-mirror-half {
+  fill: color-mix(in srgb, #8a93a3 30%, var(--surface));
+  stroke-dasharray: 3 2;
+}
+.fz4-lamp {
+  fill: color-mix(in srgb, #f2c94c 55%, var(--surface));
+}
+.fz4-pump {
+  fill: none;
+  stroke: #d9a21b;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.fz4-atom-glow {
+  fill: var(--lvl);
+  opacity: 0.25;
+}
+.fz4-atom-ex {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.fz4-atom-gr {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.fz4-laser-beam {
+  fill: #d9403a;
+  opacity: 0.25;
+}
+.fz4-grid {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 0.8;
+}
+.fz4-smd-cell {
+  stroke-width: 1.4;
+}
+.fz4-smd-q {
+  fill: color-mix(in srgb, #b46aa8 24%, var(--surface));
+  stroke: color-mix(in srgb, #b46aa8 70%, var(--ink));
+}
+.fz4-smd-l {
+  fill: color-mix(in srgb, #4f9a5a 22%, var(--surface));
+  stroke: color-mix(in srgb, #4f9a5a 70%, var(--ink));
+}
+.fz4-smd-b {
+  fill: color-mix(in srgb, #d9603b 22%, var(--surface));
+  stroke: color-mix(in srgb, #d9603b 70%, var(--ink));
+}
+.fz4-smd-h {
+  fill: color-mix(in srgb, #e0b43a 30%, var(--surface));
+  stroke: color-mix(in srgb, #c9962c 75%, var(--ink));
+}
+.fz4-smd-ch {
+  font: 700 11.5px var(--font-mono);
+  fill: var(--ink);
+  stroke: none;
+}
+.fz4-smd-s {
+  font: 700 30px var(--font-display);
+  fill: var(--ink);
+}
+.fz4-smd-n {
+  font: 700 11.5px var(--font-body);
+  fill: var(--ink-soft);
+}
+.fz4-smd-side {
+  stroke-width: 1;
+}
+.fz4-smd-side-t {
+  font: 800 11px var(--font-body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: var(--ink);
+}
+.fz4-smd-matter {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 2.4;
+  stroke-dasharray: 7 4;
+}
+.fz4-hr-bg {
+  fill: color-mix(in srgb, var(--ink) 6%, var(--surface));
+}
+.fz4-hr-band {
+  fill: var(--lvl);
+  fill-opacity: 0.16;
+  stroke: var(--lvl-ink);
+  stroke-width: 0.8;
+  stroke-dasharray: 4 4;
+}
+.fz4-star {
+  stroke: color-mix(in srgb, var(--edge) 70%, transparent);
+  stroke-width: 0.7;
+}
+.fz4-sunmark {
+  fill: #f2c94c;
+  stroke: var(--edge);
+  stroke-width: 1.6;
+}
+.fz4-bb-hot {
+  fill: color-mix(in srgb, #e8892a 45%, var(--surface));
+}
+.fz4-bb-dark {
+  fill: color-mix(in srgb, #2a2f45 70%, var(--surface));
+}
+.fz4-bb-space {
+  fill: color-mix(in srgb, #1d2440 80%, var(--surface));
+}
+.fz4-bb-cmb {
+  fill: #f2c94c;
+  opacity: 0.75;
+}
+.fz4-bb-plasma {
+  fill: #fff4c8;
+}
+.fz4-bb-star {
+  fill: #fff6d8;
+}
+.fz4-bb-galaxy {
+  fill: #c7d8ff;
+  opacity: 0.85;
+}
+.fz4 .fz4-bb-edge {
+  stroke-width: 1.4;
+}
+.fz4-bb-bang {
+  fill: #fff4c8;
+  stroke: #e8892a;
+  stroke-width: 2;
+}
