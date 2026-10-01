@@ -1,3 +1,4 @@
+import { Replayable } from './Replayable'
 import { Link } from 'react-router-dom'
 import type { Block, CalloutVariant } from '../core/types'
 import { Md } from '../core/markup'
@@ -209,7 +210,9 @@ export function BlockView({
     case 'diagram':
       return (
         <figure className="b-diagram">
-          <Diagram id={block.id} props={block.props} />
+          <Replayable>
+            <Diagram id={block.id} props={block.props} />
+          </Replayable>
           {block.caption && (
             <figcaption>
               <Md text={block.caption} />
@@ -220,7 +223,9 @@ export function BlockView({
     case 'molecule':
       return (
         <figure className="b-visual">
-          <MoleculeView molecules={block.molecules} labels={block.labels} />
+          <Replayable>
+            <MoleculeView molecules={block.molecules} labels={block.labels} />
+          </Replayable>
           {block.caption && (
             <figcaption>
               <Md text={block.caption} />
@@ -231,7 +236,9 @@ export function BlockView({
     case 'particles':
       return (
         <figure className="b-visual">
-          <ParticleScene boxes={block.boxes} arrows={block.arrows} />
+          <Replayable>
+            <ParticleScene boxes={block.boxes} arrows={block.arrows} />
+          </Replayable>
           {block.caption && (
             <figcaption>
               <Md text={block.caption} />
@@ -242,7 +249,9 @@ export function BlockView({
     case 'reaction':
       return (
         <figure className="b-visual">
-          <ReactionView equation={block.equation} />
+          <Replayable>
+            <ReactionView equation={block.equation} />
+          </Replayable>
           {block.caption && (
             <figcaption>
               <Md text={block.caption} />
@@ -257,7 +266,9 @@ export function BlockView({
     case 'wave':
       return (
         <figure className="b-visual">
-          <PhysicsBlock block={block} />
+          <Replayable>
+            <PhysicsBlock block={block} />
+          </Replayable>
           {block.caption && (
             <figcaption>
               <Md text={block.caption} />

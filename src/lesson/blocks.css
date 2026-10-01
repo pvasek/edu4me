@@ -378,3 +378,48 @@ figcaption {
   border: var(--bw) solid var(--edge);
   box-shadow: var(--double-rule);
 }
+
+/* replay a figure's animation (Replayable) */
+.replayable {
+  position: relative;
+  display: grid;
+  justify-items: inherit;
+  width: 100%;
+  min-width: 0;
+}
+.replayable-body {
+  display: grid;
+  justify-items: inherit;
+  min-width: 0;
+}
+.can-replay > .replayable-body {
+  cursor: pointer;
+}
+.replay-btn {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  color: var(--muted);
+  cursor: pointer;
+  opacity: 0.7;
+  transition:
+    opacity 0.15s,
+    color 0.15s,
+    transform 0.15s;
+}
+.replayable:hover .replay-btn,
+.replay-btn:focus-visible {
+  opacity: 1;
+  color: var(--level, var(--accent));
+}
+.replay-btn:active {
+  transform: rotate(-90deg);
+}
