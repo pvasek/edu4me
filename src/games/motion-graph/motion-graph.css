@@ -1,0 +1,346 @@
+/* Graf pohybu (prefix g-mg-) */
+.g-mg {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.g-mg-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.g-mg-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 48px;
+}
+.g-mg-prompt {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: center;
+}
+.g-mg-story {
+  margin: 0;
+  max-width: 36ch;
+  font: italic 700 clamp(19px, 5.2vw, 24px) / 1.3 var(--font-display);
+  text-align: center;
+  text-wrap: balance;
+}
+.g-mg-q {
+  margin: 0;
+  font: 700 16px/1.35 var(--font-body);
+  color: var(--ink-soft);
+  text-align: center;
+}
+.g-mg-big {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ---------- drawings ---------- */
+.g-mg-mini,
+.g-mg-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.g-mg-chart {
+  max-width: 560px;
+}
+.g-mg-grid {
+  stroke: var(--line);
+  stroke-width: 0.8;
+}
+.g-mg-axis {
+  stroke: var(--edge);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.g-mg-axis-head {
+  fill: var(--edge);
+}
+.g-mg-axlbl {
+  font: italic 700 17px var(--font-display);
+  fill: var(--ink);
+}
+.g-mg-typelbl {
+  font: 800 13px var(--font-body);
+  letter-spacing: 0.04em;
+  fill: var(--ink-soft);
+}
+.g-mg-num {
+  font: 400 13px var(--font-mono);
+  fill: var(--ink-soft);
+}
+.g-mg-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.g-mg-line-hl {
+  stroke-width: 4.6;
+}
+.g-mg-dot {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.g-mg-band {
+  fill: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.g-mg-hatch {
+  stroke: var(--blue);
+  stroke-width: 1.2;
+  opacity: 0.65;
+}
+.g-mg-area {
+  stroke: var(--blue);
+  stroke-width: 1.2;
+}
+.g-mg-arealbl {
+  font: italic 800 19px var(--font-display);
+  fill: var(--ink);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.g-mg-segdot {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.g-mg-seg.on .g-mg-segdot {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+.g-mg-seglbl {
+  font: 800 13px var(--font-body);
+  fill: var(--ink);
+}
+.g-mg-seg.on .g-mg-seglbl {
+  fill: var(--surface);
+}
+.g-mg-tri {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.8;
+  stroke-dasharray: 5 4;
+}
+.g-mg-trilbl {
+  font: italic 800 17px var(--font-display);
+  fill: var(--blue);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+/* ---------- options ---------- */
+.g-mg-tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+.g-mg-stories {
+  display: grid;
+  gap: var(--space-3);
+}
+@media (min-width: 720px) {
+  .g-mg-tiles {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.g-mg-opt {
+  appearance: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 60px;
+  padding: 10px 12px;
+  text-align: left;
+  background: var(--surface);
+  color: var(--ink);
+  border: var(--bw) solid var(--edge);
+  border-bottom-width: calc(var(--bw) + 3px);
+  border-radius: var(--r);
+  font: 600 16px/1.35 var(--font-body);
+  cursor: pointer;
+  transition: border-bottom-width 0.08s ease, background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.g-mg-tiles .g-mg-opt {
+  padding: 8px 6px 6px;
+  align-items: flex-start;
+}
+.g-mg-opt:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+.g-mg-opt:active:not(:disabled) {
+  border-bottom-width: var(--bw);
+}
+.g-mg-opt:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+.g-mg-opt:disabled {
+  cursor: default;
+}
+.g-mg-key {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid var(--line);
+  font: 700 12px/1 var(--font-mono);
+  color: var(--muted);
+}
+.g-mg-tiles .g-mg-key {
+  position: absolute;
+  left: 6px;
+  bottom: 8px;
+  width: 20px;
+  height: 20px;
+  background: var(--surface);
+}
+.g-mg-opt-text {
+  flex: 1;
+  min-width: 0;
+}
+.g-mg-opt-icon {
+  position: absolute;
+  top: -10px;
+  right: -8px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 99px;
+  border: var(--bw) solid var(--edge);
+  color: var(--surface);
+}
+.g-mg-opt-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 3;
+}
+.g-mg-opt.is-correct {
+  background: var(--good-soft);
+  border-color: var(--good);
+}
+.g-mg-opt.is-correct .g-mg-opt-icon {
+  background: var(--good);
+}
+.g-mg-opt.is-wrong {
+  background: var(--bad-soft);
+  border-color: var(--bad);
+}
+.g-mg-opt.is-wrong .g-mg-opt-icon {
+  background: var(--bad);
+}
+.g-mg-opt.is-wrong .g-mg-line {
+  stroke: var(--bad);
+}
+.g-mg-opt.is-correct .g-mg-line {
+  stroke: var(--good);
+}
+
+/* ---------- numeric answer ---------- */
+.g-mg-form {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-mg-field {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-2);
+  align-items: center;
+}
+.g-mg-units {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 3px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+}
+.g-mg-unit {
+  appearance: none;
+  min-width: 48px;
+  min-height: 42px;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: calc(var(--r-sm) - 3px);
+  background: transparent;
+  color: var(--ink-soft);
+  font: italic 700 17px/1 var(--font-display);
+  cursor: pointer;
+}
+.g-mg-unit.on {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.g-mg-unit:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 1px;
+}
+
+.g-mg-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.g-mg-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.g-mg-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.g-mg-bonusbar > span {
+  transition: width 0.25s linear;
+}
+.g-mg-status:empty {
+  display: none;
+}
+.g-mg-next {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 520px) {
+  .g-mg-field {
+    grid-template-columns: 1fr;
+  }
+  .g-mg-units {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 400px) {
+  .g-mg-card {
+    padding: var(--space-3);
+  }
+  .g-mg-tiles {
+    gap: var(--space-2);
+  }
+  .g-mg-opt {
+    font-size: 15px;
+  }
+}

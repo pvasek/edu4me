@@ -1,0 +1,166 @@
+/* Plave, nebo klesne? (prefix g-fl-) */
+.g-fl-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.g-fl-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.g-fl-q {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+.g-fl-text {
+  margin: 0;
+  font: 600 16.5px/1.45 var(--font-body);
+}
+.g-fl-stage {
+  display: grid;
+  justify-items: center;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 4px;
+}
+.g-fl-tank {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  max-height: 330px;
+  height: auto;
+}
+.g-fl-caption {
+  font: italic 600 16px/1.2 var(--font-display);
+  color: var(--ink-soft);
+  padding-bottom: 4px;
+}
+.g-fl-force {
+  font: 700 17px/1 var(--font-display);
+  paint-order: stroke;
+  stroke: var(--surface-2);
+  stroke-width: 4px;
+}
+.g-fl-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.g-fl-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.g-fl-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.g-fl-bonusbar > span {
+  transition: width 0.25s linear;
+}
+
+.g-fl-choices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.g-fl-choices.n2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.g-fl-choice {
+  appearance: none;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  min-height: 84px;
+  padding: 8px 4px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 16px/1.15 var(--font-body);
+  cursor: pointer;
+  box-shadow: var(--shadow-hard);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s;
+}
+.g-fl-choice:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--shadow-color);
+}
+.g-fl-choice:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--shadow-color);
+}
+.g-fl-choice:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+.g-fl-choice[aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.g-fl-choice:disabled {
+  cursor: default;
+}
+.g-fl-choice:disabled:not([aria-pressed='true']) {
+  opacity: 0.5;
+}
+.g-fl-glyph {
+  width: 40px;
+  height: 40px;
+}
+
+.g-fl-form {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-fl-field {
+  display: grid;
+  gap: 6px;
+  max-width: 360px;
+}
+.g-fl-flabel {
+  font: 600 14px/1.3 var(--font-body);
+  color: var(--ink-soft);
+}
+.g-fl-inwrap {
+  position: relative;
+  display: block;
+}
+.g-fl-input {
+  padding-right: 48px;
+  font-size: 21px;
+}
+.g-fl-unit {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 600 15px/1 var(--font-mono);
+  color: var(--muted);
+  pointer-events: none;
+}
+.g-fl-status:empty {
+  display: none;
+}
+.g-fl-reveal {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-fl-why {
+  margin: 0;
+  font: 600 15.5px/1.5 var(--font-body);
+  padding: 8px 12px;
+  border-left: 3px double var(--accent);
+  background: var(--surface-2);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  overflow-wrap: anywhere;
+}

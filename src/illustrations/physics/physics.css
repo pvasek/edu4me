@@ -1,0 +1,399 @@
+/* =====================================================================
+   Parametric physics drawings (src/illustrations/physics): graph, circuit,
+   forces, rays, wave. Theme tokens only; tone a is the level colour
+   (`--level`), b–d come from the vintage palette. Classes prefixed ph-.
+   ===================================================================== */
+
+.ph {
+  --ph-a: color-mix(in srgb, var(--level, var(--blue)) 78%, var(--ink));
+  --ph-b: var(--accent);
+  --ph-c: var(--teal);
+  --ph-d: var(--pink);
+  --ph-glass: color-mix(in srgb, var(--info-soft) 60%, var(--surface));
+  --ph-water: color-mix(in srgb, var(--blue) 16%, var(--surface));
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  container-type: inline-size;
+}
+.ph-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+}
+
+/* ---------------------------------------------------------------- tones */
+.ph-tone-a { --t: var(--ph-a); }
+.ph-tone-b { --t: var(--ph-b); }
+.ph-tone-c { --t: var(--ph-c); }
+.ph-tone-d { --t: var(--ph-d); }
+.ph-tone-ink { --t: var(--ink); }
+
+/* ---------------------------------------------------------------- text */
+.ph-lbl {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 16.5px;
+  fill: var(--ink);
+}
+.ph-lbl-sm {
+  font-size: 14.5px;
+  font-weight: 600;
+  fill: var(--ink-soft);
+}
+.ph-lbl-lg {
+  font-size: 19px;
+}
+.ph-lbl-t {
+  fill: var(--t, var(--ink));
+}
+.ph-unit {
+  font: 500 14px var(--font-body);
+  font-style: normal;
+  fill: var(--ink-soft);
+}
+.ph-num {
+  font: 400 11.5px var(--font-mono);
+  fill: var(--ink-soft);
+}
+.ph-cap {
+  font: 700 10px var(--font-body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  fill: var(--muted);
+}
+.ph-sym {
+  font: 700 15px var(--font-body);
+  fill: var(--ink);
+}
+.ph-halo {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+/* ---------------------------------------------------------------- strokes */
+:where(.ph-o:not([fill])) {
+  fill: none;
+}
+.ph-o {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.ph-thin {
+  stroke-width: 0.9;
+}
+.ph-thick {
+  stroke-width: 2.2;
+}
+.ph-bold {
+  stroke-width: 3;
+}
+.ph-dash {
+  stroke-dasharray: 6 4;
+}
+.ph-dot2 {
+  stroke-dasharray: 1.5 3.5;
+}
+.ph-soft {
+  stroke: var(--line);
+}
+.ph-muted-s {
+  stroke: var(--muted);
+}
+.ph-t-s {
+  stroke: var(--t, var(--edge));
+}
+.ph-t-f {
+  fill: var(--t, var(--edge));
+}
+.ph-paper {
+  fill: var(--surface);
+}
+.ph-fill2 {
+  fill: var(--surface-2);
+}
+.ph-ink-f {
+  fill: var(--ink);
+}
+.ph-glass {
+  fill: var(--ph-glass);
+}
+.ph-water {
+  fill: var(--ph-water);
+}
+.ph-hl {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.45;
+}
+.ph-hl-dark {
+  opacity: 0.7;
+}
+.ph-hl-a { stroke: var(--ph-a); opacity: 0.55; }
+.ph-hl-b { stroke: var(--ph-b); opacity: 0.55; }
+.ph-hl-c { stroke: var(--ph-c); opacity: 0.55; }
+.ph-hl-d { stroke: var(--ph-d); opacity: 0.55; }
+.ph-mk { stroke: none; }
+.ph-mk-a { fill: var(--ph-a); }
+.ph-mk-b { fill: var(--ph-b); }
+.ph-mk-c { fill: var(--ph-c); }
+.ph-mk-d { fill: var(--ph-d); }
+.ph-mk-ink { fill: var(--edge); }
+.ph-mk-muted { fill: var(--muted); }
+
+/* ---------------------------------------------------------------- graph */
+.ph-grid {
+  stroke: var(--line);
+  stroke-width: 0.7;
+  fill: none;
+}
+.ph-tick {
+  stroke: var(--edge);
+  stroke-width: 1.1;
+}
+.ph-series {
+  fill: none;
+  stroke: var(--t);
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.ph-series.ph-dash {
+  stroke-dasharray: 7 5;
+}
+.ph-area-tint {
+  fill: var(--t);
+  fill-opacity: 0.12;
+}
+.ph-pt {
+  fill: var(--t);
+  stroke: var(--surface);
+  stroke-width: 1.2;
+}
+.ph-mark-dot {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+.ph-guide {
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+  fill: none;
+}
+
+/* ---------------------------------------------------------------- legend */
+.ph-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 16px;
+  font-size: 14.5px;
+  line-height: 1.3;
+  color: var(--ink-soft);
+}
+.ph-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ph-leg-line {
+  stroke: var(--t);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.ph-leg-line.ph-bold {
+  stroke-width: 3.6;
+}
+.ph-leg-dot {
+  fill: var(--t);
+}
+.ph-leg-area {
+  fill: var(--t);
+  fill-opacity: 0.18;
+}
+
+/* ---------------------------------------------------------------- circuit */
+.ph-wire {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ph-part {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.ph-part-fill {
+  fill: var(--surface);
+}
+.ph-junction {
+  fill: var(--edge);
+}
+.ph-term {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.4;
+}
+.ph-part-t {
+  font: 700 13px var(--font-body);
+  fill: var(--ink);
+  text-anchor: middle;
+}
+.ph-current {
+  fill: var(--ph-b);
+}
+
+/* ---------------------------------------------------------------- forces */
+.ph-vec {
+  fill: none;
+  stroke: var(--t);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+.ph-vec-res {
+  stroke: var(--ink);
+  stroke-dasharray: 6 4;
+  stroke-width: 2.2;
+}
+.ph-anchor {
+  fill: var(--ink);
+}
+.ph-body {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.ph-body-tint {
+  fill: color-mix(in srgb, var(--ph-a) 22%, var(--surface));
+}
+.ph-balance {
+  font: 700 11px var(--font-body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  fill: var(--good);
+}
+
+/* ---------------------------------------------------------------- rays */
+.ph-axis {
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+  stroke-dasharray: 10 3 2 3;
+  fill: none;
+}
+.ph-ray {
+  fill: none;
+  stroke: var(--t);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ph-ray-v {
+  stroke-width: 1.2;
+  stroke-dasharray: 4 4;
+  opacity: 0.85;
+}
+.ph-obj {
+  stroke: var(--ink);
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+}
+.ph-img {
+  stroke: var(--ph-b);
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+}
+.ph-img-v {
+  stroke-dasharray: 5 4;
+  stroke-width: 2.4;
+}
+.ph-break {
+  fill: var(--surface);
+  stroke: none;
+}
+.ph-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  line-height: 1.2;
+}
+.ph-chip {
+  padding: 3px 9px;
+  border: 1.5px solid color-mix(in srgb, var(--ph-b) 55%, var(--line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ph-b) 10%, var(--surface));
+  font-weight: 700;
+  color: var(--ink);
+}
+.ph-chips-head {
+  font: 700 11px var(--font-body);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ph-chips-note {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px 14px;
+  font: 13px var(--font-mono);
+  color: var(--ink-soft);
+}
+
+/* ---------------------------------------------------------------- wave */
+.ph-wave {
+  fill: none;
+  stroke: var(--t);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ph-wave-thin {
+  stroke-width: 1.5;
+  opacity: 0.9;
+}
+.ph-wave-sum {
+  stroke: var(--ink);
+  stroke-width: 3.2;
+}
+.ph-envelope {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.1;
+  stroke-dasharray: 5 4;
+}
+.ph-coil {
+  fill: none;
+  stroke: var(--ph-a);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.ph-dim {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+}

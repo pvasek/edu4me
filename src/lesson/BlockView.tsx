@@ -14,6 +14,7 @@ import { FlipCards } from '../illustrations/blocks/FlipCards'
 import { MoleculeView } from '../illustrations/molecules/MoleculeView'
 import { ParticleScene } from '../illustrations/particles/ParticleScene'
 import { ReactionView } from '../illustrations/particles/ReactionView'
+import { CircuitView, ForcesView, GraphView, RaysView, WaveView } from '../illustrations/physics'
 import './blocks.css'
 
 const CALLOUT: Record<CalloutVariant, { icon: IconName; label: string }> = {
@@ -249,6 +250,21 @@ export function BlockView({
           )}
         </figure>
       )
+    case 'graph':
+    case 'circuit':
+    case 'forces':
+    case 'rays':
+    case 'wave':
+      return (
+        <figure className="b-visual">
+          <PhysicsBlock block={block} />
+          {block.caption && (
+            <figcaption>
+              <Md text={block.caption} />
+            </figcaption>
+          )}
+        </figure>
+      )
     case 'process':
       return (
         <figure className="b-visual b-visual-plain">
@@ -310,5 +326,23 @@ export function BlockView({
         </Link>
       )
     }
+  }
+}
+
+type PhysicsBlockData = Extract<Block, { type: 'graph' | 'circuit' | 'forces' | 'rays' | 'wave' }>
+
+/** The parametric physics drawings (src/illustrations/physics). */
+function PhysicsBlock({ block }: { block: PhysicsBlockData }) {
+  switch (block.type) {
+    case 'graph':
+      return <GraphView x={block.x} y={block.y} series={block.series} marks={block.marks} />
+    case 'circuit':
+      return <CircuitView source={block.source} parts={block.parts} />
+    case 'forces':
+      return <ForcesView body={block.body} surface={block.surface} angle={block.angle} forces={block.forces} resultant={block.resultant} />
+    case 'rays':
+      return <RaysView element={block.element} focal={block.focal} object={block.object} height={block.height} />
+    case 'wave':
+      return <WaveView kind={block.kind} waves={block.waves} sum={block.sum} marks={block.marks} />
   }
 }

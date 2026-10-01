@@ -1,0 +1,345 @@
+/* Převody jednotek (prefix g-uc-) */
+.g-uc {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.g-uc-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.g-uc-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 52px;
+}
+.g-uc-q {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  column-gap: 0.28em;
+  row-gap: 2px;
+  font: 800 clamp(28px, 8.4vw, 46px) / 1.15 var(--font-display);
+  text-align: center;
+}
+.g-uc-val,
+.g-uc-ans {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.g-uc-unit {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.g-uc-unit-to {
+  color: var(--blue);
+}
+.g-uc-eq {
+  font-weight: 500;
+  color: var(--muted);
+}
+.g-uc-ans {
+  display: inline-block;
+  min-width: 1.4em;
+  padding: 0 0.18em;
+  border-bottom: 3px double var(--edge);
+  color: var(--accent);
+  text-align: center;
+}
+.g-uc-ans.done {
+  color: var(--good);
+}
+
+/* ---------- prefix ladder ---------- */
+.g-uc-ladder {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.g-uc-ladder svg {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  overflow: visible;
+}
+.g-uc-stepbox {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.g-uc-tread {
+  stroke: var(--edge);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.g-uc-hatchline {
+  stroke: currentColor;
+  stroke-width: 1;
+  opacity: 0.35;
+}
+.g-uc-step.from {
+  color: var(--accent);
+}
+.g-uc-step.to {
+  color: var(--blue);
+}
+.g-uc-step.from .g-uc-stepbox {
+  fill: color-mix(in srgb, var(--accent) 16%, var(--surface));
+  stroke: var(--accent);
+  stroke-width: 1.8;
+}
+.g-uc-step.to .g-uc-stepbox {
+  fill: color-mix(in srgb, var(--blue) 14%, var(--surface));
+  stroke: var(--blue);
+  stroke-width: 1.8;
+}
+.g-uc-steplbl {
+  font: italic 700 15px var(--font-display);
+  fill: var(--ink);
+}
+.g-uc-steppow {
+  font: 400 11px var(--font-mono);
+  fill: var(--ink-soft);
+}
+.g-uc-arrow {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.g-uc-headfill {
+  fill: var(--accent);
+}
+.g-uc-ladder-cap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 10px;
+  font: 600 14px/1.3 var(--font-body);
+  color: var(--ink-soft);
+  text-align: center;
+}
+.g-uc-ladder-cap b {
+  font: 800 16px/1.2 var(--font-display);
+  color: var(--accent);
+}
+
+/* ---------- speed bonus ---------- */
+.g-uc-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.g-uc-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.g-uc-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.g-uc-bonusbar > span {
+  transition: width 0.25s linear;
+}
+
+/* ---------- options ---------- */
+.g-uc-opts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+.g-uc-opt {
+  appearance: none;
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  min-height: 64px;
+  padding: 12px 12px 10px;
+  text-align: left;
+  background: var(--surface);
+  color: var(--ink);
+  border: var(--bw) solid var(--edge);
+  border-bottom-width: calc(var(--bw) + 3px);
+  border-radius: var(--r);
+  cursor: pointer;
+  transition: border-bottom-width 0.08s ease, background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.g-uc-opt:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+.g-uc-opt:active:not(:disabled) {
+  border-bottom-width: var(--bw);
+}
+.g-uc-opt:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+.g-uc-opt:disabled {
+  cursor: default;
+}
+.g-uc-key {
+  align-self: center;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid var(--line);
+  font: 700 12px/1 var(--font-mono);
+  color: var(--muted);
+}
+.g-uc-opt-num {
+  font: 800 clamp(19px, 5.4vw, 24px) / 1.1 var(--font-display);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.g-uc-opt-unit {
+  font: italic 700 16px/1.1 var(--font-display);
+  color: var(--ink-soft);
+}
+.g-uc-opt-icon {
+  position: absolute;
+  top: -10px;
+  right: -8px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 99px;
+  border: var(--bw) solid var(--edge);
+  color: var(--surface);
+}
+.g-uc-opt-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 3;
+}
+.g-uc-opt.is-correct {
+  background: var(--good-soft);
+  border-color: var(--good);
+}
+.g-uc-opt.is-correct .g-uc-opt-icon {
+  background: var(--good);
+}
+.g-uc-opt.is-wrong {
+  background: var(--bad-soft);
+  border-color: var(--bad);
+}
+.g-uc-opt.is-wrong .g-uc-opt-icon {
+  background: var(--bad);
+}
+
+/* ---------- typed answers ---------- */
+.g-uc-form {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-uc-field {
+  position: relative;
+}
+.g-uc-in {
+  padding-right: 76px;
+  font-size: 22px;
+}
+.g-uc-in-unit {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: italic 700 18px/1 var(--font-display);
+  color: var(--ink-soft);
+  pointer-events: none;
+}
+.g-uc-sci {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.g-uc-in-m {
+  flex: 1 1 60px;
+  width: 60px; /* not the input's intrinsic ~20ch, which would widen the stage */
+  min-width: 56px;
+  font-size: 22px;
+}
+.g-uc-times {
+  flex: none;
+  white-space: nowrap;
+  font: 800 24px/1 var(--font-display);
+}
+.g-uc-expwrap {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+  transform: translateY(-12px);
+}
+.g-uc-in-e {
+  width: 54px;
+  min-height: 44px;
+  padding: 6px 8px;
+  font-size: 18px;
+  text-align: center;
+}
+.g-uc-pm {
+  appearance: none;
+  min-width: 40px;
+  min-height: 44px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  color: var(--ink);
+  font: 800 20px/1 var(--font-display);
+  cursor: pointer;
+}
+.g-uc-pm:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 1px;
+}
+.g-uc-sci-unit {
+  flex: none;
+  white-space: nowrap;
+  font: italic 700 20px/1 var(--font-display);
+  color: var(--ink-soft);
+}
+.g-uc-note {
+  margin: 0;
+  font-size: 14px;
+}
+.g-uc-status:empty {
+  display: none;
+}
+.g-uc-next {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 400px) {
+  .g-uc-card {
+    padding: var(--space-3);
+  }
+  .g-uc-opt {
+    padding: 10px 10px 8px;
+  }
+  .g-uc-key {
+    display: none;
+  }
+  .g-uc-steplbl {
+    font-size: 17px;
+  }
+}

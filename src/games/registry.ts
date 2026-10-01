@@ -277,7 +277,7 @@ export const GAMES: GameMeta[] = [
     kind: 'motion',
     courses: {
       fyzika: {
-        2: 'grafy s–t a v–t rovnoměrného pohybu',
+        2: 'příběh ↔ graf s–t a v–t',
         8: 'zrychlený pohyb: směrnice a plocha pod grafem',
       },
     },
@@ -297,38 +297,38 @@ export const GAMES: GameMeta[] = [
   {
     id: 'energy-chain',
     title: 'Energetický řetězec',
-    blurb: 'Seřaď přeměny energie od zdroje až po užitek.',
+    blurb: 'Seřaď přeměny energie od zdroje až po užitek a spočítej účinnost.',
     kind: 'energy',
     courses: {
       fyzika: {
         3: 'přeměny mechanické energie',
         4: 'teplo, skupenství a tepelné motory',
         7: 'elektrárny a zdroje energie',
-        10: 'tepelné stroje a účinnost',
+        10: 'tepelné stroje, Carnotova účinnost, chladnička a tepelné čerpadlo',
       },
     },
   },
   {
     id: 'circuit-builder',
     title: 'Stavitel obvodů',
-    blurb: 'Postav obvod, změř proud a napětí a rozsviť žárovky.',
+    blurb: 'Předpověz, co ukážou měřidla, která žárovka svítí nejvíc, a postav obvod podle zadání.',
     kind: 'circuit',
     courses: {
       fyzika: {
-        6: 'sériové a paralelní zapojení, Ohmův zákon',
-        11: 'Kirchhoffovy zákony a vnitřní odpor zdroje',
+        6: 'sériové a paralelní zapojení, Ohmův zákon, jas žárovek a výkon',
+        11: 'Kirchhoffovy zákony, vnitřní odpor zdroje, výsledný odpor sítě a výkon',
       },
     },
   },
   {
     id: 'ray-optics',
     title: 'Paprsky',
-    blurb: 'Najdi, kde vznikne obraz, a urči, jaký bude.',
+    blurb: 'Najdi, kde vznikne obraz, urči, jaký bude, a sleduj význačné paprsky.',
     kind: 'optics',
     courses: {
       fyzika: {
         5: 'odraz, lom a obraz v čočce a zrcadle',
-        12: 'zobrazovací rovnice a zvětšení',
+        12: 'zobrazovací rovnice, zvětšení a optická mohutnost',
       },
     },
   },
@@ -340,7 +340,7 @@ export const GAMES: GameMeta[] = [
     courses: {
       fyzika: {
         8: 'vodorovný a šikmý vrh',
-        9: 'vrh na Měsíci a planetách, oběžná rychlost',
+        9: 'vrh na Měsíci, Marsu a Jupiteru, oběžná rychlost',
       },
     },
   },

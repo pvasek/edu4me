@@ -1,0 +1,799 @@
+/* =====================================================================
+   Engraved physics figures for levels 1–3 (src/illustrations/figures/fz1).
+   Theme colours come from tokens (src/ui/theme.css); subject colours
+   (CPK atoms, flames, gases, metals) are literal. Classes prefixed fz1-.
+   ===================================================================== */
+
+.fz1 {
+  --lvl: var(--level, #8a5a2b);
+  --lvl-ink: color-mix(in srgb, var(--lvl) 72%, var(--ink));
+  --lvl-soft: color-mix(in srgb, var(--lvl) 16%, var(--surface));
+  --e: var(--blue);
+  --glass: color-mix(in srgb, var(--info-soft) 45%, var(--surface));
+  --water: color-mix(in srgb, #6f9fd8 30%, var(--surface));
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  container-type: inline-size;
+}
+
+.fz1-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------------------------------------------------------------- controls */
+.fz1-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.fz1-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.fz1-btn {
+  appearance: none;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 14px/1.1 var(--font-body);
+  min-height: 40px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.fz1-btn:hover {
+  background: var(--surface-2);
+}
+.fz1-btn[aria-pressed='true'] {
+  background: var(--lvl);
+  border-color: var(--lvl);
+  color: var(--on-level);
+}
+.fz1-host {
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------- text */
+.fz1-lbl {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16.5px;
+  fill: var(--ink-soft);
+}
+.fz1-b {
+  font-weight: 700;
+  fill: var(--ink);
+}
+.fz1-big {
+  font-size: 19px;
+}
+.fz1-sm {
+  font-size: 14.5px;
+}
+.fz1-lvl-t {
+  fill: var(--lvl-ink);
+}
+.fz1-acc-t {
+  fill: var(--accent);
+}
+.fz1-blue-t {
+  fill: var(--blue);
+}
+.fz1-red-t {
+  fill: var(--bad);
+}
+.fz1-green-t {
+  fill: var(--good);
+}
+.fz1-muted-t {
+  fill: var(--muted);
+}
+.fz1-eq {
+  font: 600 14px var(--font-body);
+  fill: var(--ink);
+}
+.fz1-eq-sm {
+  font-size: 12.5px;
+}
+.fz1-eq-lg {
+  font-size: 16px;
+}
+.fz1-num {
+  font: 400 13px var(--font-mono);
+  fill: var(--ink);
+}
+.fz1-cap {
+  font: 700 10.5px var(--font-body);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  fill: var(--muted);
+}
+.fz1-sym {
+  font: 700 22px var(--font-display);
+  fill: var(--ink);
+}
+.fz1-dark-t {
+  fill: #1f2a44;
+}
+.fz1-light-t {
+  fill: #fffaf0;
+}
+
+/* ---------------------------------------------------------------- lines */
+:where(.fz1-o:not([fill])) {
+  fill: none;
+}
+.fz1-o {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.fz1-thin {
+  stroke-width: 0.9;
+}
+.fz1-thick {
+  stroke-width: 2.2;
+}
+.fz1-fill {
+  fill: var(--surface);
+}
+.fz1-fill2 {
+  fill: var(--surface-2);
+}
+.fz1-fill3 {
+  fill: var(--surface-3);
+}
+.fz1-glass {
+  fill: var(--glass);
+  fill-opacity: 0.55;
+}
+.fz1-ln {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+}
+.fz1-soft {
+  stroke: var(--line);
+}
+.fz1-lvl-s {
+  stroke: var(--lvl-ink);
+}
+.fz1-lvl-f {
+  fill: var(--lvl);
+}
+.fz1-lvlsoft-f {
+  fill: var(--lvl-soft);
+}
+.fz1-dash {
+  stroke-dasharray: 5 4;
+}
+.fz1-dot2 {
+  stroke-dasharray: 1.5 4;
+}
+.fz1-lead {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  fill: none;
+}
+.fz1-dot {
+  fill: var(--ink-soft);
+}
+.fz1-nohit {
+  pointer-events: none;
+}
+.fz1-hl {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.4;
+}
+.fz1-hl-dark {
+  opacity: 0.6;
+}
+.fz1-hl-light {
+  stroke: #fffaf0;
+  stroke-width: 0.9;
+  opacity: 0.75;
+}
+.fz1-hl-shade {
+  stroke: #10131c;
+  stroke-width: 0.8;
+  opacity: 0.35;
+}
+.fz1-stip {
+  fill: var(--edge);
+  opacity: 0.35;
+}
+
+/* arrows */
+.fz1-arr {
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.fz1-arr-ink {
+  stroke: var(--edge);
+}
+.fz1-arr-acc {
+  stroke: var(--accent);
+}
+.fz1-arr-blue {
+  stroke: var(--blue);
+}
+.fz1-arr-lvl {
+  stroke: var(--lvl-ink);
+}
+.fz1-arr-red {
+  stroke: var(--bad);
+}
+.fz1-arr-green {
+  stroke: var(--good);
+}
+.fz1-arr-muted {
+  stroke: var(--muted);
+}
+.fz1-mk-ink {
+  fill: var(--edge);
+}
+.fz1-mk-acc {
+  fill: var(--accent);
+}
+.fz1-mk-blue {
+  fill: var(--blue);
+}
+.fz1-mk-lvl {
+  fill: var(--lvl-ink);
+}
+.fz1-mk-red {
+  fill: var(--bad);
+}
+.fz1-mk-green {
+  fill: var(--good);
+}
+.fz1-mk-muted {
+  fill: var(--muted);
+}
+.fz1-wide {
+  stroke-width: 2.6;
+}
+
+/* atoms */
+.fz1-atom-b {
+  stroke: none;
+}
+.fz1-atom-o {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.fz1-atom-t {
+  font-family: var(--font-body);
+  font-weight: 800;
+  pointer-events: none;
+}
+.fz1-atom-t-l {
+  fill: #fffaf0;
+}
+.fz1-atom-t-d {
+  fill: #1f2a44;
+}
+.fz1-bond {
+  stroke: var(--edge);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+/* badges */
+.fz1-badge {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+}
+.fz1-badge-t {
+  font: 800 15px var(--font-body);
+  fill: var(--ink);
+}
+.fz1-tag {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.fz1-tag-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+}
+
+/* pipes */
+.fz1-pipe-o {
+  fill: none;
+  stroke: var(--edge);
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+}
+.fz1-pipe-i {
+  fill: none;
+  stroke: var(--surface);
+  stroke-linecap: square;
+  stroke-linejoin: round;
+}
+.fz1-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 2 9;
+  animation: fz1-flow 1.1s linear infinite;
+}
+.fz1-flow-rev {
+  animation-direction: reverse;
+}
+@keyframes fz1-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+/* current in wires */
+.fz1-wire {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.fz1-current {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2.4;
+  stroke-dasharray: 3 11;
+  stroke-linecap: round;
+  animation: fz1-flow 1s linear infinite;
+}
+
+/* bubbles */
+.fz1-bubble {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+  animation: fz1-rise 2.4s ease-in infinite;
+}
+@keyframes fz1-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--rise, -40px));
+    opacity: 0;
+  }
+}
+
+/* flames and glow */
+.fz1-flicker {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: fz1-flicker 1.3s ease-in-out infinite alternate;
+}
+@keyframes fz1-flicker {
+  0% {
+    transform: scale(1, 1) skewX(0deg);
+  }
+  30% {
+    transform: scale(0.95, 1.06) skewX(-2deg);
+  }
+  60% {
+    transform: scale(1.04, 0.95) skewX(2deg);
+  }
+  100% {
+    transform: scale(0.97, 1.03) skewX(-1deg);
+  }
+}
+.fz1-glow {
+  animation: fz1-glow 1.8s ease-in-out infinite alternate;
+}
+@keyframes fz1-glow {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fz1-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: fz1-spin 3s linear infinite;
+}
+@keyframes fz1-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.fz1-drift {
+  animation: fz1-drift 4s ease-in-out infinite alternate;
+}
+@keyframes fz1-drift {
+  from {
+    transform: translate(-2px, 1px);
+  }
+  to {
+    transform: translate(2px, -2px);
+  }
+}
+
+/* ---------------------------------------------------------------- narrow plates */
+@container (max-width: 440px) {
+  .fz1-sec {
+    display: none;
+  }
+  .fz1-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+
+/* electrons */
+.fz1-e {
+  fill: #2f5fb3;
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.fz1-e-t {
+  font: 800 8.5px var(--font-body);
+  fill: #fffaf0;
+  pointer-events: none;
+}
+.fz1-flame-o {
+  stroke: color-mix(in srgb, var(--edge) 60%, transparent);
+  stroke-width: 0.8;
+}
+.fz1-ion-t {
+  font: 800 8px var(--font-body);
+}
+
+/* plotted curves */
+.fz1-curve {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.fz1-curve-1 {
+  stroke: var(--blue);
+}
+.fz1-curve-2 {
+  stroke: var(--accent);
+}
+
+/* compact plates (JS flag from useCompact): larger text so it stays legible
+   when a ~500-unit plate is squeezed into a phone column */
+.fz1-narrow .fz1-lbl {
+  font-size: 21px;
+}
+.fz1-narrow .fz1-lbl.fz1-sm {
+  font-size: 18.5px;
+}
+.fz1-narrow .fz1-lbl.fz1-big {
+  font-size: 23px;
+}
+.fz1-narrow .fz1-eq {
+  font-size: 17px;
+}
+.fz1-narrow .fz1-eq.fz1-eq-lg {
+  font-size: 18.5px;
+}
+.fz1-narrow .fz1-eq.fz1-eq-sm {
+  font-size: 15px;
+}
+.fz1-narrow .fz1-cap {
+  font-size: 13px;
+}
+.fz1-narrow .fz1-num {
+  font-size: 16px;
+}
+.fz1-narrow .fz1-lbl.fz1-keep {
+  font-size: 15.5px;
+}
+.fz1-needle {
+  fill: var(--bad);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.fz1-drop {
+  fill: #6f9fd8;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.fz1-num-b {
+  font-weight: 700;
+}
+.fz1-narrow .fz1-eq.fz1-keep {
+  font-size: 14.5px;
+}
+.fz1-gas {
+  fill: var(--surface);
+  stroke: var(--muted);
+  stroke-width: 1;
+}
+.fz1-badge-n {
+  font: 700 12px var(--font-mono);
+  fill: #fffaf0;
+}
+.fz1-catom {
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+/* label halo: lets a label sit over a line and stay readable */
+.fz1-halo {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 8px;
+  stroke-linejoin: round;
+}
+.fz1-flash {
+  animation: fz1-flash 3.2s steps(1) infinite;
+}
+@keyframes fz1-flash {
+  0%,
+  86%,
+  92% {
+    opacity: 1;
+  }
+  88%,
+  95% {
+    opacity: 0.35;
+  }
+}
+
+/* a StepStrip inside an interactive Figure */
+.fz1-stripbox {
+  display: grid;
+  gap: 10px;
+}
+.fz1-strip-note {
+  margin: 0;
+  text-align: center;
+  font: italic 600 17px/1.3 var(--font-display);
+  color: var(--ink-soft);
+}
+
+/* ================================================================ physics extras */
+.fz1-val {
+  font: italic 700 15px var(--font-body);
+  fill: var(--ink);
+}
+.fz1-val.fz1-val-lg {
+  font-size: 18px;
+}
+.fz1-val.fz1-val-sm {
+  font-size: 13px;
+}
+.fz1-narrow .fz1-val {
+  font-size: 17px;
+}
+.fz1-ink-t {
+  fill: var(--ink);
+}
+.fz1-water {
+  fill: var(--water);
+}
+.fz1-metal {
+  fill: color-mix(in srgb, #9aa3b0 70%, var(--surface));
+}
+.fz1-wood {
+  fill: color-mix(in srgb, #c89a5e 75%, var(--surface));
+}
+.fz1-red-f {
+  fill: #c8453a;
+}
+.fz1-blue-f {
+  fill: #3d6fd1;
+}
+.fz1-tick {
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.fz1-tickl {
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.fz1-scale-n {
+  font: 500 10.5px var(--font-mono);
+  fill: var(--ink-soft);
+}
+.fz1-narrow .fz1-scale-n {
+  font-size: 12px;
+}
+.fz1-lcd {
+  fill: color-mix(in srgb, #9fc79a 55%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.fz1-lcd-t {
+  font: 700 13px var(--font-mono);
+  fill: #1f2a44;
+}
+.fz1-spring {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+.fz1-field {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-dasharray: 3 3.5;
+}
+.fz1-hotline {
+  stroke: #d0453a;
+}
+.fz1-coldline {
+  stroke: #3d6fd1;
+}
+.fz1-row-ref {
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+.fz1-swing {
+  transform-box: view-box;
+  animation: fz1-swing 2.6s ease-in-out infinite alternate;
+}
+@keyframes fz1-swing {
+  from {
+    transform: rotate(var(--a0, -20deg));
+  }
+  to {
+    transform: rotate(var(--a1, 20deg));
+  }
+}
+.fz1-jiggle {
+  animation: fz1-jiggle 0.9s steps(4) infinite;
+}
+@keyframes fz1-jiggle {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(1.5px, -1px);
+  }
+  50% {
+    transform: translate(-1px, 1.5px);
+  }
+  75% {
+    transform: translate(1px, 1px);
+  }
+}
+.fz1-hl-glow {
+  fill: var(--lvl);
+  opacity: 0.28;
+}
+.fz1-bob {
+  animation: fz1-bob 2.8s ease-in-out infinite alternate;
+}
+@keyframes fz1-bob {
+  from {
+    transform: translateY(-1.5px);
+  }
+  to {
+    transform: translateY(1.5px);
+  }
+}
+/* charges */
+.fz1-q-plus {
+  fill: #d0453a;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.fz1-q-minus {
+  fill: #3d6fd1;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.fz1-q-t {
+  font: 800 11px var(--font-body);
+  fill: #fffaf0;
+  pointer-events: none;
+}
+/* strip panels: keep the art from growing huge in a one-column phone strip */
+.fz1-stripbox .sf-panel-art .fz1-svg {
+  max-width: 250px;
+  margin-inline: auto;
+}
+.fz1-mag-t {
+  font: 800 20px var(--font-body);
+  fill: #fffaf0;
+  pointer-events: none;
+}
+.fz1-head {
+  fill: var(--ink-soft);
+}
+.fz1-earth {
+  fill: color-mix(in srgb, #5b8fd0 55%, var(--surface));
+}
+.fz1-land {
+  fill: color-mix(in srgb, #6f9a52 75%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.fz1-cog {
+  fill: var(--edge);
+}
+.fz1-ok-s {
+  stroke: var(--good);
+}
+.fz1-bad-s {
+  stroke: var(--bad);
+}
+.fz1-ok-f {
+  fill: var(--good);
+}
+.fz1-bad-f {
+  fill: var(--bad);
+}
+.fz1-red-s {
+  stroke: #c8453a;
+}
+.fz1-rope {
+  fill: none;
+  stroke: #9a7340;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.fz1-oil {
+  fill: color-mix(in srgb, #d9a93a 45%, var(--surface));
+}
+.fz1-jet {
+  fill: none;
+  stroke: #4f86c9;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-dasharray: 7 3;
+  animation: fz1-jetflow 0.6s linear infinite;
+}
+@keyframes fz1-jetflow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+.fz1-snow-f {
+  fill: #f4f1ea;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.fz1-ep {
+  fill: color-mix(in srgb, #3d6fd1 70%, var(--surface));
+}
+.fz1-ek {
+  fill: color-mix(in srgb, var(--lvl) 80%, var(--surface));
+}
+.fz1-heat {
+  fill: color-mix(in srgb, #d0453a 55%, var(--surface));
+}
+.fz1-wall {
+  stroke-width: 5;
+  stroke-linejoin: miter;
+  stroke-linecap: square;
+}

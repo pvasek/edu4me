@@ -1,0 +1,445 @@
+/* Vrh (prefix g-pr-) */
+.g-pr {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.g-pr-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+}
+.g-pr-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.g-pr-title {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+.g-pr-g {
+  font: italic 700 16px/1.25 var(--font-display);
+  color: var(--ink-soft);
+}
+.g-pr-shots {
+  display: flex;
+  gap: 5px;
+}
+.g-pr-shotdot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1.5px solid var(--edge);
+  background: var(--accent);
+}
+.g-pr-shotdot.used {
+  background: transparent;
+  border-color: var(--muted);
+}
+.g-pr-shotdot.hit {
+  background: var(--good);
+}
+.g-pr-goal {
+  margin: 0;
+  font: 600 15px/1.45 var(--font-body);
+  color: var(--ink-soft);
+}
+
+/* ---------- scene ---------- */
+.g-pr-scene,
+.g-pr-orbit {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  --pr-ground: var(--green);
+}
+.g-pr-scene {
+  max-width: 620px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.g-pr-orbit {
+  max-width: 420px;
+  margin: 0 auto;
+}
+.g-pr-body-mesic {
+  --pr-ground: var(--muted);
+}
+.g-pr-body-mars {
+  --pr-ground: var(--accent);
+}
+.g-pr-body-jupiter {
+  --pr-ground: var(--yellow);
+}
+.g-pr-hatchline {
+  stroke: var(--pr-ground);
+  stroke-width: 1.2;
+  opacity: 0.55;
+}
+.g-pr-hatchline-b {
+  stroke: var(--edge);
+  stroke-width: 0.9;
+  opacity: 0.45;
+}
+.g-pr-ground {
+  fill: color-mix(in srgb, var(--pr-ground) 14%, var(--surface));
+}
+.g-pr-groundline {
+  stroke: var(--edge);
+  stroke-width: 1.8;
+}
+.g-pr-decor {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+.g-pr-ahead {
+  fill: var(--ink-soft);
+}
+.g-pr-ruler line {
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+}
+.g-pr-rulerlbl,
+.g-pr-dimlbl {
+  font: italic 800 17px var(--font-display);
+  fill: var(--ink);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.g-pr-dim {
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+}
+.g-pr-block rect {
+  fill: var(--surface-2);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+}
+.g-pr-block rect + rect {
+  fill-opacity: 1;
+}
+.g-pr-pad {
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.g-pr-pole {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+}
+.g-pr-flag {
+  fill: var(--accent);
+  stroke: var(--edge);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.g-pr-target.hit .g-pr-pad {
+  stroke: var(--good);
+}
+.g-pr-target.hit .g-pr-flag {
+  fill: var(--good);
+}
+.g-pr-old path:first-child {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 4;
+  opacity: 0.55;
+}
+.g-pr-cross {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.g-pr-trail {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.g-pr-trail.hit {
+  stroke: var(--good);
+}
+.g-pr-solution {
+  fill: none;
+  stroke: var(--good);
+  stroke-width: 2.2;
+  stroke-dasharray: 6 4;
+}
+.g-pr-ball {
+  fill: var(--ink);
+  stroke: var(--surface);
+  stroke-width: 1.2;
+}
+.g-pr-offlbl {
+  font: italic 800 16px var(--font-display);
+  fill: var(--bad);
+}
+.g-pr-vec {
+  stroke: var(--blue);
+  stroke-width: 1.4;
+  stroke-dasharray: 2 3;
+}
+.g-pr-barrel {
+  fill: var(--ink-soft);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.g-pr-wheel {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.8;
+}
+.g-pr-hub {
+  fill: var(--edge);
+}
+
+/* orbit */
+.g-pr-planet {
+  fill: color-mix(in srgb, var(--pr-ground) 18%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.8;
+}
+.g-pr-band {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 0.9;
+  opacity: 0.5;
+}
+.g-pr-mountain {
+  fill: var(--surface-2);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+.g-pr-planetlbl {
+  font: italic 800 17px var(--font-display);
+  fill: var(--ink);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+}
+.g-pr-radius {
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+.g-pr-orbitpath {
+  fill: none;
+  stroke: var(--good);
+  stroke-width: 1.8;
+  stroke-dasharray: 5 4;
+}
+.g-pr-fate {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 1.8;
+  stroke-dasharray: 3 3;
+}
+.g-pr-orbitlbl {
+  font: italic 800 16px var(--font-display);
+  fill: var(--good);
+}
+.g-pr-sat {
+  transform-box: view-box;
+  animation: g-pr-spin 3.2s linear 2;
+}
+@keyframes g-pr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .g-pr-sat {
+    animation: none;
+  }
+}
+
+/* ---------- controls ---------- */
+.g-pr-ctrl {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .g-pr-ctrl {
+    grid-template-columns: 1fr 1fr;
+  }
+  .g-pr-fire {
+    grid-column: 1 / -1;
+  }
+}
+.g-pr-dial,
+.g-pr-fixed {
+  display: grid;
+  gap: 6px;
+  padding: 10px 12px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+}
+.g-pr-fixed b {
+  font: italic 800 20px/1.2 var(--font-display);
+  color: var(--ink-soft);
+}
+.g-pr-dial-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.g-pr-dial-lbl {
+  font: 700 12px/1.2 var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.g-pr-dial-val {
+  font: 800 24px/1 var(--font-display);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.g-pr-dial-row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  align-items: center;
+  gap: 8px;
+}
+.g-pr-step {
+  appearance: none;
+  width: 48px;
+  height: 48px;
+  border: var(--bw) solid var(--edge);
+  border-bottom-width: calc(var(--bw) + 2px);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  color: var(--ink);
+  font: 800 24px/1 var(--font-display);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.g-pr-step:active:not(:disabled) {
+  border-bottom-width: var(--bw);
+}
+.g-pr-step:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.g-pr-step:focus-visible,
+.g-pr-range:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+.g-pr-range {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 32px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.g-pr-range::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 99px;
+  border: 1.5px solid var(--edge);
+  background: linear-gradient(to right, var(--accent) var(--pct), var(--surface-2) var(--pct));
+}
+.g-pr-range::-moz-range-track {
+  height: 8px;
+  border-radius: 99px;
+  border: 1.5px solid var(--edge);
+  background: linear-gradient(to right, var(--accent) var(--pct), var(--surface-2) var(--pct));
+}
+.g-pr-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  height: 28px;
+  margin-top: -11px;
+  border-radius: 50%;
+  border: 2px solid var(--edge);
+  background: var(--surface);
+  box-shadow: 0 2px 0 var(--edge);
+}
+.g-pr-range::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--edge);
+  background: var(--surface);
+}
+.g-pr-range:disabled {
+  opacity: 0.5;
+}
+.g-pr-fire {
+  flex-wrap: wrap;
+  row-gap: 2px;
+}
+.g-pr-fire-sub {
+  flex-basis: 100%;
+  font: 600 12px/1.2 var(--font-body);
+  opacity: 0.85;
+}
+
+/* ---------- orbit answer ---------- */
+.g-pr-orbitform {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-pr-field {
+  position: relative;
+}
+.g-pr-field .g-sh-input {
+  padding-right: 70px;
+  font-size: 22px;
+}
+.g-pr-field-unit {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: italic 700 18px/1 var(--font-display);
+  color: var(--ink-soft);
+  pointer-events: none;
+}
+.g-pr-note {
+  margin: 0;
+  font-size: 14px;
+}
+
+.g-pr-status:empty {
+  display: none;
+}
+.g-pr-next {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+.g-pr-time {
+  font-size: 14px;
+}
+
+@media (max-width: 400px) {
+  .g-pr-card {
+    padding: var(--space-3);
+  }
+  .g-pr-top .mascot {
+    display: none;
+  }
+  .g-pr-shotdot {
+    width: 10px;
+    height: 10px;
+  }
+}

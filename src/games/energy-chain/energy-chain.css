@@ -1,0 +1,322 @@
+/* Energetický řetězec (prefix g-ec-) */
+.g-ec-card-main {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.g-ec-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.g-ec-q {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+.g-ec-text {
+  margin: 0;
+  font: 600 16.5px/1.45 var(--font-body);
+}
+
+/* chain list with arrows between cards */
+.g-ec-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+  counter-reset: none;
+}
+.g-ec-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 60px;
+  padding: 8px 8px 8px 10px;
+  background: var(--surface);
+  border: var(--bw) solid var(--edge);
+  border-left: 6px solid var(--ec-c);
+  border-radius: var(--r);
+  box-shadow: 2px 2px 0 var(--shadow-color);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.g-ec-list > li + li::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -17px;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 9px solid var(--muted);
+  transform: translateX(-50%) translateY(4px);
+  pointer-events: none;
+}
+.g-ec-card.is-good {
+  background: var(--good-soft);
+}
+.g-ec-card.is-bad {
+  background: var(--bad-soft);
+}
+.g-ec-num {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--edge);
+  background: var(--surface-2);
+  font: 800 14px/1 var(--font-display);
+}
+.g-ec-grip {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  align-self: stretch;
+  cursor: grab;
+  touch-action: none;
+  color: var(--muted);
+}
+.g-ec-grip:active {
+  cursor: grabbing;
+}
+.g-ec-grip svg {
+  width: 12px;
+  height: 20px;
+  fill: currentColor;
+}
+.g-ec-face {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+  text-align: left;
+}
+.g-ec-ctext {
+  font: 700 15.5px/1.3 var(--font-body);
+  color: var(--ink);
+}
+.g-ec-form {
+  font: italic 700 16px/1.2 var(--font-display);
+  color: var(--ec-c);
+  filter: saturate(1.1);
+}
+.g-ec-mark {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--edge);
+  color: var(--surface);
+}
+.g-ec-mark svg {
+  width: 13px;
+  height: 13px;
+  stroke-width: 3;
+}
+.g-ec-mark-good {
+  background: var(--good);
+}
+.g-ec-mark-bad {
+  background: var(--bad);
+}
+.g-ec-moves {
+  flex: none;
+  display: grid;
+  gap: 4px;
+}
+.g-ec-mv {
+  appearance: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 30px;
+  padding: 0;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  color: var(--ink);
+  cursor: pointer;
+}
+.g-ec-mv:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.g-ec-mv:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 1px;
+}
+.g-ec-mv svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.g-ec-gap {
+  border-style: dashed;
+  border-left-style: solid;
+  background: var(--surface-2);
+  justify-content: flex-start;
+}
+.g-ec-gap.is-filled {
+  border-style: solid;
+  background: var(--good-soft);
+}
+.g-ec-fill {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+}
+.g-ec-q-mark {
+  flex: 1;
+  text-align: center;
+  font: 800 28px/1 var(--font-display);
+  color: var(--muted);
+}
+
+/* missing-link options */
+.g-ec-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 10px;
+}
+.g-ec-opt {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: var(--bw) solid var(--edge);
+  border-left: 6px solid var(--ec-c);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-hard);
+  cursor: pointer;
+  color: var(--ink);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.g-ec-opt:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--shadow-color);
+}
+.g-ec-opt:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--shadow-color);
+}
+.g-ec-opt:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* efficiency */
+.g-ec-flowwrap {
+  display: grid;
+  justify-items: center;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 4px;
+}
+.g-ec-flow {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  max-height: 290px;
+  height: auto;
+}
+.g-ec-box {
+  font: italic 700 17px/1 var(--font-display);
+  fill: var(--ink);
+}
+.g-ec-machine {
+  font: 700 10px/1 var(--font-body);
+  fill: var(--ink-soft);
+}
+.g-ec-flabel {
+  font: 700 18px/1 var(--font-display);
+  paint-order: stroke;
+  stroke: var(--surface-2);
+  stroke-width: 4px;
+}
+.g-ec-answer {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-ec-field {
+  display: grid;
+  gap: 6px;
+  max-width: 360px;
+}
+.g-ec-flab {
+  font: italic 700 18px/1.2 var(--font-display);
+  color: var(--ink-soft);
+}
+.g-ec-inwrap {
+  position: relative;
+  display: block;
+}
+.g-ec-input {
+  padding-right: 52px;
+  font-size: 21px;
+}
+.g-ec-unit {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 600 15px/1 var(--font-mono);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.g-ec-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.g-ec-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.g-ec-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.g-ec-bonusbar > span {
+  transition: width 0.25s linear;
+}
+.g-ec-status:empty {
+  display: none;
+}
+.g-ec-reveal {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-ec-why {
+  margin: 0;
+  font: 600 15.5px/1.5 var(--font-body);
+  padding: 8px 12px;
+  border-left: 3px double var(--accent);
+  background: var(--surface-2);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  overflow-wrap: anywhere;
+}

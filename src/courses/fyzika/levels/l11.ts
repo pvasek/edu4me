@@ -1,0 +1,1257 @@
+import type { LevelContent } from '../../../core/types'
+
+/** Samples y = f(x) at n + 1 evenly spaced points (rounded) – for smooth graph series. */
+const curve = (f: (x: number) => number, x0: number, x1: number, n = 12, digits = 3): [number, number][] => {
+  const k = 10 ** digits
+  return Array.from({ length: n + 1 }, (_, i) => {
+    const x = x0 + ((x1 - x0) * i) / n
+    return [Math.round(x * k) / k, Math.round(f(x) * k) / k]
+  })
+}
+
+const level: LevelContent = {
+  lessons: {
+    // ───────────────────────────────────────────────────────────── f11-1
+    'f11-1': {
+      id: 'f11-1',
+      title: 'Elektrické pole',
+      goals: [
+        'Spočítat elektrickou sílu mezi bodovými náboji podle Coulombova zákona',
+        'Určit intenzitu elektrického pole E = F / Q a popsat pole bodového náboje a pole mezi deskami',
+        'Počítat s potenciálem, napětím U = E · d a energií náboje v poli, i v elektronvoltech',
+        'Porovnat elektrické pole s gravitačním a vysvětlit, jak funguje Faradayova klec',
+      ],
+      hook: 'Proton a elektron v atomu vodíku se přitahují elektrickou silou asi 10^{39}krát silnější než gravitační. Že tě ta síla neroztrhá, je jen proto, že kladné a záporné náboje jsou v přírodě skoro dokonale vyrovnané. Dnes ji spočítáme.',
+      sections: [
+        {
+          title: 'Coulombův zákon',
+          icon: 'ion-plus',
+          blocks: [
+            { type: 'p', text: 'V lekci f6-1 jsi viděl, že souhlasné náboje se odpuzují a nesouhlasné přitahují. Francouz Charles Coulomb v roce 1785 změřil torzními vahami, **jak velká** ta síla je. Zjistil, že roste se součinem nábojů a klesá s druhou mocninou vzdálenosti.' },
+            { type: 'formula', text: 'F_{e} = k · |Q_{1}| · |Q_{2}| / r^{2}', caption: 'Coulombův zákon: F_{e} elektrická síla (N), Q_{1}, Q_{2} bodové náboje (C), r jejich vzdálenost (m), k = 9 · 10^{9} N·m^{2}/C^{2}' },
+            { type: 'p', text: 'Konstanta k se často zapisuje pomocí **permitivity vakua** ε_{0}. Když jsou náboje v jiném prostředí (voda, olej, plast), síla je ε_{r}krát menší; ε_{r} je **relativní permitivita** prostředí.' },
+            { type: 'formula', text: 'k = 1 / (4π · ε_{0}),   ε_{0} = 8,85 · 10^{−12} C^{2}/(N·m^{2})', caption: 've vodě (ε_{r} ≈ 81) je síla mezi ionty 81krát slabší – proto se v ní sůl rozpouští' },
+            { type: 'graph', x: { label: 'r', unit: 'm', min: 0, max: 0.3, step: 0.05 }, y: { label: 'F_{e}', unit: 'N', min: 0, max: 4, step: 1 }, series: [
+              { label: 'Q_{1} = Q_{2} = 1 µC', points: curve((r) => 0.009 / (r * r), 0.05, 0.3, 15), style: 'smooth' },
+            ], marks: [{ x: 0.1, y: 0.9, label: 'r = 10 cm: 0,9 N' }, { x: 0.2, y: 0.225, label: '2× dál: 4× menší síla' }], caption: 'Síla klesá s druhou mocninou vzdálenosti: dvakrát dál znamená čtvrtinovou sílu, třikrát dál devítinovou.' },
+            { type: 'example', title: 'Elektron a proton v atomu vodíku', problem: 'Elektron obíhá kolem protonu ve vzdálenosti r = 5,3 · 10^{−11} m. Jak velkou elektrickou silou se přitahují? Kolikrát je větší než gravitační síla 3,6 · 10^{−47} N?', steps: [
+              'Oba náboje mají velikost e = 1,6 · 10^{−19} C.',
+              'F_{e} = k · e^{2} / r^{2} = 9 · 10^{9} · (1,6 · 10^{−19})^{2} / (5,3 · 10^{−11})^{2} N',
+              'F_{e} = 2,30 · 10^{−28} / 2,81 · 10^{−21} N ≈ 8,2 · 10^{−8} N',
+              'Poměr: 8,2 · 10^{−8} / 3,6 · 10^{−47} ≈ 2,3 · 10^{39}',
+            ], answer: 'F_{e} ≈ 8,2 · 10^{−8} N, tedy asi 2 · 10^{39}krát víc než gravitační síla.' },
+            { type: 'callout', variant: 'remember', text: 'Coulombův zákon platí přesně pro **bodové náboje** a pro nabité koule (jako by byl celý náboj v jejich středu). Pro jiné tvary je to jen přiblížení.' },
+            { type: 'check', question: { kind: 'number', q: 'Dva bodové náboje 2 µC a 3 µC jsou ve vakuu 30 cm od sebe. Jak velkou silou na sebe působí?', answer: 0.6, tolerance: 0.02, unit: 'N', explain: 'F = k · Q_{1} · Q_{2} / r^{2} = 9 · 10^{9} · 2 · 10^{−6} · 3 · 10^{−6} / 0,3^{2} N = 0,054 / 0,09 N = 0,6 N.' } },
+          ],
+        },
+        {
+          title: 'Intenzita elektrického pole',
+          icon: 'vector',
+          blocks: [
+            { type: 'p', text: 'Pole popisujeme bez ohledu na to, jaký náboj do něj zrovna vložíme. Do místa pole dáme malý kladný **zkušební náboj** Q a změříme sílu. Podíl síly a náboje je **intenzita elektrického pole** E.' },
+            { type: 'formula', text: 'E = F_{e} / Q', caption: 'intenzita E je vektor se směrem síly na kladný náboj; jednotka N/C = V/m' },
+            { type: 'formula', text: 'E = k · Q / r^{2}', caption: 'intenzita radiálního pole bodového náboje Q ve vzdálenosti r' },
+            { type: 'diagram', id: 'field-lines-charges', caption: 'Siločáry bodových nábojů a dvojic nábojů jsou zakřivené a jejich hustota se mění (pole je nehomogenní). Mezi rovnoběžnými deskami jsou rovnoběžné a stejně husté (pole je homogenní).' },
+            { type: 'keyterms', items: [
+              { term: '**radiální pole**', def: 'pole osamoceného bodového náboje; siločáry jsou polopřímky ze středu (nebo do středu) a E klesá s 1/r^{2}' },
+              { term: '**homogenní pole**', def: 'intenzita má všude stejnou velikost i směr, např. mezi dvěma rovnoběžnými nabitými deskami' },
+              { term: '**princip superpozice**', def: 'když pole tvoří víc nábojů, jejich intenzity se v každém bodě sčítají jako vektory' },
+            ] },
+            { type: 'example', title: 'Pole kolem nabité kuličky', problem: 'Kulička má náboj 5 nC. Jaká je intenzita pole 10 cm od jejího středu a jak velká síla tam působí na elektron?', steps: [
+              'E = k · Q / r^{2} = 9 · 10^{9} · 5 · 10^{−9} / 0,1^{2} N/C = 45 / 0,01 N/C = 4 500 N/C',
+              'F = e · E = 1,6 · 10^{−19} C · 4 500 N/C = 7,2 · 10^{−16} N',
+              'Kulička je kladná, pole míří od ní; elektron je záporný, takže síla na něj míří **proti** směru pole – ke kuličce.',
+            ], answer: 'E = 4 500 N/C, na elektron působí síla 7,2 · 10^{−16} N směrem ke kuličce.' },
+            { type: 'callout', variant: 'fact', text: 'Suchý vzduch vydrží intenzitu asi 3 · 10^{6} V/m. Silnější pole z molekul vytrhává elektrony, vzduch začne vést a přeskočí jiskra. Tuhle **elektrickou pevnost** vzduchu potkáš znovu u blesku v lekci f11-4.' },
+            { type: 'check', question: { kind: 'choice', q: 'Kterým směrem míří intenzita elektrického pole v okolí záporného bodového náboje?', options: ['k náboji', 'od náboje', 'kolmo k přímce vedoucí k náboji', 'záleží na velikosti zkušebního náboje'], answer: 0, explain: 'Směr intenzity je směr síly na kladný zkušební náboj. Záporný náboj kladný náboj přitahuje, takže siločáry míří do něj.' } },
+          ],
+        },
+        {
+          title: 'Potenciál a napětí',
+          icon: 'gauge',
+          blocks: [
+            { type: 'p', text: 'Když pole přesune náboj z místa A do místa B, vykoná práci W. Tahle práce nezávisí na cestě, jen na začátku a konci – stejně jako u tíhové síly. Proto můžeme každému místu přiřadit **elektrický potenciál** φ: potenciální energii připadající na jednotku náboje.' },
+            { type: 'formula', text: 'φ = E_{p} / Q,   U_{AB} = φ_{A} − φ_{B} = W / Q', caption: 'potenciál φ a napětí U (rozdíl potenciálů) mají jednotku volt: 1 V = 1 J/C' },
+            { type: 'p', text: 'Místa se stejným potenciálem tvoří **ekvipotenciální plochy**. Jsou vždy kolmé na siločáry: pohybem po nich pole nekoná práci. Ve směru siločar potenciál klesá.' },
+            { type: 'diagram', id: 'parallel-plate-field', caption: 'Homogenní pole mezi deskami: siločáry od + k −, ekvipotenciální hladiny jako rovnoběžné roviny mezi nimi.' },
+            { type: 'formula', text: 'U = E · d', caption: 'v homogenním poli: napětí mezi deskami U (V), intenzita E (V/m), vzdálenost desek d (m)' },
+            { type: 'graph', x: { label: 'x', unit: 'cm', min: 0, max: 5, step: 1 }, y: { label: 'φ', unit: 'V', min: 0, max: 100, step: 20 }, series: [
+              { label: 'potenciál mezi deskami', points: [[0, 100], [5, 0]] },
+            ], marks: [{ x: 2.5, y: 50, label: 'uprostřed 50 V' }], caption: 'Desky 5 cm od sebe, napětí 100 V: potenciál klesá rovnoměrně, o 20 V na každý centimetr. Sklon grafu je intenzita, E = 2 000 V/m.' },
+            { type: 'example', title: 'Proton mezi deskami', problem: 'Desky jsou 2 cm od sebe a je mezi nimi napětí 300 V. Jaká je intenzita pole, jaká síla působí na proton a jakou práci vykoná pole, když proton přeletí od kladné desky k záporné?', steps: [
+              'E = U / d = 300 V / 0,02 m = 15 000 V/m',
+              'F = Q · E = 1,6 · 10^{−19} C · 15 000 V/m = 2,4 · 10^{−15} N',
+              'W = Q · U = 1,6 · 10^{−19} C · 300 V = 4,8 · 10^{−17} J (nebo W = F · d, vyjde totéž)',
+            ], answer: 'E = 1,5 · 10^{4} V/m, F = 2,4 · 10^{−15} N, W = 4,8 · 10^{−17} J.' },
+            { type: 'callout', variant: 'tip', text: '==Jednotka V/m je totéž co N/C.== Když počítáš z napětí a vzdálenosti, piš V/m; když ze síly a náboje, N/C.' },
+            { type: 'check', question: { kind: 'number', q: 'Mezi dvěma deskami 5 mm od sebe je homogenní pole o intenzitě 4 · 10^{4} V/m. Jaké je mezi nimi napětí?', answer: 200, tolerance: 1, unit: 'V', explain: 'U = E · d = 4 · 10^{4} V/m · 0,005 m = 200 V.' } },
+          ],
+        },
+        {
+          title: 'Energie náboje a elektronvolt',
+          icon: 'electron',
+          blocks: [
+            { type: 'p', text: 'Pole, které koná práci, urychluje náboje. Částice s nábojem Q, která projde napětím U, získá kinetickou energii rovnou práci pole. Na tom stojí elektronové dělo staré televize, rentgenka i urychlovače.' },
+            { type: 'formula', text: 'E_{k} = Q · U', caption: 'energie získaná při průchodu napětím U (pokud částice startovala z klidu)' },
+            { type: 'p', text: 'Pro mikrosvět je joule obrovská jednotka. Proto se používá **elektronvolt**: energie, kterou získá elektron (náboj e) při průchodu napětím 1 V.' },
+            { type: 'formula', text: '1 eV = 1,6 · 10^{−19} J', caption: 'násobky: keV, MeV, GeV, TeV' },
+            { type: 'example', title: 'Jak rychlý je elektron z děla?', problem: 'Elektron v klidu urychlíme napětím 1 000 V. Jakou získá energii (v eV i v J) a jakou rychlost? Hmotnost elektronu je 9,11 · 10^{−31} kg.', steps: [
+              'E_{k} = e · U = 1 000 eV = 1 000 · 1,6 · 10^{−19} J = 1,6 · 10^{−16} J',
+              'Z E_{k} = ½ · m · v^{2} vyjádříme v = √(2 · E_{k} / m)',
+              'v = √(2 · 1,6 · 10^{−16} / 9,11 · 10^{−31}) m/s = √(3,51 · 10^{14}) m/s ≈ 1,9 · 10^{7} m/s',
+            ], answer: 'E_{k} = 1 keV = 1,6 · 10^{−16} J, v ≈ 1,9 · 10^{7} m/s (asi 6 % rychlosti světla).' },
+            { type: 'iconlist', items: [
+              { icon: 'bond', title: 'Chemická vazba', text: 'řádově jednotky eV – proto chemické reakce „stojí“ volty' },
+              { icon: 'bulb', title: 'Foton viditelného světla', text: 'asi 2–3 eV' },
+              { icon: 'radiation', title: 'Rentgenka v nemocnici', text: 'elektrony urychlené na 50–150 keV' },
+              { icon: 'nucleus', title: 'Částice α z rozpadu', text: 'kolem 5 MeV' },
+              { icon: 'atom', title: 'Proton v LHC (CERN)', text: '6,8 TeV = 6,8 · 10^{12} eV' },
+            ] },
+            { type: 'callout', variant: 'warning', text: 'Energie v eV se rovná napětí ve voltech jen pro částici s nábojem e. Částice α má náboj 2e, takže napětím 500 V získá 1 000 eV.' },
+            { type: 'check', question: { kind: 'number', q: 'Iont s nábojem +3e urychlíme z klidu napětím 2 kV. Jakou kinetickou energii získá? Odpověz v keV.', answer: 6, tolerance: 0.05, unit: 'keV', explain: 'E_{k} = Q · U = 3e · 2 000 V = 6 000 eV = 6 keV.' } },
+          ],
+        },
+        {
+          title: 'Elektrické a gravitační pole',
+          icon: 'planet',
+          blocks: [
+            { type: 'p', text: 'V lekci f9-1 jsi poznal gravitační pole. Elektrické pole se popisuje úplně stejnými pojmy – jen místo hmotnosti je zdrojem náboj. Co ses naučil tam, můžeš použít tady.' },
+            { type: 'table', headers: ['', 'Gravitační pole', 'Elektrické pole'], rows: [
+              ['zdroj', 'hmotnost m', 'náboj Q'],
+              ['síla', 'F_{g} = G · m_{1} · m_{2} / r^{2}', 'F_{e} = k · Q_{1} · Q_{2} / r^{2}'],
+              ['směr síly', 'jen přitažlivá', 'přitažlivá i odpudivá'],
+              ['intenzita', 'K = F / m (N/kg)', 'E = F / Q (N/C = V/m)'],
+              ['potenciál', 'E_{p} / m (J/kg)', 'φ = E_{p} / Q (V)'],
+              ['homogenní pole', 'u povrchu Země, U = g · h na kg', 'mezi deskami, U = E · d'],
+              ['stínění', 'nelze', 'kovový obal (Faradayova klec)'],
+            ], caption: 'Stejná matematika, jiné zdroje: obě síly klesají s 1/r^{2}.' },
+            { type: 'compare', columns: [
+              { title: '**Proč vládne gravitace vesmíru**', icon: 'galaxy', tone: 'a', points: ['hmotnost je vždy kladná, přitažlivost se sčítá', 'hvězdy a planety jsou elektricky téměř neutrální', 'na velké vzdálenosti proto zbývá jen gravitace'] },
+              { title: '**Proč vládne elektřina atomům**', icon: 'atom', tone: 'b', points: ['je o 39 řádů silnější', 'drží elektrony u jádra a atomy v molekulách', 'tření, pružnost i tlak jsou ve skutečnosti elektrické síly'] },
+            ] },
+            { type: 'callout', variant: 'remember', text: 'Gravitační síla je vždy přitažlivá. Elektrická síla může přitahovat i odpuzovat – a právě proto se kladné a záporné náboje ve velkých tělesech navzájem vyruší.' },
+            { type: 'check', question: { kind: 'tf', q: 'Gravitační pole lze odstínit kovovou krabicí stejně jako elektrické pole.', answer: false, explain: 'Stínění funguje jen u elektrického pole: náboje v kovu se přeskupí a pole uvnitř vyruší. „Záporná hmotnost“, která by totéž udělala s gravitací, neexistuje.' } },
+          ],
+        },
+        {
+          title: 'Vodiče a dielektrika v poli',
+          icon: 'car',
+          blocks: [
+            { type: 'p', text: 'Vložíme kovové těleso do elektrického pole. Volné elektrony se přesouvají tak dlouho, dokud jejich vlastní pole vnější pole **uvnitř kovu úplně nevyruší**. V rovnováze je tedy uvnitř vodiče E = 0 a celý vodič má stejný potenciál.' },
+            { type: 'list', items: [
+              'náboj vodiče sedí jen na jeho **povrchu**',
+              'siločáry vstupují do povrchu kolmo',
+              'na **hrotech** se náboj hromadí a pole je tam nejsilnější – odtud výboje z hrotů a princip hromosvodu',
+              'uvnitř dutého kovového obalu je pole nulové, i když je venku silné: **Faradayova klec**',
+            ] },
+            { type: 'iconlist', items: [
+              { icon: 'car', title: 'Auto a letadlo v bouřce', text: 'blesk proteče po kovové karoserii, posádka uvnitř je v bezpečí' },
+              { icon: 'coffee', title: 'Dvířka mikrovlnky', text: 'kovová mřížka nepustí ven mikrovlny, ale světlo ano' },
+              { icon: 'plug', title: 'Stíněný kabel', text: 'opletení koaxiálního kabelu chrání signál před rušením' },
+              { icon: 'phone', title: 'Výtah bez signálu', text: 'kovová kabina tlumí rádiové vlny mobilní sítě' },
+            ] },
+            { type: 'p', text: 'Izolant (**dielektrikum**) volné elektrony nemá. V poli se jeho molekuly jen **polarizují**: kladné a záporné náboje se v nich posunou nebo se polární molekuly natočí. Jejich pole vnější pole zeslabí ε_{r}krát.' },
+            { type: 'table', headers: ['Látka', 'ε_{r}'], rows: [
+              ['vakuum', '1'],
+              ['vzduch', '1,0006'],
+              ['papír', 'asi 3'],
+              ['sklo', '5–10'],
+              ['voda', '81'],
+              ['keramika z titaničitanu barnatého', 'přes 1 000'],
+            ], caption: 'Relativní permitivita vybraných látek – využiješ ji hned v další lekci u kondenzátorů.' },
+            { type: 'game', gameId: 'swipe', text: 'Pole, potenciál, klec? Vyzkoušej si v rychlé hře „Pravda, nebo lež?“, jestli ti elektrické pole sedí.' },
+            { type: 'check', question: { kind: 'multi', q: 'Co platí pro nabitý kovový vodič v elektrostatické rovnováze?', options: ['uvnitř vodiče je intenzita pole nulová', 'náboj je rozložen po povrchu', 'na hrotech je pole nejslabší', 'všechny body vodiče mají stejný potenciál', 'náboj je rozložen rovnoměrně v celém objemu'], answers: [0, 1, 3], explain: 'Volné elektrony se přesunou tak, aby uvnitř bylo E = 0; náboj proto sedí na povrchu a vodič je ekvipotenciální. Na hrotech je pole naopak nejsilnější.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Coulombův zákon: dva bodové náboje na sebe působí silou F_{e} = k · Q_{1} · Q_{2} / r^{2}, kde k = 9 · 10^{9} N·m^{2}/C^{2}; v prostředí s permitivitou ε_{r} je síla ε_{r}krát menší.',
+        'Intenzita elektrického pole E = F / Q je vektor ve směru síly na kladný náboj; pro bodový náboj E = k · Q / r^{2}.',
+        'Napětí je rozdíl potenciálů, U = W / Q; v homogenním poli mezi deskami platí U = E · d.',
+        'Náboj Q urychlený napětím U získá energii E_{k} = Q · U; 1 eV = 1,6 · 10^{−19} J.',
+        'Elektrické a gravitační pole se popisují stejně, ale elektrická síla může i odpuzovat a pole lze odstínit.',
+        'Uvnitř vodiče v rovnováze je pole nulové a náboj sedí na povrchu – na tom stojí Faradayova klec.',
+        'Dielektrikum se v poli polarizuje a zeslabí ho ε_{r}krát.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Jednotka intenzity elektrického pole N/C je totéž co V/m.', answer: true, explain: '1 V/m = 1 (J/C)/m = 1 (N·m/C)/m = 1 N/C.' },
+        { kind: 'choice', q: 'Vzdálenost dvou nábojů zvětšíme třikrát. Jak se změní síla, kterou na sebe působí?', options: ['zmenší se 9krát', 'zmenší se 3krát', 'zvětší se 3krát', 'nezmění se'], answer: 0, explain: 'Síla klesá s druhou mocninou vzdálenosti: 3^{2} = 9.' },
+        { kind: 'number', q: 'Jaká je intenzita elektrického pole 3 cm od bodového náboje 2 nC?', answer: 20000, tolerance: 200, unit: 'N/C', explain: 'E = k · Q / r^{2} = 9 · 10^{9} · 2 · 10^{−9} / 0,03^{2} N/C = 18 / 9 · 10^{−4} N/C = 20 000 N/C.' },
+        { kind: 'match', q: 'Přiřaď veličinu k její jednotce.', pairs: [
+          ['intenzita elektrického pole E', 'V/m'],
+          ['elektrický potenciál φ', 'V'],
+          ['elektrický náboj Q', 'C'],
+          ['energie částice v mikrosvětě', 'eV'],
+        ], explain: 'Potenciál i napětí měříme ve voltech, intenzitu ve voltech na metr. Elektronvolt je jednotka energie.' },
+        { kind: 'number', q: 'Elektron urychlíme z klidu napětím 2 500 V. Jakou kinetickou energii získá? Odpověz jako násobek 10^{−16} J.', answer: 4, tolerance: 0.05, unit: '· 10^{−16} J', explain: 'E_{k} = e · U = 1,6 · 10^{−19} C · 2 500 V = 4 · 10^{−16} J (to je 2,5 keV).' },
+        { kind: 'multi', q: 'Co platí pro ekvipotenciální plochy?', options: ['jsou kolmé na siločáry', 'při pohybu náboje po nich pole nekoná práci', 'v homogenním poli jsou to rovnoběžné roviny', 'siločáry leží v nich', 'mají všude stejnou intenzitu pole E = 0'], answers: [0, 1, 2], explain: 'Na ekvipotenciální ploše je potenciál stejný, napětí mezi jejími body je nulové, a proto W = Q · U = 0. Siločáry je protínají kolmo.' },
+        { kind: 'number', q: 'Náboj +4 µC leží v bodě x = 0 a náboj +1 µC v bodě x = 30 cm. V jaké vzdálenosti od většího náboje je mezi nimi intenzita pole nulová?', answer: 20, tolerance: 0.5, unit: 'cm', explain: 'Intenzity se musí vyrovnat: 4 / r_{1}^{2} = 1 / r_{2}^{2}, tedy r_{1} = 2 · r_{2}. Protože r_{1} + r_{2} = 30 cm, vychází r_{1} = 20 cm.' },
+        { kind: 'tf', q: 'Uvnitř duté nabité kovové koule je elektrické pole nulové.', answer: true, explain: 'Náboj se rozloží po vnějším povrchu tak, že uvnitř vodiče i v dutině je E = 0. To je podstata Faradayovy klece.' },
+      ],
+    },
+    // ───────────────────────────────────────────────────────────── f11-2
+    'f11-2': {
+      id: 'f11-2',
+      title: 'Kondenzátor a kapacita',
+      goals: [
+        'Počítat s kapacitou C = Q / U a s kapacitou deskového kondenzátoru C = ε_{0} · ε_{r} · S / d',
+        'Určit energii nabitého kondenzátoru E = ½ · C · U^{2} i z plochy pod grafem Q–U',
+        'Spočítat výslednou kapacitu kondenzátorů zapojených sériově a paralelně',
+        'Popsat nabíjení a vybíjení kondenzátoru grafem a časovou konstantou τ = R · C',
+      ],
+      hook: 'Blesk fotoaparátu vychrlí za tisícinu sekundy výkon kolem 8 kW. Malá tužková baterie by to nikdy nezvládla. Ona ale jen pomalu plní „zásobník“, který se pak vyprázdní naráz. Tomu zásobníku se říká kondenzátor.',
+      sections: [
+        {
+          title: 'Kondenzátor a jeho kapacita',
+          icon: 'battery',
+          blocks: [
+            { type: 'p', text: '**Kondenzátor** tvoří dva vodiče (elektrody) oddělené izolantem. Když ho připojíš ke zdroji, zdroj přesune elektrony z jedné elektrody na druhou. Jedna má náboj +Q, druhá −Q a mezi nimi vznikne elektrické pole.' },
+            { type: 'diagram', id: 'capacitor', caption: 'Deskový kondenzátor: zdroj nabije desky opačnými náboji, mezi nimi je dielektrikum. Vpravo schematická značka.' },
+            { type: 'p', text: 'Pokus ukáže, že náboj na deskách roste přímo úměrně s napětím. Podíl Q / U je pro daný kondenzátor stálý a nazývá se **kapacita**. Říká, kolik náboje se „vejde“ na jeden volt.' },
+            { type: 'formula', text: 'C = Q / U', caption: 'kapacita C ve faradech (F = C/V); Q náboj na jedné desce (C), U napětí mezi deskami (V)' },
+            { type: 'callout', variant: 'fact', text: 'Farad je obrovská jednotka. Běžné kondenzátory mají pikofarady (pF, 10^{−12} F), nanofarady (nF) nebo mikrofarady (µF). Až **superkondenzátory** dosahují stovek až tisíců faradů.' },
+            { type: 'circuit', source: { kind: 'battery', label: '12 V' }, parts: [
+              { kind: 'switch' },
+              { kind: 'resistor', label: 'R' },
+              { parallel: [[{ kind: 'capacitor', label: 'C = 470 µF' }], [{ kind: 'voltmeter' }]] },
+            ], caption: 'Nabíjení kondenzátoru přes rezistor; voltmetr ukazuje, jak napětí na kondenzátoru roste až k 12 V.' },
+            { type: 'example', title: 'Kolik náboje unese kondenzátor', problem: 'Kondenzátor 470 µF nabijeme na 12 V. Jaký náboj je na jeho deskách?', steps: [
+              'Z C = Q / U vyjádříme Q = C · U.',
+              'Q = 470 · 10^{−6} F · 12 V = 5,64 · 10^{−3} C',
+            ], answer: 'Q ≈ 5,6 mC (na jedné desce +5,6 mC, na druhé −5,6 mC).' },
+            { type: 'check', question: { kind: 'number', q: 'Kondenzátor s kapacitou 2,2 µF nese náboj 22 µC. Jaké je napětí mezi jeho deskami?', answer: 10, tolerance: 0.1, unit: 'V', explain: 'U = Q / C = 22 · 10^{−6} C / 2,2 · 10^{−6} F = 10 V.' } },
+          ],
+        },
+        {
+          title: 'Deskový kondenzátor a dielektrikum',
+          icon: 'ruler',
+          blocks: [
+            { type: 'p', text: 'Kapacita závisí jen na stavbě kondenzátoru. Větší desky pojmou víc náboje, menší mezera znamená silnější přitahování nábojů přes izolant. A dielektrikum mezi deskami se polarizuje, zeslabí pole, a při stejném náboji tak klesne napětí.' },
+            { type: 'formula', text: 'C = ε_{0} · ε_{r} · S / d', caption: 'S plocha překrytí desek (m^{2}), d vzdálenost desek (m), ε_{0} = 8,85 · 10^{−12} F/m, ε_{r} relativní permitivita dielektrika' },
+            { type: 'compare', columns: [
+              { title: 'Kapacitu **zvětšíš**', icon: 'check', tone: 'good', points: ['větší plochou desek S', 'menší vzdáleností desek d', 'dielektrikem s velkou ε_{r}'] },
+              { title: 'Kapacitu **zmenšíš**', icon: 'cross', tone: 'bad', points: ['menší plochou desek', 'oddálením desek', 'vyjmutím dielektrika (vzduch, ε_{r} ≈ 1)'] },
+            ] },
+            { type: 'example', title: 'Dvě desky ve vzduchu', problem: 'Dvě čtvercové desky o straně 10 cm jsou ve vzduchu 1 mm od sebe. Jaká je kapacita? Jak se změní, když mezeru vyplníme sklem s ε_{r} = 7?', steps: [
+              'S = 0,1 m · 0,1 m = 0,01 m^{2}, d = 0,001 m, ε_{r} ≈ 1',
+              'C = 8,85 · 10^{−12} · 1 · 0,01 / 0,001 F = 8,85 · 10^{−11} F ≈ 89 pF',
+              'Se sklem: C = 7 · 89 pF ≈ 620 pF',
+            ], answer: 'Vzduchový kondenzátor má asi 89 pF, se skleněným dielektrikem asi 620 pF.' },
+            { type: 'p', text: 'Proto se skutečné kondenzátory vyrábějí jako svinuté pásky tenké kovové fólie s mikrometrovou vrstvou dielektrika, nebo jako mnoho keramických vrstev naskládaných na sebe.' },
+            { type: 'iconlist', items: [
+              { icon: 'phone', title: 'Kapacitní dotykový displej', text: 'prst mění kapacitu mřížky elektrod a čip spočítá, kde se jí dotýká' },
+              { icon: 'music', title: 'Kondenzátorový mikrofon', text: 'zvuk rozkmitá tenkou membránu – desku kondenzátoru; mění se d, a tím i C' },
+              { icon: 'droplets', title: 'Senzor vlhkosti', text: 'dielektrikum pohlcuje vodu, roste ε_{r} a s ní kapacita' },
+            ] },
+            { type: 'check', question: { kind: 'choice', q: 'Vzdálenost desek kondenzátoru zmenšíme na polovinu a prostor mezi nimi vyplníme dielektrikem s ε_{r} = 3. Jak se změní kapacita?', options: ['zvětší se 6krát', 'zvětší se 1,5krát', 'zvětší se 3krát', 'zmenší se 6krát'], answer: 0, explain: 'C je nepřímo úměrná d (×2) a přímo úměrná ε_{r} (×3). Celkem 2 · 3 = 6krát víc.' } },
+          ],
+        },
+        {
+          title: 'Energie nabitého kondenzátoru',
+          icon: 'lightning',
+          blocks: [
+            { type: 'p', text: 'Nabíjení stojí práci: každý další kousek náboje musíš přenést proti rostoucímu napětí. Práci najdeš jako **plochu pod grafem Q–U** (přesněji U v závislosti na Q). Graf je přímka, plocha je trojúhelník.' },
+            { type: 'graph', x: { label: 'U', unit: 'V', min: 0, max: 12, step: 2 }, y: { label: 'Q', unit: 'mC', min: 0, max: 1.4, step: 0.2 }, series: [
+              { label: 'C = 100 µF', points: [[0, 0], [12, 1.2]], area: true },
+            ], marks: [{ x: 12, y: 1.2, label: '12 V, 1,2 mC' }, { x: 7, y: 0.3, label: 'plocha = ½ · Q · U = 7,2 mJ' }], caption: 'Náboj roste s napětím přímo úměrně (sklon přímky = C). Plocha trojúhelníku pod přímkou je energie uložená v kondenzátoru.' },
+            { type: 'formula', text: 'E = ½ · Q · U = ½ · C · U^{2} = Q^{2} / (2C)', caption: 'energie nabitého kondenzátoru v joulech; sídlí v elektrickém poli mezi deskami' },
+            { type: 'example', title: 'Blesk fotoaparátu', problem: 'Kondenzátor blesku má kapacitu 150 µF a nabije se na 330 V. Kolik energie uloží? Jaký je průměrný výkon, když se vybije za 1 ms?', steps: [
+              'E = ½ · C · U^{2} = ½ · 150 · 10^{−6} F · (330 V)^{2}',
+              'E = ½ · 150 · 10^{−6} · 108 900 J ≈ 8,2 J',
+              'P = E / t = 8,2 J / 0,001 s = 8 200 W',
+            ], answer: 'E ≈ 8,2 J; při vybití za 1 ms je průměrný výkon asi 8 kW.' },
+            { type: 'example', title: 'Defibrilátor', problem: 'Defibrilátor má dodat energii 200 J při napětí 2 000 V. Jakou kapacitu musí mít jeho kondenzátor?', steps: [
+              'Z E = ½ · C · U^{2} vyjádříme C = 2E / U^{2}.',
+              'C = 2 · 200 J / (2 000 V)^{2} = 400 / 4 · 10^{6} F = 10^{−4} F',
+            ], answer: 'C = 100 µF.' },
+            { type: 'callout', variant: 'warning', text: 'Velké kondenzátory ve zdrojích, mikrovlnkách a starých televizích drží nebezpečné napětí i dlouho po vytažení ze zásuvky. Nikdy je nerozebírej a nesahej na jejich vývody.' },
+            { type: 'check', question: { kind: 'number', q: 'Kondenzátor 1 000 µF je nabitý na 10 V. Kolik energie je v něm uloženo?', answer: 0.05, tolerance: 0.001, unit: 'J', explain: 'E = ½ · C · U^{2} = ½ · 10^{−3} F · 100 V^{2} = 0,05 J.' } },
+          ],
+        },
+        {
+          title: 'Řazení kondenzátorů',
+          icon: 'plug',
+          blocks: [
+            { type: 'p', text: 'Při **paralelním** zapojení mají všechny kondenzátory stejné napětí a jejich náboje se sčítají. Při **sériovém** zapojení nese každý kondenzátor stejný náboj (zdroj přesouvá elektrony jen na krajní desky, vnitřní se nabijí indukcí) a sčítají se napětí.' },
+            { type: 'circuit', source: { kind: 'battery', label: 'U' }, parts: [
+              { kind: 'switch' },
+              { parallel: [[{ kind: 'capacitor', label: 'C_{1}' }], [{ kind: 'capacitor', label: 'C_{2}' }]] },
+            ], caption: 'Paralelní zapojení: C = C_{1} + C_{2} – jako by se plochy desek sečetly.' },
+            { type: 'circuit', source: { kind: 'battery', label: 'U' }, parts: [
+              { kind: 'switch' },
+              { kind: 'capacitor', label: 'C_{1}' },
+              { kind: 'capacitor', label: 'C_{2}' },
+            ], caption: 'Sériové zapojení: 1/C = 1/C_{1} + 1/C_{2} – jako by se mezera mezi deskami prodloužila.' },
+            { type: 'compare', columns: [
+              { title: '**Paralelně**', icon: 'plug', tone: 'a', points: ['stejné napětí U', 'Q = Q_{1} + Q_{2}', 'C = C_{1} + C_{2}', 'výsledná kapacita je **větší** než každá z nich'] },
+              { title: '**Sériově**', icon: 'battery', tone: 'b', points: ['stejný náboj Q', 'U = U_{1} + U_{2}', '1/C = 1/C_{1} + 1/C_{2}', 'výsledná kapacita je **menší** než nejmenší z nich'] },
+            ], caption: 'Pozor: u rezistorů je to přesně naopak (sériově se odpory sčítají).' },
+            { type: 'example', title: '3 µF a 6 µF', problem: 'Kondenzátory 3 µF a 6 µF zapojíme (a) paralelně, (b) sériově ke zdroji 12 V. Jaká je výsledná kapacita a jaké napětí je v případě (b) na každém z nich?', steps: [
+              '(a) C = 3 µF + 6 µF = 9 µF',
+              '(b) 1/C = 1/3 + 1/6 = 3/6 = 1/2, tedy C = 2 µF',
+              '(b) Q = C · U = 2 µF · 12 V = 24 µC na každém kondenzátoru',
+              'U_{1} = Q / C_{1} = 24 µC / 3 µF = 8 V, U_{2} = 24 µC / 6 µF = 4 V (dohromady 12 V)',
+            ], answer: 'Paralelně 9 µF, sériově 2 µF; v sérii je na 3 µF napětí 8 V a na 6 µF napětí 4 V.' },
+            { type: 'callout', variant: 'tip', text: '==V sérii má největší napětí kondenzátor s nejmenší kapacitou.== Proto se kondenzátory do série řadí hlavně tehdy, když by jeden sám nevydržel vysoké napětí.' },
+            { type: 'check', question: { kind: 'number', q: 'Dva kondenzátory po 10 µF zapojíme sériově. Jaká je výsledná kapacita?', answer: 5, tolerance: 0.05, unit: 'µF', explain: '1/C = 1/10 + 1/10 = 2/10, takže C = 5 µF. Dva stejné kondenzátory v sérii mají poloviční kapacitu.' } },
+          ],
+        },
+        {
+          title: 'Nabíjení a vybíjení',
+          icon: 'clock',
+          blocks: [
+            { type: 'p', text: 'Kondenzátor se přes rezistor nenabije okamžitě. Na začátku je prázdný, celé napětí zdroje leží na rezistoru a proud je největší. Jak napětí na kondenzátoru roste, na rezistoru ho zbývá méně, proud slábne a nabíjení se zpomaluje.' },
+            { type: 'circuit', source: { kind: 'battery', label: '9 V' }, parts: [
+              { kind: 'switch' },
+              { kind: 'resistor', label: 'R = 10 kΩ' },
+              { kind: 'ammeter' },
+              { kind: 'capacitor', label: 'C = 100 µF' },
+            ], caption: 'RC obvod: ampérmetr ukáže, jak proud po sepnutí klesá z 0,9 mA k nule.' },
+            { type: 'formula', text: 'τ = R · C', caption: 'časová konstanta (s): za dobu τ se kondenzátor nabije na 63 % napětí zdroje, při vybíjení klesne napětí na 37 %; po 5τ je děj prakticky u konce' },
+            { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 5, step: 1 }, y: { label: 'U_{C}', unit: 'V', min: 0, max: 10, step: 2 }, series: [
+              { label: 'nabíjení', points: curve((t) => 9 * (1 - Math.exp(-t)), 0, 5, 15, 2), style: 'smooth', tone: 'a' },
+              { label: 'vybíjení', points: curve((t) => 9 * Math.exp(-t), 0, 5, 15, 2), style: 'smooth', tone: 'b' },
+            ], marks: [{ x: 1, y: 5.69, label: 't = τ: 63 %' }, { x: 1, y: 3.31, label: 't = τ: 37 %' }, { y: 9, label: 'napětí zdroje 9 V' }], caption: 'Napětí na kondenzátoru (R = 10 kΩ, C = 100 µF, τ = 1 s). Strmost grafu na začátku odpovídá velkému proudu, později se graf zplošťuje.' },
+            { type: 'example', title: 'Jak dlouho se nabíjí', problem: 'Kondenzátor 100 µF nabíjíme přes rezistor 10 kΩ ze zdroje 9 V. Jaká je časová konstanta, jaké bude napětí po jedné časové konstantě a kdy je kondenzátor prakticky nabitý?', steps: [
+              'τ = R · C = 10 000 Ω · 100 · 10^{−6} F = 1 s',
+              'Po τ: U_{C} = 0,63 · 9 V ≈ 5,7 V',
+              'Prakticky nabitý po 5τ = 5 s (přes 99 %).',
+            ], answer: 'τ = 1 s, po 1 s je na kondenzátoru asi 5,7 V, plně nabitý je zhruba za 5 s.' },
+            { type: 'callout', variant: 'remember', text: 'Plocha pod grafem proudu I–t je náboj, který prošel obvodem. Sklon grafu Q–t je v každém okamžiku proud. Stejnou myšlenku jsi používal u grafů pohybu.' },
+            { type: 'check', question: { kind: 'number', q: 'Jaká je časová konstanta obvodu s rezistorem 2 kΩ a kondenzátorem 470 µF?', answer: 0.94, tolerance: 0.01, unit: 's', explain: 'τ = R · C = 2 000 Ω · 470 · 10^{−6} F = 0,94 s.' } },
+          ],
+        },
+        {
+          title: 'Kondenzátory kolem nás',
+          icon: 'phone',
+          blocks: [
+            { type: 'p', text: 'Kondenzátor umí tři věci: **uložit energii** a rychle ji vydat, **vyhladit** kolísající napětí a **odměřit čas** (τ = R · C). V každém telefonu jich jsou stovky.' },
+            { type: 'flipcards', cards: [
+              { icon: 'camera', title: 'Blesk', text: 'Baterie pomalu nabíjí kondenzátor na stovky voltů, výbojka ho pak vybije za tisícinu sekundy.' },
+              { icon: 'heart', title: 'Defibrilátor', text: 'Stovky joulů z kondenzátoru projdou hrudníkem a srdce se může znovu rozeběhnout ve správném rytmu.' },
+              { icon: 'plug', title: 'Vyhlazení napětí', text: 'Ve zdroji a nabíječce kondenzátor „dobíjí“ mezery mezi vrcholy usměrněného napětí.' },
+              { icon: 'clock', title: 'Časovač', text: 'Blikač nebo zpožděné zhasnutí světla v autě měří čas nabíjením přes rezistor – mění se R, mění se čas.' },
+              { icon: 'car', title: 'Superkondenzátory', text: 'Tramvaje a autobusy do nich při brzdění ukládají energii a při rozjezdu ji během sekund vrátí.' },
+              { icon: 'phone', title: 'Paměť DRAM', text: 'Každý bit je malinký kondenzátor: nabitý = 1, vybitý = 0. Náboj uniká, a proto se musí tisíckrát za sekundu obnovovat.' },
+            ], caption: 'Otoč kartu a zjisti, k čemu kondenzátor slouží.' },
+            { type: 'compare', columns: [
+              { title: '**Kondenzátor**', icon: 'lightning', tone: 'a', points: ['energie v elektrickém poli', 'nabije i vybije se za zlomek sekundy', 'málo energie na kilogram'] },
+              { title: '**Akumulátor**', icon: 'battery', tone: 'b', points: ['energie v chemických vazbách', 'nabíjení trvá desítky minut až hodiny', 'mnohem víc energie na kilogram'] },
+            ] },
+            { type: 'check', question: { kind: 'match', q: 'Přiřaď k zařízení vlastnost kondenzátoru, kterou využívá.', pairs: [
+              ['blesk fotoaparátu', 'rychlé uvolnění nashromážděné energie'],
+              ['dotykový displej', 'změna kapacity při přiblížení prstu'],
+              ['zpožděné zhasnutí světla', 'časová konstanta τ = R · C'],
+              ['síťový zdroj', 'vyhlazení kolísajícího napětí'],
+            ], explain: 'Kondenzátor slouží jako rychlý zásobník energie, jako senzor (kapacita závisí na okolí), jako „hodiny“ díky τ = R · C a jako vyrovnávací nádrž na náboj.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Kondenzátor jsou dva vodiče oddělené izolantem; jeho kapacita C = Q / U se měří ve faradech.',
+        'Deskový kondenzátor má kapacitu C = ε_{0} · ε_{r} · S / d – roste s plochou desek a permitivitou dielektrika, klesá s jejich vzdáleností.',
+        'Energie nabitého kondenzátoru je plocha pod grafem Q–U: E = ½ · Q · U = ½ · C · U^{2}.',
+        'Paralelně se kapacity sčítají; sériově se sčítají jejich převrácené hodnoty, 1/C = 1/C_{1} + 1/C_{2}.',
+        'Kondenzátor se přes rezistor nabíjí a vybíjí postupně; časová konstanta τ = R · C udává, za jak dlouho proběhne 63 % změny.',
+        'Kondenzátory ukládají energii (blesk, defibrilátor), vyhlazují napětí, měří čas a slouží jako senzory (dotykový displej).',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Nabitým kondenzátorem v obvodu stejnosměrného proudu trvale prochází proud.', answer: false, explain: 'Mezi deskami je izolant. Proud teče jen při nabíjení a vybíjení; po nabití klesne na nulu.' },
+        { kind: 'choice', q: 'Čemu se rovná jeden farad?', options: ['1 C/V', '1 V/C', '1 C · V', '1 J/C'], answer: 0, explain: 'Z C = Q / U: 1 F = 1 C / 1 V. Kondenzátor s kapacitou 1 F nese při napětí 1 V náboj 1 C.' },
+        { kind: 'multi', q: 'Které změny zvětší kapacitu deskového kondenzátoru?', options: ['zvětšení plochy desek', 'zmenšení vzdálenosti desek', 'vložení dielektrika s ε_{r} = 5', 'zvýšení napětí zdroje', 'oddálení desek'], answers: [0, 1, 2], explain: 'C = ε_{0} · ε_{r} · S / d závisí jen na stavbě kondenzátoru. Napětí zdroje kapacitu nemění – mění jen náboj.' },
+        { kind: 'number', q: 'Deskový kondenzátor má desky o ploše 0,02 m^{2} ve vzdálenosti 0,5 mm a dielektrikum s ε_{r} = 5. Jaká je jeho kapacita? Odpověz v nF.', answer: 1.77, tolerance: 0.03, unit: 'nF', explain: 'C = 8,85 · 10^{−12} · 5 · 0,02 / 0,0005 F = 1,77 · 10^{−9} F = 1,77 nF.' },
+        { kind: 'choice', q: 'Napětí na kondenzátoru zvýšíme dvakrát. Jak se změní energie v něm uložená?', options: ['zvětší se 4krát', 'zvětší se 2krát', 'nezmění se', 'zvětší se √2krát'], answer: 0, explain: 'E = ½ · C · U^{2}; energie roste s druhou mocninou napětí, 2^{2} = 4.' },
+        { kind: 'number', q: 'Kondenzátor 50 µF je nabitý na 200 V. Kolik energie uvolní při úplném vybití?', answer: 1, tolerance: 0.02, unit: 'J', explain: 'E = ½ · 50 · 10^{−6} F · (200 V)^{2} = ½ · 50 · 10^{−6} · 40 000 J = 1 J.' },
+        { kind: 'number', q: 'Kondenzátory 2 µF, 3 µF a 5 µF jsou zapojené paralelně k baterii 6 V. Jaký celkový náboj odebraly ze zdroje?', answer: 60, tolerance: 0.5, unit: 'µC', explain: 'Paralelně C = 2 + 3 + 5 = 10 µF, celkový náboj Q = C · U = 10 µF · 6 V = 60 µC.' },
+        { kind: 'order', q: 'Seřaď kapacity od nejmenší po největší.', items: ['47 pF', '10 nF', '2,2 µF', '4 700 µF', '1 F'], explain: 'pF = 10^{−12} F, nF = 10^{−9} F, µF = 10^{−6} F. 4 700 µF = 4,7 mF je stále mnohem méně než 1 F.' },
+      ],
+    },
+    // ───────────────────────────────────────────────────────────── f11-3
+    'f11-3': {
+      id: 'f11-3',
+      title: 'Obvody stejnosměrného proudu',
+      goals: [
+        'Počítat se svorkovým napětím skutečného zdroje U = U_{e} − R_{i} · I a s proudem nakrátko',
+        'Řešit sítě rezistorů a zdrojů pomocí obou Kirchhoffových zákonů',
+        'Navrhnout dělič napětí se senzorem (fotorezistor, termistor)',
+        'Posoudit vliv měřicích přístrojů na obvod a najít podmínku největšího výkonu ve spotřebiči',
+      ],
+      hook: 'Proč při startování auta na chvíli pohasnou světla? Baterie má pořád „svých“ 12 V, jenže startér si řekne o 200 ampérů a několik voltů se ztratí přímo uvnitř baterie. Dnes zjistíš kde.',
+      sections: [
+        {
+          title: 'Elektromotorické napětí a vnitřní odpor',
+          icon: 'battery',
+          blocks: [
+            { type: 'p', text: 'Zdroj koná práci na nábojích: chemickou (článek), mechanickou (dynamo) nebo světelnou (solární článek) energii mění na elektrickou. Práce na jednotku náboje je **elektromotorické napětí** U_{e}. Je to napětí naprázdno, když ze zdroje neteče proud.' },
+            { type: 'p', text: 'Každý skutečný zdroj má i **vnitřní odpor** R_{i} (elektrolyt, vinutí, přívody). Když teče proud, část napětí se „spotřebuje“ uvnitř zdroje a na svorkách zbude méně: **svorkové napětí** U.' },
+            { type: 'circuit', source: { kind: 'battery', label: 'U_{e} = 4,5 V' }, parts: [
+              { kind: 'resistor', label: 'R_{i} = 1 Ω' },
+              { kind: 'switch' },
+              { kind: 'ammeter' },
+              { parallel: [[{ kind: 'resistor', label: 'R = 8 Ω' }], [{ kind: 'voltmeter' }]] },
+            ], caption: 'Skutečný zdroj kreslíme jako ideální zdroj U_{e} a vnitřní odpor R_{i} v sérii. Voltmetr na spotřebiči měří svorkové napětí.' },
+            { type: 'formula', text: 'I = U_{e} / (R + R_{i})', caption: 'Ohmův zákon pro uzavřený obvod: R vnější odpor, R_{i} vnitřní odpor zdroje' },
+            { type: 'formula', text: 'U = U_{e} − R_{i} · I', caption: 'svorkové napětí je menší o úbytek napětí na vnitřním odporu' },
+            { type: 'example', title: 'Plochá baterie', problem: 'Baterie má U_{e} = 4,5 V a vnitřní odpor 1 Ω. Připojíme rezistor 8 Ω. Jaký proud teče a jaké je svorkové napětí?', steps: [
+              'I = U_{e} / (R + R_{i}) = 4,5 V / (8 Ω + 1 Ω) = 0,5 A',
+              'Úbytek uvnitř zdroje: R_{i} · I = 1 Ω · 0,5 A = 0,5 V',
+              'U = 4,5 V − 0,5 V = 4,0 V (kontrola: R · I = 8 Ω · 0,5 A = 4 V)',
+            ], answer: 'I = 0,5 A, svorkové napětí U = 4,0 V.' },
+            { type: 'check', question: { kind: 'number', q: 'Autobaterie má U_{e} = 12 V a vnitřní odpor 0,02 Ω. Startér odebírá 200 A. Jaké je v tu chvíli svorkové napětí?', answer: 8, tolerance: 0.05, unit: 'V', explain: 'U = U_{e} − R_{i} · I = 12 V − 0,02 Ω · 200 A = 12 V − 4 V = 8 V. Proto světla při startování pohasnou.' } },
+          ],
+        },
+        {
+          title: 'Zatěžovací charakteristika a zkrat',
+          icon: 'chart',
+          blocks: [
+            { type: 'p', text: 'Vztah U = U_{e} − R_{i} · I je rovnice přímky. Když měníš zátěž a měříš dvojice (I, U), dostaneš **zatěžovací charakteristiku** zdroje. Z grafu přečteš obě vlastnosti zdroje najednou.' },
+            { type: 'graph', x: { label: 'I', unit: 'A', min: 0, max: 5, step: 1 }, y: { label: 'U', unit: 'V', min: 0, max: 5, step: 1 }, series: [
+              { label: 'U_{e} = 4,5 V, R_{i} = 1 Ω', points: [[0, 4.5], [4.5, 0]] },
+            ], marks: [{ x: 0, y: 4.5, label: 'naprázdno: U = U_{e}' }, { x: 4.5, y: 0, label: 'nakrátko: I_{k} = 4,5 A' }, { x: 0.5, y: 4, label: 'R = 8 Ω' }], caption: 'Průsečík s osou U je elektromotorické napětí, průsečík s osou I je proud nakrátko. Sklon přímky (bez znaménka) je vnitřní odpor.' },
+            { type: 'formula', text: 'I_{k} = U_{e} / R_{i}', caption: 'proud nakrátko: vnější odpor je téměř nulový, proud omezuje jen vnitřní odpor' },
+            { type: 'example', title: 'Změř si svůj zdroj', problem: 'Při proudu 0,2 A ukazuje voltmetr na svorkách 5,8 V, při proudu 0,8 A jen 5,2 V. Urči U_{e} a R_{i}.', steps: [
+              'Sklon: R_{i} = ΔU / ΔI = (5,8 − 5,2) V / (0,8 − 0,2) A = 0,6 V / 0,6 A = 1 Ω',
+              'U_{e} = U + R_{i} · I = 5,8 V + 1 Ω · 0,2 A = 6,0 V',
+              'Proud nakrátko: I_{k} = 6,0 V / 1 Ω = 6 A',
+            ], answer: 'U_{e} = 6,0 V, R_{i} = 1 Ω (a proud nakrátko by byl 6 A).' },
+            { type: 'callout', variant: 'warning', title: 'Zkrat', text: 'Autobaterie nebo Li-ion článek mají vnitřní odpor jen setiny ohmu. Proud nakrátko pak dosahuje stovek ampérů: dráty se rozžhaví, článek se přehřeje a může začít hořet. Nikdy nespojuj svorky baterie kovovým předmětem.' },
+            { type: 'check', question: { kind: 'number', q: 'Zdroj má U_{e} = 9 V a vnitřní odpor 1,5 Ω. Jaký je jeho proud nakrátko?', answer: 6, tolerance: 0.05, unit: 'A', explain: 'I_{k} = U_{e} / R_{i} = 9 V / 1,5 Ω = 6 A.' } },
+          ],
+        },
+        {
+          title: 'Kirchhoffovy zákony',
+          icon: 'vector',
+          blocks: [
+            { type: 'p', text: 'Složitější obvody už nerozložíš jen na „sériové“ a „paralelní“ kousky. Pomůžou dva zákony, které v roce 1845 zformuloval Gustav Kirchhoff. Oba jsou ve skutečnosti **zákony zachování**.' },
+            { type: 'keyterms', items: [
+              { term: '**uzel**', def: 'místo, kde se stýkají aspoň tři vodiče' },
+              { term: '**větev**', def: 'část obvodu mezi dvěma sousedními uzly; teče jí všude stejný proud' },
+              { term: '**smyčka**', def: 'uzavřená cesta obvodem, která projde každou větví nejvýš jednou' },
+            ] },
+            { type: 'formula', text: 'I_{1} = I_{2} + I_{3}', caption: '1. Kirchhoffův zákon (pro uzel): součet proudů do uzlu = součet proudů z uzlu – náboj se v uzlu nehromadí ani neztrácí' },
+            { type: 'formula', text: 'Σ U_{e} = Σ R · I', caption: '2. Kirchhoffův zákon (pro smyčku): součet elektromotorických napětí = součet úbytků napětí na odporech – zachování energie' },
+            { type: 'circuit', source: { kind: 'battery', label: '12 V' }, parts: [
+              { kind: 'ammeter', label: 'I_{1}' },
+              { kind: 'resistor', label: 'R_{1} = 4 Ω' },
+              { parallel: [
+                [{ kind: 'resistor', label: 'R_{2} = 6 Ω' }, { kind: 'ammeter', label: 'I_{2}' }],
+                [{ kind: 'resistor', label: 'R_{3} = 12 Ω' }, { kind: 'ammeter', label: 'I_{3}' }],
+              ] },
+            ], caption: 'Proud I_{1} se v uzlu rozdělí na I_{2} a I_{3}. Vnitřní odpor zdroje zanedbáme.' },
+            { type: 'example', title: 'Rozdělení proudu', problem: 'Spočítej proudy I_{1}, I_{2}, I_{3} v obvodu na obrázku a ověř oba Kirchhoffovy zákony.', steps: [
+              'R_{2} a R_{3} paralelně: 1/R_{23} = 1/6 + 1/12 = 3/12, R_{23} = 4 Ω',
+              'Celkem R = 4 Ω + 4 Ω = 8 Ω, I_{1} = 12 V / 8 Ω = 1,5 A',
+              'U_{1} = R_{1} · I_{1} = 6 V, na paralelní části zbývá U_{23} = 6 V',
+              'I_{2} = 6 V / 6 Ω = 1 A, I_{3} = 6 V / 12 Ω = 0,5 A',
+              'Uzel: 1,5 A = 1 A + 0,5 A ✓; smyčka zdroj–R_{1}–R_{2}: 12 V = 6 V + 6 V ✓',
+            ], answer: 'I_{1} = 1,5 A, I_{2} = 1 A, I_{3} = 0,5 A.' },
+            { type: 'check', question: { kind: 'number', q: 'Do uzlu vtéká proud 3 A. Jednou větví z něj odtéká 1,2 A. Jaký proud odtéká druhou (a jedinou další) větví?', answer: 1.8, tolerance: 0.01, unit: 'A', explain: 'Podle 1. Kirchhoffova zákona: 3 A = 1,2 A + I, tedy I = 1,8 A.' } },
+          ],
+        },
+        {
+          title: 'Síť se dvěma zdroji',
+          icon: 'calculator',
+          blocks: [
+            { type: 'p', text: 'Síla Kirchhoffových zákonů se ukáže, když je v obvodu víc zdrojů. Typický případ: dvě baterie paralelně napájejí jeden spotřebič – nebo nabíječka dobíjí baterii, zatímco telefon běží.' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'pencil', title: 'Vyznač proudy', text: 'do každé větve šipku se zvoleným směrem a označením I_{1}, I_{2}…' },
+              { icon: 'plug', title: 'Uzly', text: 'napiš 1. zákon pro uzly (o jeden méně, než kolik jich je)' },
+              { icon: 'arrow-cycle', title: 'Smyčky', text: 'zvol směr obíhání; U_{e} je kladné, když ho obíháš od − k +, úbytek R · I kladný, když jdeš po směru proudu' },
+              { icon: 'calculator', title: 'Vyřeš soustavu', text: 'tolik rovnic, kolik je neznámých proudů' },
+              { icon: 'check', title: 'Vyhodnoť', text: 'záporný proud teče opačně, než jsi odhadl – to není chyba' },
+            ], caption: 'Postup řešení libovolné sítě' },
+            { type: 'example', title: 'Dvě baterie a žárovka', problem: 'Zdroj 12 V s odporem R_{1} = 2 Ω a zdroj 6 V s odporem R_{2} = 4 Ω jsou kladnými póly spojeny v horním uzlu, zápornými v dolním. Mezi uzly je spotřebič R_{3} = 4 Ω. Proudy I_{1}, I_{2} zvolíme ze zdrojů do horního uzlu, I_{3} z něj spotřebičem dolů. Urči všechny proudy.', steps: [
+              'Uzel: I_{1} + I_{2} = I_{3}',
+              'Smyčka se zdrojem 12 V a spotřebičem: 12 = 2 · I_{1} + 4 · I_{3}, tedy I_{1} = 6 − 2 · I_{3}',
+              'Smyčka se zdrojem 6 V a spotřebičem: 6 = 4 · I_{2} + 4 · I_{3}, tedy I_{2} = 1,5 − I_{3}',
+              'Dosadíme do uzlu: 6 − 2 · I_{3} + 1,5 − I_{3} = I_{3}, tedy 7,5 = 4 · I_{3}, I_{3} = 1,875 A',
+              'I_{1} = 6 − 3,75 = 2,25 A, I_{2} = 1,5 − 1,875 = −0,375 A',
+            ], answer: 'I_{1} = 2,25 A, I_{3} ≈ 1,9 A a I_{2} = −0,375 A: proud teče do zdroje 6 V opačně – silnější baterie tu slabší nabíjí.' },
+            { type: 'callout', variant: 'warning', text: 'Proto se do jedné sady nemají dávat nové a vybité (nebo různé) články: silnější článek „krmí“ slabší, hřejí se a vybíjejí zbytečně rychle.' },
+            { type: 'check', question: { kind: 'tf', q: 'Když při řešení sítě vyjde některý proud záporný, udělal jsi chybu ve výpočtu.', answer: false, explain: 'Záporné znaménko jen říká, že proud teče opačně, než jsi na začátku zvolil šipku. Velikost proudu je správná.' } },
+          ],
+        },
+        {
+          title: 'Dělič napětí se senzory',
+          icon: 'thermometer',
+          blocks: [
+            { type: 'p', text: 'Dva rezistory v sérii si rozdělí napětí zdroje v poměru svých odporů. Takovému zapojení se říká **dělič napětí** a je základem snad všech senzorových obvodů: stačí, aby jeden z rezistorů měnil odpor podle světla nebo teploty.' },
+            { type: 'formula', text: 'U_{2} = U · R_{2} / (R_{1} + R_{2})', caption: 'výstupní napětí na rezistoru R_{2} (zdroj bez vnitřního odporu, výstup nezatížený)' },
+            { type: 'circuit', source: { kind: 'battery', label: '9 V' }, parts: [
+              { kind: 'resistor', label: 'R_{1} = 10 kΩ' },
+              { parallel: [[{ kind: 'ldr', label: 'R_{2}' }], [{ kind: 'voltmeter', label: 'U_{2}' }]] },
+            ], caption: 'Dělič s fotorezistorem: ve tmě má fotorezistor velký odpor a U_{2} je vysoké – může sepnout pouliční osvětlení.' },
+            { type: 'example', title: 'Soumrakový spínač', problem: 'Fotorezistor má ve tmě odpor 90 kΩ, na světle 1 kΩ. Je zapojený jako R_{2} v děliči s R_{1} = 10 kΩ na 9 V. Jaké je U_{2} ve tmě a na světle?', steps: [
+              'Tma: U_{2} = 9 V · 90 / (10 + 90) = 8,1 V',
+              'Světlo: U_{2} = 9 V · 1 / (10 + 1) ≈ 0,82 V',
+              'Obvod, který sepne při napětí nad 4 V, rozsvítí lampu jen ve tmě.',
+            ], answer: 'Ve tmě 8,1 V, na světle asi 0,8 V.' },
+            { type: 'circuit', source: { kind: 'battery', label: '5 V' }, parts: [
+              { kind: 'thermistor', label: 'NTC' },
+              { parallel: [[{ kind: 'resistor', label: 'R = 10 kΩ' }], [{ kind: 'voltmeter', label: 'U_{výst}' }]] },
+            ], caption: 'Dělič s termistorem: s rostoucí teplotou odpor termistoru klesá a napětí na pevném rezistoru roste – signál pro spuštění ventilátoru.' },
+            { type: 'callout', variant: 'tip', text: 'Potenciometr (třeba knoflík hlasitosti) je dělič s posuvným kontaktem: poměr R_{1} : R_{2} měníš otáčením a výstupní napětí plynule roste od 0 do U.' },
+            { type: 'check', question: { kind: 'number', q: 'Dělič napětí tvoří rezistory R_{1} = 3 kΩ a R_{2} = 1 kΩ na zdroji 12 V. Jaké je napětí na R_{2}?', answer: 3, tolerance: 0.02, unit: 'V', explain: 'U_{2} = 12 V · 1 / (3 + 1) = 3 V.' } },
+          ],
+        },
+        {
+          title: 'Měřicí přístroje a přenos výkonu',
+          icon: 'gauge',
+          blocks: [
+            { type: 'p', text: 'Ideální ampérmetr má nulový odpor, ideální voltmetr nekonečný. Skutečné přístroje ne – a obvod, který měří, trochu změní. Voltmetr zapojený paralelně totiž vytvoří další větev, kterou odebírá proud.' },
+            { type: 'circuit', source: { kind: 'battery', label: '10 V' }, parts: [
+              { kind: 'resistor', label: 'R_{1} = 10 kΩ' },
+              { parallel: [[{ kind: 'resistor', label: 'R_{2} = 10 kΩ' }], [{ kind: 'voltmeter', label: 'R_{V} = 10 kΩ' }]] },
+            ], caption: 'Voltmetr s malým vnitřním odporem „zatíží“ dělič a ukáže méně, než tam bez něj je.' },
+            { type: 'example', title: 'Voltmetr, který lže', problem: 'Dělič 10 kΩ + 10 kΩ je na 10 V. Kolik ukáže voltmetr s odporem 10 kΩ připojený k R_{2}? A kolik digitální multimetr s odporem 10 MΩ?', steps: [
+              'Bez voltmetru: U_{2} = 10 V · 10 / 20 = 5 V',
+              'Voltmetr 10 kΩ ∥ R_{2}: R = 5 kΩ, U_{2} = 10 V · 5 / (10 + 5) ≈ 3,3 V',
+              'Multimetr 10 MΩ ∥ 10 kΩ ≈ 9,99 kΩ, U_{2} ≈ 5,00 V',
+            ], answer: 'Slabý voltmetr ukáže 3,3 V místo 5 V; multimetr s 10 MΩ měří prakticky správně.' },
+            { type: 'callout', variant: 'remember', text: '==Voltmetr musí mít odpor mnohem větší než měřená část obvodu, ampérmetr mnohem menší.== Rozsah ampérmetru se zvětšuje paralelním **bočníkem**, rozsah voltmetru sériovým **předřadným rezistorem**.' },
+            { type: 'p', text: 'Jaký spotřebič odebere ze zdroje nejvíc výkonu? Výkon P = R · I^{2} = U_{e}^{2} · R / (R + R_{i})^{2}. Malý odpor znamená velký proud, ale malé napětí; velký odpor naopak. Maximum nastane, když se **vnější odpor rovná vnitřnímu**.' },
+            { type: 'graph', x: { label: 'R', unit: 'Ω', min: 0, max: 10, step: 2 }, y: { label: 'P', unit: 'W', min: 0, max: 5, step: 1 }, series: [
+              { label: 'U_{e} = 6 V, R_{i} = 2 Ω', points: curve((r) => (36 * r) / ((r + 2) * (r + 2)), 0, 10, 20, 3), style: 'smooth' },
+            ], marks: [{ x: 2, y: 4.5, label: 'R = R_{i}: P_{max} = 4,5 W' }], caption: 'Výkon ve spotřebiči v závislosti na jeho odporu. Při R = R_{i} je P_{max} = U_{e}^{2} / (4 · R_{i}), ale účinnost je jen 50 %.' },
+            { type: 'callout', variant: 'fact', text: 'Přizpůsobení R = R_{i} se používá tam, kde jde o signál: anténa a přijímač, zesilovač a reproduktor. V rozvodné síti je naopak důležitá účinnost, a tak je vnitřní odpor zdrojů mnohem menší než odpor spotřebičů.' },
+            { type: 'game', gameId: 'circuit-builder', text: 'Postav si obvod se skutečným zdrojem a ověř Kirchhoffovy zákony ve hře Stavitel obvodů.' },
+            { type: 'check', question: { kind: 'choice', q: 'Proč by ideální voltmetr měl mít nekonečně velký odpor?', options: ['aby jím netekl žádný proud a nezměnil napětí, které měří', 'aby se nepřehřál', 'aby vydržel vysoké napětí', 'aby jím mohl téct velký proud'], answer: 0, explain: 'Voltmetr je zapojen paralelně. Každý proud, který jím teče, mění rozdělení proudů a napětí v obvodu.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Skutečný zdroj je ideální zdroj s elektromotorickým napětím U_{e} a vnitřním odporem R_{i} v sérii.',
+        'Pro uzavřený obvod platí I = U_{e} / (R + R_{i}) a svorkové napětí U = U_{e} − R_{i} · I; proud nakrátko je I_{k} = U_{e} / R_{i}.',
+        '1. Kirchhoffův zákon: součet proudů do uzlu se rovná součtu proudů z uzlu (zachování náboje).',
+        '2. Kirchhoffův zákon: v každé smyčce je součet elektromotorických napětí roven součtu úbytků R · I (zachování energie).',
+        'Dělič napětí dává U_{2} = U · R_{2} / (R_{1} + R_{2}); s fotorezistorem nebo termistorem z něj vznikne senzor.',
+        'Voltmetr musí mít velký, ampérmetr malý odpor, jinak měření ovlivní obvod.',
+        'Spotřebič odebere největší výkon, když se jeho odpor rovná vnitřnímu odporu zdroje; účinnost je pak 50 %.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Když ze zdroje odebíráme proud, je jeho svorkové napětí menší než elektromotorické napětí.', answer: true, explain: 'Část napětí připadne na vnitřní odpor: U = U_{e} − R_{i} · I. Rovnají se jen naprázdno, když I = 0.' },
+        { kind: 'number', q: 'Článek má U_{e} = 1,5 V a vnitřní odpor 0,5 Ω. Připojíme rezistor 2,5 Ω. Jaké je svorkové napětí?', answer: 1.25, tolerance: 0.01, unit: 'V', explain: 'I = 1,5 V / (2,5 + 0,5) Ω = 0,5 A; U = 1,5 V − 0,5 Ω · 0,5 A = 1,25 V.' },
+        { kind: 'match', q: 'Přiřaď zákon k principu, ze kterého vychází.', pairs: [
+          ['1. Kirchhoffův zákon', 'zachování elektrického náboje'],
+          ['2. Kirchhoffův zákon', 'zachování energie'],
+          ['U = U_{e} − R_{i} · I', 'úbytek napětí uvnitř zdroje'],
+          ['R = R_{i}', 'největší výkon ve spotřebiči'],
+        ], explain: 'Kirchhoffovy zákony jsou zákony zachování náboje a energie zapsané pro obvody. Vnitřní odpor určuje svorkové napětí i podmínku maximálního výkonu.' },
+        { kind: 'number', q: 'Zdroj ukazuje při proudu 3 A svorkové napětí 11,4 V a při proudu 6 A napětí 10,8 V. Jaké je jeho elektromotorické napětí?', answer: 12, tolerance: 0.05, unit: 'V', explain: 'R_{i} = ΔU / ΔI = 0,6 V / 3 A = 0,2 Ω; U_{e} = 11,4 V + 0,2 Ω · 3 A = 12 V.' },
+        { kind: 'choice', q: 'Ze stejného zdroje odebíráme větší proud. Co se stane se svorkovým napětím?', options: ['klesne', 'stoupne', 'nezmění se', 'klesne na nulu'], answer: 0, explain: 'Úbytek R_{i} · I roste s proudem, takže svorkové napětí klesá – po přímce zatěžovací charakteristiky.' },
+        { kind: 'multi', q: 'Které tvrzení o měřicích přístrojích je správné?', options: ['ampérmetr se zapojuje do série a má mít malý odpor', 'voltmetr se zapojuje paralelně a má mít velký odpor', 'bočník zvětšuje rozsah ampérmetru', 'voltmetr s malým odporem ukáže víc, než je skutečné napětí', 'ampérmetr zapojený paralelně ke zdroji je bezpečný'], answers: [0, 1, 2], explain: 'Voltmetr s malým odporem obvod zatíží a ukáže méně. Ampérmetr paralelně ke zdroji způsobí téměř zkrat.' },
+        { kind: 'number', q: 'Zdroj má U_{e} = 12 V a R_{i} = 3 Ω. Jaký největší výkon může dodat do vnějšího spotřebiče?', answer: 12, tolerance: 0.1, unit: 'W', explain: 'Maximum nastane pro R = R_{i} = 3 Ω: I = 12 V / 6 Ω = 2 A, P = R · I^{2} = 3 Ω · 4 A^{2} = 12 W (= U_{e}^{2} / 4R_{i}).' },
+        { kind: 'order', q: 'Seřaď kroky řešení sítě pomocí Kirchhoffových zákonů.', items: ['zvolit a vyznačit směry proudů ve větvích', 'napsat rovnice pro uzly', 'napsat rovnice pro nezávislé smyčky', 'vyřešit soustavu rovnic', 'podle znamének určit skutečné směry proudů'], explain: 'Nejdřív pojmenuješ neznámé, pak sestavíš rovnice podle obou zákonů a vyřešíš je. Záporné výsledky nakonec otočí směr šipky.' },
+      ],
+    },
+    // ───────────────────────────────────────────────────────────── f11-4
+    'f11-4': {
+      id: 'f11-4',
+      title: 'Proud v polovodičích, kapalinách a plynech',
+      goals: [
+        'Vysvětlit rozdíl mezi vodičem, polovodičem a izolantem pomocí pásového modelu',
+        'Popsat vlastní a příměsovou vodivost (typ N a P) a funkci přechodu PN v diodě, LED a solárním článku',
+        'Spočítat hmotnost látky vyloučené při elektrolýze podle Faradayova zákona',
+        'Rozlišit druhy výbojů v plynech a vysvětlit ionizaci nárazem',
+      ],
+      hook: 'Křemík z písku, slaná voda a vzduch při bouřce – tři látky, které za normálních okolností vedou proud špatně nebo vůbec. Přesto je v nich schovaný tvůj mobil, pozlacený konektor i blesk. Stačí jim dodat nosiče náboje.',
+      sections: [
+        {
+          title: 'Pásový model: vodič, polovodič, izolant',
+          icon: 'atom',
+          blocks: [
+            { type: 'p', text: 'V izolovaném atomu mají elektrony jen určité hodnoty energie. V krystalu se miliardy atomů ovlivňují a z hladin se stanou **energetické pásy**. Důležité jsou dva: **valenční pás** (elektrony vázané v atomech) a nad ním **vodivostní pás** (elektrony volné, které mohou vést proud). Mezi nimi bývá **zakázaný pás** o šířce E_{g}.' },
+            { type: 'compare', columns: [
+              { title: '**Kov**', icon: 'electron', tone: 'a', points: ['pásy se překrývají', 'volných elektronů je vždy mnoho', 'měď, hliník, stříbro'] },
+              { title: '**Polovodič**', icon: 'solar-panel', tone: 'b', points: ['úzký zakázaný pás, E_{g} ≈ 1 eV', 'teplo nebo světlo přehodí elektrony do vodivostního pásu', 'křemík (1,1 eV), germanium, GaAs'] },
+              { title: '**Izolant**', icon: 'cross', tone: 'c', points: ['široký zakázaný pás, E_{g} > 5 eV', 'tepelná energie (asi 0,03 eV) nestačí', 'diamant, sklo, plasty'] },
+            ], caption: 'O vodivosti rozhoduje šířka zakázaného pásu.' },
+            { type: 'graph', x: { label: 't', unit: '°C', min: 0, max: 100, step: 20 }, y: { label: 'R / R_{0}', min: 0, max: 1.5, step: 0.5 }, series: [
+              { label: 'kov (platina)', points: [[0, 1], [100, 1.39]], tone: 'a' },
+              { label: 'polovodič (termistor NTC)', points: curve((t) => Math.exp(3950 * (1 / (273.15 + t) - 1 / 273.15)), 0, 100, 12, 3), style: 'smooth', tone: 'b' },
+            ], caption: 'Odpor vztažený k hodnotě při 0 °C. Kovu odpor s teplotou mírně roste (kmitající ionty brzdí elektrony), polovodiči prudce klesá (přibývá nosičů).' },
+            { type: 'callout', variant: 'fact', text: 'Proto se termistor hodí jako citlivý teploměr: při ohřátí z 0 °C na 50 °C klesne jeho odpor asi desetkrát, odpor kovu vzroste jen o pětinu.' },
+            { type: 'check', question: { kind: 'choice', q: 'Proč odpor polovodiče při zahřívání klesá?', options: ['víc elektronů získá energii na přeskok přes zakázaný pás, přibývá nosičů náboje', 'ionty mřížky kmitají méně', 'krystal se roztáhne a elektrony mají víc místa', 'polovodič se při zahřátí mění na kov'], answer: 0, explain: 'Rozhoduje počet nosičů. Tepelný pohyb dodá části elektronů energii E_{g}; s teplotou jejich počet prudce roste a převáží i silnější kmitání mřížky.' } },
+          ],
+        },
+        {
+          title: 'Vlastní a příměsová vodivost',
+          icon: 'crystal',
+          blocks: [
+            { type: 'p', text: 'Když elektron v čistém křemíku přeskočí do vodivostního pásu, zanechá po sobě prázdné místo ve vazbě – **díru**. Do díry může skočit sousední elektron, díra se tím posune. Díra se chová jako kladný nosič náboje. Vodivost čistého polovodiče, kde je elektronů a děr stejně, se nazývá **vlastní vodivost**.' },
+            { type: 'p', text: 'Mnohem víc nosičů dodá **příměs**: pár cizích atomů na milion atomů křemíku zvýší vodivost o mnoho řádů. Tomu se říká **dotování** a je to základní krok výroby čipů.' },
+            { type: 'compare', columns: [
+              { title: '**Typ N**', icon: 'ion-minus', tone: 'a', points: ['příměs s 5 valenčními elektrony: fosfor, arsen', 'pátý elektron je navíc a snadno se uvolní', 'příměs je **donor** (dárce)', 'majoritní nosiče: **elektrony**'] },
+              { title: '**Typ P**', icon: 'ion-plus', tone: 'b', points: ['příměs se 3 valenčními elektrony: bor, galium', 'jedna vazba je neúplná – vznikne díra', 'příměs je **akceptor** (příjemce)', 'majoritní nosiče: **díry**'] },
+            ], caption: 'Křemík má 4 valenční elektrony; příměs s 5 nebo 3 elektrony určí typ vodivosti.' },
+            { type: 'keyterms', items: [
+              { term: '**díra**', def: 'chybějící elektron ve vazbě; pohybuje se jako kladný náboj +e' },
+              { term: '**majoritní nosiče**', def: 'nosiče, kterých je v polovodiči většina (v typu N elektrony, v typu P díry)' },
+              { term: '**minoritní nosiče**', def: 'nosiče opačného druhu, kterých je málo; vznikají tepelně' },
+            ] },
+            { type: 'callout', variant: 'warning', text: 'Polovodič typu P není kladně nabitý a typ N není nabitý záporně. Každá příměs je neutrální atom – náboj díry nebo volného elektronu vyrovnává náboj iontu příměsi.' },
+            { type: 'check', question: { kind: 'tf', q: 'Křemík dotovaný borem je polovodič typu P, ve kterém převládají díry.', answer: true, explain: 'Bor má jen 3 valenční elektrony. Jedna ze čtyř vazeb s křemíkem zůstane neúplná a vznikne díra – bor je akceptor.' } },
+          ],
+        },
+        {
+          title: 'Přechod PN a dioda',
+          icon: 'bulb',
+          blocks: [
+            { type: 'p', text: 'Spojíme oblast typu P a typu N v jednom krystalu. Elektrony z N difundují do P a zaplní tam díry (**rekombinují**). U rozhraní vznikne tenká **hradlová (vyprázdněná) vrstva** bez volných nosičů, se zabudovaným elektrickým polem. U křemíku je na ní napětí asi 0,6–0,7 V.' },
+            { type: 'diagram', id: 'pn-diode', caption: 'Dioda v propustném směru (+ na P, − na N): hradlová vrstva se zúží a proud teče. V závěrném směru se rozšíří a proud prakticky neteče.' },
+            { type: 'graph', x: { label: 'U', unit: 'V', min: -2, max: 1, step: 0.5 }, y: { label: 'I', unit: 'mA', min: 0, max: 50, step: 10 }, series: [
+              { label: 'křemíková dioda', points: [[-2, 0], [0, 0], [0.4, 0.2], [0.5, 1], [0.6, 4], [0.65, 10], [0.7, 22], [0.75, 45]], style: 'smooth' },
+            ], marks: [{ x: 0.6, label: 'prahové napětí ≈ 0,6 V' }, { x: -1, y: 0, label: 'závěrný směr: I ≈ 0' }], caption: 'Voltampérová charakteristika diody: pod prahovým napětím téměř žádný proud, nad ním proud prudce roste. Dioda není ohmická součástka.' },
+            { type: 'circuit', source: { kind: 'dc', label: '5 V' }, parts: [
+              { kind: 'switch' },
+              { kind: 'resistor', label: 'R = ?' },
+              { kind: 'led', label: 'LED' },
+            ], caption: 'LED musí mít vždy předřadný rezistor, který omezí proud; jinak by se zničila.' },
+            { type: 'example', title: 'Předřadný rezistor pro LED', problem: 'Červená LED potřebuje napětí 2,0 V a proud 15 mA. Jaký rezistor zapojíš do série, když napájíš z 5 V?', steps: [
+              'Na rezistoru musí zbýt U_{R} = 5 V − 2,0 V = 3,0 V (2. Kirchhoffův zákon).',
+              'Rezistorem teče stejný proud jako LED: I = 0,015 A.',
+              'R = U_{R} / I = 3,0 V / 0,015 A = 200 Ω',
+            ], answer: 'R = 200 Ω (v praxi nejbližší vyšší řadová hodnota, třeba 220 Ω).' },
+            { type: 'callout', variant: 'tip', text: 'Čtyři diody v můstku z obou půlvln střídavého napětí udělají napětí jednoho směru. Takový **usměrňovač** je v každé nabíječce – přesněji v lekci f11-7.' },
+            { type: 'check', question: { kind: 'number', q: 'Modrá LED potřebuje 3 V a 20 mA. Jaký předřadný rezistor potřebuješ při napájení z 9 V baterie?', answer: 300, tolerance: 2, unit: 'Ω', explain: 'U_{R} = 9 V − 3 V = 6 V; R = 6 V / 0,02 A = 300 Ω.' } },
+          ],
+        },
+        {
+          title: 'LED, solární článek a tranzistor',
+          icon: 'solar-panel',
+          blocks: [
+            { type: 'p', text: 'Přechod PN umí víc než propouštět proud jedním směrem. Podle toho, jestli energii do něj dodáváš, nebo z něj bereš, z něj vznikne zdroj světla, nebo zdroj napětí.' },
+            { type: 'iconlist', items: [
+              { icon: 'bulb', title: 'LED', text: 'elektron rekombinuje s dírou a jeho energie odletí jako foton; barva závisí na šířce zakázaného pásu materiálu (GaAs infračervená, GaN modrá)' },
+              { icon: 'solar-panel', title: 'Solární článek', text: 'foton vytvoří pár elektron–díra, pole hradlové vrstvy je rozdělí a na svorkách vznikne asi 0,5–0,6 V' },
+              { icon: 'camera', title: 'Fotodioda', text: 'proud v závěrném směru roste s osvětlením – snímače fotoaparátů, čidla dálkových ovladačů' },
+              { icon: 'phone', title: 'Tranzistor', text: 'dva přechody PN za sebou; malý proud báze řídí velký proud kolektoru – spínač i zesilovač' },
+            ] },
+            { type: 'compare', columns: [
+              { title: '**LED**', icon: 'bulb', tone: 'a', points: ['elektrická energie → světlo', 'napětí dodáváš v propustném směru', 'účinnost přes 40 %, žárovka jen asi 5 %'] },
+              { title: '**Solární článek**', icon: 'sun', tone: 'b', points: ['světlo → elektrická energie', 'článek sám je zdrojem napětí', 'křemíkové panely mají účinnost kolem 20 %'] },
+            ] },
+            { type: 'formula', text: 'I_{C} = β · I_{B}', caption: 'tranzistor jako zesilovač: proud kolektoru I_{C} je β-krát větší než proud báze I_{B} (β bývá 50–500)' },
+            { type: 'example', title: 'Tranzistor spíná motorek', problem: 'Mikrokontrolér dodá do báze tranzistoru proud 0,2 mA. Tranzistor má zesílení β = 150. Jaký největší proud může téct motorkem v obvodu kolektoru?', steps: [
+              'I_{C} = β · I_{B} = 150 · 0,2 mA',
+              'I_{C} = 30 mA',
+            ], answer: 'Motorkem může téct až 30 mA – slabý signál řídí 150krát silnější proud.' },
+            { type: 'callout', variant: 'fact', text: 'Moderní procesor v telefonu obsahuje přes 10 miliard tranzistorů, každý menší než virus. Pracují jako spínače 1/0 – na tom stojí veškerá digitální technika.' },
+            { type: 'check', question: { kind: 'choice', q: 'Co určuje barvu světla LED?', options: ['šířka zakázaného pásu použitého polovodiče', 'barva plastového pouzdra', 'velikost předřadného rezistoru', 'napětí baterie'], answer: 0, explain: 'Foton odnáší energii asi E_{g}. Větší zakázaný pás znamená energetičtější foton, tedy modřejší světlo. Pouzdro jen rozptyluje světlo.' } },
+          ],
+        },
+        {
+          title: 'Elektrolýza a Faradayův zákon',
+          icon: 'beaker',
+          blocks: [
+            { type: 'p', text: 'V chemii jsi poznal elektrolýzu jako redoxní děj. Fyzik se ptá: kolik látky se vyloučí? V elektrolytu nesou náboj **ionty**. Každý iont s nábojovým číslem z přenese náboj z · e, takže hmotnost vyloučené látky je úměrná prošlému náboji Q = I · t.' },
+            { type: 'diagram', id: 'electrolysis', caption: 'Kationty putují ke katodě (−), anionty k anodě (+). Na elektrodách přijmou nebo odevzdají elektrony a vyloučí se.' },
+            { type: 'formula', text: 'm = A · I · t,   A = M / (z · F)', caption: 'Faradayův zákon: m hmotnost (g), A elektrochemický ekvivalent, M molární hmotnost (g/mol), z nábojové číslo iontu, F = 96 485 C/mol Faradayova konstanta' },
+            { type: 'p', text: '**Faradayova konstanta** je náboj jednoho molu elementárních nábojů: F = N_{A} · e = 6,022 · 10^{23} mol^{−1} · 1,602 · 10^{−19} C ≈ 96 485 C/mol.' },
+            { type: 'example', title: 'Poměďování', problem: 'Klíč pokovujeme v roztoku $CuSO4$ proudem 2 A po dobu 30 minut. Kolik mědi se vyloučí? (M(Cu) = 63,5 g/mol, ionty $Cu^{2+}$)', steps: [
+              'Q = I · t = 2 A · 1 800 s = 3 600 C',
+              'Látkové množství elektronů: 3 600 C / 96 485 C/mol ≈ 0,0373 mol',
+              'Každý iont $Cu^{2+}$ potřebuje 2 elektrony: n(Cu) = 0,0373 / 2 ≈ 0,0187 mol',
+              'm = n · M = 0,0187 mol · 63,5 g/mol ≈ 1,18 g',
+            ], answer: 'Vyloučí se asi 1,2 g mědi.' },
+            { type: 'iconlist', items: [
+              { icon: 'ring', title: 'Galvanické pokovování', text: 'zlacení konektorů, chromování, zinkování plechů proti korozi' },
+              { icon: 'factory', title: 'Výroba hliníku', text: 'elektrolýza taveniny spotřebuje asi 14 kWh na kilogram hliníku' },
+              { icon: 'coin', title: 'Rafinace mědi', text: 'čistá měď na katodě, nečistoty padají do kalu' },
+              { icon: 'battery', title: 'Nabíjení akumulátoru', text: 'elektrolýza, která děj v článku obrací' },
+            ] },
+            { type: 'callout', variant: 'remember', text: '==Faradayova konstanta spojuje chemii s fyzikou:== jeden mol jednou nabitých iontů přenese náboj 96 485 C. Dvojnásobný náboj vyloučí dvojnásobnou hmotnost, ionty s dvojnásobným nábojovým číslem polovinu.' },
+            { type: 'check', question: { kind: 'number', q: 'Kolik stříbra se vyloučí z roztoku $AgNO3$ proudem 0,5 A za 965 s? (M(Ag) = 108 g/mol, iont $Ag^{+}$)', answer: 0.54, tolerance: 0.01, unit: 'g', explain: 'Q = 0,5 A · 965 s = 482,5 C; n(Ag) = 482,5 / 96 485 mol ≈ 0,005 mol (z = 1); m = 0,005 · 108 g = 0,54 g.' } },
+          ],
+        },
+        {
+          title: 'Výboje v plynech a plazma',
+          icon: 'lightning',
+          blocks: [
+            { type: 'p', text: 'Plyn je za normálních podmínek izolant – skoro všechny molekuly jsou neutrální. Vodivým se stane, když ho něco **ionizuje**: plamen, radioaktivní nebo UV záření. Proud, který teče jen díky vnějšímu ionizátoru a po jeho odstranění zanikne, je **nesamostatný výboj**.' },
+            { type: 'p', text: 'Při vysokém napětí získají volné elektrony mezi srážkami tolik energie, že samy vyrážejí elektrony z molekul (**ionizace nárazem**). Vznikne lavina nosičů a výboj se udržuje sám: **samostatný výboj**.' },
+            { type: 'graph', x: { label: 'U', unit: 'V', min: 0, max: 1000, step: 200 }, y: { label: 'I', unit: 'µA', min: 0, max: 20, step: 5 }, series: [
+              { label: 'výbojová trubice (schematicky)', points: [[0, 0], [100, 2], [200, 3.5], [300, 4], [500, 4.2], [700, 4.5], [800, 6], [850, 10], [900, 18]], style: 'smooth' },
+            ], marks: [{ x: 400, y: 4.1, label: 'nasycený proud' }, { x: 800, label: 'zápalné napětí' }], caption: 'Nejdřív proud roste, pak se nasytí (všechny ionty z ionizátoru dojdou k elektrodám). Nad zápalným napětím začne ionizace nárazem a proud prudce roste.' },
+            { type: 'example', title: 'Jak daleko musí elektron letět', problem: 'K ionizaci molekuly dusíku je třeba asi 15,6 eV. Na jaké dráze získá elektron tuto energii v poli 3 · 10^{6} V/m (elektrická pevnost vzduchu)?', steps: [
+              'Elektron musí projít napětím U = 15,6 V.',
+              'V homogenním poli U = E · d, tedy d = U / E',
+              'd = 15,6 V / 3 · 10^{6} V/m ≈ 5 · 10^{−6} m',
+            ], answer: 'Asi 5 µm – zhruba tolik je ve vzduchu dráha elektronu mezi srážkami, proto právě tady začíná lavina.' },
+            { type: 'iconlist', items: [
+              { icon: 'lightning', title: 'Jiskrový výboj', text: 'krátký a hlasitý: jiskra v zapalovací svíčce, **blesk** (proud desítky kA, kanál až 30 000 °C)' },
+              { icon: 'flame', title: 'Obloukový výboj', text: 'trvalý, velmi horký a jasný: svařování, obloukové pece' },
+              { icon: 'bulb', title: 'Doutnavý výboj', text: 'za nízkého tlaku, barevně září: neonové reklamy, zářivky, výbojky' },
+              { icon: 'wind', title: 'Koróna', text: 'tichý výboj u hrotů a vodičů vysokého napětí – bzučení pod dráty VVN' },
+            ] },
+            { type: 'callout', variant: 'fact', text: 'Plně ionizovaný plyn je **plazma** – čtvrté skupenství. Je z něj Slunce a hvězdy, polární záře i náplň fúzních reaktorů. Ve vesmíru je plazma nejběžnějším stavem viditelné hmoty.' },
+            { type: 'callout', variant: 'warning', text: 'Blesk si hledá nejkratší cestu k zemi. Při bouřce se vyhni vyvýšeným místům, osamělým stromům a vodě; bezpečné je auto nebo budova s hromosvodem (Faradayova klec z lekce f11-1).' },
+            { type: 'check', question: { kind: 'match', q: 'Přiřaď druh výboje k příkladu.', pairs: [
+              ['jiskrový výboj', 'blesk'],
+              ['obloukový výboj', 'svařování elektrickým obloukem'],
+              ['doutnavý výboj', 'neonová reklama'],
+              ['nesamostatný výboj', 'vedení vzduchu ozářeného rentgenem'],
+            ], explain: 'Jiskra a blesk jsou krátké samostatné výboje, oblouk je trvalý a horký, doutnavý výboj svítí za nízkého tlaku. Nesamostatný výboj potřebuje vnější ionizátor.' } },
+          ],
+        },
+      ],
+      summary: [
+        'V pevné látce tvoří energie elektronů pásy; kovy mají pásy překryté, polovodiče úzký a izolanty široký zakázaný pás.',
+        'Odpor kovů s teplotou roste, odpor polovodičů klesá, protože přibývá nosičů náboje.',
+        'Příměs s pěti valenčními elektrony dává polovodič typu N (elektrony), příměs se třemi typ P (díry).',
+        'Přechod PN propouští proud jen v propustném směru; na něm stojí dioda, LED, fotodioda, solární článek a tranzistor.',
+        'Při elektrolýze nesou náboj ionty a hmotnost vyloučené látky je m = M · I · t / (z · F), kde F = 96 485 C/mol.',
+        'Plyn vede, když je ionizovaný; samostatný výboj se udržuje ionizací nárazem (jiskra, oblouk, doutnavý výboj, koróna).',
+        'Plazma je ionizovaný plyn – Slunce, blesk i polární záře.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Odpor kovového drátu se zahřátím zvětší, odpor termistoru NTC se zmenší.', answer: true, explain: 'V kovu je nosičů pořád stejně a víc je brzdí kmitající mřížka. V polovodiči s teplotou prudce přibývá nosičů.' },
+        { kind: 'choice', q: 'Křemík dotujeme fosforem. Jaký polovodič vznikne?', options: ['typ N s převahou elektronů', 'typ P s převahou děr', 'izolant', 'vlastní polovodič'], answer: 0, explain: 'Fosfor má 5 valenčních elektronů, čtyři se zapojí do vazeb a pátý je volný. Fosfor je donor.' },
+        { kind: 'multi', q: 'Dioda je zapojena v závěrném směru. Co platí?', options: ['hradlová vrstva se rozšíří', 'proud prakticky neteče', 'na polovodič typu P je připojen záporný pól', 'LED v tomto směru jasně svítí', 'proud je největší, jaký dioda snese'], answers: [0, 1, 2], explain: 'V závěrném směru je P na −, N na +. Vnější pole odtáhne nosiče od přechodu, vyprázdněná vrstva se rozšíří a proud neteče.' },
+        { kind: 'match', q: 'Přiřaď součástku k jejímu principu.', pairs: [
+          ['LED', 'rekombinace elektronu s dírou vyzáří foton'],
+          ['solární článek', 'foton vytvoří pár elektron–díra, pole přechodu je rozdělí'],
+          ['tranzistor', 'malý proud báze řídí velký proud kolektoru'],
+          ['termistor', 'odpor silně závisí na teplotě'],
+        ], explain: 'Všechny čtyři součástky využívají polovodiče: LED a solární článek jsou opačné děje na přechodu PN, tranzistor má dva přechody.' },
+        { kind: 'number', q: 'Za jak dlouho se proudem 1,5 A vyloučí 2 g mědi z roztoku s ionty $Cu^{2+}$? (M = 63,5 g/mol) Odpověz v minutách.', answer: 67.5, tolerance: 1, unit: 'min', explain: 't = m · z · F / (M · I) = 2 · 2 · 96 485 / (63,5 · 1,5) s ≈ 4 050 s ≈ 67,5 min.' },
+        { kind: 'choice', q: 'Která LED má nejširší zakázaný pás?', options: ['modrá', 'zelená', 'červená', 'infračervená'], answer: 0, explain: 'Modré světlo má z uvedených nejkratší vlnovou délku a největší energii fotonu, tedy i největší E_{g}.' },
+        { kind: 'tf', q: 'Nesamostatný výboj pokračuje i po odstranění ionizátoru.', answer: false, explain: 'Nesamostatný výboj potřebuje vnější zdroj iontů. Sám se udržuje až samostatný výboj díky ionizaci nárazem.' },
+        { kind: 'number', q: 'Zelená LED (2,2 V, 20 mA) má svítit z USB napájení 5 V. Jaký předřadný rezistor potřebuje?', answer: 140, tolerance: 1, unit: 'Ω', explain: 'U_{R} = 5 V − 2,2 V = 2,8 V; R = 2,8 V / 0,02 A = 140 Ω.' },
+      ],
+    },
+    // ───────────────────────────────────────────────────────────── f11-5
+    'f11-5': {
+      id: 'f11-5',
+      title: 'Magnetické pole a magnetické síly',
+      goals: [
+        'Popsat magnetické pole magnetickou indukcí B a spočítat sílu na vodič F = B · I · l · sin α',
+        'Spočítat Lorentzovu sílu F = B · Q · v a poloměr kruhové dráhy nabité částice',
+        'Vysvětlit princip hmotnostního spektrometru, cyklotronu a polární záře',
+        'Spočítat magnetickou indukci u přímého vodiče a v cívce a rozlišit dia-, para- a feromagnetické látky',
+      ],
+      hook: 'Polární záře, magnetická rezonance v nemocnici i urychlovač v CERN mají společné to, že magnetické pole zatáčí letící náboje. Zvláštní je, že je nikdy nezrychlí – jen jim mění směr. Proč, to zjistíme.',
+      sections: [
+        {
+          title: 'Magnetická indukce',
+          icon: 'magnet',
+          blocks: [
+            { type: 'p', text: 'V lekcích f7-1 a f7-2 jsi poznal, že magnetické pole vytváří magnet i vodič s proudem a že v poli působí síla na vodič s proudem. Teď pole popíšeme číslem. Hlavní veličinou je **magnetická indukce** B: vektor ve směru, kam ukazuje severní pól magnetky, s jednotkou **tesla** (T).' },
+            { type: 'diagram', id: 'magnet-field', caption: 'Indukční čáry tyčového magnetu: vycházejí ze severního pólu a vstupují do jižního, uvnitř magnetu pokračují – jsou vždy uzavřené.' },
+            { type: 'list', items: [
+              'indukční čáry jsou **uzavřené křivky**, nemají začátek ani konec',
+              'magnetické póly se vždy vyskytují v páru – rozlomíš-li magnet, vzniknou dva menší magnety',
+              'hustota čar ukazuje velikost B',
+              'tečna k čáře ukazuje směr B v daném místě',
+            ] },
+            { type: 'table', headers: ['Zdroj pole', 'B'], rows: [
+              ['magnetické pole Země v ČR', 'asi 50 µT'],
+              ['magnet na ledničku', 'asi 5 mT'],
+              ['neodymový magnet u povrchu', 'asi 1 T'],
+              ['magnetická rezonance v nemocnici', '1,5–3 T'],
+              ['supravodivé magnety LHC', '8,3 T'],
+              ['neutronová hvězda (magnetar)', 'až 10^{11} T'],
+            ], caption: 'Typické hodnoty magnetické indukce' },
+            { type: 'check', question: { kind: 'tf', q: 'Indukční čáry magnetického pole jsou uzavřené křivky, protože neexistuje samostatný severní ani jižní pól.', answer: true, explain: 'Na rozdíl od elektrického pole, kde siločáry začínají na kladném a končí na záporném náboji, nemá magnetické pole „magnetický náboj“. Čáry proto nikde nekončí.' } },
+          ],
+        },
+        {
+          title: 'Síla na vodič s proudem',
+          icon: 'motor',
+          blocks: [
+            { type: 'p', text: 'Na přímý vodič délky l s proudem I v homogenním magnetickém poli působí **magnetická síla**. Je největší, když je vodič kolmý na indukční čáry, a nulová, když je s nimi rovnoběžný.' },
+            { type: 'formula', text: 'F_{m} = B · I · l · sin α', caption: 'α je úhel mezi vodičem (směrem proudu) a vektorem B; síla je kolmá na vodič i na B' },
+            { type: 'p', text: 'Z tohoto vztahu je definovaná tesla: **1 T** má pole, ve kterém na vodič dlouhý 1 m s proudem 1 A kolmým k poli působí síla 1 N. Směr síly určíš **Flemingovým pravidlem levé ruky**: indukční čáry vstupují do dlaně, natažené prsty ukazují směr proudu, odtažený palec směr síly.' },
+            { type: 'forces', body: 'point', surface: 'none', forces: [
+              { label: 'F_{m}', angle: 90, size: 3, tone: 'a' },
+              { label: 'F_{G}', angle: 270, size: 3, tone: 'b' },
+            ], caption: 'Magnetické váhy: vodič s proudem visí v poli magnetu. Když je magnetická síla stejně velká jako tíha vodiče, vodič se vznáší – tak se dá B změřit.' },
+            { type: 'example', title: 'Vodič mezi póly magnetu', problem: 'Vodič dlouhý 20 cm, kterým teče proud 5 A, je v poli s indukcí 0,4 T. Jak velká síla na něj působí, je-li s indukčními čarami kolmý? A pod úhlem 30°?', steps: [
+              'Kolmo: F = B · I · l = 0,4 T · 5 A · 0,2 m = 0,4 N',
+              'Pod úhlem 30°: F = 0,4 N · sin 30° = 0,4 N · 0,5 = 0,2 N',
+            ], answer: 'Kolmo 0,4 N, pod úhlem 30° 0,2 N.' },
+            { type: 'diagram', id: 'dc-motor', caption: 'Stejnosměrný motor: na dvě strany cívky působí opačné síly, vznikne dvojice sil a cívka se otáčí. Komutátor každou půlotáčku obrátí proud.' },
+            { type: 'check', question: { kind: 'number', q: 'Vodič dlouhý 0,5 m s proudem 3 A svírá s indukčními čarami pole 0,2 T úhel 30°. Jak velká síla na něj působí?', answer: 0.15, tolerance: 0.005, unit: 'N', explain: 'F = B · I · l · sin α = 0,2 T · 3 A · 0,5 m · 0,5 = 0,15 N.' } },
+          ],
+        },
+        {
+          title: 'Lorentzova síla',
+          icon: 'electron',
+          blocks: [
+            { type: 'p', text: 'Síla na vodič je ve skutečnosti součtem sil na všechny elektrony, které se v něm pohybují. Na jednu částici s nábojem Q, která letí rychlostí v, působí **Lorentzova (magnetická) síla**.' },
+            { type: 'formula', text: 'F_{m} = B · Q · v · sin α', caption: 'α je úhel mezi rychlostí v a indukcí B; síla je kolmá na obě' },
+            { type: 'diagram', id: 'lorentz-force', caption: 'Kladná částice v magnetickém poli: F, B a v jsou navzájem kolmé. Protože síla je stále kolmá na rychlost, částice obíhá po kružnici.' },
+            { type: 'p', text: 'Síla kolmá na rychlost **nekoná práci**: nemění velikost rychlosti ani kinetickou energii, jen směr. Působí jako dostředivá síla (lekce f8-4). Z rovnosti B · Q · v = m · v^{2} / r plyne poloměr dráhy.' },
+            { type: 'forces', body: 'point', surface: 'none', forces: [
+              { label: 'v', angle: 0, size: 3, tone: 'b' },
+              { label: 'F_{m}', angle: 90, size: 2.5, tone: 'a' },
+            ], caption: 'Okamžik na kruhové dráze: rychlost míří po tečně, magnetická síla do středu kružnice.' },
+            { type: 'formula', text: 'r = m · v / (Q · B),   T = 2π · m / (Q · B)', caption: 'poloměr a oběžná doba nabité částice kolmo k poli; oběžná doba nezávisí na rychlosti' },
+            { type: 'example', title: 'Elektron v poli', problem: 'Elektron letí rychlostí 10^{7} m/s kolmo do pole s indukcí 1 mT. Jaký je poloměr jeho dráhy? (m_{e} = 9,11 · 10^{−31} kg)', steps: [
+              'r = m · v / (e · B) = 9,11 · 10^{−31} · 10^{7} / (1,6 · 10^{−19} · 10^{−3}) m',
+              'r = 9,11 · 10^{−24} / 1,6 · 10^{−22} m ≈ 0,057 m',
+            ], answer: 'r ≈ 5,7 cm.' },
+            { type: 'check', question: { kind: 'choice', q: 'Proton vletí kolmo do homogenního magnetického pole. Co se stane s velikostí jeho rychlosti?', options: ['zůstane stejná, mění se jen směr', 'bude rovnoměrně růst', 'bude klesat až na nulu', 'začne kmitat'], answer: 0, explain: 'Lorentzova síla je vždy kolmá na rychlost, nekoná práci a nemění kinetickou energii. Proton obíhá po kružnici stálou rychlostí.' } },
+          ],
+        },
+        {
+          title: 'Spektrometr, cyklotron a polární záře',
+          icon: 'galaxy',
+          blocks: [
+            { type: 'p', text: 'Poloměr r = m · v / (Q · B) závisí na hmotnosti. Když stejně nabité ionty urychlíš stejným napětím a pošleš do magnetického pole, těžší opíšou větší oblouk. To je princip **hmotnostního spektrometru**.' },
+            { type: 'diagram', id: 'mass-spectrometer', caption: 'Hmotnostní spektrometr: zdroj iontů, urychlovací napětí, magnetické pole zakřiví dráhu podle hmotnosti, detektor zaznamená, kam ionty dopadly.' },
+            { type: 'example', title: 'Proton ve spektrometru', problem: 'Proton urychlíme z klidu napětím 2 000 V a pošleme kolmo do pole 0,1 T. Jaký je poloměr jeho dráhy? (m_{p} = 1,67 · 10^{−27} kg)', steps: [
+              'Energie: ½ · m · v^{2} = e · U, tedy v = √(2 · e · U / m)',
+              'v = √(2 · 1,6 · 10^{−19} · 2 000 / 1,67 · 10^{−27}) m/s ≈ 6,2 · 10^{5} m/s',
+              'r = m · v / (e · B) = 1,67 · 10^{−27} · 6,2 · 10^{5} / (1,6 · 10^{−19} · 0,1) m ≈ 0,065 m',
+            ], answer: 'r ≈ 6,5 cm.' },
+            { type: 'iconlist', items: [
+              { icon: 'molecule', title: 'Hmotnostní spektrometrie', text: 'odhalí izotopy (radiouhlíkové datování), doping u sportovců, složení vzorků na Marsu' },
+              { icon: 'orbit', title: 'Cyklotron', text: 'oběžná doba nezávisí na rychlosti, takže stačí střídavé napětí stálé frekvence; protony pro léčbu nádorů' },
+              { icon: 'earth', title: 'Polární záře', text: 'nabité částice ze Slunce se šroubovitě navíjejí na indukční čáry Země a u pólů narážejí do atmosféry' },
+              { icon: 'satellite', title: 'Van Allenovy pásy', text: 'magnetické pole Země zachytává nabité částice v pásech kolem planety a chrání tak život na povrchu' },
+            ] },
+            { type: 'callout', variant: 'fact', text: 'Kyslík v atmosféře září při polární záři zeleně (ve výšce asi 100–200 km) a červeně (výš), dusík fialově. Barvy jsou „podpisy“ energetických hladin – podrobněji v lekci f12-5.' },
+            { type: 'check', question: { kind: 'number', q: 'Ionty $^{12}C^{+}$ a $^{14}C^{+}$ urychlíme stejným napětím a pošleme do stejného pole. Kolikrát větší poloměr má dráha iontu $^{14}C^{+}$?', answer: 1.08, tolerance: 0.01, unit: '×', explain: 'Po urychlení je m · v = √(2 · m · Q · U), takže r = √(2 · m · U / Q) / B je úměrný √m. Poměr √(14/12) ≈ 1,08.' } },
+          ],
+        },
+        {
+          title: 'Pole vodiče a cívky',
+          icon: 'coil',
+          blocks: [
+            { type: 'p', text: 'Kolem přímého vodiče s proudem tvoří indukční čáry soustředné kružnice (Oerstedův pokus, f7-1). Směr určíš **Ampérovým pravidlem pravé ruky**: palec po směru proudu, prsty ukazují směr indukčních čar. Velikost B klesá se vzdáleností d od vodiče.' },
+            { type: 'formula', text: 'B = μ_{0} · I / (2π · d)', caption: 'pole dlouhého přímého vodiče; μ_{0} = 4π · 10^{−7} T·m/A je permeabilita vakua' },
+            { type: 'graph', x: { label: 'd', unit: 'cm', min: 0, max: 10, step: 2 }, y: { label: 'B', unit: 'µT', min: 0, max: 200, step: 50 }, series: [
+              { label: 'vodič s proudem 10 A', points: curve((d) => 200 / d, 1, 10, 18, 1), style: 'smooth' },
+            ], marks: [{ y: 50, label: 'zemské pole ≈ 50 µT' }, { x: 4, y: 50, label: 'd = 4 cm' }], caption: 'Magnetická indukce u vodiče s proudem 10 A: ve dvojnásobné vzdálenosti poloviční. Už 4 cm od vodiče je pole stejně silné jako pole Země – proto kabely ruší kompas.' },
+            { type: 'formula', text: 'B = μ_{0} · μ_{r} · N · I / l', caption: 'pole uvnitř dlouhé cívky (solenoidu): N počet závitů, l délka cívky, μ_{r} relativní permeabilita jádra' },
+            { type: 'diagram', id: 'solenoid-field', caption: 'Uvnitř dlouhé cívky je pole téměř homogenní; venku vypadá jako pole tyčového magnetu. Železné jádro ho mnohonásobně zesílí.' },
+            { type: 'example', title: 'Cívka bez jádra', problem: 'Cívka dlouhá 25 cm má 500 závitů a teče jí proud 2 A. Jaká je magnetická indukce uvnitř (bez jádra)?', steps: [
+              'B = μ_{0} · N · I / l = 4π · 10^{−7} · 500 · 2 / 0,25 T',
+              'B = 1,257 · 10^{−6} · 4 000 T ≈ 5,0 · 10^{−3} T',
+            ], answer: 'B ≈ 5 mT – stokrát víc než pole Země.' },
+            { type: 'callout', variant: 'fact', text: 'Dva rovnoběžné vodiče s proudy stejného směru se přitahují, s opačnými odpuzují. Na této síle byl do roku 2019 definován **ampér**.' },
+            { type: 'check', question: { kind: 'number', q: 'Jaká je magnetická indukce 5 cm od dlouhého přímého vodiče, kterým teče proud 20 A? Odpověz v µT.', answer: 80, tolerance: 1, unit: 'µT', explain: 'B = μ_{0} · I / (2π · d) = 4π · 10^{−7} · 20 / (2π · 0,05) T = 2 · 10^{−7} · 20 / 0,05 T = 8 · 10^{−5} T = 80 µT.' } },
+          ],
+        },
+        {
+          title: 'Magnetické vlastnosti látek',
+          icon: 'compass',
+          blocks: [
+            { type: 'p', text: 'Každý elektron se chová jako malinký magnet. Jak se tyto magnety v látce chovají, udává **relativní permeabilita** μ_{r}: kolikrát látka zesílí (nebo zeslabí) vnější magnetické pole.' },
+            { type: 'compare', columns: [
+              { title: '**Diamagnetické**', icon: 'drop', tone: 'a', points: ['μ_{r} nepatrně menší než 1', 'pole zeslabují, magnet je slabě odpuzuje', 'voda, měď, zlato, bismut', 'v silném poli levituje i živá žába'] },
+              { title: '**Paramagnetické**', icon: 'gas-cloud', tone: 'b', points: ['μ_{r} nepatrně větší než 1', 'magnet je slabě přitahuje', 'hliník, platina, kyslík', 'kapalný kyslík se „přilepí“ k magnetu'] },
+              { title: '**Feromagnetické**', icon: 'magnet', tone: 'c', points: ['μ_{r} stovky až statisíce', '**domény** se natočí ve směru pole', 'železo, nikl, kobalt a jejich slitiny', 'nad **Curieovou teplotou** (Fe 770 °C) přestanou být feromagnetické'] },
+            ] },
+            { type: 'graph', x: { label: 'I', unit: 'A', min: -5, max: 5, step: 1 }, y: { label: 'B', unit: 'T', min: -2, max: 2, step: 0.5 }, series: [
+              { label: 'proud klesá', points: curve((i) => 1.5 * Math.tanh((i + 1) / 1.2), -5, 5, 20, 3), style: 'smooth', tone: 'a' },
+              { label: 'proud roste', points: curve((i) => 1.5 * Math.tanh((i - 1) / 1.2), -5, 5, 20, 3), style: 'smooth', tone: 'b' },
+            ], marks: [{ x: 0, y: 1.02, label: 'zbytkový magnetismus' }, { x: -1, y: 0, label: 'pole zmizí až při opačném proudu' }], caption: 'Hysterezní smyčka železného jádra cívky: když proud vypneš, jádro zůstane zmagnetované. Úzká smyčka = magneticky měkká látka (jádra transformátorů), široká = tvrdá (permanentní magnety).' },
+            { type: 'keyterms', items: [
+              { term: '**magnetické domény**', def: 'oblasti feromagnetika, v nichž jsou elementární magnety natočené stejně' },
+              { term: '**Curieova teplota**', def: 'teplota, nad kterou se domény rozpadnou a látka se stane paramagnetickou' },
+              { term: '**hystereze**', def: 'zpožďování magnetizace za změnami proudu; látka si „pamatuje“ předchozí stav' },
+            ] },
+            { type: 'game', gameId: 'quickfire', text: 'Tesla, Lorentz, domény… Otestuj se v Bleskové výzvě.' },
+            { type: 'check', question: { kind: 'multi', q: 'Které látky jsou feromagnetické?', options: ['železo', 'nikl', 'kobalt', 'hliník', 'měď'], answers: [0, 1, 2], explain: 'Železo, nikl a kobalt mají domény a μ_{r} ≫ 1. Hliník je paramagnetický a měď diamagnetická – obyčejný magnet je téměř necítí.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Magnetické pole popisuje magnetická indukce B (tesla); indukční čáry jsou uzavřené.',
+        'Na vodič s proudem působí síla F_{m} = B · I · l · sin α, jejíž směr určuje Flemingovo pravidlo levé ruky.',
+        'Na pohybující se náboj působí Lorentzova síla F_{m} = B · Q · v · sin α, kolmá na rychlost; mění jen směr pohybu.',
+        'Nabitá částice kolmo k poli obíhá po kružnici o poloměru r = m · v / (Q · B); na tom stojí hmotnostní spektrometr a cyklotron.',
+        'Pole přímého vodiče je B = μ_{0} · I / (2π · d), pole uvnitř dlouhé cívky B = μ_{0} · μ_{r} · N · I / l.',
+        'Látky jsou diamagnetické, paramagnetické a feromagnetické; feromagnetika mají domény, hysterezi a Curieovu teplotu.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Magnetická síla může zvětšit velikost rychlosti nabité částice.', answer: false, explain: 'Lorentzova síla je vždy kolmá na rychlost, a proto nekoná práci. Rychlost mění jen směr.' },
+        { kind: 'number', q: 'Vodič dlouhý 8 cm s proudem 12 A je kolmo k poli s indukcí 0,5 T. Jak velká síla na něj působí?', answer: 0.48, tolerance: 0.01, unit: 'N', explain: 'F = B · I · l = 0,5 T · 12 A · 0,08 m = 0,48 N.' },
+        { kind: 'choice', q: 'Vodič s proudem je rovnoběžný s indukčními čarami. Jaká síla na něj působí?', options: ['nulová', 'největší možná', 'poloviční oproti kolmé poloze', 'síla ve směru proudu'], answer: 0, explain: 'Pro α = 0° je sin α = 0, takže F = 0.' },
+        { kind: 'number', q: 'Proton letí rychlostí 2 · 10^{6} m/s kolmo do pole s indukcí 0,5 T. Jaký je poloměr jeho dráhy? (m_{p} = 1,67 · 10^{−27} kg) Odpověz v cm.', answer: 4.2, tolerance: 0.1, unit: 'cm', explain: 'r = m · v / (e · B) = 1,67 · 10^{−27} · 2 · 10^{6} / (1,6 · 10^{−19} · 0,5) m ≈ 0,042 m = 4,2 cm.' },
+        { kind: 'choice', q: 'Elektron a proton vletí stejnou rychlostí kolmo do stejného magnetického pole. Co platí?', options: ['elektron opíše asi 1 836krát menší kružnici a obíhá opačným směrem', 'oba opíšou stejnou kružnici stejným směrem', 'elektron opíše větší kružnici, protože je lehčí', 'na elektron pole nepůsobí'], answer: 0, explain: 'Velikost náboje je stejná, r = m · v / (Q · B) je úměrný hmotnosti. Opačné znaménko náboje znamená opačný směr síly, a tedy opačný směr obíhání.' },
+        { kind: 'match', q: 'Přiřaď látku k jejímu magnetickému chování.', pairs: [
+          ['železo', 'feromagnetická, μ_{r} ≫ 1'],
+          ['hliník', 'paramagnetická, μ_{r} nepatrně větší než 1'],
+          ['měď', 'diamagnetická, μ_{r} nepatrně menší než 1'],
+          ['železo nad 770 °C', 'paramagnetické, nad Curieovou teplotou'],
+        ], explain: 'Jen feromagnetika mají domény. Nad Curieovou teplotou je tepelný pohyb rozbije a železo přestane být feromagnetické.' },
+        { kind: 'multi', q: 'Čím zvětšíš magnetickou indukci uvnitř cívky?', options: ['větším proudem', 'větším počtem závitů při stejné délce', 'vložením železného jádra', 'natažením cívky na dvojnásobnou délku při stejném počtu závitů', 'měděným jádrem'], answers: [0, 1, 2], explain: 'B = μ_{0} · μ_{r} · N · I / l. Delší cívka se stejným N má pole slabší. Měď je diamagnetická, pole nezesílí.' },
+        { kind: 'tf', q: 'Oběžná doba nabité částice v homogenním magnetickém poli nezávisí na její rychlosti.', answer: true, explain: 'T = 2π · m / (Q · B). Rychlejší částice opisuje větší kružnici, ale oběhne ji za stejnou dobu – toho využívá cyklotron.' },
+      ],
+    },
+    // ───────────────────────────────────────────────────────────── f11-6
+    'f11-6': {
+      id: 'f11-6',
+      title: 'Elektromagnetická indukce',
+      goals: [
+        'Spočítat magnetický indukční tok Φ = B · S · cos α',
+        'Určit indukované napětí z Faradayova zákona U_{i} = −N · ΔΦ / Δt i ze sklonu grafu Φ–t',
+        'Určit směr indukovaného proudu Lenzovým zákonem a vysvětlit ho zákonem zachování energie',
+        'Vysvětlit vířivé proudy a vlastní indukci a spočítat energii magnetického pole cívky',
+      ],
+      hook: 'Bezdrátová nabíječka, indukční deska i dynamo na kole dělají totéž: mění magnetické pole, a tím vyrábějí napětí – bez jediného kontaktu. Michael Faraday na to přišel v roce 1831. Bez jeho objevu by nebyla žádná elektrárna.',
+      sections: [
+        {
+          title: 'Magnetický indukční tok',
+          icon: 'magnet',
+          blocks: [
+            { type: 'p', text: 'V lekci f7-3 jsi viděl, že napětí se v cívce indukuje, když se mění magnetické pole, které jí prochází. Abychom to mohli spočítat, potřebujeme veličinu, která říká, **kolik pole prochází plochou závitu**. Je to **magnetický indukční tok** Φ.' },
+            { type: 'formula', text: 'Φ = B · S · cos α', caption: 'Φ ve weberech (Wb = T·m^{2}); S plocha závitu (m^{2}); α úhel mezi vektorem B a kolmicí (normálou) k ploše' },
+            { type: 'p', text: 'Tok si můžeš představit jako počet indukčních čar, které projdou závitem. Když je závit kolmo k čarám (α = 0°), prochází jich nejvíc. Když ho natočíš „bokem“ (α = 90°), neprojde žádná.' },
+            { type: 'graph', x: { label: 'α', unit: '°', min: 0, max: 180, step: 30 }, y: { label: 'Φ', unit: 'mWb', min: -10, max: 10, step: 5 }, series: [
+              { label: 'B = 0,5 T, S = 0,02 m^{2}', points: curve((a) => 10 * Math.cos((a * Math.PI) / 180), 0, 180, 12, 3), style: 'smooth' },
+            ], marks: [{ x: 60, y: 5, label: 'α = 60°: poloviční tok' }, { x: 90, y: 0, label: 'závit rovnoběžně s čarami' }], caption: 'Tok závitem se mění s jeho natočením. Při otočení o 180° čáry procházejí opačně a tok je záporný.' },
+            { type: 'example', title: 'Obdélníkový závit', problem: 'Závit o rozměrech 10 cm × 20 cm je v homogenním poli 0,5 T. Jaký tok jím prochází, když je normála závitu s B rovnoběžná, svírá s ní 60° a je na ni kolmá?', steps: [
+              'S = 0,1 m · 0,2 m = 0,02 m^{2}',
+              'α = 0°: Φ = 0,5 T · 0,02 m^{2} · 1 = 0,01 Wb = 10 mWb',
+              'α = 60°: Φ = 0,01 Wb · cos 60° = 5 mWb',
+              'α = 90°: Φ = 0,01 Wb · 0 = 0',
+            ], answer: '10 mWb, 5 mWb a 0 Wb.' },
+            { type: 'callout', variant: 'remember', text: 'Tok je skalár, ale má znaménko: záleží na tom, z které strany čáry závitem procházejí. Cívka s N závity „vidí“ N-krát větší celkový tok N · Φ.' },
+            { type: 'check', question: { kind: 'number', q: 'Závit o ploše 50 cm^{2} je kolmo k indukčním čarám pole 0,2 T (normála je rovnoběžná s B). Jaký tok jím prochází? Odpověz v mWb.', answer: 1, tolerance: 0.01, unit: 'mWb', explain: 'S = 50 cm^{2} = 0,005 m^{2}; Φ = B · S = 0,2 T · 0,005 m^{2} = 0,001 Wb = 1 mWb.' } },
+          ],
+        },
+        {
+          title: 'Faradayův zákon',
+          icon: 'lightning',
+          blocks: [
+            { type: 'p', text: 'Napětí se indukuje, **jen když se tok mění**. Nezáleží na tom, čím: pohybem magnetu, změnou proudu v sousední cívce, změnou plochy nebo natočením závitu. Čím rychleji se tok mění a čím víc má cívka závitů, tím větší napětí.' },
+            { type: 'list', items: [
+              'změna **B**: magnet se přibližuje nebo vzdaluje, mění se proud v sousední cívce (transformátor)',
+              'změna **S**: vodič klouže po kolejnicích a mění plochu obvodu',
+              'změna **α**: závit se v poli otáčí (generátor)',
+            ] },
+            { type: 'formula', text: 'U_{i} = − N · ΔΦ / Δt', caption: 'Faradayův zákon elektromagnetické indukce: N počet závitů, ΔΦ / Δt rychlost změny toku (Wb/s = V); znaménko minus vyjadřuje Lenzův zákon' },
+            { type: 'diagram', id: 'faraday-lenz', caption: 'Magnet zasouvaný do cívky: tok roste, galvanometr ukáže výchylku. Když magnet zastavíš, ručička se vrátí na nulu.' },
+            { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 5, step: 1 }, y: { label: 'Φ', unit: 'mWb', min: 0, max: 5, step: 1 }, series: [
+              { label: 'tok jedním závitem', points: [[0, 0], [2, 4], [4, 4], [5, 0]] },
+            ], caption: 'Tok nejdřív 2 s rovnoměrně roste, pak 2 s stojí a za 1 s klesne na nulu.' },
+            { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 5, step: 1 }, y: { label: 'U_{i}', unit: 'V', min: -0.5, max: 0.5, step: 0.25 }, series: [
+              { label: 'indukované napětí, N = 100', points: [[0, -0.2], [2, -0.2], [2, 0], [4, 0], [4, 0.4], [5, 0.4]], tone: 'b' },
+            ], marks: [{ x: 3, y: 0, label: 'tok se nemění: U_{i} = 0' }], caption: 'Indukované napětí je (až na znaménko a počet závitů) sklon grafu Φ–t. Rychlejší pokles dává dvakrát větší napětí opačného znaménka.' },
+            { type: 'example', title: 'Čtení z grafu', problem: 'Cívka má 100 závitů a tok jedním závitem se mění podle horního grafu. Jaké napětí se indukuje v jednotlivých úsecích?', steps: [
+              '0–2 s: ΔΦ / Δt = 4 mWb / 2 s = 2 mWb/s, U_{i} = −100 · 0,002 V = −0,2 V',
+              '2–4 s: tok se nemění, U_{i} = 0',
+              '4–5 s: ΔΦ / Δt = −4 mWb / 1 s, U_{i} = −100 · (−0,004) V = +0,4 V',
+            ], answer: '−0,2 V, 0 V a +0,4 V.' },
+            { type: 'check', question: { kind: 'number', q: 'Cívka má 200 závitů. Tok jedním závitem klesne rovnoměrně z 3 mWb na nulu za 0,1 s. Jak velké napětí se v cívce indukuje?', answer: 6, tolerance: 0.05, unit: 'V', explain: '|U_{i}| = N · ΔΦ / Δt = 200 · 0,003 Wb / 0,1 s = 6 V.' } },
+          ],
+        },
+        {
+          title: 'Pohybující se vodič',
+          icon: 'speed',
+          blocks: [
+            { type: 'p', text: 'Vodič délky l se pohybuje rychlostí v kolmo k poli B, například tyč klouzající po kolejnicích. Za čas Δt opíše plochu ΔS = l · v · Δt a tok obvodem se změní o ΔΦ = B · l · v · Δt. Z Faradayova zákona plyne jednoduchý vztah.' },
+            { type: 'formula', text: 'U_{i} = B · l · v', caption: 'napětí na vodiči délky l, který se pohybuje rychlostí v kolmo k indukčním čarám' },
+            { type: 'p', text: 'Totéž se dá vysvětlit Lorentzovou silou: na volné elektrony v pohybujícím se vodiči působí síla podél vodiče a nahrnou je k jednomu konci. Oba pohledy dávají stejný výsledek.' },
+            { type: 'example', title: 'Napětí na křídlech letadla', problem: 'Dopravní letadlo s rozpětím křídel 60 m letí rychlostí 250 m/s. Svislá složka magnetického pole Země je 40 µT. Jaké napětí se indukuje mezi konci křídel?', steps: [
+              'U_{i} = B · l · v = 40 · 10^{−6} T · 60 m · 250 m/s',
+              'U_{i} = 0,6 V',
+            ], answer: 'Asi 0,6 V – změřit ho ale nejde, voltmetr na palubě se pohybuje s letadlem a indukuje se i v jeho přívodech.' },
+            { type: 'iconlist', items: [
+              { icon: 'motor', title: 'Dynamo a generátor', text: 'vodiče cívky se pohybují v poli magnetu – podrobně v lekci f11-7' },
+              { icon: 'water-tap', title: 'Průtokoměr', text: 'vodivá kapalina v trubce protéká polem jako „pohybující se vodič“; napětí prozradí rychlost toku' },
+              { icon: 'ear', title: 'Dynamický mikrofon', text: 'zvuk rozkmitá membránu s cívkou v poli magnetu a indukuje se napětí' },
+            ] },
+            { type: 'callout', variant: 'tip', text: 'Směr indukovaného proudu v pohybujícím se vodiči určíš **Flemingovým pravidlem pravé ruky**: indukční čáry do dlaně, palec ve směru pohybu, prsty ukazují směr proudu. Levá ruka je pro motory, pravá pro generátory.' },
+            { type: 'check', question: { kind: 'number', q: 'Kovová tyč dlouhá 0,5 m klouže rychlostí 3 m/s kolmo k poli 0,8 T. Jaké napětí se na ní indukuje?', answer: 1.2, tolerance: 0.01, unit: 'V', explain: 'U_{i} = B · l · v = 0,8 T · 0,5 m · 3 m/s = 1,2 V.' } },
+          ],
+        },
+        {
+          title: 'Lenzův zákon',
+          icon: 'arrow-cycle',
+          blocks: [
+            { type: 'p', text: '**Lenzův zákon**: indukovaný proud má takový směr, že jeho magnetické pole **působí proti změně**, která ho vyvolala. Proto je ve Faradayově zákoně znaménko minus.' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'magnet', title: 'Přibližuješ magnet', text: 'severní pól míří k cívce, tok cívkou roste' },
+              { icon: 'coil', title: 'Cívka se brání', text: 'indukovaný proud vytvoří na bližším konci také severní pól' },
+              { icon: 'vector', title: 'Odpuzování', text: 'cívka magnet odpuzuje, musíš tlačit – konáš práci' },
+              { icon: 'heat', title: 'Kam jde práce', text: 'tvoje práce se mění na elektrickou energii a nakonec na teplo v obvodu' },
+            ], caption: 'Lenzův zákon je zákon zachování energie' },
+            { type: 'p', text: 'Kdyby to bylo naopak a cívka magnet přitahovala, magnet by se sám rozjel, indukoval by stále větší proud, a ten by ho dál urychloval. Energie by vznikala z ničeho – perpetuum mobile. ==Lenzův zákon je důsledek zákona zachování energie.==' },
+            { type: 'callout', variant: 'mascot', text: 'Pusť silný magnet do měděné trubky. Místo pádu se bude líně sunout dolů. Měď není magnetická – jen v ní indukované proudy brzdí každou změnu toku. Doma to zkusíš s neodymovým magnetem a trubkou z hobby marketu.' },
+            { type: 'callout', variant: 'fact', text: 'Thomsonův skákající kroužek: na železné jádro cívky nasadíš hliníkový kroužek a zapneš proud. Tok kroužkem prudce vzroste, indukovaný proud se mu brání a kroužek vystřelí do výšky.' },
+            { type: 'check', question: { kind: 'choice', q: 'Od cívky vzdaluješ magnet, jehož severní pól míří k cívce. Jaký pól vznikne na bližším konci cívky?', options: ['jižní – cívka se snaží magnet udržet', 'severní – cívka magnet odpuzuje', 'žádný, proud se neindukuje', 'záleží jen na počtu závitů'], answer: 0, explain: 'Tok klesá. Cívka se změně brání, a proto magnet přitahuje zpět: na bližším konci vznikne jižní pól.' } },
+          ],
+        },
+        {
+          title: 'Vířivé proudy',
+          icon: 'heat',
+          blocks: [
+            { type: 'p', text: 'Indukce nepotřebuje cívku. V každém masivním vodiči, kterým prochází měnící se tok, vzniknou uzavřené proudové smyčky – **vířivé (Foucaultovy) proudy**. Podle Lenzova zákona brzdí pohyb a podle Joulova zákona vodič zahřívají.' },
+            { type: 'compare', columns: [
+              { title: 'Kde pomáhají', icon: 'check', tone: 'good', points: [
+                '**indukční varná deska**: střídavé pole cívky ohřeje přímo dno hrnce',
+                '**elektromagnetická brzda**: vlaky, kamiony, volné pády v zábavních parcích – brzdí bez tření',
+                '**detektor kovů** na letišti i hledačka pokladů',
+                '**indukční pec** taví kovy bez plamene',
+              ] },
+              { title: 'Kde škodí', icon: 'cross', tone: 'bad', points: [
+                'ohřívají jádra transformátorů a motorů – ztráty energie',
+                'proto se jádra skládají z tenkých izolovaných **plechů**',
+                'plechy přeruší velké proudové smyčky a ztráty klesnou',
+              ] },
+            ] },
+            { type: 'callout', variant: 'tip', text: 'Proč na indukční desce nefunguje skleněný nebo hliníkový hrnec? Sklo nevede vůbec. Hliník a měď vedou tak dobře a jsou nemagnetické, že se v nich vytvoří jen malé ztráty. Dno musí být z feromagnetického materiálu, třeba oceli.' },
+            { type: 'check', question: { kind: 'tf', q: 'Jádro transformátoru se vyrábí z jednoho plného železného kvádru, aby v něm vířivé proudy byly co největší.', answer: false, explain: 'Je to naopak: vířivé proudy jádro zbytečně ohřívají. Jádro se skládá z tenkých vzájemně izolovaných plechů, aby se proudové smyčky nemohly vytvořit.' } },
+          ],
+        },
+        {
+          title: 'Vlastní indukce a indukčnost',
+          icon: 'coil',
+          blocks: [
+            { type: 'p', text: 'Když se mění proud v cívce, mění se i tok, který si cívka sama vytváří. V cívce se tak indukuje napětí, které se podle Lenze brání změně jejího **vlastního** proudu. Tomu se říká **vlastní indukce**. Míru, jak moc se cívka brání, udává **indukčnost** L s jednotkou **henry** (H).' },
+            { type: 'formula', text: 'U_{i} = − L · ΔI / Δt', caption: 'napětí vlastní indukce; indukčnost roste s počtem závitů (s N^{2}), s průřezem cívky a s permeabilitou jádra' },
+            { type: 'circuit', source: { kind: 'battery', label: '6 V' }, parts: [
+              { kind: 'switch' },
+              { parallel: [
+                [{ kind: 'coil', label: 'L' }, { kind: 'lamp', label: 'Ž_{1}' }],
+                [{ kind: 'rheostat', label: 'R' }, { kind: 'lamp', label: 'Ž_{2}' }],
+              ] },
+            ], caption: 'Pokus: odpor R nastavíš stejný jako odpor cívky. Po sepnutí se Ž_{2} rozsvítí hned, Ž_{1} v cívkové větvi až se zpožděním.' },
+            { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 1, step: 0.2 }, y: { label: 'I', unit: 'A', min: 0, max: 0.4, step: 0.1 }, series: [
+              { label: 'větev s rezistorem (Ž_{2})', points: [[0, 0], [0, 0.3], [1, 0.3]], tone: 'b' },
+              { label: 'větev s cívkou (Ž_{1})', points: curve((t) => 0.3 * (1 - Math.exp(-t / 0.2)), 0, 1, 15, 3), style: 'smooth', tone: 'a' },
+            ], caption: 'Proud cívkou nenaskočí okamžitě – roste podobně jako napětí nabíjeného kondenzátoru.' },
+            { type: 'formula', text: 'E_{m} = ½ · L · I^{2}', caption: 'energie magnetického pole cívky (J) – obdoba energie kondenzátoru ½ · C · U^{2}' },
+            { type: 'example', title: 'Jiskra při vypnutí', problem: 'Cívkou s indukčností 0,5 H teče proud 2 A. Vypínač ho přeruší za 10 ms. Jaké napětí se indukuje a kolik energie bylo v poli cívky?', steps: [
+              '|U_{i}| = L · ΔI / Δt = 0,5 H · 2 A / 0,01 s = 100 V',
+              'E_{m} = ½ · L · I^{2} = ½ · 0,5 H · (2 A)^{2} = 1 J',
+            ], answer: 'Indukuje se asi 100 V (víc než napětí zdroje!) a uvolní se 1 J – proto mezi kontakty vypínače přeskočí jiskra.' },
+            { type: 'callout', variant: 'fact', text: '**Zapalovací cívka** v benzínovém motoru využívá právě tohle: náhlé přerušení proudu vytvoří napětí až 30 kV a jiskru ve svíčce. U relé a motorů se naopak přidává ochranná dioda, aby napěťová špička nezničila elektroniku.' },
+            { type: 'check', question: { kind: 'number', q: 'Cívkou s indukčností 0,2 H teče proud 3 A. Kolik energie je uloženo v jejím magnetickém poli?', answer: 0.9, tolerance: 0.01, unit: 'J', explain: 'E_{m} = ½ · L · I^{2} = ½ · 0,2 H · 9 A^{2} = 0,9 J.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Magnetický indukční tok Φ = B · S · cos α (weber) udává, kolik magnetického pole prochází plochou závitu.',
+        'Napětí se indukuje, jen když se tok mění: U_{i} = −N · ΔΦ / Δt; v grafu Φ–t je to sklon.',
+        'Na vodiči délky l, který se pohybuje rychlostí v kolmo k poli, je napětí U_{i} = B · l · v.',
+        'Lenzův zákon: indukovaný proud působí proti změně, která ho vyvolala – je to důsledek zákona zachování energie.',
+        'Vířivé proudy v masivních vodičích brzdí a ohřívají; využívá je indukční deska a brzda, v jádrech transformátorů se omezují plechy.',
+        'Vlastní indukce brání změnám proudu v cívce: U_{i} = −L · ΔI / Δt; indukčnost L se měří v henry.',
+        'Cívka s proudem I má v magnetickém poli energii E_{m} = ½ · L · I^{2}.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'V cívce ležící v silném, ale neměnném magnetickém poli se indukuje napětí.', answer: false, explain: 'Indukované napětí závisí na změně toku. Konstantní tok, i velký, nedává žádné napětí.' },
+        { kind: 'number', q: 'Závit o ploše 0,05 m^{2} je v poli 0,4 T. Normála závitu svírá s B úhel 60°. Jaký tok závitem prochází? Odpověz v mWb.', answer: 10, tolerance: 0.1, unit: 'mWb', explain: 'Φ = B · S · cos α = 0,4 T · 0,05 m^{2} · 0,5 = 0,01 Wb = 10 mWb.' },
+        { kind: 'choice', q: 'Který zákon zachování stojí za Lenzovým zákonem?', options: ['zákon zachování energie', 'zákon zachování náboje', 'zákon zachování hybnosti', 'zákon zachování hmotnosti'], answer: 0, explain: 'Kdyby indukovaný proud změnu podporoval, energie by vznikala z ničeho. Proti změně musíš konat práci a ta se mění na elektrickou energii.' },
+        { kind: 'number', q: 'Cívka má 50 závitů o ploše 0,01 m^{2}. Magnetická indukce kolmo k závitům rovnoměrně klesne z 0,6 T na 0,2 T za 0,02 s. Jaké napětí se indukuje?', answer: 10, tolerance: 0.1, unit: 'V', explain: 'ΔΦ = ΔB · S = 0,4 T · 0,01 m^{2} = 0,004 Wb; |U_{i}| = 50 · 0,004 / 0,02 V = 10 V.' },
+        { kind: 'multi', q: 'Ve kterých zařízeních se využívají vířivé proudy?', options: ['indukční varná deska', 'elektromagnetická brzda vlaku', 'detektor kovů', 'olověný akumulátor', 'LED dioda'], answers: [0, 1, 2], explain: 'Deska ohřívá dno hrnce, brzda vířivými proudy zpomaluje kotouč, detektor zachytí pole vířivých proudů v kovu. Akumulátor a LED indukci nevyužívají.' },
+        { kind: 'match', q: 'Přiřaď veličinu k její jednotce.', pairs: [
+          ['magnetický indukční tok Φ', 'weber (Wb)'],
+          ['indukčnost L', 'henry (H)'],
+          ['magnetická indukce B', 'tesla (T)'],
+          ['indukované napětí U_{i}', 'volt (V)'],
+        ], explain: '1 Wb = 1 T · 1 m^{2}; 1 H = 1 V · s / A; 1 T = 1 N / (A · m).' },
+        { kind: 'choice', q: 'Proč padá silný magnet měděnou trubkou mnohem pomaleji než plastovou?', options: ['v mědi se indukují vířivé proudy, jejichž pole pohyb magnetu brzdí', 'měď magnet přitahuje, protože je feromagnetická', 'v měděné trubce je větší odpor vzduchu', 'měď je těžší než plast'], answer: 0, explain: 'Měď není feromagnetická. Padající magnet ale mění tok v každém „prstenci“ trubky a indukované proudy podle Lenze jeho pohyb brzdí.' },
+        { kind: 'number', q: 'Proud v cívce s indukčností 40 mH klesne rovnoměrně z 5 A na nulu za 2 ms. Jak velké napětí se na cívce indukuje?', answer: 100, tolerance: 1, unit: 'V', explain: '|U_{i}| = L · ΔI / Δt = 0,04 H · 5 A / 0,002 s = 100 V.' },
+      ],
+    },
+    // ───────────────────────────────────────────────────────────── f11-7
+    'f11-7': {
+      id: 'f11-7',
+      title: 'Střídavý proud a elektromagnetické vlny',
+      goals: [
+        'Popsat vznik střídavého napětí a počítat s amplitudou, frekvencí a efektivními hodnotami',
+        'Spočítat induktanci X_{L} = ω · L, kapacitanci X_{C} = 1 / (ω · C) a rezonanční frekvenci obvodu RLC',
+        'Počítat s transformátorem a vysvětlit, proč se elektřina přenáší vysokým napětím',
+        'Popsat oscilační obvod LC, vznik elektromagnetické vlny a spektrum od rádiových vln po záření gama (c = λ · f)',
+      ],
+      hook: 'V zásuvce je 230 V – jenže napětí v ní ve skutečnosti kmitá mezi +325 V a −325 V, padesátkrát za sekundu. A anténa tvého mobilu dělá v podstatě totéž, jen desítky milionůkrát rychleji. Dnes spojíme obojí.',
+      sections: [
+        {
+          title: 'Vznik střídavého napětí',
+          icon: 'wind-turbine',
+          blocks: [
+            { type: 'p', text: 'Cívka o N závitech plochy S se otáčí úhlovou rychlostí ω v homogenním poli B. Úhel mezi normálou a polem roste rovnoměrně, α = ω · t, takže tok Φ = B · S · cos ωt se mění pořád. Podle Faradayova zákona se indukuje napětí, které se mění **sinusově**.' },
+            { type: 'diagram', id: 'generator', caption: 'Alternátor: cívka se otáčí mezi póly magnetu, sběrací kroužky odvádějí střídavé napětí. V elektrárně se naopak točí magnet (rotor) uvnitř pevných cívek.' },
+            { type: 'formula', text: 'u = U_{m} · sin(ω · t),   ω = 2π · f = 2π / T', caption: 'okamžité napětí u, amplituda (maximální hodnota) U_{m}, úhlová frekvence ω (rad/s), frekvence f (Hz), perioda T (s)' },
+            { type: 'formula', text: 'U_{m} = N · B · S · ω', caption: 'amplituda napětí generátoru: roste s počtem závitů, polem, plochou a rychlostí otáčení' },
+            { type: 'graph', x: { label: 't', unit: 'ms', min: 0, max: 40, step: 5 }, y: { label: 'u', unit: 'V', min: -400, max: 400, step: 100 }, series: [
+              { label: 'napětí v zásuvce', points: curve((t) => 325 * Math.sin((2 * Math.PI * t) / 20), 0, 40, 32, 1), style: 'smooth' },
+            ], marks: [{ x: 5, y: 325, label: 'U_{m} = 325 V' }, { y: 230, label: 'U_{ef} = 230 V' }, { x: 20, label: 'T = 20 ms' }], caption: 'Síťové napětí 230 V, 50 Hz: jedna perioda trvá 20 ms, amplituda je 325 V.' },
+            { type: 'example', title: 'Školní generátor', problem: 'Cívka se 100 závity o ploše 0,02 m^{2} se otáčí 50krát za sekundu v poli 0,5 T. Jaká je amplituda indukovaného napětí?', steps: [
+              'ω = 2π · f = 2π · 50 s^{−1} ≈ 314 rad/s',
+              'U_{m} = N · B · S · ω = 100 · 0,5 T · 0,02 m^{2} · 314 s^{−1}',
+              'U_{m} ≈ 314 V',
+            ], answer: 'U_{m} ≈ 314 V.' },
+            { type: 'check', question: { kind: 'number', q: 'Jaká je úhlová frekvence střídavého proudu o frekvenci 50 Hz?', answer: 314, tolerance: 1, unit: 'rad/s', explain: 'ω = 2π · f = 2 · 3,14 · 50 s^{−1} ≈ 314 rad/s.' } },
+          ],
+        },
+        {
+          title: 'Efektivní hodnoty a výkon',
+          icon: 'socket',
+          blocks: [
+            { type: 'p', text: 'Když napětí pořád kmitá, co znamená „230 V“? Je to **efektivní hodnota**: takové stejnosměrné napětí, které by ve stejném rezistoru vyvinulo stejné teplo. Voltmetry a ampérmetry pro střídavý proud ukazují právě efektivní hodnoty.' },
+            { type: 'formula', text: 'U_{ef} = U_{m} / √2,   I_{ef} = I_{m} / √2', caption: 'platí pro sinusový průběh; √2 ≈ 1,41' },
+            { type: 'graph', x: { label: 't', unit: 'ms', min: 0, max: 20, step: 5 }, y: { label: 'p', unit: 'W', min: 0, max: 4000, step: 1000 }, series: [
+              { label: 'okamžitý výkon rychlovarné konvice', points: curve((t) => 4000 * Math.sin((2 * Math.PI * t) / 20) ** 2, 0, 20, 24, 1), style: 'smooth', area: true },
+            ], marks: [{ y: 2000, label: 'průměr P = U_{ef} · I_{ef} = 2 000 W' }], caption: 'Výkon v rezistoru kmitá mezi nulou a 4 000 W dvakrát za periodu. Průměr je polovina maxima – odtud √2 v efektivních hodnotách.' },
+            { type: 'example', title: 'Rychlovarná konvice', problem: 'Konvice má příkon 2 000 W při 230 V. Jaký je efektivní a maximální proud, amplituda napětí a odpor topné spirály?', steps: [
+              'I_{ef} = P / U_{ef} = 2 000 W / 230 V ≈ 8,7 A',
+              'I_{m} = √2 · I_{ef} ≈ 1,41 · 8,7 A ≈ 12,3 A',
+              'U_{m} = √2 · 230 V ≈ 325 V',
+              'R = U_{ef} / I_{ef} = 230 V / 8,7 A ≈ 26,5 Ω',
+            ], answer: 'I_{ef} ≈ 8,7 A, I_{m} ≈ 12,3 A, U_{m} ≈ 325 V, R ≈ 26,5 Ω.' },
+            { type: 'p', text: 'U cívek a kondenzátorů jsou proud a napětí fázově posunuté o úhel φ. Pak se část energie jen „přelévá“ tam a zpět a skutečný (činný) výkon je menší: P = U_{ef} · I_{ef} · cos φ. Číslu cos φ se říká **účiník**.' },
+            { type: 'check', question: { kind: 'number', q: 'Amplituda střídavého napětí je 12 V. Jaká je jeho efektivní hodnota?', answer: 8.49, tolerance: 0.05, unit: 'V', explain: 'U_{ef} = U_{m} / √2 = 12 V / 1,414 ≈ 8,49 V.' } },
+          ],
+        },
+        {
+          title: 'Odpor, induktance a kapacitance',
+          icon: 'coil',
+          blocks: [
+            { type: 'p', text: 'Pro střídavý proud se cívka a kondenzátor chovají úplně jinak než pro stejnosměrný. Cívka se kvůli vlastní indukci brání změnám proudu – čím rychlejší změny, tím víc. Kondenzátor se naopak stále nabíjí a vybíjí, takže obvodem proud teče – a čím rychleji, tím snáz.' },
+            { type: 'formula', text: 'X_{L} = ω · L,   X_{C} = 1 / (ω · C)', caption: 'induktance cívky X_{L} a kapacitance kondenzátoru X_{C} v ohmech; pro efektivní hodnoty platí I = U / X' },
+            { type: 'compare', columns: [
+              { title: '**Rezistor** R', icon: 'heat', tone: 'a', points: ['odpor nezávisí na frekvenci', 'proud a napětí ve fázi', 'energii mění na teplo'] },
+              { title: '**Cívka** X_{L}', icon: 'coil', tone: 'b', points: ['X_{L} roste s frekvencí', 'proud se za napětím zpožďuje o 90°', 'energii jen střádá a vrací'] },
+              { title: '**Kondenzátor** X_{C}', icon: 'battery', tone: 'c', points: ['X_{C} klesá s frekvencí', 'proud předbíhá napětí o 90°', 'pro stejnosměrný proud (f = 0) nepropustný'] },
+            ] },
+            { type: 'graph', x: { label: 'f', unit: 'Hz', min: 0, max: 500, step: 100 }, y: { label: 'X', unit: 'Ω', min: 0, max: 350, step: 50 }, series: [
+              { label: 'X_{L}, L = 0,1 H', points: [[0, 0], [500, 314.2]], tone: 'a' },
+              { label: 'X_{C}, C = 10 µF', points: curve((f) => 1 / (2 * Math.PI * f * 1e-5), 50, 500, 18, 1), style: 'smooth', tone: 'b' },
+            ], marks: [{ x: 159, y: 100, label: 'X_{L} = X_{C} při 159 Hz' }], caption: 'Induktance roste přímo úměrně s frekvencí, kapacitance klesá nepřímo úměrně. Kde se křivky protnou, nastane rezonance.' },
+            { type: 'example', title: 'Cívka a kondenzátor v síti', problem: 'Jakou induktanci má cívka 0,1 H a jakou kapacitanci kondenzátor 10 µF při frekvenci 50 Hz? Jaký proud jimi poteče při napětí 230 V?', steps: [
+              'ω = 2π · 50 ≈ 314 rad/s',
+              'X_{L} = 314 · 0,1 Ω ≈ 31,4 Ω, I = 230 V / 31,4 Ω ≈ 7,3 A',
+              'X_{C} = 1 / (314 · 10^{−5}) Ω ≈ 318 Ω, I = 230 V / 318 Ω ≈ 0,72 A',
+            ], answer: 'X_{L} ≈ 31 Ω (proud 7,3 A), X_{C} ≈ 318 Ω (proud 0,72 A).' },
+            { type: 'check', question: { kind: 'choice', q: 'Frekvenci střídavého napětí na kondenzátoru zdvojnásobíme. Co se stane s kapacitancí?', options: ['klesne na polovinu', 'zdvojnásobí se', 'nezmění se', 'klesne na čtvrtinu'], answer: 0, explain: 'X_{C} = 1 / (2π · f · C) je nepřímo úměrná frekvenci. Dvojnásobná frekvence znamená poloviční kapacitanci a dvojnásobný proud.' } },
+          ],
+        },
+        {
+          title: 'Obvod RLC a rezonance',
+          icon: 'wave',
+          blocks: [
+            { type: 'p', text: 'Zapojíme rezistor, cívku a kondenzátor do série. Napětí na cívce a na kondenzátoru jsou v opačné fázi, a proto se jejich účinky částečně ruší. Celkový „odpor“ obvodu pro střídavý proud je **impedance** Z.' },
+            { type: 'circuit', source: { kind: 'ac', label: 'U = 10 V' }, parts: [
+              { kind: 'resistor', label: 'R = 20 Ω' },
+              { kind: 'coil', label: 'L = 0,1 H' },
+              { kind: 'capacitor', label: 'C = 10 µF' },
+              { kind: 'ammeter' },
+            ], caption: 'Sériový obvod RLC napájený z generátoru s nastavitelnou frekvencí' },
+            { type: 'formula', text: 'Z = √(R^{2} + (X_{L} − X_{C})^{2}),   I = U / Z', caption: 'impedance sériového obvodu RLC (Ω); U a I jsou efektivní hodnoty' },
+            { type: 'formula', text: 'f_{0} = 1 / (2π · √(L · C))', caption: 'rezonanční frekvence: X_{L} = X_{C}, impedance je nejmenší (Z = R) a proud největší' },
+            { type: 'graph', x: { label: 'f', unit: 'Hz', min: 0, max: 400, step: 50 }, y: { label: 'I', unit: 'A', min: 0, max: 0.6, step: 0.1 }, series: [
+              { label: 'R = 20 Ω', points: curve((f) => 10 / Math.sqrt(400 + (2 * Math.PI * f * 0.1 - 1 / (2 * Math.PI * f * 1e-5)) ** 2), 50, 400, 35, 3), style: 'smooth' },
+            ], marks: [{ x: 159, y: 0.5, label: 'rezonance: f_{0} ≈ 159 Hz, I = U / R = 0,5 A' }], caption: 'Rezonanční křivka: jen v úzkém pásmu kolem f_{0} teče velký proud. Čím menší R, tím ostřejší vrchol.' },
+            { type: 'example', title: 'Mimo rezonanci a v rezonanci', problem: 'Pro obvod na obrázku (U = 10 V) spočítej proud při 50 Hz a rezonanční frekvenci.', steps: [
+              '50 Hz: X_{L} = 31,4 Ω, X_{C} = 318,3 Ω, X_{L} − X_{C} = −286,9 Ω',
+              'Z = √(20^{2} + 286,9^{2}) Ω ≈ 287,6 Ω, I = 10 V / 287,6 Ω ≈ 0,035 A',
+              'f_{0} = 1 / (2π · √(0,1 · 10^{−5})) Hz = 1 / (2π · 10^{−3}) Hz ≈ 159 Hz',
+              'V rezonanci Z = R = 20 Ω, I = 10 V / 20 Ω = 0,5 A',
+            ], answer: 'Při 50 Hz teče jen 35 mA, v rezonanci při 159 Hz celých 0,5 A.' },
+            { type: 'callout', variant: 'fact', text: 'Tak se ladí rádio: otočný kondenzátor mění C, a tím f_{0}. Z tisíců vysílačů v anténě „rezonuje“ jen ten, jehož frekvence se shoduje s f_{0}. Stejný princip má rezonance u kyvadla a houpačky (lekce f9-5).' },
+            { type: 'check', question: { kind: 'number', q: 'Jaká je rezonanční frekvence obvodu s cívkou 1 mH a kondenzátorem 1 nF? Odpověz v kHz.', answer: 159, tolerance: 2, unit: 'kHz', explain: '√(L · C) = √(10^{−3} · 10^{−9}) s = 10^{−6} s; f_{0} = 1 / (2π · 10^{−6}) Hz ≈ 159 000 Hz = 159 kHz.' } },
+          ],
+        },
+        {
+          title: 'Transformátor a přenos energie',
+          icon: 'factory',
+          blocks: [
+            { type: 'p', text: 'Transformátor jsi poznal v lekci f7-4: dvě cívky na společném železném jádře. Střídavý proud v primární cívce vytváří měnící se tok, který prochází i sekundární cívkou a indukuje v ní napětí. U ideálního transformátoru se neztrácí žádný výkon.' },
+            { type: 'diagram', id: 'transformer', caption: 'Primární a sekundární cívka na uzavřeném jádře z plechů. Napětí se transformuje v poměru počtu závitů.' },
+            { type: 'formula', text: 'U_{2} / U_{1} = N_{2} / N_{1} = I_{1} / I_{2}', caption: 'transformační poměr k = N_{2} / N_{1}; poslední rovnost plyne z U_{1} · I_{1} = U_{2} · I_{2} (ideální transformátor)' },
+            { type: 'example', title: 'Nabíječka', problem: 'Transformátor v nabíječce snižuje 230 V na 11,5 V. Primární cívka má 2 000 závitů. Kolik závitů má sekundární cívka a jaký proud teče primárem, odebírá-li spotřebič 2 A?', steps: [
+              'N_{2} = N_{1} · U_{2} / U_{1} = 2 000 · 11,5 / 230 = 100 závitů',
+              'I_{1} = I_{2} · U_{2} / U_{1} = 2 A · 11,5 / 230 = 0,1 A',
+            ], answer: 'N_{2} = 100 závitů, primárem teče 0,1 A.' },
+            { type: 'example', title: 'Proč vysoké napětí', problem: 'Elektrárna posílá do města výkon 10 MW vedením s odporem 5 Ω. Jaké jsou ztráty při napětí 22 kV a při 400 kV?', steps: [
+              '22 kV: I = P / U = 10^{7} W / 22 000 V ≈ 455 A, ztráty P_{z} = R · I^{2} = 5 · 455^{2} W ≈ 1,03 MW',
+              '400 kV: I = 10^{7} / 400 000 A = 25 A, ztráty P_{z} = 5 · 25^{2} W ≈ 3 100 W',
+            ], answer: 'Při 22 kV se v drátech ztratí asi 10 % výkonu, při 400 kV jen 0,03 %. Ztráty klesají s druhou mocninou napětí.' },
+            { type: 'diagram', id: 'power-grid', caption: 'Cesta elektřiny: generátor → zvyšovací transformátor → vedení 400 kV a 110 kV → rozvodny → snižovací transformátory → 230 V v zásuvce.' },
+            { type: 'check', question: { kind: 'number', q: 'Transformátor má na primáru 200 závitů a na sekundáru 11 000 závitů. Primár je připojen na 400 V. Jaké je napětí na sekundáru? Odpověz v kV.', answer: 22, tolerance: 0.1, unit: 'kV', explain: 'U_{2} = U_{1} · N_{2} / N_{1} = 400 V · 11 000 / 200 = 22 000 V = 22 kV.' } },
+          ],
+        },
+        {
+          title: 'Oscilační obvod a elektromagnetické vlny',
+          icon: 'satellite',
+          blocks: [
+            { type: 'p', text: 'Nabitý kondenzátor připojíme k cívce. Vybíjí se, proud cívkou roste a energie přechází z elektrického pole kondenzátoru do magnetického pole cívky. Cívka pak proud udržuje (vlastní indukce) a kondenzátor nabije opačně. Energie se přelévá tam a zpět: vznikají **elektromagnetické kmity**.' },
+            { type: 'formula', text: 'T = 2π · √(L · C)', caption: 'Thomsonův vztah: perioda vlastních kmitů oscilačního obvodu LC; skutečné kmity jsou kvůli odporu tlumené' },
+            { type: 'table', headers: ['Pružinový oscilátor (f9-5)', 'Oscilační obvod LC'], rows: [
+              ['výchylka x', 'náboj kondenzátoru Q'],
+              ['rychlost v', 'proud I'],
+              ['hmotnost m (setrvačnost)', 'indukčnost L'],
+              ['pružnost 1/k', 'kapacita C'],
+              ['E_{p} = ½ · k · x^{2}', 'E_{e} = Q^{2} / (2C)'],
+              ['E_{k} = ½ · m · v^{2}', 'E_{m} = ½ · L · I^{2}'],
+              ['T = 2π · √(m / k)', 'T = 2π · √(L · C)'],
+            ], caption: 'Elektromagnetický oscilátor je přesnou obdobou mechanického.' },
+            { type: 'p', text: 'Když desky kondenzátoru rozevřeš až do přímého drátu, vznikne **anténa (dipól)**. Pole už není uzavřené uvnitř obvodu, ale odtrhává se do prostoru. Maxwell předpověděl, že měnící se elektrické pole vytváří magnetické a naopak, takže se pole šíří jako **elektromagnetická vlna** rychlostí světla. Heinrich Hertz ji v roce 1887 poprvé vyrobil a zachytil.' },
+            { type: 'diagram', id: 'em-wave', caption: 'Elektromagnetická vlna: vektory E a B kmitají kolmo na sebe a kolmo na směr šíření. Vlna nepotřebuje žádné prostředí, šíří se i vakuem.' },
+            { type: 'formula', text: 'c = λ · f,   c = 3 · 10^{8} m/s', caption: 've vakuu se všechny elektromagnetické vlny šíří rychlostí světla c' },
+            { type: 'example', title: 'Rádio FM', problem: 'Stanice vysílá na 100 MHz. Jaká je vlnová délka, jak dlouhá je půlvlnná anténa a jakou kapacitu musí mít kondenzátor oscilačního obvodu s cívkou 0,1 µH?', steps: [
+              'λ = c / f = 3 · 10^{8} / 10^{8} m = 3 m, půlvlnný dipól má délku 1,5 m',
+              'Z f = 1 / (2π · √(L · C)) plyne C = 1 / (4π^{2} · f^{2} · L)',
+              'C = 1 / (39,5 · 10^{16} · 10^{−7}) F ≈ 2,5 · 10^{−11} F',
+            ], answer: 'λ = 3 m, anténa 1,5 m, C ≈ 25 pF.' },
+            { type: 'diagram', id: 'em-spectrum', caption: 'Elektromagnetické spektrum: od rádiových vln dlouhých kilometry po záření gama menší než atomové jádro. Liší se jen frekvencí a vlnovou délkou.' },
+            { type: 'table', headers: ['Oblast', 'Vlnová délka', 'Zdroj a využití'], rows: [
+              ['rádiové vlny', 'm až km', 'oscilační obvody, antény: rozhlas, televize'],
+              ['mikrovlny', 'mm až dm', 'mobil (5G 3,5 GHz), Wi-Fi 2,4 GHz, mikrovlnka, radar'],
+              ['infračervené', '760 nm – 1 mm', 'teplá tělesa: dálkové ovladače, termokamery'],
+              ['viditelné světlo', '380–760 nm', 'Slunce, LED, laser: zrak, fotosyntéza'],
+              ['ultrafialové', '10–380 nm', 'Slunce: vitamin D, dezinfekce, spálení kůže'],
+              ['rentgenové', '0,01–10 nm', 'rentgenka: medicína, kontrola zavazadel'],
+              ['gama', 'pod 0,01 nm', 'radioaktivní jádra: ozařování nádorů, sterilizace'],
+            ], caption: 'S rostoucí frekvencí roste energie záření; UV, rentgenové a gama záření ionizují.' },
+            { type: 'game', gameId: 'quickfire', text: 'Střídavý proud, rezonance, spektrum – zopakuj si celou úroveň v Bleskové výzvě.' },
+            { type: 'check', question: { kind: 'number', q: 'Síť 5G vysílá na frekvenci 3,5 GHz. Jaká je vlnová délka? Odpověz v cm.', answer: 8.6, tolerance: 0.1, unit: 'cm', explain: 'λ = c / f = 3 · 10^{8} m/s / 3,5 · 10^{9} Hz ≈ 0,086 m = 8,6 cm.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Cívka otáčející se v magnetickém poli dává sinusové napětí u = U_{m} · sin ωt s amplitudou U_{m} = N · B · S · ω.',
+        'Efektivní hodnoty sinusového proudu a napětí jsou U_{ef} = U_{m} / √2 a I_{ef} = I_{m} / √2; síť má 230 V, tedy amplitudu 325 V.',
+        'Cívka klade střídavému proudu induktanci X_{L} = ω · L, kondenzátor kapacitanci X_{C} = 1 / (ω · C).',
+        'V obvodu RLC nastává rezonance při f_{0} = 1 / (2π · √(L · C)), kdy je impedance nejmenší a proud největší.',
+        'Transformátor mění napětí v poměru závitů, U_{2} / U_{1} = N_{2} / N_{1}; vysoké napětí snižuje ztráty ve vedení R · I^{2}.',
+        'Obvod LC kmitá s periodou T = 2π · √(L · C); otevřený obvod – anténa – vyzařuje elektromagnetické vlny.',
+        'Elektromagnetické vlny se ve vakuu šíří rychlostí c = λ · f = 3 · 10^{8} m/s; spektrum sahá od rádiových vln po záření gama.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Voltmetr připojený do zásuvky ukáže efektivní hodnotu napětí, tedy asi 230 V.', answer: true, explain: 'Měřicí přístroje pro střídavý proud jsou kalibrované na efektivní hodnoty. Amplituda je √2krát větší, asi 325 V.' },
+        { kind: 'number', q: 'Jaká je amplituda napětí v síti s efektivní hodnotou 230 V?', answer: 325, tolerance: 2, unit: 'V', explain: 'U_{m} = √2 · U_{ef} = 1,414 · 230 V ≈ 325 V.' },
+        { kind: 'choice', q: 'Cívku připojíme ke zdroji střídavého napětí s vyšší frekvencí (stejné efektivní napětí). Co se stane s proudem?', options: ['zmenší se, protože induktance roste s frekvencí', 'zvětší se, protože induktance klesá', 'nezmění se', 'proud přestane téct úplně'], answer: 0, explain: 'X_{L} = 2π · f · L roste s frekvencí, takže proud I = U / X_{L} klesá.' },
+        { kind: 'number', q: 'Oscilační obvod má cívku 2 mH a kondenzátor 50 nF. Jaká je frekvence jeho vlastních kmitů? Odpověz v kHz.', answer: 15.9, tolerance: 0.2, unit: 'kHz', explain: '√(L · C) = √(2 · 10^{−3} · 5 · 10^{−8}) s = 10^{−5} s; T = 2π · 10^{−5} s ≈ 6,28 · 10^{−5} s; f = 1 / T ≈ 15 900 Hz.' },
+        { kind: 'multi', q: 'Proč se elektrická energie přenáší na velké vzdálenosti při vysokém napětí?', options: ['při stejném výkonu teče menší proud', 'ztráty ve vedení jsou úměrné druhé mocnině proudu', 'stačí tenčí a levnější vodiče', 'vysoké napětí se šíří rychleji', 'při vysokém napětí mají dráty nulový odpor'], answers: [0, 1, 2], explain: 'P = U · I: vyšší napětí znamená menší proud a ztráty R · I^{2} klesnou s jeho druhou mocninou. Odpor drátů ani rychlost šíření se nemění.' },
+        { kind: 'match', q: 'Přiřaď oblast elektromagnetického spektra k typickému použití.', pairs: [
+          ['rádiové vlny', 'rozhlasové vysílání'],
+          ['mikrovlny', 'Wi-Fi a ohřev jídla'],
+          ['infračervené záření', 'termokamera'],
+          ['rentgenové záření', 'snímek zlomené kosti'],
+        ], explain: 'Všechny jsou elektromagnetické vlny; liší se vlnovou délkou, a tím i tím, jak interagují s látkou.' },
+        { kind: 'order', q: 'Seřaď druhy elektromagnetického záření od nejnižší frekvence po nejvyšší.', items: ['rádiové vlny', 'mikrovlny', 'infračervené záření', 'viditelné světlo', 'ultrafialové záření', 'rentgenové záření'], explain: 'S rostoucí frekvencí klesá vlnová délka (c = λ · f) a roste energie záření.' },
+        { kind: 'tf', q: 'Elektromagnetické vlny se na rozdíl od zvuku mohou šířit i vakuem.', answer: true, explain: 'Elektromagnetická vlna je kmitání samotného elektrického a magnetického pole, prostředí nepotřebuje. Proto k nám dorazí světlo ze Slunce i signál z kosmických sond.' },
+      ],
+    },
+  },
+  boss: [
+    { kind: 'number', q: 'Dva bodové náboje +3 nC a −3 nC jsou ve vakuu 3 mm od sebe. Jak velkou silou se přitahují? Odpověz v mN.', answer: 9, tolerance: 0.1, unit: 'mN', explain: 'F = k · Q_{1} · Q_{2} / r^{2} = 9 · 10^{9} · 9 · 10^{−18} / (3 · 10^{−3})^{2} N = 8,1 · 10^{−8} / 9 · 10^{−6} N = 9 · 10^{−3} N = 9 mN.' },
+    { kind: 'choice', q: 'Proton a částici α (náboj 2e) urychlíme z klidu stejným napětím 1 kV. Jakou kinetickou energii získá částice α?', options: ['2 keV', '1 keV', '4 keV', '0,5 keV'], answer: 0, explain: 'E_{k} = Q · U = 2e · 1 000 V = 2 000 eV = 2 keV. Proton získá 1 keV; hmotnost na energii nemá vliv, jen na výslednou rychlost.' },
+    { kind: 'number', q: 'Kondenzátor 10 µF nabijeme na 100 V a odpojíme od zdroje. Pak jeho desky oddálíme na dvojnásobnou vzdálenost. Jaká energie je v něm uložena teď?', answer: 0.1, tolerance: 0.002, unit: 'J', explain: 'Náboj Q = C · U = 1 mC zůstane (kondenzátor je odpojený). Kapacita klesne na 5 µF, energie Q^{2} / (2C) = 10^{−6} / 10^{−5} J = 0,1 J. Energie se zdvojnásobila – dodal ji ten, kdo desky oddaloval proti přitažlivé síle.' },
+    { kind: 'tf', q: 'Výsledná kapacita kondenzátorů zapojených sériově je menší než kapacita nejmenšího z nich.', answer: true, explain: 'Při sériovém zapojení se sčítají převrácené hodnoty: 1/C = 1/C_{1} + 1/C_{2} + …, takže 1/C je větší než každá z 1/C_{i}.' },
+    { kind: 'number', q: 'Zdroj s U_{e} = 6 V a vnitřním odporem 0,5 Ω napájí dva rezistory po 5 Ω zapojené paralelně. Jaké je svorkové napětí zdroje?', answer: 5, tolerance: 0.02, unit: 'V', explain: 'Paralelně R = 2,5 Ω; I = 6 V / (2,5 + 0,5) Ω = 2 A; U = 6 V − 0,5 Ω · 2 A = 5 V.' },
+    { kind: 'match', q: 'Přiřaď zákon ke vztahu, který ho vyjadřuje.', pairs: [
+      ['Coulombův zákon', 'F_{e} = k · Q_{1} · Q_{2} / r^{2}'],
+      ['Faradayův zákon indukce', 'U_{i} = −N · ΔΦ / Δt'],
+      ['Lorentzova síla', 'F_{m} = B · Q · v · sin α'],
+      ['Thomsonův vztah', 'T = 2π · √(L · C)'],
+    ], explain: 'Coulomb popisuje sílu mezi náboji, Faraday indukci, Lorentzova síla působí na pohybující se náboj v magnetickém poli a Thomsonův vztah udává periodu obvodu LC.' },
+    { kind: 'multi', q: 'Které tvrzení o polovodičích je správné?', options: ['v polovodiči typu N jsou majoritními nosiči elektrony', 'dioda v propustném směru má zúženou hradlovou vrstvu', 'odpor čistého polovodiče s rostoucí teplotou klesá', 'polovodič typu P je kladně nabitý', 'solární článek potřebuje k výrobě proudu vnější zdroj napětí'], answers: [0, 1, 2], explain: 'Typ P je elektricky neutrální – díry vyrovnávají záporné ionty akceptorů. Solární článek je sám zdrojem napětí.' },
+    { kind: 'number', q: 'Kolik hliníku se vyloučí z taveniny s ionty $Al^{3+}$ proudem 10 A za 1 hodinu? (M(Al) = 27 g/mol)', answer: 3.36, tolerance: 0.05, unit: 'g', explain: 'Q = 10 A · 3 600 s = 36 000 C; m = M · Q / (z · F) = 27 · 36 000 / (3 · 96 485) g ≈ 3,36 g.' },
+    { kind: 'number', q: 'Proton obíhá v magnetickém poli 0,2 T po kružnici o poloměru 10 cm. Jakou má rychlost? Odpověz jako násobek 10^{6} m/s. (m_{p} = 1,67 · 10^{−27} kg)', answer: 1.92, tolerance: 0.03, unit: '· 10^{6} m/s', explain: 'Z r = m · v / (e · B): v = e · B · r / m = 1,6 · 10^{−19} · 0,2 · 0,1 / 1,67 · 10^{−27} m/s ≈ 1,92 · 10^{6} m/s.' },
+    { kind: 'choice', q: 'Na železné jádro cívky nasadíš hliníkový kroužek. Po zapnutí proudu kroužek vyskočí vzhůru. Proč?', options: ['v kroužku se indukuje proud, jehož pole působí proti nárůstu toku, a cívka kroužek odpudí', 'hliník je feromagnetický a jádro ho přitáhne', 'proud z cívky přeskočí do kroužku a ohřeje ho', 'kroužek se nabije elektrostaticky'], answer: 0, explain: 'Tok kroužkem prudce roste. Podle Lenzova zákona má indukovaný proud opačný směr než proud v cívce a antiparalelní proudy se odpuzují.' },
+    { kind: 'number', q: 'Čtvercová cívka se 100 závity o straně 10 cm je v poli 0,3 T kolmo k indukčním čarám. Za 0,05 s ji otočíš tak, že je s čarami rovnoběžná. Jaké průměrné napětí se indukuje?', answer: 6, tolerance: 0.05, unit: 'V', explain: 'ΔΦ = B · S = 0,3 T · 0,01 m^{2} = 0,003 Wb (z maxima na nulu); U_{i} = N · ΔΦ / Δt = 100 · 0,003 / 0,05 V = 6 V.' },
+    { kind: 'number', q: 'Sériový obvod RLC má cívku 25 mH a kondenzátor 10 µF. Při jaké frekvenci nastane rezonance?', answer: 318, tolerance: 3, unit: 'Hz', explain: '√(L · C) = √(0,025 · 10^{−5}) s = 5 · 10^{−4} s; f_{0} = 1 / (2π · 5 · 10^{−4}) Hz ≈ 318 Hz.' },
+  ],
+}
+
+export default level

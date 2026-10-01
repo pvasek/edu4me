@@ -1,0 +1,297 @@
+/* Výslednice sil (prefix g-fs-) */
+.g-fs-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.g-fs-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.g-fs-q {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+.g-fs-text {
+  margin: 0;
+  font: 600 16.5px/1.45 var(--font-body);
+  color: var(--ink);
+}
+.g-fs-fig {
+  display: grid;
+  justify-items: center;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 4px;
+}
+.g-fs-svg {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  max-height: 300px;
+  overflow: visible;
+  touch-action: manipulation;
+}
+.g-fs-sym {
+  font: 700 17px/1 var(--font-display);
+  paint-order: stroke;
+  stroke: var(--surface-2);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.g-fs-con .g-fs-sym {
+  stroke: var(--surface);
+}
+.g-fs-axes line {
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+}
+.g-fs-axes text,
+.g-fs-angle {
+  font: italic 600 13px/1 var(--font-display);
+  fill: var(--ink-soft);
+}
+.g-fs-guide {
+  stroke: var(--muted);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 4;
+  fill: none;
+}
+.g-fs-handle {
+  cursor: grab;
+  touch-action: none;
+  outline: none;
+}
+.g-fs-handle:active {
+  cursor: grabbing;
+}
+.g-fs-handle-dot {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+.g-fs-handle:focus-visible .g-fs-handle-dot {
+  stroke: var(--blue);
+  stroke-width: 4;
+}
+.g-fs-hint {
+  font: 700 13px/1 var(--font-hand);
+  font-size: 17px;
+  fill: var(--accent);
+}
+.g-fs-tip {
+  margin: 0;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font: 500 14px/1.35 var(--font-body);
+  color: var(--ink-soft);
+}
+.g-fs-tip svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  color: var(--blue);
+}
+
+/* legend */
+.g-fs-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 6px 12px;
+}
+.g-fs-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-left: 4px solid var(--fs-c);
+  background: var(--surface);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  font-size: 14.5px;
+  min-width: 0;
+}
+.g-fs-lsym {
+  font: italic 800 18px/1 var(--font-display);
+  color: var(--fs-c);
+  min-width: 26px;
+}
+.g-fs-lwho {
+  flex: 1;
+  min-width: 0;
+  color: var(--ink-soft);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.g-fs-lval {
+  white-space: nowrap;
+  font-weight: 700;
+}
+.g-fs-ldir {
+  color: var(--fs-c);
+  display: inline-grid;
+}
+.g-fs-ldir .g-fs-glyph {
+  width: 22px;
+  height: 22px;
+}
+
+.g-fs-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.g-fs-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.g-fs-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.g-fs-bonusbar > span {
+  transition: width 0.25s linear;
+}
+
+/* answer form */
+.g-fs-form {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-fs-dirs {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.g-fs-dirs legend,
+.g-fs-flabel {
+  font: 700 12px/1.2 var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0;
+  margin-bottom: 6px;
+}
+.g-fs-dirrow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  max-width: 420px;
+}
+.g-fs-dir {
+  position: relative;
+  appearance: none;
+  display: grid;
+  place-items: center;
+  min-height: 58px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: var(--shadow-hard);
+  transition: transform 0.08s ease, background 0.15s;
+}
+.g-fs-dir:hover {
+  transform: translate(-1px, -1px);
+}
+.g-fs-dir[aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.g-fs-dir:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+.g-fs-glyph {
+  width: 34px;
+  height: 34px;
+}
+.g-fs-dirkey {
+  position: absolute;
+  left: 6px;
+  top: 3px;
+  font: 800 12px/1 var(--font-body);
+  opacity: 0.75;
+}
+.g-fs-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.g-fs-field {
+  flex: 1 1 150px;
+  min-width: 0;
+  display: grid;
+}
+.g-fs-flabel {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.g-fs-inwrap {
+  position: relative;
+  display: block;
+}
+.g-fs-input {
+  padding-right: 48px;
+  font-size: 21px;
+}
+.g-fs-unit {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 600 15px/1 var(--font-mono);
+  color: var(--muted);
+  pointer-events: none;
+}
+.g-fs-status:empty {
+  display: none;
+}
+
+/* reveal */
+.g-fs-reveal {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-fs-con-fig {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.g-fs-con-fig .g-fs-svg {
+  max-height: 260px;
+}
+.g-fs-con-fig figcaption {
+  font: italic 600 15px/1.35 var(--font-display);
+  color: var(--ink-soft);
+  text-align: center;
+}
+.g-fs-why {
+  margin: 0;
+  font: 600 15.5px/1.5 var(--font-body);
+  padding: 8px 12px;
+  border-left: 3px double var(--accent);
+  background: var(--surface-2);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  overflow-wrap: anywhere;
+}

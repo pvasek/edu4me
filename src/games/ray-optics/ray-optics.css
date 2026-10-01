@@ -1,0 +1,395 @@
+/* Paprsky (prefix ro-). Theme tokens only. */
+.ro-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.ro-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.ro-q {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+.ro-prompt {
+  margin: 0;
+  font: 600 clamp(16px, 4.4vw, 19px) / 1.4 var(--font-body);
+}
+.ro-stage {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: center;
+}
+
+/* ---------- drawing ---------- */
+.ro-svg {
+  display: block;
+  width: 100%;
+  max-width: 540px;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  font-family: var(--font-body);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.ro-svg.is-live {
+  touch-action: none;
+  cursor: crosshair;
+}
+.ro-svg.is-live:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+.ro-bg {
+  fill: var(--surface);
+}
+.ro-axis {
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+  stroke-dasharray: 10 3 2 3;
+}
+.ro-glass {
+  fill: color-mix(in srgb, var(--info-soft) 80%, transparent);
+  stroke: var(--blue);
+  stroke-width: 1.6;
+}
+.ro-unknown {
+  fill: var(--surface-2);
+  stroke: var(--muted);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 3;
+}
+.ro-mirror {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.ro-hatch {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  fill: none;
+}
+.ro-dot {
+  fill: var(--ink);
+}
+.ro-mark {
+  font: italic 700 18px/1 var(--font-display);
+  fill: var(--ink);
+}
+.ro-dim line {
+  stroke: var(--muted);
+  stroke-width: 1;
+}
+.ro-dim text {
+  font: 600 13px/1 var(--font-mono);
+  fill: var(--ink-soft);
+}
+.ro-object line {
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.ro-object path {
+  fill: var(--accent);
+}
+.ro-image line {
+  stroke: var(--blue);
+  stroke-width: 3;
+}
+.ro-image path {
+  fill: var(--blue);
+}
+.ro-imglabel {
+  font: italic 700 16px/1 var(--font-display);
+  fill: var(--blue);
+}
+.ro-marker-arrow line {
+  stroke: var(--violet);
+  stroke-width: 2.5;
+}
+.ro-marker-arrow path {
+  fill: var(--violet);
+}
+.ro-handle {
+  fill: var(--surface);
+  stroke: var(--violet);
+  stroke-width: 2.5;
+}
+.ro-hit {
+  fill: transparent;
+}
+.ro-marker.is-done {
+  opacity: 0.45;
+}
+.ro-svg.is-live .ro-handle {
+  cursor: grab;
+}
+
+.ro-ray {
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.ro-ray.is-virtual {
+  stroke-dasharray: 5 4;
+  stroke-width: 1.3;
+  opacity: 0.85;
+}
+.ro-ray-a {
+  stroke: var(--green);
+}
+.ro-ray-b {
+  stroke: var(--pink);
+}
+.ro-ray-c {
+  stroke: var(--teal);
+}
+.ro-ray-in {
+  stroke: var(--accent);
+  stroke-width: 2.2;
+}
+.ro-ray-player {
+  stroke: var(--violet);
+  stroke-width: 2.2;
+  stroke-dasharray: 6 4;
+}
+.ro-head {
+  fill: var(--accent);
+}
+.ro-normal {
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+  stroke-dasharray: 5 4;
+}
+.ro-arc {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.3;
+}
+.ro-arc-good {
+  stroke: var(--green);
+}
+.ro-angle {
+  font: 700 15px/1 var(--font-mono);
+  fill: var(--accent);
+}
+.ro-angle-good {
+  fill: var(--green);
+}
+.ro-boundary {
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+.ro-medium {
+  fill: var(--surface);
+}
+.ro-medium-dense {
+  fill: var(--info-soft);
+}
+.ro-medlabel {
+  font: italic 700 19px/1 var(--font-display);
+  fill: var(--ink);
+}
+
+.ro-hint {
+  margin: 0;
+  text-align: center;
+  font: 600 13px/1.35 var(--font-body);
+  color: var(--muted);
+}
+.ro-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 14px;
+  font: 600 12.5px/1.3 var(--font-body);
+  color: var(--ink-soft);
+}
+.ro-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ro-legend i {
+  display: inline-block;
+  width: 20px;
+  height: 0;
+  border-top: 2.5px solid;
+}
+.ro-legend .ro-ray-a {
+  border-color: var(--green);
+}
+.ro-legend .ro-ray-b {
+  border-color: var(--pink);
+}
+.ro-legend .ro-ray-c {
+  border-color: var(--teal);
+}
+.ro-legend .ro-ray-v {
+  border-top-style: dashed;
+  border-color: var(--ink-soft);
+}
+
+.ro-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.ro-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.ro-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.ro-bonusbar > span {
+  transition: width 0.25s linear;
+}
+
+/* ---------- answers ---------- */
+.ro-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+.ro-field {
+  position: relative;
+  flex: 1 1 200px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ro-sym {
+  flex: none;
+  font: italic 700 22px/1 var(--font-display);
+}
+.ro-input {
+  padding-right: 44px;
+  font-size: 22px;
+}
+.ro-unit {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 600 16px/1 var(--font-mono);
+  color: var(--muted);
+  pointer-events: none;
+}
+.ro-minus {
+  min-width: 50px;
+  min-height: 50px;
+  padding: 0 12px;
+  font-size: 22px;
+}
+
+.ro-props {
+  display: grid;
+  gap: var(--space-3);
+}
+.ro-seg-row {
+  display: grid;
+  gap: 4px;
+}
+.ro-seg-label {
+  font: 700 12px/1.2 var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ro-seg {
+  display: flex;
+  flex-wrap: wrap;
+}
+.ro-seg button {
+  flex: 1 1 auto;
+  min-height: 46px;
+  font-size: 15px;
+}
+.ro-seg button:disabled {
+  cursor: default;
+}
+.ro-seg button.is-ok {
+  background: var(--good-soft);
+  color: var(--ink);
+  box-shadow: 0 0 0 2px var(--good);
+}
+.ro-seg button.is-bad {
+  background: var(--bad-soft);
+  color: var(--ink);
+}
+.ro-none {
+  justify-self: start;
+}
+.ro-none[aria-pressed='true'] {
+  --btn-bg: var(--info-soft);
+  border-color: var(--blue);
+}
+.ro-none.is-ok {
+  --btn-bg: var(--good-soft);
+  border-color: var(--good);
+  opacity: 1;
+}
+.ro-opts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-3);
+}
+.ro-opt {
+  justify-content: flex-start;
+  min-height: 54px;
+  text-align: left;
+}
+.ro-opt:disabled {
+  opacity: 0.6;
+}
+.ro-opt.is-ok {
+  --btn-bg: var(--good-soft);
+  border-color: var(--good);
+  opacity: 1;
+}
+.ro-opt.is-bad {
+  --btn-bg: var(--bad-soft);
+  opacity: 1;
+}
+
+.ro-status:empty {
+  display: none;
+}
+.ro-why {
+  display: grid;
+  gap: var(--space-3);
+}
+.ro-why p {
+  margin: 0;
+  font: 500 16px/1.5 var(--font-body);
+}
+.ro-why-ico {
+  width: 18px;
+  height: 18px;
+  vertical-align: -3px;
+  color: var(--accent);
+}
+
+@media (max-width: 420px) {
+  .ro-card {
+    padding: var(--space-3);
+  }
+}

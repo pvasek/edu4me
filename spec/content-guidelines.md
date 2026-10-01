@@ -96,6 +96,45 @@ A section may embed a `game` block pointing at a related mini-game (at most once
 - `check` – a question about this section; it becomes part of the end-of-lesson quiz (see below).
 - `game` – `{ gameId, text }`: a card inviting the learner to a mini-game.
 
+### Physics drawings (parametric blocks)
+
+Five blocks draw physics pictures from data (renderers in `src/illustrations/physics/`, types in `src/core/types.ts`, checked by `src/core/validate.ts`). All take an optional `caption`; labels accept inline markup (`F_{G}`, `v_{max}`, `m^{2}`); numbers are shown with a decimal comma. Tones `a`–`d`: `a` is the level colour, then ochre, teal and pink; when a tone is omitted, items cycle through them.
+
+- `graph` – axes `x`/`y` (`label`, `unit`, `min`, `max`, optional `step`; nice ticks otherwise), `series` of `[x, y]` points in order of x (`style: 'line' | 'dashed' | 'dots' | 'smooth'`, `tone`, `area: true` shades the area under the line), optional `marks` (x+y = labelled point, only x = vertical guide, only y = horizontal guide). Two or more labelled series get a legend. All points must lie inside the axes.
+
+  ```ts
+  { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 10 }, y: { label: 'v', unit: 'm/s', min: 0, max: 20 },
+    series: [{ label: 'auto', points: [[0, 0], [4, 16], [8, 16], [10, 0]], area: true },
+             { label: 'cyklista', points: [[0, 6], [10, 6]], style: 'dashed' }],
+    marks: [{ x: 4, y: 16, label: 'v_{max}' }], caption: 'Plocha pod grafem rychlosti je dráha.' }
+  ```
+- `circuit` – `source` (`'cell' | 'battery' | 'dc' | 'ac'`, optional `label` such as `'4,5 V'`) and `parts` in series, clockwise from the + terminal. A part is a component `{ kind, label? }` (`resistor`, `lamp`, `switch`, `switch-open`, `ammeter`, `voltmeter`, `ohmmeter`, `diode`, `led`, `capacitor`, `coil`, `motor`, `fuse`, `rheostat`, `ldr`, `thermistor`, `bell`, `wire`) or a parallel group `{ parallel: [[…], […]] }` whose 2+ branches are series lists (an empty branch is a plain wire). A voltmeter is drawn as a branch parallel to the part it measures. Long circuits wrap onto the right and bottom side automatically; closed circuits show moving current dots. Keep labels short (`R_{1}`, `Ž`, `2 Ω`).
+
+  ```ts
+  { type: 'circuit', source: { kind: 'battery', label: '4,5 V' },
+    parts: [{ kind: 'switch', label: 'S' }, { kind: 'ammeter' },
+            { parallel: [[{ kind: 'lamp', label: 'Ž_{1}' }], [{ kind: 'lamp', label: 'Ž_{2}' }], [{ kind: 'voltmeter' }]] }] }
+  ```
+- `forces` – a `body` (`box` default, `ball`, `car`, `person`, `point`, `plane`, `boat`, `skydiver`, `lamp`, `satellite`) on a `surface` (`none` default, `ground`, `incline` with `angle` in degrees, `water`, `ceiling` for a hanging body) with `forces`: `{ label, angle, size, tone?, from? }`. `angle` is the direction in degrees (0 right, 90 up, 180 left, 270 down) – always relative to the horizontal, also on an incline. The incline rises to the right, so the normal force points at `90 + angle` and "down the slope" is `180 + angle`. `size` sets the arrow length (all arrows share one scale). `from` is the anchor (`center` default, `top`, `bottom`, `left`, `right` of the body; `bottom` is the contact point). `resultant: true` adds the vector sum as a dashed arrow `F_{v}`, or "rovnováha" when the forces cancel.
+
+  ```ts
+  { type: 'forces', body: 'box', surface: 'incline', angle: 30, resultant: true,
+    forces: [{ label: 'F_{G}', angle: 270, size: 4 }, { label: 'N', angle: 120, size: 3.46, from: 'bottom' },
+             { label: 'F_{t}', angle: 30, size: 1.2, from: 'bottom' }] }
+  ```
+- `rays` – `element` (`convex-lens`, `concave-lens`, `concave-mirror`, `convex-mirror`, `plane-mirror`), `focal` (|f|, positive; ignored for a plane mirror), `object` (distance a > 0, not equal to f for a converging element) and optional `height`. The image is computed from 1/a + 1/a′ = 1/f and drawn with the three principal rays (virtual extensions dashed); a legend under the picture names the image (skutečný/zdánlivý, převrácený/přímý, zvětšený/zmenšený) and shows a, f, a′ and Z. Far objects or images are drawn with a broken axis.
+
+  ```ts
+  { type: 'rays', element: 'convex-lens', focal: 10, object: 15, caption: 'Předmět mezi F a 2F: obraz je skutečný, převrácený a zvětšený.' }
+  ```
+- `wave` – `kind` (`transverse` default, `longitudinal`, `standing`), `waves`: `{ amplitude, wavelength, phase?, label?, tone? }` (the picture is 2,5 × the longest wavelength wide, so only ratios matter), `sum: true` draws each wave thin and their sum bold (interference), `marks`: `'wavelength'`, `'amplitude'`, `'nodes'` (defaults: λ and A for a single transverse wave, nodes for a standing wave). Longitudinal waves show zhuštění/zředění; waves travel gently (still with reduced motion).
+
+  ```ts
+  { type: 'wave', sum: true, waves: [{ amplitude: 1, wavelength: 4, label: 'vlnění 1' },
+                                     { amplitude: 1, wavelength: 4, phase: 0.5, label: 'vlnění 2' }],
+    caption: 'Vlnění s opačnou fází se vyruší.' }
+  ```
+
 ## Questions
 
 Kinds: `choice`, `multi`, `tf`, `number`, `text`, `order`, `match`.

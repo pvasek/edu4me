@@ -666,6 +666,136 @@
   animation: il-drift 6s ease-in-out infinite;
 }
 
+/* physics vignettes */
+@keyframes il-tick {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes il-fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  12% {
+    transform: translateY(0);
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+  }
+  62% {
+    transform: translateY(var(--fall, 60px));
+    opacity: 1;
+  }
+  78%,
+  100% {
+    transform: translateY(var(--fall, 60px));
+    opacity: 0;
+  }
+}
+@keyframes il-swing {
+  0%,
+  100% {
+    transform: rotate(calc(-1 * var(--swing, 14deg)));
+  }
+  50% {
+    transform: rotate(var(--swing, 14deg));
+  }
+}
+@keyframes il-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+@keyframes il-piston {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(9px);
+  }
+}
+@keyframes il-jiggle {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(1.6px, -1.2px);
+  }
+  50% {
+    transform: translate(-1.2px, 1.4px);
+  }
+  75% {
+    transform: translate(1.2px, 1.6px);
+  }
+}
+@keyframes il-slide {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(16px);
+  }
+}
+@keyframes il-emit {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  25%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(6px);
+    opacity: 0;
+  }
+}
+@keyframes il-twinkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.72) rotate(12deg);
+    opacity: 0.6;
+  }
+}
+.il-vignette .a-tick {
+  animation: il-tick 30s steps(60) infinite;
+  transform-box: view-box;
+}
+.il-vignette .a-fall {
+  animation: il-fall 3.6s linear infinite;
+}
+.il-vignette .a-swing {
+  animation: il-swing 2.8s ease-in-out infinite;
+  transform-box: view-box;
+}
+.il-vignette .a-flow {
+  animation: il-flow 1.6s linear infinite;
+}
+.il-vignette .a-piston {
+  animation: il-piston 3.2s ease-in-out infinite;
+}
+.il-vignette .a-jiggle {
+  animation: il-jiggle 1.2s ease-in-out infinite;
+}
+.il-vignette .a-slide {
+  animation: il-slide 4s ease-in-out infinite;
+}
+.il-vignette .a-emit {
+  animation: il-emit 2.2s ease-out infinite;
+}
+.il-vignette .a-twinkle {
+  animation: il-twinkle 3s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
 /* process stations open the card viewer */
 .il-station[role='button'] {
   cursor: pointer;

@@ -1,0 +1,359 @@
+/* Stavitel obvodů (prefix cb-). Theme tokens only; lamp light is a subject colour. */
+.cb {
+  --cb-light: #f7c948;
+}
+.cb-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.cb-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.cb-q {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+.cb-prompt {
+  margin: 0;
+  font: 600 clamp(17px, 4.6vw, 20px) / 1.35 var(--font-body);
+}
+
+/* ---------- schematic ---------- */
+.cb-stage {
+  display: grid;
+  place-items: center;
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background-image: radial-gradient(var(--paper-grid) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+.cb-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+}
+.cb-wire {
+  stroke: var(--ink);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.cb-stroke {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cb-plate {
+  stroke: var(--ink);
+  stroke-width: 5;
+}
+.cb-node {
+  fill: var(--ink);
+}
+.cb-body,
+.cb-meter,
+.cb-bulb {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 1.8;
+}
+.cb-bulb[data-lit='1'] {
+  fill: var(--cb-light);
+}
+.cb-halo {
+  fill: var(--cb-light);
+  transition: opacity 0.4s;
+}
+.cb-lamp.is-burnt .cb-bulb {
+  fill: var(--surface-2);
+  stroke-dasharray: 3 2;
+}
+.cb-meter-t {
+  font: 700 14px/1 var(--font-body);
+  fill: var(--ink);
+}
+.cb-name {
+  font: italic 700 16px/1 var(--font-display);
+  fill: var(--ink);
+}
+.cb-sub {
+  font-size: 11px;
+}
+.cb-val {
+  font: 600 11px/1 var(--font-mono);
+  fill: var(--ink-soft);
+}
+.cb-warn {
+  fill: var(--bad);
+  font-family: var(--font-body);
+}
+.cb-sign {
+  font: 700 12px/1 var(--font-mono);
+  fill: var(--ink-soft);
+}
+.cb-srcval {
+  font: 600 12.5px/1 var(--font-mono);
+  fill: var(--ink);
+}
+.cb-srcval .cb-sub {
+  font-size: 9.5px;
+}
+.cb-srcbox {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+.cb-target {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+}
+.cb-reading rect {
+  fill: var(--accent);
+}
+.cb-reading text {
+  font: 700 11px/1 var(--font-mono);
+  fill: var(--accent-ink);
+}
+.cb-reading.is-given rect {
+  fill: var(--info-soft);
+  stroke: var(--blue);
+  stroke-width: 1;
+}
+.cb-reading.is-given text {
+  fill: var(--ink);
+}
+
+/* current: dots that move along the wire in the direction of the conventional current */
+.cb-flow {
+  stroke: var(--accent);
+  stroke-width: 4.2;
+  stroke-linecap: round;
+  stroke-dasharray: 0.01 12;
+  animation: cb-flow 0.6s linear infinite;
+  pointer-events: none;
+}
+@keyframes cb-flow {
+  from {
+    stroke-dashoffset: 12;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cb-flow {
+    animation: none;
+  }
+}
+
+/* slots (build) and tappable switch */
+.cb-hit {
+  fill: transparent;
+}
+.cb-slot,
+.cb-tap {
+  cursor: pointer;
+  outline: none;
+}
+.cb-slot.is-locked {
+  cursor: default;
+}
+.cb-slotbox {
+  fill: var(--surface);
+  stroke: var(--blue);
+  stroke-width: 1.6;
+  stroke-dasharray: 5 3;
+}
+.cb-slot.is-full .cb-slotbox {
+  fill: transparent;
+  stroke: var(--line);
+}
+.cb-slot.is-armed:not(.is-full) .cb-slotbox {
+  fill: var(--info-soft);
+  animation: cb-armed 1s ease-in-out infinite alternate;
+}
+.cb-slot.is-locked .cb-slotbox {
+  stroke: transparent;
+}
+@keyframes cb-armed {
+  to {
+    stroke-width: 2.6;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cb-slot.is-armed:not(.is-full) .cb-slotbox {
+    animation: none;
+    stroke-width: 2.6;
+  }
+}
+.cb-plus {
+  font: 700 20px/1 var(--font-body);
+  fill: var(--blue);
+}
+.cb-slot:focus-visible .cb-slotbox,
+.cb-tap:focus-visible .cb-hit {
+  stroke: var(--blue);
+  stroke-width: 3;
+  stroke-dasharray: none;
+}
+.cb-slot:hover:not(.is-locked) .cb-slotbox {
+  stroke-width: 2.4;
+}
+
+.cb-seg {
+  justify-self: center;
+}
+.cb-hint {
+  margin: 0;
+  text-align: center;
+  font: 600 13px/1.3 var(--font-body);
+  color: var(--muted);
+}
+
+.cb-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.cb-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.cb-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.cb-bonusbar > span {
+  transition: width 0.25s linear;
+}
+
+/* ---------- answers ---------- */
+.cb-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+.cb-field {
+  position: relative;
+  flex: 1 1 220px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cb-sym {
+  flex: none;
+  font: italic 700 22px/1 var(--font-display);
+}
+.cb-input {
+  padding-right: 48px;
+  font-size: 22px;
+}
+.cb-unit {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 600 16px/1 var(--font-mono);
+  color: var(--muted);
+  pointer-events: none;
+}
+.cb-opts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-3);
+}
+.cb-opt {
+  justify-content: flex-start;
+  min-height: 54px;
+  text-align: left;
+}
+.cb-opt:disabled {
+  opacity: 0.6;
+}
+.cb-opt.is-ok {
+  --btn-bg: var(--good-soft);
+  opacity: 1;
+  border-color: var(--good);
+}
+.cb-opt.is-bad {
+  --btn-bg: var(--bad-soft);
+  opacity: 1;
+}
+.cb-opt-ico {
+  width: 26px !important;
+  height: 26px !important;
+}
+
+.cb-tray {
+  display: grid;
+  gap: var(--space-2);
+}
+.cb-tray-label {
+  font: 700 12px/1.2 var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cb-tray-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.cb-piece {
+  min-height: 52px;
+  padding: 6px 12px 6px 8px;
+  font-size: 15px;
+}
+.cb-piece[aria-pressed='true'] {
+  --btn-bg: var(--info-soft);
+  border-color: var(--blue);
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+}
+.cb-piece-ico {
+  width: 40px !important;
+  height: 28px !important;
+}
+
+.cb-status:empty {
+  display: none;
+}
+.cb-why {
+  display: grid;
+  gap: var(--space-3);
+}
+.cb-why p {
+  margin: 0;
+  font: 500 16px/1.5 var(--font-body);
+}
+.cb-why-ico {
+  width: 18px;
+  height: 18px;
+  vertical-align: -3px;
+  color: var(--accent);
+}
+
+@media (max-width: 420px) {
+  .cb-card {
+    padding: var(--space-3);
+  }
+}

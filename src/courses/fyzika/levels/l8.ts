@@ -1,0 +1,1228 @@
+import type { LevelContent } from '../../../core/types'
+
+const level: LevelContent = {
+  lessons: {
+    // ───────────────────────────────────────────────────────────── f8-1
+    'f8-1': {
+      id: 'f8-1',
+      title: 'Veličiny, vektory a nejistoty',
+      goals: [
+        'Rozlišit skalární a vektorové veličiny a sečíst vektory graficky i po složkách',
+        'Rozložit vektor do dvou kolmých složek pomocí sinu a kosinu',
+        'Zapsat výsledek měření s absolutní i relativní nejistotou a se správným počtem platných číslic',
+        'Z grafu přímky určit směrnici a úsek i s jednotkami a ověřit vzorec rozměrovou analýzou',
+      ],
+      hook: 'Navigace v telefonu hlásí: „Cíl je 300 metrů od tebe.“ Jenže kterým směrem? A když spolužák změří chodbu pásmem na 43,217 m, věříš opravdu všem pěti číslicím? Vítej na gymnáziu – tady se počítá přesně a poctivě.',
+      sections: [
+        {
+          title: 'Skaláry a vektory',
+          icon: 'vector',
+          blocks: [
+            { type: 'p', text: 'Některé veličiny popíše jediné číslo s jednotkou: hmotnost 65 kg, teplota 21 °C, čas 12 s. Říkáme jim **skalární veličiny** (skaláry). U jiných musíš znát i **směr**: síla 20 N *doprava*, rychlost 15 m/s *na sever*. To jsou **vektorové veličiny** (vektory).' },
+            { type: 'compare', columns: [
+              { title: '**Skaláry**', icon: 'clock', tone: 'a', points: ['jen velikost a jednotka', 'hmotnost m, čas t, teplota t', 'dráha s, objem V, hustota ρ', 'energie E, práce W, výkon P'] },
+              { title: '**Vektory**', icon: 'vector', tone: 'b', points: ['velikost, směr a jednotka', 'posunutí, rychlost v, zrychlení a', 'síla F, hybnost p', 'kreslíme je jako šipky'] },
+            ], caption: 'Skaláry sčítáš jako obyčejná čísla, u vektorů rozhoduje i směr.' },
+            { type: 'keyterms', items: [
+              { term: '**velikost vektoru**', def: 'délka šipky; vždy kladné číslo s jednotkou, píšeme |v| nebo jen v' },
+              { term: '**dráha** s', def: 'délka trajektorie, kterou těleso skutečně urazilo (skalár)' },
+              { term: '**posunutí** Δr', def: 'šipka z počáteční do koncové polohy (vektor); nezajímá ji, kudy těleso šlo' },
+            ] },
+            { type: 'example', title: 'Běžec na oválu', problem: 'Běžkyně uběhne jedno celé kolo na 400m oválu a doběhne tam, kde startovala. Jaká je její dráha a jaké posunutí?', steps: [
+              'Dráha je délka trajektorie: s = 400 m.',
+              'Posunutí vede ze startu do cíle; start a cíl jsou tentýž bod.',
+              'Šipka nulové délky: Δr = 0 m.',
+            ], answer: 'Dráha 400 m, posunutí 0 m. Průměrná rychlost po dráze je nenulová, průměrná vektorová rychlost je nulová.' },
+            { type: 'callout', variant: 'remember', text: '==Vektor = velikost + směr.== V textu ho poznáš podle slov „doprava“, „pod úhlem 30°“, „svisle vzhůru“ nebo podle znaménka na zvolené ose.' },
+            { type: 'check', question: { kind: 'tf', q: 'Dráha a velikost posunutí jsou vždy stejně velké.', answer: false, explain: 'Shodují se jen při přímočarém pohybu jedním směrem. Když těleso zatáčí nebo se vrací, je dráha větší než velikost posunutí.' } },
+          ],
+        },
+        {
+          title: 'Sčítání vektorů',
+          icon: 'compass',
+          blocks: [
+            { type: 'p', text: 'Vektory sčítáme **graficky**: začátek druhé šipky přiložíš na konec první (metoda „hlava–pata“). Výslednice vede od začátku první šipky ke konci poslední. Stejný výsledek dá **rovnoběžník**, jaký znáš ze skládání sil v lekci f2-4.' },
+            { type: 'forces', body: 'point', forces: [
+              { label: 'v_{1} = 4 m/s', angle: 0, size: 4 },
+              { label: 'v_{2} = 3 m/s', angle: 90, size: 3 },
+            ], resultant: true, caption: 'Dva kolmé vektory: výslednice je úhlopříčka obdélníku. Její délku dá Pythagorova věta.' },
+            { type: 'p', text: 'Když jsou dva vektory **kolmé**, tvoří s výslednicí pravoúhlý trojúhelník. Velikost výslednice spočítáš Pythagorovou větou a její směr funkcí tangens.' },
+            { type: 'formula', text: 'v = √(v_{1}^{2} + v_{2}^{2})     tg α = v_{2} / v_{1}', caption: 'velikost a směr výslednice dvou kolmých vektorů; α je úhel od směru v_{1}' },
+            { type: 'example', title: 'Loďka přes řeku', problem: 'Loďka pluje kolmo k břehu rychlostí 4,0 m/s vůči vodě. Řeka teče rychlostí 3,0 m/s. Jak rychle a kterým směrem se loďka pohybuje vůči břehu?', steps: [
+              'Rychlosti jsou kolmé, sečteme je jako vektory.',
+              'v = √(4,0^{2} + 3,0^{2}) m/s = √25 m/s = 5,0 m/s',
+              'tg α = 3,0 / 4,0 = 0,75 → α ≈ 37°',
+            ], answer: 'Loďka se pohybuje rychlostí 5,0 m/s, odkloněná o 37° od kolmice k břehu po proudu.' },
+            { type: 'callout', variant: 'warning', text: 'Velikosti vektorů se obecně **nesčítají**. 4 m/s + 3 m/s dá 7 m/s jen tehdy, když mají oba vektory stejný směr. Při opačném směru dají 1 m/s, při kolmém 5 m/s.' },
+            { type: 'check', question: { kind: 'number', q: 'Letadlo letí vůči vzduchu rychlostí 200 m/s na sever, vítr vane 50 m/s na východ. Jak velká je rychlost letadla vůči zemi?', answer: 206, tolerance: 1, unit: 'm/s', explain: 'Rychlosti jsou kolmé: v = √(200^{2} + 50^{2}) m/s = √42 500 m/s ≈ 206 m/s.' } },
+          ],
+        },
+        {
+          title: 'Rozklad vektoru do složek',
+          icon: 'ruler',
+          blocks: [
+            { type: 'p', text: 'Opačný krok je stejně důležitý: jeden šikmý vektor nahradíme dvěma kolmými **složkami**, vodorovnou a svislou. Potřebuješ k tomu goniometrii pravoúhlého trojúhelníku.' },
+            { type: 'keyterms', items: [
+              { term: '**sin α**', def: 'protilehlá odvěsna / přepona' },
+              { term: '**cos α**', def: 'přilehlá odvěsna / přepona' },
+              { term: '**tg α**', def: 'protilehlá odvěsna / přilehlá odvěsna' },
+            ] },
+            { type: 'formula', text: 'F_{x} = F · cos α     F_{y} = F · sin α', caption: 'složky vektoru F svírajícího s osou x úhel α' },
+            { type: 'forces', body: 'box', surface: 'ground', forces: [
+              { label: 'F = 100 N', angle: 30, size: 4 },
+              { label: 'F_{x}', angle: 0, size: 3.46, tone: 'b' },
+              { label: 'F_{y}', angle: 90, size: 2, tone: 'b' },
+            ], caption: 'Tah za provaz pod úhlem 30°: vodorovná složka táhne sáňky dopředu, svislá je trochu nadlehčuje.' },
+            { type: 'example', title: 'Tahání sáněk', problem: 'Táhneš sáňky za provaz silou 100 N, provaz svírá s vodorovnou rovinou úhel 30°. Jaké jsou složky síly?', steps: [
+              'Vodorovná složka: F_{x} = 100 N · cos 30° = 100 N · 0,866 = 86,6 N',
+              'Svislá složka: F_{y} = 100 N · sin 30° = 100 N · 0,500 = 50,0 N',
+              'Kontrola: √(86,6^{2} + 50,0^{2}) N = 100 N ✓',
+            ], answer: 'F_{x} ≈ 87 N dopředu, F_{y} = 50 N vzhůru.' },
+            { type: 'example', title: 'Sčítání po složkách', problem: 'Na háček působí síla F_{1} = 10 N ve směru osy x a síla F_{2} = 10 N pod úhlem 60° k ose x. Urči výslednici.', steps: [
+              'Složky x: 10 N + 10 N · cos 60° = 10 N + 5,0 N = 15,0 N',
+              'Složky y: 0 N + 10 N · sin 60° = 8,66 N',
+              'F = √(15,0^{2} + 8,66^{2}) N = √300 N ≈ 17,3 N',
+              'tg α = 8,66 / 15,0 = 0,577 → α = 30°',
+            ], answer: 'Výslednice má velikost 17,3 N a svírá s osou x úhel 30° (leží přesně mezi oběma silami).' },
+            { type: 'callout', variant: 'tip', text: 'Zapamatuj si hodnoty: sin 30° = cos 60° = 0,5; sin 60° = cos 30° ≈ 0,866; sin 45° = cos 45° ≈ 0,707. Kalkulačka musí být přepnutá na stupně (DEG), ne na radiány.' },
+            { type: 'check', question: { kind: 'number', q: 'Fotbalista kopne míč rychlostí 20 m/s pod úhlem 30° nad vodorovnou rovinu. Jak velká je vodorovná složka rychlosti?', answer: 17.3, tolerance: 0.2, unit: 'm/s', explain: 'v_{x} = v · cos 30° = 20 m/s · 0,866 ≈ 17,3 m/s. Svislá složka je 20 m/s · sin 30° = 10 m/s.' } },
+          ],
+        },
+        {
+          title: 'Nejistota měření a platné číslice',
+          icon: 'stopwatch',
+          blocks: [
+            { type: 'p', text: 'Žádné měření není dokonalé. Výsledek proto zapisujeme jako **odhad hodnoty ± nejistota**. **Absolutní nejistota** Δx má jednotku veličiny, **relativní nejistota** δ = Δx / x je bezrozměrná a obvykle ji píšeme v procentech.' },
+            { type: 'formula', text: 'x = (x̄ ± Δx) jednotka     δ = Δx / x̄ · 100 %', caption: 'x̄ = průměr opakovaných měření, Δx = absolutní nejistota, δ = relativní nejistota' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'stopwatch', title: 'Měř opakovaně', text: 'aspoň 5 měření za stejných podmínek' },
+              { icon: 'calculator', title: 'Spočítej průměr', text: 'x̄ je nejlepší odhad hodnoty' },
+              { icon: 'ruler', title: 'Odhadni nejistotu', text: 'polovina rozpětí (max − min) / 2, ne méně než rozlišení přístroje' },
+              { icon: 'pencil', title: 'Zaokrouhli', text: 'nejistotu na 1–2 platné číslice, výsledek na stejný řád' },
+            ], caption: 'Postup od surových dat k poctivě zapsanému výsledku' },
+            { type: 'example', title: 'Doba kmitu kyvadla', problem: 'Stopkami měříš dobu 10 kmitů kyvadla: 14,2 s; 14,5 s; 14,3 s; 14,4 s; 14,1 s. Zapiš dobu jednoho kmitu T s nejistotou.', steps: [
+              'Průměr: (14,2 + 14,5 + 14,3 + 14,4 + 14,1) s / 5 = 71,5 s / 5 = 14,3 s',
+              'Nejistota: (14,5 − 14,1) s / 2 = 0,2 s',
+              'Deset kmitů: (14,3 ± 0,2) s → jeden kmit: dělíme deseti i nejistotu',
+              'T = (1,43 ± 0,02) s, relativně δ = 0,02 / 1,43 ≈ 1,4 %',
+            ], answer: 'T = (1,43 ± 0,02) s. Měřením deseti kmitů najednou jsi nejistotu jednoho kmitu desetkrát zmenšil.' },
+            { type: 'p', text: '**Platné číslice** jsou všechny číslice kromě nul na začátku čísla. 0,0520 m má tři platné číslice (5, 2 a koncová nula), 3,00 kg také tři. Zápis 1200 m je nejednoznačný – proto píšeme 1,2 · 10^{3} m (dvě platné) nebo 1,200 · 10^{3} m (čtyři).' },
+            { type: 'list', items: [
+              '**součet a rozdíl**: sčítají se **absolutní** nejistoty',
+              '**součin a podíl**: sčítají se **relativní** nejistoty',
+              'výsledek výpočtu nemá mít víc platných číslic než nejméně přesný vstup',
+            ] },
+            { type: 'example', title: 'Rychlost s nejistotou', problem: 'Běžec uběhl s = (100,0 ± 0,5) m za t = (12,5 ± 0,2) s. Urči rychlost i s nejistotou.', steps: [
+              'v = s / t = 100,0 m / 12,5 s = 8,00 m/s',
+              'δ_{s} = 0,5 / 100,0 = 0,5 %;  δ_{t} = 0,2 / 12,5 = 1,6 %',
+              'Podíl → relativní nejistoty se sčítají: δ_{v} = 2,1 %',
+              'Δv = 0,021 · 8,00 m/s ≈ 0,17 m/s → zaokrouhlíme na 0,2 m/s',
+            ], answer: 'v = (8,0 ± 0,2) m/s. Rozhoduje měření času – ruční stopky jsou tu slabým článkem.' },
+            { type: 'check', question: { kind: 'choice', q: 'Kolik platných číslic má údaj 0,040 50 m?', options: ['4', '3', '5', '6'], answer: 0, explain: 'Nuly na začátku se nepočítají. Platné jsou 4, 0, 5 a koncová 0 – celkem čtyři. Koncová nula říká, že jsi měřil na desetitisíciny metru.' } },
+          ],
+        },
+        {
+          title: 'Graf a proložená přímka',
+          icon: 'chart',
+          blocks: [
+            { type: 'p', text: 'Když jedna veličina závisí na druhé lineárně, naměřené body leží přibližně na přímce y = k · x + q. **Směrnice** k (sklon) a **úsek** q (kde přímka protne osu y) mají fyzikální význam i **jednotky**.' },
+            { type: 'formula', text: 'k = Δy / Δx', caption: 'směrnice = změna na ose y / odpovídající změna na ose x; jednotka = jednotka y / jednotka x' },
+            { type: 'graph', x: { label: 'V', unit: 'cm³', min: 0, max: 120, step: 20 }, y: { label: 'm', unit: 'g', min: 0, max: 220, step: 20 }, series: [
+              { label: 'naměřeno', style: 'dots', points: [[20, 118], [40, 137], [60, 156], [80, 173], [100, 192]], tone: 'a' },
+              { label: 'proložená přímka', style: 'dashed', points: [[0, 100], [120, 210.4]], tone: 'b' },
+            ], marks: [{ x: 0, y: 100, label: 'úsek q = 100 g (prázdná kádinka)' }, { x: 100, y: 192, label: 'bod na přímce (100; 192)' }], caption: 'Do kádinky přiléváš olej a vážíš ji i s obsahem. Směrnice přímky je hustota oleje, úsek je hmotnost prázdné kádinky.' },
+            { type: 'example', title: 'Hustota z grafu', problem: 'Z proložené přímky v grafu urči hustotu oleje a hmotnost kádinky.', steps: [
+              'Vezmi dva vzdálené body **na přímce**, ne naměřené body: (0 cm³; 100 g) a (100 cm³; 192 g).',
+              'k = Δm / ΔV = (192 − 100) g / (100 − 0) cm³ = 0,92 g/cm³',
+              'Úsek: q = 100 g (hmotnost při nulovém objemu oleje)',
+            ], answer: 'ρ = 0,92 g/cm³ = 920 kg/m³, kádinka má 100 g.' },
+            { type: 'p', text: 'Nejistotu každého bodu kreslíme jako **chybovou úsečku** – svislou čárku o délce ±Δy. Dobře proložená přímka prochází všemi chybovými úsečkami a nad i pod ní leží zhruba stejně bodů. Proč číst z přímky, a ne z jednoho bodu? Přímka „zprůměruje“ náhodné chyby všech měření.' },
+            { type: 'callout', variant: 'tip', text: 'Na maturitě i v A-level se hodnotí jednotka směrnice. Graf s–t má směrnici v m/s, graf v–t v m/s², graf m–V v g/cm³.' },
+            { type: 'check', question: { kind: 'number', q: 'Proložená přímka grafu dráhy s (v metrech) na čase t (v sekundách) prochází body (2 s; 5 m) a (10 s; 45 m). Jaká je její směrnice?', answer: 5, tolerance: 0.05, unit: 'm/s', explain: 'k = Δs / Δt = (45 − 5) m / (10 − 2) s = 40 m / 8 s = 5 m/s. Směrnice grafu s–t je rychlost.' } },
+          ],
+        },
+        {
+          title: 'Rozměrová analýza',
+          icon: 'calculator',
+          blocks: [
+            { type: 'p', text: 'Každá fyzikální rovnice musí mít na obou stranách **stejnou jednotku**. Když dosadíš jen jednotky a vyjde ti nesmysl, vzorec je špatně. Tato **rozměrová analýza** odhalí většinu chyb dřív, než začneš počítat čísla.' },
+            { type: 'iconlist', items: [
+              { icon: 'weight', title: 'newton', text: 'N = kg · m · s^{−2} (z F = m · a)' },
+              { icon: 'lightning', title: 'joule', text: 'J = N · m = kg · m^{2} · s^{−2}' },
+              { icon: 'bulb', title: 'watt', text: 'W = J / s = kg · m^{2} · s^{−3}' },
+              { icon: 'gauge', title: 'pascal', text: 'Pa = N / m^{2} = kg · m^{−1} · s^{−2}' },
+            ] },
+            { type: 'example', title: 'Ověř vzorec', problem: 'Platí pro rychlost tělesa padajícího z výšky h vzorec v = √(2 · g · h)?', steps: [
+              'Dosadíme jednotky pravé strany: √(m/s^{2} · m) = √(m^{2}/s^{2})',
+              '√(m^{2}/s^{2}) = m/s',
+              'Levá strana: rychlost v má jednotku m/s ✓',
+            ], answer: 'Rozměrově vzorec sedí. Číslo 2 ale rozměrová analýza neověří – bezrozměrné konstanty (2, ½, π) jí „proklouznou“.' },
+            { type: 'callout', variant: 'mascot', text: 'Když ti vyjde rychlost v kilogramech, nezačínej počítat znovu od konce. Nejdřív zkontroluj jednotky – ušetří ti to půl písemky.' },
+            { type: 'game', gameId: 'unit-convert', text: 'Vědecký zápis a odvozené jednotky ti musí jít samy. Procvič si je v Převodech jednotek.' },
+            { type: 'check', question: { kind: 'choice', q: 'Který vzorec je rozměrově **chybný**? (s je dráha, v rychlost, a zrychlení, t čas)', options: ['s = a · t', 's = v · t', 's = ½ · a · t^{2}', 'v^{2} = 2 · a · s'], answer: 0, explain: 'a · t má jednotku m/s^{2} · s = m/s, tedy rychlost, ne dráhu. Ostatní vzorce dávají na obou stranách metry, resp. m^{2}/s^{2}.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Skalár má jen velikost a jednotku, vektor má navíc směr; dráha je skalár, posunutí vektor.',
+        'Vektory sčítáme graficky (hlava–pata, rovnoběžník) nebo po složkách; kolmé vektory skládáme Pythagorovou větou.',
+        'Vektor F pod úhlem α k ose x má složky F_{x} = F · cos α a F_{y} = F · sin α.',
+        'Výsledek měření zapisujeme jako (x̄ ± Δx) jednotka; relativní nejistota δ = Δx / x̄ se udává v procentech.',
+        'Při sčítání se sčítají absolutní nejistoty, při násobení a dělení relativní; počet platných číslic odpovídá přesnosti měření.',
+        'Směrnice přímky k = Δy / Δx i úsek q mají fyzikální význam a jednotky; čteme je z proložené přímky, ne z jednoho bodu.',
+        'Rozměrová analýza ověří, že obě strany rovnice mají stejnou jednotku, ale bezrozměrné konstanty neodhalí.',
+      ],
+      quiz: [
+        { kind: 'multi', q: 'Které veličiny jsou vektorové?', options: ['síla', 'hmotnost', 'zrychlení', 'energie', 'hybnost'], answers: [0, 2, 4], explain: 'Síla, zrychlení i hybnost mají směr. Hmotnost a energie jsou skaláry – stačí jim číslo s jednotkou.' },
+        { kind: 'tf', q: 'Relativní nejistota nemá jednotku.', answer: true, explain: 'δ = Δx / x je podíl dvou veličin se stejnou jednotkou, jednotky se vykrátí. Proto ji můžeš porovnávat i mezi různými veličinami.' },
+        { kind: 'number', q: 'Na těleso působí dvě kolmé síly 6,0 N a 8,0 N. Jak velká je výslednice?', answer: 10, tolerance: 0.05, unit: 'N', explain: 'F = √(6,0^{2} + 8,0^{2}) N = √100 N = 10 N. Kdyby síly mířily stejným směrem, bylo by to 14 N, opačným 2 N.' },
+        { kind: 'number', q: 'Lano táhne loďku silou 500 N pod úhlem 60° od směru pohybu. Jak velká složka síly táhne loďku dopředu?', answer: 250, tolerance: 1, unit: 'N', explain: 'Složka ve směru pohybu je F · cos 60° = 500 N · 0,5 = 250 N. Zbytek síly míří do boku a loďku dopředu nepohání.' },
+        { kind: 'choice', q: 'Který zápis výsledku je správný?', options: ['g = (9,81 ± 0,05) m/s^{2}', 'g = (9,8134 ± 0,05) m/s^{2}', 'g = (9,8 ± 0,0512) m/s^{2}', 'g = 9,81 m/s^{2} ± 5'], answer: 0, explain: 'Nejistota se zaokrouhlí na jednu až dvě platné číslice a výsledek na stejný řád (setiny). Nejistota musí mít jednotku, nebo je v procentech.' },
+        { kind: 'number', q: 'Délka lavice je l = (2,50 ± 0,05) m. Jaká je relativní nejistota v procentech?', answer: 2, tolerance: 0.05, unit: '%', explain: 'δ = Δl / l = 0,05 m / 2,50 m = 0,02 = 2 %.' },
+        { kind: 'match', q: 'Přiřaď ke grafu jednotku jeho směrnice.', pairs: [
+          ['graf s–t (m, s)', 'm/s'],
+          ['graf v–t (m/s, s)', 'm/s^{2}'],
+          ['graf m–V (g, cm^{3})', 'g/cm^{3}'],
+          ['graf F–a (N, m/s^{2})', 'kg'],
+        ], explain: 'Jednotka směrnice je vždy jednotka osy y dělená jednotkou osy x. N / (m/s^{2}) = kg – směrnice grafu F–a je hmotnost.' },
+        { kind: 'choice', q: 'Obdélník má strany a = (4,0 ± 0,1) cm a b = (2,0 ± 0,1) cm. Jaká je relativní nejistota jeho obsahu S = a · b?', options: ['7,5 %', '2,5 %', '5 %', '0,2 %'], answer: 0, explain: 'U součinu se sčítají relativní nejistoty: 0,1/4,0 = 2,5 % a 0,1/2,0 = 5 %, dohromady 7,5 %. S = (8,0 ± 0,6) cm^{2}.' },
+      ],
+    },
+    // ───────────────────────────────────────────────────────────── f8-2
+    'f8-2': {
+      id: 'f8-2',
+      title: 'Rovnoměrně zrychlený pohyb',
+      goals: [
+        'Rozlišit polohu, posunutí, rychlost a zrychlení a pracovat se znaménky na zvolené ose',
+        'Z grafu v–t určit zrychlení jako směrnici a dráhu jako plochu pod grafem',
+        'Použít tři rovnice rovnoměrně zrychleného pohybu ve vícekrokových úlohách',
+        'Spočítat reakční a brzdnou dráhu auta a vysvětlit, proč roste s druhou mocninou rychlosti',
+      ],
+      hook: 'Elektroauto zrychlí z 0 na 100 km/h za 3 sekundy, rodinný vůz za 11. O kolik delší dráhu ale oba potřebují, aby na mokré silnici zastavily? Na to stačí tři rovnice a jeden graf.',
+      sections: [
+        {
+          title: 'Poloha, rychlost a zrychlení',
+          icon: 'ruler',
+          blocks: [
+            { type: 'p', text: 'Přímočarý pohyb popisujeme na **ose x**, na které si zvolíme počátek a kladný směr. **Poloha** x je souřadnice tělesa, **posunutí** Δx = x − x_{0} je změna polohy. Znaménko říká směr: záporné posunutí znamená pohyb proti ose.' },
+            { type: 'keyterms', items: [
+              { term: '**průměrná rychlost**', def: 'v = Δx / Δt – posunutí za dobu Δt' },
+              { term: '**okamžitá rychlost**', def: 'průměrná rychlost za velmi krátkou dobu; ukazuje ji tachometr' },
+              { term: '**zrychlení** a', def: 'a = Δv / Δt – změna rychlosti za jednotku času, jednotka m/s^{2}' },
+              { term: '**rovnoměrně zrychlený pohyb**', def: 'pohyb po přímce se stálým zrychlením a' },
+            ] },
+            { type: 'formula', text: 'a = Δv / Δt = (v − v_{0}) / t', caption: 'zrychlení a (m/s^{2}), počáteční rychlost v_{0} a konečná v (m/s), doba t (s)' },
+            { type: 'example', title: 'Z nuly na stovku', problem: 'Auto zrychlí z 0 na 100 km/h za 10,0 s. Jaké je jeho průměrné zrychlení?', steps: [
+              'Převod: 100 km/h = 100 / 3,6 m/s = 27,8 m/s',
+              'a = (27,8 − 0) m/s / 10,0 s',
+              'a = 2,78 m/s^{2}',
+            ], answer: 'a ≈ 2,8 m/s^{2}: každou sekundu přibude asi 2,8 m/s, tedy 10 km/h.' },
+            { type: 'iconlist', items: [
+              { icon: 'car', title: 'Rodinné auto', text: 'rozjezd asi 3 m/s^{2}' },
+              { icon: 'muscle', title: 'Sprinter při startu', text: 'asi 5 m/s^{2}' },
+              { icon: 'apple', title: 'Volný pád', text: '9,81 m/s^{2}' },
+              { icon: 'speed', title: 'Brzdící formule 1', text: 'až −50 m/s^{2}' },
+            ] },
+            { type: 'callout', variant: 'warning', text: 'Záporné zrychlení neznamená automaticky zpomalování. Těleso zpomaluje, když mají a a v **opačná znaménka**. Auto jedoucí proti ose (v < 0) se zrychlením a < 0 se rozjíždí.' },
+            { type: 'check', question: { kind: 'number', q: 'Vlak zpomalí z 30 m/s na 12 m/s za 9,0 s. Jaké je jeho zrychlení? (kladný směr = směr jízdy)', answer: -2, tolerance: 0.05, unit: 'm/s²', explain: 'a = (v − v_{0}) / t = (12 − 30) m/s / 9,0 s = −2,0 m/s^{2}. Záporné znaménko a kladná rychlost znamenají zpomalování.' } },
+          ],
+        },
+        {
+          title: 'Graf v–t: směrnice a plocha',
+          icon: 'chart',
+          blocks: [
+            { type: 'p', text: 'Při stálém zrychlení roste rychlost lineárně s časem – graf v–t je **přímka**. Její **směrnice** je zrychlení a **plocha pod grafem** je posunutí. To znáš z lekce f2-2, teď z toho odvodíme vzorce.' },
+            { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 7, step: 1 }, y: { label: 'v', unit: 'm/s', min: 0, max: 18, step: 2 }, series: [
+              { label: 'cyklista na kopci dolů', points: [[0, 4], [6, 16]], area: true, tone: 'a' },
+            ], marks: [{ x: 0, y: 4, label: 'v_{0} = 4 m/s' }, { x: 6, y: 16, label: 'v = 16 m/s' }], caption: 'Směrnice: (16 − 4) m/s / 6 s = 2 m/s^{2}. Vybarvená plocha (lichoběžník) je dráha 60 m.' },
+            { type: 'formula', text: 'v = v_{0} + a · t', caption: 'rychlost v čase t – rovnice přímky v grafu v–t' },
+            { type: 'p', text: 'Plochu lichoběžníku rozdělíme na **obdélník** v_{0} · t (jako by jel stále rychlostí v_{0}) a **trojúhelník** s odvěsnami t a a · t (přírůstek díky zrychlení). Sečtením dostaneme druhou rovnici.' },
+            { type: 'formula', text: 's = v_{0} · t + ½ · a · t^{2}', caption: 'dráha (posunutí) při rovnoměrně zrychleném pohybu' },
+            { type: 'example', title: 'Plocha pod grafem', problem: 'Z grafu nahoře urči dráhu cyklisty za 6 s oběma způsoby.', steps: [
+              'Lichoběžník: s = (v_{0} + v) / 2 · t = (4 + 16) m/s / 2 · 6 s = 60 m',
+              'Vzorcem: s = 4 m/s · 6 s + ½ · 2 m/s^{2} · (6 s)^{2} = 24 m + 36 m = 60 m',
+            ], answer: 's = 60 m. Obdélník dává 24 m, trojúhelník 36 m.' },
+            { type: 'callout', variant: 'remember', text: '==Směrnice grafu v–t = zrychlení, plocha pod grafem v–t = posunutí.== Když graf klesne pod osu t, plocha se počítá záporně – těleso jede zpátky.' },
+            { type: 'game', gameId: 'motion-graph', text: 'Zkus v Grafu pohybu určit zrychlení a dráhu jen z tvaru grafu v–t.' },
+            { type: 'check', question: { kind: 'number', q: 'Auto zpomaluje rovnoměrně z 20 m/s do zastavení za 5,0 s. Jakou dráhu přitom ujede? (Plocha pod grafem v–t.)', answer: 50, tolerance: 0.5, unit: 'm', explain: 'Pod grafem je trojúhelník: s = ½ · 20 m/s · 5,0 s = 50 m.' } },
+          ],
+        },
+        {
+          title: 'Tři rovnice pohybu',
+          icon: 'calculator',
+          blocks: [
+            { type: 'p', text: 'Z prvních dvou rovnic můžeš vyloučit čas. Z první vyjádříš t = (v − v_{0}) / a a dosadíš do s = (v_{0} + v) / 2 · t. Vyjde třetí rovnice, která se hodí, když čas neznáš a nepotřebuješ.' },
+            { type: 'formula', text: 'v^{2} = v_{0}^{2} + 2 · a · s', caption: 'vztah rychlosti a dráhy bez času' },
+            { type: 'table', headers: ['Rovnice', 'Chybí v ní', 'Použij, když…'], rows: [
+              ['v = v_{0} + a · t', 'dráha s', 'hledáš rychlost nebo čas'],
+              ['s = v_{0} · t + ½ · a · t^{2}', 'konečná rychlost v', 'znáš čas a hledáš dráhu'],
+              ['v^{2} = v_{0}^{2} + 2 · a · s', 'čas t', 'čas neznáš ani nehledáš'],
+            ], caption: 'Vyber rovnici, ve které chybí veličina, kterou neznáš a nepotřebuješ.' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'pencil', title: 'Nakresli osu', text: 'zvol kladný směr, obvykle směr pohybu' },
+              { icon: 'book', title: 'Vypiš veličiny', text: 'v_{0}, v, a, s, t – které znáš a kterou hledáš' },
+              { icon: 'calculator', title: 'Vyber rovnici', text: 'tu, ve které chybí nepotřebná veličina' },
+              { icon: 'check', title: 'Zkontroluj', text: 'jednotky, znaménko a rozumnost výsledku' },
+            ], caption: 'Postup řešení úloh o zrychleném pohybu' },
+            { type: 'example', title: 'Vzletová dráha', problem: 'Letadlo se z klidu rozjíždí se zrychlením 2,0 m/s^{2}. Ke vzletu potřebuje rychlost 80 m/s. Jak dlouhá musí být dráha?', steps: [
+              'Známe: v_{0} = 0, v = 80 m/s, a = 2,0 m/s^{2}; hledáme s, čas nepotřebujeme.',
+              'v^{2} = v_{0}^{2} + 2 · a · s → s = (v^{2} − v_{0}^{2}) / (2 · a)',
+              's = (80 m/s)^{2} / (2 · 2,0 m/s^{2}) = 6 400 / 4,0 m = 1 600 m',
+            ], answer: 'Dráha musí mít aspoň 1,6 km. Rozjezd trvá t = v / a = 40 s.' },
+            { type: 'example', title: 'Cyklista zrychluje', problem: 'Cyklista jede rychlostí 5,0 m/s a začne zrychlovat se zrychlením 0,50 m/s^{2}. Jakou bude mít rychlost a jakou dráhu ujede za 8,0 s?', steps: [
+              'v = v_{0} + a · t = 5,0 m/s + 0,50 m/s^{2} · 8,0 s = 9,0 m/s',
+              's = v_{0} · t + ½ · a · t^{2} = 5,0 · 8,0 m + ½ · 0,50 · 64 m = 40 m + 16 m = 56 m',
+              'Kontrola: s = (v_{0} + v) / 2 · t = 7,0 m/s · 8,0 s = 56 m ✓',
+            ], answer: 'v = 9,0 m/s, s = 56 m.' },
+            { type: 'check', question: { kind: 'number', q: 'Auto se rozjíždí z klidu se zrychlením 3,0 m/s^{2}. Jakou rychlost má po ujetí 50 m?', answer: 17.3, tolerance: 0.2, unit: 'm/s', explain: 'Čas neznáme, použijeme v^{2} = 2 · a · s = 2 · 3,0 · 50 m^{2}/s^{2} = 300 m^{2}/s^{2}, takže v = √300 m/s ≈ 17,3 m/s (asi 62 km/h).' } },
+          ],
+        },
+        {
+          title: 'Grafy s–t, v–t a a–t',
+          icon: 'pencil',
+          blocks: [
+            { type: 'p', text: 'Tentýž pohyb můžeš zakreslit třemi grafy. Pro rozjezd z klidu se zrychlením 2 m/s^{2} platí: a je stálé, v = 2t roste lineárně a s = t^{2} roste **kvadraticky** – graf s–t je část **paraboly**.' },
+            { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 5, step: 1 }, y: { label: 's', unit: 'm', min: 0, max: 26, step: 5 }, series: [
+              { label: 's = t^{2}', style: 'smooth', points: [[0, 0], [0.5, 0.25], [1, 1], [1.5, 2.25], [2, 4], [2.5, 6.25], [3, 9], [3.5, 12.25], [4, 16], [4.5, 20.25], [5, 25]], tone: 'a' },
+              { label: 'tečna v t = 3 s', style: 'dashed', points: [[1.5, 0], [5, 21]], tone: 'b' },
+            ], marks: [{ x: 3, y: 9, label: 'směrnice tečny = 6 m/s' }], caption: 'Graf s–t se zakřivuje nahoru. Směrnice tečny v daném okamžiku je okamžitá rychlost: v t = 3 s je v = 2 · 3 = 6 m/s.' },
+            { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 5, step: 1 }, y: { label: 'a', unit: 'm/s²', min: 0, max: 3, step: 1 }, series: [
+              { label: 'a = 2 m/s^{2}', points: [[0, 2], [5, 2]], area: true, tone: 'c' },
+            ], caption: 'Graf a–t je vodorovná čára. Plocha pod ním je změna rychlosti: 2 m/s^{2} · 5 s = 10 m/s.' },
+            { type: 'compare', columns: [
+              { title: 'Směrnice', icon: 'vector', tone: 'a', points: ['s–t → rychlost', 'v–t → zrychlení', 'a–t → (v této lekci nepotřebuješ)'] },
+              { title: 'Plocha pod grafem', icon: 'chart', tone: 'b', points: ['v–t → posunutí', 'a–t → změna rychlosti Δv', 's–t → nemá význam'] },
+            ], caption: 'Od s k a jdeš přes směrnice, zpátky od a k s přes plochy.' },
+            { type: 'callout', variant: 'tip', text: 'Ze směrnice tečny ke grafu s–t dostaneš okamžitou rychlost i bez derivací: přilož pravítko, aby se grafu v bodě jen dotýkalo, a odečti Δs / Δt na tečně.' },
+            { type: 'check', question: { kind: 'tf', q: 'Graf s–t rovnoměrně zrychleného pohybu z klidu je přímka procházející počátkem.', answer: false, explain: 'Dráha roste jako t^{2}, graf s–t je proto parabola. Přímkou je graf v–t.' } },
+          ],
+        },
+        {
+          title: 'Reakční a brzdná dráha',
+          icon: 'car',
+          blocks: [
+            { type: 'p', text: 'Než řidič sešlápne brzdu, uplyne **reakční doba** t_{r} (asi 1 s, s telefonem v ruce klidně 2 s). Celou tu dobu auto jede nezměněnou rychlostí. Teprve pak začne brzdit se zpomalením a (suchý asfalt asi 7 m/s^{2}, mokrý 4 m/s^{2}, led 1 m/s^{2}).' },
+            { type: 'formula', text: 's_{z} = v · t_{r} + v^{2} / (2 · a)', caption: 'celková (zastavovací) dráha = reakční dráha + brzdná dráha; a je velikost zpomalení' },
+            { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 6, step: 1 }, y: { label: 'v', unit: 'm/s', min: 0, max: 30, step: 5 }, series: [
+              { label: '100 km/h', points: [[0, 27.8], [1, 27.8], [4.97, 0]], area: true, tone: 'a' },
+              { label: '50 km/h', points: [[0, 13.9], [1, 13.9], [2.99, 0]], area: true, tone: 'b' },
+            ], marks: [{ x: 1, label: 'konec reakční doby' }], caption: 'Suchý asfalt, t_{r} = 1,0 s, a = 7 m/s^{2}. Plocha pod grafem je zastavovací dráha: 28 m při 50 km/h, 83 m při 100 km/h.' },
+            { type: 'example', title: 'Padesát, nebo sto?', problem: 'Porovnej zastavovací dráhu při 50 km/h a 100 km/h na suchu (t_{r} = 1,0 s, a = 7,0 m/s^{2}).', steps: [
+              '50 km/h = 13,9 m/s: reakční dráha 13,9 m/s · 1,0 s = 13,9 m',
+              'brzdná dráha (13,9)^{2} / (2 · 7,0) m = 193 / 14 m = 13,8 m → celkem 27,7 m',
+              '100 km/h = 27,8 m/s: reakční 27,8 m, brzdná (27,8)^{2} / 14 m = 55,1 m → celkem 82,9 m',
+            ], answer: 'Při dvojnásobné rychlosti se reakční dráha zdvojnásobí, brzdná zčtyřnásobí; celkem je zastavovací dráha třikrát delší (28 m → 83 m).' },
+            { type: 'callout', variant: 'warning', text: 'Brzdná dráha roste s **druhou mocninou** rychlosti. V místě, kde auto jedoucí 50 km/h už stojí, jede auto, které jelo 70 km/h, pořád ještě skoro 60 km/h. Proto je rozdíl 50 a 70 km/h v obci otázkou života.' },
+            { type: 'check', question: { kind: 'number', q: 'Řidič jede 90 km/h, reakční doba je 1,0 s, auto brzdí se zpomalením 6,25 m/s^{2}. Jaká je celková zastavovací dráha?', answer: 75, tolerance: 1, unit: 'm', explain: '90 km/h = 25 m/s. Reakční dráha 25 m, brzdná 25^{2} / (2 · 6,25) m = 625 / 12,5 m = 50 m. Celkem 75 m.' } },
+          ],
+        },
+        {
+          title: 'Vícekrokové úlohy',
+          icon: 'idea',
+          blocks: [
+            { type: 'p', text: 'Skutečné pohyby mají často několik fází: rozjezd, jízdu stálou rychlostí a brzdění. Každou fázi řešíš zvlášť a **konečná rychlost jedné fáze je počáteční rychlostí další**. Graf v–t ti celou situaci ukáže najednou.' },
+            { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 100, step: 10 }, y: { label: 'v', unit: 'm/s', min: 0, max: 25, step: 5 }, series: [
+              { label: 'souprava metra', points: [[0, 0], [20, 20], [80, 20], [90, 0]], area: true, tone: 'a' },
+            ], marks: [{ x: 20, y: 20, label: 'konec rozjezdu' }, { x: 80, y: 20, label: 'začátek brzdění' }], caption: 'Jízda metra mezi dvěma stanicemi. Plocha lichoběžníku je vzdálenost stanic.' },
+            { type: 'example', title: 'Mezi dvěma stanicemi', problem: 'Metro se rozjíždí 20 s se zrychlením 1,0 m/s^{2}, pak jede 60 s stálou rychlostí a nakonec brzdí se zpomalením 2,0 m/s^{2} až do zastavení. Jak daleko jsou stanice a jaká je průměrná rychlost?', steps: [
+              'Rozjezd: v = 1,0 · 20 m/s = 20 m/s; s_{1} = ½ · 1,0 · 20^{2} m = 200 m',
+              'Stálá rychlost: s_{2} = 20 m/s · 60 s = 1 200 m',
+              'Brzdění: t_{3} = 20 / 2,0 s = 10 s; s_{3} = 20^{2} / (2 · 2,0) m = 100 m',
+              'Celkem: s = 1 500 m za t = 20 + 60 + 10 s = 90 s → v_{p} = 1 500 / 90 m/s ≈ 16,7 m/s',
+            ], answer: 'Stanice jsou 1,5 km od sebe, průměrná rychlost je 16,7 m/s (60 km/h).' },
+            { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 12, step: 2 }, y: { label: 'v', unit: 'm/s', min: 0, max: 50, step: 10 }, series: [
+              { label: 'auto 20 m/s', points: [[0, 20], [12, 20]], tone: 'a' },
+              { label: 'policie z klidu, 4 m/s^{2}', points: [[0, 0], [12, 48]], tone: 'b' },
+            ], marks: [{ x: 5, y: 20, label: 'stejná rychlost – největší náskok' }, { x: 10, label: 'dostižení: stejné plochy' }], caption: 'Honička: policie auto dostihne, když jsou plochy pod oběma grafy stejné.' },
+            { type: 'example', title: 'Honička', problem: 'Kolem stojícího policejního auta projede pirát rychlostí 20 m/s. Ve stejném okamžiku se policie rozjede se zrychlením 4,0 m/s^{2}. Kdy a kde piráta dostihne?', steps: [
+              'Pirát: x_{1} = 20 · t; policie: x_{2} = ½ · 4,0 · t^{2} = 2,0 · t^{2}',
+              'Dostižení: x_{1} = x_{2} → 20 · t = 2,0 · t^{2} → t = 10 s (řešení t = 0 je start)',
+              'Místo: x = 20 m/s · 10 s = 200 m; rychlost policie v = 4,0 · 10 m/s = 40 m/s',
+            ], answer: 'Po 10 s, 200 m od startu; policie pak jede dvakrát rychleji než pirát.' },
+            { type: 'check', question: { kind: 'choice', q: 'V honičce výše: v jakém okamžiku je vzdálenost mezi pirátem a policií největší?', options: ['v čase 5 s, kdy mají stejnou rychlost', 'hned na začátku', 'v čase 10 s', 'vzdálenost roste pořád'], answer: 0, explain: 'Dokud je pirát rychlejší, náskok roste. Od okamžiku, kdy má policie stejnou rychlost 20 m/s (t = 20 / 4 s = 5 s), se náskok zmenšuje. Největší je tedy v 5 s: 100 m − 50 m = 50 m.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Rovnoměrně zrychlený pohyb má stálé zrychlení a = Δv / Δt s jednotkou m/s^{2}; znaménka určuje zvolená osa.',
+        'Směrnice grafu v–t je zrychlení, plocha pod ním je posunutí; směrnice tečny ke grafu s–t je okamžitá rychlost.',
+        'Platí v = v_{0} + a · t, s = v_{0} · t + ½ · a · t^{2} a v^{2} = v_{0}^{2} + 2 · a · s; vybírej rovnici podle veličiny, kterou nepotřebuješ.',
+        'Graf s–t zrychleného pohybu je parabola, graf v–t přímka a graf a–t vodorovná čára.',
+        'Zastavovací dráha je součet reakční dráhy v · t_{r} a brzdné dráhy v^{2} / (2 · a).',
+        'Brzdná dráha roste s druhou mocninou rychlosti: dvojnásobná rychlost znamená čtyřnásobnou brzdnou dráhu.',
+        'Vícefázový pohyb řešíme po fázích; konečná rychlost jedné fáze je počáteční rychlostí další.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Záporné zrychlení vždy znamená, že těleso zpomaluje.', answer: false, explain: 'Rozhoduje, jestli mají a a v stejné, nebo opačné znaménko. Pohyb proti ose (v < 0) se zrychlením a < 0 je zrychlování.' },
+        { kind: 'number', q: 'Motorka zrychlí z 0 na 100 km/h za 4,0 s. Jaké je průměrné zrychlení?', answer: 6.94, tolerance: 0.1, unit: 'm/s²', explain: '100 km/h = 27,8 m/s; a = 27,8 m/s / 4,0 s ≈ 6,9 m/s^{2}.' },
+        { kind: 'match', q: 'Přiřaď rovnici k veličině, která v ní chybí.', pairs: [
+          ['v = v_{0} + a · t', 'dráha s'],
+          ['s = v_{0} · t + ½ · a · t^{2}', 'konečná rychlost v'],
+          ['v^{2} = v_{0}^{2} + 2 · a · s', 'čas t'],
+        ], explain: 'Rovnici volíš podle toho, kterou veličinu neznáš a nepotřebuješ – ta v ní nemá být.' },
+        { kind: 'choice', q: 'Graf v–t je přímka z bodu (0 s; 12 m/s) do bodu (4 s; 0 m/s). Co z něj plyne?', options: ['těleso zpomaluje se zrychlením −3 m/s^{2} a do zastavení ujede 24 m', 'těleso zrychluje s 3 m/s^{2} a ujede 48 m', 'těleso stojí 4 s', 'těleso zpomaluje s −3 m/s^{2} a ujede 48 m'], answer: 0, explain: 'Směrnice (0 − 12) / 4 m/s^{2} = −3 m/s^{2}. Plocha trojúhelníku ½ · 12 · 4 m = 24 m.' },
+        { kind: 'number', q: 'Skateboardista vjede na rampu dolů rychlostí 2,0 m/s a na 12 m dlouhé rampě zrychluje s 1,5 m/s^{2}. Jakou rychlost má dole?', answer: 6.32, tolerance: 0.05, unit: 'm/s', explain: 'v^{2} = v_{0}^{2} + 2 · a · s = 4,0 + 2 · 1,5 · 12 = 40 m^{2}/s^{2}, v = √40 m/s ≈ 6,3 m/s.' },
+        { kind: 'choice', q: 'Rychlost auta se zvýší z 50 km/h na 100 km/h. Kolikrát se prodlouží **brzdná** dráha (bez reakční)?', options: ['4krát', '2krát', '3krát', '8krát'], answer: 0, explain: 'Brzdná dráha v^{2} / (2 · a) roste s druhou mocninou rychlosti: 2^{2} = 4.' },
+        { kind: 'number', q: 'Řidič jede 72 km/h, reaguje za 0,80 s a brzdí se zpomalením 5,0 m/s^{2}. Jaká je celková zastavovací dráha?', answer: 56, tolerance: 0.5, unit: 'm', explain: '72 km/h = 20 m/s. Reakční dráha 20 · 0,80 m = 16 m, brzdná 20^{2} / (2 · 5,0) m = 40 m. Celkem 56 m.' },
+        { kind: 'number', q: 'Výtah se z klidu rozjíždí 2,0 s se zrychlením 1,5 m/s^{2}, pak 6,0 s jede stálou rychlostí a 2,0 s rovnoměrně brzdí do zastavení. O kolik metrů vyjede?', answer: 24, tolerance: 0.3, unit: 'm', explain: 'Maximální rychlost 3,0 m/s. Plocha lichoběžníku v grafu v–t: ½ · 3 · 2 + 3 · 6 + ½ · 3 · 2 = 3 + 18 + 3 = 24 m.' },
+      ],
+    },
+    // ───────────────────────────────────────────────────────────── f8-3
+    'f8-3': {
+      id: 'f8-3',
+      title: 'Volný pád a vrhy',
+      goals: [
+        'Spočítat dobu pádu, výšku a dopadovou rychlost při volném pádu a svislém vrhu',
+        'Vysvětlit nezávislost vodorovného a svislého pohybu a použít ji u vodorovného vrhu',
+        'Určit dolet, maximální výšku a dobu letu šikmého vrhu a vysvětlit, proč nejdál doletí těleso pod 45°',
+        'Kvalitativně popsat, jak odpor vzduchu mění skutečnou trajektorii',
+      ],
+      hook: 'V roce 1971 pustil astronaut David Scott na Měsíci současně kladivo a sokolí pero. Dopadly ve stejném okamžiku – přesně jak to o 350 let dřív tvrdil Galileo. Proč na Zemi pírko plachtí a kladivo ne? A kam doletí míč, když ho kopneš pod 45°?',
+      sections: [
+        {
+          title: 'Volný pád',
+          icon: 'apple',
+          blocks: [
+            { type: 'p', text: '**Volný pád** je pohyb tělesa puštěného z klidu, na které působí jen tíhová síla (odpor vzduchu zanedbáme). Galileo zjistil, že ==ve vakuu padají všechna tělesa se stejným zrychlením==, bez ohledu na hmotnost. Říkáme mu **tíhové zrychlení** g.' },
+            { type: 'formula', text: 'g = 9,81 m/s^{2}', caption: 'tíhové zrychlení u povrchu Země ve střední zeměpisné šířce (v odhadech 10 m/s^{2})' },
+            { type: 'p', text: 'Volný pád je rovnoměrně zrychlený pohyb s v_{0} = 0 a a = g. Stačí dosadit do rovnic z lekce f8-2 (osu volíme směrem dolů):' },
+            { type: 'formula', text: 'v = g · t     h = ½ · g · t^{2}     v = √(2 · g · h)', caption: 'rychlost v čase t, uražená výška h a dopadová rychlost z výšky h' },
+            { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 3, step: 0.5 }, y: { label: 'v', unit: 'm/s', min: 0, max: 30, step: 5 }, series: [
+              { label: 'volný pád', points: [[0, 0], [3, 29.43]], area: true, tone: 'a' },
+            ], marks: [{ x: 1, y: 9.81, label: '1 s: 9,8 m/s, 4,9 m' }, { x: 2, y: 19.62, label: '2 s: 19,6 m/s, 19,6 m' }, { x: 3, y: 29.43, label: '3 s: 29,4 m/s, 44,1 m' }], caption: 'Rychlost roste každou sekundu o 9,81 m/s. Uražená výška (vybarvená plocha) roste s druhou mocninou času: 1 : 4 : 9.' },
+            { type: 'example', title: 'Jak hluboká je studna?', problem: 'Pustíš kámen do studny a šplouchnutí uslyšíš za 2,0 s. Jak je studna hluboká a jakou rychlostí kámen dopadl? (Dobu šíření zvuku zanedbej.)', steps: [
+              'h = ½ · g · t^{2} = ½ · 9,81 m/s^{2} · (2,0 s)^{2} = 19,6 m',
+              'v = g · t = 9,81 m/s^{2} · 2,0 s = 19,6 m/s',
+              'Kontrola: v = √(2 · 9,81 · 19,6) m/s = 19,6 m/s ✓',
+            ], answer: 'Hladina je asi 20 m hluboko, kámen dopadne rychlostí asi 20 m/s (70 km/h). Zvuk potřebuje na cestu nahoru 0,06 s – oprava je malá.' },
+            { type: 'callout', variant: 'fact', text: 'Tíhové zrychlení se mírně liší: na rovníku je 9,78 m/s^{2}, na pólu 9,83 m/s^{2}. Na Měsíci je jen 1,62 m/s^{2}, na Jupiteru 24,8 m/s^{2}. Proč, uvidíš u gravitačního pole v úrovni 9.' },
+            { type: 'check', question: { kind: 'number', q: 'Skokan skočí z desetimetrové věže. Jakou rychlostí dopadne do vody? (Odpor vzduchu zanedbej.)', answer: 14, tolerance: 0.1, unit: 'm/s', explain: 'v = √(2 · g · h) = √(2 · 9,81 · 10) m/s = √196,2 m/s ≈ 14,0 m/s, tedy asi 50 km/h.' } },
+          ],
+        },
+        {
+          title: 'Svislý vrh vzhůru',
+          icon: 'vector',
+          blocks: [
+            { type: 'p', text: 'Vyhodíš-li míč svisle vzhůru rychlostí v_{0}, tíhové zrychlení ho zpomaluje, až se v nejvyšším bodě na okamžik zastaví, a pak padá zpět. Osu zvolíme **nahoru**, zrychlení je proto −g.' },
+            { type: 'formula', text: 'v = v_{0} − g · t     h = v_{0} · t − ½ · g · t^{2}', caption: 'svislý vrh vzhůru: rychlost a výška v čase t' },
+            { type: 'formula', text: 't_{h} = v_{0} / g     h_{max} = v_{0}^{2} / (2 · g)', caption: 'doba výstupu a maximální výška (v nejvyšším bodě je v = 0)' },
+            { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 3.5, step: 0.5 }, y: { label: 'v', unit: 'm/s', min: -20, max: 20, step: 5 }, series: [
+              { label: 'míč vyhozený 15 m/s', points: [[0, 15], [3.06, -15]], area: true, tone: 'b' },
+            ], marks: [{ x: 1.53, y: 0, label: 'nejvyšší bod: v = 0, a = −g' }], caption: 'Graf v–t svislého vrhu je jediná přímka se směrnicí −9,81 m/s^{2}. Plocha nad osou (výstup) a pod osou (pád) jsou stejné: míč se vrátí do ruky.' },
+            { type: 'example', title: 'Míč vzhůru', problem: 'Vyhodíš míč svisle vzhůru rychlostí 15 m/s. Jak vysoko vyletí, kdy bude nahoře a kdy ti spadne zpět do ruky?', steps: [
+              't_{h} = v_{0} / g = 15 / 9,81 s = 1,53 s',
+              'h_{max} = v_{0}^{2} / (2 · g) = 225 / 19,62 m = 11,5 m',
+              'Pohyb je souměrný: pád trvá stejně dlouho jako výstup, celkem 2 · 1,53 s = 3,06 s',
+              'Do ruky dopadne rychlostí 15 m/s, jen opačným směrem.',
+            ], answer: 'Míč vyletí 11,5 m vysoko za 1,53 s a vrátí se po 3,06 s.' },
+            { type: 'callout', variant: 'warning', text: 'Nejčastější chyba: „V nejvyšším bodě je zrychlení nulové.“ Není! Rychlost je nulová, ale tíhová síla působí pořád, a zrychlení je proto pořád g dolů. Kdyby bylo nulové, míč by zůstal viset ve vzduchu.' },
+            { type: 'p', text: 'Svislý vrh je **souměrný**: v každé výšce má míč cestou dolů stejně velkou rychlost jako cestou nahoru, jen opačného směru. Stoupání i klesání trvá stejně dlouho. Při pádu z větší výšky, než odkud jsi ho vyhodil, použij h = v_{0} · t − ½ · g · t^{2} se zápornou výškou.' },
+            { type: 'check', question: { kind: 'tf', q: 'V nejvyšším bodě svislého vrhu je rychlost míče nulová a jeho zrychlení je také nulové.', answer: false, explain: 'Rychlost je nulová jen na okamžik, zrychlení je po celou dobu letu g = 9,81 m/s^{2} směrem dolů.' } },
+          ],
+        },
+        {
+          title: 'Nezávislost pohybů',
+          icon: 'idea',
+          blocks: [
+            { type: 'p', text: 'Pusť jednu kuličku ze stolu a druhou ve stejném okamžiku vodorovně odpal. ==Obě dopadnou na zem současně.== Vodorovný pohyb nijak neovlivňuje svislý: tíhová síla působí jen svisle, takže mění jen svislou složku rychlosti.' },
+            { type: 'diagram', id: 'projectile-motion', caption: 'Šikmý vrh: vodorovná složka rychlosti (vodorovné šipky) je stále stejná, svislá se mění jako u svislého vrhu. Výsledná trajektorie je parabola.' },
+            { type: 'compare', columns: [
+              { title: 'Vodorovně (osa x)', icon: 'vector', tone: 'a', points: ['žádná síla (bez odporu vzduchu)', 'a_{x} = 0', 'rovnoměrný pohyb: x = v_{x} · t'] },
+              { title: 'Svisle (osa y)', icon: 'apple', tone: 'b', points: ['tíhová síla F_{G}', 'a_{y} = −g', 'volný pád nebo svislý vrh'] },
+            ], caption: 'Každý vrh rozložíme na dva nezávislé pohyby, které spojuje jen společný čas t.' },
+            { type: 'callout', variant: 'mascot', text: 'Kulka vystřelená vodorovně z pušky a kulka upuštěná z ruky ve stejné výšce dopadnou (bez odporu vzduchu) na zem současně. Jen jedna z nich dopadne o pár set metrů dál.' },
+            { type: 'check', question: { kind: 'choice', q: 'Ze stejného stolu současně skutálíš pomalou a rychlou kuličku. Která dopadne na zem dřív?', options: ['obě současně, rychlá dál', 'rychlá, protože je rychlejší', 'pomalá, protože letí kratší dráhu', 'rychlá, protože ji nese vzduch'], answer: 0, explain: 'Doba pádu závisí jen na výšce a g, ne na vodorovné rychlosti. Rychlejší kulička jen za stejnou dobu uletí větší vodorovnou vzdálenost.' } },
+          ],
+        },
+        {
+          title: 'Vodorovný vrh',
+          icon: 'drop',
+          blocks: [
+            { type: 'p', text: 'Těleso vržené vodorovně rychlostí v_{0} z výšky h letí vodorovně rovnoměrně a zároveň volně padá. Doba letu je stejná jako doba volného pádu z výšky h.' },
+            { type: 'formula', text: 'x = v_{0} · t     y = h − ½ · g · t^{2}', caption: 'souřadnice tělesa při vodorovném vrhu v čase t (počátek na zemi pod místem hodu)' },
+            { type: 'formula', text: 't_{d} = √(2 · h / g)     d = v_{0} · √(2 · h / g)', caption: 'doba letu a dolet (vodorovná vzdálenost místa dopadu)' },
+            { type: 'graph', x: { label: 'x', unit: 'm', min: 0, max: 1.6, step: 0.2 }, y: { label: 'y', unit: 'm', min: 0, max: 1.4, step: 0.2 }, series: [
+              { label: 'míček ze stolu, 3 m/s', style: 'smooth', points: [[0, 1.25], [0.25, 1.216], [0.5, 1.114], [0.75, 0.943], [1, 0.705], [1.25, 0.398], [1.51, 0]], tone: 'a' },
+            ], marks: [{ x: 1.51, y: 0, label: 'dopad: d = 1,51 m' }], caption: 'Trajektorie vodorovného vrhu je polovina paraboly. Míček sjede ze stolu vysokého 1,25 m rychlostí 3,0 m/s.' },
+            { type: 'example', title: 'Míček ze stolu', problem: 'Pingpongový míček sjede z hrany stolu vysokého 1,25 m vodorovnou rychlostí 3,0 m/s. Kdy a kde dopadne a jakou rychlostí?', steps: [
+              'Doba pádu: t = √(2 · h / g) = √(2 · 1,25 / 9,81) s = √0,255 s = 0,505 s',
+              'Dolet: d = v_{0} · t = 3,0 m/s · 0,505 s = 1,51 m',
+              'Složky rychlosti při dopadu: v_{x} = 3,0 m/s; v_{y} = g · t = 9,81 · 0,505 m/s = 4,95 m/s',
+              'Velikost: v = √(3,0^{2} + 4,95^{2}) m/s = 5,79 m/s; směr: tg β = 4,95 / 3,0 → β ≈ 59° pod vodorovnou rovinou',
+            ], answer: 'Míček dopadne za 0,51 s asi 1,5 m od stolu rychlostí 5,8 m/s.' },
+            { type: 'callout', variant: 'fact', text: 'Proud vody z vodorovně držené hadice je krásná parabola – každá kapka letí vodorovným vrhem. Když zvýšíš tlak (rychlost), dostříkne dál, ale na zem dopadne za stejnou dobu.' },
+            { type: 'callout', variant: 'tip', text: 'U vrhů vždy začni **svislým** pohybem – ten ti dá čas. Čas pak dosadíš do vodorovného pohybu. Opačně to nejde, protože vodorovný pohyb o čase letu nic neví.' },
+            { type: 'check', question: { kind: 'number', q: 'Z útesu vysokého 20 m hodíš kámen vodorovně rychlostí 10 m/s. Jak daleko od paty útesu dopadne?', answer: 20.2, tolerance: 0.3, unit: 'm', explain: 't = √(2 · 20 / 9,81) s = 2,02 s; d = 10 m/s · 2,02 s ≈ 20,2 m.' } },
+          ],
+        },
+        {
+          title: 'Šikmý vrh',
+          icon: 'trophy',
+          blocks: [
+            { type: 'p', text: 'Při **šikmém vrhu** má počáteční rychlost v_{0} úhel elevace α. Rozložíme ji na složky (lekce f8-1): vodorovná v_{0} · cos α zůstává stálá, svislá v_{0} · sin α se chová jako svislý vrh vzhůru.' },
+            { type: 'formula', text: 'T = 2 · v_{0} · sin α / g     h_{max} = v_{0}^{2} · sin^{2} α / (2 · g)     d = v_{0}^{2} · sin 2α / g', caption: 'doba letu, maximální výška a dolet pro vrh z roviny do roviny bez odporu vzduchu' },
+            { type: 'graph', x: { label: 'x', unit: 'm', min: 0, max: 42, step: 5 }, y: { label: 'y', unit: 'm', min: 0, max: 16, step: 2 }, series: [
+              { label: '30°', style: 'smooth', tone: 'a', points: [[0, 0], [4.41, 2.23], [8.83, 3.82], [13.24, 4.78], [17.66, 5.1], [22.07, 4.78], [26.48, 3.82], [30.9, 2.23], [35.31, 0]] },
+              { label: '45°', style: 'smooth', tone: 'b', points: [[0, 0], [5.1, 4.46], [10.19, 7.64], [15.29, 9.56], [20.39, 10.19], [25.48, 9.56], [30.58, 7.65], [35.68, 4.46], [40.77, 0]] },
+              { label: '60°', style: 'smooth', tone: 'c', points: [[0, 0], [4.41, 6.68], [8.83, 11.47], [13.24, 14.33], [17.66, 15.29], [22.07, 14.33], [26.48, 11.47], [30.9, 6.69], [35.31, 0]] },
+            ], marks: [{ x: 40.77, y: 0, label: '45°: 40,8 m' }, { x: 35.31, y: 0, label: '30° i 60°: 35,3 m' }], caption: 'Tři vrhy rychlostí 20 m/s. Nejdál letí míč pod 45°; úhly 30° a 60° dají stejný dolet, ale různou výšku a dobu letu.' },
+            { type: 'example', title: 'Kop přes hřiště', problem: 'Fotbalista kopne míč rychlostí 20 m/s pod úhlem 30°. Urči dobu letu, nejvyšší výšku a dolet (odpor vzduchu zanedbej).', steps: [
+              'Složky: v_{x} = 20 · cos 30° = 17,3 m/s; v_{y} = 20 · sin 30° = 10,0 m/s',
+              'Doba výstupu: v_{y} / g = 10,0 / 9,81 s = 1,02 s → doba letu T = 2,04 s',
+              'Výška: h_{max} = v_{y}^{2} / (2 · g) = 100 / 19,62 m = 5,10 m',
+              'Dolet: d = v_{x} · T = 17,3 m/s · 2,04 s = 35,3 m',
+            ], answer: 'Míč letí 2,0 s, vystoupá 5,1 m a dopadne 35 m daleko.' },
+            { type: 'callout', variant: 'warning', text: 'Vzorce pro T, h_{max} a d platí jen pro vrh **z roviny do roviny** (místo odhodu a dopadu ve stejné výšce). Když koulař odhazuje z výšky 2 m, musíš řešit svislý pohyb rovnicí s neznámým časem.' },
+            { type: 'p', text: 'Proč je nejlepší 45°? Dolet závisí na sin 2α a sinus je největší (rovný 1) pro 2α = 90°. Úhly, které se doplňují do 90° (například 30° a 60° nebo 20° a 70°), mají stejné sin 2α, a tedy stejný dolet.' },
+            { type: 'game', gameId: 'projectile', text: 'Ve hře Vrh nastavíš úhel a rychlost a musíš trefit cíl. Vyzkoušej, jestli ti funguje pravidlo 45°.' },
+            { type: 'check', question: { kind: 'number', q: 'Jak daleko doletí kámen vržený rychlostí 15 m/s pod úhlem 45° (z roviny do roviny, bez odporu vzduchu)?', answer: 22.9, tolerance: 0.3, unit: 'm', explain: 'd = v_{0}^{2} · sin 90° / g = 225 / 9,81 m ≈ 22,9 m.' } },
+          ],
+        },
+        {
+          title: 'Odpor vzduchu',
+          icon: 'parachute',
+          blocks: [
+            { type: 'p', text: 'Ve skutečnosti proti pohybu působí **odporová síla vzduchu**, která roste s rychlostí (u míče přibližně s její druhou mocninou). Brzdí vodorovnou i svislou složku, a proto je skutečná dráha kratší, nižší a **nesouměrná**: sestup je strmější než výstup.' },
+            { type: 'graph', x: { label: 'x', unit: 'm', min: 0, max: 42, step: 5 }, y: { label: 'y', unit: 'm', min: 0, max: 12, step: 2 }, series: [
+              { label: 've vakuu (parabola)', style: 'smooth', tone: 'b', points: [[0, 0], [5.1, 4.46], [10.19, 7.64], [15.29, 9.56], [20.39, 10.19], [25.48, 9.56], [30.58, 7.65], [35.68, 4.46], [40.77, 0]] },
+              { label: 'se vzduchem (balistická křivka)', style: 'dashed', tone: 'a', points: [[0, 0], [5, 4.2], [10, 6.9], [15, 8.2], [18, 8.3], [21, 7.6], [25, 5.2], [28, 2.6], [30.5, 0]] },
+            ], caption: 'Stejný hod pod 45° rychlostí 20 m/s: vzduch zkrátí dolet asi o čtvrtinu a vrchol se posune dopředu.' },
+            { type: 'iconlist', items: [
+              { icon: 'feather', title: 'Pírko a papír', text: 'velká plocha, malá hmotnost – odpor brzy vyrovná tíhu' },
+              { icon: 'rain', title: 'Dešťová kapka', text: 'padá stálou rychlostí asi 9 m/s, ne stovky m/s' },
+              { icon: 'parachute', title: 'Parašutista', text: 'bez padáku asi 55 m/s, s padákem 5 m/s' },
+              { icon: 'trophy', title: 'Oštěp a vrh koulí', text: 'nejlepší úhel je kvůli vzduchu a výšce odhodu menší než 45° (asi 35–42°)' },
+            ] },
+            { type: 'callout', variant: 'fact', text: 'Golfové míčky mají důlky, které snižují odpor vzduchu a spolu s rotací míček nadnášejí. Hladký míček by doletěl asi o polovinu kratší vzdálenost. Mezní rychlost a odpor vzduchu spočítáš v lekci f8-5.' },
+            { type: 'check', question: { kind: 'multi', q: 'Jak odpor vzduchu mění dráhu šikmo vrženého míče ve srovnání s vakuem?', options: ['dolet je kratší', 'nejvyšší bod je níž', 'sestupná část je strmější než výstupná', 'doba letu je vždy přesně stejná', 'dráha je pořád souměrná parabola'], answers: [0, 1, 2], explain: 'Odpor brzdí obě složky rychlosti. Dráha je kratší, nižší a nesouměrná – míč na konci padá strměji, protože už ztratil velkou část vodorovné rychlosti.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Ve vakuu padají všechna tělesa se stejným tíhovým zrychlením g = 9,81 m/s^{2}, nezávisle na hmotnosti.',
+        'Při volném pádu platí v = g · t, h = ½ · g · t^{2} a dopadová rychlost v = √(2 · g · h).',
+        'Svislý vrh vzhůru dosáhne výšky h_{max} = v_{0}^{2} / (2 · g) za dobu v_{0} / g; v nejvyšším bodě je rychlost nulová, zrychlení ale stále g dolů.',
+        'Vodorovný a svislý pohyb jsou nezávislé: vodorovně se těleso pohybuje rovnoměrně, svisle volně padá, spojuje je jen čas.',
+        'Doba vodorovného vrhu je t = √(2 · h / g), dolet d = v_{0} · t; trajektorie je parabola.',
+        'Šikmý vrh má dolet d = v_{0}^{2} · sin 2α / g, největší pro 45°; doplňkové úhly dávají stejný dolet.',
+        'Odpor vzduchu zkracuje dolet a snižuje výšku, dráha je nesouměrná a nejlepší úhel je menší než 45°.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Ve vakuu dopadne olověná koule i pírko puštěné ze stejné výšky současně.', answer: true, explain: 'Bez odporu vzduchu mají všechna tělesa stejné zrychlení g. Ukázal to i pokus s kladivem a pérem na Měsíci.' },
+        { kind: 'number', q: 'Kámen padá volným pádem 3,0 s. Jakou výšku urazí?', answer: 44.1, tolerance: 0.3, unit: 'm', explain: 'h = ½ · g · t^{2} = ½ · 9,81 · 9,0 m ≈ 44,1 m.' },
+        { kind: 'choice', q: 'Jaká je rychlost a zrychlení míče v nejvyšším bodě svislého vrhu?', options: ['v = 0, a = g dolů', 'v = 0, a = 0', 'v = v_{0}, a = 0', 'v = 0, a = g nahoru'], answer: 0, explain: 'Rychlost se na okamžik zastaví, ale tíhová síla stále působí dolů, takže zrychlení je g dolů.' },
+        { kind: 'number', q: 'Jakou nejmenší rychlostí musíš vyhodit míč svisle vzhůru, aby vyletěl do výšky 5,0 m?', answer: 9.9, tolerance: 0.1, unit: 'm/s', explain: 'Z h_{max} = v_{0}^{2} / (2 · g): v_{0} = √(2 · 9,81 · 5,0) m/s ≈ 9,9 m/s.' },
+        { kind: 'multi', q: 'Které veličiny se při vodorovném vrhu bez odporu vzduchu nemění?', options: ['vodorovná složka rychlosti', 'zrychlení', 'svislá složka rychlosti', 'velikost rychlosti', 'směr rychlosti'], answers: [0, 1], explain: 'Vodorovně nepůsobí žádná síla, zrychlení je stále g dolů. Svislá složka, a tedy i velikost a směr rychlosti, se mění.' },
+        { kind: 'number', q: 'Z okna ve výšce 4,9 m hodíš míček vodorovně rychlostí 6,0 m/s. Jak daleko od domu dopadne?', answer: 6, tolerance: 0.1, unit: 'm', explain: 't = √(2 · 4,9 / 9,81) s ≈ 1,0 s; d = 6,0 m/s · 1,0 s = 6,0 m.' },
+        { kind: 'choice', q: 'Který úhel dá stejný dolet jako vrh pod 25° (stejnou rychlostí, z roviny do roviny)?', options: ['65°', '50°', '45°', '75°'], answer: 0, explain: 'Dolet závisí na sin 2α. sin 50° = sin 130°, tedy 2α = 130° a α = 65°. Doplňkové úhly (25° + 65° = 90°) mají stejný dolet.' },
+        { kind: 'number', q: 'Míč je vykopnut rychlostí 25 m/s pod úhlem 60°. Do jaké nejvyšší výšky vystoupá?', answer: 23.9, tolerance: 0.3, unit: 'm', explain: 'v_{y} = 25 · sin 60° = 21,7 m/s; h_{max} = v_{y}^{2} / (2 · g) = 469 / 19,62 m ≈ 23,9 m.' },
+      ],
+    },
+    // ───────────────────────────────────────────────────────────── f8-4
+    'f8-4': {
+      id: 'f8-4',
+      title: 'Pohyb po kružnici',
+      goals: [
+        'Popsat rovnoměrný pohyb po kružnici periodou, frekvencí, úhlovou rychlostí a vztahem v = ω · r',
+        'Spočítat dostředivé zrychlení a dostředivou sílu a určit, která skutečná síla ji v dané situaci dodává',
+        'Vyřešit auto v zatáčce, klopenou zatáčku a smyčku na horské dráze',
+        'Vysvětlit, proč „odstředivá síla“ v inerciální soustavě neexistuje',
+      ],
+      hook: 'Na kolotoči tě to „tlačí ven“, v pračce voda „utíká ven“ bubnem a v rychlé zatáčce tě to „hází“ na dveře. Jenže žádná síla ven nepůsobí. Co se tedy doopravdy děje?',
+      sections: [
+        {
+          title: 'Perioda, frekvence a úhlová rychlost',
+          icon: 'clock',
+          blocks: [
+            { type: 'p', text: 'Těleso, které obíhá po kružnici o poloměru r a za stejné doby urazí stejné oblouky, koná **rovnoměrný pohyb po kružnici**. Velikost rychlosti je stálá, **směr** se ale neustále mění.' },
+            { type: 'keyterms', items: [
+              { term: '**perioda** T', def: 'doba jednoho oběhu, jednotka s' },
+              { term: '**frekvence** f', def: 'počet oběhů za sekundu, f = 1 / T, jednotka Hz = s^{−1}' },
+              { term: '**radián** (rad)', def: 'úhel, jehož oblouk je stejně dlouhý jako poloměr; celý kruh = 2π rad = 360°' },
+              { term: '**úhlová rychlost** ω', def: 'úhel opsaný průvodičem za sekundu, ω = 2π / T = 2π · f, jednotka rad/s' },
+            ] },
+            { type: 'formula', text: 'v = 2π · r / T = ω · r', caption: 'obvodová rychlost v (m/s) = obvod kružnice / perioda = úhlová rychlost ω (rad/s) × poloměr r (m)' },
+            { type: 'diagram', id: 'circular-motion', caption: 'Rychlost míří vždy po tečně ke kružnici, zrychlení a síla do středu. Když se provázek přetrhne, těleso odletí po tečně.' },
+            { type: 'example', title: 'Kolotoč', problem: 'Sedačka kolotoče je 4,0 m od osy a jedna otáčka trvá 8,0 s. Urči frekvenci, úhlovou a obvodovou rychlost.', steps: [
+              'f = 1 / T = 1 / 8,0 s = 0,125 Hz',
+              'ω = 2π / T = 2π / 8,0 s = 0,785 rad/s',
+              'v = ω · r = 0,785 rad/s · 4,0 m = 3,14 m/s',
+            ], answer: 'f = 0,125 Hz, ω ≈ 0,79 rad/s, v ≈ 3,1 m/s. Všechny sedačky mají stejné ω, ale vnější jedou rychleji.' },
+            { type: 'callout', variant: 'fact', text: 'I ty se právě pohybuješ po kružnici. Země se otočí jednou za den, takže bod na rovníku jede rychlostí v = 2π · 6 378 km / 24 h ≈ 1 670 km/h (464 m/s). V Praze je to kvůli menšímu poloměru rovnoběžky asi 1 070 km/h.' },
+            { type: 'check', question: { kind: 'number', q: 'Buben pračky se při odstřeďování otáčí 1 200 otáček za minutu. Jaká je perioda jedné otáčky?', answer: 0.05, tolerance: 0.001, unit: 's', explain: '1 200 ot/min = 20 ot/s, tedy f = 20 Hz a T = 1 / f = 0,05 s.' } },
+          ],
+        },
+        {
+          title: 'Dostředivé zrychlení',
+          icon: 'vector',
+          blocks: [
+            { type: 'p', text: 'Zrychlení je změna **vektoru** rychlosti za čas. U pohybu po kružnici se mění směr rychlosti, a proto má těleso zrychlení, i když tachometr ukazuje pořád stejné číslo. Toto zrychlení míří **do středu kružnice** – říkáme mu **dostředivé** (normálové).' },
+            { type: 'forces', body: 'ball', forces: [
+              { label: 'v (po tečně)', angle: 90, size: 3.5, tone: 'b' },
+              { label: 'a_{d} (do středu)', angle: 180, size: 2.5, tone: 'a' },
+            ], caption: 'Těleso na pravém okraji kružnice obíhá proti směru hodinových ručiček: rychlost míří nahoru po tečně, dostředivé zrychlení doleva ke středu. Oba vektory jsou kolmé.' },
+            { type: 'formula', text: 'a_{d} = v^{2} / r = ω^{2} · r', caption: 'dostředivé zrychlení (m/s^{2}); roste s druhou mocninou rychlosti a klesá s poloměrem' },
+            { type: 'example', title: 'Auto v zatáčce', problem: 'Auto projíždí zatáčku o poloměru 50 m rychlostí 72 km/h. Jak velké má dostředivé zrychlení?', steps: [
+              '72 km/h = 20 m/s',
+              'a_{d} = v^{2} / r = (20 m/s)^{2} / 50 m = 400 / 50 m/s^{2}',
+              'a_{d} = 8,0 m/s^{2}, to je asi 0,8 g',
+            ], answer: 'a_{d} = 8,0 m/s^{2} – téměř tolik jako při volném pádu, jen do strany.' },
+            { type: 'callout', variant: 'fact', text: 'Mezinárodní vesmírná stanice ISS obíhá rychlostí 7,66 km/s ve vzdálenosti 6 780 km od středu Země. Její dostředivé zrychlení je 7 660^{2} / 6,78 · 10^{6} m/s^{2} ≈ 8,7 m/s^{2}. Astronauti tedy neustále padají – jen tak rychle do strany, že Zemi pořád míjejí.' },
+            { type: 'callout', variant: 'tip', text: 'Znáš-li úhlovou rychlost (otáčky), je pohodlnější tvar a_{d} = ω^{2} · r. Znáš-li obvodovou rychlost (tachometr), použij a_{d} = v^{2} / r. Oba jsou totéž, protože v = ω · r.' },
+            { type: 'check', question: { kind: 'choice', q: 'Auto projíždí stejnou zatáčku dvojnásobnou rychlostí. Jak se změní dostředivé zrychlení?', options: ['zvětší se 4krát', 'zvětší se 2krát', 'nezmění se', 'zmenší se 2krát'], answer: 0, explain: 'a_{d} = v^{2} / r; při dvojnásobné rychlosti je v^{2} čtyřikrát větší. Proto jsou rychlé zatáčky tak nebezpečné.' } },
+          ],
+        },
+        {
+          title: 'Dostředivá síla: kdo ji dodává?',
+          icon: 'weight',
+          blocks: [
+            { type: 'p', text: 'Podle druhého Newtonova zákona potřebuje dostředivé zrychlení výslednou sílu mířící do středu – **dostředivou sílu**. Pozor: ==dostředivá síla není nový druh síly==. Je to jen jméno pro výslednici skutečných sil (tah, tření, gravitace, tlaková síla), která míří do středu.' },
+            { type: 'formula', text: 'F_{d} = m · v^{2} / r = m · ω^{2} · r', caption: 'dostředivá síla (N) potřebná k udržení tělesa o hmotnosti m na kružnici o poloměru r' },
+            { type: 'iconlist', items: [
+              { icon: 'trophy', title: 'Hod kladivem', text: 'tah drátu' },
+              { icon: 'car', title: 'Auto v zatáčce', text: 'tření mezi pneumatikami a silnicí' },
+              { icon: 'satellite', title: 'Měsíc a družice', text: 'gravitační síla Země' },
+              { icon: 'arrow-cycle', title: 'Prádlo v bubnu', text: 'tlaková síla stěny bubnu' },
+              { icon: 'atom', title: 'Elektron v atomu (model)', text: 'elektrická síla jádra' },
+            ] },
+            { type: 'example', title: 'Kladivo', problem: 'Kladivář roztočí kouli o hmotnosti 7,26 kg po kružnici o poloměru 2,0 m (drát + paže) na rychlost 25 m/s. Jakou silou musí táhnout?', steps: [
+              'F_{d} = m · v^{2} / r',
+              'F_{d} = 7,26 kg · (25 m/s)^{2} / 2,0 m = 7,26 · 625 / 2,0 N',
+              'F_{d} ≈ 2 270 N',
+            ], answer: 'Asi 2,3 kN – jako kdyby na drátě visela hmotnost 230 kg. Proto se kladiváři zaklánějí.' },
+            { type: 'callout', variant: 'warning', text: 'Do silového diagramu nikdy nekresli „dostředivou sílu“ jako další šipku vedle tahu nebo tření. Nakresli skutečné síly a teprve jejich výslednici polož rovnou m · v^{2} / r.' },
+            { type: 'check', question: { kind: 'number', q: 'Dítě o hmotnosti 30 kg sedí na kolotoči 3,0 m od osy a jede rychlostí 3,0 m/s. Jak velká dostředivá síla na ně působí?', answer: 90, tolerance: 1, unit: 'N', explain: 'F_{d} = m · v^{2} / r = 30 · 9,0 / 3,0 N = 90 N. Dodává ji tah madla a tření sedačky.' } },
+          ],
+        },
+        {
+          title: 'Zatáčky: tření a klopení',
+          icon: 'car',
+          blocks: [
+            { type: 'p', text: 'Na vodorovné silnici drží auto v zatáčce jen **tření**. Největší třecí síla je f · F_{N} = f · m · g (f je součinitel smykového tření, u pneumatik se mluví o adhezi). Auto zatáčku projede, jen když stačí na potřebnou dostředivou sílu.' },
+            { type: 'formula', text: 'm · v^{2} / r ≤ f · m · g   →   v_{max} = √(f · g · r)', caption: 'největší bezpečná rychlost v zatáčce na vodorovné silnici; hmotnost auta se vykrátí' },
+            { type: 'example', title: 'Sucho, nebo led?', problem: 'Zatáčka má poloměr 50 m. Jakou nejvyšší rychlostí ji auto projede na suchu (f = 0,80) a na ledu (f = 0,10)?', steps: [
+              'Sucho: v_{max} = √(0,80 · 9,81 · 50) m/s = √392 m/s ≈ 19,8 m/s ≈ 71 km/h',
+              'Led: v_{max} = √(0,10 · 9,81 · 50) m/s = √49,1 m/s ≈ 7,0 m/s ≈ 25 km/h',
+            ], answer: 'Na ledu musíš zatáčku projet téměř třikrát pomaleji (√8 ≈ 2,8).' },
+            { type: 'callout', variant: 'warning', text: 'Na mokré silnici klesne f zhruba na polovinu, a tedy v_{max} asi na 70 %. Zatáčku, kterou na suchu projedeš 70 km/h, na mokru bezpečně zvládneš jen kolem 50 km/h.' },
+            { type: 'forces', body: 'car', surface: 'incline', angle: 20, forces: [
+              { label: 'F_{G}', angle: 270, size: 3 },
+              { label: 'N', angle: 110, size: 3.19 },
+            ], resultant: true, caption: 'Klopená zatáčka (střed zatáčky je vlevo): tlaková síla silnice N je nakloněná ke středu. Výslednice N a F_{G} míří vodorovně do středu a dodává dostředivou sílu i bez tření.' },
+            { type: 'p', text: 'Proto jsou zatáčky na dálnicích, velodromech a závodních okruzích **klopené**. Když je sklon α správný, stačí k zatočení tlaková síla silnice: tg α = v^{2} / (g · r).' },
+            { type: 'example', title: 'Klopená zatáčka', problem: 'Jaký sklon musí mít zatáčka o poloměru 100 m, aby ji auto projelo rychlostí 25 m/s (90 km/h) i na náledí bez tření?', steps: [
+              'tg α = v^{2} / (g · r) = 625 / (9,81 · 100) = 0,637',
+              'α = 32,5°',
+            ], answer: 'Asi 33°. Na dálnicích bývá sklon jen pár stupňů, velodromy mají v zatáčkách až 45°.' },
+            { type: 'check', question: { kind: 'number', q: 'Jakou nejvyšší rychlostí projede cyklista vodorovnou zatáčku o poloměru 30 m, je-li součinitel tření 0,60? Odpověz v m/s.', answer: 13.3, tolerance: 0.2, unit: 'm/s', explain: 'v_{max} = √(f · g · r) = √(0,60 · 9,81 · 30) m/s = √176,6 m/s ≈ 13,3 m/s (asi 48 km/h).' } },
+          ],
+        },
+        {
+          title: 'Smyčka, houpačka a pračka',
+          icon: 'arrow-cycle',
+          blocks: [
+            { type: 'p', text: 'Ve svislé kružnici se mění, **které síly** míří do středu. V nejvyšším bodě smyčky horské dráhy míří do středu (dolů) tíhová síla i tlaková síla kolejí. V nejnižším bodě míří do středu (nahoru) jen tlaková síla a tíhová míří ven.' },
+            { type: 'forces', body: 'ball', surface: 'ceiling', forces: [
+              { label: 'F_{G}', angle: 270, size: 2.5 },
+              { label: 'N (koleje)', angle: 270, size: 1.5 },
+            ], resultant: true, caption: 'Vozík v nejvyšším bodě smyčky: obě síly míří dolů do středu. Jejich součet je dostředivá síla m · v^{2} / r.' },
+            { type: 'formula', text: 'nahoře: F_{G} + N = m · v^{2} / r     dole: N − F_{G} = m · v^{2} / r', caption: 'N je tlaková síla dráhy (sedačky) na tebe – to je tíha, kterou cítíš' },
+            { type: 'example', title: 'Nejmenší rychlost ve smyčce', problem: 'Smyčka má v nejvyšším bodě poloměr 10 m. Jakou nejmenší rychlostí tam vozík musí projet, aby neodpadl od kolejí?', steps: [
+              'Na hranici odpadnutí je N = 0, dostředivou sílu dodává jen tíha: m · g = m · v^{2} / r',
+              'v_{min} = √(g · r) = √(9,81 · 10) m/s',
+              'v_{min} ≈ 9,9 m/s',
+            ], answer: 'Aspoň 9,9 m/s (36 km/h). Pak se v nejvyšším bodě cítíš úplně bez tíhy.' },
+            { type: 'example', title: 'Dole ve smyčce', problem: 'V nejnižším bodě dráhy s poloměrem 20 m jede vozík rychlostí 20 m/s. Kolikrát větší tíhu cítíš než obvykle?', steps: [
+              'a_{d} = v^{2} / r = 400 / 20 m/s^{2} = 20 m/s^{2}',
+              'N = m · g + m · a_{d} = m · (9,81 + 20) m/s^{2} = m · 29,8 m/s^{2}',
+              'N / (m · g) = 29,8 / 9,81 ≈ 3,0',
+            ], answer: 'Sedačka tě tlačí třikrát větší silou – cítíš se jako třikrát těžší („3 g“).' },
+            { type: 'callout', variant: 'fact', text: 'Buben pračky o poloměru 25 cm při 1 200 ot/min: ω = 2π · 20 rad/s ≈ 126 rad/s, a_{d} = ω^{2} · r ≈ 3 950 m/s^{2}, tedy asi 400 g. Prádlo drží stěna bubnu, ale voda otvory proletí – nic ji na kružnici nedrží, a tak letí po tečně ven.' },
+            { type: 'game', gameId: 'swipe', text: 'Existuje odstředivá síla? Otestuj se ve hře Pravda, nebo lež?' },
+            { type: 'check', question: { kind: 'number', q: 'Jakou nejmenší rychlostí musí projet motorkář nejvyšší bod „koule smrti“ o poloměru 2,5 m?', answer: 4.95, tolerance: 0.05, unit: 'm/s', explain: 'v_{min} = √(g · r) = √(9,81 · 2,5) m/s = √24,5 m/s ≈ 4,95 m/s. V praxi jezdí rychleji, aby je stěna tlačila i nahoře.' } },
+          ],
+        },
+        {
+          title: 'Odstředivá síla: mýtus a vztažná soustava',
+          icon: 'question',
+          blocks: [
+            { type: 'p', text: 'Když auto prudce zatočí doleva, máš pocit, že tě něco tlačí doprava na dveře. Pozorovatel u silnice (v **inerciální soustavě**) ale vidí něco jiného: tvoje tělo se kvůli setrvačnosti snaží jet rovně a auto zatáčí „pod tebou“. Dveře tě pak tlačí **dovnitř**, do středu zatáčky.' },
+            { type: 'compare', columns: [
+              { title: 'Pozorovatel u silnice (inerciální soustava)', icon: 'eye', tone: 'a', points: ['působí jen skutečné síly: tíha, tlak sedačky a dveří', 'výslednice míří **do středu**', 'bez ní bys jel rovně po tečně', '„odstředivá síla“ neexistuje'] },
+              { title: 'Ty v autě (otáčející se soustava)', icon: 'car', tone: 'b', points: ['vůči autu jsi v klidu', 'aby to sedělo, přidáš **setrvačnou odstředivou sílu** m · v^{2} / r ven', 'je to pomocná, zdánlivá síla', 'nemá žádné těleso, které by ji způsobovalo'] },
+            ], caption: 'Oba popisy dávají stejné předpovědi, ale jen v inerciální soustavě platí Newtonovy zákony bez „přidaných“ sil.' },
+            { type: 'callout', variant: 'remember', text: 'Když se provázek s kamenem přetrhne, kámen neodletí **ven od středu**, ale **po tečně** ve směru své okamžité rychlosti. Kdyby existovala skutečná odstředivá síla, letěl by radiálně ven.' },
+            { type: 'p', text: 'Zdánlivé síly nejsou zakázané – inženýři je používají, když počítají v otáčející se soustavě (odstředivky, meteorologie). Musíš ale vždy vědět, ve které soustavě jsi, a nesmíš je míchat se skutečnými silami v inerciální soustavě.' },
+            { type: 'callout', variant: 'mascot', text: 'Až ti někdo řekne, že tě v zatáčce „tlačí odstředivá síla“, odpověz: „Ne, to mě tlačí dveře – a to dovnitř.“ Budeš za chytráka, ale budeš mít pravdu.' },
+            { type: 'check', question: { kind: 'tf', q: 'Z pohledu pozorovatele stojícího u silnice působí na cestujícího v zatáčce odstředivá síla, která ho tlačí ven.', answer: false, explain: 'V inerciální soustavě působí jen skutečné síly a jejich výslednice míří do středu. Pocit „tlačení ven“ je setrvačnost – tělo se snaží pokračovat rovně.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Rovnoměrný pohyb po kružnici popisuje perioda T, frekvence f = 1 / T a úhlová rychlost ω = 2π / T; obvodová rychlost je v = ω · r.',
+        'Rychlost míří po tečně a mění směr, proto má těleso dostředivé zrychlení a_{d} = v^{2} / r = ω^{2} · r mířící do středu.',
+        'Dostředivá síla F_{d} = m · v^{2} / r není nový druh síly, ale výslednice skutečných sil: tahu, tření, gravitace nebo tlakové síly.',
+        'Na vodorovné silnici drží auto v zatáčce tření, nejvyšší rychlost je v_{max} = √(f · g · r); klopená zatáčka využívá i tlakovou sílu silnice.',
+        'V nejvyšším bodě smyčky musí být rychlost aspoň √(g · r); v nejnižším bodě se cítíš těžší, protože N = m · g + m · v^{2} / r.',
+        'Odstředivá síla je jen zdánlivá síla v otáčející se soustavě; v inerciální soustavě těleso bez dostředivé síly odletí po tečně.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Při rovnoměrném pohybu po kružnici je zrychlení nulové, protože se velikost rychlosti nemění.', answer: false, explain: 'Mění se směr rychlosti, a tedy i vektor rychlosti. Zrychlení a_{d} = v^{2} / r míří do středu.' },
+        { kind: 'number', q: 'Kolo auta o poloměru 0,30 m se otáčí 10krát za sekundu. Jakou rychlostí jede auto (kolo neprokluzuje)?', answer: 18.8, tolerance: 0.2, unit: 'm/s', explain: 'ω = 2π · f = 2π · 10 rad/s = 62,8 rad/s; v = ω · r = 62,8 · 0,30 m/s ≈ 18,8 m/s (asi 68 km/h).' },
+        { kind: 'choice', q: 'Kámen obíhá na provázku po kružnici a provázek se přetrhne. Kam kámen poletí (při pohledu shora)?', options: ['po tečně ke kružnici ve směru své rychlosti', 'kolmo ven od středu', 'do středu kružnice', 'dál po kružnici, dokud se nezastaví'], answer: 0, explain: 'Po přetržení na kámen ve vodorovném směru nepůsobí žádná síla, takže podle prvního Newtonova zákona pokračuje rovně ve směru okamžité rychlosti – po tečně.' },
+        { kind: 'number', q: 'Cyklista jede rychlostí 10 m/s zatáčkou o poloměru 20 m. Jaké má dostředivé zrychlení?', answer: 5, tolerance: 0.05, unit: 'm/s²', explain: 'a_{d} = v^{2} / r = 100 / 20 m/s^{2} = 5,0 m/s^{2}.' },
+        { kind: 'match', q: 'Přiřaď k situaci sílu, která dodává dostředivou sílu.', pairs: [
+          ['Měsíc obíhá Zemi', 'gravitační síla Země'],
+          ['auto v zatáčce na rovné silnici', 'tření pneumatik o silnici'],
+          ['kámen na provázku', 'tah provázku'],
+          ['prádlo v bubnu pračky', 'tlaková síla stěny bubnu'],
+        ], explain: 'Dostředivá síla je vždy nějaká skutečná síla nebo jejich výslednice – záleží na situaci.' },
+        { kind: 'choice', q: 'Auto projíždí zatáčku na hranici smyku. Jak se změní největší bezpečná rychlost, když zatáčka bude mít čtyřikrát větší poloměr?', options: ['zvětší se 2krát', 'zvětší se 4krát', 'zvětší se 16krát', 'nezmění se'], answer: 0, explain: 'v_{max} = √(f · g · r); čtyřnásobný poloměr dá √4 = 2krát větší rychlost.' },
+        { kind: 'number', q: 'Kyblík s vodou točíš ve svislé kružnici o poloměru 0,90 m. Jakou nejmenší rychlostí musí projet nejvyšším bodem, aby voda nevytekla?', answer: 2.97, tolerance: 0.05, unit: 'm/s', explain: 'Voda nevyteče, pokud tíha stačí jako dostředivá síla: v_{min} = √(g · r) = √(9,81 · 0,90) m/s ≈ 2,97 m/s.' },
+        { kind: 'multi', q: 'Která tvrzení o „odstředivé síle“ jsou správná?', options: ['je to zdánlivá (setrvačná) síla v otáčející se soustavě', 'v inerciální soustavě ji do silového diagramu nekreslíme', 'způsobuje ji zemská gravitace', 'díky ní odletí utržený kámen radiálně ven', 'pocit tlaku ven v zatáčce je projev setrvačnosti'], answers: [0, 1, 4], explain: 'Odstředivou sílu zavádí jen pozorovatel v otáčející se soustavě. Utržený kámen letí po tečně, ne radiálně, a žádné těleso tuto sílu nezpůsobuje.' },
+      ],
+    },
+    // ───────────────────────────────────────────────────────────── f8-5
+    'f8-5': {
+      id: 'f8-5',
+      title: 'Newtonovy zákony v praxi',
+      goals: [
+        'Rozpoznat inerciální vztažnou soustavu a nakreslit úplný silový diagram tělesa',
+        'Řešit pohyb po nakloněné rovině s třením pomocí složek tíhové síly',
+        'Spočítat zrychlení a tahovou sílu u spojených těles (Atwoodův padostroj, kvádr tažený závažím)',
+        'Vysvětlit zdánlivou tíhu ve výtahu a mezní rychlost při pádu v odporu vzduchu',
+      ],
+      hook: 'Stoupni si ve výtahu na osobní váhu. Při rozjezdu nahoru ukáže o pár kilo víc, při brzdění o pár míň – a kdyby se lano přetrhlo, ukázala by nulu. Zhubl jsi? Ne. Jen Newtonovy zákony začínají počítat za tebe.',
+      sections: [
+        {
+          title: 'Inerciální vztažná soustava',
+          icon: 'compass',
+          blocks: [
+            { type: 'p', text: 'První Newtonův zákon (zákon setrvačnosti) znáš z lekce f2-5: těleso, na které nepůsobí výsledná síla, zůstává v klidu nebo v rovnoměrném přímočarém pohybu. Neplatí ale z pohledu každého pozorovatele.' },
+            { type: 'keyterms', items: [
+              { term: '**vztažná soustava**', def: 'těleso (a souřadnice s hodinami), vůči kterému pohyb popisujeme' },
+              { term: '**inerciální soustava**', def: 'soustava, ve které platí zákon setrvačnosti; je v klidu nebo se pohybuje rovnoměrně přímočaře' },
+              { term: '**neinerciální soustava**', def: 'soustava, která zrychluje nebo se otáčí (rozjíždějící se autobus, kolotoč)' },
+            ] },
+            { type: 'compare', columns: [
+              { title: 'Autobus jede stálou rychlostí', icon: 'check', tone: 'good', points: ['inerciální soustava', 'hrnek na stolku stojí', 'míček vyhozený vzhůru ti spadne do ruky', 'uvnitř nepoznáš, že jedeš'] },
+              { title: 'Autobus prudce brzdí', icon: 'warning', tone: 'bad', points: ['neinerciální soustava', 'hrnek se sám rozjede dopředu', 'žádné těleso ho netlačí – je to setrvačnost', 'Newtonovy zákony tu bez zdánlivých sil neplatí'] },
+            ], caption: 'Uvnitř rovnoměrně jedoucího autobusu platí fyzika stejně jako na zastávce.' },
+            { type: 'callout', variant: 'fact', text: 'Země se otáčí, a přesně vzato proto inerciální soustavou není. Pro většinu pokusů je to ale zanedbatelné. Projeví se to u velkých pohybů – například u stáčení cyklónů nebo u Foucaultova kyvadla.' },
+            { type: 'check', question: { kind: 'tf', q: 'Vlak jedoucí stálou rychlostí 300 km/h po rovné trati je inerciální vztažná soustava.', answer: true, explain: 'Nerozhoduje velikost rychlosti, ale to, že se nemění velikost ani směr. Rovnoměrný přímočarý pohyb je stejně dobrý jako klid.' } },
+          ],
+        },
+        {
+          title: 'Silový diagram a F = m · a',
+          icon: 'vector',
+          blocks: [
+            { type: 'p', text: 'Druhý Newtonův zákon platí pro **výslednici** všech sil působících na těleso a je to vektorová rovnice. Prakticky ho zapisujeme zvlášť pro každou osu: ΣF_{x} = m · a_{x} a ΣF_{y} = m · a_{y}.' },
+            { type: 'formula', text: 'F_{v} = m · a     1 N = 1 kg · m/s^{2}', caption: 'výslednice sil F_{v} (N) = hmotnost m (kg) × zrychlení a (m/s^{2})' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'magnifier', title: 'Vyber těleso', text: 'jedno těleso, ne celou situaci' },
+              { icon: 'vector', title: 'Nakresli síly', text: 'jen síly působící **na** těleso, každá má původce' },
+              { icon: 'ruler', title: 'Zvol osy', text: 'jednu ve směru zrychlení' },
+              { icon: 'calculator', title: 'Napiš F = m · a', text: 'zvlášť pro osu x a osu y' },
+              { icon: 'check', title: 'Vyřeš a ověř', text: 'jednotky, znaménka, rozumnost' },
+            ], caption: 'Pět kroků ke každé dynamické úloze' },
+            { type: 'forces', body: 'box', surface: 'ground', forces: [
+              { label: 'F = 100 N', angle: 0, size: 3.5 },
+              { label: 'F_{t}', angle: 180, size: 2 },
+              { label: 'F_{G}', angle: 270, size: 3.5 },
+              { label: 'N', angle: 90, size: 3.5, from: 'bottom' },
+            ], resultant: true, caption: 'Bedna tažená po podlaze: svisle se tíhová a tlaková síla vyruší, vodorovně zbude F − F_{t}.' },
+            { type: 'example', title: 'Tažená bedna', problem: 'Bednu o hmotnosti 20 kg táhneš po podlaze vodorovnou silou 100 N. Součinitel smykového tření je 0,30. Jaké má bedna zrychlení?', steps: [
+              'Osa y (bedna se svisle nepohybuje): N − F_{G} = 0 → N = m · g = 20 · 9,81 N = 196 N',
+              'Třecí síla: F_{t} = f · N = 0,30 · 196 N = 58,9 N',
+              'Osa x: F − F_{t} = m · a → a = (100 − 58,9) N / 20 kg',
+              'a = 41,1 / 20 m/s^{2} ≈ 2,1 m/s^{2}',
+            ], answer: 'a ≈ 2,1 m/s^{2} ve směru tahu.' },
+            { type: 'callout', variant: 'warning', text: 'Síla akce a reakce se v jednom silovém diagramu nikdy neobjeví obě. Působí na **různá** tělesa: bedna tlačí na podlahu, podlaha na bednu. Do diagramu bedny patří jen ta druhá.' },
+            { type: 'check', question: { kind: 'number', q: 'Auto o hmotnosti 1 200 kg má tažnou sílu motoru 3 000 N, proti pohybu působí odporové síly 600 N. Jaké má zrychlení?', answer: 2, tolerance: 0.05, unit: 'm/s²', explain: 'Výslednice F_{v} = 3 000 N − 600 N = 2 400 N; a = F_{v} / m = 2 400 / 1 200 m/s^{2} = 2,0 m/s^{2}.' } },
+          ],
+        },
+        {
+          title: 'Nakloněná rovina',
+          icon: 'mountain',
+          blocks: [
+            { type: 'p', text: 'Na nakloněné rovině zvolíme osy **podél svahu** a **kolmo k němu**. Tíhovou sílu rozložíme na dvě složky: jedna táhne těleso dolů po svahu, druhá ho tlačí do podložky. Úhel mezi F_{G} a kolmicí k rovině je stejný jako sklon svahu α.' },
+            { type: 'formula', text: 'F_{∥} = m · g · sin α     F_{⊥} = m · g · cos α', caption: 'složka tíhové síly podél svahu a kolmo ke svahu; tlaková síla podložky N = m · g · cos α' },
+            { type: 'forces', body: 'box', surface: 'incline', angle: 30, forces: [
+              { label: 'F_{G}', angle: 270, size: 4 },
+              { label: 'N', angle: 120, size: 3.46 },
+              { label: 'F_{t}', angle: 30, size: 1 },
+              { label: 'F_{∥}', angle: 210, size: 2, tone: 'b' },
+              { label: 'F_{⊥}', angle: 300, size: 3.46, tone: 'b' },
+            ], caption: 'Sáňky na svahu 30°: N vyrovná kolmou složku F_{⊥}, dolů po svahu táhne F_{∥} a brzdí ji tření F_{t}.' },
+            { type: 'formula', text: 'a = g · (sin α − f · cos α)', caption: 'zrychlení tělesa klouzajícího dolů po svahu se součinitelem smykového tření f; bez tření a = g · sin α' },
+            { type: 'example', title: 'Sáňky na kopci', problem: 'Sáňky s dítětem (celkem 25 kg) sjíždějí svah se sklonem 30°. Součinitel tření je 0,10. Jaké je jejich zrychlení?', steps: [
+              'Podél svahu: F_{∥} = m · g · sin 30° = 25 · 9,81 · 0,500 N = 123 N',
+              'Kolmo: N = m · g · cos 30° = 25 · 9,81 · 0,866 N = 212 N → F_{t} = 0,10 · 212 N = 21,2 N',
+              'a = (F_{∥} − F_{t}) / m = (123 − 21,2) N / 25 kg ≈ 4,06 m/s^{2}',
+              'Kontrola vzorcem: a = 9,81 · (0,500 − 0,10 · 0,866) m/s^{2} = 4,06 m/s^{2} ✓',
+            ], answer: 'a ≈ 4,1 m/s^{2}; hmotnost se vykrátila, lehčí i těžší sáňky zrychlují stejně.' },
+            { type: 'p', text: 'Těleso na svahu zůstane v klidu, dokud klidové tření udrží složku F_{∥}: m · g · sin α ≤ f_{0} · m · g · cos α, tedy **tg α ≤ f_{0}**. Změřením úhlu, při kterém se kvádr právě rozjede, určíš součinitel klidového tření.' },
+            { type: 'game', gameId: 'force-sum', text: 'Skládání sil pod úhlem, rozklad do složek a nakloněnou rovinu si procvič ve hře Výslednice sil.' },
+            { type: 'check', question: { kind: 'number', q: 'Kostka klouže bez tření po nakloněné rovině se sklonem 20°. Jaké má zrychlení?', answer: 3.36, tolerance: 0.05, unit: 'm/s²', explain: 'Bez tření a = g · sin α = 9,81 · sin 20° m/s^{2} = 9,81 · 0,342 m/s^{2} ≈ 3,36 m/s^{2}.' } },
+          ],
+        },
+        {
+          title: 'Spojená tělesa',
+          icon: 'pulley',
+          blocks: [
+            { type: 'p', text: 'Tělesa spojená napjatým lanem mají **stejně velké zrychlení**. Lano (lehké, neprotažitelné, přes kladku bez tření) působí na obě tělesa stejně velkou **tahovou silou** T. Úlohu řešíš tak, že napíšeš F = m · a pro každé těleso zvlášť a soustavu rovnic vyřešíš.' },
+            { type: 'forces', body: 'box', surface: 'none', forces: [
+              { label: 'T', angle: 90, size: 2.4 },
+              { label: 'F_{G} = m_{2} · g', angle: 270, size: 2.9 },
+            ], resultant: true, caption: 'Zavěšené těleso m_{2}: tíha je větší než tah lana, výslednice míří dolů a těleso zrychluje dolů.' },
+            { type: 'example', title: 'Atwoodův padostroj', problem: 'Přes pevnou kladku je vedeno lano se závažími m_{1} = 3,0 kg a m_{2} = 2,0 kg. Urči zrychlení soustavy a tah lana.', steps: [
+              'Těžší m_{1} jede dolů: m_{1} · g − T = m_{1} · a',
+              'Lehčí m_{2} jede nahoru: T − m_{2} · g = m_{2} · a',
+              'Sečtením: (m_{1} − m_{2}) · g = (m_{1} + m_{2}) · a → a = 1,0 · 9,81 / 5,0 m/s^{2} = 1,96 m/s^{2}',
+              'T = m_{2} · (g + a) = 2,0 · (9,81 + 1,96) N = 23,5 N',
+            ], answer: 'a ≈ 2,0 m/s^{2}, T ≈ 23,5 N. Tah je mezi tíhami obou závaží (19,6 N a 29,4 N) – musí být.' },
+            { type: 'example', title: 'Kvádr tažený závažím', problem: 'Vozík o hmotnosti M = 4,0 kg stojí na vodorovném stole (tření zanedbej). Přes kladku na okraji stolu ho táhne zavěšené závaží m = 1,0 kg. Jaké je zrychlení a tah lana?', steps: [
+              'Vozík: T = M · a',
+              'Závaží: m · g − T = m · a',
+              'Sečtením: m · g = (M + m) · a → a = 1,0 · 9,81 / 5,0 m/s^{2} = 1,96 m/s^{2}',
+              'T = M · a = 4,0 · 1,96 N = 7,85 N',
+            ], answer: 'a ≈ 2,0 m/s^{2}, T ≈ 7,9 N – méně než tíha závaží 9,81 N, protože závaží zrychluje dolů.' },
+            { type: 'callout', variant: 'warning', text: 'Tah lana **není** automaticky roven tíze zavěšeného závaží. Kdyby byl, výslednice na závaží by byla nulová a závaží by nezrychlovalo. T = m · g platí jen v klidu nebo při stálé rychlosti.' },
+            { type: 'callout', variant: 'tip', text: 'Zkratka: celou soustavu ber jako jedno těleso o hmotnosti m_{1} + m_{2}. Pohání ji rozdíl „hnacích“ a „brzdicích“ sil. Tah lana je vnitřní síla a vykrátí se – spočítáš ho až nakonec z jednoho tělesa.' },
+            { type: 'check', question: { kind: 'number', q: 'Vozík 3,0 kg na vodorovném stole bez tření táhne přes kladku zavěšené závaží 2,0 kg. Jaké je zrychlení soustavy?', answer: 3.92, tolerance: 0.05, unit: 'm/s²', explain: 'a = m · g / (M + m) = 2,0 · 9,81 / 5,0 m/s^{2} ≈ 3,92 m/s^{2}.' } },
+          ],
+        },
+        {
+          title: 'Výtah a zdánlivá tíha',
+          icon: 'gauge',
+          blocks: [
+            { type: 'p', text: 'Osobní váha neměří tvoji hmotnost, ale **tlakovou sílu N**, kterou tě podlaha (váha) tlačí vzhůru. V klidu je N = m · g. Ve zrychlujícím výtahu platí N − m · g = m · a (osa nahoru), a proto se váha „mýlí“.' },
+            { type: 'formula', text: 'N = m · (g + a)', caption: 'zdánlivá tíha ve výtahu; a > 0 = zrychlení nahoru, a < 0 = zrychlení dolů' },
+            { type: 'forces', body: 'person', surface: 'ground', forces: [
+              { label: 'N = 679 N', angle: 90, size: 4, from: 'bottom' },
+              { label: 'F_{G} = 589 N', angle: 270, size: 3.47 },
+            ], resultant: true, caption: 'Člověk (60 kg) ve výtahu, který se rozjíždí nahoru se zrychlením 1,5 m/s^{2}: podlaha tlačí víc, než je tíha, výslednice 90 N míří nahoru.' },
+            { type: 'example', title: 'Váha ve výtahu', problem: 'Na osobní váze ve výtahu stojí člověk o hmotnosti 60 kg. Co váha ukáže, když se výtah (a) rozjíždí nahoru se zrychlením 1,5 m/s^{2}, (b) rozjíždí dolů se zrychlením 1,5 m/s^{2}, (c) volně padá?', steps: [
+              '(a) N = 60 · (9,81 + 1,5) N = 679 N → váha ukáže 679 / 9,81 ≈ 69 kg',
+              '(b) N = 60 · (9,81 − 1,5) N = 499 N → váha ukáže ≈ 51 kg',
+              '(c) a = −g → N = 60 · (9,81 − 9,81) N = 0 → váha ukáže 0 kg',
+            ], answer: 'Hmotnost je pořád 60 kg, mění se jen tlaková síla podložky – zdánlivá tíha.' },
+            { type: 'table', headers: ['Pohyb výtahu', 'Směr zrychlení', 'Váha ukáže'], rows: [
+              ['stojí nebo jede stálou rychlostí', 'a = 0', 'skutečnou hmotnost'],
+              ['rozjíždí se nahoru / brzdí při jízdě dolů', 'nahoru', 'víc'],
+              ['rozjíždí se dolů / brzdí při jízdě nahoru', 'dolů', 'míň'],
+              ['volný pád', 'g dolů', 'nulu – beztíže'],
+            ], caption: 'O údaji váhy rozhoduje směr zrychlení, ne směr jízdy.' },
+            { type: 'callout', variant: 'fact', text: 'Astronauti trénují beztíže v letadle, které letí po parabole jako šikmý vrh. Na 20–25 sekund celé letadlo volně padá a lidé uvnitř se vznášejí – stejně jako na ISS, která také neustále padá.' },
+            { type: 'check', question: { kind: 'number', q: 'Člověk o hmotnosti 50 kg stojí ve výtahu na váze, která ukazuje 45 kg. Jak velké zrychlení má výtah? (Odpověz velikostí.)', answer: 0.98, tolerance: 0.03, unit: 'm/s²', explain: 'N = 45 · 9,81 N = 441 N; a = (N − m · g) / m = (441 − 491) / 50 m/s^{2} ≈ −0,98 m/s^{2}. Zrychlení míří dolů: výtah se rozjíždí dolů, nebo brzdí při jízdě nahoru.' } },
+          ],
+        },
+        {
+          title: 'Mezní rychlost',
+          icon: 'parachute',
+          blocks: [
+            { type: 'p', text: 'Parašutista po výskoku zrychluje, ale s rostoucí rychlostí roste i **odporová síla vzduchu** F_{o} (přibližně s v^{2}). Výslednice F_{G} − F_{o} se zmenšuje, a tak se zmenšuje i zrychlení. Když F_{o} = F_{G}, je výslednice nulová a těleso padá stálou **mezní rychlostí**.' },
+            { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 40, step: 5 }, y: { label: 'v', unit: 'm/s', min: 0, max: 60, step: 10 }, series: [
+              { label: 'parašutista', style: 'smooth', tone: 'a', points: [[0, 0], [2, 18.8], [4, 33.7], [6, 43.4], [8, 49], [10, 52], [14, 54.3], [20, 55], [30, 55], [32, 15], [34, 7], [36, 5.5], [40, 5]] },
+            ], marks: [{ y: 55, label: 'mezní rychlost 55 m/s' }, { x: 30, label: 'otevření padáku' }], caption: 'Na začátku je směrnice 9,81 m/s^{2} (volný pád), pak klesá k nule. Po otevření padáku odpor prudce vzroste a rychlost klesne na novou mezní hodnotu asi 5 m/s.' },
+            { type: 'forces', body: 'skydiver', forces: [
+              { label: 'F_{o}', angle: 90, size: 3 },
+              { label: 'F_{G}', angle: 270, size: 3 },
+            ], caption: 'Při mezní rychlosti jsou odporová a tíhová síla v rovnováze: výslednice je nulová, zrychlení také.' },
+            { type: 'example', title: 'Zrychlení v polovině mezní rychlosti', problem: 'Parašutista (80 kg i s výstrojí) má mezní rychlost 55 m/s. Jaké má zrychlení, když padá rychlostí 27,5 m/s? (F_{o} je úměrná v^{2}.)', steps: [
+              'Při mezní rychlosti: F_{o} = F_{G} = 80 · 9,81 N = 785 N',
+              'Poloviční rychlost → F_{o} je (½)^{2} = ¼: F_{o} = 785 / 4 N = 196 N',
+              'a = (F_{G} − F_{o}) / m = (785 − 196) N / 80 kg ≈ 7,4 m/s^{2}',
+            ], answer: 'a ≈ 7,4 m/s^{2} – o čtvrtinu méně než g.' },
+            { type: 'callout', variant: 'mascot', text: 'Kočky přežívají pády z vysokých pater lépe než z nízkých. Po dosažení mezní rychlosti (asi 27 m/s) se uvolní a roztáhnou jako padáček. Nezkoušej to s nimi, prosím.' },
+            { type: 'check', question: { kind: 'choice', q: 'Parašutista padá mezní rychlostí. Co platí?', options: ['odporová síla je stejně velká jako tíhová, zrychlení je nulové', 'odporová síla je větší než tíhová, a proto nezrychluje', 'na parašutistu nepůsobí žádná síla', 'zrychlení je g, ale rychlost se nemění'], answer: 0, explain: 'Stálá rychlost znamená nulové zrychlení, tedy nulovou výslednici: F_{o} = F_{G}. Síly působí dál, jen se vyrovnávají.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Newtonovy zákony platí v inerciálních soustavách – v klidu nebo v rovnoměrném přímočarém pohybu; zrychlující a otáčející se soustavy jsou neinerciální.',
+        'Druhý Newtonův zákon F_{v} = m · a platí pro výslednici všech sil a zapisujeme ho zvlášť pro každou osu; silový diagram obsahuje jen síly působící na zvolené těleso.',
+        'Na nakloněné rovině má tíhová síla složky m · g · sin α podél svahu a m · g · cos α kolmo; se třením je a = g · (sin α − f · cos α).',
+        'Spojená tělesa mají stejné zrychlení; soustavu řešíme rovnicí F = m · a pro každé těleso, tah lana spočítáme nakonec.',
+        'Váha ukazuje tlakovou sílu podložky N = m · (g + a); při zrychlení nahoru se cítíme těžší, při volném pádu je N = 0 a nastává beztíže.',
+        'Odporová síla roste s rychlostí; když vyrovná tíhovou sílu, těleso padá stálou mezní rychlostí.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Když je výslednice sil působících na těleso nulová, musí být těleso v klidu.', answer: false, explain: 'Nulová výslednice znamená nulové zrychlení: těleso je v klidu, **nebo** se pohybuje rovnoměrně přímočaře.' },
+        { kind: 'number', q: 'Auto o hmotnosti 1 500 kg zabrzdí z 20 m/s do zastavení za 4,0 s. Jak velká výsledná síla ho brzdí?', answer: 7500, tolerance: 50, unit: 'N', explain: 'a = 20 / 4,0 m/s^{2} = 5,0 m/s^{2}; F = m · a = 1 500 · 5,0 N = 7 500 N.' },
+        { kind: 'choice', q: 'Jak velká je tlaková síla nakloněné roviny se sklonem α na kvádr o hmotnosti m (bez dalších sil)?', options: ['m · g · cos α', 'm · g · sin α', 'm · g', 'm · g · tg α'], answer: 0, explain: 'Tlaková síla vyrovnává kolmou složku tíhové síly m · g · cos α. Pro α = 0 dává m · g, pro svislou stěnu nulu.' },
+        { kind: 'number', q: 'Součinitel klidového tření mezi krabicí a prknem je 0,50. Při jakém nejmenším sklonu prkna se krabice rozjede?', answer: 26.6, tolerance: 0.3, unit: '°', explain: 'Krabice se rozjede, když tg α = f_{0} = 0,50, tedy α = arctg 0,50 ≈ 26,6°.' },
+        { kind: 'multi', q: 'Kdy ukáže váha ve výtahu **víc**, než je tvoje skutečná hmotnost?', options: ['výtah se rozjíždí nahoru', 'výtah brzdí při jízdě dolů', 'výtah jede stálou rychlostí nahoru', 'výtah brzdí při jízdě nahoru', 'výtah volně padá'], answers: [0, 1], explain: 'Rozhoduje směr zrychlení. Nahoru míří při rozjezdu nahoru a při brzdění cestou dolů; pak je N = m · (g + a) > m · g.' },
+        { kind: 'number', q: 'Atwoodův padostroj má závaží 5,0 kg a 3,0 kg. Jaké je zrychlení soustavy?', answer: 2.45, tolerance: 0.05, unit: 'm/s²', explain: 'a = (m_{1} − m_{2}) · g / (m_{1} + m_{2}) = 2,0 · 9,81 / 8,0 m/s^{2} ≈ 2,45 m/s^{2}.' },
+        { kind: 'order', q: 'Seřaď kroky řešení dynamické úlohy.', items: [
+          'vybrat jedno těleso',
+          'nakreslit všechny síly, které na něj působí',
+          'zvolit osy, jednu ve směru zrychlení',
+          'napsat F = m · a pro každou osu',
+          'vyřešit rovnice a zkontrolovat jednotky',
+        ], explain: 'Bez silového diagramu a zvolených os se ve znaménkách snadno ztratíš. Rovnice se píší až po nich.' },
+        { kind: 'choice', q: 'Kulička padá v oleji a už dosáhla mezní rychlosti. Co se stane, když ji nahradíš stejně velkou, ale těžší kuličkou?', options: ['mezní rychlost bude větší', 'mezní rychlost bude stejná', 'mezní rychlost bude menší', 'těžší kulička nikdy mezní rychlosti nedosáhne'], answer: 0, explain: 'Těžší kulička má větší tíhu. Odporová síla ji vyrovná až při větší rychlosti, proto je mezní rychlost větší.' },
+      ],
+    },
+    // ───────────────────────────────────────────────────────────── f8-6
+    'f8-6': {
+      id: 'f8-6',
+      title: 'Hybnost a srážky',
+      goals: [
+        'Spočítat hybnost p = m · v a impulz síly F · Δt = Δp i se znaménky',
+        'Vysvětlit, jak airbagy, deformační zóny a pokrčená kolena snižují sílu při nárazu',
+        'Použít zákon zachování hybnosti na srážky, zpětný ráz, výbuchy a rakety',
+        'Rozlišit pružnou a nepružnou srážku a ověřit výsledek energetickou kontrolou',
+      ],
+      hook: 'Kulečníková koule narazí přímo do stojící koule a sama se zastaví, zatímco druhá odjede stejnou rychlostí. Nákladní auto a osobní auto do sebe narazí a osobní odletí. Kdo tuhle hru řídí? Veličina, která se nikdy neztrácí – hybnost.',
+      sections: [
+        {
+          title: 'Hybnost',
+          icon: 'speed',
+          blocks: [
+            { type: 'p', text: 'Zastavit rozjetý kamion je těžší než zastavit rozjeté kolo, i když jedou stejně rychle. Zastavit pomalou kulku z pistole je ale také těžké, i když je lehká. Obojí zachycuje **hybnost** – součin hmotnosti a rychlosti.' },
+            { type: 'formula', text: 'p = m · v', caption: 'hybnost p (kg · m/s) = hmotnost m (kg) × rychlost v (m/s); je to vektor se směrem rychlosti' },
+            { type: 'iconlist', items: [
+              { icon: 'trophy', title: 'Tenisový míček při podání', text: '0,057 kg · 60 m/s ≈ 3,4 kg · m/s' },
+              { icon: 'star', title: 'Střela z pistole', text: '0,010 kg · 400 m/s = 4,0 kg · m/s' },
+              { icon: 'muscle', title: 'Sprinter', text: '70 kg · 10 m/s = 700 kg · m/s' },
+              { icon: 'car', title: 'Auto na silnici', text: '1 200 kg · 25 m/s = 30 000 kg · m/s' },
+              { icon: 'ship', title: 'Supertanker', text: '3 · 10^{8} kg · 7 m/s ≈ 2 · 10^{9} kg · m/s' },
+            ] },
+            { type: 'example', title: 'Znaménko hybnosti', problem: 'Dvě auta po 1 000 kg jedou proti sobě, obě rychlostí 20 m/s. Jaká je celková hybnost soustavy?', steps: [
+              'Kladný směr zvolíme doprava: p_{1} = 1 000 · (+20) kg · m/s = +20 000 kg · m/s',
+              'p_{2} = 1 000 · (−20) kg · m/s = −20 000 kg · m/s',
+              'p = p_{1} + p_{2} = 0',
+            ], answer: 'Celková hybnost je nulová, i když se obě auta pohybují. Hybnosti se sčítají jako vektory.' },
+            { type: 'callout', variant: 'fact', text: 'Newton hybnosti říkal „množství pohybu“ (quantitas motus) a svůj druhý zákon formuloval právě pomocí ní: změna hybnosti je úměrná působící síle. Tvar F = m · a je až pozdější zjednodušení.' },
+            { type: 'callout', variant: 'remember', text: '==Hybnost je vektor.== V jednorozměrných úlohách se její směr projeví znaménkem na zvolené ose. Zapomenuté mínus je nejčastější chyba celé kapitoly.' },
+            { type: 'check', question: { kind: 'number', q: 'Hráč ragby o hmotnosti 100 kg běží rychlostí 8,0 m/s. Jakou má hybnost?', answer: 800, tolerance: 5, unit: 'kg·m/s', explain: 'p = m · v = 100 kg · 8,0 m/s = 800 kg · m/s. Stejnou hybnost by měl 50kg hráč při 16 m/s.' } },
+          ],
+        },
+        {
+          title: 'Impulz síly: airbagy a pokrčená kolena',
+          icon: 'car',
+          blocks: [
+            { type: 'p', text: 'Druhý Newtonův zákon lze napsat jinak: F = m · a = m · Δv / Δt = Δp / Δt. Síla je tedy rychlost změny hybnosti. Součin síly a doby jejího působení se nazývá **impulz síly**.' },
+            { type: 'formula', text: 'F · Δt = Δp = m · v − m · v_{0}', caption: 'impulz síly (N · s) = změna hybnosti (kg · m/s); obě jednotky jsou stejné' },
+            { type: 'graph', x: { label: 't', unit: 'ms', min: 0, max: 120, step: 20 }, y: { label: 'F', unit: 'kN', min: 0, max: 220, step: 20 }, series: [
+              { label: 'náraz na volant (10 ms)', points: [[0, 0], [5, 210], [10, 0]], area: true, tone: 'a' },
+              { label: 'pás a airbag (100 ms)', points: [[0, 0], [50, 21], [100, 0]], area: true, tone: 'b' },
+            ], caption: 'Stejná změna hybnosti řidiče (plocha pod grafem F–t je v obou případech 1 050 N · s). Delší náraz znamená desetkrát menší sílu.' },
+            { type: 'example', title: 'Proč airbag zachraňuje', problem: 'Řidič (70 kg) jede rychlostí 15 m/s (54 km/h) a při nárazu se zastaví. Jaká průměrná síla na něj působí, trvá-li zastavení (a) 0,010 s při nárazu na volant, (b) 0,10 s s pásem a airbagem?', steps: [
+              'Δp = m · (0 − v_{0}) = 70 · (−15) kg · m/s = −1 050 kg · m/s',
+              '(a) F = Δp / Δt = 1 050 / 0,010 N = 105 000 N',
+              '(b) F = 1 050 / 0,10 N = 10 500 N',
+            ], answer: 'Airbag a pás prodlouží zastavení desetkrát a desetkrát sníží sílu: ze 105 kN na 10,5 kN.' },
+            { type: 'iconlist', items: [
+              { icon: 'car', title: 'Deformační zóna', text: 'přední část auta se mačká a prodlužuje dobu nárazu' },
+              { icon: 'bone', title: 'Doskok s pokrčenými koleny', text: 'zastavení trvá déle, klouby nesou menší sílu' },
+              { icon: 'star', title: 'Chytání míče', text: 'ruce „povolí“ s míčem, brankář nemá tvrdé dlaně' },
+              { icon: 'warning', title: 'Helma a chránič', text: 'pěna se stlačuje a rozkládá náraz v čase' },
+            ] },
+            { type: 'callout', variant: 'warning', text: 'U odrazu se hybnost mění víc než u zastavení. Míček narazí rychlostí 10 m/s a odrazí se 10 m/s zpět: Δv = −10 − (+10) = −20 m/s. Odraz vyžaduje dvojnásobný impulz.' },
+            { type: 'check', question: { kind: 'number', q: 'Fotbalista kopne do stojícího míče o hmotnosti 0,45 kg, který odletí rychlostí 25 m/s. Kontakt trvá 0,010 s. Jak velká průměrná síla působila na míč?', answer: 1125, tolerance: 10, unit: 'N', explain: 'Δp = 0,45 · 25 kg · m/s = 11,25 kg · m/s; F = Δp / Δt = 11,25 / 0,010 N ≈ 1 130 N.' } },
+          ],
+        },
+        {
+          title: 'Zákon zachování hybnosti',
+          icon: 'equilibrium',
+          blocks: [
+            { type: 'p', text: 'Když se dvě tělesa srazí, působí na sebe podle třetího Newtonova zákona stejně velkými opačnými silami, a to po stejnou dobu. Jejich impulzy jsou proto opačné: co hybnosti jedno těleso získá, druhé ztratí.' },
+            { type: 'formula', text: 'm_{1} · v_{1} + m_{2} · v_{2} = m_{1} · v_{1}′ + m_{2} · v_{2}′', caption: 'celková hybnost izolované soustavy před dějem = celková hybnost po ději (′ = po srážce)' },
+            { type: 'keyterms', items: [
+              { term: '**izolovaná soustava**', def: 'soustava těles, na kterou nepůsobí vnější síly (nebo se vyruší), jen síly mezi tělesy navzájem' },
+              { term: '**zákon zachování hybnosti**', def: 'celková hybnost izolované soustavy se nemění – při srážce, výbuchu, odrazu i odpálení' },
+            ] },
+            { type: 'diagram', id: 'momentum-collision', caption: 'Vozíky před srážkou a po ní: pružná srážka, nepružná srážka a srážka, při níž se vozíky spojí. Součet šipek hybnosti je před i po srážce stejný.' },
+            { type: 'example', title: 'Bruslaři se odrazí', problem: 'Dva bruslaři stojí na ledě: Petr (60 kg) a Jana (40 kg). Odstrčí se od sebe a Jana odjede rychlostí 3,0 m/s. Jak rychle odjede Petr?', steps: [
+              'Před odrazem: p = 0 (oba stojí)',
+              'Po odrazu: 60 · v_{P} + 40 · 3,0 = 0',
+              'v_{P} = −120 / 60 m/s = −2,0 m/s',
+            ], answer: 'Petr odjede rychlostí 2,0 m/s opačným směrem. Lehčí bruslař získá větší rychlost.' },
+            { type: 'callout', variant: 'tip', text: 'Soustava při srážce aut není úplně izolovaná (působí tření a tíha), ale nárazové síly jsou tak obrovské a krátké, že vnější síly během srážky můžeš zanedbat.' },
+            { type: 'check', question: { kind: 'number', q: 'Chlapec (50 kg) skočí z klidné loďky (100 kg) vodorovně rychlostí 3,0 m/s na molo. Jakou rychlostí se loďka rozjede opačným směrem?', answer: 1.5, tolerance: 0.05, unit: 'm/s', explain: '0 = 50 · 3,0 + 100 · v → v = −1,5 m/s. Loďka odjede 1,5 m/s od mola – proto se ze člunu skáče tak špatně.' } },
+          ],
+        },
+        {
+          title: 'Pružné a nepružné srážky',
+          icon: 'explosion',
+          blocks: [
+            { type: 'p', text: 'Hybnost se zachovává při **každé** srážce. Kinetická energie ale jen při **pružné** srážce. Při **nepružné** srážce se část kinetické energie změní na vnitřní energii (teplo), deformaci a zvuk. Když se tělesa po srážce spojí, jde o **dokonale nepružnou** srážku a ztráta energie je největší.' },
+            { type: 'compare', columns: [
+              { title: 'Pružná srážka', icon: 'arrow-cycle', tone: 'a', points: ['zachovává se hybnost i kinetická energie', 'tělesa se odrazí beze ztrát', 'kulečníkové koule, Newtonova kolébka, molekuly plynu', 'stejné hmotnosti v čelní srážce si vymění rychlosti'] },
+              { title: 'Nepružná srážka', icon: 'car', tone: 'b', points: ['zachovává se jen hybnost', 'část E_{k} → teplo, deformace, zvuk', 'dokonale nepružná: tělesa se spojí', 'autonehody, zachycení míče, spřažení vagonů'] },
+            ], caption: 'Hybnost se zachovává vždy, kinetická energie jen někdy.' },
+            { type: 'p', text: 'Newtonova kolébka ukazuje pružné srážky stejných koulí: pustíš-li jednu kouli, na druhé straně odletí právě jedna se stejnou rychlostí. Pustíš-li dvě, odletí dvě. Jen tak se zachová hybnost i kinetická energie současně.' },
+            { type: 'formula', text: 'v′ = (m_{1} · v_{1} + m_{2} · v_{2}) / (m_{1} + m_{2})', caption: 'společná rychlost po dokonale nepružné srážce' },
+            { type: 'example', title: 'Náraz do stojícího auta', problem: 'Auto (1 000 kg) jede rychlostí 20 m/s a narazí do stojícího auta (1 500 kg). Auta se do sebe zaklesnou. Jakou rychlostí se pohybují po srážce a kolik kinetické energie se ztratí?', steps: [
+              'v′ = (1 000 · 20 + 1 500 · 0) / (1 000 + 1 500) m/s = 20 000 / 2 500 m/s = 8,0 m/s',
+              'E_{k} před: ½ · 1 000 · 20^{2} J = 200 000 J = 200 kJ',
+              'E_{k} po: ½ · 2 500 · 8,0^{2} J = 80 000 J = 80 kJ',
+              'Ztráta: 200 − 80 kJ = 120 kJ',
+            ], answer: 'Auta jedou dál rychlostí 8,0 m/s; 120 kJ (60 % kinetické energie) se spotřebuje na deformaci karoserie a ohřátí.' },
+            { type: 'check', question: { kind: 'number', q: 'Vagon o hmotnosti 20 t jede rychlostí 3,0 m/s a narazí do stojícího vagonu o hmotnosti 10 t. Vagony se spřáhnou. Jakou rychlostí pokračují?', answer: 2, tolerance: 0.05, unit: 'm/s', explain: 'v′ = 20 · 3,0 / (20 + 10) m/s = 60 / 30 m/s = 2,0 m/s. Hmotnosti v tunách se vykrátí, převádět není třeba.' } },
+          ],
+        },
+        {
+          title: 'Zpětný ráz, výbuchy a rakety',
+          icon: 'rocket',
+          blocks: [
+            { type: 'p', text: 'Při výstřelu, výbuchu nebo odrazu je soustava na začátku v klidu a má **nulovou hybnost**. Po ději musí být součet hybností všech částí zase nula. Když tedy něco vyletí dopředu, zbytek se musí pohnout dozadu.' },
+            { type: 'example', title: 'Zpětný ráz pušky', problem: 'Puška o hmotnosti 4,0 kg vystřelí střelu o hmotnosti 10 g rychlostí 800 m/s. Jakou rychlostí se puška pohne dozadu?', steps: [
+              'Před výstřelem: p = 0',
+              'Po výstřelu: 0,010 · 800 + 4,0 · v = 0',
+              'v = −8,0 / 4,0 m/s = −2,0 m/s',
+            ], answer: 'Puška „kopne“ dozadu rychlostí 2,0 m/s. Proto se opírá pevně o rameno – rameno a tělo zvětší hmotnost, která ráz přijme.' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'fuel', title: 'Palivo hoří', text: 'v komoře vznikají horké plyny' },
+              { icon: 'steam', title: 'Plyny vylétají dozadu', text: 'tryskou rychlostí u (km/s)' },
+              { icon: 'vector', title: 'Hybnost dozadu', text: 'každou sekundu odnese plyn hybnost (Δm / Δt) · u' },
+              { icon: 'rocket', title: 'Raketa dopředu', text: 'získá stejně velkou hybnost opačným směrem' },
+            ], caption: 'Raketa se neodráží od vzduchu. Odráží se od vlastních plynů, a proto funguje i ve vakuu.' },
+            { type: 'formula', text: 'F = (Δm / Δt) · u', caption: 'tah raketového motoru (N) = hmotnost plynů vyvržená za sekundu (kg/s) × výtoková rychlost plynů (m/s)' },
+            { type: 'example', title: 'Tah motoru', problem: 'Raketový motor vyvrhne každou sekundu 250 kg plynů rychlostí 3 000 m/s. Jaký je jeho tah?', steps: [
+              'Za 1 s dostanou plyny hybnost Δp = 250 kg · 3 000 m/s = 750 000 kg · m/s',
+              'F = Δp / Δt = 750 000 N',
+            ], answer: 'Tah je 750 kN – stejná síla by zvedla 76 t.' },
+            { type: 'callout', variant: 'fact', text: 'Chobotnice a sépie plavou „na raketový pohon“: nasají vodu do plášťové dutiny a prudce ji vystříknou. Stejně fungují vodní skútry i hasičská proudnice, kterou musí držet dva hasiči.' },
+            { type: 'check', question: { kind: 'number', q: 'Petarda v klidu se roztrhne na dva kusy: 0,30 kg odletí rychlostí 10 m/s. Jakou rychlostí odletí druhý kus o hmotnosti 0,20 kg?', answer: 15, tolerance: 0.1, unit: 'm/s', explain: '0 = 0,30 · 10 + 0,20 · v → v = −15 m/s. Druhý kus letí 15 m/s opačným směrem.' } },
+          ],
+        },
+        {
+          title: 'Energetická kontrola srážky',
+          icon: 'calculator',
+          blocks: [
+            { type: 'p', text: 'Zákon zachování hybnosti dá jednu rovnici. Když v ní jsou dvě neznámé rychlosti, potřebuješ ještě jednu informaci. Vždy ale můžeš výsledek **zkontrolovat energií**: po srážce nesmí být kinetická energie větší než před ní (pokud nedošlo k výbuchu).' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'pencil', title: 'Zvol osu', text: 'kladný směr, znaménka všech rychlostí' },
+              { icon: 'calculator', title: 'Hybnost před', text: 'Σ m · v' },
+              { icon: 'equilibrium', title: 'Hybnost po', text: 'polož rovno a vyřeš neznámou' },
+              { icon: 'lightning', title: 'Energie', text: 'E_{k} po ≤ E_{k} před? Rovnost = pružná srážka' },
+            ], caption: 'Hybnost řeší, energie kontroluje' },
+            { type: 'example', title: 'Je srážka pružná?', problem: 'Koule A (2,0 kg) jede rychlostí 3,0 m/s a čelně narazí do stojící koule B (1,0 kg). Po srážce jede B rychlostí 4,0 m/s. Jakou rychlost má A a byla srážka pružná?', steps: [
+              'Hybnost: 2,0 · 3,0 + 0 = 2,0 · v_{A}′ + 1,0 · 4,0 → v_{A}′ = (6,0 − 4,0) / 2,0 m/s = 1,0 m/s',
+              'E_{k} před: ½ · 2,0 · 3,0^{2} J = 9,0 J',
+              'E_{k} po: ½ · 2,0 · 1,0^{2} + ½ · 1,0 · 4,0^{2} J = 1,0 + 8,0 J = 9,0 J',
+            ], answer: 'A jede dál 1,0 m/s; kinetická energie se zachovala, srážka byla dokonale pružná.' },
+            { type: 'example', title: 'Nemožný výsledek', problem: 'Spolužák tvrdí, že v téže situaci odjela koule B rychlostí 5,0 m/s. Je to možné?', steps: [
+              'Z hybnosti: v_{A}′ = (6,0 − 5,0) / 2,0 m/s = 0,5 m/s',
+              'E_{k} po: ½ · 2,0 · 0,5^{2} + ½ · 1,0 · 5,0^{2} J = 0,25 + 12,5 J = 12,75 J',
+              '12,75 J > 9,0 J – energie by vznikla z ničeho',
+            ], answer: 'Není to možné: hybnost by sice seděla, ale porušil by se zákon zachování energie.' },
+            { type: 'callout', variant: 'mascot', text: 'Hybnost je přísný účetní – nikdy nic neztratí. Kinetická energie je rozhazovačná – při nepružné srážce kus utratí za teplo. Jen přibývat jí nesmí.' },
+            { type: 'check', question: { kind: 'choice', q: 'Vozík 1,0 kg jede rychlostí 4,0 m/s a narazí do stojícího vozíku 1,0 kg. Který výsledek je fyzikálně **nemožný**?', options: ['první 0 m/s, druhý 5,0 m/s', 'první 0 m/s, druhý 4,0 m/s', 'oba 2,0 m/s', 'první 1,0 m/s, druhý 3,0 m/s'], answer: 0, explain: 'Výsledek 0 a 5,0 m/s porušuje už zákon zachování hybnosti (4 ≠ 5). Ostatní ho splňují: 0 a 4 je pružná srážka, 2 a 2 dokonale nepružná, 1 a 3 částečně nepružná (E_{k} 5 J < 8 J).' } },
+          ],
+        },
+      ],
+      summary: [
+        'Hybnost p = m · v je vektor se směrem rychlosti; jednotka kg · m/s.',
+        'Impulz síly F · Δt se rovná změně hybnosti Δp; prodloužením doby nárazu (airbag, deformační zóna, pokrčená kolena) se zmenší síla.',
+        'V izolované soustavě se celková hybnost zachovává, protože síly mezi tělesy jsou podle třetího Newtonova zákona opačné.',
+        'Při pružné srážce se zachovává hybnost i kinetická energie, při nepružné jen hybnost; při dokonale nepružné se tělesa spojí.',
+        'Při výstřelu, výbuchu a odrazu z klidu je celková hybnost po ději nulová; raketa se odráží od vlastních plynů a funguje i ve vakuu.',
+        'Výsledek srážky kontrolujeme energií: kinetická energie po srážce nesmí být větší než před ní.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Při nepružné srážce se hybnost soustavy nezachovává, protože se část energie změní na teplo.', answer: false, explain: 'Hybnost se zachovává při každé srážce izolované soustavy. Při nepružné srážce se nezachovává jen kinetická energie.' },
+        { kind: 'number', q: 'Hokejový puk o hmotnosti 0,17 kg letí rychlostí 40 m/s. Jakou má hybnost?', answer: 6.8, tolerance: 0.05, unit: 'kg·m/s', explain: 'p = m · v = 0,17 · 40 kg · m/s = 6,8 kg · m/s.' },
+        { kind: 'choice', q: 'Proč airbag snižuje riziko zranění?', options: ['prodlouží dobu zastavení, takže při stejné změně hybnosti je síla menší', 'zmenší změnu hybnosti řidiče', 'pohltí všechnu hybnost řidiče', 'zmenší hmotnost řidiče'], answer: 0, explain: 'Změna hybnosti je daná (řidič se musí zastavit). Z F = Δp / Δt plyne, že delší Δt znamená menší sílu.' },
+        { kind: 'number', q: 'Míč o hmotnosti 0,50 kg dopadne na zem rychlostí 6,0 m/s a odrazí se rychlostí 4,0 m/s. Jak velká je změna jeho hybnosti?', answer: 5, tolerance: 0.05, unit: 'kg·m/s', explain: 'Osa nahoru: Δp = 0,50 · (+4,0) − 0,50 · (−6,0) kg · m/s = 2,0 + 3,0 = 5,0 kg · m/s. Směr rychlosti se obrátil, proto se velikosti sčítají.' },
+        { kind: 'number', q: 'Bruslař (60 kg) jede rychlostí 4,0 m/s a chytí stojící partnerku (40 kg). Jakou rychlostí jedou spolu?', answer: 2.4, tolerance: 0.05, unit: 'm/s', explain: 'v′ = 60 · 4,0 / (60 + 40) m/s = 240 / 100 m/s = 2,4 m/s. Je to dokonale nepružná srážka.' },
+        { kind: 'match', q: 'Přiřaď situaci ke správnému popisu.', pairs: [
+          ['kulečníkové koule', 'pružná srážka, E_{k} se zachová'],
+          ['spřažení vagonů', 'dokonale nepružná srážka'],
+          ['výstřel z pušky', 'celková hybnost zůstane nulová'],
+          ['start rakety', 'plyny odnášejí hybnost dozadu'],
+        ], explain: 'Hybnost se zachovává ve všech čtyřech případech. Liší se tím, co se děje s kinetickou energií.' },
+        { kind: 'number', q: 'Vozík 2,0 kg jede rychlostí 3,0 m/s doprava, vozík 1,0 kg rychlostí 3,0 m/s doleva. Srazí se a spojí. Jakou rychlostí (se znaménkem, doprava = +) se pohybují?', answer: 1, tolerance: 0.05, unit: 'm/s', explain: 'p = 2,0 · 3,0 + 1,0 · (−3,0) = 3,0 kg · m/s; v′ = 3,0 / 3,0 m/s = +1,0 m/s, tedy doprava.' },
+        { kind: 'choice', q: 'Proč raketový motor funguje i ve vakuu, kde není vzduch, od kterého by se odrážel?', options: ['raketa se odráží od plynů, které sama vyvrhuje – hybnost soustavy raketa + plyny se zachovává', 've vakuu na raketu nepůsobí tíha, takže letí sama', 'plyny se odrážejí od Země', 've vakuu raketový motor nefunguje, jen setrvačnost'], answer: 0, explain: 'Plyny dostanou hybnost dozadu a raketa stejně velkou dopředu. Vzduch k tomu není potřeba – naopak ho brzdí.' },
+      ],
+    },
+    // ───────────────────────────────────────────────────────────── f8-7
+    'f8-7': {
+      id: 'f8-7',
+      title: 'Práce, energie a výkon kvantitativně',
+      goals: [
+        'Spočítat práci síly působící pod úhlem ze vztahu W = F · s · cos α a určit její znaménko',
+        'Použít větu o práci a kinetické energii a zákon zachování energie i se třením',
+        'Spočítat energii pružnosti ½ · k · x^{2} z plochy pod grafem F–x',
+        'Počítat výkon P = F · v a účinnost řetězce strojů a kombinovat energii s hybností',
+      ],
+      hook: 'Horská dráha nemá motor – jen jednou vyjede nahoru a pak ji celou jízdu pohání gravitace. Proč je každý další kopec nižší? A jak změříš rychlost střely pouhým pravítkem a dřevěným špalíkem? Energie ti to spočítá.',
+      sections: [
+        {
+          title: 'Práce síly pod úhlem',
+          icon: 'vector',
+          blocks: [
+            { type: 'p', text: 'V lekci f3-4 jsi počítal práci jako W = F · s pro sílu ve směru pohybu. Obecně práci koná jen **složka síly ve směru posunutí**. Když síla svírá s posunutím úhel α, je to F · cos α.' },
+            { type: 'formula', text: 'W = F · s · cos α', caption: 'práce W (J) síly F (N) po dráze s (m); α = úhel mezi silou a posunutím' },
+            { type: 'forces', body: 'box', surface: 'ground', forces: [
+              { label: 'F = 80 N', angle: 40, size: 4 },
+              { label: 'F · cos α', angle: 0, size: 3.06, tone: 'b' },
+              { label: 'F_{t}', angle: 180, size: 1.5, tone: 'c' },
+            ], caption: 'Kufr tažený za rukojeť: práci koná jen vodorovná složka F · cos α. Třecí síla míří proti pohybu a koná zápornou práci.' },
+            { type: 'table', headers: ['Úhel α', 'cos α', 'Práce', 'Příklad'], rows: [
+              ['0°', '1', 'kladná, největší: W = F · s', 'tlačíš vozík ve směru jízdy'],
+              ['0° až 90°', 'mezi 0 a 1', 'kladná, menší', 'táhneš kufr za šikmou rukojeť'],
+              ['90°', '0', '**nulová**', 'neseš tašku po rovině, dostředivá síla'],
+              ['180°', '−1', 'záporná: W = −F · s', 'tření, brzdy, odpor vzduchu'],
+            ], caption: 'Znaménko práce: kladná práce energii dodává, záporná odebírá.' },
+            { type: 'example', title: 'Kufr na letišti', problem: 'Táhneš kufr silou 80 N za rukojeť skloněnou 40° nad vodorovnou rovinou po dobu, kdy ujdeš 50 m. Jakou práci vykonáš?', steps: [
+              'W = F · s · cos α = 80 N · 50 m · cos 40°',
+              'W = 4 000 J · 0,766',
+              'W ≈ 3 060 J',
+            ], answer: 'Vykonáš asi 3,1 kJ. Kdybys táhl vodorovně, stačila by na stejnou práci menší síla – svislá složka kufr jen nadlehčuje.' },
+            { type: 'callout', variant: 'fact', text: 'Jeden joule je malá práce: zvednutí jablka (100 g) o 1 m. Schod vyjdeš s prací asi 100 J, čokoláda ti dodá asi 2 000 000 J – teoreticky na 20 000 schodů.' },
+            { type: 'check', question: { kind: 'number', q: 'Sáňky táhneš silou 100 N pod úhlem 30° k vodorovné rovině po dráze 20 m. Jakou práci vykonáš?', answer: 1732, tolerance: 10, unit: 'J', explain: 'W = F · s · cos α = 100 · 20 · 0,866 J ≈ 1 730 J.' } },
+          ],
+        },
+        {
+          title: 'Věta o práci a kinetické energii',
+          icon: 'car',
+          blocks: [
+            { type: 'p', text: 'Když na těleso působí výsledná síla F po dráze s, platí podle f8-2 v^{2} − v_{0}^{2} = 2 · a · s. Vynásobíme ½ · m a dosadíme m · a = F. Vyjde **věta o práci a kinetické energii**: práce výsledné síly se rovná změně kinetické energie.' },
+            { type: 'formula', text: 'W = ΔE_{k} = ½ · m · v^{2} − ½ · m · v_{0}^{2}', caption: 'práce výslednice všech sil (J) = změna kinetické energie tělesa (J)' },
+            { type: 'graph', x: { label: 'v', unit: 'm/s', min: 0, max: 40, step: 5 }, y: { label: 'E_{k}', unit: 'kJ', min: 0, max: 1000, step: 100 }, series: [
+              { label: 'auto 1 200 kg', style: 'smooth', tone: 'a', points: [[0, 0], [5, 15], [10, 60], [15, 135], [20, 240], [25, 375], [30, 540], [35, 735], [40, 960]] },
+            ], marks: [{ x: 25, y: 375, label: '90 km/h: 375 kJ' }, { x: 36.1, label: '130 km/h' }], caption: 'Kinetická energie roste s druhou mocninou rychlosti. Brzdy ji musí celou přeměnit na teplo.' },
+            { type: 'example', title: 'Brzdná dráha z energie', problem: 'Auto (1 200 kg) jede rychlostí 25 m/s. Brzdy vyvinou stálou brzdnou sílu 6 000 N. Na jaké dráze auto zastaví?', steps: [
+              'E_{k} = ½ · 1 200 · 25^{2} J = 375 000 J',
+              'Práce brzdné síly (α = 180°): W = −F · s',
+              '−F · s = 0 − E_{k} → s = E_{k} / F = 375 000 / 6 000 m = 62,5 m',
+            ], answer: 's = 62,5 m. Stejný výsledek dá v^{2} / (2 · a) s a = 5 m/s^{2} – energie a kinematika souhlasí.' },
+            { type: 'callout', variant: 'remember', text: '==Práce výslednice = změna kinetické energie.== Kladná práce těleso zrychlí, záporná zpomalí, nulová (například dostředivá síla) nezmění velikost rychlosti.' },
+            { type: 'check', question: { kind: 'number', q: 'Skateboardista (50 kg) zrychlí z 2,0 m/s na 6,0 m/s. Jakou práci vykonala výsledná síla?', answer: 800, tolerance: 5, unit: 'J', explain: 'W = ½ · 50 · (6,0^{2} − 2,0^{2}) J = 25 · 32 J = 800 J.' } },
+          ],
+        },
+        {
+          title: 'Tíhová energie a energie pružnosti',
+          icon: 'spring',
+          blocks: [
+            { type: 'p', text: '**Tíhová potenciální energie** E_{p} = m · g · h závisí na tom, odkud výšku měříme. Zvolenou nulovou hladinu si vybereš sám – fyzikální význam má jen **změna** ΔE_{p}. Vzorec platí blízko povrchu Země, kde je g stálé.' },
+            { type: 'p', text: 'Pružina natažená nebo stlačená o x působí silou úměrnou deformaci – to je **Hookův zákon** F = k · x, kde k je **tuhost** pružiny (N/m). Práci potřebnou k natažení nespočítáš jako F · x, protože síla roste. Spočítáš ji jako **plochu pod grafem F–x**.' },
+            { type: 'graph', x: { label: 'x', unit: 'm', min: 0, max: 0.3, step: 0.05 }, y: { label: 'F', unit: 'N', min: 0, max: 250, step: 50 }, series: [
+              { label: 'pružina k = 800 N/m', points: [[0, 0], [0.25, 200]], area: true, tone: 'b' },
+            ], marks: [{ x: 0.25, y: 200, label: 'x = 0,25 m, F = 200 N' }], caption: 'Plocha trojúhelníku pod grafem F–x = ½ · 0,25 m · 200 N = 25 J. To je energie uložená v pružině.' },
+            { type: 'formula', text: 'E_{p} = ½ · k · x^{2}', caption: 'potenciální energie pružnosti (J); k = tuhost (N/m), x = prodloužení nebo stlačení (m)' },
+            { type: 'example', title: 'Prak', problem: 'Gumu praku s tuhostí 800 N/m natáhneš o 25 cm a vystřelíš kamínek o hmotnosti 50 g. Jakou rychlostí vyletí, když se veškerá energie pružnosti změní na kinetickou?', steps: [
+              'E_{p} = ½ · 800 N/m · (0,25 m)^{2} = 25 J',
+              '½ · m · v^{2} = 25 J → v = √(2 · 25 / 0,050) m/s',
+              'v = √1 000 m/s ≈ 31,6 m/s',
+            ], answer: 'Kamínek vyletí asi 32 m/s (114 km/h). Míř jen na plechovky.' },
+            { type: 'callout', variant: 'tip', text: 'Hookův zákon platí jen v oblasti pružné deformace. Přetažená pružina se trvale deformuje a graf F–x přestane být přímkou – podrobněji v lekci f10-6 o pevných látkách.' },
+            { type: 'callout', variant: 'warning', text: 'Dvojnásobné natažení = čtyřnásobná energie (x^{2}). Proto jsou přetažené gumy, luky a pružiny nebezpečné a při prasknutí mohou vážně zranit.' },
+            { type: 'check', question: { kind: 'number', q: 'Pružina s tuhostí 200 N/m je stlačená o 10 cm. Kolik energie je v ní uloženo?', answer: 1, tolerance: 0.01, unit: 'J', explain: 'E_{p} = ½ · k · x^{2} = ½ · 200 · 0,10^{2} J = 1,0 J.' } },
+          ],
+        },
+        {
+          title: 'Zachování energie a tření',
+          icon: 'pendulum',
+          blocks: [
+            { type: 'p', text: 'Když práci konají jen tíhová síla a síla pružnosti (**konzervativní síly**), zachovává se **mechanická energie** E = E_{k} + E_{p}. Tření a odpor vzduchu (**nekonzervativní síly**) mechanickou energii zmenšují a mění ji na vnitřní energii – teplo Q.' },
+            { type: 'formula', text: 'E_{k1} + E_{p1} = E_{k2} + E_{p2} + Q     Q = F_{t} · s', caption: 'energie na začátku = energie na konci + teplo vzniklé třením (bez tření je Q = 0)' },
+            { type: 'diagram', id: 'pendulum-energy', caption: 'Kyvadlo neustále přeměňuje polohovou energii na pohybovou a zpět. Tření v závěsu a odpor vzduchu pomalu ubírají mechanickou energii, a proto každý kmit končí trochu níž.' },
+            { type: 'example', title: 'Horská dráha', problem: 'Vozík horské dráhy (500 kg) vyjede do výšky 30 m, kde má prakticky nulovou rychlost. Pak sjede do údolí ve výšce 5,0 m. (a) Jakou by tam měl rychlost bez tření? (b) Ve skutečnosti má 20 m/s. Kolik energie se přeměnilo na teplo?', steps: [
+              '(a) m · g · h_{1} = ½ · m · v^{2} + m · g · h_{2} → v = √(2 · g · (h_{1} − h_{2}))',
+              'v = √(2 · 9,81 · 25) m/s = √490 m/s ≈ 22,1 m/s',
+              '(b) ΔE_{p} = 500 · 9,81 · 25 J = 122 600 J; E_{k} = ½ · 500 · 20^{2} J = 100 000 J',
+              'Q = 122 600 − 100 000 J ≈ 22 600 J',
+            ], answer: 'Bez tření 22,1 m/s; ve skutečnosti se asi 23 kJ (18 %) přeměnilo na teplo. Proto musí být každý další kopec nižší než ten první.' },
+            { type: 'callout', variant: 'tip', text: 'Energetická metoda nepotřebuje tvar dráhy. Ať vozík jede po přímce, oblouku nebo spirále, bez tření rozhoduje jen rozdíl výšek. S kinematikou bys na zakřivené dráze neuspěl.' },
+            { type: 'check', question: { kind: 'number', q: 'Skateboardista se pustí z okraje U-rampy hluboké 3,2 m. Jakou rychlostí projede dnem, zanedbáme-li tření?', answer: 7.92, tolerance: 0.05, unit: 'm/s', explain: 'm · g · h = ½ · m · v^{2} → v = √(2 · 9,81 · 3,2) m/s ≈ 7,9 m/s. Hmotnost se vykrátí.' } },
+          ],
+        },
+        {
+          title: 'Výkon P = F · v a účinnost',
+          icon: 'gauge',
+          blocks: [
+            { type: 'p', text: '**Výkon** je práce za jednotku času, P = W / t. Když síla F táhne těleso stálou rychlostí v, urazí za čas t dráhu v · t a vykoná práci F · v · t. Výkon je tedy součin síly a rychlosti.' },
+            { type: 'formula', text: 'P = W / t = F · v', caption: 'výkon P (W) = tažná síla F (N) × rychlost v (m/s)' },
+            { type: 'example', title: 'Cyklista a auto', problem: 'Profesionální cyklista šlape výkonem 400 W a jede stálou rychlostí 12 m/s. Jak velké odporové síly překonává? Kolik výkonu potřebuje auto, které jede 30 m/s a odpory jsou 600 N?', steps: [
+              'Cyklista: stálá rychlost → tažná síla = odporové síly; F = P / v = 400 / 12 N ≈ 33 N',
+              'Auto: P = F · v = 600 N · 30 m/s = 18 000 W = 18 kW',
+            ], answer: 'Cyklista překonává asi 33 N, auto potřebuje 18 kW. Odpor vzduchu roste s v^{2}, takže výkon potřebný k jízdě roste s v^{3}.' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'factory', title: 'Elektrárna', text: 'η_{1} = 0,40' },
+              { icon: 'plug', title: 'Rozvodná síť', text: 'η_{2} = 0,93' },
+              { icon: 'motor', title: 'Elektromotor', text: 'η_{3} = 0,85' },
+              { icon: 'check', title: 'Celkem', text: 'η = 0,40 · 0,93 · 0,85 ≈ 0,32' },
+            ], caption: 'Účinnost řetězce strojů je **součin** účinností jednotlivých článků.' },
+            { type: 'example', title: 'Výtah', problem: 'Výtah o hmotnosti 800 kg (i s lidmi) vyjede stálou rychlostí o 20 m výš za 25 s. Motor má účinnost 85 %, převodovka 90 %. Jaký příkon odebírá motor ze sítě?', steps: [
+              'Užitečný výkon: P = m · g · h / t = 800 · 9,81 · 20 / 25 W ≈ 6 280 W',
+              'Celková účinnost: η = 0,85 · 0,90 = 0,765',
+              'Příkon: P_{0} = P / η = 6 280 / 0,765 W ≈ 8 210 W',
+            ], answer: 'Motor odebírá asi 8,2 kW; zhruba 1,9 kW se v motoru a převodech mění na teplo.' },
+            { type: 'callout', variant: 'fact', text: 'Koňská síla (1 k ≈ 736 W) vznikla, když James Watt srovnával parní stroj s koňmi v dolech. Zdatný člověk vydrží dodávat asi 100 W, sprinter krátce přes 1 500 W.' },
+            { type: 'check', question: { kind: 'number', q: 'Traktor táhne pluh silou 5,0 kN stálou rychlostí 2,0 m/s. Jaký je jeho užitečný výkon? Odpověz v kW.', answer: 10, tolerance: 0.1, unit: 'kW', explain: 'P = F · v = 5 000 N · 2,0 m/s = 10 000 W = 10 kW.' } },
+          ],
+        },
+        {
+          title: 'Energie a hybnost dohromady',
+          icon: 'idea',
+          blocks: [
+            { type: 'p', text: 'Nejtěžší úlohy mechaniky kombinují oba zákony zachování. Klíčem je rozdělit děj na **fáze** a pro každou fázi zvolit správný zákon: při srážce (krátké, s teplem) platí **hybnost**, při následném pohybu bez tření **mechanická energie**.' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'explosion', title: '1. Srážka', text: 'střela uvízne ve špalku: zachová se hybnost, energie ne' },
+              { icon: 'pendulum', title: '2. Výkyv', text: 'špalek se střelou vystoupá: zachová se mechanická energie' },
+              { icon: 'ruler', title: '3. Měření', text: 'změříš výšku h, zpětně spočítáš rychlost' },
+            ], caption: 'Balistické kyvadlo: dřevěný špalek zavěšený na lankách' },
+            { type: 'example', title: 'Balistické kyvadlo', problem: 'Střela o hmotnosti 10 g uvízne v zavěšeném špalku o hmotnosti 2,0 kg. Špalek se střelou se vychýlí a vystoupá o 20 cm. Jakou rychlostí střela letěla?', steps: [
+              'Fáze 2 (energie): ½ · (m + M) · V^{2} = (m + M) · g · h → V = √(2 · 9,81 · 0,20) m/s = 1,98 m/s',
+              'Fáze 1 (hybnost): m · v = (m + M) · V → v = (2,010 / 0,010) · 1,98 m/s',
+              'v ≈ 398 m/s',
+              'Kontrola energie: E_{k} střely ½ · 0,010 · 398^{2} J ≈ 792 J, po srážce jen ½ · 2,01 · 1,98^{2} J ≈ 3,9 J',
+            ], answer: 'Střela letěla asi 400 m/s. Při srážce se přes 99 % její kinetické energie změnilo na teplo a deformaci dřeva.' },
+            { type: 'callout', variant: 'warning', text: 'Typická chyba: položit kinetickou energii střely rovnou m · g · h špalku. Tak bys dostal rychlost jen asi 28 m/s – zapomněl bys na energii, která se při srážce přeměnila na teplo.' },
+            { type: 'game', gameId: 'quickfire', text: 'Hybnost, energie, výkon – otestuj rychlost svých úvah v Bleskové výzvě.' },
+            { type: 'check', question: { kind: 'number', q: 'Střela o hmotnosti 20 g uvízne ve špalku, takže spolu váží 2,0 kg, a vystoupá o 5,0 cm. Jakou rychlostí střela letěla?', answer: 99, tolerance: 1.5, unit: 'm/s', explain: 'V = √(2 · 9,81 · 0,050) m/s ≈ 0,99 m/s; v = (2,0 / 0,020) · 0,99 m/s ≈ 99 m/s.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Práce síly je W = F · s · cos α; síla kolmá k posunutí práci nekoná, síla proti pohybu koná zápornou práci.',
+        'Práce výsledné síly se rovná změně kinetické energie: W = ½ · m · v^{2} − ½ · m · v_{0}^{2}.',
+        'Tíhová potenciální energie je m · g · h vzhledem ke zvolené hladině; energie pružnosti je ½ · k · x^{2} a odpovídá ploše pod grafem F–x.',
+        'Bez tření se mechanická energie zachovává; tření ji mění na teplo Q = F_{t} · s.',
+        'Výkon je P = W / t = F · v; účinnost řetězce strojů je součin účinností jednotlivých článků.',
+        'Při srážce se zachovává hybnost, při pohybu bez tření mechanická energie; složité úlohy řešíme po fázích.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Když neseš tašku po rovné chodbě stálou rychlostí, síla tvé ruky na tašku nekoná žádnou práci.', answer: true, explain: 'Síla ruky míří svisle nahoru, posunutí vodorovně: α = 90°, cos 90° = 0. Unavíš se kvůli práci svalů uvnitř těla, ne kvůli práci na tašce.' },
+        { kind: 'number', q: 'Síla 200 N působí pod úhlem 60° ke směru posunutí po dráze 10 m. Jakou práci vykoná?', answer: 1000, tolerance: 5, unit: 'J', explain: 'W = 200 · 10 · cos 60° J = 2 000 · 0,5 J = 1 000 J.' },
+        { kind: 'choice', q: 'Jakou práci koná třecí síla při klouzání bedny po podlaze?', options: ['zápornou – míří proti pohybu a odebírá energii', 'kladnou – bedna se díky ní pohybuje', 'nulovou – tření je kolmé k pohybu', 'záleží na hmotnosti bedny'], answer: 0, explain: 'Třecí síla svírá s posunutím úhel 180°, cos 180° = −1. Mechanickou energii mění na teplo.' },
+        { kind: 'number', q: 'Lyžař (70 kg) sjede z klidu svah s převýšením 20 m a dole má rychlost 15 m/s. Kolik kJ energie se přeměnilo na teplo třením a odporem vzduchu?', answer: 5.86, tolerance: 0.1, unit: 'kJ', explain: 'm · g · h = 70 · 9,81 · 20 J ≈ 13 730 J; E_{k} = ½ · 70 · 15^{2} J = 7 875 J; Q ≈ 5 860 J = 5,86 kJ.' },
+        { kind: 'match', q: 'Přiřaď veličinu k její jednotce.', pairs: [
+          ['práce', 'J'],
+          ['výkon', 'W'],
+          ['tuhost pružiny', 'N/m'],
+          ['hybnost', 'kg · m/s'],
+        ], explain: 'Joule = N · m, watt = J/s. Tuhost říká, kolik newtonů je potřeba na prodloužení o 1 m.' },
+        { kind: 'number', q: 'Auto jede stálou rychlostí 20 m/s a proti pohybu působí odporové síly 800 N. Jaký užitečný výkon musí dodávat motor? Odpověz v kW.', answer: 16, tolerance: 0.1, unit: 'kW', explain: 'Při stálé rychlosti tažná síla = odpory = 800 N; P = F · v = 800 · 20 W = 16 000 W = 16 kW.' },
+        { kind: 'choice', q: 'Pružinu stlačíš na trojnásobek původního stlačení. Kolikrát víc energie v ní bude?', options: ['9krát', '3krát', '6krát', '27krát'], answer: 0, explain: 'E_{p} = ½ · k · x^{2}; trojnásobné x dá 3^{2} = 9krát větší energii.' },
+        { kind: 'multi', q: 'Co platí u balistického kyvadla?', options: ['při srážce střely se špalkem se zachovává hybnost', 'při srážce se zachovává kinetická energie', 'při výkyvu špalku (bez tření) se zachovává mechanická energie', 'rychlost střely lze spočítat z výšky, do které se špalek vychýlí', 'rychlost střely nezávisí na hmotnosti špalku'], answers: [0, 2, 3], explain: 'Srážka je dokonale nepružná, kinetická energie se nezachovává. Hybnost platí při srážce, mechanická energie při výkyvu – z výšky h zpětně určíš rychlost střely, a na hmotnosti špalku samozřejmě záleží.' },
+      ],
+    },
+  },
+  boss: [
+    { kind: 'number', q: 'Turistka ujde 3,0 km na východ a pak 4,0 km na sever. Jak daleko je vzdušnou čarou od místa startu?', answer: 5, tolerance: 0.05, unit: 'km', explain: 'Posunutí jsou kolmá: √(3,0^{2} + 4,0^{2}) km = 5,0 km. Dráha je přitom 7,0 km.' },
+    { kind: 'choice', q: 'Rychlost počítáš z v = s / t, kde s = (10,0 ± 0,1) m a t = (2,0 ± 0,1) s. Jaká je relativní nejistota rychlosti?', options: ['6 %', '1 %', '5 %', '0,2 %'], answer: 0, explain: 'U podílu se sčítají relativní nejistoty: 0,1 / 10,0 = 1 % a 0,1 / 2,0 = 5 %, celkem 6 %. v = (5,0 ± 0,3) m/s.' },
+    { kind: 'number', q: 'Auto rovnoměrně zrychlí z 10 m/s na 30 m/s za 8,0 s. Jakou dráhu přitom ujede?', answer: 160, tolerance: 1, unit: 'm', explain: 'Plocha lichoběžníku pod grafem v–t: s = (10 + 30) / 2 · 8,0 m = 160 m. Zrychlení bylo 2,5 m/s^{2}.' },
+    { kind: 'tf', q: 'Plocha pod grafem v–t udává zrychlení tělesa.', answer: false, explain: 'Plocha pod grafem v–t je posunutí. Zrychlení je směrnice grafu v–t.' },
+    { kind: 'number', q: 'Kámen upustíš z mostu vysokého 45 m. Za jak dlouho dopadne na hladinu (bez odporu vzduchu)?', answer: 3.03, tolerance: 0.03, unit: 's', explain: 'h = ½ · g · t^{2} → t = √(2 · 45 / 9,81) s = √9,17 s ≈ 3,03 s.' },
+    { kind: 'choice', q: 'Míč vržený pod úhlem 45° doletí 20 m. Jak daleko doletí, když ho vrhneš pod stejným úhlem dvojnásobnou rychlostí (bez odporu vzduchu)?', options: ['80 m', '40 m', '20 m', '160 m'], answer: 0, explain: 'Dolet d = v_{0}^{2} · sin 2α / g roste s druhou mocninou rychlosti: 2^{2} · 20 m = 80 m.' },
+    { kind: 'number', q: 'Auto o hmotnosti 1 000 kg projíždí zatáčku o poloměru 40 m rychlostí 15 m/s. Jak velká dostředivá síla na ně musí působit?', answer: 5625, tolerance: 30, unit: 'N', explain: 'F_{d} = m · v^{2} / r = 1 000 · 225 / 40 N ≈ 5 600 N. Dodává ji tření pneumatik o silnici.' },
+    { kind: 'number', q: 'Bedna klouže dolů po nakloněné rovině se sklonem 30°, součinitel smykového tření je 0,20. Jaké má zrychlení?', answer: 3.21, tolerance: 0.05, unit: 'm/s²', explain: 'a = g · (sin 30° − f · cos 30°) = 9,81 · (0,500 − 0,20 · 0,866) m/s^{2} = 9,81 · 0,327 m/s^{2} ≈ 3,21 m/s^{2}.' },
+    { kind: 'multi', q: 'Která tvrzení jsou pravdivá?', options: ['v nejvyšším bodě smyčky působí na vozík tíhová i tlaková síla kolejí dolů', 'parašutista padající mezní rychlostí má nulové zrychlení', 'tíhová síla knihy a tlaková síla stolu na knihu jsou dvojice akce a reakce', 'šikmo vržený míč má v nejvyšším bodě nulovou rychlost'], answers: [0, 1], explain: 'Tíhová a tlaková síla působí na stejné těleso (knihu), takže akce a reakce být nemohou – reakcí k tíze je gravitační síla knihy na Zemi. Šikmo vržený míč má v nejvyšším bodě stále vodorovnou složku rychlosti.' },
+    { kind: 'number', q: 'Kousek plastelíny o hmotnosti 50 g letí rychlostí 10 m/s a přilepí se na stojící vozík o hmotnosti 200 g. Jakou rychlostí se vozík rozjede?', answer: 2, tolerance: 0.05, unit: 'm/s', explain: 'Dokonale nepružná srážka: v′ = 0,050 · 10 / (0,050 + 0,200) m/s = 0,50 / 0,25 m/s = 2,0 m/s.' },
+    { kind: 'match', q: 'Přiřaď k údaji z grafu jeho fyzikální význam.', pairs: [
+      ['směrnice grafu s–t', 'rychlost'],
+      ['plocha pod grafem v–t', 'posunutí'],
+      ['plocha pod grafem F–t', 'změna hybnosti (impulz)'],
+      ['plocha pod grafem F–x', 'práce (energie pružnosti)'],
+    ], explain: 'Směrnice dává rychlost změny veličiny, plocha její nahromadění: v · t = s, F · t = Δp, F · x = W.' },
+    { kind: 'number', q: 'Jeřáb zvedne náklad 500 kg stálou rychlostí do výšky 12 m za 20 s. Celková účinnost jeřábu je 75 %. Jaký je jeho příkon? Odpověz v kW.', answer: 3.92, tolerance: 0.05, unit: 'kW', explain: 'Užitečný výkon P = m · g · h / t = 500 · 9,81 · 12 / 20 W ≈ 2 940 W; příkon P_{0} = P / η = 2 940 / 0,75 W ≈ 3 920 W = 3,92 kW.' },
+  ],
+}
+
+export default level
