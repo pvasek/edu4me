@@ -12,7 +12,7 @@ Follow **spec/content-guidelines.md** in full, especially **"Teaching thread (v√
 
 Other must-reads for content: the course syllabus `spec/courses/<course>/syllabus.md` (order and scope), `spec/illustration-guide.md` (visuals), `spec/courses/<course>/figures.md` and `games.md`.
 
-Checks: `npx vitest run src/courses src/core` (validator + `checkFlow` teaching-thread rules), `npx tsc --noEmit -p tsconfig.json`.
+Checks: `npx vitest run src/courses src/core` (validator + `checkFlow` teaching-thread rules for every lesson; one level: `npx vitest run src/core/flow.test.ts -t "chemie l4\."`), `npx tsc --noEmit -p tsconfig.json`.
 
 ## Code
 

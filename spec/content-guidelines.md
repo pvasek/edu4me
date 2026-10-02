@@ -69,7 +69,7 @@ Rules (all courses, every lesson):
 7. **A bridge links back and names what comes next concretely.** It picks up the thread of the text just before it and says plainly what the next block is about. Never a vague allusion the reader has to decode: not „Zkusme to na situaci, kterou znáš z každého nákupu.“, but „U kopnutí do míče je to jasné. Zkusme ale situaci, kde druhé těleso není hned vidět: zvedáš ze země tašku s nákupem.“
 8. Worked examples say *why* a step is done when it isn't obvious („Nejdřív převedeme gramy na kilogramy, protože g je v N/kg.“).
 
-Target proportions: explanation and bridges (`p`) are about **30 % of the words** of a lesson; a lesson grows by about a fifth to a third compared with a bare list of facts (the f2-3 pilot: 1 461 → 1 907 words, prose 16 % → 36 %). Rules 1 and 2 are checked automatically by the validator (`checkFlow` in `src/core/validate.ts`).
+Target proportions: explanation and bridges (`p`) are about **30 % of the words** of a lesson; a lesson grows by about a fifth to a third compared with a bare list of facts (the f2-3 pilot: 1 461 → 1 907 words, prose 16 % → 36 %). Rules 1 and 2 are checked automatically for every lesson (`checkFlow` in `src/core/validate.ts`, run by `src/core/flow.test.ts`).
 
 Before / after (fyzika f2-3):
 
