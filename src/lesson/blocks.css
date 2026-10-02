@@ -380,17 +380,21 @@ figcaption {
 }
 
 /* replay a figure's animation (Replayable) */
+/* the wrapper fills the figure's width; its content is laid out like a direct child of the figure */
 .replayable {
   position: relative;
-  display: grid;
-  justify-items: inherit;
+  justify-self: stretch;
   width: 100%;
   min-width: 0;
 }
 .replayable-body {
   display: grid;
-  justify-items: inherit;
+  justify-items: center;
+  width: 100%;
   min-width: 0;
+}
+.b-visual .replayable-body {
+  justify-items: stretch;
 }
 .can-replay > .replayable-body {
   cursor: pointer;
