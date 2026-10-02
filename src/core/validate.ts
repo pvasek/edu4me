@@ -1,4 +1,4 @@
-import type { Block, LevelContent, LevelOutline, Question } from './types'
+import type { Block, Lesson, LevelContent, LevelOutline, Question } from './types'
 import { BY_SYMBOL } from '../courses/chemie/data/elements'
 import { CHEM_ICONS, FIGURES, MOLECULES, SPECIMENS } from '../illustrations/catalog'
 import { parseFormula } from '../courses/chemie/data/formula'
@@ -192,4 +192,29 @@ export function checkEquation(eq: string): string | null {
   } catch (e) {
     return `equation does not parse: ${eq} (${(e as Error).message})`
   }
+}
+
+/** Blocks that are not part of the teaching thread (they need a sentence of prose between them). */
+const THREAD = new Set<string>(['p', 'h', 'callout', 'check', 'game'])
+
+/**
+ * Teaching-thread rules (spec/content-guidelines.md, "Teaching thread"):
+ * every section opens with a paragraph, and two content blocks never follow
+ * each other without a paragraph between them (callouts don't count as bridges).
+ */
+export function checkFlow(lesson: Lesson): string[] {
+  const errors: string[] = []
+  lesson.sections.forEach((s, si) => {
+    const where = `${lesson.id} §${si + 1} „${s.title}“`
+    if (s.blocks[0]?.type !== 'p') errors.push(`${where}: section must open with a paragraph (p)`)
+    let lastContent: string | null = null
+    s.blocks.forEach((b, bi) => {
+      if (b.type === 'p') lastContent = null
+      else if (!THREAD.has(b.type)) {
+        if (lastContent) errors.push(`${where}: ${lastContent} → ${b.type} (block ${bi + 1}) needs a bridging paragraph between them`)
+        lastContent = b.type
+      }
+    })
+  })
+  return errors
 }

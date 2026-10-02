@@ -43,12 +43,44 @@ summary: 4–7 items        – the takeaways, written as full short sentences
 quiz: 6–8 questions       – covering all sections, mixed kinds, rising difficulty
 ```
 
-Each **section** has a title and 4–12 blocks. Good rhythm for a section:
-1. explanation (`p`, `list`, `keyterms`)
-2. a visual (`diagram`, `elements`, `table`, `structure`, `formula`)
-3. a worked `example` when there is a calculation or a procedure
-4. a `callout` (tip, warning, fact, remember or mascot)
-5. **one `check` question** at the end of the section (recommended, not required). Checks are *not* shown inline: they are collected into the single end-of-lesson quiz (one per section, in reading order, then the `quiz` questions; 12 questions, or up to 14 so that every section contributes one)
+Each **section** has a title and 4–14 blocks. Good rhythm for a section:
+1. an **opening** paragraph (`p`): the question this section answers, linked to what came before
+2. explanation (`p`, `list`, `keyterms`)
+3. a visual (`diagram`, `elements`, `table`, `structure`, `formula`, physics blocks)
+4. a worked `example` when there is a calculation or a procedure
+5. a `callout` (tip, warning, fact, remember or mascot)
+6. a **closing** sentence that states what we now know and leads to the next section
+7. **one `check` question** at the end of the section (recommended, not required). Checks are *not* shown inline: they are collected into the single end-of-lesson quiz (one per section, in reading order, then the `quiz` questions; 12 questions, or up to 14 so that every section contributes one)
+
+Between the steps runs the **teaching thread** – see the next section. It is what turns a list of facts into an explanation.
+
+## Teaching thread (výkladová nit)
+
+A lesson reads like a good teacher explaining at the board, not like a stack of cards. Every fact, picture and example is **introduced** (why are we looking at this?) and, where it isn't obvious, **interpreted** (what does it show?). The thread is short – it keeps lessons condensed – but it is never missing.
+
+Rules (all courses, every lesson):
+
+1. **Open every section with a `p`** that sets up the question of the section and connects it to the previous one or to the hook („Teď už víme, co síla je. Jenže sílu nevidíme – tak podle čeho ji poznáme?“).
+2. **No two content blocks in a row without a sentence between them.** Content blocks are everything except `p`, `h`, `callout`, `check` and `game`. Before a list, table, figure, formula or example comes a `p` saying what to look at or why („Kolik je vlastně jeden newton? Tady je pár orientačních hodnot – od jablka až po raketu:“). A callout does not count as a bridge.
+3. **Say why, not only what.** Before a formula or a rule, one sentence of intuition (why it makes sense). After a surprising result, one sentence of meaning („Hmotnost zůstává stejná – proto astronauti na Měsíci poskakují.“).
+4. **Name the contrast or the trap** when two ideas are easy to confuse („Pozor, tady se chybuje nejčastěji: hmotnost a tíhová síla spolu souvisí, ale nejsou to stejné veličiny.“).
+5. **Close every section** (before its `check`) with one sentence: what we can do now and what comes next. The last section points to the next lesson.
+6. **Bridges are 1–2 sentences.** They carry meaning (a question, a reason, a contrast, a consequence) – never filler like „V této části se naučíme…“ or a repeat of the heading. No new facts hide in bridges; facts belong to the explanation.
+7. Worked examples say *why* a step is done when it isn't obvious („Nejdřív převedeme gramy na kilogramy, protože g je v N/kg.“).
+
+Target proportions: explanation and bridges (`p`) are about **30 % of the words** of a lesson; a lesson grows by about a fifth to a third compared with a bare list of facts (the f2-3 pilot: 1 461 → 1 907 words, prose 16 % → 36 %). Rules 1 and 2 are checked automatically by the validator (`checkFlow` in `src/core/validate.ts`).
+
+Before / after (fyzika f2-3):
+
+```
+before:  formula → example → compare → table → example
+after:   p „Na každý kilogram připadá asi 10 N…“ → formula
+         → p „Vyzkoušej si to na věci, kterou nosíš každý den.“ → example
+         → p „Pozor, tady se chybuje nejčastěji…“ → compare
+         → p „Číslo g totiž není všude stejné…“ → table
+         → p „Co to znamená pro astronauta na Měsíci? Spočítejme to.“ → example
+         → p „Tíhovou sílu už umíme spočítat. Zbývá ji umět nakreslit.“ → check
+```
 
 A section may embed a `game` block pointing at a related mini-game (at most once per lesson).
 

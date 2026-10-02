@@ -363,16 +363,20 @@ const level: LevelContent = {
           icon: 'magnet',
           blocks: [
             { type: 'p', text: 'Když kopneš do míče, působíš na něj **silou**. Míč ale současně působí na tvou nohu – proto kopnutí cítíš. ==Síla je vždy projevem vzájemného působení dvou těles.== Jedno těleso působí na druhé a druhé zpátky na první.' },
+            { type: 'p', text: 'Kopnutí je ale jen jeden ze způsobů, jak na sebe tělesa působí. Když se rozhlédneš kolem sebe, najdeš dvě velké skupiny: tělesa, která se musí dotknout, a tělesa, která na sebe působí, i když je od sebe dělí vzduch nebo prázdný prostor.' },
             { type: 'compare', columns: [
               { title: 'Působení při dotyku', icon: 'muscle', tone: 'a', points: ['noha kopne do míče', 'tlačíš nákupní vozík', 'lano táhne vlek', 'podlaha brzdí klouzající ponožku (tření)'] },
               { title: 'Působení na dálku (silovým polem)', icon: 'magnet', tone: 'b', points: ['Země přitahuje jablko – **gravitační pole**', 'magnet přitahuje sponku – **magnetické pole**', 'zelektrizovaný balonek přitahuje vlasy – **elektrické pole**'] },
             ], caption: 'Tělesa na sebe mohou působit dotykem, nebo na dálku prostřednictvím pole.' },
+            { type: 'p', text: 'Ať jde o dotyk, nebo o pole, každá síla má vždy dva aktéry. Proto se vyplatí ptát se pokaždé stejně:' },
             { type: 'callout', variant: 'remember', text: 'U každé síly se zeptej: **kdo** působí a **na koho**? Když nedokážeš najít těleso, které silou působí, taková síla nejspíš neexistuje.' },
+            { type: 'p', text: 'Zkusme to na situaci, kterou znáš z každého nákupu.' },
             { type: 'example', title: 'Kdo na koho?', problem: 'Popiš síly, když zvedáš ze země tašku s nákupem.', steps: [
               'Ruka působí na tašku silou nahoru – a taška táhne ruku dolů (cítíš to v prstech).',
               'Země přitahuje tašku dolů – a taška přitahuje Zemi nahoru (tak slabě, že Země se nepohne).',
             ], answer: 'Každá síla má svůj pár: tělesa působí vždy vzájemně. Víc o tom v lekci o Newtonových zákonech.' },
             { type: 'callout', variant: 'mascot', text: 'Magnet a sponka se nedotýkají, a přesto se přitahují. Připadá mi to jako kouzlo, ale fyzici tomu klidně říkají „pole“.' },
+            { type: 'p', text: 'Teď už víme, **co** síla je. Jenže sílu nevidíme – tak podle čeho ji vlastně poznáme?' },
             { type: 'check', question: { kind: 'tf', q: 'Síla může působit jen tehdy, když se tělesa navzájem dotýkají.', answer: false, explain: 'Gravitační, magnetická a elektrická síla působí i na dálku, prostřednictvím pole. Země přitahuje i padající jablko, které se jí zatím nedotýká.' } },
           ],
         },
@@ -381,6 +385,7 @@ const level: LevelContent = {
           icon: 'vector',
           blocks: [
             { type: 'p', text: 'Sílu nevidíme, poznáme ji podle jejích **účinků**. Síla může změnit pohyb tělesa (**pohybový účinek**), nebo změnit jeho tvar (**deformační účinek**).' },
+            { type: 'p', text: 'Podívej se na pár běžných situací. Ve všech působí síla, ale pokaždé dělá něco trochu jiného:' },
             { type: 'iconlist', items: [
               { icon: 'rocket', title: 'Uvede těleso do pohybu', text: 'kopnutí do míče, start rakety' },
               { icon: 'car', title: 'Zpomalí nebo zastaví', text: 'brzdy auta, brankář chytí míč' },
@@ -389,11 +394,12 @@ const level: LevelContent = {
               { icon: 'spring', title: 'Pružná deformace', text: 'trampolína, pružina, luk – po odstranění síly se vrátí do původního tvaru' },
               { icon: 'explosion', title: 'Trvalá (plastická) deformace', text: 'zmačkaná plechovka, plastelína, promáčklý blatník' },
             ] },
+            { type: 'p', text: 'Fyzici si síly kreslí šipkami: šipka ukazuje, kam síla táhne, a čím je delší, tím je síla větší. Takhle vypadá okamžik kopnutí:' },
             { type: 'forces', body: 'ball', surface: 'none', forces: [
               { label: 'F (noha na míč)', angle: 30, size: 4 },
               { label: 'F_{G}', angle: 270, size: 1 },
             ], caption: 'V okamžiku kopnutí působí na míč velká síla od nohy šikmo nahoru a malá tíhová síla dolů. Míč se rozletí a na chvíli se i trochu zdeformuje.' },
-            { type: 'p', text: 'Často nastanou oba účinky zároveň. Tenisový míček se při úderu nejen rozletí, ale na zlomek sekundy se i zploští.' },
+            { type: 'p', text: 'Často nastanou oba účinky zároveň. Tenisový míček se při úderu nejen rozletí, ale na zlomek sekundy se i zploští. A právě pružná deformace nám v dalším oddílu pomůže sílu změřit.' },
             { type: 'check', question: { kind: 'multi', q: 'Ve kterých situacích vidíš pohybový účinek síly?', options: ['brankář chytí letící míč', 'vítr ohne větev a ta se pak narovná', 'hráč hlavičkou změní směr míče', 'zmačkání prázdné plechovky', 'cyklista šlape a zrychluje'], answers: [0, 2, 4], explain: 'Zastavení, změna směru a zrychlení jsou změny pohybu. Ohnutá větev a zmačkaná plechovka ukazují deformační účinek.' } },
           ],
         },
@@ -402,16 +408,20 @@ const level: LevelContent = {
           icon: 'spring',
           blocks: [
             { type: 'p', text: 'Jednotkou síly je **newton** (N), pojmenovaný po Isaacu Newtonovi. Pro představu: ==síla 1 N je zhruba tíha tabulky čokolády o hmotnosti 100 g.==' },
+            { type: 'p', text: 'Jak ale sílu změřit? Využijeme pružnou deformaci z minulého oddílu: pružina se pod silou natáhne, a když sílu povolíš, vrátí se zpátky. Stačí tedy měřit, o kolik se natáhla.' },
             { type: 'diagram', id: 'measuring-instruments', caption: 'Siloměr mezi dalšími měřidly: uvnitř je pružina, která se natahuje tím víc, čím větší silou za háček táhneš.' },
             { type: 'p', text: '**Siloměr** využívá pružnou deformaci pružiny. Dvakrát větší síla ji natáhne dvakrát víc, trojnásobná síla třikrát víc. Prodloužení pružiny je **přímo úměrné** síle, a proto může mít siloměr rovnoměrnou stupnici.' },
+            { type: 'p', text: 'Že to opravdu platí, ověříš jednoduchým pokusem: na pružinu postupně věšej závaží, pokaždé změř prodloužení a body vynes do grafu.' },
             { type: 'graph', x: { label: 'F', unit: 'N', min: 0, max: 5, step: 1 }, y: { label: 'prodloužení', unit: 'cm', min: 0, max: 10, step: 2 }, series: [
               { label: 'pružina siloměru', points: [[0, 0], [5, 10]], tone: 'a' },
               { label: 'naměřeno', points: [[1, 2.1], [2, 3.9], [3, 6.1], [4, 7.9], [5, 10]], style: 'dots', tone: 'b' },
             ], marks: [{ x: 3, y: 6, label: '3 N → 6 cm' }], caption: 'Měření s pružinou: každý newton ji prodlouží asi o 2 cm. Body leží na přímce – prodloužení je úměrné síle.' },
+            { type: 'p', text: 'Když víme, o kolik se pružina natáhne na každý newton, umíme to i obráceně: z prodloužení zjistíme sílu.' },
             { type: 'example', title: 'Čteme pružinu', problem: 'Pružina z grafu se prodlužuje o 2 cm na každý 1 N. Zavěsíme na ni závaží a prodlouží se o 7 cm. Jak velkou silou závaží táhne?', steps: [
               '1 N ↔ 2 cm, tedy 1 cm ↔ 0,5 N',
               'F = 7 · 0,5 N = 3,5 N',
             ], answer: 'F = 3,5 N' },
+            { type: 'p', text: 'Kolik je vlastně jeden newton? Abys pro síly získal/a cit, tady je pár orientačních hodnot – od jablka až po raketu:' },
             { type: 'table', headers: ['situace', 'přibližná síla'], rows: [
               ['tíha jablka', '1 N'],
               ['stisk ruky dospělého', '400 N'],
@@ -428,26 +438,32 @@ const level: LevelContent = {
           icon: 'earth',
           blocks: [
             { type: 'p', text: 'Země přitahuje každé těleso na svém povrchu. Síla, kterou Země působí na těleso, se nazývá **tíhová síla** F_{G}. Míří svisle dolů a je tím větší, čím větší je hmotnost tělesa.' },
+            { type: 'p', text: 'O kolik větší? Na Zemi připadá na každý kilogram hmotnosti tíhová síla asi 10 N (přesněji 9,81 N). Stačí tedy hmotnost vynásobit tímto číslem:' },
             { type: 'formula', text: 'F_{G} = m · g', caption: 'F_{G} … tíhová síla (N), m … hmotnost (kg), g … tíhové zrychlení; na Zemi g ≈ 9,81 N/kg, při odhadech počítáme s 10 N/kg' },
+            { type: 'p', text: 'Vyzkoušej si to na věci, kterou nosíš každý den.' },
             { type: 'example', title: 'Školní batoh', problem: 'Batoh má hmotnost 6 kg. Jakou tíhovou silou na něj působí Země?', steps: [
               'Odhad: F_{G} = m · g = 6 kg · 10 N/kg = 60 N',
               'Přesněji: F_{G} = 6 kg · 9,81 N/kg ≈ 58,9 N',
             ], answer: 'F_{G} ≈ 60 N' },
+            { type: 'p', text: 'Pozor, tady se chybuje nejčastěji. Hmotnost a tíhová síla spolu souvisí, ale nejsou to stejné veličiny. Rozdíl je vidět hlavně tehdy, když opustíš Zemi:' },
             { type: 'compare', columns: [
               { title: 'Hmotnost m', icon: 'balance-scale', tone: 'a', points: ['kolik látky těleso obsahuje, jak je „těžké rozpohybovat“', 'jednotka **kilogram** (kg)', 'měříme **vahami**', 'na Zemi, na Měsíci i ve vesmíru **stejná**'] },
               { title: 'Tíhová síla F_{G}', icon: 'earth', tone: 'b', points: ['jak silně těleso přitahuje planeta', 'jednotka **newton** (N)', 'měříme **siloměrem**', '**závisí na místě**: na Měsíci asi šestkrát menší'] },
             ] },
+            { type: 'p', text: 'Číslo g totiž není všude stejné. Menší Měsíc nebo Mars přitahují slaběji, obří Jupiter mnohem silněji:' },
             { type: 'table', headers: ['těleso', 'g (N/kg)', 'F_{G} astronauta se skafandrem 120 kg'], rows: [
               ['Země', '9,81', '1 177 N'],
               ['Měsíc', '1,62', '194 N'],
               ['Mars', '3,71', '445 N'],
               ['Jupiter', '24,8', '2 976 N'],
             ], caption: 'Hmotnost astronauta je všude 120 kg, tíhová síla se mění podle toho, kde stojí.' },
+            { type: 'p', text: 'Co to znamená pro astronauta, který vystoupí na Měsíc? Spočítejme to.' },
             { type: 'example', title: 'Astronaut na Měsíci', problem: 'Astronaut i se skafandrem má hmotnost 120 kg. Jak velká je jeho tíhová síla na Měsíci (g = 1,62 N/kg)?', steps: [
               'F_{G} = m · g = 120 kg · 1,62 N/kg',
               'F_{G} ≈ 194 N',
             ], answer: 'Na Měsíci F_{G} ≈ 194 N, na Zemi asi 1 177 N. Hmotnost zůstává 120 kg – proto astronauti na Měsíci poskakují jako klokani.' },
             { type: 'callout', variant: 'warning', text: 'V běžné řeči říkáme „vážím 50 kilo“. Fyzik řekne: moje **hmotnost** je 50 kg a **tíhová síla**, kterou na mě působí Země, je asi 500 N.' },
+            { type: 'p', text: 'Tíhovou sílu už umíme spočítat. Aby byl popis síly úplný, potřebujeme ji ještě umět nakreslit.' },
             { type: 'check', question: { kind: 'number', q: 'Jak velkou tíhovou silou působí Země na kufr o hmotnosti 23 kg? Počítej s g = 10 N/kg.', answer: 230, tolerance: 1, unit: 'N', explain: 'F_{G} = m · g = 23 kg · 10 N/kg = 230 N.' } },
           ],
         },
@@ -456,22 +472,26 @@ const level: LevelContent = {
           icon: 'vector',
           blocks: [
             { type: 'p', text: 'Aby byla síla popsaná úplně, nestačí říct, jak je velká. Musíme znát i její směr a místo, kde na těleso působí. Proto sílu kreslíme **šipkou** (říkáme jí vektor).' },
+            { type: 'p', text: 'Každá šipka síly nese tři informace najednou:' },
             { type: 'keyterms', items: [
               { term: '**Velikost**', def: 'délka šipky podle zvoleného měřítka, např. 1 cm = 100 N' },
               { term: '**Směr**', def: 'kam šipka míří' },
               { term: '**Působiště**', def: 'bod, ve kterém síla na těleso působí – tam šipka začíná' },
             ] },
+            { type: 'p', text: 'Takhle vypadá obrázek sil u bedny, kterou posouváš po podlaze. Všimni si, že každá šipka začíná tam, kde síla působí, a její délka odpovídá velikosti:' },
             { type: 'forces', body: 'box', surface: 'ground', forces: [
               { label: 'F_{G} = 300 N', angle: 270, size: 3 },
               { label: 'F_{N} = 300 N', angle: 90, size: 3, from: 'bottom' },
               { label: 'F = 200 N', angle: 0, size: 2, from: 'left' },
             ], caption: 'Bednu o tíze 300 N tlačíme doprava silou 200 N. Podlaha tlačí bednu nahoru silou F_{N}. Měřítko: jeden dílek délky = 100 N.' },
             { type: 'callout', variant: 'tip', text: 'Značky sil se píšou s indexem, který napoví, o jakou sílu jde: F_{G} tíhová, F_{N} síla podložky, F_{t} třecí. Když si nevíš rady, napiš k šipce slovy, kdo silou působí.' },
+            { type: 'p', text: 'Když kreslíš síly sám/sama, postup je vždycky stejný: zvol měřítko, spočítej sílu a z ní délku šipky.' },
             { type: 'example', title: 'Kreslíme podle měřítka', problem: 'Zvol měřítko 1 cm = 50 N. Jak dlouhou šipkou nakreslíš tíhovou sílu psa o hmotnosti 20 kg (g = 10 N/kg)?', steps: [
               'F_{G} = m · g = 20 kg · 10 N/kg = 200 N',
               'Délka šipky = 200 N : 50 N/cm = 4 cm',
             ], answer: 'Šipka dlouhá 4 cm, svisle dolů, začíná v těžišti psa.' },
             { type: 'callout', variant: 'remember', text: 'Tíhová síla míří vždy **svisle dolů** (ke středu Země) a její působiště kreslíme do **těžiště** tělesa.' },
+            { type: 'p', text: 'Proč zrovna do těžiště, když Země přitahuje každý kousek tělesa? A co je to vlastně těžiště? Na to se podíváme v posledním oddílu.' },
             { type: 'check', question: { kind: 'number', q: 'Měřítko je 1 cm = 20 N. Šipka síly je dlouhá 3,5 cm. Jak velká je síla?', answer: 70, tolerance: 0.5, unit: 'N', explain: '3,5 · 20 N = 70 N.' } },
           ],
         },
@@ -480,15 +500,18 @@ const level: LevelContent = {
           icon: 'balance-scale',
           blocks: [
             { type: 'p', text: 'Země přitahuje každou částečku tělesa. Pro výpočty si ale můžeme představit, že celá tíhová síla působí v jediném bodě – v **těžišti** T.' },
+            { type: 'p', text: 'Těžiště rozhoduje o tom, jestli se těleso převrhne. Zkus v duchu naklápět bednu na hraně:' },
             { type: 'diagram', id: 'center-of-gravity', caption: 'Naklápění bedny: dokud svislice z těžiště prochází podstavou, bedna se vrátí zpět. Jakmile ji mine, bedna se převrhne. Nízké těžiště znamená větší stabilitu.' },
             { type: 'callout', variant: 'remember', text: '==Těleso se nepřevrhne, dokud svislice vedená těžištěm prochází plochou, na které stojí.== Čím níž je těžiště a čím širší je podstava, tím je těleso **stabilnější**.' },
+            { type: 'p', text: 'Tohle jedno pravidlo vysvětluje spoustu věcí kolem nás:' },
             { type: 'iconlist', items: [
               { icon: 'car', title: 'Závodní auto', text: 'nízké a široké: v ostré zatáčce se nepřevrhne' },
               { icon: 'muscle', title: 'Zápasník', text: 'široký postoj a pokrčená kolena snižují těžiště' },
               { icon: 'ship', title: 'Loď', text: 'těžký náklad a zátěž se dávají dolů do podpalubí' },
               { icon: 'mountain', title: 'Šikmá věž v Pise', text: 'je nakloněná asi o 4°, ale svislice z těžiště pořád prochází základnou' },
             ] },
-            { type: 'p', text: 'Těžiště ploché desky najdeš snadno: zavěs ji postupně za dva různé body a pokaždé narýsuj svislici (olovnici). Těžiště leží v průsečíku obou čar. Těžiště nemusí ležet uvnitř tělesa – třeba u prstýnku nebo podkovy je v prázdném prostoru.' },
+            { type: 'p', text: 'Jak ale těžiště najít? U ploché desky je to snadné: zavěs ji postupně za dva různé body a pokaždé narýsuj svislici (olovnici). Těžiště leží v průsečíku obou čar. Těžiště nemusí ležet uvnitř tělesa – třeba u prstýnku nebo podkovy je v prázdném prostoru.' },
+            { type: 'p', text: 'Teď umíš sílu poznat, změřit, spočítat i nakreslit. V příští lekci uvidíš, co se stane, když na jedno těleso působí několik sil najednou.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč jsou závodní auta nízká a široká?', options: ['mají nízké těžiště a širokou podstavu, takže se v zatáčkách nepřevrhnou', 'aby měla menší hmotnost', 'aby na ně působila menší tíhová síla', 'aby měla těžiště mimo karoserii'], answer: 0, explain: 'Nízké těžiště a široká podstava zvyšují stabilitu: svislice z těžiště nevyjde mimo podstavu ani při velkém náklonu.' } },
           ],
         },
