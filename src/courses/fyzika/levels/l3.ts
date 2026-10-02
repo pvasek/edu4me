@@ -18,19 +18,22 @@ const level: LevelContent = {
           title: 'Tlaková síla a tlak',
           icon: 'gauge',
           blocks: [
-            { type: 'p', text: 'Když stojíš, tlačíš celou svou tíhou na podlahu. Síle, která působí kolmo na nějakou plochu, říkáme **tlaková síla** F. Jak moc se sníh pod tebou prohne, ale nezáleží jen na síle. Záleží i na tom, na jak velkou plochu se síla rozloží.' },
+            { type: 'p', text: 'Začněme sněhem z úvodu. Když stojíš, tlačíš celou svou tíhou na zem pod sebou. Síle, která působí kolmo na nějakou plochu, říkáme **tlaková síla** F. Jak moc se sníh pod tebou prohne, ale nezáleží jen na síle. Záleží i na tom, na jak velkou plochu se síla rozloží. Sílu a plochu proto spojíme do jedné veličiny:' },
             { type: 'formula', text: 'p = F / S', caption: 'p – tlak v pascalech (Pa), F – tlaková síla v newtonech (N), S – obsah plochy v metrech čtverečních (m²)' },
             { type: 'p', text: '**Tlak** říká, jak velká síla připadá na každý čtvereční metr plochy. Jednotkou je **pascal** (Pa) podle francouzského vědce Blaise Pascala: 1 Pa = 1 N/m². Je to maličký tlak, asi jako když ti na dlani leží rozložený list papíru. Proto se často používají **kilopascaly** (1 kPa = 1 000 Pa) a **megapascaly** (1 MPa = 1 000 000 Pa).' },
             { type: 'keyterms', items: [ { term: '**tlaková síla** F', def: 'síla, která působí kolmo na plochu (N)' }, { term: '**tlak** p', def: 'tlaková síla připadající na 1 m² plochy (Pa)' }, { term: '**pascal** (Pa)', def: 'jednotka tlaku, 1 Pa = 1 N/m²' } ] },
+            { type: 'p', text: 'Jak to vypadá u člověka, který stojí na sněhu? Jeho tlaková síla je jeho tíha a míří kolmo dolů do podložky:' },
             { type: 'forces', body: 'person', surface: 'ground', forces: [
               { label: 'F = 600 N', angle: 270, size: 4, from: 'bottom' },
             ], caption: 'Člověk o hmotnosti 60 kg tlačí na podložku tlakovou silou 600 N. Jak velký bude tlak, záleží na ploše podrážek.' },
+            { type: 'p', text: 'Síla je v botách i na lyžích stejná, liší se jen plocha. Spočítejme, co to s tlakem udělá:' },
             { type: 'example', title: 'Boty, nebo lyže?', problem: 'Petr má hmotnost 60 kg. Jaký tlak působí na sníh, když stojí v botách (obě podrážky mají dohromady 0,04 m²) a když stojí na lyžích (obě lyže mají dohromady 0,32 m²)? Počítej s g = 10 N/kg.', steps: [
               'Tlaková síla je Petrova tíha: F = m · g = 60 kg · 10 N/kg = 600 N.',
               'V botách: p = F / S = 600 N / 0,04 m² = 15 000 Pa = 15 kPa.',
               'Na lyžích: p = 600 N / 0,32 m² = 1 875 Pa ≈ 1,9 kPa.',
               'Porovnání: 15 000 Pa / 1 875 Pa = 8.',
             ], answer: 'V botách 15 kPa, na lyžích asi 1,9 kPa – osmkrát menší tlak. Proto se na lyžích nebořím.' },
+            { type: 'p', text: 'V příkladu byly plochy rovnou v m². Často je ale dostaneš v cm² nebo mm² – a právě u převodu ploch se chybuje nejvíc. Tady jsou převody, které budeš potřebovat:' },
             { type: 'table', headers: ['převod', 'příklad'], rows: [
               ['1 kPa = 1 000 Pa', '15 kPa = 15 000 Pa'],
               ['1 MPa = 1 000 000 Pa', '0,2 MPa = 200 000 Pa'],
@@ -38,6 +41,7 @@ const level: LevelContent = {
               ['1 mm² = 0,000 001 m²', '2 mm² = 0,000 002 m²'],
             ], caption: 'Nejčastější převody. Pozor hlavně na plochy!' },
             { type: 'callout', variant: 'warning', title: 'Nejčastější chyba', text: 'Plocha dosazená v cm² místo v m². Metr čtvereční má 100 · 100 = 10 000 cm², takže 1 cm² = 0,000 1 m². Pascaly vyjdou jen tehdy, když dosadíš newtony a metry čtvereční.' },
+            { type: 'p', text: 'Tlak teď umíš spočítat. Příklad s lyžemi ale ukázal ještě něco: změnou plochy se dá tlak řídit – a to technici využívají na každém kroku.' },
             { type: 'check', question: { kind: 'number', q: 'Krabice o tíze 120 N leží na stole plochou 0,3 m². Jaký tlak působí na stůl?', answer: 400, tolerance: 1, unit: 'Pa', explain: 'p = F / S = 120 N / 0,3 m² = 400 Pa.' } },
           ],
         },
@@ -45,11 +49,12 @@ const level: LevelContent = {
           title: 'Jak tlak zmenšit a jak ho zvětšit',
           icon: 'weight',
           blocks: [
-            { type: 'p', text: 'Ze vztahu p = F / S plyne jednoduché pravidlo: ==čím větší plocha, tím menší tlak; čím menší plocha, tím větší tlak.== Technici ho využívají oběma směry.' },
+            { type: 'p', text: 'Lyže zmenšily tlak osmkrát, přestože Petr nezhubl ani o gram. Ze vztahu p = F / S totiž plyne jednoduché pravidlo: ==čím větší plocha, tím menší tlak; čím menší plocha, tím větší tlak.== Technici ho využívají oběma směry – porovnej je vedle sebe:' },
             { type: 'compare', columns: [
               { title: '**Tlak zmenšujeme** (velká plocha)', icon: 'mountain', tone: 'a', points: ['lyže a sněžnice na sněhu', 'pásy rolby, tanku a bagru v bahně', 'široké pneumatiky traktoru na poli', 'podložka pod maticí šroubu', 'široké popruhy školního batohu'] },
               { title: '**Tlak zvětšujeme** (malá plocha)', icon: 'warning', tone: 'b', points: ['ostrý nůž a nůžky', 'hrot hřebíku a připínáčku', 'jehla injekční stříkačky', 'zuby a drápy šelem', 'hroty na tretrách a mačkách'] },
             ], caption: 'Stejná síla, různá plocha, úplně jiný účinek.' },
+            { type: 'p', text: 'Oba sloupce se dokonce potkají na jediné drobnosti z nástěnky. Připínáček má na jednom konci ostrý hrot a na druhém širokou hlavičku – a ty na něj tlačíš jedinou silou:' },
             { type: 'example', title: 'Proč připínáček nebolí do palce', problem: 'Palcem tlačíš na připínáček silou 20 N. Hrot má plochu 0,1 mm², hlavička 1 cm². Jaký tlak působí hrot na nástěnku a jaký hlavička na tvůj palec?', steps: [
               'Převod: 0,1 mm² = 0,000 000 1 m²; 1 cm² = 0,000 1 m².',
               'Hrot: p = 20 N / 0,000 000 1 m² = 200 000 000 Pa = 200 MPa.',
@@ -57,6 +62,7 @@ const level: LevelContent = {
             ], answer: 'Hrot tlačí tlakem 200 MPa, hlavička jen 0,2 MPa – tisíckrát méně. Síla je na obou koncích stejná, liší se jen plocha.' },
             { type: 'callout', variant: 'fact', title: 'Slon, nebo podpatek?', text: 'Slon o hmotnosti 5 t stojí na čtyřech nohách o celkové ploše asi 0,4 m², takže tlačí na zem tlakem asi 125 kPa. Dívka o hmotnosti 60 kg, která přenese váhu na jeden jehlový podpatek (1 cm²), vyvine tlak 6 MPa – skoro padesátkrát víc! Proto se na některé historické parkety s jehlovými podpatky nesmí.' },
             { type: 'callout', variant: 'tip', text: 'Tupý nůž má ostří široké, takže při stejné síle vyvolá menší tlak a rajče jen zmáčkne. Nabroušením se ostří zúží, plocha zmenší a tlak mnohonásobně vzroste.' },
+            { type: 'p', text: 'Zatím jsme tlačili pevnými tělesy, která působí jen tam, kde se něčeho dotýkají. Co se ale stane, když zatlačíš na kapalinu zavřenou v nádobě?' },
             { type: 'check', question: { kind: 'choice', q: 'Proč mají rolby a bagry pásy místo kol?', options: ['Pásy zvětší plochu, tlak na měkký terén je menší a stroj se nezaboří.', 'Pásy zmenší tíhovou sílu stroje.', 'Pásy zvětší tlak, a proto se stroj lépe zakousne do země.', 'Pásy zmenší tření, takže stroj jede rychleji.'], answer: 0, explain: 'Tíha stroje zůstává stejná, ale rozloží se na velkou plochu pásů. Tlak p = F / S je proto malý.' } },
           ],
         },
@@ -65,14 +71,18 @@ const level: LevelContent = {
           icon: 'drop',
           blocks: [
             { type: 'p', text: 'Zmáčkni propíchnutý igelitový sáček s vodou a voda vystříkne ze všech dírek. Kapaliny jsou téměř nestlačitelné a tlak předávají dál do všech směrů. To popisuje **Pascalův zákon**: ==tlak vyvolaný vnější silou na kapalinu v uzavřené nádobě je ve všech místech kapaliny stejný.==' },
+            { type: 'p', text: 'Tahle vlastnost kapalin umí sílu znásobit. Stačí spojit kapalinou dva válce s písty různé velikosti:' },
             { type: 'diagram', id: 'hydraulic-press', caption: 'Hydraulický lis: malá síla na malém pístu vyvolá tlak, který kapalina přenese pod velký píst. Tam vznikne mnohem větší síla.' },
+            { type: 'p', text: 'Proč je síla na velkém pístu větší? Tlak pod oběma písty je podle Pascalova zákona stejný, a protože p = F / S, musí být stejný i podíl síly a plochy:' },
             { type: 'formula', text: 'F_{1} / S_{1} = F_{2} / S_{2}', caption: 'tlak pod oběma písty je stejný; kolikrát větší je plocha pístu, tolikrát větší je síla' },
+            { type: 'p', text: 'Jak velký rozdíl to dělá, ukáže autoservis. Zvládne mechanik zvednout auto jen silou své ruky?' },
             { type: 'example', title: 'Zvedák v autoservisu', problem: 'Malý píst hydraulického zvedáku má plochu 4 cm², velký 400 cm². Mechanik tlačí na malý píst silou 150 N. Jak velkou silou tlačí velký píst? Zvedne auto o hmotnosti 1 400 kg?', steps: [
-              'Tlak pod malým pístem: p = F_{1} / S_{1} = 150 N / 0,000 4 m² = 375 000 Pa.',
+              'Tlak pod malým pístem (4 cm² nejdřív převedeme na 0,000 4 m², aby vyšly pascaly): p = F_{1} / S_{1} = 150 N / 0,000 4 m² = 375 000 Pa.',
               'Stejný tlak je i pod velkým pístem: F_{2} = p · S_{2} = 375 000 Pa · 0,04 m² = 15 000 N.',
               'Rychlejší cesta: plocha je 400 / 4 = 100× větší, a tedy i síla: 150 N · 100 = 15 000 N.',
               'Tíha auta: F_{G} = 1 400 kg · 10 N/kg = 14 000 N, což je méně než 15 000 N.',
             ], answer: 'Velký píst tlačí silou 15 000 N, auto tedy zvedne.' },
+            { type: 'p', text: 'Stejný princip v autě nejen zvedá, ale i brzdí. Sleduj, jak tlak putuje od pedálu ke kolům:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'car', title: 'Noha na pedálu', text: 'řidič sešlápne pedál, ten tlačí na malý píst hlavního válce' },
               { icon: 'drop', title: 'Brzdová kapalina', text: 'přenese tlak trubkami ke všem čtyřem kolům najednou' },
@@ -81,6 +91,7 @@ const level: LevelContent = {
             ], caption: 'Hydraulické brzdy auta' },
             { type: 'callout', variant: 'remember', text: 'Hydraulika sílu znásobí, ale **práci neušetří**. Velký píst se posune stokrát méně než malý. Je to stejné zlaté pravidlo mechaniky, jaké znáš od páky a kladky.' },
             { type: 'callout', variant: 'fact', text: 'Hydraulika je všude kolem tebe: rameno bagru, sklápěcí korba náklaďáku, zvedací plošina, kadeřnické křeslo i klapky na křídlech letadla. Všude malé čerpadlo vytvoří tlak a velký píst ho promění ve velkou sílu.' },
+            { type: 'p', text: 'Tlak v kapalině jsme zatím vytvářeli pístem zvenku. Kapalina ale umí tlačit i sama, vlastní tíhou – a právě to tě v bazénu u dna tlačí do uší.' },
             { type: 'check', question: { kind: 'number', q: 'Malý píst lisu má plochu 2 cm², velký 60 cm². Na malý píst působíš silou 100 N. Jak velká síla působí na velký píst?', answer: 3000, tolerance: 1, unit: 'N', explain: 'Plocha velkého pístu je 60 / 2 = 30× větší, proto i síla: 100 N · 30 = 3 000 N.' } },
           ],
         },
@@ -89,19 +100,24 @@ const level: LevelContent = {
           icon: 'ocean',
           blocks: [
             { type: 'p', text: 'Voda má tíhu. Každá vrstva tlačí na vrstvy pod sebou, a proto tlak v kapalině s hloubkou roste. Tlak způsobený tíhou kapaliny se jmenuje **hydrostatický tlak**.' },
+            { type: 'p', text: 'Jak velký ten tlak je? Představ si sloupec vody nad každým čtverečním metrem dna: čím je vyšší a čím je kapalina hustší, tím víc váží. Proto ve vzorci najdeš hloubku i hustotu:' },
             { type: 'formula', text: 'p = h · ρ · g', caption: 'h – hloubka pod hladinou (m), ρ – hustota kapaliny (kg/m³), g ≈ 10 N/kg; tlak vyjde v pascalech' },
+            { type: 'p', text: 'Že tlak opravdu roste s hloubkou, uvidíš na nádobě s dírkami nad sebou. Sleduj, jak daleko stříká voda z každé z nich:' },
             { type: 'diagram', id: 'hydrostatic-pressure', caption: 'Z nejnižší dírky stříká voda nejdál, protože tam je tlak největší. Proto je i hráz přehrady dole nejsilnější.' },
+            { type: 'p', text: 'Tlak je přímo úměrný hloubce: dvakrát hlouběji znamená dvakrát větší tlak. V grafu je to proto přímka:' },
             { type: 'graph', x: { label: 'h', unit: 'm', min: 0, max: 40, step: 10 }, y: { label: 'p', unit: 'kPa', min: 0, max: 400, step: 100 }, series: [
               { label: 'sladká voda', points: [[0, 0], [10, 100], [20, 200], [30, 300], [40, 400]], area: true },
             ], marks: [
               { x: 10, y: 100, label: '10 m: 100 kPa' },
               { x: 40, y: 400, label: 'hranice rekreačního potápění' },
             ], caption: 'Hydrostatický tlak roste s hloubkou rovnoměrně: každých 10 m vody přidá asi 100 kPa.' },
+            { type: 'p', text: 'Z grafu odečteš odhad, přesné číslo dá vzorec. Spočítejme, jak velký tlak působí na potápěče:' },
             { type: 'example', title: 'Potápěč', problem: 'Potápěč se ponořil v jezeře do hloubky 12 m. Jaký hydrostatický tlak na něj působí? Hustota vody je 1 000 kg/m³.', steps: [
               'p = h · ρ · g',
               'p = 12 m · 1 000 kg/m³ · 10 N/kg',
               'p = 120 000 Pa',
             ], answer: 'p = 120 kPa. Na každý cm² jeho těla tlačí voda silou 12 N, jako by na něm leželo závaží o hmotnosti přes 1 kg.' },
+            { type: 'p', text: 'Stejný vzorec vysvětlí, proč hráze nemají svislé stěny. Porovnejme tlak u paty hráze a kousek pod hladinou:' },
             { type: 'example', title: 'Hráz přehrady', problem: 'U paty hráze je voda hluboká 70 m. Jaký tlak působí na hráz dole a jaký v hloubce 10 m?', steps: [
               'Dole: p = 70 m · 1 000 kg/m³ · 10 N/kg = 700 000 Pa = 700 kPa.',
               'V hloubce 10 m: p = 10 m · 1 000 kg/m³ · 10 N/kg = 100 000 Pa = 100 kPa.',
@@ -110,6 +126,7 @@ const level: LevelContent = {
             { type: 'callout', variant: 'tip', text: 'Hydrostatický tlak závisí jen na hloubce a na hustotě kapaliny. Nezáleží na tvaru nádoby ani na tom, kolik vody v ní je. V úzké trubce vysoké 10 m je dole stejný tlak jako v jezeře v hloubce 10 m.' },
             { type: 'callout', variant: 'fact', text: 'V nejhlubším místě oceánu, v Marianském příkopu (asi 11 km), je tlak přes 110 MPa – jako by ti na palci stála tuna. Hlubinné ponorky, které tam sjely, měly kulovou kabinu s ocelovými stěnami silnými přes 10 cm.' },
             { type: 'callout', variant: 'warning', title: 'Tlak v uších', text: 'Už ve 2–3 m hloubky tlačí voda na ušní bubínek tak, že to bolí. Potápěči proto tlak „vyrovnávají“: zmáčknou si nos a jemně do něj foukají, aby se vzduch dostal do středního ucha. Nikdy se nepotápěj s rýmou nebo bolestí uší.' },
+            { type: 'p', text: 'Hydrostatický tlak tedy závisí jen na hloubce a hustotě. Co se pak stane, když dvě nádoby s vodou propojíš?' },
             { type: 'check', question: { kind: 'number', q: 'Jaký hydrostatický tlak působí na dno bazénu hlubokého 3,5 m? Výsledek zadej v kPa.', answer: 35, tolerance: 0.5, unit: 'kPa', explain: 'p = h · ρ · g = 3,5 m · 1 000 kg/m³ · 10 N/kg = 35 000 Pa = 35 kPa.' } },
           ],
         },
@@ -118,6 +135,7 @@ const level: LevelContent = {
           icon: 'water-tap',
           blocks: [
             { type: 'p', text: 'Nádoby, které jsou dole propojené, se jmenují **spojené nádoby**. Když do nich naliješ jednu kapalinu, ==hladiny se ustálí ve stejné výšce==, ať mají nádoby jakýkoli tvar. Kdyby byla jedna hladina výš, byl by pod ní větší hydrostatický tlak a voda by přetékala, dokud se tlaky nevyrovnají.' },
+            { type: 'p', text: 'Na tomhle jednoduchém pravidle stojí spousta věcí v domácnosti i v technice:' },
             { type: 'iconlist', items: [
               { icon: 'coffee', title: 'Konvice a kropicí konev', text: 'hubička musí sahat aspoň tak vysoko jako okraj, jinak by voda vytekla' },
               { icon: 'water-tap', title: 'Vodojem a vodovod', text: 'vodojem na kopci drží hladinu výš než domy, voda do nich teče sama' },
@@ -125,6 +143,7 @@ const level: LevelContent = {
               { icon: 'drop', title: 'Zápachová uzávěrka', text: 'voda v ohbí odpadu pod umyvadlem nepustí do bytu zápach z kanalizace' },
               { icon: 'ship', title: 'Plavební komora', text: 'komora se propojí s horní nádrží, hladiny se vyrovnají a loď vypluje výš' },
             ] },
+            { type: 'p', text: 'Jak velký tlak vodojem ve vodovodu vytvoří? Rozhoduje jen to, o kolik je jeho hladina výš než kohoutek:' },
             { type: 'example', title: 'Vodojem', problem: 'Hladina vody ve vodojemu je 35 m nad kohoutkem v přízemí domu. Jaký tlak má voda v zavřeném kohoutku?', steps: [
               'Vodojem a vodovod tvoří spojené nádoby; rozhoduje výškový rozdíl h = 35 m.',
               'p = h · ρ · g = 35 m · 1 000 kg/m³ · 10 N/kg = 350 000 Pa.',
@@ -132,6 +151,7 @@ const level: LevelContent = {
             { type: 'callout', variant: 'fact', text: 'Instalatéři a hasiči udávají tlak často v **barech**: 1 bar = 100 kPa, to je tlak asi 10 m vody. Ve vodovodu bývá 2–4 bary.' },
             { type: 'game', gameId: 'unit-convert', text: 'Pascaly, kilopascaly, megapascaly, bary… Převody si procvič ve hře „Převody jednotek“.' },
             { type: 'callout', variant: 'mascot', text: 'Zkus si to doma: vezmi průhlednou hadici, nalij do ní vodu a oba konce zvedni. Ať je hýbeš jakkoli, hladiny se vždycky srovnají do stejné výšky. Takhle si vyrobíš vodováhu zadarmo!' },
+            { type: 'p', text: 'Teď už víš, jak tlačí pevná tělesa i kapaliny. V příští lekci zjistíš, proč tě voda zároveň nadnáší – a jak může plavat ocelová loď.' },
             { type: 'check', question: { kind: 'tf', q: 'Ve spojených nádobách je hladina vody výš v té nádobě, která je širší.', answer: false, explain: 'Hladina jedné kapaliny je ve spojených nádobách všude ve stejné výšce. Hydrostatický tlak závisí jen na hloubce, ne na šířce nádoby.' } },
           ],
         },
@@ -177,12 +197,14 @@ const level: LevelContent = {
           title: 'Proč jsou věci ve vodě lehčí',
           icon: 'weight',
           blocks: [
-            { type: 'p', text: 'Kamarádku v bazénu zvedneš snadno, na suchu už ne. Kapalina totiž na každé ponořené těleso působí silou směrem vzhůru. Té se říká **vztlaková síla** F_{vz}.' },
+            { type: 'p', text: 'V minulé lekci jsme zjistili, že voda tlačí na ponořené těleso ze všech stran, a čím hlouběji, tím víc. Má to důsledek, který znáš z bazénu: kamarádku ve vodě zvedneš snadno, na suchu už ne. Kapalina totiž na každé ponořené těleso působí silou směrem vzhůru. Té se říká **vztlaková síla** F_{vz}.' },
+            { type: 'p', text: 'Vztlakovou sílu můžeš i změřit. Zavěs kámen na siloměr a ponoř ho do vody – siloměr najednou ukáže méně:' },
             { type: 'forces', body: 'box', surface: 'water', forces: [
               { label: 'F_{G} = 5 N', angle: 270, size: 5 },
               { label: 'F_{vz} = 2 N', angle: 90, size: 2, tone: 'b' },
               { label: 'siloměr 3 N', angle: 90, size: 3, tone: 'c', from: 'top' },
             ], caption: 'Kámen na siloměru: ve vzduchu ukazuje 5 N, ve vodě jen 3 N. Zbylé 2 N nese vztlaková síla.' },
+            { type: 'p', text: 'Kolik z tíhy kamene převzala voda, zjistíš jednoduchým odečtením:' },
             { type: 'example', title: 'Měříme vztlak siloměrem', problem: 'Kámen zavěšený na siloměru ukazuje ve vzduchu 5 N. Po úplném ponoření do vody ukazuje 3 N. Jak velká vztlaková síla na kámen působí?', steps: [
               'Ve vzduchu siloměr ukazuje tíhovou sílu: F_{G} = 5 N.',
               'Ve vodě pomáhá kámen nést vztlaková síla, siloměr ukáže jen zbytek: F = F_{G} − F_{vz}.',
@@ -191,6 +213,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Odkud se vztlak bere? Víš už, že tlak v kapalině roste s hloubkou. Spodní stěna tělesa je hlouběji než horní, a voda na ni proto tlačí víc. ==Rozdíl tlakových sil zespodu a shora je vztlaková síla.==' },
             { type: 'callout', variant: 'mascot', text: 'Ve vodě nejsi lehčí – tvoje hmotnost zůstává stejná. Voda ti jen pomáhá tě nést. Je to jako neviditelný kamarád, který tě drží zespodu.' },
             { type: 'callout', variant: 'tip', title: 'Pokus do kuchyně', text: 'Zavěs láhev s vodou na gumičku a změř, jak se gumička natáhne. Pak láhev ponoř do kbelíku s vodou. Gumička se zkrátí: vztlak láhev nadlehčuje.' },
+            { type: 'p', text: 'Víme, odkud se vztlak bere. Teď potřebujeme zjistit, jak je velký.' },
             { type: 'check', question: { kind: 'tf', q: 'Vztlaková síla vzniká proto, že na spodní stranu ponořeného tělesa tlačí kapalina víc než na horní.', answer: true, explain: 'Spodní stěna je hlouběji, a hydrostatický tlak je tam proto větší. Výsledná síla kapaliny míří vzhůru.' } },
           ],
         },
@@ -200,13 +223,17 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Jak velký vztlak je, přišel zjistit řecký učenec **Archimédés** ze Syrakus. Když se ponoříš do plné vany, voda přeteče. Těleso vytlačí právě tolik kapaliny, jaký je objem jeho ponořené části.' },
             { type: 'callout', variant: 'remember', title: 'Archimédův zákon', text: 'Těleso ponořené do kapaliny je nadlehčováno vztlakovou silou, která se rovná **tíze kapaliny o stejném objemu**, jako má ponořená část tělesa.' },
+            { type: 'p', text: 'Ověřit to můžeš v přelivné nádobě: vodu, kterou těleso vytlačí, zachytíš do kádinky a změříš její tíhu.' },
             { type: 'diagram', id: 'archimedes-principle', caption: 'Kámen v přelivné nádobě vytlačí vodu. Tíha vytlačené vody je přesně rovna vztlakové síle.' },
+            { type: 'p', text: 'Tíhu vytlačené kapaliny spočítáme z jejího objemu a hustoty: hmotnost je m = V · ρ_{k} a tíha m · g. Dohromady dostaneme vzorec pro vztlakovou sílu:' },
             { type: 'formula', text: 'F_{vz} = V · ρ_{k} · g', caption: 'V – objem ponořené části tělesa (m³), ρ_{k} – hustota kapaliny (kg/m³), g ≈ 10 N/kg' },
+            { type: 'p', text: 'Vyzkoušej vzorec na kameni z prvního oddílu. Vyjdou stejné 2 N, jaké ukázal siloměr?' },
             { type: 'example', title: 'Kámen ve vodě', problem: 'Kámen má objem 200 cm³. Jak velká vztlaková síla na něj působí po úplném ponoření do vody (ρ = 1 000 kg/m³)?', steps: [
-              'Převod: 200 cm³ = 0,000 2 m³.',
+              'Převod: 200 cm³ = 0,000 2 m³ (hustota je v kg/m³, proto i objem musí být v m³).',
               'F_{vz} = V · ρ_{k} · g = 0,000 2 m³ · 1 000 kg/m³ · 10 N/kg',
               'F_{vz} = 2 N',
             ], answer: 'F_{vz} = 2 N. Je to přesně kámen ze siloměru: vytlačí 200 g vody a ta má tíhu 2 N.' },
+            { type: 'p', text: 'Ve vzorci je hustota kapaliny. Co se tedy stane, když stejný kámen ponoříš do něčeho jiného než do vody?' },
             { type: 'table', headers: ['kapalina', 'hustota', 'F_{vz} na kámen 200 cm³'], rows: [
               ['líh', '790 kg/m³', '1,58 N'],
               ['olej', '900 kg/m³', '1,8 N'],
@@ -216,6 +243,7 @@ const level: LevelContent = {
             ], caption: 'Stejný kámen v různých kapalinách: čím hustší kapalina, tím větší vztlak. Ve rtuti by kámen (5 N) dokonce plaval.' },
             { type: 'callout', variant: 'fact', title: 'Heuréka!', text: 'Podle legendy měl Archimédés zjistit, zda je královská koruna z čistého zlata. Ve vaně si všiml přetékající vody a vyběhl prý nahý do ulic s výkřikem „Heuréka!“ (Našel jsem!). Koruna s příměsí stříbra by při stejné hmotnosti měla větší objem, a vytlačila by tedy víc vody.' },
             { type: 'callout', variant: 'warning', text: 'Do vzorce F_{vz} = V · ρ_{k} · g patří hustota **kapaliny**, ne tělesa! Železná a hliníková kostka stejného objemu jsou ve vodě nadlehčovány úplně stejnou silou.' },
+            { type: 'p', text: 'Velikost vztlaku už umíme spočítat. Teď ho porovnáme s tíhou tělesa a zjistíme, jestli těleso klesne, nebo vyplave.' },
             { type: 'check', question: { kind: 'number', q: 'Kovový váleček o objemu 50 cm³ je celý ponořený do vody. Jak velká vztlaková síla na něj působí?', answer: 0.5, tolerance: 0.01, unit: 'N', explain: 'V = 50 cm³ = 0,000 05 m³; F_{vz} = 0,000 05 m³ · 1 000 kg/m³ · 10 N/kg = 0,5 N.' } },
           ],
         },
@@ -223,8 +251,9 @@ const level: LevelContent = {
           title: 'Klesne, vznáší se, nebo plove?',
           icon: 'fish',
           blocks: [
-            { type: 'p', text: 'Na ponořené těleso působí dvě síly: tíhová síla F_{G} dolů a vztlaková síla F_{vz} nahoru. Která je větší, ta vyhraje.' },
+            { type: 'p', text: 'Vztlak sám o sobě ještě neřekne, co těleso udělá. Na ponořené těleso totiž působí dvě síly: tíhová síla F_{G} dolů a vztlaková síla F_{vz} nahoru. Která je větší, ta vyhraje – a možnosti jsou tři:' },
             { type: 'diagram', id: 'float-sink', caption: 'Tři tělesa ve vodě: jedno klesá, druhé se vznáší, třetí plove. Rozhoduje porovnání sil, a tedy i hustot.' },
+            { type: 'p', text: 'Ve sloupcích jsou všechny tři případy srovnané. Všimni si, že každý poznáš dvojím způsobem: podle sil i podle hustot.' },
             { type: 'compare', columns: [
               { title: '**Klesá** ke dnu', icon: 'weight', tone: 'a', points: ['F_{G} > F_{vz}', 'ρ_{t} > ρ_{k}', 'kámen, klíče, ocelový hřebík'] },
               { title: '**Vznáší se**', icon: 'fish', tone: 'b', points: ['F_{G} = F_{vz}', 'ρ_{t} = ρ_{k}', 'ryba, ponorka, vajíčko v mírně osolené vodě'] },
@@ -232,14 +261,16 @@ const level: LevelContent = {
             ], caption: 'ρ_{t} – hustota tělesa, ρ_{k} – hustota kapaliny' },
             { type: 'p', text: 'Proč stačí porovnat hustoty? Tíha tělesa je F_{G} = V · ρ_{t} · g a vztlak při úplném ponoření F_{vz} = V · ρ_{k} · g. Objem V i g jsou v obou vztazích stejné. O všem tedy rozhoduje, zda je větší hustota tělesa, nebo kapaliny.' },
             { type: 'callout', variant: 'remember', title: 'Plovoucí těleso', text: 'Těleso, které plove, se vynoří jen tak daleko, až se vztlak zmenší přesně na jeho tíhu. **Plovoucí těleso vytlačí tolik kapaliny, kolik samo váží.**' },
+            { type: 'p', text: 'Kolik z plovoucího tělesa zůstane pod hladinou? Spočítejme to pro dřevěný hranolek:' },
             { type: 'example', title: 'Dřevěný hranol', problem: 'Smrkový hranolek má objem 500 cm³ a hustotu 600 kg/m³. Bude plavat? Jaká část jeho objemu bude pod vodou?', steps: [
               'Hmotnost: m = ρ · V = 600 kg/m³ · 0,000 5 m³ = 0,3 kg, tíha F_{G} = 3 N.',
               'Celý pod vodou: F_{vz} = 0,000 5 m³ · 1 000 kg/m³ · 10 N/kg = 5 N. To je víc než 3 N, hranol vystoupá.',
-              'Na hladině platí F_{vz} = F_{G} = 3 N, takže ponořený objem V = 3 N / (1 000 kg/m³ · 10 N/kg) = 0,000 3 m³ = 300 cm³.',
+              'Hranol se vynořuje, dokud vztlak neklesne na jeho tíhu. Na hladině tedy platí F_{vz} = F_{G} = 3 N, takže ponořený objem V = 3 N / (1 000 kg/m³ · 10 N/kg) = 0,000 3 m³ = 300 cm³.',
               'Ponořená část: 300 cm³ / 500 cm³ = 0,6.',
             ], answer: 'Hranol plove a pod vodou je 60 % jeho objemu – přesně podíl hustot 600 / 1 000.' },
             { type: 'game', gameId: 'float-sink', text: 'Vyzkoušej si v laboratoři „Plave, nebo klesne?“, jak vztlak rozhoduje o osudu tělesa.' },
             { type: 'callout', variant: 'tip', title: 'Pokus s vajíčkem', text: 'Čerstvé vajíčko ve vodě klesne ke dnu. Přisypávej sůl a míchej: hustota vody roste, až se vajíčko začne vznášet a nakonec vyplave na hladinu.' },
+            { type: 'p', text: 'Podle hustot by ale ocel měla vždycky klesnout. Jak tedy plove ocelová loď z úvodu?' },
             { type: 'check', question: { kind: 'choice', q: 'Těleso o hustotě 1 200 kg/m³ vložíš do vody. Co udělá?', options: ['klesne ke dnu', 'bude se vznášet', 'vyplave a ponoří se z 83 %', 'vyplave celé nad hladinu'], answer: 0, explain: 'Hustota tělesa je větší než hustota vody (1 000 kg/m³), takže tíha převáží vztlak a těleso klesne.' } },
           ],
         },
@@ -253,12 +284,14 @@ const level: LevelContent = {
               'Řeka: V = m / ρ = 2 000 000 kg / 1 000 kg/m³ = 2 000 m³.',
               'Moře: V = 2 000 000 kg / 1 025 kg/m³ ≈ 1 950 m³.',
             ], answer: 'Na řece vytlačí 2 000 m³, na moři jen asi 1 950 m³. V hustší mořské vodě se tedy ponoří o něco méně.' },
+            { type: 'p', text: 'Rozdíl mezi řekou a mořem lodníci opravdu hlídají. Plování a hustotu ale využívají i jiné věci a živočichové:' },
             { type: 'iconlist', items: [
               { icon: 'ship', title: 'Ponorová čára', text: 'značka na boku lodi ukazuje, jak hluboko se smí s nákladem ponořit; pro sladkou a mořskou vodu je jiná' },
               { icon: 'test-tube', title: 'Hustoměr (areometr)', text: 'skleněný plovák se stupnicí; v hustší kapalině se ponoří méně, hustotu přečteš u hladiny' },
               { icon: 'fish', title: 'Ryba', text: 'plynový měchýř zvětší nebo zmenší, a mění tak průměrnou hustotu těla' },
               { icon: 'swimming-pool', title: 'Záchranná vesta', text: 'lehká pěna zvětší objem, vztlak roste mnohem víc než tíha' },
             ] },
+            { type: 'p', text: 'Nejchytřeji s průměrnou hustotou pracuje ponorka. Musí umět plout na hladině, klesnout i se vznášet – sleduj, jak to dělá:' },
             { type: 'process', layout: 'cycle', steps: [
               { icon: 'ocean', title: 'Na hladině', text: 'balastní nádrže jsou plné vzduchu, ponorka plove' },
               { icon: 'drop', title: 'Napuštění nádrží', text: 'dovnitř vteče voda, tíha roste, F_{G} > F_{vz} a ponorka klesá' },
@@ -267,6 +300,7 @@ const level: LevelContent = {
             ], caption: 'Ponorka mění svou tíhu, její objem zůstává stejný.' },
             { type: 'callout', variant: 'fact', text: 'V Mrtvém moři má voda hustotu asi 1 240 kg/m³. Lidské tělo má průměrnou hustotu kolem 1 000 kg/m³, a tak se tam nedá utopit ani potopit – dá se ležet na hladině a číst si noviny.' },
             { type: 'callout', variant: 'mascot', text: 'Ponorka je vlastně ryba z oceli. Ryba nafukuje měchýř, ponorka napouští a vyfukuje nádrže. Obě dělají totéž: mění svou průměrnou hustotu.' },
+            { type: 'p', text: 'Loď je pod hladinou jen zčásti. Jak velká část plovoucího tělesa je pod vodou, ukazuje nejlépe ledovec.' },
             { type: 'check', question: { kind: 'tf', q: 'Loď, která vypluje z řeky na moře, se ponoří o trochu méně.', answer: true, explain: 'Mořská voda je hustší, takže stejnou vztlakovou sílu (rovnou tíze lodi) vyvolá menší ponořený objem.' } },
           ],
         },
@@ -275,11 +309,14 @@ const level: LevelContent = {
           icon: 'ice',
           blocks: [
             { type: 'p', text: 'Led má hustotu asi 917 kg/m³, o něco menší než voda. Proto plove, ale jen „tak tak“: nad hladinu vyčnívá jen malý kousek.' },
+            { type: 'p', text: 'Na plovoucí ledovec působí stejné dvě síly jako na hranolek a jsou v rovnováze:' },
             { type: 'forces', body: 'box', surface: 'water', forces: [
               { label: 'F_{G}', angle: 270, size: 4 },
               { label: 'F_{vz}', angle: 90, size: 4, tone: 'b' },
             ], caption: 'Plovoucí ledovec: tíhová a vztlaková síla jsou stejně velké a opačně orientované, výslednice je nulová.' },
+            { type: 'p', text: 'Z rovnosti tíhy a vztlaku plyne užitečná zkratka: ponořená část objemu závisí jen na hustotě tělesa a kapaliny.' },
             { type: 'formula', text: 'V_{pon} / V = ρ_{t} / ρ_{k}', caption: 'u plovoucího tělesa je ponořená část objemu rovna podílu hustoty tělesa a hustoty kapaliny' },
+            { type: 'p', text: 'Odkud se zkratka bere a co dává pro skutečný ledovec, ukáže příklad:' },
             { type: 'example', title: 'Ledovec v moři', problem: 'Ledovec o objemu 100 000 m³ plove v moři. Jaká část je pod hladinou a kolik m³ ledu je nad ní? Hustota ledu je 917 kg/m³, mořské vody 1 025 kg/m³.', steps: [
               'Plove, takže F_{G} = F_{vz}: V · ρ_{led} · g = V_{pon} · ρ_{moře} · g.',
               'g se zkrátí: V_{pon} / V = 917 / 1 025 ≈ 0,895.',
@@ -289,6 +326,7 @@ const level: LevelContent = {
             { type: 'callout', variant: 'fact', text: 'Titanic v roce 1912 narazil do ledovce, jehož podvodní část sahala daleko do stran. Odtud rčení „to je jen špička ledovce“: to hlavní je skryté pod hladinou.' },
             { type: 'callout', variant: 'mascot', text: 'Kostka ledu ve sklenici vody dělá totéž co ledovec: asi 9 desetin je pod hladinou. A když roztaje, hladina ve sklenici nestoupne. Vyzkoušej to!' },
             { type: 'p', text: 'Proto roztátí mořského ledu, který už plove, hladinu oceánů skoro nezvedne. Když ale roztají ledovce na pevnině (Grónsko, Antarktida), přiteče do moře nová voda a hladina stoupá.' },
+            { type: 'p', text: 'Vztlak v kapalinách teď umíš spočítat i předpovědět. Příště se podíváš na tekutinu, ve které žijeme: vzduch. I ten má tíhu, a proto tlak i vztlak.' },
             { type: 'check', question: { kind: 'number', q: 'Kostka ledu (917 kg/m³) plove ve sklenici sladké vody (1 000 kg/m³). Kolik procent jejího objemu je pod hladinou?', answer: 92, tolerance: 1, unit: '%', explain: 'V_{pon} / V = 917 / 1 000 ≈ 0,92, tedy asi 92 %.' } },
           ],
         },
@@ -339,13 +377,16 @@ const level: LevelContent = {
           title: 'Vzduchový oceán nad námi',
           icon: 'cloud',
           blocks: [
-            { type: 'p', text: 'Země je obalená vrstvou vzduchu, **atmosférou**, vysokou stovky kilometrů. Vzduch je lehký, ale ne bez hmotnosti: 1 m³ vzduchu u země má asi 1,3 kg. Celý sloupec vzduchu nad tebou tlačí na všechno pod sebou. Tomu tlaku se říká **atmosférický tlak** p_{a}.' },
+            { type: 'p', text: 'Hydrostatický tlak už znáš z vody. Vzduch je taky tekutina, jen mnohem řidší, a funguje podobně. Země je obalená vrstvou vzduchu, **atmosférou**, vysokou stovky kilometrů. Vzduch je lehký, ale ne bez hmotnosti: 1 m³ vzduchu u země má asi 1,3 kg. Celý sloupec vzduchu nad tebou tlačí na všechno pod sebou. Tomu tlaku se říká **atmosférický tlak** p_{a}.' },
             { type: 'keyterms', items: [ { term: '**atmosféra**', def: 'plynný obal Země' }, { term: '**atmosférický tlak** p_{a}', def: 'tlak způsobený tíhou vzduchu nad námi' }, { term: '**hektopascal** (hPa)', def: '100 Pa; jednotka z předpovědí počasí' } ] },
+            { type: 'p', text: 'Tlak vzduchu se během dne i s počasím trochu mění. Pro výpočty se proto používá dohodnutá hodnota, normální atmosférický tlak:' },
             { type: 'formula', text: 'p_{n} = 101 325 Pa ≈ 100 kPa', caption: 'normální atmosférický tlak u hladiny moře; v předpovědi počasí se udává v hektopascalech: 1 013 hPa (1 hPa = 100 Pa)' },
+            { type: 'p', text: 'Sto kilopascalů zní nevinně. Spočítej si ale, jakou silou to tlačí na obyčejný stůl:' },
             { type: 'example', title: 'Kolik váží vzduch na stole', problem: 'Deska stolu má rozměry 1,2 m × 0,8 m. Jak velkou silou na ni shora tlačí vzduch (p_{a} = 100 kPa)?', steps: [
               'S = 1,2 m · 0,8 m = 0,96 m²',
               'F = p · S = 100 000 Pa · 0,96 m² = 96 000 N',
             ], answer: 'Asi 96 000 N, tolik jako tíha nákladu o hmotnosti 9,6 t. Stůl se přesto neprolomí, protože vzduch tlačí stejně velkou silou i zespodu.' },
+            { type: 'p', text: 'Obrovskou sílu vzduchu necítíme, protože tlačí ze všech stran stejně. Všimneš si jí až tehdy, když je tlak na jedné straně jiný než na druhé:' },
             { type: 'iconlist', items: [
               { icon: 'plastic-bottle', title: 'Zmačkaná láhev', text: 'vysaješ z láhve vzduch a vnější tlak ji zmačká' },
               { icon: 'ear', title: 'Zalehlé uši', text: 've výtahu, v letadle nebo v tunelu se tlak venku mění rychleji než uvnitř ucha' },
@@ -353,6 +394,7 @@ const level: LevelContent = {
               { icon: 'heart', title: 'Tvoje tělo', text: 'tlak uvnitř těla je stejný jako venku, proto tě vzduch nerozmačká' },
             ] },
             { type: 'callout', variant: 'mascot', text: 'Ryby v hlubinách taky nejsou rozmáčknuté, i když na ně tlačí obrovský tlak vody. Mají ho totiž i uvnitř těla. My jsme takové „ryby“ na dně vzduchového oceánu.' },
+            { type: 'p', text: 'Atmosférický tlak tedy necítíme, ale změřit se dá. Jako první to dokázal Torricelli – se sloupcem rtuti.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč nás atmosférický tlak nerozmačká?', options: ['Tlak uvnitř našeho těla je stejně velký jako tlak vzduchu zvenku.', 'Atmosférický tlak působí jen shora a naše kosti ho unesou.', 'Vzduch nemá žádnou hmotnost, takže netlačí.', 'Atmosférický tlak působí jen na pevné předměty.'], answer: 0, explain: 'Tekutiny v těle i vzduch v plicích tlačí ven stejně velkým tlakem, jakým vzduch tlačí dovnitř. Tlaky se vyrovnají.' } },
           ],
         },
@@ -362,6 +404,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'V roce 1643 naplnil italský fyzik **Evangelista Torricelli** metr dlouhou skleněnou trubici rtutí a otočil ji dnem vzhůru do misky se rtutí. Rtuť v trubici klesla, ale jen na výšku asi 760 mm. Nad ní zůstal prázdný prostor, **vakuum**. Sloupec rtuti drží atmosférický tlak, který tlačí na hladinu v misce.' },
             { type: 'diagram', id: 'barometer', caption: 'Torricelliho rtuťový tlakoměr se sloupcem 760 mm a kovový aneroid, jaký najdeš v domácí meteostanici.' },
+            { type: 'p', text: 'Proč zrovna 760 mm? Sloupec rtuti tlačí na hladinu v misce svým hydrostatickým tlakem a ten se musí vyrovnat s atmosférickým. Spočítejme ho:' },
             { type: 'example', title: 'Torricelliho výpočet', problem: 'Rtuťový sloupec je vysoký 0,76 m, hustota rtuti je 13 600 kg/m³. Jakému tlaku odpovídá? (g = 9,81 N/kg)', steps: [
               'Sloupec rtuti vytváří hydrostatický tlak p = h · ρ · g.',
               'p = 0,76 m · 13 600 kg/m³ · 9,81 N/kg',
@@ -370,6 +413,7 @@ const level: LevelContent = {
             { type: 'callout', variant: 'fact', title: 'Šestnáct koní proti vzduchu', text: 'Starosta Magdeburku **Otto von Guericke** přiložil v roce 1654 k sobě dvě měděné polokoule o průměru asi 50 cm a vyčerpal z nich vzduch. Dvě osmispřeží koní je nedokázala roztrhnout. Vzduch je tiskl k sobě silou asi 20 000 N, jako by na nich ležely dvě tuny. Když Guericke pustil dovnitř vzduch, polokoule se rozpadly samy.' },
             { type: 'p', text: 'Kdyby Torricelli místo rtuti použil vodu, potřeboval by trubici vysokou přes 10 m – voda je 13,6krát řidší než rtuť. Proto ani nejlepší sací čerpadlo nevytáhne vodu ze studny výš než asi 10 m.' },
             { type: 'callout', variant: 'warning', text: 'Rtuť je jedovatá a její páry škodí nervům. Rtuťové barometry a teploměry se proto už do škol ani domácností neprodávají; nahradily je kovové aneroidy a elektronická čidla.' },
+            { type: 'p', text: 'Teď víme, jak velký atmosférický tlak je. Všude stejný ale není – mění se s nadmořskou výškou i s počasím.' },
             { type: 'check', question: { kind: 'number', q: 'Jak vysoký sloupec vody by udržel tlak 100 kPa? (ρ = 1 000 kg/m³, g = 10 N/kg)', answer: 10, tolerance: 0.1, unit: 'm', explain: 'Z p = h · ρ · g plyne h = p / (ρ · g) = 100 000 Pa / (1 000 kg/m³ · 10 N/kg) = 10 m.' } },
           ],
         },
@@ -378,6 +422,7 @@ const level: LevelContent = {
           icon: 'mountain',
           blocks: [
             { type: 'p', text: 'Přístroj na měření atmosférického tlaku je **barometr** (tlakoměr). Doma se používá kovový **aneroid**: tenká krabička bez vzduchu se při vyšším tlaku víc promáčkne a pohne ručičkou.' },
+            { type: 'p', text: 'Když s barometrem vyjdeš na horu, ručička klesá: nad tebou zůstává čím dál tenčí vrstva vzduchu. Jak rychle tlak ubývá, ukazuje graf:' },
             { type: 'graph', x: { label: 'nadmořská výška', unit: 'km', min: 0, max: 12, step: 2 }, y: { label: 'p_{a}', unit: 'kPa', min: 0, max: 110, step: 20 }, series: [
               { label: 'atmosférický tlak', style: 'smooth', points: [[0, 101.3], [1, 89.9], [2, 79.5], [3, 70.1], [4, 61.6], [5, 54], [6, 47.2], [7, 41.1], [8, 35.6], [9, 30.8], [10, 26.5], [11, 22.6]] },
             ], marks: [
@@ -386,16 +431,19 @@ const level: LevelContent = {
               { x: 11, y: 22.6, label: 'dopravní letadlo: 23 kPa' },
             ], caption: 'Tlak vzduchu s výškou klesá, nejdřív rychle, pak pomaleji. Na vrcholu Everestu je jen asi třetinový.' },
             { type: 'p', text: 'U země klesá tlak zhruba o 1 hPa na každých 8 m výšky. Letadla proto mají přetlakovou kabinu a horolezci na Everestu často dýchají kyslík z lahví.' },
+            { type: 'p', text: 'Pravidlo „1 hPa na 8 m“ se hodí k rychlému odhadu. Zkusme ho na výletě ze Špindlerova Mlýna na Sněžku:' },
             { type: 'example', title: 'Ze Špindlu na Sněžku', problem: 'Ve Špindlerově Mlýně (asi 750 m n. m.) ukazuje barometr 925 hPa. Kolik zhruba ukáže na Sněžce (1 603 m n. m.)?', steps: [
               'Výškový rozdíl: 1 603 m − 750 m ≈ 850 m.',
               'Pokles podle pravidla 1 hPa na 8 m: 850 m / 8 m ≈ 106 hPa.',
               '925 hPa − 106 hPa ≈ 819 hPa.',
             ], answer: 'Odhadem asi 820 hPa. Ve skutečnosti bývá na Sněžce kolem 835 hPa, protože ve větší výšce klesá tlak pomaleji – pravidlo je jen hrubý odhad.' },
+            { type: 'p', text: 'Tlak se ale mění i na jednom místě, podle počasí. Meteorologové proto rozlišují dva typy oblastí:' },
             { type: 'compare', columns: [
               { title: '**Tlaková výše** (anticyklóna)', icon: 'sun', tone: 'a', points: ['tlak vyšší než v okolí, třeba 1 030 hPa', 'vzduch klesá k zemi a otepluje se', 'obvykle jasno, v zimě mráz nebo inverze'] },
               { title: '**Tlaková níže** (cyklóna)', icon: 'rain', tone: 'b', points: ['tlak nižší než v okolí, třeba 990 hPa', 'vzduch stoupá, ochlazuje se a tvoří mraky', 'oblačno, déšť, vítr'] },
             ], caption: 'Když tlak na barometru rychle klesá, blíží se obvykle zhoršení počasí.' },
             { type: 'callout', variant: 'fact', text: 'Při nižším tlaku vře voda při nižší teplotě. Na vrcholu Everestu vaří už asi při 70 °C, takže se v ní těstoviny pořádně neuvaří. Proč to tak je, zjistíš v úrovni 4.' },
+            { type: 'p', text: 'Doteď šlo o tlak volného vzduchu kolem nás. Plyn zavřený v nádobě ale může mít tlak vyšší i nižší než vzduch venku.' },
             { type: 'check', question: { kind: 'tf', q: 'Na horách je atmosférický tlak vyšší než u moře, protože jsme blíž obloze.', answer: false, explain: 'Na horách je nad námi kratší a řidší sloupec vzduchu, proto je tlak nižší.' } },
           ],
         },
@@ -403,25 +451,29 @@ const level: LevelContent = {
           title: 'Přetlak a podtlak',
           icon: 'syringe',
           blocks: [
+            { type: 'p', text: 'V pneumatice, v přísavce i v brčku je plyn, jehož tlak se liší od tlaku vzduchu venku. Pro tyto situace se hodí několik pojmů:' },
             { type: 'keyterms', items: [
               { term: '**přetlak**', def: 'tlak plynu v nádobě je větší než atmosférický tlak venku (pneumatika, míč, sprej)' },
               { term: '**podtlak**', def: 'tlak v nádobě je menší než venku (přísavka, vysavač, brčko)' },
               { term: '**vakuum**', def: 'prostor téměř bez částic; úplné vakuum vyrobit nejde' },
               { term: '**manometr**', def: 'přístroj na měření tlaku plynu v nádobě, třeba v pneumatice' },
             ] },
+            { type: 'p', text: 'Kde se s přetlakem a podtlakem potkáš? Častěji, než bys čekal/a:' },
             { type: 'compare', columns: [
               { title: '**Přetlak**', icon: 'car', tone: 'a', points: ['pneumatika auta: přetlak asi 220 kPa (2,2 baru)', 'nafouknutý míč a nafukovací matrace', 'láhev perlivé vody a sprej', 'tlakový hrnec'] },
               { title: '**Podtlak**', icon: 'glass', tone: 'b', points: ['přísavka na kachlíkách', 'pití brčkem', 'vysavač', 'nasávání injekční stříkačkou', 'vakuové balení potravin'] },
             ] },
             { type: 'p', text: '==Při podtlaku nic netahá „zevnitř“ – tlačí vzduch zvenku.== Když piješ brčkem, zvětšíš objem úst a tlak v nich klesne. Atmosférický tlak na hladinu ve sklenici pak vytlačí limonádu nahoru.' },
+            { type: 'p', text: 'Jak velkou silou umí vzduch zvenku tlačit, ukáže přísavka na kachlíkách:' },
             { type: 'example', title: 'Přísavka', problem: 'Přísavka má kruhovou plochu o průměru 6 cm. Jakou největší silou ji vzduch přitlačí ke kachlíku, kdyby pod ní bylo úplné vakuum? (p_{a} = 100 kPa)', steps: [
               'Poloměr r = 3 cm = 0,03 m.',
-              'S = π · r^{2} = 3,14 · (0,03 m)^{2} ≈ 0,002 8 m².',
+              'Vzduch tlačí na celou plochu přísavky, proto potřebujeme obsah kruhu: S = π · r^{2} = 3,14 · (0,03 m)^{2} ≈ 0,002 8 m².',
               'F = p · S = 100 000 Pa · 0,002 8 m² ≈ 280 N.',
             ], answer: 'Až asi 280 N, to by udrželo zhruba 28 kg. Skutečná přísavka udrží méně, protože pod ní vždy trochu vzduchu zůstane.' },
             { type: 'p', text: 'Stejně funguje **injekční stříkačka**: vytažením pístu vznikne ve válci podtlak a vnější tlak do něj natlačí kapalinu. A **vysavač** má ventilátor, který z hadice odsává vzduch; okolní vzduch se do ní hrne a strhává s sebou prach.' },
             { type: 'callout', variant: 'warning', text: 'Tlak v pneumatikách kontroluj manometrem na čerpací stanici. Podhuštěná pneumatika má větší styčnou plochu, víc se zahřívá, rychleji se opotřebí a auto spotřebuje víc paliva.' },
             { type: 'callout', variant: 'tip', text: 'Brčko funguje jen díky vzduchu. Na Měsíci, kde žádná atmosféra není, bys limonádu brčkem nevypil – nic by ji do úst netlačilo.' },
+            { type: 'p', text: 'Přetlak a podtlak vysvětlí pneumatiku i brčko. Zbývá poslední otázka, kterou známe z vody: nadnáší vzduch tělesa stejně jako kapalina?' },
             { type: 'check', question: { kind: 'choice', q: 'Proč jde vypít limonádu brčkem?', options: ['V ústech vznikne podtlak a atmosférický tlak vytlačí limonádu nahoru.', 'Ústa limonádu přitahují podobně jako magnet.', 'V ústech vznikne přetlak, který limonádu nasaje.', 'Brčko zmenšuje tíhovou sílu limonády.'], answer: 0, explain: 'Pitím zmenšíš tlak v ústech. Na hladinu ve sklenici dál tlačí atmosférický tlak a ten tlačí limonádu brčkem vzhůru.' } },
           ],
         },
@@ -430,6 +482,7 @@ const level: LevelContent = {
           icon: 'balloon',
           blocks: [
             { type: 'p', text: 'Archimédův zákon platí i pro plyny. Každé těleso ve vzduchu je nadlehčováno silou F_{vz} = V · ρ_{vzduch} · g. Na tebe působí vztlak necelý 1 N, ale pro velké a lehké balony je rozhodující.' },
+            { type: 'p', text: 'Na vztlaku ve vzduchu stojí celé létání „lehčí než vzduch“:' },
             { type: 'iconlist', items: [
               { icon: 'balloon', title: 'Horkovzdušný balon', text: 'ohřátý vzduch má menší hustotu než studený vzduch kolem, balon stoupá' },
               { icon: 'gas-cylinder', title: 'Heliový balonek', text: 'helium (0,18 kg/m³) je asi 7× řidší než vzduch' },
@@ -438,13 +491,15 @@ const level: LevelContent = {
             ] },
             { type: 'p', text: 'Horkovzdušný balon stoupá, protože vzduch při ohřátí zvětší objem a jeho hustota klesne. Balon s ohřátým vzduchem má pak menší průměrnou hustotu než studený vzduch kolem. Když vzduch v balonu vychladne, balon klesá.' },
             { type: 'callout', variant: 'fact', text: 'První lidé vzlétli v horkovzdušném balonu bratří Montgolfierů v Paříži v roce 1783. Balon tehdy ohříval oheň ze slámy a vlny, dnes plynový hořák.' },
+            { type: 'p', text: 'Kolik toho takový balon unese? Spočítejme to pro malý balon s heliem:' },
             { type: 'example', title: 'Heliový balon', problem: 'Balon s heliem má objem 3 m³. Jaká vztlaková síla na něj ve vzduchu působí a jakou hmotnost (obal a náklad) udrží? ρ_{vzduch} = 1,3 kg/m³, ρ_{He} = 0,18 kg/m³.', steps: [
               'F_{vz} = V · ρ_{vzduch} · g = 3 m³ · 1,3 kg/m³ · 10 N/kg = 39 N.',
-              'Tíha helia: F_{G} = 3 m³ · 0,18 kg/m³ · 10 N/kg = 5,4 N.',
+              'I helium uvnitř něco váží a vztlak ho musí unést: F_{G} = 3 m³ · 0,18 kg/m³ · 10 N/kg = 5,4 N.',
               'Zbývá: 39 N − 5,4 N = 33,6 N, to je tíha asi 3,4 kg.',
             ], answer: 'F_{vz} = 39 N; balon unese obal a náklad o hmotnosti nejvýš asi 3,4 kg.' },
             { type: 'callout', variant: 'mascot', text: 'Na Marsu je vzduch asi stokrát řidší než u nás. Balon by tam musel být obrovský. Proto tam NASA poslala raději malý vrtulník Ingenuity s rotorem, který se točil mnohem rychleji než u pozemských vrtulníků.' },
             { type: 'game', gameId: 'swipe', text: 'Tlak, vztlak, vakuum… Rozhodni rychle v „Pravda, nebo lež?“, co platí.' },
+            { type: 'p', text: 'Tlak a vztlak v kapalinách i plynech máš za sebou. V další lekci zjistíš, kdy síla koná práci a jak rychle ji zvládnou lidé a stroje.' },
             { type: 'check', question: { kind: 'number', q: 'Horkovzdušný balon má objem 2 000 m³. Jak velká vztlaková síla na něj působí ve vzduchu o hustotě 1,3 kg/m³? Výsledek zadej v kN.', answer: 26, tolerance: 0.5, unit: 'kN', explain: 'F_{vz} = 2 000 m³ · 1,3 kg/m³ · 10 N/kg = 26 000 N = 26 kN.' } },
           ],
         },
@@ -489,18 +544,21 @@ const level: LevelContent = {
           title: 'Mechanická práce',
           icon: 'muscle',
           blocks: [
-            { type: 'p', text: 'Ve fyzice se **práce** koná, když síla posouvá těleso. Čím větší síla a čím delší dráha, tím víc práce.' },
+            { type: 'p', text: 'Fyzik se neptá, jak moc ses unavil/a, ale jestli se něco pohnulo. Ve fyzice se **práce** koná, když síla posouvá těleso. Čím větší síla a čím delší dráha, tím víc práce – proto je práce jejich součinem:' },
             { type: 'formula', text: 'W = F · s', caption: 'W – práce v joulech (J), F – síla ve směru pohybu (N), s – dráha (m); 1 J = 1 N · 1 m' },
+            { type: 'p', text: 'Ve vzorci je důležité, že síla působí ve směru pohybu. Podívej se, které síly působí na tlačený vozík a která z nich práci opravdu koná:' },
             { type: 'forces', body: 'box', surface: 'ground', forces: [
               { label: 'F = 50 N', angle: 0, size: 3 },
               { label: 'F_{t}', angle: 180, size: 3, tone: 'b' },
               { label: 'F_{G}', angle: 270, size: 3, tone: 'c' },
             ], caption: 'Vozík tlačíš silou 50 N a jede stálou rychlostí. Práci koná síla ve směru pohybu; tíhová síla míří kolmo k pohybu a práci nekoná.' },
             { type: 'p', text: 'Jednotka **joule** (J) nese jméno anglického fyzika Jamese Prescotta Joula. 1 J je malá práce: zhruba tolik vykonáš, když zvedneš tabulku čokolády (100 g) o 1 m. Proto se používají i **kilojouly** (1 kJ = 1 000 J) a **megajouly** (1 MJ = 1 000 000 J).' },
+            { type: 'p', text: 'Vraťme se k vozíku z obrázku a spočítejme, kolik práce vykonáš cestou mezi regály:' },
             { type: 'example', title: 'Nákupní vozík', problem: 'V obchodě tlačíš vozík stálou silou 50 N po dráze 30 m. Jakou práci vykonáš?', steps: [
               'W = F · s',
               'W = 50 N · 30 m = 1 500 J',
             ], answer: 'W = 1 500 J = 1,5 kJ.' },
+            { type: 'p', text: 'U vozíku byla síla zadaná. Při zvedání ji musíme nejdřív spočítat: zvednout těleso stálou rychlostí znamená přemáhat jeho tíhu.' },
             { type: 'example', title: 'Batoh na polici', problem: 'Zvedáš batoh o hmotnosti 6 kg ze země na polici ve výšce 1,5 m. Jakou práci vykonáš?', steps: [
               'Síla potřebná ke zvedání je rovna tíze batohu: F = m · g = 6 kg · 10 N/kg = 60 N.',
               'Dráha je výška police: s = h = 1,5 m.',
@@ -508,6 +566,7 @@ const level: LevelContent = {
             ], answer: 'W = 90 J.' },
             { type: 'callout', variant: 'tip', text: 'Při zvedání stálou rychlostí je potřebná síla rovna tíze: F = F_{G} = m · g. Práci při zvedání proto spočítáš jako W = m · g · h.' },
             { type: 'callout', variant: 'mascot', text: 'Ve fyzice si za „práci“ nikdo nedá jedničku, dokud se něco nepohne. Úkol z matiky, u kterého se jen mračíš, je pro fyzika nulová práce. Ale psát ho stejně musíš!' },
+            { type: 'p', text: 'Práci teď umíš spočítat. Jak je to ale s taškou z úvodu – proč se práce nekoná, i když se pořádně nadřeš?' },
             { type: 'check', question: { kind: 'number', q: 'Kůň táhne vůz silou 800 N po dráze 2 km. Jakou práci vykoná? Výsledek zadej v kJ.', answer: 1600, tolerance: 1, unit: 'kJ', explain: 'W = F · s = 800 N · 2 000 m = 1 600 000 J = 1 600 kJ. Dráhu je nutné převést na metry.' } },
           ],
         },
@@ -515,7 +574,7 @@ const level: LevelContent = {
           title: 'Kdy se práce nekoná',
           icon: 'cross',
           blocks: [
-            { type: 'p', text: 'Aby síla konala práci, musí platit dvě věci: ==těleso se musí pohybovat a síla musí působit ve směru jeho pohybu.== Jinak je práce nulová, i když se nadřeš.' },
+            { type: 'p', text: 'Odpověď se skrývá ve vzorci W = F · s. Aby síla konala práci, musí platit dvě věci: ==těleso se musí pohybovat a síla musí působit ve směru jeho pohybu.== Jinak je práce nulová, i když se nadřeš. Projdi si situace, kde jedna z podmínek chybí:' },
             { type: 'iconlist', items: [
               { icon: 'weight', title: 'Držíš těžkou tašku', text: 'síla působí, ale taška se nehýbe: s = 0, tedy W = 0' },
               { icon: 'muscle', title: 'Neseš tašku po rovině', text: 'držíš ji silou nahoru, ale jdeš vodorovně; síla je kolmá k pohybu, W = 0' },
@@ -523,7 +582,9 @@ const level: LevelContent = {
               { icon: 'ice', title: 'Puk po ledě', text: 'po odpalu klouže sám, hokejka už na něj nepůsobí' },
             ] },
             { type: 'callout', variant: 'fact', title: 'Proč tě to tedy bolí?', text: 'Když tašku držíš, svalová vlákna se pořád dokola stahují a povolují. Tělo přitom spotřebovává energii a mění ji na teplo. Na tašce ale žádnou práci nekonáš – stejně dobře by ji udržel háček na zdi.' },
+            { type: 'p', text: 'Pro kontrolu ještě dvojice situací vedle sebe. Vlevo se těleso posouvá ve směru síly, vpravo ne:' },
             { type: 'compare', columns: [ { title: '**Práce se koná**', icon: 'check', tone: 'good', points: ['zvedáš činku nad hlavu', 'tlačíš porouchané auto', 'jeřáb zvedá panel', 'výtah vyváží lidi nahoru'] }, { title: '**Práce se nekoná**', icon: 'cross', tone: 'bad', points: ['držíš činku nad hlavou', 'tlačíš do zdi', 'panel visí na jeřábu v klidu', 'kniha leží na stole'] } ] },
+            { type: 'p', text: 'Stejnou práci ale můžou dva lidé vykonat různě rychle. Jak tenhle rozdíl vyjádřit číslem?' },
             { type: 'check', question: { kind: 'tf', q: 'Když neseš tašku po rovné chodbě stálou rychlostí, síla, kterou ji držíš, nekoná práci.', answer: true, explain: 'Síla, kterou tašku držíš, míří svisle vzhůru, ale taška se pohybuje vodorovně. Ve směru síly se neposune, takže W = 0.' } },
           ],
         },
@@ -531,13 +592,15 @@ const level: LevelContent = {
           title: 'Výkon: jak rychle se práce koná',
           icon: 'speed',
           blocks: [
-            { type: 'p', text: 'Výtah i schodiště tě dostanou do stejného patra a práce na zvednutí tvého těla je stejná. Výtah to ale zvládne rychleji. **Výkon** udává, jakou práci vykoná stroj nebo člověk za 1 sekundu.' },
+            { type: 'p', text: 'Výtah i schodiště tě dostanou do stejného patra a práce na zvednutí tvého těla je stejná. Výtah to ale zvládne rychleji. **Výkon** udává, jakou práci vykoná stroj nebo člověk za 1 sekundu, a proto práci dělíme časem:' },
             { type: 'formula', text: 'P = W / t', caption: 'P – výkon ve wattech (W), W – práce (J), t – čas (s); 1 W = 1 J/s' },
             { type: 'callout', variant: 'warning', text: 'Pozor na dvě „W“: *W* psané kurzívou je práce (veličina), W bez kurzívy je watt (jednotka). Píše se tedy *W* = 600 J, ale P = 600 W.' },
+            { type: 'p', text: 'Kdo má větší výkon: těžší, nebo rychlejší? Rozhodne až výpočet.' },
             { type: 'example', title: 'Závod do schodů', problem: 'Petr (50 kg) vyběhne do patra vysokého 3 m za 5 s. Jana (40 kg) to samé zvládne za 3 s. Kdo měl větší výkon?', steps: [
               'Petr: W = m · g · h = 50 kg · 10 N/kg · 3 m = 1 500 J; P = 1 500 J / 5 s = 300 W.',
               'Jana: W = 40 kg · 10 N/kg · 3 m = 1 200 J; P = 1 200 J / 3 s = 400 W.',
             ], answer: 'Petr vykonal větší práci, ale Jana měla větší výkon: 400 W proti 300 W.' },
+            { type: 'p', text: 'Je 400 W hodně, nebo málo? Porovnej to s výkony kolem sebe:' },
             { type: 'iconlist', items: [
               { icon: 'bulb', title: 'LED žárovka', text: 'asi 10 W' },
               { icon: 'muscle', title: 'Člověk při celodenní práci', text: 'asi 100 W' },
@@ -549,6 +612,7 @@ const level: LevelContent = {
             { type: 'callout', variant: 'fact', title: 'Koňská síla', text: 'Starší jednotkou výkonu je **koňská síla** (k): 1 k ≈ 735 W. Podobnou jednotku zavedl James Watt, aby zákazníkům ukázal, kolik koní jeho parní stroj nahradí. V technickém průkazu auta dnes najdeš výkon v kW.' },
             { type: 'p', text: 'Ze vztahu pro výkon spočítáš i práci: W = P · t. Motor o výkonu 2 kW vykoná za 10 s práci 2 000 W · 10 s = 20 000 J.' },
             { type: 'callout', variant: 'tip', title: 'Změř svůj výkon', text: 'Změř výšku schodiště (počet schodů × výška jednoho schodu) a stopkami čas, za který ho vyběhneš. Výkon spočítáš jako P = m · g · h / t. Běžný teenager zvládne krátce 400–700 W.' },
+            { type: 'p', text: 'Výkon říká, jak rychle stroj pracuje. Neříká ale, kolik energie přitom přijde nazmar – to popisuje účinnost.' },
             { type: 'check', question: { kind: 'number', q: 'Jeřáb zvedne panel o hmotnosti 800 kg do výšky 15 m za 40 s. Jaký je jeho výkon?', answer: 3000, tolerance: 10, unit: 'W', explain: 'W = m · g · h = 800 kg · 10 N/kg · 15 m = 120 000 J; P = 120 000 J / 40 s = 3 000 W = 3 kW.' } },
           ],
         },
@@ -558,16 +622,19 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Žádný stroj nepředá dál všechnu energii, kterou dostane. Část se vždy „ztratí“ – nejčastěji se třením změní na teplo. **Účinnost** η (čti éta) říká, jaká část dodané energie se změní na užitečnou práci.' },
             { type: 'formula', text: 'η = W / W_{0} = P / P_{0}', caption: 'W – užitečná práce, W_{0} – dodaná energie; P – výkon, P_{0} – příkon. Účinnost nemá jednotku, vynásobením stem dostaneš procenta.' },
+            { type: 'p', text: 'Účinnost je vždycky podíl „užitečné ku dodanému“. Spočítejme ji pro výtah:' },
             { type: 'example', title: 'Výtah', problem: 'Motor výtahu odebere ze sítě 20 kJ energie a zvedne kabinu s lidmi o hmotnosti 500 kg o 3 m. Jaká je účinnost?', steps: [
               'Užitečná práce: W = m · g · h = 500 kg · 10 N/kg · 3 m = 15 000 J = 15 kJ.',
               'η = W / W_{0} = 15 kJ / 20 kJ = 0,75.',
             ], answer: 'η = 0,75 = 75 %. Zbylých 5 kJ se změnilo na teplo v motoru, kladkách a lanech.' },
+            { type: 'p', text: 'Stejný výsledek si můžeš představit jako tok energie. Ze 100 dodaných joulů sleduj, kolik jich dojde až ke kabině:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'plug', title: 'Dodáno 100 J', text: 'elektrická energie vstupuje do motoru' },
               { icon: 'motor', title: 'Motor', text: 'mění energii na otáčivý pohyb' },
               { icon: 'weight', title: 'Užitečně 75 J', text: 'zvednutá kabina' },
               { icon: 'heat', title: 'Ztráty 25 J', text: 'teplo z tření a ohřátí vinutí' },
             ], caption: 'Energetická bilance stroje s účinností 75 %' },
+            { type: 'p', text: 'Je 75 % hodně, nebo málo? Porovnej to s jinými stroji:' },
             { type: 'table', headers: ['stroj', 'přibližná účinnost'], rows: [
               ['velký elektromotor', '90–95 %'],
               ['vodní turbína', 'asi 90 %'],
@@ -577,6 +644,7 @@ const level: LevelContent = {
             ] },
             { type: 'callout', variant: 'remember', text: 'Účinnost je vždy menší než 1 (100 %). Stroj s účinností 100 % a víc – takzvané *perpetuum mobile* – postavit nejde, i když se o to vynálezci pokoušejí už stovky let.' },
             { type: 'callout', variant: 'fact', text: 'Ztrátové teplo se někdy dá využít. Auto se spalovacím motorem topí v zimě v kabině právě teplem, které motor „ztratil“. Elektromobil má motor tak účinný, že musí topit zvlášť.' },
+            { type: 'p', text: 'Stroj tedy vždycky spotřebuje víc energie, než kolik užitečně vykoná. Proč stroje vůbec používáme? Odpověď znáš už od páky.' },
             { type: 'check', question: { kind: 'number', q: 'Motor s příkonem 2 000 W má výkon 1 600 W. Jaká je jeho účinnost v procentech?', answer: 80, tolerance: 0.5, unit: '%', explain: 'η = P / P_{0} = 1 600 W / 2 000 W = 0,8 = 80 %.' } },
           ],
         },
@@ -584,19 +652,23 @@ const level: LevelContent = {
           title: 'Stroje a zlaté pravidlo mechaniky',
           icon: 'pulley',
           blocks: [
-            { type: 'p', text: 'U páky a kladky jsi poznal **zlaté pravidlo mechaniky**: co získáš na síle, ztratíš na dráze. Teď víš proč. ==Jednoduché stroje zmenšují potřebnou sílu, ale práci neušetří.== Bez tření platí F_{1} · s_{1} = F_{2} · s_{2}.' },
+            { type: 'p', text: 'U páky a kladky jsi poznal/a **zlaté pravidlo mechaniky**: co získáš na síle, ztratíš na dráze. Teď víš proč. ==Jednoduché stroje zmenšují potřebnou sílu, ale práci neušetří.== Bez tření platí F_{1} · s_{1} = F_{2} · s_{2}.' },
+            { type: 'p', text: 'Nejjednodušší takový stroj je nakloněná rovina – třeba rampa, po které tlačíš sud na korbu auta:' },
             { type: 'forces', body: 'box', surface: 'incline', angle: 15, forces: [
               { label: 'F_{G} = 1 000 N', angle: 270, size: 5 },
               { label: 'F = 250 N', angle: 15, size: 1.5, tone: 'b' },
             ], caption: 'Po rampě stačí sud tlačit silou jen čtvrtinovou, ale po čtyřikrát delší dráze.' },
+            { type: 'p', text: 'Proč zrovna čtvrtinová síla? Spočítejme práci oběma způsoby:' },
             { type: 'example', title: 'Rampa na korbu', problem: 'Sud o hmotnosti 100 kg máš dostat na korbu auta vysokou 1 m. Rovnou ho zvednout, nebo vytlačit po rampě dlouhé 4 m? Tření zanedbej.', steps: [
               'Zvednutí: F = F_{G} = 100 kg · 10 N/kg = 1 000 N; W = 1 000 N · 1 m = 1 000 J.',
               'Rampa je 4× delší než výška, stačí tedy 4× menší síla: F = 1 000 N / 4 = 250 N.',
               'Práce po rampě: W = 250 N · 4 m = 1 000 J.',
             ], answer: 'Po rampě stačí síla 250 N, ale práce je stejná: 1 000 J. S třením by po rampě byla dokonce o něco větší.' },
             { type: 'callout', variant: 'warning', text: 'Ve skutečnosti vždy působí tření, a stroj proto spotřebuje o něco **víc** práce, než kolik užitečně vykoná. Zlaté pravidlo mechaniky platí přesně jen pro ideální stroje bez tření.' },
+            { type: 'p', text: 'Stejný obchod – menší síla za delší dráhu – uzavírají i kladky. Porovnej tři zapojení:' },
             { type: 'diagram', id: 'pulley-systems', caption: 'Pevná kladka, volná kladka a kladkostroj: čím menší síla, tím víc lana musíš protáhnout.' },
             { type: 'p', text: 'Stejně funguje **kladkostroj**: čím víc nosných lan, tím menší síla stačí, ale tím víc lana musíš protáhnout. Součin síly a dráhy, tedy práce, zůstane stejný.' },
+            { type: 'p', text: 'Podle téhož pravidla fungují všechny jednoduché stroje, které znáš:' },
             { type: 'iconlist', items: [
               { icon: 'lever', title: 'Páka', text: 'páčidlo, nůžky, trakař' },
               { icon: 'pulley', title: 'Kladka a kladkostroj', text: 'jeřáb, stěžeň plachetnice, lezecká lana' },
@@ -604,6 +676,7 @@ const level: LevelContent = {
               { icon: 'drop', title: 'Hydraulika', text: 'lis, zvedák, rameno bagru' },
             ] },
             { type: 'game', gameId: 'unit-convert', text: 'Jouly, kilojouly, watty a kilowatty si procvič ve hře „Převody jednotek“.' },
+            { type: 'p', text: 'Kam se ale vykonaná práce poděje? Sud vytlačený na korbu ji má v sobě „uloženou“ – a o téhle zásobě, energii, je příští lekce.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč vedou silnice do hor v serpentinách?', options: ['Delší a méně strmá cesta vyžaduje menší sílu; práce na vyvezení auta nahoru je ale stejná.', 'Serpentiny zkrátí dráhu, a tím se ušetří práce.', 'V serpentinách se auto zvedne do menší výšky.', 'Serpentiny zmenšují hmotnost auta.'], answer: 0, explain: 'Serpentiny jsou nakloněná rovina: dráha je delší, a proto stačí menší síla. Výška, a tedy i práce, zůstává stejná.' } },
           ],
         },
@@ -647,8 +720,9 @@ const level: LevelContent = {
           title: 'Co je energie',
           icon: 'lightning',
           blocks: [
-            { type: 'p', text: 'Zvednuté kladivo zatluče hřebík. Kutálející se koule porazí kuželky. Natažený luk vystřelí šíp. Všechna tato tělesa mohou konat práci – mají **energii**.' },
+            { type: 'p', text: 'V minulé lekci jsme práci počítali. Teď se zeptáme, co tělesa potřebují, aby práci vůbec mohla konat. Zvednuté kladivo zatluče hřebík. Kutálející se koule porazí kuželky. Natažený luk vystřelí šíp. Všechna tato tělesa mohou konat práci – mají **energii**.' },
             { type: 'callout', variant: 'remember', text: '**Energie** je schopnost tělesa konat práci. Měří se ve stejné jednotce jako práce, v **joulech** (J). Když se koná práce, energie přechází z jednoho tělesa na druhé.' },
+            { type: 'p', text: 'Energii mají tělesa kolem nás v různé podobě. U každého si všimni, jakou práci dokáže vykonat:' },
             { type: 'iconlist', items: [
               { icon: 'weight', title: 'Zvednuté beranidlo', text: 'padá a zarazí kůl do země' },
               { icon: 'car', title: 'Jedoucí auto', text: 'při nárazu zdeformuje plech' },
@@ -657,6 +731,7 @@ const level: LevelContent = {
             ] },
             { type: 'p', text: 'Energii, kterou má těleso díky svému pohybu nebo své poloze, nazýváme **mechanická energie**. Má dvě podoby: pohybovou a polohovou.' },
             { type: 'callout', variant: 'mascot', text: 'Energie je jako peníze fyziky. Dá se přesouvat z účtu na účet a měnit z jedné měny do druhé, ale nikdy se nevytiskne z ničeho.' },
+            { type: 'p', text: 'Na obě podoby mechanické energie se teď podíváme zvlášť – nejdřív na energii pohybu.' },
             { type: 'check', question: { kind: 'tf', q: 'Energie se měří ve stejné jednotce jako práce.', answer: true, explain: 'Energie je schopnost konat práci, obě veličiny proto mají stejnou jednotku: joule.' } },
           ],
         },
@@ -664,22 +739,25 @@ const level: LevelContent = {
           title: 'Pohybová energie',
           icon: 'car',
           blocks: [
-            { type: 'p', text: 'Každé pohybující se těleso má **pohybovou (kinetickou) energii** E_{k}. Čím je těleso těžší a čím rychleji se pohybuje, tím víc energie má.' },
+            { type: 'p', text: 'Každé pohybující se těleso má **pohybovou (kinetickou) energii** E_{k}. Čím je těleso těžší a čím rychleji se pohybuje, tím víc energie má. Přesně to vyjadřuje vzorec:' },
             { type: 'formula', text: 'E_{k} = ½ · m · v^{2}', caption: 'm – hmotnost (kg), v – rychlost (m/s); E_{k} vyjde v joulech' },
+            { type: 'p', text: 'Všimni si, že rychlost je ve vzorci na druhou. Na ní proto záleží mnohem víc než na hmotnosti – ukazuje to graf pro auto:' },
             { type: 'graph', x: { label: 'v', unit: 'm/s', min: 0, max: 40, step: 5 }, y: { label: 'E_{k}', unit: 'kJ', min: 0, max: 800, step: 100 }, series: [
               { label: 'auto 1 000 kg', style: 'smooth', points: [[0, 0], [5, 12.5], [10, 50], [15, 112.5], [20, 200], [25, 312.5], [30, 450], [35, 612.5], [40, 800]] },
             ], marks: [
               { x: 14, y: 98, label: '50 km/h: asi 100 kJ' },
               { x: 28, y: 392, label: '100 km/h: asi 390 kJ' },
             ], caption: 'Pohybová energie auta o hmotnosti 1 000 kg. Dvojnásobná rychlost znamená čtyřnásobnou energii.' },
+            { type: 'p', text: 'Ověřme dvě hodnoty z grafu výpočtem – pro jízdu městem a po dálnici:' },
             { type: 'example', title: 'Auto ve městě a na dálnici', problem: 'Auto o hmotnosti 1 000 kg jede rychlostí 50 km/h (asi 14 m/s). Jakou má pohybovou energii? Jak se změní, když pojede 100 km/h (asi 28 m/s)?', steps: [
-              'E_{k} = ½ · 1 000 kg · (14 m/s)^{2} = 500 · 196 J = 98 000 J ≈ 98 kJ.',
+              'Rychlost dosazujeme v m/s: E_{k} = ½ · 1 000 kg · (14 m/s)^{2} = 500 · 196 J = 98 000 J ≈ 98 kJ.',
               'E_{k} = ½ · 1 000 kg · (28 m/s)^{2} = 500 · 784 J = 392 000 J ≈ 392 kJ.',
               'Poměr: 392 kJ / 98 kJ = 4.',
             ], answer: 'Při 50 km/h má auto asi 98 kJ, při 100 km/h asi 392 kJ – čtyřikrát víc.' },
             { type: 'callout', variant: 'warning', title: 'Proč na rychlosti tolik záleží', text: 'Brzdy musí při zastavení „spotřebovat“ celou pohybovou energii auta. Při dvojnásobné rychlosti je jí čtyřikrát víc, proto je i brzdná dráha asi čtyřikrát delší a náraz mnohem ničivější.' },
             { type: 'callout', variant: 'tip', text: 'Rychlost do vzorce vždy dosazuj v m/s! Z km/h ji převedeš dělením 3,6: 72 km/h = 20 m/s.' },
             { type: 'callout', variant: 'fact', text: 'Tenisák při rychlém podání letí až 60 m/s. Má jen 58 g, ale jeho pohybová energie je přes 100 J – tolik, jako kdybys zvedl 10 kg do výšky 1 m.' },
+            { type: 'p', text: 'Pohybovou energii má těleso, dokud se hýbe. Energii ale může mít i těleso, které stojí – stačí, aby bylo vysoko.' },
             { type: 'check', question: { kind: 'number', q: 'Fotbalový míč o hmotnosti 0,4 kg letí rychlostí 20 m/s. Jakou má pohybovou energii?', answer: 80, tolerance: 0.5, unit: 'J', explain: 'E_{k} = ½ · 0,4 kg · (20 m/s)^{2} = 0,2 · 400 J = 80 J.' } },
           ],
         },
@@ -689,22 +767,25 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Když těleso zvedneš, vykonáš práci W = m · g · h. Ta se neztratí: těleso ji má uloženou jako **polohovou (potenciální) energii tíhovou** E_{p}. Když ho pustíš, při pádu ji může zase proměnit v práci.' },
             { type: 'formula', text: 'E_{p} = m · g · h', caption: 'm – hmotnost (kg), g ≈ 10 N/kg, h – výška nad zvolenou nulovou hladinou (m)' },
+            { type: 'p', text: 'Ověř si na batohu, že energie, kterou těleso získá, je přesně práce, kterou jsi při zvedání vykonal/a:' },
             { type: 'example', title: 'Batoh ve čtvrtém patře', problem: 'Vyneseš batoh o hmotnosti 5 kg z přízemí do 4. patra, které je 12 m vysoko. O kolik se zvětší jeho polohová energie?', steps: [
               'E_{p} = m · g · h',
               'E_{p} = 5 kg · 10 N/kg · 12 m = 600 J',
             ], answer: 'Polohová energie batohu vzroste o 600 J – přesně o práci, kterou jsi při vynášení vykonal.' },
+            { type: 'p', text: 'Ve velkém polohovou energii využívají vodní elektrárny. Kolik jí má jeden metr krychlový vody v přehradě?' },
             { type: 'example', title: 'Voda v přehradě', problem: 'Hladina přehradní nádrže je 50 m nad turbínami. Jakou polohovou energii vůči turbínám má 1 m³ vody (1 000 kg)?', steps: [
               'E_{p} = m · g · h = 1 000 kg · 10 N/kg · 50 m',
               'E_{p} = 500 000 J',
             ], answer: 'E_{p} = 500 kJ na každý metr krychlový. Turbínami velké elektrárny jich proteče stovky každou sekundu.' },
             { type: 'callout', variant: 'tip', text: 'Výšku h měříš od místa, které si zvolíš jako nulu – od podlahy, od země nebo od turbíny. Důležité je, o kolik těleso klesne nebo stoupne.' },
-            { type: 'p', text: 'Energii může mít uloženou i **pružné těleso**: napnutý luk, stlačená pružina nebo prohnutá trampolína. Říká se jí polohová energie pružnosti.' },
+            { type: 'p', text: 'Energii může mít uloženou i **pružné těleso**: napnutý luk, stlačená pružina nebo prohnutá trampolína. Říká se jí polohová energie pružnosti. Najdeš ji všude, kde se něco napne nebo stlačí:' },
             { type: 'iconlist', items: [
               { icon: 'spring', title: 'Pružina', text: 'v propisce, v matraci, v pinballu' },
               { icon: 'vector', title: 'Luk a prak', text: 'napnutá tětiva vymrští šíp' },
               { icon: 'speed', title: 'Trampolína', text: 'prohnutá plachta vyhodí skokana zpátky nahoru' },
             ] },
             { type: 'callout', variant: 'fact', text: 'Beranidlo na stavbě zvedne těžké závaží několik metrů vysoko. Při pádu se polohová energie změní na pohybovou a ta zatluče ocelovou pilotu do země.' },
+            { type: 'p', text: 'Teď známe obě podoby mechanické energie. Co se s nimi děje, když se těleso houpe nebo jede z kopce?' },
             { type: 'check', question: { kind: 'number', q: 'Kočka o hmotnosti 4 kg vyskočí na skříň vysokou 2 m. O kolik se zvětší její polohová energie?', answer: 80, tolerance: 0.5, unit: 'J', explain: 'E_{p} = m · g · h = 4 kg · 10 N/kg · 2 m = 80 J.' } },
           ],
         },
@@ -714,23 +795,27 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Pohybová a polohová energie se mohou měnit jedna v druhou. Nejlépe to uvidíš na kyvadle nebo na houpačce.' },
             { type: 'diagram', id: 'pendulum-energy', caption: 'V krajních polohách má kyvadlo největší polohovou energii a na okamžik stojí. Dole je nejrychlejší: polohová energie se změnila na pohybovou.' },
+            { type: 'p', text: 'Rozložme jeden kmit na čtyři okamžiky a sledujme, kde má kyvadlo kterou energii:' },
             { type: 'process', layout: 'cycle', steps: [
               { icon: 'pendulum', title: 'Krajní poloha vlevo', text: 'E_{p} největší, E_{k} = 0' },
               { icon: 'speed', title: 'Nejnižší bod', text: 'E_{p} nejmenší, E_{k} největší' },
               { icon: 'pendulum', title: 'Krajní poloha vpravo', text: 'zase jen E_{p}, kyvadlo se na okamžik zastaví' },
               { icon: 'speed', title: 'Zpět dolů', text: 'E_{p} se znovu mění na E_{k}' },
             ], caption: 'Jeden kmit kyvadla' },
+            { type: 'p', text: 'Horská dráha z úvodu je vlastně obří kyvadlo s nepravidelnou tratí. Graf ukazuje obě energie podél celé trati:' },
             { type: 'graph', x: { label: 'poloha na trati', unit: 'm', min: 0, max: 100, step: 10 }, y: { label: 'E', unit: 'kJ', min: 0, max: 220, step: 50 }, series: [
               { label: 'polohová E_{p}', style: 'smooth', tone: 'a', points: [[0, 200], [10, 180], [20, 120], [30, 50], [40, 25], [50, 60], [60, 110], [70, 125], [80, 90], [90, 40], [100, 25]] },
               { label: 'pohybová E_{k}', style: 'smooth', tone: 'b', points: [[0, 0], [10, 20], [20, 80], [30, 150], [40, 175], [50, 140], [60, 90], [70, 75], [80, 110], [90, 160], [100, 175]] },
               { label: 'celková energie', style: 'dashed', tone: 'c', points: [[0, 200], [100, 200]] },
             ], caption: 'Vozík horské dráhy (500 kg) vyjíždí z klidu ve výšce 40 m. Kde je trať nízko, má hodně pohybové energie; kde je vysoko, málo. Součet zůstává 200 kJ (bez tření).' },
+            { type: 'p', text: 'Čárkovaná čára ukazuje, že součet obou energií zůstává stejný. Díky tomu spočítáme energii v kterémkoli místě trati:' },
             { type: 'example', title: 'Horská dráha', problem: 'Vozík s cestujícími (500 kg) stojí na vrcholu ve výšce 40 m. Jakou pohybovou energii bude mít v místě, kde je trať ve výšce 10 m? Tření zanedbej.', steps: [
               'Nahoře: E_{p} = 500 kg · 10 N/kg · 40 m = 200 000 J, E_{k} = 0.',
               'Ve výšce 10 m: E_{p} = 500 kg · 10 N/kg · 10 m = 50 000 J.',
               'Celková energie se nemění: E_{k} = 200 000 J − 50 000 J = 150 000 J.',
             ], answer: 'E_{k} = 150 kJ. Vozík přeměnil 150 kJ polohové energie na pohybovou.' },
             { type: 'callout', variant: 'mascot', text: 'Proto je první kopec horské dráhy vždycky nejvyšší! Kdyby byl některý další kopec vyšší než start, vozík by na něj nevyjel.' },
+            { type: 'p', text: 'Že součet energií zůstává stejný, není náhoda horské dráhy. Je to jeden z nejdůležitějších zákonů fyziky.' },
             { type: 'check', question: { kind: 'choice', q: 'Kde má houpačka největší pohybovou energii?', options: ['v nejnižším bodě', 'v nejvyšším bodě vpředu', 'v nejvyšším bodě vzadu', 'všude stejnou'], answer: 0, explain: 'V nejnižším bodě se největší část polohové energie změnila na pohybovou, houpačka je tam nejrychlejší.' } },
           ],
         },
@@ -738,19 +823,23 @@ const level: LevelContent = {
           title: 'Zákon zachování energie',
           icon: 'balance-scale',
           blocks: [
+            { type: 'p', text: 'Na kyvadle i na horské dráze se energie jen přelévala z jedné podoby do druhé a celková zůstávala stejná. Fyzici zjistili, že to platí vždycky a všude:' },
             { type: 'callout', variant: 'remember', title: 'Zákon zachování energie', text: 'Energie nevzniká ani nezaniká. Může se jen přeměnit z jedné formy na jinou nebo přejít z jednoho tělesa na druhé. Celková energie uzavřené soustavy zůstává stejná.' },
             { type: 'p', text: 'Když nepůsobí tření, platí to i pro samotnou mechanickou energii: E_{k} + E_{p} = konst. Na konci pádu z výšky h pak platí m · g · h = ½ · m · v^{2}. Hmotnost se zkrátí, takže ==těžké i lehké těleso dopadne ze stejné výšky stejně rychle== (když zanedbáme odpor vzduchu).' },
             { type: 'formula', text: 'v = √(2 · g · h)', caption: 'rychlost na konci pádu nebo sjezdu z výšky h, když těleso vyjede z klidu a tření zanedbáme' },
+            { type: 'p', text: 'Vzorec platí pro volný pád i pro sjezd po skluzavce. Spočítejme, jak rychle by z tobogánu vyjel plavec:' },
             { type: 'example', title: 'Tobogán v aquaparku', problem: 'Tobogán začíná 5 m nad hladinou bazénu. Jakou rychlostí by plavec vyjel dole, kdyby nepůsobilo tření? (g = 10 m/s²)', steps: [
-              'm · g · h = ½ · m · v^{2}, hmotnost se zkrátí: v^{2} = 2 · g · h.',
+              'Polohová energie nahoře se celá změní na pohybovou dole: m · g · h = ½ · m · v^{2}, hmotnost se zkrátí: v^{2} = 2 · g · h.',
               'v^{2} = 2 · 10 m/s² · 5 m = 100 m²/s²',
               'v = √100 m/s = 10 m/s',
             ], answer: 'v = 10 m/s, tedy 36 km/h.' },
+            { type: 'p', text: 'Pozor, 36 km/h platí jen bez tření. Ve skutečnosti je rychlost dole menší – kam se rozdíl energie poděl?' },
             { type: 'example', title: 'Kam zmizela energie?', problem: 'Ve skutečnosti vyjede dítě o hmotnosti 30 kg z pětimetrové skluzavky rychlostí jen 6 m/s. Kolik mechanické energie se „ztratilo“?', steps: [
               'Na začátku: E_{p} = 30 kg · 10 N/kg · 5 m = 1 500 J.',
               'Na konci: E_{k} = ½ · 30 kg · (6 m/s)^{2} = 15 · 36 J = 540 J.',
               'Rozdíl: 1 500 J − 540 J = 960 J.',
             ], answer: '960 J se třením změnilo na **vnitřní energii** skluzavky, oblečení a vzduchu – ty se nepatrně ohřály. Energie nezmizela, jen přestala být mechanickou.' },
+            { type: 'p', text: 'Přeměny energie najdeš všude kolem sebe. U každého příkladu sleduj, z jaké podoby do jaké energie přechází:' },
             { type: 'iconlist', items: [
               { icon: 'ocean', title: 'Vodní elektrárna', text: 'polohová energie vody -> pohybová energie -> roztočená turbína -> elektrická energie' },
               { icon: 'parachute', title: 'Parašutista', text: 'klesá stálou rychlostí; polohová energie se mění na vnitřní energii vzduchu' },
@@ -759,6 +848,7 @@ const level: LevelContent = {
             { type: 'callout', variant: 'fact', text: 'Vnitřní energii a teplu se budeš podrobně věnovat v úrovni 4. Už teď ale platí: kdykoli se zdá, že mechanická energie „zmizela“, najdeš ji jako ohřátí těles kolem.' },
             { type: 'game', gameId: 'energy-chain', text: 'Sestav v „Energetickém řetězci“, jak se energie mění na horské dráze, u kyvadla nebo ve vodní elektrárně.' },
             { type: 'callout', variant: 'fact', title: 'Joulův pokus', text: 'James Prescott Joule v 19. století spouštěl závaží, které roztáčelo lopatky ve vodě. Voda se tím nepatrně ohřála. Dokázal tak, že mechanickou energii lze přeměnit na vnitřní energii a že se přitom nic neztratí.' },
+            { type: 'p', text: 'Mechanická energie je ale jen jedna z mnoha podob energie. V příští lekci uvidíš, jaké další existují a odkud energii bereme.' },
             { type: 'check', question: { kind: 'number', q: 'Jablko spadne ze stromu z výšky 3,2 m. Jakou rychlostí dopadne na zem? (g = 10 m/s², odpor vzduchu zanedbej)', answer: 8, tolerance: 0.1, unit: 'm/s', explain: 'v = √(2 · g · h) = √(2 · 10 · 3,2) m/s = √64 m/s = 8 m/s.' } },
           ],
         },
@@ -804,7 +894,7 @@ const level: LevelContent = {
           title: 'Mnoho podob energie',
           icon: 'idea',
           blocks: [
-            { type: 'p', text: 'Energie se skrývá v různých podobách. Nemizí, jen se přelévá z jedné formy do druhé. Ťukni na kartičky a poznej šest hlavních forem.' },
+            { type: 'p', text: 'Zatím jsme sledovali mechanickou energii a viděli, že se třením mění na vnitřní energii. To ale nejsou jediné podoby. Energie nemizí, jen se přelévá z jedné formy do druhé. Ťukni na kartičky a poznej šest hlavních forem.' },
             { type: 'flipcards', cards: [
               { icon: 'pendulum', title: 'Mechanická', text: 'pohybová a polohová energie těles: jedoucí kolo, voda v přehradě, natažená pružina' },
               { icon: 'heat', title: 'Vnitřní', text: 'energie neustále se pohybujících částic látky; teplejší těleso jí má víc (podrobně v úrovni 4)' },
@@ -815,6 +905,7 @@ const level: LevelContent = {
             ], caption: 'Šest forem energie' },
             { type: 'callout', variant: 'tip', text: 'Nepleť si energii a výkon. **Energie** (J) říká, kolik práce se dá vykonat. **Výkon** (W) říká, jak rychle se energie přeměňuje nebo předává.' },
             { type: 'callout', variant: 'fact', text: 'Ze Slunce dopadá na Zemi každou sekundu asi 1,7 · 10^{17} J energie. To je několik tisíckrát víc, než kolik za tu sekundu spotřebuje celé lidstvo.' },
+            { type: 'p', text: 'Podoby energie teď poznáš. Zajímavější je sledovat, jak jedna přechází v druhou – třeba na cestě ze Slunce k tvé snídani.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď zdroj k formě energie, kterou obsahuje.', pairs: [
               ['benzín v nádrži', 'chemická energie'],
               ['voda v horní nádrži', 'polohová (mechanická) energie'],
@@ -827,7 +918,7 @@ const level: LevelContent = {
           title: 'Energetické řetězce',
           icon: 'arrow-cycle',
           blocks: [
-            { type: 'p', text: 'Když sleduješ, jak se energie mění krok za krokem, sestavuješ **energetický řetězec**. Skoro všechny řetězce na Zemi začínají na Slunci.' },
+            { type: 'p', text: 'Když sleduješ, jak se energie mění krok za krokem, sestavuješ **energetický řetězec**. Skoro všechny řetězce na Zemi začínají na Slunci. Sleduj ten, který končí v tvých svalech:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'sun', title: 'Slunce', text: 'jaderná energie -> energie záření' },
               { icon: 'leaf', title: 'Rostlina', text: 'fotosyntézou mění světlo na chemickou energii cukrů' },
@@ -836,6 +927,7 @@ const level: LevelContent = {
               { icon: 'heat', title: 'Teplo', text: 'nakonec se vše rozptýlí jako vnitřní energie okolí' },
             ], caption: 'Od Slunce až k tvým svalům' },
             { type: 'p', text: 'Rostliny při **fotosyntéze** vyrábějí z $CO2$ a vody cukr. Z pohledu fyziky je to „nabíjení“: energie světla se uloží do chemických vazeb. Když jíš, tvoje tělo tyto vazby zase „rozbaluje“.' },
+            { type: 'p', text: 'Ze Slunce ale začíná i řetězec, který s ním na první pohled nesouvisí: elektřina z vodní elektrárny.' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'sun', title: 'Slunce', text: 'ohřívá moře' },
               { icon: 'cloud', title: 'Odpaření', text: 'vodní pára stoupá a tvoří mraky' },
@@ -846,6 +938,7 @@ const level: LevelContent = {
             ], caption: 'I elektřina z vodní elektrárny je vlastně sluneční energie.' },
             { type: 'callout', variant: 'remember', text: 'V každém článku řetězce se část energie změní na teplo, které se rozptýlí do okolí. Energie se neztratí, ale už ji nedokážeme snadno znovu využít.' },
             { type: 'callout', variant: 'fact', text: 'I uhlí, ropa a zemní plyn jsou uložená sluneční energie. Vznikly z rostlin a drobných živočichů, kteří před miliony let rostli díky slunečnímu světlu.' },
+            { type: 'p', text: 'Na konci řetězce ze Slunce stojí jídlo. Kolik energie v něm vlastně je?' },
             { type: 'check', question: { kind: 'order', q: 'Seřaď energetický řetězec od začátku do konce.', items: ['jaderné reakce ve Slunci', 'sluneční záření', 'chemická energie v obilí', 'chemická energie v rohlíku', 'pohyb svalů při běhu'], explain: 'Slunce vyzařuje energii z jaderných reakcí, rostlina ji uloží do cukrů, ty sníš v pečivu a svaly je promění v pohyb.' } },
           ],
         },
@@ -854,12 +947,14 @@ const level: LevelContent = {
           icon: 'apple',
           blocks: [
             { type: 'p', text: 'Na každém obalu potravin najdeš **energetickou hodnotu**, obvykle na 100 g. Udává se v kilojoulech (kJ) a v kilokaloriích (kcal): 1 kcal ≈ 4,2 kJ.' },
+            { type: 'p', text: 'Tady je pár běžných svačin a energie, kterou ti dodají:' },
             { type: 'iconlist', items: [
               { icon: 'bread', title: 'Rohlík', text: 'asi 550 kJ' },
               { icon: 'apple', title: 'Jablko (180 g)', text: 'asi 400 kJ' },
               { icon: 'milk', title: 'Sklenice mléka (250 ml)', text: 'asi 600 kJ' },
               { icon: 'sugar', title: 'Čokoládová tyčinka (50 g)', text: 'asi 1 000 kJ' },
             ] },
+            { type: 'p', text: 'Kousky ale mají různou hmotnost. Abys mohl/a potraviny férově porovnat, potřebuješ hodnoty na stejné množství, tedy na 100 g:' },
             { type: 'table', headers: ['potravina (100 g)', 'energie'], rows: [
               ['okurka', 'asi 60 kJ'],
               ['kola (100 ml)', 'asi 180 kJ'],
@@ -869,17 +964,20 @@ const level: LevelContent = {
               ['máslo', 'asi 3 000 kJ'],
             ], caption: 'Nejvíc energie mají tuky, nejméně zelenina s hodně vodou.' },
             { type: 'p', text: 'Dospívající člověk potřebuje denně asi 9 000–12 000 kJ, podle toho, kolik se hýbe. Když sníš víc, než spotřebuješ, tělo si přebytek uloží jako tuk.' },
+            { type: 'p', text: 'Kolik je 1 000 kJ v řeči mechaniky? Proměňme energii tyčinky na výšku, do které by tě vynesla:' },
             { type: 'example', title: 'Tyčinka a schody', problem: 'Čokoládová tyčinka obsahuje 1 000 kJ. Do jaké výšky by se mohl vyšplhat člověk o hmotnosti 50 kg, kdyby všechnu její energii proměnil na polohovou energii? A kdyby svaly měly účinnost 25 %?', steps: [
               'E = 1 000 kJ = 1 000 000 J.',
-              'E_{p} = m · g · h, takže h = E / (m · g) = 1 000 000 J / (50 kg · 10 N/kg) = 2 000 m.',
+              'Celá energie se má změnit na polohovou: E_{p} = m · g · h, takže h = E / (m · g) = 1 000 000 J / (50 kg · 10 N/kg) = 2 000 m.',
               'Svaly ale využijí jen 25 %: h = 0,25 · 2 000 m = 500 m.',
             ], answer: 'Teoreticky 2 000 m, se skutečnou účinností svalů asi 500 m – to je jako vyjít po schodech asi 170 pater.' },
+            { type: 'p', text: 'Funguje to i obráceně: z energie a výkonu spočítáš, jak dlouho ji budeš spalovat.' },
             { type: 'example', title: 'Kola a chůze', problem: 'Plechovka koly (330 ml) má asi 600 kJ. Při rychlé chůzi spotřebuje tvoje tělo asi 400 W. Jak dlouho musíš jít, abys tuto energii spotřeboval?', steps: [
               'E = 600 kJ = 600 000 J, P = 400 W.',
-              't = E / P = 600 000 J / 400 W = 1 500 s.',
+              'Výkon je energie za sekundu, proto energii vydělíme výkonem: t = E / P = 600 000 J / 400 W = 1 500 s.',
               '1 500 s / 60 = 25 min.',
             ], answer: 'Asi 25 minut rychlé chůze.' },
             { type: 'callout', variant: 'warning', text: 'Jídlo není jen „palivo“. Tělo potřebuje i bílkoviny, vitamíny a minerály, které čísla v kJ neukážou. Energetická hodnota je dobrý pomocník, ne jediné měřítko zdravého jídla.' },
+            { type: 'p', text: 'Jídlo je palivo pro tělo. Kamna, auta a elektrárny mají svá paliva – a ta skrývají energie ještě víc.' },
             { type: 'check', question: { kind: 'number', q: 'Jogurt má energetickou hodnotu 400 kJ na 100 g. Kolik energie sníš s kelímkem o hmotnosti 150 g?', answer: 600, tolerance: 1, unit: 'kJ', explain: '150 g je 1,5krát víc než 100 g: 1,5 · 400 kJ = 600 kJ.' } },
           ],
         },
@@ -887,7 +985,7 @@ const level: LevelContent = {
           title: 'Paliva a výhřevnost',
           icon: 'fuel',
           blocks: [
-            { type: 'p', text: 'Paliva jsou zásobárny chemické energie. Kolik energie uvolní 1 kg paliva při hoření, udává **výhřevnost**, obvykle v megajoulech na kilogram (MJ/kg).' },
+            { type: 'p', text: 'Paliva jsou zásobárny chemické energie. Kolik energie uvolní 1 kg paliva při hoření, udává **výhřevnost**, obvykle v megajoulech na kilogram (MJ/kg). Porovnej běžná paliva:' },
             { type: 'table', headers: ['palivo', 'výhřevnost'], rows: [
               ['suché dřevo', 'asi 15 MJ/kg'],
               ['hnědé uhlí', 'asi 15 MJ/kg'],
@@ -896,19 +994,22 @@ const level: LevelContent = {
               ['zemní plyn (methan)', 'asi 50 MJ/kg'],
               ['vodík', 'asi 120 MJ/kg'],
             ] },
+            { type: 'p', text: 'Co znamenají megajouly v praxi? Porovnej, kolik energie potřebují běžné věci:' },
             { type: 'iconlist', items: [
               { icon: 'phone', title: 'Nabití mobilu', text: 'asi 50 kJ' },
               { icon: 'coffee', title: 'Uvaření 1 l vody na čaj', text: 'asi 350 kJ' },
               { icon: 'bread', title: 'Jídlo na celý den', text: 'asi 10 MJ' },
               { icon: 'car', title: 'Plná nádrž auta (40 l benzínu)', text: 'asi 1 300 MJ' },
             ] },
+            { type: 'p', text: 'Nejvíc vyčnívá plná nádrž auta. Odkud se to číslo vzalo a kolik z něj auto opravdu využije?' },
             { type: 'example', title: 'Plná nádrž', problem: 'Do nádrže auta se vejde 40 l benzínu (hustota 0,75 kg/l). Kolik energie obsahuje? Kolik z ní motor s účinností 30 % promění na pohyb auta?', steps: [
-              'm = ρ · V = 0,75 kg/l · 40 l = 30 kg.',
+              'Výhřevnost je na kilogram, proto nejdřív hmotnost: m = ρ · V = 0,75 kg/l · 40 l = 30 kg.',
               'E = 30 kg · 44 MJ/kg = 1 320 MJ.',
               'Užitečně: 0,30 · 1 320 MJ ≈ 400 MJ; zbytek odchází jako teplo výfukem a chladičem.',
             ], answer: 'V nádrži je asi 1 320 MJ, na pohyb auta z nich připadne jen asi 400 MJ.' },
             { type: 'callout', variant: 'fact', text: 'Na účtu za elektřinu uvidíš jednotku **kilowatthodina** (kWh): 1 kWh = 3,6 MJ. Podrobně s ní budeš počítat v úrovni o elektřině.' },
             { type: 'callout', variant: 'warning', text: 'Při hoření bez dostatku vzduchu vzniká jedovatý oxid uhelnatý $CO$, který nemá barvu ani zápach. Kamna, karmy a plynové kotle proto musí mít dobrý odvod spalin a byt by měl mít detektor $CO$.' },
+            { type: 'p', text: 'Paliva jsou vydatná, ale některá jednou dojdou. Které zdroje energie se naopak samy obnovují?' },
             { type: 'check', question: { kind: 'number', q: 'Kolik energie se uvolní spálením 3 kg suchého dřeva (15 MJ/kg)?', answer: 45, tolerance: 0.5, unit: 'MJ', explain: 'E = 3 kg · 15 MJ/kg = 45 MJ.' } },
           ],
         },
@@ -916,10 +1017,12 @@ const level: LevelContent = {
           title: 'Obnovitelné a neobnovitelné zdroje',
           icon: 'solar-panel',
           blocks: [
+            { type: 'p', text: 'Uhlí, ropa i zemní plyn se tvořily miliony let, ale spálíme je za pár minut. Zdroje energie proto dělíme podle toho, zda se stihnou samy doplnit:' },
             { type: 'compare', columns: [
               { title: '**Neobnovitelné** zdroje', icon: 'oil-barrel', tone: 'b', points: ['uhlí, ropa a zemní plyn vznikaly miliony let z pravěkých rostlin a živočichů', 'uran pro jaderné elektrárny', 'zásoby se jednou vyčerpají', 'fosilní paliva při spalování uvolňují $CO2$'] },
               { title: '**Obnovitelné** zdroje', icon: 'leaf', tone: 'a', points: ['Slunce: fotovoltaika, solární ohřev vody', 'vítr', 'voda: vodní elektrárny', 'biomasa: dřevo, bioplyn', 'geotermální teplo z nitra Země'] },
             ], caption: 'Obnovitelné zdroje se samy doplňují, ale často závisejí na počasí a denní době.' },
+            { type: 'p', text: 'Elektrárny na různé zdroje se liší hlavně tím, jakou podobu energie mění na elektrickou. Projdi si jejich řetězce:' },
             { type: 'iconlist', items: [
               { icon: 'solar-panel', title: 'Fotovoltaika', text: 'energie záření -> elektrická energie' },
               { icon: 'wind-turbine', title: 'Větrná elektrárna', text: 'pohybová energie vzduchu -> elektrická energie' },
@@ -930,6 +1033,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Česko vyrábí elektřinu hlavně v jaderných a uhelných elektrárnách, rychle ale přibývá slunečních a větrných zdrojů. Jak elektrárny fungují uvnitř, uvidíš v úrovni 7.' },
             { type: 'callout', variant: 'fact', text: 'Jaderná elektrárna při provozu neuvolňuje $CO2$. Vzniká v ní ale radioaktivní odpad, který se musí bezpečně uložit na tisíce let.' },
             { type: 'callout', variant: 'mascot', text: 'Slunce nám posílá energii zadarmo už 4,6 miliardy let a bude svítit ještě další miliardy let. To je celkem spolehlivý dodavatel!' },
+            { type: 'p', text: 'Elektřinu je potřeba vyrobit – ještě lepší ale je zbytečně ji nespotřebovat. Jak na to doma?' },
             { type: 'check', question: { kind: 'multi', q: 'Které zdroje energie jsou obnovitelné?', options: ['vítr', 'zemní plyn', 'sluneční záření', 'biomasa', 'černé uhlí'], answers: [0, 2, 3], explain: 'Vítr, Slunce a biomasa se doplňují samy. Zemní plyn a uhlí vznikaly miliony let a jejich zásoby se vyčerpají.' } },
           ],
         },
@@ -937,6 +1041,7 @@ const level: LevelContent = {
           title: 'Jak šetřit energií doma',
           icon: 'bulb',
           blocks: [
+            { type: 'p', text: 'Šetřit se dá i bez velkých investic. Většina rad vychází z toho, co už víš: méně energie přeměněné na nevyužité teplo a žádné spotřebiče, které běží zbytečně.' },
             { type: 'iconlist', items: [
               { icon: 'bulb', title: 'LED místo žárovky', text: 'stejné světlo za asi šestinu příkonu' },
               { icon: 'plug', title: 'Vypínej stand-by', text: 'televize, nabíječky a konzole „v pohotovosti“ odebírají proud celý den' },
@@ -945,14 +1050,16 @@ const level: LevelContent = {
               { icon: 'thermometer', title: 'O stupeň méně', text: 'každý stupeň v pokoji navíc zvýší spotřebu na topení asi o 6 %' },
               { icon: 'cold', title: 'Větrej krátce a naplno', text: 'otevřené okno na 5 minut je lepší než pootevřené celý den' },
             ] },
+            { type: 'p', text: 'Kolik taková výměna žárovky opravdu ušetří? Spočítej to:' },
             { type: 'example', title: 'LED, nebo žárovka?', problem: 'Klasická žárovka má příkon 60 W, LED žárovka se stejným světlem 9 W. Obě svítí 5 hodin denně. Kolik energie ušetří LED za den a za rok?', steps: [
               'Rozdíl příkonů: 60 W − 9 W = 51 W.',
-              'Za den: E = P · t = 51 W · 5 · 3 600 s = 918 000 J ≈ 0,92 MJ.',
+              'Za den (5 h převedeme na sekundy, aby vyšly jouly): E = P · t = 51 W · 5 · 3 600 s = 918 000 J ≈ 0,92 MJ.',
               'Za rok: 0,918 MJ · 365 ≈ 335 MJ.',
             ], answer: 'LED ušetří asi 0,9 MJ denně a asi 335 MJ ročně – skoro tolik energie, kolik je v 10 litrech benzínu.' },
             { type: 'p', text: 'Spotřebiče v pohotovostním režimu odebírají každý jen pár wattů. Doma jich ale bývá deset i víc a běží 24 hodin denně. Za rok to dá stovky megajoulů, které nikomu k ničemu nejsou.' },
             { type: 'callout', variant: 'mascot', text: 'Nejlevnější energie je ta, kterou vůbec nespotřebuješ. Planeta ti za každý ušetřený joule poděkuje!' },
             { type: 'game', gameId: 'quickfire', text: 'Tlak, vztlak, práce i energie – otestuj celou úroveň v „Bleskové výzvě“.' },
+            { type: 'p', text: 'Tím máš za sebou tlak, vztlak, práci i energii. V další úrovni se podíváš blíž na vnitřní energii a teplo – tam, kam se „ztracená“ energie nakonec vždycky schová.' },
             { type: 'check', question: { kind: 'tf', q: 'LED žárovka potřebuje pro stejné množství světla menší příkon než klasická žárovka, protože méně energie mění na teplo.', answer: true, explain: 'Klasická žárovka mění na světlo jen asi 5 % energie, zbytek na teplo. LED má účinnost mnohem vyšší.' } },
           ],
         },

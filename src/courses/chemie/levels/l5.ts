@@ -19,6 +19,7 @@ const l51: Lesson = {
       title: 'Co dělá kyselinu kyselinou',
       icon: 'lemon',
       blocks: [
+        { type: 'p', text: 'Ocet, citron a žaludeční šťávu na první pohled nic nespojuje. Přesto mají všechny kyseliny čtyři společné znaky, podle kterých je poznáš:' },
         {
           type: 'iconlist',
           items: [
@@ -46,7 +47,9 @@ const l51: Lesson = {
           arrows: true,
           caption: 'Přesnější zápis je proto $HCl + H2O -> H3O^+ + Cl^-$: každá molekula $HCl$ předá proton molekule vody.',
         },
+        { type: 'p', text: 'Jak oxoniový kation vypadá? Porovnej ho s obyčejnou molekulou vody: přibyl jeden vodík a s ním kladný náboj.' },
         { type: 'molecule', molecules: ['H2O', 'H3O+'], labels: ['voda', 'oxoniový kation $H3O^+$'] },
+        { type: 'p', text: 'Shrňme si nové pojmy. Poslední z nich, sytnost, hned rozvedeme:' },
         {
           type: 'keyterms',
           items: [
@@ -62,6 +65,7 @@ const l51: Lesson = {
           type: 'p',
           text: '$HCl$ a $HNO3$ odevzdají jen jeden proton, jsou **jednosytné**. $H2SO4$, $H2CO3$ a $H2S$ jsou **dvojsytné** a $H3PO4$ je **trojsytná**. Vícesytné kyseliny odevzdávají protony **postupně, po jednom**, a v každém kroku vznikne jiný anion.',
         },
+        { type: 'p', text: 'V tabulce najdeš běžné kyseliny podle sytnosti a hlavně anionty, které z nich krok za krokem vznikají:' },
         {
           type: 'table',
           headers: ['Kyselina', 'Sytnost', 'Anionty, které postupně vznikají'],
@@ -75,6 +79,7 @@ const l51: Lesson = {
           ],
           caption: 'U kyseliny sírové proběhne 1. stupeň úplně ($H2SO4 -> H^+ + HSO4^-$), 2. stupeň jen částečně ($HSO4^- <=> H^+ + SO4^2-$).',
         },
+        { type: 'p', text: 'Jak takové postupné odštěpování zapsat? Nejlépe je to vidět na trojsytné kyselině fosforečné, která má kroky tři.' },
         {
           type: 'example',
           problem: 'Zapiš postupnou disociaci kyseliny fosforečné $H3PO4$.',
@@ -86,6 +91,7 @@ const l51: Lesson = {
           ],
           answer: 'Tři stupně a tři různé anionty: $H2PO4^-$, $HPO4^2-$ a $PO4^3-$ (jejich názvy poznáš v lekci 5-5).',
         },
+        { type: 'p', text: 'Na modelu je dobře vidět, co z molekuly po třetím kroku zbude:' },
         { type: 'molecule', molecules: ['H3PO4', 'PO4^3-'], labels: ['kyselina fosforečná (trojsytná)', 'fosforečnanový anion $PO4^3-$'], caption: 'Po odtržení všech tří vodíků zbude z $H3PO4$ anion s nábojem 3−.' },
         {
           type: 'callout',
@@ -93,6 +99,7 @@ const l51: Lesson = {
           title: 'Sytnost není počet všech vodíků',
           text: 'U kyslíkatých kyselin se odštěpují jen vodíky vázané na kyslík. Kyselina octová $CH3COOH$ má čtyři vodíky, ale je **jednosytná**: tři vodíky sedí na uhlíku a ty se neodštěpí (podrobně v úrovni 8).',
         },
+        { type: 'p', text: 'Teď víš, co dělá kyselinu kyselinou a kolik protonů může odevzdat. Zbývá kyseliny pojmenovat, a začneme těmi nejjednoduššími, bez kyslíku.' },
         {
           type: 'check',
           question: {
@@ -111,7 +118,7 @@ const l51: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Nejjednodušší kyseliny obsahují jen vodík a jeden nekov. Tyto **bezkyslíkaté kyseliny** jsou vodné roztoky plynů, třeba chlorovodíku $HCl$ nebo fluorovodíku $HF$.',
+          text: 'Aby se o kyselinách dalo mluvit, potřebují jména. Nejjednodušší kyseliny obsahují jen vodík a jeden nekov. Tyto **bezkyslíkaté kyseliny** jsou vodné roztoky plynů, třeba chlorovodíku $HCl$ nebo fluorovodíku $HF$.',
         },
         {
           type: 'process',
@@ -124,7 +131,9 @@ const l51: Lesson = {
           ],
           caption: 'Název bezkyslíkaté kyseliny = kyselina + název vodíkaté sloučeniny + koncovka -ová.',
         },
+        { type: 'p', text: 'Kyselina tedy nese jméno plynu, ze kterého vznikla. Takhle vypadají molekuly tří takových plynů:' },
         { type: 'molecule', molecules: ['HCl', 'HF', 'H2S'], labels: ['chlorovodík', 'fluorovodík', 'sulfan'] },
+        { type: 'p', text: 'Stejné pravidlo platí pro všechny bezkyslíkaté kyseliny. V tabulce jsou ty nejběžnější i s tím, kde je potkáš:' },
         {
           type: 'table',
           headers: ['Vzorec', 'Plyn', 'Kyselina (vodný roztok)', 'Kde ji potkáš'],
@@ -148,6 +157,7 @@ const l51: Lesson = {
           variant: 'warning',
           text: 'Kyselina fluorovodíková je výjimečně zrádná. Proniká kůží, váže vápník z tkání a kostí a bolest se často ozve až za několik hodin. Leptá i sklo, proto se uchovává v plastových lahvích.',
         },
+        { type: 'p', text: 'Bezkyslíkatou kyselinu tedy pojmenuješ podle plynu. U kyselin s kyslíkem to tak snadné není, tam o názvu rozhoduje oxidační číslo.' },
         {
           type: 'check',
           question: {
@@ -165,7 +175,7 @@ const l51: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Kyslíkaté kyseliny** (oxokyseliny) obsahují vodík, kyslík a jeden **centrální atom**, obvykle nekovu. Ve vzorci je pořadí vodík – centrální atom – kyslík: $H2SO4$, $HNO3$, $H3PO4$.',
+          text: 'Většina kyselin z laboratoře i z domácnosti ale kyslík obsahuje. **Kyslíkaté kyseliny** (oxokyseliny) obsahují vodík, kyslík a jeden **centrální atom**, obvykle nekovu. Ve vzorci je pořadí vodík – centrální atom – kyslík: $H2SO4$, $HNO3$, $H3PO4$.',
         },
         { type: 'molecule', molecules: ['H2SO4', 'HNO3', 'H3PO4'], labels: ['kyselina sírová', 'kyselina dusičná', 'kyselina fosforečná'], caption: 'Centrální atom (S, N, P) obklopují kyslíky, vodíky sedí na kyslících.' },
         {
@@ -186,6 +196,7 @@ const l51: Lesson = {
             ['VIII', '-ičelá', '(vzácné)', '–'],
           ],
         },
+        { type: 'p', text: 'Jak tedy ze vzorce poznáš koncovku? Stačí dopočítat oxidační číslo centrálního atomu: vodík má +I, kyslík −II a zbytek musí součet doplnit na nulu.' },
         {
           type: 'process',
           layout: 'flow',
@@ -197,6 +208,7 @@ const l51: Lesson = {
           ],
           caption: 'Od vzorce k názvu: oxidační číslo centrálního atomu dopočítáš tak, aby součet v molekule byl nula.',
         },
+        { type: 'p', text: 'Teď totéž s kyselinou, kde má síra méně kyslíků než v kyselině sírové. Pozor, jiný počet kyslíků znamená jiné oxidační číslo, a tedy i jinou koncovku:' },
         {
           type: 'example',
           problem: 'Pojmenuj kyselinu $H2SO3$.',
@@ -207,6 +219,7 @@ const l51: Lesson = {
           ],
           answer: '$H2SO3$ je **kyselina siřičitá**.',
         },
+        { type: 'p', text: 'Ze vzorce už název odvodíš. V testech se ale častěji ptají obráceně: znáš název a máš napsat vzorec.' },
         {
           type: 'check',
           question: {
@@ -227,6 +240,7 @@ const l51: Lesson = {
           text: 'Opačný směr je v testech nejčastější. Máš dva spolehlivé postupy se stejným výsledkem, vyber si ten, který ti sedí víc.',
         },
         { type: 'h', text: 'Postup 1: oxid + voda' },
+        { type: 'p', text: 'Kyslíkatá kyselina vzniká, když se oxid nekovu sloučí s vodou. Stačí tedy najít oxid se stejným oxidačním číslem a vodu k němu „přičíst“:' },
         {
           type: 'process',
           layout: 'flow',
@@ -238,6 +252,7 @@ const l51: Lesson = {
           ],
           caption: 'Oxid nekovu se stejným oxidačním číslem + $H2O$. Jsou-li všechny počty atomů sudé, vyděl je dvěma.',
         },
+        { type: 'p', text: 'U kyseliny sírové vyšel vzorec hned. U dusíku je potřeba ještě jeden krok, protože počty atomů vyjdou zdvojené:' },
         {
           type: 'example',
           problem: 'Odvoď vzorec kyseliny dusičné.',
@@ -250,6 +265,7 @@ const l51: Lesson = {
           answer: '$HNO3$',
         },
         { type: 'h', text: 'Postup 2: počítání vodíků a kyslíků' },
+        { type: 'p', text: 'Kdo nechce psát oxidy, může vzorec rovnou spočítat. Každý kyslík má −II, takže vodíky a centrální atom musí dát dohromady sudé číslo: liché oxidační číslo proto doplní jeden vodík, sudé dva.' },
         {
           type: 'process',
           layout: 'flow',
@@ -260,6 +276,7 @@ const l51: Lesson = {
             { icon: 'check', title: 'Kontrola', text: 'součet oxidačních čísel = 0' },
           ],
         },
+        { type: 'p', text: 'Ověřme pravidlo na kyselině chloristé, kde má chlor nejvyšší možné oxidační číslo VII:' },
         {
           type: 'example',
           problem: 'Odvoď vzorec kyseliny chloristé.',
@@ -276,7 +293,9 @@ const l51: Lesson = {
           title: 'Výjimka, kterou musíš znát',
           text: 'Podle pravidla by kyselina fosforečná ($P^{V}$) měla vzorec $HPO3$. Běžná kyselina fosforečná z coly nebo z hnojiv má ale tři vodíky: $H3PO4$, přesným názvem **kyselina trihydrogenfosforečná**.',
         },
+        { type: 'p', text: 'Odkud se tři vodíky berou? Oxid fosforečný se slučuje se třemi molekulami vody, ne s jednou jako ostatní oxidy:' },
         { type: 'reaction', equation: 'P2O5 + 3H2O -> 2H3PO4', caption: 'oxid fosforečný + tři molekuly vody -> kyselina fosforečná' },
+        { type: 'p', text: 'Teď umíš kyseliny pojmenovat oběma směry. Jména ale nejsou všechno, v dalším oddílu uvidíš, s čím kyseliny reagují a co přitom vzniká.' },
         { type: 'game', gameId: 'naming', text: 'Procvič si převody název ↔ vzorec v Názvoslovném trenažéru. Po pár kolech ti kyseliny půjdou samy.' },
         {
           type: 'check',
@@ -308,7 +327,7 @@ const l51: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Všechny kyseliny obsahují v roztoku kationty $H3O^+$, a proto reagují podobně. Produktem je vždy **sůl**, iontová látka z kationtu kovu a aniontu kyseliny (podrobně v lekci 5-5). ==Podle partnera kyseliny poznáš, co vznikne vedle soli.==',
+          text: 'Na začátku lekce jsme viděli, že kyseliny rozpouštějí kovy. Není to náhoda: všechny kyseliny obsahují v roztoku kationty $H3O^+$, a proto reagují podobně. Produktem je vždy **sůl**, iontová látka z kationtu kovu a aniontu kyseliny (podrobně v lekci 5-5). ==Podle partnera kyseliny poznáš, co vznikne vedle soli.==',
         },
         {
           type: 'iconlist',
@@ -319,9 +338,13 @@ const l51: Lesson = {
             { icon: 'mountain', title: 'kyselina + uhličitan', text: '-> sůl + voda + oxid uhličitý $CO2$' },
           ],
         },
+        { type: 'p', text: 'Podívejme se na tři z těchto reakcí s kyselinou chlorovodíkovou. Zinek je neušlechtilý kov, takže vedle soli uniká vodík:' },
         { type: 'reaction', equation: 'Zn + 2HCl -> ZnCl2 + H2', caption: 'Zinek se v kyselině chlorovodíkové rozpouští a uniká vodík. Vzniká chlorid zinečnatý.' },
+        { type: 'p', text: 'S oxidem kovu je to jinak. Vodík z kyseliny se spojí s kyslíkem z oxidu na vodu, a proto nic nebublá:' },
         { type: 'reaction', equation: 'MgO + 2HCl -> MgCl2 + H2O', caption: 'Bílý oxid hořečnatý se v kyselině rozpustí na chlorid hořečnatý. Plyn nevzniká.' },
+        { type: 'p', text: 'Uhličitan zase šumí, protože kromě soli a vody vzniká i oxid uhličitý:' },
         { type: 'reaction', equation: 'CaCO3 + 2HCl -> CaCl2 + H2O + CO2', caption: 'Vápenec šumí: vzniklá kyselina uhličitá se hned rozpadá na vodu a oxid uhličitý.' },
+        { type: 'p', text: 'Teď zkus celý postup sám/sama. U hliníku dá vyčíslení víc práce, protože jeho kation má jiný náboj než zinek:' },
         {
           type: 'example',
           problem: 'Co vznikne reakcí hliníku s kyselinou chlorovodíkovou? Zapiš vyčíslenou rovnici.',
@@ -343,6 +366,7 @@ const l51: Lesson = {
           variant: 'tip',
           text: 'Vodní kámen z konvice odstraníš octem nebo kyselinou citronovou: uhličitan vápenatý se rozpustí a šumí $CO2$. Stejnou reakcí kyselé deště rozpouštějí vápencové sochy.',
         },
+        { type: 'p', text: 'Kyseliny tedy rozpouštějí kovy, oxidy i vápenec. Právě proto s nimi musíme zacházet opatrně, a to je téma posledního oddílu.' },
         {
           type: 'check',
           question: {
@@ -361,8 +385,9 @@ const l51: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Koncentrované kyseliny jsou **žíravé**: poškozují kůži, oči i oblečení. Koncentrovaná kyselina chlorovodíková a dusičná navíc uvolňují dráždivé výpary, proto se s nimi pracuje v **digestoři**.',
+          text: 'Kyselina, která rozpustí zinek nebo vápenec, si poradí i s kůží. Koncentrované kyseliny jsou **žíravé**: poškozují kůži, oči i oblečení. Koncentrovaná kyselina chlorovodíková a dusičná navíc uvolňují dráždivé výpary, proto se s nimi pracuje v **digestoři**.',
         },
+        { type: 'p', text: 'Které kyseliny potkáš nejčastěji? Tady je přehled i s tím, čím jsou nebezpečné a k čemu slouží:' },
         {
           type: 'iconlist',
           items: [
@@ -374,6 +399,7 @@ const l51: Lesson = {
             { icon: 'lemon', title: 'octová a citronová', text: 'přírodní organické kyseliny z octa a citronů; jejich vzorce přijdou na řadu v úrovni 8' },
           ],
         },
+        { type: 'p', text: 'Nejvíc nehod se stává při ředění koncentrované kyseliny. Správný postup má čtyři kroky a na jejich pořadí záleží:' },
         {
           type: 'process',
           layout: 'flow',
@@ -400,9 +426,10 @@ const l51: Lesson = {
         { type: 'h', text: 'Kyselé deště' },
         {
           type: 'p',
-          text: 'I úplně čistý déšť je mírně kyselý: rozpouští se v něm $CO2$ ze vzduchu a vzniká slabá kyselina uhličitá ($CO2 + H2O <=> H2CO3$), takže má pH asi 5,6 (co je pH, se dozvíš v lekci 5-3). **Kyselé deště** jsou mnohem kyselejší. Způsobuje je oxid siřičitý $SO2$ ze spalování uhlí se sírou a oxidy dusíku ($NO$, $NO2$) z motorů a elektráren.',
+          text: 'Kyseliny ale nevznikají jen v továrnách, tvoří se i v ovzduší. I úplně čistý déšť je mírně kyselý: rozpouští se v něm $CO2$ ze vzduchu a vzniká slabá kyselina uhličitá ($CO2 + H2O <=> H2CO3$), takže má pH asi 5,6 (co je pH, se dozvíš v lekci 5-3). **Kyselé deště** jsou mnohem kyselejší. Způsobuje je oxid siřičitý $SO2$ ze spalování uhlí se sírou a oxidy dusíku ($NO$, $NO2$) z motorů a elektráren.',
         },
         { type: 'diagram', id: 'acid-rain', caption: 'Od komína a výfuku ke kyselému dešti: $SO2$ z továren a oxidy dusíku z aut se v oblacích mění na kyselinu siřičitou, sírovou a dusičnou (rovnice pod obrázkem). Déšť s pH pod 5,6 poškozuje lesy a okyseluje jezera.' },
+        { type: 'p', text: 'Co takový déšť způsobí, když dopadne na zem? Všimni si, že jde hlavně o reakce kyselin, které už znáš z minulého oddílu:' },
         {
           type: 'iconlist',
           items: [
@@ -417,6 +444,7 @@ const l51: Lesson = {
           variant: 'fact',
           text: 'V 70. a 80. letech 20. století odumřely vlivem kyselých dešťů rozsáhlé lesy v Krušných a Jizerských horách, v „Černém trojúhelníku“ na pomezí Česka, Německa a Polska. V 90. letech se elektrárny odsířily: suspenze vápence zachytí $SO2$ ze spalin a vznikne sádrovec na sádrokarton. Lesy se od té doby vracejí.',
         },
+        { type: 'p', text: 'Teď znáš kyseliny od názvu až po jejich vliv na přírodu. V příští lekci přijde jejich protějšek: hydroxidy a zásady, které dokážou kyselinu zneškodnit.' },
         {
           type: 'check',
           question: {
@@ -525,13 +553,14 @@ const l52: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Hydroxidy** jsou sloučeniny kationtu kovu a **hydroxidových aniontů** $OH^-$. Hydroxidový anion je skupina z jednoho kyslíku a jednoho vodíku s nábojem −1.',
+          text: 'Kyseliny poznáme podle kationtu $H^+$. Jejich protějšek, zásady, má jiný společný znak: hydroxidový anion. **Hydroxidy** jsou sloučeniny kationtu kovu a **hydroxidových aniontů** $OH^-$. Hydroxidový anion je skupina z jednoho kyslíku a jednoho vodíku s nábojem −1.',
         },
         { type: 'molecule', molecules: ['OH-'], labels: ['hydroxidový anion $OH^-$'] },
         {
           type: 'p',
           text: 'Protože $OH^-$ má náboj −1, ==počet skupin OH se rovná oxidačnímu číslu kovu.== Víc skupin patří do **závorky**: $Ca(OH)2$. Název: **hydroxid** + koncovka podle oxidačního čísla kovu jako u oxidů (-ný, -natý, -itý…).',
         },
+        { type: 'p', text: 'V tabulce si všimni, že počet skupin OH ve vzorci vždy odpovídá římské číslici v prvním sloupci:' },
         {
           type: 'table',
           headers: ['Oxidační číslo kovu', 'Koncovka', 'Název', 'Vzorec'],
@@ -544,6 +573,7 @@ const l52: Lesson = {
             ['III', '-itý', 'hydroxid železitý', '$Fe(OH)3$'],
           ],
         },
+        { type: 'p', text: 'Jak ale napsat vzorec, když znáš jen název? Koncovka prozradí náboj kationtu a ten určí počet skupin OH:' },
         {
           type: 'process',
           layout: 'flow',
@@ -555,6 +585,7 @@ const l52: Lesson = {
           ],
           caption: 'Od názvu ke vzorci hydroxidu.',
         },
+        { type: 'p', text: 'Zkusme oba směry najednou, u kovů, které v tabulce nejsou:' },
         {
           type: 'example',
           problem: 'Pojmenuj $Pb(OH)2$ a napiš vzorec hydroxidu chromitého.',
@@ -571,6 +602,7 @@ const l52: Lesson = {
           variant: 'warning',
           text: 'Nejčastější chyba je zapomenutá závorka. Zápis $CaOH2$ by znamenal jeden kyslík a dva vodíky, což je nesmysl. Správně je $Ca(OH)2$: dva kyslíky a dva vodíky.',
         },
+        { type: 'p', text: 'Hydroxidy už umíš pojmenovat. Teď nás bude zajímat, co dělají ve vodě, a tam se rozdělí na dvě velmi odlišné skupiny.' },
         {
           type: 'check',
           question: {
@@ -590,7 +622,7 @@ const l52: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Podle Arrhenia je **zásada** látka, která ve vodě uvolňuje **hydroxidové anionty** $OH^-$. Rozpustné hydroxidy to dělají přímo, disociují na ionty.',
+          text: 'Pro kyseliny měl Arrhenius jednoduchou definici a pro zásady je zrcadlová. Podle Arrhenia je **zásada** látka, která ve vodě uvolňuje **hydroxidové anionty** $OH^-$. Rozpustné hydroxidy to dělají přímo, disociují na ionty.',
         },
         {
           type: 'particles',
@@ -601,11 +633,13 @@ const l52: Lesson = {
           arrows: true,
           caption: '$NaOH -> Na^+ + OH^-$',
         },
+        { type: 'p', text: 'Hydroxid kovu s oxidačním číslem II uvolní z každé jednotky vzorce dva anionty $OH^-$:' },
         { type: 'formula', text: '$Ca(OH)2 -> Ca^{2+} + 2OH^-$' },
         {
           type: 'p',
           text: 'V širším smyslu je **zásada** každý oxid nebo hydroxid kovu, který s kyselinou dává sůl a vodu. Zásady rozpustné ve vodě se nazývají **alkálie** a jejich roztoky jsou **alkalické**. ==Každá alkálie je zásada, ale ne každá zásada je alkálie.==',
         },
+        { type: 'p', text: 'Kde vede hranice mezi alkálií a nerozpustnou zásadou? Podívej se, jak moc se rozpustnost jednotlivých hydroxidů liší:' },
         {
           type: 'table',
           headers: ['Hydroxid', 'Rozpustnost ve vodě (20 °C)', 'Zařazení'],
@@ -619,6 +653,7 @@ const l52: Lesson = {
           ],
           caption: 'Alkálie jsou hydroxidy alkalických kovů a těžších kovů alkalických zemin. Rozpustnost ve 2. skupině shora dolů roste.',
         },
+        { type: 'p', text: 'Rozdíl v rozpustnosti není jen číslo v tabulce. V laboratoři poznáš obě skupiny na první pohled:' },
         {
           type: 'compare',
           columns: [
@@ -631,12 +666,14 @@ const l52: Lesson = {
           text: 'Nerozpustné hydroxidy se připravují **srážením**: k roztoku soli kovu přikápneš alkálii. Kationty kovu se spojí s $OH^-$ a vypadne sraženina.',
         },
         { type: 'reaction', equation: 'CuSO4 + 2NaOH -> Cu(OH)2 + Na2SO4', caption: 'modrá sraženina hydroxidu měďnatého; iontově $Cu^{2+} + 2OH^- -> Cu(OH)2(s)$. Zahřátím zčerná: $Cu(OH)2 -> CuO + H2O$.' },
+        { type: 'p', text: 'Alkálií se tedy srážejí nerozpustné hydroxidy. Samotné alkálie se dají připravit i přímo z kovu:' },
         { type: 'reaction', equation: '2Na + 2H2O -> 2NaOH + H2', caption: 'Alkálie vznikají i z alkalického kovu a vody: sodík + voda -> hydroxid sodný + vodík.' },
         {
           type: 'callout',
           variant: 'warning',
           text: 'Sodík reaguje s vodou prudce, vodík se může vznítit. Pokus patří jen učiteli: kousek velikosti hrášku, velká kádinka vody a ochranný štít.',
         },
+        { type: 'p', text: 'Zásady tedy uvolňují $OH^-$ a ty nejrozpustnější z nich jsou alkálie. Existuje ale i zásada, která skupinu OH vůbec nemá.' },
         {
           type: 'check',
           question: {
@@ -657,6 +694,7 @@ const l52: Lesson = {
           type: 'p',
           text: '**Amoniak** $NH3$ je bezbarvý plyn štiplavého zápachu. Skupinu OH ve vzorci nemá, a přesto jeho vodný roztok barví fenolftalein fialově. Jak je to možné?',
         },
+        { type: 'p', text: 'Odpověď skrývá stavba molekuly. Porovnej amoniak s kationtem, který z něj ve vodě vzniká:' },
         {
           type: 'molecule',
           molecules: ['NH3', 'NH4+'],
@@ -666,6 +704,7 @@ const l52: Lesson = {
           type: 'p',
           text: 'Volný elektronový pár dusíku si „přitáhne“ vodíkový kation z molekuly vody. Vznikne **amonný kation** $NH4^+$ a z vody zbude hydroxidový anion $OH^-$, který dělá roztok zásaditým.',
         },
+        { type: 'p', text: 'Pozor, nezreagují všechny molekuly. Na modelu částic vidíš, že většina amoniaku zůstane v roztoku nezměněná:' },
         {
           type: 'particles',
           boxes: [
@@ -684,6 +723,7 @@ const l52: Lesson = {
           variant: 'tip',
           text: 'Na amoniaku je vidět, že Arrheniova definice má své meze. V lekci 5-6 poznáš obecnější Brønstedovu teorii, která si s ním poradí elegantně.',
         },
+        { type: 'p', text: 'Zásadou tedy může být i látka, která $OH^-$ vyrobí až z vody. Teď se vrátíme k oxidům a uvidíme, které z nich dávají zásady a které kyseliny.' },
         {
           type: 'check',
           question: {
@@ -701,15 +741,19 @@ const l52: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Oxidy kovů, hlavně alkalických kovů a kovů alkalických zemin, jsou **zásadité oxidy**: s vodou dávají hydroxid a s kyselinou sůl a vodu. Oxidy nekovů jsou naopak **kyselé oxidy**: s vodou dávají kyseliny (lekce 5-1).',
+          text: 'Hydroxidy i kyseliny často vznikají z oxidů a vody. Podle toho, co z oxidu vznikne, oxidy dělíme. Oxidy kovů, hlavně alkalických kovů a kovů alkalických zemin, jsou **zásadité oxidy**: s vodou dávají hydroxid a s kyselinou sůl a vodu. Oxidy nekovů jsou naopak **kyselé oxidy**: s vodou dávají kyseliny (lekce 5-1).',
         },
+        { type: 'p', text: 'Typický zásaditý oxid je oxid sodný. S vodou z něj vznikne alkálie:' },
         { type: 'reaction', equation: 'Na2O + H2O -> 2NaOH', caption: 'oxid sodný + voda -> hydroxid sodný' },
+        { type: 'p', text: 'Nejznámější zásaditý oxid ale najdeš na každé stavbě. Pálené vápno prochází celým cyklem reakcí a vrací se zpět do vápence:' },
         { type: 'diagram', id: 'limestone-cycle', caption: 'Vápenný cyklus: pálením vápence $CaCO3$ vzniká **pálené vápno** $CaO$, typický zásaditý oxid. S vodou reaguje bouřlivě a hodně se zahřeje (**hašení vápna**), vznikne **hašené vápno** $Ca(OH)2$. Malta z něj tvrdne tak, že pohlcuje oxid uhličitý ze vzduchu, a vzniká zpět vápenec.' },
+        { type: 'p', text: 'Druhý znak zásaditého oxidu je reakce s kyselinou. Tady je stejná jako u hydroxidu, vznikne sůl a voda:' },
         { type: 'reaction', equation: 'CaO + 2HCl -> CaCl2 + H2O', caption: 'Zásaditý oxid + kyselina -> sůl + voda. S kyselinou reagují i oxidy, které se ve vodě nerozpouštějí, třeba $CuO$.' },
         {
           type: 'p',
           text: '**Amfoterní** oxidy a hydroxidy (z řeckého *amfoteros*, obojí) reagují s kyselinami i se zásadami. Typické jsou sloučeniny hliníku a zinku: $Al2O3$, $Al(OH)3$, $ZnO$ a $Zn(OH)2$.',
         },
+        { type: 'p', text: 'Jak může jedna látka reagovat s kyselinou i se zásadou? Na hydroxidu hlinitém vidíš obě role vedle sebe:' },
         {
           type: 'compare',
           columns: [
@@ -718,6 +762,7 @@ const l52: Lesson = {
           ],
           caption: 'Bílá sraženina $Al(OH)3$ zmizí v kyselině i v nadbytku hydroxidu sodného.',
         },
+        { type: 'p', text: 'Zásaditý, amfoterní, nebo kyselý? Napoví periodická tabulka. Projdi oxidy 3. periody zleva doprava:' },
         {
           type: 'table',
           headers: ['Oxid', 'Charakter', 'S vodou vznikne'],
@@ -732,6 +777,7 @@ const l52: Lesson = {
           ],
           caption: 'Oxidy prvků 3. periody: zleva doprava roste nekovový charakter a oxidy přecházejí od zásaditých přes amfoterní ke kyselým. **Neutrální oxidy** $CO$, $NO$ a $N2O$ nereagují s kyselinami ani se zásadami.',
         },
+        { type: 'p', text: 'Teď pravidlo použij: podle polohy prvku urči charakter oxidu a napiš reakci, která ho prozradí.' },
         {
           type: 'example',
           problem: 'Rozhodni, jak se chovají $K2O$, $SO2$ a $ZnO$, a pro každý zapiš jednu typickou reakci.',
@@ -747,6 +793,7 @@ const l52: Lesson = {
           variant: 'remember',
           text: 'Kov -> zásaditý oxid, nekov -> kyselý oxid, hliník a zinek -> amfoterní. Pozor na výjimky: kovy ve vysokém oxidačním čísle tvoří kyselé oxidy, třeba $Mn2O7$ nebo $CrO3$. Proto existují kyselina manganistá a chromová.',
         },
+        { type: 'p', text: 'Teď víš, odkud zásady pocházejí. V dalším oddílu se podíváme, s čím reagují.' },
         {
           type: 'check',
           question: {
@@ -765,7 +812,7 @@ const l52: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Alkálie reagují podobně, protože všechny obsahují v roztoku anion $OH^-$. ==Zapamatuj si čtyři typické partnery zásad.==',
+          text: 'U kyselin jsme měli seznam typických reakcí a zásady mají podobný. Alkálie reagují podobně, protože všechny obsahují v roztoku anion $OH^-$. ==Zapamatuj si čtyři typické partnery zásad.==',
         },
         {
           type: 'iconlist',
@@ -776,15 +823,20 @@ const l52: Lesson = {
             { icon: 'test-tube', title: 'alkálie + roztok soli kovu', text: '-> sraženina nerozpustného hydroxidu' },
           ],
         },
+        { type: 'p', text: 'Projdi si všechny partnery na konkrétních rovnicích. Nejdůležitější je reakce s kyselinou, které se věnuje celá lekce 5-4:' },
         { type: 'reaction', equation: 'NaOH + HCl -> NaCl + H2O', caption: 'neutralizace: hydroxid sodný + kyselina chlorovodíková -> chlorid sodný + voda' },
+        { type: 'p', text: 'Kyselý oxid se chová jako kyselina, i když v něm žádný vodík není. Vzniká opět sůl a voda:' },
         { type: 'reaction', equation: '2NaOH + CO2 -> Na2CO3 + H2O', caption: 'Proto se $NaOH$ skladuje dobře uzavřený: pohlcuje $CO2$ ze vzduchu a mění se na uhličitan.' },
+        { type: 'p', text: 'S hydroxidem vápenatým vzniká nerozpustný uhličitan, a proto je reakce dobře vidět:' },
         { type: 'reaction', equation: 'Ca(OH)2 + CO2 -> CaCO3 + H2O', caption: 'Čirá **vápenná voda** (roztok $Ca(OH)2$) se po vydechnutí brčkem zakalí bílým $CaCO3$. Tak se dokazuje oxid uhličitý.' },
+        { type: 'p', text: 'Reakci s amonnou solí prozradí čich: zásada z ní vytlačí plynný amoniak.' },
         { type: 'reaction', equation: 'NH4Cl + NaOH -> NaCl + NH3 + H2O', caption: 'Za tepla uniká štiplavý amoniak a navlhčený červený lakmusový papírek nad zkumavkou zmodrá. Tak se dokazují amonné soli.' },
         {
           type: 'callout',
           variant: 'fact',
           text: 'Amonná hnojiva se nesmějí sypat na pole zároveň s páleným nebo hašeným vápnem. Zásada by z nich uvolnila amoniak a dusík by z půdy unikl do vzduchu.',
         },
+        { type: 'p', text: 'Z rovnice reakce s $CO2$ můžeš i počítat, stejně jako v lekci 4-6:' },
         {
           type: 'example',
           problem: 'Kolik gramů $NaOH$ zachytí 2,2 g $CO2$, pokud vzniká uhličitan sodný?',
@@ -796,6 +848,7 @@ const l52: Lesson = {
           ],
           answer: 'Zachytí ho 4,0 g $NaOH$.',
         },
+        { type: 'p', text: 'Reakce zásad tedy známe. Zbývá podívat se, kde se hydroxidy používají a proč s nimi musíš být ještě opatrnější než s kyselinami.' },
         {
           type: 'check',
           question: {
@@ -812,6 +865,7 @@ const l52: Lesson = {
       title: 'Hydroxidy v praxi a bezpečnost',
       icon: 'goggles',
       blocks: [
+        { type: 'p', text: 'Hydroxidy nejsou jen laboratorní chemikálie. Některé máš doma, aniž bys o tom věděl/a – tady jsou ty nejběžnější i s tím, k čemu slouží:' },
         {
           type: 'iconlist',
           items: [
@@ -836,7 +890,9 @@ const l52: Lesson = {
           title: 'Zásady jsou pro oči horší než kyseliny',
           text: 'Kyselina bílkoviny na povrchu srazí a vytvoří jakousi bariéru. Zásada tkáň rozpouští a proniká hlouběji. Zásada v oku může během několika minut natrvalo poškodit rohovku, proto jsou ochranné brýle při práci s $NaOH$ povinné.',
         },
+        { type: 'p', text: 'Jak žíravinu poznáš na obalu? Podle výstražného symbolu:' },
         { type: 'diagram', id: 'lab-safety', caption: 'Výstražné symboly GHS. Hydroxid sodný nese symbol žíraviny (GHS05) – klepni na něj. Najdeš ho i na obalu čističe odpadů.' },
+        { type: 'p', text: 'Ze symbolu žíraviny plynou konkrétní pravidla pro práci s hydroxidy:' },
         {
           type: 'iconlist',
           items: [
@@ -852,6 +908,7 @@ const l52: Lesson = {
           title: 'První pomoc',
           text: 'Zasažené místo oplachuj proudem vody aspoň 15 minut, oko ještě déle, a vyhledej lékaře. Žádný ocet ani citron na kůži nelij.',
         },
+        { type: 'p', text: 'Teď už rozeznáš kyseliny i zásady a víš, jak s nimi bezpečně pracovat. V příští lekci se naučíš změřit, jak moc je roztok kyselý nebo zásaditý: poznáš stupnici pH.' },
         { type: 'game', gameId: 'swipe', text: 'Zahraj si Pravda, nebo lež? a otestuj, jestli rozeznáš fakta o kyselinách a zásadách od mýtů.' },
         {
           type: 'check',
@@ -963,7 +1020,7 @@ const l53: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Čistá voda vede proud jen nepatrně, obsahuje tedy trochu iontů. Molekuly vody si totiž občas předají vodíkový kation: vznikne oxoniový kation a hydroxidový anion. Říká se tomu **autoprotolýza vody**.',
+          text: 'Než začneme počítat pH, musíme se podívat na samotnou vodu. Čistá voda vede proud jen nepatrně, obsahuje tedy trochu iontů. Molekuly vody si totiž občas předají vodíkový kation: vznikne oxoniový kation a hydroxidový anion. Říká se tomu **autoprotolýza vody**.',
         },
         {
           type: 'particles',
@@ -974,11 +1031,13 @@ const l53: Lesson = {
           arrows: true,
           caption: 'Autoprotolýza $H2O + H2O <=> H3O^+ + OH^-$: dvě molekuly vody si předají proton.',
         },
+        { type: 'p', text: 'Oba ionty, které při tom vznikají, už znáš: oxoniový kation z kyselin a hydroxidový anion ze zásad.' },
         { type: 'molecule', molecules: ['H3O+', 'OH-'], labels: ['oxoniový kation', 'hydroxidový anion'] },
         {
           type: 'p',
           text: '$[H3O^+]$ značí molární koncentraci oxoniových kationtů v mol/dm^{3} (totéž $c$ jako v lekci 4-5). V čisté vodě při 25 °C je $[H3O^+] = [OH^-] = 10^{-7}$ mol/dm^{3}.',
         },
+        { type: 'p', text: 'Vynásob obě koncentrace v čisté vodě: 10^{-7} · 10^{-7} = 10^{-14}. Právě tento součin je klíčem k celé lekci:' },
         { type: 'formula', text: '$[H3O^+]·[OH^-] = 1,0·10^{-14}$', caption: '**iontový součin vody** $K_{v}$ při 25 °C (proč platí, vysvětlí rovnováhy v úrovni 6)' },
         {
           type: 'p',
@@ -992,6 +1051,7 @@ const l53: Lesson = {
             { title: 'zásaditý roztok', icon: 'soap', tone: 'c', points: ['$[H3O^+] < [OH^-]$'] },
           ],
         },
+        { type: 'p', text: 'Z jedné koncentrace teď dopočítáš druhou. Psát pořád mocniny deseti je ale nepohodlné, a proto chemici zavedli jedno jednoduché číslo: pH.' },
         {
           type: 'check',
           question: {
@@ -1039,6 +1099,7 @@ const l53: Lesson = {
           ],
           caption: 'Silná kyselina: kolik molekul kyseliny, tolik kationtů $H3O^+$.',
         },
+        { type: 'p', text: 'Teď už pH spočítáme. Začni roztokem, jehož koncentrace je celá mocnina deseti, tam stačí přečíst exponent:' },
         {
           type: 'example',
           problem: 'Jaké pH má kyselina chlorovodíková o koncentraci 0,01 mol/dm^{3}?',
@@ -1049,6 +1110,7 @@ const l53: Lesson = {
           ],
           answer: 'pH = 2',
         },
+        { type: 'p', text: 'Koncentrace ale většinou celou mocninou deseti není. Pak logaritmus spočítá kalkulačka:' },
         {
           type: 'example',
           problem: 'Jaké pH má kyselina chlorovodíková o koncentraci 0,05 mol/dm^{3}?',
@@ -1059,6 +1121,7 @@ const l53: Lesson = {
           ],
           answer: 'pH ≈ 1,3',
         },
+        { type: 'p', text: 'Postup jde i obrátit: z naměřeného pH zjistíš, kolik je v roztoku $H3O^+$.' },
         {
           type: 'example',
           title: 'Zpětný výpočet',
@@ -1070,6 +1133,7 @@ const l53: Lesson = {
           ],
           answer: '$[H3O^+]$ ≈ 1,3·10^{-3} mol/dm^{3}',
         },
+        { type: 'p', text: 'pH kyselin už spočítáš. V roztoku zásady ale převažují $OH^-$ a s nimi se počítá trochu jinak.' },
         {
           type: 'check',
           question: {
@@ -1088,10 +1152,12 @@ const l53: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'U zásad je pohodlnější začít u hydroxidových aniontů. Podobně jako pH se definuje **pOH**:',
+          text: 'Z koncentrace zásady přímo známe $[OH^-]$, ne $[H3O^+]$. U zásad je proto pohodlnější začít u hydroxidových aniontů. Podobně jako pH se definuje **pOH**:',
         },
         { type: 'formula', text: '$pOH = −log[OH^-]$' },
+        { type: 'p', text: 'Jak se z pOH dostaneme k pH? Součin $[H3O^+]·[OH^-]$ je vždy 10^{-14}, takže součet obou exponentů s opačným znaménkem dá vždy 14:' },
         { type: 'formula', text: '$pH + pOH = 14$', caption: 'plyne z iontového součinu vody; platí ve vodných roztocích při 25 °C' },
+        { type: 'p', text: 'Výpočet pH zásady má tedy vždy stejné tři kroky a kontrolu na konci:' },
         {
           type: 'process',
           layout: 'flow',
@@ -1103,6 +1169,7 @@ const l53: Lesson = {
           ],
           caption: 'Výpočet pH roztoku silné zásady.',
         },
+        { type: 'p', text: 'Vyzkoušej postup na nejběžnější silné zásadě:' },
         {
           type: 'example',
           problem: 'Jaké pH má roztok hydroxidu sodného o koncentraci 0,001 mol/dm^{3}?',
@@ -1113,6 +1180,7 @@ const l53: Lesson = {
           ],
           answer: 'pH = 11',
         },
+        { type: 'p', text: 'U hydroxidů kovů s oxidačním číslem II pozor: z jedné jednotky vzorce vzniknou dva anionty $OH^-$.' },
         {
           type: 'particles',
           boxes: [
@@ -1120,6 +1188,7 @@ const l53: Lesson = {
           ],
           caption: '$Ca(OH)2 -> Ca^{2+} + 2OH^-$: koncentrace $OH^-$ je dvojnásobná.',
         },
+        { type: 'p', text: 'Tenhle dvojnásobek musíš započítat hned v prvním kroku výpočtu:' },
         {
           type: 'example',
           problem: 'Jaké pH má roztok hydroxidu vápenatého o koncentraci 0,005 mol/dm^{3}?',
@@ -1130,6 +1199,7 @@ const l53: Lesson = {
           ],
           answer: 'pH = 12',
         },
+        { type: 'p', text: 'A když koncentrace nevyjde jako mocnina deseti? Postup je stejný, jen logaritmus spočítá kalkulačka:' },
         {
           type: 'example',
           problem: 'Jaké pH má roztok $KOH$ o koncentraci 0,04 mol/dm^{3}?',
@@ -1145,6 +1215,7 @@ const l53: Lesson = {
           variant: 'warning',
           text: 'Typická chyba: u zásady spočítáš pOH a zapomeneš ho převést na pH. Zkontroluj se selským rozumem: zásaditý roztok musí mít pH **větší** než 7.',
         },
+        { type: 'p', text: 'Silné kyseliny i zásady už zvládneš. Zbývají dvě situace, které v úlohách potkáš často: kyselina se dvěma protony a ředění.' },
         {
           type: 'check',
           question: {
@@ -1163,7 +1234,7 @@ const l53: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Dvojsytná kyselina sírová může odevzdat dva protony (lekce 5-1). Ve zředěném roztoku proto ve školních úlohách počítáme s tím, že odevzdá oba: ==$[H3O^+] = 2·c(H2SO4)$.==',
+          text: 'Zatím dala každá molekula kyseliny jeden $H3O^+$. Dvojsytná kyselina sírová ale může odevzdat dva protony (lekce 5-1). Ve zředěném roztoku proto ve školních úlohách počítáme s tím, že odevzdá oba: ==$[H3O^+] = 2·c(H2SO4)$.==',
         },
         {
           type: 'particles',
@@ -1172,6 +1243,7 @@ const l53: Lesson = {
           ],
           caption: 'Zjednodušeně: $H2SO4 + 2H2O -> 2H3O^+ + SO4^2-$.',
         },
+        { type: 'p', text: 'Dvojnásobek se do výpočtu promítne stejně jako u $Ca(OH)2$, jen tentokrát u $H3O^+$:' },
         {
           type: 'example',
           problem: 'Jaké pH má kyselina sírová o koncentraci 0,005 mol/dm^{3}?',
@@ -1193,6 +1265,7 @@ const l53: Lesson = {
           text: 'Když roztok silné kyseliny zředíš, látkové množství $H3O^+$ se nezmění, jen se rozdělí do většího objemu. Novou koncentraci spočítáš jako v lekci 4-5: $c_{1}·V_{1} = c_{2}·V_{2}$. Desetinásobné zředění silné kyseliny zvýší pH o 1, u silné zásady ho o 1 sníží.',
         },
         { type: 'diagram', id: 'dilution', caption: 'Při ředění zůstává látkové množství rozpuštěné látky stejné, zvětší se jen objem. Proto koncentrace klesne a pH se posune k 7.' },
+        { type: 'p', text: 'Spočítejme, co udělá stonásobné zředění. Nejdřív z pH zjistíme koncentraci, protože vzorec pro ředění pracuje s koncentracemi, ne s pH:' },
         {
           type: 'example',
           problem: 'Pipetou odměříš 10,0 cm^{3} kyseliny chlorovodíkové o pH 1 a v odměrné baňce ji doplníš vodou na 1,00 dm^{3}. Jaké pH má zředěný roztok?',
@@ -1203,6 +1276,7 @@ const l53: Lesson = {
           ],
           answer: 'pH = 3',
         },
+        { type: 'p', text: 'U zásady funguje ředění zrcadlově. Počítat musíš přes $[OH^-]$, protože právě ta se ředěním zmenšuje:' },
         {
           type: 'example',
           problem: 'Roztok $NaOH$ má pH 12. Jaké pH bude mít, když ho zředíš na desetinásobný objem?',
@@ -1218,6 +1292,7 @@ const l53: Lesson = {
           variant: 'warning',
           text: 'Ředěním se kyselina nikdy nestane zásaditou. Když kyselinu s pH 5 zředíš tisíckrát, nevyjde pH 8, ale číslo těsně pod 7: i čistá voda sama obsahuje 10^{-7} mol/dm^{3} $H3O^+$.',
         },
+        { type: 'p', text: 'Teď spočítáš pH běžných školních roztoků. Kam na stupnici ale patří ocet, mýdlo nebo krev?' },
         {
           type: 'check',
           question: {
@@ -1236,7 +1311,7 @@ const l53: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Stupnice pH běžně sahá od 0 do 14. Podívej se, kam patří látky, které znáš z domova.',
+          text: 'Spočítaná čísla dostanou smysl, až je porovnáš se skutečnými látkami. Stupnice pH běžně sahá od 0 do 14. Podívej se, kam patří látky, které znáš z domova.',
         },
         {
           type: 'diagram',
@@ -1258,6 +1333,7 @@ const l53: Lesson = {
           },
           caption: 'Každý dílek stupnice znamená desetinásobnou změnu koncentrace $H3O^+$.',
         },
+        { type: 'p', text: 'Pro tvoje tělo nejsou tato čísla jen teorie. Některá pH se musí držet v úzkém rozmezí, jinak něco přestane fungovat:' },
         {
           type: 'iconlist',
           items: [
@@ -1272,6 +1348,7 @@ const l53: Lesson = {
           variant: 'fact',
           text: 'Existují i roztoky s pH menším než 0 nebo větším než 14. Třeba koncentrovaná kyselina chlorovodíková má pH záporné. Stupnice 0–14 je jen praktický rozsah pro běžné roztoky.',
         },
+        { type: 'p', text: 'pH tedy umíme spočítat i zařadit. Jak ho ale v laboratoři rychle zjistit bez výpočtu? K tomu slouží indikátory.' },
         {
           type: 'check',
           question: {
@@ -1289,14 +1366,16 @@ const l53: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Acidobazické indikátory** jsou barviva, která mění barvu podle pH. Každý má svůj **barevný přechod**, tedy rozmezí pH, ve kterém barvu mění.',
+          text: 'Už v lekci 5-1 jsme viděli, že výluh z červeného zelí v kyselině zčervená. **Acidobazické indikátory** jsou barviva, která mění barvu podle pH. Každý má svůj **barevný přechod**, tedy rozmezí pH, ve kterém barvu mění.',
         },
         {
           type: 'p',
           text: 'Indikátor je sám slabá kyselina. Její molekula $HInd$ má jinou barvu než anion $Ind^-$, který vznikne odtržením protonu. V kyselém roztoku převažuje $HInd$, v zásaditém $Ind^-$, a v barevném přechodu jsou obě formy zastoupené podobně.',
         },
         { type: 'formula', text: '$HInd <=> H^+ + Ind^-$', caption: 'kyselá forma (jedna barva) ⇌ zásaditá forma (druhá barva)' },
+        { type: 'p', text: 'Každý indikátor má tedy dvě barvy a každý je střídá při jiném pH. Porovnej nejběžnější indikátory:' },
         { type: 'diagram', id: 'indicator-colors', caption: 'Barvy lakmusu, fenolftaleinu, methyloranže, univerzálního indikátoru a výluhu z červeného zelí v kyselém, neutrálním a zásaditém roztoku.' },
+        { type: 'p', text: 'Pro práci v laboratoři potřebuješ přesná čísla: v jakém rozmezí pH každý indikátor barvu mění.' },
         {
           type: 'table',
           headers: ['Indikátor', 'Přechod (pH)', 'Kyselá barva', 'Zásaditá barva'],
@@ -1310,6 +1389,7 @@ const l53: Lesson = {
           ],
           caption: 'Pod dolní hranicí přechodu má indikátor „kyselou“ barvu, nad horní hranicí „zásaditou“. Uvnitř přechodu vidíš směs obou barev, třeba oranžovou u methyloranže.',
         },
+        { type: 'p', text: 'Pozor, jeden indikátor řekne jen to, jestli je pH pod přechodem, nebo nad ním. Spojením dvou indikátorů ale rozmezí zúžíš:' },
         {
           type: 'example',
           problem: 'Vzorek barví methyloranž žlutě a bromthymolovou modř žlutě. V jakém rozmezí je jeho pH?',
@@ -1324,6 +1404,7 @@ const l53: Lesson = {
           type: 'p',
           text: '**Univerzální indikátor** je směs několika indikátorů: papírkem jím nasáklým určíš pH zhruba na jednotku přesně (při pH 7 je zelený). Přesněji se pH měří elektronickým **pH metrem**.',
         },
+        { type: 'p', text: 'Nejjednodušší indikátor si ale vyrobíš doma, z červeného zelí:' },
         {
           type: 'process',
           layout: 'flow',
@@ -1340,6 +1421,7 @@ const l53: Lesson = {
           variant: 'fact',
           text: 'Antokyany ze zelí mají celou duhu: v silně kyselém prostředí jsou červené, ve slabě kyselém růžovofialové, v neutrálním fialové, ve slabě zásaditém modré a v silně zásaditém zelené až žluté.',
         },
+        { type: 'p', text: 'Teď umíš pH spočítat, odhadnout i změřit. V příští lekci dáš kyselinu a zásadu dohromady: navzájem se zneutralizují a indikátor ti ukáže, kdy přesně.' },
         { type: 'game', gameId: 'ph-lab', text: 'V pH laboratoři přikapáváš kyselinu a zásadu a sleduješ, jak se krok za krokem mění barva univerzálního indikátoru.' },
         {
           type: 'check',
@@ -1445,9 +1527,10 @@ const l54: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Neutralizace** je reakce kyseliny se zásadou (hydroxidem), při které vzniká **sůl** a **voda**. Kyselina a zásada se navzájem „vyruší“ a roztok přestane být kyselý i zásaditý.',
+          text: 'Kyseliny a zásady jsme zatím zkoumali každou zvlášť. Co se stane, když je slijeme dohromady? **Neutralizace** je reakce kyseliny se zásadou (hydroxidem), při které vzniká **sůl** a **voda**. Kyselina a zásada se navzájem „vyruší“ a roztok přestane být kyselý i zásaditý.',
         },
         { type: 'diagram', id: 'neutralization', caption: 'Kyselina chlorovodíková + hydroxid sodný -> chlorid sodný + voda: kationty $H3O^+$ z kyseliny předají proton aniontům $OH^-$ ze zásady a vznikne voda. Ionty $Na^+$ a $Cl^-$ zůstanou v roztoku jako sůl.' },
+        { type: 'p', text: 'Na každou molekulu $HCl$ stačí jeden $NaOH$. Dvojsytná kyselina sírová má ale dva protony, a potřebuje tedy dvojnásobek zásady:' },
         { type: 'reaction', equation: 'H2SO4 + 2NaOH -> Na2SO4 + 2H2O', caption: 'dvojsytná kyselina sírová potřebuje dva $NaOH$' },
         {
           type: 'p',
@@ -1464,6 +1547,7 @@ const l54: Lesson = {
           variant: 'fact',
           text: 'Neutralizace je **exotermní**, uvolňuje teplo. U silné kyseliny a silné zásady je to vždy asi 57 kJ na každý mol vzniklé vody, protože pokaždé probíhá stejná reakce $H^+ + OH^- -> H2O$. O reakčním teple víc v úrovni 6.',
         },
+        { type: 'p', text: 'Teď víš, co se při neutralizaci doopravdy děje. Stejná reakce ti ale pomáhá i mimo laboratoř, třeba když tě pálí žáha.' },
         {
           type: 'check',
           question: {
@@ -1483,10 +1567,12 @@ const l54: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Kyselina chlorovodíková ze žaludku v jícnu pálí: to je **pálení žáhy**. **Antacida**, léky proti překyselení, obsahují slabě rozpustné zásady, které nadbytek kyseliny zneutralizují.',
+          text: 'Vraťme se k tabletě z úvodu lekce. Kyselina chlorovodíková ze žaludku v jícnu pálí: to je **pálení žáhy**. **Antacida**, léky proti překyselení, obsahují slabě rozpustné zásady, které nadbytek kyseliny zneutralizují.',
         },
         { type: 'reaction', equation: 'Mg(OH)2 + 2HCl -> MgCl2 + 2H2O', caption: 'hydroxid hořečnatý neutralizuje žaludeční kyselinu' },
+        { type: 'p', text: 'Stejně funguje i druhá běžná zásada v tabletách. Kation $Al^{3+}$ má ale náboj 3+, takže potřebuje tři molekuly kyseliny:' },
         { type: 'reaction', equation: 'Al(OH)3 + 3HCl -> AlCl3 + 3H2O', caption: 'hydroxid hlinitý dělá totéž' },
+        { type: 'p', text: 'Neutralizace by sice proběhla i s hydroxidem sodným, ale u léku hodně záleží na tom, jak rozpustná a silná zásada je. Porovnej obě možnosti:' },
         {
           type: 'compare',
           columns: [
@@ -1497,7 +1583,7 @@ const l54: Lesson = {
         },
         {
           type: 'p',
-          text: '**Vápnění půdy**: kyselé půdy, třeba pod smrkovými lesy nebo po kyselých deštích, se posypávají mletým vápencem $CaCO3$ nebo hašeným vápnem. Vápenec reaguje s kyselinou za vzniku oxidu uhličitého:',
+          text: 'Neutralizovat se dá i celé pole. **Vápnění půdy**: kyselé půdy, třeba pod smrkovými lesy nebo po kyselých deštích, se posypávají mletým vápencem $CaCO3$ nebo hašeným vápnem. Vápenec reaguje s kyselinou za vzniku oxidu uhličitého:',
         },
         { type: 'formula', text: '$CaCO3 + 2H^+ -> Ca^{2+} + H2O + CO2$', caption: 'Stejně vápenec zachytí kyselý $SO2$ při odsíření spalin (lekce 5-1).' },
         {
@@ -1505,6 +1591,7 @@ const l54: Lesson = {
           variant: 'mascot',
           text: 'Když je někdo „kyselý“, zkus mu nabídnout trochu zásady. U lidí to funguje hůř než u roztoků, ale chemicky je to čistá neutralizace.',
         },
+        { type: 'p', text: 'Neutralizace tedy pomáhá žaludku i půdě. V laboratoři ji chemici používají ještě jinak: k přesnému měření koncentrace.' },
         {
           type: 'check',
           question: {
@@ -1523,8 +1610,9 @@ const l54: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Titrace** (odměrná analýza) je metoda, jak zjistit neznámou koncentraci roztoku. K přesně odměřenému objemu vzorku postupně přidáváš roztok o známé koncentraci, dokud spolu přesně nezreagují.',
+          text: 'Kyselina a zásada spolu reagují v přesném poměru podle rovnice. Když tedy víš, kolik zásady se spotřebovalo, víš i, kolik bylo kyseliny. **Titrace** (odměrná analýza) je metoda, jak zjistit neznámou koncentraci roztoku. K přesně odměřenému objemu vzorku postupně přidáváš roztok o známé koncentraci, dokud spolu přesně nezreagují.',
         },
+        { type: 'p', text: 'Celé to stojí na přesném odměřování objemů. K tomu slouží čtyři pomůcky:' },
         {
           type: 'flipcards',
           cards: [
@@ -1535,6 +1623,7 @@ const l54: Lesson = {
           ],
           caption: 'Klepni na kartu a přečti si, k čemu pomůcka slouží.',
         },
+        { type: 'p', text: 'Kromě pomůcek potřebuješ i několik pojmů. Pozor hlavně na poslední dva, snadno se pletou:' },
         {
           type: 'keyterms',
           items: [
@@ -1549,6 +1638,7 @@ const l54: Lesson = {
           variant: 'fact',
           text: 'Proč prostě nenavážit $NaOH$? Jeho pecičky pohlcují vodu i $CO2$ ze vzduchu, takže navážka nikdy není přesná. Roztok $NaOH$ se proto **standardizuje** titrací přesně navážené kyseliny šťavelové. Kyselina chlorovodíková se zase standardizuje na bezvodém uhličitanu sodném.',
         },
+        { type: 'p', text: 'Když máš roztoky i pomůcky připravené, titrace probíhá vždy ve stejném pořadí kroků:' },
         {
           type: 'process',
           layout: 'flow',
@@ -1562,6 +1652,7 @@ const l54: Lesson = {
             { icon: 'arrow-cycle', title: 'Opakuj', text: 'dokud se dvě spotřeby neliší o víc než 0,10 cm^{3}; ty zprůměruj' },
           ],
         },
+        { type: 'p', text: 'Spotřeba je jen tak přesná, jak přesně odečteš objem. Hladina v úzké trubici je prohnutá, a proto se čte u menisku:' },
         { type: 'diagram', id: 'meniscus', caption: 'Stejně jako v odměrném válci na obrázku odečítáš objem i v byretě: u spodního okraje menisku, s okem v jeho úrovni.' },
         {
           type: 'callout',
@@ -1573,6 +1664,7 @@ const l54: Lesson = {
           variant: 'warning',
           text: 'Pipetuje se vždy **pipetovacím nástavcem (balonkem)**, nikdy ústy. A když plníš byretu hydroxidem, měj nasazené brýle a byretu plň pod úrovní očí, kapka zásady v oku je vážný problém.',
         },
+        { type: 'p', text: 'Spotřebu z byrety už umíš změřit. Teď z ní spočítáme koncentraci vzorku.' },
         {
           type: 'check',
           question: {
@@ -1608,7 +1700,9 @@ const l54: Lesson = {
             { icon: 'flask', title: '$c$ vzorku', text: '$c = n/V$ (objem vzorku z pipety)' },
           ],
         },
+        { type: 'p', text: 'Ve druhém i čtvrtém kroku se opakuje stejný vztah mezi látkovým množstvím, koncentrací a objemem:' },
         { type: 'formula', text: '$n = c·V$', caption: 'objem dosazuj v dm^{3}: 1 cm^{3} = 0,001 dm^{3}' },
+        { type: 'p', text: 'Projdi všechny čtyři kroky na nejjednodušší titraci: kyselina chlorovodíková a hydroxid sodný.' },
         {
           type: 'example',
           problem: 'Na titraci 20,0 cm^{3} kyseliny chlorovodíkové se spotřebovalo 15,0 cm^{3} roztoku $NaOH$ o koncentraci 0,100 mol/dm^{3}. Jaká je koncentrace kyseliny?',
@@ -1620,6 +1714,7 @@ const l54: Lesson = {
           ],
           answer: '$c(HCl)$ = 0,075 mol/dm^{3}',
         },
+        { type: 'p', text: 'Ve skutečné laboratoři titruješ několikrát a spotřeby se trochu liší. Které z nich do výpočtu patří?' },
         {
           type: 'example',
           title: 'Průměr ze souhlasných titrací',
@@ -1632,6 +1727,7 @@ const l54: Lesson = {
           ],
           answer: '$c(NaOH)$ = 0,0910 mol/dm^{3}',
         },
+        { type: 'p', text: 'Titrace odpoví i na praktickou otázku: kolik kyseliny je v octu z kuchyně? Ocet je na titraci příliš koncentrovaný, a proto ho nejdřív zředíme:' },
         {
           type: 'example',
           title: 'Kolik kyseliny je v octu?',
@@ -1640,11 +1736,12 @@ const l54: Lesson = {
             'Rovnice: $CH3COOH + NaOH -> CH3COONa + H2O$, poměr 1 : 1.',
             '$n(NaOH)$ = 0,100 mol/dm^{3} · 0,0134 dm^{3} = 1,34·10^{-3} mol = $n(CH3COOH)$ v 10,0 cm^{3} zředěného roztoku.',
             '$c$(zředěný) = 1,34·10^{-3} mol : 0,0100 dm^{3} = 0,134 mol/dm^{3}.',
-            'Ocet jsi zředil desetkrát, takže $c$(ocet) = 10 · 0,134 mol/dm^{3} = 1,34 mol/dm^{3}.',
+            'Ocet jsi zředil/a desetkrát, takže $c$(ocet) = 10 · 0,134 mol/dm^{3} = 1,34 mol/dm^{3}.',
             'Pro zajímavost: 1,34 mol/dm^{3} · 60 g/mol ≈ 80 g kyseliny v 1 dm^{3}, to odpovídá běžnému 8% octu.',
           ],
           answer: '$c(CH3COOH)$ = 1,34 mol/dm^{3}',
         },
+        { type: 'p', text: 'S poměrem 1 : 1 už počítat umíš. Kyselina sírová nebo hydroxid vápenatý ale reagují v jiném poměru, a to výpočet mění.' },
         { type: 'game', gameId: 'titration', text: 'Vyzkoušej si titraci nanečisto: v minihře Titrace přikapáváš z byrety a ze spotřeby spočítáš koncentraci.' },
         {
           type: 'check',
@@ -1665,9 +1762,10 @@ const l54: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Dvojsytná kyselina sírová potřebuje na každou molekulu dva $OH^-$. Hydroxid vápenatý nebo barnatý zase potřebuje dvě molekuly $HCl$. ==Poměr z rovnice je tu 1 : 2 a nesmíš ho přehlédnout.==',
+          text: 'Zatím reagovala jedna molekula kyseliny vždy s jednou jednotkou zásady. Dvojsytná kyselina sírová ale potřebuje na každou molekulu dva $OH^-$. Hydroxid vápenatý nebo barnatý zase potřebuje dvě molekuly $HCl$. ==Poměr z rovnice je tu 1 : 2 a nesmíš ho přehlédnout.==',
         },
         { type: 'reaction', equation: 'Ca(OH)2 + 2HCl -> CaCl2 + 2H2O', caption: 'na jednu vzorcovou jednotku $Ca(OH)2$ připadají dvě molekuly $HCl$' },
+        { type: 'p', text: 'Začneme kyselinou sírovou s hydroxidem sodným. Rozhoduje třetí krok: látkové množství $NaOH$ dělíme dvěma, protože kyseliny je podle rovnice poloviční množství.' },
         {
           type: 'example',
           problem: 'Na titraci 10,0 cm^{3} kyseliny sírové se spotřebovalo 25,0 cm^{3} $NaOH$ o koncentraci 0,200 mol/dm^{3}. Jaká je koncentrace kyseliny?',
@@ -1679,6 +1777,7 @@ const l54: Lesson = {
           ],
           answer: '$c(H2SO4)$ = 0,25 mol/dm^{3}',
         },
+        { type: 'p', text: 'Teď obrácená situace z rovnice nahoře: na jednu jednotku $Ca(OH)2$ připadají dvě molekuly $HCl$. Dvěma tedy tentokrát dělíme $n(HCl)$:' },
         {
           type: 'example',
           problem: 'Na 50,0 cm^{3} vápenné vody se spotřebovalo 23,0 cm^{3} kyseliny chlorovodíkové o koncentraci 0,100 mol/dm^{3}. Jaká je koncentrace $Ca(OH)2$?',
@@ -1690,6 +1789,7 @@ const l54: Lesson = {
           ],
           answer: '$c(Ca(OH)2)$ = 0,023 mol/dm^{3}, to je asi 1,7 g v 1 dm^{3}: nasycená vápenná voda.',
         },
+        { type: 'p', text: 'Někdy neznáš koncentraci, ale objem: kolik kyseliny máš na neutralizaci připravit. Postup je stejný, jen poslední krok počítá $V = n/c$.' },
         {
           type: 'example',
           title: 'Hledáš objem',
@@ -1709,8 +1809,9 @@ const l54: Lesson = {
         {
           type: 'callout',
           variant: 'tip',
-          text: 'Kontrola: napiš si pod rovnici poměr, třeba $n(H2SO4) : n(NaOH)$ = 1 : 2. Látka s větším koeficientem musí mít i větší látkové množství. Když ti vyjde naopak, dělil jsi místo násobení.',
+          text: 'Kontrola: napiš si pod rovnici poměr, třeba $n(H2SO4) : n(NaOH)$ = 1 : 2. Látka s větším koeficientem musí mít i větší látkové množství. Když ti vyjde naopak, dělil/a jsi místo násobení.',
         },
+        { type: 'p', text: 'Koncentraci z titrace teď spočítáš pro oba poměry. Zbývá otázka, proč tolik záleží na volbě indikátoru. Odpověď dá titrační křivka.' },
         {
           type: 'check',
           question: {
@@ -1730,7 +1831,7 @@ const l54: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Když během titrace měříš pH a vyneseš ho do grafu proti objemu přidaného odměrného roztoku, dostaneš **titrační křivku**.',
+          text: 'Titraci jsme zatím sledovali jen podle barvy indikátoru. Když během titrace měříš pH a vyneseš ho do grafu proti objemu přidaného odměrného roztoku, dostaneš **titrační křivku**.',
         },
         {
           type: 'diagram',
@@ -1738,6 +1839,7 @@ const l54: Lesson = {
           props: { kind: 'strong-strong' },
           caption: 'Titrace silné kyseliny silnou zásadou: v okolí bodu ekvivalence vyskočí pH zhruba ze 4 na 10.',
         },
+        { type: 'p', text: 'Křivka má tři různé úseky a každý říká, co se v baňce zrovna děje:' },
         {
           type: 'process',
           layout: 'flow',
@@ -1758,6 +1860,7 @@ const l54: Lesson = {
           props: { kind: 'weak-strong' },
           caption: 'Kyselina octová titrovaná hydroxidem sodným: barevné pásy ukazují, že do skoku pH padne fenolftalein, ale ne methyloranž.',
         },
+        { type: 'p', text: 'Postav obě křivky vedle sebe. Všimni si, že se liší hlavně začátkem a polohou skoku, tedy právě tam, kde na indikátoru záleží:' },
         {
           type: 'compare',
           columns: [
@@ -1770,6 +1873,7 @@ const l54: Lesson = {
           type: 'p',
           text: '==Indikátor musí měnit barvu uvnitř skoku pH.== Pak se **konec titrace** (změna barvy) od **bodu ekvivalence** (poměr podle rovnice) liší nejvýš o kapku.',
         },
+        { type: 'p', text: 'Podle toho, kde skok leží, vybereš indikátor pro každý typ titrace:' },
         {
           type: 'table',
           headers: ['Titrace', 'pH v bodě ekvivalence', 'Vhodný indikátor'],
@@ -1783,8 +1887,9 @@ const l54: Lesson = {
         {
           type: 'callout',
           variant: 'warning',
-          text: 'Kdybys kyselinu octovou titroval na methyloranž, změnila by barvu už zhruba ve třetině titrace. Konec titrace by byl daleko před bodem ekvivalence a vypočtená koncentrace úplně špatně.',
+          text: 'Kdybys kyselinu octovou titroval/a na methyloranž, změnila by barvu už zhruba ve třetině titrace. Konec titrace by byl daleko před bodem ekvivalence a vypočtená koncentrace úplně špatně.',
         },
+        { type: 'p', text: 'Teď umíš titraci provést, spočítat i správně zvolit indikátor. Po neutralizaci ale v baňce vždy zůstane sůl, a solím a jejich názvům patří příští lekce.' },
         {
           type: 'check',
           question: {
@@ -1893,13 +1998,15 @@ const l55: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Soli** jsou iontové sloučeniny z **kationtu kovu** (nebo amonného kationtu $NH4^+$) a **aniontu kyseliny**. Můžeš si je představit jako kyselinu, ve které vodík nahradil kov.',
+          text: 'Po každé neutralizaci v minulé lekci zůstala v baňce sůl. **Soli** jsou iontové sloučeniny z **kationtu kovu** (nebo amonného kationtu $NH4^+$) a **aniontu kyseliny**. Můžeš si je představit jako kyselinu, ve které vodík nahradil kov.',
         },
+        { type: 'p', text: 'Neutralizace ale není jediná cesta. V laboratoři k soli vedou čtyři:' },
         { type: 'diagram', id: 'salt-preparation', caption: 'Čtyři laboratorní cesty k soli: kyselina + neušlechtilý kov (unikají bublinky vodíku), kyselina + hydroxid (neutralizace), kyselina + uhličitan (šumí oxid uhličitý) a srážení roztoků dvou solí (vzniká bílá sraženina).' },
+        { type: 'p', text: 'Sůl se dá připravit i úplně bez kyseliny, přímo z prvků:' },
         { type: 'reaction', equation: '2Na + Cl2 -> 2NaCl', caption: 'Další cesta – kov + nekov: přímá syntéza soli z prvků.' },
         {
           type: 'p',
-          text: 'Typické reakce kyselin s kovy, oxidy, hydroxidy a uhličitany už znáš z lekce 5-1. Při přípravě soli v laboratoři jde hlavně o to, **kterou cestu zvolit**, abys dostal čistou sůl. Rozhoduje, jestli je sůl rozpustná.',
+          text: 'Typické reakce kyselin s kovy, oxidy, hydroxidy a uhličitany už znáš z lekce 5-1. Při přípravě soli v laboratoři jde hlavně o to, **kterou cestu zvolit**, abys dostal/a čistou sůl. Rozhoduje, jestli je sůl rozpustná.',
         },
         {
           type: 'compare',
@@ -1910,6 +2017,7 @@ const l55: Lesson = {
           ],
           caption: 'Jak zvolit cestu k soli',
         },
+        { type: 'p', text: 'Projdi si celý postup pro rozpustnou sůl z prvního sloupce, modrou skalici. Všimni si, proč se přidává nadbytek oxidu:' },
         {
           type: 'process',
           layout: 'flow',
@@ -1927,6 +2035,7 @@ const l55: Lesson = {
           variant: 'warning',
           text: 'Při zahušťování nech roztok odpařit jen částečně a pracuj v brýlích: horký roztok prská. Síran měďnatý je zdraví škodlivý a jedovatý pro vodní organismy, zbytky nelij do odpadu.',
         },
+        { type: 'p', text: 'Teď víš, jak sůl připravit. Aby ses v solích vyznal/a, potřebuješ jim ale umět říkat jménem.' },
         {
           type: 'check',
           question: {
@@ -1950,7 +2059,7 @@ const l55: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Název soli = **podstatné jméno podle aniontu** + **přídavné jméno podle kationtu**. Soli bezkyslíkatých kyselin znáš z lekce 3-6 (chlorid sodný). U kyslíkatých kyselin se koncovka změní takto:',
+          text: 'Solí je obrovské množství, ale jejich názvy se tvoří podle jednoho pravidla. Název soli = **podstatné jméno podle aniontu** + **přídavné jméno podle kationtu**. Soli bezkyslíkatých kyselin znáš z lekce 3-6 (chlorid sodný). U kyslíkatých kyselin se koncovka změní takto:',
         },
         {
           type: 'table',
@@ -1967,12 +2076,14 @@ const l55: Lesson = {
             ['manganistá $HMnO4$', 'VII', '$MnO4^-$', 'manganis**tan**'],
           ],
         },
+        { type: 'p', text: 'V názvu aniontu se tedy skrývá kyselina, ze které pochází. Jak nejčastější anionty vypadají a jaký mají náboj, ukazuje model:' },
         {
           type: 'molecule',
           molecules: ['NO3-', 'SO4^2-', 'CO3^2-', 'PO4^3-'],
           labels: ['dusičnan $NO3^-$', 'síran $SO4^2-$', 'uhličitan $CO3^2-$', 'fosforečnan $PO4^3-$'],
           caption: 'Nejčastější víceatomové anionty. ==Náboj aniontu se rovná počtu vodíků, které kyselina odevzdala.==',
         },
+        { type: 'p', text: 'Náboj aniontu tedy zjistíš z kyseliny. Stačí ho vyrovnat nábojem kationtu, a máš vzorec soli:' },
         {
           type: 'process',
           layout: 'flow',
@@ -1985,6 +2096,7 @@ const l55: Lesson = {
           ],
           caption: 'Od kyseliny přes anion k soli.',
         },
+        { type: 'p', text: 'Často jdeš obráceně, od vzorce k názvu. Oxidační číslo kovu pak musíš dopočítat z náboje aniontů:' },
         {
           type: 'example',
           problem: 'Pojmenuj $Fe2(SO4)3$.',
@@ -1995,6 +2107,7 @@ const l55: Lesson = {
           ],
           answer: '$Fe2(SO4)3$ je **síran železitý**.',
         },
+        { type: 'p', text: 'A teď zase od názvu ke vzorci, u soli, kde se náboje kationtu a aniontu liší:' },
         {
           type: 'example',
           problem: 'Napiš vzorec fosforečnanu vápenatého.',
@@ -2005,6 +2118,7 @@ const l55: Lesson = {
           ],
           answer: '$Ca3(PO4)2$',
         },
+        { type: 'p', text: 'Soli kyselin, které odevzdaly všechny vodíky, už pojmenuješ. Vícesytná kyselina ale může odevzdat jen část vodíků, a pak vznikne zvláštní druh soli.' },
         {
           type: 'check',
           question: {
@@ -2033,9 +2147,11 @@ const l55: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Když si anion kyseliny část vodíků ponechá, vznikne **hydrogensůl** (předpona **hydrogen-** nebo **dihydrogen-**). Každý ponechaný vodík zmenší záporný náboj aniontu o 1.',
+          text: 'Vícesytná kyselina odevzdává protony postupně, po jednom (lekce 5-1). Když si anion kyseliny část vodíků ponechá, vznikne **hydrogensůl** (předpona **hydrogen-** nebo **dihydrogen-**). Každý ponechaný vodík zmenší záporný náboj aniontu o 1.',
         },
+        { type: 'p', text: 'Na kyselině uhličité jsou vidět všechny tři stupně: kyselina, anion s jedním vodíkem a anion bez vodíku.' },
         { type: 'molecule', molecules: ['H2CO3', 'HCO3-', 'CO3^2-'], labels: ['kyselina uhličitá', 'hydrogenuhličitan', 'uhličitan'] },
+        { type: 'p', text: 'Stejné pravidlo platí pro všechny vícesytné kyseliny. U kyseliny fosforečné vzniknou dokonce tři různé anionty:' },
         {
           type: 'table',
           headers: ['Anion', 'Náboj', 'Název aniontu', 'Příklad soli'],
@@ -2047,6 +2163,7 @@ const l55: Lesson = {
             ['$PO4^3-$', '−3', 'fosforečnan', '$Na3PO4$, fosforečnan sodný'],
           ],
         },
+        { type: 'p', text: 'Při psaní vzorce hydrogensoli rozhoduje náboj aniontu a ten ti prozradí počet vodíků v názvu:' },
         {
           type: 'example',
           problem: 'Napiš vzorec dihydrogenfosforečnanu sodného.',
@@ -2056,6 +2173,7 @@ const l55: Lesson = {
           ],
           answer: '$NaH2PO4$',
         },
+        { type: 'p', text: 'Opačný směr: ze vzorce poznáš, kolik vodíků si anion ponechal.' },
         {
           type: 'example',
           problem: 'Pojmenuj $Mg(HCO3)2$.',
@@ -2070,7 +2188,9 @@ const l55: Lesson = {
           variant: 'fact',
           text: 'Hydrogenuhličitan sodný je **jedlá soda**. Při pečení se rozkládá a v kypřicím prášku navíc reaguje s kyselou složkou. Bublinky $CO2$ nakypří těsto.',
         },
+        { type: 'p', text: 'Jak se jedlá soda teplem rozkládá, ukazuje rovnice:' },
         { type: 'reaction', equation: '2NaHCO3 -> Na2CO3 + H2O + CO2', caption: 'rozklad jedlé sody teplem' },
+        { type: 'p', text: 'Hydrogensoli si tedy ponechávají vodík. Jiné soli zase vážou v krystalu celé molekuly vody.' },
         {
           type: 'check',
           question: {
@@ -2090,7 +2210,7 @@ const l55: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Některé soli krystalizují s pevně vázanou **krystalovou vodou**, říkáme jim **hydráty**. Ve vzorci se voda připojuje tečkou: $CuSO4·5H2O$ je **pentahydrát síranu měďnatého** (předpona + hydrát + název soli ve 2. pádě).',
+          text: 'Modrá skalice z prvního oddílu má ve vzorci tečku a pět molekul vody. Některé soli totiž krystalizují s pevně vázanou **krystalovou vodou**, říkáme jim **hydráty**. Ve vzorci se voda připojuje tečkou: $CuSO4·5H2O$ je **pentahydrát síranu měďnatého** (předpona + hydrát + název soli ve 2. pádě).',
         },
         {
           type: 'callout',
@@ -2098,6 +2218,7 @@ const l55: Lesson = {
           title: 'Řecké předpony',
           text: 'mono- (1), di- (2), tri- (3), tetra- (4), penta- (5), hexa- (6), hepta- (7), okta- (8), nona- (9), deka- (10); pro půl molekuly vody hemi-.',
         },
+        { type: 'p', text: 'Krystalová voda není vlhkost na povrchu, ale součást krystalu. Podívej se, jak jsou molekuly vody rozmístěné mezi ionty:' },
         {
           type: 'particles',
           boxes: [
@@ -2105,6 +2226,7 @@ const l55: Lesson = {
           ],
           caption: 'Na každou vzorcovou jednotku $CuSO4$ připadá pět molekul krystalové vody.',
         },
+        { type: 'p', text: 'Hydrátů je hodně a mnohé znáš pod běžnými názvy. Všimni si, že sádrovec a pálená sádra se liší jen množstvím vody:' },
         {
           type: 'table',
           headers: ['Vzorec', 'Název', 'Běžný název'],
@@ -2116,6 +2238,7 @@ const l55: Lesson = {
             ['$Na2CO3·10H2O$', 'dekahydrát uhličitanu sodného', 'krystalová soda'],
           ],
         },
+        { type: 'p', text: 'Pozor při výpočtech: krystalová voda patří k hmotnosti hydrátu, takže ji do molární hmotnosti musíš započítat.' },
         {
           type: 'example',
           problem: 'Jaká je molární hmotnost modré skalice $CuSO4·5H2O$?',
@@ -2126,12 +2249,14 @@ const l55: Lesson = {
           ],
           answer: '$M(CuSO4·5H2O)$ = 249,5 g/mol',
         },
+        { type: 'p', text: 'Krystalovou vodu jde ze soli i vyhnat. Stačí modrou skalici zahřát:' },
         { type: 'reaction', equation: 'CuSO4·5H2O -> CuSO4 + 5H2O', caption: 'zahřátím ztratí modrá skalice krystalovou vodu a zbělá' },
         {
           type: 'callout',
           variant: 'fact',
           text: 'Bílý bezvodý $CuSO4$ po kápnutí vody zase zmodrá, a proto slouží jako důkaz vody. Podobně tuhne sádra: pálená sádra přijme vodu a změní se zpět na tvrdý sádrovec.',
         },
+        { type: 'p', text: 'Hydráty už pojmenuješ i spočítáš. Teď se podíváme, co se se solemi děje ve vodě: některé se rozpustí a jiné vytvoří sraženinu.' },
         {
           type: 'check',
           question: {
@@ -2149,8 +2274,9 @@ const l55: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Některé soli se ve vodě rozpouštějí výborně, jiné skoro vůbec. Když smícháš roztoky dvou solí a ionty se mohou spojit do nerozpustné soli, vyloučí se **sraženina**.',
+          text: 'Už při přípravě solí rozhodovalo, jestli je sůl rozpustná. Některé soli se ve vodě rozpouštějí výborně, jiné skoro vůbec. Když smícháš roztoky dvou solí a ionty se mohou spojit do nerozpustné soli, vyloučí se **sraženina**.',
         },
+        { type: 'p', text: 'Kterou sůl čekat jako sraženinu, poznáš podle několika pravidel. Nejjistější vodítko jsou ionty, jejichž soli se rozpouštějí vždy:' },
         {
           type: 'compare',
           columns: [
@@ -2178,6 +2304,7 @@ const l55: Lesson = {
           ],
           caption: 'Pravidla rozpustnosti ve vodě',
         },
+        { type: 'p', text: 'Podle pravidel je $BaSO4$ nerozpustný. Co se tedy stane, když smícháš roztoky $BaCl2$ a $Na2SO4$? Sleduj jednotlivé ionty:' },
         {
           type: 'particles',
           boxes: [
@@ -2191,6 +2318,7 @@ const l55: Lesson = {
           type: 'p',
           text: 'Molekulová rovnice srážení tedy neukazuje, co se skutečně děje. Proto se srážení zapisuje **iontovou rovnicí**, ve které ionty-diváky vynecháš.',
         },
+        { type: 'p', text: 'Iontovou rovnici napíšeš ve čtyřech krocích:' },
         {
           type: 'process',
           layout: 'flow',
@@ -2202,6 +2330,7 @@ const l55: Lesson = {
           ],
           caption: 'Jak napsat iontovou rovnici srážení',
         },
+        { type: 'p', text: 'Vyzkoušej postup na dusičnanu olovnatém a jodidu draselném. Nejdřív musíš podle pravidel rozhodnout, která sůl je nerozpustná:' },
         {
           type: 'example',
           problem: 'Zapiš iontovou rovnici reakce roztoků dusičnanu olovnatého a jodidu draselného.',
@@ -2213,7 +2342,9 @@ const l55: Lesson = {
           ],
           answer: '$Pb^{2+} + 2I^- -> PbI2(s)$: vznikne sytě žlutá sraženina jodidu olovnatého.',
         },
+        { type: 'p', text: 'Výsledná iontová rovnice platí pro jakoukoli dvojici rozpustné olovnaté soli a rozpustného jodidu:' },
         { type: 'reaction', equation: 'Pb^2+ + 2I^- -> PbI2', caption: 'žlutá sraženina jodidu olovnatého; ze stejného důvodu vzniká s jakýmkoli rozpustným jodidem a olovnatou solí' },
+        { type: 'p', text: 'Stejně stručně se zapisuje i srážení chloridu stříbrného, kterým se dokazují chloridy:' },
         { type: 'reaction', equation: 'Ag^+ + Cl^- -> AgCl', caption: 'bílá sraženina chloridu stříbrného: iontová rovnice pro $AgNO3 + NaCl$ i pro $AgNO3 + HCl$ (důkaz chloridů, úroveň 7)' },
         {
           type: 'callout',
@@ -2230,6 +2361,7 @@ const l55: Lesson = {
           variant: 'fact',
           text: 'Přesto pacienti před rentgenem pijí „baryovou kaši“ se síranem barnatým. Je tak nerozpustný, že se v těle téměř nevstřebá, a přitom dobře pohlcuje rentgenové záření.',
         },
+        { type: 'p', text: 'Teď předpovíš, kdy vznikne sraženina, a zapíšeš to iontovou rovnicí. Na závěr se podíváme, které soli potkáš doma, na zahradě i v lékárně.' },
         {
           type: 'check',
           question: {
@@ -2251,6 +2383,7 @@ const l55: Lesson = {
       title: 'Soli kolem nás',
       icon: 'magnifier',
       blocks: [
+        { type: 'p', text: 'Na začátku lekce zaznělo, že sůl na talíři je jen jedna z mnoha. Tady jsou soli, které potkáš nejčastěji, i s názvy podle pravidel z této lekce:' },
         {
           type: 'iconlist',
           items: [
@@ -2273,7 +2406,9 @@ const l55: Lesson = {
           variant: 'warning',
           text: 'Nikdy nemíchej čisticí prostředek s chlornanem sodným s kyselým čističem na WC ani s octem! Uvolní se jedovatý chlor.',
         },
+        { type: 'p', text: 'Proč je ta směs tak nebezpečná? Chlornan reaguje s kyselinou za vzniku chloru:' },
         { type: 'reaction', equation: 'NaClO + 2HCl -> NaCl + Cl2 + H2O', caption: 'chlornan + kyselina -> jedovatý plynný chlor' },
+        { type: 'p', text: 'Teď znáš soli od přípravy až po název. V příští lekci se na kyseliny a zásady podíváš znovu a obecněji: podle Brønsteda jde vždy o předání protonu.' },
         { type: 'game', gameId: 'naming', text: 'Soli jsou v Názvoslovném trenažéru královská disciplína. Zkus kolo se solemi kyslíkatých kyselin a hydráty.' },
         {
           type: 'check',
@@ -2389,6 +2524,7 @@ const l56: Lesson = {
             { title: 'Brønsted a Lowry', icon: 'ion-plus', tone: 'b', points: ['kyselina je **donor protonu**', 'zásada je **akceptor protonu**', 'funguje i bez vody, třeba mezi plyny', 'amoniak je zásada, protože přijme $H^+$'] },
           ],
         },
+        { type: 'p', text: 'Nová definice tedy sleduje jediné: kdo proton odevzdá a kdo ho přijme. Shrňme si pojmy, které z toho plynou:' },
         {
           type: 'keyterms',
           items: [
@@ -2397,7 +2533,9 @@ const l56: Lesson = {
             { term: 'acidobazická reakce', def: 'přenos protonu z kyseliny na zásadu' },
           ],
         },
+        { type: 'p', text: 'Podívej se, jak to vypadá v reakci, kterou znáš z lekce 5-1:' },
         { type: 'formula', text: '$HCl + H2O -> H3O^+ + Cl^-$', caption: '$HCl$ je kyselina (odevzdá $H^+$), voda je tady zásada (přijme ho).' },
+        { type: 'p', text: 'A teď amoniak z lekce 5-2. Pozor na vodu: tentokrát proton odevzdává, takže hraje opačnou roli než před chvílí.' },
         { type: 'formula', text: '$NH3 + H2O <=> NH4^+ + OH^-$', caption: 'Tady je naopak voda kyselinou a amoniak zásadou.' },
         {
           type: 'p',
@@ -2417,6 +2555,7 @@ const l56: Lesson = {
           variant: 'remember',
           text: '==Kyselinou nebo zásadou látka není sama o sobě.== Rozhoduje, co v dané reakci dělá: jestli proton odevzdá, nebo přijme.',
         },
+        { type: 'p', text: 'Kyselinu a zásadu teď poznáš podle toho, co dělají s protonem. Zajímavé je, co z kyseliny zbude, když proton odevzdá.' },
         {
           type: 'check',
           question: {
@@ -2438,12 +2577,14 @@ const l56: Lesson = {
           text: 'Když kyselina odevzdá proton, to, co z ní zbude, ho může zase přijmout: zbytek kyseliny je tedy zásada. Kyselina a zásada, které se liší právě o jeden proton, tvoří **konjugovaný pár**.',
         },
         { type: 'formula', text: '$HA <=> A^- + H^+$', caption: 'kyselina $HA$ a její konjugovaná zásada $A^-$' },
+        { type: 'p', text: 'Na modelech porovnej dvě takové dvojice. Kyselina se od své zásady liší jediným vodíkem a jedním kladným nábojem:' },
         {
           type: 'molecule',
           molecules: ['NH4+', 'NH3', 'H3O+', 'H2O'],
           labels: ['kyselina $NH4^+$', 'konjugovaná zásada $NH3$', 'kyselina $H3O^+$', 'konjugovaná zásada $H2O$'],
           caption: 'Dva konjugované páry: kyselina má vždy o jeden proton víc než její zásada.',
         },
+        { type: 'p', text: 'Stejně najdeš konjugovanou zásadu ke kterékoli kyselině: stačí odebrat jeden $H^+$. Všimni si vody, která se v tabulce objeví dvakrát:' },
         {
           type: 'table',
           headers: ['Kyselina', 'odevzdá', 'Konjugovaná zásada'],
@@ -2456,6 +2597,7 @@ const l56: Lesson = {
             ['$HCO3^-$', '$H^+$ ->', '$CO3^2-$'],
           ],
         },
+        { type: 'p', text: 'V každé acidobazické reakci jsou konjugované páry dva, protože proton jedna částice ztratí a druhá získá. Najdeme je v reakci amoniaku s vodou:' },
         {
           type: 'example',
           problem: 'Najdi konjugované páry v reakci $NH3 + H2O <=> NH4^+ + OH^-$.',
@@ -2466,6 +2608,7 @@ const l56: Lesson = {
           ],
           answer: 'Konjugované páry jsou $NH4^+$/$NH3$ a $H2O$/$OH^-$.',
         },
+        { type: 'p', text: 'Kyselina a její konjugovaná zásada spolu souvisí i silou. Porovnej silnou a slabou kyselinu:' },
         {
           type: 'compare',
           columns: [
@@ -2474,6 +2617,7 @@ const l56: Lesson = {
           ],
           caption: 'Čím silnější kyselina, tím slabší je její konjugovaná zásada.',
         },
+        { type: 'p', text: 'Konjugované páry už najdeš. Teď se podíváme na látky, které v jedné reakci proton přijímají a v jiné ho odevzdávají.' },
         {
           type: 'check',
           question: {
@@ -2496,7 +2640,7 @@ const l56: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Některé částice umějí proton odevzdat i přijmout, podle toho, s kým se potkají. Říká se jim **amfoterní látky** neboli **amfolyty**. Nejdůležitějším amfolytem je voda.',
+          text: 'Voda se v tabulce konjugovaných párů objevila dvakrát, jednou jako kyselina a jednou jako zásada. Některé částice totiž umějí proton odevzdat i přijmout, podle toho, s kým se potkají. Říká se jim **amfoterní látky** neboli **amfolyty**. Nejdůležitějším amfolytem je voda.',
         },
         {
           type: 'compare',
@@ -2515,11 +2659,13 @@ const l56: Lesson = {
           molecules: ['H2CO3', 'HCO3-', 'CO3^2-'],
           labels: ['$H2CO3$: $HCO3^-$ přijal proton', 'amfolyt $HCO3^-$', '$CO3^2-$: $HCO3^-$ odevzdal proton'],
         },
+        { type: 'p', text: 'Kterou roli $HCO3^-$ zahraje, záleží na partnerovi. S kyselinou se chová jako zásada:' },
         {
           type: 'formula',
           text: '$HCO3^- + H3O^+ -> H2CO3 + H2O$',
           caption: 'jako zásada přijme proton; vzniklá $H2CO3$ se rozpadá na $CO2$ a vodu',
         },
+        { type: 'p', text: 'Se zásadou je to naopak, $HCO3^-$ proton odevzdá:' },
         { type: 'formula', text: '$HCO3^- + OH^- -> CO3^2- + H2O$', caption: 'jako kyselina proton odevzdá' },
         {
           type: 'p',
@@ -2530,6 +2676,7 @@ const l56: Lesson = {
           variant: 'fact',
           text: 'Hydrogenuhličitan v krvi funguje jako tlumič: zachytí nadbytečnou kyselinu i zásadu, a proto pH krve kolísá jen o setiny. Takovým soustavám se říká pufry a podrobně je probereme v úrovni 6.',
         },
+        { type: 'p', text: 'Teď víš, že role kyseliny nebo zásady závisí na partnerovi. Kyseliny se ale liší i tím, jak ochotně proton odevzdávají.' },
         {
           type: 'check',
           question: {
@@ -2548,7 +2695,7 @@ const l56: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Silné kyseliny** odevzdají vodě proton prakticky ze všech molekul, disociují úplně. **Slabé kyseliny** disociují jen z malé části a většina molekul zůstane celá, proto v rovnici píšeme obousměrnou šipku.',
+          text: 'Už v lekcích 5-3 a 5-4 se kyselina octová chovala jinak než chlorovodíková. Proč? **Silné kyseliny** odevzdají vodě proton prakticky ze všech molekul, disociují úplně. **Slabé kyseliny** disociují jen z malé části a většina molekul zůstane celá, proto v rovnici píšeme obousměrnou šipku.',
         },
         {
           type: 'particles',
@@ -2558,11 +2705,13 @@ const l56: Lesson = {
           ],
           caption: 'Stejná koncentrace kyseliny, ale úplně jiný počet kationtů $H3O^+$.',
         },
+        { type: 'p', text: 'Rovnice disociace slabé kyseliny proto musí ukázat, že reakce neproběhne úplně:' },
         {
           type: 'formula',
           text: '$CH3COOH + H2O <=> CH3COO^- + H3O^+$',
           caption: 'Kyselina octová je slabá, proto obousměrná šipka. Jak velká část molekul se rozštěpí, spočítáš v příkladu níže.',
         },
+        { type: 'p', text: 'Které kyseliny a zásady jsou silné? Je jich jen pár, a proto se vyplatí je znát nazpaměť:' },
         {
           type: 'compare',
           columns: [
@@ -2576,6 +2725,7 @@ const l56: Lesson = {
           text: 'Jak velká část elektrolytu se rozštěpila na ionty, udává **stupeň disociace** $α$: podíl disociovaných molekul ze všech rozpuštěných. Nabývá hodnot od 0 do 1 a často se uvádí v procentech.',
         },
         { type: 'formula', text: '$α = [H3O^+] / c(HA)$', caption: 'pro slabou kyselinu $HA$ rozpuštěnou ve vodě' },
+        { type: 'p', text: 'Stupeň disociace ukáže, jak velký je rozdíl mezi slabou a silnou kyselinou. Porovnejme kyselinu octovou s chlorovodíkovou o stejné koncentraci:' },
         {
           type: 'example',
           problem: 'Kyselina octová o koncentraci 0,10 mol/dm^{3} má $[H3O^+]$ = 1,3·10^{-3} mol/dm^{3}. Urči stupeň disociace a pH a porovnej je s kyselinou chlorovodíkovou stejné koncentrace.',
@@ -2597,6 +2747,7 @@ const l56: Lesson = {
           variant: 'tip',
           text: 'Teď už víš, proč má slabá kyselina jinou titrační křivku (lekce 5-4): na začátku je v roztoku málo $H3O^+$, takže křivka začíná výš, a vzniklý octan sodný posune bod ekvivalence do zásadité oblasti.',
         },
+        { type: 'p', text: 'Sílu kyseliny teď umíš posoudit i vyjádřit číslem. Využijeme ji k předpovědi, jaké pH bude mít roztok soli.' },
         {
           type: 'check',
           question: {
@@ -2614,7 +2765,7 @@ const l56: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Roztok soli nemusí být neutrální! Jedlá soda barví univerzální indikátor zelenomodře a hnojivo s chloridem amonným okyseluje půdu. Za to může **hydrolýza solí**, reakce iontů soli s vodou.',
+          text: 'Konjugované páry vysvětlí i jednu záhadu. Roztok soli totiž nemusí být neutrální! Jedlá soda barví univerzální indikátor zelenomodře a hnojivo s chloridem amonným okyseluje půdu. Za to může **hydrolýza solí**, reakce iontů soli s vodou.',
         },
         {
           type: 'diagram',
@@ -2648,6 +2799,7 @@ const l56: Lesson = {
           variant: 'tip',
           text: '==Roztok soli se chová podle silnějšího z „rodičů“.== Silná kyselina + slabá zásada -> kyselý roztok. Slabá kyselina + silná zásada -> zásaditý roztok. Obojí silné -> neutrální.',
         },
+        { type: 'p', text: 'Hydrolýza není jen teorie, využíváš ji při praní i na zahradě:' },
         {
           type: 'iconlist',
           items: [
@@ -2655,6 +2807,7 @@ const l56: Lesson = {
             { icon: 'fertilizer', title: 'Amonná hnojiva', text: 'kationty $NH4^+$ půdu postupně okyselují' },
           ],
         },
+        { type: 'p', text: 'Teď předpovíš, jestli bude roztok soli kyselý, nebo zásaditý. Zbývá poslední, nejobecnější pohled na kyseliny a zásady, který se obejde i bez protonu.' },
         {
           type: 'check',
           question: {
@@ -2682,11 +2835,13 @@ const l56: Lesson = {
             { term: 'Lewisova zásada', def: 'donor elektronového páru: částice s volným elektronovým párem, např. $NH3$, $H2O$, $OH^-$, $Cl^-$' },
           ],
         },
+        { type: 'p', text: 'Nejznámějším příkladem je reakce fluoridu boritého s amoniakem. Porovnej obě molekuly: $NH3$ má volný elektronový pár, $BF3$ má volné místo, kam ho přijmout.' },
         {
           type: 'molecule',
           molecules: ['BF3', 'NH3'],
           labels: ['$BF3$: přijme pár (Lewisova kyselina)', '$NH3$: poskytne pár (Lewisova zásada)'],
         },
+        { type: 'p', text: 'Když se obě molekuly setkají, volný pár dusíku se naváže na bor:' },
         {
           type: 'structure',
           art: '    F     H\n    |     |\nF — B ←── N — H\n    |     |\n    F     H',
@@ -2701,6 +2856,7 @@ const l56: Lesson = {
           text: '==Typickými Lewisovými kyselinami jsou kationty kovů.== Mají volné orbitaly, do kterých přijímají elektronové páry molekul vody, amoniaku nebo aniontů. Vznikají **komplexy**: kation kovu obklopený navázanými částicemi (podrobně v úrovni 7).',
         },
         { type: 'reaction', equation: 'Cu^2+ + 4NH3 -> [Cu(NH3)4]^2+', caption: 'Světle modrý roztok měďnaté soli s nadbytkem amoniaku tmavě zmodrá: vzniká tetraamminměďnatý kation. $Cu^{2+}$ je Lewisova kyselina, $NH3$ Lewisova zásada.' },
+        { type: 'p', text: 'Stejně reaguje amoniak i s kationtem stříbra. Najdi v reakci kyselinu a zásadu sám/sama:' },
         {
           type: 'example',
           problem: 'Urči Lewisovu kyselinu a zásadu v reakci $Ag^+ + 2NH3 -> [Ag(NH3)2]^+$.',
@@ -2716,6 +2872,7 @@ const l56: Lesson = {
           variant: 'fact',
           text: 'Proč je roztok $AlCl3$ nebo $FeCl3$ kyselý? Malý kation s velkým nábojem váže molekuly vody jako Lewisova kyselina a přitahuje jejich elektrony tak silně, že se z vody snáz odštěpí proton: $[Al(H2O)6]^{3+} + H2O <=> [Al(OH)(H2O)5]^{2+} + H3O^+$. I to je hydrolýza, jen z pohledu kationtu.',
         },
+        { type: 'p', text: 'Teď můžeme všechny tři teorie postavit vedle sebe. Všimni si, že každá další zahrnuje i tu předchozí:' },
         {
           type: 'compare',
           columns: [
@@ -2730,6 +2887,7 @@ const l56: Lesson = {
           variant: 'mascot',
           text: 'Arrhenius, Brønsted, Lewis: na výpočty pH ti bohatě stačí Brønsted. Lewise ale potkáš u komplexů kovů v úrovni 7 i u organických reakcí v úrovni 8, tak si ho zapamatuj.',
         },
+        { type: 'p', text: 'Teď znáš kyseliny a zásady ze tří pohledů. V další úrovni přijdou redoxní reakce, kde se místo protonů předávají elektrony, a ke slabým kyselinám se pak vrátíš i s výpočty.' },
         {
           type: 'check',
           question: {

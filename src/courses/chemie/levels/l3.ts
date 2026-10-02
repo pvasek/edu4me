@@ -23,7 +23,7 @@ const l31: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Z úrovně 2 víš, že vzácné plyny mají stálý **oktet** (helium dvojici). Ostatní atomy se k podobnému stavu dopracují přes **chemickou vazbu**, tedy soudržné působení, které drží atomy pohromadě.',
+          text: 'Helium z úvodu se nudí samo, protože už má všechno, co potřebuje: z úrovně 2 víš, že vzácné plyny mají stálý **oktet** (helium dvojici). Ostatní atomy se k podobnému stavu dopracují přes **chemickou vazbu**, tedy soudržné působení, které drží atomy pohromadě. Mají k tomu tři cesty:',
         },
         {
           type: 'iconlist',
@@ -35,7 +35,7 @@ const l31: Lesson = {
         },
         {
           type: 'p',
-          text: '==Když vznikne vazba, energie soustavy klesne a přebytek se uvolní, často jako teplo nebo světlo.== Je to jako kulička, která se skutálí do důlku a sama už nevyleze.',
+          text: 'Ať atomy elektrony sdílejí, nebo předávají, vždy z toho mají stejný zisk. ==Když vznikne vazba, energie soustavy klesne a přebytek se uvolní, často jako teplo nebo světlo.== Je to jako kulička, která se skutálí do důlku a sama už nevyleze. Proč energie klesá, uvidíš nejlépe na nejjednodušší molekule, vodíku $H2$:',
         },
         {
           type: 'process',
@@ -48,6 +48,7 @@ const l31: Lesson = {
           ],
           caption: 'Co se děje, když se k sobě blíží dva atomy vodíku.',
         },
+        { type: 'p', text: 'Stejný příběh se dá nakreslit jako graf: vodorovně je vzdálenost jader r, svisle energie E. Sleduj křivku zprava doleva a hledej její nejnižší bod.' },
         {
           type: 'structure',
           art: art(
@@ -63,6 +64,7 @@ const l31: Lesson = {
           ),
           caption: 'Křivka energie a vzdálenosti pro dva atomy vodíku. Vpravo jsou atomy daleko od sebe (E = 0). Při přibližování převládá přitahování a energie klesá. Vlevo převládne odpuzování jader a energie prudce roste. Minimum leží ve vzdálenosti rovné délce vazby (74 pm) a jeho hloubka je vazebná energie (436 kJ/mol).',
         },
+        { type: 'p', text: 'Ten nejnižší bod je pro vazbu klíčový: z jeho polohy a hloubky vyčteš dvě čísla, která popisují každou vazbu.' },
         {
           type: 'keyterms',
           items: [
@@ -71,6 +73,7 @@ const l31: Lesson = {
             { term: 'délka vazby', def: 'vzdálenost jader dvou vázaných atomů' },
           ],
         },
+        { type: 'p', text: 'Proč nás vazebná energie zajímá i mimo graf? Když se při reakci rozpadnou slabší vazby a vzniknou pevnější, rozdíl energie se uvolní. Nejznámější příklad je hoření vodíku:' },
         {
           type: 'reaction',
           equation: '2H2 + O2 -> 2H2O',
@@ -82,6 +85,7 @@ const l31: Lesson = {
           title: 'Energie z nových vazeb',
           text: 'Právě tahle reakce běží v palivovém článku vodíkového auta: rozdíl energií vazeb pohání elektromotor. Stejná reakce vynášela do vesmíru raketoplány.',
         },
+        { type: 'p', text: 'Vazba je tedy energetický důlek. Jak je hluboký a v jaké vzdálenosti leží, se ale vazba od vazby liší – a právě na to se podíváme teď.' },
         {
           type: 'check',
           question: {
@@ -99,7 +103,7 @@ const l31: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Každá vazba má svou **délku** v pikometrech (1 pm = 10^{−12} m) a **vazebnou energii** v kJ/mol, tedy na obrovskou „porci“ vazeb (mol poznáš v úrovni 4). Větší energie znamená pevnější vazbu.',
+          text: 'Obě čísla z minulého oddílu, polohu a hloubku důlku, už známe jménem. Každá vazba má svou **délku** v pikometrech (1 pm = 10^{−12} m) a **vazebnou energii** v kJ/mol, tedy na obrovskou „porci“ vazeb (mol poznáš v úrovni 4). Větší energie znamená pevnější vazbu. Nejdřív porovnej vazby mezi stejnými atomy, které se liší jen násobností vazby (jednoduchá –, dvojná =, trojná ≡):',
         },
         {
           type: 'table',
@@ -114,12 +118,14 @@ const l31: Lesson = {
           ],
           caption: 'Násobnost vazby: mezi stejnými atomy je jednoduchá vazba nejdelší a nejslabší, trojná nejkratší a nejpevnější.',
         },
+        { type: 'p', text: 'Rozdíly v délce uvidíš i na 3D modelech. Vodík má nejmenší atomy, chlor mnohem větší a dusík drží pohromadě trojná vazba:' },
         {
           type: 'molecule',
           molecules: ['H2', 'Cl2', 'N2'],
           labels: ['$H–H$: 74 pm, 436 kJ/mol', '$Cl–Cl$: 199 pm, 242 kJ/mol', '$N≡N$: 110 pm, 945 kJ/mol'],
           caption: 'Porovnej, jak daleko jsou od sebe jádra v molekulách vodíku, chloru a dusíku.',
         },
+        { type: 'p', text: 'U chloru je vidět, že kromě násobnosti hraje roli i velikost atomů. Ověříme to na řadě, kde se mění jen jeden partner: vodík vázaný na fluor, chlor, brom a jod.' },
         {
           type: 'table',
           headers: ['Vazba', 'Délka (pm)', 'Vazebná energie (kJ/mol)'],
@@ -131,6 +137,7 @@ const l31: Lesson = {
           ],
           caption: 'Velikost atomu: ve skupině halogenů směrem dolů atomy rostou, vazba $H–X$ se prodlužuje a slábne.',
         },
+        { type: 'p', text: 'Z obou tabulek plynou tři pravidla, která platí pro všechny vazby:' },
         {
           type: 'list',
           items: [
@@ -139,6 +146,7 @@ const l31: Lesson = {
             '==**Délka vazby klesá s násobností: jednoduchá > dvojná > trojná.**== Co je dvojná a trojná vazba, uvidíš hned v další lekci.',
           ],
         },
+        { type: 'p', text: 'Podle první tabulky to vypadá, že každá další vazba přidá stejný díl pevnosti. Platí to opravdu? Spočítejme to.' },
         {
           type: 'example',
           title: 'Je dvojná vazba dvakrát pevnější?',
@@ -156,6 +164,7 @@ const l31: Lesson = {
           title: 'Líný dusík',
           text: 'Vzduch je ze 78 % tvořen dusíkem, a přesto ho rostliny neumějí přímo využít. Trojná vazba v molekule $N2$ patří k nejpevnějším vůbec. Rozštípnout ji dokážou jen hlízkové bakterie, blesky a chemický průmysl při výrobě hnojiv.',
         },
+        { type: 'p', text: 'Délka a pevnost vazby tedy závisí na velikosti atomů a na násobnosti vazby. Zatím jsme ale mlčky počítali s tím, že se oba atomy o elektrony dělí rovným dílem – a to platí jen u stejných atomů.' },
         {
           type: 'check',
           question: {
@@ -174,7 +183,7 @@ const l31: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Dva různé atomy se o sdílené elektrony nedělí vždy spravedlivě. Schopnost atomu ve vazbě přitahovat vazebné elektrony se nazývá **elektronegativita** (anglicky *electronegativity*), značka X.',
+          text: 'V $H2$ nebo $Cl2$ tahají oba atomy za sdílený pár stejně silně. Dva různé atomy se ale o sdílené elektrony nedělí vždy spravedlivě. Schopnost atomu ve vazbě přitahovat vazebné elektrony se nazývá **elektronegativita** (anglicky *electronegativity*), značka X. Kde v tabulce leží silní a kde slabí „přitahovači“, ukazuje mapa:',
         },
         {
           type: 'diagram',
@@ -184,7 +193,7 @@ const l31: Lesson = {
         },
         {
           type: 'p',
-          text: 'Používá se **Paulingova stupnice** podle chemika Linuse Paulinga; hodnoty nemají jednotku. Nejvyšší má fluor (3,98), nejnižší cesium a francium (kolem 0,8).',
+          text: 'Používá se **Paulingova stupnice** podle chemika Linuse Paulinga; hodnoty nemají jednotku. Nejvyšší má fluor (3,98), nejnižší cesium a francium (kolem 0,8). Proč roste právě tímto směrem, vyplývá ze stavby atomu, kterou znáš z úrovně 2:',
         },
         {
           type: 'list',
@@ -195,6 +204,7 @@ const l31: Lesson = {
             'Vzácné plyny vazby téměř netvoří, proto se jim hodnota obvykle neuvádí.',
           ],
         },
+        { type: 'p', text: 'Pravidla ti řeknou, který prvek přitahuje víc. Pro výpočty ale potřebuješ konkrétní čísla – nemusíš je umět nazpaměť, stačí je umět najít:' },
         {
           type: 'table',
           headers: ['Prvek', 'X', 'Prvek', 'X', 'Prvek', 'X'],
@@ -212,6 +222,7 @@ const l31: Lesson = {
           variant: 'tip',
           text: 'Nejelektronegativnější kout tabulky je vpravo nahoře. Čím blíž má prvek k fluoru, tím silněji si elektrony ve vazbě přitahuje.',
         },
+        { type: 'p', text: 'Teď umíš u každého atomu zjistit, jak silně si ve vazbě přitahuje elektrony. Co se ale stane, když se potkají dva atomy s hodně odlišnou elektronegativitou?' },
         {
           type: 'check',
           question: {
@@ -229,14 +240,16 @@ const l31: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Typ vazby odhadneš z **rozdílu elektronegativit** ΔX. Od větší hodnoty odečítáš menší, takže ΔX nikdy není záporné.',
+          text: 'Elektronegativita jednoho atomu sama o vazbě nic neřekne; rozhoduje, jak moc se oba partneři liší. Typ vazby proto odhadneš z **rozdílu elektronegativit** ΔX. Od větší hodnoty odečítáš menší, takže ΔX nikdy není záporné.',
         },
         { type: 'formula', text: 'ΔX = X_{větší} − X_{menší}', caption: 'rozdíl elektronegativit vázaných atomů' },
+        { type: 'p', text: 'Čím větší ΔX, tím víc se sdílený pár posouvá k jednomu z atomů. Na stupnici je vidět, kde podle toho leží hranice mezi typy vazeb:' },
         {
           type: 'diagram',
           id: 'bond-type-scale',
           caption: 'Stupnice ΔX: pod 0,4 nepolární vazba, od 0,4 do 1,7 polární, od 1,7 iontová. Hranice jsou jen orientační. Oblaky ukazují, jak se elektrony posouvají k elektronegativnějšímu atomu, až vzniknou ionty.',
         },
+        { type: 'p', text: 'Každému úseku stupnice odpovídá jeden typ vazby. Tady jsou vedle sebe i s příklady látek, které znáš:' },
         {
           type: 'compare',
           columns: [
@@ -262,7 +275,7 @@ const l31: Lesson = {
         },
         {
           type: 'p',
-          text: 'U polární vazby nese elektronegativnější atom **částečný záporný náboj** δ− a druhý **částečný kladný náboj** δ+. Nejsou to celé náboje jako u iontů, jen posun elektronů. Vazbě se dvěma „póly“ říkáme **dipól**.',
+          text: 'U polární vazby nese elektronegativnější atom **částečný záporný náboj** δ− a druhý **částečný kladný náboj** δ+. Nejsou to celé náboje jako u iontů, jen posun elektronů. Vazbě se dvěma „póly“ říkáme **dipól**. Takhle vypadá u chlorovodíku:',
         },
         {
           type: 'molecule',
@@ -270,6 +283,7 @@ const l31: Lesson = {
           labels: ['$H^{δ+}–Cl^{δ−}$'],
           caption: 'Polární vazba v chlorovodíku: elektronegativnější chlor si přitahuje sdílený pár k sobě.',
         },
+        { type: 'p', text: 'Že je vazba v $HCl$ polární, se dá i spočítat. Postup je vždy stejný: najdi obě hodnoty X, odečti menší od větší a výsledek porovnej s hranicemi 0,4 a 1,7.' },
         {
           type: 'example',
           title: 'Jakou vazbu má chlorovodík?',
@@ -277,6 +291,7 @@ const l31: Lesson = {
           steps: ['X(Cl) = 3,16 a X(H) = 2,20', 'ΔX = 3,16 − 2,20 = 0,96', '0,4 ≤ 0,96 < 1,7, vazba je tedy polární kovalentní', 'Elektronegativnější chlor nese δ−, vodík δ+.'],
           answer: 'polární kovalentní vazba, $H^{δ+}–Cl^{δ−}$',
         },
+        { type: 'p', text: 'Stejný postup u kovu a nekovu dá úplně jiný výsledek. Zkus sodík a chlor v kuchyňské soli:' },
         {
           type: 'example',
           title: 'A kuchyňská sůl?',
@@ -290,6 +305,7 @@ const l31: Lesson = {
           title: 'Hranice nejsou ostré',
           text: 'Mezi typy vazeb je plynulý přechod. Fluorovodík $HF$ má ΔX = 1,78, a přesto tvoří molekuly s polární kovalentní vazbou. Užitečné pravidlo navíc: kov + nekov většinou dá iontovou vazbu, nekov + nekov kovalentní.',
         },
+        { type: 'p', text: 'Z ΔX tedy odhadneš, jestli atomy elektrony sdílejí, nebo předávají. V další lekci se podíváme zblízka na sdílení: kolik párů mohou atomy sdílet a jak to zapsat Lewisovým vzorcem.' },
         {
           type: 'check',
           question: {
@@ -414,7 +430,7 @@ const l32: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Kovalentní vazba** vzniká, když dva atomy **sdílejí elektronový pár**; obvykle každý přispěje jedním valenčním elektronem. Sdílený pár patří oběma atomům a oba se tak přiblíží konfiguraci vzácného plynu.',
+          text: 'V minulé lekci vyšlo, že nekovy s malým ΔX si elektrony nepředávají, ale sdílejí. Co to přesně znamená? **Kovalentní vazba** vzniká, když dva atomy **sdílejí elektronový pár**; obvykle každý přispěje jedním valenčním elektronem. Sdílený pár patří oběma atomům a oba se tak přiblíží konfiguraci vzácného plynu. Nejjednodušší případ je vodík:',
         },
         {
           type: 'structure',
@@ -423,13 +439,14 @@ const l32: Lesson = {
         },
         {
           type: 'p',
-          text: 'Páry, které se na vazbě nepodílejí, jsou **volné** (nevazebné) **elektronové páry**. Ve **valenčním** neboli **Lewisově vzorci** je kreslíme jako dvojici teček nebo čárku u symbolu. Atomy 2. periody se snaží mít kolem sebe osm elektronů (**oktetové pravidlo**), vodíku stačí dva jako heliu.',
+          text: 'Páry, které se na vazbě nepodílejí, jsou **volné** (nevazebné) **elektronové páry**. Ve **valenčním** neboli **Lewisově vzorci** je kreslíme jako dvojici teček nebo čárku u symbolu. Atomy 2. periody se snaží mít kolem sebe osm elektronů (**oktetové pravidlo**), vodíku stačí dva jako heliu. Volné páry poprvé uvidíš u chloru:',
         },
         {
           type: 'structure',
           art: art(' ··      ··', ':Cl  —  Cl:', ' ··      ··'),
           caption: 'Molekula chloru: jeden vazebný pár a na každém atomu tři volné páry. Každý chlor má kolem sebe oktet.',
         },
+        { type: 'p', text: 'Ve vzorci chloru jsou tedy dva druhy párů. Než půjdeme dál, ujasněme si názvy, které budeš potřebovat celou lekci:' },
         {
           type: 'keyterms',
           items: [
@@ -440,7 +457,7 @@ const l32: Lesson = {
         },
         {
           type: 'p',
-          text: 'Atomy mohou sdílet i víc párů: **jednoduchá vazba** je jeden sdílený pár, **dvojná vazba** dva a **trojná vazba** tři. Kyslík v $O2$ je spojen dvojnou vazbou, dusík v $N2$ trojnou. Čím víc sdílených párů, tím je vazba kratší a pevnější.',
+          text: 'Atomy mohou sdílet i víc párů: **jednoduchá vazba** je jeden sdílený pár, **dvojná vazba** dva a **trojná vazba** tři. Kyslík v $O2$ je spojen dvojnou vazbou, dusík v $N2$ trojnou. Čím víc sdílených párů, tím je vazba kratší a pevnější – přesně jak ukazovala tabulka délek v minulé lekci.',
         },
         {
           type: 'molecule',
@@ -448,11 +465,13 @@ const l32: Lesson = {
           labels: ['jednoduchá $Cl–Cl$', 'dvojná $O=O$', 'trojná $N≡N$'],
           caption: 'Otoč si je myší nebo prstem: čím víc sdílených párů, tím blíž jsou atomy u sebe.',
         },
+        { type: 'p', text: 'Na papíře zapisujeme stejné molekuly Lewisovým vzorcem. Spočítej si u každého atomu elektrony: vazebné a volné páry dohromady musí dát osm.' },
         {
           type: 'structure',
           art: art(' ··     ··', ' O   =  O          :N ≡ N:', ' ··     ··'),
           caption: 'Kyslík: dvojná vazba a dva volné páry na každém atomu. Dusík: trojná vazba a jeden volný pár na každém atomu.',
         },
+        { type: 'p', text: 'V minulé lekci jsme zjistili, že dvojná vazba není dvakrát pevnější než jednoduchá. Vysvětlení je v tom, že sdílené páry nejsou všechny stejné: orbitaly se mohou překrývat dvojím způsobem.' },
         {
           type: 'compare',
           columns: [
@@ -471,6 +490,7 @@ const l32: Lesson = {
           ],
           caption: 'Vazby se liší tím, jak se překrývají orbitaly.',
         },
+        { type: 'p', text: 'Jak se vazby σ a π skládají v jednoduché, dvojné a trojné vazbě, shrnuje tabulka:' },
         {
           type: 'table',
           headers: ['Vazba', 'Sdílené páry', 'Složení', 'Příklad'],
@@ -485,6 +505,7 @@ const l32: Lesson = {
           variant: 'remember',
           text: '==Mezi dvěma atomy je vždy jen jedna vazba σ; každá další vazba je π.== Vazba π je slabší a snáz se „otevře“, proto jsou látky s dvojnými vazbami reaktivnější (uvidíš v organické chemii v úrovni 8).',
         },
+        { type: 'p', text: 'Teď víš, z čeho se vazby skládají. U dvouatomových molekul se vzorec dá uhodnout, u větších ale potřebuješ postup, aby ti žádný elektron neutekl.' },
         {
           type: 'check',
           question: {
@@ -503,7 +524,7 @@ const l32: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Lewisův vzorec sestavíš podle pevného postupu. Potřebuješ jen počet valenčních elektronů, který vyčteš z čísla skupiny: 1. a 2. skupina má 1 a 2, skupiny 13 až 18 mají o deset méně, než je číslo skupiny.',
+          text: 'Vzorec $H2$ nebo $Cl2$ uhodneš, u $CO2$ nebo $HCN$ to už tak snadné není. Proto se Lewisův vzorec sestavuje podle pevného postupu. Potřebuješ jen počet valenčních elektronů, který vyčteš z čísla skupiny: 1. a 2. skupina má 1 a 2, skupiny 13 až 18 mají o deset méně, než je číslo skupiny. Pak už jen projdeš šest kroků:',
         },
         {
           type: 'process',
@@ -518,11 +539,13 @@ const l32: Lesson = {
           ],
           caption: 'Šest kroků k Lewisovu vzorci.',
         },
+        { type: 'p', text: 'U jednoduchých molekul s vodíkem stačí první čtyři kroky. Ověř si podle nich vzorce vody, amoniaku a methanu:' },
         {
           type: 'structure',
           art: art('    ··             ··            H', 'H — O — H     H — N — H     H — C — H', '    ··             |            |', '                   H            H'),
           caption: 'Voda (2 volné páry na kyslíku), amoniak (1 volný pár na dusíku) a methan (žádný volný pár).',
         },
+        { type: 'p', text: 'Krok „dořeš oktet“ přijde ke slovu až u molekul s násobnými vazbami. Projdeme celý postup na oxidu uhličitém:' },
         {
           type: 'example',
           title: 'Oxid uhličitý',
@@ -536,6 +559,7 @@ const l32: Lesson = {
           ],
           answer: '$O=C=O$ se dvěma volnými páry na každém kyslíku',
         },
+        { type: 'p', text: 'U kyanovodíku navíc rozhoduje druhý krok: vodík tvoří jen jednu vazbu, a proto nikdy nestojí uprostřed. Jinak je postup stejný:' },
         {
           type: 'example',
           title: 'Kyanovodík',
@@ -549,6 +573,7 @@ const l32: Lesson = {
           ],
           answer: '$H–C≡N$ s jedním volným párem na dusíku',
         },
+        { type: 'p', text: 'Výsledek si nakresli celý, i s volným párem na dusíku – bez něj by dusík neměl oktet.' },
         {
           type: 'structure',
           art: art('H — C ≡ N:'),
@@ -560,6 +585,7 @@ const l32: Lesson = {
           title: 'Ion kreslíš stejně',
           text: 'U iontu jen v prvním kroku uprav počet elektronů: za každý záporný náboj jeden elektron přidej, za každý kladný jeden uber. Hotový vzorec dej do hranaté závorky a náboj napiš vpravo nahoru.',
         },
+        { type: 'p', text: 'Postup tedy funguje pro molekuly i ionty. U amonného kationtu se ale skrývá zvláštnost: jednu z jeho vazeb tvoří pár, který dodal jen dusík.' },
         {
           type: 'check',
           question: {
@@ -577,7 +603,7 @@ const l32: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Někdy dodá oba elektrony do vazby jen jeden atom. Takové vazbě říkáme **koordinační** (donor-akceptorová, anglicky *dative*) **vazba**.',
+          text: 'Zatím do každé vazby přispěl každý atom jedním elektronem. Někdy ale dodá oba elektrony jen jeden atom. Takové vazbě říkáme **koordinační** (donor-akceptorová, anglicky *dative*) **vazba**. Potřebuje dva partnery s opačnými rolemi:',
         },
         {
           type: 'keyterms',
@@ -586,16 +612,19 @@ const l32: Lesson = {
             { term: 'akceptor', def: 'atom nebo ion s prázdným orbitalem, který pár přijme (např. $H^+$, který nemá žádný elektron)' },
           ],
         },
+        { type: 'p', text: 'Typickým akceptorem je proton $H^+$: sám elektrony nemá, a tak rád přijme celý pár. Donorem může být dusík amoniaku se svým volným párem:' },
         {
           type: 'reaction',
           equation: 'NH3 + H^+ -> NH4^+',
           caption: 'Vznik amonného kationtu: dusík poskytne volný pár iontu $H^+$.',
         },
+        { type: 'p', text: 'Stejně se proton naváže na volný pár kyslíku ve vodě:' },
         {
           type: 'reaction',
           equation: 'H2O + H^+ -> H3O^+',
           caption: 'Vznik oxoniového kationtu: donorem je kyslík vody.',
         },
+        { type: 'p', text: 'Ve vzorci se koordinační vazba někdy kreslí šipkou, abys viděl/a, odkud pár přišel:' },
         {
           type: 'structure',
           art: art('      H     +          ··    +', '      |            H — O — H', '  H — N — H            ↓', '      ↓                H', '      H'),
@@ -614,6 +643,7 @@ const l32: Lesson = {
           art: art(':C ≡ O:'),
           caption: 'Oxid uhelnatý: 4 + 6 = 10 elektronů, tedy 5 párů. Tři tvoří trojnou vazbu, z toho jeden je koordinační (oba elektrony od kyslíku).',
         },
+        { type: 'p', text: 'Ve všech třech částicích je tedy jedna vazba koordinační. Zkus ji najít na 3D modelech:' },
         {
           type: 'molecule',
           molecules: ['NH4+', 'H3O+', 'CO'],
@@ -626,6 +656,7 @@ const l32: Lesson = {
           title: 'Proč je $CO$ tak jedovatý',
           text: 'Atom železa v hemoglobinu tvé krve váže kyslík koordinační vazbou. Oxid uhelnatý se na stejné místo váže volným párem uhlíku, a to asi 200krát pevněji než kyslík. Krev pak kyslík nepřenáší. O takových sloučeninách (komplexech) uslyšíš víc v úrovni 7.',
         },
+        { type: 'p', text: 'Šipka ve vzorci tedy prozrazuje jen původ elektronů. Jak ale u atomu poznat, že dal do vazeb víc, než by „měl“? K tomu slouží formální náboj.' },
         {
           type: 'check',
           question: {
@@ -643,13 +674,14 @@ const l32: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'V amonném kationtu dal dusík do vazeb víc, než kolik z nich „má“. Tuhle nerovnováhu vyjadřuje **formální náboj**: počítáme, jako by se každý vazebný pár dělil mezi oba atomy přesně napůl.',
+          text: 'V amonném kationtu dal dusík do vazeb víc, než kolik z nich „má“. Tuhle nerovnováhu vyjadřuje **formální náboj**: počítáme, jako by se každý vazebný pár dělil mezi oba atomy přesně napůl. Porovnáš tedy, kolik elektronů má atom sám o sobě a kolik mu jich ve vzorci „patří“:',
         },
         {
           type: 'formula',
           text: 'formální náboj = V − N − B/2',
           caption: 'V = valenční elektrony volného atomu, N = elektrony ve volných párech atomu, B/2 = počet vazeb atomu (polovina vazebných elektronů)',
         },
+        { type: 'p', text: 'Vyzkoušej vzorec na částicích s koordinační vazbou z minulého oddílu:' },
         {
           type: 'table',
           headers: ['Částice', 'Atom', 'V', 'N', 'Vazby', 'Formální náboj'],
@@ -661,6 +693,7 @@ const l32: Lesson = {
           ],
           caption: 'Vodíky mají ve všech případech formální náboj 0 (1 − 0 − 1).',
         },
+        { type: 'p', text: 'Všimni si, že u $CO$ se náboje +1 a −1 vyruší a u $NH4^+$ dají dohromady náboj iontu. Pro formální náboje platí tři pravidla:' },
         {
           type: 'list',
           items: [
@@ -669,11 +702,13 @@ const l32: Lesson = {
             'Když už záporný formální náboj být musí, patří **elektronegativnějšímu** atomu.',
           ],
         },
+        { type: 'p', text: 'K čemu to je? Pravidla pomohou vybrat mezi vzorci, které oba splňují oktetové pravidlo. Třeba $CO2$ se dá nakreslit dvěma způsoby:' },
         {
           type: 'structure',
           art: art(' ··      ··              ··', ' O = C = O      :O ≡ C — O:', ' ··      ··              ··', ' 0   0   0      +1   0  −1', ' vzorec A        vzorec B'),
           caption: 'Dva vzorce $CO2$, oba s oktety. Pod atomy jsou formální náboje.',
         },
+        { type: 'p', text: 'Oktet tady nerozhodne. Spočítejme formální náboje v obou vzorcích a porovnejme je podle pravidel:' },
         {
           type: 'example',
           title: 'Který vzorec oxidu uhličitého je lepší?',
@@ -691,6 +726,7 @@ const l32: Lesson = {
           title: 'Formální náboj není oxidační číslo',
           text: 'Formální náboj dělí vazebné páry napůl. Oxidační číslo, které poznáš v lekci o chemických vzorcích, je naopak celé přiděluje elektronegativnějšímu atomu. Uhlík v $CO$ má formální náboj −1, ale oxidační číslo +II.',
         },
+        { type: 'p', text: 'Formální náboje nám tedy pomohou vybrat lepší ze dvou vzorců. U ozonu ale narazíme na případ, kdy jsou dva vzorce úplně rovnocenné.' },
         {
           type: 'check',
           question: {
@@ -708,7 +744,7 @@ const l32: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Podle postupu vyjde ozonu $O3$ jedna vazba dvojná a druhá jednoduchá. Měření ale ukazuje, že ==obě vazby $O–O$ jsou stejně dlouhé (128 pm)==, někde mezi jednoduchou (148 pm) a dvojnou (121 pm).',
+          text: 'Vrať se k ozonu z úvodu lekce. Podle postupu mu vyjde jedna vazba dvojná a druhá jednoduchá. Měření ale ukazuje, že ==obě vazby $O–O$ jsou stejně dlouhé (128 pm)==, někde mezi jednoduchou (148 pm) a dvojnou (121 pm).',
         },
         {
           type: 'structure',
@@ -717,13 +753,14 @@ const l32: Lesson = {
         },
         {
           type: 'p',
-          text: 'Žádný z obou vzorců sám o sobě neplatí. Skutečná molekula je **rezonanční hybrid**, jakýsi „průměr“ všech **rezonančních** (mezních) **struktur**. Elektrony vazby π nepatří jedné vazbě, ale jsou **delokalizované** přes celou částici. Mezi struktury píšeme obousměrnou šipku ↔.',
+          text: 'Žádný z obou vzorců sám o sobě neplatí. Skutečná molekula je **rezonanční hybrid**, jakýsi „průměr“ všech **rezonančních** (mezních) **struktur**. Elektrony vazby π nepatří jedné vazbě, ale jsou **delokalizované** přes celou částici. Mezi struktury píšeme obousměrnou šipku ↔. U dusičnanového aniontu jsou struktury dokonce tři:',
         },
         {
           type: 'diagram',
           id: 'resonance',
           caption: 'Tři rezonanční struktury dusičnanového aniontu $NO3^-$ a jejich hybrid. Skutečný ion má všechny tři vazby N–O stejně dlouhé a záporný náboj rozprostřený rovnoměrně na tři kyslíky.',
         },
+        { type: 'p', text: 'Uhličitanový anion je stavěný podobně jako dusičnanový. Projdi postup a sleduj, kolika způsoby se dá dvojná vazba umístit:' },
         {
           type: 'example',
           title: 'Uhličitanový anion',
@@ -738,6 +775,7 @@ const l32: Lesson = {
           ],
           answer: 'Skutečný ion je hybrid tří struktur: všechny vazby C–O jsou stejné, něco mezi jednoduchou a dvojnou, a náboj 2− se dělí mezi tři kyslíky.',
         },
+        { type: 'p', text: 'Ve skutečnosti tedy žádná z vazeb není čistě dvojná ani jednoduchá. Na modelech všech tří částic je to vidět:' },
         {
           type: 'molecule',
           molecules: ['O3', 'NO3-', 'CO3^2-'],
@@ -750,6 +788,7 @@ const l32: Lesson = {
           title: 'Molekula nepřeskakuje',
           text: 'Rezonance neznamená, že se ozon rychle přepíná mezi dvěma vzorci. Je to jako s mezkem: kříženec koně a oslice není chvíli kůň a chvíli osel, ale pořád mezek. Rezonanční struktury jsou jen naše pomůcka, jak na papíře zakreslit delokalizované elektrony.',
         },
+        { type: 'p', text: 'Rezonance tedy řeší případy, kdy elektronů je dost, jen se nedají umístit jedním vzorcem. Zbývají molekuly, kde oktet nevyjde vůbec.' },
         {
           type: 'check',
           question: {
@@ -767,7 +806,7 @@ const l32: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Oktetové pravidlo je šikovná pomůcka, ale ne zákon přírody. Výjimky mají tři podoby.',
+          text: 'Všechny dosavadní vzorce stály na oktetovém pravidle. Je to ale šikovná pomůcka, ne zákon přírody. Výjimky mají tři podoby:',
         },
         {
           type: 'iconlist',
@@ -777,12 +816,14 @@ const l32: Lesson = {
             { icon: 'electron', title: 'Lichý počet elektronů', text: '$NO$ (11 elektronů) a $NO2$ (17 elektronů) mají jeden nepárový elektron, jsou to **radikály**' },
           ],
         },
+        { type: 'p', text: 'První dva typy výjimek ukazují, jak moc se může lišit počet elektronů kolem centrálního atomu – od šesti až do dvanácti:' },
         {
           type: 'molecule',
           molecules: ['BF3', 'PCl5', 'SF6'],
           labels: ['$BF3$: 6 elektronů kolem B', '$PCl5$: 10 elektronů kolem P', '$SF6$: 12 elektronů kolem S'],
           caption: 'Tři výjimky z oktetu ve 3D. Jaký mají tvar, rozebereme v příští lekci.',
         },
+        { type: 'p', text: 'Postup pro Lewisův vzorec platí i pro výjimky. U fosforu jen zjistíš, že elektronů kolem něj je na konci víc než osm:' },
         {
           type: 'example',
           title: 'Chlorid fosforečný',
@@ -799,6 +840,7 @@ const l32: Lesson = {
           type: 'p',
           text: 'Proč smí fosfor a síra mít víc než osm elektronů? Jsou větší, vejde se kolem nich víc sousedů a jejich valenční vrstva má víc orbitalů. Prvky 2. periody (C, N, O, F) mají jen čtyři valenční orbitaly (2s a tři 2p), a proto ==kolem nich nikdy nebude víc než osm elektronů.==',
         },
+        { type: 'p', text: 'A co bor, kterému naopak dva elektrony do oktetu chybí? Volné místo mu může zaplnit cizí volný pár – koordinační vazbou, jakou už znáš:' },
         {
           type: 'structure',
           art: art('    F     H', '    |     |', 'F — B  ←  N — H', '    |     |', '    F     H'),
@@ -810,6 +852,7 @@ const l32: Lesson = {
           title: 'Proč v $BF3$ nekreslíme dvojnou vazbu',
           text: 'Z volného páru fluoru by šla udělat dvojná vazba B=F a bor by měl oktet. Fluor by ale nesl formální náboj +1, a to nejelektronegativnějšímu prvku nesedí. Vzorec se třemi jednoduchými vazbami má všechny formální náboje 0, a proto je lepší.',
         },
+        { type: 'p', text: 'Teď umíš nakreslit Lewisův vzorec skoro každé molekuly. Vzorec na papíře je ale plochý – v příští lekci zjistíš, jaký tvar mají molekuly v prostoru.' },
         {
           type: 'check',
           question: {
@@ -913,7 +956,7 @@ const l37: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Tvar molekuly předpovíš modelem **VSEPR** (z anglického *Valence Shell Electron Pair Repulsion*, odpuzování elektronových párů valenční vrstvy). ==Elektronové páry kolem centrálního atomu se odpuzují, a proto se od sebe vzdálí co nejvíc.==',
+          text: 'Lewisův vzorec z minulé lekce říká, kdo je s kým spojený, ale ne, jak molekula vypadá v prostoru. Tvar molekuly předpovíš modelem **VSEPR** (z anglického *Valence Shell Electron Pair Repulsion*, odpuzování elektronových párů valenční vrstvy). ==Elektronové páry kolem centrálního atomu se odpuzují, a proto se od sebe vzdálí co nejvíc.== Abys to mohl/a použít, potřebuješ tři pojmy:',
         },
         {
           type: 'keyterms',
@@ -923,6 +966,7 @@ const l37: Lesson = {
             { term: 'tvar molekuly', def: 'rozmístění atomů v prostoru; volné páry do něj nezahrnujeme, i když ho ovlivňují' },
           ],
         },
+        { type: 'p', text: 'S nimi už tvar určíš v pěti krocích. Prvním je Lewisův vzorec – bez něj nevíš, kolik oblastí centrální atom má:' },
         {
           type: 'process',
           layout: 'flow',
@@ -937,19 +981,21 @@ const l37: Lesson = {
         },
         {
           type: 'p',
-          text: 'Proč volný pár odpuzuje víc než vazebný? Vazebný pár drží dvě jádra a je protažený mezi ně. Volný pár drží jen jedno jádro, je blíž centrálnímu atomu a rozprostře se do širšího prostoru.',
+          text: 'Poslední krok si zaslouží vysvětlení. Proč volný pár odpuzuje víc než vazebný? Vazebný pár drží dvě jádra a je protažený mezi ně. Volný pár drží jen jedno jádro, je blíž centrálnímu atomu a rozprostře se do širšího prostoru. Síla odpuzování proto klesá v tomto pořadí:',
         },
         {
           type: 'formula',
           text: 'volný–volný > volný–vazebný > vazebný–vazebný',
           caption: 'síla odpuzování mezi elektronovými páry',
         },
+        { type: 'p', text: 'Jak velký je ten rozdíl? Porovnej tři molekuly se čtyřmi oblastmi, které se liší jen počtem volných párů:' },
         {
           type: 'molecule',
           molecules: ['CH4', 'NH3', 'H2O'],
           labels: ['methan: 109,5°', 'amoniak: 107°', 'voda: 104,5°'],
           caption: 'Ve všech třech míří čtyři elektronové oblasti do rohů čtyřstěnu. Každý volný pár ale stlačí vazebné úhly o kousek víc.',
         },
+        { type: 'p', text: 'Teď celý postup krok za krokem na amoniaku:' },
         {
           type: 'example',
           title: 'Tvar amoniaku',
@@ -968,6 +1014,7 @@ const l37: Lesson = {
           title: 'Balonkový pokus',
           text: 'Nafoukni čtyři stejné balonky a svaž je uzly k sobě. Samy se natočí do rohů čtyřstěnu jako vazby v methanu. Se dvěma balonky dostaneš přímku, se třemi trojúhelník. Balonky se „odpuzují“ stejně jako elektronové páry.',
         },
+        { type: 'p', text: 'Postup i s opravou úhlů tedy znáš. Teď ho použijeme na nejčastější molekuly, které mají kolem centrálního atomu dvě až čtyři oblasti.' },
         {
           type: 'check',
           question: {
@@ -991,13 +1038,14 @@ const l37: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Většina molekul, které potkáš, má kolem centrálního atomu dvě, tři nebo čtyři elektronové oblasti. Podle toho, kolik z nich jsou volné páry, vznikne pět základních tvarů.',
+          text: 'Většina molekul, které potkáš, má kolem centrálního atomu dvě, tři nebo čtyři elektronové oblasti. Podle toho, kolik z nich jsou volné páry, vznikne pět základních tvarů. Prohlédni si je nejdřív na obrázku:',
         },
         {
           type: 'diagram',
           id: 'vsepr-shapes',
           caption: 'Pět základních tvarů molekul s vazebnými úhly. Klínová vazba míří před rovinu nákresu, čárkovaná za ni.',
         },
+        { type: 'p', text: 'Tabulka říká totéž v číslech. Čti ji po řádcích: nejdřív počet oblastí, pak kolik z nich jsou volné páry, a teprve z toho tvar.' },
         {
           type: 'table',
           headers: ['Oblasti', 'Vazby + volné páry', 'Tvar', 'Úhel', 'Příklady'],
@@ -1011,12 +1059,14 @@ const l37: Lesson = {
           ],
           caption: 'Tvary pro dvě až čtyři elektronové oblasti.',
         },
+        { type: 'p', text: 'Tvary bez volných párů jsou nejpravidelnější. Otoč si modely a najdi na nich úhly z tabulky:' },
         {
           type: 'molecule',
           molecules: ['BeCl2', 'BF3', 'CH4'],
           labels: ['$BeCl2$: lineární, 180°', '$BF3$: trojúhelník, 120°', '$CH4$: tetraedr, 109,5°'],
           caption: 'Tři tvary bez volných párů. Chlorid beryllitý má tvar přímky v plynném stavu; pevný tvoří dlouhé řetězce.',
         },
+        { type: 'p', text: 'Pozor, oblast není totéž co vazba: dvojná vazba se počítá jako jedna oblast. Proč na tom záleží, ukáže dvojice tříatomových molekul, které na papíře vypadají podobně:' },
         {
           type: 'example',
           title: 'Proč je $CO2$ rovný a $SO2$ zalomený',
@@ -1029,6 +1079,7 @@ const l37: Lesson = {
           ],
           answer: '$CO2$ je lineární (180°), $SO2$ lomený (asi 119°)',
         },
+        { type: 'p', text: 'Celý rozdíl dělá jediný volný pár na síře. Na modelech je vidět na první pohled:' },
         {
           type: 'molecule',
           molecules: ['CO2', 'SO2'],
@@ -1040,6 +1091,7 @@ const l37: Lesson = {
           title: 'Uspořádání oblastí není tvar molekuly',
           text: 'Ve vodě míří čtyři oblasti do rohů čtyřstěnu, ale molekula tetraedrická není: atomy tvoří lomený tvar. Tvar vždy pojmenuj jen podle atomů.',
         },
+        { type: 'p', text: 'Pro dvě až čtyři oblasti teď určíš tvar téměř každé molekuly. Co ale prvky, které mají kolem sebe víc než oktet?' },
         {
           type: 'check',
           question: {
@@ -1063,7 +1115,7 @@ const l37: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Prvky 3. a vyšší periody mohou mít rozšířený oktet, a tedy 5 nebo 6 elektronových oblastí. Pět oblastí tvoří **trigonální bipyramidu**: tři vazby leží v rovině „rovníku“ se 120° a dvě míří nahoru a dolů, k rovníku kolmo (90°). Šest oblastí tvoří **oktaedr** (osmistěn) a všechny sousední úhly jsou 90°.',
+          text: 'V minulé lekci jsi poznal/a výjimky z oktetu $PCl5$ a $SF6$. Prvky 3. a vyšší periody mohou mít rozšířený oktet, a tedy 5 nebo 6 elektronových oblastí. Pět oblastí tvoří **trigonální bipyramidu**: tři vazby leží v rovině „rovníku“ se 120° a dvě míří nahoru a dolů, k rovníku kolmo (90°). Šest oblastí tvoří **oktaedr** (osmistěn) a všechny sousední úhly jsou 90°. Prohlédni si oba tvary na modelech:',
         },
         {
           type: 'molecule',
@@ -1071,6 +1123,7 @@ const l37: Lesson = {
           labels: ['$PCl5$: trigonální bipyramida', '$SF6$: oktaedr', '$XeF4$: čtvercová'],
           caption: 'Otoč si je a najdi úhly 90° a 120°. Ve $XeF4$ jsou nad a pod rovinou čtverce dva volné páry xenonu, které model neukazuje.',
         },
+        { type: 'p', text: 'Stejně jako u čtyř oblastí mohou i tady některé rohy obsadit volné páry. Vznikne tak celá rodina tvarů:' },
         {
           type: 'table',
           headers: ['Oblasti', 'Vazby + volné páry', 'Tvar', 'Úhly', 'Příklad'],
@@ -1086,7 +1139,7 @@ const l37: Lesson = {
         },
         {
           type: 'p',
-          text: 'Kam se volné páry posadí? V bipyramidě do roviny rovníku, kde mají víc místa. V oktaedru jsou si všechny rohy rovné, ale ==dva volné páry se postaví naproti sobě==, co nejdál od sebe. Proto je $XeF4$ plochý čtverec.',
+          text: 'Kam se volné páry posadí? V bipyramidě do roviny rovníku, kde mají víc místa. V oktaedru jsou si všechny rohy rovné, ale ==dva volné páry se postaví naproti sobě==, co nejdál od sebe. Proto je $XeF4$ plochý čtverec. Ověřme si to výpočtem:',
         },
         {
           type: 'example',
@@ -1106,6 +1159,7 @@ const l37: Lesson = {
           title: 'Vzácný plyn, a přece sloučenina',
           text: 'Ještě v roce 1961 stálo v učebnicích, že vzácné plyny žádné sloučeniny netvoří. O rok později připravil Neil Bartlett první sloučeninu xenonu a brzy nato vznikl i $XeF4$. Fluorid sírový $SF6$ zase izoluje vysokonapěťové vypínače v rozvodnách, je ale nejsilnějším známým skleníkovým plynem.',
         },
+        { type: 'p', text: 'Tvar teď určíš pro dvě až šest oblastí. Zbývá vysvětlit, jak mohou orbitaly atomu mířit právě do těchto směrů – na to je hybridizace.' },
         {
           type: 'check',
           question: {
@@ -1124,7 +1178,7 @@ const l37: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Uhlík má konfiguraci 1s^{2} 2s^{2} 2p^{2}: jen dva nepárové elektrony a orbitaly p svírají 90°. Methan přitom má čtyři úplně stejné vazby s úhly 109,5°. Rozpor vysvětluje **hybridizace**: orbitaly atomu se před vznikem vazeb „smíchají“ na nové, stejné hybridní orbitaly, které míří tam, kam je potřeba.',
+          text: 'VSEPR předpoví úhly, ale neříká nic o orbitalech, ze kterých vazby vznikají. A tady narazíme na rozpor. Uhlík má konfiguraci 1s^{2} 2s^{2} 2p^{2}: jen dva nepárové elektrony a orbitaly p svírají 90°. Methan přitom má čtyři úplně stejné vazby s úhly 109,5°. Rozpor vysvětluje **hybridizace**: orbitaly atomu se před vznikem vazeb „smíchají“ na nové, stejné hybridní orbitaly, které míří tam, kam je potřeba. U methanu to proběhne ve čtyřech krocích:',
         },
         {
           type: 'process',
@@ -1137,11 +1191,13 @@ const l37: Lesson = {
           ],
           caption: 'Jak vzniknou čtyři stejné vazby v methanu.',
         },
+        { type: 'p', text: 'Uhlík ale nemusí smíchat všechny tři orbitaly p. Podle toho, kolik jich do míchání vstoupí, vznikne jeden ze tří typů hybridizace:' },
         {
           type: 'diagram',
           id: 'hybridization',
           caption: 'Hybridizace uhlíku: sp³ (čtyři orbitaly do čtyřstěnu, methan), sp² (tři orbitaly v rovině se 120° a kolmý nehybridizovaný orbital p, ethen) a sp (dva orbitaly v přímce a dva kolmé orbitaly p, ethyn).',
         },
+        { type: 'p', text: 'Všimni si, že hybridní orbitaly míří přesně pod úhly, které předpověděl VSEPR. Tabulka proto spojuje obě teorie:' },
         {
           type: 'table',
           headers: ['Oblasti', 'Hybridizace', 'Uspořádání', 'Úhel', 'Příklady'],
@@ -1159,6 +1215,7 @@ const l37: Lesson = {
           variant: 'remember',
           text: '==Počet elektronových oblastí = počet hybridních orbitalů.== Stačí spočítat oblasti: 2 znamenají sp, 3 sp², 4 sp³. Hybridní orbitaly tvoří vazby σ a nesou volné páry; vazby π vznikají z orbitalů p, které se hybridizace neúčastnily.',
         },
+        { type: 'p', text: 'Z počtu oblastí tedy určíš hybridizaci. Nejlépe je to vidět na třech nejjednodušších uhlovodících se dvěma uhlíky.' },
         {
           type: 'check',
           question: {
@@ -1177,7 +1234,7 @@ const l37: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Uhlík umí všechny tři hybridizace, a proto je organická chemie tak pestrá (úroveň 8). V **ethanu** má každý uhlík hybridizaci sp³ a atomy spojuje jednoduchá vazba σ. V **ethenu** je uhlík sp²: tři hybridní orbitaly tvoří vazby σ a zbylé orbitaly p se překryjí bokem nad a pod rovinou molekuly ve vazbu π. V **ethynu** je uhlík sp a dva zbylé orbitaly p dají dvě vazby π.',
+          text: 'Uhlík umí všechny tři hybridizace, a proto je organická chemie tak pestrá (úroveň 8). V **ethanu** má každý uhlík hybridizaci sp³ a atomy spojuje jednoduchá vazba σ. V **ethenu** je uhlík sp²: tři hybridní orbitaly tvoří vazby σ a zbylé orbitaly p se překryjí bokem nad a pod rovinou molekuly ve vazbu π. V **ethynu** je uhlík sp a dva zbylé orbitaly p dají dvě vazby π. Porovnej tvary všech tří molekul:',
         },
         {
           type: 'molecule',
@@ -1185,6 +1242,7 @@ const l37: Lesson = {
           labels: ['ethan: sp³, 109,5°', 'ethen: sp², 120°', 'ethyn: sp, 180°'],
           caption: 'Ethan je prostorový, ethen celý leží v jedné rovině a ethyn je rovný jako tyčka.',
         },
+        { type: 'p', text: 'Tvar je jen jedna stránka věci. Z hybridizace plyne i to, kolik vazeb σ a π molekula má:' },
         {
           type: 'table',
           headers: ['Molekula', 'Hybridizace C', 'Vazba C–C', 'Vazby σ', 'Vazby π', 'Tvar'],
@@ -1195,6 +1253,7 @@ const l37: Lesson = {
           ],
           caption: 'Vazby σ: všechny vazby $C–H$ plus jedna vazba σ mezi uhlíky.',
         },
+        { type: 'p', text: 'Uhlíky v jedné molekule nemusí mít stejnou hybridizaci. Pak ji určíš u každého uhlíku zvlášť, podle počtu jeho oblastí:' },
         {
           type: 'example',
           title: 'Propen',
@@ -1213,6 +1272,7 @@ const l37: Lesson = {
           title: 'Dvojná vazba se neotáčí',
           text: 'Kolem jednoduché vazby σ se obě poloviny ethanu volně otáčejí. U ethenu by otočení roztrhlo boční překryv vazby π, a tak je molekula tuhá a plochá. Díky tomu existují izomery *cis* a *trans* (úroveň 8). A ještě jedna perlička: ethen je rostlinný hormon, který urychluje zrání ovoce. Proto banány v sáčku s jablkem zežloutnou rychleji.',
         },
+        { type: 'p', text: 'Hybridizace tedy spojuje tvar molekuly s vazbami σ a π. Zbývá poslední otázka z úvodu: proč je voda polární a $CO2$ ne?' },
         {
           type: 'check',
           question: {
@@ -1230,7 +1290,7 @@ const l37: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Molekula je **polární**, když má jeden konec trochu záporný a druhý trochu kladný. Každá polární vazba je jako malá šipka (dipól) mířící k elektronegativnějšímu atomu. ==Šipky se sčítají podle tvaru molekuly: když se díky souměrnosti vyruší, molekula je nepolární.==',
+          text: 'Odpověď spojuje polaritu vazeb z první lekce s tvarem molekuly. Molekula je **polární**, když má jeden konec trochu záporný a druhý trochu kladný. Každá polární vazba je jako malá šipka (dipól) mířící k elektronegativnějšímu atomu. ==Šipky se sčítají podle tvaru molekuly: když se díky souměrnosti vyruší, molekula je nepolární.== Jak moc je molekula polární, vyjadřuje jedno číslo:',
         },
         {
           type: 'keyterms',
@@ -1239,11 +1299,13 @@ const l37: Lesson = {
             { term: 'nepolární molekula', def: 'molekula s dipólovým momentem 0: nepolární vazby, nebo souměrný tvar' },
           ],
         },
+        { type: 'p', text: 'Jak se šipky sčítají, ukazuje chlorovodík z první lekce a dvojice z úvodu, voda a $CO2$:' },
         {
           type: 'diagram',
           id: 'polarity',
           caption: 'Dipóly vazeb se sčítají jako šipky. V $HCl$ míří dipól k chloru. V lomené $H2O$ míří oba dipóly ke kyslíku a sečtou se: voda je polární. V lineárním $CO2$ táhnou obě polární vazby stejně silně na opačné strany a vyruší se: molekula je nepolární.',
         },
+        { type: 'p', text: 'Stejné pravidlo platí pro všechny tvary, které už znáš. Porovnej tvar každé molekuly s jejím dipólovým momentem:' },
         {
           type: 'table',
           headers: ['Molekula', 'Tvar', 'μ (D)', 'Polární?'],
@@ -1257,12 +1319,14 @@ const l37: Lesson = {
           ],
           caption: 'Dipólové momenty několika molekul.',
         },
+        { type: 'p', text: 'Nejzajímavější je poslední dvojice: obě molekuly mají tvar čtyřstěnu, a přesto se v polaritě liší. Prohlédni si je:' },
         {
           type: 'molecule',
           molecules: ['CCl4', 'CH2Cl2'],
           labels: ['$CCl4$: μ = 0', '$CH2Cl2$: μ = 1,6 D'],
           caption: 'Tetrachlormethan a dichlormethan: oba mají tvar čtyřstěnu, liší se souměrností.',
         },
+        { type: 'p', text: 'Proč tomu tak je, zjistíš, když dipóly vazeb sečteš krok za krokem:' },
         {
           type: 'example',
           title: '$CCl4$ proti $CH2Cl2$',
@@ -1274,6 +1338,7 @@ const l37: Lesson = {
           ],
           answer: '$CCl4$ je souměrný a nepolární, $CH2Cl2$ nesouměrný a polární (μ = 1,6 D)',
         },
+        { type: 'p', text: 'Pozor, tady se chybuje nejčastěji: polární vazba ještě neznamená polární molekulu. Rozdíl shrnuje srovnání:' },
         {
           type: 'compare',
           columns: [
@@ -1303,6 +1368,7 @@ const l37: Lesson = {
           title: 'Proč mikrovlnka ohřeje polévku',
           text: 'Mikrovlny rozkmitají polární molekuly vody: dipóly se v rychle se měnícím elektrickém poli neustále natáčejí a třou o sousedy. Suchý talíř bez vody se proto ohřívá mnohem pomaleji než jídlo.',
         },
+        { type: 'p', text: 'Z tvaru a polarity vazeb teď poznáš, jestli je molekula polární. Zatím jsme ale zkoumali jen molekuly; v příští lekci přijdou na řadu látky bez molekul – iontové krystaly a kovy.' },
         {
           type: 'check',
           question: {
@@ -1409,21 +1475,24 @@ const l33: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Při velkém rozdílu elektronegativit (ΔX ≥ 1,7), typicky mezi kovem a nekovem, atomy elektrony **předávají**. Kov odevzdá valenční elektrony a stane se **kationtem**, nekov je přijme a stane se **aniontem**.',
+          text: 'Minulé dvě lekce patřily sdílení elektronů. Teď se vrátíme k druhé cestě z první lekce: při velkém rozdílu elektronegativit (ΔX ≥ 1,7), typicky mezi kovem a nekovem, atomy elektrony **předávají**. Kov odevzdá valenční elektrony a stane se **kationtem**, nekov je přijme a stane se **aniontem**. Pro sodík a chlor to zapíšeš takto:',
         },
         { type: 'formula', text: '$Na -> Na^+ + e^-$ a $Cl + e^- -> Cl^-$', caption: 'sodík elektron ztrácí, chlor ho získává' },
+        { type: 'p', text: 'Proč odevzdá sodík právě jeden elektron? Podívej se, jak vypadá jeho kation, a porovnej ho se vzácným plynem:' },
         {
           type: 'diagram',
           id: 'bohr',
           props: { z: 11, ion: 1, label: 'Na⁺' },
           caption: 'Kation $Na^+$: 11 protonů a 10 elektronů (2, 8), stejné uspořádání jako neon.',
         },
+        { type: 'p', text: 'Chlor naopak jeden elektron přijal a i on skončil s oktetem:' },
         {
           type: 'diagram',
           id: 'bohr',
           props: { z: 17, ion: -1, label: 'Cl⁻' },
           caption: 'Anion $Cl^-$: 17 protonů a 18 elektronů (2, 8, 8), stejné uspořádání jako argon.',
         },
+        { type: 'p', text: 'Oba ionty mají tedy uspořádání vzácného plynu. Ve skutečnosti probíhá taková výměna při reakci sodíku s chlorem:' },
         {
           type: 'reaction',
           equation: '2Na + Cl2 -> 2NaCl',
@@ -1431,7 +1500,7 @@ const l33: Lesson = {
         },
         {
           type: 'p',
-          text: '==**Iontová vazba** je elektrostatické přitahování opačně nabitých iontů.== Na rozdíl od kovalentní vazby nemá směr: každý ion přitahuje všechny opačně nabité sousedy kolem sebe.',
+          text: 'Vzniklé ionty se pak navzájem drží. ==**Iontová vazba** je elektrostatické přitahování opačně nabitých iontů.== Na rozdíl od kovalentní vazby nemá směr: každý ion přitahuje všechny opačně nabité sousedy kolem sebe. Kolik elektronů atom odevzdá nebo přijme, poznáš podle jeho skupiny:',
         },
         {
           type: 'table',
@@ -1446,6 +1515,7 @@ const l33: Lesson = {
           ],
           caption: 'Náboje iontů hlavních skupin odpovídají tomu, kolik elektronů chybí nebo přebývá do oktetu.',
         },
+        { type: 'p', text: 'Z tabulky tedy vyčteš náboj iontu. Jak z nábojů složit vzorec celé sloučeniny, ukáže další oddíl.' },
         {
           type: 'check',
           question: {
@@ -1463,7 +1533,7 @@ const l33: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Iontová sloučenina je jako celek **elektricky neutrální**: kladných nábojů je přesně tolik jako záporných. Vzorec udává nejmenší celočíselný poměr iontů.',
+          text: 'Když víš, jaké náboje ionty nesou, sestavíš vzorec jednoduchou úvahou. Iontová sloučenina je jako celek **elektricky neutrální**: kladných nábojů je přesně tolik jako záporných. Vzorec udává nejmenší celočíselný poměr iontů. Nejdřív jednoduchý případ:',
         },
         {
           type: 'example',
@@ -1472,11 +1542,13 @@ const l33: Lesson = {
           steps: ['Jeden ion $Ca^{2+}$ nese náboj 2+.', 'Jeden ion $Cl^-$ nese náboj 1−, na vyrovnání jsou potřeba dva.', '2+ a 2 · (1−) dává dohromady 0.'],
           answer: '$CaCl2$',
         },
+        { type: 'p', text: 'Stejný poměr 1 : 2 je vidět i v rovnici, kterou chlorid vápenatý vzniká z prvků:' },
         {
           type: 'reaction',
           equation: 'Ca + Cl2 -> CaCl2',
           caption: 'Jeden atom vápníku odevzdá dva elektrony, každý ze dvou atomů chloru přijme jeden.',
         },
+        { type: 'p', text: 'Složitější je to, když se náboje navzájem nedělí, třeba 3+ a 2−. Pak pomůže nejmenší společný násobek:' },
         {
           type: 'example',
           title: 'Oxid hlinitý',
@@ -1484,6 +1556,7 @@ const l33: Lesson = {
           steps: ['Nejmenší společný násobek 3 a 2 je 6.', 'Kladný náboj 6+ dají 2 ionty $Al^{3+}$.', 'Záporný náboj 6− dají 3 ionty $O^{2-}$.'],
           answer: '$Al2O3$',
         },
+        { type: 'p', text: 'I tady platí, že kolik elektronů hliník odevzdá, tolik jich kyslík přijme. V rovnici to přesně sedí:' },
         {
           type: 'reaction',
           equation: '4Al + 3O2 -> 2Al2O3',
@@ -1495,6 +1568,7 @@ const l33: Lesson = {
           text: 'Všimni si, že v $Al2O3$ se čísla nábojů „překřížila“: trojka od hliníku je u kyslíku a dvojka od kyslíku u hliníku. Tomuto triku se říká křížové pravidlo a pořádně ho rozebereme v lekci o oxidačním čísle.',
         },
         { type: 'game', gameId: 'ion-builder', text: 'Poskládej z kationtů a aniontů neutrální sloučeninu. Kolik iontů $Cl^-$ potřebuje jeden $Fe^{3+}$?' },
+        { type: 'p', text: 'Vzorec tedy udává jen poměr iontů. Jak ty ionty doopravdy leží v pevné látce, se podíváme teď.' },
         {
           type: 'check',
           question: {
@@ -1514,7 +1588,7 @@ const l33: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Ionty se v pevné látce uspořádají do pravidelné **krystalové mřížky**. V chloridu sodném je každý ion $Na^+$ obklopen šesti ionty $Cl^-$ a každý $Cl^-$ šesti ionty $Na^+$.',
+          text: 'Vzorec $NaCl$ říká poměr 1 : 1, ale ne, jak ionty v soli leží. V pevné látce se uspořádají do pravidelné **krystalové mřížky**. V chloridu sodném je každý ion $Na^+$ obklopen šesti ionty $Cl^-$ a každý $Cl^-$ šesti ionty $Na^+$. Prohlédni si mřížku ve 3D:',
         },
         {
           type: 'diagram',
@@ -1523,7 +1597,7 @@ const l33: Lesson = {
         },
         {
           type: 'p',
-          text: '==V iontové látce nejsou žádné molekuly.== Vzorec $NaCl$ jen říká, že sodných a chloridových iontů je v krystalu stejně. Nejmenší skupině iontů podle vzorce říkáme **vzorcová jednotka**.',
+          text: '==V iontové látce nejsou žádné molekuly.== Vzorec $NaCl$ jen říká, že sodných a chloridových iontů je v krystalu stejně. Nejmenší skupině iontů podle vzorce říkáme **vzorcová jednotka**. Rozdíl proti krystalu z molekul ukazuje částicový model:',
         },
         {
           type: 'particles',
@@ -1546,6 +1620,7 @@ const l33: Lesson = {
           ],
           caption: 'Iontová mřížka proti krystalu z molekul.',
         },
+        { type: 'p', text: 'Počet sousedů, kterými je každý ion obklopen, má v chemii krystalů vlastní jméno:' },
         {
           type: 'keyterms',
           items: [
@@ -1558,6 +1633,7 @@ const l33: Lesson = {
           title: 'Pokus doma',
           text: 'Rozpusť ve sklenici teplé vody tolik soli, kolik se jí rozpustí, a nech ji pár dní odpařovat na parapetu. Pod lupou uvidíš drobné krychličky: tvar krystalu prozrazuje krychlovou mřížku $NaCl$.',
         },
+        { type: 'p', text: 'Teď víš, jak je iontový krystal postavený. Právě z této stavby plynou vlastnosti, kterými jsou iontové látky typické.' },
         {
           type: 'check',
           question: {
@@ -1573,6 +1649,7 @@ const l33: Lesson = {
       title: 'Vlastnosti iontových látek',
       icon: 'salt',
       blocks: [
+        { type: 'p', text: 'Z úvodu víš, že sůl taje až při 801 °C a v ruce se rozpadne na kousky. Tyto vlastnosti a několik dalších vysvětluje mřížka z minulého oddílu:' },
         {
           type: 'iconlist',
           items: [
@@ -1582,6 +1659,7 @@ const l33: Lesson = {
             { icon: 'drop', title: 'Často se rozpouštějí ve vodě', text: 'ale zdaleka ne všechny' },
           ],
         },
+        { type: 'p', text: 'Nejzajímavější je třetí vlastnost. Elektrický proud je pohyb nábojů, a ionty se mohou pohybovat, jen když se mřížka rozpadne – roztavením nebo rozpuštěním:' },
         {
           type: 'particles',
           boxes: [
@@ -1618,7 +1696,7 @@ const l33: Lesson = {
         },
         {
           type: 'p',
-          text: 'Jak pevně drží ionty v krystalu pohromadě, vyjadřuje **mřížková energie**: energie, která se uvolní, když se z volných iontů v plynném stavu poskládá krystal. Stejně velkou energii je potřeba dodat, abychom krystal rozebrali zpátky na volné ionty.',
+          text: 'Teploty tání iontových látek se ale hodně liší. Jak pevně drží ionty v krystalu pohromadě, vyjadřuje **mřížková energie**: energie, která se uvolní, když se z volných iontů v plynném stavu poskládá krystal. Stejně velkou energii je potřeba dodat, abychom krystal rozebrali zpátky na volné ionty. Porovnej ji u několika iontových látek:',
         },
         {
           type: 'table',
@@ -1637,6 +1715,7 @@ const l33: Lesson = {
           variant: 'remember',
           text: '==Mřížková energie roste s nábojem iontů a klesá s jejich velikostí.== Větší náboje se přitahují silněji, malé ionty se k sobě dostanou blíž. Čím větší mřížková energie, tím vyšší teplota tání a tvrdší krystal. Proto se z $MgO$ vyrábějí žáruvzdorné vyzdívky pecí.',
         },
+        { type: 'p', text: 'Pravidlo si vyzkoušej na třech látkách, z nichž dvě mají stejné náboje iontů:' },
         {
           type: 'example',
           title: 'Seřaď podle teploty tání',
@@ -1648,6 +1727,7 @@ const l33: Lesson = {
           ],
           answer: '$KCl$ (770 °C) < $NaCl$ (801 °C) < $MgO$ (2852 °C)',
         },
+        { type: 'p', text: 'Zbývá vysvětlit křehkost z úvodu. Představ si, že úder posune jednu vrstvu iontů o kousek stranou:' },
         {
           type: 'structure',
           art: art(' + − + − +        + − + − +', ' − + − + −   →      − + − + −', '', ' posun vrstvy: souhlasné náboje', ' se ocitnou nad sebou a odpuzují se'),
@@ -1658,6 +1738,7 @@ const l33: Lesson = {
           variant: 'warning',
           text: 'Slaná voda i pot vedou elektrický proud, protože obsahují volně pohyblivé ionty. Proto nikdy nesahej na elektrické spotřebiče mokrýma rukama a nenos je do koupelny k vaně.',
         },
+        { type: 'p', text: 'Iontové látky tedy drží pohromadě přitahování iontů v mřížce. Kationty tvoří i kovy, a přesto se chovají úplně jinak – proč?' },
         {
           type: 'check',
           question: {
@@ -1676,7 +1757,7 @@ const l33: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Kovy mají nízkou elektronegativitu a své valenční elektrony snadno uvolní. Atomy se změní na kationty a elektrony vytvoří společný **elektronový plyn** („moře elektronů“), který prostupuje celým kusem kovu.',
+          text: 'U soli si elektrony vzal nekov. Co se ale stane, když jsou pohromadě jen atomy kovu a elektrony nikdo nechce? Kovy mají nízkou elektronegativitu a své valenční elektrony snadno uvolní. Atomy se změní na kationty a elektrony vytvoří společný **elektronový plyn** („moře elektronů“), který prostupuje celým kusem kovu. Podívej se, jak to vypadá:',
         },
         {
           type: 'diagram',
@@ -1696,6 +1777,7 @@ const l33: Lesson = {
             '**Kovový lesk:** volné elektrony pohlcují a znovu vyzařují světlo.',
           ],
         },
+        { type: 'p', text: 'Síla kovové vazby se ale kov od kovu hodně liší. Nejlépe to ukazují teploty tání:' },
         {
           type: 'iconlist',
           items: [
@@ -1706,7 +1788,7 @@ const l33: Lesson = {
         },
         {
           type: 'p',
-          text: '**Slitina** je kov smíšený s jiným kovem nebo s nekovem, třeba s uhlíkem. Cizí atomy mají jinou velikost a narušují pravidelné vrstvy kationtů. Vrstvy po sobě hůř kloužou, a proto jsou slitiny obvykle **tvrdší a pevnější** než čisté kovy.',
+          text: 'Vlastnosti kovu můžeme i cíleně změnit. **Slitina** je kov smíšený s jiným kovem nebo s nekovem, třeba s uhlíkem. Cizí atomy mají jinou velikost a narušují pravidelné vrstvy kationtů. Vrstvy po sobě hůř kloužou, a proto jsou slitiny obvykle **tvrdší a pevnější** než čisté kovy. Rozdíl uvidíš v částicovém modelu:',
         },
         {
           type: 'particles',
@@ -1717,6 +1799,7 @@ const l33: Lesson = {
           ],
           caption: 'Čistý kov a dvě slitiny v částicovém modelu.',
         },
+        { type: 'p', text: 'Proto se většina kovů používá právě jako slitiny. Tady jsou ty nejznámější:' },
         {
           type: 'iconlist',
           items: [
@@ -1733,6 +1816,7 @@ const l33: Lesson = {
           variant: 'fact',
           text: 'Zlato se dá vytepat na plátek tenký asi desetitisícinu milimetru. Takovým „plátkovým zlatem“ se zlatí sochy, rámy obrazů, a dokonce i dorty.',
         },
+        { type: 'p', text: 'Kovová vazba tedy vysvětluje vodivost, kujnost i lesk kovů. Teď můžeme porovnat všechny typy vazeb a zařadit kteroukoli pevnou látku.' },
         {
           type: 'check',
           question: {
@@ -1756,13 +1840,15 @@ const l33: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Kovalentní vazba (sdílené elektronové páry mezi nekovy) tvoří dva různé druhy pevných látek. **Molekulové látky** ($H2O$, $CO2$, $I2$, cukr) mají pevné vazby jen uvnitř molekul a mezi molekulami slabé síly (další lekce), proto tají a vřou při nízkých teplotách. V **kovalentních (atomových) krystalech** jsou kovalentně propojeny všechny atomy: ==roztavit je znamená rozbít pevné kovalentní vazby, proto tají až při velmi vysokých teplotách.==',
+          text: 'Iontové a kovové látky už známe. Zbývá kovalentní vazba (sdílené elektronové páry mezi nekovy), která tvoří dva různé druhy pevných látek. **Molekulové látky** ($H2O$, $CO2$, $I2$, cukr) mají pevné vazby jen uvnitř molekul a mezi molekulami slabé síly (další lekce), proto tají a vřou při nízkých teplotách. V **kovalentních (atomových) krystalech** jsou kovalentně propojeny všechny atomy: ==roztavit je znamená rozbít pevné kovalentní vazby, proto tají až při velmi vysokých teplotách.==',
         },
+        { type: 'p', text: 'Jak velký rozdíl dělá jen způsob propojení atomů, ukazuje uhlík. Ze stejných atomů vzniká několik úplně odlišných látek:' },
         {
           type: 'diagram',
           id: 'carbon-allotropes',
           caption: 'Podoby uhlíku: diamant, grafit, grafen, fulleren $C60$ a nanotrubice. Všechno je čistý uhlík, liší se jen propojení atomů.',
         },
+        { type: 'p', text: 'Diamant a grafit jsou typické kovalentní krystaly a patří k nim i křemen. Všimni si, jak počet sousedů každého atomu rozhoduje o vlastnostech:' },
         {
           type: 'iconlist',
           items: [
@@ -1771,6 +1857,7 @@ const l33: Lesson = {
             { icon: 'crystal', title: 'Oxid křemičitý $SiO2$', text: 'křemen, písek: každý Si je vázán se 4 atomy O a každý O se 2 atomy Si. Taje kolem 1700 °C.' },
           ],
         },
+        { type: 'p', text: 'Teď máme pohromadě všechny čtyři typy pevných látek. Tabulka je srovnává vlastnost po vlastnosti:' },
         {
           type: 'table',
           headers: ['Vlastnost', 'Molekulová', 'Kovalentní krystal', 'Iontová', 'Kovová'],
@@ -1786,6 +1873,7 @@ const l33: Lesson = {
           ],
           caption: 'Čtyři typy pevných látek podle vazby, která drží jejich částice pohromadě.',
         },
+        { type: 'p', text: 'Tabulku můžeš číst i obráceně: z vlastností neznámé látky poznáš její typ. Postupuj vylučovací metodou:' },
         {
           type: 'example',
           title: 'Detektivka s neznámou látkou',
@@ -1809,6 +1897,7 @@ const l33: Lesson = {
           variant: 'fact',
           text: 'Za objev grafenu, jediné vrstvy grafitu, dostali Andre Geim a Konstantin Novoselov v roce 2010 Nobelovu cenu.',
         },
+        { type: 'p', text: 'Teď umíš látku zařadit podle vlastností. U molekulových látek ale o všem rozhodují slabé síly mezi molekulami – a těm patří příští lekce.' },
         {
           type: 'check',
           question: {
@@ -1921,7 +2010,7 @@ const l34: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Kovalentní vazby** drží atomy uvnitř molekuly, **mezimolekulové síly** přitahují celé molekuly k sobě a jsou mnohem slabší. Právě ony rozhodují o teplotě tání a varu, rozpustnosti i povrchovém napětí. ==Při tání a varu molekulové látky se kovalentní vazby nerozbíjejí, molekuly se jen od sebe vzdálí.==',
+          text: 'Minulá lekce skončila u molekulových látek, které tají a vřou snadno. Proč, vysvětlí rozdíl mezi dvěma druhy soudržnosti. **Kovalentní vazby** drží atomy uvnitř molekuly, **mezimolekulové síly** přitahují celé molekuly k sobě a jsou mnohem slabší. Právě ony rozhodují o teplotě tání a varu, rozpustnosti i povrchovém napětí. ==Při tání a varu molekulové látky se kovalentní vazby nerozbíjejí, molekuly se jen od sebe vzdálí.== Ukažme si to na vaření vody:',
         },
         {
           type: 'particles',
@@ -1942,6 +2031,7 @@ const l34: Lesson = {
           arrows: true,
           caption: 'Var vody: překonávají se jen síly mezi molekulami.',
         },
+        { type: 'p', text: 'Proč se při varu nerozbijí i molekuly? Porovnej, kolik energie drží atomy v molekule a kolik molekuly mezi sebou:' },
         {
           type: 'table',
           headers: ['Druh soudržnosti', 'Typická energie (kJ/mol)', 'Příklad'],
@@ -1957,6 +2047,7 @@ const l34: Lesson = {
           variant: 'mascot',
           text: 'Když voda vře, molekuly $H2O$ se nerozpadnou. Jen se pustí sousedů a vyletí ven jako tanečníci z parketu po poslední písničce. Každý odchází celý!',
         },
+        { type: 'p', text: 'Mezimolekulové síly jsou tedy slabé, ale rozhodují o skupenství látky. Teď si projdeme jejich druhy, od nejslabšího.' },
         {
           type: 'check',
           question: {
@@ -1974,7 +2065,7 @@ const l34: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Van der Waalsovy síly** (podle fyzika J. D. van der Waalse) jsou slabé přitažlivé síly mezi molekulami. Patří sem dva hlavní druhy; silnější je vodíková vazba.',
+          text: '**Van der Waalsovy síly** (podle fyzika J. D. van der Waalse) jsou slabé přitažlivé síly mezi molekulami. Patří sem dva hlavní druhy; silnější je vodíková vazba. Všechny tři druhy vedle sebe:',
         },
         {
           type: 'compare',
@@ -2002,7 +2093,7 @@ const l34: Lesson = {
         },
         {
           type: 'p',
-          text: '**Londonovy síly**: elektrony se pohybují, takže na okamžik bývá na jedné straně molekuly víc elektronů. Vznikne **okamžitý dipól**, který „nakazí“ souseda, a obě molekuly se na chvilku přitáhnou. ==Londonovy síly působí mezi všemi částicemi a rostou s počtem elektronů, tedy s velikostí molekuly.==',
+          text: '**Londonovy síly**: elektrony se pohybují, takže na okamžik bývá na jedné straně molekuly víc elektronů. Vznikne **okamžitý dipól**, který „nakazí“ souseda, a obě molekuly se na chvilku přitáhnou. ==Londonovy síly působí mezi všemi částicemi a rostou s počtem elektronů, tedy s velikostí molekuly.== Ukazují to halogeny, jejichž molekuly jsou nepolární a liší se jen velikostí:',
         },
         {
           type: 'table',
@@ -2017,7 +2108,7 @@ const l34: Lesson = {
         },
         {
           type: 'p',
-          text: 'Stejný trend uvidíš u **alkanů**, uhlovodíků s jednoduchými vazbami (podrobně v úrovni 8). Jejich molekuly jsou nepolární, působí mezi nimi jen Londonovy síly. S každým dalším uhlíkem přibude 8 elektronů a molekula se prodlouží.',
+          text: 'Stejný trend uvidíš u **alkanů**, uhlovodíků s jednoduchými vazbami (podrobně v úrovni 8). Jejich molekuly jsou nepolární, působí mezi nimi jen Londonovy síly. S každým dalším uhlíkem přibude 8 elektronů a molekula se prodlouží. Sleduj, jak s tím roste teplota varu:',
         },
         {
           type: 'table',
@@ -2033,6 +2124,7 @@ const l34: Lesson = {
           ],
           caption: 'Čím delší řetězec, tím silnější Londonovy síly a vyšší teplota varu. Proto je propan-butan v bombě plyn a oktan v benzínu kapalina.',
         },
+        { type: 'p', text: 'Záleží ale i na tvaru. Dvě molekuly se stejným vzorcem i počtem elektronů mohou vřít při různé teplotě:' },
         {
           type: 'molecule',
           molecules: ['butane', 'isobutane'],
@@ -2041,7 +2133,7 @@ const l34: Lesson = {
         },
         {
           type: 'p',
-          text: '**Dipól–dipólové síly** působí mezi polárními molekulami s trvalým dipólem: kladný konec jedné molekuly přitahuje záporný konec sousední.',
+          text: '**Dipól–dipólové síly** působí mezi polárními molekulami s trvalým dipólem: kladný konec jedné molekuly přitahuje záporný konec sousední. U chlorovodíku to vypadá takto:',
         },
         {
           type: 'structure',
@@ -2054,6 +2146,7 @@ const l34: Lesson = {
           title: 'Gekon na stropě',
           text: 'Gekon šplhá po skle bez lepidla i přísavek. Na prstech má miliony mikroskopických chloupků a každý se k povrchu přitahuje van der Waalsovými silami. Jedna síla je nepatrná, ale miliony dohromady udrží celé zvíře.',
         },
+        { type: 'p', text: 'Van der Waalsovy síly tedy sílí s velikostí molekuly a s její polaritou. U některých molekul se ale přidá ještě mnohem silnější přitahování.' },
         {
           type: 'check',
           question: {
@@ -2071,13 +2164,14 @@ const l34: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Vodíková vazba** je zvlášť silné přitahování molekul. Vzniká, když je vodík vázán na malý, velmi elektronegativní atom **F, O nebo N**. Takový vodík nese výrazný náboj δ+ a přitahuje volný elektronový pár atomu F, O nebo N sousední molekuly.',
+          text: 'Právě toto silnější přitahování vysvětluje záhadu vody z úvodu. **Vodíková vazba** je zvlášť silné přitahování molekul. Vzniká, když je vodík vázán na malý, velmi elektronegativní atom **F, O nebo N**. Takový vodík nese výrazný náboj δ+ a přitahuje volný elektronový pár atomu F, O nebo N sousední molekuly. Nejlépe je to vidět na vodě:',
         },
         {
           type: 'diagram',
           id: 'hydrogen-bonds',
           caption: 'Vodíkové vazby ve vodě (tečkovaně): vodík δ+ jedné molekuly přitahuje volný elektronový pár kyslíku sousední molekuly. Každá molekula vody jich může vytvořit až čtyři – dvě přes své vodíky a dvě přes volné páry kyslíku. V ledu tvoří molekuly pravidelnou síť se šestiúhelníkovými dutinami.',
         },
+        { type: 'p', text: 'Voda ale není jediná. Porovnej ji s amoniakem a fluorovodíkem – i v nich je vodík vázán na jeden z těch tří prvků:' },
         {
           type: 'molecule',
           molecules: ['H2O', 'NH3', 'HF'],
@@ -2094,6 +2188,7 @@ const l34: Lesson = {
           variant: 'fact',
           text: 'Dvě vlákna tvé DNA drží u sebe právě vodíkové vazby mezi dusíkatými bázemi. Jsou dost pevné, aby dvoušroubovice držela, a dost slabé, aby se při kopírování dala rozepnout jako zip. Víc v úrovni 9.',
         },
+        { type: 'p', text: 'Teď znáš všechny tři druhy mezimolekulových sil. Mezi molekulami jich ale obvykle působí několik najednou – která pak rozhoduje?' },
         {
           type: 'check',
           question: {
@@ -2112,7 +2207,7 @@ const l34: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Mezi molekulami obvykle působí několik sil najednou: Londonovy vždy, dipól–dipólové u polárních molekul a vodíkové vazby, když je vodík vázán na F, O nebo N. Kterou z nich brát jako rozhodující, zjistíš v několika krocích.',
+          text: 'Mezi molekulami obvykle působí několik sil najednou: Londonovy vždy, dipól–dipólové u polárních molekul a vodíkové vazby, když je vodík vázán na F, O nebo N. Kterou z nich brát jako rozhodující, zjistíš ve čtyřech krocích:',
         },
         {
           type: 'process',
@@ -2125,6 +2220,7 @@ const l34: Lesson = {
           ],
           caption: 'Jak odhadnout, která mezimolekulová síla převládá.',
         },
+        { type: 'p', text: 'Postup si vyzkoušej na třech látkách, u kterých polarita a velikost molekul táhnou každá jinam:' },
         {
           type: 'example',
           title: 'Polarita, nebo velikost?',
@@ -2136,6 +2232,7 @@ const l34: Lesson = {
           ],
           answer: 'U stejně velkých molekul rozhodla polarita, u velmi rozdílných velikost molekul (Londonovy síly).',
         },
+        { type: 'p', text: 'Teď můžeme rozluštit záhadu z úvodu. Prohlédni si teploty varu sloučenin vodíku s prvky 14.–17. skupiny a hledej, co z řady vybočuje:' },
         {
           type: 'table',
           headers: ['Perioda', '14. skupina', '15. skupina', '16. skupina', '17. skupina'],
@@ -2149,7 +2246,7 @@ const l34: Lesson = {
         },
         {
           type: 'p',
-          text: 'Molekuly $CH4$ až $SnH4$ jsou souměrné tetraedry, a tedy nepolární. Působí mezi nimi jen Londonovy síly, které rostou s počtem elektronů, a teplota varu stoupá bez výjimky. V 15., 16. a 17. skupině vybočují $NH3$, $H2O$ a $HF$: jako jediné tvoří **vodíkové vazby**.',
+          text: 'Molekuly $CH4$ až $SnH4$ jsou souměrné tetraedry, a tedy nepolární. Působí mezi nimi jen Londonovy síly, které rostou s počtem elektronů, a teplota varu stoupá bez výjimky. V 15., 16. a 17. skupině vybočují $NH3$, $H2O$ a $HF$: jako jediné tvoří **vodíkové vazby**. Nejvíc vybočuje voda – porovnej ji se sousedem ve skupině:',
         },
         {
           type: 'molecule',
@@ -2157,6 +2254,7 @@ const l34: Lesson = {
           labels: ['voda $H2O$', 'sulfan $H2S$'],
           caption: 'Porovnej obě molekuly: tvar mají podobný, liší se centrálním atomem.',
         },
+        { type: 'p', text: 'Podle počtu elektronů by měl výš vřít sulfan. Proč je to naopak, rozebereme krok za krokem:' },
         {
           type: 'example',
           title: 'Voda proti sulfanu',
@@ -2174,6 +2272,7 @@ const l34: Lesson = {
           variant: 'fact',
           text: '==Bez vodíkových vazeb by voda vřela zhruba při −80 °C.== Na Zemi by pak nebyla kapalná voda, oceány ani život, jak ho známe.',
         },
+        { type: 'p', text: 'Teď umíš odhadnout pořadí teplot varu. Vodíkové vazby mají ale na vodu ještě jeden nečekaný vliv: led na ní plave.' },
         {
           type: 'check',
           question: {
@@ -2197,7 +2296,7 @@ const l34: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'U většiny látek je pevná fáze hustší než kapalina, voda je výjimka. V ledu je každá molekula vázána vodíkovými vazbami ke čtyřem sousedům a vzniká **řídká šestiúhelníková mřížka** s dutinami. ==Led má proto menší hustotu (asi 0,92 g/cm^{3}) než kapalná voda (1,00 g/cm^{3}) a plave na ní.==',
+          text: 'Vodíkové vazby nevysvětlují jen vysokou teplotu varu vody. U většiny látek je pevná fáze hustší než kapalina, voda je ale výjimka. V ledu je každá molekula vázána vodíkovými vazbami ke čtyřem sousedům a vzniká **řídká šestiúhelníková mřížka** s dutinami. ==Led má proto menší hustotu (asi 0,92 g/cm^{3}) než kapalná voda (1,00 g/cm^{3}) a plave na ní.== Rozdíl je vidět v částicovém modelu:',
         },
         {
           type: 'particles',
@@ -2217,6 +2316,7 @@ const l34: Lesson = {
           ],
           caption: 'Ve stejném objemu je v ledu méně molekul než v kapalné vodě. Při zamrznutí voda zvětší objem zhruba o 9 %.',
         },
+        { type: 'p', text: 'Že led plave, má pro život ve vodě obrovský význam. Sleduj, co se děje v rybníce, když přijde mráz:' },
         {
           type: 'process',
           layout: 'flow',
@@ -2238,6 +2338,7 @@ const l34: Lesson = {
           variant: 'fact',
           text: 'Voda zatečená do puklin ve skále nebo v asfaltu v zimě zamrzne a rozšíří je. Tomuto mrazovému zvětrávání vděčíme za sutě pod skalami i za výtluky na silnicích po zimě.',
         },
+        { type: 'p', text: 'Vodíkové vazby tedy řídí i to, jak voda mrzne. Stejné síly mezi molekulami rozhodují také o tom, co se ve vodě rozpustí.' },
         {
           type: 'check',
           question: {
@@ -2255,13 +2356,14 @@ const l34: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'O rozpustnosti rozhoduje pravidlo ==**podobné se rozpouští v podobném**.== Polární a iontové látky se dobře rozpouštějí v polárních rozpouštědlech, jako je voda, nepolární látky v nepolárních, jako je benzín.',
+          text: 'Když se látka rozpouští, musí se její částice obklopit molekulami rozpouštědla. O rozpustnosti proto rozhoduje pravidlo ==**podobné se rozpouští v podobném**.== Polární a iontové látky se dobře rozpouštějí v polárních rozpouštědlech, jako je voda, nepolární látky v nepolárních, jako je benzín. Jak polární voda rozebírá krystal soli, ukazuje obrázek:',
         },
         {
           type: 'diagram',
           id: 'dissolving',
           caption: 'Rozpouštění soli ve vodě: polární molekuly vody obklopí ionty na povrchu krystalu – $Na^+$ kyslíkem, $Cl^-$ vodíky – a odnesou je do roztoku.',
         },
+        { type: 'p', text: 'Stejné pravidlo vysvětluje, proč se olej s vodou nemísí a proč mastnou skvrnu voda nesmyje:' },
         {
           type: 'iconlist',
           items: [
@@ -2271,6 +2373,7 @@ const l34: Lesson = {
             { icon: 'beaker', title: 'Jod', text: 've vodě se rozpouští jen nepatrně, v nepolárním benzínu dobře' },
           ],
         },
+        { type: 'p', text: 'Vodíkové vazby ovlivňují i chování vody na hladině. Než se na ni podíváme, ujasněme si dva pojmy:' },
         {
           type: 'keyterms',
           items: [
@@ -2293,6 +2396,7 @@ const l34: Lesson = {
           variant: 'warning',
           text: 'Benzín a jiná organická rozpouštědla jsou hořlavá a jejich páry škodí zdraví. Pracuj s nimi jen v malém množství, dobře větrej a nikdy ne u otevřeného ohně.',
         },
+        { type: 'p', text: 'Mezimolekulové síly tedy vysvětlují skupenství, rozpustnost i povrchové napětí. V příští lekci se od vlastností látek přesuneme k jejich vzorcům a poznáš oxidační číslo, klíč k názvosloví.' },
         {
           type: 'check',
           question: {
@@ -2402,7 +2506,11 @@ const l35: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Oxidační číslo** je myšlený (formální) náboj atomu. Dostaneš ho, když si představíš, že ==všechny vazebné elektronové páry patří vždy elektronegativnějšímu z obou atomů==, jako by všechny vazby byly iontové.',
+          text: 'Obě látky z úvodu jsou složené jen ze železa a chloru. Liší se tím, kolik elektronů železo „dalo“ chloru, a právě to vyjadřuje jedno číslo. **Oxidační číslo** je myšlený (formální) náboj atomu. Dostaneš ho, když si představíš, že ==všechny vazebné elektronové páry patří vždy elektronegativnějšímu z obou atomů==, jako by všechny vazby byly iontové.',
+        },
+        {
+          type: 'p',
+          text: 'Pozor na rozdíl proti formálnímu náboji z lekce o Lewisových vzorcích: tam jsme vazebné páry dělili napůl, tady je celé dáme jednomu atomu. Na dvou molekulách, které už znáš, to vypadá takto:',
         },
         {
           type: 'molecule',
@@ -2412,7 +2520,7 @@ const l35: Lesson = {
         },
         {
           type: 'p',
-          text: 'V $HCl$ má chlor s přiděleným párem o elektron víc než jeho atom: −I; vodík o elektron přišel: +I. V $H2O$ si kyslík vezme oba vazebné páry, dostane −II a každý vodík +I.',
+          text: 'V $HCl$ má chlor s přiděleným párem o elektron víc než jeho atom: −I; vodík o elektron přišel: +I. V $H2O$ si kyslík vezme oba vazebné páry, dostane −II a každý vodík +I. Jak oxidační čísla zapisovat, záleží na jejich znaménku:',
         },
         {
           type: 'iconlist',
@@ -2422,6 +2530,7 @@ const l35: Lesson = {
             { icon: 'atom', title: 'Nula', text: 'arabskou číslicí: $Cl2^0$' },
           ],
         },
+        { type: 'p', text: 'Pozor, $Fe^{III}$ a $Fe^{3+}$ vypadají podobně, ale neznamenají totéž. Rozdíl je v obsahu i v zápisu:' },
         {
           type: 'compare',
           columns: [
@@ -2440,6 +2549,7 @@ const l35: Lesson = {
           ],
           caption: 'Náboj iontu, nebo oxidační číslo?',
         },
+        { type: 'p', text: 'Oxidační číslo tedy určíš z elektronegativit. Kreslit kvůli němu pokaždé vazby by ale bylo zdlouhavé – a naštěstí to není potřeba.' },
         {
           type: 'check',
           question: {
@@ -2458,7 +2568,7 @@ const l35: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Nemusíš pokaždé kreslit vazby. Stačí několik pravidel, která platí téměř vždy.',
+          text: 'Elektronegativita se v tabulce mění pravidelně, a tak některé prvky dostávají skoro vždy stejné oxidační číslo. Stačí si proto zapamatovat šest pravidel, která platí téměř vždy:',
         },
         {
           type: 'iconlist',
@@ -2473,7 +2583,7 @@ const l35: Lesson = {
         },
         {
           type: 'p',
-          text: 'Nejvyšší kladné oxidační číslo prvku hlavní skupiny odpovídá počtu valenčních elektronů (výjimkou jsou kyslík a fluor). Nejnižší záporné u nekovů zjistíš jako číslo skupiny minus 18.',
+          text: 'Pro ostatní prvky pravidlo nemáme, víme ale aspoň, v jakém rozsahu se jejich oxidační číslo pohybuje. Nejvyšší kladné oxidační číslo prvku hlavní skupiny odpovídá počtu valenčních elektronů (výjimkou jsou kyslík a fluor). Nejnižší záporné u nekovů zjistíš jako číslo skupiny minus 18. Pro několik nekovů to vypadá takto:',
         },
         {
           type: 'table',
@@ -2486,12 +2596,14 @@ const l35: Lesson = {
           ],
           caption: 'Rozsah oxidačních čísel některých nekovů.',
         },
+        { type: 'p', text: 'Oba krajní stavy najdeš ve známých molekulách. U uhlíku jsou to methan a oxid uhličitý:' },
         {
           type: 'molecule',
           molecules: ['CH4', 'CO2'],
           labels: ['$C^{−IV}$: nejnižší', '$C^{IV}$: nejvyšší'],
           caption: 'Uhlík (14. skupina) ve svém nejnižším a nejvyšším oxidačním čísle.',
         },
+        { type: 'p', text: 'Pravidla dají oxidační čísla většiny atomů hned. Ten poslední, pro který pravidlo nemáme, dopočítáme ze součtu.' },
         {
           type: 'check',
           question: {
@@ -2507,6 +2619,7 @@ const l35: Lesson = {
       title: 'Výpočet oxidačního čísla',
       icon: 'calculator',
       blocks: [
+        { type: 'p', text: 'Pravidlo o součtu funguje jako rovnice o jedné neznámé: neznámé je oxidační číslo prvku, pro který pravidlo nemáme. Řešíš ji vždy ve stejných krocích:' },
         {
           type: 'process',
           layout: 'flow',
@@ -2519,6 +2632,7 @@ const l35: Lesson = {
           ],
           caption: 'Oxidační číslo dopočítáš ze součtu.',
         },
+        { type: 'p', text: 'Začni jednoduchou molekulou, kde je neznámá jen síra:' },
         {
           type: 'example',
           title: 'Síra v oxidu siřičitém',
@@ -2526,6 +2640,7 @@ const l35: Lesson = {
           steps: ['Kyslík má −II, dva kyslíky dohromady −4.', 'Molekula je neutrální: x + 2 · (−2) = 0', 'x = +4'],
           answer: '$S^{IV}O2^{−II}$',
         },
+        { type: 'p', text: 'Postup funguje i pro látky ze tří prvků. Jen sečteš všechny atomy, které znáš:' },
         {
           type: 'example',
           title: 'Mangan v hypermanganu',
@@ -2533,6 +2648,7 @@ const l35: Lesson = {
           steps: ['Draslík (1. skupina) má +I, kyslík −II.', '(+1) + x + 4 · (−2) = 0', 'x = 8 − 1 = +7'],
           answer: 'mangan má oxidační číslo VII',
         },
+        { type: 'p', text: 'U iontu se mění jediná věc: součet se nerovná nule, ale náboji iontu. Právě na to se nejčastěji zapomíná.' },
         {
           type: 'example',
           title: 'Ion: síranový anion',
@@ -2540,6 +2656,7 @@ const l35: Lesson = {
           steps: ['Kyslík má −II, čtyři kyslíky dohromady −8.', 'Součet se rovná náboji iontu: x + (−8) = −2', 'x = +6'],
           answer: 'síra má oxidační číslo VI',
         },
+        { type: 'p', text: 'Stejně počítáš u kationtu. Náboj je tu kladný, a přesto může oxidační číslo vyjít záporné:' },
         {
           type: 'example',
           title: 'Ion: amonný kation',
@@ -2547,12 +2664,14 @@ const l35: Lesson = {
           steps: ['Vodík má +I, čtyři vodíky +4.', 'x + 4 = +1', 'x = −3'],
           answer: 'dusík má oxidační číslo −III',
         },
+        { type: 'p', text: 'Výsledky si prohlédni na modelech. Všimni si, že síra má v $SO2$ a v $SO4^2-$ různá oxidační čísla – jeden prvek jich může mít několik:' },
         {
           type: 'molecule',
           molecules: ['SO2', 'SO4^2-', 'NH4+'],
           labels: ['$S^{IV}$', '$S^{VI}$', '$N^{−III}$'],
           caption: 'Tři vyřešené částice. Ion se počítá stejně, jen součet se rovná jeho náboji.',
         },
+        { type: 'p', text: 'Oxidační číslo teď spočítáš v molekule i v iontu. V češtině ho ale nenajdeš jen ve vzorci – schovává se i v názvu látky.' },
         {
           type: 'check',
           question: {
@@ -2580,7 +2699,7 @@ const l35: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'V českém názvosloví se oxidační číslo schovává do **koncovky přídavného jména**: z názvu „oxid hlinitý“ hned víš, že hliník má III. Koncovek je osm, pro oxidační čísla I až VIII.',
+          text: 'V českém názvosloví se oxidační číslo schovává do **koncovky přídavného jména**: z názvu „oxid hlinitý“ hned víš, že hliník má III. Koncovek je osm, pro oxidační čísla I až VIII:',
         },
         {
           type: 'table',
@@ -2603,6 +2722,7 @@ const l35: Lesson = {
           title: 'Jak si koncovky zapamatovat',
           text: 'Odříkej je rytmicky jako rozpočitadlo: **ný – na-tý – i-tý – i-či-tý, ič-ný – o-vý – is-tý – i-če-lý**. A přidej si kotvu ze 3. periody: $Na2O$, $MgO$, $Al2O3$, $SiO2$, $P4O10$, $SO3$, $Cl2O7$ jsou oxid sodný, hořečnatý, hlinitý, křemičitý, fosforečný, sírový a chloristý. ==Skupina po skupině roste oxidační číslo od I do VII a koncovky jdou přesně za sebou.==',
         },
+        { type: 'p', text: 'Jak moc na koncovce záleží, ukazují dva oxidy síry, které se liší jediným atomem kyslíku:' },
         {
           type: 'molecule',
           molecules: ['SO2', 'SO3'],
@@ -2616,6 +2736,7 @@ const l35: Lesson = {
           text: 'Koncovka se připojuje ke kmeni českého názvu prvku a ten se občas změní: hořčík → hořečnatý, vápník → vápenatý, draslík → draselný, zinek → zinečnatý, uhlík → uhelnatý a uhličitý, síra → siřičitý a sírový, nikl → nikelnatý, cín → cínatý a cíničitý.',
         },
         { type: 'game', gameId: 'quickfire', text: 'Procvič si koncovky na čas: kolik oxidačních čísel přiřadíš za 60 sekund?' },
+        { type: 'p', text: 'Koncovky tedy převádějí oxidační číslo na slovo. Teď je použijeme naplno: z názvu sestavíme vzorec.' },
         {
           type: 'check',
           question: {
@@ -2632,6 +2753,7 @@ const l35: Lesson = {
       title: 'Křížové pravidlo: od názvu ke vzorci',
       icon: 'cross',
       blocks: [
+        { type: 'p', text: 'Název jako „oxid hlinitý“ obsahuje všechno, co ke vzorci potřebuješ. Stačí vědět, co která jeho část prozrazuje:' },
         {
           type: 'compare',
           columns: [
@@ -2650,6 +2772,7 @@ const l35: Lesson = {
           ],
           caption: 'Název dvouprvkové sloučeniny má dvě části.',
         },
+        { type: 'p', text: 'Z obou částí názvu tedy znáš oxidační čísla obou prvků. Vzorec z nich sestavíš v pěti krocích:' },
         {
           type: 'process',
           layout: 'flow',
@@ -2661,11 +2784,13 @@ const l35: Lesson = {
             { icon: 'check', title: 'Kontrola', text: 'součet oxidačních čísel musí být 0' },
           ],
         },
+        { type: 'p', text: 'Proč se čísla kříží? Indexy musí být takové, aby se kladná a záporná oxidační čísla vyrušila, a křížem to vyjde vždy. Na oxidu hlinitém to vypadá takto:' },
         {
           type: 'structure',
           art: art(' III    −II', '  Al     O', '    ╲   ╱', '     ╲ ╱', '      ╳', '     ╱ ╲', '  Al₂     O₃    →    Al₂O₃'),
           caption: 'Křížové pravidlo pro oxid hlinitý: trojka od hliníku jde ke kyslíku, dvojka od kyslíku k hliníku.',
         },
+        { type: 'p', text: 'Někdy vyjdou indexy se společným dělitelem. Pak přijde ke slovu čtvrtý krok, krácení:' },
         {
           type: 'example',
           title: 'Oxid uhličitý',
@@ -2673,6 +2798,7 @@ const l35: Lesson = {
           steps: ['-ičitý znamená IV: $C^{IV}$; oxid znamená $O^{−II}$.', 'Do kříže: $C2O4$', 'Oba indexy vydělíme dvěma: $CO2$', 'Kontrola: +4 + 2 · (−2) = 0'],
           answer: '$CO2$',
         },
+        { type: 'p', text: 'A když je jedno z oxidačních čísel 1, odpovídající index se nepíše:' },
         {
           type: 'example',
           title: 'Chlorid železitý',
@@ -2685,6 +2811,7 @@ const l35: Lesson = {
           variant: 'warning',
           text: 'Krátit indexy se nesmí u peroxidů, například u peroxidu vodíku $H2O2$. Proč, uvidíš v další lekci.',
         },
+        { type: 'p', text: 'Z názvu teď napíšeš vzorec. Zbývá opačný směr: ze vzorce název.' },
         {
           type: 'check',
           question: {
@@ -2702,6 +2829,7 @@ const l35: Lesson = {
       title: 'Od vzorce k názvu',
       icon: 'magnifier',
       blocks: [
+        { type: 'p', text: 'Opačný směr je jako křížové pravidlo pozpátku. Oxidační číslo prvního prvku neznáš, ale dopočítáš ho ze záporné složky, jejíž oxidační číslo znáš:' },
         {
           type: 'process',
           layout: 'flow',
@@ -2712,6 +2840,7 @@ const l35: Lesson = {
           ],
           caption: 'Opačný směr: od vzorce k názvu.',
         },
+        { type: 'p', text: 'Vyzkoušej to na oxidu železa, hlavní složce rudy hematitu:' },
         {
           type: 'example',
           title: 'Hematit a červený pigment',
@@ -2719,6 +2848,7 @@ const l35: Lesson = {
           steps: ['Tři kyslíky: 3 · (−2) = −6', 'Dva atomy železa musí mít dohromady +6, každý tedy +3.', 'III znamená koncovku -itý.'],
           answer: 'oxid železitý',
         },
+        { type: 'p', text: 'Když je ve vzorci jen jeden atom kovu, je výpočet ještě kratší:' },
         {
           type: 'example',
           title: 'Galenit',
@@ -2726,6 +2856,7 @@ const l35: Lesson = {
           steps: ['Sulfid má −II.', 'Jediný atom olova tedy má +2.', 'II znamená koncovku -natý.'],
           answer: 'sulfid olovnatý',
         },
+        { type: 'p', text: 'Teď se vrátíme k otázce z úvodu. Stejné dva prvky mohou tvořit víc sloučenin a v názvu je odliší jedině koncovka:' },
         {
           type: 'table',
           headers: ['Vzorec', 'Výpočet', 'Název'],
@@ -2742,6 +2873,7 @@ const l35: Lesson = {
           variant: 'fact',
           text: 'Chlorid železitý $FeCl3$ se používá k leptání měděných plošných spojů v elektronice. Při leptání se mění na chlorid železnatý $FeCl2$. Proto je dobré názvy přesně rozlišovat.',
         },
+        { type: 'p', text: 'Teď umíš převádět vzorec na název a zpátky. V příští lekci tuto dovednost použiješ na celé rodiny sloučenin: oxidy, sulfidy, hydridy a další.' },
         {
           type: 'check',
           question: {
@@ -2862,7 +2994,7 @@ const l36: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Dvouprvková** (binární) **sloučenina** se skládá ze dvou prvků a její název má dvě slova. ==Podstatné jméno s koncovkou **-id** patří elektronegativnější složce, přídavné jméno s koncovkou podle oxidačního čísla té elektropozitivnější.==',
+          text: 'V minulé lekci jsi převáděl/a vzorce na názvy a zpátky. Teď tuto dovednost použiješ na všechny rodiny dvouprvkových sloučenin. **Dvouprvková** (binární) **sloučenina** se skládá ze dvou prvků a její název má dvě slova. ==Podstatné jméno s koncovkou **-id** patří elektronegativnější složce, přídavné jméno s koncovkou podle oxidačního čísla té elektropozitivnější.== Rozeberme to na páleném vápně z úvodu:',
         },
         {
           type: 'compare',
@@ -2882,6 +3014,7 @@ const l36: Lesson = {
           ],
           caption: 'Oxid vápenatý $CaO$ rozebraný na dvě části názvu.',
         },
+        { type: 'p', text: 'Koncovku přídavného jména už znáš. Podstatné jméno závisí na tom, který prvek je elektronegativnější složkou – tady je celý přehled:' },
         {
           type: 'table',
           headers: ['Podstatné jméno', 'Záporná složka', 'Příklad'],
@@ -2901,6 +3034,7 @@ const l36: Lesson = {
           variant: 'fact',
           text: 'O tom, kdo dostane koncovku -id, rozhoduje elektronegativita. Proto $OF2$ není oxid fluoru, ale fluorid kyslíku (přesněji difluorid kyslíku): fluor je elektronegativnější, má −I a kyslík tu výjimečně +II.',
         },
+        { type: 'p', text: 'Tabulka je mapou celé lekce. Projdeme ji rodinu po rodině a začneme těmi nejběžnějšími, oxidy.' },
         {
           type: 'check',
           question: {
@@ -2923,7 +3057,7 @@ const l36: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Oxidy** jsou sloučeniny kyslíku s jiným prvkem, kyslík v nich má −II. Najdeš je v horninách, ve vzduchu a oxidem vodíku je koneckonců i voda.',
+          text: '**Oxidy** jsou sloučeniny kyslíku s jiným prvkem, kyslík v nich má −II. Najdeš je v horninách, ve vzduchu a oxidem vodíku je koneckonců i voda. Tady jsou ty, na které narazíš nejčastěji:',
         },
         {
           type: 'iconlist',
@@ -2938,12 +3072,14 @@ const l36: Lesson = {
             { icon: 'gas-cylinder', title: '$N2O$ oxid dusný', text: '„rajský plyn“ v bombičkách do šlehačky' },
           ],
         },
+        { type: 'p', text: 'Oxidy kovů jsou většinou pevné látky, oxidy nekovů naopak tvoří malé molekuly. Prohlédni si čtyři z nich:' },
         {
           type: 'molecule',
           molecules: ['CO2', 'CO', 'SO2', 'NO2'],
           labels: ['oxid uhličitý', 'oxid uhelnatý', 'oxid siřičitý', 'oxid dusičitý: hnědý plyn z výfuků'],
           caption: 'Molekulové oxidy nekovů jsou plyny.',
         },
+        { type: 'p', text: 'Vzorec oxidu napíšeš z názvu křížovým pravidlem. Zopakujme postup na oxidu, který ještě neznáš:' },
         {
           type: 'process',
           layout: 'flow',
@@ -2955,6 +3091,7 @@ const l36: Lesson = {
           ],
           caption: 'Název → vzorec křížovým pravidlem.',
         },
+        { type: 'p', text: 'A opačně, ze vzorce název – tentokrát pro oxid z alkalické baterie:' },
         {
           type: 'example',
           title: 'Vzorec → název',
@@ -2967,6 +3104,7 @@ const l36: Lesson = {
           variant: 'warning',
           text: 'Oxid uhelnatý $CO$ nemá barvu ani zápach a už malé množství ve vzduchu je smrtelné. Proto patří k plynovým kotlům a karmám detektor CO. Pálené vápno $CaO$ zase s vodou prudce reaguje za vývoje tepla, dráždí kůži a vážně poškozuje oči: pracuj s ním jen v rukavicích a brýlích.',
         },
+        { type: 'p', text: 'Oxidy teď pojmenuješ oběma směry. Kyslík ale tvoří i sloučeniny, kde jsou dva jeho atomy vázané k sobě, a v nich se pravidla trochu mění.' },
         {
           type: 'check',
           question: {
@@ -2996,18 +3134,20 @@ const l36: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Peroxidy** obsahují dvojici navzájem vázaných atomů kyslíku –O–O–, tedy peroxidový anion $O2^2-$. ==Každý kyslík v peroxidu má oxidační číslo −I.==',
+          text: 'Peroxidy vypadají jako oxidy s kyslíkem navíc, ale je v nich zásadní rozdíl. **Peroxidy** obsahují dvojici navzájem vázaných atomů kyslíku –O–O–, tedy peroxidový anion $O2^2-$. ==Každý kyslík v peroxidu má oxidační číslo −I.== Nejznámější je peroxid vodíku:',
         },
         {
           type: 'structure',
           art: art('    ··  ··', ' H — O — O — H', '    ··  ··'),
           caption: 'Peroxid vodíku $H2O2$: mezi atomy kyslíku je jednoduchá vazba.',
         },
+        { type: 'p', text: 'Ve 3D je rozdíl proti vodě vidět na první pohled: místo jednoho kyslíku dva, spojené spolu.' },
         {
           type: 'molecule',
           molecules: ['H2O', 'H2O2'],
           labels: ['voda: oxid vodíku, $O^{−II}$', 'peroxid vodíku: –O–O–, $O^{−I}$'],
         },
+        { type: 'p', text: 'Pozor, tady se chybuje nejčastěji: vzorec peroxidu nekrátíme, i když by se indexy krátit daly. Proč, ukazuje srovnání s oxidy:' },
         {
           type: 'compare',
           columns: [
@@ -3026,6 +3166,7 @@ const l36: Lesson = {
           ],
           caption: 'Vodík tvoří jen jeden peroxid, a proto se mu říká jednoduše peroxid vodíku.',
         },
+        { type: 'p', text: 'Jak poznáš peroxid jen ze vzorce? Spočítej oxidační číslo kyslíku – když vyjde −I, je to peroxid:' },
         {
           type: 'example',
           title: 'Oxid, nebo peroxid?',
@@ -3038,6 +3179,7 @@ const l36: Lesson = {
           variant: 'fact',
           text: 'Třiprocentní roztok peroxidu vodíku z lékárny dezinfikuje rány a odbarvuje vlasy. Na ráně pění, protože enzym z krve ho rychle rozkládá na vodu a kyslík. Koncentrovaný (30%) roztok ale leptá kůži, takže s ním jen v rukavicích a brýlích.',
         },
+        { type: 'p', text: 'Peroxid tedy poznáš podle kyslíku s −I a jeho vzorec nikdy nekrátíš. Teď přijdou na řadu další záporné složky: halogeny a síra.' },
         {
           type: 'check',
           question: {
@@ -3055,7 +3197,7 @@ const l36: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: '**Halogenidy** jsou sloučeniny halogenů F, Cl, Br a I s oxidačním číslem −I: fluoridy, chloridy, bromidy a jodidy. **Sulfidy** jsou sloučeniny síry s oxidačním číslem −II; mnoho z nich jsou důležité rudy kovů.',
+          text: '**Halogenidy** jsou sloučeniny halogenů F, Cl, Br a I s oxidačním číslem −I: fluoridy, chloridy, bromidy a jodidy. **Sulfidy** jsou sloučeniny síry s oxidačním číslem −II; mnoho z nich jsou důležité rudy kovů. Halogenidy přitom potkáváš každý den:',
         },
         {
           type: 'iconlist',
@@ -3068,6 +3210,7 @@ const l36: Lesson = {
             { icon: 'pill', title: '$KI$ jodid draselný', text: 'jodové tablety pro případ jaderné havárie' },
           ],
         },
+        { type: 'p', text: 'Sulfidy znáš spíš z přírody a z rud. Tady jsou nejdůležitější:' },
         {
           type: 'iconlist',
           items: [
@@ -3077,6 +3220,7 @@ const l36: Lesson = {
             { icon: 'ring', title: '$Ag2S$ sulfid stříbrný', text: 'černý povlak na stříbrných šperkech' },
           ],
         },
+        { type: 'p', text: 'Vzorce halogenidů a sulfidů píšeš stejně jako u oxidů, jen záporná složka má jiné oxidační číslo. Vyzkoušej si to na jodidu:' },
         {
           type: 'example',
           title: 'Zlatý déšť',
@@ -3090,6 +3234,7 @@ const l36: Lesson = {
           title: 'Pokus doma',
           text: 'Zčernalý stříbrný řetízek je pokrytý sulfidem stříbrným $Ag2S$. Polož ho do misky vyložené alobalem, zasyp lžící jedlé sody a zalij horkou vodou. Za pár minut se stříbro vyjasní. Co se přitom děje, vysvětlí redoxní reakce v úrovni 6.',
         },
+        { type: 'p', text: 'Halogenidy a sulfidy jsou tedy jen oxidy s jinou zápornou složkou. U vodíku je to složitější: podle partnera může mít +I i −I.' },
         {
           type: 'check',
           question: {
@@ -3117,6 +3262,7 @@ const l36: Lesson = {
       title: 'Hydridy, nitridy a karbidy',
       icon: 'gas-cylinder',
       blocks: [
+        { type: 'p', text: 'Vodík je zvláštní: s kovy je elektronegativnější složkou, s nekovy naopak elektropozitivnější. Podle toho se jeho sloučeniny jmenují úplně jinak:' },
         {
           type: 'compare',
           columns: [
@@ -3134,6 +3280,7 @@ const l36: Lesson = {
             },
           ],
         },
+        { type: 'p', text: 'U sloučenin vodíku s nekovy se proto koncovka -id nepoužívá. Mají zažité triviální názvy a vedle nich systematické:' },
         {
           type: 'table',
           headers: ['Vzorec', 'Triviální název', 'Systematický název'],
@@ -3154,7 +3301,7 @@ const l36: Lesson = {
         },
         {
           type: 'p',
-          text: '**Nitridy** obsahují dusík s oxidačním číslem −III, **karbidy** uhlík s −IV. Často jsou mimořádně tvrdé a odolné: $TiN$ je zlatavý povlak vrtáků, karbid křemičitý $SiC$ (karborundum) je na brusných papírech a kotoučích.',
+          text: 'Zbývají poslední dvě rodiny z tabulky na začátku lekce. **Nitridy** obsahují dusík s oxidačním číslem −III, **karbidy** uhlík s −IV. Často jsou mimořádně tvrdé a odolné: $TiN$ je zlatavý povlak vrtáků, karbid křemičitý $SiC$ (karborundum) je na brusných papírech a kotoučích. Vzorec nitridu sestavíš křížovým pravidlem jako obvykle:',
         },
         {
           type: 'example',
@@ -3163,11 +3310,13 @@ const l36: Lesson = {
           steps: ['-natý znamená II: $Mg^{II}$, nitrid $N^{−III}$.', 'Do kříže: hořčík index 3, dusík index 2.', 'Kontrola: 3 · (+2) + 2 · (−3) = 0'],
           answer: '$Mg3N2$',
         },
+        { type: 'p', text: 'Vzorec $Mg3N2$ se objeví i v rovnici, kterou nitrid vzniká:' },
         {
           type: 'reaction',
           equation: '3Mg + N2 -> Mg3N2',
           caption: 'Hořící hořčík si bere i dusík ze vzduchu.',
         },
+        { type: 'p', text: 'Opačný směr funguje stejně jako u oxidů. Zkus pojmenovat karbid:' },
         {
           type: 'example',
           title: 'Karbid ze vzorce',
@@ -3181,11 +3330,13 @@ const l36: Lesson = {
           title: 'Karbidka',
           text: 'Karbid vápenatý $CaC2$ je výjimka: obsahuje dvojici atomů uhlíku, podobně jako peroxid dvojici kyslíků, a proto neodpovídá oxidačnímu číslu −IV. S vodou uvolňuje hořlavý plyn acetylen $C2H2$, který svítil jeskyňářům v karbidových lampách. Acetylen je výbušný, s karbidem proto jen pod dohledem.',
         },
+        { type: 'p', text: 'Reakci karbidky s vodou zapíšeš takto:' },
         {
           type: 'reaction',
           equation: 'CaC2 + 2H2O -> C2H2 + Ca(OH)2',
           caption: 'Karbid vápenatý a voda dávají acetylen $C2H2$.',
         },
+        { type: 'p', text: 'Teď znáš všechny rodiny z úvodní tabulky. Zbývá jeden háček: kovy, které mají víc oxidačních čísel.' },
         {
           type: 'check',
           question: {
@@ -3209,7 +3360,7 @@ const l36: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Mnoho kovů, hlavně přechodných, tvoří sloučeniny s různými oxidačními čísly. Železo se s kyslíkem slučuje jako $Fe^{II}$ i $Fe^{III}$, měď s chlorem jako $Cu^{I}$ i $Cu^{II}$. ==Jediné, co tyto látky v názvu rozliší, je koncovka.==',
+          text: 'Dva chloridy železa jsi koncovkou rozlišil/a už v minulé lekci. Takových dvojic je ale víc: mnoho kovů, hlavně přechodných, tvoří sloučeniny s různými oxidačními čísly. Železo se s kyslíkem slučuje jako $Fe^{II}$ i $Fe^{III}$, měď s chlorem jako $Cu^{I}$ i $Cu^{II}$. ==Jediné, co tyto látky v názvu rozliší, je koncovka.== Jak velký rozdíl dělá jedno oxidační číslo, ukazují dva oxidy železa:',
         },
         {
           type: 'compare',
@@ -3229,6 +3380,7 @@ const l36: Lesson = {
           ],
           caption: 'Stejné prvky, jiné oxidační číslo, úplně jiná látka.',
         },
+        { type: 'p', text: 'Podobné dvojice tvoří i další kovy. Ty nejběžnější najdeš v tabulce:' },
         {
           type: 'table',
           headers: ['Prvek', 'Nižší oxidační číslo', 'Vyšší oxidační číslo'],
@@ -3241,6 +3393,7 @@ const l36: Lesson = {
           ],
           caption: 'Dvojice sloučenin, které se liší jen oxidačním číslem kovu.',
         },
+        { type: 'p', text: 'Jak to poznáš ze vzorce? Spočítej oxidační číslo kovu a podle něj zvol koncovku:' },
         {
           type: 'example',
           title: 'Dva chloridy mědi',
@@ -3253,7 +3406,7 @@ const l36: Lesson = {
         },
         {
           type: 'p',
-          text: '**Kation** jednoho prvku pojmenuješ přídavným jménem se stejnou koncovkou jako ve sloučenině: $Na^+$ je sodný kation, $Fe^{2+}$ železnatý a $Fe^{3+}$ železitý kation. **Anion** jednoho prvku dostane koncovku **-idový**: $Cl^-$ chloridový, $O^{2-}$ oxidový, $S^{2-}$ sulfidový anion.',
+          text: 'Stejné koncovky používáme i pro samotné ionty. **Kation** jednoho prvku pojmenuješ přídavným jménem se stejnou koncovkou jako ve sloučenině: $Na^+$ je sodný kation, $Fe^{2+}$ železnatý a $Fe^{3+}$ železitý kation. **Anion** jednoho prvku dostane koncovku **-idový**: $Cl^-$ chloridový, $O^{2-}$ oxidový, $S^{2-}$ sulfidový anion. Některé víceatomové ionty mají vlastní názvy, které si stačí zapamatovat:',
         },
         {
           type: 'table',
@@ -3267,6 +3420,7 @@ const l36: Lesson = {
           ],
           caption: 'Víceatomové ionty s vlastními názvy. Sloučeniny s nimi se jmenují stejně jako dvouprvkové: podstatné jméno podle aniontu, přídavné podle kationtu.',
         },
+        { type: 'p', text: 'Amonný a oxoniový kation znáš z lekce o koordinační vazbě, hydroxidový anion z formálního náboje. Prohlédni si je ve 3D:' },
         {
           type: 'molecule',
           molecules: ['NH4+', 'H3O+', 'OH-'],
@@ -3278,6 +3432,7 @@ const l36: Lesson = {
           text: 'Kyanidy jsou prudce jedovaté: už desetiny gramu kyanidu draselného zastaví v buňkách dýchání. Patří jen do přísně zabezpečených laboratoří.',
         },
         { type: 'game', gameId: 'naming', text: 'Teď už víš všechno potřebné. Vyzkoušej si v trenažéru převody vzorec ↔ název u oxidů, halogenidů a dalších sloučenin.' },
+        { type: 'p', text: 'Teď umíš pojmenovat dvouprvkové sloučeniny i jednoduché ionty. V příští úrovni je začneš používat v chemických rovnicích a výpočtech.' },
         {
           type: 'check',
           question: {

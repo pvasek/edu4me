@@ -22,13 +22,14 @@ const l4_1: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Při **chemické reakci** vznikají nové látky; při fyzikální změně (tání, var, rozpouštění) látka zůstává sama sebou. Vazby ve výchozích látkách se **štěpí** a **vznikají nové**, atomy se jen přeskupí jako kostičky stavebnice.',
+          text: 'Než zjistíme, kam zmizelo dřevo z krbu, musíme vědět, co se při hoření a dalších reakcích vlastně děje. Při **chemické reakci** vznikají nové látky; při fyzikální změně (tání, var, rozpouštění) látka zůstává sama sebou. Vazby ve výchozích látkách se **štěpí** a **vznikají nové**, atomy se jen přeskupí jako kostičky stavebnice. Ukažme si to na hoření vodíku. Sleduj, které vazby zaniknou, které vzniknou a co se stane s počtem atomů:',
         },
         {
           type: 'reaction',
           equation: '2H2 + O2 -> 2H2O',
           caption: 'Vazby H–H a O=O se rozbijí, vzniknou vazby O–H. Atomů je před reakcí i po ní stejně.',
         },
+        { type: 'p', text: 'Látky na obou stranách šipky mají vlastní jména, která budeš potřebovat v celé této úrovni:' },
         {
           type: 'keyterms',
           items: [
@@ -37,6 +38,7 @@ const l4_1: Lesson = {
             { term: 'chemická rovnice', def: 'zápis reakce pomocí vzorců, např. $C + O2 -> CO2$' },
           ],
         },
+        { type: 'p', text: 'Přeskupování atomů ale nevidíš. Jak tedy poznáš, že reakce probíhá? Obvykle ji prozradí některý z těchto znaků:' },
         {
           type: 'iconlist',
           items: [
@@ -53,6 +55,7 @@ const l4_1: Lesson = {
           title: 'Znak není důkaz',
           text: 'Bublinky vidíš i ve vroucí vodě, a přece jde jen o var, tedy fyzikální změnu. Rozhodující je jediné: ==vznikla nová látka s jinými vlastnostmi?== Znaky ti jen napoví, kde hledat.',
         },
+        { type: 'p', text: 'Reakci už odlišíš od fyzikální změny. Teď se vrátíme k otázce z úvodu: co se při reakci děje s hmotností?' },
         {
           type: 'check',
           question: {
@@ -71,13 +74,14 @@ const l4_1: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Roku 1756 zahříval **Michail Lomonosov** kovy v zatavených nádobách a celková hmotnost se nezměnila. Roku 1774 to přesným vážením potvrdil **Antoine Lavoisier**.',
+          text: 'Když se atomy jen přeskupují, žádný nemůže zmizet ani přibýt. Měla by se tedy zachovat i hmotnost – a přesně to pokusem ověřili dva chemici. Roku 1756 zahříval **Michail Lomonosov** kovy v zatavených nádobách a celková hmotnost se nezměnila. Roku 1774 to přesným vážením potvrdil **Antoine Lavoisier**. Tak vznikl **zákon zachování hmotnosti**: ==celková hmotnost reaktantů se rovná celkové hmotnosti produktů.== Ověřit si to můžeš i v kuchyni. Jen musíš soustavu uzavřít, aby ti žádný plyn neutekl:',
         },
         {
           type: 'diagram',
           id: 'conservation-of-mass',
           caption: 'Ocet a jedlá soda v baňce uzavřené balonkem: vzniklý $CO2$ balonek nafoukne, ale váha ukazuje před reakcí i po ní 152,4 g. V uzavřené soustavě se celková hmotnost při reakci nemění.',
         },
+        { type: 'p', text: 'Váha říká, že hmotnost sedí. Proč tomu tak je, ukáže až pohled na částice:' },
         {
           type: 'particles',
           arrows: true,
@@ -87,6 +91,7 @@ const l4_1: Lesson = {
           ],
           caption: 'Proč zákon platí? Atomy se jen přeskupí. Kolik jich do reakce vstoupí, tolik jich vyjde, a proto se nemění ani hmotnost.',
         },
+        { type: 'p', text: 'Zákon se dá hned použít k výpočtu: hmotnost produktů je součet hmotností reaktantů.' },
         {
           type: 'example',
           title: 'Železo a síra',
@@ -98,6 +103,7 @@ const l4_1: Lesson = {
           ],
           answer: 'Vznikne 8,8 g sulfidu železnatého.',
         },
+        { type: 'p', text: 'Stejně dobře dopočítáš látku, kterou zvážit nemůžeš, třeba plyn, který uletěl:' },
         {
           type: 'example',
           title: 'Když produkt odletí',
@@ -109,6 +115,7 @@ const l4_1: Lesson = {
           ],
           answer: 'Uniklo 4,4 g oxidu uhličitého.',
         },
+        { type: 'p', text: 'Právě unikající nebo přibývající plyn plete vážení v otevřené nádobě. Porovnej dva pokusy, které zákonu na první pohled odporují:' },
         {
           type: 'compare',
           columns: [
@@ -132,6 +139,7 @@ const l4_1: Lesson = {
           variant: 'mascot',
           text: 'Takže to kilo dřeva z krbu? Většina uletěla komínem jako $CO2$ a vodní pára. Kdybys zachytil všechny plyny, váha by seděla na gram. Chemie je poctivý účetní.',
         },
+        { type: 'p', text: 'Celková hmotnost tedy sedí vždy. Další zákon jde hlouběji a ptá se, v jakém poměru se prvky slučují.' },
         {
           type: 'check',
           question: {
@@ -159,13 +167,14 @@ const l4_1: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Kolem roku 1799 si francouzský chemik **Joseph Louis Proust** všiml, že uhličitan měďnatý má vždy stejné složení, ať ho připravil v laboratoři, nebo vykopal v dole. Z toho vyvodil **zákon stálých poměrů slučovacích**: ==prvky se ve sloučenině slučují vždy v tomtéž hmotnostním poměru.==',
+          text: 'Zákon zachování hmotnosti hlídá jen součet. Neříká, jestli se prvky mohou slučovat v libovolném poměru. Kolem roku 1799 si francouzský chemik **Joseph Louis Proust** všiml, že uhličitan měďnatý má vždy stejné složení, ať ho připravil v laboratoři, nebo vykopal v dole. Z toho vyvodil **zákon stálých poměrů slučovacích**: ==prvky se ve sloučenině slučují vždy v tomtéž hmotnostním poměru.== Nejlíp je to vidět na vodě. Ať ji rozložíš odkudkoli, na každý gram vodíku připadne 8 gramů kyslíku:',
         },
         {
           type: 'formula',
           text: '$m(H) : m(O)$ = 1 : 8',
           caption: 'hmotnostní poměr vodíku a kyslíku ve vodě – ať pochází z kohoutku, z ledovce, nebo z komety',
         },
+        { type: 'p', text: 'Odkud se poměr 1 : 8 bere? Spočítáš ho ze vzorce a z atomových hmotností – a stejně to jde u každé sloučeniny:' },
         {
           type: 'table',
           headers: ['Sloučenina', 'Hmotnostní poměr prvků', 'Proč právě tak'],
@@ -177,6 +186,7 @@ const l4_1: Lesson = {
           ],
           caption: 'Poměr vyplývá ze vzorce a z relativních atomových hmotností (H 1, C 12, O 16, Mg 24, S 32, Fe 56).',
         },
+        { type: 'p', text: 'Pozor, tady se to snadno splete: stejné prvky mohou tvořit sloučeninu i obyčejnou směs. Stálý poměr platí jen pro sloučeninu:' },
         {
           type: 'compare',
           columns: [
@@ -194,14 +204,15 @@ const l4_1: Lesson = {
             },
           ],
         },
+        { type: 'p', text: 'Co se stane, když prvky smícháš v jiném poměru, než sloučenina potřebuje? Ten, kterého je víc, nezreaguje celý:' },
         {
           type: 'example',
           title: 'Co zbude?',
           problem: 'Zahřeješ 21 g železa se 16 g síry. Železo a síra se v sulfidu železnatém slučují v hmotnostním poměru 7 : 4. Kolik $FeS$ vznikne a co zbude?',
           steps: [
-            '21 g železa potřebuje 21 g · 4/7 = 12 g síry.',
+            'Na 7 g železa připadají 4 g síry, takže 21 g železa potřebuje 21 g · 4/7 = 12 g síry.',
             'Síry máš 16 g, takže 16 g − 12 g = 4 g síry zbude nezreagované.',
-            'Zákon zachování hmotnosti: $m(FeS)$ = 21 g + 12 g = 33 g.',
+            'Zákon zachování hmotnosti: $m(FeS)$ = 21 g + 12 g = 33 g. Sčítáme jen síru, která opravdu zreagovala.',
             'Kontrola: 33 g $FeS$ + 4 g síry = 37 g = 21 g + 16 g.',
           ],
           answer: 'Vznikne 33 g $FeS$ a zbudou 4 g síry. Látce, která se spotřebuje celá, budeš v poslední lekci říkat limitující reaktant.',
@@ -216,6 +227,7 @@ const l4_1: Lesson = {
           variant: 'fact',
           text: 'Proustův krajan Claude Louis Berthollet tvrdil, že složení sloučenin se může plynule měnit. Spor trval léta a vyhrál ho Proust. Dnes víme, že některé pevné látky (třeba oxid železnatý) mívají složení mírně proměnlivé, pro běžné sloučeniny ale zákon platí.',
         },
+        { type: 'p', text: 'Poměry prvků ve sloučenině už umíš spočítat. Teď se podíváme, co všechno vyčteš z chemické rovnice.' },
         {
           type: 'check',
           question: {
@@ -235,13 +247,14 @@ const l4_1: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Chemická rovnice je nejkratší možný popis reakce. Vlevo jsou reaktanty, vpravo produkty, mezi nimi šipka. Čte se „reaguje za vzniku“ nebo prostě „dává“.',
+          text: 'Oba zákony se promítají do zápisu, kterým chemici reakce popisují. Chemická rovnice je nejkratší možný popis reakce. Vlevo jsou reaktanty, vpravo produkty, mezi nimi šipka. Čte se „reaguje za vzniku“ nebo prostě „dává“. Jako příklad poslouží hoření vodíku, tentokrát i s písmeny v závorkách:',
         },
         {
           type: 'reaction',
           equation: '2H2(g) + O2(g) -> 2H2O(l)',
           caption: 'hoření vodíku',
         },
+        { type: 'p', text: 'Tuhle rovnici můžeš číst dvojím způsobem – podle toho, jestli se ptáš „co?“, nebo „kolik?“:' },
         {
           type: 'compare',
           columns: [
@@ -263,6 +276,7 @@ const l4_1: Lesson = {
             },
           ],
         },
+        { type: 'p', text: 'Zbývají písmena v závorkách. Jsou to **stavové symboly** a říkají, v jakém skupenství látka do reakce vstupuje nebo z ní vychází:' },
         {
           type: 'particles',
           boxes: [
@@ -273,6 +287,7 @@ const l4_1: Lesson = {
           ],
           caption: 'Stavové symboly za vzorcem říkají, v jakém skupenství látka je.',
         },
+        { type: 'p', text: 'Teď to dáme dohromady a přečteme celou rovnici rozkladu vápence:' },
         {
           type: 'example',
           title: 'Čteme rovnici',
@@ -290,6 +305,7 @@ const l4_1: Lesson = {
           variant: 'remember',
           text: 'V rovnici musí být vlevo i vpravo **stejný počet atomů každého prvku**. To je zákon zachování hmotnosti převedený do vzorců. Jak rovnici „srovnat“, se naučíš hned v další lekci.',
         },
+        { type: 'p', text: 'Rovnici už přečteš. U látek rozpuštěných ve vodě ji ale jde zapsat ještě přesněji, protože tam reagují jednotlivé ionty.' },
         {
           type: 'check',
           question: {
@@ -308,7 +324,7 @@ const l4_1: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Iontové látky jsou složené z kationtů a aniontů. Ve vodě se ionty od sebe oddělí a volně se pohybují: $NaCl(aq)$ proto ve skutečnosti znamená $Na^+(aq)$ a $Cl^-(aq)$.',
+          text: 'Symbol (aq) u iontové látky skrývá důležitou věc. Iontové látky jsou složené z kationtů a aniontů. Ve vodě se ionty od sebe oddělí a volně se pohybují: $NaCl(aq)$ proto ve skutečnosti znamená $Na^+(aq)$ a $Cl^-(aq)$.',
         },
         {
           type: 'particles',
@@ -330,11 +346,13 @@ const l4_1: Lesson = {
             { term: 'zkrácená iontová rovnice', def: 'rovnice bez iontů-diváků; ukazuje jen to podstatné' },
           ],
         },
+        { type: 'p', text: 'Všechny tři pojmy si ukážeme na jednom pokusu: zinkový plíšek ponoříš do modrého roztoku chloridu měďnatého.' },
         {
           type: 'reaction',
           equation: 'Zn(s) + CuCl2(aq) -> ZnCl2(aq) + Cu(s)',
           caption: 'zinkový plíšek v modrém roztoku chloridu měďnatého se pokryje mědí',
         },
+        { type: 'p', text: 'Molekulová rovnice vypadá, jako by reagovalo všechno. Pohled na částice ale ukáže, které ionty se změnily a které ne:' },
         {
           type: 'particles',
           arrows: true,
@@ -344,6 +362,7 @@ const l4_1: Lesson = {
           ],
           caption: 'Doopravdy reagují jen zinek a ionty $Cu^{2+}$.',
         },
+        { type: 'p', text: 'Totéž teď zapíšeme krok za krokem jako úplnou a zkrácenou iontovou rovnici:' },
         {
           type: 'example',
           title: 'Zinek v roztoku chloridu měďnatého',
@@ -357,6 +376,7 @@ const l4_1: Lesson = {
           ],
           answer: 'Zkrácená iontová rovnice: $Zn + Cu^{2+} -> Zn^{2+} + Cu$',
         },
+        { type: 'p', text: 'Stejný postup funguje i u srážecích reakcí, kde z roztoku vypadne nerozpustná látka:' },
         {
           type: 'example',
           title: 'Sraženina chloridu stříbrného',
@@ -379,6 +399,7 @@ const l4_1: Lesson = {
           title: 'Bezpečnost',
           text: 'Dusičnan stříbrný je žíravý a na kůži zanechává černé skvrny, které vydrží několik dní. Pracuj v ochranných brýlích a rukavicích.',
         },
+        { type: 'p', text: 'Rovnici už umíš přečíst i zapsat iontově. V příští lekci se ji naučíš vyčíslit, tedy doplnit koeficienty tak, aby atomy i náboje seděly.' },
         {
           type: 'check',
           question: {
@@ -491,13 +512,14 @@ const l4_2: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Rovnice $H2 + O2 -> H2O$ nesedí: vlevo jsou 2 atomy O, vpravo 1. **Vyčíslit** ji znamená doplnit před vzorce čísla tak, aby na obou stranách byl stejný počet atomů každého prvku.',
+          text: 'V minulé lekci jsme si řekli, že v rovnici musí být vlevo i vpravo stejně atomů každého prvku. Rovnice $H2 + O2 -> H2O$ to ale nesplňuje: vlevo jsou 2 atomy O, vpravo 1. **Vyčíslit** ji znamená doplnit před vzorce čísla tak, aby na obou stranách byl stejný počet atomů každého prvku. Stačí dát dvojku před vodík a před vodu – a atomy sedí:',
         },
         {
           type: 'reaction',
           equation: '2H2 + O2 -> 2H2O',
           caption: 'Vyčísleno jen doplněním čísel před vzorce – vzorce látek zůstaly stejné.',
         },
+        { type: 'p', text: 'Ve vzorcích se tak potkávají dva druhy čísel. Je důležité je nesplést, protože jedno smíš měnit a druhé ne:' },
         {
           type: 'compare',
           columns: [
@@ -525,11 +547,13 @@ const l4_2: Lesson = {
             },
           ],
         },
+        { type: 'p', text: 'Když se oba druhy čísel sejdou u jednoho vzorce, celkový počet atomů dostaneš násobením:' },
         {
           type: 'formula',
           text: 'počet atomů = koeficient × index',
           caption: 'u závorky násob ještě indexem za závorkou',
         },
+        { type: 'p', text: 'Vyzkoušej to na třech příkladech: nejdřív spočítej atomy sám/sama a pak porovnej s popiskem.' },
         {
           type: 'particles',
           boxes: [
@@ -539,6 +563,7 @@ const l4_2: Lesson = {
           ],
           caption: 'Koeficient říká, kolik částic nakreslíš; index, z kolika atomů je každá složená.',
         },
+        { type: 'p', text: 'Proč nesmíš sáhnout na index? Protože bys změnil/a samotnou látku. Porovnej vodu a peroxid vodíku:' },
         {
           type: 'molecule',
           molecules: ['H2O', 'H2O2'],
@@ -556,6 +581,7 @@ const l4_2: Lesson = {
           variant: 'tip',
           text: 'Koeficient 1 se nepíše. $O2$ v rovnici znamená jednu molekulu kyslíku.',
         },
+        { type: 'p', text: 'Teď víš, co smíš měnit. Zbývá zjistit, v jakém pořadí koeficienty doplňovat, aby ses v delší rovnici nezamotal/a.' },
         {
           type: 'check',
           question: {
@@ -584,7 +610,7 @@ const l4_2: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Jednoduché rovnice vyčíslíš „od oka“, u složitějších se vyplatí pevné pořadí. Kyslík a vodík bývají ve více látkách, proto přicházejí na řadu nakonec.',
+          text: 'U vody stačilo chvíli zkoušet. Jednoduché rovnice vyčíslíš „od oka“, u složitějších se vyplatí pevné pořadí. Kyslík a vodík bývají ve více látkách, proto přicházejí na řadu nakonec.',
         },
         {
           type: 'process',
@@ -599,6 +625,7 @@ const l4_2: Lesson = {
           ],
           caption: 'Pořadí vyčíslování – pomůcka **KoNeVoKy**. Kyslík je poslední, protože se objevuje skoro všude.',
         },
+        { type: 'p', text: 'Vyzkoušejme pořadí na výrobě amoniaku. Kovy tu nejsou, takže začneme rovnou dusíkem:' },
         {
           type: 'example',
           title: 'Syntéza amoniaku',
@@ -611,22 +638,25 @@ const l4_2: Lesson = {
           ],
           answer: '$N2 + 3H2 -> 2NH3$',
         },
+        { type: 'p', text: 'Hotovou rovnici si ověř na počítadle atomů pod ní:' },
         {
           type: 'reaction',
           equation: 'N2 + 3H2 -> 2NH3',
         },
+        { type: 'p', text: 'Těžší je to, když má prvek na každé straně jiný index. Takový případ je hliník reagující se vzdušným kyslíkem:' },
         {
           type: 'example',
           title: 'Hliník na vzduchu',
           problem: 'Hliník se na vzduchu pokrývá tenkou ochrannou vrstvou oxidu. Vyčísli $Al + O2 -> Al2O3$.',
           steps: [
-            'Kyslík: vlevo 2 atomy, vpravo 3. Nejmenší společný násobek čísel 2 a 3 je 6.',
+            'Hliník by šel srovnat hned, ale kyslík by ho pak stejně rozhodil. Začneme proto kyslíkem: vlevo 2 atomy, vpravo 3. Nejmenší společný násobek čísel 2 a 3 je 6.',
             'Aby bylo 6 atomů O na obou stranách: $3O2$ vlevo a $2Al2O3$ vpravo.',
             'Hliník: vpravo teď 2 × 2 = 4 atomy, proto $4Al$ vlevo.',
             'Kontrola: Al 4 = 4, O 3 × 2 = 6 a 2 × 3 = 6.',
           ],
           answer: '$4Al + 3O2 -> 2Al2O3$',
         },
+        { type: 'p', text: 'I tady se vyplatí kontrola na počítadle:' },
         {
           type: 'reaction',
           equation: '4Al + 3O2 -> 2Al2O3',
@@ -636,6 +666,7 @@ const l4_2: Lesson = {
           variant: 'remember',
           text: 'Když má prvek vlevo a vpravo různé indexy (2 a 3), hledej jejich **nejmenší společný násobek**. To je počet atomů, na který obě strany doplníš.',
         },
+        { type: 'p', text: 'Pořadí KoNeVoKy a nejmenší společný násobek zvládnou většinu rovnic. Občas ti ale na kyslík vyjde lichý počet atomů a na ten potřebuješ další trik.' },
         {
           type: 'check',
           question: {
@@ -664,7 +695,7 @@ const l4_2: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Vyjde-li ti lichý počet atomů kyslíku, z molekul $O2$ ho neposkládáš. Trik: jako **mezikrok** napiš zlomek, třeba $5/2 O2$, a pak celou rovnici vynásob dvěma.',
+          text: 'Po vyrovnání ostatních prvků ti někdy na kyslík vyjde lichý počet atomů – a ten z molekul $O2$ neposkládáš. Trik: jako **mezikrok** napiš zlomek, třeba $5/2 O2$, a pak celou rovnici vynásob dvěma.',
         },
         {
           type: 'process',
@@ -678,6 +709,7 @@ const l4_2: Lesson = {
           ],
           caption: 'Trik se zlomkem',
         },
+        { type: 'p', text: 'Nejdřív jednodušší případ. U rozkladu peroxidu vodíku se zlomku vyhneš, když hned zdvojíš výchozí látku:' },
         {
           type: 'example',
           title: 'Rozklad peroxidu vodíku',
@@ -685,16 +717,18 @@ const l4_2: Lesson = {
           steps: [
             'Vodík: vlevo 2, vpravo 2. Sedí.',
             'Kyslík: vlevo 2, vpravo 1 + 2 = 3. Nesedí.',
-            'Zkusíme $2H2O2$: vlevo teď 4 H a 4 O.',
+            'Lichého počtu se zbavíme zdvojením peroxidu: zkusíme $2H2O2$, vlevo teď jsou 4 H a 4 O.',
             'Vodík: potřebujeme 4 H vpravo, tedy $2H2O$ (2 × 2 = 4).',
             'Kyslík vpravo: 2 (z vody) + 2 (z $O2$) = 4. Sedí.',
           ],
           answer: '$2H2O2 -> 2H2O + O2$',
         },
+        { type: 'p', text: 'Na počítadle zkontroluj, že sedí vodík i kyslík:' },
         {
           type: 'reaction',
           equation: '2H2O2 -> 2H2O + O2',
         },
+        { type: 'p', text: 'Při spalování amoniaku už takhle snadno nevyvázneš. Tady použiješ celý trik se zlomkem krok za krokem:' },
         {
           type: 'example',
           title: 'Spalování amoniaku (výroba kyseliny dusičné)',
@@ -709,6 +743,7 @@ const l4_2: Lesson = {
           ],
           answer: '$4NH3 + 5O2 -> 4NO + 6H2O$',
         },
+        { type: 'p', text: 'Rovnici vynásobenou dvěma opět ověř počítadlem:' },
         {
           type: 'reaction',
           equation: '4NH3 + 5O2 -> 4NO + 6H2O',
@@ -718,6 +753,7 @@ const l4_2: Lesson = {
           variant: 'warning',
           text: 'Zlomek je jen pomocný krok. Ve výsledné rovnici musí být **nejmenší celá čísla**. Rovnice $4H2 + 2O2 -> 4H2O$ sice sedí, ale správně je zkrácená $2H2 + O2 -> 2H2O$.',
         },
+        { type: 'p', text: 'Trik se zlomkem nejčastěji využiješ u hoření, kde kyslík vychází lichý velmi často. Na to se podíváme teď.' },
         {
           type: 'check',
           question: {
@@ -741,18 +777,20 @@ const l4_2: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Sporák, zapalovač i vařič spalují **uhlovodíky**, sloučeniny uhlíku a vodíku (podrobně v úrovni 8). Při dokonalém hoření z nich vzniká oxid uhličitý a voda.',
+          text: 'Sporák, zapalovač i turistický vařič spalují **uhlovodíky**, sloučeniny uhlíku a vodíku (podrobně v úrovni 8). Při dokonalém hoření z nich vzniká oxid uhličitý a voda. Tři nejběžnější plynná paliva vypadají takto. Všimni si, že se liší jen počtem atomů uhlíku a vodíku:',
         },
         {
           type: 'molecule',
           molecules: ['CH4', 'C3H8', 'butane'],
           labels: ['methan $CH4$ (zemní plyn)', 'propan $C3H8$ (plynová bomba)', 'butan $C4H10$ (zapalovač)'],
         },
+        { type: 'p', text: 'Ať hoří kterékoli z nich, schéma reakce je stejné. Kyslík je v obou produktech, proto ho necháš až na konec:' },
         {
           type: 'formula',
           text: '$C_{x}H_{y} + O2 -> CO2 + H2O$',
           caption: 'pořadí vyčíslení: uhlík → vodík → kyslík',
         },
+        { type: 'p', text: 'Začneme methanem, u kterého se zlomek ještě neobjeví:' },
         {
           type: 'example',
           title: 'Methan (zemní plyn)',
@@ -764,10 +802,12 @@ const l4_2: Lesson = {
           ],
           answer: '$CH4 + 2O2 -> CO2 + 2H2O$',
         },
+        { type: 'p', text: 'Tak vypadá hoření zemního plynu na tvém sporáku:' },
         {
           type: 'reaction',
           equation: 'CH4 + 2O2 -> CO2 + 2H2O',
         },
+        { type: 'p', text: 'Butan má vodíku víc a kyslík vpravo vyjde lichý. Tady přijde ke slovu trik se zlomkem:' },
         {
           type: 'example',
           title: 'Butan (zapalovač)',
@@ -781,6 +821,7 @@ const l4_2: Lesson = {
           ],
           answer: '$2C4H10 + 13O2 -> 8CO2 + 10H2O$',
         },
+        { type: 'p', text: 'Všechny tyto rovnice ale platí, jen když je kyslíku dost. Pozor na rozdíl mezi dokonalým a nedokonalým hořením:' },
         {
           type: 'compare',
           columns: [
@@ -808,6 +849,7 @@ const l4_2: Lesson = {
           gameId: 'balance',
           text: 'Zkus si vyčíslit co nejvíc rovnic proti času ve hře Vyčísli rovnici.',
         },
+        { type: 'p', text: 'Hoření už vyčíslíš. Zbývají iontové rovnice, ve kterých musí kromě atomů sedět i náboje.' },
         {
           type: 'check',
           question: {
@@ -826,13 +868,14 @@ const l4_2: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'V iontové rovnici (poznal jsi ji v první lekci této úrovně) musí sedět **dvě** věci: počet atomů každého prvku a **součet nábojů** vlevo a vpravo. Náboj se při reakci neztrácí ani nevzniká z ničeho.',
+          text: 'V iontové rovnici (poznal/a jsi ji v první lekci této úrovně) musí sedět **dvě** věci: počet atomů každého prvku a **součet nábojů** vlevo a vpravo. Náboj se při reakci neztrácí ani nevzniká z ničeho. Ke kontrole atomů tedy přibývá druhé pravidlo:',
         },
         {
           type: 'formula',
           text: 'součet nábojů vlevo = součet nábojů vpravo',
           caption: 'náboj iontu násob jeho koeficientem: $3Fe^{2+}$ nese celkem 3 · (+2) = +6',
         },
+        { type: 'p', text: 'Jak snadno se na náboje zapomene, ukazuje rovnice leptání mědi. Na první pohled vypadá vyčíslená:' },
         {
           type: 'example',
           title: 'Leptání plošných spojů',
@@ -845,11 +888,13 @@ const l4_2: Lesson = {
           ],
           answer: '$2Fe^{3+} + Cu -> 2Fe^{2+} + Cu^{2+}$',
         },
+        { type: 'p', text: 'Výslednou rovnici si prohlédni i s počítadlem atomů:' },
         {
           type: 'reaction',
           equation: '2Fe^3+ + Cu -> 2Fe^2+ + Cu^2+',
           caption: 'Počítadlo pod obrázkem kontroluje jen atomy. Náboje (+6 = +6) musíš zkontrolovat sám.',
         },
+        { type: 'p', text: 'U hliníku v kyselině musíš vyrovnat náboj a počet atomů vodíku zároveň. Pomůže zase nejmenší společný násobek:' },
         {
           type: 'example',
           title: 'Hliník v kyselině',
@@ -863,6 +908,7 @@ const l4_2: Lesson = {
           ],
           answer: '$2Al + 6H^+ -> 2Al^{3+} + 3H2$',
         },
+        { type: 'p', text: 'Výsledná rovnice popisuje, co uvidíš ve zkumavce: kov mizí a uvolňují se bublinky vodíku.' },
         {
           type: 'reaction',
           equation: '2Al + 6H^+ -> 2Al^3+ + 3H2',
@@ -878,6 +924,7 @@ const l4_2: Lesson = {
           variant: 'tip',
           text: 'Kontrola nábojů zároveň hlídá předané elektrony: atom mědi odevzdá 2 elektrony a každý ze dvou iontů $Fe^{3+}$ jeden přijme. Takové redoxní rovnice budeš vyčíslovat pomocí oxidačních čísel v úrovni 6.',
         },
+        { type: 'p', text: 'Iontové rovnice už vyčíslíš. Na závěr si ukážeme, jak každou hotovou rovnici zkontrolovat a kde se nejčastěji chybuje.' },
         {
           type: 'check',
           question: {
@@ -896,7 +943,7 @@ const l4_2: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Hotovou rovnici vždy zkontroluj tabulkou: pro každý prvek sečti atomy vlevo a vpravo. Zabere to půl minuty a ušetří ti body v písemce.',
+          text: 'Ať vyčísluješ jakoukoli rovnici, poslední krok je vždycky stejný. Hotovou rovnici zkontroluj tabulkou: pro každý prvek sečti atomy vlevo a vpravo. Zabere to půl minuty a ušetří ti body v písemce.',
         },
         {
           type: 'table',
@@ -908,11 +955,13 @@ const l4_2: Lesson = {
           ],
           caption: 'Kontrola rovnice $2C4H10 + 13O2 -> 8CO2 + 10H2O$',
         },
+        { type: 'p', text: 'Stejnou kontrolu dělá počítadlo pod rovnicí. Vyzkoušej si ho na výrobě železa ve vysoké peci:' },
         {
           type: 'reaction',
           equation: 'Fe2O3 + 3CO -> 2Fe + 3CO2',
           caption: 'Počítadlo atomů pod obrázkem dělá stejnou kontrolu: Fe 2 = 2, C 3 = 3, O vlevo 3 + 3 = 6 a vpravo 3 × 2 = 6.',
         },
+        { type: 'p', text: 'Když kontrola nesedí, bývá za tím obvykle jedna z těchto chyb:' },
         {
           type: 'iconlist',
           items: [
@@ -934,6 +983,7 @@ const l4_2: Lesson = {
           variant: 'mascot',
           text: 'Moje zlaté pravidlo: rovnici, kterou jsem nezkontroloval, považuju za nevyčíslenou. Atomy se počítají, ne odhadují!',
         },
+        { type: 'p', text: 'Rovnice už umíš zapsat, vyčíslit i zkontrolovat. V příští lekci je roztřídíš podle toho, co se při reakci s látkami děje.' },
         {
           type: 'check',
           question: {
@@ -1060,13 +1110,14 @@ const l4_3: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Nejjednodušší třídění se dívá na to, **jak se mění počet a složení látek**. Stačí porovnat levou a pravou stranu rovnice.',
+          text: 'Rovnice už umíš zapsat i vyčíslit. Aby ses v milionech reakcí vyznal/a, potřebuješ je roztřídit. Nejjednodušší třídění se dívá na to, **jak se mění počet a složení látek**. Stačí porovnat levou a pravou stranu rovnice.',
         },
         {
           type: 'diagram',
           id: 'reaction-types',
           caption: 'Čtyři základní typy reakcí: barevné tvary ukazují, co se spojí, co se rozpadne a kdo si s kým vymění místo. Pod každým schématem je skutečná rovnice, u syntézy třeba hoření hořčíku v bleskovém prášku.',
         },
+        { type: 'p', text: 'Aby sis typy zapamatoval/a, tady je ke každému ještě jeden příklad:' },
         {
           type: 'list',
           items: [
@@ -1076,11 +1127,13 @@ const l4_3: Lesson = {
             '**podvojná záměna** – dvě sloučeniny si „vymění partnery“ jako dva páry při tanci',
           ],
         },
+        { type: 'p', text: 'Nejčastěji se plete substituce s podvojnou záměnou. Prohlédni si reakci železa s kyselinou a sleduj, s kým je spojený chlor:' },
         {
           type: 'reaction',
           equation: 'Fe + 2HCl -> FeCl2 + H2',
           caption: 'Prohlédni si částice: s kým je chlor spojený vlevo a s kým vpravo?',
         },
+        { type: 'p', text: 'Teď stejnou reakci zařadíme krok za krokem:' },
         {
           type: 'example',
           title: 'Zařaď reakci',
@@ -1097,6 +1150,7 @@ const l4_3: Lesson = {
           variant: 'tip',
           text: 'Rychlý test: ==jedna látka vpravo = syntéza, jedna látka vlevo = rozklad.== Když je vlevo i vpravo prvek a sloučenina, jde o substituci. Dvě sloučeniny na obou stranách znamenají podvojnou záměnu.',
         },
+        { type: 'p', text: 'Čtyři základní typy už rozlišíš. Nejvíc podob má podvojná záměna, proto se na ni podíváme zblízka.' },
         {
           type: 'check',
           question: {
@@ -1119,7 +1173,7 @@ const l4_3: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Když smícháš dva roztoky iontových látek, podvojná záměna proběhne jen tehdy, když něco „odejde“ z roztoku:',
+          text: 'Podvojná záměna probíhá hlavně v roztocích iontových látek. Když smícháš dva takové roztoky, proběhne jen tehdy, když něco „odejde“ z roztoku:',
         },
         {
           type: 'iconlist',
@@ -1129,6 +1183,7 @@ const l4_3: Lesson = {
             { icon: 'drop', title: 'voda', text: 'při neutralizaci' },
           ],
         },
+        { type: 'p', text: 'Podle toho, co z roztoku odejde, mají podvojné záměny vlastní jména:' },
         {
           type: 'keyterms',
           items: [
@@ -1137,6 +1192,7 @@ const l4_3: Lesson = {
             { term: 'reakce s vývojem plynu', def: 'podvojná záměna, při které jeden produkt uniká jako plyn, třeba $CO2$ z uhličitanu a kyseliny' },
           ],
         },
+        { type: 'p', text: 'Jak srážecí reakce vypadá na úrovni iontů, ukazuje směs roztoků dusičnanu stříbrného a kuchyňské soli:' },
         {
           type: 'particles',
           arrows: true,
@@ -1155,6 +1211,7 @@ const l4_3: Lesson = {
           ],
           caption: '$Ag^+$ a $Cl^-$ si „vymění partnery“ a vypadnou z roztoku.',
         },
+        { type: 'p', text: 'Teď zapíšeš a vyčíslíš rovnici jedné z nejhezčích srážecích reakcí:' },
         {
           type: 'example',
           title: 'Zlatý déšť',
@@ -1173,6 +1230,7 @@ const l4_3: Lesson = {
           title: 'Bezpečnost',
           text: 'Sloučeniny olova jsou jedovaté. Zlatý déšť patří jen do školní laboratoře: brýle, rukavice a odpad do označené nádoby, nikdy do výlevky.',
         },
+        { type: 'p', text: 'Při neutralizaci žádná sraženina nevzniká. Z roztoku „odejde“ voda: ionty $H^+$ a $OH^-$ se spojí do jejích molekul.' },
         {
           type: 'reaction',
           equation: 'HCl + NaOH -> NaCl + H2O',
@@ -1184,11 +1242,13 @@ const l4_3: Lesson = {
           title: 'Sopka v kuchyni',
           text: 'Nalij ocet na jedlou sodu a začne to šumět. Nejdřív proběhne podvojná záměna a vzniklá kyselina uhličitá se hned rozloží na vodu a $CO2$ (podrobněji v úrovni 5). Je to bezpečný domácí pokus, jen si pod to dej talíř.',
         },
+        { type: 'p', text: 'Stejně šumí vápenec nebo vodní kámen polité kyselinou. Tady z roztoku odchází plyn:' },
         {
           type: 'reaction',
           equation: 'CaCO3 + 2HCl -> CaCl2 + H2O + CO2',
           caption: 'reakce s vývojem plynu: vápenec (i vodní kámen) v kyselině šumí, protože uniká $CO2$',
         },
+        { type: 'p', text: 'Podvojnou záměnu už poznáš ve všech třech podobách. U substituce ale zatím nevíš, jestli vůbec proběhne – to prozradí řada reaktivity kovů.' },
         {
           type: 'check',
           question: {
@@ -1216,18 +1276,20 @@ const l4_3: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Proč železný hřebík vytěsní měď z roztoku chloridu měďnatého, ale měděný drát železo z roztoku chloridu železnatého ne? Kovy se liší tím, jak ochotně reagují a mění se na kationty. Seřazené podle toho tvoří **řadu reaktivity kovů**, v českých učebnicích **Beketovovu řadu** (řadu napětí kovů).',
+          text: 'Proč železný hřebík vytěsní měď z roztoku chloridu měďnatého, ale měděný drát železo z roztoku chloridu železnatého ne? Kovy se liší tím, jak ochotně reagují a mění se na kationty. Seřazené podle toho tvoří **řadu reaktivity kovů**, v českých učebnicích **Beketovovu řadu** (řadu napětí kovů). Čím víc vlevo kov v řadě stojí, tím ochotněji reaguje. Pro školní příklady ti stačí tohle pořadí:',
         },
         {
           type: 'formula',
           text: 'K  Ca  Na  Mg  Al  Zn  Fe  Sn  Pb  **H**  Cu  Ag  Au',
           caption: 'zjednodušená řada: vlevo nejreaktivnější (neušlechtilé) kovy, vpravo nejméně reaktivní (ušlechtilé); vodík slouží jako hraniční kámen',
         },
+        { type: 'p', text: 'Jak velký je rozdíl mezi oběma konci řady? Podívej se, které kovy v ní stojí:' },
         {
           type: 'elements',
           symbols: ['K', 'Na', 'Mg', 'Zn', 'Fe', 'Cu', 'Ag', 'Au'],
           caption: 'Od draslíku, který se uchovává pod petrolejem, po zlato, které se v přírodě najde ryzí',
         },
+        { type: 'p', text: 'Z polohy kovu v řadě vyčteš tři předpovědi:' },
         {
           type: 'iconlist',
           items: [
@@ -1236,6 +1298,7 @@ const l4_3: Lesson = {
             { icon: 'arrow-cycle', title: 'Kov a roztok soli', text: 'kov vytěsní z roztoku soli **každý kov, který stojí napravo od něj**' },
           ],
         },
+        { type: 'p', text: 'Vyzkoušej si předpovídat na čtyřech dvojicích. U každé najdi oba kovy (nebo kov a vodík) v řadě a porovnej, kdo stojí víc vlevo:' },
         {
           type: 'example',
           title: 'Proběhne reakce?',
@@ -1248,6 +1311,7 @@ const l4_3: Lesson = {
           ],
           answer: 'Proběhnou reakce a) a d).',
         },
+        { type: 'p', text: 'Stejné pravidlo vysvětluje i oblíbený pokus se stříbrným stromečkem:' },
         {
           type: 'reaction',
           equation: 'Cu + 2AgNO3 -> Cu(NO3)2 + 2Ag',
@@ -1264,6 +1328,7 @@ const l4_3: Lesson = {
           variant: 'fact',
           text: 'Proto se zlato a stříbro v přírodě najdou ryzí, kdežto sodík nebo draslík nikdy: okamžitě by zreagovaly se vzduchem a vodou. Ušlechtilé kovy byly také první kovy, které lidé znali.',
         },
+        { type: 'p', text: 'Teď umíš předpovědět, jestli reakce proběhne. Dál nás bude zajímat, co reakce dělá s teplem.' },
         {
           type: 'check',
           question: {
@@ -1288,7 +1353,7 @@ const l4_3: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Reakce se liší i tím, co dělají s teplem. Když vznikají pevnější vazby, než jaké se rozbily, energie přebývá a uvolní se do okolí.',
+          text: 'Řada reaktivity říká, jestli reakce proběhne. Reakce se ale liší i tím, co dělají s teplem. Když vznikají pevnější vazby, než jaké se rozbily, energie přebývá a uvolní se do okolí.',
         },
         {
           type: 'compare',
@@ -1313,12 +1378,14 @@ const l4_3: Lesson = {
             },
           ],
         },
+        { type: 'p', text: 'Rozdíl je nejlépe vidět na energetickém diagramu. U exotermní reakce leží produkty níž než reaktanty:' },
         {
           type: 'diagram',
           id: 'energy-profile',
           props: { kind: 'exo' },
           caption: 'Exotermní reakce: produkty mají méně energie než reaktanty, rozdíl odchází jako teplo. Kopec $E_{a}$ uprostřed (aktivační energie) probereš v úrovni 6.',
         },
+        { type: 'p', text: 'U endotermní reakce je to naopak: produkty leží výš a chybějící energii musí reakce odněkud získat.' },
         {
           type: 'diagram',
           id: 'energy-profile',
@@ -1333,7 +1400,7 @@ const l4_3: Lesson = {
         },
         {
           type: 'p',
-          text: 'Tepelné změny budeš počítat v úrovni 6 pomocí reakčního tepla $ΔH$. Teď stačí rozpoznat, kterým směrem teplo teče.',
+          text: 'Tepelné změny budeš počítat v úrovni 6 pomocí reakčního tepla $ΔH$. Teď stačí rozpoznat, kterým směrem teplo teče. Dalším hlediskem je, jak rychle reakce běží a jestli se dá vrátit.',
         },
         {
           type: 'check',
@@ -1350,6 +1417,7 @@ const l4_3: Lesson = {
       title: 'Rychlé, pomalé a vratné reakce',
       icon: 'stopwatch',
       blocks: [
+        { type: 'p', text: 'V úvodu jsme porovnali rezavění kola a výbuch rachejtle. Reakce se opravdu velmi liší rychlostí – od okamžiku až po staletí:' },
         {
           type: 'compare',
           columns: [
@@ -1377,6 +1445,7 @@ const l4_3: Lesson = {
           equation: 'N2 + 3H2 <=> 2NH3',
           caption: 'výroba amoniaku: část amoniaku se zase rozkládá zpátky na dusík a vodík',
         },
+        { type: 'p', text: 'Pozor, vratnost a rychlost jsou dvě různá hlediska. Porovnej reakce, které běží jen jedním směrem, s vratnými:' },
         {
           type: 'compare',
           columns: [
@@ -1400,6 +1469,7 @@ const l4_3: Lesson = {
           variant: 'remember',
           text: 'Šipka → znamená, že reakce běží jedním směrem. Dvojitá šipka ⇌ znamená, že běží oběma směry zároveň. Co se v takové soustavě děje, probereme v úrovni 6 u chemické rovnováhy.',
         },
+        { type: 'p', text: 'Teplo, rychlost i směr reakce už rozlišíš. Zbývá nejširší třídění: podle toho, co si částice při reakci předávají.' },
         {
           type: 'check',
           question: {
@@ -1423,7 +1493,7 @@ const l4_3: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Reakce se dají třídit i podle toho, **co si částice předávají**. Tak vznikají dvě velké rodiny.',
+          text: 'Dosud jsme třídili podle vzhledu rovnice, tepla a rychlosti. Reakce se dají třídit i podle toho, **co si částice předávají**. Tak vznikají dvě velké rodiny.',
         },
         {
           type: 'compare',
@@ -1442,11 +1512,13 @@ const l4_3: Lesson = {
             },
           ],
         },
+        { type: 'p', text: 'Jak předávání elektronů vypadá, ukazuje schéma reakce zinku s ionty mědi:' },
         {
           type: 'diagram',
           id: 'redox-transfer',
           caption: 'Při redoxní reakci přecházejí elektrony z jedné částice na druhou: atom zinku předá dva elektrony kationtu $Cu^{2+}$ – přesně to se děje v reakci z příkladu níže.',
         },
+        { type: 'p', text: 'Elektrony ale v rovnici nevidíš. Redoxní reakci proto poznáš podle oxidačních čísel, která už znáš z úrovně 3:' },
         {
           type: 'example',
           title: 'Je to redoxní reakce?',
@@ -1459,11 +1531,13 @@ const l4_3: Lesson = {
           ],
           answer: 'Ano, jde o redoxní reakci (a zároveň o substituci).',
         },
+        { type: 'p', text: 'Šuplíky se navzájem nevylučují. Vezmi si třeba hoření hořčíku:' },
         {
           type: 'reaction',
           equation: '2Mg + O2 -> 2MgO',
           caption: 'Hoření hořčíku patří do pěti šuplíků najednou.',
         },
+        { type: 'p', text: 'Projdi u něj všechna hlediska z této lekce jedno po druhém:' },
         {
           type: 'iconlist',
           items: [
@@ -1484,6 +1558,7 @@ const l4_3: Lesson = {
           gameId: 'quickfire',
           text: 'Otestuj se v Bleskové výzvě: poznáš typ reakce dřív, než vyprší čas?',
         },
+        { type: 'p', text: 'Reakce už umíš roztřídit. V příští lekci začneme počítat, kolik látky do reakce vstupuje – a k tomu potřebujeme novou veličinu, látkové množství.' },
         {
           type: 'check',
           question: {
@@ -1599,13 +1674,14 @@ const l4_4: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Vejce kupuješ po tuctech (12 kusů), papír po balících. Pro drobounké atomy a molekuly mají chemici obří „balení“: **mol**.',
+          text: 'Molekuly v doušku vody po jedné nespočítáš. Vejce ale také nekupuješ po kusech: kupuješ je po tuctech (12 kusů), papír po balících. Pro drobounké atomy a molekuly mají chemici obří „balení“: **mol**.',
         },
         {
           type: 'diagram',
           id: 'mole-scale',
           caption: 'Jeden mol od každé látky: 18 g vody, 58,5 g soli, 12 g uhlíku i balonek 22,4 dm^{3} plynu. Pokaždé je to 6,022·10^{23} částic. Proč každý mol váží jinak, zjistíš u molární hmotnosti.',
         },
+        { type: 'p', text: 'K molu patří tři pojmy, které budeš potřebovat v každém výpočtu této úrovně:' },
         {
           type: 'keyterms',
           items: [
@@ -1614,11 +1690,13 @@ const l4_4: Lesson = {
             { term: 'Avogadrova konstanta $N_{A}$', def: '$N_{A}$ = 6,022·10^{23} mol^{−1}; počet částic v jednom molu' },
           ],
         },
+        { type: 'p', text: 'Když víš, kolik částic je v jednom molu, látkové množství dostaneš prostým dělením – stejně jako počet tuctů z počtu vajec:' },
         {
           type: 'formula',
           text: '$n = N / N_{A}$',
           caption: '$n$ látkové množství (mol), $N$ počet částic, $N_{A}$ Avogadrova konstanta',
         },
+        { type: 'p', text: 'Vztah funguje oběma směry. Nejdřív z molů spočítáme částice:' },
         {
           type: 'example',
           title: 'Z molů na částice',
@@ -1630,6 +1708,7 @@ const l4_4: Lesson = {
           ],
           answer: '$N$ ≈ 1,51·10^{24} molekul $CO2$',
         },
+        { type: 'p', text: 'A teď obráceně, z počtu atomů na moly:' },
         {
           type: 'example',
           title: 'Z částic na moly',
@@ -1641,6 +1720,7 @@ const l4_4: Lesson = {
           ],
           answer: 'Hřebík obsahuje 0,5 mol železa.',
         },
+        { type: 'p', text: 'Pozor, tady se často chybuje: záleží na tom, jaké částice počítáš. Jedna molekula totiž může obsahovat víc atomů téhož prvku:' },
         {
           type: 'particles',
           boxes: [
@@ -1660,6 +1740,7 @@ const l4_4: Lesson = {
           variant: 'fact',
           text: 'Od roku 2019 je mol definován přímo pevnou hodnotou Avogadrovy konstanty: $N_{A}$ = 6,022 140 76·10^{23} mol^{−1}. Kdybys měl mol zrnek máku, pokryl bys celou Českou republiku vrstvou vysokou přes dva kilometry.',
         },
+        { type: 'p', text: 'Moly už převedeš na částice a zpět. Částice ale v laboratoři nespočítáš – k molům se potřebuješ dostat přes váhu.' },
         {
           type: 'check',
           question: {
@@ -1696,11 +1777,13 @@ const l4_4: Lesson = {
           id: 'mole-bridge',
           caption: 'Látkové množství $n$ je most: z hmotnosti se k němu dostaneš dělením $M$, z počtu částic dělením $N_{A}$, z objemu plynu dělením $V_{m}$ a u roztoku platí $n = c · V$. Opačným směrem násobíš.',
         },
+        { type: 'p', text: 'Nejčastěji budeš přecházet mezi hmotností a moly. Čím těžší jsou částice, tím méně molů je v jednom gramu, proto se hmotností dělí:' },
         {
           type: 'formula',
           text: '$n = m / M$',
           caption: '$m$ hmotnost (g), $M$ molární hmotnost (g/mol), $n$ látkové množství (mol). Trojúhelník $m$–$n$–$M$: zakryj, co hledáš, a zbude $m = n · M$, $n = m / M$ nebo $M = m / n$.',
         },
+        { type: 'p', text: 'Než začneš převádět, potřebuješ znát $M$. Sečteš ji ze vzorce a z tabulky atomových hmotností:' },
         {
           type: 'example',
           title: 'Molární hmotnost ze vzorce',
@@ -1712,6 +1795,7 @@ const l4_4: Lesson = {
           ],
           answer: '18 g/mol, 100 g/mol a 102 g/mol',
         },
+        { type: 'p', text: 'S molární hmotností v ruce už projdeš celý most: z gramů na moly a z molů na částice.' },
         {
           type: 'example',
           title: 'Z hmotnosti na moly a na částice',
@@ -1723,6 +1807,7 @@ const l4_4: Lesson = {
           ],
           answer: '0,2 mol, tedy asi 1,2·10^{23} molekul $CO2$',
         },
+        { type: 'p', text: 'Opačným směrem, z molů na gramy, se molární hmotností násobí:' },
         {
           type: 'example',
           title: 'Z molů na hmotnost',
@@ -1734,6 +1819,7 @@ const l4_4: Lesson = {
           ],
           answer: '$m$ = 25 g',
         },
+        { type: 'p', text: 'U plynných prvků se chybuje nejčastěji. Podívej se, jak vypadají jejich molekuly:' },
         {
           type: 'molecule',
           molecules: ['Cl2', 'O2', 'N2', 'H2'],
@@ -1749,6 +1835,7 @@ const l4_4: Lesson = {
           gameId: 'molar-mass',
           text: 'Procvič si sčítání atomových hmotností ve hře Molární hmotnost.',
         },
+        { type: 'p', text: 'Z hmotnosti už spočítáš moly. U plynů se ale místo vážení mnohem častěji měří objem.' },
         {
           type: 'check',
           question: {
@@ -1779,7 +1866,7 @@ const l4_4: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'U plynů se měří objem. **Avogadrův zákon**: stejné objemy různých plynů obsahují za stejné teploty a tlaku stejný počet molekul, ať jde o lehoučký vodík, nebo těžký $CO2$.',
+          text: 'Plyn se špatně váží, zato se snadno měří jeho objem. Pomůže **Avogadrův zákon**: stejné objemy různých plynů obsahují za stejné teploty a tlaku stejný počet molekul, ať jde o lehoučký vodík, nebo těžký $CO2$.',
         },
         {
           type: 'particles',
@@ -1799,6 +1886,7 @@ const l4_4: Lesson = {
           text: '$n = V / V_{m}$',
           caption: '$V_{m}$ = 22,4 dm^{3}/mol za normálních podmínek (0 °C, 101,325 kPa)',
         },
+        { type: 'p', text: 'Molární objem je další pilíř mostu. Spolu s molární hmotností převedeš gramy plynu na litry:' },
         {
           type: 'example',
           title: 'Objem z hmotnosti',
@@ -1810,6 +1898,7 @@ const l4_4: Lesson = {
           ],
           answer: '$V$ ≈ 4,48 dm^{3} (skoro pět litrů)',
         },
+        { type: 'p', text: 'A naopak: z objemu balonku zjistíš, kolik plyn váží.' },
         {
           type: 'example',
           title: 'Hmotnost z objemu',
@@ -1823,7 +1912,7 @@ const l4_4: Lesson = {
         },
         {
           type: 'p',
-          text: 'Laboratoř ale nemá 0 °C. Při **pokojových (laboratorních) podmínkách**, tedy 20 °C a 101,325 kPa, je plyn o něco roztaženější a jeden mol zabere asi **24 dm^{3}**. S touto hodnotou počítají i mezinárodní úlohy (IGCSE) se zadáním „při pokojové teplotě“.',
+          text: 'Laboratoř ale nemá 0 °C. Při **pokojových (laboratorních) podmínkách**, tedy 20 °C a 101,325 kPa, je plyn o něco roztaženější a jeden mol zabere asi **24 dm^{3}**. S touto hodnotou počítají i mezinárodní úlohy (IGCSE) se zadáním „při pokojové teplotě“. Obě hodnoty si porovnej vedle sebe, ať víš, kterou kdy použít:',
         },
         {
           type: 'compare',
@@ -1843,6 +1932,7 @@ const l4_4: Lesson = {
           ],
           caption: 'Proč zrovna 24? Zahřátím z 273 K na 293 K se plyn roztáhne: 22,4 · 293 / 273 ≈ 24,0 dm^{3}/mol.',
         },
+        { type: 'p', text: 'Pokojovou hodnotu použiješ třeba u šumivé tablety ve sklenici:' },
         {
           type: 'example',
           title: 'Šumivá tableta',
@@ -1854,6 +1944,7 @@ const l4_4: Lesson = {
           ],
           answer: 'Tableta uvolní asi 1,1 g $CO2$.',
         },
+        { type: 'p', text: 'Pozor ještě na jednu past: molární objem patří jen plynům. Porovnej mol plynu s molem kapalné vody:' },
         {
           type: 'compare',
           columns: [
@@ -1877,6 +1968,7 @@ const l4_4: Lesson = {
           variant: 'fact',
           text: 'Hodnot molárního objemu koluje víc: IUPAC dnes jako standardní tlak doporučuje 100 kPa, pak při 0 °C vychází 22,7 dm^{3}/mol; při 25 °C a 101,3 kPa je to asi 24,5 dm^{3}/mol. ==Vždy použij hodnotu, kterou dává zadání== – bez ní počítej s 22,4 dm^{3}/mol, nebo rovnou s $pV = nRT$.',
         },
+        { type: 'p', text: 'Molární objem ti ale pomůže jen za normálních nebo pokojových podmínek. Pro jinou teplotu a tlak potřebuješ obecnější vztah.' },
         {
           type: 'check',
           question: {
@@ -1917,11 +2009,13 @@ const l4_4: Lesson = {
             { icon: 'ocean', title: 'potápěčská láhev', text: 'vysoký tlak, studená voda' },
           ],
         },
+        { type: 'p', text: 'Ve všech těchto případech se mění tlak, objem i teplota. Molekuly plynu tlačí na stěny tím víc, čím víc jich je a čím jsou teplejší – a právě to rovnice vyjadřuje:' },
         {
           type: 'formula',
           text: '$pV = nRT$',
           caption: '$p$ tlak (Pa), $V$ objem (m^{3}), $n$ látkové množství (mol), $T$ teplota (K), $R$ = 8,314 J·K^{−1}·mol^{−1}',
         },
+        { type: 'p', text: 'Nejvíc chyb vzniká při dosazování. Před výpočtem si převeď všechny veličiny do základních jednotek:' },
         {
           type: 'iconlist',
           items: [
@@ -1931,6 +2025,7 @@ const l4_4: Lesson = {
             { icon: 'idea', title: 'pohodlná zkratka', text: 'když dosadíš tlak v kPa a objem v dm^{3}, jednotky také sedí' },
           ],
         },
+        { type: 'p', text: 'Vyzkoušejme převody na nejjednodušším případu: hledáme objem známého množství plynu.' },
         {
           type: 'example',
           title: 'Objem plynu při pokojové teplotě',
@@ -1943,6 +2038,7 @@ const l4_4: Lesson = {
           ],
           answer: '$V$ ≈ 49,6 dm^{3}',
         },
+        { type: 'p', text: 'Teď příklad z kuchyně, kde musíš nejdřív z hmotnosti spočítat moly:' },
         {
           type: 'example',
           title: 'Bombička do šlehačky',
@@ -1955,6 +2051,7 @@ const l4_4: Lesson = {
           ],
           answer: 'Z malé bombičky by vzniklo asi 4,4 dm^{3} plynu, proto je v ní tak vysoký tlak.',
         },
+        { type: 'p', text: 'Rovnici můžeš použít i obráceně: ze změřeného objemu, tlaku a teploty zjistíš molární hmotnost a podle ní plyn poznáš.' },
         {
           type: 'example',
           title: 'Který plyn to je?',
@@ -1974,6 +2071,7 @@ const l4_4: Lesson = {
           title: 'Nejčastější chyba',
           text: 'Dosadit teplotu ve stupních Celsia. Při 0 °C by ti vyšlo, že plyn nemá žádný objem, a při −10 °C dokonce záporný. ==V rovnici $pV = nRT$ je teplota vždy v kelvinech.==',
         },
+        { type: 'p', text: 'Plyny už spočítáš za jakýchkoli podmínek. Moly ale prozradí i to, z čeho se sloučenina skládá – a o tom je poslední oddíl.' },
         {
           type: 'check',
           question: {
@@ -1993,13 +2091,14 @@ const l4_4: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Hmotnostní zlomek spočítáš i pro prvek ve sloučenině. Hutník tak zjistí, kolik železa dostane z tuny rudy.',
+          text: 'Hmotnostní zlomek znáš z roztoků v úrovni 1. Spočítáš ho ale i pro prvek ve sloučenině. Hutník tak zjistí, kolik železa dostane z tuny rudy. Stačí zjistit, jakou část relativní molekulové hmotnosti tvoří atomy hledaného prvku:',
         },
         {
           type: 'formula',
           text: '$w(X) = x · A_{r}(X) / M_{r}$',
           caption: '$x$ je počet atomů prvku X ve vzorci',
         },
+        { type: 'p', text: 'Vyzkoušej to na železné rudě, kterou hutník taví ve vysoké peci:' },
         {
           type: 'example',
           title: 'Kolik železa je v rudě',
@@ -2011,6 +2110,7 @@ const l4_4: Lesson = {
           ],
           answer: '$w(Fe)$ = 0,70 = 70 %. Z tuny čistého hematitu získáš 700 kg železa.',
         },
+        { type: 'p', text: 'Jde to i obráceně: ze změřeného složení zjistíš vzorec. Nejdřív ale pozor na dva druhy vzorců, které se snadno pletou:' },
         {
           type: 'compare',
           columns: [
@@ -2028,6 +2128,7 @@ const l4_4: Lesson = {
             },
           ],
         },
+        { type: 'p', text: 'Empirický vzorec ze složení najdeš v pěti krocích. Klíčový je druhý: procenta udávají hmotnosti, ale vzorec poměr atomů, proto musíš převést na moly.' },
         {
           type: 'process',
           layout: 'flow',
@@ -2040,6 +2141,7 @@ const l4_4: Lesson = {
           ],
           caption: 'Jak najít empirický (a molekulový) vzorec ze složení',
         },
+        { type: 'p', text: 'Postup si projdeme na černém oxidu železa:' },
         {
           type: 'example',
           title: 'Empirický vzorec ze složení',
@@ -2052,6 +2154,7 @@ const l4_4: Lesson = {
           ],
           answer: 'Empirický vzorec je $Fe3O4$ (magnetit, magnetická železná ruda).',
         },
+        { type: 'p', text: 'Když znáš i molární hmotnost, dostaneš se od empirického vzorce k molekulovému:' },
         {
           type: 'example',
           title: 'Od empirického k molekulovému vzorci',
@@ -2064,6 +2167,7 @@ const l4_4: Lesson = {
           ],
           answer: 'Empirický vzorec $CH2O$, molekulový vzorec $C6H12O6$ (glukóza).',
         },
+        { type: 'p', text: 'Že je glukóza opravdu šest jednotek $CH2O$, ukáže i model molekuly:' },
         {
           type: 'molecule',
           molecules: ['glucose'],
@@ -2074,6 +2178,7 @@ const l4_4: Lesson = {
           variant: 'tip',
           text: 'Když ti po vydělení vyjde 1,5, násob dvěma. Když 1,33 nebo 1,67, násob třemi. Když 1,25, násob čtyřmi. Zaokrouhluj jen čísla opravdu blízká celému číslu (2,01 → 2, ale 1,5 není 2!).',
         },
+        { type: 'p', text: 'Teď umíš převádět mezi částicemi, gramy, moly a objemy plynů. V příští lekci stejný most použiješ pro roztoky a jejich koncentraci.' },
         {
           type: 'check',
           question: {
@@ -2192,7 +2297,7 @@ const l4_5: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Hmotnostní zlomek $w$ říká, kolik gramů látky je ve 100 g roztoku. Reakce ale probíhají mezi **částicemi**, proto chemik používá **molární koncentraci**: počet molů látky v 1 dm^{3} roztoku.',
+          text: 'V minulé lekci jsi převáděl/a gramy na moly. Teď to využiješ u roztoků. Hmotnostní zlomek $w$ říká, kolik gramů látky je ve 100 g roztoku. Reakce ale probíhají mezi **částicemi**, proto chemik používá **molární koncentraci**: počet molů látky v 1 dm^{3} roztoku.',
         },
         {
           type: 'particles',
@@ -2202,16 +2307,19 @@ const l4_5: Lesson = {
           ],
           caption: 'Stejný objem, čtyřikrát víc rozpuštěných částic = čtyřikrát vyšší koncentrace.',
         },
+        { type: 'p', text: 'Rozhoduje tedy, kolik částic připadá na jednotku objemu. Zapsáno vzorcem:' },
         {
           type: 'formula',
           text: '$c = n / V$',
           caption: '$c$ molární koncentrace (mol/dm^{3}), $n$ látkové množství rozpuštěné látky (mol), $V$ objem roztoku (dm^{3})',
         },
+        { type: 'p', text: 'V laboratoři ale moly nevážíš, vážíš gramy. Proto se do vzorce rovnou dosazuje $n = m / M$:' },
         {
           type: 'formula',
           text: '$c = m / (M · V)$',
           caption: 'po dosazení $n = m / M$: se vzorcem v tomto tvaru se počítá nejčastěji',
         },
+        { type: 'p', text: 'Vyzkoušej si oba kroky na solném roztoku:' },
         {
           type: 'example',
           title: 'Solný roztok',
@@ -2219,11 +2327,12 @@ const l4_5: Lesson = {
           steps: [
             '$M(NaCl)$ = 23 + 35,5 = 58,5 g/mol',
             '$n = m / M$ = 5,85 g : 58,5 g/mol = 0,100 mol',
-            'Převedeme objem: $V$ = 250 cm^{3} = 0,250 dm^{3}',
+            'Převedeme objem, protože koncentrace se udává na dm^{3}: $V$ = 250 cm^{3} = 0,250 dm^{3}',
             '$c = n / V$ = 0,100 mol : 0,250 dm^{3} = 0,400 mol/dm^{3}',
           ],
           answer: '$c$ = 0,4 mol/dm^{3}',
         },
+        { type: 'p', text: 'Stejně spočítáš koncentraci cukru v obyčejném hrnku čaje:' },
         {
           type: 'example',
           title: 'Cukr v čaji',
@@ -2241,6 +2350,7 @@ const l4_5: Lesson = {
           title: 'Dvě klasické chyby',
           text: 'Objem musí být v dm^{3}: 250 cm^{3} = 0,250 dm^{3}, ne 250. A $V$ je ==objem celého roztoku==, ne objem vody, do které látku sypeš.',
         },
+        { type: 'p', text: 'Molární koncentraci už spočítáš. Na etiketách ale často najdeš gramy na litr – a to je jiná veličina.' },
         {
           type: 'check',
           question: {
@@ -2260,18 +2370,20 @@ const l4_5: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Na etiketách minerálek, v rozborech vody nebo v krevních testech se složení často udává v gramech či miligramech na litr. To je **hmotnostní koncentrace**: hmotnost rozpuštěné látky v 1 dm^{3} roztoku.',
+          text: 'Na etiketách minerálek, v rozborech vody nebo v krevních testech se složení často udává v gramech či miligramech na litr. To je **hmotnostní koncentrace**: hmotnost rozpuštěné látky v 1 dm^{3} roztoku. Vzorec je stejně jednoduchý jako u molární koncentrace, jen místo molů dosadíš gramy:',
         },
         {
           type: 'formula',
           text: '$γ = m / V$',
           caption: '$γ$ (gama) hmotnostní koncentrace v g/dm^{3} nebo mg/dm^{3}, $m$ hmotnost rozpuštěné látky, $V$ objem roztoku; některé učebnice ji značí $ρ$ s indexem látky',
         },
+        { type: 'p', text: 'Obě koncentrace popisují stejný roztok, jedna v gramech, druhá v molech. Mezi nimi proto převádí molární hmotnost:' },
         {
           type: 'formula',
           text: '$γ = c · M$',
           caption: 'převod na molární koncentraci a zpět: $c = γ / M$',
         },
+        { type: 'p', text: 'Pro představu, s jakými hodnotami se v běžném životě potkáš:' },
         {
           type: 'iconlist',
           items: [
@@ -2281,6 +2393,7 @@ const l4_5: Lesson = {
             { icon: 'glass', title: 'Sladká limonáda', text: 'kolem 100 g cukru v 1 dm^{3}' },
           ],
         },
+        { type: 'p', text: 'Co znamená zhruba 100 g/dm^{3} pro jednu plechovku limonády? Spočítejme to:' },
         {
           type: 'example',
           title: 'Cukr v plechovce',
@@ -2292,6 +2405,7 @@ const l4_5: Lesson = {
           ],
           answer: 'V plechovce je asi 35 g cukru; $c$ ≈ 0,31 mol/dm^{3}.',
         },
+        { type: 'p', text: 'Hmotnostní koncentrace se hodí i ke kontrole limitů, třeba u vody ze studny:' },
         {
           type: 'example',
           title: 'Dusičnany ve studni',
@@ -2303,6 +2417,7 @@ const l4_5: Lesson = {
           ],
           answer: '$γ$ = 60 mg/dm^{3}, voda limit překračuje (a nesmí se z ní připravovat kojenecká strava); $c$ ≈ 0,97 mmol/dm^{3}.',
         },
+        { type: 'p', text: 'Pozor, tady se snadno spletou dvě veličiny se stejnou jednotkou g/dm^{3}:' },
         {
           type: 'compare',
           columns: [
@@ -2321,6 +2436,7 @@ const l4_5: Lesson = {
           ],
           caption: 'Stejná jednotka, jiná veličina. A pozor i na hmotnostní zlomek: ten je bez jednotky (g na g roztoku).',
         },
+        { type: 'p', text: 'Koncentraci hotového roztoku už spočítáš. Teď to otočíme: jak roztok o zadané koncentraci připravit?' },
         {
           type: 'check',
           question: {
@@ -2349,6 +2465,7 @@ const l4_5: Lesson = {
             { term: '**odměrná baňka**', def: 'baňka s dlouhým úzkým hrdlem a ryskou; po doplnění po rysku obsahuje přesně udaný objem (kalibrovaná na 20 °C)' },
           ],
         },
+        { type: 'p', text: 'Nejdřív výpočet. Koncentrace je zadaná v mol/dm^{3}, proto laborant počítá přes moly:' },
         {
           type: 'example',
           title: 'Kolik navážit',
@@ -2359,6 +2476,7 @@ const l4_5: Lesson = {
           ],
           answer: 'Navážíš 7,31 g $NaCl$.',
         },
+        { type: 'p', text: 'Navážku máš. Teď je potřeba látku převést do roztoku tak, aby objem seděl přesně:' },
         {
           type: 'process',
           layout: 'flow',
@@ -2371,6 +2489,7 @@ const l4_5: Lesson = {
           ],
           caption: 'Příprava roztoku o přesné koncentraci',
         },
+        { type: 'p', text: 'Nejvíc přesnosti se ztratí v posledním kroku, při doplnění po rysku. Podívej se, jak správně odečíst hladinu:' },
         {
           type: 'diagram',
           id: 'meniscus',
@@ -2382,13 +2501,14 @@ const l4_5: Lesson = {
           title: 'Proč odměrná baňka, a ne kádinka?',
           text: 'Stupnice kádinky se může splést i o 5 %, odměrná baňka na 250 cm^{3} jen asi o 0,15 cm^{3}. Látku ale nejdřív rozpusť v kádince: rozpouštění může roztok zahřát nebo ochladit a baňka měří přesně jen při 20 °C. Poslední kapky doplňuj střičkou nebo kapátkem.',
         },
+        { type: 'p', text: 'Ještě jedna záludnost: některé soli se prodávají jako hydráty, které mají v krystalu vázanou vodu. Tu na vahách vážíš také:' },
         {
           type: 'example',
           title: 'Pozor na hydráty',
           problem: 'Máš připravit 100 cm^{3} roztoku síranu měďnatého o $c$ = 0,1 mol/dm^{3}. V laboratoři je jen modrá skalice $CuSO4·5H2O$. Kolik jí navážíš? ($A_{r}$: Cu 63,5, S 32, O 16, H 1; názvosloví solí přijde v úrovni 5)',
           steps: [
             '$n(CuSO4)$ = 0,1 mol/dm^{3} · 0,100 dm^{3} = 0,010 mol',
-            'Každá jednotka hydrátu obsahuje jednu $CuSO4$, tedy $n(hydrátu)$ = 0,010 mol.',
+            'Každá jednotka hydrátu obsahuje jednu $CuSO4$, tedy $n(hydrátu)$ = 0,010 mol. Molární hmotnost ale musíme počítat i s vodou, protože ji navážíš spolu se solí.',
             '$M(CuSO4·5H2O)$ = 63,5 + 32 + 4 · 16 + 5 · 18 = 249,5 g/mol',
             '$m$ = 0,010 mol · 249,5 g/mol = 2,50 g',
           ],
@@ -2399,6 +2519,7 @@ const l4_5: Lesson = {
           variant: 'warning',
           text: 'Síran měďnatý je zdraví škodlivý a dráždí oči. Při vážení a rozpouštění používej brýle a rukavice, rozsypané krystalky hned ukliď.',
         },
+        { type: 'p', text: 'Roztok z pevné látky už připravíš. Kyseliny nebo čpavek ale mají na lahvi místo mol/dm^{3} procenta.' },
         {
           type: 'check',
           question: {
@@ -2428,11 +2549,13 @@ const l4_5: Lesson = {
             { icon: 'warning', title: 'koncentrovaný čpavek', text: '25 % $NH3$' },
           ],
         },
+        { type: 'p', text: 'Aby ses od procent dostal/a k molům, potřebuješ vědět, kolik váží jeden dm^{3} roztoku. Proto ve vzorci vystupuje hustota:' },
         {
           type: 'formula',
           text: '$c = w · ρ / M$',
           caption: 'hustotu dosaď v g/dm^{3} (1 g/cm^{3} = 1000 g/dm^{3})',
         },
+        { type: 'p', text: 'Vzorec se nemusíš učit nazpaměť, odvodíš si ho ve čtyřech krocích:' },
         {
           type: 'process',
           layout: 'flow',
@@ -2444,6 +2567,7 @@ const l4_5: Lesson = {
           ],
           caption: 'Odkud se vzorec bere',
         },
+        { type: 'p', text: 'Postup si projdeme na fyziologickém roztoku. Jeho hustota je skoro stejná jako u vody, takže čísla vyjdou zpaměti:' },
         {
           type: 'example',
           title: 'Fyziologický roztok',
@@ -2456,6 +2580,7 @@ const l4_5: Lesson = {
           ],
           answer: '$c$ ≈ 0,154 mol/dm^{3}',
         },
+        { type: 'p', text: 'U koncentrované kyseliny už hustota od vody znatelně odbíhá, a tak dosadíme rovnou do vzorce:' },
         {
           type: 'example',
           title: 'Koncentrovaná kyselina chlorovodíková',
@@ -2468,6 +2593,7 @@ const l4_5: Lesson = {
           ],
           answer: '$c$ ≈ 11,6 mol/dm^{3}, v praxi se říká „asi dvanáctimolární“.',
         },
+        { type: 'p', text: 'Vzorec jde použít i obráceně, z koncentrace zpátky na procenta:' },
         {
           type: 'example',
           title: 'A zpátky: z koncentrace na procenta',
@@ -2485,6 +2611,7 @@ const l4_5: Lesson = {
           title: 'Bezpečnost',
           text: 'Koncentrovaná kyselina chlorovodíková i čpavek jsou žíravé a uvolňují dráždivé výpary. Pracuj v digestoři, v brýlích a rukavicích.',
         },
+        { type: 'p', text: 'Mezi procenty a moly už převádíš. Koncentrovanou kyselinu ale skoro nikdy nepoužiješ tak, jak je – musíš ji zředit.' },
         {
           type: 'check',
           question: {
@@ -2511,6 +2638,7 @@ const l4_5: Lesson = {
           id: 'dilution',
           caption: 'Pipetou odměříš $V1$ zásobního roztoku, převedeš ho do odměrné baňky o objemu $V2$ a doplníš vodou po rysku. Rozpuštěných částic je pořád stejně, jen ve větším objemu, proto $c1 · V1 = c2 · V2$ (obě strany jsou rovny $n$). Čísla na obrázku spočítáš v příkladu níže.',
         },
+        { type: 'p', text: 'Ze stejného vztahu spočítáš, kolik zásobního roztoku odměřit. Pozor, $V1$ je objem zásobního roztoku, ne přidané vody:' },
         {
           type: 'example',
           title: 'Ředění zásobního roztoku',
@@ -2534,6 +2662,7 @@ const l4_5: Lesson = {
           title: 'Ředění kyselin',
           text: 'Při ředění koncentrované kyseliny se uvolňuje hodně tepla. Proto vždy platí: ==nejdřív voda, potom kyselina==. Kyselinu liješ pomalu do vody za míchání, nikdy naopak.',
         },
+        { type: 'p', text: 'Stejně zředíš i koncentrovanou kyselinu chlorovodíkovou z minulého oddílu, jen nesmíš zapomenout na pořadí „nejdřív voda“:' },
         {
           type: 'example',
           title: 'Zředěná kyselina chlorovodíková',
@@ -2545,6 +2674,7 @@ const l4_5: Lesson = {
           ],
           answer: 'Do baňky s asi 300 cm^{3} vody opatrně přilij 41,7 cm^{3} kyseliny a doplň po rysku.',
         },
+        { type: 'p', text: 'Ředění vodou už spočítáš. Co když ale místo vody přileješ jiný roztok téže látky?' },
         {
           type: 'check',
           question: {
@@ -2584,11 +2714,13 @@ const l4_5: Lesson = {
           ],
           caption: 'Částice obou roztoků se sečtou a rozprostřou do součtu objemů.',
         },
+        { type: 'p', text: 'Stačí tedy sečíst moly z obou roztoků a vydělit je celkovým objemem:' },
         {
           type: 'formula',
           text: '$c = (c1V1 + c2V2) / (V1 + V2)$',
           caption: 'koncentrace po smíchání dvou roztoků téže látky',
         },
+        { type: 'p', text: 'Čísla z obrázku si teď přepočítej krok za krokem:' },
         {
           type: 'example',
           title: 'Smíchání dvou roztoků',
@@ -2606,6 +2738,7 @@ const l4_5: Lesson = {
           variant: 'remember',
           text: 'Výsledná koncentrace leží vždy **mezi** koncentracemi obou roztoků, blíž té, kterého roztoku je víc. Vyjde-li ti něco mimo, máš chybu.',
         },
+        { type: 'p', text: 'U hmotnostních zlomků se směšování dá spočítat rychleji, křížovým pravidlem. Každý roztok dostane tolik dílů, o kolik je od cílové koncentrace vzdálený ten druhý:' },
         {
           type: 'example',
           title: 'Křížové pravidlo pro hmotnostní zlomky',
@@ -2623,6 +2756,7 @@ const l4_5: Lesson = {
           title: 'Objemy se ne vždy sčítají',
           text: 'Smícháš-li 50 cm^{3} lihu a 50 cm^{3} vody, dostaneš jen asi 96 cm^{3} směsi. Molekuly se do sebe „zasunou“ díky vodíkovým vazbám. U zředěných vodných roztoků je rozdíl zanedbatelný, u koncentrovaných raději počítej s hmotnostmi.',
         },
+        { type: 'p', text: 'Teď umíš roztok připravit, zředit i smíchat. V příští lekci propojíš moly, gramy, objemy plynů i koncentrace s chemickou rovnicí a spočítáš, kolik produktu reakce dá.' },
         {
           type: 'check',
           question: {
@@ -2741,29 +2875,32 @@ const l4_6: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Koeficienty udávají poměr **počtu částic**. A protože mol je jen „balení“ částic, udávají i ==poměr látkových množství==.',
+          text: 'Teď propojíš vyčíslenou rovnici s moly z minulých lekcí. Koeficienty udávají poměr **počtu částic**. A protože mol je jen „balení“ částic, udávají i ==poměr látkových množství==.',
         },
         {
           type: 'reaction',
           equation: 'N2 + 3H2 -> 2NH3',
           caption: 'syntéza amoniaku: na obrázku molekuly, ale stejný poměr platí i pro moly',
         },
+        { type: 'p', text: 'Obecně tedy platí: látková množství dvou látek v reakci jsou ve stejném poměru jako jejich koeficienty.' },
         {
           type: 'formula',
           text: '$n(A) : n(B) = a : b$',
           caption: '$a$, $b$ jsou koeficienty látek A a B v rovnici',
         },
+        { type: 'p', text: 'Nejjednodušší úloha zůstává celá v molech – stačí vynásobit poměrem:' },
         {
           type: 'example',
           title: 'Kolik amoniaku',
           problem: 'Kolik molů amoniaku vznikne ze 4,5 mol vodíku (dusíku je dost)?',
           steps: [
             'Poměr z rovnice: $n(NH3) : n(H2)$ = 2 : 3',
-            '$n(NH3)$ = 4,5 mol · 2/3',
+            'Na každé 3 mol vodíku vzniknou 2 mol amoniaku: $n(NH3)$ = 4,5 mol · 2/3',
             '$n(NH3)$ = 3,0 mol',
           ],
           answer: 'Vzniknou 3,0 mol $NH3$.',
         },
+        { type: 'p', text: 'Pozor, tady se chybuje nejčastěji: poměr koeficientů platí pro moly, ne pro gramy. Porovnej, co tatáž rovnice říká o molech a co o gramech:' },
         {
           type: 'compare',
           columns: [
@@ -2797,6 +2934,7 @@ const l4_6: Lesson = {
           ],
           caption: '$m(A) -> n(A) -> n(B) -> m(B)$',
         },
+        { type: 'p', text: 'Čtyři kroky si projdeme na pálení vápna:' },
         {
           type: 'example',
           title: 'Pálení vápna',
@@ -2809,17 +2947,19 @@ const l4_6: Lesson = {
           ],
           answer: 'Vznikne 140 g $CaO$ (a zbylých 110 g odejde jako $CO2$).',
         },
+        { type: 'p', text: 'Stejný postup používá i hutník. Nejdřív se podívej, co se děje ve vysoké peci:' },
         {
           type: 'diagram',
           id: 'blast-furnace',
           caption: 'Vysoká pec: oxid uhelnatý redukuje železnou rudu na železo.',
         },
+        { type: 'p', text: 'Teď spočítáme, kolik železa pec z rudy dá:' },
         {
           type: 'example',
           title: 'Vysoká pec',
           problem: 'Ve vysoké peci se železo vyrábí redukcí rudy oxidem uhelnatým: $Fe2O3 + 3CO -> 2Fe + 3CO2$. Kolik kilogramů železa získáš z 800 kg $Fe2O3$? ($A_{r}$: Fe 56, O 16)',
           steps: [
-            '$n(Fe2O3)$ = 800 000 g : 160 g/mol = 5000 mol',
+            'Kilogramy převedeme na gramy, protože $M$ je v g/mol: $n(Fe2O3)$ = 800 000 g : 160 g/mol = 5000 mol',
             'Poměr $n(Fe) : n(Fe2O3)$ = 2 : 1, tedy $n(Fe)$ = 10 000 mol',
             '$m(Fe)$ = 10 000 mol · 56 g/mol = 560 000 g',
           ],
@@ -2831,6 +2971,7 @@ const l4_6: Lesson = {
           title: 'Zkratka pro kilogramy',
           text: 'Když dosadíš hmotnost v kg a molární hmotnost v kg/kmol (stejné číslo jako v g/mol), vyjdou ti kilomoly a výsledek rovnou v kilogramech. Přepočet na gramy si ušetříš.',
         },
+        { type: 'p', text: 'Hmotnost produktu už spočítáš. Když je produktem plyn, víc tě ale obvykle zajímá jeho objem.' },
         {
           type: 'check',
           question: {
@@ -2861,7 +3002,7 @@ const l4_6: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Když je produktem plyn, poslední krok nevede na hmotnost, ale na objem.',
+          text: 'Když je produktem plyn, poslední krok nevede na hmotnost, ale na objem. Podle podmínek zvolíš jeden ze dvou vztahů z lekce o látkovém množství:',
         },
         {
           type: 'compare',
@@ -2880,11 +3021,13 @@ const l4_6: Lesson = {
             },
           ],
         },
+        { type: 'p', text: 'Za normálních podmínek stačí molární objem. Ukážeme si to na zinku, který se rozpouští v kyselině:' },
         {
           type: 'reaction',
           equation: 'Zn + 2HCl -> ZnCl2 + H2',
           caption: 'z 1 mol zinku vznikne 1 mol vodíku',
         },
+        { type: 'p', text: 'Postup je stejný jako u hmotnosti, jen v posledním kroku násobíš molárním objemem místo molární hmotnosti:' },
         {
           type: 'example',
           title: 'Vodík ze zinku',
@@ -2896,6 +3039,7 @@ const l4_6: Lesson = {
           ],
           answer: 'Vznikne 4,48 dm^{3} vodíku.',
         },
+        { type: 'p', text: 'Když plyn nevzniká za normálních podmínek, poslední krok nahradí stavová rovnice. Tak se počítá airbag:' },
         {
           type: 'example',
           title: 'Airbag',
@@ -2908,6 +3052,7 @@ const l4_6: Lesson = {
           ],
           answer: '$V$ ≈ 36,7 dm^{3}, a to za pouhých 30 milisekund.',
         },
+        { type: 'p', text: 'A co když jsou plynné i reaktanty? Vezmi si hoření propanu:' },
         {
           type: 'reaction',
           equation: 'C3H8(g) + 5O2(g) -> 3CO2(g) + 4H2O(l)',
@@ -2924,6 +3069,7 @@ const l4_6: Lesson = {
           variant: 'warning',
           text: 'Vodík tvoří se vzduchem výbušnou směs. Při pokusech s ním pracuj bez otevřeného ohně a jen v malých množstvích. Azid sodný je prudce jedovatý, v autě je bezpečně uzavřený.',
         },
+        { type: 'p', text: 'Zatím jsme vždy počítali z jednoho reaktantu a všeho ostatního bylo dost. Co když jsou zadané dva a jeden dojde dřív?' },
         {
           type: 'check',
           question: {
@@ -2950,6 +3096,7 @@ const l4_6: Lesson = {
           id: 'limiting-reagent',
           caption: 'Na sendvič patří 2 krajíce chleba a 1 plátek sýra. Z 8 krajíců a 3 plátků uděláš jen 3 sendviče: sýr dojde první, 2 krajíce zbudou. U molekul podle $2H2 + O2 -> 2H2O$ stačí 4 molekuly vodíku jen na 2 molekuly kyslíku: vodík je limitující a jedna $O2$ zbude.',
         },
+        { type: 'p', text: 'Oba reaktanty mají v chemii své názvy:' },
         {
           type: 'keyterms',
           items: [
@@ -2957,6 +3104,7 @@ const l4_6: Lesson = {
             { term: 'reaktant v nadbytku', def: 'reaktant, jehož část po reakci zbude nezreagovaná' },
           ],
         },
+        { type: 'p', text: 'U palačinek to vidíš hned, u molů se vyplatí postup. Moly musíš vydělit koeficientem, protože rovnice od každé látky žádá jiný počet molů:' },
         {
           type: 'process',
           layout: 'flow',
@@ -2968,6 +3116,7 @@ const l4_6: Lesson = {
           ],
           caption: 'Jak najít limitující reaktant',
         },
+        { type: 'p', text: 'Postup si vyzkoušíme na slučování vodíku s kyslíkem:' },
         {
           type: 'example',
           title: 'Vodík a kyslík',
@@ -2981,6 +3130,7 @@ const l4_6: Lesson = {
           ],
           answer: 'Vznikne 36 g vody a zbude 8 g kyslíku. Kontrola: 4 + 40 = 36 + 8 = 44 g.',
         },
+        { type: 'p', text: 'Úlohu se železem a sírou znáš z první lekce, kde jsi ji počítal/a přes hmotnostní poměr. Přes moly to jde stejně dobře:' },
         {
           type: 'example',
           title: 'Železo a síra',
@@ -2999,6 +3149,7 @@ const l4_6: Lesson = {
           title: 'Porovnávej moly, ne gramy',
           text: 'Že máš víc gramů kyslíku než vodíku, nic neznamená. Rozhoduje látkové množství vydělené koeficientem.',
         },
+        { type: 'p', text: 'Limitující reaktant už najdeš. Zatím jsme ale počítali, že vznikne všechno, co rovnice slibuje – a to v praxi neplatí.' },
         {
           type: 'check',
           question: {
@@ -3038,11 +3189,13 @@ const l4_6: Lesson = {
             { icon: 'equilibrium', title: 'vratné reakce', text: 'neproběhnou úplně' },
           ],
         },
+        { type: 'p', text: 'Jak velká část teoretického množství opravdu vznikla, vyjadřuje výtěžek:' },
         {
           type: 'formula',
           text: '$η = m_{skut} / m_{teor} · 100 %$',
           caption: 'výtěžek $η$ (čti „éta“): skutečně získaná hmotnost produktu děleno teoretickou hmotností',
         },
+        { type: 'p', text: 'Vezmi si pálení vápna z prvního oddílu, kde teoreticky vzniklo 140 g $CaO$:' },
         {
           type: 'example',
           title: 'Výtěžek z vápenky',
@@ -3053,18 +3206,20 @@ const l4_6: Lesson = {
           ],
           answer: '$η$ = 90 %',
         },
+        { type: 'p', text: 'Častěji ale znáš, kolik produktu chceš, a hledáš, kolik suroviny vzít. Pak se výtěžkem dělí:' },
         {
           type: 'example',
           title: 'Kolik navážit, když víš, že něco ztratíš',
           problem: 'Potřebuješ získat 28 g $CaO$. Výtěžek rozkladu je 80 %. Kolik gramů $CaCO3$ musíš vypálit? ($A_{r}$: C 12, O 16, Ca 40)',
           steps: [
-            'Teoreticky musí vzniknout: 28 g : 0,80 = 35 g $CaO$',
+            'Teoreticky musí vzniknout víc, protože pětina se ztratí: 28 g : 0,80 = 35 g $CaO$',
             '$n(CaO)$ = 35 g : 56 g/mol = 0,625 mol',
             '$n(CaCO3)$ = 0,625 mol (poměr 1 : 1)',
             '$m(CaCO3)$ = 0,625 mol · 100 g/mol = 62,5 g',
           ],
           answer: 'Musíš vypálit 62,5 g vápence.',
         },
+        { type: 'p', text: 'Násobit, nebo dělit? Tady se chybuje často, proto si obě situace porovnej vedle sebe:' },
         {
           type: 'compare',
           columns: [
@@ -3083,6 +3238,7 @@ const l4_6: Lesson = {
           ],
           caption: 'Násobit, nebo dělit? Surovin potřebuješ vždy víc, než kolik by stačilo teoreticky.',
         },
+        { type: 'p', text: 'Jak se výtěžek zvyšuje v průmyslu, ukazuje výroba amoniaku:' },
         {
           type: 'diagram',
           id: 'haber-process',
@@ -3113,6 +3269,7 @@ const l4_6: Lesson = {
           text: 'atomová ekonomie = $M$(žádaný produkt) : Σ $M$(reaktanty) · 100 %',
           caption: 'molární hmotnosti násob koeficienty z vyčíslené rovnice; Σ znamená součet',
         },
+        { type: 'p', text: 'Vápenka ukáže, proč může být atomová ekonomie nízká i při dokonalé práci:' },
         {
           type: 'example',
           title: 'Kolik z vápence zůstane',
@@ -3124,6 +3281,7 @@ const l4_6: Lesson = {
           ],
           answer: '56 %. Zbylých 44 % hmotnosti vápence odchází jako $CO2$, i kdyby výtěžek byl 100 %. Vápenky proto patří k velkým zdrojům skleníkových plynů.',
         },
+        { type: 'p', text: 'Výtěžek a atomovou ekonomii je snadné splést, přitom měří úplně jiné věci:' },
         {
           type: 'compare',
           columns: [
@@ -3141,6 +3299,7 @@ const l4_6: Lesson = {
             },
           ],
         },
+        { type: 'p', text: 'Výtěžek i atomovou ekonomii už spočítáš. Zbývá poslední komplikace: suroviny, které nejsou čisté.' },
         {
           type: 'check',
           question: {
@@ -3166,6 +3325,7 @@ const l4_6: Lesson = {
           type: 'formula',
           text: 'čistota = $m$(čisté látky) : $m$(vzorku) · 100 %',
         },
+        { type: 'p', text: 'Představ si vzorek vápence s příměsí písku. Při reakci se projeví jen jeho část:' },
         {
           type: 'particles',
           boxes: [
@@ -3173,6 +3333,7 @@ const l4_6: Lesson = {
           ],
           caption: 'S kyselinou reaguje jen uhličitan vápenatý; písek zůstane beze změny.',
         },
+        { type: 'p', text: 'Čistotu proto zjistíš z množství produktu: změříš uvolněný plyn a spočítáš, kolik $CaCO3$ ho muselo dát.' },
         {
           type: 'example',
           title: 'Jak čistý je vápenec?',
@@ -3185,6 +3346,7 @@ const l4_6: Lesson = {
           ],
           answer: 'Vzorek obsahuje 80 % $CaCO3$.',
         },
+        { type: 'p', text: 'Opačná úloha: čistotu znáš a hledáš, kolik produktu surovina dá.' },
         {
           type: 'example',
           title: 'Kolik železa z tuny rudy',
@@ -3207,6 +3369,7 @@ const l4_6: Lesson = {
           variant: 'fact',
           text: 'Čistota se hlídá u léků (předepisuje ji lékopis), v potravinách i ve zlatnictví: zlato o ryzosti 999,9 obsahuje 99,99 % zlata.',
         },
+        { type: 'p', text: 'Teď zvládneš i nečisté vzorky. Na závěr spojíme všechny kroky do úloh, jaké tě čekají v písemce.' },
         {
           type: 'check',
           question: {
@@ -3241,11 +3404,13 @@ const l4_6: Lesson = {
           ],
           caption: 'Univerzální postup pro složitější úlohy',
         },
+        { type: 'p', text: 'Postup si projdeme na úloze, ve které se potká roztok s plynem. Prvním krokem je vždy vyčíslená rovnice:' },
         {
           type: 'reaction',
           equation: 'Mg + 2HCl -> MgCl2 + H2',
           caption: 'hořčík v kyselině: na 1 mol Mg potřebuješ 2 mol $HCl$ a vznikne 1 mol $H2$',
         },
+        { type: 'p', text: 'Z rovnice víš, že kyseliny je potřeba dvakrát víc molů než hořčíku. Teď to dopočítáme:' },
         {
           type: 'example',
           title: 'Hořčík v kyselině',
@@ -3258,11 +3423,13 @@ const l4_6: Lesson = {
           ],
           answer: 'Potřebuješ 250 cm^{3} kyseliny a vznikne 5,6 dm^{3} vodíku.',
         },
+        { type: 'p', text: 'Druhá úloha spojuje roztok se srážecí reakcí:' },
         {
           type: 'reaction',
           equation: 'AgNO3(aq) + NaCl(aq) -> AgCl(s) + NaNO3(aq)',
           caption: 'srážení chloridu stříbrného: poměr 1 : 1',
         },
+        { type: 'p', text: 'Moly dusičnanu stříbrného tentokrát spočítáš z koncentrace a objemu roztoku:' },
         {
           type: 'example',
           title: 'Kolik sraženiny',
@@ -3285,6 +3452,7 @@ const l4_6: Lesson = {
           gameId: 'balance',
           text: 'Každý výpočet začíná vyčíslenou rovnicí. Zahraj si Vyčísli rovnici a měj ruku jistou.',
         },
+        { type: 'p', text: 'Tím máš pohromadě všechny chemické výpočty této úrovně. V další úrovni je využiješ u kyselin, zásad a solí – a začneš kyselinami a jejich názvoslovím.' },
         {
           type: 'check',
           question: {

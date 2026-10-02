@@ -21,13 +21,15 @@ const level: LevelContent = {
           title: 'Cukry podle funkčních skupin',
           icon: 'sugar',
           blocks: [
-            { type: 'p', text: 'Chemik pod pojmem **sacharidy** myslí celou skupinu látek: od hroznového cukru přes škrob v bramborách po celulózu ve dřevě. Jsou to **polyhydroxyaldehydy** nebo **polyhydroxyketony** – molekuly s několika skupinami $–OH$ a jednou karbonylovou skupinou $C=O$ – a také látky, ze kterých takové molekuly vznikají hydrolýzou.' },
+            { type: 'p', text: 'Škrob v rohlíku i celulóza v tričku a sešitu patří do jedné velké rodiny. Chemik pod pojmem **sacharidy** myslí celou skupinu látek: od hroznového cukru přes škrob v bramborách po celulózu ve dřevě. Jsou to **polyhydroxyaldehydy** nebo **polyhydroxyketony** – molekuly s několika skupinami $–OH$ a jednou karbonylovou skupinou $C=O$ – a také látky, ze kterých takové molekuly vznikají hydrolýzou.' },
+            { type: 'p', text: 'Začneme u nejmenších cihliček, ze kterých se pak staví všechno ostatní:' },
             {
               type: 'molecule',
               molecules: ['glucose', 'fructose', 'ribose'],
               labels: ['glukóza – aldohexóza', 'fruktóza – ketohexóza', 'ribóza – aldopentóza'],
               caption: 'Tři důležité **monosacharidy**, nejjednodušší sacharidy, které se hydrolýzou už dál neštěpí. Otoč modely a najdi skupinu $C=O$.',
             },
+            { type: 'p', text: 'Skupinu $C=O$ mají všechny tři, ale ne na stejném místě. Právě podle toho se monosacharidy dělí do dvou skupin:' },
             {
               type: 'compare',
               columns: [
@@ -36,6 +38,7 @@ const level: LevelContent = {
               ],
               caption: 'Podle karbonylové skupiny se monosacharidy dělí na aldózy a ketózy. Podle počtu uhlíků na **hexózy** (6 C) a **pentózy** (5 C).',
             },
+            { type: 'p', text: 'Nejlépe je rozdíl vidět, když glukózu a fruktózu rozkreslíš do řetězce vedle sebe. Sleduj, na kterém uhlíku u každé z nich sedí skupina $C=O$:' },
             {
               type: 'structure',
               art: art(
@@ -53,6 +56,7 @@ const level: LevelContent = {
             },
             { type: 'callout', variant: 'tip', title: 'Jak si to zapamatovat', text: 'Koncovka *-óza* skoro vždycky prozradí, že jde o sacharid.' },
             { type: 'game', gameId: 'functional-groups', text: 'Hydroxyskupina, aldehyd, keton: všechny tři najdeš v sacharidech. Procvič si, jak je poznat na první pohled.' },
+            { type: 'p', text: 'Aldózu od ketózy už rozeznáš. Jenže dvě molekuly glukózy se stejnými skupinami se ještě mohou lišit tím, jak jsou ty skupiny rozmístěné v prostoru.' },
             {
               type: 'check',
               question: {
@@ -69,7 +73,7 @@ const level: LevelContent = {
           title: 'D a L, α a β: prostorové podoby cukrů',
           icon: 'magnifier',
           blocks: [
-            { type: 'p', text: 'Otevřená glukóza má čtyři **chirální uhlíky** (C2 až C5), každý nese čtyři různé substituenty – chiralitu znáš z úrovně 8. O zařazení do řady **D**, nebo **L** rozhoduje jen ten chirální uhlík, který je nejdál od karbonylové skupiny (u hexóz C5).' },
+            { type: 'p', text: 'Prostorové podoby cukrů popisují dvě dvojice písmen: D a L, α a β. Začněme řadou D/L. Otevřená glukóza má čtyři **chirální uhlíky** (C2 až C5), každý nese čtyři různé substituenty – chiralitu znáš z úrovně 8. O zařazení do řady **D**, nebo **L** rozhoduje jen ten chirální uhlík, který je nejdál od karbonylové skupiny (u hexóz C5). Kam má jeho skupina $–OH$ mířit, ukazuje nejjednodušší možný případ:' },
             {
               type: 'structure',
               art: art(
@@ -84,10 +88,13 @@ const level: LevelContent = {
             },
             { type: 'callout', variant: 'remember', text: '==V přírodě převažují D-sacharidy== (D-glukóza, D-fruktóza, D-ribóza), zatímco bílkoviny stavějí z L-aminokyselin. Enzymy obě podoby rozliší stejně spolehlivě jako ruka levou a pravou rukavici.' },
             { type: 'callout', variant: 'warning', text: 'Písmena D a L neříkají, kterým směrem látka stáčí rovinu polarizovaného světla – to se značí (+) a (−). Třeba D-fruktóza stáčí světlo doleva.' },
-            { type: 'p', text: 'V roztoku má otevřený řetězec jen nepatrná část molekul. Skupina $–OH$ na C5 zreaguje s aldehydovou skupinou na C1 na **poloacetal** (hemiacetal) a vznikne šestičlenný kruh s jedním atomem kyslíku. Fruktóza tvoří hlavně pětičlenný kruh.' },
+            { type: 'p', text: 'Fischerova projekce kreslí glukózu jako rovný řetězec. Ve skutečnosti má ale v roztoku otevřený řetězec jen nepatrná část molekul. Skupina $–OH$ na C5 zreaguje s aldehydovou skupinou na C1 na **poloacetal** (hemiacetal) a vznikne šestičlenný kruh s jedním atomem kyslíku. Fruktóza tvoří hlavně pětičlenný kruh.' },
+            { type: 'p', text: 'Při uzavření kruhu se stane něco důležitého: na C1 vznikne nové chirální centrum, a tedy dvě možné podoby kruhu.' },
             { type: 'diagram', id: 'glucose-ring', caption: 'Z řetězce kruh. Uhlík C1 se při tom stane novým chirálním centrem, **anomerním uhlíkem**. Míří-li jeho $–OH$ na opačnou stranu kruhu než skupina $–CH2OH$ (v obvyklém nákresu dolů), jde o **α-glukózu**; míří-li na stejnou stranu (nahoru), o **β-glukózu**.' },
+            { type: 'p', text: 'Na plochém nákresu se „nahoru“ a „dolů“ snadno splete. Ve 3D modelu sleduj jen uhlík C1 a jeho skupinu $–OH$:' },
             { type: 'molecule', molecules: ['alpha-glucose', 'glucose'], labels: ['α-D-glukóza', 'β-D-glukóza'], caption: 'Dva **anomery** glukózy. Otoč modely a najdi skupinu $–OH$ na C1 – jen tou se liší.' },
             { type: 'callout', variant: 'fact', title: 'Mutarotace', text: 'Kruh se v roztoku neustále otevírá a zase zavírá, a tak se α a β mění jedna v druhou. Ustálí se rovnováha asi 36 % α-glukózy a 64 % β-glukózy; otevřených řetězců je méně než 1 %.' },
+            { type: 'p', text: 'Pozor na záměnu: o D, nebo L rozhoduje C5, o α, nebo β uhlík C1. A právě poloha $–OH$ na C1 určí, jak se cukry spojují do větších molekul.' },
             {
               type: 'check',
               question: {
@@ -104,13 +111,15 @@ const level: LevelContent = {
           title: 'Disacharidy a redukující cukry',
           icon: 'bond',
           blocks: [
-            { type: 'p', text: 'Dva monosacharidy se spojí **glykosidovou vazbou** – kyslíkovým můstkem $C–O–C$. Poloacetalová skupina $–OH$ na anomerním uhlíku jednoho reaguje s hydroxyskupinou druhého a odštěpí se voda; jde o kondenzaci jako při esterifikaci.' },
+            { type: 'p', text: 'Anomerní uhlík C1 je nejreaktivnější místo celého kruhu, a proto se přes něj cukry spojují. Dva monosacharidy se spojí **glykosidovou vazbou** – kyslíkovým můstkem $C–O–C$. Poloacetalová skupina $–OH$ na anomerním uhlíku jednoho reaguje s hydroxyskupinou druhého a odštěpí se voda; jde o kondenzaci jako při esterifikaci.' },
             { type: 'p', text: 'Vazbu popisujeme dvěma údaji: jestli byl anomerní uhlík v poloze α, nebo β, a které uhlíky spojuje. Zápis **α(1->4)** znamená, že C1 α-glukózy je přes kyslík spojen s C4 další molekuly.' },
+            { type: 'p', text: 'Co kondenzace spojí, to voda zase rozštěpí. Přesně tohle dělá tvoje trávení s cukrem z cukřenky:' },
             {
               type: 'reaction',
               equation: 'C12H22O11 + H2O -> C6H12O6 + C6H12O6',
               caption: 'Hydrolýza sacharózy při trávení: vznikne glukóza a fruktóza. Opačný děj, kondenzace $C6H12O6 + C6H12O6 -> C12H22O11 + H2O$, disacharid vytvoří.',
             },
+            { type: 'p', text: 'Sacharóza ale není jediný disacharid v tvém jídle. Porovnej tři nejdůležitější – liší se tím, z jakých monosacharidů jsou a jakou vazbou je spojují:' },
             {
               type: 'iconlist',
               items: [
@@ -120,7 +129,8 @@ const level: LevelContent = {
               ],
             },
             { type: 'callout', variant: 'fact', title: 'Intolerance laktózy', text: 'Lidem s intolerancí laktózy chybí dost enzymu laktázy. Nerozloženou laktózu zkvasí bakterie v tlustém střevě – odtud nadýmání. Bezlaktózové mléko má laktózu už rozloženou na glukózu a galaktózu, proto chutná sladší.' },
-            { type: 'p', text: 'Monosacharidy a většina disacharidů jsou **redukující sacharidy**: jejich kruh se v roztoku otevírá a volná aldehydová skupina se snadno oxiduje, přitom redukuje ionty kovů. Pozitivně reaguje i fruktóza, protože se v zásaditém prostředí přesmykuje na aldózu.' },
+            { type: 'p', text: 'Disacharidy jsou na pohled k nerozeznání – samé bílé krystalky. V laboratoři je ale rozliší jednoduchá zkouška, a to díky otevírání kruhu z minulého oddílu.' },
+            { type: 'p', text: 'Monosacharidy a většina disacharidů jsou **redukující sacharidy**: jejich kruh se v roztoku otevírá a volná aldehydová skupina se snadno oxiduje, přitom redukuje ionty kovů. Pozitivně reaguje i fruktóza, protože se v zásaditém prostředí přesmykuje na aldózu. Tuhle schopnost prozradí dvě klasická činidla:' },
             {
               type: 'compare',
               columns: [
@@ -129,9 +139,11 @@ const level: LevelContent = {
               ],
               caption: 'Dva důkazy redukujících sacharidů, které znáš z úrovně 8',
             },
+            { type: 'p', text: 'Co se ve zkumavce vlastně děje? Je to redoxní reakce: cukr předá elektrony mědi a sám se oxiduje.' },
             { type: 'formula', text: '$RCHO + 2Cu^{2+} + 5OH^- -> RCOO^- + Cu2O + 3H2O$', caption: 'Fehlingova zkouška iontově: aldehydová skupina se oxiduje na karboxylát, $Cu^{II}$ se redukuje na červený oxid měďný.' },
             { type: 'callout', variant: 'warning', title: 'Sacharóza je výjimka', text: 'Sacharóza **redukující není**. Glykosidová vazba spojuje právě ty dva uhlíky, ze kterých by vznikla aldehydová a ketonová skupina, takže se žádný kruh neotevře a Fehlingova zkouška vyjde negativně.' },
             { type: 'callout', variant: 'warning', title: 'Bezpečnost', text: 'Fehlingovo činidlo obsahuje žíravý $NaOH$, proto pracuj s brýlemi. Tollensovo činidlo se připravuje vždy čerstvé a hned po pokusu se zlikviduje, protože stáním z něj mohou vzniknout výbušné sloučeniny stříbra.' },
+            { type: 'p', text: 'Disacharidy už umíš poskládat i dokázat. Co se ale stane, když se nespojí dvě glukózy, ale tisíce?' },
             {
               type: 'check',
               question: {
@@ -148,7 +160,8 @@ const level: LevelContent = {
           title: 'Polysacharidy: škrob, glykogen a celulóza',
           icon: 'bread',
           blocks: [
-            { type: 'p', text: 'Spojením stovek až desetitisíců glukóz vznikne **polysacharid**. Je to přírodní polymer vzniklý kondenzací jako polyestery a polyamidy z úrovně 8 – jen monomerem je glukóza.' },
+            { type: 'p', text: 'Tady se konečně dostáváme k rohlíku a tričku z úvodu. Spojením stovek až desetitisíců glukóz vznikne **polysacharid**. Je to přírodní polymer vzniklý kondenzací jako polyestery a polyamidy z úrovně 8 – jen monomerem je glukóza.' },
+            { type: 'p', text: 'Z téže glukózy příroda staví tři velmi odlišné látky. Sleduj hlavně, jestli jsou z α-, nebo z β-glukózy:' },
             {
               type: 'compare',
               columns: [
@@ -158,8 +171,9 @@ const level: LevelContent = {
               ],
               caption: 'Tři polymery téže glukózy',
             },
-            { type: 'p', text: 'Drobný rozdíl mezi α a β rozhoduje o všem. Vazby α(1->4) stáčejí řetězec do šroubovice, vazby β(1->4) ho nechají rovný, takže se řetězce celulózy skládají těsně vedle sebe. A naše trávicí enzymy umějí štěpit jen α-glykosidové vazby. ==Celulózu proto nestrávíme, a přesto je jako vláknina pro trávení užitečná.==' },
+            { type: 'p', text: 'Drobný rozdíl mezi α a β rozhoduje o všem – i o otázce z úvodu. Vazby α(1->4) stáčejí řetězec do šroubovice, vazby β(1->4) ho nechají rovný, takže se řetězce celulózy skládají těsně vedle sebe. A naše trávicí enzymy umějí štěpit jen α-glykosidové vazby. ==Celulózu proto nestrávíme, a přesto je jako vláknina pro trávení užitečná.==' },
             { type: 'callout', variant: 'fact', text: 'Ani krávy celulózu samy nerozloží. Dělají to za ně mikroorganismy v bachoru, které mají enzym celulázu. Termiti na tom jsou podobně – bez střevních mikrobů by dřevo nestrávili.' },
+            { type: 'p', text: 'Šroubovice škrobu má i praktické využití: díky ní škrob v jídle dokážeš jednoduchým pokusem, který s celulózou nevyjde.' },
             {
               type: 'process',
               layout: 'flow',
@@ -172,6 +186,7 @@ const level: LevelContent = {
               caption: '**Důkaz škrobu** jodem – jeden z nejhezčích pokusů',
             },
             { type: 'callout', variant: 'warning', text: 'Jod barví kůži i oblečení a dráždí oči. Pokus proto dělej ve škole s ochrannými brýlemi a v rukavicích.' },
+            { type: 'p', text: 'Teď víš, jak z jedné glukózy vznikne jídlo i dřevo. Zbývá otázka, odkud se ta glukóza vůbec bere.' },
             {
               type: 'check',
               question: {
@@ -192,20 +207,22 @@ const level: LevelContent = {
           title: 'Fotosyntéza: odkud se cukry berou',
           icon: 'leaf',
           blocks: [
-            { type: 'p', text: 'Glukózu vyrábějí zelené rostliny, řasy a sinice při **fotosyntéze**: z oxidu uhličitého a vody s pomocí světla a zeleného barviva **chlorofylu**. Jako vedlejší produkt uvolní kyslík.' },
+            { type: 'p', text: 'Všechen ten škrob a celulózu postavila rostlina z glukózy, kterou si sama vyrobila. Glukózu vyrábějí zelené rostliny, řasy a sinice při **fotosyntéze**: z oxidu uhličitého a vody s pomocí světla a zeleného barviva **chlorofylu**. Jako vedlejší produkt uvolní kyslík. Celý děj shrnuje jedna rovnice:' },
             { type: 'reaction', equation: '6CO2 + 6H2O -> C6H12O6 + 6O2', caption: 'Souhrnná rovnice fotosyntézy. Děj je silně endotermní (ΔH ≈ +2 800 kJ/mol) a energii mu dodává světlo. Z glukózy pak rostlina skládá škrob i celulózu.' },
             { type: 'p', text: 'Opačný děj, **buněčné dýchání**, probíhá v tvých buňkách: glukóza se oxiduje kyslíkem zpět na $CO2$ a vodu a uvolněná energie se ukládá do molekul **ATP** (adenosintrifosfátu), univerzální „baterie“ buňky. ==Sluneční energie se tak přes sacharidy dostane až do tvých svalů.==' },
             { type: 'callout', variant: 'tip', title: 'Podrobnosti později', text: 'Jak rostlina světlo zachytí a jak buňka glukózu krok za krokem „spaluje“, rozebereme v lekci **Metabolismus: ATP, dýchání a fotosyntéza**.' },
+            { type: 'p', text: 'S rovnicí fotosyntézy se počítá stejně jako s každou jinou: koeficienty udávají poměr látkových množství. Kolik kyslíku tedy rostlina vyrobí?' },
             {
               type: 'example',
               problem: 'Kolik gramů kyslíku uvolní rostlina, když fotosyntézou vytvoří 90 g glukózy? $M(C6H12O6) = 180 g/mol$, $M(O2) = 32 g/mol$.',
               steps: [
-                '$n(glukóza) = m / M = 90 g / 180 g/mol = 0,5 mol$',
+                'Nejdřív převedeme hmotnost na látkové množství, protože rovnice počítá v molech: $n(glukóza) = m / M = 90 g / 180 g/mol = 0,5 mol$',
                 'Podle rovnice vznikne s 1 mol glukózy 6 mol $O2$, takže $n(O2) = 6 · 0,5 mol = 3 mol$.',
                 '$m(O2) = n · M = 3 mol · 32 g/mol$',
               ],
               answer: '$m(O2) = 96 g$',
             },
+            { type: 'p', text: 'Teď víš, odkud se energie v cukrech vzala: ze slunečního světla. Zbývá zjistit, kolik jí z jídla dostane tvoje tělo.' },
             {
               type: 'check',
               question: {
@@ -222,7 +239,7 @@ const level: LevelContent = {
           title: 'Energie v jídle',
           icon: 'apple',
           blocks: [
-            { type: 'p', text: '**Energetická hodnota** na obalu potravin udává, kolik energie se uvolní úplnou oxidací živin v těle. Je to vlastně reakční teplo z termochemie. Evropské značení počítá s těmito hodnotami (1 kcal = 4,184 kJ):' },
+            { type: 'p', text: 'Energii, kterou rostlina uložila do cukrů, ti dýchání zase uvolní. Kolik jí je, se dočteš na každém obalu. **Energetická hodnota** na obalu potravin udává, kolik energie se uvolní úplnou oxidací živin v těle. Je to vlastně reakční teplo z termochemie. Evropské značení počítá s těmito hodnotami (1 kcal = 4,184 kJ):' },
             {
               type: 'iconlist',
               items: [
@@ -235,11 +252,12 @@ const level: LevelContent = {
             { type: 'p', text: 'Proč dá tuk víc než dvojnásobek? Jeho uhlíky jsou mnohem méně oxidované než v sacharidech, kde na skoro každém uhlíku už „sedí“ kyslík. ==Čím víc je v molekule co oxidovat, tím víc energie se uvolní.==' },
             { type: 'molecule', molecules: ['glucose', 'palmitic-acid'], labels: ['glukóza: kyslík skoro na každém uhlíku', 'kyselina palmitová: dlouhý řetězec skupin $CH2$'], caption: 'Porovnej, kolik kyslíku už v molekule je. Mastná kyselina z tuku má co oxidovat.' },
             { type: 'p', text: 'Záleží i na rychlosti. Glukóza jde do krve hned, škrob musí nejdřív rozštěpit enzymy a celulóza (vláknina) energii téměř nedodá. Proto sladký nápoj „nakopne“ rychle, ale nakrátko.' },
+            { type: 'p', text: 'S hodnotami ze seznamu výše spočítáš energii čehokoli, co má na obalu složení živin. Zkusme to na sladké tyčince:' },
             {
               type: 'example',
               problem: 'Tyčinka obsahuje 30 g sacharidů, 10 g tuků a 5 g bílkovin. Jakou má přibližnou energetickou hodnotu?',
               steps: [
-                'sacharidy: 30 g · 17 kJ/g = 510 kJ',
+                'Každou živinu násobíme jejím vlastním energetickým obsahem. Sacharidy: 30 g · 17 kJ/g = 510 kJ',
                 'tuky: 10 g · 37 kJ/g = 370 kJ',
                 'bílkoviny: 5 g · 17 kJ/g = 85 kJ',
                 'součet: 510 kJ + 370 kJ + 85 kJ = 965 kJ',
@@ -247,6 +265,7 @@ const level: LevelContent = {
               answer: 'asi 965 kJ, tedy zhruba 230 kcal',
             },
             { type: 'callout', variant: 'mascot', text: 'Tvůj mozek je pěkný mlsoun. Denně spotřebuje asi 120 g glukózy, zhruba pětinu energie celého těla. Přemýšlení je doslova chemie!' },
+            { type: 'p', text: 'Sacharidy teď umíš poznat, dokázat i spočítat na talíři. V příští lekci přijdou na řadu tuky – podle čísel výše nejbohatší zdroj energie v jídle.' },
             {
               type: 'check',
               question: {
@@ -349,13 +368,14 @@ const level: LevelContent = {
           title: 'Tuky a oleje jsou estery',
           icon: 'droplets',
           blocks: [
-            { type: 'p', text: '**Lipidy** spojuje jedna vlastnost: jsou nepolární nebo převážně nepolární, takže se nerozpouštějí ve vodě, ale dobře v benzínu nebo hexanu. Nejznámější z nich, tuky a oleje, jsou **triacylglyceroly** (starší název triglyceridy). Chemicky jde o **estery** trojsytného alkoholu **glycerolu** (propan-1,2,3-triolu) a tří **mastných kyselin**.' },
+            { type: 'p', text: 'Máslo i olivový olej z úvodu patří mezi **lipidy**. Lipidy spojuje jedna vlastnost: jsou nepolární nebo převážně nepolární, takže se nerozpouštějí ve vodě, ale dobře v benzínu nebo hexanu. Nejznámější z nich, tuky a oleje, jsou **triacylglyceroly** (starší název triglyceridy). Chemicky jde o **estery** trojsytného alkoholu **glycerolu** (propan-1,2,3-triolu) a tří **mastných kyselin**. Nejdřív si prohlédni oba stavební díly:' },
             {
               type: 'molecule',
               molecules: ['glycerol', 'palmitic-acid'],
               labels: ['glycerol $C3H5(OH)3$', 'kyselina palmitová $C15H31COOH$'],
               caption: 'Dva stavební díly tuku: sladký viskózní glycerol se třemi skupinami $–OH$ a mastná kyselina s dlouhým řetězcem.',
             },
+            { type: 'p', text: 'Aby z nich vznikl tuk, musí se spojit. K tomu potřebujeme dva pojmy:' },
             {
               type: 'keyterms',
               items: [
@@ -363,11 +383,13 @@ const level: LevelContent = {
                 { term: 'esterová vazba', def: 'skupina $–CO–O–$; vzniká reakcí karboxylové kyseliny s alkoholem za odštěpení vody' },
               ],
             },
+            { type: 'p', text: 'Glycerol má tři skupiny $–OH$, a tak se na něj navážou tři mastné kyseliny. S kyselinou palmitovou to vypadá takto:' },
             {
               type: 'reaction',
               equation: 'C3H5(OH)3 + 3C15H31COOH -> C51H98O6 + 3H2O',
               caption: 'Vznik tuku esterifikací: glycerol + 3 molekuly kyseliny palmitové -> tripalmitin + 3 molekuly vody',
             },
+            { type: 'p', text: 'Souhrnný vzorec $C51H98O6$ o stavbě tuku moc neprozradí. Přehlednější je schéma, ve kterém je vidět každá část molekuly:' },
             {
               type: 'structure',
               art: art(
@@ -379,6 +401,7 @@ const level: LevelContent = {
               ),
               caption: 'Triacylglycerol schematicky: vlevo zbytek glycerolu, uprostřed tři esterové skupiny, vpravo řetězce mastných kyselin $R1$, $R2$, $R3$ (mohou být různé).',
             },
+            { type: 'p', text: 'Glycerol je ve všech tucích stejný, liší se jen řetězce $R$. A právě podle nich rozlišujeme tuky a oleje:' },
             {
               type: 'compare',
               columns: [
@@ -388,6 +411,7 @@ const level: LevelContent = {
               caption: 'Výjimky existují: kokosový a palmový tuk jsou rostlinné, ale pevné, rybí tuk je živočišný, ale tekutý.',
             },
             { type: 'callout', variant: 'tip', title: 'Důkaz tuků', text: 'Barvivo **Sudan III** se rozpouští v tucích a olejích a obarví je oranžově červeně. Jednodušší „důkaz“ znáš z kuchyně: mastná skvrna na papíře prosvítá a na rozdíl od vody se neodpaří.' },
+            { type: 'p', text: 'Teď víš, z čeho se tuk skládá. Proč je ale máslo pevné a olej tekutý, zjistíš, až se na řetězce mastných kyselin podíváš zblízka.' },
             {
               type: 'check',
               question: {
@@ -404,7 +428,7 @@ const level: LevelContent = {
           title: 'Nasycené, nenasycené a trans',
           icon: 'bond',
           blocks: [
-            { type: 'p', text: 'O tom, jestli je tuk pevný, nebo tekutý, rozhoduje tvar řetězců mastných kyselin.' },
+            { type: 'p', text: 'O tom, jestli je tuk pevný, nebo tekutý, rozhoduje tvar řetězců mastných kyselin – a ten závisí na dvojných vazbách. Porovnej oba typy:' },
             {
               type: 'compare',
               columns: [
@@ -412,12 +436,14 @@ const level: LevelContent = {
                 { title: 'Nenasycené', icon: 'droplets', tone: 'b', points: ['jedna nebo více dvojných vazeb $C=C$', 'v přírodě téměř vždy **cis** – řetězec se zalomí', 'zalomené řetězce se špatně skládají -> **tekuté oleje**'] },
               ],
             },
+            { type: 'p', text: 'Proč se řetězec u dvojné vazby zalomí? Kolem dvojné vazby se molekula nemůže otáčet, takže zbytky řetězce zůstanou natrvalo buď na stejné straně, nebo naproti sobě. Nejlépe to uvidíš na malé molekule:' },
             {
               type: 'molecule',
               molecules: ['cis-but-2-ene', 'trans-but-2-ene'],
               labels: ['cis: řetězec se zalomí', 'trans: řetězec zůstane rovný'],
               caption: 'Cis a trans na malé molekule but-2-enu. U **cis** jsou oba zbytky řetězce na stejné straně dvojné vazby, u **trans** naproti sobě – řetězec je pak skoro rovný jako u nasycené kyseliny.',
             },
+            { type: 'p', text: 'Mastné kyseliny v jídle se tedy liší hlavně počtem dvojných vazeb. Tady je pět nejběžnějších, od nasycených po trojnásobně nenasycenou:' },
             {
               type: 'table',
               headers: ['Kyselina', 'Vzorec', 'Dvojné vazby', 'Kde je jí hodně'],
@@ -430,7 +456,7 @@ const level: LevelContent = {
               ],
               caption: 'Každá dvojná vazba ubere z řetězce dva atomy vodíku.',
             },
-            { type: 'p', text: 'Kyselinu linolovou a α-linolenovou si tělo neumí vyrobit, proto jsou **esenciální**. Znáš je pod názvy **omega-6** a **omega-3** mastné kyseliny. Písmeno **ω** je poslední v řecké abecedě, a tak se uhlíky počítají od „posledního“ konce řetězce, od skupiny $–CH3$. ==U omega-3 kyseliny začíná první dvojná vazba na třetím uhlíku od konce==, u omega-6 na šestém.' },
+            { type: 'p', text: 'Kyselinu linolovou a α-linolenovou si tělo neumí vyrobit, proto jsou **esenciální**. Znáš je pod názvy **omega-6** a **omega-3** mastné kyseliny. Písmeno **ω** je poslední v řecké abecedě, a tak se uhlíky počítají od „posledního“ konce řetězce, od skupiny $–CH3$. ==U omega-3 kyseliny začíná první dvojná vazba na třetím uhlíku od konce==, u omega-6 na šestém. Na konci řetězce to vypadá takto:' },
             {
               type: 'structure',
               art: art(
@@ -439,6 +465,7 @@ const level: LevelContent = {
               ),
               caption: 'Konec řetězce omega-3 kyseliny: dvojná vazba začíná na uhlíku ω3. Zápis **18:3** u kyselin níže znamená 18 uhlíků a 3 dvojné vazby.',
             },
+            { type: 'p', text: 'Pod těmito zkratkami je najdeš i na obalech doplňků stravy. Tři nejdůležitější a kde je hledat:' },
             {
               type: 'iconlist',
               items: [
@@ -448,9 +475,11 @@ const level: LevelContent = {
               ],
             },
             { type: 'callout', variant: 'fact', title: 'Proč olej žlukne', text: 'Kyslík ze vzduchu napadá právě dvojné vazby a vznikají páchnoucí aldehydy a kratší kyseliny. Oleje s mnoha dvojnými vazbami, třeba lněný, proto žluknou nejrychleji a uchovávají se v chladu a ve tmě.' },
-            { type: 'p', text: '**Ztužování** olejů je katalytická **hydrogenace**: na dvojné vazby se za zvýšené teploty s niklem jako katalyzátorem adicí naváže vodík. Z tekutého oleje se stane pevný tuk, například základ některých margarínů.' },
+            { type: 'p', text: 'Dvojné vazby dělají olej tekutým, ale také méně trvanlivým. Potravinářství si s tím poradí tak, že je odstraní. **Ztužování** olejů je katalytická **hydrogenace**: na dvojné vazby se za zvýšené teploty s niklem jako katalyzátorem adicí naváže vodík. Z tekutého oleje se stane pevný tuk, například základ některých margarínů.' },
             { type: 'reaction', equation: 'C17H33COOH + H2 -> C17H35COOH', caption: 'Hydrogenace kyseliny olejové na stearovou (katalyzátor $Ni$): dvojná vazba zmizí, řetězec se narovná.' },
+            { type: 'p', text: 'Při ztužování ale nemusí vzniknout jen nasycené kyseliny. Pozor na záměnu: trans kyselina dvojnou vazbu má, a přesto je její řetězec rovný skoro jako u nasycené.' },
             { type: 'callout', variant: 'warning', title: 'Trans-mastné kyseliny', text: 'Při **částečném** ztužování se část dvojných vazeb nenasytí, ale přesmykne do polohy **trans**. Trans-mastné kyseliny zvyšují v krvi „zlý“ LDL cholesterol a riziko nemocí srdce a cév. EU proto od roku 2021 omezuje jejich obsah na 2 g ve 100 g tuku (kromě přirozených trans kyselin z mléka a masa přežvýkavců).' },
+            { type: 'p', text: 'Hydrogenace mění tuk na dvojných vazbách. Tuk se ale dá změnit i na esterových vazbách – a tak vzniká mýdlo.' },
             {
               type: 'check',
               question: {
@@ -466,12 +495,13 @@ const level: LevelContent = {
           title: 'Zmýdelnění: jak se vyrábí mýdlo',
           icon: 'soap',
           blocks: [
-            { type: 'p', text: 'Estery se dají štěpit i zásadou. Když tuk povaříš s roztokem hydroxidu sodného, vznikne glycerol a sodné soli mastných kyselin – **mýdla**. Reakce se proto jmenuje **zmýdelnění** (saponifikace).' },
+            { type: 'p', text: 'Hydrolýzu tuku vodou na glycerol a mastné kyseliny už znáš z prvního oddílu. Estery se dají štěpit i zásadou. Když tuk povaříš s roztokem hydroxidu sodného, vznikne glycerol a sodné soli mastných kyselin – **mýdla**. Reakce se proto jmenuje **zmýdelnění** (saponifikace).' },
             {
               type: 'reaction',
               equation: 'C51H98O6 + 3NaOH -> C3H8O3 + 3C15H31COONa',
               caption: 'Zmýdelnění tripalmitinu: tuk + hydroxid sodný -> glycerol + mýdlo (palmitan sodný). Obecně $(RCOO)3C3H5 + 3NaOH -> C3H5(OH)3 + 3RCOONa$.',
             },
+            { type: 'p', text: 'Vlastnosti mýdla ovlivní i to, který hydroxid použiješ:' },
             {
               type: 'compare',
               columns: [
@@ -481,6 +511,7 @@ const level: LevelContent = {
               caption: 'Zmýdelnění je na rozdíl od kyselé hydrolýzy **nevratné**: karboxylátový anion už s alkoholem zpátky nezreaguje.',
             },
             { type: 'callout', variant: 'warning', title: 'Bezpečnost', text: '$NaOH$ je silná žíravina a v oku může způsobit trvalé poškození. Při výrobě mýdla vždy ochranné brýle a rukavice. Domácí mýdlo musí ještě několik týdnů „zrát“, než zreaguje zbytek louhu.' },
+            { type: 'p', text: 'Kolik louhu na várku mýdla potřebuješ, spočítáš z rovnice. Rozhoduje, kolik esterových vazeb má jedna molekula tuku:' },
             {
               type: 'example',
               problem: 'Kolik gramů $NaOH$ je potřeba ke zmýdelnění 0,2 mol triacylglycerolu? $M(NaOH) = 40 g/mol$.',
@@ -491,6 +522,7 @@ const level: LevelContent = {
               ],
               answer: '$m(NaOH) = 24 g$',
             },
+            { type: 'p', text: 'Mýdlo tedy umíš vyrobit i spočítat. Jak ale umyje mastný talíř, když se tuk ve vodě nerozpouští?' },
             {
               type: 'check',
               question: {
@@ -507,10 +539,11 @@ const level: LevelContent = {
           title: 'Jak mýdlo myje: micely',
           icon: 'water-tap',
           blocks: [
-            { type: 'p', text: 'Molekula mýdla, například palmitan sodný $CH3(CH2)14COONa$, má dvě tváře. Nepolární uhlovodíkový **ocas** je **hydrofobní** a rád se rozpouští v mastnotě, nabitá karboxylátová **hlava** $–COO^-$ je **hydrofilní**. Takové látky jsou **amfifilní** a patří mezi **tenzidy** (povrchově aktivní látky).' },
+            { type: 'p', text: 'Odpověď je ve stavbě molekuly mýdla. Molekula mýdla, například palmitan sodný $CH3(CH2)14COONa$, má dvě tváře. Nepolární uhlovodíkový **ocas** je **hydrofobní** a rád se rozpouští v mastnotě, nabitá karboxylátová **hlava** $–COO^-$ je **hydrofilní**. Takové látky jsou **amfifilní** a patří mezi **tenzidy** (povrchově aktivní látky).' },
+            { type: 'p', text: 'Podívej se, co se stane, když se takové molekuly ve vodě setkají s kapkou mastnoty:' },
             { type: 'diagram', id: 'micelle', caption: 'Jak mýdlo umyje mastný talíř: nepolární ocasy se rozpustí v kapce mastnoty, nabité hlavy zůstanou ve vodě a obalí ji ze všech stran. Vznikne **micela** s mastnotou uvnitř a záporným nábojem na povrchu. Micely se navzájem odpuzují, nespojí se zpět a voda je odplaví.' },
             { type: 'callout', variant: 'remember', text: '==Podobné se rozpouští v podobném.== Mýdlo funguje jako prostředník: jedním koncem drží vodu, druhým mastnotu.' },
-            { type: 'p', text: 'V **tvrdé vodě** mýdlo hůř pění. Proto chemici vyvinuli **syntetické tenzidy** (detergenty).' },
+            { type: 'p', text: 'Mýdlo má ale slabinu: v **tvrdé vodě** hůř pění. Proto chemici vyvinuli **syntetické tenzidy** (detergenty). Porovnej, v čem se od mýdla liší:' },
             {
               type: 'compare',
               columns: [
@@ -518,6 +551,7 @@ const level: LevelContent = {
                 { title: 'Syntetický tenzid', icon: 'flask', tone: 'good', points: ['například alkylbenzensulfonáty', 'myje stejně, ale s vápenatými ionty sraženinu netvoří', 'dříve se do pracích prášků přidávaly fosforečnany, které ve vodách škodí (víc v poslední lekci)'] },
               ],
             },
+            { type: 'p', text: 'Teď víš, proč mýdlo myje. Stejný trik – polární hlavu a nepolární ocas – používá příroda ke stavbě každé buňky.' },
             { type: 'game', gameId: 'quickfire', text: 'Tuky, oleje, mýdla: kolik otázek stihneš správně za 60 sekund?' },
             {
               type: 'check',
@@ -540,11 +574,11 @@ const level: LevelContent = {
           title: 'Fosfolipidy, membrány a vosky',
           icon: 'cell',
           blocks: [
-            { type: 'p', text: 'Ne všechny lipidy slouží jako palivo. **Fosfolipidy** mají na glycerolu jen dvě mastné kyseliny a na třetím místě fosfátovou skupinu s další polární částí, například s cholinem. Mají tedy, podobně jako mýdlo, polární hlavu a dva nepolární ocasy.' },
+            { type: 'p', text: 'Ne všechny lipidy slouží jako palivo. **Fosfolipidy** mají na glycerolu jen dvě mastné kyseliny a na třetím místě fosfátovou skupinu s další polární částí, například s cholinem. Mají tedy, podobně jako mýdlo, polární hlavu a dva nepolární ocasy. Co s nimi udělá voda?' },
             { type: 'diagram', id: 'lipid-bilayer', caption: 'Ve vodě se fosfolipidy samy uspořádají do **lipidové dvojvrstvy**: polární hlavy ven k vodě, nepolární ocasy dovnitř k sobě.' },
             { type: 'callout', variant: 'remember', text: '==Z lipidové dvojvrstvy je postavená membrána každé tvé buňky.== Nenasycené (zalomené) mastné kyseliny ve fosfolipidech ji udržují pružnou.' },
             { type: 'callout', variant: 'tip', title: 'Lecitin v majonéze', text: '**Lecitin** (fosfatidylcholin) ze žloutku je přírodní emulgátor. Díky němu drží pohromadě majonéza z oleje a vody z octa či citronu. Na obalech ho najdeš jako E 322.' },
-            { type: 'p', text: '**Vosky** jsou estery vyšších mastných kyselin s vyššími jednosytnými alkoholy (s dlouhým řetězcem). Jsou velmi hydrofobní a chrání povrchy.' },
+            { type: 'p', text: 'Membrána odděluje buňku od vody kolem ní. Podobně se před vodou chrání i povrchy rostlin a zvířat – pomocí vosků. **Vosky** jsou estery vyšších mastných kyselin s vyššími jednosytnými alkoholy (s dlouhým řetězcem). Jsou velmi hydrofobní a chrání povrchy. Najdeš je všude kolem sebe:' },
             {
               type: 'iconlist',
               items: [
@@ -553,6 +587,7 @@ const level: LevelContent = {
                 { icon: 'droplets', title: 'Peří vodních ptáků', text: 'mastná vrstva odpuzuje vodu' },
               ],
             },
+            { type: 'p', text: 'Tím máme za sebou lipidy postavené z mastných kyselin. Poslední skupina vypadá úplně jinak: mastné kyseliny v ní nenajdeš vůbec.' },
             {
               type: 'check',
               question: {
@@ -568,10 +603,10 @@ const level: LevelContent = {
           title: 'Steroidy a terpeny',
           icon: 'leaf',
           blocks: [
-            { type: 'p', text: '**Steroidy** mají za základ soustavu čtyř spojených kruhů – tří šestičlenných a jednoho pětičlenného. Nejznámější je **cholesterol**: je nezbytnou součástí buněčných membrán a tělo z něj vyrábí steroidní hormony, žlučové kyseliny a vitamin D.' },
+            { type: 'p', text: 'Steroidy a terpeny nemají dlouhé řetězce, ale kruhy a větvené kostry. **Steroidy** mají za základ soustavu čtyř spojených kruhů – tří šestičlenných a jednoho pětičlenného. Nejznámější je **cholesterol**: je nezbytnou součástí buněčných membrán a tělo z něj vyrábí steroidní hormony, žlučové kyseliny a vitamin D.' },
             { type: 'molecule', molecules: ['cholesterol-core'], labels: ['steroidní kostra'], caption: 'Čtyři spojené kruhy – společný základ cholesterolu i steroidních hormonů' },
             { type: 'callout', variant: 'fact', text: 'Cholesterol není jed – většinu si ho tělo vyrobí samo v játrech. Potíž nastává, když ho krev přenáší příliš mnoho ve formě **LDL** a ten se ukládá ve stěnách cév. **HDL** naopak odvádí přebytek zpět do jater.' },
-            { type: 'p', text: '**Terpeny** (izoprenoidy) jsou poskládané z pětiuhlíkatých jednotek **izoprenu**, 2-methylbuta-1,3-dienu $CH2=C(CH3)–CH=CH2$. Počet jejich uhlíků je proto násobkem pěti. Rostliny z nich dělají vůně, barviva i obranné látky; mezi lipidy patří, protože jsou nepolární a ve vodě se nerozpouštějí.' },
+            { type: 'p', text: 'Odkud se steroidní kostra bere? Příroda ji skládá z menších dílů – stejných, z jakých rostliny staví své vůně. **Terpeny** (izoprenoidy) jsou poskládané z pětiuhlíkatých jednotek **izoprenu**, 2-methylbuta-1,3-dienu $CH2=C(CH3)–CH=CH2$. Počet jejich uhlíků je proto násobkem pěti. Rostliny z nich dělají vůně, barviva i obranné látky; mezi lipidy patří, protože jsou nepolární a ve vodě se nerozpouštějí. Podle počtu jednotek je chemici třídí takto:' },
             {
               type: 'table',
               headers: ['Skupina', 'Jednotek izoprenu', 'Uhlíků', 'Příklady'],
@@ -586,6 +621,7 @@ const level: LevelContent = {
               caption: 'Terpeny podle počtu izoprenových jednotek',
             },
             { type: 'callout', variant: 'fact', title: 'Steroidy jsou přestavěné terpeny', text: 'Tělo skládá cholesterol z triterpenu skvalenu ($C30$): řetězec se uzavře do čtyř kruhů a tři uhlíky se cestou odštěpí, proto má cholesterol 27 uhlíků. Vůně pomeranče, barva mrkve i tvůj cholesterol tak mají společného předka – izopren.' },
+            { type: 'p', text: 'Teď znáš všechny hlavní skupiny lipidů a víš, k čemu tělu slouží. V příští lekci přejdeme k bílkovinám a k jejich stavebním dílům, aminokyselinám.' },
             {
               type: 'check',
               question: {
@@ -699,7 +735,7 @@ const level: LevelContent = {
           title: 'Aminokyselina: dvě skupiny u jednoho uhlíku',
           icon: 'protein',
           blocks: [
-            { type: 'p', text: '**Bílkoviny** (proteiny) tvoří svaly, vlasy, protilátky i enzymy – a všechny jsou postavené z pouhých dvaceti druhů **aminokyselin**. Jde o **2-aminokyseliny** (α-aminokyseliny): na stejném uhlíku, hned vedle karboxylové skupiny $–COOH$, sedí aminoskupina $–NH2$. Jednotlivé aminokyseliny se liší jen **postranním řetězcem** $R$.' },
+            { type: 'p', text: 'Abychom pochopili, co se stalo s bílkem, musíme nejdřív vědět, z čeho jsou bílkoviny postavené. **Bílkoviny** (proteiny) tvoří svaly, vlasy, protilátky i enzymy – a všechny jsou postavené z pouhých dvaceti druhů **aminokyselin**. Jde o **2-aminokyseliny** (α-aminokyseliny): na stejném uhlíku, hned vedle karboxylové skupiny $–COOH$, sedí aminoskupina $–NH2$. Jednotlivé aminokyseliny se liší jen **postranním řetězcem** $R$. Jejich společná kostra vypadá takto:' },
             {
               type: 'structure',
               art: art(
@@ -711,6 +747,7 @@ const level: LevelContent = {
               ),
               caption: 'Obecná 2-aminokyselina. Uhlík uprostřed je α-uhlík, $R$ je postranní řetězec.',
             },
+            { type: 'p', text: 'Všechno, čím se aminokyseliny od sebe liší, je tedy schované v $R$. Podívej se na pár příkladů – od pouhého vodíku po řetězec s další kyselou nebo zásaditou skupinou:' },
             {
               type: 'table',
               headers: ['Aminokyselina', 'Zkratka', 'Postranní řetězec', 'Poznámka'],
@@ -724,7 +761,7 @@ const level: LevelContent = {
               ],
               caption: 'Několik z dvaceti aminokyselin, které tvoří bílkoviny',
             },
-            { type: 'p', text: 'Kromě glycinu mají všechny tyto aminokyseliny na α-uhlíku čtyři různé substituenty: $–H$, $–NH2$, $–COOH$ a $–R$. α-uhlík je tedy **chirální centrum** a aminokyselina existuje ve dvou zrcadlových formách, **enantiomerech**, které nejdou ztotožnit – jako levá a pravá ruka.' },
+            { type: 'p', text: 'Kromě glycinu mají všechny tyto aminokyseliny na α-uhlíku čtyři různé substituenty: $–H$, $–NH2$, $–COOH$ a $–R$. α-uhlík je tedy **chirální centrum** a aminokyselina existuje ve dvou zrcadlových formách, **enantiomerech**, které nejdou ztotožnit – jako levá a pravá ruka. Rozlišíme je stejně jako cukry, ve Fischerově projekci:' },
             {
               type: 'structure',
               art: art(
@@ -738,9 +775,11 @@ const level: LevelContent = {
               caption: 'Fischerova projekce: skupina $–COOH$ nahoře, postranní řetězec dole. Míří-li $–NH2$ **doleva**, je to L-aminokyselina, doprava D-aminokyselina – stejné pravidlo jako u D/L cukrů.',
             },
             { type: 'callout', variant: 'remember', text: '==Bílkoviny všech organismů stavějí jen z L-aminokyselin.== Enzymy a receptory jsou samy chirální, a tak oba enantiomery rozliší: například D-asparagin chutná sladce, přírodní L-asparagin je téměř bez chuti.' },
+            { type: 'p', text: 'Proč je zrovna glycin výjimkou, uvidíš nejlépe ve 3D. Porovnej ho s alaninem, který má místo jednoho vodíku skupinu $–CH3$:' },
             { type: 'molecule', molecules: ['glycine', 'alanine'], labels: ['glycin (Gly), $R = –H$', 'alanin (Ala), $R = –CH3$'], caption: 'Otoč modely: glycin má na α-uhlíku dva vodíky, a proto není chirální. Alanin má čtyři různé substituenty.' },
-            { type: 'p', text: 'Aminokyseliny, které si tělo neumí vyrobit, jsou **esenciální** – musíme je dostávat v potravě. U člověka jich je devět, například lysin, leucin, tryptofan nebo fenylalanin. Starší učebnice uvádějí osm a histidin počítají jen u dětí.' },
+            { type: 'p', text: 'Tělo tedy potřebuje L-aminokyseliny – ale ne všechny si umí vyrobit samo. Aminokyseliny, které si tělo neumí vyrobit, jsou **esenciální** – musíme je dostávat v potravě. U člověka jich je devět, například lysin, leucin, tryptofan nebo fenylalanin. Starší učebnice uvádějí osm a histidin počítají jen u dětí.' },
             { type: 'callout', variant: 'fact', text: 'Luštěninám chybí hlavně methionin, obilovinám lysin. Proto se v mnoha kuchyních světa přirozeně kombinují: čočka s rýží, fazole s kukuřičnou tortillou, hummus s pitou.' },
+            { type: 'p', text: 'Stavební díly bílkovin už znáš. Než je začneme spojovat, podívejme se, co spolu udělají dvě protichůdné skupiny – kyselá a zásaditá – v jedné molekule.' },
             { type: 'game', gameId: 'functional-groups', text: 'Aminoskupina, karboxylová skupina, amid: poznáš je v mžiku?' },
             {
               type: 'check',
@@ -770,7 +809,7 @@ const level: LevelContent = {
               ),
               caption: 'Aminokyselina jako amfion, celkový náboj je nulový. Proto jsou aminokyseliny krystalické, mají vysokou teplotu tání (často se dřív rozloží) a dobře se rozpouštějí ve vodě – chovají se spíš jako soli.',
             },
-            { type: 'p', text: 'Aminokyselina je **amfoterní**: může reagovat jako kyselina i jako zásada. Podle pH proton přijme, nebo odevzdá, a tak aminokyseliny i bílkoviny tlumí výkyvy pH – fungují jako **pufry**.' },
+            { type: 'p', text: 'Aminokyselina je **amfoterní**: může reagovat jako kyselina i jako zásada. Podle pH proton přijme, nebo odevzdá, a tak aminokyseliny i bílkoviny tlumí výkyvy pH – fungují jako **pufry**. Co se s amfionem stane, když roztok okyselíš, nebo zalkalizuješ:' },
             {
               type: 'compare',
               columns: [
@@ -780,6 +819,7 @@ const level: LevelContent = {
               ],
               caption: '**Izoelektrický bod** (pI) je pH, při kterém má aminokyselina nebo bílkovina celkový náboj nulový.',
             },
+            { type: 'p', text: 'Na stupnici pH to vypadá takto – sleduj, kde se kation mění na anion:' },
             {
               type: 'diagram',
               id: 'ph-scale',
@@ -787,6 +827,7 @@ const level: LevelContent = {
               caption: 'Náboj aminokyseliny podle pH. Mléčná bílkovina kasein má izoelektrický bod asi při pH 4,6.',
             },
             { type: 'p', text: 'Izoelektrický bod leží mezi hodnotami $pK_{a}$ obou skupin (slabé kyseliny a $pK_{a}$ znáš z úrovně 6). U aminokyselin s neutrálním postranním řetězcem je to jejich průměr. Kyselý postranní řetězec (Glu) posune pI dolů, zásaditý (Lys) nahoru.' },
+            { type: 'p', text: 'Proč zrovna průměr? V izoelektrickém bodě je kationtů přesně tolik jako aniontů, a to nastane uprostřed mezi oběma $pK_{a}$. Spočítejme to pro glycin:' },
             {
               type: 'example',
               problem: 'Glycin má $pK_{a}$ karboxylové skupiny 2,34 a $pK_{a}$ skupiny $–NH3^+$ 9,60. Vypočítej jeho izoelektrický bod.',
@@ -796,6 +837,7 @@ const level: LevelContent = {
               ],
               answer: 'pI ≈ 5,97. Při pH 5,97 je glycin amfion a v elektrickém poli se nepohybuje.',
             },
+            { type: 'p', text: 'Glycin vyšel kolem 6. Porovnej ho s aminokyselinami, které mají v postranním řetězci další kyselou nebo zásaditou skupinu:' },
             {
               type: 'table',
               headers: ['Aminokyselina', 'Postranní řetězec', 'pI'],
@@ -808,6 +850,7 @@ const level: LevelContent = {
               caption: 'Na rozdílném pI stojí **elektroforéza**: v elektrickém poli putují aminokyseliny i bílkoviny podle svého náboje při daném pH.',
             },
             { type: 'callout', variant: 'fact', title: 'Jak vzniká tvaroh', text: 'V izoelektrickém bodě se bílkoviny rozpouštějí nejhůř. Když mléko zkysne a jeho pH klesne asi na 4,6, dostane se **kasein** do svého izoelektrického bodu a vysráží se. Tak vzniká tvaroh.' },
+            { type: 'p', text: 'Teď víš, jak se náboj aminokyseliny mění s pH. Skupiny $–COOH$ a $–NH2$ ale umějí ještě víc: spojit dvě aminokyseliny dohromady.' },
             {
               type: 'check',
               question: {
@@ -823,8 +866,9 @@ const level: LevelContent = {
           title: 'Peptidová vazba',
           icon: 'bond',
           blocks: [
-            { type: 'p', text: 'Aminokyseliny se spojují **kondenzací**: karboxylová skupina jedné reaguje s aminoskupinou druhé a odštěpí se voda. Vznikne **peptidová vazba** $–CO–NH–$ – amidová vazba, kterou znáš z úrovně 8 (i nylon je polyamid).' },
+            { type: 'p', text: 'Aminokyseliny se spojují **kondenzací**: karboxylová skupina jedné reaguje s aminoskupinou druhé a odštěpí se voda. Vznikne **peptidová vazba** $–CO–NH–$ – amidová vazba, kterou znáš z úrovně 8 (i nylon je polyamid). Ukažme si to na dvou nejjednodušších aminokyselinách:' },
             { type: 'diagram', id: 'peptide-bond', caption: 'Glycin + alanin -> glycylalanin (Gly-Ala) + voda: z $–COOH$ glycinu a $–NH2$ alaninu odejde molekula vody a zbude peptidová vazba $–CO–NH–$. Opakováním vzniká polypeptidový řetězec s N-koncem a C-koncem.' },
+            { type: 'p', text: 'Každá další aminokyselina se připojí stejnou reakcí. Podle délky řetězce mají vzniklé látky různé názvy:' },
             {
               type: 'process',
               layout: 'flow',
@@ -839,15 +883,17 @@ const level: LevelContent = {
             },
             { type: 'p', text: 'Řetězec má dva různé konce: **N-konec** s volnou aminoskupinou a **C-konec** s volnou karboxylovou skupinou. Pořadí se zapisuje vždy od N-konce.' },
             { type: 'callout', variant: 'warning', text: 'Gly-Ala a Ala-Gly nejsou totéž! Záleží na tom, která aminokyselina dala karboxylovou skupinu a která aminoskupinu. Jsou to dvě různé látky.' },
+            { type: 'p', text: 'Když na pořadí záleží, kolik různých řetězců se dá z dvaceti aminokyselin poskládat? Zkusme to pro ten nejkratší, tripeptid:' },
             {
               type: 'example',
               problem: 'Kolik různých tripeptidů lze teoreticky sestavit z 20 aminokyselin, když se každá smí opakovat?',
               steps: [
                 'Na každou ze tří pozic můžeme dát kteroukoli z 20 aminokyselin.',
-                'Počet možností: $20 · 20 · 20 = 20^3$',
+                'Možnosti pro jednotlivé pozice se násobí, protože každou volbu na první pozici lze zkombinovat s každou na druhé i třetí: $20 · 20 · 20 = 20^3$',
               ],
               answer: '8 000 tripeptidů. Pro bílkovinu ze 100 aminokyselin je to $20^{100}$ – číslo se 131 číslicemi.',
             },
+            { type: 'p', text: 'Proto existuje tolik různých bílkovin. Řetězec sám ale ještě nic neumí – aby fungoval, musí se složit.' },
             {
               type: 'check',
               question: {
@@ -866,6 +912,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Rozmotaný řetězec by byl k ničemu. Bílkovina funguje, jen když se složí do přesného prostorového tvaru, a ten popisujeme ve čtyřech úrovních.' },
             { type: 'diagram', id: 'protein-structure', caption: 'Čtyři úrovně struktury bílkoviny: od pořadí aminokyselin přes α-šroubovici a β-list k tvaru celého řetězce a ke spojení několika řetězců.' },
+            { type: 'p', text: 'U každé úrovně je důležité vědět, které vazby ji drží. Právě to rozhoduje, co ji dokáže rozbít:' },
             {
               type: 'table',
               headers: ['Úroveň', 'Co popisuje', 'Co ji drží'],
@@ -877,6 +924,7 @@ const level: LevelContent = {
               ],
               caption: 'Jen primární strukturu drží pevné kovalentní vazby. Vyšší úrovně stojí hlavně na slabých interakcích – proto je tak snadno rozruší teplo nebo změna pH.',
             },
+            { type: 'p', text: 'Sekundární struktura má dvě hlavní podoby. Drží je stejné vodíkové vazby, ale tvar je úplně jiný:' },
             {
               type: 'compare',
               columns: [
@@ -885,9 +933,10 @@ const level: LevelContent = {
               ],
               caption: 'Dva typy sekundární struktury',
             },
-            { type: 'p', text: 'Příkladem kvartérní struktury je **hemoglobin**: čtyři polypeptidové řetězce, každý s jednou skupinou hemu. Uprostřed hemu je ion $Fe^{2+}$, který váže kyslík.' },
+            { type: 'p', text: 'Kvartérní strukturu mají jen bílkoviny složené z více řetězců. Příkladem kvartérní struktury je **hemoglobin**: čtyři polypeptidové řetězce, každý s jednou skupinou hemu. Uprostřed hemu je ion $Fe^{2+}$, který váže kyslík.' },
             { type: 'callout', variant: 'remember', text: '==Primární struktura určuje všechny ostatní.== Pořadí aminokyselin rozhodne, jak se řetězec složí. Záměna jediné aminokyseliny v hemoglobinu (valin místo kyseliny glutamové) způsobuje srpkovitou anémii.' },
             { type: 'callout', variant: 'fact', title: 'Trvalá ondulace', text: 'Redukční činidlo rozštěpí disulfidové můstky v keratinu vlasů, vlasy se natočí na natáčky a oxidační činidlo pak můstky spojí v nové poloze. Kadeře drží, dokud nedorostou nové vlasy.' },
+            { type: 'p', text: 'Teď víš, které vazby drží tvar bílkoviny a že ty vyšší jsou slabé. Co se stane, když je rozbijeme, uvidíš na bílku z úvodu.' },
             {
               type: 'check',
               question: {
@@ -904,7 +953,8 @@ const level: LevelContent = {
           title: 'Denaturace, funkce a důkaz bílkovin',
           icon: 'egg',
           blocks: [
-            { type: 'p', text: '**Denaturace** je porušení prostorové struktury bílkoviny (sekundární až kvartérní). Peptidové vazby zůstanou, ale řetězec se rozvine a bílkovina ztratí funkci. Většinou je nevratná – uvařené vejce už syrové nebude.' },
+            { type: 'p', text: 'Na pánvi se s bílkem stalo právě tohle: teplo rozbilo slabé vazby a bílkoviny se rozvinuly. **Denaturace** je porušení prostorové struktury bílkoviny (sekundární až kvartérní). Peptidové vazby zůstanou, ale řetězec se rozvine a bílkovina ztratí funkci. Většinou je nevratná – uvařené vejce už syrové nebude.' },
+            { type: 'p', text: 'Teplo ale není jediný nepřítel. Denaturaci způsobí všechno, co rozruší slabé vazby z minulého oddílu:' },
             {
               type: 'iconlist',
               items: [
@@ -915,6 +965,7 @@ const level: LevelContent = {
                 { icon: 'sun', title: 'UV záření a mechanické namáhání', text: 'spálená kůže, šlehání sněhu z bílků' },
               ],
             },
+            { type: 'p', text: 'Pozor, ne každé vysrážení bílkoviny je denaturace. Koncentrovaná sůl bílkovinu také vysráží, a přitom ji nepoškodí:' },
             {
               type: 'compare',
               columns: [
@@ -922,8 +973,9 @@ const level: LevelContent = {
                 { title: 'Vysolování', icon: 'salt', tone: 'good', points: ['koncentrovaný roztok soli, např. síranu amonného', 'bílkovina se vysráží, ale nedenaturuje', 'vratné: po zředění se zase rozpustí; slouží k čištění bílkovin'] },
               ],
             },
-            { type: 'p', text: 'Bílkoviny mají v těle spoustu úloh. Jako zdroj energie dodají asi 17 kJ/g, ale to není jejich hlavní práce. Dusík z přebytečných aminokyselin vylučujeme močí jako **močovinu** $CO(NH2)2$.' },
+            { type: 'p', text: 'Proč je ztráta tvaru tak vážná? Protože na tvaru závisí všechno, co bílkovina dělá. Bílkoviny mají v těle spoustu úloh. Jako zdroj energie dodají asi 17 kJ/g, ale to není jejich hlavní práce. Dusík z přebytečných aminokyselin vylučujeme močí jako **močovinu** $CO(NH2)2$.' },
             { type: 'molecule', molecules: ['urea'], labels: ['močovina $CO(NH2)2$'], caption: 'Močovina – konečný produkt odbourávání aminokyselin u člověka' },
+            { type: 'p', text: 'Hlavní práce bílkovin je ale jinde. Tady je sedm úloh, které v těle plní:' },
             {
               type: 'iconlist',
               items: [
@@ -936,6 +988,7 @@ const level: LevelContent = {
                 { icon: 'milk', title: 'Zásobní', text: 'kasein v mléce, ovalbumin ve vaječném bílku' },
               ],
             },
+            { type: 'p', text: 'Jak ale poznat, že ve vzorku bílkovina je? Nejčastěji se používá biuretová reakce, která reaguje přímo s peptidovými vazbami:' },
             {
               type: 'process',
               layout: 'flow',
@@ -947,6 +1000,7 @@ const level: LevelContent = {
               ],
               caption: '**Biuretová reakce** dokazuje bílkoviny. Reagují látky s aspoň dvěma peptidovými vazbami, tedy od tripeptidů výš.',
             },
+            { type: 'p', text: 'Biuretová reakce není jediný důkaz biomolekul. Tady jsou pohromadě i důkazy z minulých lekcí a ještě jeden pro bílkoviny s aromatickými aminokyselinami:' },
             {
               type: 'table',
               headers: ['Důkaz', 'Činidlo', 'Pozitivní výsledek', 'Dokazuje'],
@@ -960,6 +1014,7 @@ const level: LevelContent = {
               caption: 'Další důkazové reakce biomolekul',
             },
             { type: 'callout', variant: 'warning', title: 'Bezpečnost', text: 'Hydroxid sodný i koncentrovaná kyselina dusičná jsou žíraviny. Ochranné brýle a rukavice jsou povinné, s kyselinou dusičnou se pracuje jen v digestoři. Mimochodem: xanthoproteinová reakce je důvod, proč kyselina dusičná barví kůži nažluto.' },
+            { type: 'p', text: 'Bílkoviny teď umíš poskládat, rozbít i dokázat. V příští lekci se podíváme na jejich nejdůležitější práci zblízka: bílkoviny jako enzymy.' },
             {
               type: 'check',
               question: {
@@ -1063,9 +1118,9 @@ const level: LevelContent = {
           title: 'Enzymy: katalyzátory života',
           icon: 'enzyme',
           blocks: [
-            { type: 'p', text: '**Enzymy** jsou **biokatalyzátory**: urychlují reakce v živých organismech a samy se přitom nespotřebují. Téměř všechny jsou bílkoviny. Jako každý katalyzátor (úroveň 6) snižují **aktivační energii**, ale nemění reakční teplo ani polohu rovnováhy.' },
+            { type: 'p', text: 'Vraťme se k tajné zbrani z úvodu. **Enzymy** jsou **biokatalyzátory**: urychlují reakce v živých organismech a samy se přitom nespotřebují. Téměř všechny jsou bílkoviny. Jako každý katalyzátor (úroveň 6) snižují **aktivační energii**, ale nemění reakční teplo ani polohu rovnováhy. Na energetickém diagramu je to dobře vidět:' },
             { type: 'diagram', id: 'energy-profile', props: { kind: 'exo', catalyst: true }, caption: 'Enzym nabídne reakci „nižší průsmyk“: aktivační energie klesne, reakční teplo zůstane stejné. Reakce jen rychleji dospěje tam, kam by stejně směřovala.' },
-            { type: 'p', text: 'Enzymy jsou výkonné a vybíravé: každý obvykle katalyzuje jen jednu reakci jedné látky – svého **substrátu**. Názvy většiny enzymů končí na **-áza**.' },
+            { type: 'p', text: 'Enzymy jsou výkonné a vybíravé: každý obvykle katalyzuje jen jednu reakci jedné látky – svého **substrátu**. Názvy většiny enzymů končí na **-áza**. Z názvu často poznáš i substrát:' },
             {
               type: 'iconlist',
               items: [
@@ -1076,8 +1131,9 @@ const level: LevelContent = {
                 { icon: 'gas-cloud', title: 'Kataláza', text: 'rozkládá peroxid vodíku na vodu a kyslík' },
               ],
             },
+            { type: 'p', text: 'Reakci, kterou katalyzuje kataláza, si zapiš – za chvíli ji uvidíš i v pokusu:' },
             { type: 'reaction', equation: '2H2O2 -> 2H2O + O2', caption: 'Rozklad peroxidu vodíku, který katalyzuje enzym kataláza' },
-            { type: 'p', text: 'Enzymů jsou tisíce, a tak je biochemici třídí podle typu reakce, kterou katalyzují, do **sedmi tříd**. Každý enzym má číselný kód EC, jehož první číslice je právě jeho třída.' },
+            { type: 'p', text: 'Enzymů jsou tisíce, a tak je biochemici třídí podle typu reakce, kterou katalyzují, do **sedmi tříd**. Každý enzym má číselný kód EC, jehož první číslice je právě jeho třída. Tady je přehled všech sedmi:' },
             {
               type: 'table',
               headers: ['Třída', 'Jakou reakci katalyzuje', 'Příklad'],
@@ -1094,6 +1150,7 @@ const level: LevelContent = {
             },
             { type: 'callout', variant: 'fact', text: 'Jedna molekula katalázy rozloží za sekundu miliony molekul peroxidu vodíku. Proto peroxid na odřenině šumí: kataláza z poškozených buněk ho bleskově rozkládá na vodu a kyslík.' },
             { type: 'callout', variant: 'warning', title: 'Pokus', text: 'Kousek syrového bramboru ve 3% roztoku peroxidu vodíku bouřlivě pění. Pracuj s ochrannými brýlemi, i zředěný peroxid dráždí oči. Uvařený brambor nepění – proč, zjistíš za chvíli.' },
+            { type: 'p', text: 'Teď víš, co enzymy dělají. Zbývá otázka, jak enzym svůj substrát najde mezi tisíci jiných molekul.' },
             {
               type: 'check',
               question: {
@@ -1110,8 +1167,9 @@ const level: LevelContent = {
           title: 'Aktivní centrum: zámek a klíč',
           icon: 'catalyst',
           blocks: [
-            { type: 'p', text: 'Substrát se váže jen na malé místo obrovské molekuly enzymu – **aktivní centrum**. Je to prohlubeň z několika postranních řetězců aminokyselin, která vzniká díky terciární struktuře bílkoviny. Její tvar a náboj přesně odpovídají substrátu.' },
+            { type: 'p', text: 'Odpověď je v tvaru. Substrát se váže jen na malé místo obrovské molekuly enzymu – **aktivní centrum**. Je to prohlubeň z několika postranních řetězců aminokyselin, která vzniká díky terciární struktuře bílkoviny. Její tvar a náboj přesně odpovídají substrátu. Celá katalýza pak proběhne ve čtyřech krocích:' },
             { type: 'diagram', id: 'enzyme-lock-key', caption: 'Enzymová katalýza ve čtyřech krocích: substrát zapadne do aktivního centra, v komplexu enzym–substrát (ES) se jeho vazby oslabí, substrát se přemění na produkty a ty se uvolní. Enzym vyjde z reakce nezměněný a může pracovat znovu: $E + S <=> ES -> E + P$. Poslední obrázek ukazuje inhibitor, který aktivní centrum zablokuje.' },
+            { type: 'p', text: 'Jak přesně do sebe enzym a substrát zapadnou? Popisují to dva modely, starší a novější:' },
             {
               type: 'compare',
               columns: [
@@ -1122,6 +1180,7 @@ const level: LevelContent = {
             },
             { type: 'callout', variant: 'remember', text: '==Oba modely vysvětlují, proč je enzym tak specifický.== Dnešní představě lépe odpovídá indukované přizpůsobení.' },
             { type: 'callout', variant: 'mascot', text: 'Enzym je jako dobrý barista: jeden kávovar, tisíce káv za den a nikdy se neopotřebuje. Jen ho nesmíš uvařit.' },
+            { type: 'p', text: 'Tvar aktivního centra je tedy pro enzym vším. Co ho může změnit – a enzym zpomalit nebo zastavit – rozebereme v dalším oddílu.' },
             {
               type: 'check',
               question: {
@@ -1137,9 +1196,9 @@ const level: LevelContent = {
           title: 'Teplota, pH, substrát a inhibitory',
           icon: 'thermometer',
           blocks: [
-            { type: 'p', text: 'S rostoucí teplotou se enzymová reakce nejprve zrychluje jako každá jiná. Nad **teplotním optimem** (u lidských enzymů kolem 37 °C) ale bílkovina denaturuje a aktivita prudce klesá. Proto uvařený brambor s peroxidem nepění.' },
+            { type: 'p', text: 'Tvar aktivního centra drží slabé vazby, a ty jsou citlivé na teplo i na pH. S rostoucí teplotou se enzymová reakce nejprve zrychluje jako každá jiná. Nad **teplotním optimem** (u lidských enzymů kolem 37 °C) ale bílkovina denaturuje a aktivita prudce klesá. Proto uvařený brambor s peroxidem nepění.' },
             { type: 'callout', variant: 'fact', text: 'Bakterie *Thermus aquaticus* z horkých pramenů v Yellowstonu má enzymy, které nejlépe pracují kolem 72 °C a vydrží i var. Jeden z nich se používá při PCR, o které se dozvíš v lekci o nukleových kyselinách.' },
-            { type: 'p', text: 'Každý enzym má také své **optimální pH**. Na pH totiž závisí náboj postranních řetězců v aktivním centru, a tedy i jeho tvar.' },
+            { type: 'p', text: 'Každý enzym má také své **optimální pH**. Na pH totiž závisí náboj postranních řetězců v aktivním centru, a tedy i jeho tvar. Pěkně to ukazují trávicí enzymy – každý pracuje v jiné části trávicí trubice:' },
             {
               type: 'diagram',
               id: 'ph-scale',
@@ -1158,7 +1217,7 @@ const level: LevelContent = {
               caption: 'Rychlost enzymové reakce a koncentrace substrátu: křivka nejdřív strmě stoupá, pak se ohne do vodorovné roviny.',
             },
             { type: 'callout', variant: 'mascot', text: 'Představ si pokladny v supermarketu. Když přijdou dva zákazníci, fronta hned mizí. Když přijde celá škola, všechny pokladny jedou naplno a rychleji to nepůjde, dokud neotevřeš další – tedy nepřidáš enzym.' },
-            { type: 'p', text: 'Činnost enzymů mohou brzdit **inhibitory**. Tělo tak reguluje metabolismus a stejným principem účinkuje řada léků i jedů.' },
+            { type: 'p', text: 'Zatím jsme enzymy zrychlovali a zpomalovali podmínkami. Činnost enzymů mohou ale cíleně brzdit i **inhibitory**. Tělo tak reguluje metabolismus a stejným principem účinkuje řada léků i jedů. Podle toho, kam a jak pevně se inhibitor naváže, rozlišujeme tři typy:' },
             {
               type: 'compare',
               columns: [
@@ -1169,6 +1228,7 @@ const level: LevelContent = {
               caption: 'Tři typy inhibice',
             },
             { type: 'callout', variant: 'tip', text: '**Kompetitivní** = soutěží o stejné místo. **Nekompetitivní** = nesoutěží, „sabotuje“ enzym odjinud.' },
+            { type: 'p', text: 'Teď víš, co enzym zrychlí, zpomalí nebo vyřadí. Mnoho enzymů ale samo pracovat nemůže – potřebuje malého pomocníka.' },
             {
               type: 'check',
               question: {
@@ -1190,9 +1250,9 @@ const level: LevelContent = {
           title: 'Koenzymy a vitaminy',
           icon: 'lemon',
           blocks: [
-            { type: 'p', text: 'Mnoho enzymů potřebuje pomocníka, který není bílkovina – **kofaktor**. Může to být ion kovu (například $Mg^{2+}$, $Zn^{2+}$ nebo $Fe^{2+}$), nebo malá organická molekula, **koenzym**. Koenzym obvykle přenáší elektrony, atomy vodíku nebo celé skupiny atomů.' },
+            { type: 'p', text: 'Mnoho enzymů potřebuje pomocníka, který není bílkovina – **kofaktor**. Může to být ion kovu (například $Mg^{2+}$, $Zn^{2+}$ nebo $Fe^{2+}$), nebo malá organická molekula, **koenzym**. Koenzym obvykle přenáší elektrony, atomy vodíku nebo celé skupiny atomů. Nejčastější kovové kofaktory:' },
             { type: 'elements', symbols: ['Mg', 'Zn', 'Fe', 'Co'], caption: 'Kovy jako kofaktory. Kobalt je ve středu molekuly vitaminu B_{12}.' },
-            { type: 'p', text: 'Řadu koenzymů tělo vyrábí z **vitaminů**. Ty potřebujeme jen v malém množství (miligramy nebo mikrogramy denně), ale tělo si je neumí vyrobit vůbec, nebo jen nedostatečně. Energii nedodávají.' },
+            { type: 'p', text: 'Řadu koenzymů tělo vyrábí z **vitaminů**. Ty potřebujeme jen v malém množství (miligramy nebo mikrogramy denně), ale tělo si je neumí vyrobit vůbec, nebo jen nedostatečně. Energii nedodávají. Podle rozpustnosti je dělíme na dvě skupiny, a to má praktické důsledky:' },
             {
               type: 'compare',
               columns: [
@@ -1201,6 +1261,7 @@ const level: LevelContent = {
               ],
               caption: 'Pomůcka: v tucích se rozpouští **ADEK**.',
             },
+            { type: 'p', text: 'Tady jsou nejdůležitější vitaminy obou skupin: kde je najdeš, k čemu slouží a co způsobí jejich nedostatek.' },
             {
               type: 'iconlist',
               items: [
@@ -1215,6 +1276,7 @@ const level: LevelContent = {
             },
             { type: 'p', text: 'Vitaminy skupiny B jsou základem koenzymů. Z niacinu (B_{3}) vzniká $NAD^+$, z riboflavinu (B_{2}) koenzym FAD a z kyseliny pantothenové (B_{5}) koenzym A. Všechny tři budou hrát hlavní roli v lekci o metabolismu.' },
             { type: 'callout', variant: 'fact', title: 'První klinický pokus', text: 'V roce 1747 skotský lodní lékař James Lind rozdělil námořníky nemocné kurdějemi do dvojic a každé dal jinou „léčbu“. Uzdravili se jen ti, kteří dostávali citrony a pomeranče. Byl to jeden z prvních kontrolovaných pokusů v dějinách medicíny.' },
+            { type: 'p', text: 'Vitaminy a koenzymy pomáhají enzymům uvnitř buňky. Jak se ale buňky na různých koncích těla domluví, co mají dělat?' },
             {
               type: 'check',
               question: {
@@ -1235,7 +1297,7 @@ const level: LevelContent = {
           title: 'Hormony: chemické zprávy',
           icon: 'blood',
           blocks: [
-            { type: 'p', text: '**Hormony** jsou signální molekuly. Vytvářejí je žlázy s vnitřní sekrecí, krev je roznese po těle a působí jen na **cílové buňky**, které pro ně mají **receptor**. Stačí jich nepatrné množství.' },
+            { type: 'p', text: 'K tomu tělo používá chemické zprávy. **Hormony** jsou signální molekuly. Vytvářejí je žlázy s vnitřní sekrecí, krev je roznese po těle a působí jen na **cílové buňky**, které pro ně mají **receptor**. Stačí jich nepatrné množství. Nejdůležitější hormony a co dělají:' },
             {
               type: 'iconlist',
               items: [
@@ -1247,6 +1309,7 @@ const level: LevelContent = {
                 { icon: 'muscle', title: 'Testosteron, estradiol', text: 'steroidy z varlat a vaječníků; pohlavní znaky, růst svalů a kostí' },
               ],
             },
+            { type: 'p', text: 'Některé hormony jsou bílkoviny, jiné steroidy. To není jen detail: chemie hormonu rozhodne, jak se jeho zpráva dostane do buňky.' },
             {
               type: 'compare',
               columns: [
@@ -1256,7 +1319,9 @@ const level: LevelContent = {
               caption: 'Způsob účinku hormonu prozradí jeho chemie.',
             },
             { type: 'callout', variant: 'fact', text: 'Při **cukrovce 1. typu** slinivka netvoří inzulin. Dříve se získával ze slinivek prasat a skotu, od roku 1982 ho vyrábějí geneticky upravené bakterie, do kterých vědci vložili lidský gen pro inzulin.' },
+            { type: 'p', text: 'Některé hormony potřebují prvek, který musíme přijímat potravou. Tyroxin ze seznamu výše se bez něj neobejde:' },
             { type: 'elements', symbols: ['I'], caption: 'Jod je nezbytný pro tyroxin. Proto se do kuchyňské soli přidává jodid nebo jodičnan draselný.' },
+            { type: 'p', text: 'Enzymy, vitaminy a hormony řídí, co se v buňce děje. V příští lekci uvidíš, jak s jejich pomocí buňka získává energii z glukózy – a jak ji rostlina vyrábí.' },
             { type: 'game', gameId: 'swipe', text: 'Enzym, vitamin, nebo hormon? Rozhoduj rychle, co je pravda a co ne.' },
             {
               type: 'check',
@@ -1367,7 +1432,7 @@ const level: LevelContent = {
           title: 'Metabolismus: rozkládat a stavět',
           icon: 'arrow-cycle',
           blocks: [
-            { type: 'p', text: '**Metabolismus** (látková přeměna) je souhrn všech chemických reakcí v organismu. Probíhá v **metabolických drahách** – řadách navazujících kroků, z nichž každý katalyzuje jiný enzym.' },
+            { type: 'p', text: 'Enzymy z minulé lekce nepracují každý zvlášť, ale v dlouhých řadách. **Metabolismus** (látková přeměna) je souhrn všech chemických reakcí v organismu. Probíhá v **metabolických drahách** – řadách navazujících kroků, z nichž každý katalyzuje jiný enzym. Všechny ty reakce se dají rozdělit do dvou velkých skupin:' },
             {
               type: 'compare',
               columns: [
@@ -1377,6 +1442,7 @@ const level: LevelContent = {
               caption: 'Dvě strany metabolismu. Energii mezi nimi přenáší ATP.',
             },
             { type: 'p', text: 'Proč tolik kroků? Kdyby buňka glukózu „spálila“ najednou jako plamen, všechna energie by se uvolnila jako teplo. ==Po malých dávkách ji buňka dokáže zachytit v chemické podobě.==' },
+            { type: 'p', text: 'Odkud ale buňka vezme látky, které rozkládá? Podle toho se organismy dělí do dvou skupin:' },
             {
               type: 'iconlist',
               items: [
@@ -1384,6 +1450,7 @@ const level: LevelContent = {
                 { icon: 'apple', title: 'Heterotrofní organismy', text: 'živočichové, houby, většina bakterií: organické látky musí přijmout v potravě' },
               ],
             },
+            { type: 'p', text: 'Rozklad a stavba se tedy musí nějak propojit. Spojovacím článkem je molekula ATP z úvodu.' },
             {
               type: 'check',
               question: {
@@ -1400,7 +1467,7 @@ const level: LevelContent = {
           title: 'ATP: energetická měna buňky',
           icon: 'battery',
           blocks: [
-            { type: 'p', text: '**ATP** (adenosintrifosfát) je nukleotid: adenin, ribóza a řetízek tří fosfátových skupin. Vazby mezi fosfáty jsou anhydridové a v české literatuře se jim říká **makroergní**. Odštěpením koncového fosfátu vznikne **ADP** (adenosindifosfát).' },
+            { type: 'p', text: 'Jak může stačit 250 gramů ATP, když ho za den spotřebuješ tolik, kolik vážíš? Odpověď začíná u jeho stavby. **ATP** (adenosintrifosfát) je nukleotid: adenin, ribóza a řetízek tří fosfátových skupin. Vazby mezi fosfáty jsou anhydridové a v české literatuře se jim říká **makroergní**. Odštěpením koncového fosfátu vznikne **ADP** (adenosindifosfát). Schematicky:' },
             {
               type: 'structure',
               art: art(
@@ -1409,10 +1476,13 @@ const level: LevelContent = {
               ),
               caption: 'ATP schematicky. Vlnovka ~ značí makroergní vazbu. Hydrolýzou se obvykle odštěpí koncový fosfát γ.',
             },
+            { type: 'p', text: 'Energii buňce dodá právě odštěpení posledního fosfátu. Zapisuje se takto:' },
             { type: 'formula', text: 'ATP + $H2O$ -> ADP + P_{i}', caption: 'Hydrolýza ATP: ΔG ≈ −30,5 kJ/mol za standardních podmínek, v buňce asi −50 kJ/mol. P_{i} je anorganický fosfát.' },
+            { type: 'p', text: 'ADP se po rozštěpení neztratí – buňka ho znovu „dobije“. Každá molekula tak koloběhem projde za den stovkykrát, a proto ti stačí těch pár set gramů:' },
             { type: 'diagram', id: 'atp-cycle', caption: 'Koloběh ATP a ADP jako dobíjecí baterie. Katabolické děje (hlavně dýchání) dodávají energii na připojení fosfátu k ADP; svalový stah, syntéza bílkovin nebo přenos iontů přes membránu ji spotřebují štěpením ATP.' },
             { type: 'callout', variant: 'warning', title: 'Energie není „v jedné vazbě“', text: 'Přetržení každé vazby energii spotřebuje, nikdy ji neuvolní. Hydrolýza ATP energii uvolňuje proto, že produkty (ADP a fosfát, dobře obklopené vodou) jsou dohromady mnohem stabilnější než ATP a voda. „Makroergní vazba“ je jen zkratka.' },
-            { type: 'p', text: '**Energetické spřažení**: reakce, která by sama neproběhla (ΔG > 0), se spojí s hydrolýzou ATP. Celková ΔG je součtem obou a vyjde záporná, takže spřažený děj proběhne. Z úrovně 6 víš, že samovolně probíhají děje s ΔG < 0.' },
+            { type: 'p', text: 'K čemu je tedy energie z ATP dobrá? **Energetické spřažení**: reakce, která by sama neproběhla (ΔG > 0), se spojí s hydrolýzou ATP. Celková ΔG je součtem obou a vyjde záporná, takže spřažený děj proběhne. Z úrovně 6 víš, že samovolně probíhají děje s ΔG < 0.' },
+            { type: 'p', text: 'Ukažme si to na stavbě aminokyseliny glutaminu:' },
             {
               type: 'example',
               problem: 'Syntéza glutaminu z kyseliny glutamové a amoniaku má ΔG = +14,2 kJ/mol. Proběhne, když ji buňka spřáhne s hydrolýzou ATP (ΔG = −30,5 kJ/mol)?',
@@ -1423,6 +1493,7 @@ const level: LevelContent = {
               ],
               answer: 'Ano, celková ΔG = −16,3 kJ/mol.',
             },
+            { type: 'p', text: 'Teď víš, jak ATP pohání děje, které by samy neproběhly. Odkud ale buňka bere energii na to, aby ADP znovu dobila? Hlavně z buněčného dýchání.' },
             {
               type: 'check',
               question: {
@@ -1439,7 +1510,7 @@ const level: LevelContent = {
           title: 'Buněčné dýchání: od glukózy k ATP',
           icon: 'lungs',
           blocks: [
-            { type: 'p', text: '**Buněčné dýchání** je oxidace glukózy kyslíkem. Souhrnně je to stejná reakce jako hoření, jen rozdělená do desítek kroků, takže se velká část energie zachytí do ATP.' },
+            { type: 'p', text: '**Buněčné dýchání** je oxidace glukózy kyslíkem. Souhrnně je to stejná reakce jako hoření, jen rozdělená do desítek kroků, takže se velká část energie zachytí do ATP. Celková rovnice je obrácená fotosyntéza:' },
             { type: 'reaction', equation: 'C6H12O6 + 6O2 -> 6CO2 + 6H2O', caption: 'ΔG ≈ −2 870 kJ/mol. Uhlík glukózy (průměrné oxidační číslo 0) se oxiduje na $C^{IV}$ v $CO2$, kyslík se redukuje na $O^{−II}$ ve vodě.' },
             { type: 'p', text: 'Elektrony z glukózy nejdou na kyslík přímo. Nejdřív je převezmou **přenašeče elektronů** – koenzymy vyrobené z vitaminů skupiny B:' },
             {
@@ -1450,7 +1521,9 @@ const level: LevelContent = {
                 { term: 'acetylkoenzym A', def: 'dvouuhlíkatý zbytek kyseliny octové na koenzymu A (z vitaminu B_{5}); „vstupenka“ do citrátového cyklu' },
               ],
             },
+            { type: 'p', text: 'S těmito přenašeči už můžeme projít celou cestu glukózy. Sleduj, kde v buňce která fáze probíhá:' },
             { type: 'diagram', id: 'cellular-respiration', caption: 'Tři fáze buněčného dýchání. **Glykolýza** v cytoplazmě rozštěpí glukózu (C6) na dva pyruváty (C3). V matrix mitochondrie se pyruvát oxidačně dekarboxyluje na acetylkoenzym A, který vstoupí do **citrátového (Krebsova) cyklu** – tam se jeho uhlíky oxidují na $CO2$. **Dýchací řetězec** na vnitřní membráně mitochondrie předá elektrony z NADH a $FADH2$ kyslíku a vznikne voda.' },
+            { type: 'p', text: 'Kolik ATP která fáze vyrobí? Sečtěme to na jednu molekulu glukózy:' },
             {
               type: 'table',
               headers: ['Fáze', 'Kde', 'Co se děje', 'ATP', 'Přenašeče'],
@@ -1469,11 +1542,12 @@ const level: LevelContent = {
               type: 'example',
               problem: 'Oxidací 1 mol glukózy se uvolní 2 870 kJ. Buňka z ní získá asi 32 mol ATP a hydrolýza 1 mol ATP dává 30,5 kJ. Jaká je účinnost dýchání?',
               steps: [
-                'energie zachycená v ATP: 32 · 30,5 kJ = 976 kJ',
-                'účinnost = 976 kJ / 2 870 kJ · 100 %',
+                'energie zachycená v ATP: každý mol ATP nese 30,5 kJ, takže 32 · 30,5 kJ = 976 kJ',
+                'účinnost je podíl užitečně zachycené a celkové energie: 976 kJ / 2 870 kJ · 100 %',
               ],
               answer: 'Asi 34 %. Zbytek se uvolní jako teplo, které udržuje tvou tělesnou teplotu. Automobilový motor má účinnost jen kolem 25–30 %.',
             },
+            { type: 'p', text: 'Celá tahle výroba ale běží jen tehdy, když na konci řetězce čeká kyslík. Co dělá buňka, když kyslík dojde – třeba ve svalu při sprintu?' },
             {
               type: 'check',
               question: {
@@ -1494,7 +1568,7 @@ const level: LevelContent = {
           title: 'Když chybí kyslík: kvašení',
           icon: 'muscle',
           blocks: [
-            { type: 'p', text: 'Bez kyslíku se dýchací řetězec zastaví a NADH nemá komu elektrony předat. Brzy by se zastavila i glykolýza, protože by jí došel $NAD^+$. Buňka proto vrátí elektrony z NADH na pyruvát a $NAD^+$ tím obnoví. Tomu se říká **kvašení** (fermentace): zisk jsou jen 2 ATP z glukózy, zato rychle.' },
+            { type: 'p', text: 'Bez kyslíku se dýchací řetězec zastaví a NADH nemá komu elektrony předat. Brzy by se zastavila i glykolýza, protože by jí došel $NAD^+$. Buňka proto vrátí elektrony z NADH na pyruvát a $NAD^+$ tím obnoví. Tomu se říká **kvašení** (fermentace): zisk jsou jen 2 ATP z glukózy, zato rychle. Buňky to umějí dvěma způsoby:' },
             {
               type: 'compare',
               columns: [
@@ -1502,20 +1576,24 @@ const level: LevelContent = {
                 { title: 'Alkoholové kvašení', icon: 'bread', tone: 'b', points: ['pyruvát odštěpí $CO2$ na acetaldehyd, ten se redukuje na **ethanol**', 'kvasinky bez přístupu kyslíku', 'pivo, víno, kynuté těsto (bublinky $CO2$)'] },
               ],
             },
+            { type: 'p', text: 'Souhrnné rovnice obou dějů jsou překvapivě jednoduché: NADH v nich vznikne i zase zanikne, a tak se v rovnici vůbec neobjeví.' },
             { type: 'reaction', equation: 'C6H12O6 -> 2CH3CH(OH)COOH', caption: 'Mléčné kvašení souhrnně: glukóza -> 2 molekuly kyseliny mléčné (v buňce jako laktát)' },
+            { type: 'p', text: 'Alkoholové kvašení se liší tím, že uhlík navíc odchází jako $CO2$ – odtud bublinky v pivu i v kynutém těstě:' },
             { type: 'reaction', equation: 'C6H12O6 -> 2C2H5OH + 2CO2', caption: 'Alkoholové kvašení: glukóza -> 2 ethanol + 2 oxid uhličitý' },
             { type: 'callout', variant: 'fact', title: 'Svalovici nezpůsobuje kyselina mléčná', text: 'Laktát ze svalů krev odplaví zhruba do hodiny po výkonu a játra z něj znovu vyrobí glukózu (**Coriho cyklus**). Bolest svalů druhý den způsobují drobná poškození svalových vláken.' },
+            { type: 'p', text: 'Z rovnice alkoholového kvašení spočítáš, kolik alkoholu může nejvýš vzniknout z cukru, třeba v moštu:' },
             {
               type: 'example',
               problem: 'Kolik gramů ethanolu mohou kvasinky nejvýše vyrobit z 360 g glukózy? $M(C6H12O6) = 180 g/mol$, $M(C2H5OH) = 46 g/mol$.',
               steps: [
                 '$n(glukóza) = 360 g / 180 g/mol = 2 mol$',
-                'Z 1 mol glukózy vzniknou 2 mol ethanolu: $n(C2H5OH) = 4 mol$.',
+                'Podle koeficientů v rovnici vzniknou z 1 mol glukózy 2 mol ethanolu: $n(C2H5OH) = 4 mol$.',
                 '$m(C2H5OH) = 4 mol · 46 g/mol$',
               ],
               answer: '184 g ethanolu. Zbylých 176 g odejde jako $CO2$ – hmotnost se zachová.',
             },
             { type: 'callout', variant: 'warning', text: '$CO2$ z kvašení je těžší než vzduch a hromadí se u země. Ve vinných sklepech během kvašení hrozí udušení, proto se do nich dřív chodilo se zapálenou svíčkou: když zhasla, bylo třeba rychle ven.' },
+            { type: 'p', text: 'Dýchání i kvašení glukózu spotřebovávají a dýchání navíc kyslík. Kde se obojí bere? Vyrábí je fotosyntéza.' },
             {
               type: 'check',
               question: {
@@ -1532,8 +1610,9 @@ const level: LevelContent = {
           title: 'Fotosyntéza: světelná fáze a Calvinův cyklus',
           icon: 'sun',
           blocks: [
-            { type: 'p', text: 'Fotosyntéza probíhá v **chloroplastech**. Souhrnnou rovnici $6CO2 + 6H2O -> C6H12O6 + 6O2$ znáš z lekce o sacharidech. Ve skutečnosti ji tvoří dvě navazující fáze.' },
+            { type: 'p', text: 'Fotosyntéza probíhá v **chloroplastech**. Souhrnnou rovnici $6CO2 + 6H2O -> C6H12O6 + 6O2$ znáš z lekce o sacharidech. Ve skutečnosti ji tvoří dvě navazující fáze. Než je rozebereme, podívej se, jak fotosyntéza a dýchání zapadají do sebe:' },
             { type: 'diagram', id: 'photosynthesis-respiration', caption: 'Fotosyntéza v chloroplastu a dýchání v mitochondrii tvoří koloběh: produkty jednoho děje jsou výchozími látkami druhého. Energie ale v kruhu neobíhá – přichází ze Slunce a nakonec odchází jako teplo.' },
+            { type: 'p', text: 'Teď zpátky do chloroplastu. Obě fáze fotosyntézy probíhají na různých místech a dělají úplně jinou práci:' },
             {
               type: 'compare',
               columns: [
@@ -1542,6 +1621,7 @@ const level: LevelContent = {
               ],
               caption: 'Světelná fáze vyrobí „baterie“ (ATP) a „nosiče elektronů“ (NADPH), Calvinův cyklus je spotřebuje na stavbu cukru.',
             },
+            { type: 'p', text: 'Calvinův cyklus je opravdu cyklus: výchozí cukr C5 se na konci vrátí, aby mohl navázat další $CO2$. Projdi si jeho čtyři kroky:' },
             {
               type: 'process',
               layout: 'cycle',
@@ -1555,6 +1635,7 @@ const level: LevelContent = {
             },
             { type: 'callout', variant: 'fact', title: 'Odkud je kyslík?', text: 'V roce 1941 dali vědci řasám vodu s těžkým izotopem $^{18}O$ a ten se objevil v uvolněném kyslíku. ==Veškerý kyslík z fotosyntézy pochází z vody, ne z $CO2$.== Kyslík z $CO2$ skončí v glukóze a ve vodě, která při fotosyntéze zase vzniká.' },
             { type: 'callout', variant: 'mascot', text: 'RuBisCO je pomalý enzym, stihne jen pár molekul $CO2$ za sekundu. Rostliny to řeší hrubou silou: mají ho v listech tolik, že je to nejspíš nejhojnější bílkovina na Zemi.' },
+            { type: 'p', text: 'Teď víš, jak rostlina uloží energii světla do cukru a jak ji buňka zase uvolní. Zbývá druhé velké palivo, tuky, a otázka, jak se energie v těle sčítá.' },
             {
               type: 'check',
               question: {
@@ -1571,7 +1652,7 @@ const level: LevelContent = {
           title: 'Tuky jako palivo a energetická bilance',
           icon: 'heart',
           blocks: [
-            { type: 'p', text: 'Palivem nejsou jen sacharidy. Mastné kyseliny se v mitochondriích štěpí **β-oxidací**: z řetězce se opakovaně odštípne dvouuhlíkatý úsek jako acetylkoenzym A a každé „kolo“ navíc dodá NADH a $FADH2$.' },
+            { type: 'p', text: 'Palivem nejsou jen sacharidy. Mastné kyseliny se v mitochondriích štěpí **β-oxidací**: z řetězce se opakovaně odštípne dvouuhlíkatý úsek jako acetylkoenzym A a každé „kolo“ navíc dodá NADH a $FADH2$. Celá cesta tuku k ATP vypadá takto:' },
             {
               type: 'process',
               layout: 'flow',
@@ -1583,7 +1664,7 @@ const level: LevelContent = {
               ],
               caption: '==Acetylkoenzym A je křižovatka metabolismu==: sbíhají se v něm cesty cukrů, tuků i aminokyselin.',
             },
-            { type: 'p', text: '**Energetická bilance** porovnává energii přijatou v jídle s energií vydanou. Zhruba dvě třetiny výdeje tvoří **bazální metabolismus** – práce srdce, mozku, dýchání a udržování teploty v klidu. Zbytek jde na pohyb a trávení.' },
+            { type: 'p', text: '**Energetická bilance** porovnává energii přijatou v jídle s energií vydanou. Zhruba dvě třetiny výdeje tvoří **bazální metabolismus** – práce srdce, mozku, dýchání a udržování teploty v klidu. Zbytek jde na pohyb a trávení. Kolik energie stojí běžné činnosti:' },
             {
               type: 'table',
               headers: ['Činnost', 'Výdej energie'],
@@ -1596,6 +1677,7 @@ const level: LevelContent = {
               ],
               caption: 'Orientační hodnoty pro člověka o hmotnosti 60 kg. Dospívající potřebují podle pohlaví a pohybu zhruba 9 000–13 000 kJ denně.',
             },
+            { type: 'p', text: 'Když sečteš příjem a výdej, může bilance dopadnout dvojím způsobem:' },
             {
               type: 'compare',
               columns: [
@@ -1603,16 +1685,18 @@ const level: LevelContent = {
                 { title: 'Příjem < výdej', icon: 'muscle', tone: 'b', points: ['tělo čerpá zásoby: nejdřív glykogen, pak tuky', 'hmotnost klesá'] },
               ],
             },
+            { type: 'p', text: 'Jak rychle se malý denní přebytek projeví na váze? Spočítejme to:' },
             {
               type: 'example',
               problem: 'Dospívající přijme každý den o 800 kJ víc, než vydá. Za jak dlouho přibere 1 kg tukové tkáně? Tuková tkáň je asi z 80 % tvořena tukem, tuk dává 37 kJ/g.',
               steps: [
-                'energie v 1 kg tukové tkáně: 1 000 g · 0,8 · 37 kJ/g = 29 600 kJ',
+                'Tuk tvoří jen 80 % tkáně, proto násobíme 0,8. Energie v 1 kg tukové tkáně: 1 000 g · 0,8 · 37 kJ/g = 29 600 kJ',
                 'počet dní: 29 600 kJ / 800 kJ za den ≈ 37 dní',
               ],
               answer: 'Asi za 37 dní, tedy zhruba 5 týdnů. Za rok se malý denní přebytek nasčítá skoro na 10 kg.',
             },
             { type: 'callout', variant: 'fact', text: 'Glykogenu má tělo jen asi 400–500 g v játrech a svalech – energie zhruba na den bez jídla. Tuku má i štíhlý člověk kolem 10 kg, a to vystačí na několik týdnů. Proto tělo ukládá energii hlavně do tuku.' },
+            { type: 'p', text: 'Teď víš, jak buňka získává energii a jak s ní tělo hospodaří. V příští lekci přejdeme od energie k informaci: k nukleovým kyselinám, které určují, jaké bílkoviny a enzymy buňka vůbec vyrobí.' },
             {
               type: 'check',
               question: {
@@ -1723,7 +1807,7 @@ const level: LevelContent = {
           title: 'Nukleotid: stavebnice ze tří dílů',
           icon: 'molecule',
           blocks: [
-            { type: 'p', text: '**Nukleové kyseliny** – DNA a RNA – uchovávají a přenášejí genetickou informaci. Jsou to polymery a jejich monomery se nazývají **nukleotidy**.' },
+            { type: 'p', text: 'Návod na všechny bílkoviny a enzymy z minulých lekcí je zapsaný v molekulách, které se vejdou do jádra z úvodu. **Nukleové kyseliny** – DNA a RNA – uchovávají a přenášejí genetickou informaci. Jsou to polymery a jejich monomery se nazývají **nukleotidy**. Každý nukleotid se skládá ze tří dílů:' },
             {
               type: 'structure',
               art: art(
@@ -1735,7 +1819,9 @@ const level: LevelContent = {
               ),
               caption: 'Nukleotid schematicky: **fosfát** (zbytek kyseliny fosforečné), **pentóza** (cukr s pěti uhlíky: deoxyribóza v DNA, ribóza v RNA) a **dusíkatá báze** (A, G, C a T v DNA, v RNA místo T uracil U). Báze je vázaná na uhlík C1′ pentózy, fosfát esterovou vazbou na C5′. Na hydroxyskupinu na C3′ se napojí fosfát dalšího nukleotidu.',
             },
+            { type: 'p', text: 'Prvním dílem, kterým se DNA a RNA liší, je cukr. Prohlédni si ribózu z RNA a najdi uhlík C2′:' },
             { type: 'molecule', molecules: ['ribose'], labels: ['ribóza'], caption: 'Pentóza RNA. Deoxyribóza má na uhlíku C2′ místo skupiny $–OH$ jen vodík – odtud předpona *deoxy-*.' },
+            { type: 'p', text: 'Nositelem informace jsou ale báze. Podle velikosti se dělí do dvou skupin – a na rozdílu ve velikosti bude za chvíli záležet:' },
             {
               type: 'compare',
               columns: [
@@ -1743,7 +1829,9 @@ const level: LevelContent = {
                 { title: 'Pyrimidinové báze', icon: 'molecule', tone: 'b', points: ['jeden kruh', '**cytosin (C)**', '**thymin (T)** jen v DNA', '**uracil (U)** jen v RNA'] },
               ],
             },
+            { type: 'p', text: 'Ve 3D je rozdíl mezi jedním a dvěma kruhy hned vidět:' },
             { type: 'molecule', molecules: ['adenine', 'guanine', 'cytosine', 'thymine'], labels: ['adenin (A)', 'guanin (G)', 'cytosin (C)', 'thymin (T)'], caption: 'Čtyři báze DNA. Porovnej dvojité kruhy purinů s jednoduchými kruhy pyrimidinů.' },
+            { type: 'p', text: 'Při popisu nukleových kyselin se ti budou hodit ještě dva pojmy:' },
             {
               type: 'keyterms',
               items: [
@@ -1751,8 +1839,10 @@ const level: LevelContent = {
                 { term: 'fosfodiesterová vazba', def: 'fosfátový můstek mezi C3′ jednoho a C5′ dalšího nukleotidu; tvoří páteř vlákna' },
               ],
             },
+            { type: 'p', text: 'Z kolika prvků je celá ta stavebnice postavená?' },
             { type: 'elements', symbols: ['C', 'H', 'O', 'N', 'P'], caption: 'Nukleové kyseliny tvoří jen pět prvků. Fosfor je v každém nukleotidu.' },
             { type: 'callout', variant: 'fact', text: 'Nukleotidem je i **ATP** (adenosintrifosfát), energetická měna buňky z lekce o metabolismu. Má adenin, ribózu a tři fosfáty za sebou. Nukleotidy tedy neslouží jen jako písmena genetického kódu.' },
+            { type: 'p', text: 'Díly už znáš. Jak z nich vznikne molekula, která se umí přesně zkopírovat, ukáže slavná dvoušroubovice.' },
             {
               type: 'check',
               question: {
@@ -1769,9 +1859,9 @@ const level: LevelContent = {
           title: 'Dvoušroubovice DNA',
           icon: 'dna',
           blocks: [
-            { type: 'p', text: 'V roce 1953 popsali James Watson a Francis Crick strukturu DNA; klíčová data získali z rentgenových snímků **Rosalind Franklinové**. DNA tvoří **dvoušroubovice**: dvě vlákna stočená kolem sebe jako točité schodiště.' },
+            { type: 'p', text: 'V roce 1953 popsali James Watson a Francis Crick strukturu DNA; klíčová data získali z rentgenových snímků **Rosalind Franklinové**. DNA tvoří **dvoušroubovice**: dvě vlákna stočená kolem sebe jako točité schodiště. Sleduj na modelu páteř a příčky:' },
             { type: 'diagram', id: 'dna-helix', caption: 'Páteř každého vlákna tvoří střídající se deoxyribóza a fosfát, báze míří dovnitř jako příčky žebříku. Vlákna jsou **antiparalelní**: jedno běží ve směru 5′ -> 3′, druhé opačně. Vložený rozvinutý žebřík ukazuje cukr S, fosfát P a vodíkové vazby mezi bázemi.' },
-            { type: 'p', text: 'Báze naproti sobě se párují podle pravidla **komplementarity**: ==adenin vždy s thyminem (A–T), guanin vždy s cytosinem (G–C).== Vždy se spojí větší purinová báze s menší pyrimidinovou, takže má žebřík všude stejnou šířku.' },
+            { type: 'p', text: 'Báze naproti sobě se párují podle pravidla **komplementarity**: ==adenin vždy s thyminem (A–T), guanin vždy s cytosinem (G–C).== Vždy se spojí větší purinová báze s menší pyrimidinovou, takže má žebřík všude stejnou šířku. Oba páry se ale liší pevností:' },
             {
               type: 'compare',
               columns: [
@@ -1780,17 +1870,19 @@ const level: LevelContent = {
               ],
             },
             { type: 'callout', variant: 'tip', title: 'Pomůcka', text: 'Rovné k rovnému, kulaté ke kulatému: písmena **A** a **T** jsou z rovných čar, **G** a **C** jsou oblá.' },
+            { type: 'p', text: 'Z komplementarity plyne užitečný trik: když znáš podíl jedné báze, dopočítáš všechny ostatní.' },
             {
               type: 'example',
               problem: 'Vzorek DNA obsahuje 30 % adeninu. Kolik procent tvoří guanin?',
               steps: [
                 'Podle komplementarity je thyminu stejně jako adeninu: T = 30 %.',
                 'A + T = 60 %, na G + C zbývá 100 % − 60 % = 40 %.',
-                'G a C se také párují, takže G = 40 % / 2.',
+                'G a C se také párují, takže je jich stejně: G = 40 % / 2.',
               ],
               answer: 'Guanin tvoří 20 %.',
             },
-            { type: 'p', text: 'Když znáš jedno vlákno, druhé dopíšeš jednoznačně. K úseku 5′-ATGCCA-3′ patří vlákno 3′-TACGGT-5′.' },
+            { type: 'p', text: 'Když znáš jedno vlákno, druhé dopíšeš jednoznačně. K úseku 5′-ATGCCA-3′ patří vlákno 3′-TACGGT-5′. Pozor na směr: vlákna jsou antiparalelní, takže naproti konci 5′ stojí vždy konec 3′.' },
+            { type: 'p', text: 'Právě díky tomu se DNA umí přesně zkopírovat. Aby se ale informace z DNA dostala k ribozomům, potřebuje buňka druhou nukleovou kyselinu – RNA.' },
             {
               type: 'check',
               question: {
@@ -1807,7 +1899,7 @@ const level: LevelContent = {
           title: 'RNA a její tři role',
           icon: 'cell',
           blocks: [
-            { type: 'p', text: '**RNA** (ribonukleová kyselina) se od DNA liší ve třech věcech: má ribózu, uracil místo thyminu a obvykle jen jedno vlákno. ==DNA je archiv, RNA pracovní kopie.==' },
+            { type: 'p', text: '**RNA** (ribonukleová kyselina) se od DNA liší ve třech věcech: má ribózu, uracil místo thyminu a obvykle jen jedno vlákno. ==DNA je archiv, RNA pracovní kopie.== Porovnej je bod po bodu:' },
             {
               type: 'compare',
               columns: [
@@ -1816,6 +1908,7 @@ const level: LevelContent = {
               ],
               caption: 'Srovnání DNA a RNA',
             },
+            { type: 'p', text: 'Pracovní kopie ale není jen jedna. Buňka používá tři druhy RNA, každý s jinou úlohou:' },
             {
               type: 'iconlist',
               items: [
@@ -1824,7 +1917,7 @@ const level: LevelContent = {
                 { icon: 'factory', title: 'rRNA (ribozomální)', text: 'spolu s bílkovinami tvoří ribozom a sama katalyzuje vznik peptidové vazby' },
               ],
             },
-            { type: 'p', text: 'Na krátkém životě mRNA stojí **mRNA vakcíny**. Místo oslabeného viru obsahují jen návod na jednu jeho bílkovinu – u vakcín proti covidu-19 na „hrot“ viru (spike protein). Poprvé se plošně očkovaly v roce 2020; za výzkum, který je umožnil, dostali Katalin Karikó a Drew Weissman Nobelovu cenu za rok 2023.' },
+            { type: 'p', text: 'To, že se mRNA rychle rozkládá, se dá využít i v medicíně. Na krátkém životě mRNA stojí **mRNA vakcíny**. Místo oslabeného viru obsahují jen návod na jednu jeho bílkovinu – u vakcín proti covidu-19 na „hrot“ viru (spike protein). Poprvé se plošně očkovaly v roce 2020; za výzkum, který je umožnil, dostali Katalin Karikó a Drew Weissman Nobelovu cenu za rok 2023. Co se s vakcínou v těle děje, krok za krokem:' },
             {
               type: 'process',
               layout: 'flow',
@@ -1837,6 +1930,7 @@ const level: LevelContent = {
               caption: 'Jak funguje mRNA vakcína',
             },
             { type: 'callout', variant: 'remember', text: 'mRNA z vakcíny nepronikne do jádra a nezmění tvou DNA. Zůstává v cytoplazmě, kde ji čtou ribozomy, a rychle se rozkládá. Aby nevyvolala zbytečný zánět, nahrazuje se v ní uridin upraveným nukleosidem odvozeným od pseudouridinu – právě to byl objev oceněný Nobelovou cenou.' },
+            { type: 'p', text: 'Všechny tři druhy RNA už znáš. Jak spolupracují, aby z genu vznikla bílkovina, ukáže další oddíl.' },
             {
               type: 'check',
               question: {
@@ -1852,7 +1946,7 @@ const level: LevelContent = {
           title: 'Od genu k bílkovině',
           icon: 'protein',
           blocks: [
-            { type: 'p', text: 'Informace v buňce teče jedním směrem: DNA -> RNA -> bílkovina. Tomuto principu se říká **centrální dogma molekulární biologie**.' },
+            { type: 'p', text: 'Informace v buňce teče jedním směrem: DNA -> RNA -> bílkovina. Tomuto principu se říká **centrální dogma molekulární biologie**. Začíná to ale ještě o krok dřív: než se buňka rozdělí, musí svou DNA zdvojit.' },
             {
               type: 'process',
               layout: 'flow',
@@ -1863,8 +1957,9 @@ const level: LevelContent = {
               ],
               caption: '**Replikace**: zdvojení DNA před dělením buňky',
             },
+            { type: 'p', text: 'Replikace kopíruje celou DNA. Při výrobě bílkoviny se ale přepisuje jen jeden gen, a to ve dvou krocích – nejdřív do mRNA, pak do bílkoviny:' },
             { type: 'diagram', id: 'protein-synthesis', caption: '**Transkripce**, přepis genu z DNA do mRNA, probíhá v jádře: úsek DNA se rozvine a RNA-polymeráza přikládá nukleotidy komplementárně k templátovému vláknu DNA (místo T dává U) a vzniklá mRNA, kopie genu, odchází z jádra k ribozomům. **Translace**, překlad pořadí kodonů v mRNA do pořadí aminokyselin, probíhá na ribozomu: čtení začne na kodonu AUG, tRNA přináší aminokyseliny (její antikodon se páruje s kodonem), ribozom je spojí peptidovou vazbou a posune se o kodon dál.' },
-            { type: 'p', text: 'Ribozom čte mRNA po trojicích bází – **kodonech**. Čtyři báze dávají $4^3 = 64$ trojic: 61 kodonů určuje některou z 20 aminokyselin a 3 jsou **stop kodony**, které translaci ukončí: hotový polypeptid se uvolní a složí do prostorové struktury. Startovní kodon **AUG** zároveň kóduje methionin.' },
+            { type: 'p', text: 'Ribozom čte mRNA po trojicích bází – **kodonech**. Čtyři báze dávají $4^3 = 64$ trojic: 61 kodonů určuje některou z 20 aminokyselin a 3 jsou **stop kodony**, které translaci ukončí: hotový polypeptid se uvolní a složí do prostorové struktury. Startovní kodon **AUG** zároveň kóduje methionin. Genetický kód má čtyři důležité vlastnosti:' },
             {
               type: 'iconlist',
               items: [
@@ -1874,6 +1969,7 @@ const level: LevelContent = {
                 { icon: 'check', title: 'Nepřekrývající se', text: 'každá báze patří jen do jednoho kodonu' },
               ],
             },
+            { type: 'p', text: 'Teď už umíš projít celou cestu od DNA k bílkovině. Zkus to na krátkém úseku genu:' },
             {
               type: 'example',
               problem: 'Úsek templátového (přepisovaného) vlákna DNA je 3′-TACCGAATT-5′. Jaká mRNA vznikne a co kóduje?',
@@ -1885,6 +1981,7 @@ const level: LevelContent = {
               ],
               answer: 'mRNA 5′-AUGGCUUAA-3′ kóduje dipeptid Met-Ala.',
             },
+            { type: 'p', text: 'Gen tedy umíš přeložit do bílkoviny. Co se ale stane, když se v DNA objeví chyba – a jak se dá DNA zkoumat v laboratoři?' },
             {
               type: 'check',
               question: {
@@ -1901,7 +1998,7 @@ const level: LevelContent = {
           title: 'Mutace, PCR a testy DNA',
           icon: 'test-tube',
           blocks: [
-            { type: 'p', text: '**Mutace** je trvalá změna v pořadí bází DNA. Vzniká chybou při replikaci nebo působením **mutagenů**: UV záření, ionizujícího záření a některých chemických látek, například benzo[a]pyrenu z cigaretového kouře.' },
+            { type: 'p', text: 'Kopírování DNA je velmi přesné, ale ne dokonalé. **Mutace** je trvalá změna v pořadí bází DNA. Vzniká chybou při replikaci nebo působením **mutagenů**: UV záření, ionizujícího záření a některých chemických látek, například benzo[a]pyrenu z cigaretového kouře. Podle toho, co se v DNA změní, rozlišujeme dva hlavní typy:' },
             {
               type: 'compare',
               columns: [
@@ -1910,7 +2007,7 @@ const level: LevelContent = {
               ],
             },
             { type: 'callout', variant: 'fact', title: 'Mutace a evoluce', text: 'Mutace nejsou jen špatné. Většina nemá žádný účinek, některé škodí a vzácně některá přinese výhodu. Právě mutace jsou zdrojem rozmanitosti, na které stojí evoluce.' },
-            { type: 'p', text: '**PCR** (polymerázová řetězová reakce) je „kopírka DNA“, kterou v roce 1983 vymyslel Kary Mullis: ve zkumavce se opakuje replikace vybraného úseku DNA. Potřebuješ vzorek DNA, **primery** (krátké úseky DNA, které vyznačí začátek kopírovaného úseku), nukleotidy a tepelně odolnou **Taq polymerázu**.' },
+            { type: 'p', text: 'Kopírovat DNA podle vzoru buňky se naučily i laboratoře. **PCR** (polymerázová řetězová reakce) je „kopírka DNA“, kterou v roce 1983 vymyslel Kary Mullis: ve zkumavce se opakuje replikace vybraného úseku DNA. Potřebuješ vzorek DNA, **primery** (krátké úseky DNA, které vyznačí začátek kopírovaného úseku), nukleotidy a tepelně odolnou **Taq polymerázu**. Jeden cyklus má tři kroky, které řídí jen teplota:' },
             {
               type: 'process',
               layout: 'cycle',
@@ -1922,7 +2019,9 @@ const level: LevelContent = {
               ],
               caption: 'Jeden cyklus PCR zdvojnásobí počet kopií',
             },
+            { type: 'p', text: 'Protože každý cyklus počet kopií zdvojnásobí, roste jejich počet exponenciálně – jako mocnina dvou:' },
             { type: 'formula', text: 'N = N_{0} · 2^{n}', caption: 'počet kopií po n cyklech; po 30 cyklech je z jediné molekuly přes miliardu kopií' },
+            { type: 'p', text: 'Vyzkoušej si, jak rychle to roste, na vzorku s pouhými třemi molekulami:' },
             {
               type: 'example',
               problem: 'Vzorek obsahuje 3 molekuly hledané DNA. Kolik kopií bude po 10 cyklech PCR, pokud každý cyklus proběhne dokonale?',
@@ -1932,6 +2031,7 @@ const level: LevelContent = {
               ],
               answer: 'N = 3 072 kopií',
             },
+            { type: 'p', text: 'Z pár molekul je tak za chvíli dost DNA na rozbor. Proto se PCR používá všude, kde je vzorku málo:' },
             {
               type: 'iconlist',
               items: [
@@ -1941,6 +2041,7 @@ const level: LevelContent = {
                 { icon: 'heart', title: 'Dědičné choroby', text: 'hledání mutací v genech' },
               ],
             },
+            { type: 'p', text: 'Teď víš, jak se genetická informace zapisuje, čte, mění i kopíruje. V příští lekci se z buňky přesuneme do lékárny a do kuchyně: k léčivům, drogám a chemii potravin.' },
             { type: 'game', gameId: 'quickfire', text: 'Báze, kodony, polymerázy: zvládneš bleskovou výzvu?' },
             {
               type: 'check',
@@ -2040,10 +2141,11 @@ const level: LevelContent = {
           title: 'Léky proti bolesti: aspirin, paracetamol, ibuprofen',
           icon: 'pill',
           blocks: [
-            { type: 'p', text: 'Vrbová kůra se proti bolesti a horečce používala už ve starověku; obsahuje salicin, ze kterého tělo tvoří **kyselinu salicylovou**. Ta ale dráždí žaludek, a tak chemik Felix Hoffmann v roce 1897 navázal na její fenolovou skupinu $–OH$ acetylovou skupinu. Vznikl šetrnější ester, **kyselina acetylsalicylová** – aspirin.' },
+            { type: 'p', text: 'Začneme lékem, který máš nejspíš v lékárničce a který je „přírodní“ i „chemický“ zároveň. Vrbová kůra se proti bolesti a horečce používala už ve starověku; obsahuje salicin, ze kterého tělo tvoří **kyselinu salicylovou**. Ta ale dráždí žaludek, a tak chemik Felix Hoffmann v roce 1897 navázal na její fenolovou skupinu $–OH$ acetylovou skupinu. Vznikl šetrnější ester, **kyselina acetylsalicylová** – aspirin. Acetylovou skupinu dodá acetanhydrid:' },
             { type: 'reaction', equation: 'C7H6O3 + (CH3CO)2O -> C9H8O4 + CH3COOH', caption: 'kyselina salicylová + acetanhydrid -> kyselina acetylsalicylová + kyselina octová' },
+            { type: 'p', text: 'Prohlédni si výsledek ve 3D. Na místě fenolové skupiny $–OH$ teď sedí ester:' },
             { type: 'molecule', molecules: ['aspirin'], labels: ['kyselina acetylsalicylová'], caption: 'Aspirin: najdeš esterovou i karboxylovou skupinu?' },
-            { type: 'p', text: 'Bolest, horečku a zánět vyvolávají v těle látky zvané **prostaglandiny**. Vyrábí je enzym **cyklooxygenáza** (COX) a právě ten je cílem většiny léků proti bolesti – opět inhibice enzymu, kterou znáš z lekce o enzymech.' },
+            { type: 'p', text: 'Bolest, horečku a zánět vyvolávají v těle látky zvané **prostaglandiny**. Vyrábí je enzym **cyklooxygenáza** (COX) a právě ten je cílem většiny léků proti bolesti – opět inhibice enzymu, kterou znáš z lekce o enzymech. Tři nejběžnější léky to ale dělají každý trochu jinak:' },
             {
               type: 'compare',
               columns: [
@@ -2055,6 +2157,7 @@ const level: LevelContent = {
             },
             { type: 'callout', variant: 'warning', text: 'Paracetamol je součástí mnoha kombinovaných léků „na chřipku a nachlazení“. Kdo užije dva takové přípravky zároveň, může nechtěně překročit bezpečnou denní dávku. Dávkování vždy určuje příbalová informace, lékař nebo lékárník.' },
             { type: 'callout', variant: 'fact', text: 'Ibuprofen je chirální. Účinný je hlavně enantiomer (S); tablety obsahují směs obou enantiomerů a tělo část neúčinného (R) samo přemění na (S).' },
+            { type: 'p', text: 'Léky proti bolesti tlumí příznaky, které vyrábí naše vlastní tělo. Antibiotika míří jinam – na cizí buňky, bakterie.' },
             {
               type: 'check',
               question: {
@@ -2073,6 +2176,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: '**Antibiotika** zabíjejí bakterie nebo brzdí jejich množení. První z nich, **penicilin**, objevil Alexander Fleming v roce 1928, když plíseň *Penicillium* na Petriho misce zastavila růst bakterií. Penicilin blokuje enzymy, které stavějí bakteriální buněčnou stěnu – lidské buňky ji nemají, a proto jim nevadí.' },
             { type: 'callout', variant: 'remember', text: '==Antibiotika na viry nefungují.== Na chřipku ani na běžné nachlazení nepomohou, protože viry nemají buněčnou stěnu ani vlastní metabolismus.' },
+            { type: 'p', text: 'Bakterie se ale umějí bránit. Když se antibiotika používají zbytečně nebo nedůsledně, vzniká problém, který lékaře trápí čím dál víc:' },
             {
               type: 'process',
               layout: 'flow',
@@ -2084,7 +2188,7 @@ const level: LevelContent = {
               ],
               caption: 'Jak vzniká **rezistence**. Proto se antibiotika předepisují uvážlivě a musí se dobrat celá předepsaná dávka.',
             },
-            { type: 'p', text: 'Nový lék nevzniká náhodou. Vědci nejdřív najdou **cíl** – obvykle enzym nebo receptor, jehož zablokování nemoc zastaví. Pak hledají molekulu, která do cíle „zapadne“, a upravují ji, aby účinkovala víc a škodila méně.' },
+            { type: 'p', text: 'Nový lék nevzniká náhodou. Vědci nejdřív najdou **cíl** – obvykle enzym nebo receptor, jehož zablokování nemoc zastaví. Pak hledají molekulu, která do cíle „zapadne“, a upravují ji, aby účinkovala víc a škodila méně. Celá cesta má přesně dané etapy:' },
             {
               type: 'process',
               layout: 'flow',
@@ -2099,6 +2203,7 @@ const level: LevelContent = {
             },
             { type: 'callout', variant: 'tip', title: 'Placebo a dvojitě zaslepená studie', text: 'Část pacientů dostane **placebo**, tabletu bez účinné látky. Ani pacient, ani lékař neví, kdo co dostal – studie je **dvojitě zaslepená**. Jen tak se odliší skutečný účinek léku od síly očekávání.' },
             { type: 'callout', variant: 'warning', title: 'Thalidomid', text: 'Na konci 50. let se těhotným ženám podával lék na spaní thalidomid. Způsobil tisícům dětí těžké vrozené vady. Jeho molekula je chirální a enantiomery se v těle mění jeden na druhý, takže by nepomohlo ani podávat jen „bezpečný“ enantiomer. Od té doby jsou zkoušky léků mnohem přísnější.' },
+            { type: 'p', text: 'Klinické zkoušky hledají hlavně dávku, která léčí a neškodí. Dávka je klíčem i k obecnější otázce: co je vlastně jed?' },
             {
               type: 'check',
               question: {
@@ -2116,6 +2221,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Švýcarský lékař **Paracelsus** v 16. století napsal: „Všechny věci jsou jed a nic není bez jedu. Jen dávka dělá, že věc není jed.“ Tahle myšlenka je dodnes základem toxikologie.' },
             { type: 'callout', variant: 'remember', title: 'LD_{50}', text: 'Dávka, po které uhyne polovina pokusných zvířat, v miligramech látky na kilogram tělesné hmotnosti. ==Čím menší LD_{50}, tím jedovatější látka.== Hodnoty níže jsou orientační pro potkany při podání ústy (botulotoxin: myš, injekčně); u lidí se mohou lišit.' },
+            { type: 'p', text: 'Jak velké jsou rozdíly mezi běžnými látkami? Porovnej LD_{50} od vody až po nejsilnější známý jed:' },
             {
               type: 'iconlist',
               items: [
@@ -2130,16 +2236,18 @@ const level: LevelContent = {
             },
             { type: 'p', text: '**Přírodní neznamená bezpečné** a **syntetické neznamená jedovaté**. Nejjedovatější známá látka, botulotoxin, je stoprocentně přírodní. A vitamin C z továrny je úplně stejná molekula jako ten z citronu.' },
             { type: 'p', text: 'U léků se sleduje **terapeutická šíře** – odstup mezi dávkou, která léčí, a dávkou, která škodí. Když je malý, jako u srdečního léku digoxinu z náprstníku, musí lékař dávku hlídat velmi pečlivě.' },
+            { type: 'p', text: 'Dávku na kilogram si můžeš spočítat i sám/sama. Vyzkoušej to na kofeinu z energetických nápojů:' },
             {
               type: 'example',
               problem: 'Dospívající o hmotnosti 60 kg vypije za odpoledne dvě plechovky energetického nápoje, každou s 80 mg kofeinu. Jaká je to dávka na kilogram? Evropský úřad pro bezpečnost potravin (EFSA) považuje u dětí a dospívajících za bezpečné nejvýše 3 mg/kg za den.',
               steps: [
                 'celkový kofein: 2 · 80 mg = 160 mg',
-                'dávka na kilogram: 160 mg / 60 kg ≈ 2,7 mg/kg',
+                'Limity se udávají na kilogram hmotnosti, proto dělíme hmotností: 160 mg / 60 kg ≈ 2,7 mg/kg',
               ],
               answer: 'Asi 2,7 mg/kg – těsně pod hranicí EFSA. Třetí plechovka by ji překročila (4 mg/kg).',
             },
             { type: 'callout', variant: 'fact', text: 'Předávkovat se dá i vodou. Když někdo během krátké doby vypije mnoho litrů, klesne mu koncentrace sodných iontů v krvi a může to ohrozit život. Paracelsus by se usmíval.' },
+            { type: 'p', text: 'Jedovatost už umíš posoudit podle dávky. Kofein a nikotin ze seznamu ale nejsou jen jedy – patří k látkám, na kterých může vzniknout závislost.' },
             {
               type: 'check',
               question: {
@@ -2156,9 +2264,9 @@ const level: LevelContent = {
           title: 'Alkaloidy a návykové látky',
           icon: 'coffee',
           blocks: [
-            { type: 'p', text: '**Alkaloidy** jsou dusíkaté zásadité látky převážně rostlinného původu – název je odvozen od slova alkálie. Rostliny se jimi brání před býložravci, na člověka mají silné účinky. Patří k nim kofein, nikotin, morfin, kokain nebo atropin z rulíku.' },
+            { type: 'p', text: '**Alkaloidy** jsou dusíkaté zásadité látky převážně rostlinného původu – název je odvozen od slova alkálie. Rostliny se jimi brání před býložravci, na člověka mají silné účinky. Patří k nim kofein, nikotin, morfin, kokain nebo atropin z rulíku. Ten nejznámější možná piješ každé ráno:' },
             { type: 'molecule', molecules: ['caffeine'], labels: ['kofein'], caption: 'Kofein: dva spojené dusíkaté kruhy. V rozumné dávce povzbudí, ve velké škodí.' },
-            { type: 'p', text: '**Návykové látky** působí na receptory v mozku a zasahují do systému odměny, ve kterém hraje hlavní roli **dopamin**. Mozek si na ně zvyká: vzniká **tolerance** (pro stejný účinek je potřeba víc) a bez látky přicházejí abstinenční příznaky.' },
+            { type: 'p', text: '**Návykové látky** působí na receptory v mozku a zasahují do systému odměny, ve kterém hraje hlavní roli **dopamin**. Mozek si na ně zvyká: vzniká **tolerance** (pro stejný účinek je potřeba víc) a bez látky přicházejí abstinenční příznaky. Jak působí nejčastější z nich:' },
             {
               type: 'table',
               headers: ['Látka', 'Zdroj', 'Jak působí', 'Rizika'],
@@ -2172,18 +2280,20 @@ const level: LevelContent = {
             },
             { type: 'p', text: 'Ethanol odbourávají hlavně játra. Enzym **alkoholdehydrogenáza** ho oxiduje na jedovatý **acetaldehyd** (ethanal), který stojí za kocovinou, a ten se dál oxiduje na kyselinu octovou.' },
             { type: 'reaction', equation: 'C2H5OH + O2 -> CH3COOH + H2O', caption: 'Souhrnná oxidace ethanolu v těle (přes acetaldehyd) na kyselinu octovou, která pak skončí v citrátovém cyklu' },
+            { type: 'p', text: 'Játra přitom zvládnou jen určité množství za hodinu. Z jejich výkonu spočítáš, jak dlouho po jednom pivu zůstává alkohol v krvi:' },
             {
               type: 'example',
               problem: 'Muž o hmotnosti 70 kg vypije 0,5 l piva s 4 % obj. alkoholu. Hustota ethanolu je 0,79 g/cm³ a játra odbourají asi 0,1 g ethanolu na kilogram hmotnosti za hodinu. Jak dlouho bude alkohol odbourávat?',
               steps: [
-                'objem ethanolu: 500 cm³ · 0,04 = 20 cm³',
-                'hmotnost ethanolu: 20 cm³ · 0,79 g/cm³ ≈ 15,8 g',
+                '4 % obj. znamená 4 cm³ ethanolu ve 100 cm³ nápoje. Objem ethanolu: 500 cm³ · 0,04 = 20 cm³',
+                'Rychlost odbourávání je v gramech, proto objem převedeme na hmotnost: 20 cm³ · 0,79 g/cm³ ≈ 15,8 g',
                 'rychlost odbourávání: 0,1 g/(kg·h) · 70 kg = 7 g/h',
                 'doba: 15,8 g / 7 g/h ≈ 2,3 h',
               ],
               answer: 'Asi 2,3 hodiny; lehčí člověk potřebuje ještě déle. Proto se v Česku za volant smí jen s nulovým alkoholem v krvi.',
             },
             { type: 'callout', variant: 'warning', title: 'Opioidy', text: 'Předávkování opioidy zastaví dýchání. Protijed **naloxon** je kompetitivní antagonista: vytlačí opioid z receptorů a dýchání obnoví. Syntetický fentanyl je asi stokrát silnější než morfin – smrtelná dávka se počítá v miligramech.' },
+            { type: 'p', text: 'Léky a drogy působí v malých dávkách. Mnohem víc chemických látek ale každý den sníš – v jídle.' },
             {
               type: 'check',
               question: {
@@ -2204,7 +2314,7 @@ const level: LevelContent = {
           title: 'Chemie potravin: živiny, éčka a konzervace',
           icon: 'apple',
           blocks: [
-            { type: 'p', text: 'Potravina je směs tisíců látek. **Živiny** jsou ty, které tělo potřebuje – ať už jako zdroj energie a stavební materiál, nebo v malém množství pro enzymy a hormony.' },
+            { type: 'p', text: 'Potravina je směs tisíců látek. **Živiny** jsou ty, které tělo potřebuje – ať už jako zdroj energie a stavební materiál, nebo v malém množství pro enzymy a hormony. Většinu z nich už znáš z této úrovně:' },
             {
               type: 'iconlist',
               items: [
@@ -2216,7 +2326,7 @@ const level: LevelContent = {
                 { icon: 'water-tap', title: 'Voda', text: 'tvoří asi 60 % hmotnosti těla' },
               ],
             },
-            { type: 'p', text: '**Přídatné látky** (aditiva) prodlužují trvanlivost potravin nebo zlepšují jejich chuť, barvu či konzistenci. V EU se smí použít jen schválená látka s kódem **E + číslo**; Evropský úřad pro bezpečnost potravin (EFSA) u ní stanoví **ADI**, přijatelný denní příjem. Ten bývá stokrát nižší než dávka, která v pokusech ještě neměla žádný účinek.' },
+            { type: 'p', text: '**Přídatné látky** (aditiva) prodlužují trvanlivost potravin nebo zlepšují jejich chuť, barvu či konzistenci. V EU se smí použít jen schválená látka s kódem **E + číslo**; Evropský úřad pro bezpečnost potravin (EFSA) u ní stanoví **ADI**, přijatelný denní příjem. Ten bývá stokrát nižší než dávka, která v pokusech ještě neměla žádný účinek. Podle čísla poznáš, k čemu látka slouží:' },
             {
               type: 'table',
               headers: ['Kódy', 'Skupina', 'Příklad'],
@@ -2231,7 +2341,7 @@ const level: LevelContent = {
               ],
               caption: 'E-kód neznamená „umělé“ ani „nebezpečné“, ale prověřené. Svoje éčko má jedlá soda, vitamin C, lecitin ze žloutku i kyslík.',
             },
-            { type: 'p', text: 'Potraviny kazí mikroorganismy, enzymy a kyslík. **Konzervace** jim bere to, co potřebují: vodu, vhodnou teplotu, příznivé pH nebo kyslík.' },
+            { type: 'p', text: 'Konzervanty jsou ale jen jedna z cest, jak jídlo uchovat. Potraviny kazí mikroorganismy, enzymy a kyslík. **Konzervace** jim bere to, co potřebují: vodu, vhodnou teplotu, příznivé pH nebo kyslík.' },
             {
               type: 'iconlist',
               items: [
@@ -2243,6 +2353,7 @@ const level: LevelContent = {
                 { icon: 'flask', title: 'Konzervanty', text: 'kyselina sorbová (E 200), benzoan sodný (E 211), oxid siřičitý ve víně (E 220), dusitany (E 250)' },
               ],
             },
+            { type: 'p', text: 'Schválení ale neplatí navždy. Porovnej dva příklady: jedno éčko se dál používá s přísnými limity, druhé EU zakázala.' },
             {
               type: 'compare',
               columns: [
@@ -2251,6 +2362,7 @@ const level: LevelContent = {
               ],
               caption: 'Kritické myšlení platí oběma směry: systém se průběžně přehodnocuje.',
             },
+            { type: 'p', text: 'Teď víš, co znamenají éčka a proč se potraviny konzervují. Stejný kritický pohled se hodí i na chemii v koupelně a na tvrzení z reklam.' },
             {
               type: 'check',
               question: {
@@ -2266,7 +2378,7 @@ const level: LevelContent = {
           title: 'Kosmetika, drogerie a kritické myšlení',
           icon: 'soap',
           blocks: [
-            { type: 'p', text: 'Kosmetika a drogerie jsou chemie, kterou už z velké části znáš: mýdla a tenzidy z lekce o lipidech, kyseliny a zásady z úrovně 5, oxidační činidla z úrovně 6.' },
+            { type: 'p', text: 'Kosmetika a drogerie jsou chemie, kterou už z velké části znáš: mýdla a tenzidy z lekce o lipidech, kyseliny a zásady z úrovně 5, oxidační činidla z úrovně 6. Podívej se, co dělají běžné přípravky:' },
             {
               type: 'iconlist',
               items: [
@@ -2276,6 +2388,7 @@ const level: LevelContent = {
                 { icon: 'soap', title: 'Šampon', text: 'tenzidy a kondicionační látky; mírně kyselé pH šetří vlasy i pokožku' },
               ],
             },
+            { type: 'p', text: 'Kosmetika bývá šetrná. Silnější chemii najdeš v čisticích prostředcích – a tam už je dobré vědět, co v nich je:' },
             {
               type: 'table',
               headers: ['Přípravek', 'Účinná látka', 'Jak funguje'],
@@ -2287,9 +2400,12 @@ const level: LevelContent = {
               ],
               caption: 'Chemie v koupelně a kuchyni',
             },
+            { type: 'p', text: 'Každý z nich je při správném použití bezpečný. Nebezpečné to začne být, když smícháš bělidlo s kyselým čističem:' },
             { type: 'reaction', equation: 'NaClO + 2HCl -> NaCl + Cl2 + H2O', caption: 'Proč se chlorové bělidlo nikdy nesmí míchat s kyselým čističem: uvolní se jedovatý chlor.' },
             { type: 'callout', variant: 'warning', text: 'Čisticí prostředky nemíchej a nepřelévej do lahví od nápojů. Bělidlo s kyselinou uvolní chlor, bělidlo s čpavkem jedovaté chloraminy. Se žíravinami pracuj v rukavicích a řiď se výstražnými symboly na obalu.' },
+            { type: 'p', text: 'Nebezpečný přípravek poznáš ještě před otevřením – podle výstražných symbolů na obalu:' },
             { type: 'diagram', id: 'lab-safety', caption: 'Výstražné symboly GHS nejsou jen v laboratoři: žíravinu najdeš na čističi odpadů, dráždivou látku na odvápňovači.' },
+            { type: 'p', text: 'Chemie na obalu je jedna věc, chemie v reklamě druhá. Když narazíš na tvrzení o „škodlivé chemii“ jako na etiketě z úvodu, polož si pět otázek:' },
             {
               type: 'iconlist',
               items: [
@@ -2301,6 +2417,7 @@ const level: LevelContent = {
               ],
             },
             { type: 'callout', variant: 'mascot', text: 'Moje oblíbená etiketa: 100% přírodní banán obsahuje vodu, fruktózu, glukózu, sacharózu, škrob, kyselinu jablečnou, E 160a, E 300, E 306… a dokonce radioaktivní draslík $^{40}K$. A pořád je to prostě banán.' },
+            { type: 'p', text: 'Teď rozumíš lékům, éčkům i etiketám a nenaletíš nesmyslům. V poslední lekci se podíváme na chemii v největším měřítku: na energii, klima a zelenou chemii.' },
             { type: 'game', gameId: 'swipe', text: 'Mýtus, nebo fakt? Otestuj svůj detektor nesmyslů v kole Pravda, nebo lež.' },
             {
               type: 'check',
@@ -2406,8 +2523,9 @@ const level: LevelContent = {
           title: 'Paliva a jejich energie',
           icon: 'fuel',
           blocks: [
-            { type: 'p', text: '**Fosilní paliva** – uhlí, ropa a zemní plyn – vznikla z odumřelých organismů za miliony let. Jsou to zásoby sluneční energie, kterou kdysi zachytila fotosyntéza. Tvoří se nesrovnatelně pomaleji, než je spotřebováváme, proto jsou **neobnovitelná**.' },
+            { type: 'p', text: 'Většinu energie, kterou lidstvo spotřebuje, dnes dodává hoření. **Fosilní paliva** – uhlí, ropa a zemní plyn – vznikla z odumřelých organismů za miliony let. Jsou to zásoby sluneční energie, kterou kdysi zachytila fotosyntéza. Tvoří se nesrovnatelně pomaleji, než je spotřebováváme, proto jsou **neobnovitelná**. Při hoření se jejich uhlík a vodík oxidují na $CO2$ a vodu, například u zemního plynu:' },
             { type: 'reaction', equation: 'CH4 + 2O2 -> CO2 + 2H2O', caption: 'Spalování methanu (zemního plynu), ΔH = −890 kJ/mol' },
+            { type: 'p', text: 'Stejně hoří i paliva z rostlin. Pro ovzduší je ale rozdíl, odkud se uhlík v palivu vzal:' },
             {
               type: 'compare',
               columns: [
@@ -2415,8 +2533,9 @@ const level: LevelContent = {
                 { title: 'Obnovitelná paliva', icon: 'leaf', tone: 'good', points: ['dřevo, bioethanol, bionafta, bioplyn', 'z dnešní biomasy, která znovu doroste', 'rostliny při růstu $CO2$ zase spotřebují', 'problémy: zábor půdy, energie na pěstování a zpracování'] },
               ],
             },
+            { type: 'p', text: 'Proč na původu uhlíku tolik záleží? Ukáže to koloběh uhlíku:' },
             { type: 'diagram', id: 'carbon-cycle', caption: 'Koloběh uhlíku: fotosyntéza uhlík váže, dýchání a spalování ho vracejí do ovzduší. Fosilní paliva přidávají uhlík, který byl miliony let mimo koloběh.' },
-            { type: 'p', text: 'Paliva porovnáváme podle **výhřevnosti**: kolik energie se uvolní spálením 1 g paliva. Jednotka kJ/g je totéž co MJ/kg. Když se započítá i teplo, které se uvolní kondenzací vzniklé vodní páry, mluvíme o **spalném teple** – to je o něco větší.' },
+            { type: 'p', text: 'Paliva porovnáváme podle **výhřevnosti**: kolik energie se uvolní spálením 1 g paliva. Jednotka kJ/g je totéž co MJ/kg. Když se započítá i teplo, které se uvolní kondenzací vzniklé vodní páry, mluvíme o **spalném teple** – to je o něco větší. Takhle si stojí běžná paliva:' },
             {
               type: 'table',
               headers: ['Palivo', 'Výhřevnost (kJ/g)', 'Obnovitelné?', 'Hlavní problém'],
@@ -2431,25 +2550,28 @@ const level: LevelContent = {
               ],
               caption: 'Výhřevnost vybraných paliv',
             },
+            { type: 'p', text: 'Odkud se taková čísla berou? Z reakčního tepla – stačí ho přepočítat z molu na gram. Zkusme to pro methan:' },
             {
               type: 'example',
               problem: 'Methan má spalné teplo 890 kJ/mol a $M(CH4) = 16 g/mol$. Kolik energie uvolní spálení 1 g methanu?',
               steps: [
                 'energie na 1 mol: 890 kJ',
-                'energie na 1 g: 890 kJ/mol / 16 g/mol ≈ 55,6 kJ/g',
+                'Z molu na gram převedeme dělením molární hmotností: 890 kJ/mol / 16 g/mol ≈ 55,6 kJ/g',
               ],
               answer: 'Asi 55,6 kJ/g. Tabulková výhřevnost (asi 50 kJ/g) je menší, protože voda odchází komínem jako pára a její kondenzační teplo se nevyužije.',
             },
+            { type: 'p', text: 'Pro klima ale nerozhoduje jen to, kolik energie palivo dá, ale i kolik $CO2$ přitom vznikne. Porovnejme uhlí se zemním plynem:' },
             {
               type: 'example',
               problem: 'Co vypustí méně $CO2$ na stejné množství energie: uhlík (uhlí), nebo methan (zemní plyn)? $C + O2 -> CO2$, ΔH = −394 kJ/mol; $CH4 + 2O2 -> CO2 + 2H2O$, ΔH = −890 kJ/mol.',
               steps: [
                 'Uhlí: na 1 mol $CO2$ se uvolní 394 kJ.',
                 'Methan: na 1 mol $CO2$ se uvolní 890 kJ.',
-                'Pro 1 000 kJ: uhlí 1 000 / 394 ≈ 2,5 mol $CO2$, methan 1 000 / 890 ≈ 1,1 mol $CO2$.',
+                'Srovnávat musíme při stejné energii, proto počítáme pro 1 000 kJ: uhlí 1 000 / 394 ≈ 2,5 mol $CO2$, methan 1 000 / 890 ≈ 1,1 mol $CO2$.',
               ],
               answer: 'Zemní plyn vypustí na stejnou energii zhruba o polovinu méně $CO2$, protože část energie získá oxidací vodíku na vodu.',
             },
+            { type: 'p', text: 'I nejlepší fosilní palivo tedy $CO2$ produkuje. Jaké jsou alternativy?' },
             {
               type: 'check',
               question: {
@@ -2467,7 +2589,7 @@ const level: LevelContent = {
           title: 'Biopaliva, vodík a baterie',
           icon: 'battery',
           blocks: [
-            { type: 'p', text: 'Obnovitelné palivo je jen tak „zelené“, jak zelená je jeho výroba. Počítá se všechno: hnojiva, traktory, doprava i energie na zpracování.' },
+            { type: 'p', text: 'Obnovitelné palivo je jen tak „zelené“, jak zelená je jeho výroba. Počítá se všechno: hnojiva, traktory, doprava i energie na zpracování. Čtyři hlavní alternativy k fosilním palivům:' },
             {
               type: 'iconlist',
               items: [
@@ -2477,9 +2599,11 @@ const level: LevelContent = {
                 { icon: 'lightning', title: 'Vodík', text: 'dnes většinou ze zemního plynu; „zelený“ je jen z elektrolýzy vody obnovitelnou elektřinou' },
               ],
             },
+            { type: 'p', text: 'Vodík láká hlavně tím, co z něj při hoření vznikne:' },
             { type: 'reaction', equation: '2H2 + O2 -> 2H2O', caption: 'Vodík hoří na vodu, bez $CO2$.' },
+            { type: 'p', text: 'Vodík se ale nemusí pálit. V palivovém článku z něj získáme rovnou elektřinu:' },
             { type: 'diagram', id: 'fuel-cell', caption: 'Palivový článek: vodík a kyslík se slučují na vodu, ale energie se neuvolní jako teplo plamene. Elektrony putují vnějším obvodem jako elektrický proud (úroveň 6).' },
-            { type: 'p', text: '**Baterie** energii nevyrábějí, jen ji uchovávají. Lithium-iontový akumulátor pojme asi 0,5–0,9 kJ na gram, zhruba padesátkrát méně než benzín. Elektromotor ale přemění na pohyb asi 90 % energie, spalovací motor jen 25–30 %.' },
+            { type: 'p', text: '**Baterie** energii nevyrábějí, jen ji uchovávají. Lithium-iontový akumulátor pojme asi 0,5–0,9 kJ na gram, zhruba padesátkrát méně než benzín. Elektromotor ale přemění na pohyb asi 90 % energie, spalovací motor jen 25–30 %. Co to znamená pro auta:' },
             {
               type: 'compare',
               columns: [
@@ -2488,6 +2612,7 @@ const level: LevelContent = {
               ],
             },
             { type: 'callout', variant: 'remember', text: '==Vodík i baterie jsou nosiče energie, ne její zdroje.== Energii do nich musí někdo nejdřív dodat – z uhlí, jádra, slunce nebo větru.' },
+            { type: 'p', text: 'Všechny alternativy se tedy poměřují podle toho, kolik $CO2$ ušetří. Proč je právě $CO2$ takový problém, vysvětlí další oddíl.' },
             {
               type: 'check',
               question: {
@@ -2503,10 +2628,11 @@ const level: LevelContent = {
           title: 'Skleníkový efekt a změna klimatu',
           icon: 'earth',
           blocks: [
-            { type: 'p', text: '**Skleníkové plyny** – vodní pára, $CO2$, methan $CH4$ a oxid dusný $N2O$ – propustí sluneční záření, ale zčásti pohlcují **infračervené záření**, kterým ohřátá Země vyzařuje teplo, a část ho vracejí zpět. Tomu říkáme **skleníkový efekt**.' },
+            { type: 'p', text: 'Oxid uhličitý není jedovatý, a přesto mění klima celé planety. **Skleníkové plyny** – vodní pára, $CO2$, methan $CH4$ a oxid dusný $N2O$ – propustí sluneční záření, ale zčásti pohlcují **infračervené záření**, kterým ohřátá Země vyzařuje teplo, a část ho vracejí zpět. Tomu říkáme **skleníkový efekt**. Sleduj cestu záření na obrázku:' },
             { type: 'diagram', id: 'greenhouse-effect', caption: 'Sluneční záření projde atmosférou a ohřeje povrch, ohřátý povrch vyzařuje infračervené záření a skleníkové plyny ($CO2$, $CH4$, $H2O$) jeho část vracejí k Zemi. Bez tohoto přirozeného skleníkového efektu by byla průměrná teplota na Zemi asi −18 °C místo +15 °C.' },
+            { type: 'p', text: 'Proč pohlcují teplo jen některé plyny? Hlavní složky vzduchu, dusík a kyslík, totiž skleníkové nejsou:' },
             { type: 'molecule', molecules: ['CO2', 'CH4', 'H2O', 'N2'], labels: ['$CO2$: pohlcuje IR', '$CH4$: pohlcuje IR', '$H2O$: pohlcuje IR', '$N2$: nepohlcuje'], caption: 'Infračervené záření rozkmitá vazby v molekule, ale pohltí se jen tehdy, když se při kmitání mění rozložení náboje. Dvouatomové molekuly $N2$ a $O2$ tuto podmínku nesplňují, $CO2$, $CH4$ a $H2O$ ano.' },
-            { type: 'p', text: 'Spalováním fosilních paliv a kácením lesů vzrostla koncentrace $CO2$ z asi 280 ppm před průmyslovou revolucí na víc než 420 ppm dnes. **Methanu** je ve vzduchu mnohem méně, ale kilogram methanu přispěje za 100 let k oteplení asi 28krát víc než kilogram $CO2$. Pochází z chovu skotu, rýžových polí, skládek a z úniků při těžbě zemního plynu.' },
+            { type: 'p', text: 'Přirozený skleníkový efekt je tedy užitečný. Problém je, že ho lidé zesilují. Spalováním fosilních paliv a kácením lesů vzrostla koncentrace $CO2$ z asi 280 ppm před průmyslovou revolucí na víc než 420 ppm dnes. **Methanu** je ve vzduchu mnohem méně, ale kilogram methanu přispěje za 100 let k oteplení asi 28krát víc než kilogram $CO2$. Pochází z chovu skotu, rýžových polí, skládek a z úniků při těžbě zemního plynu. Že $CO2$ přibývá právě kvůli lidem, dokládá pět nezávislých typů měření:' },
             {
               type: 'iconlist',
               items: [
@@ -2519,6 +2645,7 @@ const level: LevelContent = {
             },
             { type: 'callout', variant: 'fact', title: 'Co říká věda', text: 'Podle Mezivládního panelu pro změnu klimatu (IPCC) je hlavní příčinou dnešního oteplování jednoznačně lidská činnost. Klima se měnilo i v minulosti, dnešní změna je ale mimořádně rychlá.' },
             { type: 'p', text: '**Uhlíková stopa** vyjadřuje, kolik skleníkových plynů (přepočtených na $CO2$) vznikne kvůli výrobku, činnosti nebo člověku. Průměrný obyvatel Česka má uhlíkovou stopu kolem 10 tun $CO2$ ročně.' },
+            { type: 'p', text: 'Vraťme se k otázce z úvodu: jak může z paliva vzniknout víc $CO2$, než kolik samo váží? Spočítejme to pro benzín:' },
             {
               type: 'example',
               problem: 'Kolik kilogramů $CO2$ vznikne spálením 1 kg oktanu (modelové složky benzínu)? $M(C8H18) = 114 g/mol$, $M(CO2) = 44 g/mol$.',
@@ -2530,6 +2657,7 @@ const level: LevelContent = {
               ],
               answer: 'Asi 3,1 kg $CO2$ – víc než samo palivo. Většinu hmotnosti dodá kyslík ze vzduchu.',
             },
+            { type: 'p', text: 'Pozor, skleníkový efekt se často plete s ozonovou dírou. Jsou to dva různé problémy s různými příčinami – ozonu a dalšímu znečištění ovzduší a vody se věnuje další oddíl.' },
             {
               type: 'check',
               question: {
@@ -2552,11 +2680,12 @@ const level: LevelContent = {
           title: 'Ozon, kyselé deště a znečištěná voda',
           icon: 'rain',
           blocks: [
-            { type: 'p', text: '**Ozon** $O3$ ve stratosféře (asi 15–35 km nad zemí) pohlcuje nebezpečné UV záření. Ohrožují ho **freony** (chlorfluorované uhlovodíky): UV záření z nich uvolní atom chloru, který rozkládá ozon jako katalyzátor.' },
+            { type: 'p', text: '**Ozon** $O3$ ve stratosféře (asi 15–35 km nad zemí) pohlcuje nebezpečné UV záření. Ohrožují ho **freony** (chlorfluorované uhlovodíky): UV záření z nich uvolní atom chloru, který rozkládá ozon jako katalyzátor. Podívej se, kde ozon leží a jak ho chlor ničí:' },
             { type: 'diagram', id: 'ozone-layer', caption: 'Ozonová vrstva zachytí většinu UV záření dřív, než dopadne na povrch. Ve stratosféře UV záření rozbije freon $CCl2F2$ a uvolněný atom chloru rozkládá ozon v cyklu $Cl + O3 -> ClO + O2$ a $ClO + O -> Cl + O2$. Chlor se v něm obnovuje, takže jeden atom může zničit až 100 000 molekul ozonu.' },
             { type: 'callout', variant: 'fact', title: 'Příběh s dobrým koncem', text: '**Montrealský protokol** (1987) postupně zakázal freony a ozonová vrstva se obnovuje; nad Antarktidou by se měla vrátit na úroveň z roku 1980 kolem roku 2066. Pozor na rozdíl: ozon ve stratosféře nás chrání, přízemní ozon ve smogu škodí dýchacím cestám.' },
-            { type: 'p', text: '**Kyselé deště**: $SO2$ z uhelných elektráren a oxidy dusíku z motorů reagují ve vzduchu s kyslíkem a vodou na kyselinu sírovou a dusičnou, například $2SO2 + O2 -> 2SO3$ a $SO3 + H2O -> H2SO4$. Běžný déšť má kvůli rozpuštěnému $CO2$ pH asi 5,6, kyselý déšť i méně než 4,5.' },
+            { type: 'p', text: 'Druhý velký problém ovzduší způsobují plyny ze spalování. **Kyselé deště**: $SO2$ z uhelných elektráren a oxidy dusíku z motorů reagují ve vzduchu s kyslíkem a vodou na kyselinu sírovou a dusičnou, například $2SO2 + O2 -> 2SO3$ a $SO3 + H2O -> H2SO4$. Běžný déšť má kvůli rozpuštěnému $CO2$ pH asi 5,6, kyselý déšť i méně než 4,5.' },
             { type: 'diagram', id: 'acid-rain', caption: 'Od komína ke kyselému dešti: oxidy síry a dusíku se ve vzduchu mění na kyseliny, déšť okyseluje půdu a vodu, poškozuje lesy a rozpouští vápencové stavby.' },
+            { type: 'p', text: 'Řešení nabídla sama chemie: $SO2$ se dá zachytit ve spalinách dřív, než unikne komínem.' },
             { type: 'reaction', equation: '2CaCO3 + 2SO2 + O2 -> 2CaSO4 + 2CO2', caption: 'Odsíření spalin: $SO2$ se zachytí vápencem a vznikne síran vápenatý – s vodou sádrovec $CaSO4·2H2O$ pro sádrokartonové desky.' },
             { type: 'callout', variant: 'fact', text: 'V 70. a 80. letech kyselé deště zničily smrkové lesy v Krušných horách. Po roce 1990 dostaly uhelné elektrárny odsiřovací zařízení, emise $SO2$ v Česku klesly o víc než 90 % a lesy se vracejí.' },
             { type: 'p', text: 'Vodu znečišťují hlavně tři skupiny látek. Nejviditelnější je **eutrofizace**, kterou spouštějí živiny z hnojiv a odpadních vod.' },
@@ -2571,6 +2700,7 @@ const level: LevelContent = {
               ],
               caption: 'Eutrofizace',
             },
+            { type: 'p', text: 'Eutrofizace je vidět na první pohled. Další znečišťující látky jsou nenápadné, a o to zrádnější:' },
             {
               type: 'iconlist',
               items: [
@@ -2579,6 +2709,7 @@ const level: LevelContent = {
                 { icon: 'plastic-bottle', title: 'Mikroplasty', text: 'částice menší než 5 mm z rozpadu plastů a praní syntetického oblečení' },
               ],
             },
+            { type: 'p', text: 'Ozonová vrstva i krušnohorské lesy ukazují, že chemie umí škody napravit. Ještě lepší je ale škodám předejít – a o tom je zelená chemie.' },
             {
               type: 'check',
               question: {
@@ -2606,6 +2737,7 @@ const level: LevelContent = {
                 { icon: 'thermometer', title: '6. Úspora energie', text: 'reakce za běžné teploty a tlaku' },
               ],
             },
+            { type: 'p', text: 'Zbylých šest principů míří hlavně na suroviny, počet kroků a bezpečnost:' },
             {
               type: 'iconlist',
               items: [
@@ -2617,7 +2749,7 @@ const level: LevelContent = {
                 { icon: 'fire-extinguisher', title: '12. Prevence nehod', text: 'bezpečnější látky a postupy' },
               ],
             },
-            { type: 'p', text: '**Atomová ekonomie** (úroveň 4) udává, kolik procent hmotnosti výchozích látek skončí v žádaném produktu. ==Adice mají 100 %==, při substitucích a eliminacích vždy odchází i vedlejší produkt.' },
+            { type: 'p', text: 'Druhý princip, atomovou ekonomii, si můžeš i spočítat. **Atomová ekonomie** (úroveň 4) udává, kolik procent hmotnosti výchozích látek skončí v žádaném produktu. ==Adice mají 100 %==, při substitucích a eliminacích vždy odchází i vedlejší produkt. Spočítejme ji pro aspirin z minulé lekce:' },
             {
               type: 'example',
               problem: 'Jaká je atomová ekonomie výroby aspirinu z kyseliny salicylové ($M = 138 g/mol$) a acetanhydridu ($M = 102 g/mol$)? Aspirin má $M = 180 g/mol$.',
@@ -2628,7 +2760,7 @@ const level: LevelContent = {
               ],
               answer: '75 % – zbylá čtvrtina atomů skončí ve vedlejším produktu, kyselině octové.',
             },
-            { type: 'p', text: 'Dnešní hospodářství je většinou **lineární**: vytěžit, vyrobit, vyhodit. **Oběhové (cirkulární) hospodářství** chce udržet materiály v oběhu co nejdéle a odpad brát jako surovinu. Recyklaci plastů a jejich kódy znáš z lekce o polymerech.' },
+            { type: 'p', text: 'Dnešní hospodářství je většinou **lineární**: vytěžit, vyrobit, vyhodit. **Oběhové (cirkulární) hospodářství** chce udržet materiály v oběhu co nejdéle a odpad brát jako surovinu. Recyklaci plastů a jejich kódy znáš z lekce o polymerech. Oba přístupy vedle sebe:' },
             {
               type: 'compare',
               columns: [
@@ -2636,9 +2768,10 @@ const level: LevelContent = {
                 { title: 'Oběhové hospodářství', icon: 'recycle', tone: 'good', points: ['výrobky navržené k opravě, sdílení a recyklaci', 'opakované použití před recyklací', 'odpad jednoho procesu je surovinou dalšího'] },
               ],
             },
-            { type: 'p', text: '**Posouzení životního cyklu** (LCA, anglicky *life-cycle assessment*) sečte dopady výrobku „od kolébky do hrobu“: těžbu surovin, výrobu, dopravu, používání i to, co se s ním stane nakonec.' },
+            { type: 'p', text: 'Co je ale opravdu šetrnější, se nedá odhadnout od oka. **Posouzení životního cyklu** (LCA, anglicky *life-cycle assessment*) sečte dopady výrobku „od kolébky do hrobu“: těžbu surovin, výrobu, dopravu, používání i to, co se s ním stane nakonec. Na plastovém výrobku to vypadá takto:' },
             { type: 'diagram', id: 'plastic-lifecycle', caption: 'Životní cyklus plastového výrobku: od ropy přes monomer a polymer k výrobku a po použití k recyklaci, do spalovny, na skládku, nebo jako mikroplasty do přírody. LCA hodnotí každou z těchto etap.' },
             { type: 'callout', variant: 'fact', title: 'Která taška je nejšetrnější?', text: 'Podle LCA studií musíš bavlněnou tašku použít mnohokrát, než bude šetrnější než tenká igelitka: kvůli uhlíkové stopě desítkykrát, a když započteš i vodu a pesticidy na pěstování bavlny, dokonce tisíckrát. Nejšetrnější je taška, kterou už máš a nosíš ji pořád.' },
+            { type: 'p', text: 'Chemie tedy problémy nejen způsobuje, ale umí je i změřit, vysvětlit a vyřešit – to je odpověď na druhou otázku z úvodu. Tím jsi prošel/prošla celou úrovní: od molekul života až po chemii, která rozhoduje o budoucnosti planety.' },
             {
               type: 'check',
               question: {
