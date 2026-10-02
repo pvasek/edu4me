@@ -66,7 +66,8 @@ Rules (all courses, every lesson):
 4. **Name the contrast or the trap** when two ideas are easy to confuse („Pozor, tady se chybuje nejčastěji: hmotnost a tíhová síla spolu souvisí, ale nejsou to stejné veličiny.“).
 5. **Close every section** (before its `check`) with one sentence: what we can do now and what comes next. The last section points to the next lesson.
 6. **Bridges are 1–2 sentences.** They carry meaning (a question, a reason, a contrast, a consequence) – never filler like „V této části se naučíme…“ or a repeat of the heading. No new facts hide in bridges; facts belong to the explanation.
-7. Worked examples say *why* a step is done when it isn't obvious („Nejdřív převedeme gramy na kilogramy, protože g je v N/kg.“).
+7. **A bridge links back and names what comes next concretely.** It picks up the thread of the text just before it and says plainly what the next block is about. Never a vague allusion the reader has to decode: not „Zkusme to na situaci, kterou znáš z každého nákupu.“, but „U kopnutí do míče je to jasné. Zkusme ale situaci, kde druhé těleso není hned vidět: zvedáš ze země tašku s nákupem.“
+8. Worked examples say *why* a step is done when it isn't obvious („Nejdřív převedeme gramy na kilogramy, protože g je v N/kg.“).
 
 Target proportions: explanation and bridges (`p`) are about **30 % of the words** of a lesson; a lesson grows by about a fifth to a third compared with a bare list of facts (the f2-3 pilot: 1 461 → 1 907 words, prose 16 % → 36 %). Rules 1 and 2 are checked automatically by the validator (`checkFlow` in `src/core/validate.ts`).
 

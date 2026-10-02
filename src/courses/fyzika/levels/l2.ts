@@ -370,7 +370,7 @@ const level: LevelContent = {
             ], caption: 'Tělesa na sebe mohou působit dotykem, nebo na dálku prostřednictvím pole.' },
             { type: 'p', text: 'Ať jde o dotyk, nebo o pole, každá síla má vždy dva aktéry. Proto se vyplatí ptát se pokaždé stejně:' },
             { type: 'callout', variant: 'remember', text: 'U každé síly se zeptej: **kdo** působí a **na koho**? Když nedokážeš najít těleso, které silou působí, taková síla nejspíš neexistuje.' },
-            { type: 'p', text: 'Zkusme to na situaci, kterou znáš z každého nákupu.' },
+            { type: 'p', text: 'U kopnutí do míče je to jasné. Zkusme ale situaci, kde druhé těleso není hned vidět: zvedáš ze země tašku s nákupem.' },
             { type: 'example', title: 'Kdo na koho?', problem: 'Popiš síly, když zvedáš ze země tašku s nákupem.', steps: [
               'Ruka působí na tašku silou nahoru – a taška táhne ruku dolů (cítíš to v prstech).',
               'Země přitahuje tašku dolů – a taška přitahuje Zemi nahoru (tak slabě, že Země se nepohne).',

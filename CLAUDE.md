@@ -8,7 +8,7 @@ Follow **spec/content-guidelines.md** in full, especially **"Teaching thread (v�
 - A lesson reads like a teacher explaining, not a stack of facts. Every section opens with a paragraph that sets up its question and links to what came before.
 - Every list, table, figure, formula and example is introduced by a short `p` (what to look at, why). Two content blocks never follow each other without a sentence between them.
 - Say why, not only what. Name the common trap. Close each section with one sentence that leads to the next.
-- Bridges are 1–2 meaningful sentences. Keep lessons condensed: no filler.
+- Bridges are 1–2 meaningful sentences that link back to the previous text and name the next thing concretely (no vague allusions). Keep lessons condensed: no filler.
 
 Other must-reads for content: the course syllabus `spec/courses/<course>/syllabus.md` (order and scope), `spec/illustration-guide.md` (visuals), `spec/courses/<course>/figures.md` and `games.md`.
 
