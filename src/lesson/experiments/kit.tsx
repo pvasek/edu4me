@@ -13,6 +13,7 @@ export function Control({
   max,
   step = 1,
   digits = 0,
+  format,
   onChange,
 }: {
   /** inline markup, e.g. "napětí U" or "m" */
@@ -23,10 +24,12 @@ export function Control({
   max: number
   step?: number
   digits?: number
+  /** shown text for a value (overrides digits and unit), e.g. a step index → "100×" */
+  format?: (v: number) => string
   onChange: (v: number) => void
 }) {
   const id = useId()
-  const text = `${fmt(value, digits)}${unit ? ` ${unit}` : ''}`
+  const text = format ? format(value) : `${fmt(value, digits)}${unit ? ` ${unit}` : ''}`
   return (
     <div className="xp-control">
       <label htmlFor={id}>
