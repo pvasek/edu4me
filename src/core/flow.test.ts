@@ -8,7 +8,8 @@ import { checkFlow } from './validate'
  * paragraph. Check one level with: npx vitest run src/core/flow.test.ts -t "fyzika l3\."
  */
 describe('teaching thread', () => {
-  for (const course of COURSES.filter((c) => c.available))
+  // every course with an outline, published or still being built
+  for (const course of COURSES.filter((c) => c.levels.length))
     for (const level of course.levels)
       it(`${course.id} ${level.id}.`, async () => {
         const content = await level.load()
