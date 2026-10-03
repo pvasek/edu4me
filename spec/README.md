@@ -20,3 +20,7 @@ This folder is the single source of truth for *what* Q & Why is and *how* it sho
 | [syllabus.md](courses/fyzika/syllabus.md) | Full syllabus: 12 levels, 80 lessons, curriculum alignment (RVP ZV 2026, RVP G, IGCSE 0625, A-level/AP), ordering principles |
 | [figures.md](courses/fyzika/figures.md) | The named physics figures (fz1–fz4) and reusable chemistry figures |
 | [games.md](courses/fyzika/games.md) | Physics mini-games per level and their rules |
+| **courses/biologie/** | |
+| [syllabus.md](courses/biologie/syllabus.md) | Full syllabus: 12 levels, 80 lessons, curriculum alignment (RVP ZV 2026, RVP G, IGCSE 0610, AQA 7402, AP), audit and ordering principles |
+| [figures.md](courses/biologie/figures.md) | The named biology figures (bz1–bz6) and reusable figures from other courses |
+| [games.md](courses/biologie/games.md) | Biology mini-games per level and their rules |

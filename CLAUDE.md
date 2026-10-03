@@ -1,6 +1,6 @@
 # Q & Why – notes for Claude
 
-Czech learning app for teens, formerly edu4me (Vite + React 19 + TS, deployed to GitHub Pages). Courses: Chemie, Fyzika. The spec in `spec/` is the source of truth; read the relevant file before changing anything it covers (`spec/README.md` lists them).
+Czech learning app for teens, formerly edu4me (Vite + React 19 + TS, deployed to GitHub Pages). Courses: Chemie, Fyzika, Biologie. The spec in `spec/` is the source of truth; read the relevant file before changing anything it covers (`spec/README.md` lists them).
 
 ## Creating a new course
 

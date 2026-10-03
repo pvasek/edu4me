@@ -36,11 +36,19 @@
 - [x] 83 named physics figures, 37 physics icons, 12 level vignettes
 - [x] 8 physics mini-games (unit conversion, motion graphs, force sum, float/sink, energy chain, circuit builder, ray optics, projectile) + quickfire and swipe
 
+## v0.5: Biology course
+
+- [x] Biology syllabus from RVP ZV (2026 revision), RVP G, IGCSE 0610, AQA 7402 and AP, audited and reordered (12 levels, 80 lessons)
+- [x] `new-course` skill: the repeatable process for building a course (syllabus first)
+- [x] In-lesson experiments ("Vyzkoušej si") for all courses; parametric biology blocks `punnett` and `pedigree`
+- [x] Named biology figures, 43 biology icons, 12 level vignettes, model-organism emblems
+- [x] 6 biology mini-games (identification key, cell builder, body map, Punnett cross, DNA code, food web) + quickfire and swipe
+
 ## Next
 
 - Split the figure library into per-level chunks (the lesson bundle is ~160 kB gzip).
 
-- **Review pass by a chemistry and a physics teacher** of all content (typos, terminology, difficulty balance).
+- **Review pass by a chemistry, a physics and a biology teacher** of all content (typos, terminology, difficulty balance).
 - Spaced-repetition review mode built from the question pool.
 - Offline support (PWA: manifest + service worker) so the app works on the bus.
 - Glossary ("Slovníček") generated from all `keyterms` blocks, with search.
@@ -50,7 +58,6 @@
 
 ## Future courses
 
-1. **Biologie**: cell, genetics, human body, ecology.
-2. **Matematika**: functions, equations, geometry, probability.
+1. **Matematika**: functions, equations, geometry, probability.
 
 Each course reuses the engine; the spec folder gets `spec/courses/<id>/` with its own syllabus and games.

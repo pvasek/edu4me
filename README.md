@@ -2,14 +2,15 @@
 
 **▶ Live: [pvasek.github.io/edu4me](https://pvasek.github.io/edu4me/)**
 
-Playful Czech learning app for teenagers (formerly *edu4me*; the repository and URL keep that name). Two courses:
+Playful Czech learning app for teenagers (formerly *edu4me*; the repository and URL keep that name). Three courses:
 
 - **Chemie**: from "what is a substance" to pre-university chemistry, in 9 levels, 63 lessons, 14 mini-games and a periodic table you collect like a sticker album.
 - **Fyzika**: from measuring and forces to relativity, quanta and cosmology, in 12 levels, 80 lessons (ZŠ 6. třída → gymnázium / A-level), 10 mini-games and a collection of units and constants.
+- **Biologie**: from the cell and microbes through plants, animals and the human body to molecular genetics, physiology and evolution, in 12 levels, 80 lessons (ZŠ 6. třída → gymnázium / A-level), 8 mini-games, 17 in-lesson experiments and a collection of famous model organisms.
 
 - Runs fully in the browser, deployed on GitHub Pages; progress is saved locally (export/import available).
 - Built with Vite, React 19 and TypeScript. No backend, no tracking.
-- Designed to host more courses (biology and maths are planned).
+- Designed to host more courses (maths is planned).
 
 ## Start
 

@@ -43,6 +43,9 @@ src/
     fyzika/
       index.ts             outline: 12 levels, 80 lessons, emblems (units/constants)
       levels/l1.ts … l12.ts
+    biologie/
+      index.ts             outline: 12 levels, 80 lessons, emblems (model organisms)
+      levels/l1.ts … l12.ts
 ```
 
 ## Routes
@@ -50,7 +53,7 @@ src/
 | Path | Page |
 |---|---|
 | `#/` | Home: greeting, continue card, stats, courses |
-| `#/c/chemie`, `#/c/fyzika` | Course atlas: all levels with their lessons |
+| `#/c/chemie`, `#/c/fyzika`, `#/c/biologie` | Course atlas: all levels with their lessons |
 | `#/c/chemie/l/l3` | Level: lesson path, level test, level games |
 | `#/c/chemie/l/l3/l3-2` | Lesson: one scrolling page (read) → one quiz → results |
 | `#/c/chemie/l/l3/vyzva` | Level test |
