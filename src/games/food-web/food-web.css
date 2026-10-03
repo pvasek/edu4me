@@ -1,0 +1,265 @@
+/* Potravní síť (prefix g-fw-) */
+.g-fw-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.g-fw-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.g-fw-q {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+.g-fw-text {
+  margin: 0;
+  font: 600 16.5px/1.45 var(--font-body);
+}
+.g-fw-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.g-fw-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.g-fw-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.g-fw-bonusbar > span {
+  transition: width 0.25s linear;
+}
+
+/* web diagram */
+.g-fw-stage {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 6px 2px;
+}
+.g-fw-web {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
+.g-fw-nodetext {
+  font: 700 12.5px/1 var(--font-body);
+}
+.g-fw-caption {
+  font: italic 600 14px/1.2 var(--font-display);
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* chain builder */
+.g-fw-chain {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-fw-slots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 0;
+}
+.g-fw-slotwrap {
+  display: flex;
+  align-items: center;
+}
+.g-fw-arrow {
+  padding: 0 4px;
+  font: 800 20px/1 var(--font-body);
+  color: var(--muted);
+}
+.g-fw-arrow.ok {
+  color: var(--good);
+}
+.g-fw-arrow.bad {
+  color: var(--bad);
+  text-decoration: line-through;
+}
+.g-fw-slot,
+.g-fw-chip {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  min-width: 52px;
+  padding: 6px 10px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 15px/1.1 var(--font-body);
+  cursor: pointer;
+}
+.g-fw-slot {
+  justify-content: center;
+  border-style: dashed;
+  background: var(--surface-2);
+}
+.g-fw-slot.filled {
+  border-style: solid;
+  background: var(--highlight);
+}
+.g-fw-slot:disabled {
+  cursor: default;
+}
+.g-fw-slotnum {
+  font: 700 14px/1 var(--font-mono);
+  color: var(--muted);
+}
+.g-fw-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.g-fw-chip {
+  box-shadow: var(--shadow-hard);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, opacity 0.15s;
+}
+.g-fw-chip:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--shadow-color);
+}
+.g-fw-chip:disabled {
+  opacity: 0.3;
+  box-shadow: none;
+  cursor: default;
+}
+
+/* options */
+.g-fw-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.g-fw-option {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 8px 10px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 16px/1.2 var(--font-body);
+  cursor: pointer;
+  box-shadow: var(--shadow-hard);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s;
+}
+.g-fw-options.two .g-fw-option {
+  min-height: 60px;
+  font-size: 17px;
+}
+.g-fw-option:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--shadow-color);
+}
+.g-fw-option:disabled {
+  cursor: default;
+  box-shadow: none;
+}
+.g-fw-option.right {
+  background: var(--good-soft);
+  border-width: 3px;
+}
+.g-fw-option.wrong {
+  background: var(--bad-soft);
+  text-decoration: line-through;
+}
+.g-fw-option.off {
+  opacity: 0.5;
+}
+.g-fw-dir {
+  flex: none;
+}
+.g-fw-dir.up {
+  transform: rotate(-90deg);
+  color: var(--good);
+}
+.g-fw-dir.down {
+  transform: rotate(-90deg);
+  color: var(--bad);
+}
+.g-fw-slot:focus-visible,
+.g-fw-chip:focus-visible,
+.g-fw-option:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* numeric answer */
+.g-fw-form {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-fw-field {
+  display: block;
+  max-width: 320px;
+}
+.g-fw-inwrap {
+  position: relative;
+  display: block;
+}
+.g-fw-input {
+  padding-right: 52px;
+  font-size: 21px;
+}
+.g-fw-unit {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 600 15px/1 var(--font-mono);
+  color: var(--muted);
+  pointer-events: none;
+}
+.g-fw-status:empty {
+  display: none;
+}
+.g-fw-legend {
+  font: 500 14px/1.4 var(--font-body);
+  color: var(--ink-soft);
+}
+.g-fw-legend summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.g-fw-legend ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  columns: 2 220px;
+}
+.g-fw-legend i {
+  font-family: var(--font-display);
+}
+@media (prefers-reduced-motion: reduce) {
+  .g-fw-chip,
+  .g-fw-option,
+  .g-fw-bonusbar > span {
+    transition: none;
+  }
+}
