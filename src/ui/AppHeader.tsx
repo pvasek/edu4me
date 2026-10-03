@@ -4,7 +4,11 @@ import { COURSES, courseById } from '../core/registry'
 import { ChemIconView } from '../illustrations/ChemIcon'
 import { Icon } from './Icon'
 import { SyncDot } from './SyncDot'
+import logoMark from '../assets/brand/qwhy-mark.svg'
+import logoWord from '../assets/brand/qwhy-word.svg'
+import logoWordDark from '../assets/brand/qwhy-word-dark.svg'
 
+// storage keys keep the old app name (edu4me) so saved data survives the rename
 const LAST_COURSE = 'edu4me-last-course'
 
 /** The course the learner is in (from the URL) or was in last. */
@@ -32,18 +36,10 @@ export function AppHeader() {
   return (
     <header className="app-header">
       <div className="app-header-inner">
-        <Link to="/" className="brand" aria-label="edu4me – domů">
-          <svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
-            <g fill="none" stroke="var(--edge)" strokeWidth="2.2">
-              <ellipse cx="20" cy="20" rx="17" ry="6.5" />
-              <ellipse cx="20" cy="20" rx="17" ry="6.5" transform="rotate(60 20 20)" />
-              <ellipse cx="20" cy="20" rx="17" ry="6.5" transform="rotate(120 20 20)" />
-            </g>
-            <circle cx="20" cy="20" r="5" fill="var(--accent)" stroke="var(--edge)" strokeWidth="1.8" />
-          </svg>
-          <span>
-            edu<b>4</b>me
-          </span>
+        <Link to="/" className="brand" aria-label="Q & Why – domů">
+          <img className="brand-mark" src={logoMark} alt="" width={64} height={32} />
+          <img className="brand-word brand-word-light" src={logoWord} alt="" width={86} height={23} />
+          <img className="brand-word brand-word-dark" src={logoWordDark} alt="" width={86} height={23} />
         </Link>
         <nav className="app-nav" aria-label="Hlavní navigace">
           <NavLink to={`/c/${course.id}`} end={false} className="nav-link">

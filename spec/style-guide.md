@@ -1,7 +1,13 @@
 # Style guide – "Encyclopedia"
 
-The visual language of edu4me, chosen from the 24 variants in [design/style-lab.html](design/style-lab.html) (**variant 15, Encyclopedia**), with "vintage colour pops" added so it stays playful for teenagers. All values live as CSS custom properties in `src/ui/theme.css`. **Never hard-code a colour or font in a component**; use a token. Changing the whole look means editing that one file.
+The visual language of Q & Why, chosen from the 24 variants in [design/style-lab.html](design/style-lab.html) (**variant 15, Encyclopedia**), with "vintage colour pops" added so it stays playful for teenagers. All values live as CSS custom properties in `src/ui/theme.css`. **Never hard-code a colour or font in a component**; use a token. Changing the whole look means editing that one file.
 
+
+## Brand: Q & Why
+
+- Logo: an open book with "Q" and "Why" on its pages, plus the "Q & Why" wordmark (`src/assets/brand/`, true vector SVGs). Colours: navy `#082346`, gold `#be8a2c`, cream `#f8f4ed`.
+- Header: book mark + wordmark; in dark mode the wordmark is cream (`qwhy-word-dark.svg`); on phones narrower than 420 px only the book is shown.
+- Favicon: the single-"Q" book on a cream rounded tile (`public/favicon.svg`, PNG/ICO fallbacks, `apple-touch-icon.png`), so it reads on light and dark browser tabs.
 ## Personality
 
 An antique scientific encyclopedia that has come alive. Parchment pages, ink-blue engraving lines, italic Garamond headings, double-ruled frames and hatched shading give it the calm authority of an old reference book. Antique plate colours (madder red, ochre, sage, teal ink, plum), handwritten margin notes (Caveat), a friendly engraved mascot and lively animation keep it playful.

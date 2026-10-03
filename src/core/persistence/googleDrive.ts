@@ -11,6 +11,7 @@ import { NeedsAuthError, type RemoteStorage } from './types'
 
 export const GOOGLE_CLIENT_ID: string = (import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined) ?? ''
 const SCOPE = 'https://www.googleapis.com/auth/drive.appdata'
+// keeps the app's old name: existing Drive copies are found by this name
 const FILE_NAME = 'edu4me-progress.json'
 const API = 'https://www.googleapis.com/drive/v3'
 const UPLOAD = 'https://www.googleapis.com/upload/drive/v3'

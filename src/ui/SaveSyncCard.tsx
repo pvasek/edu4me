@@ -42,7 +42,7 @@ export function SaveSyncCard() {
     const blob = new Blob([exportProgress()], { type: 'application/json' })
     const a = document.createElement('a')
     a.href = URL.createObjectURL(blob)
-    a.download = `edu4me-postup-${today()}.json`
+    a.download = `q-and-why-postup-${today()}.json`
     a.click()
     setTimeout(() => URL.revokeObjectURL(a.href), 1000)
     writeMeta({ lastExportAt: new Date().toISOString() })
@@ -51,7 +51,7 @@ export function SaveSyncCard() {
   const upload = async (f: File | undefined) => {
     if (!f) return
     const ok = importProgress(await f.text())
-    setMsg(ok ? 'Záloha byla načtena a spojena s tvým postupem.' : 'Soubor se nepodařilo načíst. Je to záloha z edu4me?')
+    setMsg(ok ? 'Záloha byla načtena a spojena s tvým postupem.' : 'Soubor se nepodařilo načíst. Je to záloha z Q & Why?')
   }
   const protect = async () => {
     const ok = await requestPersist()

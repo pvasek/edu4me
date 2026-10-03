@@ -9,7 +9,7 @@ backed up to a file, and can optionally be synced to the learner's own Google Dr
 |---|---|---|---|
 | State | `src/core/progress.ts` | yes | In-memory `ProgressState`, XP rules, badges; every change is a `commit`. |
 | Merge | `src/core/progressMerge.ts` | yes | `migrate()` (v1 → v2) and `mergeProgress()` – combines two copies without losing anything. |
-| Local | `src/core/persistence/local.ts` | yes | `localStorage` (key `edu4me-progress-v1`) + a backup copy of the previous save, device id, persistent-storage request, other-tab sync. |
+| Local | `src/core/persistence/local.ts` | yes | `localStorage` (key `edu4me-progress-v1`; storage keys and the Drive file name keep the app's former name so saved progress survives the rename) + a backup copy of the previous save, device id, persistent-storage request, other-tab sync. |
 | Sync engine | `src/core/persistence/sync.ts` | when a remote is connected | load remote → merge → save; runs on connect, 4 s after changes, when the tab is hidden, on tap. |
 | Remote backends | `src/core/persistence/*.ts` implementing `RemoteStorage` (`types.ts`) | opt-in | Google Drive today (`googleDrive.ts`). |
 
@@ -60,7 +60,7 @@ Progress refers to lesson, level and game ids. `src/courses/chemie/progress-ids.
 
 ### Setting up Google Drive sync (one-time, ~30–60 min)
 
-1. <https://console.cloud.google.com> → create a project (e.g. "edu4me").
+1. <https://console.cloud.google.com> → create a project (e.g. "Q & Why").
 2. **APIs & Services → Library** → enable **Google Drive API**.
 3. **Google Auth Platform / OAuth consent screen**: External; app name; support e-mail; app home page `https://pvasek.github.io/edu4me/`; privacy policy `https://pvasek.github.io/edu4me/#/soukromi`; authorised domain `pvasek.github.io`. Add the scope `…/auth/drive.appdata`.
 4. **Clients → Create client → Web application**. Authorised JavaScript origins: `https://pvasek.github.io` (and `http://localhost:5173` for development). No redirect URI is needed.

@@ -19,7 +19,7 @@ class Boundary extends Component<{ children: ReactNode }, { error: unknown }> {
       <main className="page stack" style={{ maxWidth: 560, margin: '48px auto', padding: '0 16px' }}>
         <MascotSays mood="sad">
           {stale
-            ? 'Mezitím vyšla nová verze edu4me a tahle stránka se nenačetla. Načti ji prosím znovu.'
+            ? 'Mezitím vyšla nová verze Q & Why a tahle stránka se nenačetla. Načti ji prosím znovu.'
             : 'Tuhle stránku se nepodařilo zobrazit. Zkus ji načíst znovu.'}
         </MascotSays>
         <div className="row">

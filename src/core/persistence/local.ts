@@ -4,6 +4,7 @@
  */
 
 /** Key name kept from v1 so existing learners keep their progress (the data carries its own version). */
+// keys keep the app's old name (edu4me): renaming them would lose learners' saved progress
 export const PROGRESS_KEY = 'edu4me-progress-v1'
 const BACKUP_KEY = `${PROGRESS_KEY}.bak`
 const DEVICE_KEY = 'edu4me-device'

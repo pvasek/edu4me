@@ -1,6 +1,6 @@
-# edu4me – specification
+# Q & Why – specification
 
-This folder is the single source of truth for *what* edu4me is and *how* it should look and feel. Code implements what is written here; when they disagree, fix one of them.
+This folder is the single source of truth for *what* Q & Why is and *how* it should look and feel. Code implements what is written here; when they disagree, fix one of them.
 
 | File | What's inside |
 |---|---|

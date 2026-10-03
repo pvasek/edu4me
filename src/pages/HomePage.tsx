@@ -41,7 +41,7 @@ export function HomePage() {
     <Page className="home">
       <section className="home-hero">
         <div className="home-hero-text">
-          <span className="eyebrow">edu4me · hravé učení</span>
+          <span className="eyebrow">Q &amp; Why · hravé učení</span>
           <h1>
             Učení, které <span className="scribble">dává smysl</span>.
           </h1>

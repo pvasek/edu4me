@@ -1,6 +1,6 @@
 # Illustration guide
 
-edu4me should feel like an **illustrated scientific encyclopedia that became a game**. Most ideas are explained by a picture: a technical schema, an engraved apparatus, a rotating molecule, a particle scene, a process cycle or an icon grid. Text supports the pictures, not the other way round.
+Q & Why should feel like an **illustrated scientific encyclopedia that became a game**. Most ideas are explained by a picture: a technical schema, an engraved apparatus, a rotating molecule, a particle scene, a process cycle or an icon grid. Text supports the pictures, not the other way round.
 
 All visual assets are listed in `src/illustrations/catalog.ts` (icons, molecules, figures). Content may only use those ids; renderers must implement every one.
 

@@ -25,8 +25,33 @@
   font: 800 22px/1 var(--font-display);
   letter-spacing: -0.02em;
 }
-.brand b {
-  color: var(--accent);
+.brand img {
+  display: block;
+  height: auto;
+}
+.brand-mark {
+  width: 64px;
+}
+.brand-word {
+  width: 86px;
+}
+/* the navy wordmark disappears on dark backgrounds: swap in the cream one */
+.brand .brand-word-dark {
+  display: none;
+}
+:root[data-theme='dark'] .brand .brand-word-light {
+  display: none;
+}
+:root[data-theme='dark'] .brand .brand-word-dark {
+  display: block;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .brand .brand-word-light {
+    display: none;
+  }
+  :root:not([data-theme='light']) .brand .brand-word-dark {
+    display: block;
+  }
 }
 .app-nav {
   display: flex;
@@ -85,13 +110,20 @@
   .nav-link {
     padding: 8px;
   }
-  .brand span {
-    font-size: 19px;
+  .brand-word {
+    width: 72px;
   }
 }
 @media (max-width: 420px) {
   .hide-xs {
     display: none;
+  }
+  /* phones: only the book */
+  .brand .brand-word {
+    display: none !important;
+  }
+  .brand-mark {
+    width: 54px;
   }
   .app-header-inner {
     gap: 6px;

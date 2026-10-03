@@ -2,7 +2,7 @@
 
 ## Vision
 
-**edu4me** is a free, playful learning web app for Czech teenagers. It takes one school subject at a time and turns it into a journey: short lessons, instant practice, mini-games and visible progress. Learners should come back because it is fun, and leave understanding the subject better than they did from school alone.
+**Q & Why** (formerly edu4me) is a free, playful learning web app for Czech teenagers. It takes one school subject at a time and turns it into a journey: short lessons, instant practice, mini-games and visible progress. Learners should come back because it is fun, and leave understanding the subject better than they did from school alone.
 
 Chemistry is the first course. Physics, biology and mathematics are planned and already appear on the home screen as "Připravujeme".
 
@@ -50,4 +50,4 @@ A new course needs an outline (`index.ts`), level content files, optional course
 
 - Accounts, a server or a teacher dashboard. Progress is local and can be exported/imported as a file.
 - Tracking or analytics. The app makes no third-party requests.
-- Replacing school: edu4me explains and trains; it doesn't grade.
+- Replacing school: Q & Why explains and trains; it doesn't grade.

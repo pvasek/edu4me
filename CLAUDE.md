@@ -1,6 +1,6 @@
-# edu4me – notes for Claude
+# Q & Why – notes for Claude
 
-Czech learning app for teens (Vite + React 19 + TS, deployed to GitHub Pages). Courses: Chemie, Fyzika. The spec in `spec/` is the source of truth; read the relevant file before changing anything it covers (`spec/README.md` lists them).
+Czech learning app for teens, formerly edu4me (Vite + React 19 + TS, deployed to GitHub Pages). Courses: Chemie, Fyzika. The spec in `spec/` is the source of truth; read the relevant file before changing anything it covers (`spec/README.md` lists them).
 
 ## Writing or editing lessons (any course)
 
@@ -18,5 +18,6 @@ Checks: `npx vitest run src/courses src/core` (validator + `checkFlow` teaching-
 
 - Figures: `src/illustrations/figures/<group>/`, ids in `src/illustrations/catalog.ts`; every catalog id needs a component (`catalog-complete.test.ts`).
 - Games: `src/games/<id>/`, registered per course in `src/games/registry.ts`.
+- Brand: logo and wordmark in `src/assets/brand/` (true vector SVGs; a cream wordmark for dark mode), favicon in `public/`. Storage keys keep the old `edu4me-` prefix on purpose: renaming them would lose saved progress.
 - Progress ids are permanent: see `src/courses/<course>/progress-ids.json` and `spec/persistence.md`.
 - Full check before pushing: `npx tsc --noEmit -p tsconfig.json && npx vitest run && npx vite build`. Pushing to `main` deploys.

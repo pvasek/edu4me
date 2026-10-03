@@ -7,10 +7,10 @@ export default function PrivacyPage() {
   const drive = availableRemotes().some((r) => r.id === 'gdrive')
   return (
     <Page className="privacy stack">
-      <span className="eyebrow">edu4me</span>
+      <span className="eyebrow">Q &amp; Why</span>
       <h1>Jak zacházíme s tvými daty</h1>
       <p>
-        edu4me nemá žádný vlastní server ani uživatelské účty. Nesbíráme o tobě žádné údaje, nepoužíváme analytiku ani reklamní
+        Q &amp; Why nemá žádný vlastní server ani uživatelské účty. Nesbíráme o tobě žádné údaje, nepoužíváme analytiku ani reklamní
         cookies.
       </p>
 
