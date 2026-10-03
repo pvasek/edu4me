@@ -1,6 +1,6 @@
 # Brief: writing the lessons of one level (Q & Why)
 
-Repo /home/user/edu4me (Vite + React + TS). Czech-only learning app for teens. Your level: **<COURSE> level <N> – <title>**, lessons <ids>. Write `src/courses/<course>/levels/l<N>.ts` (exporting default `LevelContent`: `{ lessons: { '<id>': {...}, … }, boss: [...] }`). Only edit that file; other agents write other levels at the same time. Keep helper files in your own scratchpad subfolder. Don't commit.
+Repo /home/user/edu4me (Vite + React + TS). Czech-only learning app for teens. Your level: **<COURSE> level <N> – <title>**, lessons <ids>. Write `src/courses/<course>/levels/l<N>.ts` (exporting default `LevelContent`: `{ lessons: { '<id>': {...}, … }, boss: [...] }`). Only edit that file; other agents write other levels at the same time. Keep helper files in your own scratchpad subfolder. Don't commit. Write the level file as soon as the first lesson is done and save after every lesson, so an interruption loses at most one lesson.
 
 ## Read first
 - `CLAUDE.md`; `spec/content-guidelines.md` in full, especially **Teaching thread** and **Experiments**; `spec/illustration-guide.md`.
