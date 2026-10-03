@@ -56,7 +56,7 @@ export function HomePage() {
             {name}
           </strong>{' '}
           {doneCount === 0
-            ? 'Já jsem Atomík. Provedu tě krok za krokem. Začneme?'
+            ? 'Já jsem Kvído a ptám se „proč?“ na všechno. Provedu tě krok za krokem. Začneme?'
             : next
               ? `Máš za sebou ${doneCount} ${doneCount === 1 ? 'lekci' : doneCount < 5 ? 'lekce' : 'lekcí'}. Jdeme na další!`
               : 'Zvládl/a jsi celý kurz. Klobouk dolů!'}

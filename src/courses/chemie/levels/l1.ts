@@ -12,7 +12,7 @@ const level: LevelContent = {
         'Pojmenovat základní laboratorní pomůcky a rozpoznat výstražné symboly GHS',
         'Správně zahřát zkumavku, pracovat bezpečně a poskytnout první pomoc při drobné nehodě',
       ],
-      hook: 'Ahoj, já jsem Atomík! Co mají společného pečení palačinek, rezavé kolo a nabíjení mobilu? Všude tam probíhá chemie. Dnes zjistíš, co přesně chemie zkoumá – a jak u toho nepřijít o obočí.',
+      hook: 'Ahoj, já jsem Kvído! Co mají společného pečení palačinek, rezavé kolo a nabíjení mobilu? Všude tam probíhá chemie. Dnes zjistíš, co přesně chemie zkoumá – a jak u toho nepřijít o obočí.',
       sections: [
         {
           title: 'Chemie je všude kolem tebe',

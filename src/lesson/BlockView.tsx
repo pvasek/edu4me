@@ -23,7 +23,7 @@ const CALLOUT: Record<CalloutVariant, { icon: IconName; label: string }> = {
   warning: { icon: 'alert', label: 'Pozor' },
   fact: { icon: 'sparkle', label: 'Věděl/a jsi?' },
   remember: { icon: 'pin', label: 'Zapamatuj si' },
-  mascot: { icon: 'atom', label: 'Atomík' },
+  mascot: { icon: 'info', label: 'Kvído' },
 }
 
 export function BlockView({

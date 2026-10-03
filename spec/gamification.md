@@ -54,9 +54,9 @@ Empty cells are dashed outlines; collected ones light up in their category colou
 
 A course whose `album.kind` is `emblems` (physics: "Sbírka jednotek a konstant") awards the level's emblem for passing its level test: a unit or constant (m, N, Pa, J, c, Ω, T, g, G, K, e, h) with its name (`LevelOutline.emblemName`). Emblems are stored in `progress.elements` as `course:symbol` (e.g. `fyzika:N`), so they never count towards the element album. They are shown as engraved medals (`EmblemTile`) on the profile, the level page and the level test. `LevelTile` picks the element tile or the medal by course.
 
-## Mascot: Atomík
+## Guide: Kvído
 
-A friendly atom with orbiting electrons and a face with six moods (happy, think, wow, sad, cheer, sleep). Atomík greets on the home page, opens every lesson with a hook question, comments in `mascot` callouts, and reacts to results. It never scolds.
+Kvído is a living letter Q (the Q of Q & Why) with a question-mark curl on top, in the logo's navy, gold and cream. His name sounds like "Q" and is a real Czech name. He is curious, a bit cheeky and always asks one more „proč?“. He has six moods (happy, think, wow, sad, cheer, sleep); `src/ui/Mascot.tsx`. He replaced the earlier atom mascot Atomík when the app became Q & Why. Kvído greets on the home page, opens every lesson with a hook question, comments in `mascot` callouts, and reacts to results. It never scolds.
 
 ## Ideas for later
 

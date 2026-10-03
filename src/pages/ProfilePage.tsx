@@ -52,7 +52,7 @@ export default function ProfilePage() {
           <input
             id="name"
             className="name-input"
-            placeholder="Jak ti má Atomík říkat?"
+            placeholder="Jak ti má Kvído říkat?"
             value={p.settings.name}
             maxLength={24}
             onChange={(e) => setSettings({ name: e.target.value })}

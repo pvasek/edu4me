@@ -90,7 +90,7 @@ A section may embed a `game` block pointing at a related mini-game (at most once
 - `p` – paragraph.
 - `h` – sub-heading inside a section (rarely needed).
 - `list` – bullets, or `ordered: true` for real sequences only.
-- `callout` – `tip` (a practical trick), `warning` (typical mistake, safety), `fact` (a surprising real-world fact), `remember` (a rule to memorise), `mascot` (Atomík speaking: humour, encouragement).
+- `callout` – `tip` (a practical trick), `warning` (typical mistake, safety), `fact` (a surprising real-world fact), `remember` (a rule to memorise), `mascot` (Kvído speaking: humour, encouragement).
 - `keyterms` – term/definition pairs; use when 2+ new terms appear together.
 - `formula` – a centred, large display of an equation or formula, with an optional caption.
 - `example` – worked example: `problem`, numbered `steps`, and the final `answer`. Show units in each step.

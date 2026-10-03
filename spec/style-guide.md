@@ -89,7 +89,7 @@ Rules:
 - `.btn` + `.btn-primary / -good / -ghost / -sm / -lg / -block`.
 - `.card` (outlined + hard shadow) and `.card-flat` (hairline, no shadow) for secondary panels.
 - `.chip` for XP, streak, tags; `.progress > span` bars (colour via `--bar`).
-- `<Mascot mood>` – Atomík, the atom mascot, drawn like an engraving (hatched nucleus). Moods: happy, think, wow, sad, cheer, sleep. `<MascotSays>` adds a speech bubble.
+- `<Mascot mood>` – Kvído, the Q & Why guide: a living letter Q with a question-mark curl, in the logo's navy, gold and cream, drawn like an engraving (hatched body). Moods: happy, think, wow, sad, cheer, sleep. `<MascotSays>` adds a speech bubble.
 - `<ElementTile symbol size>` – periodic-table tile coloured by category.
 - `<Icon name>` – 24 px stroke icons (2 px stroke), filled for flame/bolt/star/heart/play.
 - `.note` – handwritten annotation in the accent colour.
