@@ -170,6 +170,23 @@ Five blocks draw physics pictures from data (renderers in `src/illustrations/phy
     caption: 'Vlnění s opačnou fází se vyruší.' }
   ```
 
+Two more blocks draw genetics from data the same way (renderers in `src/illustrations/biology/`, pure logic in `genetics.ts` and `pedigree.ts`; same caption, markup, tones and dark-mode rules):
+
+- `punnett` – `parents: [rodič 1, rodič 2]` as genotypes in markup: `'Aa'`, `'AaBb'` (at most two genes, both parents the same number), `'X^{A}X^{a}'` × `'X^{A}Y'` (sex chromosomes), `'I^{A}i'` × `'I^{B}i'` (blood groups). Gametes are computed (one gene → 2, two genes → 4 by independent assortment); parent 1 stands on the left, parent 2 on top, ♀/♂ are added when the cross involves X and Y. Cells show the offspring genotype (dominant allele first, X before Y), shaded by phenotype, and a key below gives the genotype ratio („1 AA : 2 Aa : 1 aa“) and the phenotype ratio („3 : 1 – 75 % fialový květ, 25 % bílý květ“). Optional `traits` name the phenotypes; keys are looked up in this order: the gene's genotype (`'Aa'`, `'C^{R}C^{W}'` – use it for incomplete dominance), the allele that shows (`'A'`, `'a'`, `'I^{A}'`, `'X^{a}'` or just `'a'` for an X allele), and `'XX'` / `'XY'` to rename „dívka“ / „chlapec“ (e.g. „samice“ / „samec“). A capital allele is dominant over a small one; two different capital alleles are codominant (I^{A}I^{B} → „skupina AB“; blood groups are named automatically). An X-linked male shows the allele on his single X. Without `traits` the shorthand A_, aa, A_B_ is shown, so name the traits whenever the learner should read the result in words. Write trait names as short nouns or adjectives that work after a percentage („bílý květ“, „barvoslepost“); in a cross with X they follow the sex („dívka, zdravé vidění“).
+
+  ```ts
+  { type: 'punnett', parents: ['X^{A}X^{a}', 'X^{A}Y'], traits: { A: 'zdravé vidění', a: 'barvoslepost' },
+    caption: 'Matka přenašečka a zdravý otec: barvoslepý může být jen syn.' }
+  ```
+- `pedigree` – `people`: 3–18 people `{ id, sex: 'm' | 'f', affected?, carrier?, label?, parents?: [motherId, fatherId] }`, at most 4 generations. Generations and positions are computed from the parent links: people without parents start generation I, unless they had children with someone from the family (then they stand beside that partner); couples are joined by a line, siblings hang from a common sibship line, two families joined by a marriage stand side by side. Square = male, circle = female, filled (level colour) = affected, dot = carrier; roman numerals mark the generations and a key under the chart explains the symbols. Keep `label` short (one word or a genotype like `X^{a}Y`) – long labels widen the whole chart. List people generation by generation and siblings in birth order; the order in the data is the order in the picture.
+
+  ```ts
+  { type: 'pedigree', caption: 'Barvoslepost v rodině: nemocný je dědeček i vnuk, matka je přenašečka.',
+    people: [{ id: 'd', sex: 'm', affected: true, label: 'dědeček' }, { id: 'b', sex: 'f', label: 'babička' },
+             { id: 'm', sex: 'f', carrier: true, parents: ['b', 'd'], label: 'matka' }, { id: 'o', sex: 'm', label: 'otec' },
+             { id: 's', sex: 'm', affected: true, parents: ['m', 'o'], label: 'syn' }, { id: 'c', sex: 'f', parents: ['m', 'o'], label: 'dcera' }] }
+  ```
+
 ### Experiments („Vyzkoušej si“)
 
 `{ type: 'experiment', id, caption? }` puts a small interactive picture right into the lesson text, in a dashed frame labelled „Vyzkoušej si“. The learner moves one or two sliders and immediately sees what happens. Ids come from `src/lesson/experiments/catalog.ts`; each is a lazy-loaded component `src/lesson/experiments/<id>.tsx` built from the shared kit (`kit.tsx`: `Experiment` layout, `Control` slider, `Choice` buttons, `Readout`), with its physics as a pure, unit-tested function in `<id>.model.ts`.
