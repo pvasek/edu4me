@@ -18,7 +18,7 @@ const level: LevelContent = {
           title: 'Odkud se bere náboj',
           icon: 'atom',
           blocks: [
-            { type: 'p', text: 'V lekci f1-7 jsi třel balonek o vlasy a viděl, že nabitá tělesa se přitahují nebo odpuzují. Teď se podíváme dovnitř. Každý atom má **kladně nabité jádro** s protony a kolem něj **záporně nabité elektrony**.' },
+            { type: 'p', text: 'V lekci „Elektrický náboj a magnety“ jsi třel balonek o vlasy a viděl, že nabitá tělesa se přitahují nebo odpuzují. Teď se podíváme dovnitř. Každý atom má **kladně nabité jádro** s protony a kolem něj **záporně nabité elektrony**.' },
             { type: 'p', text: 'Jestli je celé těleso nabité, záleží jen na tom, jestli má obou druhů částic stejně. Možnosti jsou tři:' },
             { type: 'compare', columns: [
               { title: '**Neutrální těleso**', icon: 'atom', tone: 'c', points: ['protonů a elektronů je stejně', 'jejich náboje se navzájem vyruší', 'většina věcí kolem tebe'] },
@@ -56,7 +56,7 @@ const level: LevelContent = {
             { type: 'iconlist', items: [
               { icon: 'balloon', title: 'Nabitý balonek', text: 'nanocoulomby (10^{−9} C)' },
               { icon: 'lightning', title: 'Blesk', text: 'obvykle jednotky až desítky coulombů' },
-              { icon: 'phone', title: 'Baterie telefonu', text: 'při úplném vybití jí projde asi 15 000 C (spočítáš v lekci f6-2)' },
+              { icon: 'phone', title: 'Baterie telefonu', text: 'při úplném vybití jí projde asi 15 000 C (spočítáš v lekci „Elektrický obvod, proud a napětí“)' },
               { icon: 'car', title: 'Autobaterie', text: 'kolem 200 000 C' },
             ] },
             { type: 'callout', variant: 'fact', text: 'Náboj každého tělesa je celistvým násobkem e. Nemůžeš mít půl elektronu navíc. Proto se e říká „elementární“ – je to nejmenší kousek náboje.' },
@@ -76,7 +76,7 @@ const level: LevelContent = {
               { title: '**Elektrolyty**', icon: 'droplets', tone: 'b', points: ['nosiče náboje: **ionty** (+ i −)', 'slaná voda, kyseliny, tělní tekutiny', 'proto je voda s elektřinou nebezpečná'] },
               { title: '**Izolanty**', icon: 'cross', tone: 'c', points: ['téměř **žádné volné nosiče**', 'plasty, guma, sklo, suché dřevo, vzduch', 'obaly kabelů, rukojeti nářadí'] },
             ], caption: 'Tři druhy látek podle toho, co v nich může nést náboj' },
-            { type: 'p', text: 'Mezi vodiči a izolanty stojí **polovodiče**, například křemík. Za normálních podmínek vedou jen trochu, ale teplo nebo světlo v nich uvolní další nosiče. Jsou základem elektroniky a poznáš je v lekci f6-6.' },
+            { type: 'p', text: 'Mezi vodiči a izolanty stojí **polovodiče**, například křemík. Za normálních podmínek vedou jen trochu, ale teplo nebo světlo v nich uvolní další nosiče. Jsou základem elektroniky a poznáš je v lekci „Polovodiče a elektronika“.' },
             { type: 'callout', variant: 'mascot', text: 'Proto mají šroubováky pro elektrikáře plastové rukojeti a kabely gumový obal. Kov uvnitř vede, izolant venku chrání tebe.' },
             { type: 'callout', variant: 'warning', text: 'Čistá destilovaná voda vede proud velmi špatně. Voda z kohoutku, z vany nebo z louže ale obsahuje rozpuštěné ionty, a proto vede dobře. Stejně tak tvoje tělo – z velké části je to slaný roztok.' },
             { type: 'p', text: 'Víme, kde se náboj může pohybovat. Co ho ale k pohybu přiměje, když se nabitá tělesa ani nedotýkají? Na to odpoví elektrické pole.' },
@@ -244,7 +244,7 @@ const level: LevelContent = {
             { type: 'table', headers: ['Součástka', 'Jak značka vypadá', 'K čemu slouží'], rows: [
               ['článek', 'dlouhá tenká čárka (+) a krátká tlustá (−)', 'zdroj napětí'],
               ['žárovka', 'kroužek s křížkem', 'svítí'],
-              ['rezistor', 'obdélníček', 'brzdí proud (lekce f6-3)'],
+              ['rezistor', 'obdélníček', 'brzdí proud (lekce „Elektrický odpor a Ohmův zákon“)'],
               ['spínač', 'čára s odklopenou páčkou', 'zapíná a vypíná'],
               ['ampérmetr, voltmetr', 'kroužek s písmenem A nebo V', 'měří proud a napětí'],
               ['motor', 'kroužek s písmenem M', 'mění energii na pohyb'],
@@ -308,7 +308,7 @@ const level: LevelContent = {
               { title: '**Dohodnutý směr proudu**', icon: 'ion-plus', tone: 'a', points: [
                 've vnějším obvodu od **kladného** pólu zdroje k **zápornému**',
                 'zavedl se v 18.–19. století',
-                'používá se ve schématech a pravidlech (dioda v lekci f6-6, pravidlo pravé ruky v úrovni 7)',
+                'používá se ve schématech a pravidlech (dioda v lekci „Polovodiče a elektronika“, pravidlo pravé ruky v úrovni 7)',
               ] },
               { title: '**Pohyb elektronů v kovu**', icon: 'electron', tone: 'b', points: [
                 've vnějším obvodu od **záporného** pólu ke **kladnému**',
@@ -366,7 +366,7 @@ const level: LevelContent = {
             { type: 'circuit', source: { kind: 'battery', label: '3 × 1,5 V = 4,5 V' }, parts: [{ kind: 'switch', label: 'S' }, { kind: 'lamp', label: 'Ž' }], caption: 'Plochá baterie: tři články po 1,5 V spojené za sebou dají 4,5 V. Devítivoltová baterie má uvnitř šest článků.' },
             { type: 'p', text: 'Akumulátor v telefonu funguje podobně jako článek, jen chemickou reakci uvnitř můžeš nabíjením obrátit. Podívej se, co se v něm děje:' },
             { type: 'diagram', id: 'li-ion-battery', caption: 'Z chemie znáš vnitřek Li-ion akumulátoru: ionty lithia putují uvnitř mezi elektrodami, elektrony vnějším obvodem přes telefon.' },
-            { type: 'p', text: 'Zásuvka je jiný zdroj: napětí 230 V v ní vytváří elektrárna a mění svůj směr (střídavé napětí). Víc o zásuvce v lekci f6-5 a o střídavém proudu v úrovni 7.' },
+            { type: 'p', text: 'Zásuvka je jiný zdroj: napětí 230 V v ní vytváří elektrárna a mění svůj směr (střídavé napětí). Víc o zásuvce v lekci „Elektrická práce, výkon a bezpečnost“ a o střídavém proudu v úrovni 7.' },
             { type: 'p', text: 'Ať je zdroj jakýkoli, jedné chybě se musíš vyhnout. **Zkrat** nastane, když se póly zdroje spojí cestou, která proud téměř nebrzdí – třeba holým drátem. Proud se vyhne spotřebiči a je obrovský. Dráty i zdroj se prudce zahřejí.' },
             { type: 'p', text: 'Ve schématu vypadá zkrat nenápadně – stačí jeden drát navíc:' },
             { type: 'circuit', source: { kind: 'battery', label: '4,5 V' }, parts: [{ kind: 'switch', label: 'S' }, { parallel: [[{ kind: 'lamp', label: 'Ž' }], [{ kind: 'wire', label: 'zkrat' }]] }], caption: 'Zkrat: holý drát spojený vedle žárovky. Proud jde drátem, žárovka zhasne a baterie se přehřívá.' },
@@ -453,7 +453,9 @@ const level: LevelContent = {
             ], marks: [{ x: 6, y: 0.6, label: '6 V → 0,6 A' }], caption: '**Voltampérová charakteristika** rezistoru je přímka procházející počátkem: proud je přímo úměrný napětí.' },
             { type: 'p', text: 'Přímka z počátku znamená přímou úměrnost: dvojnásobné napětí dá dvojnásobný proud. A čím větší odpor vodič klade, tím menší proud při stejném napětí poteče. Obojí shrnuje Ohmův zákon:' },
             { type: 'formula', text: 'I = U / R', caption: '**Ohmův zákon**: proud I (A) = napětí U (V) / odpor R (Ω)' },
-            { type: 'p', text: 'Zákon se dá číst selským rozumem: napětí proud pohání, odpor ho brzdí. Proto je napětí v čitateli a odpor ve jmenovateli.' },
+            { type: 'p', text: 'Zákon se dá číst selským rozumem: napětí proud pohání, odpor ho brzdí. Proto je napětí v čitateli a odpor ve jmenovateli. Vyzkoušej si obojí: přidávej napětí U a sleduj ampérmetr, pak zvětšuj odpor R.' },
+            { type: 'experiment', id: 'ohm-law', caption: 'R je tu odpor celého obvodu i se žárovkou. Jas žárovky ukazuje výkon P = U · I, se kterým budeš počítat v lekci „Elektrická práce, výkon a bezpečnost“.' },
+            { type: 'p', text: 'Všiml sis? Proud roste s napětím a klesá s odporem, ale záleží jen na jejich podílu U / R: 0,5 A dá 6 V na 12 Ω stejně jako 12 V na 24 Ω.' },
             { type: 'callout', variant: 'remember', text: '==Při stálém odporu je proud přímo úměrný napětí.== Dvojnásobné napětí znamená dvojnásobný proud.' },
             { type: 'p', text: 'Ohmův zákon máme. Teď s ním budeme počítat všemi směry.' },
             { type: 'check', question: { kind: 'number', q: 'Rezistorem teče při napětí 4,5 V proud 0,15 A. Jaký má odpor?', answer: 30, tolerance: 0.1, unit: 'Ω', explain: 'R = U / I = 4,5 V / 0,15 A = 30 Ω.' } },
@@ -556,7 +558,7 @@ const level: LevelContent = {
           title: 'Rezistory, reostaty a potenciometry',
           icon: 'gauge',
           blocks: [
-            { type: 'p', text: '**Rezistor** je součástka se stálým, předem daným odporem. V elektronice omezuje proud (například LED v lekci f6-6) nebo dělí napětí (lekce f6-4). Vedle pevných rezistorů existují i součástky, kterým odpor nastavíš:' },
+            { type: 'p', text: '**Rezistor** je součástka se stálým, předem daným odporem. V elektronice omezuje proud (například LED v lekci „Polovodiče a elektronika“) nebo dělí napětí (lekce „Zapojení rezistorů“). Vedle pevných rezistorů existují i součástky, kterým odpor nastavíš:' },
             { type: 'iconlist', items: [
               { icon: 'pencil', title: 'Rezistor', text: 'pevný odpor; hodnota je napsaná číslem nebo barevnými proužky' },
               { icon: 'ruler', title: 'Reostat', text: 'drát navinutý na válci s posuvným jezdcem; mění odpor v obvodu, hlavně v laboratoři' },
@@ -715,7 +717,7 @@ const level: LevelContent = {
           title: 'Hádanky s jasem žárovek',
           icon: 'idea',
           blocks: [
-            { type: 'p', text: 'Jas žárovky závisí na tom, kolik energie v ní každou sekundu přemění proud na světlo a teplo. U stejných žárovek platí: ==větší proud → jasnější žárovka==. Přesný výpočet výkonu přijde v lekci f6-5. Začneme dvěma stejnými žárovkami v sérii:' },
+            { type: 'p', text: 'Jas žárovky závisí na tom, kolik energie v ní každou sekundu přemění proud na světlo a teplo. U stejných žárovek platí: ==větší proud → jasnější žárovka==. Přesný výpočet výkonu přijde v lekci „Elektrická práce, výkon a bezpečnost“. Začneme dvěma stejnými žárovkami v sérii:' },
             { type: 'circuit', source: { kind: 'battery', label: '4,5 V' }, parts: [{ kind: 'lamp', label: 'Ž₁' }, { kind: 'lamp', label: 'Ž₂' }], caption: 'Dvě stejné žárovky v sérii: každá má jen polovinu napětí, proud je menší a obě svítí slaběji než jedna samotná.' },
             { type: 'p', text: 'Teď stejné dvě žárovky zapojíme vedle sebe:' },
             { type: 'circuit', source: { kind: 'battery', label: '4,5 V' }, parts: [{ parallel: [[{ kind: 'lamp', label: 'Ž₁' }], [{ kind: 'lamp', label: 'Ž₂' }]] }], caption: 'Dvě stejné žárovky paralelně: každá má plné napětí a svítí stejně jasně jako jedna samotná. Baterie ale dává dvojnásobný proud a vybije se dvakrát rychleji.' },
@@ -747,7 +749,7 @@ const level: LevelContent = {
               'Kontrola přes proud: I = 9 V / 3 000 Ω = 0,003 A; U₂ = 2 000 Ω · 0,003 A = 6 V',
             ], answer: 'Voltmetr ukáže 6 V, na R₁ zbývají 3 V.' },
             { type: 'p', text: 'Výsledek dává smysl: R₂ je dvakrát větší než R₁, a proto dostane dvakrát víc napětí.' },
-            { type: 'p', text: '**Potenciometr** je vlastně nastavitelný dělič: jezdec rozdělí odporovou dráhu na dvě části a otočením knoflíku měníš jejich poměr. Tak se nastavuje hlasitost nebo jas. Když místo jednoho rezistoru dáš senzor, který mění odpor se světlem nebo teplotou, vznikne čidlo (lekce f6-6).' },
+            { type: 'p', text: '**Potenciometr** je vlastně nastavitelný dělič: jezdec rozdělí odporovou dráhu na dvě části a otočením knoflíku měníš jejich poměr. Tak se nastavuje hlasitost nebo jas. Když místo jednoho rezistoru dáš senzor, který mění odpor se světlem nebo teplotou, vznikne čidlo (lekce „Polovodiče a elektronika“).' },
             { type: 'p', text: 'Teď umíš spočítat proudy a napětí v jakémkoli jednoduchém obvodu. V příští lekci zjistíš, kolik energie v něm spotřebiče přemění – a kolik to stojí.' },
             { type: 'game', gameId: 'circuit-builder', text: 'Série, nebo paralela? Rozsviť žárovky co nejjasněji a spočítej proudy ve hře „Stavitel obvodů“.' },
             { type: 'check', question: { kind: 'number', q: 'Dělič napětí: zdroj 12 V, R₁ = 3 kΩ, R₂ = 1 kΩ. Jaké napětí je na R₂?', answer: 3, tolerance: 0.05, unit: 'V', explain: 'U₂ = 12 V · 1 kΩ / (3 kΩ + 1 kΩ) = 12 V · 1/4 = 3 V.' } },
@@ -821,7 +823,7 @@ const level: LevelContent = {
           title: 'Příkon, výkon a účinnost',
           icon: 'bulb',
           blocks: [
-            { type: 'p', text: 'Z lekce f3-4 víš, že výkon je práce za sekundu: P = W / t. Když dosadíš W = U · I · t, čas se zkrátí a zbude jednoduchý vztah:' },
+            { type: 'p', text: 'Z lekce „Práce a výkon“ víš, že výkon je práce za sekundu: P = W / t. Když dosadíš W = U · I · t, čas se zkrátí a zbude jednoduchý vztah:' },
             { type: 'formula', text: 'P = U · I', caption: 'příkon P (W) = napětí U (V) · proud I (A); 1 W = 1 V · 1 A' },
             { type: 'p', text: 'Pozor na dvě slova, která se často pletou. Vzorec P = U · I dává **příkon**, tedy co spotřebič bere. Užitečný **výkon** je vždy menší:' },
             { type: 'keyterms', items: [
@@ -844,14 +846,14 @@ const level: LevelContent = {
             { type: 'example', title: 'Proud konvicí', problem: 'Konvice má na štítku 230 V / 2 000 W. Jaký proud jí teče?', steps: [
               'Z P = U · I vyjádříme I = P / U',
               'I = 2 000 W / 230 V ≈ 8,7 A',
-            ], answer: 'Konvicí teče asi 8,7 A – tolik jsme použili v lekci f6-4.' },
+            ], answer: 'Konvicí teče asi 8,7 A – tolik jsme použili v lekci „Zapojení rezistorů“.' },
             { type: 'p', text: 'Rozdíl mezi příkonem a výkonem nejlépe ukážou dvě žárovky, které svítí stejně jasně:' },
             { type: 'compare', columns: [
               { title: 'Klasická žárovka 60 W', icon: 'heat', tone: 'bad', points: ['na světlo přemění jen asi 5 % energie', 'zbytek je teplo – žárovka pálí', 'vydrží asi 1 000 hodin'] },
               { title: 'LED žárovka 8 W', icon: 'bulb', tone: 'good', points: ['stejně světla za zlomek energie', 'skoro nehřeje', 'vydrží přes 15 000 hodin'] },
             ], caption: 'Proč EU klasické žárovky postupně zakázala' },
             { type: 'p', text: 'Účinnost klasické žárovky je tedy jen asi 5 %. LED dá stejné světlo s asi sedmkrát menším příkonem.' },
-            { type: 'callout', variant: 'fact', text: 'Z Ohmova zákona plyne také P = R · I^{2}. Dvojnásobný proud stejnou žárovkou tedy znamená čtyřnásobný příkon. Proto žárovky v hádankách z lekce f6-4 reagovaly na proud tak citlivě.' },
+            { type: 'callout', variant: 'fact', text: 'Z Ohmova zákona plyne také P = R · I^{2}. Dvojnásobný proud stejnou žárovkou tedy znamená čtyřnásobný příkon. Proto žárovky v hádankách z lekce „Zapojení rezistorů“ reagovaly na proud tak citlivě.' },
             { type: 'p', text: 'Příkon říká, jak rychle spotřebič energii bere. Kolik jí spotřebuje za měsíc a kolik to stojí, spočítáme v dalším oddílu.' },
             { type: 'check', question: { kind: 'number', q: 'Vysavač má příkon 900 W a je připojený na 230 V. Jaký proud jím teče?', answer: 3.9, tolerance: 0.05, unit: 'A', explain: 'I = P / U = 900 W / 230 V ≈ 3,9 A.' } },
           ],
@@ -1071,7 +1073,7 @@ const level: LevelContent = {
             { type: 'graph', x: { label: 'E', unit: 'lx', min: 0, max: 1000, step: 200 }, y: { label: 'R', unit: 'kΩ', min: 0, max: 100, step: 20 }, series: [
               { label: 'fotorezistor', points: [[10, 90], [30, 45], [50, 30], [100, 17], [200, 9], [400, 5], [700, 3], [1000, 2]], style: 'smooth', tone: 'b' },
             ], marks: [{ x: 10, y: 90, label: 'šero' }, { x: 1000, y: 2, label: 'jasná místnost' }], caption: 'Fotorezistor: ve tmě má odpor desítky kilohmů, na světle jen jednotky. Osvětlení E se měří v luxech (lx).' },
-            { type: 'p', text: 'Jak z toho udělat čidlo? Elektronika nejsnáz měří napětí, a tak fotorezistor zapojíme do děliče napětí z lekce f6-4:' },
+            { type: 'p', text: 'Jak z toho udělat čidlo? Elektronika nejsnáz měří napětí, a tak fotorezistor zapojíme do děliče napětí z lekce „Zapojení rezistorů“:' },
             { type: 'circuit', source: { kind: 'battery', label: '6 V' }, parts: [{ kind: 'resistor', label: 'R = 10 kΩ' }, { parallel: [[{ kind: 'ldr', label: 'LDR' }], [{ kind: 'voltmeter', label: 'V' }]] }], caption: 'Soumrakové čidlo: dělič napětí z pevného rezistoru a fotorezistoru. Napětí na fotorezistoru roste, když se stmívá.' },
             { type: 'p', text: 'Spočítejme, jak moc se napětí mezi tmou a světlem liší:' },
             { type: 'example', title: 'Kdy rozsvítit lampu', problem: 'V děliči na obrázku má fotorezistor ve tmě odpor 90 kΩ a na světle 2 kΩ. Jaké napětí ukáže voltmetr ve tmě a na světle?', steps: [
@@ -1099,7 +1101,7 @@ const level: LevelContent = {
             { type: 'circuit', source: { kind: 'battery', label: '4,5 V' }, parts: [{ kind: 'switch', label: 'S' }, { kind: 'diode', label: 'D (propustný směr)' }, { kind: 'lamp', label: 'Ž' }], caption: 'Dioda zapojená v **propustném směru**: šipka značky míří ve směru proudu (od + k −) a žárovka svítí.' },
             { type: 'p', text: 'Teď stejnou diodu otočíme a nic jiného neměníme:' },
             { type: 'circuit', source: { kind: 'battery', label: '4,5 V' }, parts: [{ kind: 'switch', label: 'S' }, { kind: 'diode', label: 'D (závěrný směr)' }, { kind: 'lamp', label: 'Ž' }], caption: 'Stejná dioda otočená do **závěrného směru**: proud neteče a žárovka nesvítí.' },
-            { type: 'p', text: 'Kdy přesně dioda začne vést? Ukáže to její voltampérová charakteristika. Porovnej ji v duchu s přímkou rezistoru z lekce f6-3:' },
+            { type: 'p', text: 'Kdy přesně dioda začne vést? Ukáže to její voltampérová charakteristika. Porovnej ji v duchu s přímkou rezistoru z lekce „Elektrický odpor a Ohmův zákon“:' },
             { type: 'graph', x: { label: 'U', unit: 'V', min: -2, max: 1, step: 0.5 }, y: { label: 'I', unit: 'mA', min: 0, max: 50, step: 10 }, series: [
               { label: 'křemíková dioda', points: [[-2, 0], [0, 0], [0.4, 0], [0.5, 1], [0.55, 3], [0.6, 8], [0.65, 18], [0.7, 35], [0.72, 48]] },
             ], marks: [{ x: 0.6, label: 'prahové napětí ≈ 0,6 V' }, { x: -1, y: 0, label: 'závěrný směr: proud neteče' }], caption: 'Voltampérová charakteristika diody: v závěrném směru (záporné U) proud neteče, v propustném začne prudce růst nad asi 0,6 V.' },

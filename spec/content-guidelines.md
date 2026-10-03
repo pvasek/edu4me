@@ -67,7 +67,8 @@ Rules (all courses, every lesson):
 5. **Close every section** (before its `check`) with one sentence: what we can do now and what comes next. The last section points to the next lesson.
 6. **Bridges are 1–2 sentences.** They carry meaning (a question, a reason, a contrast, a consequence) – never filler like „V této části se naučíme…“ or a repeat of the heading. No new facts hide in bridges; facts belong to the explanation.
 7. **A bridge links back and names what comes next concretely.** It picks up the thread of the text just before it and says plainly what the next block is about. Never a vague allusion the reader has to decode: not „Zkusme to na situaci, kterou znáš z každého nákupu.“, but „U kopnutí do míče je to jasné. Zkusme ale situaci, kde druhé těleso není hned vidět: zvedáš ze země tašku s nákupem.“
-8. Worked examples say *why* a step is done when it isn't obvious („Nejdřív převedeme gramy na kilogramy, protože g je v N/kg.“).
+8. **Refer to other lessons by their title**, never by id: „v lekci „Grafy pohybu““, not „v lekci f2-2“. Learners never see ids (the validator rejects them).
+9. Worked examples say *why* a step is done when it isn't obvious („Nejdřív převedeme gramy na kilogramy, protože g je v N/kg.“).
 
 Target proportions: explanation and bridges (`p`) are about **30 % of the words** of a lesson; a lesson grows by about a fifth to a third compared with a bare list of facts (the f2-3 pilot: 1 461 → 1 907 words, prose 16 % → 36 %). Rules 1 and 2 are checked automatically for every lesson (`checkFlow` in `src/core/validate.ts`, run by `src/core/flow.test.ts`).
 
@@ -128,6 +129,7 @@ A section may embed a `game` block pointing at a related mini-game (at most once
 - Every section may set `icon` (a `ChemIcon`) shown next to its title – set it on every section.
 - `check` – a question about this section; it becomes part of the end-of-lesson quiz (see below).
 - `game` – `{ gameId, text }`: a card inviting the learner to a mini-game.
+- `experiment` – `{ id, caption? }`: an in-lesson micro-experiment („Vyzkoušej si“), see [Experiments](#experiments-vyzkoušej-si) below.
 
 ### Physics drawings (parametric blocks)
 
@@ -167,6 +169,24 @@ Five blocks draw physics pictures from data (renderers in `src/illustrations/phy
                                      { amplitude: 1, wavelength: 4, phase: 0.5, label: 'vlnění 2' }],
     caption: 'Vlnění s opačnou fází se vyruší.' }
   ```
+
+### Experiments („Vyzkoušej si“)
+
+`{ type: 'experiment', id, caption? }` puts a small interactive picture right into the lesson text, in a dashed frame labelled „Vyzkoušej si“. The learner moves one or two sliders and immediately sees what happens. Ids come from `src/lesson/experiments/catalog.ts`; each is a lazy-loaded component `src/lesson/experiments/<id>.tsx` built from the shared kit (`kit.tsx`: `Experiment` layout, `Control` slider, `Choice` buttons, `Readout`), with its physics as a pure, unit-tested function in `<id>.model.ts`.
+
+| id | lesson | the learner sets → sees |
+|---|---|---|
+| `density-float` | f1-4 | mass m and volume V of a block (and the liquid: voda, slaná voda, olej) → ρ = m / V; the block floats (submerged by ρ / ρ_kapaliny), hovers (within ±0,02 g/cm³) or sinks |
+| `ohm-law` | f6-3 | voltage U and resistance R → the ammeter shows I = U / R, the lamp glows with P = U · I and the current dots run faster |
+
+When to use one:
+- **One idea, one or two controls, an immediate visible effect, about 30 seconds.** A small `Choice` (e.g. the liquid) is fine as an extra; more controls turn it into a game.
+- **Only where moving a value teaches something a static picture can't**: a relation (ρ = m / V, I = U / R) or a threshold (plave / vznáší se / klesne). If a `graph`, `diagram` or physics drawing shows it just as well, use that instead.
+- **Place it where the idea is taught**, right after the explanation or formula it makes tangible, never collected at the end of the lesson. One per lesson is usually enough.
+- **An optional „Úkol“**: one short challenge sentence with a checkable target („Nastav proud přesně 0,5 A.“); the box turns green while it is met.
+- **No scoring, no XP, no saved progress.** An experiment is part of the reading; competition belongs to the `game` block.
+- **Teaching thread:** `experiment` is a content block. Before it, a `p` says what to try and why. If another content block follows, a `p` after it says what the learner should have noticed („Všiml sis? …“). A concept from a later lesson shown in the experiment is named with its lesson („výkon P = U · I, lekce f6-5“), usually in the `caption`.
+- The picture follows the [illustration guide](illustration-guide.md): Czech labels, decimal comma, units with a space, theme tokens only (dark mode), readable at 330 px, native range inputs (keyboard), `role="img"` with a Czech `aria-label` describing the current state; with reduced motion there is no ambient animation and changes jump instead of gliding.
 
 ## Questions
 

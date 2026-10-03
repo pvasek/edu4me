@@ -14,6 +14,7 @@ Repo /home/user/edu4me (Vite + React + TS). Czech-only learning app for teens. Y
 - 5–6 sections. Every section: `icon`, an opening `p` that sets up the question and links back, at least one visual, a closing sentence leading on, and a `check` question at its end.
 - goals 2–4; hook 1–3 sentences (spoken by the guide Kvído); summary 4–7 full sentences; quiz 7–8 questions, ≥ 3 kinds including `tf`, rising difficulty, every question with `explain`.
 - **Teaching thread**: before every list, table, figure, formula, experiment or example that follows another content block, a 1–2 sentence `p` (what to look at, why). Say why, name the trap, no filler, no new facts hidden in bridges; bridges link back and name the next thing concretely.
+- Refer to other lessons by title („v lekci „Grafy pohybu““), never by id; the validator rejects ids in visible text.
 - Every formula or procedure gets a worked `example` (problem → steps with a short "why" → answer with unit). Number questions with `unit` and `tolerance` where it fits.
 - Short sentences at ZŠ levels; precise, quantitative, multi-step at gymnázium levels. Real-world hooks everywhere.
 - Visuals: named figures (`diagram`), parametric blocks if the course has them, `process`, `iconlist`, `compare`, `flipcards`, `table`, `keyterms`. Only ids from `src/illustrations/catalog.ts`.

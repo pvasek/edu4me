@@ -9,6 +9,8 @@ export type Inline = string
 
 import type { ChemIcon, FigureId, MoleculeId, SpecimenId } from '../illustrations/catalog'
 export type { ChemIcon, FigureId, MoleculeId, SpecimenId }
+import type { ExperimentId } from '../lesson/experiments/catalog'
+export type { ExperimentId }
 
 export type CalloutVariant = 'tip' | 'warning' | 'fact' | 'remember' | 'mascot'
 
@@ -54,6 +56,8 @@ export type Block =
   /** Cards with a big picture on the front; tap to flip and read the back. */
   | { type: 'flipcards'; cards: FlipCard[]; caption?: Inline }
   | { type: 'game'; gameId: GameId; text?: Inline }
+  /** An in-lesson micro-experiment ("Vyzkoušej si"): a small interactive picture, see src/lesson/experiments. */
+  | { type: 'experiment'; id: ExperimentId; caption?: Inline }
   // ── physics: parametric technical drawings (rendered in src/illustrations/physics/) ──
   /** A graph drawn from data points: motion graphs, heating curves, I–U characteristics, decay… */
   | { type: 'graph'; x: GraphAxis; y: GraphAxis; series: GraphSeries[]; marks?: GraphMark[]; caption?: Inline }

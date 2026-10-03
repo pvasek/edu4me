@@ -2,10 +2,11 @@ import type { Block, Lesson, LevelContent, LevelOutline, Question } from './type
 import { BY_SYMBOL } from '../courses/chemie/data/elements'
 import { CHEM_ICONS, FIGURES, MOLECULES, SPECIMENS } from '../illustrations/catalog'
 import { parseFormula } from '../courses/chemie/data/formula'
+import { EXPERIMENTS } from '../lesson/experiments/catalog'
 
 const ICONS = new Set<string>(CHEM_ICONS)
 const SPECS = new Set<string>(SPECIMENS)
-const VISUAL = new Set<string>(['flipcards', 'diagram', 'molecule', 'particles', 'reaction', 'process', 'iconlist', 'compare', 'elements', 'structure', 'graph', 'circuit', 'forces', 'rays', 'wave'])
+const VISUAL = new Set<string>(['flipcards', 'diagram', 'molecule', 'particles', 'reaction', 'process', 'iconlist', 'compare', 'elements', 'structure', 'graph', 'circuit', 'forces', 'rays', 'wave', 'experiment'])
 const CIRCUIT_KINDS = new Set<string>(['resistor', 'lamp', 'switch', 'switch-open', 'ammeter', 'voltmeter', 'ohmmeter', 'diode', 'led', 'capacitor', 'coil', 'motor', 'fuse', 'rheostat', 'ldr', 'thermistor', 'bell', 'wire'])
 const MOLS = new Set<string>(MOLECULES)
 
@@ -35,6 +36,14 @@ export function validateLevel(outline: LevelOutline, content: LevelContent): str
       s.blocks.forEach((b, bi) => checkBlock(b, (m) => at(`section ${si + 1} block ${bi + 1}: ${m}`)))
     })
     lesson.quiz.forEach((q, qi) => checkQuestion(q, (m) => at(`quiz ${qi + 1}: ${m}`)))
+    for (const t of visibleStrings(lesson)) {
+      const m = LESSON_ID.exec(t)
+      if (m) at(`lesson id "${m[0]}" shown to the learner – refer to the lesson by its title: "${t.slice(0, 60)}"`)
+    }
+  }
+  for (const t of visibleStrings(content.boss)) {
+    const m = LESSON_ID.exec(t)
+    if (m) errs.push(`boss: lesson id "${m[0]}" shown to the learner – use the lesson title`)
   }
   if (content.boss.length < 10) errs.push(`boss has ${content.boss.length} questions (want 10–12)`)
   content.boss.forEach((q, qi) => checkQuestion(q, (m) => errs.push(`boss ${qi + 1}: ${m}`)))
@@ -45,6 +54,7 @@ function checkBlock(b: Block, err: (m: string) => void) {
   if (b.type === 'check') checkQuestion(b.question, err)
   if (b.type === 'elements') for (const s of b.symbols) if (!BY_SYMBOL[s]) err(`unknown element ${s}`)
   if (b.type === 'diagram' && !DIAGRAMS.has(b.id)) err(`unknown diagram ${b.id}`)
+  if (b.type === 'experiment' && !(EXPERIMENTS as readonly string[]).includes(b.id)) err(`unknown experiment ${b.id}`)
   if (b.type === 'table') b.rows.forEach((r, i) => r.length !== b.headers.length && err(`table row ${i + 1} has ${r.length} cells, headers ${b.headers.length}`))
   if (b.type === 'example' && b.steps.length === 0) err('example without steps')
   if (b.type === 'molecule') for (const m of b.molecules) if (!MOLS.has(m)) err(`unknown molecule ${m}`)
@@ -217,4 +227,15 @@ export function checkFlow(lesson: Lesson): string[] {
     })
   })
   return errors
+}
+
+/** A lesson id such as "f6-5" or "l2-3"; learners never see ids, so text must name lessons by title. */
+const LESSON_ID = /(?<![\w'/-])[a-z]\d{1,2}-\d{1,2}(?![\w'-])/
+
+/** Every string a learner can read in a lesson (skips the `id` / `gameId` fields). */
+function visibleStrings(v: unknown, key = ''): string[] {
+  if (typeof v === 'string') return key === 'id' || key === 'gameId' ? [] : [v]
+  if (Array.isArray(v)) return v.flatMap((x) => visibleStrings(x))
+  if (v && typeof v === 'object') return Object.entries(v).flatMap(([k, x]) => visibleStrings(x, k))
+  return []
 }

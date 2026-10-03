@@ -12,7 +12,7 @@ const level: LevelContent = {
         'Vysvětlit, jak funguje elektromagnet a čím ho zesílíš',
         'Popsat využití elektromagnetů: jeřáb, zvonek, relé, magnetická rezonance',
       ],
-      hook: 'V lekci f1-7 jsi zjistil, že magnety přitahují železo a kompas ukazuje k severu. Teď přijde překvapení: magnet si vyrobíš z obyčejného drátu a baterky. A dokonce ho umíš vypnout!',
+      hook: 'V lekci „Elektrický náboj a magnety“ jsi zjistil, že magnety přitahují železo a kompas ukazuje k severu. Teď přijde překvapení: magnet si vyrobíš z obyčejného drátu a baterky. A dokonce ho umíš vypnout!',
       sections: [
         {
           title: 'Oerstedův pokus',
@@ -288,7 +288,7 @@ const level: LevelContent = {
               'Účinnost: užitečný výkon dělíme příkonem, η = 135 W / 180 W = 0,75',
               '0,75 = 75 %; zbylých 180 W − 135 W = 45 W se mění na teplo',
             ], answer: 'Příkon je 180 W, účinnost 75 %.' },
-            { type: 'callout', variant: 'fact', text: 'Velké elektromotory mají účinnost přes 90 %. Benzínový motor přemění na pohyb jen asi 30 % energie paliva (lekce f4-4). I proto je elektromobil v přeměně energie mnohem úspornější.' },
+            { type: 'callout', variant: 'fact', text: 'Velké elektromotory mají účinnost přes 90 %. Benzínový motor přemění na pohyb jen asi 30 % energie paliva (lekce „Tepelné motory“). I proto je elektromobil v přeměně energie mnohem úspornější.' },
             { type: 'p', text: 'Když motor zablokuješ – třeba se vrták zasekne ve zdi –, proud prudce vzroste a cívky se rychle přehřívají. Proto mají motory tepelnou ochranu a vrtačky spojku, která zablokovaný vrták „pustí“.' },
             { type: 'p', text: 'Motor mění proud v otáčení. Co když ale proud bude rychle měnit směr? Pak se cívka nebude točit, ale kmitat – a máme reproduktor.' },
             { type: 'check', question: { kind: 'number', q: 'Motor ventilátoru má příkon 40 W a účinnost 60 %. Jaký je jeho užitečný mechanický výkon?', answer: 24, tolerance: 0.5, unit: 'W', explain: 'P_{výkon} = η · P_{příkon} = 0,6 · 40 W = 24 W. Zbylých 16 W se změní na teplo.' } },
@@ -303,7 +303,7 @@ const level: LevelContent = {
               { icon: 'music', title: 'Hudební signál', text: 'ze zesilovače přichází proud, který mění směr stovkykrát až tisícekrát za sekundu' },
               { icon: 'coil', title: 'Cívka v poli magnetu', text: 'podle směru proudu na ni působí síla dopředu nebo dozadu' },
               { icon: 'wave', title: 'Membrána kmitá', text: 'kmitá v rytmu proudu a tlačí na vzduch' },
-              { icon: 'ear', title: 'Zvuk', text: 'zhuštění a zředění vzduchu doletí do ucha (lekce f4-5)' },
+              { icon: 'ear', title: 'Zvuk', text: 'zhuštění a zředění vzduchu doletí do ucha (lekce „Zvuk a jeho šíření“)' },
             ], caption: 'Jak reproduktor mění elektrický signál na zvuk' },
             { type: 'p', text: 'Z toho plyne, jak reproduktor ovládá hlasitost i výšku tónu. Čím větší proud, tím víc se membrána vychýlí a tím hlasitější je zvuk. Čím rychleji proud mění směr, tím vyšší je tón.' },
             { type: 'callout', variant: 'fact', text: 'Sluchátka v tvých uších fungují stejně, jen jsou miniaturní. Mikrofon je obrácený reproduktor: zvuk rozkmitá membránu s cívkou u magnetu a v cívce vznikne elektrický signál. Jak je to možné, uvidíš v další lekci.' },
@@ -560,7 +560,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Může vůbec proud, který se pořád obrací, něco užitečného udělat? Může – podívej se na nejjednodušší obvod se žárovkou:' },
             { type: 'circuit', source: { kind: 'ac', label: '230 V ~' }, parts: [{ kind: 'fuse', label: 'pojistka' }, { kind: 'switch' }, { kind: 'lamp', label: 'Ž' }], caption: 'Žárovka na střídavém napětí sítě svítí, protože vlákno se zahřívá při proudu oběma směry.' },
             { type: 'callout', variant: 'fact', text: 'Na konci 19. století se strhla „válka proudů“. Edison prosazoval stejnosměrný proud, Tesla a Westinghouse střídavý. Vyhrál střídavý – hlavně díky transformátoru, který pracuje jen se střídavým proudem.' },
-            { type: 'p', text: 'Ne každý spotřebič ale snese střídavý proud. Mobil potřebuje stejnosměrný proud. Nabíječka proto napětí ze sítě nejdřív sníží a pak ho diodami (lekce f6-6) usměrní na stejnosměrné.' },
+            { type: 'p', text: 'Ne každý spotřebič ale snese střídavý proud. Mobil potřebuje stejnosměrný proud. Nabíječka proto napětí ze sítě nejdřív sníží a pak ho diodami (lekce „Polovodiče a elektronika“) usměrní na stejnosměrné.' },
             { type: 'p', text: 'Střídavý proud se tedy pořád obrací. Jak rychle, to udává frekvence – a o té je další oddíl.' },
             { type: 'check', question: { kind: 'tf', q: 'Elektrony ze střídavé sítě putují drátem z elektrárny až do tvé zásuvky.', answer: false, explain: 'Při střídavém proudu elektrony jen kmitají tam a zpátky kolem jednoho místa. Z elektrárny k tobě se šíří energie, ne elektrony.' } },
           ],
@@ -592,7 +592,7 @@ const level: LevelContent = {
           title: 'Transformátor',
           icon: 'coil',
           blocks: [
-            { type: 'p', text: 'Proč transformátor potřebuje právě střídavý proud? Protože pracuje díky indukci. Má dvě cívky na společném **železném jádře**. Do **primární** cívky přivedeš střídavé napětí. Střídavý proud v ní vytváří měnící se magnetické pole a jádro ho převede do **sekundární** cívky. Tam pole indukuje napětí (lekce f7-3).' },
+            { type: 'p', text: 'Proč transformátor potřebuje právě střídavý proud? Protože pracuje díky indukci. Má dvě cívky na společném **železném jádře**. Do **primární** cívky přivedeš střídavé napětí. Střídavý proud v ní vytváří měnící se magnetické pole a jádro ho převede do **sekundární** cívky. Tam pole indukuje napětí (lekce „Elektromagnetická indukce“).' },
             { type: 'diagram', id: 'transformer', caption: 'Transformátor: primární a sekundární cívka na společném železném jádře. Poměr napětí je stejný jako poměr počtů závitů.' },
             { type: 'p', text: 'Měnící se pole prochází všemi závity sekundární cívky a v každém indukuje stejné napětí. Víc závitů tedy dá víc voltů – proto platí jednoduchý poměr:' },
             { type: 'formula', text: 'U_{1} / U_{2} = N_{1} / N_{2}', caption: 'U₁, U₂ – napětí na primární a sekundární cívce (V); N₁, N₂ – počty jejich závitů' },
@@ -634,7 +634,7 @@ const level: LevelContent = {
           icon: 'lightning',
           blocks: [
             { type: 'p', text: 'Proč se elektřina přenáší napětím 400 000 V, když je tak nebezpečné? Kvůli ztrátám. Dráty vedení mají malý, ale ne nulový odpor. Proud je **zahřívá** a tato energie se ztrácí. Ztráty rostou s proudem hodně rychle: dvakrát větší proud znamená **čtyřikrát** větší ztráty.' },
-            { type: 'formula', text: 'P_{ztr} = R · I^{2}', caption: 'tepelné ztráty ve vedení (W) = odpor vedení R (Ω) · druhá mocnina proudu I (A); plyne z U = R · I a P = U · I (lekce f6-3 a f6-5)' },
+            { type: 'formula', text: 'P_{ztr} = R · I^{2}', caption: 'tepelné ztráty ve vedení (W) = odpor vedení R (Ω) · druhá mocnina proudu I (A); plyne z U = R · I a P = U · I (lekce „Elektrický odpor a Ohmův zákon“ a „Elektrická práce, výkon a bezpečnost“)' },
             { type: 'p', text: 'Jak velký rozdíl to dělá? Pošleme stejný výkon stejným vedením dvakrát – jednou nízkým a jednou vysokým napětím:' },
             { type: 'example', title: 'Stejný výkon, jiné napětí', problem: 'Městečko odebírá výkon 1 MW (1 000 000 W). Vedení k němu má odpor 10 Ω. Porovnej ztráty při přenosu napětím 10 kV a 400 kV.', steps: [
               'Nejdřív proud, který vedením poteče. 10 kV: I = P / U = 1 000 000 W / 10 000 V = 100 A',
@@ -722,7 +722,7 @@ const level: LevelContent = {
           title: 'Skoro všude se točí generátor',
           icon: 'factory',
           blocks: [
-            { type: 'p', text: 'Uhlí, uran, voda i slunce – tak různé zdroje, a přece z nich v zásuvce máš stejných 230 V. Jak je to možné? Téměř každá elektrárna má uvnitř stejné srdce: **generátor** z lekce f7-3. Elektrárny se liší hlavně tím, **co ho roztáčí**. Výjimkou jsou solární panely – ty vyrábějí proud přímo ze světla, bez pohybu.' },
+            { type: 'p', text: 'Uhlí, uran, voda i slunce – tak různé zdroje, a přece z nich v zásuvce máš stejných 230 V. Jak je to možné? Téměř každá elektrárna má uvnitř stejné srdce: **generátor** z lekce „Elektromagnetická indukce“. Elektrárny se liší hlavně tím, **co ho roztáčí**. Výjimkou jsou solární panely – ty vyrábějí proud přímo ze světla, bez pohybu.' },
             { type: 'diagram', id: 'power-plants', caption: 'Uhelná, jaderná, vodní, větrná a solární elektrárna: co roztáčí turbínu a jaké přeměny energie v každé probíhají.' },
             { type: 'p', text: 'Projděme podrobně nejběžnější typ, tepelnou elektrárnu. Sleduj, jak se energie mění krok za krokem:' },
             { type: 'process', layout: 'flow', steps: [
@@ -740,14 +740,14 @@ const level: LevelContent = {
               { term: '**obnovitelný zdroj**', def: 'zdroj, který se v lidském čase sám obnovuje: slunce, vítr, voda, biomasa, teplo Země' },
             ] },
             { type: 'p', text: 'Generátor je tedy společný. Teď se podíváme, čím ho roztáčejí tepelné a jaderné elektrárny a proč při tom tolik energie uteče.' },
-            { type: 'check', question: { kind: 'tf', q: 'Solární panel vyrábí elektřinu tak, že světlo roztáčí malý generátor.', answer: false, explain: 'Solární článek je polovodič (lekce f6-6). Světlo v něm uvolňuje nosiče náboje a vzniká napětí – bez jakéhokoli pohybu.' } },
+            { type: 'check', question: { kind: 'tf', q: 'Solární panel vyrábí elektřinu tak, že světlo roztáčí malý generátor.', answer: false, explain: 'Solární článek je polovodič (lekce „Polovodiče a elektronika“). Světlo v něm uvolňuje nosiče náboje a vzniká napětí – bez jakéhokoli pohybu.' } },
           ],
         },
         {
           title: 'Tepelné a jaderné elektrárny',
           icon: 'steam',
           blocks: [
-            { type: 'p', text: 'Začněme elektrárnami, které vyrábějí páru. V **uhelné** elektrárně hoří hnědé uhlí, u nás hlavně ze severních Čech. **Paroplynová** elektrárna spaluje zemní plyn. V **jaderné** elektrárně dává teplo štěpení uranu (lekce f7-6). Dál je všechno stejné: pára, turbína, generátor. Liší se ale palivem a tím, co po sobě nechávají:' },
+            { type: 'p', text: 'Začněme elektrárnami, které vyrábějí páru. V **uhelné** elektrárně hoří hnědé uhlí, u nás hlavně ze severních Čech. **Paroplynová** elektrárna spaluje zemní plyn. V **jaderné** elektrárně dává teplo štěpení uranu (lekce „Atom, radioaktivita a jaderná energie“). Dál je všechno stejné: pára, turbína, generátor. Liší se ale palivem a tím, co po sobě nechávají:' },
             { type: 'compare', columns: [
               { title: '**Uhelná elektrárna**', icon: 'factory', tone: 'bad', points: ['palivo: hnědé uhlí', 'velké emise $CO2$, prachu a $SO2$', 'povrchové doly mění krajinu', 'běží stále, výkon se dá regulovat'] },
               { title: '**Jaderná elektrárna**', icon: 'radiation', tone: 'a', points: ['palivo: uran', 'provoz téměř bez emisí $CO2$', 'radioaktivní odpad, přísná bezpečnost', 'běží stále na stálý výkon'] },
@@ -774,13 +774,13 @@ const level: LevelContent = {
             { type: 'flipcards', cards: [
               { icon: 'drop', title: 'Vodní elektrárna', text: 'Voda padá z výšky a roztáčí turbínu: polohová → pohybová → elektrická energie. Účinnost až 90 %. U nás hlavně Vltavská kaskáda (Lipno, Orlík, Slapy).' },
               { icon: 'wind-turbine', title: 'Větrná elektrárna', text: 'Vítr roztáčí listy rotoru a generátor v gondole. Vyrábí jen tehdy, když fouká. U nás hlavně v Krušných horách a na Vysočině.' },
-              { icon: 'solar-panel', title: 'Fotovoltaická elektrárna', text: 'Solární články (lekce f6-6) mění světlo přímo na elektřinu s účinností asi 20 %. Vyrábějí jen ve dne a nejvíc v létě.' },
+              { icon: 'solar-panel', title: 'Fotovoltaická elektrárna', text: 'Solární články (lekce „Polovodiče a elektronika“) mění světlo přímo na elektřinu s účinností asi 20 %. Vyrábějí jen ve dne a nejvíc v létě.' },
               { icon: 'volcano', title: 'Geotermální elektrárna', text: 'Horká voda a pára z hlubin Země roztáčejí turbínu. Vyplatí se tam, kde je teplo blízko povrchu – na Islandu nebo v Itálii. U nás zatím skoro není.' },
               { icon: 'leaf', title: 'Biomasa a bioplyn', text: 'Spaluje se dřevo, sláma nebo bioplyn z odpadu a kukuřice. Je to tepelná elektrárna s obnovitelným palivem.' },
             ], caption: 'Klepni na kartu a přečti si, jak každý zdroj vyrábí elektřinu.' },
             { type: 'p', text: 'Výkon vodní elektrárny umíš odhadnout sám/sama. Stačí vědět, kolik vody proteče a z jaké výšky padá:' },
             { type: 'example', title: 'Výkon vodní elektrárny', problem: 'Turbínou vodní elektrárny proteče každou sekundu 20 m³ vody (20 000 kg) z výšky 30 m. Jaký největší výkon může elektrárna mít? (g = 10 N/kg)', steps: [
-              'Polohová energie vody, která proteče za 1 s: E_{p} = m · g · h (lekce f3-5)',
+              'Polohová energie vody, která proteče za 1 s: E_{p} = m · g · h (lekce „Mechanická energie“)',
               'E_{p} = 20 000 kg · 10 N/kg · 30 m = 6 000 000 J',
               'Výkon je energie za sekundu a tahle energie se uvolní právě za 1 s: P = E / t = 6 000 000 J / 1 s = 6 000 000 W = 6 MW',
             ], answer: 'Nejvýš 6 MW; při účinnosti 90 % dodá do sítě asi 5,4 MW.' },
@@ -1181,7 +1181,7 @@ const level: LevelContent = {
           title: 'Měsíc: fáze a příliv',
           icon: 'ocean',
           blocks: [
-            { type: 'p', text: 'Měsíc oběhne Zemi asi za měsíc – od úplňku k úplňku uplyne 29,5 dne. Sám nesvítí, jen odráží sluneční světlo. Podle toho, jakou část jeho osvětlené poloviny vidíme, se mění **fáze**: nov, první čtvrť, úplněk, poslední čtvrť (lekce f5-1).' },
+            { type: 'p', text: 'Měsíc oběhne Zemi asi za měsíc – od úplňku k úplňku uplyne 29,5 dne. Sám nesvítí, jen odráží sluneční světlo. Podle toho, jakou část jeho osvětlené poloviny vidíme, se mění **fáze**: nov, první čtvrť, úplněk, poslední čtvrť (lekce „Světlo a jeho šíření“).' },
             { type: 'p', text: 'Proč se fáze mění, pochopíš nejlíp, když se na Zemi a Měsíc podíváš shora:' },
             { type: 'diagram', id: 'moon-phases', caption: 'Měsíc obíhá Zemi a Slunce ho osvětluje vždy z jedné strany. Ze Země proto vidíme různě velkou část osvětlené poloviny.' },
             { type: 'p', text: 'Měsíc ale na Zemi nejen svítí. Svou gravitací přitahuje i oceány. Na straně Země blíž k Měsíci se voda vzduje – a druhé vzdutí vzniká na opačné straně Země. Země se pod nimi otáčí, a proto na pobřeží nastává **příliv a odliv** zhruba dvakrát denně (asi po 12 h 25 min).' },
@@ -1199,7 +1199,7 @@ const level: LevelContent = {
           title: 'Hvězdy: jak žijí a umírají',
           icon: 'star',
           blocks: [
-            { type: 'p', text: 'Slunce je jen jedna z miliard hvězd. Hvězda je obrovská koule plynu, ve které probíhá **jaderná syntéza** (lekce f7-6). Gravitace ji stlačuje, tlak horkého plynu ji rozpíná. Dokud jsou obě v rovnováze, hvězda svítí klidně – jako Slunce už 4,6 miliardy let.' },
+            { type: 'p', text: 'Slunce je jen jedna z miliard hvězd. Hvězda je obrovská koule plynu, ve které probíhá **jaderná syntéza** (lekce „Atom, radioaktivita a jaderná energie“). Gravitace ji stlačuje, tlak horkého plynu ji rozpíná. Dokud jsou obě v rovnováze, hvězda svítí klidně – jako Slunce už 4,6 miliardy let.' },
             { type: 'p', text: 'Jednou ale palivo dojde. Co se pak stane, záleží na hmotnosti hvězdy – obrázek ukazuje obě cesty:' },
             { type: 'diagram', id: 'star-life-cycle', caption: 'Život hvězd: z mlhoviny vznikne hvězda. Hvězda jako Slunce skončí jako bílý trpaslík, velmi hmotná hvězda výbuchem supernovy.' },
             { type: 'p', text: 'Projděme podrobněji cestu hvězdy, jako je naše Slunce:' },

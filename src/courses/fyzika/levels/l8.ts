@@ -44,7 +44,7 @@ const level: LevelContent = {
           title: 'Sčítání vektorů',
           icon: 'compass',
           blocks: [
-            { type: 'p', text: 'Vektory sčítáme **graficky**: začátek druhé šipky přiložíš na konec první (metoda „hlava–pata“). Výslednice vede od začátku první šipky ke konci poslední. Stejný výsledek dá **rovnoběžník**, jaký znáš ze skládání sil v lekci f2-4.' },
+            { type: 'p', text: 'Vektory sčítáme **graficky**: začátek druhé šipky přiložíš na konec první (metoda „hlava–pata“). Výslednice vede od začátku první šipky ke konci poslední. Stejný výsledek dá **rovnoběžník**, jaký znáš ze skládání sil v lekci „Skládání sil a rovnováha“.' },
             { type: 'forces', body: 'point', forces: [
               { label: 'v_{1} = 4 m/s', angle: 0, size: 4 },
               { label: 'v_{2} = 3 m/s', angle: 90, size: 3 },
@@ -258,7 +258,7 @@ const level: LevelContent = {
           title: 'Graf v–t: směrnice a plocha',
           icon: 'chart',
           blocks: [
-            { type: 'p', text: 'Při stálém zrychlení roste rychlost lineárně s časem – graf v–t je **přímka**. Její **směrnice** je zrychlení a **plocha pod grafem** je posunutí. To znáš z lekce f2-2, teď z toho odvodíme vzorce.' },
+            { type: 'p', text: 'Při stálém zrychlení roste rychlost lineárně s časem – graf v–t je **přímka**. Její **směrnice** je zrychlení a **plocha pod grafem** je posunutí. To znáš z lekce „Grafy pohybu“, teď z toho odvodíme vzorce.' },
             { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 7, step: 1 }, y: { label: 'v', unit: 'm/s', min: 0, max: 18, step: 2 }, series: [
               { label: 'cyklista na kopci dolů', points: [[0, 4], [6, 16]], area: true, tone: 'a' },
             ], marks: [{ x: 0, y: 4, label: 'v_{0} = 4 m/s' }, { x: 6, y: 16, label: 'v = 16 m/s' }], caption: 'Směrnice: (16 − 4) m/s / 6 s = 2 m/s^{2}. Vybarvená plocha (lichoběžník) je dráha 60 m.' },
@@ -431,7 +431,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Kladivo a pero na Měsíci padaly bez vzduchu, tedy volným pádem. **Volný pád** je pohyb tělesa puštěného z klidu, na které působí jen tíhová síla (odpor vzduchu zanedbáme). Galileo zjistil, že ==ve vakuu padají všechna tělesa se stejným zrychlením==, bez ohledu na hmotnost. Říkáme mu **tíhové zrychlení** g.' },
             { type: 'formula', text: 'g = 9,81 m/s^{2}', caption: 'tíhové zrychlení u povrchu Země ve střední zeměpisné šířce (v odhadech 10 m/s^{2})' },
-            { type: 'p', text: 'Volný pád je rovnoměrně zrychlený pohyb s v_{0} = 0 a a = g. Stačí dosadit do rovnic z lekce f8-2 (osu volíme směrem dolů):' },
+            { type: 'p', text: 'Volný pád je rovnoměrně zrychlený pohyb s v_{0} = 0 a a = g. Stačí dosadit do rovnic z lekce „Rovnoměrně zrychlený pohyb“ (osu volíme směrem dolů):' },
             { type: 'formula', text: 'v = g · t     h = ½ · g · t^{2}     v = √(2 · g · h)', caption: 'rychlost v čase t, uražená výška h a dopadová rychlost z výšky h' },
             { type: 'p', text: 'Jak rychle to narůstá? Podívej se na první tři sekundy pádu v grafu v–t:' },
             { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 3, step: 0.5 }, y: { label: 'v', unit: 'm/s', min: 0, max: 30, step: 5 }, series: [
@@ -454,7 +454,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Vyhodíš-li míč svisle vzhůru rychlostí v_{0}, tíhové zrychlení ho zpomaluje, až se v nejvyšším bodě na okamžik zastaví, a pak padá zpět. Osu zvolíme **nahoru**, zrychlení je proto −g.' },
             { type: 'formula', text: 'v = v_{0} − g · t     h = v_{0} · t − ½ · g · t^{2}', caption: 'svislý vrh vzhůru: rychlost a výška v čase t' },
-            { type: 'p', text: 'Nejvyšší bod poznáš podle toho, že je v něm rychlost nulová. Dosadíme tedy v = 0 do první rovnice a do vztahu v^{2} = v_{0}^{2} + 2 · a · s z lekce f8-2:' },
+            { type: 'p', text: 'Nejvyšší bod poznáš podle toho, že je v něm rychlost nulová. Dosadíme tedy v = 0 do první rovnice a do vztahu v^{2} = v_{0}^{2} + 2 · a · s z lekce „Rovnoměrně zrychlený pohyb“:' },
             { type: 'formula', text: 't_{h} = v_{0} / g     h_{max} = v_{0}^{2} / (2 · g)', caption: 'doba výstupu a maximální výška (v nejvyšším bodě je v = 0)' },
             { type: 'p', text: 'Celý let ukazuje graf v–t. Všimni si, že se přímka v nejvyšším bodě nezlomí, ale plynule projde nulou do záporných hodnot – míč začne padat:' },
             { type: 'graph', x: { label: 't', unit: 's', min: 0, max: 3.5, step: 0.5 }, y: { label: 'v', unit: 'm/s', min: -20, max: 20, step: 5 }, series: [
@@ -501,7 +501,7 @@ const level: LevelContent = {
             { type: 'graph', x: { label: 'x', unit: 'm', min: 0, max: 1.6, step: 0.2 }, y: { label: 'y', unit: 'm', min: 0, max: 1.4, step: 0.2 }, series: [
               { label: 'míček ze stolu, 3 m/s', style: 'smooth', points: [[0, 1.25], [0.25, 1.216], [0.5, 1.114], [0.75, 0.943], [1, 0.705], [1.25, 0.398], [1.51, 0]], tone: 'a' },
             ], marks: [{ x: 1.51, y: 0, label: 'dopad: d = 1,51 m' }], caption: 'Trajektorie vodorovného vrhu je polovina paraboly. Míček sjede ze stolu vysokého 1,25 m rychlostí 3,0 m/s.' },
-            { type: 'p', text: 'Teď spočítáme, kdy a kde míček dopadne. Rychlost při dopadu pak složíme z obou složek, stejně jako vektory v lekci f8-1.' },
+            { type: 'p', text: 'Teď spočítáme, kdy a kde míček dopadne. Rychlost při dopadu pak složíme z obou složek, stejně jako vektory v lekci „Veličiny, vektory a nejistoty“.' },
             { type: 'example', title: 'Míček ze stolu', problem: 'Pingpongový míček sjede z hrany stolu vysokého 1,25 m vodorovnou rychlostí 3,0 m/s. Kdy a kde dopadne a jakou rychlostí?', steps: [
               'Doba pádu (začínáme svislým pohybem, ten určuje čas): t = √(2 · h / g) = √(2 · 1,25 / 9,81) s = √0,255 s = 0,505 s',
               'Dolet: d = v_{0} · t = 3,0 m/s · 0,505 s = 1,51 m',
@@ -518,7 +518,7 @@ const level: LevelContent = {
           title: 'Šikmý vrh',
           icon: 'trophy',
           blocks: [
-            { type: 'p', text: 'Při **šikmém vrhu** má počáteční rychlost v_{0} úhel elevace α. Rozložíme ji na složky (lekce f8-1): vodorovná v_{0} · cos α zůstává stálá, svislá v_{0} · sin α se chová jako svislý vrh vzhůru.' },
+            { type: 'p', text: 'Při **šikmém vrhu** má počáteční rychlost v_{0} úhel elevace α. Rozložíme ji na složky (lekce „Veličiny, vektory a nejistoty“): vodorovná v_{0} · cos α zůstává stálá, svislá v_{0} · sin α se chová jako svislý vrh vzhůru.' },
             { type: 'formula', text: 'T = 2 · v_{0} · sin α / g     h_{max} = v_{0}^{2} · sin^{2} α / (2 · g)     d = v_{0}^{2} · sin 2α / g', caption: 'doba letu, maximální výška a dolet pro vrh z roviny do roviny bez odporu vzduchu' },
             { type: 'p', text: 'Jak dolet závisí na úhlu? Porovnej tři vrhy stejnou rychlostí 20 m/s:' },
             { type: 'graph', x: { label: 'x', unit: 'm', min: 0, max: 42, step: 5 }, y: { label: 'y', unit: 'm', min: 0, max: 16, step: 2 }, series: [
@@ -556,7 +556,7 @@ const level: LevelContent = {
               { icon: 'parachute', title: 'Parašutista', text: 'bez padáku asi 55 m/s, s padákem 5 m/s' },
               { icon: 'trophy', title: 'Oštěp a vrh koulí', text: 'nejlepší úhel je kvůli vzduchu a výšce odhodu menší než 45° (asi 35–42°)' },
             ] },
-            { type: 'callout', variant: 'fact', text: 'Golfové míčky mají důlky, které snižují odpor vzduchu a spolu s rotací míček nadnášejí. Hladký míček by doletěl asi o polovinu kratší vzdálenost. Mezní rychlost a odpor vzduchu spočítáš v lekci f8-5.' },
+            { type: 'callout', variant: 'fact', text: 'Golfové míčky mají důlky, které snižují odpor vzduchu a spolu s rotací míček nadnášejí. Hladký míček by doletěl asi o polovinu kratší vzdálenost. Mezní rychlost a odpor vzduchu spočítáš v lekci „Newtonovy zákony v praxi“.' },
             { type: 'p', text: 'Teď víš, jak tělesa padají a letí po parabole. V příští lekci přijde pohyb, při kterém se směr rychlosti mění bez ustání: pohyb po kružnici.' },
             { type: 'check', question: { kind: 'multi', q: 'Jak odpor vzduchu mění dráhu šikmo vrženého míče ve srovnání s vakuem?', options: ['dolet je kratší', 'nejvyšší bod je níž', 'sestupná část je strmější než výstupná', 'doba letu je vždy přesně stejná', 'dráha je pořád souměrná parabola'], answers: [0, 1, 2], explain: 'Odpor brzdí obě složky rychlosti. Dráha je kratší, nižší a nesouměrná – míč na konci padá strměji, protože už ztratil velkou část vodorovné rychlosti.' } },
           ],
@@ -782,7 +782,7 @@ const level: LevelContent = {
           title: 'Inerciální vztažná soustava',
           icon: 'compass',
           blocks: [
-            { type: 'p', text: 'Než začneme s váhou ve výtahu počítat, musíme si ujasnit, odkud se na pohyb díváme. První Newtonův zákon (zákon setrvačnosti) znáš z lekce f2-5: těleso, na které nepůsobí výsledná síla, zůstává v klidu nebo v rovnoměrném přímočarém pohybu. Neplatí ale z pohledu každého pozorovatele.' },
+            { type: 'p', text: 'Než začneme s váhou ve výtahu počítat, musíme si ujasnit, odkud se na pohyb díváme. První Newtonův zákon (zákon setrvačnosti) znáš z lekce „Newtonovy pohybové zákony“: těleso, na které nepůsobí výsledná síla, zůstává v klidu nebo v rovnoměrném přímočarém pohybu. Neplatí ale z pohledu každého pozorovatele.' },
             { type: 'keyterms', items: [
               { term: '**vztažná soustava**', def: 'těleso (a souřadnice s hodinami), vůči kterému pohyb popisujeme' },
               { term: '**inerciální soustava**', def: 'soustava, ve které platí zákon setrvačnosti; je v klidu nebo se pohybuje rovnoměrně přímočaře' },
@@ -827,7 +827,7 @@ const level: LevelContent = {
               'a = 41,1 / 20 m/s^{2} ≈ 2,1 m/s^{2}',
             ], answer: 'a ≈ 2,1 m/s^{2} ve směru tahu.' },
             { type: 'callout', variant: 'warning', text: 'Síla akce a reakce se v jednom silovém diagramu nikdy neobjeví obě. Působí na **různá** tělesa: bedna tlačí na podlahu, podlaha na bednu. Do diagramu bedny patří jen ta druhá.' },
-            { type: 'p', text: 'Tady síly mířily pěkně vodorovně a svisle. Na svahu tomu tak není, a tak si pomůžeme rozkladem do složek z lekce f8-1.' },
+            { type: 'p', text: 'Tady síly mířily pěkně vodorovně a svisle. Na svahu tomu tak není, a tak si pomůžeme rozkladem do složek z lekce „Veličiny, vektory a nejistoty“.' },
             { type: 'check', question: { kind: 'number', q: 'Auto o hmotnosti 1 200 kg má tažnou sílu motoru 3 000 N, proti pohybu působí odporové síly 600 N. Jaké má zrychlení?', answer: 2, tolerance: 0.05, unit: 'm/s²', explain: 'Výslednice F_{v} = 3 000 N − 600 N = 2 400 N; a = F_{v} / m = 2 400 / 1 200 m/s^{2} = 2,0 m/s^{2}.' } },
           ],
         },
@@ -1180,7 +1180,7 @@ const level: LevelContent = {
           title: 'Práce síly pod úhlem',
           icon: 'vector',
           blocks: [
-            { type: 'p', text: 'Horská dráha z úvodu je celá o přeměnách energie a energii přenáší práce. V lekci f3-4 jsi počítal/a práci jako W = F · s pro sílu ve směru pohybu. Obecně práci koná jen **složka síly ve směru posunutí**. Když síla svírá s posunutím úhel α, je to F · cos α.' },
+            { type: 'p', text: 'Horská dráha z úvodu je celá o přeměnách energie a energii přenáší práce. V lekci „Práce a výkon“ jsi počítal/a práci jako W = F · s pro sílu ve směru pohybu. Obecně práci koná jen **složka síly ve směru posunutí**. Když síla svírá s posunutím úhel α, je to F · cos α.' },
             { type: 'formula', text: 'W = F · s · cos α', caption: 'práce W (J) síly F (N) po dráze s (m); α = úhel mezi silou a posunutím' },
             { type: 'p', text: 'Podívej se na kufr, který táhneš za šikmou rukojeť:' },
             { type: 'forces', body: 'box', surface: 'ground', forces: [
@@ -1210,7 +1210,7 @@ const level: LevelContent = {
           title: 'Věta o práci a kinetické energii',
           icon: 'car',
           blocks: [
-            { type: 'p', text: 'Když na těleso působí výsledná síla F po dráze s, platí podle f8-2 v^{2} − v_{0}^{2} = 2 · a · s. Vynásobíme ½ · m a dosadíme m · a = F. Vyjde **věta o práci a kinetické energii**: práce výsledné síly se rovná změně kinetické energie.' },
+            { type: 'p', text: 'Když na těleso působí výsledná síla F po dráze s, platí podle lekce „Rovnoměrně zrychlený pohyb“ v^{2} − v_{0}^{2} = 2 · a · s. Vynásobíme ½ · m a dosadíme m · a = F. Vyjde **věta o práci a kinetické energii**: práce výsledné síly se rovná změně kinetické energie.' },
             { type: 'formula', text: 'W = ΔE_{k} = ½ · m · v^{2} − ½ · m · v_{0}^{2}', caption: 'práce výslednice všech sil (J) = změna kinetické energie tělesa (J)' },
             { type: 'p', text: 'Kolik kinetické energie má jedoucí auto? Podívej se, jak rychle roste s rychlostí:' },
             { type: 'graph', x: { label: 'v', unit: 'm/s', min: 0, max: 40, step: 5 }, y: { label: 'E_{k}', unit: 'kJ', min: 0, max: 1000, step: 100 }, series: [
@@ -1244,7 +1244,7 @@ const level: LevelContent = {
               '½ · m · v^{2} = 25 J → v = √(2 · 25 / 0,050) m/s',
               'v = √1 000 m/s ≈ 31,6 m/s',
             ], answer: 'Kamínek vyletí asi 32 m/s (114 km/h). Míř jen na plechovky.' },
-            { type: 'callout', variant: 'tip', text: 'Hookův zákon platí jen v oblasti pružné deformace. Přetažená pružina se trvale deformuje a graf F–x přestane být přímkou – podrobněji v lekci f10-6 o pevných látkách.' },
+            { type: 'callout', variant: 'tip', text: 'Hookův zákon platí jen v oblasti pružné deformace. Přetažená pružina se trvale deformuje a graf F–x přestane být přímkou – podrobněji v lekci „Pevné látky a kapaliny“ o pevných látkách.' },
             { type: 'callout', variant: 'warning', text: 'Dvojnásobné natažení = čtyřnásobná energie (x^{2}). Proto jsou přetažené gumy, luky a pružiny nebezpečné a při prasknutí mohou vážně zranit.' },
             { type: 'p', text: 'Teď znáš všechny formy mechanické energie. Zbývá je spojit do jednoho zákona a započítat i tření.' },
             { type: 'check', question: { kind: 'number', q: 'Pružina s tuhostí 200 N/m je stlačená o 10 cm. Kolik energie je v ní uloženo?', answer: 1, tolerance: 0.01, unit: 'J', explain: 'E_{p} = ½ · k · x^{2} = ½ · 200 · 0,10^{2} J = 1,0 J.' } },

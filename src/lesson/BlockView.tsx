@@ -16,6 +16,7 @@ import { MoleculeView } from '../illustrations/molecules/MoleculeView'
 import { ParticleScene } from '../illustrations/particles/ParticleScene'
 import { ReactionView } from '../illustrations/particles/ReactionView'
 import { CircuitView, ForcesView, GraphView, RaysView, WaveView } from '../illustrations/physics'
+import { ExperimentBlock } from './experiments/ExperimentBlock'
 import './blocks.css'
 
 const CALLOUT: Record<CalloutVariant, { icon: IconName; label: string }> = {
@@ -320,6 +321,8 @@ export function BlockView({
           <QuestionView question={block.question} onAnswered={onCheck} compact />
         </div>
       )
+    case 'experiment':
+      return <ExperimentBlock id={block.id} caption={block.caption} />
     case 'game': {
       const g = GAME_BY_ID[block.gameId]
       if (!g || !g.courses[courseId]) return null // game not (yet) available in this course

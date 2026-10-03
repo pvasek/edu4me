@@ -427,3 +427,26 @@ figcaption {
 .replay-btn:active {
   transform: rotate(-90deg);
 }
+
+/* in-lesson micro-experiment */
+.b-experiment {
+  border-style: dashed;
+  border-color: var(--level, var(--accent));
+}
+.b-experiment-tag {
+  justify-self: start;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font: 800 12px var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--level, var(--accent));
+}
+.b-experiment-tag svg {
+  width: 15px;
+  height: 15px;
+}
+.b-experiment-loading {
+  min-height: 220px;
+}

@@ -247,7 +247,7 @@ const level: LevelContent = {
           title: 'Kruhová rychlost družice',
           icon: 'satellite',
           blocks: [
-            { type: 'p', text: 'Z lekce o pohybu po kružnici (f8-4) víš, že těleso obíhá po kružnici jen tehdy, když na něj působí **dostředivá síla** F_{d} = m · v^{2} / r. U družice tuto roli hraje gravitační síla Země.' },
+            { type: 'p', text: 'Z lekce o pohybu po kružnici (lekce „Pohyb po kružnici“) víš, že těleso obíhá po kružnici jen tehdy, když na něj působí **dostředivá síla** F_{d} = m · v^{2} / r. U družice tuto roli hraje gravitační síla Země.' },
             { type: 'forces', body: 'satellite', surface: 'none', forces: [
               { label: 'F_{g} = F_{d}', angle: 270, size: 4 },
             ], caption: 'Jediná síla na družici, gravitační, míří do středu Země a slouží jako dostředivá síla.' },
@@ -280,7 +280,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Odpověď dal už Newton myšlenkovým pokusem. Představ si dělo na vysoké hoře, které střílí vodorovně. Pomalá koule spadne kousek od hory, rychlejší dál. Při určité rychlosti koule „padá“ přesně tak, jak se pod ní zakřivuje povrch Země, a obletí ji dokola.' },
             { type: 'process', layout: 'flow', steps: [
-              { icon: 'mountain', title: 'v < 7,9 km/s', text: 'koule spadne zpět na Zemi (vrh, lekce f8-3)' },
+              { icon: 'mountain', title: 'v < 7,9 km/s', text: 'koule spadne zpět na Zemi (vrh, lekce „Volný pád a vrhy“)' },
               { icon: 'orbit', title: 'v = 7,9 km/s', text: 'první kosmická rychlost: kruhová dráha těsně nad povrchem' },
               { icon: 'satellite', title: '7,9–11,2 km/s', text: 'eliptická dráha, Země je v ohnisku' },
               { icon: 'rocket', title: 'v ≥ 11,2 km/s', text: 'druhá kosmická (úniková) rychlost: těleso opustí Zemi navždy' },
@@ -613,7 +613,7 @@ const level: LevelContent = {
               ['zrychlení a (m/s^{2})', 'úhlové zrychlení ε (rad/s^{2})', 'a_{t} = ε · r'],
               ['v = v_{0} + a · t', 'ω = ω_{0} + ε · t', ''],
               ['s = v_{0} · t + ½ · a · t^{2}', 'φ = ω_{0} · t + ½ · ε · t^{2}', ''],
-            ], caption: 'Otáčivý pohyb má stejné rovnice jako posuvný, jen s úhlovými veličinami. Úhlovou rychlost znáš z lekce f8-4.' },
+            ], caption: 'Otáčivý pohyb má stejné rovnice jako posuvný, jen s úhlovými veličinami. Úhlovou rychlost znáš z lekce „Pohyb po kružnici“.' },
             { type: 'p', text: 'Nově je tu úhlové zrychlení. Udává, jak rychle se mění úhlová rychlost, stejně jako zrychlení u obyčejné rychlosti:' },
             { type: 'formula', text: 'ε = Δω / Δt', caption: 'úhlové zrychlení ε (rad/s^{2}): o kolik rad/s se změní úhlová rychlost za 1 s' },
             { type: 'callout', variant: 'warning', title: 'Otáčky na radiány', text: 'Výrobci udávají otáčky za minutu. Do vzorců ale dosazuj ω v rad/s: ω = 2π · f, kde f je v otáčkách za sekundu. Tedy 1 ot/min = 2π / 60 rad/s ≈ 0,105 rad/s.' },

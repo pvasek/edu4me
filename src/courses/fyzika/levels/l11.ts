@@ -27,7 +27,7 @@ const level: LevelContent = {
           title: 'Coulombův zákon',
           icon: 'ion-plus',
           blocks: [
-            { type: 'p', text: 'V lekci f6-1 jsi viděl/a, že souhlasné náboje se odpuzují a nesouhlasné přitahují. Francouz Charles Coulomb v roce 1785 změřil torzními vahami, **jak velká** ta síla je. Zjistil, že roste se součinem nábojů a klesá s druhou mocninou vzdálenosti.' },
+            { type: 'p', text: 'V lekci „Elektrický náboj a elektrické pole“ jsi viděl/a, že souhlasné náboje se odpuzují a nesouhlasné přitahují. Francouz Charles Coulomb v roce 1785 změřil torzními vahami, **jak velká** ta síla je. Zjistil, že roste se součinem nábojů a klesá s druhou mocninou vzdálenosti.' },
             { type: 'formula', text: 'F_{e} = k · |Q_{1}| · |Q_{2}| / r^{2}', caption: 'Coulombův zákon: F_{e} elektrická síla (N), Q_{1}, Q_{2} bodové náboje (C), r jejich vzdálenost (m), k = 9 · 10^{9} N·m^{2}/C^{2}' },
             { type: 'p', text: 'Konstanta k se často zapisuje pomocí **permitivity vakua** ε_{0}. Když jsou náboje v jiném prostředí (voda, olej, plast), síla je ε_{r}krát menší; ε_{r} je **relativní permitivita** prostředí.' },
             { type: 'formula', text: 'k = 1 / (4π · ε_{0}),   ε_{0} = 8,85 · 10^{−12} C^{2}/(N·m^{2})', caption: 've vodě (ε_{r} ≈ 81) je síla mezi ionty 81krát slabší – proto se v ní sůl rozpouští' },
@@ -69,7 +69,7 @@ const level: LevelContent = {
               'F = e · E = 1,6 · 10^{−19} C · 4 500 N/C = 7,2 · 10^{−16} N',
               'Kulička je kladná, pole míří od ní; elektron je záporný, takže síla na něj míří **proti** směru pole – ke kuličce.',
             ], answer: 'E = 4 500 N/C, na elektron působí síla 7,2 · 10^{−16} N směrem ke kuličce.' },
-            { type: 'callout', variant: 'fact', text: 'Suchý vzduch vydrží intenzitu asi 3 · 10^{6} V/m. Silnější pole z molekul vytrhává elektrony, vzduch začne vést a přeskočí jiskra. Tuhle **elektrickou pevnost** vzduchu potkáš znovu u blesku v lekci f11-4.' },
+            { type: 'callout', variant: 'fact', text: 'Suchý vzduch vydrží intenzitu asi 3 · 10^{6} V/m. Silnější pole z molekul vytrhává elektrony, vzduch začne vést a přeskočí jiskra. Tuhle **elektrickou pevnost** vzduchu potkáš znovu u blesku v lekci „Proud v polovodičích, kapalinách a plynech“.' },
             { type: 'p', text: 'Intenzita popisuje pole pomocí síly. Když se ale náboj v poli pohybuje, hodí se jiný popis – přes práci a energii. Vede k potenciálu a napětí.' },
             { type: 'check', question: { kind: 'choice', q: 'Kterým směrem míří intenzita elektrického pole v okolí záporného bodového náboje?', options: ['k náboji', 'od náboje', 'kolmo k přímce vedoucí k náboji', 'záleží na velikosti zkušebního náboje'], answer: 0, explain: 'Směr intenzity je směr síly na kladný zkušební náboj. Záporný náboj kladný náboj přitahuje, takže siločáry míří do něj.' } },
           ],
@@ -130,7 +130,7 @@ const level: LevelContent = {
           title: 'Elektrické a gravitační pole',
           icon: 'planet',
           blocks: [
-            { type: 'p', text: 'V lekci f9-1 jsi poznal/a gravitační pole. Elektrické pole se popisuje úplně stejnými pojmy – jen místo hmotnosti je zdrojem náboj. Co ses naučil/a tam, můžeš použít tady.' },
+            { type: 'p', text: 'V lekci „Gravitační pole“ jsi poznal/a gravitační pole. Elektrické pole se popisuje úplně stejnými pojmy – jen místo hmotnosti je zdrojem náboj. Co ses naučil/a tam, můžeš použít tady.' },
             { type: 'table', headers: ['', 'Gravitační pole', 'Elektrické pole'], rows: [
               ['zdroj', 'hmotnost m', 'náboj Q'],
               ['síla', 'F_{g} = G · m_{1} · m_{2} / r^{2}', 'F_{e} = k · Q_{1} · Q_{2} / r^{2}'],
@@ -682,7 +682,7 @@ const level: LevelContent = {
               'Rezistorem teče stejný proud jako LED: I = 0,015 A.',
               'R = U_{R} / I = 3,0 V / 0,015 A = 200 Ω',
             ], answer: 'R = 200 Ω (v praxi nejbližší vyšší řadová hodnota, třeba 220 Ω).' },
-            { type: 'callout', variant: 'tip', text: 'Čtyři diody v můstku z obou půlvln střídavého napětí udělají napětí jednoho směru. Takový **usměrňovač** je v každé nabíječce – přesněji v lekci f11-7.' },
+            { type: 'callout', variant: 'tip', text: 'Čtyři diody v můstku z obou půlvln střídavého napětí udělají napětí jednoho směru. Takový **usměrňovač** je v každé nabíječce – přesněji v lekci „Střídavý proud a elektromagnetické vlny“.' },
             { type: 'p', text: 'Dioda tedy pouští proud jen jedním směrem a LED potřebuje předřadný rezistor. Proč ale LED vůbec svítí – a co dalšího přechod PN dokáže?' },
             { type: 'check', question: { kind: 'number', q: 'Modrá LED potřebuje 3 V a 20 mA. Jaký předřadný rezistor potřebuješ při napájení z 9 V baterie?', answer: 300, tolerance: 2, unit: 'Ω', explain: 'U_{R} = 9 V − 3 V = 6 V; R = 6 V / 0,02 A = 300 Ω.' } },
           ],
@@ -765,7 +765,7 @@ const level: LevelContent = {
               { icon: 'wind', title: 'Koróna', text: 'tichý výboj u hrotů a vodičů vysokého napětí – bzučení pod dráty VVN' },
             ] },
             { type: 'callout', variant: 'fact', text: 'Plně ionizovaný plyn je **plazma** – čtvrté skupenství. Je z něj Slunce a hvězdy, polární záře i náplň fúzních reaktorů. Ve vesmíru je plazma nejběžnějším stavem viditelné hmoty.' },
-            { type: 'callout', variant: 'warning', text: 'Blesk si hledá nejkratší cestu k zemi. Při bouřce se vyhni vyvýšeným místům, osamělým stromům a vodě; bezpečné je auto nebo budova s hromosvodem (Faradayova klec z lekce f11-1).' },
+            { type: 'callout', variant: 'warning', text: 'Blesk si hledá nejkratší cestu k zemi. Při bouřce se vyhni vyvýšeným místům, osamělým stromům a vodě; bezpečné je auto nebo budova s hromosvodem (Faradayova klec z lekce „Elektrické pole“).' },
             { type: 'p', text: 'Teď víš, jak vede proud kov, polovodič, elektrolyt i plyn. Pohybující se náboje ale kolem sebe vytvářejí ještě jedno pole – magnetické. To je téma další lekce.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď druh výboje k příkladu.', pairs: [
               ['jiskrový výboj', 'blesk'],
@@ -817,7 +817,7 @@ const level: LevelContent = {
           title: 'Magnetická indukce',
           icon: 'magnet',
           blocks: [
-            { type: 'p', text: 'V lekcích f7-1 a f7-2 jsi poznal/a, že magnetické pole vytváří magnet i vodič s proudem a že v poli působí síla na vodič s proudem. Teď pole popíšeme číslem. Hlavní veličinou je **magnetická indukce** B: vektor ve směru, kam ukazuje severní pól magnetky, s jednotkou **tesla** (T).' },
+            { type: 'p', text: 'V lekcích „Magnetické pole elektrického proudu“ a „Elektromotor“ jsi poznal/a, že magnetické pole vytváří magnet i vodič s proudem a že v poli působí síla na vodič s proudem. Teď pole popíšeme číslem. Hlavní veličinou je **magnetická indukce** B: vektor ve směru, kam ukazuje severní pól magnetky, s jednotkou **tesla** (T).' },
             { type: 'diagram', id: 'magnet-field', caption: 'Indukční čáry tyčového magnetu: vycházejí ze severního pólu a vstupují do jižního, uvnitř magnetu pokračují – jsou vždy uzavřené.' },
             { type: 'p', text: 'Z obrázku si odnes čtyři vlastnosti indukčních čar:' },
             { type: 'list', items: [
@@ -870,7 +870,7 @@ const level: LevelContent = {
             { type: 'formula', text: 'F_{m} = B · Q · v · sin α', caption: 'α je úhel mezi rychlostí v a indukcí B; síla je kolmá na obě' },
             { type: 'p', text: 'Jak se taková částice pohybuje? Na obrázku letí kladná částice kolmo k poli:' },
             { type: 'diagram', id: 'lorentz-force', caption: 'Kladná částice v magnetickém poli: F, B a v jsou navzájem kolmé. Protože síla je stále kolmá na rychlost, částice obíhá po kružnici.' },
-            { type: 'p', text: 'Tady je odpověď na otázku z úvodu. Síla kolmá na rychlost **nekoná práci**: nemění velikost rychlosti ani kinetickou energii, jen směr. Působí jako dostředivá síla (lekce f8-4). Z rovnosti B · Q · v = m · v^{2} / r plyne poloměr dráhy.' },
+            { type: 'p', text: 'Tady je odpověď na otázku z úvodu. Síla kolmá na rychlost **nekoná práci**: nemění velikost rychlosti ani kinetickou energii, jen směr. Působí jako dostředivá síla (lekce „Pohyb po kružnici“). Z rovnosti B · Q · v = m · v^{2} / r plyne poloměr dráhy.' },
             { type: 'forces', body: 'point', surface: 'none', forces: [
               { label: 'v', angle: 0, size: 3, tone: 'b' },
               { label: 'F_{m}', angle: 90, size: 2.5, tone: 'a' },
@@ -892,7 +892,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Poloměr r = m · v / (Q · B) závisí na hmotnosti. Když stejně nabité ionty urychlíš stejným napětím a pošleš do magnetického pole, těžší opíšou větší oblouk. To je princip **hmotnostního spektrometru**.' },
             { type: 'diagram', id: 'mass-spectrometer', caption: 'Hmotnostní spektrometr: zdroj iontů, urychlovací napětí, magnetické pole zakřiví dráhu podle hmotnosti, detektor zaznamená, kam ionty dopadly.' },
-            { type: 'p', text: 'Jak velký oblouk proton opíše? Nejdřív musíme z urychlovacího napětí zjistit jeho rychlost – to umíme z lekce f11-1.' },
+            { type: 'p', text: 'Jak velký oblouk proton opíše? Nejdřív musíme z urychlovacího napětí zjistit jeho rychlost – to umíme z lekce „Elektrické pole“.' },
             { type: 'example', title: 'Proton ve spektrometru', problem: 'Proton urychlíme z klidu napětím 2 000 V a pošleme kolmo do pole 0,1 T. Jaký je poloměr jeho dráhy? (m_{p} = 1,67 · 10^{−27} kg)', steps: [
               'Kinetická energie se rovná práci pole: ½ · m · v^{2} = e · U, tedy v = √(2 · e · U / m)',
               'v = √(2 · 1,6 · 10^{−19} · 2 000 / 1,67 · 10^{−27}) m/s ≈ 6,2 · 10^{5} m/s',
@@ -905,7 +905,7 @@ const level: LevelContent = {
               { icon: 'earth', title: 'Polární záře', text: 'nabité částice ze Slunce se šroubovitě navíjejí na indukční čáry Země a u pólů narážejí do atmosféry' },
               { icon: 'satellite', title: 'Van Allenovy pásy', text: 'magnetické pole Země zachytává nabité částice v pásech kolem planety a chrání tak život na povrchu' },
             ] },
-            { type: 'callout', variant: 'fact', text: 'Kyslík v atmosféře září při polární záři zeleně (ve výšce asi 100–200 km) a červeně (výš), dusík fialově. Barvy jsou „podpisy“ energetických hladin – podrobněji v lekci f12-5.' },
+            { type: 'callout', variant: 'fact', text: 'Kyslík v atmosféře září při polární záři zeleně (ve výšce asi 100–200 km) a červeně (výš), dusík fialově. Barvy jsou „podpisy“ energetických hladin – podrobněji v lekci „Atom a jeho spektra“.' },
             { type: 'p', text: 'Dosud jsme magnetické pole brali jako hotové. Odkud se ale bere a jak silné je kolem vodiče nebo v cívce?' },
             { type: 'check', question: { kind: 'number', q: 'Ionty $^{12}C^{+}$ a $^{14}C^{+}$ urychlíme stejným napětím a pošleme do stejného pole. Kolikrát větší poloměr má dráha iontu $^{14}C^{+}$?', answer: 1.08, tolerance: 0.01, unit: '×', explain: 'Po urychlení je m · v = √(2 · m · Q · U), takže r = √(2 · m · U / Q) / B je úměrný √m. Poměr √(14/12) ≈ 1,08.' } },
           ],
@@ -914,7 +914,7 @@ const level: LevelContent = {
           title: 'Pole vodiče a cívky',
           icon: 'coil',
           blocks: [
-            { type: 'p', text: 'Kolem přímého vodiče s proudem tvoří indukční čáry soustředné kružnice (Oerstedův pokus, f7-1). Směr určíš **Ampérovým pravidlem pravé ruky**: palec po směru proudu, prsty ukazují směr indukčních čar. Velikost B klesá se vzdáleností d od vodiče.' },
+            { type: 'p', text: 'Kolem přímého vodiče s proudem tvoří indukční čáry soustředné kružnice (Oerstedův pokus, lekce „Magnetické pole elektrického proudu“). Směr určíš **Ampérovým pravidlem pravé ruky**: palec po směru proudu, prsty ukazují směr indukčních čar. Velikost B klesá se vzdáleností d od vodiče.' },
             { type: 'formula', text: 'B = μ_{0} · I / (2π · d)', caption: 'pole dlouhého přímého vodiče; μ_{0} = 4π · 10^{−7} T·m/A je permeabilita vakua' },
             { type: 'p', text: 'Jak rychle pole se vzdáleností slábne, ukazuje graf pro proud 10 A. Pozor na rozdíl oproti bodovému náboji: B klesá jen s 1/d, ne s 1/d^{2}.' },
             { type: 'graph', x: { label: 'd', unit: 'cm', min: 0, max: 10, step: 2 }, y: { label: 'B', unit: 'µT', min: 0, max: 200, step: 50 }, series: [
@@ -1001,7 +1001,7 @@ const level: LevelContent = {
           title: 'Magnetický indukční tok',
           icon: 'magnet',
           blocks: [
-            { type: 'p', text: 'Jak přesně se z měnícího pole stane napětí? V lekci f7-3 jsi viděl/a, že napětí se v cívce indukuje, když se mění magnetické pole, které jí prochází. Abychom to mohli spočítat, potřebujeme veličinu, která říká, **kolik pole prochází plochou závitu**. Je to **magnetický indukční tok** Φ.' },
+            { type: 'p', text: 'Jak přesně se z měnícího pole stane napětí? V lekci „Elektromagnetická indukce“ jsi viděl/a, že napětí se v cívce indukuje, když se mění magnetické pole, které jí prochází. Abychom to mohli spočítat, potřebujeme veličinu, která říká, **kolik pole prochází plochou závitu**. Je to **magnetický indukční tok** Φ.' },
             { type: 'formula', text: 'Φ = B · S · cos α', caption: 'Φ ve weberech (Wb = T·m^{2}); S plocha závitu (m^{2}); α úhel mezi vektorem B a kolmicí (normálou) k ploše' },
             { type: 'p', text: 'Tok si můžeš představit jako počet indukčních čar, které projdou závitem. Když je závit kolmo k čarám (α = 0°), prochází jich nejvíc. Když ho natočíš „bokem“ (α = 90°), neprojde žádná.' },
             { type: 'graph', x: { label: 'α', unit: '°', min: 0, max: 180, step: 30 }, y: { label: 'Φ', unit: 'mWb', min: -10, max: 10, step: 5 }, series: [
@@ -1065,7 +1065,7 @@ const level: LevelContent = {
             ], answer: 'Asi 0,6 V – změřit ho ale nejde, voltmetr na palubě se pohybuje s letadlem a indukuje se i v jeho přívodech.' },
             { type: 'p', text: 'Napětí na křídlech je spíš kuriozita. Jinde ale pohybující se vodič v poli dělá užitečnou práci:' },
             { type: 'iconlist', items: [
-              { icon: 'motor', title: 'Dynamo a generátor', text: 'vodiče cívky se pohybují v poli magnetu – podrobně v lekci f11-7' },
+              { icon: 'motor', title: 'Dynamo a generátor', text: 'vodiče cívky se pohybují v poli magnetu – podrobně v lekci „Střídavý proud a elektromagnetické vlny“' },
               { icon: 'water-tap', title: 'Průtokoměr', text: 'vodivá kapalina v trubce protéká polem jako „pohybující se vodič“; napětí prozradí rychlost toku' },
               { icon: 'ear', title: 'Dynamický mikrofon', text: 'zvuk rozkmitá membránu s cívkou v poli magnetu a indukuje se napětí' },
             ] },
@@ -1191,7 +1191,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Odkud se bere napětí, které pořád mění znaménko? Vyrábí ho cívka, která se otáčí v magnetickém poli. Cívka o N závitech plochy S se otáčí úhlovou rychlostí ω v homogenním poli B. Úhel mezi normálou a polem roste rovnoměrně, α = ω · t, takže tok Φ = B · S · cos ωt se mění pořád. Podle Faradayova zákona se indukuje napětí, které se mění **sinusově**.' },
             { type: 'diagram', id: 'generator', caption: 'Alternátor: cívka se otáčí mezi póly magnetu, sběrací kroužky odvádějí střídavé napětí. V elektrárně se naopak točí magnet (rotor) uvnitř pevných cívek.' },
-            { type: 'p', text: 'Sinusové napětí popisujeme stejně jako harmonické kmitání v lekci f9-5 – amplitudou a úhlovou frekvencí:' },
+            { type: 'p', text: 'Sinusové napětí popisujeme stejně jako harmonické kmitání v lekci „Mechanické kmitání“ – amplitudou a úhlovou frekvencí:' },
             { type: 'formula', text: 'u = U_{m} · sin(ω · t),   ω = 2π · f = 2π / T', caption: 'okamžité napětí u, amplituda (maximální hodnota) U_{m}, úhlová frekvence ω (rad/s), frekvence f (Hz), perioda T (s)' },
             { type: 'p', text: 'Jak velká bude amplituda? Z Faradayova zákona plyne, že roste se vším, co změnu toku zrychlí nebo zvětší:' },
             { type: 'formula', text: 'U_{m} = N · B · S · ω', caption: 'amplituda napětí generátoru: roste s počtem závitů, polem, plochou a rychlostí otáčení' },
@@ -1286,7 +1286,7 @@ const level: LevelContent = {
               'V rezonanci Z = R = 20 Ω, I = 10 V / 20 Ω = 0,5 A',
             ], answer: 'Při 50 Hz teče jen 35 mA, v rezonanci při 159 Hz celých 0,5 A.' },
             { type: 'p', text: 'Stačilo změnit frekvenci a proud vzrostl čtrnáctkrát, přestože součástky zůstaly stejné. V tom je síla rezonance.' },
-            { type: 'callout', variant: 'fact', text: 'Tak se ladí rádio: otočný kondenzátor mění C, a tím f_{0}. Z tisíců vysílačů v anténě „rezonuje“ jen ten, jehož frekvence se shoduje s f_{0}. Stejný princip má rezonance u kyvadla a houpačky (lekce f9-5).' },
+            { type: 'callout', variant: 'fact', text: 'Tak se ladí rádio: otočný kondenzátor mění C, a tím f_{0}. Z tisíců vysílačů v anténě „rezonuje“ jen ten, jehož frekvence se shoduje s f_{0}. Stejný princip má rezonance u kyvadla a houpačky (lekce „Mechanické kmitání“).' },
             { type: 'p', text: 'Rezonance vybírá jednu frekvenci. Pro rozvod elektřiny je ale důležitější jiná výhoda střídavého proudu: jeho napětí se dá snadno měnit.' },
             { type: 'check', question: { kind: 'number', q: 'Jaká je rezonanční frekvence obvodu s cívkou 1 mH a kondenzátorem 1 nF? Odpověz v kHz.', answer: 159, tolerance: 2, unit: 'kHz', explain: '√(L · C) = √(10^{−3} · 10^{−9}) s = 10^{−6} s; f_{0} = 1 / (2π · 10^{−6}) Hz ≈ 159 000 Hz = 159 kHz.' } },
           ],
@@ -1295,7 +1295,7 @@ const level: LevelContent = {
           title: 'Transformátor a přenos energie',
           icon: 'factory',
           blocks: [
-            { type: 'p', text: 'Transformátor jsi poznal/a v lekci f7-4: dvě cívky na společném železném jádře. Střídavý proud v primární cívce vytváří měnící se tok, který prochází i sekundární cívkou a indukuje v ní napětí. U ideálního transformátoru se neztrácí žádný výkon.' },
+            { type: 'p', text: 'Transformátor jsi poznal/a v lekci „Střídavý proud a transformátor“: dvě cívky na společném železném jádře. Střídavý proud v primární cívce vytváří měnící se tok, který prochází i sekundární cívkou a indukuje v ní napětí. U ideálního transformátoru se neztrácí žádný výkon.' },
             { type: 'diagram', id: 'transformer', caption: 'Primární a sekundární cívka na uzavřeném jádře z plechů. Napětí se transformuje v poměru počtu závitů.' },
             { type: 'p', text: 'Každým závitem obou cívek prochází stejný měnící se tok, takže se v každém indukuje stejné napětí. Napětí cívek jsou proto v poměru jejich počtu závitů:' },
             { type: 'formula', text: 'U_{2} / U_{1} = N_{2} / N_{1} = I_{1} / I_{2}', caption: 'transformační poměr k = N_{2} / N_{1}; poslední rovnost plyne z U_{1} · I_{1} = U_{2} · I_{2} (ideální transformátor)' },
@@ -1323,7 +1323,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Čím větší L a C, tím déle trvá, než se energie přelije, a tím delší je perioda:' },
             { type: 'formula', text: 'T = 2π · √(L · C)', caption: 'Thomsonův vztah: perioda vlastních kmitů oscilačního obvodu LC; skutečné kmity jsou kvůli odporu tlumené' },
             { type: 'p', text: 'Vzorec ti možná připomíná pružinu. Není to náhoda – oscilátor LC je přesnou obdobou pružinového, jen s jinými veličinami:' },
-            { type: 'table', headers: ['Pružinový oscilátor (f9-5)', 'Oscilační obvod LC'], rows: [
+            { type: 'table', headers: ['Pružinový oscilátor (lekce „Mechanické kmitání“)', 'Oscilační obvod LC'], rows: [
               ['výchylka x', 'náboj kondenzátoru Q'],
               ['rychlost v', 'proud I'],
               ['hmotnost m (setrvačnost)', 'indukčnost L'],
@@ -1334,7 +1334,7 @@ const level: LevelContent = {
             ], caption: 'Elektromagnetický oscilátor je přesnou obdobou mechanického.' },
             { type: 'p', text: 'Když desky kondenzátoru rozevřeš až do přímého drátu, vznikne **anténa (dipól)**. Pole už není uzavřené uvnitř obvodu, ale odtrhává se do prostoru. Maxwell předpověděl, že měnící se elektrické pole vytváří magnetické a naopak, takže se pole šíří jako **elektromagnetická vlna** rychlostí světla. Heinrich Hertz ji v roce 1887 poprvé vyrobil a zachytil.' },
             { type: 'diagram', id: 'em-wave', caption: 'Elektromagnetická vlna: vektory E a B kmitají kolmo na sebe a kolmo na směr šíření. Vlna nepotřebuje žádné prostředí, šíří se i vakuem.' },
-            { type: 'p', text: 'Pro vlnu platí stejný vztah mezi rychlostí, vlnovou délkou a frekvencí jako u vln mechanických (lekce f9-6):' },
+            { type: 'p', text: 'Pro vlnu platí stejný vztah mezi rychlostí, vlnovou délkou a frekvencí jako u vln mechanických (lekce „Mechanické vlnění“):' },
             { type: 'formula', text: 'c = λ · f,   c = 3 · 10^{8} m/s', caption: 've vakuu se všechny elektromagnetické vlny šíří rychlostí světla c' },
             { type: 'p', text: 'Spočítejme, jak dlouhá je vlna FM rádia a jak naladit obvod, který ji přijme.' },
             { type: 'example', title: 'Rádio FM', problem: 'Stanice vysílá na 100 MHz. Jaká je vlnová délka, jak dlouhá je půlvlnná anténa a jakou kapacitu musí mít kondenzátor oscilačního obvodu s cívkou 0,1 µH?', steps: [
