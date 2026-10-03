@@ -24,5 +24,7 @@ export const EXPERIMENTS = [
   'glucose-insulin',
   'population-growth',
   'predator-prey',
+  'body-temperature',
+  'coral-bleaching',
 ] as const
 export type ExperimentId = (typeof EXPERIMENTS)[number]

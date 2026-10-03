@@ -111,6 +111,9 @@ export const FIGURES = [
   'chromosome-karyotype', 'punnett-peas', 'blood-group-inheritance', 'sex-linkage', 'natural-selection-moth', 'artificial-selection', 'geological-timescale', 'fossil-formation', 'earth-layers', 'plate-boundaries', 'rock-cycle', 'soil-profile', 'water-cycle', 'food-web', 'energy-pyramid', 'succession', 'organelles-detail', 'endosymbiosis', 'membrane-transport', 'osmosis-cells', 'mitosis-meiosis', 'chloroplast-reactions',
   // levels 10–12
   'dna-replication', 'genetic-code-wheel', 'lac-operon', 'stem-cells', 'cancer-cell-cycle', 'dihybrid-cross', 'pcr-electrophoresis', 'crispr', 'homeostasis-feedback', 'oxygen-dissociation', 'nephron', 'synapse', 'sarcomere', 'immune-response', 'xylem-phloem', 'tropisms', 'cladogram', 'speciation', 'hominin-timeline', 'biomes',
+  // extra figures for levels 1–3 (bz5) and 4–7 (bz6)
+  'life-signs', 'microscope-history', 'wet-mount', 'size-scale', 'virus-structure', 'malaria-cycle', 'root-tip', 'conifers', 'celery-transpiration', 'carboniferous-forest',
+  'sponge-flow', 'starfish-feet', 'skin-section', 'neuron-structure', 'reproductive-organs', 'miller-urey', 'twins',
 ] as const
 export type FigureId = (typeof FIGURES)[number]
 

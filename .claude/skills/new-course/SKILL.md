@@ -75,6 +75,8 @@ Brief: [references/lesson-brief.md](references/lesson-brief.md). The format, in 
 - **Experiments in the lesson** where a control explains better than a picture; **mini-games** linked where they train the skill.
 - Every section ends with a `check`; 7–8 quiz questions; a 12-question level test.
 
+**Second pass: the wishlist.** Lesson agents report figures and experiments they wished existed. Collect them in `scratchpad/<course>/wishlist.md`; when a level's lesson agent is done, launch a second pass: register the new ids (catalog / experiment stubs), and let one agent per group draw them **and** place them into those finished lessons (the lesson files now belong to that agent).
+
 Agents verify with the content validator and the teaching-thread check (commands in the brief). Commit each level locally as soon as it passes; never commit a level that is still being written. **Don't push** while the course is incomplete: its content test and `catalog-complete` fail until every level and figure exists, and every push runs CI (pushing `main` deploys).
 
 ## 6. Wiring and release

@@ -22,4 +22,6 @@ export const EXPERIMENT_COMPONENTS: Partial<Record<ExperimentId, LazyExoticCompo
   'glucose-insulin': lazyWithReload(() => import('./glucose-insulin')),
   'population-growth': lazyWithReload(() => import('./population-growth')),
   'predator-prey': lazyWithReload(() => import('./predator-prey')),
+  'body-temperature': lazyWithReload(() => import('./body-temperature')),
+  'coral-bleaching': lazyWithReload(() => import('./coral-bleaching')),
 }

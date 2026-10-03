@@ -109,3 +109,30 @@ Data-shaped pictures don't need a named figure: use the **parametric blocks** `p
 ## Reusable figures from other courses (already drawn)
 
 `photosynthesis-respiration`, `cellular-respiration`, `atp-cycle`, `enzyme-lock-key`, `lipid-bilayer`, `dna-helix`, `protein-synthesis`, `protein-structure`, `glucose-ring`, `nitrogen-cycle`, `carbon-cycle`, `greenhouse-effect`, `ozone-layer` (chemistry); `eye-anatomy`, `vision-defects`, `ear-anatomy`, `radiation-penetration` (physics). Use them where they fit the biological story.
+
+## bz5 – extra figures for levels 1–3 (`src/illustrations/figures/bz5/`)
+
+| id | What it shows |
+|---|---|
+| `life-signs` | Plate of the signs of life (metabolism, growth, reproduction, response, movement, cells, heredity), each with a small engraved example; a crystal and a fire as "looks alive but isn't". |
+| `microscope-history` | Leeuwenhoek's single-lens microscope, Hooke's compound microscope with his cork cells, and a modern school microscope. |
+| `wet-mount` | StepFilm: drop of water → onion epidermis → cover slip at an angle → stain → observe. |
+| `size-scale` | Size ladder from 1 m to 10 nm: person, hand, ant, hair width, egg cell, cheek cell, bacterium, virus; which needs eye, lupa, light microscope, electron microscope. |
+| `virus-structure` | Two viruses in section: a naked icosahedral virus and an enveloped virus (envelope, spikes, capsid, RNA/DNA), with size compared to a bacterium. |
+| `malaria-cycle` | StepFilm: mosquito bite → liver → red blood cells burst (fever cycles) → mosquito takes up gametes. |
+| `root-tip` | Root tip zones: root cap, division zone, elongation zone, root-hair zone, with water entering a root hair. |
+| `conifers` | Plate of Czech conifers: smrk, borovice, jedle, modřín – twigs with needles and cones, key differences labelled. |
+| `celery-transpiration` | Celery stalk in coloured water: after hours the leaves colour; cross-section shows the dyed vessels. |
+| `carboniferous-forest` | Carboniferous swamp forest with tree ferns, giant horsetails and club mosses, a giant dragonfly; below, layers turning into coal. |
+
+## bz6 – extra figures for levels 4–7 (`src/illustrations/figures/bz6/`)
+
+| id | What it shows |
+|---|---|
+| `sponge-flow` | Sponge in section: water in through pores, collar cells, out through the osculum; food filtered. |
+| `starfish-feet` | Starfish from below with tube feet; water-vascular system; prying open a mussel. |
+| `skin-section` | Skin section: epidermis, dermis, subcutaneous fat, hair follicle, sweat gland, sebaceous gland, receptors, blood vessels. |
+| `neuron-structure` | Neuron: dendrites, cell body, nucleus, axon with myelin sheath, nodes, axon terminals; signal direction. |
+| `reproductive-organs` | Male and female reproductive systems as clean, respectful textbook diagrams with Czech labels. |
+| `miller-urey` | The Miller–Urey apparatus: "ocean" flask heated, "atmosphere" gases, sparks, condenser, amino acids collecting. |
+| `twins` | Identical (one egg splits) vs fraternal twins (two eggs, two sperm) as a StepStrip. |
