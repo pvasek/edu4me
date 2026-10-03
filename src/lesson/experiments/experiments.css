@@ -114,6 +114,8 @@
 }
 .xp-readout strong.xp-word {
   font: italic 700 20px var(--font-display);
+  /* the font shorthand resets this; ratios like "1 : 2 : 1" need lining digits */
+  font-variant-numeric: lining-nums;
 }
 .xp-good strong {
   color: var(--good);
@@ -175,4 +177,156 @@
   .xp-ohm .xp-ohm-reading {
     font-size: 17px;
   }
+}
+
+/* ---------------------------------------------------------------- microscope-zoom */
+.xp-mz-rim {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 6;
+}
+.xp-mz-nucleolus {
+  fill: var(--ink);
+  opacity: 0.75;
+}
+.xp-mz-lead {
+  stroke: var(--ink-soft);
+}
+.xp-mz-pin {
+  fill: var(--ink);
+  stroke: var(--surface);
+  stroke-width: 1;
+}
+
+/* ---------------------------------------------------------------- surface-volume */
+.xp-sv-face {
+  fill: color-mix(in srgb, var(--green) 26%, var(--surface));
+}
+.xp-sv-top {
+  fill: color-mix(in srgb, var(--green) 14%, var(--surface));
+}
+.xp-sv-side {
+  fill: color-mix(in srgb, var(--green) 38%, var(--surface));
+}
+.xp-sv-grid {
+  stroke: color-mix(in srgb, var(--edge) 55%, transparent);
+}
+.xp-sv-alive {
+  fill: color-mix(in srgb, var(--green) 30%, var(--surface));
+}
+.xp-sv-core {
+  fill: color-mix(in srgb, var(--muted) 55%, var(--surface));
+}
+.xp-sv-membrane {
+  stroke-width: 2;
+}
+.xp-sv-o2 {
+  stroke: var(--ph-c);
+  stroke-width: 1.8;
+}
+.xp-sv-o2t {
+  fill: var(--ph-c);
+}
+.xp-sv-bad {
+  fill: var(--bad);
+}
+
+/* ---------------------------------------------------------------- bacterial-growth */
+.xp-bg-agar {
+  fill: color-mix(in srgb, var(--yellow) 22%, var(--surface));
+}
+.xp-bg-rod {
+  fill: none;
+  stroke: color-mix(in srgb, var(--violet) 75%, var(--ink));
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.xp-bg-past {
+  --t: var(--ph-a);
+}
+.xp-bg-future {
+  --t: var(--line);
+  stroke-width: 1.4;
+}
+.xp-bg-million {
+  stroke: var(--bad);
+}
+.xp-bg-now {
+  fill: var(--ph-a);
+  stroke: var(--surface);
+  stroke-width: 1.5;
+}
+
+/* ---------------------------------------------------------------- herd-immunity */
+.xp-hi-p {
+  stroke-width: 1.3;
+  stroke-linejoin: round;
+}
+.xp-hi-free {
+  fill: var(--surface);
+  stroke: var(--edge);
+}
+.xp-hi-vac {
+  fill: color-mix(in srgb, var(--teal) 70%, var(--ink));
+  stroke: color-mix(in srgb, var(--teal) 70%, var(--ink));
+}
+.xp-hi-shield {
+  fill: color-mix(in srgb, var(--teal) 20%, var(--surface));
+  stroke: color-mix(in srgb, var(--teal) 55%, var(--surface));
+  stroke-width: 1;
+}
+.xp-hi-sick {
+  fill: var(--bad);
+  stroke: color-mix(in srgb, var(--bad) 70%, var(--ink));
+}
+.xp-hi-first {
+  stroke: var(--bad);
+  stroke-width: 1.6;
+  stroke-dasharray: 3 2.5;
+}
+
+/* ---------------------------------------------------------------- pulse-exercise */
+.xp-pe-heart {
+  fill: color-mix(in srgb, var(--bad) 62%, var(--surface));
+}
+.xp-pe-beat {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: xp-pe-beat var(--beat, 1s) ease-out infinite;
+}
+@keyframes xp-pe-beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  12% {
+    transform: scale(1.13);
+  }
+  28% {
+    transform: scale(0.98);
+  }
+}
+.xp-pe-rate {
+  font: 700 19px var(--font-mono);
+  font-style: normal;
+}
+.xp-pe-band {
+  fill: color-mix(in srgb, var(--level, var(--accent)) 10%, transparent);
+}
+.xp-pe-main {
+  --t: var(--bad);
+}
+.xp-pe-other {
+  --t: var(--muted);
+  stroke-width: 1.6;
+}
+
+/* legends under a plate: keep their swatches small (.xp-stage svg would stretch them) */
+.xp-stage .ph-legend svg {
+  width: 28px;
+  height: 12px;
+  flex: none;
+}
+.xp-pe-main-t {
+  fill: var(--bad);
 }
