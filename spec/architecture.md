@@ -72,7 +72,7 @@ A game is a React component `({ levelId, onFinish }) => JSX` registered in `src/
 
 **Add a game**: create `src/games/<id>/index.tsx`, add the id to `GameId` in `core/types.ts`, register metadata (with `courses: { <courseId>: { <level number>: 'what it trains' } }`) and the lazy import in `games/registry.ts`, and document it in `spec/courses/<course>/games.md`. A game may serve several courses; it gets `courseId` in its props. Game progress is stored under `gameKey(courseId, gameId)` (chemistry keeps un-prefixed ids).
 
-**Add a course**: create `src/courses/<id>/index.ts` exporting a `Course` (levels with `load()` functions), add it to `COURSES` in `core/registry.ts` with `available: true`, add `spec/courses/<id>/syllabus.md`. Give the course an `icon` (header), an `album` (`elements` or `emblems`) and per-level `symbol` (+ `emblemName`), add scenes for its levels to `LevelVignette`, course badges to `core/badges.ts`, and `src/courses/<id>/progress-ids.json` + test. Named figures go in `src/illustrations/figures/<group>/` (id in `catalog.ts`).
+**Add a course**: follow the project skill `.claude/skills/new-course/SKILL.md` (syllabus first, then structure, building blocks, lessons, wiring); its `references/wiring-checklist.md` lists every file to touch.
 
 ## Local development
 

@@ -1,0 +1,7 @@
+# Brief: building mini-games (Q & Why)
+
+Read first: `CLAUDE.md`; `spec/courses/<course>/games.md` (what each game trains per level) and the syllabus of those levels; two finished games end to end (`src/games/molar-mass/` for numeric answers with tolerance, `src/games/circuit-builder/` or `src/games/float-sink/` for interactive ones); the shared kit `src/games/shared/` (GameKit, hooks, util); `src/games/types.ts`; `src/games/registry.ts` (register the game with `courses: { <course>: { <level>: 'what it trains' } }` and a lazy `GAME_COMPONENTS` entry); `src/pages/GamePage.tsx`.
+
+Each game: `index.tsx` (default export taking `GameProps`), `levels.ts` (content per level; free play mixes them), `logic.ts` (pure, computed answers, never hand-typed), `<id>.css`, tests for the logic (answers correct, tolerance, every level produces valid tasks, no duplicates in a round). Rounds of 8–12 tasks, 1–3 minutes, immediate feedback with a one-line Czech explanation, points + time bonus, `onFinish({ score, max })` exactly once. Mobile first (330 px, one hand), keyboard accessible, reduced motion respected, theme tokens only.
+
+Verify with `npx vitest run src/games/<id>`, tsc, and a headless play-through at 360 px and 1000 px, light and dark (`#/c/<course>/hry/<id>`). Only edit your game folders and your registry entries. Don't commit. Report in ≤ 150 words per game.
