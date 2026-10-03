@@ -16,6 +16,7 @@ import { MoleculeView } from '../illustrations/molecules/MoleculeView'
 import { ParticleScene } from '../illustrations/particles/ParticleScene'
 import { ReactionView } from '../illustrations/particles/ReactionView'
 import { CircuitView, ForcesView, GraphView, RaysView, WaveView } from '../illustrations/physics'
+import { BiologyBlock } from '../illustrations/biology'
 import { ExperimentBlock } from './experiments/ExperimentBlock'
 import './blocks.css'
 
@@ -269,6 +270,20 @@ export function BlockView({
         <figure className="b-visual">
           <Replayable>
             <PhysicsBlock block={block} />
+          </Replayable>
+          {block.caption && (
+            <figcaption>
+              <Md text={block.caption} />
+            </figcaption>
+          )}
+        </figure>
+      )
+    case 'punnett':
+    case 'pedigree':
+      return (
+        <figure className="b-visual">
+          <Replayable>
+            <BiologyBlock block={block} />
           </Replayable>
           {block.caption && (
             <figcaption>

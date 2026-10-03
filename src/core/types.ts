@@ -68,7 +68,22 @@ export type Block =
   /** A ray diagram for a lens or mirror; the image is computed from the imaging equation. */
   | { type: 'rays'; element: 'convex-lens' | 'concave-lens' | 'concave-mirror' | 'convex-mirror' | 'plane-mirror'; focal: number; object: number; height?: number; caption?: Inline }
   /** One or more waves (transverse, longitudinal or standing), optionally with their sum and λ/A marks. */
+  /** A Punnett square drawn from the parents' genotypes, e.g. ['Aa', 'Aa'], ['AaBb', 'AaBb'], ['X^{A}X^{a}', 'X^{A}Y']; offspring and ratios are computed. */
+  | { type: 'punnett'; parents: [string, string]; traits?: Record<string, Inline>; caption?: Inline }
+  /** A family pedigree chart: squares = males, circles = females, filled = affected, dot = carrier. */
+  | { type: 'pedigree'; people: PedigreePerson[]; caption?: Inline }
   | { type: 'wave'; kind?: 'transverse' | 'longitudinal' | 'standing'; waves: WaveSpec[]; sum?: boolean; marks?: ('wavelength' | 'amplitude' | 'nodes')[]; caption?: Inline }
+
+export interface PedigreePerson {
+  id: string
+  sex: 'm' | 'f'
+  affected?: boolean
+  carrier?: boolean
+  /** short label under the symbol, e.g. "babička" or a genotype "Aa" */
+  label?: Inline
+  /** ids of the mother and father (both must be in the chart) */
+  parents?: [string, string]
+}
 
 export type Tone = 'a' | 'b' | 'c' | 'd'
 
@@ -269,3 +284,10 @@ export type GameId =
   | 'circuit-builder'
   | 'ray-optics'
   | 'projectile'
+  // biology
+  | 'id-key'
+  | 'cell-builder'
+  | 'body-map'
+  | 'punnett'
+  | 'dna-code'
+  | 'food-web'

@@ -6,7 +6,7 @@ import { EXPERIMENTS } from '../lesson/experiments/catalog'
 
 const ICONS = new Set<string>(CHEM_ICONS)
 const SPECS = new Set<string>(SPECIMENS)
-const VISUAL = new Set<string>(['flipcards', 'diagram', 'molecule', 'particles', 'reaction', 'process', 'iconlist', 'compare', 'elements', 'structure', 'graph', 'circuit', 'forces', 'rays', 'wave', 'experiment'])
+const VISUAL = new Set<string>(['flipcards', 'diagram', 'molecule', 'particles', 'reaction', 'process', 'iconlist', 'compare', 'elements', 'structure', 'graph', 'circuit', 'forces', 'rays', 'wave', 'experiment', 'punnett', 'pedigree'])
 const CIRCUIT_KINDS = new Set<string>(['resistor', 'lamp', 'switch', 'switch-open', 'ammeter', 'voltmeter', 'ohmmeter', 'diode', 'led', 'capacitor', 'coil', 'motor', 'fuse', 'rheostat', 'ldr', 'thermistor', 'bell', 'wire'])
 const MOLS = new Set<string>(MOLECULES)
 
@@ -74,6 +74,17 @@ function checkBlock(b: Block, err: (m: string) => void) {
     if (e) err(e)
   }
   if (b.type === 'graph') checkGraph(b, err)
+  if (b.type === 'punnett') {
+    const [p1, p2] = b.parents.map(alleles)
+    if (!p1.length || !p2.length || p1.length % 2 || p2.length % 2) err(`punnett: genotypes must be pairs of alleles, got ${b.parents.join(' × ')}`)
+    else if (p1.length !== p2.length) err('punnett: both parents need the same number of genes')
+    else if (p1.length > 4) err('punnett: at most two genes (a 4 × 4 square)')
+  }
+  if (b.type === 'pedigree') {
+    const ids = new Set(b.people.map((p) => p.id))
+    if (b.people.length < 3 || b.people.length > 18) err(`pedigree: ${b.people.length} people (want 3–18)`)
+    for (const p of b.people) for (const par of p.parents ?? []) if (!ids.has(par)) err(`pedigree: ${p.id} has unknown parent ${par}`)
+  }
   if (b.type === 'circuit') {
     if (!b.parts.length) err('circuit without parts')
     for (const part of b.parts) {
@@ -238,4 +249,9 @@ function visibleStrings(v: unknown, key = ''): string[] {
   if (Array.isArray(v)) return v.flatMap((x) => visibleStrings(x))
   if (v && typeof v === 'object') return Object.entries(v).flatMap(([k, x]) => visibleStrings(x, k))
   return []
+}
+
+/** Alleles of a genotype string: "AaBb" → [A, a, B, b]; "X^{A}Y" → [X^{A}, Y]; "I^{A}i" → [I^{A}, i]. */
+export function alleles(genotype: string): string[] {
+  return genotype.replace(/\s+/g, '').match(/[A-Za-z](?:\^\{[^}]+\}|\^[A-Za-z0-9+-])?/g) ?? []
 }

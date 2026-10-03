@@ -8,6 +8,10 @@ import { FIGURES_FZ1 } from './fz1'
 import { FIGURES_FZ2 } from './fz2'
 import { FIGURES_FZ3 } from './fz3'
 import { FIGURES_FZ4 } from './fz4'
+import { FIGURES_BZ1 } from './bz1'
+import { FIGURES_BZ2 } from './bz2'
+import { FIGURES_BZ3 } from './bz3'
+import { FIGURES_BZ4 } from './bz4'
 
 /** All named figures. Each group file is owned by one figure agent. */
 export const FIGURE_COMPONENTS: Partial<Record<FigureId, ComponentType>> = {
@@ -20,4 +24,9 @@ export const FIGURE_COMPONENTS: Partial<Record<FigureId, ComponentType>> = {
   ...FIGURES_FZ2,
   ...FIGURES_FZ3,
   ...FIGURES_FZ4,
+  // biology
+  ...FIGURES_BZ1,
+  ...FIGURES_BZ2,
+  ...FIGURES_BZ3,
+  ...FIGURES_BZ4,
 }

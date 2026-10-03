@@ -170,6 +170,20 @@ export const GAMES: GameMeta[] = [
         11: 'elektrické a magnetické pole, obvody a indukce',
         12: 'optika, relativita, kvanta, jádro a vesmír',
       },
+      biologie: {
+        1: 'znaky života, mikroskop, buňka a třídění',
+        2: 'viry, bakterie, protista, houby a lišejníky',
+        3: 'stavba, výživa a rozmnožování rostlin',
+        4: 'bezobratlí živočichové',
+        5: 'obratlovci a chování',
+        6: 'lidské tělo, zdraví a první pomoc',
+        7: 'dědičnost, mutace a evoluce',
+        8: 'Země, horniny, ekosystémy a ochrana přírody',
+        9: 'buňka, membrány, enzymy, dýchání a fotosyntéza',
+        10: 'molekulární genetika a biotechnologie',
+        11: 'fyziologie a homeostáza',
+        12: 'evoluce, populace a ekosystémy',
+      },
     },
   },
   {
@@ -202,6 +216,20 @@ export const GAMES: GameMeta[] = [
         10: 'kinetická teorie, plyny a termodynamika',
         11: 'elektrické a magnetické pole, obvody a indukce',
         12: 'optika, relativita, kvanta, jádro a vesmír',
+      },
+      biologie: {
+        1: 'znaky života, mikroskop, buňka a třídění',
+        2: 'viry, bakterie, protista, houby a lišejníky',
+        3: 'stavba, výživa a rozmnožování rostlin',
+        4: 'bezobratlí živočichové',
+        5: 'obratlovci a chování',
+        6: 'lidské tělo, zdraví a první pomoc',
+        7: 'dědičnost, mutace a evoluce',
+        8: 'Země, horniny, ekosystémy a ochrana přírody',
+        9: 'buňka, membrány, enzymy, dýchání a fotosyntéza',
+        10: 'molekulární genetika a biotechnologie',
+        11: 'fyziologie a homeostáza',
+        12: 'evoluce, populace a ekosystémy',
       },
     },
   },
@@ -344,6 +372,83 @@ export const GAMES: GameMeta[] = [
       },
     },
   },
+  // biology
+  {
+    id: 'id-key',
+    title: 'Určovací klíč',
+    blurb: 'Poznej organismus podle znaků krok za krokem, jako v pravém určovacím klíči.',
+    kind: 'quiz',
+    courses: {
+      biologie: {
+        1: 'skupiny organismů a buňky',
+        2: 'mikroorganismy, houby a lišejníky',
+        3: 'rostliny: mechy, kapradiny, jehličnany a čeledi',
+        4: 'bezobratlí: měkkýši, členovci, hmyz',
+        5: 'obratlovci: ryby, obojživelníci, plazi, ptáci a savci',
+      },
+    },
+  },
+  {
+    id: 'cell-builder',
+    title: 'Stavitel buňky',
+    blurb: 'Poskládej buňku z organel a zjisti, co která dělá.',
+    kind: 'build',
+    courses: {
+      biologie: {
+        1: 'rostlinná, živočišná a bakteriální buňka',
+        9: 'organely eukaryotní buňky a jejich funkce',
+      },
+    },
+  },
+  {
+    id: 'body-map',
+    title: 'Mapa těla',
+    blurb: 'Umísti orgány na správné místo a přiřaď jim funkci.',
+    kind: 'build',
+    courses: {
+      biologie: {
+        6: 'orgánové soustavy člověka',
+        11: 'fyziologie: hormony, nervy, ledviny a imunita',
+      },
+    },
+  },
+  {
+    id: 'punnett',
+    title: 'Křížení',
+    blurb: 'Doplň Punnettův čtverec a odhadni, jací budou potomci.',
+    kind: 'lab',
+    courses: {
+      biologie: {
+        7: 'jedna vlastnost, dominance a krevní skupiny',
+        10: 'dvě vlastnosti, vazba genů a dědičnost na X',
+        12: 'alely v populaci a přírodní výběr',
+      },
+    },
+  },
+  {
+    id: 'dna-code',
+    title: 'Genetický kód',
+    blurb: 'Přepiš DNA do mRNA a přelož ji do bílkoviny.',
+    kind: 'quiz',
+    courses: {
+      biologie: {
+        10: 'transkripce, translace a mutace',
+      },
+    },
+  },
+  {
+    id: 'food-web',
+    title: 'Potravní síť',
+    blurb: 'Sestav potravní řetězec a zjisti, co se stane, když jeden druh zmizí.',
+    kind: 'energy',
+    courses: {
+      biologie: {
+        5: 'kdo koho loví mezi obratlovci',
+        8: 'potravní sítě českých ekosystémů a pyramida energie',
+        12: 'populace, společenstva a toky energie',
+      },
+    },
+  },
 ]
 
 /** Levels (by number) a game supports in a course, with what it trains there; undefined = not in that course. */
@@ -380,4 +485,10 @@ export const GAME_COMPONENTS: Partial<Record<GameId, LazyExoticComponent<Compone
   'circuit-builder': lazyWithReload(() => import('./circuit-builder')),
   'ray-optics': lazyWithReload(() => import('./ray-optics')),
   'projectile': lazyWithReload(() => import('./projectile')),
+  'id-key': lazyWithReload(() => import('./id-key')),
+  'cell-builder': lazyWithReload(() => import('./cell-builder')),
+  'body-map': lazyWithReload(() => import('./body-map')),
+  'punnett': lazyWithReload(() => import('./punnett')),
+  'dna-code': lazyWithReload(() => import('./dna-code')),
+  'food-web': lazyWithReload(() => import('./food-web')),
 }

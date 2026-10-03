@@ -30,6 +30,8 @@ export const CHEM_ICONS = [
   'rocket', 'planet', 'orbit', 'satellite', 'galaxy', 'telescope', 'microscope', 'lens', 'mirror', 'prism', 'rainbow',
   'eye', 'camera', 'laser', 'wave', 'sound', 'ear', 'music', 'compass', 'coil', 'motor', 'socket', 'solar-panel',
   'wind-turbine', 'radiation',
+  // biology (drawings in icon-paths-biology.ts)
+  'virus', 'bacteria', 'amoeba', 'mushroom', 'lichen', 'moss', 'fern', 'root', 'flower', 'seed', 'sponge', 'jellyfish', 'worm', 'snail', 'spider', 'tick', 'bee', 'butterfly', 'starfish', 'frog', 'lizard', 'bird', 'mouse', 'deer', 'paw', 'skeleton', 'tooth', 'kidney', 'brain', 'neuron', 'baby', 'first-aid', 'chromosome', 'pea', 'twins', 'fossil', 'soil', 'food-chain', 'forest', 'pond', 'family-tree', 'cell-division', 'gene-scissors',
 ] as const
 export type ChemIcon = (typeof CHEM_ICONS)[number]
 
@@ -100,6 +102,15 @@ export const FIGURES = [
   'capacitor', 'lorentz-force', 'mass-spectrometer', 'faraday-lenz', 'em-wave', 'double-slit', 'diffraction-grating',
   'polarization', 'light-clock', 'photoelectric-effect', 'energy-levels', 'laser-cavity', 'binding-energy', 'standard-model',
   'hr-diagram', 'big-bang-timeline',
+  // ── biology (src/illustrations/figures/bz1…bz4, see spec/courses/biologie/figures.md) ──
+  // levels 1–3
+  'microscope-parts', 'cell-plant-animal', 'levels-of-organisation', 'surface-volume', 'life-cycles', 'classification-hierarchy', 'dichotomous-key', 'virus-replication', 'bacterial-cell', 'protists-gallery', 'fungus-anatomy', 'lichen-section', 'immune-response-basic', 'moss-fern-cycle', 'plant-organs', 'leaf-cross-section', 'flower-parts', 'seed-germination', 'monocot-dicot',
+  // levels 4–6
+  'animal-symmetry', 'cnidarian-hydra', 'tapeworm-cycle', 'mollusc-groups', 'earthworm-soil', 'arthropod-groups', 'insect-metamorphosis', 'honeybee-colony', 'vertebrate-evolution', 'fish-anatomy', 'frog-metamorphosis', 'amniotic-egg', 'bird-flight', 'mammal-teeth', 'human-skeleton', 'heart-circulation', 'lungs-alveoli', 'digestive-system', 'reflex-arc', 'urinary-system', 'human-development',
+  // levels 7–9
+  'chromosome-karyotype', 'punnett-peas', 'blood-group-inheritance', 'sex-linkage', 'natural-selection-moth', 'artificial-selection', 'geological-timescale', 'fossil-formation', 'earth-layers', 'plate-boundaries', 'rock-cycle', 'soil-profile', 'water-cycle', 'food-web', 'energy-pyramid', 'succession', 'organelles-detail', 'endosymbiosis', 'membrane-transport', 'osmosis-cells', 'mitosis-meiosis', 'chloroplast-reactions',
+  // levels 10–12
+  'dna-replication', 'genetic-code-wheel', 'lac-operon', 'stem-cells', 'cancer-cell-cycle', 'dihybrid-cross', 'pcr-electrophoresis', 'crispr', 'homeostasis-feedback', 'oxygen-dissociation', 'nephron', 'synapse', 'sarcomere', 'immune-response', 'xylem-phloem', 'tropisms', 'cladogram', 'speciation', 'hominin-timeline', 'biomes',
 ] as const
 export type FigureId = (typeof FIGURES)[number]
 

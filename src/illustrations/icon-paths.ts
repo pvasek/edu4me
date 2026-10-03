@@ -10,6 +10,7 @@
  */
 import type { ChemIcon } from './catalog'
 import { PHYSICS_ICON_PATHS } from './icon-paths-physics'
+import { BIOLOGY_ICON_PATHS } from './icon-paths-biology'
 
 export type IconFill = 'soft' | 'solid' | 'hatch'
 export interface IconShape {
@@ -58,6 +59,7 @@ const drop = (x: number, top: number, r: number) =>
 
 export const ICON_PATHS: Record<ChemIcon, IconDef> = {
   ...PHYSICS_ICON_PATHS,
+  ...BIOLOGY_ICON_PATHS,
   // ───────────────────────── lab equipment ─────────────────────────
   flask: [
     hatch('M6.96 14.5h10.08l2.36 4.1A1.6 1.6 0 0 1 18 21H6a1.6 1.6 0 0 1-1.4-2.4Z'),

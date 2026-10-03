@@ -59,6 +59,13 @@ Launch background agents, each owning its own files (never two agents on one fil
 
 Concurrency limit is 20 agents. Lessons (phase 5) can start as soon as the figure ids exist in the catalog, because lessons reference ids, not drawings.
 
+**Prepare before launching, so agents never share a file:**
+- Register every game (`GAMES` + `GAME_COMPONENTS`) and every experiment (`catalog.ts` + `index.ts`) yourself, each with a stub component that already satisfies the tests (`role="img"` + Czech aria-label). Agents then only replace their own files.
+- Define the types and validator rules of any new parametric block yourself (`core/types.ts`, `core/validate.ts`, a stub renderer wired into `BlockView`), so lesson agents can use the block at once while the renderer agent builds it.
+- Only lesson agents edit lesson files. Building-block agents never place blocks in lessons; the lesson brief lists which experiment and game ids belong to which lesson.
+- The new course is `available: false` until release, so its routes don't render: agents test games and experiments through a scratch Vite entry or static markup, never by flipping `available` in the repo.
+- Copy the skill's brief templates into `scratchpad/<course>/` and add a short "course specifics" section (notation, naming of organisms/quantities, block examples, the experiment → lesson map).
+
 ## 5. Lessons (one agent per level)
 
 Brief: [references/lesson-brief.md](references/lesson-brief.md). The format, in short:
@@ -68,7 +75,7 @@ Brief: [references/lesson-brief.md](references/lesson-brief.md). The format, in 
 - **Experiments in the lesson** where a control explains better than a picture; **mini-games** linked where they train the skill.
 - Every section ends with a `check`; 7–8 quiz questions; a 12-question level test.
 
-Agents verify with the content validator and the teaching-thread check (commands in the brief). Commit each level as soon as it passes; never commit a level that is still being written.
+Agents verify with the content validator and the teaching-thread check (commands in the brief). Commit each level locally as soon as it passes; never commit a level that is still being written. **Don't push** while the course is incomplete: its content test and `catalog-complete` fail until every level and figure exists, and every push runs CI (pushing `main` deploys).
 
 ## 6. Wiring and release
 
@@ -85,3 +92,6 @@ Before pushing: `npx tsc --noEmit -p tsconfig.json && npx vitest run && npx vite
 - Bridges must link back to the text just before and name the next thing concretely; a vague allusion confuses (see the rejected example in content-guidelines).
 - Vector art means real paths. Never wrap a PNG in an SVG.
 - Raster images from generators can carry metadata. Strip it, and prefer drawing in code.
+- Learner-facing text never shows ids (`v lekci f6-5`); name the lesson by its title. The validator rejects ids.
+- The album: every course except chemistry uses `emblems` – one memorable thing per level (physics: units and constants; biology: famous model organisms with their story). Pick something with a short symbol that fits the emblem tile.
+- Wiring scripts: write them to a scratch `.py` file and run it (long inline heredocs with nested quotes break easily); assert every anchor so a failed replace stops the script instead of half-applying.

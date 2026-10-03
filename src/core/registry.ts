@@ -1,6 +1,7 @@
 import type { Course, LevelOutline } from './types'
 import { chemie } from '../courses/chemie'
 import { fyzika } from '../courses/fyzika'
+import { biologie } from '../courses/biologie'
 import { BY_SYMBOL } from '../courses/chemie/data/elements'
 
 /**
@@ -10,7 +11,7 @@ import { BY_SYMBOL } from '../courses/chemie/data/elements'
 export const COURSES: Course[] = [
   chemie,
   fyzika,
-  { id: 'biologie', title: 'Biologie', tagline: 'Od buňky po ekosystémy.', color: '#56834a', available: false, levels: [] },
+  biologie,
   { id: 'matematika', title: 'Matematika', tagline: 'Čísla, funkce a geometrie hravě.', color: '#7a5290', available: false, levels: [] },
 ]
 

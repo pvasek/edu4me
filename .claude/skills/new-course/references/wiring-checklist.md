@@ -9,6 +9,9 @@ Done for Fyzika; follow the same files (grep `fyzika` to see each one).
 - [ ] `src/core/registry.ts` – add the course to `COURSES` (replacing a placeholder entry).
 - [ ] `src/illustrations/catalog.ts` – new figure ids (grouped, comment per group) and icon ids; empty registries `src/illustrations/figures/<group>.tsx` spread into `figures/index.ts`; icon paths file spread into `ICON_PATHS`.
 - [ ] `src/games/registry.ts` – `courses.<id>` levels for reused games (`quickfire`, `swipe`, …) and new games with placeholder components; `GameId` in `core/types.ts`; game `kind` in `ui/GameCard.tsx` if new.
+- [ ] `src/lesson/experiments/catalog.ts` + `index.ts` – every experiment id of the syllabus registered, each with a stub `<id>.tsx` that passes `experiments.test.tsx`.
+- [ ] New parametric blocks: type in `core/types.ts`, rules in `core/validate.ts` (+ `VISUAL`), a stub renderer wired into `lesson/BlockView.tsx`.
+- [ ] `spec/courses/<id>/figures.md` and `games.md` written before agents start.
 
 ## Release (phase 6)
 - [ ] Every catalog figure has a component (`catalog-complete.test.ts`), every experiment too (`experiments.test.tsx`).
