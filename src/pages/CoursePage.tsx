@@ -4,14 +4,13 @@ import { motion, useScroll, useSpring } from 'motion/react'
 import { courseById, emblemName } from '../core/registry'
 import { useProgress, type ProgressState } from '../core/progress'
 import type { Course, LevelOutline } from '../core/types'
-import { gamesForLevel } from '../games/registry'
 import { ChemIconView } from '../illustrations/ChemIcon'
 import { LevelVignette } from '../illustrations/vignettes/LevelVignette'
 import { Icon } from '../ui/Icon'
 import { Mascot } from '../ui/Mascot'
 import { Bar, MLink, Page } from '../ui/anim'
 import { Ring } from '../ui/PathMap'
-import { popIn, pressable, rise, spring, stagger } from '../ui/motion'
+import { pressable, rise, spring, stagger } from '../ui/motion'
 import { NotFound } from './NotFound'
 import './course.css'
 
@@ -113,7 +112,6 @@ const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'
 function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: string; current: boolean; side: 'left' | 'right' }) {
   const { level, done, doneCount, passed, best } = s
   const nextIdx = done.indexOf(false)
-  const games = gamesForLevel(courseId, level.number)
   const status = passed ? 'Splněno' : doneCount === 0 ? 'Nezačato' : doneCount === level.lessons.length ? 'Čeká na výzvu' : 'Rozpracováno'
   const cta =
     nextIdx !== -1
@@ -210,19 +208,6 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
             </Link>
           </motion.li>
         </motion.ol>
-
-        <motion.div className="atlas-games" variants={rise}>
-          <span className="stat-label">Hry k úrovni</span>
-          <motion.div className="atlas-game-chips" variants={stagger(0.04)}>
-            {games.map((g) => (
-              <motion.span key={g.id} variants={popIn}>
-                <Link to={`/c/${courseId}/hry/${g.id}?uroven=${level.id}`} className="chip atlas-game-chip" title={g.courses[courseId]?.[level.number]}>
-                  <Icon name="gamepad" /> {g.title}
-                </Link>
-              </motion.span>
-            ))}
-          </motion.div>
-        </motion.div>
 
         <motion.div className="atlas-cta" variants={rise}>
           <MLink to={cta.to} className={`btn${current ? ' btn-primary' : ''}`} {...pressable}>

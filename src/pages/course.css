@@ -266,24 +266,6 @@
   color: var(--muted);
   white-space: nowrap;
 }
-.atlas-games {
-  display: grid;
-  gap: 8px;
-}
-.atlas-game-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.atlas-game-chip {
-  text-decoration: none;
-  border-color: var(--line);
-  font-weight: 600;
-}
-.atlas-game-chip:hover {
-  border-color: var(--level);
-  color: var(--level);
-}
 .atlas-cta {
   display: flex;
   flex-wrap: wrap;
