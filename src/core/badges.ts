@@ -3,11 +3,13 @@ import type { IconName } from '../ui/Icon'
 import type { Course } from './types'
 import { chemie } from '../courses/chemie'
 import { fyzika } from '../courses/fyzika'
+import { biologie } from '../courses/biologie'
 import { gamesForCourse } from '../games/registry'
 
 const lessonCount = (c: Course) => c.levels.reduce((n, l) => n + l.lessons.length, 0)
 const CHEMIE_LESSONS = lessonCount(chemie)
 const FYZIKA_LESSONS = lessonCount(fyzika)
+const BIOLOGIE_LESSONS = lessonCount(biologie)
 const CHEMIE_GAMES = gamesForCourse('chemie').map((g) => g.id)
 
 export interface Badge {
@@ -40,6 +42,21 @@ const FYZIKA_LEVEL_BADGES: [string, string][] = [
   ['l10', 'Termodynamik'],
   ['l11', 'Faradayovec'],
   ['l12', 'Kvantový fyzik'],
+]
+
+const BIOLOGIE_LEVEL_BADGES: [string, string][] = [
+  ['l1', 'Pozorovatel buněk'],
+  ['l2', 'Lovec mikrobů'],
+  ['l3', 'Botanik'],
+  ['l4', 'Entomolog'],
+  ['l5', 'Zoolog'],
+  ['l6', 'Anatom'],
+  ['l7', 'Mendelovec'],
+  ['l8', 'Ekolog'],
+  ['l9', 'Biochemik'],
+  ['l10', 'Genetik'],
+  ['l11', 'Fyziolog'],
+  ['l12', 'Darwinovec'],
 ]
 
 const LEVEL_BADGES: [string, string, string][] = [
@@ -95,6 +112,20 @@ export const BADGES: Badge[] = [
       color: fyzika.levels[i]?.color ?? '#3f6699',
       course: 'fyzika',
       earned: (p) => levelPassed(p, id, 'fyzika'),
+    }),
+  ),
+  // biology
+  { id: 'biologie-first', title: 'První pozorování', description: 'Dokonči první lekci biologie.', icon: 'target', color: '#56834a', course: 'biologie', earned: (p) => courseLessonsDone(p, 'biologie') >= 1 },
+  { id: 'biologie-all', title: 'Biolog', description: `Dokonči všech ${BIOLOGIE_LESSONS} lekcí biologie.`, icon: 'trophy', color: '#56834a', course: 'biologie', earned: (p) => courseLessonsDone(p, 'biologie') >= BIOLOGIE_LESSONS },
+  ...BIOLOGIE_LEVEL_BADGES.map(
+    ([id, title], i): Badge => ({
+      id: `biologie-level-${id}`,
+      title,
+      description: `Zvládni závěrečnou výzvu ${i + 1}. úrovně biologie.`,
+      icon: 'trophy',
+      color: biologie.levels[i]?.color ?? '#56834a',
+      course: 'biologie',
+      earned: (p) => levelPassed(p, id, 'biologie'),
     }),
   ),
 ]
