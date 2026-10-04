@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { courseById, findLevel } from '../core/registry'
+import { courseById, findLevel, levelHref } from '../core/registry'
 import { useLevelContent } from '../core/useLevelContent'
 import { completeLesson, getProgress, starsFor } from '../core/progress'
 import type { Lesson, LessonSection } from '../core/types'
@@ -61,7 +61,7 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
     window.scrollTo({ top: 0 })
   }
 
-  const exit = `/c/${courseId}/l/${levelId}`
+  const exit = levelHref(courseId ?? '', levelId ?? '')
 
   return (
     <main className="lesson" style={{ ['--level' as string]: levelColor }}>
@@ -232,7 +232,7 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
               )}
             </div>
             <Link to={exit} className="muted">
-              Zpět na přehled úrovně
+              Zpět na přehled kurzu
             </Link>
           </section>
         )}

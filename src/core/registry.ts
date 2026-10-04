@@ -33,3 +33,6 @@ export const albumItemId = (course: Course, symbol: string) => (course.album?.ki
 
 /** Human name of a level's emblem ("newton", "Kyslík"). */
 export const emblemName = (level: LevelOutline) => level.emblemName ?? BY_SYMBOL[level.symbol]?.name ?? level.symbol
+
+/** A level's place in the course overview (the overview scrolls to it). */
+export const levelHref = (courseId: string, levelId: string) => `/c/${courseId}?uroven=${levelId}`

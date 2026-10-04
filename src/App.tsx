@@ -1,7 +1,8 @@
 import { Suspense, useEffect } from 'react'
 import { lazyWithReload } from './core/staleBuild'
 import { RouteErrorBoundary } from './ui/RouteErrorBoundary'
-import { HashRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { HashRouter, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom'
+import { levelHref } from './core/registry'
 import { MotionConfig } from 'motion/react'
 import { AppHeader } from './ui/AppHeader'
 import { Toasts } from './ui/Toasts'
@@ -9,7 +10,6 @@ import { Loading } from './ui/Loading'
 import { useProgress } from './core/progress'
 import { HomePage } from './pages/HomePage'
 import { CoursePage } from './pages/CoursePage'
-import { LevelPage } from './pages/LevelPage'
 import { NotFound } from './pages/NotFound'
 
 const LessonPage = lazyWithReload(() => import('./pages/LessonPage'))
@@ -27,6 +27,11 @@ function ThemeSync() {
     else root.setAttribute('data-theme', theme)
   }, [theme])
   return null
+}
+
+function LevelRedirect() {
+  const { courseId, levelId } = useParams()
+  return <Navigate to={levelHref(courseId ?? '', levelId ?? '')} replace />
 }
 
 function ScrollTop() {
@@ -51,7 +56,8 @@ export function App() {
           <Route path="/c/:courseId" element={<CoursePage />} />
           <Route path="/c/:courseId/hry" element={<GamesPage />} />
           <Route path="/c/:courseId/hry/:gameId" element={<GamePage />} />
-          <Route path="/c/:courseId/l/:levelId" element={<LevelPage />} />
+          {/* the former level page: old links open the course overview at that level */}
+          <Route path="/c/:courseId/l/:levelId" element={<LevelRedirect />} />
           <Route path="/c/:courseId/l/:levelId/vyzva" element={<LevelTestPage />} />
           <Route path="/c/:courseId/l/:levelId/:lessonId" element={<LessonPage />} />
           <Route path="*" element={<NotFound />} />

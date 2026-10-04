@@ -54,7 +54,7 @@ src/
 |---|---|
 | `#/` | Home: greeting, continue card, stats, courses |
 | `#/c/chemie`, `#/c/fyzika`, `#/c/biologie` | Course atlas: all levels with their lessons |
-| `#/c/chemie/l/l3` | Level: lesson path, level test, level games |
+| `#/c/chemie?uroven=l3` | Course atlas scrolled to a level (where lessons, level tests and games return to; the old `#/c/chemie/l/l3` level page redirects here) |
 | `#/c/chemie/l/l3/l3-2` | Lesson: one scrolling page (read) → one quiz → results |
 | `#/c/chemie/l/l3/vyzva` | Level test |
 | `#/c/chemie/hry` | All mini-games |
@@ -63,7 +63,7 @@ src/
 
 ## Content model
 
-See `src/core/types.ts` and [content-guidelines.md](content-guidelines.md). In short: a `Lesson` has goals, a hook, sections of `Block`s and a quiz of `Question`s; a level file exports `LevelContent` (`lessons` + `boss`). Content is plain TypeScript data, so it is type-checked, diffable and needs no CMS. Each level is its own chunk, loaded on demand.
+See [app-structure.md](app-structure.md) (the units and where they live), `src/core/types.ts` and [content-guidelines.md](content-guidelines.md). In short: a `Lesson` has goals, a hook, sections of `Block`s and a quiz of `Question`s; a level file exports `LevelContent` (`lessons` + `boss`). Content is plain TypeScript data, so it is type-checked, diffable and needs no CMS. Each level is its own chunk, loaded on demand.
 
 ## Games
 

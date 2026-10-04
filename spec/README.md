@@ -5,6 +5,7 @@ This folder is the single source of truth for *what* Q & Why is and *how* it sho
 | File | What's inside |
 |---|---|
 | [concept.md](concept.md) | Vision, audience, learning principles, the multi-course idea |
+| [app-structure.md](app-structure.md) | How a course works in the app: course → levels → lessons → sections → blocks, quiz, level test, games; where each is stored and how it loads |
 | [architecture.md](architecture.md) | Tech stack, folder structure, content model, how to add a course / lesson / game |
 | [style-guide.md](style-guide.md) | Visual language "Lab Notebook Pop": tokens, type, components, motion |
 | [content-guidelines.md](content-guidelines.md) | How lessons and questions are written, inline markup, block types |

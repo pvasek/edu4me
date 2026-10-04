@@ -41,7 +41,7 @@ Why 9 levels with 6–8 lessons: 9 levels map cleanly onto the stages of the Cze
 Everything course-specific lives in `src/courses/<id>/`; everything else is shared:
 
 - the content model (`src/core/types.ts`): lessons, blocks, questions,
-- the lesson player, quiz runner, level map, progress store, badges and theme,
+- the lesson player, quiz runner, course overview, progress store, badges and theme,
 - the game shell (every game gets intro, results, XP and stars for free).
 
 A new course needs an outline (`index.ts`), level content files, optional course-specific diagrams and games, and a spec folder in `spec/courses/<id>/`. See [architecture.md](architecture.md).

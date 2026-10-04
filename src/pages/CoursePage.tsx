@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { motion, useScroll, useSpring } from 'motion/react'
 import { courseById, emblemName } from '../core/registry'
 import { useProgress, type ProgressState } from '../core/progress'
@@ -9,7 +9,7 @@ import { LevelVignette } from '../illustrations/vignettes/LevelVignette'
 import { Icon } from '../ui/Icon'
 import { Mascot } from '../ui/Mascot'
 import { Bar, MLink, Page } from '../ui/anim'
-import { Ring } from '../ui/PathMap'
+import { Ring } from '../ui/Ring'
 import { pressable, rise, spring, stagger } from '../ui/motion'
 import { NotFound } from './NotFound'
 import './course.css'
@@ -37,6 +37,15 @@ export function CoursePage() {
   const atlasRef = useRef<HTMLOListElement>(null)
   const { scrollYProgress } = useScroll({ target: atlasRef, offset: ['start 70%', 'end 70%'] })
   const spine = useSpring(scrollYProgress, { stiffness: 120, damping: 30 })
+  // ?uroven=l3 (from a lesson, the level test or a game): open the overview at that level
+  const [params] = useSearchParams()
+  const focus = params.get('uroven')
+  useEffect(() => {
+    if (!focus) return
+    // after the route's scroll-to-top
+    const t = setTimeout(() => document.getElementById(`atlas-${focus}`)?.scrollIntoView({ block: 'start' }), 60)
+    return () => clearTimeout(t)
+  }, [focus])
   if (!course) return <NotFound />
 
   const stats = statsFor(course, p)
@@ -118,7 +127,7 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
       ? { to: `/c/${courseId}/l/${level.id}/${level.lessons[nextIdx].id}`, label: doneCount ? 'Pokračovat' : 'Začít úroveň', icon: 'play' as const }
       : !passed
         ? { to: `/c/${courseId}/l/${level.id}/vyzva`, label: 'Závěrečná výzva', icon: 'trophy' as const }
-        : { to: `/c/${courseId}/l/${level.id}`, label: 'Opakovat', icon: 'refresh' as const }
+        : { to: `/c/${courseId}/l/${level.id}/${level.lessons[0].id}`, label: 'Opakovat', icon: 'refresh' as const }
 
   return (
     <li id={`atlas-${level.id}`} className={`atlas-row atlas-${side}${current ? ' current' : ''}`} style={{ ['--level' as string]: level.color }}>
@@ -129,7 +138,7 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
         viewport={{ once: true, margin: '-60px 0px' }}
         transition={spring.bouncy}
       >
-        <Link to={`/c/${courseId}/l/${level.id}`} className="level-node-disc" aria-label={`Úroveň ${level.number}: ${level.title}`}>
+        <Link to={cta.to} className="level-node-disc" aria-label={`Úroveň ${level.number}: ${level.title} – ${cta.label}`}>
           <Ring value={doneCount / level.lessons.length} color={level.color} />
           <span className="level-node-tile">
             <span className="level-node-num">{level.number}</span>
@@ -160,7 +169,7 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
               <span className={`atlas-status${passed ? ' passed' : ''}`}>{status}</span>
             </div>
             <h2>
-              <Link to={`/c/${courseId}/l/${level.id}`}>{level.title}</Link>
+              <Link to={cta.to}>{level.title}</Link>
             </h2>
             <p className="muted">{level.subtitle}</p>
             <div className="atlas-progress">
@@ -213,9 +222,6 @@ function LevelPlate({ s, courseId, current, side }: { s: LevelStats; courseId: s
           <MLink to={cta.to} className={`btn${current ? ' btn-primary' : ''}`} {...pressable}>
             <Icon name={cta.icon} /> {cta.label}
           </MLink>
-          <Link to={`/c/${courseId}/l/${level.id}`} className="btn btn-ghost btn-sm">
-            Mapa úrovně <Icon name="arrowRight" />
-          </Link>
         </motion.div>
       </motion.article>
     </li>

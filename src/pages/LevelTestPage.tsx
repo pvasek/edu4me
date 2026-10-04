@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { albumItemId, courseById, emblemName, findLevel } from '../core/registry'
+import { albumItemId, courseById, emblemName, findLevel, levelHref } from '../core/registry'
 import { useLevelContent } from '../core/useLevelContent'
 import { finishLevelTest, PASS_RATIO, starsFor } from '../core/progress'
 import { QuizRunner } from '../lesson/QuizRunner'
@@ -22,7 +22,7 @@ export default function LevelTestPage() {
   const [run, setRun] = useState(0)
   if (!course || !level || error) return <NotFound />
   if (!content) return <Loading />
-  const exit = `/c/${course.id}/l/${level.id}`
+  const exit = levelHref(course.id, level.id)
   const need = Math.ceil(content.boss.length * PASS_RATIO)
 
   return (
@@ -96,7 +96,7 @@ export default function LevelTestPage() {
                 <Icon name="refresh" /> Znovu
               </button>
               <Link to={exit} className="btn btn-primary btn-lg">
-                Zpět na úroveň <Icon name="arrowRight" />
+                Zpět na přehled <Icon name="arrowRight" />
               </Link>
             </div>
           </section>

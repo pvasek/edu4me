@@ -44,6 +44,8 @@
 - [x] Named biology figures, 43 biology icons, 12 level vignettes, model-organism emblems
 - [x] Figure groups load lazily, one chunk per group (`illustrations/figures/lazy.ts`): the lesson page chunk went from ~556 to ~77 kB gzip
 - [x] 6 biology mini-games (identification key, cell builder, body map, Punnett cross, DNA code, food web) + quickfire and swipe
+- [x] The separate level page ("Mapa úrovně") removed: the course overview already lists each level's lessons, test and progress; old links open the overview at that level
+- [x] `spec/app-structure.md`: how a course is structured in the app
 
 ## Next
 

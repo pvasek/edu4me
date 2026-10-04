@@ -1,6 +1,6 @@
 import { Suspense, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
-import { courseById } from '../core/registry'
+import { courseById, levelHref } from '../core/registry'
 import { finishGame, gameKey, useProgress } from '../core/progress'
 import { GAME_BY_ID, GAME_COMPONENTS } from '../games/registry'
 import type { GameResult } from '../games/types'
@@ -47,7 +47,7 @@ export default function GamePage() {
   return (
     <Page className="game-page" style={level ? { ['--level' as string]: level.color } : undefined}>
       <nav className="crumbs">
-        <Link to={level ? `/c/${course.id}/l/${level.id}` : `/c/${course.id}/hry`}>
+        <Link to={level ? levelHref(course.id, level.id) : `/c/${course.id}/hry`}>
           <Icon name="arrowLeft" width={16} height={16} /> {level ? `${level.number}. ${level.title}` : 'Mini-hry'}
         </Link>
       </nav>
