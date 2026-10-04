@@ -114,7 +114,7 @@ export default function BrownianMotion() {
       compact={compact}
       boost={false}
       replay
-      label="Brownův pohyb. V mikroskopu vidíme, že pylové zrnko ve vodě se samo pohybuje po klikaté dráze. Ve zvětšeném výřezu jsou nakresleny molekuly vody, které v mikroskopu vidět nejsou: neustále se pohybují a narážejí do zrnka ze všech stran. Nárazy se v každém okamžiku úplně nevyrovnají, zrnko dostane výsledný šťouchanec a posune se. Brownův pohyb je důkazem, že se částice látky neustále neuspořádaně pohybují."
+      label="Brownův pohyb. V mikroskopu vidíme, že drobné zrníčko ve vodě (třeba částečka z pylu) se samo pohybuje po klikaté dráze. Ve zvětšeném výřezu jsou nakresleny molekuly vody, které v mikroskopu vidět nejsou: neustále se pohybují a narážejí do zrnka ze všech stran. Nárazy se v každém okamžiku úplně nevyrovnají, zrnko dostane výsledný šťouchanec a posune se. Brownův pohyb je důkazem, že se částice látky neustále neuspořádaně pohybují."
     >
       <defs>
         <clipPath id={`${id}-bf`}>

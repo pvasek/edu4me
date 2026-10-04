@@ -96,7 +96,7 @@ const level: LevelContent = {
               ['V = 330 ml', 'objem', '330', 'mililitr'],
             ] },
             { type: 'callout', variant: 'warning', title: 'Bez jednotky to nejde', text: '„Stůl je dlouhý 2.“ Dva co? Metry, palce, lokte? ==Číslo bez jednotky je ve fyzice skoro k ničemu.== Jednotku piš vždycky, i v mezivýsledcích.' },
-            { type: 'callout', variant: 'fact', text: 'V roce 1999 se ztratila americká sonda Mars Climate Orbiter za 125 milionů dolarů. Jeden tým počítal v amerických librách, druhý v jednotkách SI – a nikdo to nezkontroloval. Sonda shořela v atmosféře Marsu.' },
+            { type: 'callout', variant: 'fact', text: 'V roce 1999 se ztratila americká sonda Mars Climate Orbiter za 125 milionů dolarů. Jeden tým počítal v angloamerických jednotkách (librách síly), druhý v jednotkách SI – a nikdo to nezkontroloval. Sonda shořela v atmosféře Marsu.' },
             { type: 'p', text: 'Měřit a zapisovat výsledky už umíš. Jak ale z měření poskládat odpověď na otázku o přírodě? K tomu slouží pokus.' },
             { type: 'check', question: { kind: 'tf', q: 'Zápis m = 3 kg říká, že hmotnost tělesa je 3 kilogramy.', answer: true, explain: 'Písmeno m je značka veličiny hmotnost, 3 je číselná hodnota a kg je jednotka kilogram.' } },
           ],
@@ -108,27 +108,27 @@ const level: LevelContent = {
             { type: 'p', text: 'Fyzik neměří nazdařbůh, postupuje jako detektiv. Nejdřív si něčeho všimne, pak vysloví podezření a nakonec ho ověří důkazem – **pokusem**.' },
             { type: 'process', layout: 'flow', caption: 'Postup vědecké práce', steps: [
               { icon: 'magnifier', title: 'Pozorování', text: 'všimneš si jevu: houpačka kýve pořád stejně rychle' },
-              { icon: 'question', title: 'Otázka', text: 'na čem závisí doba jednoho kyvu?' },
+              { icon: 'question', title: 'Otázka', text: 'na čem závisí doba jednoho kmitu (pohybu tam a zpět)?' },
               { icon: 'idea', title: 'Hypotéza', text: 'odhad, který jde ověřit: „těžší závaží kýve pomaleji“' },
-              { icon: 'stopwatch', title: 'Pokus', text: 'měníš jen hmotnost závaží a měříš dobu kyvu' },
+              { icon: 'stopwatch', title: 'Pokus', text: 'měníš jen hmotnost závaží a měříš dobu kmitu' },
               { icon: 'chart', title: 'Vyhodnocení', text: 'tabulka, graf, výpočet' },
               { icon: 'check', title: 'Závěr', text: 'hypotézu potvrdíš, nebo vyvrátíš' },
             ] },
             { type: 'p', text: 'Nejdůležitějším krokem je pokus. Aby z něj vyšla jasná odpověď, rozděluje fyzik veličiny do tří skupin:' },
             { type: 'keyterms', items: [
               { term: 'nezávisle proměnná', def: 'veličina, kterou při pokusu **sám měníš** (hmotnost závaží)' },
-              { term: 'závisle proměnná', def: 'veličina, kterou **měříš** a sleduješ, jak se mění (doba kyvu)' },
+              { term: 'závisle proměnná', def: 'veličina, kterou **měříš** a sleduješ, jak se mění (doba kmitu)' },
               { term: 'řízené veličiny', def: 'všechno ostatní, co musí zůstat **stejné** (délka závěsu, výchylka)' },
             ] },
             { type: 'p', text: 'Jak to dopadlo s houpačkou? Pokus s kyvadlem na provázku dlouhém 1 m, u kterého jsme měnili jen hmotnost závaží, dal tento výsledek:' },
             { type: 'graph', x: { label: 'm', unit: 'g', min: 0, max: 250, step: 50 }, y: { label: 'T', unit: 's', min: 0, max: 3, step: 0.5 }, series: [
               { label: 'naměřeno', points: [[20, 2.0], [50, 2.0], [100, 2.0], [150, 2.0], [200, 2.0]] },
-            ], marks: [{ x: 100, y: 2.0, label: 'pořád asi 2 s' }], caption: 'Kyvadlo s provázkem 1 m: doba jednoho kyvu tam a zpět T vůbec nezávisí na hmotnosti závaží. Hypotéza „těžší kýve pomaleji“ je vyvrácená.' },
+            ], marks: [{ x: 100, y: 2.0, label: 'pořád asi 2 s' }], caption: 'Kyvadlo s provázkem 1 m: doba jednoho kmitu T (pohyb tam a zpět) vůbec nezávisí na hmotnosti závaží. Hypotéza „těžší kýve pomaleji“ je vyvrácená.' },
             { type: 'p', text: 'Vyvrácená hypotéza není prohra: teď víme, že na hmotnosti nezáleží. Dalším podezřelým je délka provázku, a tak měníme jen ji:' },
             { type: 'graph', x: { label: 'l', unit: 'm', min: 0, max: 2, step: 0.5 }, y: { label: 'T', unit: 's', min: 0, max: 3, step: 0.5 }, series: [
               { label: 'naměřeno', style: 'smooth', tone: 'b', points: [[0.1, 0.63], [0.25, 1.0], [0.5, 1.42], [0.75, 1.74], [1, 2.01], [1.25, 2.24], [1.5, 2.46], [1.75, 2.65], [2, 2.84]] },
-            ], caption: 'Druhý pokus: měníme délku provázku l. Tady se doba kyvu mění – delší kyvadlo kýve pomaleji.' },
-            { type: 'p', text: 'Teď víme, co dobu kyvu opravdu ovlivňuje: délka provázku. Stejně postupuješ i u úplně obyčejné otázky z domácnosti. Stačí správně určit, co měníš, co měříš a co hlídáš:' },
+            ], caption: 'Druhý pokus: měníme délku provázku l. Tady se doba kmitu mění – delší kyvadlo kýve pomaleji.' },
+            { type: 'p', text: 'Teď víme, co dobu kmitu opravdu ovlivňuje: délka provázku. Stejně postupuješ i u úplně obyčejné otázky z domácnosti. Stačí správně určit, co měníš, co měříš a co hlídáš:' },
             { type: 'example', title: 'Navrhni pokus: kde tričko uschne dřív', problem: 'Chceš zjistit, jestli mokré tričko uschne rychleji na slunci, nebo ve stínu. Urči proměnné.', steps: [
               'Nezávisle proměnná (měníš ji): místo sušení – slunce, nebo stín.',
               'Závisle proměnná (měříš ji): doba, za kterou tričko uschne, v minutách.',
@@ -153,17 +153,17 @@ const level: LevelContent = {
               { icon: 'check', title: 'Závěr', text: 'odpověď na cíl, co mohlo měření zkreslit' },
             ] },
             { type: 'p', text: 'Srdcem protokolu je tabulka. Takhle může vypadat tabulka z našeho pokusu s kyvadlem:' },
-            { type: 'table', headers: ['Délka provázku l (m)', 'Doba 10 kyvů (s)', 'Doba 1 kyvu T (s)'], rows: [
+            { type: 'table', headers: ['Délka provázku l (m)', 'Doba 10 kmitů (s)', 'Doba 1 kmitu T (s)'], rows: [
               ['0,25', '10,1', '1,01'],
               ['0,50', '14,2', '1,42'],
               ['1,00', '20,1', '2,01'],
             ], caption: 'Ukázka tabulky z protokolu. Jednotky patří do záhlaví, čísla pak píšeš bez nich.' },
-            { type: 'p', text: 'Všimni si prostředního sloupce: neměřili jsme jeden kyv, ale deset najednou. Proč, a jak z toho dostat dobu jednoho kyvu?' },
-            { type: 'example', title: 'Jak z tabulky vytáhnout výsledek', problem: 'Deset kyvů kyvadla s provázkem 0,50 m trvalo 14,2 s. Jak dlouho trvá jeden kyv?', steps: [
-              'Měříme 10 kyvů najednou, protože jeden kyv je moc krátký a chyba při mačkání stopek by byla velká.',
-              'Doba jednoho kyvu: T = 14,2 s : 10',
+            { type: 'p', text: 'Všimni si prostředního sloupce: neměřili jsme jeden kmit, ale deset najednou. Proč, a jak z toho dostat dobu jednoho kmitu?' },
+            { type: 'example', title: 'Jak z tabulky vytáhnout výsledek', problem: 'Deset kmitů kyvadla s provázkem 0,50 m trvalo 14,2 s. Jak dlouho trvá jeden kmit?', steps: [
+              'Měříme 10 kmitů najednou, protože jeden kmit je moc krátký a chyba při mačkání stopek by byla velká.',
+              'Doba jednoho kmitu: T = 14,2 s : 10',
               'T = 1,42 s',
-            ], answer: 'Jeden kyv trvá 1,42 s.' },
+            ], answer: 'Jeden kmit trvá 1,42 s.' },
             { type: 'callout', variant: 'tip', text: 'Zapisuj hned, co naměříš, i když se to zdá divné. Chybnou hodnotu nemaž gumou, jen ji přeškrtni a napiš proč. I „špatné“ měření je stopa.' },
             { type: 'p', text: 'Protokol už umíš sepsat. Zbývá poslední věc, bez které do laboratoře nesmíš: bezpečnost.' },
             { type: 'check', question: { kind: 'order', q: 'Seřaď části protokolu tak, jak jdou za sebou.', items: ['název a cíl měření', 'pomůcky', 'postup', 'tabulka naměřených hodnot a výpočty', 'závěr'], explain: 'Nejdřív řekneš, co zjišťuješ a čím, pak jak jsi měřil, potom výsledky a nakonec závěr, který odpovídá na cíl.' } },
@@ -215,10 +215,10 @@ const level: LevelContent = {
           ['čas', 'sekunda (s)'],
           ['teplota', 'stupeň Celsia (°C)'],
         ], explain: 'To jsou jednotky, se kterými se budeš potkávat úplně nejčastěji.' },
-        { kind: 'choice', q: 'Kamarád tvrdí: „Těžší závaží na kyvadle kýve pomaleji.“ Co to je z pohledu vědecké práce?', options: ['hypotéza, kterou je třeba ověřit pokusem', 'dokázaný fyzikální zákon', 'závěr protokolu', 'řízená veličina'], answer: 0, explain: 'Je to odhad, který jde ověřit. Pokus s kyvadlem ho navíc vyvrátil: doba kyvu na hmotnosti nezávisí.' },
+        { kind: 'choice', q: 'Kamarád tvrdí: „Těžší závaží na kyvadle kýve pomaleji.“ Co to je z pohledu vědecké práce?', options: ['hypotéza, kterou je třeba ověřit pokusem', 'dokázaný fyzikální zákon', 'závěr protokolu', 'řízená veličina'], answer: 0, explain: 'Je to odhad, který jde ověřit. Pokus s kyvadlem ho navíc vyvrátil: doba kmitu na hmotnosti nezávisí.' },
         { kind: 'choice', q: 'Zkoumáš, jestli teplota vody ovlivní, jak rychle se v ní rozpustí kostka cukru. Co musíš nechat při všech pokusech **stejné**?', options: ['velikost kostky cukru a množství vody', 'teplotu vody', 'dobu rozpouštění', 'nic, stačí pokus udělat jednou'], answer: 0, explain: 'Teplotu měníš (nezávisle proměnná), dobu rozpouštění měříš (závisle proměnná). Cukr a množství vody jsou řízené veličiny a musí zůstat stejné.' },
         { kind: 'tf', q: 'Když pokus jednou vyjde podle hypotézy, je hypotéza s jistotou dokázaná.', answer: false, explain: 'Jedno měření může být náhoda nebo chyba. Pokus se opakuje, a pokud to jde, ověřují ho i jiní lidé.' },
-        { kind: 'choice', q: 'Proč se při měření kyvadla stopuje 10 kyvů najednou, a ne jen jeden?', options: ['chyba při mačkání stopek se rozdělí na 10 kyvů, výsledek je přesnější', 'deset kyvů trvá kratší dobu', 'jeden kyv stopkami změřit nejde vůbec', 'kyvadlo se při prvních kyvech teprve rozjíždí'], answer: 0, explain: 'Stopky zmáčkneš vždycky trochu pozdě. Když dobu 10 kyvů dělíš deseti, dělíš i tuto chybu.' },
+        { kind: 'choice', q: 'Proč se při měření kyvadla stopuje 10 kmitů najednou, a ne jen jeden?', options: ['chyba při mačkání stopek se rozdělí na 10 kmitů, výsledek je přesnější', 'deset kmitů trvá kratší dobu', 'jeden kmit stopkami změřit nejde vůbec', 'kyvadlo se při prvních kyvech teprve rozjíždí'], answer: 0, explain: 'Stopky zmáčkneš vždycky trochu pozdě. Když dobu 10 kmitů dělíš deseti, dělíš i tuto chybu.' },
       ],
     },
     // ───────────────────────────────────────────────────────────── f1-2
@@ -265,7 +265,7 @@ const level: LevelContent = {
               'Objem: V = a · b · c = 4 m · 3 m · 2,5 m',
               'V = 30 m³',
             ], answer: 'S = 12 m², V = 30 m³' },
-            { type: 'callout', variant: 'remember', title: 'Povolené jednotky mimo SI', text: 'V životě se smějí používat i **litr** (l), **minuta** (min), **hodina** (h), **tuna** (t) a **stupeň Celsia** (°C). Platí 1 l = 1 dm³ a 1 ml = 1 cm³. ==Litr je krychle o hraně 1 dm (10 cm).==' },
+            { type: 'callout', variant: 'remember', title: 'Povolené jednotky mimo SI', text: 'V životě se smějí používat i **litr** (l), **minuta** (min), **hodina** (h) a **tuna** (t). Platí 1 l = 1 dm³ a 1 ml = 1 cm³. ==Litr je krychle o hraně 1 dm (10 cm).==' },
             { type: 'p', text: 'Jednotky už známe. Jak ale zapsat vzdálenost do Prahy nebo tloušťku vlasu, aby to nebylo samé nuly? Na to máme předpony.' },
             { type: 'check', question: { kind: 'number', q: 'Trampolína má čtvercový tvar se stranou 3 m. Jaký je její obsah?', answer: 9, tolerance: 0, unit: 'm²', explain: 'S = a · a = 3 m · 3 m = 9 m². Jednotka je metr krát metr, tedy metr čtvereční.' } },
           ],
@@ -345,7 +345,7 @@ const level: LevelContent = {
             ], answer: '750 g; 2 400 kg; 0,5 g' },
             { type: 'callout', variant: 'tip', title: 'Posouvání desetinné čárky', text: 'Násobit 1 000 znamená posunout desetinnou čárku o 3 místa doprava (0,75 → 750). Dělit 1 000 znamená posunout ji o 3 místa doleva (500 → 0,500). Chybějící místa doplň nulami.' },
             { type: 'p', text: 'U délky a hmotnosti je každý schod 10 nebo 1 000. U obsahu a objemu je to ale jinak – a právě tam se chybuje nejvíc.' },
-            { type: 'check', question: { kind: 'number', q: 'Kamion váží 12,5 t. Kolik je to kilogramů?', answer: 12500, tolerance: 0, unit: 'kg', explain: 'Z tun na kilogramy jdeme dolů, násobíme 1 000: 12,5 · 1 000 = 12 500 kg.' } },
+            { type: 'check', question: { kind: 'number', q: 'Kamion má hmotnost 12,5 t. Kolik je to kilogramů?', answer: 12500, tolerance: 0, unit: 'kg', explain: 'Z tun na kilogramy jdeme dolů, násobíme 1 000: 12,5 · 1 000 = 12 500 kg.' } },
           ],
         },
         {
@@ -468,7 +468,7 @@ const level: LevelContent = {
       quiz: [
         { kind: 'tf', q: '1 m² = 100 cm².', answer: false, explain: 'Čtverec 1 m × 1 m je 100 cm × 100 cm, tedy 10 000 cm². U obsahu se schody násobí dvakrát.' },
         { kind: 'number', q: 'Cyklostezka měří 3,2 km. Kolik je to metrů?', answer: 3200, tolerance: 0, unit: 'm', explain: 'km → m: násobíme 1 000. 3,2 · 1 000 = 3 200 m.' },
-        { kind: 'number', q: 'Balíček mouky váží 450 g. Kolik je to kilogramů?', answer: 0.45, tolerance: 0.001, unit: 'kg', explain: 'g → kg: dělíme 1 000. 450 : 1 000 = 0,45 kg.' },
+        { kind: 'number', q: 'Balíček mouky má hmotnost 450 g. Kolik je to kilogramů?', answer: 0.45, tolerance: 0.001, unit: 'kg', explain: 'g → kg: dělíme 1 000. 450 : 1 000 = 0,45 kg.' },
         { kind: 'match', q: 'Přiřaď předponu k násobku.', pairs: [
           ['kilo', '1 000'],
           ['mega', '1 000 000'],
@@ -584,7 +584,7 @@ const level: LevelContent = {
               'V = V_{2} − V_{1} = 52 ml − 45 ml = 7 ml',
               '1 ml = 1 cm³',
             ], answer: 'Klíč má objem 7 cm³.' },
-            { type: 'p', text: 'Co když je těleso tak malé, že hladinou skoro nepohne? Pomůže stejný trik jako u deseti kyvů kyvadla:' },
+            { type: 'p', text: 'Co když je těleso tak malé, že hladinou skoro nepohne? Pomůže stejný trik jako u deseti kmitů kyvadla:' },
             { type: 'example', title: 'Malé těleso? Změř jich víc najednou', problem: 'Jedna kulička je tak malá, že hladinu skoro nepohne. Do válce s 30 ml vody proto nasypeš 20 stejných kuliček a hladina stoupne na 38 ml. Jaký objem má jedna kulička?', steps: [
               'Objem 20 kuliček: 38 ml − 30 ml = 8 ml = 8 cm³',
               'Jedna kulička: 8 cm³ : 20 = 0,4 cm³',
@@ -598,7 +598,7 @@ const level: LevelContent = {
           title: 'Čas, opakované měření a průměr',
           icon: 'stopwatch',
           blocks: [
-            { type: 'p', text: 'Stopky v mobilu ukazují setiny sekundy, ale tvůj prst tak rychlý není. **Reakční doba** člověka je asi 0,2 s. Proto krátké děje měříme vícekrát nebo najednou (10 kyvů místo jednoho).' },
+            { type: 'p', text: 'Stopky v mobilu ukazují setiny sekundy, ale tvůj prst tak rychlý není. **Reakční doba** člověka je asi 0,2 s. Proto krátké děje měříme vícekrát nebo najednou (10 kmitů místo jednoho).' },
             { type: 'p', text: 'Když měření několikrát zopakuješ, výsledky se trochu liší. Nejlepším odhadem skutečné hodnoty je **aritmetický průměr**. O kolik se jednotlivá měření od průměru liší, říká **odchylka**. Takhle vypadá pět měření stejného pádu míčku:' },
             { type: 'graph', x: { label: 'číslo měření', min: 0, max: 6, step: 1 }, y: { label: 't', unit: 's', min: 1.2, max: 1.4, step: 0.05 }, series: [
               { label: 'měření', style: 'dots', points: [[1, 1.32], [2, 1.28], [3, 1.35], [4, 1.30], [5, 1.25]] },
@@ -656,11 +656,11 @@ const level: LevelContent = {
         { kind: 'tf', q: 'Nejmenší dílek školního pravítka bývá 1 mm.', answer: true, explain: 'Běžné pravítko má milimetrové rysky, takže měří s přesností asi na milimetr.' },
         { kind: 'choice', q: 'Jak správně odečteš objem vody v odměrném válci?', options: ['u spodního okraje menisku, s okem ve výšce hladiny', 'u horního okraje menisku, s okem nad válcem', 'uprostřed mezi horním a spodním okrajem', 'kdekoli, na menisku nezáleží'], answer: 0, explain: 'Voda u stěn vzlíná; správná hodnota je nejnižší místo hladiny, a to čteme při pohledu z boku ve výšce hladiny.' },
         { kind: 'number', q: 'Ve válci je 50 ml vody. Po vhození 8 stejných kuliček hladina stoupne na 66 ml. Jaký objem má jedna kulička?', answer: 2, tolerance: 0, unit: 'cm³', explain: 'Všech 8 kuliček má objem 66 ml − 50 ml = 16 cm³, jedna tedy 16 : 8 = 2 cm³.' },
-        { kind: 'number', q: 'Kyvadlo udělalo 20 kyvů za 30,0 s. Jak dlouho trvá jeden kyv?', answer: 1.5, tolerance: 0.01, unit: 's', explain: 'T = 30,0 s : 20 = 1,5 s. Měření mnoha kyvů najednou zmenší chybu reakce.' },
-        { kind: 'multi', q: 'Co pomůže zmenšit chybu měření?', options: ['měření několikrát zopakovat a spočítat průměr', 'dívat se na stupnici kolmo', 'měřit 10 kyvů místo jednoho', 'opsat z kalkulačky co nejvíc desetinných míst', 'měřit od ulomeného konce pravítka'], answers: [0, 1, 2], explain: 'Průměr, kolmý pohled a měření více kyvů chybu zmenšují. Další číslice z kalkulačky přesnost nepřidají a ulomený konec pravítka ji zhorší.' },
+        { kind: 'number', q: 'Kyvadlo udělalo 20 kmitů za 30,0 s. Jak dlouho trvá jeden kmit?', answer: 1.5, tolerance: 0.01, unit: 's', explain: 'T = 30,0 s : 20 = 1,5 s. Měření mnoha kmitů najednou zmenší chybu reakce.' },
+        { kind: 'multi', q: 'Co pomůže zmenšit chybu měření?', options: ['měření několikrát zopakovat a spočítat průměr', 'dívat se na stupnici kolmo', 'měřit 10 kmitů místo jednoho', 'opsat z kalkulačky co nejvíc desetinných míst', 'měřit od ulomeného konce pravítka'], answers: [0, 1, 2], explain: 'Průměr, kolmý pohled a měření více kmitů chybu zmenšují. Další číslice z kalkulačky přesnost nepřidají a ulomený konec pravítka ji zhorší.' },
         { kind: 'order', q: 'Seřaď kroky měření objemu kamene odměrným válcem.', items: ['nalít do válce vodu', 'odečíst objem V₁', 'ponořit kámen na niti', 'odečíst objem V₂', 'vypočítat V = V₂ − V₁'], explain: 'Nejdřív potřebuješ objem vody bez kamene, pak s kamenem, a rozdíl je objem kamene.' },
         { kind: 'choice', q: 'Petr zapsal výsledek l = (25,4 ± 0,1) cm. Co to znamená?', options: ['skutečná délka je nejspíš mezi 25,3 cm a 25,5 cm', 'délka je přesně 25,4 cm', 'Petr měřil desetkrát', 'délka je 25,4 cm nebo 0,1 cm'], answer: 0, explain: 'Za znaménkem ± je odchylka. Říká, jak daleko od průměru může skutečná hodnota ležet.' },
-        { kind: 'number', q: 'Tři měření doby 10 kyvů dala 15,2 s; 15,6 s a 15,4 s. Jaká je průměrná doba **jednoho** kyvu?', answer: 1.54, tolerance: 0.005, unit: 's', explain: 'Průměr 10 kyvů: (15,2 + 15,6 + 15,4) : 3 = 15,4 s. Jeden kyv: 15,4 s : 10 = 1,54 s.' },
+        { kind: 'number', q: 'Tři měření doby 10 kmitů dala 15,2 s; 15,6 s a 15,4 s. Jaká je průměrná doba **jednoho** kmitu?', answer: 1.54, tolerance: 0.005, unit: 's', explain: 'Průměr 10 kmitů: (15,2 + 15,6 + 15,4) : 3 = 15,4 s. Jeden kmit: 15,4 s : 10 = 1,54 s.' },
       ],
     },
     // ───────────────────────────────────────────────────────────── f1-4
@@ -683,7 +683,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Pozor, v běžné řeči se hmotnosti říká „váha“ a snadno se plete s tíhou. Fyzika obě veličiny přísně odlišuje:' },
             { type: 'compare', caption: 'Hmotnost a tíha se v běžné řeči pletou, ve fyzice je rozlišujeme.', columns: [
               { title: 'Hmotnost m', icon: 'weight', tone: 'a', points: ['kolik látky těleso obsahuje', 'jednotka **kilogram** (kg)', 'měří se **vahami**', 'na Zemi, na Měsíci i ve vesmíru **stejná**'] },
-              { title: 'Tíha (tíhová síla)', icon: 'planet', tone: 'b', points: ['jak silně těleso přitahuje Země', 'jednotka **newton** (N)', 'měří se siloměrem', 'na Měsíci asi **6× menší**', 'podrobně v lekci „Síla a její měření“'] },
+              { title: 'Tíha (tíhová síla)', icon: 'planet', tone: 'b', points: ['jak silně Země přitahuje těleso', 'jednotka **newton** (N)', 'měří se siloměrem', 'na Měsíci asi **6× menší**', 'podrobně v lekci „Síla a její měření“'] },
             ] },
             { type: 'p', text: 'Hmotnost budeš často převádět. Vzpomeň si na schody hmotnosti z lekce „Veličiny, jednotky a převody“ – každý z nich je 1 000:' },
             { type: 'example', title: 'Převody hmotnosti', problem: 'Převeď: a) 0,35 kg na g, b) 1 250 g na kg, c) 3,8 t na kg, d) 250 mg na g.', steps: [
@@ -710,7 +710,7 @@ const level: LevelContent = {
               { icon: 'car', title: 'Mostová váha', text: 'váží celé kamiony, až 60 t' },
             ] },
             { type: 'p', text: 'Často vážíš těleso v nádobě. Hmotnost samotného obsahu pak dostaneš odečtením, podobně jako objem kamene ve válci:' },
-            { type: 'example', title: 'Kolik váží voda v kádince', problem: 'Prázdná kádinka má 85 g. Když do ní naliješ vodu, váha ukáže 285 g. Jaká je hmotnost vody?', steps: [
+            { type: 'example', title: 'Hmotnost vody v kádince', problem: 'Prázdná kádinka má 85 g. Když do ní naliješ vodu, váha ukáže 285 g. Jaká je hmotnost vody?', steps: [
               'Hmotnost vody = hmotnost kádinky s vodou − hmotnost prázdné kádinky',
               'm = 285 g − 85 g = 200 g',
             ], answer: 'Voda má hmotnost 200 g.' },
@@ -741,7 +741,7 @@ const level: LevelContent = {
               'ρ = 2,7 g/cm³',
             ], answer: 'ρ = 2,7 g/cm³' },
             { type: 'p', text: 'Ze vzorce hustoty umíš vypočítat i hmotnost nebo objem. Stačí ho převrátit: **m = ρ · V** a **V = m / ρ**.' },
-            { type: 'example', title: 'Kolik váží voda ve vaně', problem: 'Ve vaně je 150 l vody. Hustota vody je 1 g/cm³ (= 1 kg/l). Jaká je hmotnost vody?', steps: [
+            { type: 'example', title: 'Hmotnost vody ve vaně', problem: 'Ve vaně je 150 l vody. Hustota vody je 1 g/cm³ (= 1 kg/l). Jaká je hmotnost vody?', steps: [
               'Hustota je v g/cm³, proto objem převedeme na cm³: V = 150 l = 150 dm³ = 150 000 cm³',
               'm = ρ · V = 1 g/cm³ · 150 000 cm³ = 150 000 g',
               '150 000 g = 150 kg',
@@ -751,7 +751,7 @@ const level: LevelContent = {
               'Hustota je v g/cm³, proto hmotnost převedeme na gramy: m = 1 kg = 1 000 g',
               'V = m / ρ = 1 000 g / 19,3 g/cm³',
               'V ≈ 51,8 cm³',
-            ], answer: 'V ≈ 52 cm³ – kilogram zlata se vejde do krabičky od sirek.' },
+            ], answer: 'V ≈ 52 cm³ – kilogram zlata zabere asi tolik místa jako dvě krabičky od sirek.' },
             { type: 'callout', variant: 'tip', title: 'Trojúhelník hustoty', text: 'Nakresli trojúhelník, nahoru napiš m, dolů ρ a V. Zakryj prstem, co hledáš: m = ρ · V (vedle sebe = násobíš), ρ = m / V a V = m / ρ (nad sebou = dělíš).' },
             { type: 'p', text: 'Hustotu umíš spočítat. V tabulkách ale bývá v jiných jednotkách než v tvém výpočtu, a tak je musíš umět převést.' },
             { type: 'check', question: { kind: 'number', q: 'Kámen má hmotnost 78 g a objem 30 cm³. Jaká je jeho hustota?', answer: 2.6, tolerance: 0.01, unit: 'g/cm³', explain: 'ρ = m / V = 78 g / 30 cm³ = 2,6 g/cm³.' } },
@@ -774,7 +774,7 @@ const level: LevelContent = {
               'b) kg/m³ → g/cm³: : 1 000; 920 : 1 000 = 0,92 g/cm³',
             ], answer: 'Železo 7 900 kg/m³, led 0,92 g/cm³.' },
             { type: 'p', text: 'Hustota v kg/m³ se hodí hlavně u velkých objemů, třeba když chceš zvážit vzduch ve třídě:' },
-            { type: 'example', title: 'Kolik váží metr krychlový vzduchu', problem: 'Hustota vzduchu je asi 1,29 kg/m³. Kolik váží vzduch ve třídě o objemu 200 m³?', steps: [
+            { type: 'example', title: 'Hmotnost vzduchu ve třídě', problem: 'Hustota vzduchu je asi 1,29 kg/m³. Jakou hmotnost má vzduch ve třídě o objemu 200 m³?', steps: [
               'm = ρ · V = 1,29 kg/m³ · 200 m³',
               'm = 258 kg',
             ], answer: 'Vzduch ve třídě má asi 258 kg – víc než tři dospělí lidé!' },
@@ -849,7 +849,7 @@ const level: LevelContent = {
       ],
       summary: [
         'Hmotnost udává, kolik látky těleso obsahuje; měří se vahami v kilogramech a je všude stejná.',
-        'Tíha je síla, kterou těleso přitahuje Země; na Měsíci je asi šestkrát menší, hmotnost se ale nemění.',
+        'Tíhová síla (tíha) je síla, kterou Země přitahuje těleso; na Měsíci je asi šestkrát menší, hmotnost se ale nemění.',
         'Hustota je hmotnost jednotky objemu: ρ = m / V, a proto také m = ρ · V a V = m / ρ.',
         'Platí 1 g/cm³ = 1 000 kg/m³; voda má hustotu 1 g/cm³ neboli 1 000 kg/m³.',
         'Hustota je pro látku typická, a proto podle ní můžeme neznámou látku určit z tabulky.',
@@ -888,14 +888,14 @@ const level: LevelContent = {
           title: 'Z čeho jsou látky',
           icon: 'atom',
           blocks: [
-            { type: 'p', text: 'Abychom pochopili, jak vůně kávy cestuje, musíme se podívat dovnitř látek. Kdybys kousek železa dělil pořád na menší a menší části, jednou bys narazil na hranici. Všechny látky se skládají z nepatrných **částic**: atomů, molekul nebo iontů. V chemii jsi je už poznal podle toho, jak se spojují; fyzika sleduje hlavně, **jak se pohybují a jak na sebe působí**. Částice mohou mít tři podoby:' },
+            { type: 'p', text: 'Abychom pochopili, jak vůně kávy cestuje, musíme se podívat dovnitř látek. Kdybys kousek železa dělil pořád na menší a menší části, jednou bys narazil na hranici. Všechny látky se skládají z nepatrných **částic**: atomů, molekul nebo iontů. Jak se spojují, zkoumá chemie; fyzika sleduje hlavně, **jak se pohybují a jak na sebe působí**. Částice mohou mít tři podoby:' },
             { type: 'keyterms', items: [
               { term: 'atom', def: 'nejmenší částice prvku, třeba atom železa nebo zlata' },
               { term: 'molekula', def: 'skupinka atomů pevně spojených dohromady, třeba molekula vody' },
               { term: 'iont', def: 'nabitá částice, která vznikne z atomu ziskem nebo ztrátou elektronů' },
             ] },
-            { type: 'p', text: 'Jak malé ty částice jsou? Projdi si cestu od zrnka písku až k jedinému atomu:' },
-            { type: 'diagram', id: 'atom-scale', caption: 'Od zrnka písku k atomu: atom má průměr asi 10^{−10} m, desetinu nanometru.' },
+            { type: 'p', text: 'Jak malé ty částice jsou? Atom má průměr asi 10^{−10} m, desetinu nanometru. Tak malou věc si nepředstavíš, a proto ji obrázek zvětší na velikost fotbalového stadionu:' },
+            { type: 'diagram', id: 'atom-scale', caption: 'Atom zvětšený na velikost stadionu. I uvnitř atomu je ještě menší jádro – velké jako špendlíková hlavička uprostřed hřiště. Skutečný atom má průměr asi 10^{−10} m.' },
             { type: 'p', text: 'Molekuly neuvidíš ani v běžném mikroskopu. Model ti ale ukáže, jak jsou poskládané ty, které máš kolem sebe nejčastěji – ve vodě a ve vzduchu:' },
             { type: 'molecule', molecules: ['H2O', 'O2', 'N2'], labels: ['molekula vody', 'molekula kyslíku', 'molekula dusíku'], caption: 'Molekuly vody a hlavních plynů ve vzduchu. Otáčej je prstem.' },
             { type: 'callout', variant: 'fact', text: 'V jedné kapce vody (asi 0,05 ml) je kolem 1,7 · 10^{21} molekul. Kdyby je každý z 8 miliard lidí na Zemi počítal rychlostí jedna za sekundu, trvalo by to přes 6 000 let.' },
@@ -912,7 +912,7 @@ const level: LevelContent = {
             { type: 'iconlist', items: [
               { icon: 'coffee', title: 'Vůně kávy', text: 'molekuly vůně doputují přes celý byt' },
               { icon: 'soap', title: 'Deodorant', text: 'ucítíš ho i na druhé straně šatny' },
-              { icon: 'fish', title: 'Rybí nos', text: 'žralok zachytí krev ve vodě na velkou dálku' },
+              { icon: 'drop', title: 'Čaj ze sáčku', text: 'barva se z čajového sáčku šíří do vody i bez míchání' },
               { icon: 'salt', title: 'Nakládané okurky', text: 'sůl a ocet proniknou až dovnitř okurky' },
               { icon: 'ring', title: 'Kovy', text: 'zlato a olovo stisknuté k sobě do sebe za roky proniknou o kousek' },
             ] },
@@ -922,7 +922,7 @@ const level: LevelContent = {
               { title: 'Pomalejší difuze', icon: 'cold', tone: 'b', points: ['ve studené látce', 'v kapalinách: částice do sebe často narážejí', 'v pevných látkách: trvá měsíce až roky'] },
             ] },
             { type: 'callout', variant: 'tip', title: 'Pokus do kuchyně', text: 'Kápni potravinářské barvivo zároveň do sklenice se studenou a s horkou vodou a nemíchej. Stopkami změř, za jak dlouho se obarví celá sklenice. Nezapomeň na řízené veličiny: stejné sklenice, stejně vody, stejná kapka.' },
-            { type: 'callout', variant: 'mascot', text: 'Až zase ucítíš z kuchyně palačinky, vzpomeň si: molekuly vůně k tobě doletěly samy a cestou se srazily s miliardami molekul vzduchu. Proto to trvá pár sekund, a ne okamžik.' },
+            { type: 'callout', variant: 'mascot', text: 'Až zase ucítíš z kuchyně palačinky, vzpomeň si: molekuly vůně k tobě doletěly samy a cestou se srazily s miliardami molekul vzduchu. Proto to trvá chvíli, a ne okamžik. Na delší vzdálenost jim pomáhá i proudění vzduchu v bytě.' },
             { type: 'p', text: 'Difuze dokazuje, že se částice pohybují. Další stopy prozradí, že je mezi nimi i volné místo.' },
             { type: 'check', question: { kind: 'tf', q: 'V horké vodě probíhá difuze pomaleji než ve studené.', answer: false, explain: 'V horké vodě se částice pohybují rychleji, a proto difuze probíhá rychleji.' } },
           ],
@@ -932,7 +932,7 @@ const level: LevelContent = {
           icon: 'microscope',
           blocks: [
             { type: 'p', text: 'Difuzi cítíš nosem, pohyb částic se ale dá i uvidět – nepřímo. V roce 1827 pozoroval skotský botanik Robert Brown mikroskopem drobná zrníčka ve vodě. Neustále sebou cukala sem a tam, i když voda stála. Proč, vysvětlil až Albert Einstein v roce 1905: do zrníčka ze všech stran nerovnoměrně narážejí neviditelné molekuly vody. Zrníčko tak dělá viditelným pohyb částic, které vidět nejsou:' },
-            { type: 'diagram', id: 'brownian-motion', caption: 'Brownův pohyb: klikatá dráha pylového zrnka. Ve výřezu jsou molekuly vody, které do něj narážejí.' },
+            { type: 'diagram', id: 'brownian-motion', caption: 'Brownův pohyb: klikatá dráha drobného zrníčka ve vodě. Ve výřezu jsou molekuly vody, které do něj narážejí.' },
             { type: 'p', text: 'Druhou stopou je **zmenšení objemu při smíchání**. Nalij 50 ml vody a 50 ml lihu do jednoho válce. Čekal bys 100 ml, ale vyjde jen asi 97 ml. Menší částice zapadly do mezer mezi většími.' },
             { type: 'particles', caption: 'Mezi částicemi jsou mezery. Po smíchání molekuly vody zaplní část mezer mezi molekulami lihu, a směs má proto menší objem než součet obou kapalin.', boxes: [
               { label: '50 ml vody', state: 'liquid', items: [{ species: 'H2O', count: 10 }] },
@@ -988,7 +988,7 @@ const level: LevelContent = {
               { label: 'vodní pára', state: 'gas', items: [{ species: 'H2O', count: 6 }] },
             ] },
             { type: 'callout', variant: 'warning', title: 'Pára není obláček', text: 'Vodní pára je neviditelný plyn. Bílý obláček nad hrncem jsou už drobné kapičky vody, které vznikly, když pára na vzduchu zchladla.' },
-            { type: 'callout', variant: 'fact', title: 'Čtvrté skupenství', text: 'Při velmi vysokých teplotách se z atomů plynu odtrhávají elektrony a vzniká **plazma**. Ze žhavého plazmatu je Slunce, blesk i světlo v zářivce.' },
+            { type: 'callout', variant: 'fact', title: 'Čtvrté skupenství', text: 'Při velmi vysokých teplotách nebo v elektrickém výboji se z atomů plynu odtrhávají elektrony a vzniká **plazma**. Z plazmatu je Slunce i blesk, plazma svítí i v zářivce.' },
             { type: 'p', text: 'Víme, jak vypadají jednotlivá skupenství. Co se ale s částicemi děje, když led taje nebo voda vře?' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď ke skupenství, jak se v něm pohybují částice.', pairs: [
               ['pevná látka', 'kmitají kolem stálých míst'],
@@ -1034,7 +1034,7 @@ const level: LevelContent = {
         { kind: 'tf', q: 'Částice v pevné látce jsou úplně v klidu.', answer: false, explain: 'I v pevné látce částice neustále kmitají, jen kolem stálých míst. Téměř by se zastavily až při absolutní nule (lekce „Teplota a teplotní roztažnost“).' },
         { kind: 'tf', q: 'Plyny lze stlačit, protože mezi jejich částicemi jsou velké mezery.', answer: true, explain: 'Molekuly plynu jsou od sebe daleko, a tak je lze přiblížit. U kapalin a pevných látek jsou částice těsně u sebe.' },
         { kind: 'text', q: 'Jak se jmenuje samovolné pronikání částic jedné látky mezi částice druhé látky?', accept: ['difuze', 'difúze'], explain: 'Difuze probíhá bez míchání, protože se částice samy neustále pohybují.' },
-        { kind: 'choice', q: 'Který jev **nedokazuje**, že se částice látek neustále pohybují?', options: ['kámen padá k zemi', 'vůně parfému se šíří místností', 'pylové zrnko ve vodě se chvěje', 'cukr se v čaji rozpustí i bez míchání'], answer: 0, explain: 'Pád kamene způsobuje přitažlivost Země, s pohybem částic nesouvisí. Ostatní jsou stopy pohybu částic.' },
+        { kind: 'choice', q: 'Který jev **nedokazuje**, že se částice látek neustále pohybují?', options: ['kámen padá k zemi', 'vůně parfému se šíří místností', 'drobné zrníčko ve vodě se pod mikroskopem chvěje', 'cukr se v čaji rozpustí i bez míchání'], answer: 0, explain: 'Pád kamene způsobuje přitažlivost Země, s pohybem částic nesouvisí. Ostatní jsou stopy pohybu částic.' },
         { kind: 'multi', q: 'Které vlastnosti mají kapaliny?', options: ['stálý objem', 'tvar podle nádoby', 'jsou snadno stlačitelné', 'částice se mohou přesouvat', 'vyplní celou nádobu jako plyn'], answers: [0, 1, 3], explain: 'Kapalina má stálý objem, ale tvar podle nádoby, protože se částice přesouvají. Stlačit se skoro nedá a celou nádobu nevyplní.' },
         { kind: 'order', q: 'Kostku ledu z mrazáku (−18 °C) dáš do hrnce na sporák. Seřaď, co se bude dít.', items: ['led se ohřívá, molekuly kmitají čím dál víc', 'led taje, molekuly opouštějí stálá místa', 'voda se ohřívá, molekuly se přesouvají rychleji', 'voda vře a molekuly unikají jako pára'], explain: 'Dodávaná energie částice postupně rozpohybuje víc a víc: nejdřív kmitají, pak se uvolní z míst (tání) a nakonec se od sebe úplně vzdálí (var).' },
         { kind: 'choice', q: 'Proč se na studeném okně v kuchyni objeví kapky, když se vaří polévka?', options: ['vodní pára z vaření na studeném skle kapalní', 'sklo propouští vodu zvenku', 'voda difunduje ze skla ven', 'teplem se na skle roztaje led'], answer: 0, explain: 'Molekuly vodní páry se o studené sklo zpomalí, přitažlivé síly je spojí a vzniknou kapky: kapalnění.' },
@@ -1169,7 +1169,7 @@ const level: LevelContent = {
               { icon: 'fuel', title: 'Nádrž nedolévej po okraj', text: 'benzin se na slunci roztáhne a vyteče' },
               { icon: 'balloon', title: 'Balonek na láhvi', text: 'v horké vodě se sám nafoukne' },
               { icon: 'star', title: 'Pingpongový míček', text: 'promáčklý míček v horké vodě vyskočí do kulata' },
-              { icon: 'car', title: 'Pneumatiky', text: 'v mrazu mají nižší tlak, vzduch uvnitř se smrští' },
+              { icon: 'car', title: 'Pneumatiky', text: 'v mrazu v nich klesne tlak, protože se vzduch uvnitř ochladí' },
             ] },
             { type: 'p', text: 'Jak velký je ten efekt u kapaliny? Vezměme hrnec naplněný vodou až po okraj:' },
             { type: 'example', title: 'Proč přetekl hrnec', problem: 'Hrnec je až po okraj naplněný 3 l studené vody (15 °C). Při ohřátí na 95 °C se voda roztáhne asi o 4 %. Kolik vody přeteče?', steps: [
@@ -1196,7 +1196,7 @@ const level: LevelContent = {
               { icon: 'wind', title: 'Podzim', text: 'studený vzduch chladí hladinu' },
               { icon: 'drop', title: 'Klesání', text: 'chladnější a hustší voda klesá ke dnu' },
               { icon: 'thermometer', title: 'Dno na 4 °C', text: 'nejhustší voda se nahromadí dole' },
-              { icon: 'ice', title: 'Led nahoře', text: 'voda pod 4 °C je lehčí, zůstane u hladiny a zamrzne' },
+              { icon: 'ice', title: 'Led nahoře', text: 'voda chladnější než 4 °C má menší hustotu, zůstane u hladiny a zamrzne' },
               { icon: 'fish', title: 'Ryby žijí', text: 'led izoluje a u dna zůstane asi 4 °C' },
             ] },
             { type: 'p', text: 'Anomálie má i méně příjemnou stránku: voda při zamrznutí zvětší objem. Spočítejme, proč praská láhev v mrazáku. Pomůže nám hustota z lekce „Hmotnost a hustota“:' },
@@ -1205,7 +1205,7 @@ const level: LevelContent = {
               'V = m / ρ = 1 000 g / 0,92 g/cm³',
               'V ≈ 1 087 cm³',
             ], answer: 'Led má asi 1 090 cm³, o 9 % víc než voda. Plná láhev proto v mrazáku praskne.' },
-            { type: 'callout', variant: 'fact', text: 'Voda zamrzající v puklinách skal je rozšiřuje a skály se postupně rozpadají (mrazové zvětrávání). Ze stejného důvodu na jaře praskají silnice a vodovodní trubky.' },
+            { type: 'callout', variant: 'fact', text: 'Voda zamrzající v puklinách skal je rozšiřuje a skály se postupně rozpadají (mrazové zvětrávání). Ze stejného důvodu v mrazu praskají vodovodní trubky a na jaře jsou v silnicích výmoly.' },
             { type: 'game', gameId: 'swipe', text: 'Otestuj se ve hře **Pravda, nebo lež?**: teplota, stupnice a roztažnost.' },
             { type: 'p', text: 'Teď víš, co je teplota a proč se látky při zahřátí roztahují. V poslední lekci úrovně se podíváš na úplně jiné působení: na elektrický náboj, který tě „kopne“ z kliky, a na magnety.' },
             { type: 'check', question: { kind: 'choice', q: 'Jakou teplotu má v zimě voda u dna hlubokého zamrzlého rybníka?', options: ['asi 4 °C', '0 °C', '−4 °C', 'stejnou jako vzduch nad ledem'], answer: 0, explain: 'Voda o teplotě 4 °C má největší hustotu, a proto se hromadí u dna. Led nahoře ji chrání před mrazem.' } },
@@ -1268,7 +1268,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Existují dva druhy elektrického náboje: **kladný** (+) a **záporný** (−). Jak se chovají, zjistíš snadno se dvěma balonky na nitích.' },
             { type: 'compare', columns: [
               { title: 'Souhlasné náboje', icon: 'cross', tone: 'bad', points: ['+ a +, nebo − a −', 'se **odpuzují**', 'dva balonky otřené o vlasy od sebe odskočí', 'jednotlivé vlasy od sebe odstávají'] },
-              { title: 'Nesouhlasné náboje', icon: 'check', tone: 'good', points: ['+ a −', 'se **přitahují**', 'balonek přiláká vlasy, o které byl otřen', 'prach se lepí na zelektrovanou obrazovku'] },
+              { title: 'Nesouhlasné náboje', icon: 'check', tone: 'good', points: ['+ a −', 'se **přitahují**', 'balonek přiláká vlasy, o které byl otřen'] },
             ] },
             { type: 'p', text: 'Pojmy, které jsme zatím používali volně, si teď upřesníme. Všimni si, že o druhu náboje rozhoduje vždycky počet elektronů:' },
             { type: 'keyterms', items: [
@@ -1315,14 +1315,14 @@ const level: LevelContent = {
               { icon: 'car', title: 'Auto je úkryt', text: 'kovová karoserie svede blesk kolem tebe' },
               { icon: 'tree', title: 'Ne pod osamělý strom', text: 'blesk nejčastěji udeří do nejvyššího místa' },
               { icon: 'mountain', title: 'Pryč z kopce', text: 'slez z hřebene, nestůj na otevřené louce' },
-              { icon: 'swimming-pool', title: 'Ven z vody', text: 'voda vede a hladina je nejvyšší místo v okolí' },
+              { icon: 'swimming-pool', title: 'Ven z vody', text: 'voda vede a na rovné hladině jsi nejvyšším místem v okolí' },
               { icon: 'warning', title: 'Přikrč se', text: 'v otevřeném terénu se přikrč, nohy u sebe, nelehej si' },
             ] },
             { type: 'p', text: 'Jak poznáš, jestli je bouřka ještě daleko? Pomůže zpoždění hromu za bleskem, protože světlo letí mnohem rychleji než zvuk:' },
             { type: 'example', title: 'Jak daleko je bouřka', problem: 'Uviděl jsi blesk a hrom zaslechl o 6 s později. Jak daleko je bouřka? Světlo k tobě doletí prakticky okamžitě, zvuk urazí asi 1 km za 3 s.', steps: [
               'Za každé 3 s urazí zvuk asi 1 km.',
               'Vzdálenost ≈ 6 s : 3 s/km = 2 km',
-            ], answer: 'Bouřka je asi 2 km daleko. Přesněji se se zvukem budeš počítat v lekci „Zvuk a jeho šíření“.' },
+            ], answer: 'Bouřka je asi 2 km daleko. Přesněji budeš se zvukem počítat v lekci „Zvuk a jeho šíření“.' },
             { type: 'callout', variant: 'warning', text: 'Blesk může udeřit i 10 km před bouřkou. Pokud mezi bleskem a hromem napočítáš méně než 30 s, schovej se, a ven vyjdi až 30 minut po posledním zahřmění.' },
             { type: 'callout', variant: 'fact', title: 'Český vynálezce', text: 'Farář Prokop Diviš postavil v roce 1754 v Přímětících u Znojma „povětrnostní stroj“ – jeden z prvních hromosvodů v Evropě. Hromosvod je kovová tyč na střeše spojená vodičem se zemí: blesk neškodně svede do země.' },
             { type: 'p', text: 'Elektrické síly působí na dálku, bez dotyku. Stejně záhadně působí i magnet na lednici z úvodu – na něj se podíváme teď.' },
@@ -1364,7 +1364,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Prostor kolem magnetu, ve kterém magnet působí silou, se nazývá **magnetické pole**. Vidět ho nemůžeš, ale umíš ho zviditelnit: na papír nad magnetem nasyp **železné piliny** a lehce poklepej. Piliny se seřadí do křivek – **magnetických indukčních čar**.' },
             { type: 'diagram', id: 'magnet-field', caption: 'Piliny kolem tyčového magnetu ukazují indukční čáry, které vycházejí ze severního pólu a vstupují do jižního. Malé kompasy se natočí podél čar.' },
-            { type: 'p', text: 'Takové pole nemá jen magnet z lednice. **Země je obří magnet.** Proto se střelka kompasu (malý lehký magnet) natočí severním pólem k severu. Pozor na chyták: v blízkosti zeměpisného severního pólu leží **jižní magnetický pól** Země – jen tak může přitahovat severní pól střelky.' },
+            { type: 'p', text: 'Takové pole nemá jen magnet z lednice. **Země je obří magnet.** Proto se střelka kompasu (malý lehký magnet) natočí severním pólem k severu. Pozor na chyták: v blízkosti zeměpisného severního pólu leží **jižní magnetický pól** Země – jen tak může přitahovat severní pól střelky. (Zeměpisci mu podle polohy říkají severní magnetický pól, proto ho tak najdeš i na obrázku.)' },
             { type: 'diagram', id: 'earth-magnetism', caption: 'Magnetické pole Země: zeměpisné a magnetické póly nejsou na stejném místě a magnetické se pomalu posouvají.' },
             { type: 'callout', variant: 'tip', title: 'Kompas z kuchyně', text: 'Zmagnetuj šicí jehlu (přejeď ji magnetem 20× stejným směrem), propíchni s ní kousek korku a polož ho do misky s vodou. Jehla se sama otočí k severu.' },
             { type: 'callout', variant: 'fact', title: 'Polární záře', text: 'Magnetické pole Země odklání proud nabitých částic ze Slunce (sluneční vítr). U pólů se částice dostanou do atmosféry, narážejí do molekul vzduchu a ty svítí zeleně a červeně – vzniká polární záře.' },
@@ -1388,14 +1388,14 @@ const level: LevelContent = {
         { kind: 'tf', q: 'Při tření balonku o vlasy vzniká elektrický náboj z ničeho.', answer: false, explain: 'Náboj nevzniká, jen se přesouvá: elektrony přejdou z vlasů na balonek.' },
         { kind: 'text', q: 'Jak se jmenuje přístroj, kterým zjistíme, zda je těleso elektricky nabité?', accept: ['elektroskop'], explain: 'Elektroskop má lehké kovové lístky, které se při nabití odpuzují a rozevřou.' },
         { kind: 'choice', q: 'Proč se lístky elektroskopu po dotyku nabitou tyčí rozevřou?', options: ['oba lístky získají souhlasný náboj a odpuzují se', 'lístky se zahřejí a roztáhnou', 'lístky zmagnetují', 'tyč lístky rozfoukne'], answer: 0, explain: 'Náboj z tyče se rozteče po kovu až do lístků. Oba mají stejný druh náboje, a proto se od sebe odpuzují.' },
-        { kind: 'multi', q: 'Které látky magnet přitahuje?', options: ['železo', 'nikl', 'kobalt', 'hliník', 'měď'], answers: [0, 1, 2], explain: 'Magneticky se chová železo (i ocel), nikl a kobalt. Hliník a měď magnet nepřitáhne.' },
+        { kind: 'multi', q: 'Které látky magnet přitahuje?', options: ['železo', 'nikl', 'kobalt', 'hliník', 'měď'], answers: [0, 1, 2], explain: 'Magnet přitahuje železo (i ocel), nikl a kobalt. Hliník a měď magnet nepřitáhne.' },
         { kind: 'match', q: 'Přiřaď pojem k popisu.', pairs: [
           ['vodič', 'náboj jím snadno prochází'],
           ['izolant', 'náboj jím skoro neprojde'],
           ['hromosvod', 'svede blesk do země'],
           ['kompas', 'ukazuje směr magnetického pole Země'],
         ], explain: 'Vodiče vedou náboj, izolanty ne. Hromosvod je uzemněný vodič na střeše a kompas je malý magnet, který se natáčí podle pole Země.' },
-        { kind: 'choice', q: 'Kam ukazuje severní pól střelky kompasu?', options: ['k zeměpisnému severu, kde leží jižní magnetický pól Země', 'k zeměpisnému severu, kde leží severní magnetický pól Země', 'k zeměpisnému jihu', 'vždy ke Slunci'], answer: 0, explain: 'Severní pól střelky přitahuje nesouhlasný pól. U zeměpisného severu proto musí ležet jižní magnetický pól Země.' },
+        { kind: 'choice', q: 'Severní pól střelky kompasu míří k zeměpisnému severu. Jaký pól má Země jako magnet blízko zeměpisného severu?', options: ['jižní (S), protože nesouhlasné póly se přitahují', 'severní (N), protože souhlasné póly se přitahují', 'žádný, střelku natáčí Slunce', 'oba póly najednou'], answer: 0, explain: 'Severní pól střelky přitahuje nesouhlasný pól. U zeměpisného severu proto musí ležet jižní magnetický pól Země.' },
         { kind: 'choice', q: 'Proč za bouřky nemáš stát pod osamělým stromem?', options: ['blesk nejčastěji udeří do nejvyššího místa v okolí', 'strom přitahuje déšť', 'pod stromem je větší vítr', 'stromy jsou izolanty a náboj se v nich hromadí'], answer: 0, explain: 'Osamělý strom je nejvyšší bod v okolí, a blesk do něj proto udeří nejspíš. Proud pak může přeskočit i na člověka pod ním.' },
       ],
     },
@@ -1409,7 +1409,7 @@ const level: LevelContent = {
     { kind: 'number', q: 'Kamínek o hmotnosti 52 g zvedl hladinu v odměrném válci ze 40 ml na 60 ml. Jaká je jeho hustota?', answer: 2.6, tolerance: 0.01, unit: 'g/cm³', explain: 'V = 60 ml − 40 ml = 20 cm³; ρ = m / V = 52 g / 20 cm³ = 2,6 g/cm³.' },
     { kind: 'number', q: 'Hliníkový kvádr má rozměry 10 cm × 5 cm × 2 cm. Jakou má hmotnost v gramech (ρ hliníku = 2,7 g/cm³)?', answer: 270, tolerance: 0.5, unit: 'g', explain: 'V = 10 cm · 5 cm · 2 cm = 100 cm³; m = ρ · V = 2,7 g/cm³ · 100 cm³ = 270 g.' },
     { kind: 'choice', q: 'Pepa zkoumá, jak teplota vody ovlivní rychlost difuze barviva. Co je **závisle proměnná**?', options: ['doba, za kterou se barvivo rozptýlí po celé sklenici', 'teplota vody', 'množství vody ve sklenici', 'velikost kapky barviva'], answer: 0, explain: 'Teplotu Pepa sám mění (nezávisle proměnná), množství vody a velikost kapky drží stejné. Měří dobu rozptýlení – to je závisle proměnná.' },
-    { kind: 'multi', q: 'Které jevy dokazují, že se částice látek neustále pohybují?', options: ['vůně parfému se rozšíří po místnosti', 'pylová zrnka ve vodě se neustále chvějí', 'kámen padá k zemi', 'magnet přitahuje hřebík', 'cukr se ve vodě rozpustí i bez míchání'], answers: [0, 1, 4], explain: 'Difuze vůně, Brownův pohyb a samovolné rozpouštění jsou stopy pohybu částic. Pád kamene a přitahování magnetem způsobují jiné síly.' },
+    { kind: 'multi', q: 'Které jevy dokazují, že se částice látek neustále pohybují?', options: ['vůně parfému se rozšíří po místnosti', 'drobná zrníčka ve vodě se pod mikroskopem neustále chvějí', 'kámen padá k zemi', 'magnet přitahuje hřebík', 'cukr se ve vodě rozpustí i bez míchání'], answers: [0, 1, 4], explain: 'Difuze vůně, Brownův pohyb a samovolné rozpouštění jsou stopy pohybu částic. Pád kamene a přitahování magnetem způsobují jiné síly.' },
     { kind: 'number', q: 'Venkovní teploměr ukazuje −18 °C. Kolik je to kelvinů? Zaokrouhli na celé kelviny.', answer: 255, tolerance: 0.5, unit: 'K', explain: 'T = t + 273,15 = −18 + 273,15 = 255,15 K ≈ 255 K.' },
     { kind: 'tf', q: 'Teploty 0 K se dá snadno dosáhnout, stačí látku ponořit do kapalného dusíku.', answer: false, explain: 'Kapalný dusík má asi 77 K (−196 °C). Absolutní nuly nelze nikdy úplně dosáhnout, fyzici se k ní jen velmi přiblíží.' },
     { kind: 'match', q: 'Přiřaď k jevu jeho vysvětlení.', pairs: [
