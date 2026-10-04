@@ -47,7 +47,17 @@ export const rise: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: ease.out } },
 }
 
-/** Child of `stagger`: pops in with a spring (nodes, tiles, badges). */
+/**
+ * Child of `stagger` for full-width rows and cards: grows to its size without
+ * overshooting. A bouncy scale above 1 makes a full-width element stick out of
+ * the screen on both sides for a moment, and the page can then be panned sideways.
+ */
+export const popRow: Variants = {
+  hidden: { opacity: 0, scale: 0.96 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } },
+}
+
+/** Child of `stagger`: pops in with a spring (nodes, tiles, badges – small things only, see popRow). */
 export const popIn: Variants = {
   hidden: { opacity: 0, scale: 0.6 },
   show: { opacity: 1, scale: 1, transition: spring.bouncy },

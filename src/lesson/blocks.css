@@ -348,6 +348,11 @@ figcaption {
   border: 1.5px solid var(--line);
   box-shadow: var(--double-rule);
 }
+/* a drawing never pokes out of its frame (zoomed insets, labels at the edge):
+   anything wider than the column would let the page pan sideways on a phone */
+.b-visual:not(.b-visual-plain) {
+  overflow-x: clip;
+}
 .b-visual-plain {
   padding: 0;
   background: none;

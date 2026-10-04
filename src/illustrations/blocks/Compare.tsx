@@ -46,8 +46,11 @@ export function Compare({ columns }: { columns: CompareColumn[] }) {
           return (
             <Fragment key={i}>
               {i > 0 && (
-                <motion.div className="il-vs" variants={seal} aria-hidden="true">
-                  <span className="il-seal">vs</span>
+                // the full-width row only fades; the bounce is on the small seal
+                <motion.div className="il-vs" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }} aria-hidden="true">
+                  <motion.span className="il-seal" variants={seal}>
+                    vs
+                  </motion.span>
                 </motion.div>
               )}
               <motion.section className={`il-plate il-tone-${tone}`} custom={side} variants={plate}>

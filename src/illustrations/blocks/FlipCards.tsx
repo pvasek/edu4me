@@ -2,7 +2,7 @@ import { useState, type KeyboardEvent } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import type { FlipCard } from '../../core/types'
 import { Md, plain } from '../../core/markup'
-import { popIn, spring, stagger } from '../../ui/motion'
+import { popRow, spring, stagger } from '../../ui/motion'
 import { ChemIconView } from '../ChemIcon'
 import { SpecimenView } from '../specimens'
 import './flipcards.css'
@@ -55,7 +55,7 @@ export function FlipCards({ cards }: { cards: FlipCard[] }) {
         {cards.map((c, i) => {
           const on = flipped.has(i)
           return (
-            <motion.div key={i} className="fc-slot" variants={popIn}>
+            <motion.div key={i} className="fc-slot" variants={popRow}>
               <div
                 className={`fc-card${on ? ' is-flipped' : ''}${seen.has(i) ? ' is-seen' : ''}`}
                 role="button"

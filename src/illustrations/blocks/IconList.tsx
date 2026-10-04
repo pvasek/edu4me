@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { useRef } from 'react'
 import type { IconItem } from '../../core/types'
 import { Md } from '../../core/markup'
-import { popIn, spring, stagger } from '../../ui/motion'
+import { popRow, spring, stagger } from '../../ui/motion'
 import { CardViewer, useCardViewer } from '../../ui/CardViewer'
 import { Medal } from './Medal'
 import '../illustrations.css'
@@ -21,7 +21,7 @@ export function IconList({ items }: { items: IconItem[] }) {
         viewport={{ once: true, amount: 0.15 }}
       >
         {items.map((it, i) => (
-          <motion.li key={i} variants={popIn}>
+          <motion.li key={i} variants={popRow}>
             <motion.button
               type="button"
               className="il-spec"
