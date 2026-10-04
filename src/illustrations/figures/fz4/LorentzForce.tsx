@@ -13,7 +13,7 @@ import {
 } from "./kit";
 
 const LABEL =
-  "Lorentzova síla na kladně nabitou částici v homogenním magnetickém poli, jehož indukce B míří kolmo do nákresny (křížky). Částice letí rychlostí v; magnetická síla F_m je kolmá na rychlost i na indukci, a proto mění jen směr pohybu, ne velikost rychlosti. Když částice letí vpravo, síla míří nahoru do středu; na pravém kraji letí nahoru a síla míří vlevo. Částice proto obíhá proti směru hodinových ručiček po kružnici o poloměru r = m · v / (Q · B). Vpravo pravidlo pravé ruky: vektory v a B leží v jedné rovině, prsty pravé ruky ukazují ve směru v a ohýbají se k B, vztyčený palec ukazuje směr síly F_m na kladný náboj; F_m, v a B jsou navzájem kolmé.";
+  "Lorentzova síla na kladně nabitou částici v homogenním magnetickém poli, jehož indukce B míří kolmo do nákresny (křížky). Částice letí rychlostí v; magnetická síla F_m je kolmá na rychlost i na indukci, a proto mění jen směr pohybu, ne velikost rychlosti. Když částice letí vpravo, síla míří nahoru do středu; na pravém kraji letí nahoru a síla míří vlevo. Částice proto obíhá proti směru hodinových ručiček po kružnici o poloměru r = m · v / (Q · B). Vpravo Flemingovo pravidlo levé ruky, stejné jako pro sílu na vodič s proudem: indukční čáry vstupují do dlaně levé ruky, natažené prsty ukazují směr pohybu kladné částice (to je směr proudu), odtažený palec ukazuje směr síly F_m. Pro zápornou částici míří síla opačně. F_m, v a B jsou navzájem kolmé.";
 
 const CX = 164;
 const CY = 176;
@@ -160,7 +160,7 @@ function Orbit() {
   );
 }
 
-/** Right-hand rule triad: v and B span the shaded plane, F_m stands perpendicular to it. */
+/** Fleming's left-hand rule triad (as in the lesson): B into the palm, fingers along v, thumb F_m; v and B span the shaded plane. */
 function Triad() {
   const o: [number, number] = [40, 160];
   const v: [number, number] = [130, 160];
@@ -169,16 +169,12 @@ function Triad() {
   return (
     <g>
       <text x={100} y={0} textAnchor="middle" className="fz4-lbl fz4-b">
-        pravidlo pravé ruky
+        pravidlo levé ruky
       </text>
       <Fade delay={0.4}>
         <path
           d={`M${o[0]} ${o[1]} L${v[0]} ${v[1]} L${v[0] + b[0] - o[0]} ${b[1]} L${b[0]} ${b[1]}Z`}
           className="fz4-plane"
-        />
-        <path
-          d={`M${o[0] + 20} ${o[1]} A20 20 0 0 0 ${o[0] + 14} ${o[1] - 10}`}
-          className="fz4-angle-arc"
         />
       </Fade>
       <Vec
@@ -210,15 +206,16 @@ function Triad() {
       />
       <Fade delay={1.2}>
         <text x={100} y={194} textAnchor="middle" className="fz4-lbl fz4-sm">
-          prsty ve směru <tspan className="fz4-it fz4-b">v</tspan>, ohnout k{" "}
-          <tspan className="fz4-it fz4-b">B</tspan>,
+          indukční čáry <tspan className="fz4-it fz4-b">B</tspan> do dlaně,
         </text>
         <text x={100} y={212} textAnchor="middle" className="fz4-lbl fz4-sm">
+          prsty ve směru <tspan className="fz4-it fz4-b">v</tspan> (kladný náboj),
+        </text>
+        <text x={100} y={230} textAnchor="middle" className="fz4-lbl fz4-sm">
           palec ukáže <tspan className="fz4-it fz4-b">F</tspan>
           <tspan className="fz4-b" fontSize="70%" dy="0.3em">
             m
           </tspan>
-          <tspan dy="-0.3em"> (kladný náboj)</tspan>
         </text>
       </Fade>
     </g>
@@ -232,7 +229,7 @@ export default function LorentzForce() {
     <Figure
       level={11}
       w={n ? 348 : 556}
-      h={n ? 572 : 340}
+      h={n ? 590 : 340}
       max={n ? 420 : 700}
       compact={compact}
       boost={false}

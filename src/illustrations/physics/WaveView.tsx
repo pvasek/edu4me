@@ -21,7 +21,10 @@ export function waveLabel(kind: Kind, waves: WaveSpec[], sum: boolean, marks: WM
     s = `Skládání vlnění (interference): ${names.join(' a ')} jsou tenkou čarou, jejich součet (výsledné vlnění) tlustou čarou.`
   else if (waves.length > 1) s = `Příčná vlnění: ${names.join('; ')}.`
   else s = `Příčné vlnění: sinusoida s amplitudou ${czNum(w0.amplitude)} a vlnovou délkou ${czNum(w0.wavelength)}.`
-  if (marks.includes('wavelength')) s += ' Vyznačena vlnová délka λ (vzdálenost dvou sousedních vrcholů).'
+  if (marks.includes('wavelength'))
+    s += kind === 'longitudinal'
+      ? ' Vyznačena vlnová délka λ (vzdálenost dvou sousedních zhuštění).'
+      : ' Vyznačena vlnová délka λ (vzdálenost dvou sousedních vrcholů).'
   if (marks.includes('amplitude') && kind !== 'longitudinal') s += ' Vyznačena amplituda A (největší výchylka od rovnovážné polohy).'
   if (kind !== 'standing') s += ' Vlnění postupuje doprava.'
   return s

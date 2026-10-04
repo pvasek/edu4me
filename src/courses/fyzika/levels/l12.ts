@@ -1036,10 +1036,10 @@ const level: LevelContent = {
           title: 'Dozimetrie a záření v medicíně',
           icon: 'syringe',
           blocks: [
-            { type: 'p', text: 'Jak nebezpečné je záření z reaktoru, z rentgenu nebo z přírody? Ionizující záření škodí tím, že v tkáni předá energii a rozbíjí molekuly, hlavně DNA. Kolik energie tkáň pohltila, udává **dávka**. Jak moc to škodí, udává **dávkový ekvivalent** – záleží i na druhu záření. Obě veličiny spočítáš takto:' },
-            { type: 'formula', text: 'D = E / m,     H = w_{R} · D', caption: 'D dávka v grayích (Gy = J/kg), H dávkový ekvivalent v sievertech (Sv); radiační váhový faktor w_{R} je 1 pro γ a β, 20 pro α' },
+            { type: 'p', text: 'Jak nebezpečné je záření z reaktoru, z rentgenu nebo z přírody? Ionizující záření škodí tím, že v tkáni předá energii a rozbíjí molekuly, hlavně DNA. Kolik energie tkáň pohltila, udává **dávka**. Jak moc to škodí, udává **ekvivalentní dávka** – záleží i na druhu záření. Obě veličiny spočítáš takto:' },
+            { type: 'formula', text: 'D = E / m,     H = w_{R} · D', caption: 'D dávka v grayích (Gy = J/kg), H ekvivalentní dávka v sievertech (Sv); radiační váhový faktor w_{R} je 1 pro γ a β, 20 pro α' },
             { type: 'p', text: 'Vyzkoušej oba vzorce na pracovníkovi, který byl vystaven záření γ:' },
-            { type: 'example', title: 'Dávka při nehodě', problem: 'Pracovník o hmotnosti 80 kg pohltil z γ záření celkem energii 0,16 J. Jakou dostal dávku a dávkový ekvivalent?', steps: [
+            { type: 'example', title: 'Dávka při nehodě', problem: 'Pracovník o hmotnosti 80 kg pohltil z γ záření celkem energii 0,16 J. Jakou dostal dávku a ekvivalentní dávku?', steps: [
               'D = E / m = 0,16 J / 80 kg = 0,002 0 Gy = 2,0 mGy',
               'Pro záření γ je radiační váhový faktor w_{R} = 1',
               'H = 1 · 2,0 mGy = 2,0 mSv',
@@ -1059,7 +1059,7 @@ const level: LevelContent = {
             ], caption: 'Záření v nemocnici' },
             { type: 'callout', variant: 'tip', title: 'Tři pravidla ochrany', text: '**Čas** – být u zdroje co nejkratší dobu. **Vzdálenost** – intenzita záření z bodového zdroje klesá se čtvercem vzdálenosti. **Stínění** – papír na α, plech na β, olovo a beton na γ.' },
             { type: 'p', text: 'Jádro teď znáš od stavby až po využití v nemocnici. V poslední lekci půjdeme ještě hlouběji, k částicím uvnitř nukleonů, a pak naopak co nejdál – ke hvězdám a počátku vesmíru.' },
-            { type: 'check', question: { kind: 'number', q: 'Tkáň pohltila z α záření dávku 0,50 mGy. Jaký je dávkový ekvivalent v mSv? (w_{R} = 20)', answer: 10, tolerance: 0.1, unit: 'mSv', explain: 'H = w_{R} · D = 20 · 0,50 mGy = 10 mSv. Částice α předají energii na velmi krátké dráze, a proto jsou uvnitř těla tak nebezpečné.' } },
+            { type: 'check', question: { kind: 'number', q: 'Tkáň pohltila z α záření dávku 0,50 mGy. Jaká je ekvivalentní dávka v mSv? (w_{R} = 20)', answer: 10, tolerance: 0.1, unit: 'mSv', explain: 'H = w_{R} · D = 20 · 0,50 mGy = 10 mSv. Částice α předají energii na velmi krátké dráze, a proto jsou uvnitř těla tak nebezpečné.' } },
           ],
         },
       ],
@@ -1069,7 +1069,7 @@ const level: LevelContent = {
         'Vazebná energie na nukleon je největší kolem železa, proto energii uvolňuje štěpení těžkých i syntéza lehkých jader.',
         'Při přeměně α klesne Z o 2 a A o 4, při β⁻ vzroste Z o 1, při β⁺ klesne Z o 1, při γ se Z ani A nemění.',
         'Počet nepřeměněných jader klesá podle N = N_{0} · (1/2)^{t/T}; aktivita A = λ · N se měří v becquerelech.',
-        'Dávka se udává v grayích (J/kg), dávkový ekvivalent v sievertech; chrání nás čas, vzdálenost a stínění.',
+        'Dávka se udává v grayích (J/kg), ekvivalentní dávka v sievertech; chrání nás čas, vzdálenost a stínění.',
       ],
       quiz: [
         { kind: 'tf', q: 'Při přeměně β⁻ se nukleonové číslo jádra nemění.', answer: true, explain: 'Neutron se změní na proton, počet nukleonů zůstane stejný. Protonové číslo vzroste o 1.' },

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Draw, Eq, Fade, Figure, Head, Pop, Sym, Toggle, pat, useFig } from './kit'
 
 const LABEL =
-  'Transformátor. Na uzavřeném železném jádře jsou dvě cívky. Primární cívka s N₁ závity je připojená ke zdroji střídavého napětí U₁, sekundární cívka s N₂ závity napájí spotřebič napětím U₂. Střídavý proud v primární cívce vytváří v jádře proměnný magnetický tok, který indukuje napětí v sekundární cívce. Platí U₂ : U₁ = N₂ : N₁. Snižující transformátor: 1 000 závitů a 230 V na primáru, 50 závitů a 11,5 V na sekundáru. Zvyšující transformátor: 100 závitů a 230 V, 1 000 závitů a 2 300 V.'
+  'Transformátor. Na uzavřeném železném jádře jsou dvě cívky. Primární cívka s N₁ závity je připojená ke zdroji střídavého napětí U₁, sekundární cívka s N₂ závity napájí spotřebič napětím U₂. Střídavý proud v primární cívce vytváří v jádře proměnný magnetický tok, který indukuje napětí v sekundární cívce. Platí U₂ : U₁ = N₂ : N₁. Snižovací transformátor: 1 000 závitů a 230 V na primáru, 50 závitů a 11,5 V na sekundáru. Zvyšovací transformátor: 100 závitů a 230 V, 1 000 závitů a 2 300 V.'
 
 type Mode = 'down' | 'up'
 const DATA: Record<Mode, { n1: string; n2: string; u2: string; d1: number; d2: number; k: string }> = {
@@ -12,7 +12,7 @@ const DATA: Record<Mode, { n1: string; n2: string; u2: string; d1: number; d2: n
     u2: '11,5 V',
     d1: 12,
     d2: 3,
-    k: 'snižující: N₂ < N₁ → U₂ < U₁',
+    k: 'snižovací: N₂ < N₁ → U₂ < U₁',
   },
   up: {
     n1: '100',
@@ -20,7 +20,7 @@ const DATA: Record<Mode, { n1: string; n2: string; u2: string; d1: number; d2: n
     u2: '2 300 V',
     d1: 4,
     d2: 12,
-    k: 'zvyšující: N₂ > N₁ → U₂ > U₁',
+    k: 'zvyšovací: N₂ > N₁ → U₂ > U₁',
   },
 }
 
@@ -79,8 +79,8 @@ export default function Transformer() {
           value={mode}
           onChange={setMode}
           options={[
-            { id: 'down', text: 'snižující' },
-            { id: 'up', text: 'zvyšující' },
+            { id: 'down', text: 'snižovací' },
+            { id: 'up', text: 'zvyšovací' },
           ]}
         />
       }

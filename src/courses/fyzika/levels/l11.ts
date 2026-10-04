@@ -1001,7 +1001,7 @@ const level: LevelContent = {
           title: 'Magnetický indukční tok',
           icon: 'magnet',
           blocks: [
-            { type: 'p', text: 'Jak přesně se z měnícího pole stane napětí? V lekci „Elektromagnetická indukce“ jsi viděl/a, že napětí se v cívce indukuje, když se mění magnetické pole, které jí prochází. Abychom to mohli spočítat, potřebujeme veličinu, která říká, **kolik pole prochází plochou závitu**. Je to **magnetický indukční tok** Φ.' },
+            { type: 'p', text: 'Jak přesně se z měnícího pole stane napětí? V lekci „Elektromagnetická indukce“ ze základní školy jsi viděl/a, že napětí se v cívce indukuje, když se mění magnetické pole, které jí prochází. Abychom to mohli spočítat, potřebujeme veličinu, která říká, **kolik pole prochází plochou závitu**. Je to **magnetický indukční tok** Φ.' },
             { type: 'formula', text: 'Φ = B · S · cos α', caption: 'Φ ve weberech (Wb = T·m^{2}); S plocha závitu (m^{2}); α úhel mezi vektorem B a kolmicí (normálou) k ploše' },
             { type: 'p', text: 'Tok si můžeš představit jako počet indukčních čar, které projdou závitem. Když je závit kolmo k čarám (α = 0°), prochází jich nejvíc. Když ho natočíš „bokem“ (α = 90°), neprojde žádná.' },
             { type: 'graph', x: { label: 'α', unit: '°', min: 0, max: 180, step: 30 }, y: { label: 'Φ', unit: 'mWb', min: -10, max: 10, step: 5 }, series: [
@@ -1141,7 +1141,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Jiskra při vypnutí', problem: 'Cívkou s indukčností 0,5 H teče proud 2 A. Vypínač ho přeruší za 10 ms. Jaké napětí se indukuje a kolik energie bylo v poli cívky?', steps: [
               '|U_{i}| = L · ΔI / Δt = 0,5 H · 2 A / 0,01 s = 100 V',
               'E_{m} = ½ · L · I^{2} = ½ · 0,5 H · (2 A)^{2} = 1 J',
-            ], answer: 'Indukuje se asi 100 V (víc než napětí zdroje!) a uvolní se 1 J – proto mezi kontakty vypínače přeskočí jiskra.' },
+            ], answer: 'Indukuje se asi 100 V (mnohem víc, než bývá napětí zdroje) a uvolní se 1 J – proto mezi kontakty vypínače přeskočí jiskra.' },
             { type: 'callout', variant: 'fact', text: '**Zapalovací cívka** v benzínovém motoru využívá právě tohle: náhlé přerušení proudu vytvoří napětí až 30 kV a jiskru ve svíčce. U relé a motorů se naopak přidává ochranná dioda, aby napěťová špička nezničila elektroniku.' },
             { type: 'p', text: 'Teď umíš indukované napětí spočítat, určit jeho směr i využít. V další lekci roztočíme cívku v magnetickém poli – a dostaneme střídavý proud, jaký teče ze zásuvky.' },
             { type: 'check', question: { kind: 'number', q: 'Cívkou s indukčností 0,2 H teče proud 3 A. Kolik energie je uloženo v jejím magnetickém poli?', answer: 0.9, tolerance: 0.01, unit: 'J', explain: 'E_{m} = ½ · L · I^{2} = ½ · 0,2 H · 9 A^{2} = 0,9 J.' } },
@@ -1199,12 +1199,12 @@ const level: LevelContent = {
             { type: 'graph', x: { label: 't', unit: 'ms', min: 0, max: 40, step: 5 }, y: { label: 'u', unit: 'V', min: -400, max: 400, step: 100 }, series: [
               { label: 'napětí v zásuvce', points: curve((t) => 325 * Math.sin((2 * Math.PI * t) / 20), 0, 40, 32, 1), style: 'smooth' },
             ], marks: [{ x: 5, y: 325, label: 'U_{m} = 325 V' }, { y: 230, label: 'U_{ef} = 230 V' }, { x: 20, label: 'T = 20 ms' }], caption: 'Síťové napětí 230 V, 50 Hz: jedna perioda trvá 20 ms, amplituda je 325 V.' },
-            { type: 'p', text: 'A jakou amplitudu dá malý školní generátor?' },
-            { type: 'example', title: 'Školní generátor', problem: 'Cívka se 100 závity o ploše 0,02 m^{2} se otáčí 50krát za sekundu v poli 0,5 T. Jaká je amplituda indukovaného napětí?', steps: [
+            { type: 'p', text: 'A jakou amplitudu dá jednoduchý generátor s jedinou cívkou?' },
+            { type: 'example', title: 'Generátor s jednou cívkou', problem: 'Cívka se 100 závity o ploše 0,02 m^{2} se otáčí 50krát za sekundu v poli 0,5 T. Jaká je amplituda indukovaného napětí?', steps: [
               'Nejdřív převedeme otáčky na úhlovou frekvenci: ω = 2π · f = 2π · 50 s^{−1} ≈ 314 rad/s',
               'U_{m} = N · B · S · ω = 100 · 0,5 T · 0,02 m^{2} · 314 s^{−1}',
               'U_{m} ≈ 314 V',
-            ], answer: 'U_{m} ≈ 314 V.' },
+            ], answer: 'U_{m} ≈ 314 V – skoro tolik jako v zásuvce.' },
             { type: 'p', text: 'Amplitudu i frekvenci už spočítáš. Proč se ale o zásuvce říká 230 V, když napětí stoupá až na 325 V?' },
             { type: 'check', question: { kind: 'number', q: 'Jaká je úhlová frekvence střídavého proudu o frekvenci 50 Hz?', answer: 314, tolerance: 1, unit: 'rad/s', explain: 'ω = 2π · f = 2 · 3,14 · 50 s^{−1} ≈ 314 rad/s.' } },
           ],

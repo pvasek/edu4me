@@ -27,8 +27,8 @@ const f10_1: Lesson = {
           'Částice se neustále a neuspořádaně pohybují. Tomuto pohybu říkáme **tepelný pohyb**; s rostoucí teplotou je intenzivnější.',
           'Částice na sebe navzájem působí silami: na velmi malou vzdálenost se odpuzují, na o něco větší se přitahují.',
         ] },
-        { type: 'p', text: 'Molekuly jsou ale příliš malé, abychom je viděli. Jak tedy víme, že se opravdu pohybují? Nejpřesvědčivější je pohled do mikroskopu na zrnka pylu ve vodě:' },
-        { type: 'diagram', id: 'brownian-motion', caption: 'Brownův pohyb: pylové zrnko ve vodě se klikatě potácí, protože do něj ze všech stran nerovnoměrně narážejí neviditelné molekuly vody.' },
+        { type: 'p', text: 'Molekuly jsou ale příliš malé, abychom je viděli. Jak tedy víme, že se opravdu pohybují? Nejpřesvědčivější je pohled do mikroskopu. Robert Brown v něm v roce 1827 sledoval drobná zrníčka, která se ve vodě uvolnila z pylových zrn:' },
+        { type: 'diagram', id: 'brownian-motion', caption: 'Brownův pohyb: drobné zrníčko ve vodě se klikatě potácí, protože do něj ze všech stran nerovnoměrně narážejí neviditelné molekuly vody.' },
         { type: 'p', text: 'Brownův pohyb není jediný důkaz. Částicovou stavbu prozrazuje spousta běžných jevů, stačí se na ně podívat pozorně:' },
         { type: 'iconlist', items: [
           { icon: 'drop', title: 'Difuze', text: 'kapka inkoustu se ve vodě rozptýlí i bez míchání, v teplé vodě rychleji' },
@@ -39,7 +39,7 @@ const f10_1: Lesson = {
         ] },
         { type: 'callout', variant: 'fact', text: 'Brownův pohyb vysvětlil Albert Einstein v roce 1905. Francouz Jean Perrin pak z pohybu zrníček změřil, kolik molekul je v jednom molu, a dostal za to Nobelovu cenu. Tím skončil poslední vážný spor o to, zda atomy opravdu existují.' },
         { type: 'p', text: 'Že částice existují a pohybují se, je tedy jisté. Třetí tvrzení – že na sebe působí silami – vysvětlí, proč je jedna látka pevná a jiná plyn.' },
-        { type: 'check', question: { kind: 'choice', q: 'Který pozorovaný jev nejlépe dokazuje, že se částice kapaliny **neustále a neuspořádaně pohybují**?', options: ['chvění pylových zrnek ve vodě pod mikroskopem', 'voda se téměř nedá stlačit', 'kapka vody na skle má kulatý tvar', 'led plave na vodě'], answer: 0, explain: 'Zrnka se chvějí, protože do nich nepravidelně narážejí molekuly vody – to je Brownův pohyb. Nestlačitelnost svědčí o odpudivých silách, ne o pohybu.' } },
+        { type: 'check', question: { kind: 'choice', q: 'Který pozorovaný jev nejlépe dokazuje, že se částice kapaliny **neustále a neuspořádaně pohybují**?', options: ['chvění drobných zrníček ve vodě pod mikroskopem', 'voda se téměř nedá stlačit', 'kapka vody na skle má kulatý tvar', 'led plave na vodě'], answer: 0, explain: 'Zrnka se chvějí, protože do nich nepravidelně narážejí molekuly vody – to je Brownův pohyb. Nestlačitelnost svědčí o odpudivých silách, ne o pohybu.' } },
       ],
     },
     {
@@ -633,7 +633,7 @@ const f10_4: Lesson = {
         { type: 'p', text: 'Pozor na rozdíl mezi W a W′. V různých učebnicích najdeš zákon zapsaný se dvěma různými pracemi a obě podoby jsou správně:' },
         { type: 'compare', columns: [
           { title: 'Práce vykonaná **na plynu** W', icon: 'muscle', tone: 'a', points: ['ΔU = Q + W', 'W > 0 při stlačení', 'tuto podobu používá i chemie'] },
-          { title: 'Práce vykonaná **plynem** W′', icon: 'motor', tone: 'b', points: ['Q = ΔU + W′', 'W′ > 0 při rozpínání', 'tak je zákon v mnoha českých učebnicích i v anglickém A-level (tam se W′ píše jako W)'] },
+          { title: 'Práce vykonaná **plynem** W′', icon: 'motor', tone: 'b', points: ['Q = ΔU + W′', 'W′ > 0 při rozpínání', 'tak je zákon v mnoha českých i v některých anglických učebnicích (tam se W′ píše jako W)'] },
         ], caption: 'Dva zápisy téhož zákona. Stačí si pohlídat, o čí práci jde.' },
         { type: 'p', text: 'Vyzkoušej si znaménka na plynu, který teplo přijímá a zároveň pracuje:' },
         { type: 'example', title: 'Plyn pod pístem', problem: 'Plyn ve válci přijme od plamene teplo 500 J a přitom zvedne píst, tedy vykoná práci 200 J. Jak se změní jeho vnitřní energie?', steps: [
@@ -737,7 +737,7 @@ const f10_4: Lesson = {
           'ΔU = 3/2 · n · R · ΔT, odtud ΔT = ΔU / (1,5 · n · R)',
           'ΔT = −750 J / (1,5 · 2 mol · 8,31 J/(mol·K))',
         ], answer: 'ΔT ≈ −30 K, helium se ochladí o 30 °C.' },
-        { type: 'callout', variant: 'fact', text: 'Na adiabatickém rozpínání stojí zkapalňování vzduchu: stlačený a předchlazený vzduch se nechá prudce rozepnout a ochladí se až pod −190 °C. Tak se vyrábí kapalný dusík i kyslík pro nemocnice.' },
+        { type: 'callout', variant: 'fact', text: 'Na rozpínání plynu stojí i zkapalňování vzduchu. Stlačený a předchlazený vzduch se rozpíná v **turboexpandéru**: roztáčí turbínu, koná práci, a proto chladne – jako při adiabatickém ději. Poslední ochlazení obstará **škrcení** ve ventilu (Joule–Thomsonův jev, na kterém stavěl Carl von Linde): plyn chladne, protože jeho molekuly se při rozpínání vzdalují proti přitažlivým silám. Vzduch tak zchladne pod −190 °C a vyrobí se z něj kapalný dusík i kyslík pro nemocnice.' },
         { type: 'p', text: 'Teď máme první zákon pro všechny čtyři děje. Je čas je dát dohromady do jednoho přehledu.' },
         { type: 'check', question: { kind: 'tf', q: 'Při izotermickém rozpínání ideálního plynu se veškeré přijaté teplo přemění na práci.', answer: true, explain: 'Teplota se nemění, takže ΔU = 0 a z prvního zákona plyne Q = W′.' } },
       ],
@@ -779,7 +779,7 @@ const f10_4: Lesson = {
   ],
   summary: [
     'První termodynamický zákon ΔU = Q + W je zákon zachování energie pro tepelné děje; W je práce vykonaná na plynu.',
-    'Ekvivalentní zápis Q = ΔU + W′ používá práci W′ = −W vykonanou plynem; tuto podobu najdeš i v A-level učebnicích.',
+    'Ekvivalentní zápis Q = ΔU + W′ používá práci W′ = −W vykonanou plynem; tuto podobu najdeš i v některých anglických učebnicích.',
     'Práce plynu je rovna ploše pod křivkou děje v p–V diagramu; při stálém tlaku W′ = p · ΔV.',
     'Při izochorickém ději plyn nekoná práci a Q = ΔU; při izotermickém ději je ΔU = 0 a Q = W′.',
     'Při adiabatickém ději je Q = 0, takže ΔU = −W′: rozpínání plyn ochlazuje, stlačování ohřívá.',
@@ -1290,7 +1290,7 @@ const f10_7: Lesson = {
         { type: 'graph', x: { label: 't', unit: '°C', min: 0, max: 120, step: 20 }, y: { label: 'p_{s}', unit: 'kPa', min: 0, max: 200, step: 50 }, series: [
           { label: 'tlak syté vodní páry', style: 'smooth', tone: 'a', points: [[0, 0.61], [10, 1.23], [20, 2.34], [30, 4.25], [40, 7.38], [50, 12.35], [60, 19.95], [70, 31.2], [80, 47.4], [90, 70.2], [100, 101.3], [110, 143.3], [120, 198.7]] },
         ], marks: [{ x: 100, y: 101.3, label: '101,3 kPa: var při 100 °C' }, { x: 71, y: 33, label: 'Everest (33 kPa): 71 °C' }], caption: 'Tlak syté páry prudce roste s teplotou: z 20 °C na 100 °C vzroste více než čtyřicetkrát.' },
-        { type: 'callout', variant: 'remember', text: '==Tlak syté páry závisí jen na teplotě, ne na objemu.== Stlačíš-li sytou páru, část zkapalní a tlak zůstane stejný. Pro sytou páru proto stavová rovnice ideálního plynu neplatí.' },
+        { type: 'callout', variant: 'remember', text: '==Tlak syté páry závisí jen na teplotě, ne na objemu.== Stlačíš-li sytou páru, část zkapalní a tlak zůstane stejný. Pro takový děj proto neplatí Boylův–Mariottův zákon: množství páry v nádobě se mění.' },
         { type: 'callout', variant: 'fact', text: 'Parní stroje a turbíny využívají právě strmý růst tlaku syté páry: pára o 250 °C má tlak asi 4 MPa, tedy čtyřicetkrát víc než atmosféra.' },
         { type: 'p', text: 'V grafu jsou vyznačené dva body: při 100 °C se tlak syté páry rovná atmosférickému tlaku, při 71 °C tlaku na vrcholu Everestu. Proč právě tyhle dvojice, vysvětlí podmínka varu.' },
         { type: 'check', question: { kind: 'choice', q: 'Nad vodou v uzavřené nádobě s pístem je sytá pára. Píst pomalu zatlačíš a teplota se nezmění. Co se stane?', options: ['část páry zkapalní a tlak páry zůstane stejný', 'tlak páry vzroste podle Boylova–Mariottova zákona', 'všechna voda se vypaří', 'tlak páry klesne'], answer: 0, explain: 'Tlak syté páry je určen teplotou. Při zmenšení objemu se rovnováha obnoví tím, že část páry zkapalní.' } },

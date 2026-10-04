@@ -157,7 +157,7 @@ export default function ArchimedesPrinciple() {
             <text x={bx + bw / 2} y={by + 108} textAnchor="middle" className="fz1-lbl fz1-sm fz1-b">
               = tíha vytlačené vody
             </text>
-            <Val x={bx + bw / 2} y={by + 134} t="F_{vz} = V · ρ_{kap} · g" anchor="middle" className="fz1-val-sm" />
+            <Val x={bx + bw / 2} y={by + 134} t="F_{vz} = V · ρ_{k} · g" anchor="middle" className="fz1-val-sm" />
           </>
         )}
       </Pop>

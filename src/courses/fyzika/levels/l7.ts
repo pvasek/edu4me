@@ -809,7 +809,7 @@ const level: LevelContent = {
               { title: '**Obnovitelné zdroje**', icon: 'leaf', tone: 'good', points: ['slunce, vítr, voda, biomasa, teplo Země', 'nevyčerpají se', 'provoz bez emisí $CO2$ (biomasa vrací jen ten $CO2$, který rostliny vzaly ze vzduchu)', 'slunce a vítr kolísají a potřebují zálohu nebo úložiště'] },
             ] },
             { type: 'p', text: 'Proč tolik záleží na $CO2$? Protože zesiluje skleníkový efekt, a tím otepluje planetu:' },
-            { type: 'diagram', id: 'greenhouse-effect', caption: 'Skleníkový efekt (znáš ho z chemie): $CO2$ ze spalování uhlí, ropy a plynu zadržuje teplo v atmosféře.' },
+            { type: 'diagram', id: 'greenhouse-effect', caption: 'Skleníkový efekt (viz také chemie): $CO2$ ze spalování uhlí, ropy a plynu zadržuje teplo v atmosféře.' },
             { type: 'callout', variant: 'remember', text: 'Dokonalá elektrárna neexistuje. Proto každá země kombinuje zdroje: stálé (jádro, voda), rychle řiditelné (plyn, přečerpávací elektrárny, baterie) a levné, ale proměnlivé (slunce, vítr).' },
             { type: 'p', text: 'Každá země si tedy skládá vlastní kombinaci zdrojů. Jak vypadá ta česká, ukáže další oddíl.' },
             { type: 'check', question: { kind: 'multi', q: 'Které zdroje energie jsou obnovitelné?', options: ['vítr', 'sluneční záření', 'uran', 'hnědé uhlí', 'biomasa'], answers: [0, 1, 4], explain: 'Vítr, slunce a biomasa se v lidském čase obnovují. Uhlí vznikalo miliony let a uran je na Zemi od jejího vzniku – zásoby obou jednou dojdou.' } },

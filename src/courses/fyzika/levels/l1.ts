@@ -1401,7 +1401,7 @@ const level: LevelContent = {
     },
   },
   boss: [
-    { kind: 'number', q: 'Cyklista jede rychlostí 54 km/h. Kolik je to m/s?', answer: 15, tolerance: 0.1, unit: 'm/s', explain: 'km/h → m/s: dělíme 3,6. 54 : 3,6 = 15 m/s.' },
+    { kind: 'number', q: 'Cyklista jede rychlostí 18 km/h. Kolik je to m/s?', answer: 5, tolerance: 0.1, unit: 'm/s', explain: 'km/h → m/s: dělíme 3,6. 18 : 3,6 = 5 m/s.' },
     { kind: 'choice', q: 'Průměr Země je asi 12 700 km. Jak ho zapíšeš v metrech vědeckým zápisem?', options: ['1,27 · 10^{7} m', '1,27 · 10^{4} m', '1,27 · 10^{6} m', '1,27 · 10^{10} m'], answer: 0, explain: '12 700 km = 12 700 000 m = 1,27 · 10^{7} m. Desetinnou čárku posuneme o 7 míst.' },
     { kind: 'number', q: 'Vodní nádrž má tvar kvádru 2 m × 1 m × 0,5 m. Kolik litrů vody pojme?', answer: 1000, tolerance: 0, unit: 'l', explain: 'V = 2 m · 1 m · 0,5 m = 1 m³ = 1 000 dm³ = 1 000 l.' },
     { kind: 'tf', q: 'Při převodu z m³ na dm³ násobíme číslem 1 000.', answer: true, explain: '1 m³ = 10 dm · 10 dm · 10 dm = 1 000 dm³. Jdeme na menší jednotku, proto násobíme.' },

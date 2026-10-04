@@ -427,7 +427,7 @@ const level: LevelContent = {
               { label: 'atmosférický tlak', style: 'smooth', points: [[0, 101.3], [1, 89.9], [2, 79.5], [3, 70.1], [4, 61.6], [5, 54], [6, 47.2], [7, 41.1], [8, 35.6], [9, 30.8], [10, 26.5], [11, 22.6]] },
             ], marks: [
               { x: 1.6, y: 84, label: 'Sněžka: 84 kPa' },
-              { x: 8.8, y: 32, label: 'Everest: asi 32 kPa' },
+              { x: 8.8, y: 33, label: 'Everest: asi 33 kPa' },
               { x: 11, y: 22.6, label: 'dopravní letadlo: 23 kPa' },
             ], caption: 'Tlak vzduchu s výškou klesá, nejdřív rychle, pak pomaleji. Na vrcholu Everestu je jen asi třetinový.' },
             { type: 'p', text: 'U země klesá tlak zhruba o 1 hPa na každých 8 m výšky. Letadla proto mají přetlakovou kabinu a horolezci na Everestu často dýchají kyslík z lahví.' },

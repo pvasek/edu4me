@@ -164,7 +164,6 @@ const level: LevelContent = {
             ] },
             { type: 'callout', variant: 'fact', text: 'Hromosvod vynalezl Benjamin Franklin. Nezávisle na něm postavil v roce 1754 v Příměticích u Znojma „povětrnostní stroj“ český kněz a přírodovědec **Prokop Diviš**.' },
             { type: 'p', text: 'Teď víš, co je náboj a jak se chová, když stojí na místě. V další lekci ho rozpohybujeme: postavíme obvod, kterým poteče elektrický proud.' },
-            { type: 'game', gameId: 'swipe', text: 'Přitahuje, nebo odpuzuje? Vyzkoušej si v rychlé hře „Pravda, nebo lež?“, jak ti jde statická elektřina.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč se doporučuje sáhnout před tankováním na kovovou karoserii auta?', options: [
               'vybiješ náboj nasbíraný na oblečení, a jiskra pak nepřeskočí u pistole s benzínem',
               'karoserie je studená a ochladí benzínové výpary',
@@ -1201,7 +1200,8 @@ const level: LevelContent = {
               '2^{8} = 256',
             ], answer: 'Jeden bajt zapíše 256 různých hodnot, třeba 256 odstínů jedné barvy v pixelu.' },
             { type: 'callout', variant: 'fact', text: 'Hlavní čip moderního telefonu obsahuje přes deset miliard tranzistorů, každý menší než většina virů. Všechny spolu jen spínají nuly a jedničky – a z toho vzniknou fotky, hry i videohovory.' },
-            { type: 'p', text: 'Tím máš celou úroveň Elektřina: od náboje přes obvody až k čipu. V další úrovni zjistíš, že proud tekoucí drátem kolem sebe vytváří magnetické pole.' },
+            { type: 'p', text: 'Tím máš celou úroveň Elektřina: od náboje přes obvody až k čipu. Než půjdeš dál, prověř si ji celou ve dvou rychlých hrách. V další úrovni pak zjistíš, že proud tekoucí drátem kolem sebe vytváří magnetické pole.' },
+            { type: 'game', gameId: 'swipe', text: 'Přitahuje, nebo odpuzuje? Vede, nebo izoluje? V rychlé hře „Pravda, nebo lež?“ rozhodni o tvrzeních z celé úrovně Elektřina.' },
             { type: 'game', gameId: 'quickfire', text: 'Dioda, LED, termistor, nebo tranzistor? Otestuj se v Bleskové výzvě z celé úrovně Elektřina.' },
             { type: 'check', question: { kind: 'number', q: 'Kolik různých hodnot zapíšeš pomocí 4 bitů?', answer: 16, tolerance: 0, explain: 'Každý bit zdvojnásobí počet možností: 2 · 2 · 2 · 2 = 2^{4} = 16.' } },
           ],

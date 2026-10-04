@@ -1,7 +1,7 @@
 import { ChemText, Fade, Figure, Pop, useCompact } from "./kit";
 
 const LABEL =
-  "Standardní model částic. Částice hmoty (fermiony) ve třech generacích: kvarky u (up), c (charm) a t (top) s nábojem +2/3 e; kvarky d (down), s (strange) a b (bottom) s nábojem −1/3 e; leptony elektron, mion a tauon s nábojem −e; tři neutrina ν_e, ν_μ a ν_τ bez náboje. Nositelé interakcí (kalibrační bosony): gluon g (silná interakce, náboj 0), foton γ (elektromagnetická, 0), bozon Z (slabá, 0) a bozony W⁺ a W⁻ (slabá, ±1). Higgsův boson H má náboj 0. Běžná hmota je jen z první generace: kvarků u, d a elektronu.";
+  "Standardní model částic. Částice hmoty (fermiony) ve třech generacích: kvarky u (up), c (charm) a t (top) s nábojem +2/3 e; kvarky d (down), s (strange) a b (bottom) s nábojem −1/3 e; leptony elektron, mion a tauon s nábojem −e; tři neutrina ν_e, ν_μ a ν_τ bez náboje. Nositelé interakcí (kalibrační bosony): gluon g (silná interakce, náboj 0), foton γ (elektromagnetická, 0), boson Z (slabá, 0) a bosony W⁺ a W⁻ (slabá, ±1). Higgsův boson H má náboj 0. Běžná hmota je jen z první generace: kvarků u, d a elektronu.";
 
 type Kind = "q" | "l" | "b" | "h";
 interface P {
@@ -33,8 +33,8 @@ const GEN: P[][] = [
 const BOSONS: P[] = [
   { s: "g", name: "gluon", q: "0", k: "b" },
   { s: "γ", name: "foton", q: "0", k: "b" },
-  { s: "Z", name: "bozon Z", q: "0", k: "b" },
-  { s: "W^{±}", name: "bozon W", q: "±1", k: "b" },
+  { s: "Z", name: "boson Z", q: "0", k: "b" },
+  { s: "W^{±}", name: "boson W", q: "±1", k: "b" },
 ];
 const HIGGS: P = { s: "H", name: "Higgsův boson", q: "0", k: "h" };
 
@@ -189,7 +189,7 @@ export default function StandardModel() {
               y={406}
               w={62}
               h={76}
-              p={{ ...p, name: p.name.replace("bozon ", "") }}
+              p={{ ...p, name: p.name.replace("boson ", "") }}
               delay={0.6 + i * 0.06}
             />
           ))}
