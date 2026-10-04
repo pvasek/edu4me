@@ -1,0 +1,1001 @@
+import type { LevelContent } from '../../../core/types'
+
+/*
+ * Zeměpis – level 5 „Lidé na Zemi“ (ZŠ 7. třída).
+ * Data sources (verified 2026-10): UN World Population Prospects 2024 (medium variant, values for 2025;
+ * life expectancy estimates 2023), ČSÚ (pohyb obyvatelstva 2025), UNHCR Global Trends 2025 (stav ke konci 2025),
+ * Eurostat (dočasná ochrana, červenec 2026), UN World Urbanization Prospects 2025, Pew Research Center (2025, stav 2020),
+ * Ethnologue (počty mluvčích, zaokrouhleno).
+ */
+
+// Population density 2025 (UN WPP 2024 population ÷ area), four classes in obyv./km².
+const DENSITY_LOW = ['ARG', 'AUS', 'BLZ', 'BOL', 'BTN', 'BWA', 'CAF', 'CAN', 'COG', 'DZA', 'FIN', 'FLK', 'GAB', 'GRL', 'GUY', 'ISL', 'KAZ', 'LBY', 'MLI', 'MNG', 'MRT', 'NAM', 'NCL', 'NER', 'NOR', 'NZL', 'OMN', 'PNG', 'PRY', 'RUS', 'SAH', 'SAU', 'SDS', 'SUR', 'SWE', 'TCD', 'TKM', 'URY']
+const DENSITY_MID = ['AFG', 'AGO', 'ALB', 'ARM', 'BFA', 'BGR', 'BHS', 'BIH', 'BLR', 'BRA', 'BRN', 'CHL', 'CMR', 'COD', 'COL', 'DJI', 'ECU', 'ERI', 'ESP', 'EST', 'FJI', 'GEO', 'GIN', 'GNB', 'GNQ', 'GRC', 'HND', 'HRV', 'IRL', 'IRN', 'KEN', 'KGZ', 'KHM', 'LAO', 'LBR', 'LSO', 'LTU', 'LVA', 'MAR', 'MDA', 'MDG', 'MEX', 'MKD', 'MMR', 'MNE', 'MOZ', 'NIC', 'PAN', 'PER', 'ROU', 'SDN', 'SEN', 'SLB', 'SOL', 'SOM', 'SRB', 'SWZ', 'TJK', 'TLS', 'TUN', 'TZA', 'UKR', 'USA', 'UZB', 'VEN', 'VUT', 'YEM', 'ZAF', 'ZMB', 'ZWE']
+const DENSITY_HIGH = ['ARE', 'AUT', 'AZE', 'BEN', 'CHE', 'CHN', 'CIV', 'CPV', 'CRI', 'CUB', 'CYN', 'CYP', 'CZE', 'DEU', 'DNK', 'DOM', 'EGY', 'ETH', 'FRA', 'GBR', 'GHA', 'GMB', 'GTM', 'HUN', 'IDN', 'IRQ', 'ITA', 'JAM', 'JOR', 'KOS', 'KWT', 'LUX', 'MWI', 'MYS', 'NGA', 'NPL', 'PAK', 'POL', 'PRK', 'PRT', 'QAT', 'SLE', 'SVK', 'SVN', 'SYR', 'TGO', 'THA', 'TTO', 'TUR', 'UGA']
+const DENSITY_TOP = ['BDI', 'BEL', 'BGD', 'BHR', 'COM', 'HTI', 'IND', 'ISR', 'JPN', 'KOR', 'LBN', 'LKA', 'MDV', 'MLT', 'MUS', 'NLD', 'PHL', 'PRI', 'PSX', 'RWA', 'SGP', 'SLV', 'TWN', 'VNM']
+
+// UN WPP 2024, medium variant 2025: shares of the whole population (%) in 5-year groups 0–4 … 80–84, 85+.
+const NIGER_M = [8.9, 7.7, 6.8, 5.8, 4.7, 3.8, 2.9, 2.3, 1.9, 1.6, 1.3, 1.0, 0.8, 0.6, 0.4, 0.2, 0.1, 0.0]
+const NIGER_F = [8.6, 7.4, 6.6, 5.6, 4.6, 3.6, 2.8, 2.2, 1.8, 1.5, 1.2, 1.0, 0.8, 0.6, 0.4, 0.2, 0.1, 0.0]
+const JAPAN_M = [1.6, 1.9, 2.2, 2.4, 2.6, 2.5, 2.5, 2.7, 3.0, 3.4, 4.1, 3.5, 3.2, 2.9, 3.0, 3.3, 2.0, 2.0]
+const JAPAN_F = [1.5, 1.8, 2.1, 2.2, 2.4, 2.4, 2.4, 2.6, 2.9, 3.3, 4.0, 3.5, 3.2, 3.0, 3.2, 4.0, 2.8, 3.9]
+const USA_M = [2.7, 2.9, 3.1, 3.4, 3.4, 3.4, 3.5, 3.6, 3.4, 3.2, 3.0, 3.0, 3.1, 2.8, 2.3, 1.7, 1.0, 0.7]
+const USA_F = [2.6, 2.7, 2.9, 3.2, 3.2, 3.1, 3.3, 3.4, 3.2, 3.0, 2.9, 3.0, 3.1, 3.0, 2.5, 2.0, 1.3, 1.2]
+const CZE_M = [2.3, 2.7, 2.7, 2.9, 2.6, 2.4, 3.1, 3.4, 3.6, 4.2, 4.2, 3.2, 3.0, 2.6, 2.6, 2.1, 1.1, 0.7]
+const CZE_F = [2.2, 2.6, 2.5, 2.7, 2.5, 2.3, 2.9, 3.2, 3.3, 4.0, 4.0, 3.1, 3.1, 2.9, 3.2, 2.9, 1.9, 1.4]
+const WPP = 'UN World Population Prospects 2024, odhad pro rok 2025'
+
+const level: LevelContent = {
+  lessons: {
+    // ───────────────────────────────────────────────────────────── z5-1
+    'z5-1': {
+      id: 'z5-1',
+      title: 'Kolik nás je a kde žijeme',
+      goals: [
+        'Říct, kolik lidí žije na Zemi, jak rychle jich přibývá a které státy jsou nejlidnatější',
+        'Odhadnout dobu zdvojnásobení počtu obyvatel podle pravidla 70',
+        'Spočítat hustotu zalidnění a porovnat podle ní státy',
+        'Vysvětlit, proč jsou lidé rozmístěni nerovnoměrně, a rozlišit ekumenu a anekumenu',
+      ],
+      hook: 'Ve tvé třídě je možná 25 lidí. Na Zemi je nás asi 8,3 miliardy – a než dočteš tuhle lekci, přibude na světě dalších zhruba 1 700 lidí. Kde se všichni vejdou?',
+      sections: [
+        {
+          title: 'Osm miliard a pořád víc',
+          icon: 'people',
+          blocks: [
+            { type: 'p', text: 'Dlouhá tisíciletí rostl počet lidí jen velmi pomalu. První miliardy dosáhlo lidstvo až kolem roku 1800. Pak se ale růst rozjel tak, že dnes nás je víc než osmkrát tolik.' },
+            { type: 'p', text: 'Podívej se na graf. Sleduj hlavně to, jak se křivka po roce 1950 prudce zvedá – a jak se na konci zase ohýbá:' },
+            { type: 'graph', x: { label: 'rok', min: 1800, max: 2100, step: 50 }, y: { label: 'počet obyvatel', unit: 'mld.', min: 0, max: 11, step: 1 },
+              series: [
+                { label: 'skutečnost', points: [[1800, 1.0], [1850, 1.2], [1900, 1.6], [1950, 2.5], [1960, 3.0], [1970, 3.7], [1980, 4.4], [1990, 5.3], [2000, 6.1], [2010, 7.0], [2020, 7.8], [2025, 8.3]], style: 'smooth', area: true },
+                { label: 'odhad OSN', points: [[2025, 8.3], [2040, 9.2], [2050, 9.7], [2060, 10.0], [2070, 10.2], [2084, 10.3], [2100, 10.2]], style: 'dashed' },
+              ],
+              marks: [{ x: 2022, y: 8.0, label: '8 mld. (2022)' }, { x: 1927, y: 2.0, label: '2 mld.' }],
+              caption: 'Počet obyvatel světa v miliardách. Data: UN World Population Prospects 2024 (od roku 1950), starší hodnoty jsou odhady historiků; čárkovaně střední varianta odhadu OSN.' },
+            { type: 'p', text: 'Proč ten skok? Kdysi se rodilo hodně dětí, ale hodně jich také brzy umíralo. Očkování, čistá voda, mýdlo a dost jídla úmrtnost prudce snížily, zatímco dětí se rodilo pořád hodně. Lidí proto začalo rychle přibývat.' },
+            { type: 'p', text: 'Kolik to dělá za jeden rok? Stačí porovnat, kolik lidí se narodí a kolik zemře:' },
+            { type: 'table', headers: ['svět, rok 2025', 'počet'], rows: [
+              ['narozených', 'asi 132 milionů'],
+              ['zemřelých', 'asi 63 milionů'],
+              ['**přírůstek**', 'asi 69 milionů – víc lidí, než má Francie'],
+            ], caption: 'UN World Population Prospects 2024, střední varianta pro rok 2025' },
+            { type: 'callout', variant: 'fact', text: 'OSN vyhlásila 15. listopad 2022 „dnem osmi miliard“. Přesné datum nikdo nezná, je to symbol – ale v roce 2022 jsme tu hranici opravdu překročili.' },
+            { type: 'p', text: 'Pozor na častý omyl: lidstvo neroste stále rychleji. Podle OSN počet obyvatel vyvrcholí kolem roku 2084 asi na 10,3 miliardy a pak začne pomalu klesat. Jak rychlý je tedy růst dnes? To se dá vyjádřit jedním číslem.' },
+            { type: 'check', question: { kind: 'number', q: 'Za rok se na světě narodí asi 132 milionů lidí a zemře asi 63 milionů. O kolik milionů lidí světa přibude?', answer: 69, tolerance: 0, unit: 'mil.', explain: 'Přírůstek = narození − zemřelí = 132 − 63 = 69 milionů lidí za rok.' } },
+          ],
+        },
+        {
+          title: 'Za jak dlouho nás bude dvakrát tolik',
+          icon: 'hourglass',
+          blocks: [
+            { type: 'p', text: 'Rychlost růstu se udává v procentech za rok. Svět dnes roste asi o 0,84 % ročně, Niger o 3,2 %, Česko skoro vůbec. Co ale taková procenta znamenají v praxi?' },
+            { type: 'p', text: 'Šikovná je **doba zdvojnásobení**: za kolik let by se počet obyvatel zdvojnásobil, kdyby rostl stále stejně. Geografové ji odhadují jednoduchým pravidlem 70:' },
+            { type: 'formula', text: 'doba zdvojnásobení ≐ 70 : roční růst v %', caption: 'pravidlo 70 – platí pro malé roční přírůstky' },
+            { type: 'p', text: 'Proč zrovna 70? Přírůstek se každý rok počítá z většího počtu lidí, protože i noví obyvatelé mají děti. Růst se tak „sčítá na růstu“ a matematicky z toho vyjde právě číslo asi 70. Vyzkoušej si to na nejrychleji rostoucím státě světa:' },
+            { type: 'example', title: 'Niger', problem: 'Počet obyvatel Nigeru roste asi o 3,2 % ročně (UN WPP 2024). Za kolik let by se zdvojnásobil?', steps: [
+              'Použijeme pravidlo 70: doba zdvojnásobení ≐ 70 : 3,2',
+              '70 : 3,2 ≐ 21,9',
+            ], answer: 'Asi za 22 let. Z dnešních 28 milionů obyvatel by jich bylo 56 milionů dřív, než ti bude 35 let.' },
+            { type: 'p', text: 'Teď si posuň růst sám. Nastav nejdřív 3,2 % jako Niger, pak 0,9 % jako Indie a nakonec skoro nulu jako Česko. Sleduj, jak se doba zdvojnásobení natahuje:' },
+            { type: 'experiment', id: 'doubling-time', caption: 'Roční růst v % → doba zdvojnásobení (≐ 70 : %). Malý rozdíl v procentech znamená velký rozdíl v letech.' },
+            { type: 'p', text: 'Všiml sis? Při 3 % ročně se počet lidí zdvojnásobí za jednu generaci, při 0,8 % až za celý lidský život. Proto mají rychle rostoucí země problém stihnout postavit dost škol a nemocnic.' },
+            { type: 'p', text: 'Víme už, jak rychle lidí přibývá. Teď se podívejme, ve kterých státech jich žije nejvíc.' },
+            { type: 'check', question: { kind: 'number', q: 'Počet obyvatel státu roste o 2 % ročně. Za kolik let se podle pravidla 70 zdvojnásobí?', answer: 35, tolerance: 0, unit: 'let', explain: '70 : 2 = 35 let.' } },
+          ],
+        },
+        {
+          title: 'Nejlidnatější státy',
+          icon: 'flag',
+          blocks: [
+            { type: 'p', text: 'Dlouho platilo, že nejvíc lidí žije v Číně. V roce 2023 ji ale podle OSN předstihla Indie. V Číně se dnes rodí málo dětí a počet obyvatel už klesá, v Indii pořád roste.' },
+            { type: 'p', text: 'Najdi na mapě deset nejlidnatějších států. Všimni si, kolik z nich leží v Asii:' },
+            { type: 'map', view: 'world', highlight: [{ codes: ['IND', 'CHN', 'USA', 'IDN', 'PAK', 'NGA', 'BRA', 'BGD', 'RUS', 'ETH'], tone: 'a', label: '10 nejlidnatějších států' }], layers: ['names'],
+              caption: 'Deset nejlidnatějších států světa v roce 2025 (UN World Population Prospects 2024).' },
+            { type: 'p', text: 'Přesná čísla ukazuje tabulka. Indie a Čína mají dohromady skoro 2,9 miliardy lidí, tedy víc než třetinu lidstva:' },
+            { type: 'table', headers: ['pořadí', 'stát', 'obyvatel (mil.)'], rows: [
+              ['1.', 'Indie', '1 470'], ['2.', 'Čína', '1 414'], ['3.', 'Spojené státy americké', '348'], ['4.', 'Indonésie', '287'], ['5.', 'Pákistán', '257'],
+              ['6.', 'Nigérie', '240'], ['7.', 'Brazílie', '213'], ['8.', 'Bangladéš', '177'], ['9.', 'Rusko', '144'], ['10.', 'Etiopie', '137'],
+            ], caption: 'Odhad pro rok 2025, UN World Population Prospects 2024. Česko má 10,9 mil. obyvatel (ČSÚ, konec roku 2025).' },
+            { type: 'p', text: 'Celkově žije v Asii asi 59 % lidstva, v Africe 19 %, v Evropě jen 9 %. A nejrychleji dnes přibývá lidí v Africe: Nigérie a Etiopie se v žebříčku posouvají nahoru.' },
+            { type: 'p', text: 'Velký počet obyvatel ale ještě neznamená, že je ve státě „plno“. Rusko má lidí hodně, a přesto je z velké části prázdné. Potřebujeme jiné měřítko.' },
+            { type: 'check', question: { kind: 'choice', q: 'Který stát má nejvíc obyvatel na světě?', options: ['Indie', 'Čína', 'Spojené státy americké', 'Indonésie'], answer: 0, explain: 'Indie předstihla Čínu v roce 2023 a v roce 2025 měla asi 1,47 miliardy obyvatel.' } },
+          ],
+        },
+        {
+          title: 'Hustota zalidnění',
+          icon: 'map',
+          blocks: [
+            { type: 'p', text: 'Aby šlo státy férově porovnat, dělíme počet obyvatel rozlohou. Dostaneme **hustotu zalidnění**: kolik lidí připadá na jeden čtvereční kilometr.' },
+            { type: 'formula', text: 'hustota zalidnění = počet obyvatel : rozloha (obyv./km²)', caption: '1 km² je čtverec 1 km × 1 km, zhruba 140 fotbalových hřišť' },
+            { type: 'p', text: 'Spočítejme to pro Česko. Použijeme čísla Českého statistického úřadu:' },
+            { type: 'example', title: 'Česko', problem: 'Česko mělo na konci roku 2025 asi 10 916 000 obyvatel (ČSÚ) a rozlohu 78 871 km². Jaká je jeho hustota zalidnění?', steps: [
+              'hustota = počet obyvatel : rozloha',
+              '10 916 000 : 78 871 ≐ 138,4',
+            ], answer: 'Asi 138 obyv./km². Na každý čtvereční kilometr Česka připadá v průměru 138 lidí.' },
+            { type: 'p', text: 'Je to hodně, nebo málo? Porovnej Česko se státy, které drží rekordy na obou koncích:' },
+            { type: 'table', headers: ['stát', 'hustota (obyv./km²)', 'proč'], rows: [
+              ['Monako', '≐ 18 500', 'nejhustěji zalidněný stát světa: 38 tisíc lidí na 2 km²'],
+              ['Singapur', '≐ 8 000', 'městský stát na ostrově'],
+              ['Bangladéš', '≐ 1 190', 'úrodná delta Gangy a Brahmaputry'],
+              ['Česko', '≐ 138', 'střední Evropa'],
+              ['svět (souš bez Antarktidy)', '≐ 60', 'průměr'],
+              ['Rusko', '≐ 8', 'obrovská tajga a tundra'],
+              ['Mongolsko', '≐ 2', 'stepi a pouště, nejřidčeji zalidněný stát světa'],
+            ], caption: 'Počty obyvatel 2025 (UN WPP 2024, Česko ČSÚ), zaokrouhleno' },
+            { type: 'p', text: 'Pozor, hustota je jen průměr. V Egyptě vychází asi 120 obyv./km², ale skoro všichni žijí v úzkém pruhu podél Nilu a v jeho deltě; zbytek je poušť. Na mapě hustoty ve čtyřech odstínech to vidíš pro celý svět:' },
+            { type: 'map', view: 'world', highlight: [
+              { codes: DENSITY_LOW, tone: 'a', label: 'pod 25 obyv./km²' },
+              { codes: DENSITY_MID, tone: 'b', label: '25–100 obyv./km²' },
+              { codes: DENSITY_HIGH, tone: 'c', label: '100–300 obyv./km²' },
+              { codes: DENSITY_TOP, tone: 'd', label: 'nad 300 obyv./km²' },
+            ], caption: 'Hustota zalidnění států v roce 2025 (počet obyvatel podle UN WPP 2024 : rozloha). Malé státy jako Monako nebo Singapur jsou na mapě světa skoro neviditelné.' },
+            { type: 'p', text: 'Nejtmavší místa leží v jižní a východní Asii a v západní Evropě, nejsvětlejší v Kanadě, Rusku, Austrálii a na Sahaře. Proč jsou lidé rozmístěni tak nerovnoměrně?' },
+            { type: 'check', question: { kind: 'number', q: 'Ostrovní stát má 500 000 obyvatel a rozlohu 2 000 km². Jaká je jeho hustota zalidnění v obyv./km²?', answer: 250, tolerance: 0, unit: 'obyv./km²', explain: '500 000 : 2 000 = 250 obyv./km².' } },
+          ],
+        },
+        {
+          title: 'Proč žijeme tam, kde žijeme',
+          icon: 'pin',
+          blocks: [
+            { type: 'p', text: 'Mapa hustoty není náhodná. Lidé se odjakživa usazovali tam, kde se dalo dobře žít: kde byla voda, úrodná půda a snesitelné podnebí. Později k tomu přibyla práce, doprava a města.' },
+            { type: 'p', text: 'Geografové proto rozlišují dvě skupiny důvodů, proč lidé žijí právě někde. Porovnej je:' },
+            { type: 'compare', columns: [
+              { title: 'Přírodní činitelé', icon: 'leaf', tone: 'a', points: ['mírné nebo teplé vlhké podnebí', 'dostatek sladké vody (řeky, jezera)', 'úrodná půda – nížiny a delty řek', 'rovinatý reliéf, nízká nadmořská výška', 'blízkost moře'] },
+              { title: 'Společenští činitelé', icon: 'city', tone: 'b', points: ['práce a průmysl', 'dobrá doprava a obchod', 'školy, nemocnice a služby', 'historie osídlení – staré kulturní oblasti', 'bezpečí a politická stabilita'] },
+            ] },
+            { type: 'p', text: 'Proto je nejvíc lidí v nížinách jižní a východní Asie: monzunové deště a úrodné delty uživí rýži pro miliardy lidí už po tisíce let. Dnes ale stále víc rozhodují společenští činitelé – lidé se stěhují za prací do měst, i když je kolem poušť, jako v Dubaji.' },
+            { type: 'callout', variant: 'fact', text: 'Asi 9 z 10 lidí žije na severní polokouli. Je na ní totiž mnohem víc pevniny než na jižní.' },
+            { type: 'p', text: 'Teď víme, proč lidé někde žijí rádi. Kde ale nežije skoro nikdo?' },
+            { type: 'check', question: { kind: 'multi', q: 'Které z těchto činitelů jsou přírodní?', options: ['úrodná půda v deltě řeky', 'teplé vlhké podnebí', 'nová továrna', 'dostatek sladké vody', 'dálnice do hlavního města'], answers: [0, 1, 3], explain: 'Půda, podnebí a voda jsou dány přírodou. Továrna a dálnice jsou dílem lidí, patří ke společenským činitelům.' } },
+          ],
+        },
+        {
+          title: 'Ekumena a anekumena',
+          icon: 'snowflake',
+          blocks: [
+            { type: 'p', text: 'Na mapě hustoty jsme viděli místa, kde skoro nikdo nežije. Geografové pro obydlenou a neobydlenou část Země mají zvláštní slova.' },
+            { type: 'p', text: 'Souš dělíme podle toho, jestli je trvale osídlená, osídlená jen občas, nebo vůbec:' },
+            { type: 'iconlist', items: [
+              { icon: 'house', title: 'Ekumena', text: 'trvale osídlená část souše – vesnice, města, pole; patří k ní i Česko' },
+              { icon: 'tent', title: 'Subekumena', text: 'osídlená jen dočasně: pastevci se stády v horách a stepích, polární výzkumné stanice' },
+              { icon: 'snowflake', title: 'Anekumena', text: 'trvale neosídlená: Antarktida, vnitrozemí Grónska, nejsušší části pouští, velehory' },
+            ] },
+            { type: 'p', text: 'Proč tam lidé nežijí? Je příliš chladno, sucho nebo vysoko na to, aby se tam dalo pěstovat jídlo. Hranice ekumeny se ale posouvá: zavlažování z pouště udělá pole a technika umožní žít i v Arktidě.' },
+            { type: 'callout', variant: 'tip', text: 'Pomůcka: řecké *oikúmené* znamená „obydlená země“. Předpona *a-* znamená „ne“, jako ve slově *a*symetrický. Anekumena je tedy „neobydlená“.' },
+            { type: 'p', text: 'Víme už, kolik nás je a kde žijeme. Proč ale v Nigeru lidí rychle přibývá a v Česku ne? Na to se podíváme v lekci „Porodnost, úmrtnost a věková pyramida“.' },
+            { type: 'check', question: { kind: 'choice', q: 'Kam patří vnitrozemí Antarktidy?', options: ['k anekumeně', 'k ekumeně', 'k subekumeně', 'k aglomeraci'], answer: 0, explain: 'V Antarktidě nikdo trvale nežije, je to anekumena. Výzkumné stanice na pobřeží jsou osídlené jen dočasně.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Na Zemi žije asi 8,3 miliardy lidí a každý rok jich přibude asi 69 milionů.',
+        'Lidstvo rychle rostlo hlavně proto, že klesla úmrtnost; podle OSN vyvrcholí kolem roku 2084 asi na 10,3 miliardy.',
+        'Dobu zdvojnásobení odhadneme pravidlem 70: 70 vydělíme ročním růstem v procentech.',
+        'Nejlidnatější státy jsou Indie a Čína; Indie Čínu předstihla v roce 2023.',
+        'Hustota zalidnění je počet obyvatel na 1 km²; Česko má asi 138 obyv./km², Monako přes 18 000, Mongolsko asi 2.',
+        'Rozmístění lidí ovlivňují přírodní činitelé (podnebí, voda, půda) i společenští činitelé (práce, doprava, historie).',
+        'Ekumena je trvale osídlená souš, anekumena neosídlená (Antarktida, vnitrozemí Grónska).',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Na Zemi dnes žije asi 8,3 miliardy lidí.', answer: true, explain: 'Podle OSN překročilo lidstvo 8 miliard v roce 2022 a dnes nás je asi 8,3 miliardy.' },
+        { kind: 'choice', q: 'Proč začal počet lidí od 19. století rychle růst?', options: ['klesla úmrtnost, ale dětí se rodilo stále hodně', 'lidé začali mít mnohem víc dětí než dřív', 'přestali se stěhovat', 'zvětšila se pevnina'], answer: 0, explain: 'Lékařství, hygiena a dost jídla snížily úmrtnost. Porodnost zůstala vysoká, a tak lidí rychle přibývalo.' },
+        { kind: 'tf', q: 'Mongolsko je jeden z nejhustěji zalidněných států světa.', answer: false, explain: 'Je to naopak: Mongolsko má jen asi 2 obyv./km² a je nejřidčeji zalidněným státem světa.' },
+        { kind: 'match', q: 'Přiřaď stát k jeho hustotě zalidnění.', pairs: [
+          ['Monako', '≐ 18 500 obyv./km²'],
+          ['Bangladéš', '≐ 1 190 obyv./km²'],
+          ['Česko', '≐ 138 obyv./km²'],
+          ['Mongolsko', '≐ 2 obyv./km²'],
+        ], explain: 'Monako je městský stát, Bangladéš leží v úrodné deltě, Česko je v evropském průměru a Mongolsko pokrývají stepi a pouště.' },
+        { kind: 'text', q: 'Jak se nazývá trvale osídlená část souše?', accept: ['ekumena'], explain: 'Ekumena je obydlená souš. Neobydlená je anekumena, občas obydlená subekumena.' },
+        { kind: 'order', q: 'Seřaď státy od nejvíce obyvatel po nejméně (rok 2025).', items: ['Indie', 'Čína', 'Spojené státy americké', 'Nigérie', 'Česko'], explain: 'Indie 1 470 mil., Čína 1 414 mil., USA 348 mil., Nigérie 240 mil., Česko 10,9 mil.' },
+        { kind: 'number', q: 'Stát má rozlohu 50 000 km² a hustotu zalidnění 120 obyv./km². Kolik má obyvatel (v milionech)?', answer: 6, tolerance: 0, unit: 'mil.', explain: 'Počet obyvatel = hustota · rozloha = 120 · 50 000 = 6 000 000, tedy 6 milionů.' },
+        { kind: 'choice', q: 'Egypt má průměrnou hustotu asi 120 obyv./km². Proč ten průměr klame?', options: ['skoro všichni žijí v úzkém pruhu u Nilu a v deltě, zbytek je poušť', 'polovina obyvatel žije v Antarktidě', 'Egypt je ostrov', 'v Egyptě se počet obyvatel nesčítá'], answer: 0, explain: 'Hustota je průměr přes celé území. V Egyptě je ale obydlený hlavně pruh u Nilu, kde žijí lidé velmi nahusto.' },
+      ],
+    },
+
+    // ───────────────────────────────────────────────────────────── z5-2
+    'z5-2': {
+      id: 'z5-2',
+      title: 'Porodnost, úmrtnost a věková pyramida',
+      goals: [
+        'Spočítat porodnost, úmrtnost a přirozený přírůstek v promilích',
+        'Vysvětlit, co je střední délka života a proč se mezi státy liší',
+        'Přečíst věkovou pyramidu a určit, zda je populace progresivní, stacionární, nebo regresivní',
+        'Popsat v hrubých rysech demografickou revoluci',
+      ],
+      hook: 'V roce 2025 se v Česku narodilo jen 77 600 dětí – nejméně od roku 1785, kdy se to začalo zapisovat. V Nigeru má žena v průměru skoro šest dětí. Co takové rozdíly udělají se zemí za třicet let?',
+      sections: [
+        {
+          title: 'Porodnost a úmrtnost',
+          icon: 'baby',
+          blocks: [
+            { type: 'p', text: 'V lekci „Kolik nás je a kde žijeme“ jsme viděli, že Niger roste o 3,2 % ročně a Česko skoro vůbec. Abychom zjistili proč, musíme spočítat, kolik lidí se rodí a kolik umírá.' },
+            { type: 'p', text: 'Samotná čísla narozených nestačí: v Indii se narodí víc dětí než v Česku už jen proto, že je tam víc lidí. Proto se počty přepočítávají na 1 000 obyvatel a udávají v **promilích** (‰):' },
+            { type: 'compare', columns: [
+              { title: 'Porodnost', icon: 'baby', tone: 'a', points: ['počet živě narozených dětí za rok na 1 000 obyvatel', 'porodnost = narození : obyvatelé · 1 000'] },
+              { title: 'Úmrtnost', icon: 'hourglass', tone: 'b', points: ['počet zemřelých za rok na 1 000 obyvatel', 'úmrtnost = zemřelí : obyvatelé · 1 000'] },
+            ] },
+            { type: 'p', text: 'Zkusme to na skutečných číslech z Česka. Postup je pro obě veličiny stejný:' },
+            { type: 'example', title: 'Česko 2025', problem: 'V Česku se v roce 2025 narodilo 77 600 dětí a zemřelo 113 300 lidí. Obyvatel bylo asi 10 916 000 (ČSÚ). Jaká byla porodnost a úmrtnost?', steps: [
+              'Porodnost = narození : obyvatelé · 1 000 = 77 600 : 10 916 000 · 1 000',
+              '≐ 7,1 ‰',
+              'Úmrtnost = zemřelí : obyvatelé · 1 000 = 113 300 : 10 916 000 · 1 000',
+              '≐ 10,4 ‰',
+            ], answer: 'Porodnost asi 7,1 ‰, úmrtnost asi 10,4 ‰. Na každých 1 000 obyvatel se narodilo 7 dětí a zemřelo 10 lidí.' },
+            { type: 'p', text: 'Pozor na značku: ‰ znamená „z tisíce“, % „ze sta“. Porodnost 7,1 ‰ je tedy 0,71 %. Jak si Česko stojí ve světě, ukazuje tabulka:' },
+            { type: 'table', headers: ['stát', 'porodnost', 'úmrtnost'], rows: [
+              ['Niger', '40,8 ‰', '8,6 ‰'],
+              ['Indie', '15,8 ‰', '6,6 ‰'],
+              ['svět', '16,1 ‰', '7,7 ‰'],
+              ['Česko', '7,1 ‰', '10,4 ‰'],
+              ['Japonsko', '6,1 ‰', '12,6 ‰'],
+            ], caption: 'Rok 2025: Česko podle ČSÚ, ostatní podle UN World Population Prospects 2024 (odhad)' },
+            { type: 'p', text: 'Všimni si překvapení: úmrtnost je v Nigeru nižší než v Česku. Není to tím, že by se tam lidé dožívali vyššího věku. V Nigeru je prostě velmi málo starých lidí, kteří umírají nejčastěji. Co z porodnosti a úmrtnosti plyne pro růst, uvidíme hned.' },
+            { type: 'check', question: { kind: 'number', q: 'Ve městě s 50 000 obyvateli se za rok narodilo 450 dětí. Jaká je porodnost v ‰?', answer: 9, tolerance: 0, unit: '‰', explain: '450 : 50 000 · 1 000 = 9 ‰.' } },
+          ],
+        },
+        {
+          title: 'Přirozený přírůstek',
+          icon: 'chart',
+          blocks: [
+            { type: 'p', text: 'Když od porodnosti odečteme úmrtnost, dostaneme **přirozený přírůstek**. Říká, kolik lidí na 1 000 obyvatel přibude jen díky narozeným a zemřelým.' },
+            { type: 'formula', text: 'přirozený přírůstek = porodnost − úmrtnost', caption: 'v ‰; když vyjde záporně, mluvíme o přirozeném úbytku' },
+            { type: 'p', text: 'Počet obyvatel se ale mění ještě jinak: lidé se stěhují. Rozdíl přistěhovalých a vystěhovalých je **migrační saldo**. Celkovou změnu tak skládáme ze dvou částí:' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'baby', title: 'Přirozený přírůstek', text: 'narození − zemřelí; Česko 2025: −35 700' },
+              { icon: 'footprints', title: 'Migrační saldo', text: 'přistěhovalí − vystěhovalí; Česko 2025: +42 000' },
+              { icon: 'people', title: 'Celkový přírůstek', text: 'součet obou; Česko 2025: +6 300 obyvatel' },
+            ], caption: 'Změna počtu obyvatel Česka v roce 2025 (ČSÚ)' },
+            { type: 'p', text: 'V Česku tedy víc lidí umírá, než se rodí. Obyvatel přesto mírně přibylo – jen díky přistěhovalým. Tak to podle ČSÚ funguje už sedm let po sobě.' },
+            { type: 'callout', variant: 'remember', text: 'Přirozený přírůstek = porodnost − úmrtnost. Celkový přírůstek = přirozený přírůstek + migrační saldo.' },
+            { type: 'p', text: 'Přirozený přírůstek závisí na tom, jak dlouho lidé žijí. A to se mezi státy liší o desítky let.' },
+            { type: 'check', question: { kind: 'number', q: 'Japonsko má porodnost 6,1 ‰ a úmrtnost 12,6 ‰. Jaký je jeho přirozený přírůstek v ‰?', answer: -6.5, tolerance: 0.05, unit: '‰', explain: '6,1 − 12,6 = −6,5 ‰. Záporné číslo znamená přirozený úbytek: v Japonsku ubývá asi 6–7 lidí na 1 000 obyvatel ročně.' } },
+          ],
+        },
+        {
+          title: 'Jak dlouho žijeme',
+          icon: 'heart',
+          blocks: [
+            { type: 'p', text: 'Úmrtnost úzce souvisí se **střední délkou života** (statistici říkají *naděje dožití při narození*). Udává, kolika let se v průměru dožije právě narozené dítě, když se podmínky nezmění.' },
+            { type: 'p', text: 'Graf ukazuje, jak se střední délka života měnila od roku 1950. Porovnej hlavně výšku čar a to, jak rychle stoupají:' },
+            { type: 'graph', x: { label: 'rok', min: 1950, max: 2025, step: 10 }, y: { label: 'střední délka života', unit: 'roky', min: 30, max: 90, step: 10 },
+              series: [
+                { label: 'Japonsko', points: [[1950, 59.3], [1960, 67.7], [1970, 72.0], [1980, 76.1], [1990, 79.0], [2000, 81.2], [2010, 82.9], [2023, 84.7]], tone: 'a' },
+                { label: 'Česko', points: [[1950, 64.4], [1960, 70.5], [1970, 69.5], [1980, 70.3], [1990, 71.4], [2000, 75.0], [2010, 77.6], [2023, 79.8]], tone: 'b' },
+                { label: 'svět', points: [[1950, 46.4], [1960, 47.8], [1970, 56.3], [1980, 60.5], [1990, 64.0], [2000, 66.4], [2010, 70.1], [2023, 73.2]], tone: 'c', style: 'dashed' },
+                { label: 'Niger', points: [[1950, 35.9], [1960, 36.2], [1970, 35.9], [1980, 39.3], [1990, 41.7], [2000, 49.2], [2010, 57.1], [2023, 61.2]], tone: 'd' },
+              ],
+              caption: 'Střední délka života při narození, obě pohlaví (UN World Population Prospects 2024, odhady 1950–2023).' },
+            { type: 'p', text: 'Světový průměr vzrostl ze 46 let v roce 1950 na 73 let. Rekordmanem je Japonsko s téměř 85 lety. V Česku se chlapec narozený v roce 2025 dožije v průměru asi 78 let, dívka skoro 84 let (ČSÚ). Ženy žijí déle skoro všude na světě.' },
+            { type: 'p', text: 'Pozor na častý omyl: střední délka života 61 let v Nigeru neznamená, že tam lidé umírají v 61 letech. Průměr stahují dolů hlavně děti, které zemřou v prvních letech života. Kdo dětství přežije, má velkou šanci zestárnout.' },
+            { type: 'callout', variant: 'fact', text: 'Proč se délka života tak rychle prodlužuje? Hlavně díky očkování, čisté pitné vodě, antibiotikům a péči o matky a novorozence. Nejvíc pomohlo to, že méně dětí umírá.' },
+            { type: 'p', text: 'Porodnost a délka života spolu určují, kolik je v populaci dětí a kolik starých lidí. Nejlépe je to vidět na jednom obrázku – věkové pyramidě.' },
+            { type: 'check', question: { kind: 'tf', q: 'Střední délka života 61 let znamená, že většina lidí v dané zemi zemře v 61 letech.', answer: false, explain: 'Je to průměr. Snižují ho hlavně úmrtí malých dětí; dospělí se často dožívají mnohem vyššího věku.' } },
+          ],
+        },
+        {
+          title: 'Věková pyramida',
+          icon: 'people',
+          blocks: [
+            { type: 'p', text: '**Věková pyramida** je graf složení obyvatel podle věku a pohlaví. Každý vodorovný pruh je jedna věková skupina (0–4 roky, 5–9 let …), nejmladší dole. Vlevo jsou muži, vpravo ženy; délka pruhu ukazuje, kolik procent všech obyvatel do skupiny patří.' },
+            { type: 'p', text: 'Porovnej dva státy na opačných koncích světa. Dívej se hlavně na šířku základny a vrcholu:' },
+            { type: 'pyramid', step: 5, pyramids: [
+              { label: 'Niger 2025', male: NIGER_M, female: NIGER_F, source: WPP },
+              { label: 'Japonsko 2025', male: JAPAN_M, female: JAPAN_F, source: WPP },
+            ], caption: 'Niger: skoro polovina obyvatel (46 %) je mladší 15 let. Japonsko: dětí je 11 %, lidí nad 65 let 30 %.' },
+            { type: 'p', text: 'Podle tvaru rozlišujeme tři typy populací. Každý tvar prozrazuje, co se s počtem obyvatel stane v budoucnu:' },
+            { type: 'compare', columns: [
+              { title: 'Progresivní (rostoucí)', icon: 'baby', tone: 'a', points: ['tvar pyramidy: široká základna, úzký vrchol', 'vysoká porodnost, hodně dětí', 'obyvatel rychle přibývá', 'Niger, Nigérie'] },
+              { title: 'Stacionární (ustálená)', icon: 'people', tone: 'b', points: ['tvar zvonu: skupiny do středního věku skoro stejně široké', 'porodnost zhruba stejná jako úmrtnost', 'počet obyvatel se mění málo', 'blízko k němu mají USA'] },
+              { title: 'Regresivní (ubývající)', icon: 'hourglass', tone: 'c', points: ['tvar urny: základna užší než střed', 'nízká porodnost, hodně starých lidí', 'obyvatel bez přistěhovalých ubývá', 'Japonsko, Itálie, Česko'] },
+            ] },
+            { type: 'p', text: 'Pozor, tady se často chybuje: široká základna neznamená, že se v zemi žije dobře. Znamená jen to, že se rodí hodně dětí. Pro srovnání tu je zvonovitá pyramida USA:' },
+            { type: 'pyramid', step: 5, pyramids: [{ label: 'USA 2025', male: USA_M, female: USA_F, source: WPP }], caption: 'Spojené státy: věkové skupiny až do 60 let jsou skoro stejně široké. Pyramida má tvar zvonu.' },
+            { type: 'p', text: 'Umíme tedy pyramidu přečíst a pojmenovat. Jak ale dostala pyramida Česka svůj zubatý tvar?' },
+            { type: 'check', question: { kind: 'choice', q: 'Pyramida má širokou základnu a úzký vrchol. Jaký je to typ populace?', options: ['progresivní', 'regresivní', 'stacionární', 'migrační'], answer: 0, explain: 'Široká základna znamená hodně dětí a vysokou porodnost. Taková populace roste – je progresivní.' } },
+          ],
+        },
+        {
+          title: 'Pyramida Česka a její příběh',
+          icon: 'calendar',
+          blocks: [
+            { type: 'p', text: 'Pyramida skutečného státu není hladká. Každý zub a každý zářez je stopa po události, kdy se rodilo víc nebo méně dětí. Česko je dobrý příklad.' },
+            { type: 'p', text: 'Najdi v pyramidě Česka nejširší pruhy kolem 45–54 let a úzké pruhy kolem 20–29 let:' },
+            { type: 'pyramid', step: 5, pyramids: [{ label: 'Česko 2025', male: CZE_M, female: CZE_F, source: WPP }], caption: 'Česko má regresivní pyramidu: dětí do 15 let je 15 %, lidí nad 65 let 21 %.' },
+            { type: 'p', text: 'Co znamenají zuby? Lidé ve věku 45–54 let se narodili v 70. letech, kdy stát rodinám s dětmi hodně pomáhal (říká se jim „Husákovy děti“). Úzký pás 20–29 let jsou děti z let kolem roku 2000, kdy se rodilo nejméně. A v pruhu 70–79 let je poválečný „baby boom“.' },
+            { type: 'p', text: 'Teď si zahraj na demografa. Nastav porodnost a úmrtnost a podívej se, jak se tvar pyramidy změní za 50 let. Zkus nastavit hodnoty Nigeru (40 ‰ a 9 ‰) a pak Česka (7 ‰ a 10 ‰):' },
+            { type: 'experiment', id: 'birth-death-rates', caption: 'Porodnost a úmrtnost → přirozený přírůstek a tvar pyramidy za 50 let.' },
+            { type: 'p', text: 'Všiml sis? Vysoká porodnost rozšiřuje základnu a pyramida se „nafukuje“. Nízká porodnost základnu zužuje a za pár desetiletí se z pyramidy stane urna. Pyramidy si můžeš procvičit i ve hře:' },
+            { type: 'game', gameId: 'pop-pyramid', text: 'Poznáš z tvaru pyramidy, jestli populace roste, nebo stárne? A kde je baby boom?' },
+            { type: 'p', text: 'Proč se ale některé státy změnily z rostoucích na stárnoucí? Vysvětluje to jeden model.' },
+            { type: 'check', question: { kind: 'choice', q: 'Proč je v pyramidě Česka nejširší skupina 45–54 let?', options: ['v 70. letech se rodilo hodně dětí', 'v tomto věku se do Česka nejvíc lidí přistěhovalo', 'lidé v tomto věku nejméně umírají', 'v 70. letech se nikdo nevystěhoval'], answer: 0, explain: 'Lidé, kterým je v roce 2025 45–54 let, se narodili v letech 1971–1980, kdy se v Česku rodilo hodně dětí.' } },
+          ],
+        },
+        {
+          title: 'Demografická revoluce',
+          icon: 'arrow-cycle',
+          blocks: [
+            { type: 'p', text: 'Evropa kdysi vypadala jako dnešní Niger: hodně dětí, hodně úmrtí, krátký život. Za posledních 250 let prošla velkou změnou, které geografové říkají **demografická revoluce** (také demografický přechod).' },
+            { type: 'p', text: 'Model ukazuje porodnost, úmrtnost a počet obyvatel v pěti fázích. Sleduj, která čára klesne první:' },
+            { type: 'diagram', id: 'demographic-transition', caption: 'Demografická revoluce: nejdřív klesne úmrtnost, porodnost až o desítky let později. Mezi nimi lidí rychle přibývá.' },
+            { type: 'p', text: 'Klíč je v pořadí. Nejdřív klesne úmrtnost (lékařství, hygiena, jídlo). Rodiny ale ještě dlouho mají hodně dětí, a tak populace roste. Teprve když se děti dostanou do škol, ženy chodí do práce a děti už nemusí rodičům pomáhat na poli, klesne i porodnost.' },
+            { type: 'callout', variant: 'mascot', text: 'Takže lidstvo nevybuchne donekonečna. Až se všechny státy dostanou do pozdních fází, růst se zastaví. OSN to čeká kolem roku 2084.' },
+            { type: 'p', text: 'Dnes jsou státy světa v různých fázích: Niger ve druhé, Indie ve třetí, Česko a Japonsko už v páté s přirozeným úbytkem. Podrobněji model rozebereme v lekci „Demografický přechod“. Obyvatel ale nepřibývá a neubývá jen narozením a úmrtím – lidé se také stěhují. Na to se podíváme v lekci „Migrace“.' },
+            { type: 'check', question: { kind: 'order', q: 'Seřaď, jak se v demografické revoluci mění populace.', items: ['vysoká porodnost i úmrtnost, počet lidí skoro neroste', 'klesá úmrtnost, lidí rychle přibývá', 'klesá i porodnost, růst se zpomaluje', 'porodnost i úmrtnost jsou nízké, růst se zastaví'], explain: 'Nejdřív klesne úmrtnost a populace roste, porodnost klesne až později. Na konci jsou obě nízké.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Porodnost a úmrtnost udáváme v promilích: počet narozených nebo zemřelých za rok na 1 000 obyvatel.',
+        'Přirozený přírůstek je porodnost minus úmrtnost; spolu s migračním saldem dává celkový přírůstek.',
+        'V Česku víc lidí umírá, než se rodí; obyvatel mírně přibývá jen díky přistěhovalým.',
+        'Střední délka života je průměr; ve světě vzrostla ze 46 let (1950) na 73 let, v Japonsku je téměř 85 let.',
+        'Věková pyramida ukazuje složení obyvatel podle věku a pohlaví: progresivní (pyramida), stacionární (zvon), regresivní (urna).',
+        'Zuby v pyramidě Česka jsou stopy po obdobích s hodně a málo narozenými dětmi.',
+        'Při demografické revoluci klesne nejdřív úmrtnost a později porodnost; mezi tím lidí rychle přibývá.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Porodnost 10 ‰ znamená, že se za rok narodí 10 dětí na každých 100 obyvatel.', answer: false, explain: 'Promile znamená „z tisíce“: 10 dětí na 1 000 obyvatel, tedy 1 %.' },
+        { kind: 'choice', q: 'V Česku se v roce 2025 víc lidí narodilo, než zemřelo?', options: ['ne, víc lidí zemřelo; obyvatel přibylo jen díky přistěhovalým', 'ano, narodilo se dvakrát víc lidí', 'ano, ale všichni se vystěhovali', 'ne, a celkový počet obyvatel prudce klesl'], answer: 0, explain: 'Přirozený přírůstek byl −35 700, migrační saldo +42 000, takže obyvatel celkem přibylo asi 6 300.' },
+        { kind: 'match', q: 'Přiřaď tvar pyramidy k typu populace.', pairs: [
+          ['pyramida se širokou základnou', 'progresivní'],
+          ['zvon', 'stacionární'],
+          ['urna s užší základnou', 'regresivní'],
+        ], explain: 'Čím širší základna, tím víc dětí a rychlejší růst. Urna znamená stárnoucí populaci.' },
+        { kind: 'number', q: 'Stát má porodnost 28 ‰ a úmrtnost 7 ‰. Jaký je jeho přirozený přírůstek v ‰?', answer: 21, tolerance: 0, unit: '‰', explain: '28 − 7 = 21 ‰.' },
+        { kind: 'tf', q: 'Ženy mají ve většině států světa vyšší střední délku života než muži.', answer: true, explain: 'V Česku se dívka narozená v roce 2025 dožije v průměru skoro 84 let, chlapec asi 78 let.' },
+        { kind: 'multi', q: 'Co platí o pyramidě Nigeru?', options: ['skoro polovina obyvatel je mladší 15 let', 'má širokou základnu', 'lidí nad 65 let je velmi málo', 'má tvar urny', 'obyvatel ubývá'], answers: [0, 1, 2], explain: 'Niger má progresivní pyramidu: hodně dětí, málo starých lidí a rychlý růst.' },
+        { kind: 'choice', q: 'Proč má Niger nižší úmrtnost (asi 8,6 ‰) než Česko (asi 10,4 ‰)?', options: ['v Nigeru žije velmi málo starých lidí, kteří umírají nejčastěji', 'v Nigeru je lepší zdravotní péče než v Česku', 'lidé v Nigeru žijí déle', 'v Nigeru se úmrtí nesčítají'], answer: 0, explain: 'Úmrtnost se počítá na všechny obyvatele. Mladá populace má málo úmrtí, i když se tam lidé dožívají nižšího věku.' },
+        { kind: 'choice', q: 'Co při demografické revoluci klesne jako první?', options: ['úmrtnost', 'porodnost', 'počet obyvatel', 'migrace'], answer: 0, explain: 'Nejdřív se zlepší zdraví a výživa a klesne úmrtnost. Porodnost klesá až později, proto mezitím lidí rychle přibývá.' },
+      ],
+    },
+
+    // ───────────────────────────────────────────────────────────── z5-3
+    'z5-3': {
+      id: 'z5-3',
+      title: 'Migrace',
+      goals: [
+        'Rozlišit vnitřní a mezinárodní, dobrovolnou a nucenou migraci',
+        'Vysvětlit migraci pomocí odpuzujících a přitahujících faktorů',
+        'Vysvětlit, kdo je uprchlík, a říct, odkud a kam uprchlíci nejčastěji odcházejí',
+        'Popsat hlavní vlny migrace v dějinách Česka a dnes',
+      ],
+      hook: 'Kde se narodili tvoji prarodiče? Možná ve stejném městě jako ty – a možná na Slovensku, na Ukrajině, ve Vietnamu nebo na druhém konci republiky. Skoro každá rodina má ve svém příběhu nějaké stěhování.',
+      sections: [
+        {
+          title: 'Lidé jsou pořád na cestě',
+          icon: 'footprints',
+          blocks: [
+            { type: 'p', text: 'V lekci „Porodnost, úmrtnost a věková pyramida“ jsme viděli, že počet obyvatel mění nejen narození a úmrtí, ale i stěhování. Stěhování lidí je ale mnohem starší než jakékoli státy.' },
+            { type: 'p', text: 'Celé lidstvo je vlastně potomkem migrantů. Na mapě sleduj, kudy se člověk rozumný rozšířil z Afriky do celého světa:' },
+            { type: 'diagram', id: 'human-migration', caption: 'Šíření člověka rozumného (*Homo sapiens*) z Afriky. Hlavní vlna opustila Afriku asi před 70 000–60 000 lety.' },
+            { type: 'p', text: 'Dnes geografové za **migraci** považují stěhování, při kterém člověk změní místo trvalého bydliště na delší dobu. Proto do ní nepatří dovolená u moře ani každodenní dojížďka do školy nebo do práce.' },
+            { type: 'callout', variant: 'warning', text: 'Častý omyl: dojíždění do práce v sousedním městě není migrace. Člověk se večer vrací domů a jeho bydliště se nemění.' },
+            { type: 'p', text: 'Lidé se ale stěhují z velmi různých důvodů a na různou vzdálenost. Podle toho migraci třídíme.' },
+            { type: 'check', question: { kind: 'tf', q: 'Žák, který každý den dojíždí do školy v sousedním městě, je migrant.', answer: false, explain: 'Migrace znamená změnu trvalého bydliště. Dojížďka je pravidelný pohyb, po kterém se člověk vrací domů.' } },
+          ],
+        },
+        {
+          title: 'Druhy migrace',
+          icon: 'signpost',
+          blocks: [
+            { type: 'p', text: 'Když se rodina přestěhuje z Ostravy do Prahy, je to taky migrace – jen nepřekročí hranici. Migraci proto dělíme podle dvou otázek: jestli lidé překročí státní hranici a jestli odcházejí dobrovolně.' },
+            { type: 'p', text: 'Porovnej obě dělení. Každé stěhování patří do jedné kategorie z každého sloupce:' },
+            { type: 'compare', columns: [
+              { title: 'Podle hranic', icon: 'border', tone: 'a', points: ['**vnitřní** migrace: uvnitř jednoho státu (z vesnice do města, z Ostravy do Prahy)', '**mezinárodní** migrace: přes hranici státu (z Ukrajiny do Česka)'] },
+              { title: 'Podle dobrovolnosti', icon: 'footprints', tone: 'b', points: ['**dobrovolná** migrace: za prací, studiem, rodinou, lepším bydlením', '**nucená** migrace: útěk před válkou, pronásledováním nebo katastrofou'] },
+            ] },
+            { type: 'p', text: 'Z pohledu jednoho státu má mezinárodní migrace dva směry. Pro ně se používají tyto pojmy:' },
+            { type: 'keyterms', items: [
+              { term: '**Emigrace** (vystěhovalectví)', def: 'odchod ze státu; emigrant je vystěhovalec' },
+              { term: '**Imigrace** (přistěhovalectví)', def: 'příchod do státu; imigrant je přistěhovalec' },
+              { term: '**Migrační saldo**', def: 'přistěhovalí minus vystěhovalí; v Česku bylo v roce 2025 kladné (+42 000)' },
+            ] },
+            { type: 'p', text: 'Mimo zemi svého narození žije podle OSN asi 300 milionů lidí, tedy necelé 4 % lidstva (stav 2024). Vnitřních migrantů je ještě mnohem víc: nejčastější cestou na světě je cesta z venkova do města ve vlastním státě.' },
+            { type: 'p', text: 'Víme, kam lidé jdou. Zajímavější je ale otázka, proč odcházejí.' },
+            { type: 'check', question: { kind: 'choice', q: 'Rodina se přestěhovala z Brna do Liberce, protože otec tam dostal lepší práci. O jakou migraci jde?', options: ['vnitřní a dobrovolnou', 'mezinárodní a dobrovolnou', 'vnitřní a nucenou', 'mezinárodní a nucenou'], answer: 0, explain: 'Rodina nepřekročila hranici (vnitřní migrace) a odešla za prací ze své vůle (dobrovolná migrace).' } },
+          ],
+        },
+        {
+          title: 'Proč lidé odcházejí',
+          icon: 'magnet',
+          blocks: [
+            { type: 'p', text: 'Nikdo neopouští domov jen tak. Na každé místo působí síly, které lidi vyhánějí nebo naopak lákají – podobně jako magnet, který jeden pól odpuzuje a druhý přitahuje.' },
+            { type: 'p', text: 'Geografové tomu říkají model **push–pull**. Prohlédni si, co lidi z výchozího místa „tlačí“ pryč, co je „táhne“ do cíle a co jim stojí v cestě:' },
+            { type: 'diagram', id: 'push-pull', caption: 'Odpuzující faktory (push) ve výchozím místě, přitahující faktory (pull) v cíli a překážky mezi nimi.' },
+            { type: 'p', text: 'Odpuzující faktory jsou třeba válka, chudoba, nedostatek práce nebo sucho. Přitahující faktory jsou práce a vyšší mzdy, bezpečí, rodina a známí nebo vzdělání. Mezi nimi stojí překážky: hranice a víza, cena cesty, vzdálenost a jiný jazyk.' },
+            { type: 'p', text: 'Pozor: většinou nepůsobí jen jeden důvod. Mladý muž z venkova odejde do města, protože doma není práce (push) a ve městě má bratrance a nabídku práce (pull). Teprve obojí dohromady ho přiměje sbalit si kufr.' },
+            { type: 'p', text: 'U dobrovolné migrace lidé mezi push a pull faktory vybírají. U nucené migrace na výběr nemají: odpuzující faktor je tak silný, že jde o život.' },
+            { type: 'check', question: { kind: 'match', q: 'Přiřaď faktor k jeho druhu.', pairs: [
+              ['válka v zemi', 'odpuzující faktor (push)'],
+              ['volná pracovní místa v cizině', 'přitahující faktor (pull)'],
+              ['přísná vízová povinnost', 'překážka'],
+            ], explain: 'Válka vyhání lidi z domova, práce v cíli je láká a víza jim cestu ztěžují.' } },
+          ],
+        },
+        {
+          title: 'Uprchlíci',
+          icon: 'shield',
+          blocks: [
+            { type: 'p', text: 'Nejtěžší formou nucené migrace je útěk před válkou nebo pronásledováním. O takové lidi se stará Úřad vysokého komisaře OSN pro uprchlíky (UNHCR).' },
+            { type: 'p', text: 'Slova „migrant“ a „uprchlík“ se v médiích často pletou. Přesné významy jsou tyto:' },
+            { type: 'keyterms', items: [
+              { term: '**Uprchlík**', def: 'člověk, který uprchl ze své země před válkou nebo pronásledováním a nemůže se bezpečně vrátit; chrání ho mezinárodní právo' },
+              { term: '**Vnitřně vysídlená osoba**', def: 'člověk, který musel opustit domov, ale zůstal ve vlastním státě' },
+              { term: '**Žadatel o azyl**', def: 'člověk, který požádal jiný stát o ochranu a čeká na rozhodnutí' },
+            ] },
+            { type: 'p', text: 'Kolik takových lidí na světě je? Čísla UNHCR jsou obrovská:' },
+            { type: 'table', headers: ['konec roku 2025', 'počet'], rows: [
+              ['nuceně vysídlení celkem', 'asi 118 milionů'],
+              ['z toho vnitřně vysídlení', 'asi 69 milionů'],
+              ['uprchlíci (včetně 6 milionů Palestinců)', 'asi 42 milionů'],
+              ['žadatelé o azyl', 'asi 9 milionů'],
+            ], caption: 'UNHCR Global Trends 2025' },
+            { type: 'p', text: 'Odkud uprchlíci pocházejí a kam míří? Porovnej na mapě obě skupiny států. Všimni si, že státy, které přijímají nejvíc uprchlíků, často sousedí se zemí, odkud lidé utíkají:' },
+            { type: 'map', view: 'world', highlight: [
+              { codes: ['AFG', 'SDS', 'SDN', 'SYR', 'UKR', 'VEN'], tone: 'a', label: 'odkud pochází 7 z 10 uprchlíků' },
+              { codes: ['COL', 'DEU', 'TUR', 'UGA', 'IRN'], tone: 'b', label: 'státy, které přijaly nejvíc uprchlíků' },
+            ], layers: ['names'], caption: 'Hlavní země původu a největší hostitelské státy uprchlíků na konci roku 2025 (UNHCR Global Trends 2025): Kolumbie 2,8 mil., Německo 2,7 mil., Turecko 2,4 mil., Uganda 1,9 mil., Írán 1,7 mil.' },
+            { type: 'p', text: 'Pozor na rozšířený omyl, že většina uprchlíků míří do Evropy. Většina z nich zůstává v sousedních zemích, aby se mohla vrátit domů: Venezuelané v Kolumbii, Syřané v Turecku, Afghánci v Íránu. Výjimkou je Německo, kam přišlo hodně lidí ze Sýrie i z Ukrajiny.' },
+            { type: 'p', text: 'Uprchlíci i migranti mají své místo i v dějinách Česka. Česko bylo dlouho zemí, ze které se odcházelo.' },
+            { type: 'check', question: { kind: 'tf', q: 'Většina uprchlíků na světě žije v sousedních zemích státu, ze kterého utekla.', answer: true, explain: 'Lidé utíkají co nejblíž, aby se mohli vrátit. Proto hostí nejvíc uprchlíků třeba Kolumbie, Turecko nebo Írán.' } },
+          ],
+        },
+        {
+          title: 'Migrace v dějinách Česka',
+          icon: 'castle',
+          blocks: [
+            { type: 'p', text: 'Dnes se do Česka víc lidí stěhuje, než z něj odchází. Ještě před sto lety to ale bylo naopak a Češi byli národem vystěhovalců.' },
+            { type: 'p', text: 'Projdi si hlavní vlny migrace na našem území. U každé si všimni, jestli šlo o migraci dobrovolnou, nebo nucenou:' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'ship', title: '19. století', text: 'statisíce Čechů odcházejí za prací do Vídně a do USA (Chicago, Texas, Nebraska)' },
+              { icon: 'train', title: '1945–1946', text: 'vysídlení (odsun) asi tří milionů Němců z Československa; do pohraničí přicházejí noví obyvatelé' },
+              { icon: 'border', title: '1948 a 1968', text: 'po komunistickém převratu a po okupaci emigrují desetitisíce lidí na Západ' },
+              { icon: 'handshake', title: '70. a 80. léta', text: 'do Československa přijíždějí pracovníci z Vietnamu a dalších spřátelených států' },
+              { icon: 'house', title: 'po roce 1990', text: 'Česko se stává zemí přistěhovalců: Ukrajinci, Slováci, Vietnamci' },
+            ], caption: 'Hlavní vlny migrace v dějinách Česka' },
+            { type: 'p', text: 'Vysídlení Němců a emigrace po roce 1948 byly migrace nucené nebo vyvolané politikou. Odchody za prací v 19. století a příchody po roce 1990 byly hlavně dobrovolné – lákala práce a vyšší mzdy.' },
+            { type: 'callout', variant: 'fact', text: 'Kolem roku 1900 žilo ve Vídni tolik Čechů, že to bylo jedno z největších „českých“ měst. Dodnes tam najdeš česká příjmení na každém kroku.' },
+            { type: 'p', text: 'Velká vlna příchodů přišla v roce 2022. Ukazuje, jak rychle se může migrace změnit, když vypukne válka.' },
+            { type: 'check', question: { kind: 'choice', q: 'Kterou vlnu migrace v dějinách Česka řadíme k nuceným?', options: ['vysídlení Němců po roce 1945', 'odchody Čechů za prací do Vídně v 19. století', 'příchod Slováků za studiem po roce 1993', 'stěhování mladých lidí do Prahy za prací'], answer: 0, explain: 'Němci museli z Československa po válce odejít bez ohledu na svou vůli. Ostatní příklady jsou dobrovolná migrace.' } },
+          ],
+        },
+        {
+          title: 'Česko dnes: válka na Ukrajině',
+          icon: 'house',
+          blocks: [
+            { type: 'p', text: 'V únoru 2022 Rusko napadlo Ukrajinu. Miliony lidí, hlavně ženy s dětmi, utekly během několika týdnů do sousedních zemí a dál do Evropské unie.' },
+            { type: 'p', text: 'Mapa ukazuje hlavní směry útěku. Všimni si, že tři státy s nejvíce příchozími leží na západ od Ukrajiny:' },
+            { type: 'map', view: 'europe', highlight: [
+              { codes: ['UKR'], tone: 'a', label: 'Ukrajina' },
+              { codes: ['DEU', 'POL', 'CZE'], tone: 'b', label: 'nejvíc lidí s dočasnou ochranou' },
+            ], routes: [
+              { points: [{ lat: 50.45, lon: 30.52 }, { lat: 52.23, lon: 21.01 }], tone: 'c', arrow: true },
+              { points: [{ lat: 50.45, lon: 30.52 }, { lat: 50.08, lon: 14.42 }], tone: 'c', arrow: true },
+              { points: [{ lat: 50.45, lon: 30.52 }, { lat: 52.52, lon: 13.40 }], tone: 'c', arrow: true, label: 'útěk před válkou' },
+            ], points: [{ lat: 50.45, lon: 30.52, label: 'Kyjev', kind: 'capital' }, { lat: 50.08, lon: 14.42, label: 'Praha', kind: 'capital' }],
+              caption: 'Uprchlíci z Ukrajiny s dočasnou ochranou v EU: asi 4,4 milionu (Eurostat, červenec 2026). Nejvíc jich je v Německu, Polsku a Česku.' },
+            { type: 'p', text: 'V Česku měla v červenci 2026 dočasnou ochranu asi 395 tisíc lidí z Ukrajiny (Eurostat). Na počet obyvatel je to nejvíc v celé EU: asi 36 lidí na každých 1 000 obyvatel. Ve škole tak máš spolužáky z Ukrajiny možná i ty.' },
+            { type: 'p', text: 'Migrace tedy mění složení obyvatel: do škol, ulic a obchodů přináší nové jazyky, jídla a zvyky. Jak se lidé světa liší řečí, vírou a kulturou, probereme v lekci „Jazyky, náboženství a kultury“.' },
+            { type: 'check', question: { kind: 'multi', q: 'Co platí o uprchlících z Ukrajiny v Česku?', options: ['utíkají před válkou, jde o nucenou migraci', 'v roce 2026 jich bylo v Česku asi 395 tisíc', 'na počet obyvatel jich má Česko nejvíc v EU', 'jde o vnitřní migraci', 'do Česka přišli hlavně za studiem'], answers: [0, 1, 2], explain: 'Lidé utekli před ruskou invazí (nucená, mezinárodní migrace). Česko jich přijalo nejvíc v přepočtu na obyvatele.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Migrace je stěhování se změnou trvalého bydliště; dojížďka do práce ani dovolená migrací nejsou.',
+        'Migrace je vnitřní, nebo mezinárodní, a dobrovolná, nebo nucená.',
+        'Lidi z domova vyhánějí odpuzující faktory (push) a do cíle lákají přitahující faktory (pull); mezi nimi stojí překážky.',
+        'Ke konci roku 2025 bylo na světě asi 118 milionů nuceně vysídlených lidí, z toho asi 42 milionů uprchlíků.',
+        'Většina uprchlíků zůstává v sousedních zemích.',
+        'Česko bylo dlouho zemí vystěhovalců; po roce 1990 se stalo zemí přistěhovalců.',
+        'Na počet obyvatel přijalo Česko nejvíc uprchlíků z Ukrajiny v celé EU.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Stěhování z vesnice do krajského města ve stejném státě je vnitřní migrace.', answer: true, explain: 'Člověk nepřekročil hranici státu, proto jde o vnitřní migraci.' },
+        { kind: 'choice', q: 'Kdo je uprchlík?', options: ['člověk, který utekl ze své země před válkou nebo pronásledováním', 'každý, kdo se přestěhoval do ciziny za prací', 'člověk, který jede na dovolenou do ciziny', 'člověk, který se stěhuje v rámci vlastního státu'], answer: 0, explain: 'Uprchlík utekl přes hranici před válkou nebo pronásledováním. Kdo zůstal ve svém státě, je vnitřně vysídlená osoba.' },
+        { kind: 'multi', q: 'Které faktory jsou přitahující (pull)?', options: ['volná pracovní místa', 'bezpečí', 'sucho a neúroda', 'rodina, která už v cíli žije', 'válka'], answers: [0, 1, 3], explain: 'Práce, bezpečí a rodina lákají do cíle. Sucho a válka lidi z domova vyhánějí (push).' },
+        { kind: 'text', q: 'Jak se jedním slovem nazývá odchod obyvatel ze státu (vystěhovalectví)?', accept: ['emigrace'], explain: 'Emigrace je vystěhovalectví, imigrace přistěhovalectví.' },
+        { kind: 'number', q: 'Do státu se za rok přistěhovalo 60 000 lidí a vystěhovalo 18 000 lidí. Jaké je migrační saldo?', answer: 42000, tolerance: 0, explain: 'Migrační saldo = přistěhovalí − vystěhovalí = 60 000 − 18 000 = 42 000.' },
+        { kind: 'tf', q: 'Česko je po celou dobu svých dějin zemí, kam se víc lidí stěhuje, než odkud odchází.', answer: false, explain: 'V 19. století a za komunismu z našeho území hodně lidí odcházelo. Zemí přistěhovalců se Česko stalo až po roce 1990.' },
+        { kind: 'choice', q: 'Proč uprchlíky ze Sýrie přijalo nejvíc Turecko?', options: ['sousedí se Sýrií a uprchlíci zůstávají blízko domova', 'leží daleko od Sýrie', 'je to nejbohatší stát světa', 'v Turecku nejsou hranice'], answer: 0, explain: 'Uprchlíci obvykle utíkají do nejbližšího bezpečného státu, aby se mohli vrátit domů.' },
+        { kind: 'order', q: 'Seřaď události migrace v dějinách Česka od nejstarší.', items: ['odchody Čechů do Vídně a do USA', 'vysídlení Němců z Československa', 'emigrace po okupaci v roce 1968', 'příchod uprchlíků z Ukrajiny'], explain: '19. století, 1945–1946, 1968 a 2022.' },
+      ],
+    },
+
+    // ───────────────────────────────────────────────────────────── z5-4
+    'z5-4': {
+      id: 'z5-4',
+      title: 'Jazyky, náboženství a kultury',
+      goals: [
+        'Vysvětlit, co je kultura a kulturní identita',
+        'Zařadit češtinu do jazykové rodiny a vyjmenovat hlavní světové jazyky',
+        'Popsat hlavní světová náboženství a ukázat na mapě, kde převládají',
+        'Vysvětlit, proč je dělení lidí na „rasy“ zastaralé, a mluvit o jiných kulturách s respektem',
+      ],
+      hook: 'Na internetu píšeš anglicky, s babičkou česky a ve hře potkáš hráče z Brazílie nebo z Koreje. Na světě se mluví přes 7 000 jazyky. Kolik z nich poznáš?',
+      sections: [
+        {
+          title: 'Co je kultura',
+          icon: 'speech',
+          blocks: [
+            { type: 'p', text: 'V lekci „Migrace“ jsme viděli, že lidé si s sebou do nového domova přinášejí jazyk, jídla i zvyky. Tomu všemu dohromady říkáme **kultura**: způsob života, který se lidé naučí od rodiny a okolí a předávají ho dál.' },
+            { type: 'p', text: 'Kultura není jen divadlo a galerie. Patří k ní všechno, čím se skupiny lidí od sebe liší a v čem se poznávají:' },
+            { type: 'iconlist', items: [
+              { icon: 'speech', title: 'Jazyk', text: 'nejdůležitější znak kultury; nese příběhy, písně i humor' },
+              { icon: 'book', title: 'Náboženství a hodnoty', text: 'čemu lidé věří a co považují za správné' },
+              { icon: 'calendar', title: 'Zvyky a svátky', text: 'Vánoce, ramadán, lunární Nový rok, Dušičky' },
+              { icon: 'bread', title: 'Jídlo', text: 'knedlíky, rýže, tortilly – a co se jíst nesmí' },
+              { icon: 'music', title: 'Hudba, umění, oblékání', text: 'lidové písně, kroje, stavby, tanec' },
+            ] },
+            { type: 'p', text: 'Když se člověk cítí součástí nějaké kultury, mluvíme o **kulturní identitě**: „jsem Češka“, „jsem Moravák“, „jsem Vietnamec, který vyrostl v Plzni“. Identit může mít člověk víc najednou a nevylučují se.' },
+            { type: 'p', text: 'Nejsnáz se kultury rozlišují podle jazyka. Začneme proto tím, jak jsou jazyky světa mezi sebou příbuzné.' },
+            { type: 'check', question: { kind: 'multi', q: 'Co patří ke kultuře skupiny lidí?', options: ['jazyk', 'svátky a zvyky', 'jídlo', 'barva očí', 'krevní skupina'], answers: [0, 1, 2], explain: 'Kulturu se člověk učí od ostatních: jazyk, zvyky, jídlo. Barvu očí ani krevní skupinu se nenaučíš, ty jsou dané geny.' } },
+          ],
+        },
+        {
+          title: 'Jazykové rodiny',
+          icon: 'family-tree',
+          blocks: [
+            { type: 'p', text: 'Proč rozumíš slovensky skoro všechno a polsky jen něco? Jazyky jsou příbuzné jako lidé v rodině. Vyvinuly se ze společného předka a příbuzné jazyky dělíme do **jazykových rodin**.' },
+            { type: 'p', text: 'Sleduj „rodokmen“ češtiny od největší skupiny k nejmenší:' },
+            { type: 'process', layout: 'flow', steps: [
+              { icon: 'globe', title: 'Indoevropská rodina', text: 'mluví jí asi polovina lidstva' },
+              { icon: 'family-tree', title: 'Slovanské jazyky', text: 'ruština, ukrajinština, polština, srbština…' },
+              { icon: 'people', title: 'Západoslovanské jazyky', text: 'čeština, slovenština, polština, lužická srbština' },
+              { icon: 'speech', title: 'Čeština', text: 'asi 10 milionů rodilých mluvčích' },
+            ], caption: 'Zařazení češtiny mezi jazyky světa' },
+            { type: 'p', text: 'K indoevropské rodině patří i angličtina a němčina (germánské jazyky), španělština a francouzština (románské jazyky) nebo hindština a perština. Proto se v nich najdou podobná slova: *matka* – *mother* – *Mutter* – *madre*. Hlavní rodiny světa ukazuje tabulka:' },
+            { type: 'table', headers: ['jazyková rodina', 'příklady jazyků', 'kde'], rows: [
+              ['indoevropská', 'čeština, angličtina, španělština, hindština', 'Evropa, Amerika, jižní Asie'],
+              ['sinotibetská', 'čínština, tibetština, barmština', 'východní Asie'],
+              ['nigerokonžská', 'svahilština, jorubština, zuluština', 'Afrika jižně od Sahary'],
+              ['afroasijská', 'arabština, hebrejština, amharština', 'severní Afrika, Blízký východ'],
+              ['austronéská', 'indonéština, tagalština, malgaština', 'jihovýchodní Asie, Tichomoří'],
+              ['uralská', 'finština, estonština, maďarština', 'severní a střední Evropa'],
+            ], caption: 'Hlavní jazykové rodiny (zjednodušeno)' },
+            { type: 'callout', variant: 'fact', text: 'Maďarština je náš soused, ale není to slovanský ani indoevropský jazyk. Patří k uralské rodině, takže jejími vzdálenými příbuznými jsou finština a estonština.' },
+            { type: 'p', text: 'Jazyků je hodně, ale velká většina lidí mluví jen několika z nich. Které jazyky mají nejvíc mluvčích?' },
+            { type: 'check', question: { kind: 'choice', q: 'Do které skupiny jazyků patří čeština?', options: ['západoslovanské jazyky indoevropské rodiny', 'románské jazyky', 'uralská rodina', 'východoslovanské jazyky'], answer: 0, explain: 'Čeština je západoslovanský jazyk spolu se slovenštinou, polštinou a lužickou srbštinou; slovanské jazyky patří k indoevropské rodině.' } },
+          ],
+        },
+        {
+          title: 'Světové jazyky',
+          icon: 'globe',
+          blocks: [
+            { type: 'p', text: 'Na světě se mluví přes 7 000 jazyky, ale mnoho z nich má jen pár tisíc mluvčích. Asi 40 % jazyků je ohroženo zánikem, protože je děti už nepoužívají (Ethnologue).' },
+            { type: 'p', text: 'V tabulce porovnej celkový počet mluvčích s počtem rodilých mluvčích (těch, pro které je jazyk mateřštinou):' },
+            { type: 'table', headers: ['jazyk', 'mluvčí celkem', 'z toho rodilí'], rows: [
+              ['angličtina', 'asi 1,5 miliardy', 'asi 390 milionů'],
+              ['čínština (mandarínská)', 'asi 1,2 miliardy', 'asi 940 milionů'],
+              ['hindština', 'asi 600 milionů', 'asi 340 milionů'],
+              ['španělština', 'asi 560 milionů', 'asi 480 milionů'],
+              ['arabština', 'asi 330 milionů', 'mluvená nářečí se liší'],
+              ['francouzština', 'asi 310 milionů', 'asi 75 milionů'],
+            ], caption: 'Zaokrouhleno podle Ethnologue (2025)' },
+            { type: 'p', text: 'Pozor na past: angličtina má nejvíc mluvčích, ale většina z nich se ji naučila jako druhý jazyk – ve škole, v práci, na internetu. Nejvíc rodilých mluvčích má čínština.' },
+            { type: 'p', text: 'Proč se španělsky mluví v Mexiku a portugalsky v Brazílii? Mapa úředních jazyků to prozradí – kopíruje bývalé koloniální říše:' },
+            { type: 'map', view: 'world', highlight: [
+              { codes: ['ESP', 'MEX', 'GTM', 'HND', 'SLV', 'NIC', 'CRI', 'PAN', 'CUB', 'DOM', 'PRI', 'COL', 'VEN', 'ECU', 'PER', 'BOL', 'CHL', 'ARG', 'URY', 'PRY', 'GNQ'], tone: 'a', label: 'španělština' },
+              { codes: ['PRT', 'BRA', 'AGO', 'MOZ', 'GNB', 'CPV', 'STP', 'TLS'], tone: 'b', label: 'portugalština' },
+              { codes: ['MAR', 'DZA', 'TUN', 'LBY', 'EGY', 'SDN', 'MRT', 'SAU', 'YEM', 'OMN', 'ARE', 'QAT', 'BHR', 'KWT', 'IRQ', 'SYR', 'JOR', 'LBN', 'PSX', 'SOM', 'SOL', 'DJI', 'COM', 'TCD'], tone: 'c', label: 'arabština' },
+              { codes: ['FRA', 'BEL', 'CHE', 'LUX', 'MCO', 'CAN', 'HTI', 'SEN', 'CIV', 'GIN', 'BEN', 'TGO', 'CMR', 'GAB', 'COG', 'COD', 'CAF', 'MDG', 'BDI', 'RWA', 'SYC', 'VUT'], tone: 'd', label: 'francouzština' },
+            ], caption: 'Státy, kde je daný jazyk úředním jazykem (často jedním z několika: Kanada, Belgie, Švýcarsko; Čad, Džibutsko a Komory mají úřední arabštinu i francouzštinu). Angličtina je úředním jazykem v desítkách dalších států.' },
+            { type: 'p', text: 'Jazyky se tedy šířily s obchodníky, dobyvateli a kolonisty. Podobně putovala světem i náboženství.' },
+            { type: 'check', question: { kind: 'tf', q: 'Nejvíc rodilých mluvčích na světě má angličtina.', answer: false, explain: 'Angličtina má nejvíc mluvčích celkem, ale hlavně jako druhý jazyk. Nejvíc rodilých mluvčích má čínština (mandarínská), asi 940 milionů.' } },
+          ],
+        },
+        {
+          title: 'Světová náboženství',
+          icon: 'book',
+          blocks: [
+            { type: 'p', text: 'Náboženství odpovídá na velké otázky: odkud se svět vzal, co je dobré a co přijde po smrti. Ovlivňuje svátky, jídlo, oblékání i architekturu – kostely, mešity a chrámy jsou často nejstaršími stavbami měst.' },
+            { type: 'p', text: 'Pět velkých náboženství má dohromady miliardy věřících. U každého si všimni, kde vzniklo:' },
+            { type: 'iconlist', items: [
+              { icon: 'book', title: 'Křesťanství', text: 'asi 2,3 mld. věřících (29 %); vzniklo v Palestině, svatá kniha Bible; katolíci, pravoslavní, protestanti' },
+              { icon: 'moon', title: 'Islám', text: 'asi 2,0 mld. (26 %); vznikl v Arábii, svatá kniha Korán, posvátné město Mekka' },
+              { icon: 'flower', title: 'Hinduismus', text: 'asi 1,2 mld. (15 %); vznikl v Indii, mnoho bohů, víra v převtělování' },
+              { icon: 'leaf', title: 'Buddhismus', text: 'asi 0,3 mld. (4 %); vznikl v Indii, rozšířil se do jihovýchodní a východní Asie' },
+              { icon: 'book', title: 'Judaismus', text: 'asi 15 mil.; nejstarší z náboženství s jedním Bohem, svatá kniha Tóra' },
+            ] },
+            { type: 'p', text: 'Velkou skupinou jsou i lidé **bez náboženské příslušnosti**: asi 1,9 miliardy, tedy čtvrtina lidstva. Nejvíc jich žije v Číně (Pew Research Center, údaje za rok 2020).' },
+            { type: 'callout', variant: 'tip', text: 'Křesťanství, islám a judaismus mají společný kořen: všechny uctívají jednoho Boha a za předka považují Abraháma. Pro všechna tři je svatým městem Jeruzalém.' },
+            { type: 'p', text: 'Víme, kolik věřících která víra má. Kde na mapě ale která převládá?' },
+            { type: 'check', question: { kind: 'match', q: 'Přiřaď náboženství k místu, kde vzniklo.', pairs: [
+              ['islám', 'Arábie'],
+              ['hinduismus', 'Indie'],
+              ['křesťanství', 'Palestina'],
+            ], explain: 'Islám vznikl v Arábii (Mekka, Medína), hinduismus v Indii a křesťanství v Palestině. V Indii vznikl i buddhismus.' } },
+          ],
+        },
+        {
+          title: 'Kde se která víra rozšířila',
+          icon: 'map',
+          blocks: [
+            { type: 'p', text: 'Náboženství se šířila s obchodem, misionáři i dobyvateli. Do Ameriky se křesťanství dostalo s kolonisty spolu se španělštinou a portugalštinou, islám se šířil po obchodních cestách přes Saharu a Indický oceán.' },
+            { type: 'p', text: 'Na mapě jsou vybarveny jen státy, kde jedno náboženství jasně převládá. Hledej velké souvislé oblasti:' },
+            { type: 'map', view: 'world', highlight: [
+              { codes: ['MAR', 'DZA', 'TUN', 'LBY', 'EGY', 'SDN', 'MRT', 'SEN', 'MLI', 'NER', 'GMB', 'GIN', 'SOM', 'SOL', 'DJI', 'SAU', 'YEM', 'OMN', 'ARE', 'QAT', 'KWT', 'BHR', 'IRQ', 'IRN', 'SYR', 'JOR', 'PSX', 'AFG', 'PAK', 'BGD', 'TUR', 'AZE', 'UZB', 'TKM', 'TJK', 'KGZ', 'KAZ', 'IDN', 'MYS', 'BRN', 'MDV', 'COM', 'KOS'], tone: 'a', label: 'islám' },
+              { codes: ['USA', 'MEX', 'GTM', 'HND', 'SLV', 'NIC', 'CRI', 'PAN', 'COL', 'VEN', 'ECU', 'PER', 'BOL', 'BRA', 'PRY', 'ARG', 'CHL', 'POL', 'ITA', 'ESP', 'PRT', 'IRL', 'GRC', 'ROU', 'UKR', 'HRV', 'SVK', 'RUS', 'PHL', 'COD', 'AGO', 'ZAF', 'KEN', 'UGA', 'RWA', 'ZMB', 'ZWE', 'ETH', 'PNG'], tone: 'b', label: 'křesťanství' },
+              { codes: ['IND', 'NPL'], tone: 'c', label: 'hinduismus' },
+              { codes: ['THA', 'MMR', 'KHM', 'LKA', 'LAO', 'BTN', 'MNG'], tone: 'd', label: 'buddhismus' },
+            ], caption: 'Výběr států, kde jedno náboženství jasně převládá (podle Pew Research Center, 2025). Nevybarvené státy jsou smíšené, nebo v nich většina lidí k žádné víře nepatří – jako Česko, Čína nebo Japonsko.' },
+            { type: 'p', text: 'Všimni si, že islám převládá od Maroka po Indonésii – nejlidnatější muslimskou zemí světa. Pozor ale: Arab a muslim není totéž. Většina muslimů nejsou Arabové, žijí hlavně v Asii.' },
+            { type: 'p', text: 'A jak je to v Česku? Patří k nejméně věřícím zemím světa. Při sčítání lidu v roce 2021 uvedla skoro polovina lidí (48 %), že je bez náboženské víry, asi 30 % na otázku neodpovědělo a k nějaké víře se přihlásila jen asi pětina obyvatel (ČSÚ).' },
+            { type: 'p', text: 'Jazyky i náboženství tedy tvoří barevnou mozaiku. Kde se kultury potkávají, může to být obohacení – a někdy i zdroj sporů.' },
+            { type: 'check', question: { kind: 'choice', q: 'Který stát má nejvíc muslimů na světě?', options: ['Indonésie', 'Saúdská Arábie', 'Egypt', 'Turecko'], answer: 0, explain: 'Indonésie má asi 287 milionů obyvatel a velká většina z nich jsou muslimové. Islám se tam rozšířil s obchodníky přes Indický oceán.' } },
+          ],
+        },
+        {
+          title: 'Rozmanitost a respekt',
+          icon: 'handshake',
+          blocks: [
+            { type: 'p', text: 'Ve světě je asi 200 států, ale tisíce národů a jazyků. Skoro každý stát je proto kulturně pestrý. Také v Česku žijí Slováci, Ukrajinci, Vietnamci, Romové, Poláci, Němci a mnoho dalších.' },
+            { type: 'p', text: 'Dřív se lidé dělili na „rasy“ podle barvy kůže. Dnes víme, že takové dělení vědecky neobstojí. Porovnej, co platí:' },
+            { type: 'compare', columns: [
+              { title: 'Zastaralá představa', icon: 'cross', tone: 'bad', points: ['lidé se dělí na několik jasně oddělených „ras“', 'podle vzhledu lze poznat schopnosti nebo povahu', 'některé skupiny jsou „lepší“ než jiné'] },
+              { title: 'Co víme dnes', icon: 'check', tone: 'good', points: ['všichni lidé patří k jednomu druhu *Homo sapiens*', 'rozdíly v genech uvnitř jedné skupiny jsou větší než mezi skupinami', 'barva kůže je jen přizpůsobení silnému nebo slabému slunečnímu záření', 'lidé se liší hlavně kulturou, a tu se každý učí'] },
+            ] },
+            { type: 'p', text: 'Proč na tom záleží? Představa „ras“ v minulosti sloužila k ospravedlnění otroctví a pronásledování. Proto dnes geografové mluví o národech, etnických skupinách a kulturách – podle jazyka, historie a toho, k čemu se lidé sami hlásí.' },
+            { type: 'p', text: 'Rozdíly v jazyce a víře mohou zneužít politici, kteří chtějí rozdělovat. Tak se v 90. letech rozpadla Jugoslávie ve válkách mezi Srby, Chorvaty a Bosňáky. Jinde lidé různých kultur žijí vedle sebe po staletí v míru – třeba Švýcarsko má čtyři úřední jazyky.' },
+            { type: 'callout', variant: 'mascot', text: 'Respekt neznamená, že musíš se vším souhlasit. Znamená ptát se, poslouchat a nesoudit člověka podle toho, odkud je nebo čemu věří.' },
+            { type: 'game', gameId: 'swipe', text: 'Pravda, nebo lež? Otestuj, co víš o lidech, jazycích a náboženstvích světa.' },
+            { type: 'p', text: 'Lidé různých kultur se nejčastěji potkávají ve městech. Jak města vznikají a rostou, uvidíme v lekci „Sídla a města“.' },
+            { type: 'check', question: { kind: 'tf', q: 'Všichni dnešní lidé patří k jednomu biologickému druhu.', answer: true, explain: 'Všichni jsme *Homo sapiens*. Rozdíly ve vzhledu jsou malé a genetické rozdíly uvnitř skupin jsou větší než mezi nimi.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Kultura je způsob života, který se lidé učí od ostatních: jazyk, víra, zvyky, jídlo, umění.',
+        'Jazyky dělíme do jazykových rodin; čeština je západoslovanský jazyk indoevropské rodiny.',
+        'Nejvíc mluvčích má angličtina, nejvíc rodilých mluvčích čínština; španělština a portugalština se rozšířily s koloniemi.',
+        'Největší náboženství jsou křesťanství, islám a hinduismus; asi čtvrtina lidí k žádnému náboženství nepatří.',
+        'Islám převládá od severní Afriky po Indonésii, hinduismus v Indii a Nepálu, buddhismus v jihovýchodní Asii.',
+        'Česko patří k nejméně věřícím zemím světa.',
+        'Dělení lidí na „rasy“ je zastaralé: všichni patříme k jednomu druhu a lišíme se hlavně kulturou.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Maďarština je slovanský jazyk.', answer: false, explain: 'Maďarština patří k uralské rodině, je příbuzná s finštinou a estonštinou.' },
+        { kind: 'choice', q: 'Proč se v Brazílii mluví portugalsky?', options: ['Brazílie byla portugalskou kolonií', 'Brazílie sousedí s Portugalskem', 'portugalština vznikla v Brazílii', 'Brazilci si ji vybrali v hlasování v roce 2000'], answer: 0, explain: 'Jazyky Ameriky kopírují koloniální říše: Brazílii ovládalo Portugalsko, většinu zbytku Latinské Ameriky Španělsko.' },
+        { kind: 'match', q: 'Přiřaď jazyk k jazykové rodině.', pairs: [
+          ['polština', 'indoevropská'],
+          ['arabština', 'afroasijská'],
+          ['finština', 'uralská'],
+          ['čínština', 'sinotibetská'],
+        ], explain: 'Polština je slovanský, tedy indoevropský jazyk. Arabština je afroasijská, finština uralská a čínština sinotibetská.' },
+        { kind: 'multi', q: 'Ve kterých státech převládá islám?', options: ['Indonésie', 'Pákistán', 'Egypt', 'Indie', 'Thajsko'], answers: [0, 1, 2], explain: 'V Indii převládá hinduismus a v Thajsku buddhismus. Indonésie, Pákistán a Egypt jsou muslimské státy.' },
+        { kind: 'tf', q: 'Každý muslim je Arab.', answer: false, explain: 'Většina muslimů nejsou Arabové. Nejvíc jich žije v Indonésii, Pákistánu, Indii a Bangladéši.' },
+        { kind: 'text', q: 'Jak se jmenuje náboženství, které vzniklo v Indii a převládá v Thajsku, Myanmaru a na Srí Lance?', accept: ['buddhismus'], explain: 'Buddhismus vznikl v Indii a rozšířil se do jihovýchodní a východní Asie.' },
+        { kind: 'choice', q: 'Proč je barva kůže lidí v různých částech světa různá?', options: ['je to přizpůsobení různě silnému slunečnímu záření', 'lidé různé barvy kůže patří k různým druhům', 'určuje ji jazyk, kterým člověk mluví', 'závisí na náboženství'], answer: 0, explain: 'Tmavší kůže lépe chrání před silným UV zářením v tropech. S druhem, jazykem ani vírou barva kůže nesouvisí.' },
+        { kind: 'choice', q: 'Kolik lidí v Česku se při sčítání v roce 2021 přihlásilo k nějaké víře?', options: ['asi pětina', 'asi polovina', 'asi tři čtvrtiny', 'skoro všichni'], answer: 0, explain: 'Skoro polovina lidí uvedla, že je bez víry, asi 30 % neodpovědělo a k víře se přihlásila asi pětina obyvatel.' },
+      ],
+    },
+
+    // ───────────────────────────────────────────────────────────── z5-5
+    'z5-5': {
+      id: 'z5-5',
+      title: 'Sídla a města',
+      goals: [
+        'Rozlišit vesnici a město a popsat funkce sídel',
+        'Vysvětlit urbanizaci a její fáze včetně suburbanizace',
+        'Rozlišit aglomeraci, konurbaci, megalopoli a megaměsto a ukázat největší města světa',
+        'Popsat problémy velkoměst a vysvětlit, co je slum',
+      ],
+      hook: 'Kde bydlíš – v centru města, na sídlišti, na vesnici, nebo v nové čtvrti rodinných domů za městem, odkud se každé ráno jezdí autem do práce? Každá z těch možností má svůj zeměpisný příběh.',
+      sections: [
+        {
+          title: 'Vesnice, nebo město',
+          icon: 'house',
+          blocks: [
+            { type: 'p', text: 'V lekci „Jazyky, náboženství a kultury“ jsme řekli, že se kultury nejčastěji potkávají ve městech. Co ale město vlastně je? Každé místo, kde lidé trvale bydlí, je **sídlo** – od osamělého statku po velkoměsto.' },
+            { type: 'p', text: 'Sídla tvoří hierarchii jako pyramida. Sleduj, jak se směrem nahoru mění počet sídel a nabídka služeb:' },
+            { type: 'diagram', id: 'settlement-hierarchy', caption: 'Hierarchie sídel: samot a vesnic je nejvíc, ale mají nejméně služeb. Metropolí je málo, zato nabízejí vládu, letiště i univerzity.' },
+            { type: 'p', text: 'Pozor, město od vesnice neodlišuje jen počet obyvatel. Ve městě lidé bydlí hustěji, většina pracuje v průmyslu a službách, ne v zemědělství, a město slouží i lidem z okolí: mají tam školy, nemocnici, úřady a obchody.' },
+            { type: 'callout', variant: 'fact', text: 'V Česku je přes 6 200 obcí a asi 600 z nich má statut města. Většina obcí je malá: víc než polovina z nich má méně než 500 obyvatel.' },
+            { type: 'p', text: 'Proč ale některá sídla vyrostla ve velká města a jiná zůstala malá? Záleží na tom, k čemu slouží.' },
+            { type: 'check', question: { kind: 'tf', q: 'Vesnici od města odlišuje jen počet obyvatel.', answer: false, explain: 'Rozhoduje i hustota zástavby, druh práce obyvatel a služby, které sídlo nabízí okolí.' } },
+          ],
+        },
+        {
+          title: 'K čemu sídla slouží',
+          icon: 'factory',
+          blocks: [
+            { type: 'p', text: 'Každé sídlo má jednu nebo více **funkcí**. Funkce říká, čím se v sídle lidé živí a proč tam přijíždějí ostatní.' },
+            { type: 'p', text: 'Projdi si hlavní funkce. U každé je příklad z Česka:' },
+            { type: 'iconlist', items: [
+              { icon: 'house', title: 'Obytná', text: 'lidé tam hlavně bydlí a za prací dojíždějí; satelitní obce kolem velkých měst' },
+              { icon: 'factory', title: 'Průmyslová', text: 'továrny dávají práci tisícům lidí; Mladá Boleslav a automobilka' },
+              { icon: 'coin', title: 'Obslužná', text: 'obchody, školy, nemocnice pro široké okolí; každé okresní město' },
+              { icon: 'flag', title: 'Správní', text: 'sídlí tam úřady, krajský úřad, vláda; Praha a krajská města' },
+              { icon: 'train', title: 'Dopravní', text: 'křižovatka železnic a silnic; Česká Třebová, Přerov' },
+              { icon: 'mountain', title: 'Rekreační', text: 'turisté, lázně, hory; Špindlerův Mlýn, Karlovy Vary' },
+            ] },
+            { type: 'p', text: 'Velká města mají funkcí mnoho najednou. Praha je hlavní město (správní), centrum služeb, dopravní uzel i turistický cíl. Právě tahle pestrost láká další lidi, a tak města rostou.' },
+            { type: 'p', text: 'Stěhování lidí do měst je jedním z největších procesů dnešního světa. Má své jméno.' },
+            { type: 'check', question: { kind: 'match', q: 'Přiřaď sídlo k jeho hlavní funkci.', pairs: [
+              ['Mladá Boleslav', 'průmyslová'],
+              ['Špindlerův Mlýn', 'rekreační'],
+              ['Česká Třebová', 'dopravní'],
+            ], explain: 'Mladá Boleslav je známá automobilkou, Špindlerův Mlýn horskou rekreací a Česká Třebová velkým železničním uzlem.' } },
+          ],
+        },
+        {
+          title: 'Urbanizace',
+          icon: 'city',
+          blocks: [
+            { type: 'p', text: '**Urbanizace** je růst měst: zvyšuje se podíl lidí, kteří žijí ve městech, a městský způsob života se šíří i na venkov. Ještě v roce 1800 žila naprostá většina lidí na vesnicích.' },
+            { type: 'p', text: 'Jak je na tom svět dnes? OSN v roce 2025 rozdělila lidstvo do tří skupin podle toho, kde bydlí:' },
+            { type: 'iconlist', items: [
+              { icon: 'city', title: 'Města – 45 %', text: 'velká, hustě zastavěná města s desítkami tisíc a více obyvatel' },
+              { icon: 'house', title: 'Menší města a městečka – 36 %', text: 'okresní městečka a předměstí' },
+              { icon: 'tractor', title: 'Venkov – 19 %', text: 'vesnice a samoty' },
+            ] },
+            { type: 'p', text: 'Proč se lidé stěhují do měst? Funguje stejný model push–pull jako u migrace: na venkově ubývá práce v zemědělství (push), město láká prací, školami a službami (pull). V Česku dnes žije ve městech asi 7 z 10 lidí.' },
+            { type: 'callout', variant: 'warning', text: 'Pozor: podíl obyvatel měst se v různých statistikách liší podle toho, co se za město považuje. OSN v roce 2025 zavedla nový jednotný způsob počítání, proto starší učebnice uvádějí jiná čísla.' },
+            { type: 'p', text: 'Když města rostou, slévají se s okolím do obrovských celků. Pro ně má zeměpis přesné pojmy.' },
+            { type: 'check', question: { kind: 'choice', q: 'Co je urbanizace?', options: ['růst podílu obyvatel žijících ve městech', 'stěhování z měst na venkov', 'výstavba silnic mezi vesnicemi', 'pokles počtu obyvatel státu'], answer: 0, explain: 'Urbanizace znamená, že ve městech žije stále větší část obyvatel a šíří se městský způsob života.' } },
+          ],
+        },
+        {
+          title: 'Aglomerace a megaměsta',
+          icon: 'globe',
+          blocks: [
+            { type: 'p', text: 'Velké město nekončí cedulí s jeho jménem. Okolní obce s ním srůstají a lidé denně dojíždějí tam i zpět. Proto geografové sledují celé městské celky:' },
+            { type: 'keyterms', items: [
+              { term: '**Aglomerace**', def: 'velké město spolu s okolními obcemi, které s ním srůstají a jsou s ním spojené dojížďkou; pražská aglomerace' },
+              { term: '**Konurbace**', def: 'několik zhruba stejně velkých měst, která srostla dohromady; Ostravsko-karvinská konurbace, Porúří v Německu' },
+              { term: '**Megaměsto**', def: 'městský celek s více než 10 miliony obyvatel' },
+              { term: '**Megalopole**', def: 'pás několika aglomerací táhnoucí se stovky kilometrů; Boston–Washington v USA, Tokio–Ósaka v Japonsku' },
+            ] },
+            { type: 'p', text: 'Megaměst přibývá rychle: v roce 1975 jich bylo 8, v roce 2025 už 33 a 19 z nich leží v Asii. Najdi na mapě ta největší:' },
+            { type: 'map', view: 'world', points: [
+              { lat: -6.2, lon: 106.85, label: 'Jakarta', kind: 'city' },
+              { lat: 23.81, lon: 90.41, label: 'Dháka', kind: 'city' },
+              { lat: 35.68, lon: 139.69, label: 'Tokio', kind: 'city' },
+              { lat: 28.61, lon: 77.21, label: 'Dillí', kind: 'city' },
+              { lat: 31.23, lon: 121.47, label: 'Šanghaj', kind: 'city' },
+              { lat: 23.13, lon: 113.26, label: 'Kanton', kind: 'city' },
+              { lat: 30.04, lon: 31.24, label: 'Káhira', kind: 'city' },
+              { lat: 14.6, lon: 120.98, label: 'Manila', kind: 'city' },
+              { lat: 22.57, lon: 88.36, label: 'Kalkata', kind: 'city' },
+              { lat: 37.57, lon: 126.98, label: 'Soul', kind: 'city' },
+            ], caption: 'Největší megaměsta světa podle OSN (World Urbanization Prospects 2025). Prvních pět leží v Asii.' },
+            { type: 'p', text: 'Největším městem světa je podle OSN (2025) Jakarta s asi 42 miliony obyvatel. Druhá je Dháka (asi 37 milionů) a třetí Tokio (asi 33 milionů), které bylo dlouho na prvním místě. Pro srovnání: Praha má asi 1,4 milionu obyvatel.' },
+            { type: 'p', text: 'Pozor na past: jiné zdroje uvádějí jiná pořadí. Záleží na tom, kde se hranice města nakreslí – jestli jen úřední hranice, nebo celé souvislé zastavěné území. OSN v roce 2025 začala počítat celé souvislé území, a tak Jakarta předběhla Tokio.' },
+            { type: 'p', text: 'Takto obrovská města lákají miliony lidí. Přinášejí jim ale i velké problémy.' },
+            { type: 'check', question: { kind: 'choice', q: 'Jak se nazývá několik měst, která srostla dohromady, jako Ostrava, Karviná a Havířov?', options: ['konurbace', 'megaměsto', 'satelitní město', 'samota'], answer: 0, explain: 'Konurbace vzniká srůstáním několika podobně velkých měst. Ostravsko-karvinská konurbace je největší v Česku.' } },
+          ],
+        },
+        {
+          title: 'Problémy velkoměst a slumy',
+          icon: 'warning',
+          blocks: [
+            { type: 'p', text: 'Velkoměsto nabízí práci, školy a zábavu. Když ale roste rychleji, než stihne stavět byty, silnice a kanalizaci, objeví se problémy. Porovnej obě strany:' },
+            { type: 'compare', columns: [
+              { title: 'Co města lákají', icon: 'city', tone: 'good', points: ['práce a vyšší mzdy', 'školy a univerzity', 'nemocnice a lékaři', 'kultura, sport, obchody', 'dobrá doprava a internet'] },
+              { title: 'Problémy velkoměst', icon: 'warning', tone: 'bad', points: ['dopravní zácpy a hluk', 'smog a špinavé ovzduší', 'drahé bydlení', 'v létě přehřáté ulice – tepelný ostrov města', 'chudé čtvrti bez vody a kanalizace'] },
+            ] },
+            { type: 'p', text: 'Nejtěžší je situace v rychle rostoucích městech Asie, Afriky a Latinské Ameriky. Lidé, kteří si nemohou dovolit byt, si staví příbytky z plechu a dřeva na okrajích měst, na svazích nebo u řek. Tak vznikají **slumy** (chudinské čtvrti): favely v Riu de Janeiro, Dháravi v Bombaji nebo Kibera v Nairobi.' },
+            { type: 'callout', variant: 'fact', text: 'Ve slumech a podobných neformálních čtvrtích žije podle OSN přes 1,1 miliardy lidí, tedy zhruba každý čtvrtý obyvatel měst.' },
+            { type: 'p', text: 'Pozor: slum není jen „ošklivá čtvrť“. Lidé tam často nemají pitnou vodu, záchod, jistotu, že je odtud nevyženou, a bezpečné domy. Přesto tam žijí, protože ve městě je práce, kterou na venkově nenajdou.' },
+            { type: 'p', text: 'V Evropě a v Česku slumy téměř nejsou. Města tu ale řeší jiný jev: lidé se z nich stěhují za jejich hranice.' },
+            { type: 'check', question: { kind: 'multi', q: 'Které problémy jsou typické pro velkoměsta?', options: ['dopravní zácpy', 'smog', 'drahé bydlení', 'nedostatek obchodů', 'příliš velké vzdálenosti k nemocnici'], answers: [0, 1, 2], explain: 'Zácpy, smog a drahé bydlení trápí velkoměsta. Obchodů a nemocnic je tam naopak víc než na venkově.' } },
+          ],
+        },
+        {
+          title: 'Suburbanizace',
+          icon: 'car',
+          blocks: [
+            { type: 'p', text: 'Když jsou města velká a bohatá, část lidí z nich odchází. Chtějí dům se zahradou, klid a čistší vzduch. Do města ale dál jezdí do práce a do školy.' },
+            { type: 'p', text: 'Na modelu města sleduj, kde je centrum, kde sídliště a kde nové čtvrti za městem. Šipky ukazují každodenní dojížďku:' },
+            { type: 'diagram', id: 'urban-zones', caption: 'Zjednodušený model města: centrum, starší vnitřní město, průmysl, sídliště, předměstí a satelitní obce. Šipky = dojížďka do centra.' },
+            { type: 'p', text: 'Města procházejí podle geografů typickými fázemi. Každá fáze má své jméno podle toho, kam se lidé stěhují:' },
+            { type: 'diagram', id: 'urbanisation-stages', caption: 'Fáze vývoje měst: urbanizace (do města), suburbanizace (na okraj a do okolí), desurbanizace (na venkov), reurbanizace (zpět do centra).' },
+            { type: 'p', text: '**Suburbanizace** je stěhování z města do jeho okolí, do satelitních obcí a nových čtvrtí rodinných domů. V Česku nejrychleji rostou obce kolem Prahy (okresy Praha-východ a Praha-západ) a kolem Brna. Pozor, není to opak urbanizace: lidé dál žijí městským životem a jezdí do města každý den, jen bydlí za jeho hranicí.' },
+            { type: 'callout', variant: 'tip', text: 'Satelitní obec poznáš podle nových ulic s rodinnými domy, které vypadají všechny podobně, a podle ranních kolon aut směrem do města.' },
+            { type: 'p', text: 'Sídla, města a jejich okolí patří do nějakého státu, který stanoví jejich hranice a pravidla. Co je stát a jak se státy liší, uvidíme v lekci „Státy a hranice“.' },
+            { type: 'check', question: { kind: 'order', q: 'Seřaď fáze vývoje měst tak, jak obvykle jdou po sobě.', items: ['urbanizace', 'suburbanizace', 'desurbanizace', 'reurbanizace'], explain: 'Nejdřív lidé míří do města, pak na jeho okraj a do okolí, potom i na venkov a nakonec se vracejí do obnovených center.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Sídlo je místo, kde lidé trvale bydlí; sídla tvoří hierarchii od samoty po metropoli a megalopoli.',
+        'Město se od vesnice liší hustotou, prací obyvatel a službami pro okolí, nejen počtem obyvatel.',
+        'Sídla mají funkce: obytnou, průmyslovou, obslužnou, správní, dopravní a rekreační.',
+        'Urbanizace je růst podílu lidí ve městech; ve velkých městech dnes žije 45 % lidí, na venkově asi pětina.',
+        'Aglomerace je město s okolím, konurbace srostlá města, megaměsto má přes 10 milionů obyvatel; největší je Jakarta.',
+        'Rychle rostoucí velkoměsta trápí zácpy, smog a drahé bydlení; přes miliardu lidí žije ve slumech.',
+        'Suburbanizace je stěhování z města do jeho okolí; v Česku hlavně kolem Prahy a Brna.',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Největším městem světa je podle OSN (2025) Jakarta.', answer: true, explain: 'Podle World Urbanization Prospects 2025 má Jakarta asi 42 milionů obyvatel, Dháka asi 37 a Tokio asi 33 milionů.' },
+        { kind: 'choice', q: 'Jak se nazývá město s více než 10 miliony obyvatel?', options: ['megaměsto', 'aglomerace', 'konurbace', 'satelit'], answer: 0, explain: 'Megaměstem OSN nazývá městský celek s více než 10 miliony obyvatel. V roce 2025 jich bylo 33.' },
+        { kind: 'match', q: 'Přiřaď pojem k příkladu.', pairs: [
+          ['megalopole', 'pás měst Boston–Washington'],
+          ['konurbace', 'Ostrava, Karviná a Havířov'],
+          ['slum', 'favela v Riu de Janeiro'],
+          ['satelitní obec', 'nové rodinné domy u Prahy'],
+        ], explain: 'Megalopole je pás aglomerací, konurbace srostlá města, slum chudinská čtvrť a satelitní obec vzniká při suburbanizaci.' },
+        { kind: 'tf', q: 'Suburbanizace znamená, že lidé přestávají jezdit do města.', answer: false, explain: 'Při suburbanizaci lidé bydlí za městem, ale do města dál denně dojíždějí do práce a do školy.' },
+        { kind: 'multi', q: 'Proč se lidé stěhují z venkova do měst?', options: ['ve městě je víc práce', 've městě jsou školy a nemocnice', 'na venkově ubývá práce v zemědělství', 've městech je čistší vzduch', 've městech je levnější bydlení'], answers: [0, 1, 2], explain: 'Města lákají prací a službami, venkov vyhání úbytek práce. Vzduch a bydlení jsou naopak ve městech horší a dražší.' },
+        { kind: 'text', q: 'Jak se nazývá růst podílu obyvatel žijících ve městech?', accept: ['urbanizace'], explain: 'Urbanizace je růst měst a šíření městského způsobu života.' },
+        { kind: 'choice', q: 'Proč různé zdroje uvádějí různá pořadí největších měst světa?', options: ['hranice města se počítají různě', 'města se každý rok stěhují', 'v Asii se obyvatelé nesčítají', 'pořadí určují turisté'], answer: 0, explain: 'Záleží, jestli se počítá jen území podle úředních hranic, nebo celé souvislé zastavěné území.' },
+      ],
+    },
+
+    // ───────────────────────────────────────────────────────────── z5-6
+    'z5-6': {
+      id: 'z5-6',
+      title: 'Státy a hranice',
+      goals: [
+        'Vyjmenovat znaky státu a rozlišit stát a národ',
+        'Rozlišit přírodní a umělé hranice a popsat hranice Česka',
+        'Rozlišit monarchii a republiku, unitární stát a federaci a uvést příklady',
+        'Popsat, co je závislé území a k čemu slouží OSN, EU a NATO',
+      ],
+      hook: 'Mezi Českem a Německem dnes přejdeš hranici a ani si toho nevšimneš. Ještě v roce 1989 tam stály ploty s ostnatým drátem a strážní věže. Co vlastně dělá stát státem a co je hranice?',
+      sections: [
+        {
+          title: 'Co je stát',
+          icon: 'flag',
+          blocks: [
+            { type: 'p', text: 'V předchozích lekcích jsme lidi počítali po státech: Indie, Niger, Česko. Co ale musí území splňovat, aby bylo státem? Nestačí vlajka a hymna.' },
+            { type: 'p', text: 'Stát musí mít čtyři znaky. Když jeden chybí, je to jen území, a ne samostatný stát:' },
+            { type: 'iconlist', items: [
+              { icon: 'border', title: 'Území', text: 'vymezené hranicemi' },
+              { icon: 'people', title: 'Obyvatelstvo', text: 'lidé, kteří na území trvale žijí' },
+              { icon: 'crown', title: 'Státní moc', text: 'vláda, zákony, soudy; stát o sobě rozhoduje sám (svrchovanost)' },
+              { icon: 'handshake', title: 'Uznání', text: 'ostatní státy ho uznávají za samostatný stát' },
+            ] },
+            { type: 'p', text: 'Proto nelze přesně říct, kolik je na světě států. V Organizaci spojených národů (OSN) je 193 členských států a dva státy jsou pozorovateli: Vatikán a Palestina. Některá území vystupují jako státy, ale uznává je jen část světa – třeba Kosovo nebo Tchaj-wan. Počítá se tedy „asi 200 států“.' },
+            { type: 'map', view: 'world', highlight: [
+              { codes: ['RUS'], tone: 'a', label: 'Rusko – největší stát (17,1 mil. km²)' },
+              { codes: ['KOS', 'TWN', 'SAH'], tone: 'b', label: 'uznané jen částí světa nebo sporné' },
+              { codes: ['PSX'], tone: 'c', label: 'Palestina – pozorovatel při OSN' },
+            ], points: [{ lat: 41.9, lon: 12.45, label: 'Vatikán – nejmenší stát (0,44 km²)', kind: 'place' }],
+              caption: 'Největší a nejmenší stát světa a příklady území, jejichž postavení je sporné. Nejmladším členem OSN je Jižní Súdán (2011).' },
+            { type: 'p', text: 'Pozor: stát je jiná věc než národ. To je druhý pojem, který se často plete.' },
+            { type: 'check', question: { kind: 'multi', q: 'Které znaky musí mít stát?', options: ['území', 'obyvatelstvo', 'státní moc', 'přístup k moři', 'alespoň milion obyvatel'], answers: [0, 1, 2], explain: 'Stát potřebuje území, obyvatele a vlastní moc; čtvrtým znakem je uznání ostatních států. Přístup k moři ani velký počet obyvatel nepotřebuje – Česko moře nemá a Vatikán má jen pár set obyvatel.' } },
+          ],
+        },
+        {
+          title: 'Stát a národ',
+          icon: 'people',
+          blocks: [
+            { type: 'p', text: '**Národ** je společenství lidí, které spojuje jazyk, společné dějiny, kultura a hlavně pocit, že k sobě patří. Stát je naproti tomu politická organizace na určitém území. Hranice států a národů se nemusí krýt.' },
+            { type: 'p', text: 'Porovnej dva základní typy států podle toho, kolik národů v nich žije:' },
+            { type: 'compare', columns: [
+              { title: 'Národní stát', icon: 'flag', tone: 'a', points: ['velká většina obyvatel patří k jednomu národu', 'jeden hlavní úřední jazyk', 'Česko, Polsko, Japonsko'] },
+              { title: 'Mnohonárodnostní stát', icon: 'people', tone: 'b', points: ['žije v něm více národů', 'často více úředních jazyků', 'Švýcarsko (4 úřední jazyky), Belgie, Indie, Rusko'] },
+            ] },
+            { type: 'p', text: 'Některé národy vlastní stát vůbec nemají. Největší z nich jsou Kurdové: desítky milionů lidí žijí v Turecku, Iráku, Íránu a Sýrii. Spory o to, kdo má mít vlastní stát, patří k častým příčinám konfliktů.' },
+            { type: 'callout', variant: 'tip', text: 'Pomůcka: státní občanství je „papír“ – ukazuje, ke kterému státu patříš. Národnost je pocit – k jakému národu se hlásíš. Vietnamka narozená v Plzni může být českou občankou a hlásit se k vietnamské národnosti.' },
+            { type: 'p', text: 'Stát se od sousedů odděluje hranicí. Jak hranice vznikají?' },
+            { type: 'check', question: { kind: 'choice', q: 'Který národ je největším národem bez vlastního státu?', options: ['Kurdové', 'Češi', 'Japonci', 'Poláci'], answer: 0, explain: 'Kurdové žijí hlavně v Turecku, Iráku, Íránu a Sýrii, ale vlastní uznaný stát nemají.' } },
+          ],
+        },
+        {
+          title: 'Hranice',
+          icon: 'border',
+          blocks: [
+            { type: 'p', text: '**Státní hranice** je čára, která odděluje území dvou států. Na mapě je tenká, ale v krajině ji můžeš poznat podle hraničních kamenů, cedulí nebo dřív i plotů.' },
+            { type: 'p', text: 'Hranice vedou buď podle přírody (po hřebenech hor, po řekách), nebo jsou umělé. Na mapě Afriky hledej hranice, které vypadají jako narýsované pravítkem:' },
+            { type: 'map', view: 'africa', highlight: [{ codes: ['EGY', 'LBY', 'SDN', 'TCD', 'NER', 'DZA', 'MLI', 'MRT'], tone: 'a', label: 'státy s rovnými (umělými) hranicemi' }], layers: ['graticule', 'names'],
+              caption: 'Rovné hranice na Sahaře kreslili evropští kolonizátoři v 19. a 20. století, často podle rovnoběžek a poledníků. Hranice Egypta a Súdánu vede po 22° s. š.' },
+            { type: 'p', text: 'Umělé hranice nerespektují, kde žijí jednotlivé národy, a tak dodnes mohou být zdrojem sporů. Podobná rovná hranice odděluje i USA a Kanadu: vede po 49° s. š. Přírodní hranice jsou třeba Pyreneje mezi Španělskem a Francií nebo řeka Odra mezi Německem a Polskem.' },
+            { type: 'p', text: 'A Česko? Jeho hranice vede většinou po hřebenech pohoří (Krušné hory, Krkonoše, Šumava) a jen místy po řekách. Je to jedna z nejstarších hranic v Evropě. Její délky ukazuje tabulka:' },
+            { type: 'table', headers: ['soused', 'délka hranice'], rows: [
+              ['Německo', '810 km'], ['Polsko', '762 km'], ['Rakousko', '466 km'], ['Slovensko', '252 km'], ['**celkem**', '**2 290 km**'],
+            ], caption: 'Délka státní hranice Česka (ČÚZK, zaokrouhleno)' },
+            { type: 'p', text: 'Od roku 2007 je Česko v **schengenském prostoru**, a tak se na hranicích se sousedy běžně nekontroluje. Hranice ale dál platí: určuje, čí zákony kde platí. Kdo však v takovém státě vládne?' },
+            { type: 'check', question: { kind: 'tf', q: 'Hranice Egypta a Súdánu vede po rovnoběžce, je to tedy umělá hranice.', answer: true, explain: 'Hranice vede po 22° s. š. a nesleduje přírodu ani národy – byla nakreslena na mapě.' } },
+          ],
+        },
+        {
+          title: 'Monarchie, nebo republika',
+          icon: 'crown',
+          blocks: [
+            { type: 'p', text: 'Státy se liší dvěma věcmi: kdo stojí v jejich čele a jak je uspořádané jejich území. Obě dělení najdeš na jednom obrázku:' },
+            { type: 'diagram', id: 'state-forms', caption: 'Forma vlády: monarchie, nebo republika. Uspořádání státu: unitární stát, nebo federace.' },
+            { type: 'p', text: 'V **monarchii** stojí v čele panovník (král, královna, kníže), který vládne doživotně a funkci dědí. V **republice** je hlavou státu prezident, kterého volí lidé nebo parlament na omezenou dobu. Českého prezidenta volí občané přímo od roku 2013.' },
+            { type: 'p', text: 'Pozor, tady se chybuje nejčastěji: monarchie neznamená, že král vládne sám. V **konstituční** monarchii vládne parlament a vláda, panovník hlavně reprezentuje: Spojené království, Švédsko, Španělsko, Japonsko. Jen v několika **absolutních** monarchiích má panovník skutečnou moc, například v Saúdské Arábii nebo v Eswatini.' },
+            { type: 'p', text: 'Druhé dělení se týká uspořádání území. Rozdíl je v tom, kdo vydává zákony:' },
+            { type: 'compare', columns: [
+              { title: 'Unitární stát', icon: 'flag', tone: 'a', points: ['zákony vydává jeden parlament pro celé území', 'kraje spravují území, ale vlastní zákony nemají', 'Česko (14 krajů), Polsko, Francie'] },
+              { title: 'Federace (spolkový stát)', icon: 'layers', tone: 'b', points: ['skládá se ze států nebo spolkových zemí s vlastními parlamenty a zákony', 'Německo (16 spolkových zemí), Rakousko (9), USA (50 států)', 'také Švýcarsko, Rusko, Indie, Brazílie'] },
+            ] },
+            { type: 'p', text: 'Česko je tedy parlamentní republika a unitární stát. Ne každé území ale patří k samostatnému státu na stejné úrovni – některá patří státu na druhém konci světa.' },
+            { type: 'check', question: { kind: 'match', q: 'Přiřaď stát k jeho formě.', pairs: [
+              ['Česko', 'republika, unitární stát'],
+              ['Německo', 'republika, federace'],
+              ['Spojené království', 'konstituční monarchie'],
+              ['Saúdská Arábie', 'absolutní monarchie'],
+            ], explain: 'Česko je unitární republika, Německo spolková republika, ve Spojeném království panovník jen reprezentuje a v Saúdské Arábii král skutečně vládne.' } },
+          ],
+        },
+        {
+          title: 'Závislá území',
+          icon: 'island',
+          blocks: [
+            { type: 'p', text: 'Ne každé území na mapě je samostatný stát. **Závislá území** nemají plnou samostatnost a patří k jinému státu, často velmi vzdálenému. Většinou jde o pozůstatky koloniálních říší.' },
+            { type: 'p', text: 'Najdi na mapě několik příkladů. Všimni si, jak daleko od „mateřského“ státu leží:' },
+            { type: 'map', view: 'world', highlight: [
+              { codes: ['GRL', 'PRI', 'FLK', 'NCL', 'PYF'], tone: 'a', label: 'závislá území (výběr)' },
+              { codes: ['DNK', 'USA', 'GBR', 'FRA'], tone: 'b', label: 'státy, ke kterým patří' },
+              { codes: ['ATA'], tone: 'c', label: 'Antarktida – nepatří žádnému státu' },
+            ], caption: 'Grónsko patří k Dánsku, Portoriko k USA, Falklandy ke Spojenému království (nárokuje si je Argentina), Nová Kaledonie a Francouzská Polynésie k Francii.' },
+            { type: 'p', text: 'Grónsko je největší ostrov světa a má širokou samosprávu, ale zahraniční politiku a obranu za něj řeší Dánsko. Zvláštní je Antarktida: podle Smlouvy o Antarktidě z roku 1959 nepatří žádnému státu a smí se využívat jen k mírovým účelům a k výzkumu.' },
+            { type: 'p', text: 'Státy a území nežijí každý sám za sebe. Spolupracují v mezinárodních organizacích – a Česko je členem těch nejdůležitějších.' },
+            { type: 'check', question: { kind: 'choice', q: 'Ke kterému státu patří Grónsko?', options: ['k Dánsku', 'ke Kanadě', 'k Norsku', 'k Islandu'], answer: 0, explain: 'Grónsko je autonomní území Dánska. Má vlastní samosprávu, obranu a zahraniční politiku řeší Dánsko.' } },
+          ],
+        },
+        {
+          title: 'OSN, EU a NATO',
+          icon: 'handshake',
+          blocks: [
+            { type: 'p', text: 'Po dvou světových válkách se státy dohodly, že budou spory řešit společně. Vznikly mezinárodní organizace. Tři z nich jsou pro Česko nejdůležitější:' },
+            { type: 'iconlist', items: [
+              { icon: 'globe', title: 'OSN (Organizace spojených národů)', text: 'od roku 1945, 193 členů, sídlo v New Yorku; mír, lidská práva, pomoc uprchlíkům; v Radě bezpečnosti má 5 stálých členů právo veta' },
+              { icon: 'star', title: 'EU (Evropská unie)', text: '27 států; společný trh, volný pohyb lidí a zboží, v mnoha státech euro; Česko je členem od roku 2004' },
+              { icon: 'shield', title: 'NATO (Severoatlantická aliance)', text: '32 států; obranné spojenectví – útok na jednoho člena je útokem na všechny; Česko je členem od roku 1999' },
+            ] },
+            { type: 'p', text: 'Členství v EU a v NATO se často plete, protože většina evropských států je v obou. Na mapě porovnej, kde se obě organizace překrývají a kde ne:' },
+            { type: 'map', view: 'europe', highlight: [
+              { codes: ['BEL', 'BGR', 'HRV', 'CZE', 'DNK', 'EST', 'FIN', 'FRA', 'DEU', 'GRC', 'HUN', 'ITA', 'LVA', 'LTU', 'LUX', 'NLD', 'POL', 'PRT', 'ROU', 'SVK', 'SVN', 'ESP', 'SWE'], tone: 'a', label: 'EU i NATO' },
+              { codes: ['AUT', 'IRL', 'MLT', 'CYP'], tone: 'b', label: 'jen EU' },
+              { codes: ['NOR', 'ISL', 'GBR', 'TUR', 'ALB', 'MNE', 'MKD', 'GRL'], tone: 'c', label: 'jen NATO' },
+            ], caption: 'Členové EU a NATO v Evropě (2026). K NATO patří také USA a Kanada; Grónsko je v NATO jako součást Dánska, ale není v EU.' },
+            { type: 'p', text: 'Pozor: Rakousko a Irsko jsou v EU, ale ne v NATO; Norsko a Spojené království jsou v NATO, ale ne v EU. Podrobněji se Evropské unii budeme věnovat v lekci „Evropská unie a integrace“.' },
+            { type: 'game', gameId: 'quickfire', text: 'Blesková výzva: státy, hranice, města a lidé – kolik odpovědí stihneš?' },
+            { type: 'p', text: 'Teď už víme, kolik nás je, kde žijeme, jak se stěhujeme, čím se lišíme a jak jsme rozdělení do států. Čím se ale lidé v různých státech živí, uvidíme v úrovni „Hospodářství světa“.' },
+            { type: 'check', question: { kind: 'tf', q: 'Všechny státy Evropské unie jsou také členy NATO.', answer: false, explain: 'Rakousko, Irsko, Malta a Kypr jsou v EU, ale ne v NATO. A naopak Norsko nebo Spojené království jsou v NATO, ale ne v EU.' } },
+          ],
+        },
+      ],
+      summary: [
+        'Stát má čtyři znaky: území, obyvatelstvo, státní moc a mezinárodní uznání.',
+        'V OSN je 193 členských států; celkem je na světě asi 200 států.',
+        'Národ spojuje jazyk, dějiny a pocit sounáležitosti; hranice států a národů se nemusí krýt.',
+        'Hranice jsou přírodní (hory, řeky) nebo umělé (podle rovnoběžek a poledníků); Česko má hranici dlouhou asi 2 290 km.',
+        'V čele monarchie stojí panovník, v čele republiky prezident; unitární stát má jeden parlament, federace se skládá ze spolkových zemí.',
+        'Závislá území patří k jinému státu (Grónsko k Dánsku); Antarktida nepatří nikomu.',
+        'Česko je členem OSN, NATO (od 1999) a EU (od 2004).',
+      ],
+      quiz: [
+        { kind: 'tf', q: 'Česko je federace.', answer: false, explain: 'Česko je unitární stát: zákony vydává jeden parlament a kraje vlastní zákony nemají.' },
+        { kind: 'choice', q: 'Který stát je federací?', options: ['Německo', 'Česko', 'Polsko', 'Francie'], answer: 0, explain: 'Německo se skládá z 16 spolkových zemí s vlastními parlamenty. Česko, Polsko i Francie jsou unitární státy.' },
+        { kind: 'number', q: 'Kolik členských států má OSN?', answer: 193, tolerance: 0, explain: 'OSN má 193 členů. Vatikán a Palestina jsou pozorovatelé.' },
+        { kind: 'match', q: 'Přiřaď závislé území ke státu, ke kterému patří.', pairs: [
+          ['Grónsko', 'Dánsko'],
+          ['Portoriko', 'USA'],
+          ['Falklandy', 'Spojené království'],
+          ['Nová Kaledonie', 'Francie'],
+        ], explain: 'Všechna tato území jsou pozůstatky koloniálních říší a leží daleko od svého státu.' },
+        { kind: 'order', q: 'Seřaď sousedy Česka podle délky společné hranice od nejdelší.', items: ['Německo', 'Polsko', 'Rakousko', 'Slovensko'], explain: 'Německo 810 km, Polsko 762 km, Rakousko 466 km, Slovensko 252 km.' },
+        { kind: 'tf', q: 'V konstituční monarchii vládne parlament a vláda, panovník hlavně reprezentuje stát.', answer: true, explain: 'Tak je to třeba ve Spojeném království, ve Švédsku nebo v Japonsku.' },
+        { kind: 'text', q: 'Jak se jmenuje obranné spojenectví, jehož je Česko členem od roku 1999? (zkratka)', accept: ['NATO'], explain: 'NATO je Severoatlantická aliance. Útok na jednoho člena se bere jako útok na všechny.' },
+        { kind: 'choice', q: 'Proč mají státy na Sahaře rovné hranice?', options: ['kreslili je kolonizátoři na mapě podle rovnoběžek a poledníků', 'vedou po hřebenech hor', 'kopírují toky velkých řek', 'vznikly podle hranic jazyků'], answer: 0, explain: 'Evropské mocnosti si Afriku dělily od stolu. Rovné hranice nerespektovaly krajinu ani národy.' },
+      ],
+    },
+  },
+  boss: [
+    { kind: 'choice', q: 'Stát má 2 miliony obyvatel a rozlohu 80 000 km². Jak je zalidněný ve srovnání s Českem (asi 138 obyv./km²)?', options: ['řidčeji, má 25 obyv./km²', 'hustěji, má 250 obyv./km²', 'stejně, má 138 obyv./km²', 'hustěji, má 400 obyv./km²'], answer: 0, explain: '2 000 000 : 80 000 = 25 obyv./km², tedy asi pětkrát řidčeji než Česko.' },
+    { kind: 'number', q: 'Počet obyvatel státu roste o 1,4 % ročně. Za kolik let se podle pravidla 70 zdvojnásobí?', answer: 50, tolerance: 0, unit: 'let', explain: '70 : 1,4 = 50 let.' },
+    { kind: 'tf', q: 'Podle OSN poroste počet lidí na Zemi bez konce stále rychleji.', answer: false, explain: 'Růst se zpomaluje. OSN čeká vrchol kolem roku 2084 asi při 10,3 miliardy lidí.' },
+    { kind: 'number', q: 'Stát má porodnost 12 ‰, úmrtnost 9 ‰ a migrační saldo −1 ‰. O kolik promile se změní počet obyvatel?', answer: 2, tolerance: 0, unit: '‰', explain: 'Přirozený přírůstek 12 − 9 = 3 ‰, k tomu migrační saldo −1 ‰: celkový přírůstek 2 ‰.' },
+    { kind: 'choice', q: 'Věková pyramida je úzká dole a nejširší kolem 50 let. Co se stane s počtem obyvatel bez přistěhovalých?', options: ['bude ubývat, protože se rodí málo dětí', 'bude rychle růst', 'zůstane navždy stejný', 'zdvojnásobí se za 20 let'], answer: 0, explain: 'Je to regresivní pyramida (urna): dětí je málo, a až silné ročníky zestárnou, bude víc úmrtí než narození.' },
+    { kind: 'match', q: 'Přiřaď pojem k vysvětlení.', pairs: [
+      ['anekumena', 'trvale neosídlená část souše'],
+      ['migrační saldo', 'přistěhovalí minus vystěhovalí'],
+      ['suburbanizace', 'stěhování z města do jeho okolí'],
+      ['konurbace', 'srostlá města podobné velikosti'],
+    ], explain: 'Pojmy pocházejí z různých lekcí úrovně: rozmístění lidí, migrace a města.' },
+    { kind: 'multi', q: 'Které situace jsou nucená migrace?', options: ['rodina utíká před válkou na Ukrajině', 'lidé opouštějí oblast zasaženou ničivou povodní', 'student odjíždí na univerzitu do Vídně', 'programátorka se stěhuje za lepší prací do Berlína', 'vysídlení Němců z Československa po roce 1945'], answers: [0, 1, 4], explain: 'Válka, katastrofa a vysídlení nedávají lidem na výběr. Studium a práce jsou dobrovolná migrace.' },
+    { kind: 'choice', q: 'Proč se v Latinské Americe mluví hlavně španělsky a portugalsky a převládá tam křesťanství?', options: ['jazyk i víru tam přinesli španělští a portugalští kolonisté', 'tyto jazyky tam vznikly', 'Latinská Amerika leží v Evropě', 'místní obyvatelé si je vybrali v referendu'], answer: 0, explain: 'Kolonizace od 16. století rozšířila jazyk i náboženství Španělska a Portugalska.' },
+    { kind: 'tf', q: 'Střední délka života je ve většině států světa vyšší u žen než u mužů.', answer: true, explain: 'Ženy žijí déle skoro všude; v Česku o šest let (asi 84 proti 78 letům v roce 2025).' },
+    { kind: 'order', q: 'Seřaď sídla od nejmenšího po největší.', items: ['samota', 'vesnice', 'město', 'velkoměsto', 'megaměsto'], explain: 'Samota má pár obyvatel, vesnice desítky až stovky, velkoměsto přes 100 000 a megaměsto přes 10 milionů.' },
+    { kind: 'choice', q: 'Který stát je v EU, ale není v NATO?', options: ['Rakousko', 'Norsko', 'Polsko', 'Spojené království'], answer: 0, explain: 'Rakousko je neutrální a do NATO nevstoupilo. Norsko a Spojené království jsou v NATO, ale ne v EU; Polsko je v obou.' },
+    { kind: 'text', q: 'Jak se jmenuje stát, který je nejhustěji zalidněným státem světa a leží na pobřeží Středozemního moře u Francie?', accept: ['Monako', 'Monaco'], explain: 'Monako má asi 38 tisíc obyvatel na 2 km², tedy přes 18 000 obyv./km².' },
+  ],
+}
+
+export default level
