@@ -4,12 +4,14 @@ import type { Course } from './types'
 import { chemie } from '../courses/chemie'
 import { fyzika } from '../courses/fyzika'
 import { biologie } from '../courses/biologie'
+import { zemepis } from '../courses/zemepis'
 import { gamesForCourse } from '../games/registry'
 
 const lessonCount = (c: Course) => c.levels.reduce((n, l) => n + l.lessons.length, 0)
 const CHEMIE_LESSONS = lessonCount(chemie)
 const FYZIKA_LESSONS = lessonCount(fyzika)
 const BIOLOGIE_LESSONS = lessonCount(biologie)
+const ZEMEPIS_LESSONS = lessonCount(zemepis)
 const CHEMIE_GAMES = gamesForCourse('chemie').map((g) => g.id)
 
 export interface Badge {
@@ -57,6 +59,21 @@ const BIOLOGIE_LEVEL_BADGES: [string, string][] = [
   ['l10', 'Genetik'],
   ['l11', 'Fyziolog'],
   ['l12', 'Darwinovec'],
+]
+
+const ZEMEPIS_LEVEL_BADGES: [string, string][] = [
+  ['l1', 'Kartograf'],
+  ['l2', 'Strážce času'],
+  ['l3', 'Horolezec'],
+  ['l4', 'Meteorolog'],
+  ['l5', 'Demograf'],
+  ['l6', 'Obchodník'],
+  ['l7', 'Cestovatel'],
+  ['l8', 'Evropan'],
+  ['l9', 'Znalec Česka'],
+  ['l10', 'Klimatolog'],
+  ['l11', 'Geopolitik'],
+  ['l12', 'Stratég planety'],
 ]
 
 const LEVEL_BADGES: [string, string, string][] = [
@@ -126,6 +143,20 @@ export const BADGES: Badge[] = [
       color: biologie.levels[i]?.color ?? '#56834a',
       course: 'biologie',
       earned: (p) => levelPassed(p, id, 'biologie'),
+    }),
+  ),
+  // geography
+  { id: 'zemepis-first', title: 'První výprava', description: 'Dokonči první lekci zeměpisu.', icon: 'target', color: '#2f7d86', course: 'zemepis', earned: (p) => courseLessonsDone(p, 'zemepis') >= 1 },
+  { id: 'zemepis-all', title: 'Zeměpisec', description: `Dokonči všech ${ZEMEPIS_LESSONS} lekcí zeměpisu.`, icon: 'trophy', color: '#2f7d86', course: 'zemepis', earned: (p) => courseLessonsDone(p, 'zemepis') >= ZEMEPIS_LESSONS },
+  ...ZEMEPIS_LEVEL_BADGES.map(
+    ([id, title], i): Badge => ({
+      id: `zemepis-level-${id}`,
+      title,
+      description: `Zvládni závěrečnou výzvu ${i + 1}. úrovně zeměpisu.`,
+      icon: 'trophy',
+      color: zemepis.levels[i]?.color ?? '#2f7d86',
+      course: 'zemepis',
+      earned: (p) => levelPassed(p, id, 'zemepis'),
     }),
   ),
 ]
