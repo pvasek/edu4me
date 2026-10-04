@@ -141,10 +141,11 @@ export function RaysView({
           { x: f > 0 ? -2 * F : 2 * F, t: 'S' },
         ]
       : [
-          { x: -F, t: 'F' },
-          { x: F, t: 'F′' },
-          { x: -2 * F, t: '2F' },
-          { x: 2 * F, t: '2F′' },
+          // a diverging lens has its image focus F′ on the object side
+          { x: -F, t: f > 0 ? 'F' : 'F′' },
+          { x: F, t: f > 0 ? 'F′' : 'F' },
+          { x: -2 * F, t: f > 0 ? '2F' : '2F′' },
+          { x: 2 * F, t: f > 0 ? '2F′' : '2F' },
         ]
 
   const words = imageWords(info)

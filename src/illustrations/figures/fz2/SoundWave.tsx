@@ -34,7 +34,7 @@ export default function SoundWave() {
       max={620}
       replay
       compact={compact}
-      label="Zvuk jako podélné vlnění. Rozkmitaná ladička tlačí a odtahuje vzduch, částice vzduchu kmitají sem a tam ve směru šíření a vytvářejí střídavě zhuštění (vyšší tlak) a zředění (nižší tlak). Vlnění postupuje od ladičky, samotné částice zůstávají na místě. Graf pod částicemi ukazuje tlak vzduchu: vrcholy odpovídají zhuštěním, sedla zředěním, vzdálenost dvou zhuštění je vlnová délka λ."
+      label="Zvuk jako podélné vlnění. Rozkmitaná ladička tlačí a odtahuje vzduch, částice vzduchu kmitají sem a tam ve směru šíření a vytvářejí střídavě zhuštění (vyšší tlak) a zředění (nižší tlak). Vlnění postupuje od ladičky, samotné částice zůstávají na místě. Graf pod částicemi ukazuje tlak vzduchu: vrcholy odpovídají zhuštěním, důly zředěním, vzdálenost dvou zhuštění je vlnová délka λ."
     >
       <Plate w={n ? 360 : 560} />
     </Figure>

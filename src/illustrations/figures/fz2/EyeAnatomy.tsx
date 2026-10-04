@@ -12,7 +12,7 @@ const PARTS: { n: number; t: string; at: V; to?: V }[] = [
   { n: 2, t: 'duhovka', at: [190, 40], to: [184, 94] },
   { n: 3, t: 'zornice', at: [132, 196], to: [183, 138] },
   { n: 4, t: 'čočka', at: [214, 26], to: [198, 102] },
-  { n: 5, t: 'řasnaté tělísko', at: [236, 36], to: [204, 90] },
+  { n: 5, t: 'řasnaté těleso', at: [236, 36], to: [204, 90] },
   { n: 6, t: 'sklivec', at: [270, 92] },
   { n: 7, t: 'sítnice', at: [372, 224], to: [326, 206] },
   { n: 8, t: 'žlutá skvrna', at: [384, 154], to: [357, 134] },
@@ -86,7 +86,7 @@ export default function EyeAnatomy() {
       max={680}
       compact={compact}
       boost={false}
-      label="Stavba oka a vznik obrazu. Světlo prochází rohovkou, otvorem v duhovce zvaným zornice a čočkou, kterou řasnaté tělísko zakulacuje nebo zplošťuje, a sklivcem dopadá na sítnici. Nejostřeji vidíme ve žluté skvrně, ve slepé skvrně, kde z oka vychází zrakový nerv, nejsou žádné buňky citlivé na světlo. Rohovka a čočka vytvoří na sítnici skutečný, zmenšený a převrácený obraz; mozek si ho otočí."
+      label="Stavba oka a vznik obrazu. Světlo prochází rohovkou, otvorem v duhovce zvaným zornice a čočkou, kterou řasnaté těleso zakulacuje nebo zplošťuje, a sklivcem dopadá na sítnici. Nejostřeji vidíme ve žluté skvrně, ve slepé skvrně, kde z oka vychází zrakový nerv, nejsou žádné buňky citlivé na světlo. Rohovka a čočka vytvoří na sítnici skutečný, zmenšený a převrácený obraz; mozek si ho otočí."
     >
       {/* object */}
       <Pop delay={0}>

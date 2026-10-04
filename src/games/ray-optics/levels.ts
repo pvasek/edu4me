@@ -102,7 +102,7 @@ const scene5 = (el: Element, a: number): Scene => ({ el, f: signedF(el, 1), a, h
 function why5(s: Scene): string {
   const p = propsOf(imageOf(s.f, s.a))
   if (!isConverging(s.el)) {
-    return `${s.el === 'rozptylka' ? 'Rozptylka' : 'Vypuklé zrcadlo'} paprsky rozbíhá; protnou se jen jejich prodloužení, a tak je obraz vždy ${propsText(p)}.`
+    return `${s.el === 'rozptylka' ? 'Rozptylka' : 'Vypuklé zrcadlo'} paprsky rozptyluje; protnou se jen jejich prodloužení, a tak je obraz vždy ${propsText(p)}.`
   }
   if (!p) return 'Předmět je v ohnisku: paprsky vycházejí rovnoběžně, nikde se neprotnou, obraz nevznikne.'
   const where = p.real ? 'paprsky se skutečně protnou' : 'protnou se jen prodloužení paprsků'

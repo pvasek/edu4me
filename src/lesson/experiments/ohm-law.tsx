@@ -30,7 +30,7 @@ function ohmLabel(U: number, Rv: number): string {
   const head = `Schéma obvodu: baterie s napětím ${czNum(U)} V, ampérmetr, rezistor s odporem ${Rv} Ω a žárovka zapojené za sebou. `
   if (I === 0) return head + 'Napětí je nulové, obvodem neteče proud a žárovka nesvítí.'
   const lamp = glow < 0.3 ? 'svítí slabě' : glow < 0.65 ? 'svítí středně jasně' : 'svítí jasně'
-  return head + `Ampérmetr ukazuje proud ${czNum(I, 2)} A, žárovka ${lamp} (výkon ${czNum(P, P < 10 ? 2 : 1)} W).`
+  return head + `Ampérmetr ukazuje proud ${czNum(I, 2)} A, žárovka ${lamp} (příkon ${czNum(P, P < 10 ? 2 : 1)} W).`
 }
 
 /** Current dots drifting along the wire, faster with a bigger current; hidden under the parts. */
@@ -155,7 +155,7 @@ export default function OhmLaw() {
       readouts={
         <>
           <Readout label="proud I = U / R" value={I} digits={2} unit="A" />
-          <Readout label="výkon P = U · I" value={P} digits={P < 10 ? 2 : 1} unit="W" />
+          <Readout label="příkon P = U · I" value={P} digits={P < 10 ? 2 : 1} unit="W" />
         </>
       }
       challenge="Nastav proud přesně 0,5 A."

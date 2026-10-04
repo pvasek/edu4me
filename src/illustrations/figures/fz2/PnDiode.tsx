@@ -2,7 +2,7 @@ import { StepStrip } from '../../sequence/StepFigure'
 import { Arrow, Figure, Frame, pat, rng, useFig } from './kit'
 
 const LABEL =
-  'Polovodičová dioda. Přechod PN vznikne spojením polovodiče typu P, kde proud vedou díry (kladné), a typu N, kde ho vedou volné elektrony; na rozhraní je tenká vrstva bez volných nábojů. Značka diody je trojúhelník s čárkou: anoda A je strana P, katoda K strana N. V propustném směru (plus zdroje na P) vrstva zúží, diodou teče proud a LED svítí. V závěrném směru (plus zdroje na N) se vrstva rozšíří, proud neteče a LED nesvítí. Dioda tak propouští proud jen jedním směrem.'
+  'Polovodičová dioda. Přechod PN vznikne spojením polovodiče typu P, kde proud vedou díry (kladné), a typu N, kde ho vedou volné elektrony; na rozhraní je tenká vrstva bez volných nábojů. Značka diody je trojúhelník s čárkou: anoda A je strana P, katoda K strana N. V propustném směru (plus zdroje na P) se vrstva zúží, diodou teče proud a LED svítí. V závěrném směru (plus zdroje na N) se vrstva rozšíří, proud neteče a LED nesvítí. Dioda tak propouští proud jen jedním směrem.'
 
 const PCOL = '#e8a598'
 const NCOL = '#a9c3de'

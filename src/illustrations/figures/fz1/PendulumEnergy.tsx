@@ -75,7 +75,7 @@ export default function PendulumEnergy() {
       compact={compact}
       boost={false}
       replay
-      label="Kyvadlo a přeměny mechanické energie. V krajní poloze A má kulička největší polohovou energii Ep a nulovou pohybovou energii Ek. V nejnižším bodě B je polohová energie nejmenší a pohybová největší. V druhé krajní poloze C je zase jen polohová energie. Celková mechanická energie se zachovává, jen kvůli tření a odporu vzduchu se malá část mění na teplo, a proto kulička vystoupí do C o něco níž než v A a kmity pomalu slábnou."
+      label="Kyvadlo a přeměny mechanické energie. V krajní poloze A má kulička největší polohovou energii Ep a nulovou pohybovou energii Ek. V nejnižším bodě B je polohová energie nejmenší a pohybová největší. V druhé krajní poloze C je zase jen polohová energie. Celková energie se zachovává, jen kvůli tření a odporu vzduchu se malá část mechanické energie mění na teplo, a proto kulička vystoupí do C o něco níž než v A a kmity pomalu slábnou."
     >
       {/* support */}
       <rect x={l.px - 40} y={l.py - 14} width={80} height={10} rx={2} className="fz1-o fz1-wood" />

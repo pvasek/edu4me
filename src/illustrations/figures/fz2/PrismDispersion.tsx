@@ -100,7 +100,7 @@ function Drop() {
       ))}
       <path d={`M${rays[0].p3[0]} ${rays[0].p3[1]} h-66`} className="fz2-normal" />
       <text x={8} y={src[1] - 8} className="fz2-lbl fz2-sm">
-        slunce
+        Slunce
       </text>
       <text x={196} y={206} textAnchor="end" className="fz2-lbl fz2-sm">
         lom – odraz – lom
@@ -120,7 +120,7 @@ export default function PrismDispersion() {
       max={680}
       compact={compact}
       boost={false}
-      label="Rozklad světla hranolem. Bílé světlo se na obou stěnách skleněného hranolu láme, a protože sklo láme každou barvu jinak (fialovou nejvíc, červenou nejmíň), rozloží se na spektrum: červená, oranžová, žlutá, zelená, modrá, indigo a fialová. Duha vzniká stejně v kapkách deště: sluneční světlo se v kapce lomí, odrazí od její zadní stěny a znovu lomí; červená vychází pod úhlem asi 42,4°, fialová asi 40,6° vůči slunečním paprskům."
+      label="Rozklad světla hranolem. Bílé světlo se na obou stěnách skleněného hranolu láme, a protože sklo láme každou barvu jinak (fialovou nejvíc, červenou nejmíň), rozloží se na spektrum: červená, oranžová, žlutá, zelená, modrá, indigo a fialová. Duha vzniká stejně v kapkách deště: sluneční světlo se v kapce láme, odrazí od její zadní stěny a znovu láme; červená vychází pod úhlem asi 42,4°, fialová asi 40,6° vůči slunečním paprskům."
     >
       <Prism />
       <g transform={n ? 'translate(86 262)' : 'translate(390 20)'}>

@@ -18,7 +18,7 @@ const level: LevelContent = {
           title: 'Klid a pohyb jsou relativní',
           icon: 'car',
           blocks: [
-            { type: 'p', text: 'Jak můžou mít pravdu průvodčí i kráva zároveň? Těleso je **v pohybu**, když mění svou polohu vzhledem k jinému tělesu. Když ji nemění, je **v klidu**. To „jiné těleso“, ke kterému pohyb vztahujeme, se nazývá **vztažná soustava**.' },
+            { type: 'p', text: 'Jak můžou mít pravdu průvodčí i kráva zároveň? Těleso je **v pohybu**, když mění svou polohu vzhledem k jinému tělesu. Když ji nemění, je **v klidu**. To „jiné těleso“, ke kterému pohyb vztahujeme, se nazývá **vztažné těleso**; spolu s ním mluvíme o **vztažné soustavě**.' },
             { type: 'p', text: 'Vrať se do vlaku z úvodu. Posuďme tři věci – cestujícího, kufr a strom za oknem – nejdřív vzhledem k vlaku a pak vzhledem k nádraží:' },
             { type: 'compare', columns: [
               { title: 'Vzhledem k vlaku', icon: 'clock', tone: 'a', points: ['cestující na sedadle: **v klidu**', 'kufr na polici: **v klidu**', 'strom za oknem: **pohybuje se** dozadu'] },
@@ -66,7 +66,7 @@ const level: LevelContent = {
           title: 'Druhy pohybů: rovnoměrný a nerovnoměrný',
           icon: 'clock',
           blocks: [
-            { type: 'p', text: 'Pohyby můžeme třídit podle tvaru trajektorie. Když je trajektorie přímka, jde o pohyb **přímočarý**. Když je zakřivená, je pohyb **křivočarý**. Tady jsou příklady obou – a dvou častých zvláštních případů křivočarého pohybu:' },
+            { type: 'p', text: 'Pohyby můžeme třídit podle tvaru trajektorie. Když je trajektorie přímka, jde o pohyb **přímočarý**. Když je zakřivená, je pohyb **křivočarý**. Tady jsou příklady obou – a dvou zvláštních druhů pohybu, které potkáš často:' },
             { type: 'iconlist', items: [
               { icon: 'apple', title: 'Přímočarý', text: 'padající jablko, výtah, vlak na rovné trati' },
               { icon: 'fireworks', title: 'Křivočarý', text: 'hozený míč, raketa ohňostroje, auto v serpentinách' },
@@ -135,7 +135,7 @@ const level: LevelContent = {
             { type: 'process', layout: 'flow', steps: [
               { icon: 'ruler', title: '1 km = 1 000 m' },
               { icon: 'clock', title: '1 h = 3 600 s' },
-              { icon: 'calculator', title: '1 km/h = 1 000 m / 3 600 s', text: '= 1/3,6 m/s ≈ 0,28 m/s' },
+              { icon: 'calculator', title: '1 km/h = 1 000 m / 3 600 s', text: '= 1/3,6 m/s ≐ 0,28 m/s' },
               { icon: 'speed', title: '1 m/s = 3,6 km/h' },
             ], caption: 'Odkud se bere převodní číslo 3,6' },
             { type: 'p', text: 'Číslo 3,6 tedy už máme. Zbývá vědět, kdy jím dělit a kdy násobit:' },
@@ -145,7 +145,7 @@ const level: LevelContent = {
               'a) Z km/h na m/s dělíme: 72 : 3,6 = 20',
               'b) Z m/s na km/h násobíme: 15 · 3,6 = 54',
             ], answer: 'a) 72 km/h = 20 m/s, b) 15 m/s = 54 km/h' },
-            { type: 'callout', variant: 'warning', title: 'Kontrola rozumem', text: 'Když převádíš na km/h, musí ti vyjít **větší** číslo. Když ti z 20 m/s vyjde 5,6 km/h, dělil jsi místo násobení.' },
+            { type: 'callout', variant: 'warning', title: 'Kontrola rozumem', text: 'Když převádíš na km/h, musí ti vyjít **větší** číslo. Když ti z 20 m/s vyjde 5,6 km/h, dělil/a jsi místo násobení.' },
             { type: 'game', gameId: 'unit-convert', text: 'Procvič si převody km/h ↔ m/s na rychlost v mini-hře Převody jednotek.' },
             { type: 'p', text: 'Zatím jsme počítali, jako by rychlost byla pořád stejná. Skutečná jízda ale taková skoro nikdy není – jakou rychlost jí tedy přiřadit?' },
             { type: 'check', question: { kind: 'number', q: 'Auto jede po okresní silnici rychlostí 90 km/h. Kolik je to m/s?', answer: 25, tolerance: 0.1, unit: 'm/s', explain: '90 : 3,6 = 25 m/s.' } },
@@ -161,8 +161,8 @@ const level: LevelContent = {
             { type: 'example', title: 'Školní výlet', problem: 'Autobus jel po dálnici 120 km za 1,5 h, pak 30 minut stál na odpočívadle a nakonec jel 40 km po okresce za 1 h. Jaká byla průměrná rychlost celé cesty?', steps: [
               's_{celk} = 120 km + 40 km = 160 km',
               'Přestávku započítáme, protože čas běžel, i když autobus stál: t_{celk} = 1,5 h + 0,5 h + 1 h = 3 h',
-              'v_{p} = 160 km / 3 h ≈ 53,3 km/h',
-            ], answer: 'v_{p} ≈ 53 km/h' },
+              'v_{p} = 160 km / 3 h ≐ 53,3 km/h',
+            ], answer: 'v_{p} ≐ 53 km/h' },
             { type: 'p', text: 'Celý výlet můžeš i nakreslit. Všimni si, že přestávka je v grafu vodorovný úsek – čas běží, ale dráha nepřibývá:' },
             { type: 'graph', x: { label: 't', unit: 'h', min: 0, max: 3, step: 0.5 }, y: { label: 's', unit: 'km', min: 0, max: 160, step: 40 }, series: [
               { label: 'skutečná jízda', points: [[0, 0], [1.5, 120], [2, 120], [3, 160]], tone: 'a' },
@@ -211,7 +211,7 @@ const level: LevelContent = {
         'Spočítat dráhu jako plochu pod grafem v–t',
         'Vysvětlit, co je zrychlení, a spočítat ho ze změny rychlosti',
       ],
-      hook: 'Aplikace na běhání ti po tréninku ukáže křivky. Poznáš z nich, kdy jsi sprintoval a kdy jsi stál na semaforu? Graf je příběh bez slov – naučím tě ho číst.',
+      hook: 'Aplikace na běhání ti po tréninku ukáže křivky. Poznáš z nich, kdy jsi sprintoval/a a kdy jsi stál/a na semaforu? Graf je příběh bez slov – naučím tě ho číst.',
       sections: [
         {
           title: 'Graf dráhy s–t',
@@ -481,12 +481,12 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Země přitahuje každé těleso na svém povrchu. Síla, kterou Země působí na těleso, se nazývá **tíhová síla** F_{G}. Míří svisle dolů a je tím větší, čím větší je hmotnost tělesa.' },
             { type: 'p', text: 'O kolik větší? Na Zemi připadá na každý kilogram hmotnosti tíhová síla asi 10 N (přesněji 9,81 N). Stačí tedy hmotnost vynásobit tímto číslem:' },
-            { type: 'formula', text: 'F_{G} = m · g', caption: 'F_{G} … tíhová síla (N), m … hmotnost (kg), g … tíhové zrychlení; na Zemi g ≈ 9,81 N/kg, při odhadech počítáme s 10 N/kg' },
+            { type: 'formula', text: 'F_{G} = m · g', caption: 'F_{G} … tíhová síla (N), m … hmotnost (kg), g … tíhové zrychlení; na Zemi g ≐ 9,81 N/kg, při odhadech počítáme s 10 N/kg' },
             { type: 'p', text: 'Vyzkoušej si to na věci, kterou nosíš každý den.' },
             { type: 'example', title: 'Školní batoh', problem: 'Batoh má hmotnost 6 kg. Jakou tíhovou silou na něj působí Země?', steps: [
               'Odhad: F_{G} = m · g = 6 kg · 10 N/kg = 60 N',
-              'Přesněji: F_{G} = 6 kg · 9,81 N/kg ≈ 58,9 N',
-            ], answer: 'F_{G} ≈ 60 N' },
+              'Přesněji: F_{G} = 6 kg · 9,81 N/kg ≐ 58,9 N',
+            ], answer: 'F_{G} ≐ 60 N' },
             { type: 'p', text: 'Pozor, tady se chybuje nejčastěji. Hmotnost a tíhová síla spolu souvisí, ale nejsou to stejné veličiny. Rozdíl je vidět hlavně tehdy, když opustíš Zemi:' },
             { type: 'compare', columns: [
               { title: 'Hmotnost m', icon: 'balance-scale', tone: 'a', points: ['kolik látky těleso obsahuje, jak je „těžké rozpohybovat“', 'jednotka **kilogram** (kg)', 'měříme **vahami**', 'na Zemi, na Měsíci i ve vesmíru **stejná**'] },
@@ -498,12 +498,12 @@ const level: LevelContent = {
               ['Měsíc', '1,62', '194 N'],
               ['Mars', '3,71', '445 N'],
               ['Jupiter', '24,8', '2 976 N'],
-            ], caption: 'Hmotnost astronauta je všude 120 kg, tíhová síla se mění podle toho, kde stojí.' },
+            ], caption: 'Hmotnost astronauta je všude 120 kg, tíhová síla se mění podle toho, kde se nachází.' },
             { type: 'p', text: 'Co to znamená pro astronauta, který vystoupí na Měsíc? Spočítejme to.' },
             { type: 'example', title: 'Astronaut na Měsíci', problem: 'Astronaut i se skafandrem má hmotnost 120 kg. Jak velká je jeho tíhová síla na Měsíci (g = 1,62 N/kg)?', steps: [
               'F_{G} = m · g = 120 kg · 1,62 N/kg',
-              'F_{G} ≈ 194 N',
-            ], answer: 'Na Měsíci F_{G} ≈ 194 N, na Zemi asi 1 177 N. Hmotnost zůstává 120 kg – proto astronauti na Měsíci poskakují jako klokani.' },
+              'F_{G} ≐ 194 N',
+            ], answer: 'Na Měsíci F_{G} ≐ 194 N, na Zemi asi 1 177 N. Hmotnost zůstává 120 kg – proto astronauti na Měsíci poskakují jako klokani.' },
             { type: 'callout', variant: 'warning', text: 'V běžné řeči říkáme „vážím 50 kilo“. Fyzik řekne: moje **hmotnost** je 50 kg a **tíhová síla**, kterou na mě působí Země, je asi 500 N.' },
             { type: 'p', text: 'Tíhovou sílu už umíme spočítat. Aby byl popis síly úplný, potřebujeme ji ještě umět nakreslit.' },
             { type: 'check', question: { kind: 'number', q: 'Jak velkou tíhovou silou působí Země na kufr o hmotnosti 23 kg? Počítej s g = 10 N/kg.', answer: 230, tolerance: 1, unit: 'N', explain: 'F_{G} = m · g = 23 kg · 10 N/kg = 230 N.' } },
@@ -513,7 +513,7 @@ const level: LevelContent = {
           title: 'Síla jako šipka',
           icon: 'vector',
           blocks: [
-            { type: 'p', text: 'Aby byla síla popsaná úplně, nestačí říct, jak je velká. Musíme znát i její směr a místo, kde na těleso působí. Proto sílu kreslíme **šipkou** (říkáme jí vektor).' },
+            { type: 'p', text: 'Aby byla síla popsaná úplně, nestačí říct, jak je velká. Musíme znát i její směr a místo, kde na těleso působí. Proto sílu kreslíme **šipkou** – síla je **vektorová veličina**.' },
             { type: 'p', text: 'Každá šipka síly nese tři informace najednou:' },
             { type: 'keyterms', items: [
               { term: '**Velikost**', def: 'délka šipky podle zvoleného měřítka, např. 1 cm = 100 N' },
@@ -525,7 +525,7 @@ const level: LevelContent = {
               { label: 'F_{G} = 300 N', angle: 270, size: 3 },
               { label: 'F_{N} = 300 N', angle: 90, size: 3, from: 'bottom' },
               { label: 'F = 200 N', angle: 0, size: 2, from: 'left' },
-            ], caption: 'Bednu o tíze 300 N tlačíme doprava silou 200 N. Podlaha tlačí bednu nahoru silou F_{N}. Měřítko: jeden dílek délky = 100 N.' },
+            ], caption: 'Bednu o tíze 300 N tlačíme doprava silou 200 N. Podlaha tlačí bednu nahoru silou F_{N}. Tření zatím nekreslíme, přijde na řadu v lekci o tření. Měřítko: jeden dílek délky = 100 N.' },
             { type: 'callout', variant: 'tip', text: 'Značky sil se píšou s indexem, který napoví, o jakou sílu jde: F_{G} tíhová, F_{N} síla podložky, F_{t} třecí. Když si nevíš rady, napiš k šipce slovy, kdo silou působí.' },
             { type: 'p', text: 'Když kreslíš síly sám/sama, postup je vždycky stejný: zvol měřítko, spočítej sílu a z ní délku šipky.' },
             { type: 'example', title: 'Kreslíme podle měřítka', problem: 'Zvol měřítko 1 cm = 50 N. Jak dlouhou šipkou nakreslíš tíhovou sílu psa o hmotnosti 20 kg (g = 10 N/kg)?', steps: [
@@ -562,7 +562,7 @@ const level: LevelContent = {
         'Síla je projevem vzájemného působení dvou těles, a to při dotyku nebo na dálku prostřednictvím pole.',
         'Síla může změnit pohyb tělesa (rozjet, zastavit, zrychlit, změnit směr) nebo jeho tvar (pružně či trvale).',
         'Jednotkou síly je newton (N) a měříme ji siloměrem, jehož pružina se prodlužuje úměrně síle.',
-        'Tíhová síla F_{G} = m · g, na Zemi g ≈ 9,81 N/kg, v odhadech 10 N/kg.',
+        'Tíhová síla F_{G} = m · g, na Zemi g ≐ 9,81 N/kg, v odhadech 10 N/kg.',
         'Hmotnost je všude stejná, tíhová síla závisí na místě – na Měsíci je asi šestkrát menší.',
         'Sílu kreslíme šipkou, která má velikost, směr a působiště.',
         'Těleso je stabilní, dokud svislice z těžiště prochází jeho podstavou; nízké těžiště stabilitu zvyšuje.',
@@ -579,7 +579,7 @@ const level: LevelContent = {
         { kind: 'number', q: 'Na těleso působí tíhová síla 45 N. Jakou má hmotnost? (g = 10 N/kg)', answer: 4.5, tolerance: 0.05, unit: 'kg', explain: 'm = F_{G} / g = 45 N / 10 N/kg = 4,5 kg.' },
         { kind: 'multi', q: 'Které síly působí na dálku, bez dotyku těles?', options: ['Země přitahuje Měsíc', 'magnet přitahuje sponku', 'tření mezi podrážkou a chodníkem', 'lano táhne lyžaře na vleku', 'zelektrizovaný balonek přitahuje papírky'], answers: [0, 1, 4], explain: 'Gravitační, magnetická a elektrická síla působí prostřednictvím pole. Tření a tah lana vyžadují dotyk.' },
         { kind: 'number', q: 'Na siloměr zavěsíme závaží o hmotnosti 500 g. Kolik newtonů siloměr ukáže na Měsíci (g = 1,6 N/kg)?', answer: 0.8, tolerance: 0.01, unit: 'N', explain: 'm = 500 g = 0,5 kg, F_{G} = 0,5 kg · 1,6 N/kg = 0,8 N. Na Zemi by ukázal asi 5 N.' },
-        { kind: 'choice', q: 'Skříň naklápíš na hraně. Kdy se převrhne?', options: ['když svislice z jejího těžiště vyjde mimo podstavu', 'hned, jakmile ji o kousek nakloníš', 'jen když je těžší než 50 kg', 'jen když má těžiště přesně uprostřed'], answer: 0, explain: 'Dokud svislice z těžiště prochází podstavou, tíhová síla skříň vrací zpět. Když podstavu mine, tíhová síla ji dopřeklopí.' },
+        { kind: 'choice', q: 'Skříň naklápíš na hraně. Kdy se převrhne?', options: ['když svislice z jejího těžiště vyjde mimo podstavu', 'hned, jakmile ji o kousek nakloníš', 'jen když je těžší než 50 kg', 'jen když má těžiště přesně uprostřed'], answer: 0, explain: 'Dokud svislice z těžiště prochází podstavou, tíhová síla skříň vrací zpět. Když podstavu mine, tíhová síla ji převrhne.' },
         { kind: 'tf', q: 'Síla vzniká vždy při vzájemném působení dvou těles.', answer: true, explain: 'Síla nikdy nepůsobí „sama od sebe“: vždy jedno těleso působí na druhé a to druhé zpět na první.' },
       ],
     },
@@ -657,7 +657,7 @@ const level: LevelContent = {
             ], caption: 'Kniha na stole. Země táhne knihu dolů tíhovou silou F_{G}. Stůl tlačí knihu nahoru silou podložky F_{N}. Obě síly jsou stejně velké a opačné, výslednice je nula.' },
             { type: 'p', text: 'U knihy hraje hlavní roli síla podložky. Pojmenujme ji přesně, a s ní i tah lana – obě budeme v úlohách o silách potřebovat pořád:' },
             { type: 'keyterms', items: [
-              { term: '**Síla podložky** F_{N}', def: 'síla, kterou podložka (stůl, podlaha) tlačí na těleso kolmo nahoru; vznikne, protože se podložka nepatrně prohne' },
+              { term: '**Síla podložky** F_{N}', def: 'síla, kterou podložka (stůl, podlaha) tlačí na těleso kolmo ke své ploše – u vodorovné podložky svisle nahoru; vznikne, protože se podložka nepatrně prohne' },
               { term: '**Tahová síla** závěsu', def: 'síla, kterou napnuté lano, lanko nebo pružina táhne těleso' },
             ] },
             { type: 'p', text: 'Tah lana uvidíš třeba u lampy, která visí ze stropu. Místo stolu ji tu drží lanko:' },
@@ -689,17 +689,17 @@ const level: LevelContent = {
             { type: 'forces', body: 'box', surface: 'ground', forces: [
               { label: 'F_{1}', angle: 30, size: 3 },
               { label: 'F_{2}', angle: 330, size: 3 },
-            ], resultant: true, caption: 'Dva psi táhnou saně silami F_{1} a F_{2}, které svírají úhel 60°. Výslednice míří přesně mezi ně, dopředu, a je kratší než součet obou šipek.' },
+            ], resultant: true, caption: 'Dva psi táhnou saně stejně velkými silami F_{1} a F_{2}, které svírají úhel 60°. Výslednice míří přesně mezi ně, dopředu, a je kratší než součet obou šipek.' },
             { type: 'p', text: 'Nejsnáz se rovnoběžník rýsuje, když jsou síly na sebe kolmé – pak je z něj obdélník. Vyzkoušej to s pravítkem:' },
             { type: 'example', title: 'Kolmé síly', problem: 'Na bod působí dvě na sebe kolmé síly 30 N a 40 N. Najdi výslednici graficky (měřítko 1 cm = 10 N).', steps: [
               'Narýsuj z jednoho bodu šipku 3 cm vodorovně a šipku 4 cm svisle.',
               'Doplň rovnoběžník – tady je to obdélník 3 cm × 4 cm.',
               'Úhlopříčka měří 5 cm, to je 5 · 10 N = 50 N.',
             ], answer: 'F_{v} = 50 N – méně než součet 70 N, ale víc než rozdíl 10 N.' },
-            { type: 'callout', variant: 'tip', text: 'Výslednice dvou sil leží vždy **mezi jejich rozdílem a součtem**. Čím menší úhel mezi silami, tím je výslednice větší. Při úhlu 0° se síly sčítají, při 180° odečítají.' },
+            { type: 'callout', variant: 'tip', text: 'Velikost výslednice dvou sil leží vždy **mezi jejich rozdílem a součtem**. Čím menší úhel mezi silami, tím je výslednice větší. Při úhlu 0° se síly sčítají, při 180° odečítají.' },
             { type: 'callout', variant: 'fact', text: 'Velkou loď do přístavu často táhnou dva remorkéry, každý trochu šikmo od boku. Jejich síly se skládají jako v rovnoběžníku a loď jede rovně dopředu.' },
             { type: 'p', text: 'Síly teď umíš skládat v libovolném směru. Zbývá to využít v praxi: u každého tělesa najít všechny síly, které na něj působí.' },
-            { type: 'check', question: { kind: 'choice', q: 'Na těleso působí síly 60 N a 80 N pod nějakým úhlem. Jakou velikost může mít výslednice?', options: ['100 N', '150 N', '10 N', '0 N'], answer: 0, explain: 'Výslednice musí ležet mezi 80 − 60 = 20 N a 80 + 60 = 140 N. Hodnotě 100 N odpovídá například pravý úhel mezi silami.' } },
+            { type: 'check', question: { kind: 'choice', q: 'Na těleso působí síly 60 N a 80 N pod nějakým úhlem. Jakou velikost může mít výslednice?', options: ['100 N', '150 N', '10 N', '0 N'], answer: 0, explain: 'Výslednice musí ležet mezi 80 − 60 = 20 N a 80 + 60 = 140 N. Hodnota 100 N vyjde, když síly svírají pravý úhel.' } },
           ],
         },
         {
@@ -824,7 +824,7 @@ const level: LevelContent = {
               { label: 'F_{G}', angle: 270, size: 4 },
               { label: 'F_{N}', angle: 90, size: 4, from: 'bottom' },
             ], caption: 'Auto jede po dálnici stálou rychlostí 130 km/h. Motor táhne jen proto, aby vyrovnal odpor vzduchu a valivé tření. Výslednice je nulová.' },
-            { type: 'callout', variant: 'warning', text: '==Stálá rychlost neznamená „žádné síly“, ale „síly v rovnováze“.== Když řidič přestane plynovat, tah zmizí, odpor převládne a auto zpomaluje.' },
+            { type: 'callout', variant: 'warning', text: '==Stálá rychlost neznamená „žádné síly“, ale „síly v rovnováze“.== Když řidič uvolní plynový pedál, tah zmizí, odpor převládne a auto zpomaluje.' },
             { type: 'p', text: 'Víme, co se děje, když je výslednice sil nulová. Co přesně se ale stane, když nulová není – jako u auta, kterému zmizí tah?' },
             { type: 'check', question: { kind: 'choice', q: 'Auto prudce zabrzdí. Proč se cestující nakloní dopředu?', options: ['jeho tělo setrvačností pokračuje v pohybu', 'tlačí ho dopředu síla brzd', 'odstrčí ho opěradlo sedadla', 'při brzdění na něj působí větší tíhová síla'], answer: 0, explain: 'Brzdy působí na auto, ne na cestujícího. Jeho tělo pokračuje setrvačností stejnou rychlostí, dokud ho nezastaví pás.' } },
           ],
@@ -851,7 +851,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Rozjezd auta', problem: 'Auto o hmotnosti 1 200 kg se rozjíždí se zrychlením 2 m/s². Jak velká je výslednice sil?', steps: [
               'F = m · a = 1 200 kg · 2 m/s²',
             ], answer: 'F = 2 400 N' },
-            { type: 'callout', variant: 'tip', text: 'Tíhová síla F_{G} = m · g je jen zvláštní případ zákona síly. Padající těleso zrychluje právě o g ≈ 9,81 m/s² – proto má g jednotku N/kg i m/s² (je to totéž).' },
+            { type: 'callout', variant: 'tip', text: 'Tíhová síla F_{G} = m · g je jen zvláštní případ zákona síly. Volně padající těleso (bez odporu vzduchu) zrychluje právě o g ≐ 9,81 m/s² – proto má g jednotku N/kg i m/s² (je to totéž).' },
             { type: 'p', text: 'První dva zákony mluví o tom, co síla udělá s jedním tělesem. Třetí zákon se dívá na obě tělesa, mezi kterými síla působí.' },
             { type: 'check', question: { kind: 'number', q: 'Jak velkou výslednou silou musí působit sprinter o hmotnosti 60 kg, aby na startu zrychlil o 5 m/s²?', answer: 300, tolerance: 0.5, unit: 'N', explain: 'F = m · a = 60 kg · 5 m/s² = 300 N.' } },
           ],
@@ -901,7 +901,7 @@ const level: LevelContent = {
               ['Země táhne knihu dolů (F_{G})', 'kniha táhne Zemi nahoru'],
               ['stůl tlačí knihu nahoru (F_{N})', 'kniha tlačí stůl dolů'],
             ], caption: 'Kniha na stole: F_{G} a F_{N} jsou v rovnováze, ale nejsou akce a reakce.' },
-            { type: 'callout', variant: 'tip', text: 'Test na akci a reakci: prohoď slova. „Země táhne knihu“ → „kniha táhne Zemi“. Když dostaneš sílu na jiné těleso stejného druhu, našel jsi reakci.' },
+            { type: 'callout', variant: 'tip', text: 'Test na akci a reakci: prohoď slova. „Země táhne knihu“ → „kniha táhne Zemi“. Když dostaneš sílu na jiné těleso stejného druhu, našel/a jsi reakci.' },
             { type: 'p', text: 'Stejná past se skrývá ve slavné hádance o koni a vozu. Vyřešíš ji, když budeš síly na každé těleso sčítat zvlášť:' },
             { type: 'example', title: 'Paradox koně a vozu', problem: 'Kůň táhne vůz. Podle 3. zákona táhne vůz koně stejně velkou silou dozadu. Jak se tedy mohou rozjet?', steps: [
               'Na vůz působí jen tah koně dopředu (a malé tření kol). Výslednice na vůz míří dopředu – vůz zrychluje.',
@@ -935,7 +935,7 @@ const level: LevelContent = {
               'a = F / m = 2 000 000 N / 500 000 kg',
             ], answer: 'a = 4 m/s²' },
             { type: 'callout', variant: 'fact', text: 'Raketa se nepotřebuje „odrážet od vzduchu“. Odráží se od vlastních plynů, a proto funguje i ve vzduchoprázdnu, dokonce lépe. Jak palivo ubývá, hmotnost rakety klesá a zrychlení roste.' },
-            { type: 'callout', variant: 'mascot', text: 'Zkus to doma: nafoukni balonek a pusť ho. Právě jsi odpálil raketu na zákon akce a reakce. Jen řízení se trochu nepovedlo.' },
+            { type: 'callout', variant: 'mascot', text: 'Zkus to doma: nafoukni balonek a pusť ho. Právě jsi odpálil/a raketu na zákon akce a reakce. Jen řízení se trochu nepovedlo.' },
             { type: 'p', text: 'Newtonovy zákony vysvětlují, proč se věci rozjíždějí i zastavují. Tím, kdo je zastavuje, bývá skoro vždy tření nebo odpor vzduchu – a na ty se podíváme v příští lekci.' },
             { type: 'check', question: { kind: 'tf', q: 'Raketa ve vesmíru nemůže zrychlovat, protože se nemá od čeho odrazit.', answer: false, explain: 'Raketa tlačí na své vlastní výtokové plyny a ty podle zákona akce a reakce tlačí raketu opačným směrem. Vzduch k tomu nepotřebuje.' } },
           ],
@@ -975,7 +975,7 @@ const level: LevelContent = {
         'Popsat odpor vzduchu a vody a vysvětlit, proč parašutista padá stálou (mezní) rychlostí',
         'Navrhnout, jak tření zvětšit, kde pomáhá, nebo zmenšit, kde škodí',
       ],
-      hook: 'Představ si den bez tření. Nemohl bys chodit, tkaničky by se samy rozvázaly, auto by nezabrzdilo a tužka by nepsala. Tření je otravné i nepostradatelné zároveň.',
+      hook: 'Představ si den bez tření. Nemohl/a bys chodit, tkaničky by se samy rozvázaly, auto by nezabrzdilo a tužka by nepsala. Tření je otravné i nepostradatelné zároveň.',
       sections: [
         {
           title: 'Odkud se tření bere',
@@ -1004,7 +1004,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Třecí síla je tím větší, čím víc těleso tlačí na podložku, a závisí na materiálech a drsnosti obou ploch. Skoro vůbec ale nezávisí na **velikosti** styčné plochy ani na rychlosti.' },
             { type: 'p', text: 'Proč právě tlaková síla? Čím víc se plochy k sobě tisknou, tím pevněji se jejich nerovnosti do sebe zaklesnou. Třecí sílu proto spočítáme z tlakové síly a čísla, které popisuje dvojici materiálů:' },
-            { type: 'formula', text: 'F_{t} = f · F_{N}', caption: 'F_{t} … třecí síla (N), f … součinitel smykového tření (bez jednotky), F_{N} … kolmá tlaková síla na podložku (N); na vodorovné podložce F_{N} = F_{G}' },
+            { type: 'formula', text: 'F_{t} = f · F_{N}', caption: 'F_{t} … třecí síla (N), f … součinitel smykového tření (bez jednotky), F_{N} … kolmá tlaková síla mezi tělesem a podložkou, stejně velká jako síla podložky (N); na vodorovné podložce F_{N} = F_{G}' },
             { type: 'p', text: 'Součinitel tření f je jen číslo bez jednotky. Čím je menší, tím po sobě plochy kloužou snáz. Najdeš ho v tabulkách:' },
             { type: 'table', headers: ['dvojice materiálů', 'součinitel tření f'], rows: [
               ['pneumatika – suchý asfalt', '0,7'],
@@ -1015,8 +1015,8 @@ const level: LevelContent = {
             ], caption: 'Přibližné součinitele smykového tření' },
             { type: 'p', text: 'Vezměme dřevěnou bednu na dřevěné podlaze (f = 0,3). Které síly na ni působí, když ji táhneš stálou rychlostí?' },
             { type: 'forces', body: 'box', surface: 'ground', forces: [
-              { label: 'F = 60 N', angle: 0, size: 2, from: 'right' },
-              { label: 'F_{t} = 60 N', angle: 180, size: 2, from: 'bottom' },
+              { label: 'F = 60 N', angle: 0, size: 1.2, from: 'right' },
+              { label: 'F_{t} = 60 N', angle: 180, size: 1.2, from: 'bottom' },
               { label: 'F_{G} = 200 N', angle: 270, size: 4 },
               { label: 'F_{N} = 200 N', angle: 90, size: 4, from: 'bottom' },
             ], caption: 'Dřevěnou bednu táhneme po dřevěné podlaze stálou rychlostí. Tah vyrovnává tření, síla podlahy vyrovnává tíhovou sílu.' },
@@ -1050,7 +1050,7 @@ const level: LevelContent = {
               { icon: 'car', title: 'Pneumatiky', text: 'nafouknuté kolo s malým valivým odporem' },
             ], caption: 'Jak lidé postupně vyměnili smýkání za valení' },
             { type: 'p', text: 'Kolik to dělá v číslech? Porovnej, jakou silou táhneš stejný kufr po podlaze a na kolečkách:' },
-            { type: 'example', title: 'Kufr na letišti', problem: 'Kufr má hmotnost 20 kg. Kdybys ho táhl po podlaze, součinitel tření by byl 0,4. Na kolečkách je odpor zhruba jako při f = 0,02. Jak velkou silou ho táhneš v obou případech? (g = 10 N/kg)', steps: [
+            { type: 'example', title: 'Kufr na letišti', problem: 'Kufr má hmotnost 20 kg. Kdybys ho táhl/a po podlaze, součinitel tření by byl 0,4. Na kolečkách je odpor zhruba jako při f = 0,02. Jak velkou silou ho táhneš v obou případech? (g = 10 N/kg)', steps: [
               'Kufr tlačí na podlahu v obou případech stejnou silou: F_{N} = 20 kg · 10 N/kg = 200 N',
               'Bez koleček: F_{t} = 0,4 · 200 N = 80 N',
               'Na kolečkách: F = 0,02 · 200 N = 4 N',
@@ -1064,7 +1064,7 @@ const level: LevelContent = {
           title: 'Odpor vzduchu a vody',
           icon: 'parachute',
           blocks: [
-            { type: 'p', text: 'Když se těleso pohybuje vzduchem nebo vodou, musí částice prostředí odsouvat stranou. Prostředí na ně působí **odporovou silou** proti pohybu. Jak velký odpor bude, závisí na čtyřech věcech:' },
+            { type: 'p', text: 'Když se těleso pohybuje vzduchem nebo vodou, musí částice prostředí odsouvat stranou. Prostředí na něj působí **odporovou silou** proti pohybu. Jak velký odpor bude, závisí na čtyřech věcech:' },
             { type: 'iconlist', items: [
               { icon: 'speed', title: 'Rychlost', text: 'čím rychleji, tím větší odpor; při dvojnásobné rychlosti asi čtyřnásobný' },
               { icon: 'drop', title: 'Tvar', text: 'aerodynamický (kapkovitý) tvar obtéká vzduch snadno' },
@@ -1093,11 +1093,11 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Vzpomeň si na úvod: bez tření bychom nemohli chodit ani brzdit. Zároveň ale tření ničí boty a pneumatiky. Rozdělme si situace na ty, kde tření potřebujeme, a ty, kde nám jen přidává práci:' },
             { type: 'compare', columns: [
-              { title: 'Tření pomáhá', icon: 'check', tone: 'good', points: ['chůze a běh – podrážka se neklouže', 'brzdy kola a auta', 'pneumatiky drží v zatáčce', 'škrtnutí zápalkou', 'uzel na tkaničce drží', 'šroub a hřebík drží ve dřevě'] },
+              { title: 'Tření pomáhá', icon: 'check', tone: 'good', points: ['chůze a běh – podrážka neklouže', 'brzdy kola a auta', 'pneumatiky drží v zatáčce', 'škrtnutí zápalkou', 'uzel na tkaničce drží', 'šroub a hřebík drží ve dřevě'] },
               { title: 'Tření škodí', icon: 'cross', tone: 'bad', points: ['opotřebení bot, pneumatik a součástek', 'zahřívání ložisek a motoru', 'vyšší spotřeba paliva', 'odpor vzduchu brzdí cyklisty a auta'] },
             ] },
             { type: 'p', text: 'Nejdůležitější užitečné tření je to mezi pneumatikou a silnicí: rozhoduje o tom, jak rychle auto zastaví. Spojme ho se zákonem síly F = m · a.' },
-            { type: 'example', title: 'Brzdění na suchu a na mokru', problem: 'Auto o hmotnosti 1 000 kg brzdí tak, že kola se ještě neprotáčejí. Jaké největší zpomalení může mít na suchém asfaltu (f = 0,7) a na mokrém (f = 0,4)? (g = 10 N/kg)', steps: [
+            { type: 'example', title: 'Brzdění na suchu a na mokru', problem: 'Auto o hmotnosti 1 000 kg brzdí tak, že se kola ještě nezablokují. Jaké největší zpomalení může mít na suchém asfaltu (f = 0,7) a na mokrém (f = 0,4)? (g = 10 N/kg)', steps: [
               'Auto brzdí tření mezi pneumatikami a silnicí, a to závisí na tlakové síle: F_{N} = F_{G} = 1 000 kg · 10 N/kg = 10 000 N',
               'Sucho: F_{t} = 0,7 · 10 000 N = 7 000 N, a = F / m = 7 000 N / 1 000 kg = 7 m/s²',
               'Mokro: F_{t} = 0,4 · 10 000 N = 4 000 N, a = 4 000 N / 1 000 kg = 4 m/s²',
@@ -1116,7 +1116,7 @@ const level: LevelContent = {
               { icon: 'oil-barrel', title: 'Mazání', text: 'olej v motoru vytvoří tenkou vrstvu a plochy se nedotýkají přímo (zmenšuje)' },
               { icon: 'gauge', title: 'Ložiska', text: 'smýkání nahradí valení kuliček (zmenšuje)' },
               { icon: 'wind', title: 'Aerodynamický tvar', text: 'auta, vlaky a cyklistické helmy mají zaoblené tvary (zmenšuje odpor)' },
-              { icon: 'ship', title: 'Vzduchový polštář', text: 'vznášedlo a stolní hokej plují na vrstvě vzduchu (zmenšuje)' },
+              { icon: 'ship', title: 'Vzduchový polštář', text: 'vznášedlo nebo puk vzdušného hokeje (air hockey) plují na vrstvě vzduchu (zmenšuje)' },
               { icon: 'mountain', title: 'Posyp a zimní pneumatiky', text: 'písek na náledí, hluboký vzorek a měkčí guma (zvětšuje)' },
               { icon: 'muscle', title: 'Magnézium', text: 'gymnasté a lezci si jím suší ruce, aby neklouzaly (zvětšuje)' },
             ] },
@@ -1197,8 +1197,8 @@ const level: LevelContent = {
             { type: 'p', text: '**Páka** je tuhá tyč, která se může otáčet kolem pevné osy. Je v rovnováze, když se momenty sil, které ji otáčejí na jednu a na druhou stranu, rovnají.' },
             { type: 'p', text: 'Místo, kde se páka otáčí, se nazývá **osa otáčení** (nebo opěrný bod). Vzdálenosti sil od osy jsou **ramena** d_{1} a d_{2}. Podmínku rovnováhy pak zapíšeme takto:' },
             { type: 'formula', text: 'F_{1} · d_{1} = F_{2} · d_{2}', caption: 'podmínka rovnováhy na páce: moment otáčející na jednu stranu = moment otáčející na druhou stranu' },
-            { type: 'p', text: 'Nejznámější páka je houpačka. Podívej se, kam si sedne táta a kam dcera, aby se houpačka nepřeklopila:' },
-            { type: 'diagram', id: 'torque-balance', caption: 'Houpačka v rovnováze: těžší táta sedí blíž k ose, lehčí dcera dál. Momenty obou jsou stejné.' },
+            { type: 'p', text: 'Nejznámější páka je houpačka. Podívej se, kam si sedne těžší a kam lehčí dítě, aby se houpačka nepřeklopila:' },
+            { type: 'diagram', id: 'torque-balance', caption: 'Houpačka v rovnováze: těžší dítě sedí blíž k ose, lehčí dál. Momenty obou jsou stejné. Rameno je v obrázku označené r, v lekci d. Dole stejná rovnováha u jeřábu s protizávažím.' },
             { type: 'p', text: 'Kam přesně si má lehčí dítě sednout, zjistíme z podmínky rovnováhy:' },
             { type: 'example', title: 'Houpačka', problem: 'Táta s tíhou 750 N sedí 1 m od osy houpačky. Jak daleko od osy si musí na druhou stranu sednout Eliška s tíhou 300 N, aby byla houpačka v rovnováze?', steps: [
               'F_{1} · d_{1} = F_{2} · d_{2}',
@@ -1246,10 +1246,10 @@ const level: LevelContent = {
           title: 'Pevná kladka',
           icon: 'pulley',
           blocks: [
-            { type: 'p', text: '**Kladka** je kolo s drážkou pro lano, které se otáčí kolem osy. Funguje jako dvojzvratná páka se stejně dlouhými rameny. **Pevná kladka** je upevněná na místě a nesjíždí s břemenem.' },
+            { type: 'p', text: '**Kladka** je kolo s drážkou pro lano, které se otáčí kolem osy. **Pevná kladka** je upevněná na místě a nesjíždí s břemenem. Funguje jako dvojzvratná páka se stejně dlouhými rameny.' },
             { type: 'p', text: 'Kladky se dají zapojit různě. Obrázek ukazuje tři zapojení, která v této lekci postupně probereme – začneme tím prvním:' },
             { type: 'diagram', id: 'pulley-systems', caption: 'Pevná kladka, volná kladka a kladkostroj. Každý zvedá stejné břemeno, ale potřebuje jinou sílu.' },
-            { type: 'p', text: 'Pevná kladka ==mění jen směr síly, ne její velikost==: F = F_{G}. Proč ji tedy používáme? Táhnout lano dolů je pohodlnější než zvedat břemeno nahoru – můžeš se do lana opřít vlastní vahou. Proto pevnou kladku najdeš všude, kde se něco tahá nahoru:' },
+            { type: 'p', text: 'Pevná kladka ==mění jen směr síly, ne její velikost==: F = F_{G}. Proč ji tedy používáme? Táhnout lano dolů je pohodlnější než zvedat břemeno nahoru – můžeš se do lana opřít vlastní tíhou. Proto pevnou kladku najdeš všude, kde se něco tahá nahoru:' },
             { type: 'iconlist', items: [
               { icon: 'drop', title: 'Studna', text: 'vědro na laně přes kladku nad studnou' },
               { icon: 'star', title: 'Stožár s vlajkou', text: 'lanko vede přes kladku na vrcholu, vlajku vytáhneš zdola' },
@@ -1285,8 +1285,8 @@ const level: LevelContent = {
               'Každé ze 4 nosných lan se musí zkrátit o 2 m, takže vytáhne 4 · 2 m = 8 m lana.',
             ], answer: 'Táhne silou 150 N a vytáhne 8 m lana.' },
             { type: 'p', text: 'Nejčastější chyba je špatně spočítat lana. Do n nepatří každé lano, které na obrázku vidíš:' },
-            { type: 'callout', variant: 'warning', text: 'Počítej jen **nosná** lana, tedy úseky lana, které vedou od volné kladky s břemenem nahoru. Volný konec, za který taháš dolů, se nepočítá, pokud nevede přímo z kladky s břemenem.' },
-            { type: 'callout', variant: 'fact', text: 'Velké stavební jeřáby mají v kladnici i desítky nosných lan. Díky tomu stačí relativně slabý naviják, aby zvedl několik tun.' },
+            { type: 'callout', variant: 'warning', text: 'Počítej jen **nosná** lana, tedy úseky lana, které vedou od volné kladky s břemenem nahoru. Volný konec, který vede z horní pevné kladky dolů k tvé ruce, se nepočítá – břemeno nenese.' },
+            { type: 'callout', variant: 'fact', text: 'Velké jeřáby mají v kladnici deset i více nosných lan. Díky tomu stačí relativně slabý naviják, aby zvedl mnoho tun.' },
             { type: 'p', text: 'Stavbař ušetřil sílu, ale musel vytáhnout čtyřikrát víc lana. Je to náhoda, nebo pravidlo?' },
             { type: 'check', question: { kind: 'number', q: 'Břemeno s tíhou 900 N visí na kladkostroji se 6 nosnými lany. Jak velkou silou musíš táhnout za volný konec lana?', answer: 150, tolerance: 0.5, unit: 'N', explain: 'F = F_{G} / n = 900 N / 6 = 150 N.' } },
           ],
@@ -1309,7 +1309,7 @@ const level: LevelContent = {
               's_{ruka} = 5 · 4 cm = 20 cm',
             ], answer: 'Tlačíš silou 200 N a ruka se posune o 20 cm.' },
             { type: 'p', text: 'Součin síly a dráhy je ve fyzice důležitá veličina – **práce**. Zlaté pravidlo tedy říká, že **žádný stroj práci neušetří**, jen ji rozloží na menší sílu po delší dráze. S prací a energií se podrobně setkáš v lekci o práci a výkonu (úroveň 3).' },
-            { type: 'callout', variant: 'mascot', text: 'Takže Archimédés by opravdu pohnul Zemí. Jen by musel svou páku tlačit po dráze delší, než je celý vesmír. Nevadí, dám si radši klacek a kámen na zahradě.' },
+            { type: 'callout', variant: 'mascot', text: 'Takže Archimédés by opravdu pohnul Zemí. Jen by musel svou páku tlačit po dráze dlouhé asi jako celá naše Galaxie – a Zemi by tím zvedl o pouhý centimetr. Nevadí, dám si radši klacek a kámen na zahradě.' },
             { type: 'p', text: 'Tím máš pohyb a síly v malíčku. V další úrovni uvidíš, co se stane, když se síla rozloží na plochu – začneme tlakem.' },
             { type: 'check', question: { kind: 'tf', q: 'S kladkostrojem zvedneš břemeno menší silou, ale musíš vytáhnout delší lano.', answer: true, explain: 'Zlaté pravidlo mechaniky: kolikrát menší síla, tolikrát delší dráha. Se 4 nosnými lany potřebuješ čtvrtinovou sílu, ale čtyřikrát delší lano.' } },
           ],
@@ -1336,7 +1336,7 @@ const level: LevelContent = {
         ], explain: 'Všechny stroje kromě pevné kladky zmenšují sílu – a přesně stejněkrát prodlužují dráhu.' },
         { kind: 'choice', q: 'Na houpačce sedí Ondra s tíhou 400 N ve vzdálenosti 1,5 m od osy. Kam si má sednout táta s tíhou 800 N, aby byla houpačka v rovnováze?', options: ['0,75 m od osy na druhé straně', '3 m od osy na druhé straně', '1,5 m od osy na druhé straně', '0,75 m od osy na stejné straně jako Ondra'], answer: 0, explain: '400 N · 1,5 m = 800 N · d, d = 600 N·m / 800 N = 0,75 m. Musí sedět na druhé straně, aby otáčel houpačkou opačným směrem.' },
         { kind: 'multi', q: 'Které z těchto předmětů fungují jako páka?', options: ['nůžky', 'kleště', 'otvírák lahví', 'teploměr', 'odměrný válec'], answers: [0, 1, 2], explain: 'Nůžky a kleště jsou dvojzvratné páky, otvírák lahví jednozvratná. Teploměr a odměrný válec jsou měřidla, žádná osa otáčení tam nepracuje.' },
-        { kind: 'number', q: 'Kolik metrů lana musíš vytáhnout, abys kladkostrojem se 3 nosnými lany zvedl náklad o 1,5 m?', answer: 4.5, tolerance: 0.05, unit: 'm', explain: 'Každé ze 3 nosných lan se zkrátí o 1,5 m, celkem vytáhneš 3 · 1,5 m = 4,5 m. Síla je za to třikrát menší.' },
+        { kind: 'number', q: 'Kolik metrů lana musíš vytáhnout, abys kladkostrojem se 3 nosnými lany zvedl/a náklad o 1,5 m?', answer: 4.5, tolerance: 0.05, unit: 'm', explain: 'Každé ze 3 nosných lan se zkrátí o 1,5 m, celkem vytáhneš 3 · 1,5 m = 4,5 m. Síla je za to třikrát menší.' },
       ],
     },
   },

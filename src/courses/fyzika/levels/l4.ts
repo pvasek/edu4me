@@ -35,7 +35,7 @@ const level: LevelContent = {
             { type: 'callout', variant: 'remember', text: '==Vnitřní energii má každé těleso, i ledová kostka.== Částice se přestávají pohybovat až u absolutní nuly (−273,15 °C), a té se nedá dosáhnout.' },
             { type: 'callout', variant: 'mascot', text: 'Vnitřní energie je jako mravenčí armáda: jeden mravenec nic neunese, ale miliardy miliard částic dohromady jsou pořádná síla!' },
             { type: 'p', text: 'Teď víš, co vnitřní energie je a na čem závisí. Dlaně jsi ale nezahřál/a ohněm, nýbrž třením. To je jedna ze dvou cest, jak vnitřní energii změnit.' },
-            { type: 'check', question: { kind: 'choice', q: 'Co má větší vnitřní energii: hrnek čaje o teplotě 80 °C, nebo plná vana vody o teplotě 40 °C?', options: ['vana, protože obsahuje mnohem víc částic', 'hrnek, protože má vyšší teplotu', 'obojí stejně, obě jsou to voda', 'nedá se to vůbec porovnat'], answer: 0, explain: 'Vnitřní energie závisí na teplotě i na hmotnosti. Ve vaně je asi tisíckrát víc vody než v hrnku, takže i při nižší teplotě má vana mnohem větší vnitřní energii.' } },
+            { type: 'check', question: { kind: 'choice', q: 'Co má větší vnitřní energii: hrnek čaje o teplotě 80 °C, nebo plná vana vody o teplotě 40 °C?', options: ['vana, protože obsahuje mnohem víc částic', 'hrnek, protože má vyšší teplotu', 'obojí stejně, obě jsou to voda', 'nedá se to vůbec porovnat'], answer: 0, explain: 'Vnitřní energie závisí na teplotě i na hmotnosti. Ve vaně je stovkykrát víc vody než v hrnku, takže i při nižší teplotě má vana mnohem větší vnitřní energii.' } },
           ],
         },
         {
@@ -44,7 +44,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Vnitřní energii tělesa můžeš zvýšit dvěma způsoby. Buď na tělese **konáš práci** (třeš ho, stlačuješ, ohýbáš), nebo ho **zahřeješ** od teplejšího tělesa. Druhému ději říkáme **tepelná výměna**. Příklady obou cest najdeš všude kolem sebe:' },
             { type: 'compare', columns: [
-              { title: '**Konání práce**', icon: 'muscle', tone: 'a', points: ['tření dlaní o sebe', 'hustilka se při pumpování zahřívá (stlačený vzduch)', 'vrták i vrtaná díra jsou horké', 'kotoučové brzdy kola po dlouhém sjezdu', 'meteor se třením o vzduch rozžhaví'] },
+              { title: '**Konání práce**', icon: 'muscle', tone: 'a', points: ['tření dlaní o sebe', 'hustilka se při pumpování zahřívá (stlačený vzduch)', 'vrták i vrtaná díra jsou horké', 'kotoučové brzdy kola po dlouhém sjezdu', 'meteor se v atmosféře rozžhaví, protože prudce stlačuje vzduch před sebou'] },
               { title: '**Tepelná výměna**', icon: 'heat', tone: 'b', points: ['voda v hrnci na plotýnce', 'lžička v horkém čaji', 'kámen vyhřátý sluncem', 'studený nápoj v ruce se ohřívá', 'ruce u radiátoru'] },
             ], caption: 'Obě cesty vedou ke stejnému výsledku: částice se rozpohybují rychleji.' },
             { type: 'p', text: 'U tepelné výměny se v běžné řeči pletou tři slova: tepelná výměna, teplo a teplota. Fyzika je přesně rozlišuje:' },
@@ -57,7 +57,7 @@ const level: LevelContent = {
             { type: 'process', layout: 'flow', steps: [
               { icon: 'heat', title: 'Teplejší těleso', text: 'rychlé částice narážejí do pomalejších' },
               { icon: 'arrow-cycle', title: 'Tepelná výměna', text: 'energie přechází jako teplo Q' },
-              { icon: 'cold', title: 'Chladnější těleso', text: 'jeho částice se rozpohybují, teplota roste' },
+              { icon: 'cold', title: 'Chladnější těleso', text: 'jeho částice se pohybují rychleji, teplota roste' },
               { icon: 'equilibrium', title: 'Rovnováha', text: 'výměna skončí, když mají obě tělesa stejnou teplotu' },
             ], caption: 'Teplo samo od sebe přechází vždy z teplejšího tělesa na chladnější.' },
             { type: 'callout', variant: 'warning', title: 'Teplo není teplota', text: 'Těleso **nemá** teplo, má vnitřní energii a teplotu. Teplo je jen ta energie, která mezi tělesy **přejde**. Proto se v běžné řeči „je tu teplo“ říká nepřesně.' },
@@ -131,14 +131,14 @@ const level: LevelContent = {
               { icon: 'car', title: 'Chlazení motoru', text: 'chladicí kapalina na bázi vody odvádí z motoru velké teplo, a sama se přitom ohřeje jen málo' },
               { icon: 'heat', title: 'Ústřední topení', text: 'horká voda z kotle přenese teplo potrubím až do radiátorů v každém pokoji' },
               { icon: 'drop', title: 'Termofor', text: 'láhev s horkou vodou hřeje v posteli celé hodiny' },
-              { icon: 'heart', title: 'Tvoje tělo', text: 'jsi asi ze 60 % voda, proto tvoje teplota nekolísá při každé změně počasí' },
+              { icon: 'heart', title: 'Tvoje tělo', text: 'jsi asi ze 60 % voda, a proto se tvoje tělo ohřívá i chladne jen pomalu' },
             ] },
             { type: 'p', text: 'Nejlépe je vliv moře vidět na teplotě během jednoho letního dne. Porovnej, jak moc kolísá teplota ve vnitrozemí a u moře:' },
             { type: 'graph', x: { label: 'hodina dne', unit: 'h', min: 0, max: 24, step: 4 }, y: { label: 'teplota vzduchu', unit: '°C', min: 10, max: 35, step: 5 }, series: [
               { label: 'vnitrozemí', style: 'smooth', tone: 'a', points: [[0, 16], [3, 14], [6, 14], [9, 21], [12, 28], [15, 31], [18, 27], [21, 20], [24, 16]] },
               { label: 'u moře', style: 'smooth', tone: 'b', points: [[0, 22], [3, 21], [6, 21], [9, 23], [12, 26], [15, 27], [18, 26], [21, 24], [24, 22]] },
             ], caption: 'Letní den ve vnitrozemí a u moře: moře tlumí výkyvy teploty.' },
-            { type: 'callout', variant: 'fact', text: 'Kdybys dodal teplo potřebné k ohřátí 1 kg vody o 1 °C kilogramu olova, ohřál by se o víc než 30 °C.' },
+            { type: 'callout', variant: 'fact', text: 'Teplem, které ohřeje 1 kg vody o 1 °C, by se kilogram olova ohřál o víc než 30 °C.' },
             { type: 'p', text: 'Voda teplo pomalu přijímá i pomalu vydává. Co se ale stane, když se potká teplá voda se studenou? To spočítáme v posledním oddílu.' },
             { type: 'check', question: { kind: 'tf', q: 'U moře bývají větší rozdíly mezi denní a noční teplotou než ve vnitrozemí.', answer: false, explain: 'Je to naopak. Voda má velkou měrnou tepelnou kapacitu, přes den teplo pohlcuje a v noci ho vydává, a tak teplotu u moře vyrovnává.' } },
           ],
@@ -152,7 +152,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Když za obě tepla dosadíme Q = m · c · Δt, dostaneme rovnici pro výslednou teplotu. Pozor na rozdíly teplot: vždy odečítáme nižší teplotu od vyšší, aby obě strany vyšly kladné.' },
             { type: 'formula', text: 'm_{1} · c_{1} · (t_{1} − t) = m_{2} · c_{2} · (t − t_{2})', caption: 't_{1} teplota teplejšího tělesa, t_{2} teplota chladnějšího, t výsledná teplota' },
             { type: 'p', text: 'Pravidlo platí jen tehdy, když teplo neutíká do okolí. Proto se takové pokusy dělají v kalorimetru:' },
-            { type: 'diagram', id: 'calorimeter', caption: 'Kalorimetr je dobře izolovaná nádoba s teploměrem a míchadlem. Teplo z něj skoro neuniká, takže teplo odevzdané se rovná teplu přijatému.' },
+            { type: 'diagram', id: 'calorimeter', caption: 'Kalorimetr je dobře izolovaná nádoba s teploměrem a míchadlem. Teplo z něj skoro neuniká, takže teplo odevzdané se rovná teplu přijatému. Obrázek pochází z chemie, proto je vztah zapsán jako q = m · c · ΔT a c vody jako 4,18 J/(g·K); je to totéž jako naše Q = m · c · Δt a 4 200 J/(kg·°C).' },
             { type: 'p', text: 'Co se uvnitř děje, ukáže měření: plechovku s horkou vodou ponoříme do studené a sledujeme oba teploměry.' },
             { type: 'graph', x: { label: 'čas', unit: 'min', min: 0, max: 10, step: 2 }, y: { label: 'teplota', unit: '°C', min: 0, max: 90, step: 10 }, series: [
               { label: 'horká voda 0,2 kg', style: 'smooth', tone: 'a', points: [[0, 80], [1, 65], [2, 56], [3, 50], [4, 47], [6, 45], [8, 44.3], [10, 44]] },
@@ -283,14 +283,14 @@ const level: LevelContent = {
             { type: 'compare', columns: [
               { title: '**Ve dne: vánek od moře**', icon: 'sun', tone: 'a', points: ['pevnina se ohřeje rychleji než moře', 'teplý vzduch nad pevninou stoupá', 'chladnější vzduch od moře proudí na pláž'] },
               { title: '**V noci: vánek od pevniny**', icon: 'cold', tone: 'b', points: ['pevnina rychle vychladne, moře je teplejší', 'teplý vzduch stoupá nad mořem', 'vzduch proudí z pevniny na moře'] },
-            ], caption: 'Mořský vánek (brízu) pohání proudění. A rozdíl způsobuje velká měrná tepelná kapacita vody.' },
+            ], caption: 'Mořský vánek (brízu) pohání proudění. Rozdíl teplot pevniny a moře způsobuje velká měrná tepelná kapacita vody.' },
             { type: 'p', text: 'Proudění pohání i další velké děje v přírodě a technice:' },
             { type: 'iconlist', items: [
               { icon: 'ocean', title: 'Golfský proud', text: 'mořský proud nese teplou vodu z Mexického zálivu k Evropě; bez něj by byly zimy v Anglii mnohem krutější' },
               { icon: 'factory', title: 'Komín', text: 'horké spaliny stoupají a táhnou za sebou čerstvý vzduch do kamen' },
               { icon: 'cloud', title: 'Termika', text: 'stoupající teplý vzduch nese ptáky, paraglidisty i vznikající mraky' },
             ] },
-            { type: 'callout', variant: 'fact', text: 'Ve vesmírné stanici není proudění vzduchu samo od sebe: bez tíže teplý vzduch nestoupá. Plamen svíčky tam proto nemá tvar kapky, ale kuličky, a stanice potřebuje ventilátory.' },
+            { type: 'callout', variant: 'fact', text: 'Ve vesmírné stanici není proudění vzduchu samo od sebe: ve stavu beztíže teplý vzduch nestoupá. Plamen svíčky tam proto nemá tvar kapky, ale kuličky, a stanice potřebuje ventilátory.' },
             { type: 'callout', variant: 'tip', text: 'Nezakrývej radiátor dlouhým závěsem ani nábytkem. Zastavíš tím proudění vzduchu a pokoj se bude vytápět mnohem hůř.' },
             { type: 'p', text: 'Vedení i proudění ale potřebují látku. Jak se k nám tedy dostane teplo ze Slunce přes prázdný vesmír?' },
             { type: 'check', question: { kind: 'choice', q: 'Proč se radiátory montují dole pod okno, a ne ke stropu?', options: ['teplý vzduch stoupá, a tak od podlahy promíchá celý pokoj; u stropu by teplo zůstalo nahoře', 'u podlahy je teplejší vzduch, radiátor tam méně ztrácí', 'teplo se šíří hlavně dolů', 'u stropu by radiátor vedl teplo do stropu'], answer: 0, explain: 'Ohřátý vzduch stoupá vzhůru. Radiátor dole tak rozproudí vzduch v celém pokoji. U stropu by se teplý vzduch jen držel nahoře a u podlahy by byla zima.' } },
@@ -300,7 +300,7 @@ const level: LevelContent = {
           title: 'Tepelné záření',
           icon: 'sun',
           blocks: [
-            { type: 'p', text: 'Mezi Sluncem a Zemí je vakuum, žádná látka. Vedení ani proudění tam fungovat nemůže. Přesto nás Slunce hřeje. Teplo k nám letí jako **tepelné (infračervené) záření**, které nepotřebuje žádnou látku.' },
+            { type: 'p', text: 'Mezi Sluncem a Zemí je vakuum, žádná látka. Vedení ani proudění tam fungovat nemůže. Přesto nás Slunce hřeje. Energii k nám přináší **záření**: viditelné světlo a neviditelné **tepelné (infračervené) záření**. Záření nepotřebuje žádnou látku.' },
             { type: 'p', text: 'Září každé těleso, i ty sám/sama. Čím je teplejší, tím víc. Termokamera toto neviditelné záření zachytí a teplá místa obarví žlutě a červeně.' },
             { type: 'p', text: 'Jak dobře těleso záření pohlcuje, záleží na jeho povrchu. Ukáže to pokus se dvěma plechovkami vody na slunci:' },
             { type: 'graph', x: { label: 'čas na slunci', unit: 'min', min: 0, max: 30, step: 5 }, y: { label: 'teplota vody', unit: '°C', min: 15, max: 50, step: 5 }, series: [
@@ -362,7 +362,7 @@ const level: LevelContent = {
               ['zateplená zeď (pasivní dům)', 'asi 0,15'],
             ] },
             { type: 'p', text: 'Co zateplení přinese, spočítáme na jedné zdi rodinného domu.' },
-            { type: 'example', title: 'Kolik teplo uteče zdí', problem: 'Zeď domu má plochu 20 m² a U = 1,5 W/(m²·°C). Uvnitř je 20 °C, venku −5 °C. Jaká je tepelná ztráta? A kolik po zateplení na U = 0,25 W/(m²·°C)?', steps: [
+            { type: 'example', title: 'Kolik tepla uteče zdí', problem: 'Zeď domu má plochu 20 m² a U = 1,5 W/(m²·°C). Uvnitř je 20 °C, venku −5 °C. Jaká je tepelná ztráta? A kolik po zateplení na U = 0,25 W/(m²·°C)?', steps: [
               'Odečítáme zápornou teplotu, proto se čísla sečtou: Δt = 20 °C − (−5 °C) = 25 °C',
               'Před zateplením: P = 1,5 · 20 · 25 = 750 W',
               'Po zateplení: P = 0,25 · 20 · 25 = 125 W',
@@ -408,7 +408,7 @@ const level: LevelContent = {
         'Vysvětlit, proč teplota varu závisí na tlaku a proč vypařování ochlazuje',
         'Popsat vznik rosy, mlhy, jinovatky a oblaků',
       ],
-      hook: 'Do sklenice s ledem nalij vodu a změř teplotu. Nula. Postav ji na plotýnku a měř znovu: pořád nula, dokud všechen led neroztaje! Kam mizí teplo, které dodáváš?',
+      hook: 'Do hrnce s ledem nalij trochu vody a změř teplotu. Nula. Postav hrnec na plotýnku, míchej a měř znovu: pořád nula, dokud všechen led neroztaje! Kam mizí teplo, které dodáváš?',
       sections: [
         {
           title: 'Šest změn skupenství',
@@ -421,13 +421,13 @@ const level: LevelContent = {
               { title: '**Teplo se přijímá**', icon: 'heat', tone: 'a', points: ['**tání**: pevná -> kapalná', '**vypařování a var**: kapalná -> plynná', '**sublimace**: pevná -> plynná'] },
               { title: '**Teplo se odevzdává**', icon: 'cold', tone: 'b', points: ['**tuhnutí**: kapalná -> pevná', '**kapalnění (kondenzace)**: plynná -> kapalná', '**desublimace**: plynná -> pevná'] },
             ], caption: 'Každá změna má svou opačnou dvojici. Kolik tepla látka při jedné přijme, tolik ho při opačné odevzdá.' },
-            { type: 'p', text: 'Všech šest změn potkáváš doma i v přírodě:' },
+            { type: 'p', text: 'Změny skupenství potkáváš doma i v přírodě na každém kroku:' },
             { type: 'iconlist', items: [
               { icon: 'ice', title: 'Tání', text: 'zmrzlina v létě, jarní tání sněhu' },
               { icon: 'steam', title: 'Var', text: 'bublinky páry v celém objemu vody v konvici' },
               { icon: 'droplets', title: 'Kapalnění', text: 'orosené brýle, když přijdeš z mrazu' },
               { icon: 'gas-cloud', title: 'Sublimace', text: 'suchý led ($CO2$) mizí bez louže, zmrzlé prádlo schne i v mrazu' },
-              { icon: 'cold', title: 'Desublimace', text: 'jinovatka a námraza na stromech' },
+              { icon: 'cold', title: 'Desublimace', text: 'jinovatka na stromech, ledové květy na okně' },
             ] },
             { type: 'callout', variant: 'remember', text: '==Při změně skupenství se nemění částice, jen jejich uspořádání a pohyb.== Led, voda i pára jsou pořád tytéž molekuly $H2O$.' },
             { type: 'p', text: 'Změny skupenství umíš pojmenovat. Teď zjistíme, při jaké teplotě k nim dochází.' },
@@ -459,8 +459,8 @@ const level: LevelContent = {
               { tone: 'b', points: [[0, 20], [10, 11], [20, 5], [30, 1.5], [35, 0], [85, 0], [95, -7], [105, -12], [120, -16]] },
             ], marks: [{ x: 60, y: 0, label: 'tuhnutí při 0 °C' }], caption: 'Křivka chladnutí vody v mrazáku. Při tuhnutí se teplota zastaví na 0 °C, stejné teplotě, při které led taje. Voda přitom odevzdává teplo, a proto tuhne tak dlouho.' },
             { type: 'callout', variant: 'fact', text: 'Wolfram má nejvyšší teplotu tání ze všech kovů. Proto se z něj dělala vlákna žárovek, která svítila rozžhavená na asi 2 500 °C.' },
-            { type: 'callout', variant: 'tip', text: 'Nekrystalické (amorfní) látky jako sklo, vosk nebo máslo nemají přesnou teplotu tání. Postupně měknou v širokém rozmezí teplot.' },
-            { type: 'callout', variant: 'mascot', text: 'Čokoláda taje kolem 30–35 °C, tedy těsně pod teplotou tvé dlaně. Proto se v ruce rozpustí a v krabici ne. Mistrovská fyzika cukrářů!' },
+            { type: 'callout', variant: 'tip', text: 'Nekrystalické (amorfní) látky jako sklo, vosk nebo asfalt nemají přesnou teplotu tání. Postupně měknou v širokém rozmezí teplot.' },
+            { type: 'callout', variant: 'mascot', text: 'Čokoláda taje kolem 30–35 °C, tedy těsně pod teplotou lidského těla. Proto ti v ruce roztaje, a v krabici ne. Mistrovská fyzika cukrářů!' },
             { type: 'p', text: 'V grafu se během tuhnutí teplota zastavila, přestože voda pořád odevzdávala teplo. Kam se to teplo při změně skupenství ztrácí? Na to se podíváme teď.' },
             { type: 'check', question: { kind: 'choice', q: 'Kterým teploměrem změříš teplotu −50 °C na Sibiři? Náplň musí zůstat kapalná.', options: ['lihovým', 'rtuťovým', 'vodním', 'olověným'], answer: 0, explain: 'Líh tuhne až při −114 °C. Rtuť ztuhne už při −39 °C a voda při 0 °C.' } },
           ],
@@ -495,7 +495,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Častěji ale chceš z ledu teplou vodu. Pak projdeš dva úseky křivky ohřevu a teplo spočítáš pro každý zvlášť:' },
             { type: 'example', title: 'Od ledu k teplé vodě', problem: 'Led o hmotnosti 1 kg a teplotě 0 °C chceš proměnit na vodu o teplotě 20 °C. Kolik tepla potřebuješ?', steps: [
               'Tání: Q_{1} = m · l_{t} = 1 kg · 334 kJ/kg = 334 kJ',
-              'Ohřátí vody (šikmý úsek, proto vztah z minulé lekce): Q_{2} = m · c · Δt = 1 kg · 4 200 J/(kg·°C) · 20 °C = 84 000 J = 84 kJ',
+              'Ohřátí vody (šikmý úsek, proto vztah z lekce Vnitřní energie a teplo): Q_{2} = m · c · Δt = 1 kg · 4 200 J/(kg·°C) · 20 °C = 84 000 J = 84 kJ',
               'Celkem: Q = Q_{1} + Q_{2} = 334 kJ + 84 kJ',
             ], answer: 'Q = 418 kJ. Samotné tání spotřebuje čtyřikrát víc tepla než ohřátí o 20 °C.' },
             { type: 'p', text: 'A teď nejdelší vodorovný úsek křivky, var:' },
@@ -547,7 +547,7 @@ const level: LevelContent = {
               { icon: 'wind', title: 'Vítr', text: 'odnáší páru nad hladinou, proto foukáme do horké polévky' },
               { icon: 'cloud', title: 'Suchý vzduch', text: 've vlhkém vzduchu se vypařuje pomalu, proto je dusno k nevydržení' },
             ] },
-            { type: 'callout', variant: 'fact', text: 'Pes se nepotí kůží, ale vyplazuje jazyk a rychle dýchá. Vypařování slin z jazyka ho ochlazuje. Stejným trikem chladí vodu i porézní hliněný džbán: voda prosakuje a vypařuje se z jeho povrchu.' },
+            { type: 'callout', variant: 'fact', text: 'Pes se kůží skoro nepotí (potní žlázy má hlavně na polštářcích tlapek), a proto vyplazuje jazyk a rychle dýchá. Vypařování slin z jazyka ho ochlazuje. Stejným trikem chladí vodu i porézní hliněný džbán: voda prosakuje a vypařuje se z jeho povrchu.' },
             { type: 'callout', variant: 'tip', text: 'Kápni si na ruku trochu dezinfekce s lihem. Studí, i když má pokojovou teplotu. Líh se vypařuje rychleji než voda, a proto ruku ochlazuje víc.' },
             { type: 'p', text: 'Vypařováním se voda dostává do vzduchu jako neviditelná pára. Co se s ní stane, když vzduch zase vychladne?' },
             { type: 'check', question: { kind: 'multi', q: 'Co urychlí schnutí mokrého trička?', options: ['pověsit ho ve větru', 'rozprostřít ho, aby mělo velký povrch', 'pověsit ho na teplé místo', 'nechat ho zmačkané v igelitce', 'sušit ho ve velmi vlhké koupelně'], answers: [0, 1, 2], explain: 'Vypařování urychluje vítr, velký povrch a vyšší teplota. V igelitce a ve vlhkém vzduchu se pára hromadí nad povrchem a vypařování se zpomalí.' } },
@@ -562,7 +562,7 @@ const level: LevelContent = {
             { type: 'process', layout: 'cycle', steps: [
               { icon: 'sun', title: 'Vypařování', text: 'Slunce vypařuje vodu z moří, řek i listů' },
               { icon: 'wind', title: 'Výstup vzduchu', text: 'teplý vlhký vzduch stoupá a ve výšce chladne' },
-              { icon: 'cloud', title: 'Kapalnění', text: 'pára kondenzuje na kapičky a krystalky: vzniká mrak' },
+              { icon: 'cloud', title: 'Kapalnění', text: 'pára zkapalní na drobné kapičky, výš desublimuje i na ledové krystalky: vzniká mrak' },
               { icon: 'rain', title: 'Srážky', text: 'kapky se spojují a padají jako déšť nebo sníh' },
             ], caption: 'Koloběh vody pohánějí změny skupenství.' },
             { type: 'p', text: 'Kapalnění páry ze vzduchu má v počasí několik podob a každá má své jméno:' },
@@ -632,7 +632,7 @@ const level: LevelContent = {
             { type: 'iconlist', items: [
               { icon: 'factory', title: 'Parní stroj', text: 'lokomotivy, parníky, továrny; účinnost jen asi 10 %' },
               { icon: 'wind-turbine', title: 'Parní turbína', text: 'pára roztáčí lopatky; dnes pohání generátory v uhelných i jaderných elektrárnách (úroveň 7)' },
-              { icon: 'ship', title: 'Parníky a ponorky', text: 'velké lodě a jaderné ponorky dodnes pohánějí parní turbíny' },
+              { icon: 'ship', title: 'Parníky a ponorky', text: 'jaderné ponorky, letadlové lodě a ledoborce dodnes pohánějí parní turbíny' },
             ] },
             { type: 'callout', variant: 'fact', text: 'Skotský mechanik James Watt v 18. století parní stroj výrazně vylepšil. Po něm se jmenuje jednotka výkonu watt.' },
             { type: 'p', text: 'Kotel s topeništěm dělá z parního stroje obra. Do auta se vejde jen motor, ve kterém palivo hoří přímo ve válci.' },
@@ -643,7 +643,7 @@ const level: LevelContent = {
           title: 'Čtyřdobý zážehový motor',
           icon: 'car',
           blocks: [
-            { type: 'p', text: 'V autě hoří palivo přímo uvnitř válce. Je to **spalovací motor s vnitřním spalováním**. Benzínový motor se jmenuje **zážehový**, protože směs benzínu se vzduchem zažehne jiskra ze **zapalovací svíčky**. Podívej se, co se děje uvnitř jednoho válce:' },
+            { type: 'p', text: 'V autě hoří palivo přímo uvnitř válce. Je to **spalovací motor** (motor s vnitřním spalováním). Benzínový motor se jmenuje **zážehový**, protože směs benzínu se vzduchem zažehne jiskra ze **zapalovací svíčky**. Podívej se, co se děje uvnitř jednoho válce:' },
             { type: 'diagram', id: 'four-stroke-engine', caption: 'Čtyři doby zážehového motoru: sání, stlačení, pracovní zdvih a výfuk.' },
             { type: 'p', text: 'Motor pracuje v cyklu čtyř pohybů pístu, kterým říkáme doby. Projdi je jednu po druhé:' },
             { type: 'process', layout: 'cycle', steps: [
@@ -737,7 +737,7 @@ const level: LevelContent = {
               { icon: 'heat', title: 'Odpadní teplo', text: 'tři čtvrtiny energie paliva ohřívají okolí' },
             ] },
             { type: 'p', text: 'Nejvážnější z těchto dopadů je $CO2$, protože mění klima celé Země. Schéma ukazuje, jak to funguje:' },
-            { type: 'diagram', id: 'greenhouse-effect', caption: 'Oxid uhličitý z motorů a elektráren zadržuje v atmosféře tepelné záření Země (v chemii jsi poznal skleníkový efekt).' },
+            { type: 'diagram', id: 'greenhouse-effect', caption: 'Oxid uhličitý z motorů a elektráren zadržuje v atmosféře tepelné záření Země, a tak zesiluje skleníkový efekt.' },
             { type: 'p', text: 'Jednou z cest, jak dostat výfukové plyny z měst, jsou elektromobily. Porovnej je s klasickým autem:' },
             { type: 'compare', columns: [
               { title: '**Auto se spalovacím motorem**', icon: 'fuel', tone: 'a', points: ['účinnost motoru asi 25–30 %', '$CO2$ a smog přímo z výfuku ve městě', 'rychlé tankování, velký dojezd'] },
@@ -747,7 +747,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Kolik $CO2$ vyprodukuje cesta', problem: 'Auto spotřebuje 6 litrů benzínu na 100 km. Kolik $CO2$ vypustí na cestě z Prahy do Brna (asi 200 km)?', steps: [
               'Na 200 km spotřebuje 2 · 6 l = 12 l benzínu.',
               'Každý litr dá asi 2,3 kg $CO2$: 12 · 2,3 kg = 27,6 kg.',
-            ], answer: 'Asi 28 kg $CO2$, tedy víc, než kolik váží běžný školák v první třídě.' },
+            ], answer: 'Asi 28 kg $CO2$, tedy víc, než je hmotnost běžného prvňáčka.' },
             { type: 'callout', variant: 'tip', text: 'Nejčistší kilometr je ten, který ujedeš na kole, pěšky nebo ve vlaku. Plný autobus spotřebuje na jednoho cestujícího mnohem méně paliva než auto s jedním řidičem.' },
             { type: 'p', text: 'Motory mění teplo na práci. Jde to ale i obráceně: prací můžeme teplo přenést tam, kam by samo nikdy neteklo.' },
             { type: 'check', question: { kind: 'tf', q: 'Elektromobil nemá výfuk, ale jeho celkový dopad na klima závisí i na tom, jak se vyrábí elektřina, kterou nabíjí.', answer: true, explain: 'Pokud se elektřina vyrábí v uhelné elektrárně, vzniká $CO2$ tam. Ze slunce, větru nebo vody je elektřina mnohem čistší.' } },
@@ -785,10 +785,10 @@ const level: LevelContent = {
       ],
       summary: [
         'Tepelný motor mění část vnitřní energie horkého plynu na mechanickou práci; zbytek odchází jako odpadní teplo.',
-        'Parní stroj a parní turbína spalují palivo mimo válec; spalovací motory aut uvnitř válce.',
+        'U parního stroje a parní turbíny hoří palivo mimo motor, pod kotlem; spalovací motory aut spalují palivo uvnitř válce.',
         'Čtyřdobý zážehový motor má doby sání, stlačení, pracovní zdvih a výfuk; práci koná jen třetí doba.',
         'Vznětový motor nemá svíčku, nafta se vznítí v silně stlačeném horkém vzduchu; proudový motor tlačí letadlo dopředu proudem horkých plynů.',
-        'Účinnost η = W / Q · 100 %; tepelné motory mají účinnost jen asi 25–45 %, protože část tepla musí vždy odejít do chladnějšího okolí.',
+        'Účinnost η = W / Q · 100 %; tepelné motory mají účinnost jen asi 10–45 %, protože část tepla musí vždy odejít do chladnějšího okolí.',
         'Spalování paliv uvolňuje $CO2$ a škodliviny; elektromobil je čistší ve městě, jeho celkový dopad závisí na výrobě elektřiny.',
         'Lednička a tepelné čerpadlo přenášejí teplo z chladnějšího místa do teplejšího za cenu práce kompresoru.',
       ],
@@ -826,11 +826,11 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Polož prsty na krk a řekni „ááá“. Cítíš chvění? To kmitají tvoje **hlasivky**. Každý zvuk vzniká tak, že se nějaké těleso rychle **chvěje** (kmitá) a rozkmitá okolní vzduch. Podívej se, co kmitá u běžných zdrojů zvuku:' },
             { type: 'iconlist', items: [
-              { icon: 'music', title: 'Struna kytary', text: 'po drnknutí kmitá stokrát i víckrát za sekundu' },
+              { icon: 'music', title: 'Struna kytary', text: 'po drnknutí kmitá desítkykrát až stovkykrát za sekundu' },
               { icon: 'sound', title: 'Membrána reproduktoru', text: 'kmitá dopředu a dozadu a tlačí do vzduchu' },
               { icon: 'lungs', title: 'Hlasivky', text: 'proud vzduchu z plic je rozechvěje' },
               { icon: 'wind', title: 'Vzduchový sloupec', text: 've flétně nebo trubce kmitá přímo vzduch' },
-              { icon: 'wave', title: 'Ladička', text: 'ocelová vidlice kmitá přesně 440krát za sekundu (tón a¹)' },
+              { icon: 'wave', title: 'Ladička', text: 'ocelová vidlice; ta na ladění nástrojů kmitá přesně 440krát za sekundu (tón a¹)' },
             ] },
             { type: 'p', text: 'U struny chvění vidíš, u ladičky ne: kmitá příliš rychle. Dokázat se to dá miskou vody:' },
             { type: 'process', layout: 'flow', steps: [
@@ -891,7 +891,7 @@ const level: LevelContent = {
           title: 'Rychlost zvuku',
           icon: 'speed',
           blocks: [
-            { type: 'p', text: 'Zvuk je rychlý, ale ne okamžitý. Ve vzduchu uběhne asi **340 m za sekundu**, v teplém vzduchu o trochu víc, ve studeném o trochu méně. V kapalinách a pevných látkách jsou částice blíž u sebe a předávají si kmitání rychleji.' },
+            { type: 'p', text: 'Zvuk je rychlý, ale ne okamžitý. Ve vzduchu uběhne asi **340 m za sekundu**, v teplém vzduchu o trochu víc, ve studeném o trochu méně. V kapalinách a pevných látkách jsou částice blíž u sebe a pevněji vázané, a proto si kmitání předávají rychleji.' },
             { type: 'p', text: 'Podívej se, kolikrát rychleji než vzduchem se zvuk šíří vodou a ocelí:' },
             { type: 'table', headers: ['Prostředí', 'Rychlost zvuku'], rows: [
               ['vzduch (asi 15 °C)', '340 m/s'],
@@ -941,7 +941,7 @@ const level: LevelContent = {
               { title: '**Ozvěna**', icon: 'mountain', tone: 'a', points: ['překážka dál než asi 17 m', 'odražený zvuk slyšíš zvlášť', 'hory, lom, velká hala'] },
               { title: '**Dozvuk**', icon: 'music', tone: 'b', points: ['odrazy přicházejí dřív než za 0,1 s', 'splývají s původním zvukem a prodlužují ho', 'kostel, prázdná místnost, tělocvična'] },
             ] },
-            { type: 'callout', variant: 'tip', text: 'Koberce, závěsy, čalouněný nábytek a pěnové panely zvuk pohlcují. Proto v prázdném bytě po stěhování všechno „duní“ a v nahrávacím studiu je naprosté ticho bez dozvuku.' },
+            { type: 'callout', variant: 'tip', text: 'Koberce, závěsy, čalouněný nábytek a pěnové panely zvuk pohlcují. Proto v prázdném bytě po stěhování všechno „duní“ a nahrávací studio má stěny obložené pěnou, aby v něm nebyl skoro žádný dozvuk.' },
             { type: 'p', text: 'Z ozvěny jde tedy změřit vzdálenost. Netopýři i lodě to dělají každý den.' },
             { type: 'check', question: { kind: 'number', q: 'Ozvěna výkřiku se vrátí za 1,2 s. Jak daleko je skála? (v = 340 m/s)', answer: 204, tolerance: 2, unit: 'm', explain: 's = v · t / 2 = 340 m/s · 1,2 s / 2 = 204 m.' } },
           ],
@@ -958,7 +958,7 @@ const level: LevelContent = {
               { icon: 'ship', title: 'Sonar', text: 'lodě měří hloubku moře a hledají ponorky, rybáři hejna ryb' },
               { icon: 'car', title: 'Parkovací senzory', text: 'pípají tím rychleji, čím blíž je překážka' },
               { icon: 'heart', title: 'Ultrazvukové vyšetření', text: 'odrazy zvuku od orgánů vykreslí obraz miminka v břiše (lekce Vlastnosti zvuku a hluk)' },
-              { icon: 'fish', title: 'Delfíni a velryby', text: 'cvakáním hledají potravu v kalné vodě' },
+              { icon: 'fish', title: 'Delfíni a vorvani', text: 'cvakáním hledají potravu v kalné vodě' },
             ] },
             { type: 'p', text: 'Spočítejme, jak hluboké je moře pod lodí. Pozor, ve vodě je zvuk víc než čtyřikrát rychlejší než ve vzduchu, proto dosazuj 1 500 m/s.' },
             { type: 'example', title: 'Hloubka moře', problem: 'Sonar lodi vyšle zvukový signál a jeho ozvěna ode dna se vrátí za 4 s. Jak hluboké je moře? Zvuk se ve vodě šíří rychlostí 1 500 m/s.', steps: [
@@ -967,7 +967,7 @@ const level: LevelContent = {
             ], answer: 'Moře je hluboké asi 3 000 m.' },
             { type: 'callout', variant: 'warning', text: 'Nezapomeň dělit dvěma! Nejčastější chyba u ozvěny i sonaru je, že se počítá jen cesta jedním směrem.' },
             { type: 'game', gameId: 'quickfire', text: 'Rychlost zvuku, ozvěna a bouřka: otestuj se v Bleskové výzvě.' },
-            { type: 'callout', variant: 'fact', text: 'Netopýři křičí ultrazvukem o frekvenci až přes 100 000 Hz a hlasitostí jako sbíječka. My je naštěstí neslyšíme. Z ozvěny poznají i kořist tenkou jako vlas.' },
+            { type: 'callout', variant: 'fact', text: 'Netopýři křičí hlasitě jako sbíječka, ale tak vysokými tóny, že je naštěstí neslyšíme (víc v příští lekci). Z ozvěny rozpoznají i drátek tenký jako vlas.' },
             { type: 'p', text: 'Teď víš, jak zvuk vzniká, jak rychle se šíří a jak se odráží. V příští lekci zjistíš, čím se zvuky liší: proč je jeden vysoký, druhý hlasitý a proč housle zní jinak než klavír.' },
             { type: 'check', question: { kind: 'number', q: 'Signál sonaru se od hejna ryb vrátí za 0,8 s. Jak hluboko je hejno? (Rychlost zvuku ve vodě 1 500 m/s.)', answer: 600, tolerance: 5, unit: 'm', explain: 's = v · t / 2 = 1 500 m/s · 0,8 s / 2 = 600 m.' } },
           ],
@@ -1017,7 +1017,7 @@ const level: LevelContent = {
               { amplitude: 1, wavelength: 6, label: 'nízký tón: malá frekvence', tone: 'b' },
               { amplitude: 1, wavelength: 2, label: 'vysoký tón: velká frekvence', tone: 'a' },
             ], caption: 'Záznam tlaku vzduchu pro dva tóny. Vyšší tón má kmity nahuštěnější, protože zdroj kmitá rychleji.' },
-            { type: 'p', text: '==Čím větší frekvence, tím vyšší tón slyšíme.== Kratší, tenčí a víc napnutá struna kmitá rychleji, a proto zní výš. Proto má basa dlouhé tlusté struny a housle krátké tenké.' },
+            { type: 'p', text: '==Čím větší frekvence, tím vyšší tón slyšíme.== Kratší, tenčí a víc napnutá struna kmitá rychleji, a proto zní výš. Proto má kontrabas dlouhé tlusté struny a housle krátké tenké.' },
             { type: 'p', text: 'Vyzkoušej si vztah f = 1 / T na ladičce z minulé lekce.' },
             { type: 'example', title: 'Komorní a', problem: 'Ladička kmitá s frekvencí 440 Hz. Jaká je doba jednoho kmitu?', steps: [
               'f = 1 / T, a proto T = 1 / f.',
@@ -1099,7 +1099,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Každý nástroj si svou směs harmonických tónů vyrábí jinak:' },
             { type: 'flipcards', cards: [
               { icon: 'music', title: 'Kytara', text: 'struny kmitají a dřevěná ozvučná skříň zvuk zesílí; barvu dává tvar a dřevo skříně' },
-              { icon: 'wind', title: 'Flétna', text: 'kmitá sloupec vzduchu v trubici; skoro čistý tón s málo harmonickými' },
+              { icon: 'wind', title: 'Flétna', text: 'kmitá sloupec vzduchu v trubici; skoro čistý tón s málo vyššími harmonickými tóny' },
               { icon: 'lungs', title: 'Lidský hlas', text: 'hlasivky + dutina úst a nosu; proto poznáš kamaráda po telefonu' },
             ] },
             { type: 'callout', variant: 'remember', text: '**Výška** tónu = frekvence. **Hlasitost** = amplituda. **Barva** tónu = směs vyšších harmonických tónů. Tři vlastnosti, tři různé příčiny.' },

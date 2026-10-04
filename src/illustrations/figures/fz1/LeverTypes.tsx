@@ -113,7 +113,7 @@ function Panel({ children, ex }: { children: ReactNode; ex: ReactNode }) {
 }
 
 const LABEL =
-  'Tři druhy pák. Páka první třídy (dvojzvratná) má opěrný bod mezi silou a břemenem – houpačka, páčidlo, nůžky. Páka druhé třídy (jednozvratná) má břemeno mezi opěrným bodem a silou – kolečko, louskáček. Páka třetí třídy (jednozvratná) má sílu mezi opěrným bodem a břemenem – předloktí, kde sval táhne blízko lokte, nebo pinzeta.'
+  'Tři uspořádání páky; česká škola rozlišuje páku dvojzvratnou a jednozvratnou. Páka první třídy (dvojzvratná) má opěrný bod mezi silou a břemenem – houpačka, páčidlo, nůžky. Páka druhé třídy (jednozvratná) má břemeno mezi opěrným bodem a silou – kolečko, louskáček. Páka třetí třídy (jednozvratná) má sílu mezi opěrným bodem a břemenem – předloktí, kde sval táhne blízko lokte, nebo pinzeta.'
 
 export default function LeverTypes() {
   return (

@@ -3,7 +3,7 @@ import { Figure, Frame, Ray, pat, useFig } from './kit'
 import { type V, along, norm, sub } from './geom'
 
 const LABEL =
-  'Kulová zrcadla a rovnoběžné paprsky. Duté zrcadlo je spojné: paprsky rovnoběžné s optickou osou se po odrazu protnou v ohnisku F, které leží v polovině vzdálenosti mezi zrcadlem a středem křivosti C (f = r/2); používá se v baterce, reflektoru, kosmetickém zrcátku a dalekohledu. Vypuklé zrcadlo je rozptylné: odražené paprsky se rozbíhají, jako by vycházely ze zdánlivého ohniska za zrcadlem; dává zmenšený obraz s velkým rozhledem, proto je na křižovatkách a jako zpětné zrcátko.'
+  'Kulová zrcadla a rovnoběžné paprsky. Duté zrcadlo je spojné: paprsky rovnoběžné s optickou osou se po odrazu protnou v ohnisku F, které leží v polovině vzdálenosti mezi zrcadlem a středem křivosti S (f = r/2); používá se v baterce, reflektoru, kosmetickém zrcátku a dalekohledu. Vypuklé zrcadlo je rozptylné: odražené paprsky se rozbíhají, jako by vycházely ze zdánlivého ohniska za zrcadlem; dává zmenšený obraz s velkým rozhledem, proto je na křižovatkách a jako zpětné zrcátko.'
 
 const AX = 104 // optical axis
 const HS = [-60, -32, 32, 60]
@@ -63,7 +63,7 @@ function Concave() {
         return <Ray key={h} pts={[[14, AX + h], H, along(H, d, (Math.hypot(H[0] - F[0], H[1] - F[1]) + 30))]} delay={i * 0.1} />
       })}
       <Point x={F[0]} t="F" />
-      <Point x={vx - 2 * f} t="C" />
+      <Point x={vx - 2 * f} t="S" />
       <path d={`M${F[0]} ${AX - 84} H${vx}`} className="fz2-dim" />
       <text x={(F[0] + vx) / 2} y={AX - 88} textAnchor="middle" className="fz2-lbl fz2-sm">
         f = r/2
@@ -108,7 +108,7 @@ export default function CurvedMirrors() {
           steps={[
             {
               title: 'Duté zrcadlo – spojné',
-              caption: 'Rovnoběžné paprsky se sejdou v ohnisku F, v půli cesty ke středu křivosti C. Baterka, reflektor, kosmetické zrcátko, dalekohled.',
+              caption: 'Rovnoběžné paprsky se sejdou v ohnisku F, v půli cesty ke středu křivosti S. Baterka, reflektor, kosmetické zrcátko, dalekohled.',
               art: <Concave />,
             },
             {
