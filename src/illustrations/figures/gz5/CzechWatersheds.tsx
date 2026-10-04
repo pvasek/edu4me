@@ -8,12 +8,12 @@ const LABEL =
 type Sea = "n" | "b" | "c";
 /** the sea each named river (Natural Earth, Czech names) finally drains to */
 const SEA: Record<string, Sea> = {
-  Labe: "n", Vltava: "n", "Ohře": "n", "Sázava": "n", "Úhlava": "n", "Sála": "n", "Spréva": "n",
+  Labe: "n", Vltava: "n", "Ohře": "n", "Sázava": "n", "Úhlava": "n", "Mže": "n", Berounka: "n", Orlice: "n", "Sála": "n", "Spréva": "n",
   Mohan: "n", "Warme Steinach": "n", "Černý Halštrov": "n", "Bílý Halštrov": "n", "Cvikovská Mulda": "n",
   Unstruta: "n",
-  Odra: "b", "Lužická Nisa": "b", "Kladská Nisa": "b", Visla: "b", Varta: "b", Bobr: "b", Prosna: "b",
-  Dunaj: "c", Morava: "c", Dyje: "c", Svratka: "c", Svitava: "c", Inn: "c", Isara: "c", Traun: "c",
-  Waldnaab: "c", "Váh": "c", Hron: "c", Ipel: "c",
+  Odra: "b", Opava: "b", Moravice: "b", "Lužická Nisa": "b", "Kladská Nisa": "b", Visla: "b", Varta: "b", Bobr: "b", Prosna: "b",
+  Dunaj: "c", Morava: "c", Dyje: "c", Svratka: "c", Jihlava: "c", Inn: "c", Isara: "c", Traun: "c",
+  Waldnaab: "c", "Váh": "c", Hron: "c", "Ipeľ": "c", Nitra: "c",
 };
 
 // the main European watershed, simplified through known ridges and passes [lon, lat]
@@ -36,18 +36,6 @@ const NS_BA: LL[] = [
   [14.82, 50.8], [14.66, 50.85],
 ];
 
-/**
- * Natural Earth's "Svitava" is really the Jihlava (Nové Mlýny → Třebíč → Jihlava) joined to a stray
- * line that runs on west into the Vltava basin; keep only the part east of `lon`.
- */
-function eastOf(flat: Float64Array, lon: number): Float64Array {
-  const out: number[] = [];
-  for (let i = 0; i < flat.length; i += 2) {
-    if (flat[i] < lon) break;
-    out.push(flat[i], flat[i + 1]);
-  }
-  return Float64Array.from(out);
-}
 
 function RiverKey({ sea }: { sea: Sea }) {
   return <path d="M2 7 Q10 2 17 7 T32 7" className={`gz5-riv gz5-riv-${sea}`} style={{ strokeWidth: 2.6 }} />;
@@ -84,7 +72,7 @@ export default function CzechWatersheds() {
               {rivers.map((r) => (
                 <g key={r.name} className={`gz5-riv gz5-riv-${SEA[r.name]}`} style={{ strokeWidth: r.rank <= 5 ? 2.8 : r.rank <= 9 ? 2 : 1.4 }}>
                   {r.parts.map((part, i) => (
-                    <path key={i} d={flatPath(project, r.name === "Svitava" ? eastOf(part, 15.5) : part)} />
+                    <path key={i} d={flatPath(project, part)} />
                   ))}
                 </g>
               ))}
