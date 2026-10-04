@@ -77,7 +77,7 @@ export default function EarthMagnetism() {
       compact={compact}
       boost={false}
       replay
-      label="Země jako obří magnet. Magnetické pole Země vypadá, jako by v ní ležel tyčový magnet skloněný asi o 11° od zemské osy. Blízko severního zeměpisného pólu leží severní magnetický pól – fyzikálně je to jižní pól S tohoto magnetu, a proto k němu míří severní konec střelky kompasu. Indukční čáry vycházejí z jižní polokoule a vstupují do severní."
+      label="Země jako obří magnet. Magnetické pole Země vypadá, jako by v ní ležel tyčový magnet skloněný asi o 10° od zemské osy. Blízko severního zeměpisného pólu leží severní magnetický pól – fyzikálně je to jižní pól S tohoto magnetu, a proto k němu míří severní konec střelky kompasu. Indukční čáry vycházejí z jižní polokoule a vstupují do severní."
     >
       <defs>
         <clipPath id={cid}>
@@ -168,7 +168,7 @@ export default function EarthMagnetism() {
           </Lbl>
         )}
         <text x={L.cx + 4} y={L.cy - L.r - 36} className="fz1-lbl fz1-sm fz1-lvl-t fz1-halo">
-          11°
+          ≈ 10°
         </text>
       </Fade>
     </Figure>
