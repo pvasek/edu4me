@@ -51,7 +51,7 @@ const f10_1: Lesson = {
         { type: 'graph', x: { label: 'r', unit: 'nm', min: 0.25, max: 0.7, step: 0.05 }, y: { label: 'F', unit: 'relativně', min: -1.5, max: 4, step: 1 }, series: [
           { label: 'síla mezi dvěma molekulami', style: 'smooth', points: [[0.28, 3.71], [0.29, 1.28], [0.3, 0], [0.31, -0.63], [0.32, -0.91], [0.33, -1], [0.34, -0.98], [0.36, -0.83], [0.38, -0.65], [0.4, -0.49], [0.45, -0.24], [0.5, -0.12], [0.6, -0.03], [0.7, -0.01]] },
         ], marks: [{ x: 0.3, y: 0, label: 'r_{0}: síla je nulová' }, { x: 0.33, y: -1, label: 'nejsilnější přitahování' }], caption: 'Kladná síla znamená odpuzování, záporná přitahování. Blíž než r_{0} se molekuly prudce odpuzují, dál se přitahují a na vzdálenost několika průměrů molekul už na sebe prakticky nepůsobí.' },
-        { type: 'p', text: 'V **rovnovážné vzdálenosti** r_{0} (u malých molekul asi 0,3 nm) je výsledná síla nulová. Proto nejde stlačit kapalinu ani pevnou látku: částice jsou už u sebe a další přiblížení vyvolá obrovské odpudivé síly.' },
+        { type: 'p', text: 'V **rovnovážné vzdálenosti** r_{0} (u malých molekul asi 0,3 nm) je výsledná síla nulová. Proto se kapalina ani pevná látka nedají téměř stlačit: částice jsou už u sebe a další přiblížení vyvolá obrovské odpudivé síly.' },
         { type: 'p', text: 'Ze vzdáleností částic a sil mezi nimi teď vyčteme, jak vypadají tři skupenství:' },
         { type: 'diagram', id: 'states', caption: 'Částice v pevné látce, kapalině a plynu. V plynu jsou za běžných podmínek asi desetkrát dál od sebe než v kapalině.' },
         { type: 'p', text: 'Tabulka shrnuje rozdíly. Čti ji po řádcích a všimni si, že poslední dva řádky vyplývají z prvních dvou:' },
@@ -62,7 +62,7 @@ const f10_1: Lesson = {
           ['tvar a objem', 'stálý tvar i objem', 'stálý objem, tvar nádoby', 'vyplní celou nádobu'],
         ], caption: 'Tři skupenství v kinetické teorii' },
         { type: 'callout', variant: 'remember', text: '==O skupenství rozhoduje poměr mezi přitažlivými silami a tepelným pohybem částic.== Zahříváním pohyb zesílíš, proto se pevná látka nakonec roztaví a kapalina vypaří.' },
-        { type: 'p', text: 'Kvalitativně tedy víme, jak částice drží pohromadě. Teď je čas na čísla: kolik částic v látce je a kolik váží jedna z nich?' },
+        { type: 'p', text: 'Kvalitativně tedy víme, jak částice drží pohromadě. Teď je čas na čísla: kolik částic v látce je a jakou hmotnost má jedna z nich?' },
         { type: 'check', question: { kind: 'tf', q: 'Mezi molekulami plynu působí za běžných podmínek stejně velké přitažlivé síly jako mezi molekulami kapaliny.', answer: false, explain: 'Molekuly plynu jsou asi desetkrát dál od sebe než v kapalině a přitažlivá síla se vzdáleností rychle slábne. Proto je v plynu téměř zanedbatelná.' } },
       ],
     },
@@ -70,7 +70,7 @@ const f10_1: Lesson = {
       title: 'Kolik je to částic? Látkové množství očima fyzika',
       icon: 'molecule',
       blocks: [
-        { type: 'p', text: 'V chemii (lekce *Látkové množství a molární hmotnost*) jsi poznal/a mol, Avogadrovu konstantu a molární hmotnost. Nebudeme je znovu vykládat. Použijeme je k fyzikální otázce: kolik váží a jak velká je jedna molekula? Nejdřív si připomeň čtyři veličiny, se kterými budeme počítat:' },
+        { type: 'p', text: 'V chemii (lekce *Látkové množství a molární hmotnost*) jsi poznal/a mol, Avogadrovu konstantu a molární hmotnost. Nebudeme je znovu vykládat. Použijeme je k fyzikální otázce: jakou hmotnost má a jak velká je jedna molekula? Nejdřív si připomeň čtyři veličiny, se kterými budeme počítat:' },
         { type: 'keyterms', items: [
           { term: '**Látkové množství n**', def: 'počet částic vyjádřený v molech, n = N / N_{A}; jednotka mol' },
           { term: '**Avogadrova konstanta N_{A}**', def: '6,022·10^{23} mol^{−1}: tolik částic je v jednom molu' },
@@ -79,10 +79,10 @@ const f10_1: Lesson = {
         ] },
         { type: 'p', text: 'Jak spolu souvisejí? Nejlépe to ukáže obrázek, který znáš z chemie:' },
         { type: 'diagram', id: 'mole-bridge', caption: 'Most mezi hmotností, látkovým množstvím a počtem částic znáš z chemie. Fyzik po něm přejde až k jediné molekule.' },
-        { type: 'p', text: 'Úvaha je jednoduchá: jeden mol váží M_{m} a obsahuje N_{A} molekul. Hmotnost jedné molekuly proto dostaneme dělením:' },
+        { type: 'p', text: 'Úvaha je jednoduchá: jeden mol má hmotnost M_{m} a obsahuje N_{A} molekul. Hmotnost jedné molekuly proto dostaneme dělením:' },
         { type: 'formula', text: 'm_{0} = M_{m} / N_{A} = M_{r} · m_{u}', caption: 'm_{0} hmotnost jedné molekuly (kg), M_{m} molární hmotnost (kg/mol), N_{A} Avogadrova konstanta (mol^{−1}), M_{r} relativní molekulová hmotnost (bez jednotky)' },
         { type: 'p', text: 'Vyzkoušej vzorec na nejznámější molekule. Výsledek si ověříme i druhou cestou přes m_{u}.' },
-        { type: 'example', title: 'Kolik váží molekula vody?', problem: 'Urči hmotnost jedné molekuly vody $H2O$.', steps: [
+        { type: 'example', title: 'Jakou hmotnost má molekula vody?', problem: 'Urči hmotnost jedné molekuly vody $H2O$.', steps: [
           'M_{m} = 18 g/mol = 0,018 kg/mol',
           'm_{0} = M_{m} / N_{A} = 0,018 kg/mol / (6,022·10^{23} mol^{−1})',
           'm_{0} ≈ 2,99·10^{−26} kg',
@@ -103,21 +103,21 @@ const f10_1: Lesson = {
       title: 'Molekuly plynu: stovky metrů za sekundu',
       icon: 'speed',
       blocks: [
-        { type: 'p', text: 'Molekula dusíku váží jen asi 5·10^{−26} kg, a přesto její nárazy nafouknou balonek. Musí tedy být hodně rychlá. Molekuly vzduchu v tvém pokoji letí rychlostí kolem 500 m/s. Každá se ale zhruba po 70 nanometrech srazí s jinou a změní směr. Proto se vůně z kuchyně šíří bytem jen pomalu: molekula kličkuje a skoro nepostupuje.' },
+        { type: 'p', text: 'Molekula dusíku má hmotnost jen asi 5·10^{−26} kg, a přesto její nárazy nafouknou balonek. Musí tedy být hodně rychlá. Molekuly vzduchu v tvém pokoji letí rychlostí kolem 500 m/s. Každá se ale zhruba po 70 nanometrech srazí s jinou a změní směr. Proto se vůně z kuchyně šíří bytem jen pomalu: molekula kličkuje a skoro nepostupuje.' },
         { type: 'p', text: 'Rychlosti molekul nejsou stejné. Při srážkách si molekuly neustále vyměňují energii, takže některé jsou právě pomalé a jiné velmi rychlé. Kolik molekul má kterou rychlost, popisuje **Maxwellovo rozdělení rychlostí**. V grafu porovnej dvě teploty:' },
         { type: 'graph', x: { label: 'v', unit: 'm/s', min: 0, max: 2000, step: 400 }, y: { label: 'podíl molekul', unit: '% na 100 m/s', min: 0, max: 22, step: 5 }, series: [
           { label: '300 K (27 °C)', style: 'smooth', tone: 'b', points: [[0, 0], [100, 2.8], [200, 9.6], [300, 16.3], [400, 19.6], [500, 18.4], [600, 14.3], [700, 9.4], [800, 5.3], [900, 2.6], [1000, 1.1], [1200, 0.1], [1400, 0], [2000, 0]] },
           { label: '900 K (627 °C)', style: 'smooth', tone: 'a', points: [[0, 0], [200, 2.1], [400, 6.8], [600, 10.6], [700, 11.3], [800, 11.2], [1000, 8.9], [1200, 5.6], [1400, 2.9], [1600, 1.2], [1800, 0.4], [2000, 0.1]] },
         ], marks: [{ x: 422, y: 19.7, label: 'nejčastější rychlost 422 m/s' }], caption: 'Rozdělení rychlostí molekul dusíku. Při vyšší teplotě se vrchol posune k vyšším rychlostem a křivka se roztáhne a sníží. Plocha pod každou křivkou je stejná: všechny molekuly, 100 %.' },
         { type: 'p', text: 'Pro mnoho dějů je důležitý hlavně pravý „ocas“ křivky: hrstka molekul, které jsou mnohem rychlejší než průměr.' },
-        { type: 'diagram', id: 'maxwell-boltzmann', caption: 'Totéž rozdělení znáš z chemické kinetiky: jen molekuly s dostatečnou energií (za prahem) zreagují nebo uniknou z hladiny kapaliny.' },
+        { type: 'diagram', id: 'maxwell-boltzmann', caption: 'Totéž rozdělení, vynesené pro energie částic, znáš z chemické kinetiky: jen molekuly s dostatečnou energií (za prahem) zreagují nebo uniknou z hladiny kapaliny.' },
         { type: 'p', text: 'Právě tyhle nejrychlejší molekuly stojí za několika jevy, které znáš:' },
         { type: 'iconlist', items: [
           { icon: 'steam', title: 'Vypařování', text: 'i ve studené vodě má pár molekul dost energie, aby unikly z hladiny' },
           { icon: 'planet', title: 'Únik z atmosféry', text: 'nejrychlejší molekuly lehkých plynů (vodík, helium) unikají ze Země do vesmíru' },
           { icon: 'flame', title: 'Rychlost reakcí', text: 's teplotou prudce roste podíl velmi rychlých molekul, a tak i rychlost reakcí' },
         ] },
-        { type: 'callout', variant: 'fact', text: 'Rychlosti molekul poprvé změřil Otto Stern v roce 1920. Atomy stříbra vylétaly z rozžhaveného drátku k otáčejícímu se válci. Čím pomalejší atom, tím víc se válec mezitím pootočil a tím dál od středu dopadl.' },
+        { type: 'callout', variant: 'fact', text: 'Rychlosti molekul poprvé změřil Otto Stern v roce 1920. Atomy stříbra vylétaly z rozžhaveného drátku k otáčejícímu se válci. Čím pomalejší atom, tím víc se válec mezitím pootočil a tím dál od místa, kam by atom dopadl při stojícím válci, zanechal stopu.' },
         { type: 'p', text: 'S teplotou se celé rozdělení posouvá k vyšším rychlostem. Jak přesně souvisí teplota s pohybem molekul, ukáže další oddíl.' },
         { type: 'check', question: { kind: 'tf', q: 'Při dané teplotě mají všechny molekuly plynu stejnou rychlost.', answer: false, explain: 'Molekuly si při srážkách vyměňují energii, takže jejich rychlosti jsou rozdělené od téměř nulových po velmi vysoké (Maxwellovo rozdělení). Teplota určuje jen průměrnou energii.' } },
       ],
@@ -213,7 +213,7 @@ const f10_2: Lesson = {
     'Počítat s měrnou, molární i celkovou tepelnou kapacitou',
     'Sestavit kalorimetrickou rovnici pro více těles včetně tání ledu',
   ],
-  hook: 'Hodíš do coly pár kostek ledu a za minutu je ledová. Stačilo by místo toho přilít stejné množství vody o 0 °C? Vůbec ne – a za chvíli spočítáš, proč led chladí skoro pětkrát líp.',
+  hook: 'Hodíš do coly pár kostek ledu a za minutu je ledová. Stačilo by místo toho přilít stejné množství vody o 0 °C? Vůbec ne – a za chvíli spočítáš, proč led chladí několikrát líp.',
   sections: [
     {
       title: 'Vnitřní energie ideálního plynu',
@@ -327,7 +327,7 @@ const f10_2: Lesson = {
       title: 'Skupenská tepla',
       icon: 'ice',
       blocks: [
-        { type: 'p', text: 'Kalorimetrická rovnice zatím počítala jen se změnou teploty. Při tání nebo varu ale přijímá látka teplo, a její teplota se přitom nemění. Energie se spotřebuje na roztržení vazeb mezi částicemi, tedy na zvětšení jejich **potenciální** energie. Toto teplo je **skupenské teplo** L. Je úměrné hmotnosti, takže stačí znát teplo na jeden kilogram:' },
+        { type: 'p', text: 'Kalorimetrická rovnice zatím počítala jen se změnou teploty. Při tání nebo varu ale přijímá látka teplo, a její teplota se přitom nemění. Energie se spotřebuje na uvolnění (při varu až roztržení) vazeb mezi částicemi, tedy na zvětšení jejich **potenciální** energie. Toto teplo je **skupenské teplo** L. Je úměrné hmotnosti, takže stačí znát teplo na jeden kilogram:' },
         { type: 'formula', text: 'L_{t} = m · l_{t}     L_{v} = m · l_{v}', caption: 'L skupenské teplo (J), m hmotnost (kg), l měrné skupenské teplo (J/kg); pro vodu l_{t} = 334 kJ/kg (tání), l_{v} = 2,26 MJ/kg (var při 100 °C)' },
         { type: 'p', text: 'Jak velká ta čísla jsou ve srovnání s obyčejným ohřevem? Sleduj, jak roste teplota kilogramu ledu, když mu stále dodáváš teplo:' },
         { type: 'graph', x: { label: 'Q', unit: 'kJ', min: 0, max: 3200, step: 400 }, y: { label: 't', unit: '°C', min: -20, max: 120, step: 20 }, series: [
@@ -425,17 +425,17 @@ const f10_3: Lesson = {
         { type: 'iconlist', items: [
           { icon: 'atom', title: 'Bodové molekuly', text: 'rozměry molekul jsou zanedbatelné proti jejich vzdálenostem' },
           { icon: 'cross', title: 'Žádné síly na dálku', text: 'molekuly na sebe působí jen při srážkách' },
-          { icon: 'balloon', title: 'Pružné srážky', text: 'při srážkách s sebou i se stěnou se kinetická energie neztrácí' },
+          { icon: 'balloon', title: 'Pružné srážky', text: 'při vzájemných srážkách i při nárazech na stěnu se celková kinetická energie nemění' },
           { icon: 'arrow-cycle', title: 'Chaotický pohyb', text: 'molekuly létají všemi směry, žádný směr není zvýhodněný' },
         ] },
         { type: 'p', text: 'Každý model má své hranice. Vyplatí se vědět, kdy mu můžeš věřit a kdy už ne:' },
         { type: 'compare', columns: [
           { title: 'Plyn je skoro ideální', icon: 'check', tone: 'good', points: ['nízký tlak (do několika MPa)', 'vysoká teplota, daleko od zkapalnění', 'vzduch, helium, dusík za pokojových podmínek'] },
-          { title: 'Model selhává', icon: 'warning', tone: 'bad', points: ['obrovský tlak: molekuly zabírají velkou část objemu', 'teplota blízko bodu zkapalnění: přitažlivé síly se projeví', 'vodní pára těsně nad hladinou vroucí vody'] },
+          { title: 'Model selhává', icon: 'warning', tone: 'bad', points: ['obrovský tlak: molekuly zabírají velkou část objemu', 'teplota blízká teplotě zkapalnění: přitažlivé síly se projeví', 'vodní pára těsně nad hladinou vroucí vody'] },
         ], caption: 'Kdy smíš počítat s ideálním plynem' },
-        { type: 'callout', variant: 'fact', text: 'Ve vzduchu v tvém pokoji zabírají samotné molekuly jen asi desetinu promile objemu. Zbytek je prázdný prostor, a proto je model „bodových molekul“ tak dobrý.' },
+        { type: 'callout', variant: 'fact', text: 'Ve vzduchu v tvém pokoji zabírají samotné molekuly méně než tisícinu objemu. Zbytek je prázdný prostor, a proto je model „bodových molekul“ tak dobrý.' },
         { type: 'p', text: 'Model máme. Teď z něj vyvodíme první důležitou věc: proč plyn vůbec tlačí na stěny nádoby.' },
-        { type: 'check', question: { kind: 'tf', q: 'Za pokojové teploty a atmosférického tlaku se vzduch chová téměř jako ideální plyn.', answer: true, explain: 'Molekuly jsou daleko od sebe a teplota je daleko nad bodem zkapalnění dusíku i kyslíku, takže předpoklady modelu jsou splněny velmi dobře.' } },
+        { type: 'check', question: { kind: 'tf', q: 'Za pokojové teploty a atmosférického tlaku se vzduch chová téměř jako ideální plyn.', answer: true, explain: 'Molekuly jsou daleko od sebe a teplota je daleko nad teplotou varu (zkapalnění) dusíku i kyslíku, takže předpoklady modelu jsou splněny velmi dobře.' } },
       ],
     },
     {
@@ -458,7 +458,7 @@ const f10_3: Lesson = {
           '(N / V) · m_{0} je hmotnost molekul v 1 m^{3}, tedy hustota ρ: p = 1/3 · ρ · v_{k}^{2} (počet ani hmotnost molekul tak nemusíme znát zvlášť)',
           'v_{k} = √(3 · p / ρ) = √(3 · 101 000 Pa / 1,2 kg/m^{3})',
           'v_{k} = √(252 500) m/s',
-        ], answer: 'v_{k} ≈ 500 m/s, stejně jako z teploty v minulé lekci.' },
+        ], answer: 'v_{k} ≈ 500 m/s, stejně jako z teploty v lekci o kinetické teorii.' },
         { type: 'p', text: 'Dvě úplně různá měření, přes teplotu a přes tlak a hustotu, dala stejnou rychlost. To je silný důkaz, že model ideálního plynu funguje.' },
         { type: 'callout', variant: 'remember', text: 'Dosadíš-li E_{0} = 3/2 · k · T, dostaneš p = (N / V) · k · T. ==Tlak roste s počtem molekul v objemu a s teplotou.== To je jádro stavové rovnice.' },
         { type: 'p', text: 'Tlak tedy vysvětlíme nárazy molekul. Z toho už je jen krůček k rovnici, která spojí tlak, objem a teplotu.' },
@@ -528,7 +528,7 @@ const f10_3: Lesson = {
         { type: 'graph', x: { label: 't', unit: '°C', min: -300, max: 200, step: 50 }, y: { label: 'V', unit: 'dm³', min: 0, max: 5, step: 1 }, series: [
           { label: 'naměřeno', tone: 'b', points: [[-50, 2.23], [0, 2.73], [50, 3.23], [100, 3.73], [150, 4.23], [200, 4.73]] },
           { label: 'prodloužení přímky', style: 'dashed', tone: 'c', points: [[-273.15, 0], [-50, 2.23]] },
-        ], marks: [{ x: -273.15, y: 0, label: '−273,15 °C = 0 K' }], caption: 'Izobarický děj: objem plynu roste lineárně s teplotou. Prodloužená přímka protne osu v −273,15 °C. Tak byla absolutní nula poprvé odhadnuta.' },
+        ], marks: [{ x: -273.15, y: 0, label: '−273,15 °C = 0 K' }], caption: 'Izobarický děj: objem plynu roste lineárně s teplotou. Prodloužená přímka protne osu v −273,15 °C. Takovým prodloužením se absolutní nula historicky odhadovala.' },
         { type: 'p', text: 'Pro srovnání s izotermou zakreslíme oba děje i do p–V diagramu:' },
         { type: 'graph', x: { label: 'V', unit: 'dm³', min: 0, max: 8, step: 1 }, y: { label: 'p', unit: 'kPa', min: 0, max: 600, step: 100 }, series: [
           { label: 'izobara (p = 200 kPa)', tone: 'b', points: [[2, 200], [6, 200]] },
@@ -544,7 +544,7 @@ const f10_3: Lesson = {
         { type: 'example', title: 'Sprej v autě', problem: 'Plechovka spreje má při 20 °C tlak 300 kPa. Jaký tlak bude mít v autě na slunci při 60 °C? A v ohni při 400 °C?', steps: [
           'p_{2} = p_{1} · T_{2} / T_{1} = 300 kPa · 333 / 293 ≈ 341 kPa',
           'p_{3} = 300 kPa · 673 / 293 ≈ 689 kPa',
-        ], answer: 'Při 60 °C asi 340 kPa, v ohni skoro 700 kPa – plechovka může vybuchnout. Proto se na ně píše „nevystavujte teplotám nad 50 °C“.' },
+        ], answer: 'Při 60 °C asi 340 kPa, v ohni skoro 700 kPa – plechovka může vybuchnout. Proto se na spreje píše „nevystavujte teplotám nad 50 °C“.' },
         { type: 'callout', variant: 'tip', text: 'Pozor na jména: v anglických učebnicích se izobarickému zákonu říká *Charles’s law* a izochorickému *Gay-Lussac’s law*, tedy obráceně než u nás. Bezpečnější je pamatovat si vzorce, ne jména.' },
         { type: 'p', text: 'Ve všech dosavadních dějích plyn mohl vyměňovat teplo s okolím. Co se stane, když tuhle cestu zavřeme?' },
         { type: 'check', question: { kind: 'number', q: 'Vzduch v pokoji (60 m^{3}, 17 °C) ohřeješ na 22 °C. Tlak se nemění, protože vzduch může unikat škvírami. Kolik m^{3} vzduchu (měřeno při 22 °C) z pokoje unikne?', answer: 1.03, tolerance: 0.03, unit: 'm³', explain: 'Izobarický děj: V_{2} = 60 m^{3} · 295 / 290 ≈ 61,03 m^{3}. Rozdíl, asi 1,03 m^{3}, se do pokoje nevejde a unikne ven.' } },
@@ -555,7 +555,7 @@ const f10_3: Lesson = {
       icon: 'cloud',
       blocks: [
         { type: 'p', text: 'Zbývá čtvrtý děj, při kterém se mění tlak, objem i teplota najednou. **Adiabatický děj** probíhá bez tepelné výměny s okolím: plyn je tepelně izolovaný, nebo se děj odehraje tak rychle, že teplo nestihne projít stěnami. ==Při adiabatickém stlačení se plyn ohřívá, při rozpínání ochlazuje.== Proto tlak při stlačení roste rychleji než u izotermy a vzorec má v exponentu konstantu κ:' },
-        { type: 'formula', text: 'p · V^{κ} = konst.', caption: 'Poissonův zákon; κ = C_{p} / C_{V} je Poissonova konstanta: pro vzduch 1,4, pro helium 1,67. Platí také T · V^{κ − 1} = konst.' },
+        { type: 'formula', text: 'p · V^{κ} = konst.', caption: 'Poissonův zákon; κ = C_{p} / C_{V} je Poissonova konstanta (poměr molárních tepelných kapacit při stálém tlaku a stálém objemu, viz příští lekce): pro vzduch 1,4, pro helium 1,67. Platí také T · V^{κ − 1} = konst.' },
         { type: 'p', text: 'Rozdíl proti izotermickému ději je nejlépe vidět, když obě křivky vyjdou ze stejného bodu:' },
         { type: 'graph', x: { label: 'V', unit: 'dm³', min: 0, max: 10, step: 2 }, y: { label: 'p', unit: 'kPa', min: 0, max: 600, step: 100 }, series: [
           { label: 'izoterma', style: 'smooth', tone: 'b', points: [[2, 500], [2.5, 400], [3, 333.3], [4, 250], [5, 200], [6, 166.7], [7, 142.9], [8, 125], [10, 100]] },
@@ -615,7 +615,7 @@ const f10_4: Lesson = {
     'Aplikovat první zákon na izochorický, izobarický, izotermický a adiabatický děj',
     'Vysvětlit, proč je ohřev plynu při stálém tlaku náročnější než při stálém objemu (C_{p} > C_{V})',
   ],
-  hook: 'Při pumpování kola se hustilka zahřeje. Při vypouštění bombičky se šlehačkou ti ruka skoro přimrzne. Ani v jednom případě jsi nic nezahříval ani nechladil. Odkud se bere teplo a kam mizí? Odpověď je v jediné rovnici.',
+  hook: 'Při pumpování kola se hustilka zahřeje. Při vypouštění bombičky se šlehačkou ti ruka skoro přimrzne. Ani v jednom případě jsi nic nezahříval ani nechladil. Odkud se bere energie, která hustilku ohřeje, a kam mizí energie plynu z bombičky? Odpověď je v jediné rovnici.',
   sections: [
     {
       title: 'Zákon zachování energie pro plyn',
@@ -818,7 +818,7 @@ const f10_5: Lesson = {
           { label: 'cyklus A → B → C → D → A', area: true, tone: 'b', points: [[2, 300], [6, 300], [6, 100], [2, 100], [2, 300]] },
         ], marks: [{ x: 2, y: 300, label: 'A' }, { x: 6, y: 300, label: 'B' }, { x: 6, y: 100, label: 'C' }, { x: 2, y: 100, label: 'D' }], caption: 'Při rozpínání A → B koná plyn práci 300 kPa · 4 dm³ = 1 200 J, při stlačení C → D na něm okolí vykoná 100 kPa · 4 dm³ = 400 J. Celková práce za cyklus je 800 J – obsah vybarvené plochy.' },
         { type: 'callout', variant: 'remember', text: '==Práce vykonaná za jeden cyklus je rovna obsahu plochy uzavřené křivkou v p–V diagramu.== Probíhá-li cyklus ve směru hodinových ručiček, plyn práci koná (motor); proti směru na něm práci konáme (chladnička).' },
-        { type: 'p', text: 'Po celém cyklu je plyn ve stejném stavu jako na začátku, a proto ΔU = 0. Z prvního zákona pak plyne, že práce za cyklus se rovná rozdílu přijatého a odevzdaného tepla: W = Q_{1} − Q_{2}. Plyn tedy musí část tepla vždycky někam odevzdat – a právě z toho vychází stavba každého motoru.' },
+        { type: 'p', text: 'Po celém cyklu je plyn ve stejném stavu jako na začátku, a proto ΔU = 0. Z prvního zákona pak plyne, že práce za cyklus se rovná rozdílu přijatého a odevzdaného tepla: W = Q_{1} − Q_{2}. U strojů počítáme s velikostmi: W je práce, kterou plyn za cyklus vykoná (v minulé lekci W′), Q_{1} teplo přijaté a Q_{2} teplo odevzdané. Plyn tedy musí část tepla vždycky někam odevzdat – a právě z toho vychází stavba každého motoru.' },
         { type: 'check', question: { kind: 'number', q: 'Cyklus má v p–V diagramu tvar trojúhelníku s vrcholy (1 dm³; 100 kPa), (4 dm³; 100 kPa) a (1 dm³; 400 kPa). Jakou práci vykoná plyn za jeden cyklus?', answer: 450, tolerance: 2, unit: 'J', explain: 'Obsah trojúhelníku: ½ · 3 dm³ · 300 kPa = 450 J.' } },
       ],
     },
@@ -841,7 +841,7 @@ const f10_5: Lesson = {
         { type: 'example', title: 'Kolik tepla odchází z auta', problem: 'Motor auta dává užitečný výkon 60 kW při účinnosti 30 %. Jaký výkon dodává palivo a kolik tepla za sekundu odchází do okolí?', steps: [
           'Užitečný výkon je jen 30 % výkonu paliva, proto dělíme: P_{1} = P / η = 60 kW / 0,30 = 200 kW',
           'Odpadní tepelný výkon: 200 kW − 60 kW = 140 kW',
-        ], answer: 'Palivo dodává 200 kW, do okolí odchází 140 kW – jako by auto topilo stovkou rychlovarných konvic.' },
+        ], answer: 'Palivo dodává 200 kW, do okolí odchází 140 kW – jako by auto topilo asi sedmdesáti rychlovarnými konvicemi.' },
         { type: 'p', text: 'Účinnost motoru umíme spočítat. Je ale nízká jen proto, že motory nejsou dokonalé, nebo existuje hranice, kterou nepřekoná ani ideální stroj?' },
         { type: 'check', question: { kind: 'number', q: 'Motor vykoná za cyklus práci 400 J a chladiči odevzdá 1 200 J. Jaká je jeho účinnost?', answer: 25, tolerance: 0.5, unit: '%', explain: 'Q_{1} = W + Q_{2} = 400 + 1 200 = 1 600 J; η = 400 / 1 600 = 0,25 = 25 %.' } },
       ],
@@ -909,7 +909,7 @@ const f10_5: Lesson = {
         { type: 'compare', columns: [
           { title: 'Probíhá samo od sebe', icon: 'check', tone: 'good', points: ['horký čaj chladne na teplotu pokoje', 'vůně se rozptýlí po místnosti', 'led v teplé místnosti taje', 'brzdící kolo se zahřeje'] },
           { title: 'Samo od sebe nikdy', icon: 'cross', tone: 'bad', points: ['čaj se ohřeje od chladnějšího stolu', 'vůně se sama slije zpět do lahvičky', 'voda v teplé místnosti zmrzne', 'horké kolo se samo roztočí a ochladí'] },
-        ], caption: 'Všechny děje vlevo zvětšují entropii. Děje vpravo by energii neporušily, ale entropii by snížily.' },
+        ], caption: 'Všechny děje vlevo zvětšují entropii. Děje vpravo by zákon zachování energie neporušily, ale entropii by snížily.' },
         { type: 'p', text: 'Proč je rozptýlený stav tak „oblíbený“? Podívej se na plyn, kterému otevřeme celou nádobu:' },
         { type: 'particles', boxes: [
           { label: 'na začátku', items: [{ species: 'N2', count: 8 }], state: 'gas', note: 'plyn jen v levé polovině' },
@@ -934,7 +934,7 @@ const f10_5: Lesson = {
           ['paroplynová elektrárna', '≈ 60 %', 'plynová turbína + parní turbína za sebou'],
         ], caption: 'Účinnosti tepelných strojů (pro srovnání: elektromotor má přes 90 %, protože to není tepelný stroj)' },
         { type: 'p', text: 'Elektrárny v tabulce se liší palivem, ale princip mají stejný. Porovnej je s elektrárnami, které tepelný motor nepotřebují:' },
-        { type: 'diagram', id: 'power-plants', caption: 'Tepelná a jaderná elektrárna mají stejné jádro: tepelný motor s turbínou. Vodní, větrná a solární elektrárna Carnotovou mezí omezené nejsou.' },
+        { type: 'diagram', id: 'power-plants', caption: 'Tepelná a jaderná elektrárna mají stejné jádro: tepelný motor s turbínou. Vodní, větrná a fotovoltaická elektrárna Carnotovou mezí omezené nejsou.' },
         { type: 'p', text: 'Účinnost 33 % zní abstraktně. Spočítejme, kolik tepla to znamená u skutečného jaderného bloku:' },
         { type: 'example', title: 'Kam jde teplo z jaderného bloku', problem: 'Blok jaderné elektrárny dodává elektrický výkon 1 000 MW při účinnosti 33 %. Jaký tepelný výkon má reaktor a kolik odchází do chladicích věží?', steps: [
           'Elektrický výkon je jen třetina tepelného: P_{1} = P / η = 1 000 MW / 0,33 ≈ 3 000 MW',
@@ -944,11 +944,11 @@ const f10_5: Lesson = {
         { type: 'iconlist', items: [
           { icon: 'heat', title: 'Teplárna (kogenerace)', text: 'odpadní teplo ohřívá vodu pro dálkové vytápění měst; využije se až 85 % energie paliva' },
           { icon: 'factory', title: 'Paroplynový cyklus', text: 'horké plyny z plynové turbíny ještě vyrobí páru pro druhou turbínu' },
-          { icon: 'car', title: 'Rekuperace a turbodmychadlo', text: 'energie výfukových plynů stlačí nasávaný vzduch' },
+          { icon: 'car', title: 'Turbodmychadlo', text: 'energie výfukových plynů stlačí nasávaný vzduch' },
         ] },
         { type: 'p', text: 'Termodynamiku plynů a strojů máme za sebou. V příští lekci se vrátíme k pevným látkám a kapalinám: proč se tyč protáhne, proč most potřebuje dilatační spáry a jak voda vzlíná v ubrousku.' },
         { type: 'game', gameId: 'energy-chain', text: 'Sestav energetický řetězec tepelné elektrárny a motoru a spočítej, kolik energie dojde až na konec.' },
-        { type: 'check', question: { kind: 'multi', q: 'Které změny mohou zvýšit účinnost tepelné elektrárny?', options: ['vyšší teplota páry vstupující do turbíny', 'chladnější chladicí voda', 'využití odpadního tepla k vytápění', 'nižší teplota páry', 'teplejší chladič'], answers: [0, 1, 2], explain: 'Carnotova mez roste s T_{1} a s klesající T_{2}. Kogenerace nezvýší účinnost výroby elektřiny, ale zvýší celkové využití energie paliva.' } },
+        { type: 'check', question: { kind: 'multi', q: 'Které změny mohou zvýšit účinnost tepelné elektrárny nebo celkové využití energie paliva?', options: ['vyšší teplota páry vstupující do turbíny', 'chladnější chladicí voda', 'využití odpadního tepla k vytápění', 'nižší teplota páry', 'teplejší chladič'], answers: [0, 1, 2], explain: 'Carnotova mez roste s T_{1} a s klesající T_{2}. Kogenerace nezvýší účinnost výroby elektřiny, ale zvýší celkové využití energie paliva.' } },
       ],
     },
   ],
@@ -964,7 +964,7 @@ const f10_5: Lesson = {
   quiz: [
     { kind: 'tf', q: 'Tepelný motor s účinností 100 % by neporušil první termodynamický zákon, ale porušil by druhý.', answer: true, explain: 'Energie by se zachovala (Q_{1} = W), ale motor by celé teplo změnil na práci bez chladiče, což zakazuje Kelvinova–Planckova formulace druhého zákona.' },
     { kind: 'number', q: 'Jaká je nejvyšší možná účinnost motoru, který pracuje mezi teplotami 327 °C a 27 °C?', answer: 50, tolerance: 0.5, unit: '%', explain: 'T_{1} = 600 K, T_{2} = 300 K: η_{max} = 1 − 300/600 = 50 %.' },
-    { kind: 'choice', q: 'Co nejvíc zvýší Carnotovu účinnost motoru?', options: ['vyšší teplota ohřívače', 'větší objem válců', 'jiný pracovní plyn', 'vyšší teplota chladiče'], answer: 0, explain: 'η_{max} = 1 − T_{2}/T_{1} závisí jen na teplotách. Vyšší T_{1} (nebo nižší T_{2}) účinnost zvýší, na plynu ani velikosti nezáleží.' },
+    { kind: 'choice', q: 'Která změna zvýší Carnotovu účinnost motoru?', options: ['vyšší teplota ohřívače', 'větší objem válců', 'jiný pracovní plyn', 'vyšší teplota chladiče'], answer: 0, explain: 'η_{max} = 1 − T_{2}/T_{1} závisí jen na teplotách. Vyšší T_{1} (nebo nižší T_{2}) účinnost zvýší, na plynu ani velikosti nezáleží.' },
     { kind: 'number', q: 'Motor má účinnost 25 % a dává užitečný výkon 30 kW. Jaký tepelný výkon odchází do okolí?', answer: 90, tolerance: 0.5, unit: 'kW', explain: 'P_{1} = 30 / 0,25 = 120 kW; odpadní výkon 120 − 30 = 90 kW.' },
     { kind: 'number', q: 'Jaký je teoreticky nejvyšší topný faktor tepelného čerpadla, které topí vodou o 45 °C, když je venku −5 °C?', answer: 6.36, tolerance: 0.05, explain: 'ε_{t, max} = T_{1} / (T_{1} − T_{2}) = 318 / 50 ≈ 6,36.' },
     { kind: 'match', q: 'Přiřaď ke stroji jeho typickou účinnost.', pairs: [
@@ -988,7 +988,7 @@ const f10_6: Lesson = {
     'Přečíst diagram napětí–deformace a spočítat teplotní roztažnost Δl = α · l_{0} · Δt',
     'Vysvětlit povrchové napětí, smáčení a kapilaritu a spočítat kapilární elevaci',
   ],
-  hook: 'Ocelové lano lanovky unese kabinu plnou lidí, pavoučí vlákno je na svou tloušťku ještě pevnější a vodoměrka běhá po vodě, jako by to byla trampolína. Všechno jsou to příběhy o tom, jak pevně se drží částice pohromadě.',
+  hook: 'Ocelové lano lanovky unese kabinu plnou lidí, pavoučí vlákno je na svou hmotnost ještě pevnější a vodoměrka běhá po vodě, jako by to byla trampolína. Všechno jsou to příběhy o tom, jak pevně se drží částice pohromadě.',
   sections: [
     {
       title: 'Krystalické a amorfní látky',
@@ -1007,7 +1007,7 @@ const f10_6: Lesson = {
           { label: 'krystalická látka (naftalen)', tone: 'b', points: [[0, 20], [3, 80], [7, 80], [9, 110]] },
           { label: 'amorfní látka (vosk)', style: 'smooth', tone: 'a', points: [[0, 20], [2, 42], [4, 62], [6, 80], [8, 97], [10, 112]] },
         ], marks: [{ x: 5, y: 80, label: 'tání při 80 °C' }], caption: 'Krystalická látka taje při určité teplotě (vodorovný úsek). Amorfní látka postupně měkne a přesnou teplotu tání nemá.' },
-        { type: 'callout', variant: 'fact', text: 'Křemíkový monokrystal pro čipy se táhne z taveniny jako obří válec o průměru 30 cm a délce přes metr. Každý atom v něm sedí na svém místě mřížky – odchylek je méně než jedna na miliardu.' },
+        { type: 'callout', variant: 'fact', text: 'Křemíkový monokrystal pro čipy se táhne z taveniny jako obří válec o průměru 30 cm a délce přes metr. Celý válec je jediný krystal: mřížka v něm pokračuje bez přerušení od jednoho konce ke druhému.' },
         { type: 'p', text: 'Uspořádání částic známe. Co se s ním stane, když za pevnou látku zatáhneme nebo na ni zatlačíme?' },
         { type: 'check', question: { kind: 'choice', q: 'Která z látek je amorfní?', options: ['okenní sklo', 'kuchyňská sůl', 'měděný drát', 'led'], answer: 0, explain: 'Sklo nemá pravidelnou mřížku a při zahřívání postupně měkne. Sůl, měď i led jsou krystalické.' } },
       ],
@@ -1029,10 +1029,10 @@ const f10_6: Lesson = {
         { type: 'p', text: 'Při malých deformacích se materiál chová jako pružina: dvojnásobné napětí dá dvojnásobné prodloužení.' },
         { type: 'formula', text: 'σ_{n} = E · ε', caption: 'Hookův zákon pro pružnou deformaci; E modul pružnosti v tahu (Youngův modul), jednotka Pa, u kovů v GPa' },
         { type: 'p', text: 'Čím větší modul E, tím je materiál tužší. Porovnej tři kovy:' },
-        { type: 'graph', x: { label: 'ε', unit: '‰', min: 0, max: 2, step: 0.5 }, y: { label: 'σ_{n}', unit: 'MPa', min: 0, max: 450, step: 100 }, series: [
-          { label: 'ocel (E = 210 GPa)', tone: 'a', points: [[0, 0], [2, 420]] },
-          { label: 'měď (E = 120 GPa)', tone: 'c', points: [[0, 0], [2, 240]] },
-          { label: 'hliník (E = 70 GPa)', tone: 'b', points: [[0, 0], [2, 140]] },
+        { type: 'graph', x: { label: 'ε', unit: '‰', min: 0, max: 1, step: 0.25 }, y: { label: 'σ_{n}', unit: 'MPa', min: 0, max: 250, step: 50 }, series: [
+          { label: 'ocel (E = 210 GPa)', tone: 'a', points: [[0, 0], [1, 210]] },
+          { label: 'měď (E = 120 GPa)', tone: 'c', points: [[0, 0], [1, 120]] },
+          { label: 'hliník (E = 70 GPa)', tone: 'b', points: [[0, 0], [1, 70]] },
         ], marks: [{ x: 1, y: 210, label: 'ocel: 1 ‰ ↔ 210 MPa' }], caption: 'V oblasti pružné deformace je napětí přímo úměrné relativnímu prodloužení. Směrnice přímky je modul pružnosti E.' },
         { type: 'p', text: 'O kolik se tedy protáhne ocelový drát, na kterém visí zhruba 21 kg?' },
         { type: 'example', title: 'Ocelový drát', problem: 'Ocelový drát délky 2 m a průřezu 1 mm^{2} je zatížen silou 210 N. O kolik se prodlouží? (E = 210 GPa)', steps: [
@@ -1108,7 +1108,7 @@ const f10_6: Lesson = {
         { type: 'example', title: 'Když se kolejnice nemůže roztáhnout', problem: 'Dnešní tratě mají kolejnice svařené a pevně uchycené. Jaké napětí v nich vznikne, když se ohřejí o 40 K? (E = 210 GPa)', steps: [
           'Kolejnice se chce prodloužit o α · Δt své délky, ale nemůže – je to, jako bychom ji o tolik stlačili: ε = α · Δt = 12·10^{−6} · 40 = 4,8·10^{−4}',
           'σ_{n} = E · ε = 2,1·10^{11} Pa · 4,8·10^{−4}',
-        ], answer: 'σ_{n} ≈ 100 MPa – velké, ale ocel ho snese. Pražce a štěrk musí kolejnici udržet, jinak se v horku zkroutí.' },
+        ], answer: 'σ_{n} ≈ 100 MPa – velké, ale ocel ho snese. Pražce a štěrk musí kolejnici udržet, jinak kolej v horku vybočí do strany.' },
         { type: 'callout', variant: 'fact', text: 'Eiffelova věž je v létě asi o 10 až 15 cm vyšší než v zimě. Objemová roztažnost je zhruba trojnásobkem délkové: β ≈ 3 · α.' },
         { type: 'p', text: 'Pevné látky drží tvar díky silám mezi částicemi. U kapalin tytéž síly vytvoří na hladině zvláštní „blánu“.' },
         { type: 'check', question: { kind: 'number', q: 'Hliníková tyč má při 20 °C délku 2 m. O kolik milimetrů se prodlouží při ohřátí na 120 °C? (α = 24·10^{−6} K^{−1})', answer: 4.8, tolerance: 0.05, unit: 'mm', explain: 'Δl = 24·10^{−6} · 2 m · 100 K = 4,8·10^{−3} m = 4,8 mm.' } },
@@ -1217,7 +1217,7 @@ const f10_7: Lesson = {
     'Přečíst fázový diagram vody a najít v něm trojný a kritický bod',
     'Spočítat relativní vlhkost vzduchu a vysvětlit rosný bod, rosu, mlhu a oblaka',
   ],
-  hook: 'Na vrcholu Mount Everestu vře voda už při 70 °C, takže těstoviny se tam pořádně neuvaří. V tlakovém hrnci naopak vře až při 120 °C. Jak může mít jedna látka tolik bodů varu?',
+  hook: 'Na vrcholu Mount Everestu vře voda už kolem 70 °C, takže těstoviny se tam pořádně neuvaří. V tlakovém hrnci naopak vře až při 120 °C. Jak může mít jedna látka tolik různých teplot varu?',
   sections: [
     {
       title: 'Změny skupenství očima částic',
@@ -1273,7 +1273,7 @@ const f10_7: Lesson = {
         { type: 'example', title: 'Pot jako klimatizace', problem: 'Při běhu se ti odpaří 0,5 kg potu. Kolik tepla tělo ztratí? (l_{v} při 35 °C ≈ 2,4 MJ/kg)', steps: [
           'Pot se vypařuje při teplotě kůže, proto bereme l_{v} při 35 °C: L_{v} = m · l_{v} = 0,5 kg · 2,4 MJ/kg',
         ], answer: 'L_{v} = 1,2 MJ – bez pocení by se tvé tělo během hodinového běhu přehřálo o víc než 4 °C.' },
-        { type: 'p', text: 'Tabulka uvádí body varu „při normálním tlaku“. Proč na tlaku záleží, vysvětlí sytá pára.' },
+        { type: 'p', text: 'Tabulka uvádí teploty varu „při normálním tlaku“. Proč na tlaku záleží, vysvětlí sytá pára.' },
         { type: 'check', question: { kind: 'number', q: 'Kolik tepla potřebuješ, abys roztavil/a 0,5 kg olova o teplotě 27 °C? (c = 129 J/(kg·K), t_{t} = 327 °C, l_{t} = 23 kJ/kg)', answer: 30.9, tolerance: 0.3, unit: 'kJ', explain: 'Ohřátí: 0,5 · 129 · 300 J = 19,35 kJ. Tání: 0,5 · 23 kJ = 11,5 kJ. Celkem asi 30,9 kJ.' } },
       ],
     },
@@ -1305,7 +1305,7 @@ const f10_7: Lesson = {
           { title: 'Vypařování', icon: 'droplets', tone: 'b', points: ['při každé teplotě', 'jen z povrchu', 'kapalina se ochlazuje', 'rychlejší při vyšší teplotě, větším povrchu, ve větru a v suchém vzduchu'] },
           { title: 'Var', icon: 'steam', tone: 'a', points: ['jen při teplotě varu', 'v celém objemu (bubliny)', 'teplota se nemění, dokud je kapalina', 'teplota varu je taková, při níž p_{s} = vnější tlak'] },
         ] },
-        { type: 'p', text: 'Z podmínky varu plyne odpověď na otázku z úvodu: nižší vnější tlak znamená nižší bod varu, vyšší tlak vyšší. Pár příkladů:' },
+        { type: 'p', text: 'Z podmínky varu plyne odpověď na otázku z úvodu: nižší vnější tlak znamená nižší teplotu varu, vyšší tlak vyšší. Pár příkladů:' },
         { type: 'iconlist', items: [
           { icon: 'mountain', title: 'Mount Everest', text: 'tlak asi 33 kPa, voda vře kolem 71 °C' },
           { icon: 'mountain', title: 'Sněžka', text: 'tlak asi 83 kPa, voda vře kolem 95 °C' },
@@ -1332,7 +1332,7 @@ const f10_7: Lesson = {
         { type: 'keyterms', items: [
           { term: '**Trojný bod**', def: 'jediný stav, v němž jsou v rovnováze všechna tři skupenství; pro vodu 0,01 °C a 611 Pa' },
           { term: '**Kritický bod**', def: 'konec křivky syté páry; nad ním nelze rozlišit kapalinu a plyn (nadkritická tekutina); pro vodu 374 °C a 22,1 MPa' },
-          { term: '**Anomálie vody**', def: 'led má menší hustotu než voda, proto vyšší tlak bod tání mírně snižuje (křivka tání jde doleva)' },
+          { term: '**Anomálie vody**', def: 'led má menší hustotu než voda, proto vyšší tlak teplotu tání mírně snižuje (křivka tání jde doleva)' },
         ] },
         { type: 'callout', variant: 'tip', text: 'Jak diagram číst: ohřev při stálém tlaku je **vodorovná** cesta zleva doprava; kde protne křivku, nastane skupenská přeměna. Změna tlaku při stálé teplotě je **svislá** cesta. Pod tlakem trojného bodu vede vodorovná cesta z ledu rovnou do páry.' },
         { type: 'p', text: 'Každá látka má svůj trojný a kritický bod. Porovnej vodu s oxidem uhličitým:' },
@@ -1346,7 +1346,7 @@ const f10_7: Lesson = {
           { icon: 'coffee', title: 'Lyofilizace', text: 'instantní káva i expediční jídlo: zmrazí se a ve vakuu pod 611 Pa led sublimuje' },
           { icon: 'factory', title: 'Nadkritický $CO2$', text: 'nad 31 °C a 7,4 MPa rozpouští kofein z kávových zrn bez chemikálií' },
         ] },
-        { type: 'callout', variant: 'warning', title: 'Mýtus o bruslení', text: 'Často se říká, že led pod bruslí taje díky tlaku. Tlak ale posune bod tání jen o pár desetin stupně. Bruslení umožňuje hlavně tenká kvazikapalná vrstva na povrchu ledu a teplo ze tření.' },
+        { type: 'callout', variant: 'warning', title: 'Mýtus o bruslení', text: 'Často se říká, že led pod bruslí taje díky tlaku. Tlak ale posune teplotu tání jen o pár desetin stupně. Bruslení umožňuje hlavně tenká kvazikapalná vrstva na povrchu ledu a teplo ze tření.' },
         { type: 'p', text: 'Fázový diagram popisuje čistou látku. V přírodě je ale vodní pára vždy smíchaná se vzduchem – a odtud se bere počasí.' },
         { type: 'check', question: { kind: 'choice', q: 'Při jakém tlaku nemůže existovat kapalná voda při žádné teplotě?', options: ['pod 611 Pa, tedy pod tlakem trojného bodu', 'pod 101,3 kPa', 'nad 22,1 MPa', 'pod 1 MPa'], answer: 0, explain: 'Pod tlakem trojného bodu se led přeměňuje rovnou na páru (sublimuje). Na tom stojí lyofilizace. Na Marsu je tlak kolem 600 Pa, a proto tam kapalná voda na povrchu nevydrží.' } },
       ],
@@ -1402,9 +1402,9 @@ const f10_7: Lesson = {
     { kind: 'match', q: 'Přiřaď ke stavu vody jeho tlak a teplotu.', pairs: [
       ['trojný bod', '0,01 °C a 611 Pa'],
       ['kritický bod', '374 °C a 22,1 MPa'],
-      ['normální bod varu', '100 °C a 101,3 kPa'],
-      ['normální bod tání', '0 °C a 101,3 kPa'],
-    ], explain: 'Normální body tání a varu jsou určeny při atmosférickém tlaku. Trojný bod leží při velmi nízkém tlaku, kritický bod při velmi vysokém.' },
+      ['teplota varu za normálního tlaku', '100 °C a 101,3 kPa'],
+      ['teplota tání za normálního tlaku', '0 °C a 101,3 kPa'],
+    ], explain: 'Teploty tání a varu v tabulkách se udávají při normálním tlaku 101,3 kPa. Trojný bod leží při velmi nízkém tlaku, kritický bod při velmi vysokém.' },
     { kind: 'multi', q: 'Co urychlí schnutí prádla na šňůře?', options: ['vyšší teplota vzduchu', 'vítr', 'nižší relativní vlhkost vzduchu', 'vyšší relativní vlhkost vzduchu', 'složení prádla do malé hromádky'], answers: [0, 1, 2], explain: 'Vypařování urychluje vyšší teplota, odnášení páry větrem a suchý vzduch. Vlhký vzduch a malý povrch ho zpomalují.' },
     { kind: 'number', q: 'Kolik gramů potu se musí odpařit, aby tělo ztratilo teplo 480 kJ? (l_{v} = 2,4 MJ/kg)', answer: 200, tolerance: 1, unit: 'g', explain: 'm = L / l_{v} = 480 kJ / 2 400 kJ/kg = 0,2 kg = 200 g.' },
     { kind: 'choice', q: 'Proč suchý led ($CO2$) na vzduchu nekape, ale rovnou mizí jako plyn?', options: ['atmosférický tlak je nižší než tlak trojného bodu $CO2$ (518 kPa)', '$CO2$ nemá žádné kapalné skupenství', 'suchý led má příliš vysokou teplotu tání', 've vzduchu je příliš málo $CO2$'], answer: 0, explain: 'Pod tlakem trojného bodu kapalina nemůže existovat, látka přechází z pevné fáze rovnou do plynné. Kapalný $CO2$ existuje jen pod tlakem nad 518 kPa, např. v bombičkách.' },
