@@ -7,7 +7,7 @@ Done for Fyzika; follow the same files (grep `fyzika` to see each one).
 - [ ] `src/courses/<id>/content.test.ts` – runs `validateLevel` on every level (copy fyzika's).
 - [ ] `src/courses/<id>/progress-ids.json` + `progress-ids.test.ts` – levels, lessons, games of the course (copy fyzika's; never remove an id later).
 - [ ] `src/core/registry.ts` – add the course to `COURSES` (replacing a placeholder entry).
-- [ ] `src/illustrations/catalog.ts` – new figure ids (grouped, comment per group) and icon ids; empty registries `src/illustrations/figures/<group>.tsx` spread into `figures/index.ts`; icon paths file spread into `ICON_PATHS`.
+- [ ] `src/illustrations/catalog.ts` – new figure ids (grouped, comment per group) and icon ids; empty registries `src/illustrations/figures/<group>.tsx` spread into `figures/index.ts` and added as a lazy group in `figures/lazy.ts` (`FIGURE_GROUPS` + the ids in `GROUP_FIGURES`); icon paths file spread into `ICON_PATHS`.
 - [ ] `src/games/registry.ts` – `courses.<id>` levels for reused games (`quickfire`, `swipe`, …) and new games with placeholder components; `GameId` in `core/types.ts`; game `kind` in `ui/GameCard.tsx` if new.
 - [ ] `src/lesson/experiments/catalog.ts` + `index.ts` – every experiment id of the syllabus registered, each with a stub `<id>.tsx` that passes `experiments.test.tsx`.
 - [ ] New parametric blocks: type in `core/types.ts`, rules in `core/validate.ts` (+ `VISUAL`), a stub renderer wired into `lesson/BlockView.tsx`.

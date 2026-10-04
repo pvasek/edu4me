@@ -20,7 +20,7 @@ Checks: `npx vitest run src/courses src/core` (validator + `checkFlow` teaching-
 
 ## Code
 
-- Figures: `src/illustrations/figures/<group>/`, ids in `src/illustrations/catalog.ts`; every catalog id needs a component (`catalog-complete.test.ts`).
+- Figures: `src/illustrations/figures/<group>/`, ids in `src/illustrations/catalog.ts`; every catalog id needs a component (`catalog-complete.test.ts`) and an entry in its group in `src/illustrations/figures/lazy.ts` (groups load lazily; `figure-groups.test.ts`).
 - Games: `src/games/<id>/`, registered per course in `src/games/registry.ts`.
 - In-lesson experiments (`experiment` block, "Vyzkoušej si"): `src/lesson/experiments/` (catalog, lazy registry, shared kit); every catalog id needs a component (`experiments.test.tsx`).
 - Brand: logo and wordmark in `src/assets/brand/` (true vector SVGs; a cream wordmark for dark mode), favicon in `public/`. Storage keys keep the old `edu4me-` prefix on purpose: renaming them would lose saved progress.

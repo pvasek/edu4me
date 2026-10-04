@@ -42,11 +42,10 @@
 - [x] `new-course` skill: the repeatable process for building a course (syllabus first)
 - [x] In-lesson experiments ("Vyzkoušej si") for all courses; parametric biology blocks `punnett` and `pedigree`
 - [x] Named biology figures, 43 biology icons, 12 level vignettes, model-organism emblems
+- [x] Figure groups load lazily, one chunk per group (`illustrations/figures/lazy.ts`): the lesson page chunk went from ~556 to ~77 kB gzip
 - [x] 6 biology mini-games (identification key, cell builder, body map, Punnett cross, DNA code, food web) + quickfire and swipe
 
 ## Next
-
-- Split the figure library into per-level chunks (the lesson bundle is ~160 kB gzip).
 
 - **Review pass by a chemistry, a physics and a biology teacher** of all content (typos, terminology, difficulty balance).
 - Spaced-repetition review mode built from the question pool.

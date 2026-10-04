@@ -1003,3 +1003,9 @@
   border-bottom: 1px solid var(--edge);
   font: 500 15px/1.45 var(--font-body);
 }
+
+/* placeholder while a lazily loaded figure group arrives */
+.figure-loading {
+  width: 100%;
+  min-height: 220px;
+}

@@ -1,4 +1,4 @@
-import { Component, type ComponentType, type ReactNode } from 'react'
+import { Component, Suspense, type ComponentType, type ReactNode } from 'react'
 import type { DiagramId } from '../core/types'
 import Bohr from './Bohr'
 import EnergyProfile from './EnergyProfile'
@@ -12,7 +12,7 @@ import Separation from './Separation'
 import States from './States'
 import TitrationCurve from './TitrationCurve'
 import { Fallback, type DiagramProps } from './util'
-import { FIGURE_COMPONENTS } from '../illustrations/figures'
+import { lazyFigure } from '../illustrations/figures/lazy'
 import './diagrams.css'
 
 /** One component per diagram id (see DiagramId in src/core/types.ts). */
@@ -49,11 +49,13 @@ class Guard extends Component<{ id: string; children: ReactNode }, { failed: boo
  * the caption. Unknown ids or invalid props render a small fallback note.
  */
 export function Diagram({ id, props }: { id: DiagramId; props?: Record<string, unknown> }) {
-  const Fig = Object.prototype.hasOwnProperty.call(FIGURE_COMPONENTS, id) ? FIGURE_COMPONENTS[id as keyof typeof FIGURE_COMPONENTS] : undefined
+  const Fig = lazyFigure(id)
   if (Fig)
     return (
       <Guard id={id} key={id}>
-        <Fig />
+        <Suspense fallback={<div className="figure-loading" aria-hidden="true" />}>
+          <Fig />
+        </Suspense>
       </Guard>
     )
   const C = Object.prototype.hasOwnProperty.call(DIAGRAMS, id) ? DIAGRAMS[id] : undefined

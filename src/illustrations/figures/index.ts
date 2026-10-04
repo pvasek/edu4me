@@ -17,7 +17,7 @@ import { FIGURES_BZ6 } from './bz6'
 import { FIGURES_BZ7 } from './bz7'
 import { FIGURES_BZ8 } from './bz8'
 
-/** All named figures. Each group file is owned by one figure agent. */
+/** All named figures, imported eagerly: for tests only. The app loads groups lazily (lazy.ts). Each group file is owned by one figure agent. */
 export const FIGURE_COMPONENTS: Partial<Record<FigureId, ComponentType>> = {
   ...FIGURES_L12,
   ...FIGURES_L35,

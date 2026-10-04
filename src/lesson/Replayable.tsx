@@ -43,7 +43,9 @@ export function Replayable({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (reduce || ownControls || animated || !body.current) return
-    return watchForAnimation(body.current, () => setAnimated(true))
+    const el = body.current
+    // a lazily loaded figure appears after mount: check for its own controls again
+    return watchForAnimation(el, () => (el.querySelector(CONTROLS) ? setOwnControls(true) : setAnimated(true)))
   }, [reduce, ownControls, animated])
 
   const enabled = !reduce && !ownControls && animated

@@ -46,8 +46,8 @@ export function HomePage() {
             Učení, které <span className="scribble">dává smysl</span>.
           </h1>
           <p className="lead">
-            {courses.map((c, i) => (i ? c.title.toLowerCase() : c.title)).join(' a ')}: krátké lekce s obrázky, kvízy a minihrami. {total} lekcí od základní
-            školy až po maturitu, sbírky prvků a jednotek a odznaky za každý krok.
+            {courses.map((c, i) => (i ? c.title.toLowerCase() : c.title)).join(', ').replace(/, ([^,]*)$/, ' a $1')}: krátké lekce s obrázky, kvízy a minihrami. {total} lekcí od základní
+            školy až po maturitu, sbírky prvků, jednotek a organismů a odznaky za každý krok.
           </p>
         </div>
         <MascotSays mood={doneCount ? 'happy' : 'wow'} size={88}>
