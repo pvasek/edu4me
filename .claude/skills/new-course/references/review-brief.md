@@ -39,13 +39,16 @@ Biology:
 - taxonomy ranks: říše, kmen (botany also oddělení), třída, řád, čeleď, rod, druh
 - *přírodní výběr*; *producent, konzument, rozkladač (destruent)*; *společenstvo*, *populace*, *ekosystém*
 - *pavoukovci* are not insects; *netopýr* and *velryba* are mammals; viruses are not cells
+- found in review: *druhový přívlastek* (not druhové jméno); *nespojitá* (not skoková) proměnlivost; *B-lymfocyt*; *krvomíza* in insects; first aid per the current ERC guidelines (2025: call 155 as soon as the person does not respond, check breathing with the dispatcher)
 
 Chemistry:
 - Czech systematic names with the right endings (oxid uhličitý, kyselina sírová, hydroxid sodný, síran měďnatý); *oxidační číslo*; *látkové množství* (mol), *molární hmotnost* (g/mol), *relativní atomová hmotnost* (no unit)
 - *prvek* / *sloučenina* / *směs*; *atom* / *molekula* / *ion* (*kationt*, *aniont*); *teplota tání / varu* (not bod); *skupenství*; *exotermní / endotermní*
 - safety notes as Czech schools teach them (*nejdřív voda, potom kyselina*)
+- found in review: *K_v* (not K_w) for the ion product of water; *kataláza*, *glukóza* (-óza); *retardační faktor R_f*; *čiření*; *atomová krystalová mřížka* (not "obří kovalentní"); "·" between two equations reads as multiplication (use ";")
 
 Physics:
 - *hmotnost* (kg) vs *tíha*, *tíhová síla* (N); never "váha" for mass in a physics sentence; *teplo* vs *teplota*; *tlak* vs *tlaková síla*; *rychlost* vs *velikost rychlosti*; *elektrické napětí* vs *proud*
 - Czech symbols and units (*t* for time, *s* for path at ZŠ, km/h, kWh); *g ≐ 10 N/kg* at ZŠ, 9,81 m/s² at gymnázium; ≐ for rounded results
 - misconceptions stated as facts (a "centrifugal force" pushing outward, heavier things falling faster, current "used up" in a bulb)
+- found in review: *kmit* (full period) vs *kyv* (half); light is *soustřeďována / rozptylována* (not "sbíhá"); a mirage is gradual *lom*, never *ohyb* (= diffraction); *teplota tání / varu* (not bod); *ekvivalentní dávka* (not dávkový ekvivalent); free-body diagrams must balance and be drawn to scale
