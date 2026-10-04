@@ -40,7 +40,7 @@ export const FACTS: Record<string, string> = {
   Ag: 'Vedu elektrický proud a teplo nejlépe ze všech kovů. Ze mě jsou šperky, příbory i olympijské medaile za druhé místo.',
   Sn: 'Pájí se mnou elektronika a tenkou vrstvou chráním plechovky od konzerv před rezavěním.',
   I: 'Když mě zahřeješ, fialově černé krystaly se rovnou mění na fialové páry. Přidávají mě do soli kvůli štítné žláze.',
-  Xe: 'Svítím v jasných výbojkách světlometů aut a pohání mě iontové motory vesmírných sond.',
+  Xe: 'Svítím v jasných výbojkách světlometů aut a jsem palivem iontových motorů vesmírných sond.',
   Cs: 'Kmity mých atomů v atomových hodinách určují, jak dlouho trvá jedna sekunda.',
   Ba: 'Moje sloučenina se pije před rentgenem žaludku a v ohňostrojích barvím plamen zeleně.',
   W: 'Mám nejvyšší teplotu tání ze všech kovů, přes 3 400 °C, proto ze mě byla vlákna žárovek.',

@@ -202,7 +202,7 @@ const L6_MISSIONS = at(6, [
     id: 'weak-acetic-dilute',
     category: 'weak',
     text: 'V kádince je 50 cm³ **kyseliny octové** 0,1 mol/dm³. Zřeď ji vodou na pH 3,0.',
-    hint: 'U HCl by stačilo zředit 1,3×. Tady víc!',
+    hint: 'Silnou kyselinu se stejným pH by stačilo zředit 1,3×. Tady víc!',
     start: fill(r6('ch3cooh'), 50),
     min: 3,
     max: 3,

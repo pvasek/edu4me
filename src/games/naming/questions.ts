@@ -361,7 +361,7 @@ function hydrateItem(c: Cation, a: Anion, n: number): NItem {
     formula: h.formula,
     name: h.name,
     wrong,
-    explain: `${cap(MULT[n])}hydrát = ${n} molekul vody na jednu jednotku ${base.name.split(' ')[0]}u. Voda se píše za tečku: $${h.formula}$. Název soli je ve 2. pádě.`,
+    explain: `${cap(MULT[n])}hydrát = ${n} ${n <= 4 ? 'molekuly' : 'molekul'} vody na jednu jednotku ${base.name.split(' ')[0]}u. Voda se píše za tečku: $${h.formula}$. Název soli je ve 2. pádě.`,
   }
 }
 

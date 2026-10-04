@@ -213,7 +213,7 @@ export const ORGANIC: OrganicItem[] = [
     'Karbonyl $-CO-$ uvnitř řetězce = keton, přípona **-on**. Propanon je aceton.'),
   o('ketone', 'butanon', 'CH3-CO-CH2-CH3', 'C4H8O', ['butanal', 'butan-2-ol', 'propanon'],
     ['CH3-CH2-CH2-CHO', 'CH3-CH(OH)-CH2-CH3', 'CH3-CO-CH3'],
-    'Čtyři uhlíky, karbonyl uvnitř: butanon. Jiný keton se 4 uhlíky neexistuje, lokant netřeba.'),
+    'Čtyři uhlíky, karbonyl uvnitř: butanon. Uvnitř řetězce může být karbonyl jen na C2, lokant netřeba.'),
   o('ketone', 'pentan-2-on', 'CH3-CO-CH2-CH2-CH3', 'C5H10O', ['pentan-4-on', 'pentan-3-on', 'pentanal'],
     ['CH3-CH2-CO-CH2-CH3', 'CH3-CH2-CH2-CH2-CHO', 'CH3-CH(OH)-CH2-CH2-CH3'],
     'Číslujeme od konce bližšího ke karbonylu: lokant 2, ne 4.'),

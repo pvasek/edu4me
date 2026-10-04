@@ -121,7 +121,7 @@ export const LEVELS: Record<number, Equation[]> = {
     eq('l7-superphosphate', 'Ca3(PO4)2 + H2SO4', 'Ca(H2PO4)2 + CaSO4', [1, 2, 1, 2], 'Výroba superfosfátu (hnojivo)'),
     eq('l7-thermite', 'Fe2O3 + Al', 'Al2O3 + Fe', [1, 2, 1, 2], 'Aluminotermie: svařování kolejnic termitem'),
     eq('l7-chloralkali', 'NaCl + H2O', 'NaOH + H2 + Cl2', [2, 2, 2, 1, 1], 'Elektrolýza solanky: NaOH, vodík a chlor'),
-    eq('l7-al', 'Al2O3', 'Al + O2', [2, 4, 3], 'Elektrolýza taveniny bauxitu: výroba hliníku'),
+    eq('l7-al', 'Al2O3', 'Al + O2', [2, 4, 3], 'Elektrolýza oxidu hlinitého v roztaveném kryolitu: výroba hliníku'),
     eq('l7-si', 'SiO2 + C', 'Si + CO', [1, 2, 1, 2], 'Výroba křemíku redukcí písku'),
     eq('l7-reforming', 'CH4 + H2O', 'CO + H2', [1, 1, 1, 3], 'Parní reforming: vodík pro syntézu amoniaku'),
     eq('l7-w', 'WO3 + H2', 'W + H2O', [1, 3, 1, 3], 'Výroba wolframu redukcí vodíkem'),

@@ -47,7 +47,7 @@ export interface Indicator {
 }
 
 export const INDICATORS: Record<IndicatorId, Indicator> = {
-  fenolftalein: { id: 'fenolftalein', name: 'fenolftalein', from: 8.2, to: 10, colours: 'bezbarvý → fialově růžový' },
+  fenolftalein: { id: 'fenolftalein', name: 'fenolftalein', from: 8.2, to: 10, colours: 'bezbarvý → červenofialový' },
   methyloranz: { id: 'methyloranz', name: 'methyloranž', from: 3.1, to: 4.4, colours: 'červená → žlutá' },
 }
 

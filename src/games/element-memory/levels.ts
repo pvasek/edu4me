@@ -147,7 +147,7 @@ const L4: MemLevel = {
     { a: 'relativní atomová hmotnost $A_{r}$', b: 'vážený průměr hmotností izotopů', tagB: 'význam' },
     { a: 'koeficienty v rovnici', b: 'poměr látkových množství', tagB: 'význam' },
     { a: 'omezující reaktant', b: 'spotřebuje se jako první', tagB: 'význam' },
-    { a: 'Avogadrův zákon', b: 'stejné objemy plynů mají stejný počet molekul', tagB: 'význam' },
+    { a: 'Avogadrův zákon', b: 'za stejné T a p: stejný objem = stejně molekul', tagB: 'význam' },
   ],
 }
 

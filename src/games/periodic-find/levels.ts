@@ -265,7 +265,7 @@ const L6: FindPrompt[] = [
   h('H', 'Plyn, který vzniká na katodě při elektrolýze solanky', 'electrolysis', undefined, 'Sodík se z roztoku nevyloučí, redukuje se voda na vodík.'),
   h('Al', 'Kov vyráběný elektrolýzou oxidu rozpuštěného v roztaveném kryolitu', 'electrolysis', undefined, 'Hliník: elektrolýza $Al2O3$ v kryolitu při asi 950 °C.'),
   h('Mg', 'Kov 2. skupiny ve 3. periodě, z něhož se dělají obětované anody lodí', 'corrosion', at(3, 2), 'Hořčík (−2,37 V) se oxiduje místo železa.'),
-  h('Zn', 'Kov, kterým se pokovují okapy a svodidla: je neušlechtilejší než železo, a chrání ho i po poškrábání', 'corrosion', undefined, 'Pozinkování: zinek se obětuje místo železa.'),
+  h('Zn', 'Kov, kterým se pokovují okapy a svodidla: je neušlechtilejší než železo, a proto ho chrání i po poškrábání', 'corrosion', undefined, 'Pozinkování: zinek se obětuje místo železa.'),
   h('Sn', 'Kov 14. skupiny v 5. periodě, jehož vrstva chrání plechovky, ale po poškrábání železo rezaví rychleji', 'corrosion', at(5, 14), 'Cín je ušlechtilejší než železo.'),
   h('Cr', 'Kov 6. skupiny, který v nerezové oceli vytvoří ochrannou pasivní vrstvu', 'corrosion', undefined, 'Chrom se pasivuje tenkou vrstvou oxidu.'),
   h('Fe', 'Kov 8. skupiny, který katalyzuje Haberovu–Boschovu syntézu amoniaku', 'catalyst', undefined, 'Železný katalyzátor zrychlí ustavení rovnováhy, výtěžek nezmění.'),

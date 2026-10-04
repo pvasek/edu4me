@@ -69,7 +69,7 @@ export function checkAtom(t: AtomTask, p: number, n: number, e: number): AtomChe
   const el = BY_Z[t.z]
   const problems: string[] = []
   if (p !== t.z) {
-    problems.push(`**Protony:** prvek určuje protonové číslo. ${el.name} má Z = ${t.z}, takže potřebuje ${t.z} protonů (máš ${p}).`)
+    problems.push(`**Protony:** prvek určuje protonové číslo. ${el.name} má Z = ${t.z}, takže potřebuje ${t.z} ${t.z === 1 ? 'proton' : t.z <= 4 ? 'protony' : 'protonů'} (máš ${p}).`)
   }
   if (n !== t.n) {
     const who = t.label ? `Izotop ${t.label}` : `$^{${t.a}}${t.symbol}$`
