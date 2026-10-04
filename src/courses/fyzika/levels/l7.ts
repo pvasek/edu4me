@@ -585,7 +585,7 @@ const level: LevelContent = {
             { type: 'callout', variant: 'tip', text: 'Napětí v zásuvce se neustále mění mezi +325 V a −325 V. Hodnota 230 V je tzv. **efektivní napětí**: střídavý proud s ním ohřeje vařič stejně jako stálé napětí 230 V. Víc v úrovni 11.' },
             { type: 'callout', variant: 'fact', text: 'Slyšíš, jak transformátor tiše bzučí? Jádro se v rytmu pole nepatrně smršťuje a natahuje – stokrát za sekundu, tedy dvakrát za každý kmit 50 Hz.' },
             { type: 'p', text: 'Střídavé napětí tedy kmitá 50krát za sekundu. Právě díky tomu, že se pořád mění, ho umí transformátor převádět na jiné napětí.' },
-            { type: 'check', question: { kind: 'number', q: 'V USA má síť frekvenci 60 Hz. Jak dlouho tam trvá jeden kmit? Odpověz v milisekundách.', answer: 16.7, tolerance: 0.1, unit: 'ms', explain: 'T = 1 / 60 Hz ≈ 0,0167 s = 16,7 ms.' } },
+            { type: 'check', question: { kind: 'number', q: 'V USA má síť frekvenci 60 Hz. Jak dlouho tam trvá jeden kmit? Odpověz v milisekundách.', answer: 16.7, tolerance: 0.1, unit: 'ms', explain: 'T = 1 / 60 Hz ≐ 0,0167 s = 16,7 ms.' } },
           ],
         },
         {
@@ -600,7 +600,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Transformátor v adaptéru', problem: 'Transformátor adaptéru má na primární cívce 2 300 závitů a je připojený na 230 V. Kolik závitů musí mít sekundární cívka, aby dávala 12 V?', steps: [
               'Napětí je úměrné počtu závitů, takže nejdřív zjistíme, kolik závitů připadá na jeden volt: 2 300 závitů / 230 V = 10 závitů',
               'Pro 12 V potřebujeme N₂ = 10 · 12 = 120 závitů',
-              'Kontrola: U₁ / U₂ = 230 V / 12 V ≈ 19,2 a N₁ / N₂ = 2 300 / 120 ≈ 19,2',
+              'Kontrola: U₁ / U₂ = 230 V / 12 V ≐ 19,2 a N₁ / N₂ = 2 300 / 120 ≐ 19,2',
             ], answer: 'Sekundární cívka má 120 závitů.' },
             { type: 'callout', variant: 'warning', text: 'Se stejnosměrným proudem transformátor **nefunguje**. Stálý proud vytvoří stálé pole a to nic neindukuje – primární cívka se jen zahřívá.' },
             { type: 'callout', variant: 'tip', text: 'Rychlá kontrola výsledku: víc závitů = víc voltů. Když má sekundární cívka méně závitů než primární, musí ti vyjít menší napětí.' },
@@ -852,7 +852,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Kolik energie pojme kubík vody', problem: '1 m³ vody (1 000 kg) se vyčerpá o 500 m výš. Kolik energie se uloží? (g = 10 N/kg)', steps: [
               'E_{p} = m · g · h = 1 000 kg · 10 N/kg · 500 m',
               'E_{p} = 5 000 000 J = 5 MJ',
-              'Elektřinu měříme v kWh, proto převedeme: 1 kWh = 3 600 000 J, takže 5 MJ ≈ 1,4 kWh',
+              'Elektřinu měříme v kWh, proto převedeme: 1 kWh = 3 600 000 J, takže 5 MJ ≐ 1,4 kWh',
             ], answer: 'Asi 5 MJ, tedy 1,4 kWh. Proto potřebuje přečerpávací elektrárna obrovské nádrže.' },
             { type: 'p', text: 'Přečerpávací elektrárna je ale jen jedna možnost. Energii lze ukládat i do baterií – a ještě lepší je ji vůbec nespotřebovat:' },
             { type: 'iconlist', items: [
@@ -1221,7 +1221,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Vzdálenosti ve vesmíru jsou tak obří, že kilometry nestačí. Používáme **světelný rok** (ly) – vzdálenost, kterou světlo urazí za jeden rok. Pozor: **světelný rok je jednotka délky, ne času!**' },
             { type: 'p', text: 'Světlo letí stálou rychlostí, takže vzdálenost spočítáš stejně jako u auta: rychlost krát čas.' },
-            { type: 'formula', text: 'd = c · t;  1 ly ≈ 9,46 · 10^{12} km', caption: 'rychlost světla c ≈ 300 000 km/s; za rok (asi 31,5 milionu sekund) urazí světlo 9,46 bilionu kilometrů' },
+            { type: 'formula', text: 'd = c · t;  1 ly ≐ 9,46 · 10^{12} km', caption: 'rychlost světla c ≐ 300 000 km/s; za rok (asi 31,5 milionu sekund) urazí světlo 9,46 bilionu kilometrů' },
             { type: 'p', text: 'Zkus to obráceně – ze vzdálenosti spočítej čas. Jak staré je sluneční světlo, které právě vidíš?' },
             { type: 'example', title: 'Světlo ze Slunce', problem: 'Slunce je od Země vzdálené 150 milionů km. Jak dlouho k nám letí jeho světlo? (c = 300 000 km/s)', steps: [
               'Z d = c · t plyne t = d / c',
@@ -1250,7 +1250,7 @@ const level: LevelContent = {
             ] },
             { type: 'p', text: 'Teď máš představu o vesmíru od Slunce až po vzdálené galaxie. V další úrovni se vrátíme k pohybu a silám, tentokrát přesněji – začneme veličinami, vektory a tím, jak přesně umíme měřit.' },
             { type: 'game', gameId: 'quickfire', text: 'Planety, hvězdy, elektrárny i transformátory – zopakuj si celou úroveň v Bleskové výzvě.' },
-            { type: 'check', question: { kind: 'number', q: 'Nejbližší hvězda Proxima Centauri je vzdálená 4,2 ly. Kolik je to bilionů kilometrů? (1 ly ≈ 9,46 bilionu km)', answer: 39.7, tolerance: 0.3, unit: 'bilionů km', explain: '4,2 · 9,46 bilionu km ≈ 39,7 bilionu km, tedy asi 4 · 10^{13} km.' } },
+            { type: 'check', question: { kind: 'number', q: 'Nejbližší hvězda Proxima Centauri je vzdálená 4,2 ly. Kolik je to bilionů kilometrů? (1 ly ≐ 9,46 bilionu km)', answer: 39.7, tolerance: 0.3, unit: 'bilionů km', explain: '4,2 · 9,46 bilionu km ≐ 39,7 bilionu km, tedy asi 4 · 10^{13} km.' } },
           ],
         },
       ],
