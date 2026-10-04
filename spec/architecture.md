@@ -52,7 +52,7 @@ src/
 
 | Path | Page |
 |---|---|
-| `#/` | Home: greeting, continue card, stats, courses |
+| `#/` | Home: a slim continue row (Kvído, next lesson, course) right under the header, intro, courses |
 | `#/c/chemie`, `#/c/fyzika`, `#/c/biologie` | Course atlas: all levels with their lessons |
 | `#/c/chemie?uroven=l3` | Course atlas scrolled to a level (where lessons, level tests and games return to; the old `#/c/chemie/l/l3` level page redirects here) |
 | `#/c/chemie/l/l3/l3-2` | Lesson: one scrolling page (read) → one quiz → results |

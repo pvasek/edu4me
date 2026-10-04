@@ -1,18 +1,9 @@
 import { COURSES, nextLesson } from '../core/registry'
 import { useProgress } from '../core/progress'
-import { MascotSays } from '../ui/Mascot'
+import { Mascot } from '../ui/Mascot'
 import { Icon } from '../ui/Icon'
 import { MLink, Page } from '../ui/anim'
 import { pressable } from '../ui/motion'
-import { LevelTile } from '../ui/LevelTile'
-
-function greeting() {
-  const h = new Date().getHours()
-  if (h < 5) return 'Ještě vzhůru?'
-  if (h < 10) return 'Dobré ráno!'
-  if (h < 18) return 'Ahoj!'
-  return 'Dobrý večer!'
-}
 
 export function HomePage() {
   const p = useProgress()
@@ -30,10 +21,32 @@ export function HomePage() {
   const doneCount = courses.reduce((a, c) => a + lessonsOf(c.id), 0)
   const total = courses.reduce((a, c) => a + c.levels.reduce((n, l) => n + l.lessons.length, 0), 0)
   const courseDone = nextCourse ? lessonsOf(nextCourse.id) : 0
-  const name = p.settings.name ? `, ${p.settings.name}` : ''
+  const lessonNo = next ? next.level.lessons.findIndex((l) => l.id === next.lesson.id) + 1 : 0
 
   return (
     <Page className="home">
+      {/* continue where you left off: one slim row right under the header */}
+      {next && nextCourse && (
+        <MLink
+          {...pressable}
+          to={`/c/${nextCourse.id}/l/${next.level.id}/${next.lesson.id}`}
+          className="continue-row card"
+          style={{ ['--level' as string]: next.level.color }}
+          aria-label={`${courseDone ? 'Pokračovat' : 'Začít'}: ${next.lesson.title} (${nextCourse.title}, lekce ${lessonNo})`}
+        >
+          <Mascot mood={doneCount ? 'happy' : 'wow'} size={46} className="continue-row-kv" />
+          <span className="continue-row-text">
+            <strong>{next.lesson.title}</strong>
+            <span>
+              {courseDone ? 'Pokračuj' : 'Začni tady'} · {nextCourse.title} · lekce {lessonNo}
+            </span>
+          </span>
+          <span className="continue-row-play" aria-hidden="true">
+            <Icon name="play" />
+          </span>
+        </MLink>
+      )}
+
       <section className="home-hero">
         <div className="home-hero-text">
           <span className="eyebrow">Q &amp; Why · hravé učení</span>
@@ -45,43 +58,8 @@ export function HomePage() {
             školy až po maturitu, sbírky prvků, jednotek a organismů a odznaky za každý krok.
           </p>
         </div>
-        <MascotSays mood={doneCount ? 'happy' : 'wow'} size={88}>
-          <strong>
-            {greeting()}
-            {name}
-          </strong>{' '}
-          {doneCount === 0
-            ? 'Já jsem Kvído a ptám se „proč?“ na všechno. Provedu tě krok za krokem. Začneme?'
-            : next
-              ? `Máš za sebou ${doneCount} ${doneCount === 1 ? 'lekci' : doneCount < 5 ? 'lekce' : 'lekcí'}. Jdeme na další!`
-              : 'Zvládl/a jsi celý kurz. Klobouk dolů!'}
-        </MascotSays>
       </section>
 
-      {next && nextCourse && (
-        <MLink
-          {...pressable}
-          to={`/c/${nextCourse.id}/l/${next.level.id}/${next.lesson.id}`}
-          className="continue-card card"
-          style={{ ['--level' as string]: next.level.color }}
-        >
-          <div className="continue-badge">
-            <LevelTile course={nextCourse} level={next.level} size="sm" hideName />
-          </div>
-          <div className="continue-text">
-            <span className="eyebrow">
-              {courseDone ? 'Pokračuj' : 'Začni tady'} · {nextCourse.title} · Úroveň {next.level.number}
-            </span>
-            <h2>{next.lesson.title}</h2>
-            <span className="muted">
-              {next.level.title} · {next.lesson.minutes} min
-            </span>
-          </div>
-          <span className="btn btn-primary btn-lg continue-go">
-            <Icon name="play" /> {courseDone ? 'Pokračovat' : 'Začít'}
-          </span>
-        </MLink>
-      )}
 
 
       <section className="stack">
