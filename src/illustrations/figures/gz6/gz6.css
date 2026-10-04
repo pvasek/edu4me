@@ -1,0 +1,653 @@
+.gz6 {
+  --lvl: var(--level, #1f6f8b);
+  --lvl-ink: color-mix(in srgb, var(--lvl) 72%, var(--ink));
+  --lvl-soft: color-mix(in srgb, var(--lvl) 16%, var(--surface));
+  --e: var(--blue);
+  --glass: color-mix(in srgb, var(--info-soft) 45%, var(--surface));
+  --water: color-mix(in srgb, #6f9fd8 30%, var(--surface));
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  container-type: inline-size;
+}
+
+.gz6-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gz6-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.gz6-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.gz6-btn {
+  appearance: none;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 14px/1.1 var(--font-body);
+  min-height: 40px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.gz6-btn:hover {
+  background: var(--surface-2);
+}
+.gz6-btn[aria-pressed="true"] {
+  background: var(--lvl);
+  border-color: var(--lvl);
+  color: var(--on-level);
+}
+.gz6-host {
+  width: 100%;
+}
+
+.gz6-lbl {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16.5px;
+  fill: var(--ink-soft);
+}
+.gz6-b {
+  font-weight: 700;
+  fill: var(--ink);
+}
+.gz6-big {
+  font-size: 19px;
+}
+.gz6-sm {
+  font-size: 14.5px;
+}
+.gz6-lvl-t {
+  fill: var(--lvl-ink);
+}
+.gz6-acc-t {
+  fill: var(--accent);
+}
+.gz6-blue-t {
+  fill: var(--blue);
+}
+.gz6-red-t {
+  fill: var(--bad);
+}
+.gz6-muted-t {
+  fill: var(--muted);
+}
+.gz6-eq {
+  font: 600 14px var(--font-body);
+  fill: var(--ink);
+}
+.gz6-eq-sm {
+  font-size: 12.5px;
+}
+.gz6-eq-lg {
+  font-size: 16px;
+}
+.gz6-num {
+  font: 400 13px var(--font-mono);
+  fill: var(--ink);
+}
+.gz6-light-t {
+  fill: #fffaf0;
+}
+
+:where(.gz6-o:not([fill])) {
+  fill: none;
+}
+.gz6-o {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.gz6-thin {
+  stroke-width: 0.9;
+}
+.gz6-fill {
+  fill: var(--surface);
+}
+.gz6-fill2 {
+  fill: var(--surface-2);
+}
+.gz6-fill3 {
+  fill: var(--surface-3);
+}
+.gz6-glass {
+  fill: var(--glass);
+  fill-opacity: 0.55;
+}
+.gz6-ln {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+}
+.gz6-lvl-s {
+  stroke: var(--lvl-ink);
+}
+.gz6-lvl-f {
+  fill: var(--lvl);
+}
+.gz6-lvlsoft-f {
+  fill: var(--lvl-soft);
+}
+.gz6-dash {
+  stroke-dasharray: 5 4;
+}
+.gz6-dot2 {
+  stroke-dasharray: 1.5 4;
+}
+.gz6-lead {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  fill: none;
+}
+.gz6-dot {
+  fill: var(--ink-soft);
+}
+.gz6-nohit {
+  pointer-events: none;
+}
+.gz6-hl {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.4;
+}
+.gz6-hl-dark {
+  opacity: 0.6;
+}
+.gz6-hl-light {
+  stroke: #fffaf0;
+  stroke-width: 0.9;
+  opacity: 0.75;
+}
+.gz6-hl-shade {
+  stroke: #10131c;
+  stroke-width: 0.8;
+  opacity: 0.35;
+}
+.gz6-stip {
+  fill: var(--edge);
+  opacity: 0.35;
+}
+
+.gz6-arr {
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz6-arr-ink {
+  stroke: var(--edge);
+}
+.gz6-arr-acc {
+  stroke: var(--accent);
+}
+.gz6-arr-blue {
+  stroke: var(--blue);
+}
+.gz6-arr-lvl {
+  stroke: var(--lvl-ink);
+}
+.gz6-arr-red {
+  stroke: var(--bad);
+}
+.gz6-arr-green {
+  stroke: var(--good);
+}
+.gz6-arr-muted {
+  stroke: var(--muted);
+}
+.gz6-mk-ink {
+  fill: var(--edge);
+}
+.gz6-mk-acc {
+  fill: var(--accent);
+}
+.gz6-mk-blue {
+  fill: var(--blue);
+}
+.gz6-mk-lvl {
+  fill: var(--lvl-ink);
+}
+.gz6-mk-red {
+  fill: var(--bad);
+}
+.gz6-mk-green {
+  fill: var(--good);
+}
+.gz6-mk-muted {
+  fill: var(--muted);
+}
+
+.gz6-tag {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.gz6-tag-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+}
+
+.gz6-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 2 9;
+  animation: gz6-flow 1.1s linear infinite;
+}
+.gz6-flow-rev {
+  animation-direction: reverse;
+}
+@keyframes gz6-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+@container (max-width: 440px) {
+  .gz6-sec {
+    display: none;
+  }
+  .gz6-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+
+
+
+/* ---------------------------------------------------------------- narrow boost */
+.gz6-narrow .gz6-lbl {
+  font-size: 19px;
+}
+.gz6-narrow .gz6-lbl.gz6-sm {
+  font-size: 17px;
+}
+.gz6-narrow .gz6-lbl.gz6-big {
+  font-size: 21px;
+}
+.gz6-narrow .gz6-eq {
+  font-size: 16px;
+}
+.gz6-narrow .gz6-eq.gz6-eq-lg {
+  font-size: 17.5px;
+}
+.gz6-narrow .gz6-eq.gz6-eq-sm {
+  font-size: 14.5px;
+}
+.gz6-halo {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+.gz6-stripbox {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+}
+.gz6-strip-note {
+  margin: 0;
+  text-align: center;
+  font: italic 600 17px/1.3 var(--font-display);
+  color: var(--ink-soft);
+}
+.gz6-sym-t {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 19px;
+  fill: var(--ink);
+}
+.gz6-tone-lvl {
+  fill: var(--lvl-ink);
+}
+.gz6-tone-red {
+  fill: var(--bad);
+}
+.gz6-tone-green {
+  fill: var(--good);
+}
+.gz6-tone-blue {
+  fill: var(--blue);
+}
+.gz6-tone-acc {
+  fill: var(--accent);
+}
+.gz6-tone-muted {
+  fill: var(--muted);
+}
+.gz6-it {
+  font-style: italic;
+}
+.gz6-qs {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.gz6-num-badge circle {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.gz6-num-badge text {
+  font-family: var(--font-body);
+  font-weight: 800;
+  fill: var(--on-level);
+  pointer-events: none;
+}
+.gz6-vec {
+  stroke-width: 2.6;
+}
+.gz6-box {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.gz6-box-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.4;
+}
+.gz6-title {
+  font: italic 700 18px var(--font-display);
+  fill: var(--ink);
+}
+.gz6-narrow .gz6-title {
+  font-size: 20px;
+}
+.gz6-scale {
+  stroke: var(--ink);
+  stroke-width: 2.4;
+  stroke-linecap: butt;
+}
+.gz6-scale-t {
+  font: 600 12.5px var(--font-body);
+  fill: var(--ink-soft);
+}
+.gz6-narrow .gz6-scale-t {
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------------- geography fills
+   (token mixes, so the plate works on parchment and in the night-study theme) */
+.gz6-sea {
+  fill: color-mix(in srgb, var(--blue) 26%, var(--surface));
+}
+.gz6-sea-deep {
+  fill: color-mix(in srgb, var(--blue) 42%, var(--surface));
+}
+.gz6-warm {
+  fill: color-mix(in srgb, var(--bad) 30%, var(--surface));
+}
+.gz6-cold {
+  fill: color-mix(in srgb, var(--blue) 40%, var(--surface));
+}
+.gz6-land {
+  fill: color-mix(in srgb, var(--yellow) 20%, var(--surface-2));
+}
+.gz6-soil {
+  fill: color-mix(in srgb, var(--accent) 24%, var(--surface-2));
+}
+.gz6-rock {
+  fill: color-mix(in srgb, var(--muted) 26%, var(--surface));
+}
+.gz6-sand {
+  fill: color-mix(in srgb, var(--yellow) 42%, var(--surface));
+}
+.gz6-grass {
+  fill: color-mix(in srgb, var(--green) 34%, var(--surface));
+}
+.gz6-veg {
+  fill: color-mix(in srgb, var(--green) 55%, var(--surface));
+}
+.gz6-ice {
+  fill: color-mix(in srgb, var(--info-soft) 70%, var(--surface));
+}
+.gz6-cloud {
+  fill: color-mix(in srgb, var(--surface) 85%, var(--muted));
+}
+.gz6-air {
+  fill: color-mix(in srgb, var(--blue) 7%, var(--surface));
+}
+.gz6-space {
+  fill: color-mix(in srgb, var(--ink) 10%, var(--surface));
+}
+.gz6-sun {
+  fill: color-mix(in srgb, var(--yellow) 70%, var(--surface));
+}
+.gz6-crust-o {
+  fill: color-mix(in srgb, var(--teal) 30%, var(--surface-2));
+}
+.gz6-crust-c {
+  fill: color-mix(in srgb, var(--accent) 28%, var(--surface-2));
+}
+.gz6-litho {
+  fill: color-mix(in srgb, var(--muted) 30%, var(--surface-2));
+}
+.gz6-mantle {
+  fill: color-mix(in srgb, var(--accent) 14%, var(--surface));
+}
+.gz6-magma {
+  fill: color-mix(in srgb, var(--bad) 62%, var(--surface));
+}
+.gz6-town {
+  fill: color-mix(in srgb, var(--ink-soft) 30%, var(--surface));
+}
+.gz6-lvl-fill {
+  fill: color-mix(in srgb, var(--lvl) 30%, var(--surface));
+}
+.gz6-lvl-soft {
+  fill: var(--lvl-soft);
+}
+.gz6-good-fill {
+  fill: color-mix(in srgb, var(--good) 28%, var(--surface));
+}
+.gz6-bad-fill {
+  fill: color-mix(in srgb, var(--bad) 22%, var(--surface));
+}
+.gz6-ghost {
+  opacity: 0.35;
+}
+.gz6-faint {
+  opacity: 0.55;
+}
+.gz6-good-t {
+  fill: var(--good);
+}
+.gz6-teal-t {
+  fill: color-mix(in srgb, var(--teal) 80%, var(--ink));
+}
+.gz6-grid {
+  stroke: var(--edge);
+  stroke-width: 0.6;
+  opacity: 0.3;
+  stroke-dasharray: 3 4;
+}
+.gz6-curve {
+  fill: none;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz6-curve-lvl {
+  stroke: var(--lvl-ink);
+}
+.gz6-curve-acc {
+  stroke: var(--accent);
+}
+.gz6-curve-red {
+  stroke: var(--bad);
+}
+.gz6-curve-blue {
+  stroke: var(--blue);
+}
+.gz6-curve-green {
+  stroke: var(--good);
+}
+.gz6-band {
+  stroke: none;
+}
+.gz6-band-sun {
+  fill: color-mix(in srgb, var(--yellow) 62%, transparent);
+}
+.gz6-band-ref {
+  fill: color-mix(in srgb, var(--yellow) 34%, transparent);
+}
+.gz6-band-lw {
+  fill: color-mix(in srgb, var(--bad) 42%, transparent);
+}
+.gz6-band-back {
+  fill: color-mix(in srgb, var(--lvl) 50%, transparent);
+}
+.gz6-band-heat {
+  fill: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.gz6-sign {
+  font: 800 20px var(--font-body);
+}
+.gz6-wave {
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+/* ---------------------------------------------------------------- ambient loops */
+.gz6-fall {
+  animation: gz6-fall 2.4s linear infinite;
+}
+@keyframes gz6-fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--fall, 30px));
+    opacity: 0;
+  }
+}
+.gz6-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: gz6-pulse 1.8s ease-in-out infinite;
+}
+@keyframes gz6-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.gz6-shake {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: gz6-shake 0.5s ease-in-out infinite alternate;
+}
+@keyframes gz6-shake {
+  from {
+    transform: rotate(-1.5deg);
+  }
+  to {
+    transform: rotate(1.5deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gz6-fall,
+  .gz6-pulse,
+  .gz6-shake,
+  .gz6-flow {
+    animation: none;
+  }
+}
+.gz6-blue-s {
+  stroke: var(--blue);
+}
+.gz6-acc-s {
+  stroke: var(--accent);
+}
+.gz6-red-s {
+  stroke: var(--bad);
+}
+.gz6-green-s {
+  stroke: var(--good);
+}
+
+/* radiation-budget strands */
+.gz6-st {
+  fill: none;
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+}
+.gz6-st-sun {
+  stroke: color-mix(in srgb, var(--yellow) 78%, var(--surface));
+}
+.gz6-st-lw {
+  stroke: color-mix(in srgb, var(--bad) 62%, var(--surface));
+}
+.gz6-st-back {
+  stroke: color-mix(in srgb, var(--lvl) 70%, var(--surface));
+}
+.gz6-st-heat {
+  stroke: color-mix(in srgb, var(--accent) 60%, var(--surface));
+}
+.gz6-st-heat2 {
+  stroke: color-mix(in srgb, var(--accent) 35%, var(--surface));
+}
+.gz6-hd-sun {
+  fill: color-mix(in srgb, var(--yellow) 78%, var(--surface));
+}
+.gz6-hd-lw {
+  fill: color-mix(in srgb, var(--bad) 62%, var(--surface));
+}
+.gz6-hd-back {
+  fill: color-mix(in srgb, var(--lvl) 70%, var(--surface));
+}
+.gz6-hd-heat {
+  fill: color-mix(in srgb, var(--accent) 60%, var(--surface));
+}
+.gz6-hd-heat2 {
+  fill: color-mix(in srgb, var(--accent) 35%, var(--surface));
+}
+.gz6-burst {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+/* plates shown small (strip panels): larger lettering */
+.gz6-xl .gz6-lbl {
+  font-size: 18px;
+}
+.gz6-xl .gz6-lbl.gz6-sm {
+  font-size: 16px;
+}
