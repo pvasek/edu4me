@@ -39,6 +39,7 @@ Badges in `src/core/badges.ts` (a badge with `course` is shown only once that co
 - one badge per chemistry level test (Pán látek … Biochemik);
 - physics: První měření (first physics lesson), Fyzik (all physics lessons), one badge per physics level test (Měřič … Kvantový fyzik);
 - biology: První pozorování (first biology lesson), Biolog (all biology lessons), one badge per biology level test (Pozorovatel buněk … Darwinovec).
+- geography: První výprava (first geography lesson), Zeměpisec (all geography lessons), one badge per geography level test (Kartograf … Stratég planety).
 
 New badges pop up as a toast.
 
@@ -53,7 +54,7 @@ Empty cells are dashed outlines; collected ones light up in their category colou
 
 ## Emblem collections (sbírky)
 
-A course whose `album.kind` is `emblems` (physics: "Sbírka jednotek a konstant"; biology: "Sbírka slavných organismů", a model organism per level such as Pc for the slipper animalcule or Dm for the fruit fly) awards the level's emblem for passing its level test: a unit or constant (m, N, Pa, J, c, Ω, T, g, G, K, e, h) with its name (`LevelOutline.emblemName`). Emblems are stored in `progress.elements` as `course:symbol` (e.g. `fyzika:N`), so they never count towards the element album. They are shown as engraved medals (`EmblemTile`) on the profile, the level page and the level test. `LevelTile` picks the element tile or the medal by course.
+A course whose `album.kind` is `emblems` (physics: "Sbírka jednotek a konstant"; biology: "Sbírka slavných organismů", a model organism per level such as Pc for the slipper animalcule or Dm for the fruit fly; geography: "Sbírka zeměpisných rekordů", a record holder of planet Earth per level such as Ev for Mount Everest or Mp for the Mariana Trench) awards the level's emblem for passing its level test: a unit or constant (m, N, Pa, J, c, Ω, T, g, G, K, e, h) with its name (`LevelOutline.emblemName`). Emblems are stored in `progress.elements` as `course:symbol` (e.g. `fyzika:N`), so they never count towards the element album. They are shown as engraved medals (`EmblemTile`) on the profile, the level page and the level test. `LevelTile` picks the element tile or the medal by course.
 
 ## Guide: Kvído
 

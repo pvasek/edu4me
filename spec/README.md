@@ -25,3 +25,8 @@ This folder is the single source of truth for *what* Q & Why is and *how* it sho
 | [syllabus.md](courses/biologie/syllabus.md) | Full syllabus: 12 levels, 80 lessons, curriculum alignment (RVP ZV 2026, RVP G, IGCSE 0610, AQA 7402, AP), audit and ordering principles |
 | [figures.md](courses/biologie/figures.md) | The named biology figures (bz1–bz6) and reusable figures from other courses |
 | [games.md](courses/biologie/games.md) | Biology mini-games per level and their rules |
+| **courses/zemepis/** | |
+| [syllabus.md](courses/zemepis/syllabus.md) | Full syllabus: 12 levels, 85 lessons, curriculum alignment (RVP ZV 2026, RVP G, IGCSE 0460, AQA 7037, AP Human Geography), audit and ordering principles |
+| [figures.md](courses/zemepis/figures.md) | The named geography figures (gz1–gz7) and reusable figures from other courses |
+| [games.md](courses/zemepis/games.md) | Geography mini-games and in-lesson experiments per level |
+| [geo.md](geo.md) | The map engine: Natural Earth data, views, layers, the `map` block and `GeoMap` |

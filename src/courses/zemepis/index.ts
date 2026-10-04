@@ -16,7 +16,7 @@ export const zemepis: Course = {
   tagline: 'Od mapy a kompasu přes planetu, podnebí a lidi až po regiony světa, Česko a globální výzvy.',
   color: '#2f7d86',
   icon: 'globe',
-  available: false,
+  available: true,
   album: { kind: 'emblems', title: 'Sbírka zeměpisných rekordů' },
   levels: [
     {

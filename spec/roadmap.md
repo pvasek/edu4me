@@ -47,9 +47,18 @@
 - [x] The separate level page ("Mapa úrovně") removed: the course overview already lists each level's lessons, test and progress; old links open the overview at that level
 - [x] `spec/app-structure.md`: how a course is structured in the app
 
+## v0.6: Geography course
+
+- [x] Geography syllabus from RVP ZV (2026 revision), RVP G, maturita topics, IGCSE 0460, AQA 7037 and AP Human Geography, audited and reordered (12 levels, 85 lessons)
+- [x] Map engine from Natural Earth data (`src/geo/`, spec/geo.md): the `map` block with 12 views, highlights, points, routes, bands and layers; data loads lazily per view
+- [x] Parametric blocks `climate` (klimatogram) and `pyramid` (age–sex pyramid) with real station normals and UN WPP 2024 data
+- [x] 117 named geography figures, 42 geography icons, 12 level vignettes, emblems of Earth's records
+- [x] 7 geography mini-games (coordinates, map scale, contours, time zones, climate chart, blind map, population pyramid) + quickfire and swipe; 17 in-lesson experiments
+- [x] Independent review of every level by a reviewer who did not write it, with every unverified number checked, rounded or removed
+
 ## Next
 
-- **Review pass by a chemistry, a physics and a biology teacher** of all content (typos, terminology, difficulty balance).
+- **Review pass by a chemistry, a physics, a biology and a geography teacher** of all content (typos, terminology, difficulty balance).
 - Spaced-repetition review mode built from the question pool.
 - Offline support (PWA: manifest + service worker) so the app works on the bus.
 - Glossary ("Slovníček") generated from all `keyterms` blocks, with search.

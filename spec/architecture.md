@@ -46,6 +46,10 @@ src/
     biologie/
       index.ts             outline: 12 levels, 80 lessons, emblems (model organisms)
       levels/l1.ts … l12.ts
+    zemepis/
+      index.ts             outline: 12 levels, 85 lessons, emblems (Earth's records)
+      levels/l1.ts … l12.ts
+  geo/                     map engine: projections, views, GeoMap, lazily loaded Natural Earth data (spec/geo.md)
 ```
 
 ## Routes
@@ -53,7 +57,7 @@ src/
 | Path | Page |
 |---|---|
 | `#/` | Home: a slim continue row (Kvído, next lesson, course) right under the header, intro, courses |
-| `#/c/chemie`, `#/c/fyzika`, `#/c/biologie` | Course atlas: all levels with their lessons |
+| `#/c/chemie`, `#/c/fyzika`, `#/c/biologie`, `#/c/zemepis` | Course atlas: all levels with their lessons |
 | `#/c/chemie?uroven=l3` | Course atlas scrolled to a level (where lessons, level tests and games return to; the old `#/c/chemie/l/l3` level page redirects here) |
 | `#/c/chemie/l/l3/l3-2` | Lesson: one scrolling page (read) → one quiz → results |
 | `#/c/chemie/l/l3/vyzva` | Level test |
