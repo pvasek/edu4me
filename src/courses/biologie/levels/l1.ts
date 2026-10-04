@@ -684,7 +684,7 @@ const level: LevelContent = {
           title: 'Pohlavní rozmnožování',
           icon: 'egg',
           blocks: [
-            { type: 'p', text: 'Při **pohlavním rozmnožování** se na potomkovi podílejí **dva rodiče**. Každý vytvoří zvláštní **pohlavní buňky**: samice vajíčka, samec spermie, u rostlin vznikají v pylu a v semeníku květu. Jejich splynutím – **oplozením** – vzniká první buňka nového jedince, **zygota**.' },
+            { type: 'p', text: 'Při **pohlavním rozmnožování** se na potomkovi podílejí **dva rodiče**. Každý vytvoří zvláštní **pohlavní buňky**: u živočichů samice vajíčka a samec spermie, u kvetoucích rostlin samčí buňky v pylu a vaječné buňky ve vajíčkách v semeníku květu. Jejich splynutím – **oplozením** – vzniká první buňka nového jedince, **zygota**.' },
             { type: 'p', text: 'Na obrázku porovnej obě cesty: na jedné straně jeden rodič a stejní potomci, na druhé dva rodiče, pohlavní buňky a potomek, který je jiný než oba rodiče:' },
             { type: 'diagram', id: 'life-cycles', caption: 'Nepohlavní rozmnožování (pučící kvasinka, šlahoun jahodníku) a pohlavní rozmnožování (dva rodiče → pohlavní buňky → oplození → potomek).' },
             { type: 'p', text: 'Obě cesty mají své silné a slabé stránky. Shrňme je vedle sebe:' },

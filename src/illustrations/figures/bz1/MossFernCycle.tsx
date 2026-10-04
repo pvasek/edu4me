@@ -3,7 +3,7 @@ import { StepStrip } from "../../sequence/StepFigure";
 import { Arrow, Body, Figure, Frame, ell, f1, pat, useFig } from "./kit";
 
 const LABEL =
-  "Zjednodušený životní cyklus mechu a kapradiny: výtrusy, gametofyt, pohlavní buňky a sporofyt se pravidelně střídají (rodozměna). Mech: z výtrusu vyroste zelená lodyžka mechu, gametofyt, který převládá; na ní vzniknou vajíčka a spermie, spermie doplave za vajíčkem v kapce vody; z oplozeného vajíčka vyroste na lodyžce štět s tobolkou, sporofyt, a v tobolce vzniknou nové výtrusy. Kapradina: z výtrusu vyroste jen malý srdčitý prokel, gametofyt; po oplození ve vodě z něj vyroste velká kapradina, sporofyt, který převládá a na rubu listů nese výtrusnice s výtrusy.";
+  "Zjednodušený životní cyklus mechu a kapradiny: výtrusy, gametofyt, pohlavní buňky a sporofyt se pravidelně střídají (rodozměna). Mech: z výtrusu vyroste zelená lodyžka mechu, gametofyt, který převládá; na ní vzniknou vaječné buňky a spermatozoidy, spermatozoid doplave k vaječné buňce v kapce vody; z oplozené vaječné buňky vyroste na lodyžce štět s tobolkou, sporofyt, a v tobolce vzniknou nové výtrusy. Kapradina: z výtrusu vyroste jen malý srdčitý prokel, gametofyt; po oplození ve vodě z něj vyroste velká kapradina, sporofyt, který převládá a na rubu listů nese výtrusnice s výtrusy.";
 
 const W = 320;
 const H = 330;
@@ -124,7 +124,7 @@ function Moss() {
         <MossShoot x={240} y={100} h={60} />
         <MossShoot x={266} y={100} h={46} />
       </Corner>
-      <Corner k={2} title="oplození" sub="spermie plave ve vodě">
+      <Corner k={2} title="oplození" sub="spermatozoid plave ve vodě">
         <Fertilisation x={240} y={200} />
       </Corner>
       <Corner k={3} title="sporofyt" sub="štět s tobolkou">
@@ -184,7 +184,7 @@ function Fern() {
         <Ground x={240} y={96} w={80} />
         <Prothallus x={240} y={88} s={1.2} />
       </Corner>
-      <Corner k={2} title="oplození" sub="spermie plave ve vodě">
+      <Corner k={2} title="oplození" sub="spermatozoid plave ve vodě">
         <Fertilisation x={240} y={200} />
       </Corner>
       <Corner k={3} title="sporofyt" sub="kapradina" big>

@@ -230,6 +230,11 @@ Kinds: `choice`, `multi`, `tf`, `number`, `text`, `order`, `match`.
 - Home experiments are welcome, but only with safe household materials (vinegar, baking soda, red cabbage juice, salt, sugar).
 - Mnemonics are encouraged (e.g. the "KOCHNa" order, the oxide endings -ný, -natý, -itý, -ičitý, -ičný, -ový, -istý, -ičelý).
 
+## Biology specifics
+
+- Use the terms of Czech school biology, and the right word for the right group. Sex cells: animals have **vajíčko** and **spermie**; mosses, ferns and algae have **vaječná buňka** and pohyblivé **spermatozoidy** (formed in zárodečníky and pelatky); seed plants have **samčí buňky** from the pollen and a **vaječná buňka** inside the **vajíčko** (the ovule, which becomes the seed). Never "spermie" for a plant.
+- Name organisms in Czech, with the Latin name at first mention (*dub letní – Quercus robur*).
+
 ## Example (abridged)
 
 ```ts
