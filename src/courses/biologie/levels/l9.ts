@@ -403,8 +403,8 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Teď se vrátíme k infuzi z úvodu. Podle koncentrace vnějšího roztoku vůči buňce rozlišujeme roztoky **hypotonické** (řidší než buňka, vyšší Ψ), **izotonické** (stejné) a **hypertonické** (koncentrovanější, nižší Ψ). Jak na ně reaguje živočišná a rostlinná buňka, ukazuje obrázek:' },
             { type: 'diagram', id: 'osmosis-cells', caption: 'Červená krvinka a rostlinná buňka v hypotonickém, izotonickém a hypertonickém roztoku: hemolýza, turgor, krenace a plazmolýza.' },
-            { type: 'p', text: 'Vyzkoušej si to sám/sama. Vyber krvinku, nastav koncentraci $NaCl$ a sleduj, kam teče voda. Pak to samé zkus s rostlinnou buňkou. Najdi koncentraci, při které krvinka praskne.' },
-            { type: 'experiment', id: 'osmosis-cell', caption: 'Krvinka a rostlinná buňka v roztoku $NaCl$. Krevní plazma je izotonická s asi 0,9 % $NaCl$.' },
+            { type: 'p', text: 'Vyzkoušej si to sám/sama. Vyber krvinku, nastav koncentraci $NaCl$ a sleduj, kam teče voda. Pak to samé zkus s rostlinnou buňkou. Najdi koncentraci, při které se krvinka nemění, a pak tu, při které praskne.' },
+            { type: 'experiment', id: 'osmosis-cell', caption: 'Krvinka nebo rostlinná buňka v roztoku $NaCl$ od 0 do 3 %. Krevní plazma je izotonická s asi 0,9 % $NaCl$.' },
             { type: 'p', text: 'Všiml/a sis? Krvinka v řidším roztoku nasává vodu, až praskne (**hemolýza**). Rostlinná buňka sice vodu nasává také, ale pevná **buněčná stěna** ji zastaví: vznikne napětí zvané **turgor**, které drží rostlinu vzpřímenou. V hypertonickém roztoku se krvinka svraští a protoplast rostlinné buňky se odtrhne od stěny – **plazmolýza**.' },
             { type: 'p', text: 'Shrňme reakce obou buněk do přehledu, je to častá otázka u maturity:' },
             { type: 'table', headers: ['roztok', 'voda teče', 'červená krvinka', 'rostlinná buňka'], rows: [
@@ -1032,6 +1032,8 @@ const level: LevelContent = {
               { icon: 'cell-division', title: 'Anafáze', text: 'sesterské chromatidy se od sebe oddělí a vlákna je táhnou k opačným pólům' },
               { icon: 'cell', title: 'Telofáze', text: 'u pólů vzniknou dva nové jaderné obaly, chromozomy se despiralizují' },
             ], caption: 'Mitóza: profáze → metafáze → anafáze → telofáze. Výsledkem jsou dvě geneticky shodná jádra.' },
+            { type: 'p', text: 'Teď totéž v jedné buňce se čtyřmi chromozomy, od interfáze až po rozdělení. U každého kroku si všímej počtu nahoře: kolik je chromozomů a kolik chromatid?' },
+            { type: 'diagram', id: 'mitosis-stages', caption: 'Mitóza buňky s 2n = 4 (červeně chromozomy od matky, modře od otce): 4 chromozomy po 2 chromatidách se seřadí v rovině, 8 chromatid se rozejde k pólům a každá dceřiná buňka dostane zase 4 chromozomy. Lidská buňka má 46.' },
             { type: 'p', text: 'Mitóza rozdělí jádro; celou buňku rozdělí až **cytokineze**. Tady se živočišná a rostlinná buňka liší, protože rostlinná má pevnou stěnu:' },
             { type: 'compare', columns: [
               { title: 'Živočišná buňka', icon: 'cell', tone: 'a', points: ['prstenec z aktinových vláken se stahuje', 'buňka se zaškrtí **rýhou** jako balonek stažený provázkem'] },
@@ -1091,7 +1093,8 @@ const level: LevelContent = {
               { icon: 'arrow-cycle', title: '2. Přenos', text: 'uvnitř vzniká **druhý posel** cAMP a spustí kaskádu enzymů (kináz), z nichž každý aktivuje mnoho dalších' },
               { icon: 'sugar', title: '3. Odpověď', text: 'aktivovaný enzym štěpí glykogen a buňka uvolní do krve glukózu' },
             ], caption: 'Signální dráha: receptor → přenos signálu (kaskáda) → odpověď buňky' },
-            { type: 'p', text: 'Proč tak složitě, místo aby hormon rovnou spustil reakci? Kaskáda signál **zesílí**: každý enzym aktivuje desítky dalších, a jedna molekula adrenalinu tak uvolní miliony molekul glukózy. Navíc se v každém kroku dá signál přibrzdit nebo zkombinovat s jiným.' },
+            { type: 'p', text: 'Proč tak složitě, místo aby hormon rovnou spustil reakci? Kaskáda signál **zesílí**: každá aktivovaná molekula zapne mnoho molekul dalšího stupně. Navíc se v každém kroku dá signál přibrzdit nebo zkombinovat s jiným. Na obrázku sleduj, jak počet molekul roste krok za krokem:' },
+            { type: 'diagram', id: 'cell-signalling', caption: 'Zesílení signálu v jaterní buňce (přibližné počty): 1 molekula adrenalinu → asi 100 molekul cAMP → kinázy → asi 10 000 enzymů štěpících glykogen → asi 100 milionů molekul glukózy.' },
             { type: 'callout', variant: 'remember', text: 'Buňka odpoví jen na signál, pro který má **receptor**. Proto adrenalin rozbuší srdce a uvolní cukr z jater, ale na kožní buňky nepůsobí. Steroidní hormony (testosteron, estrogen) projdou membránou samy a jejich receptory jsou uvnitř buňky.' },
             { type: 'p', text: 'Stejným způsobem dostávají buňky pokyn k dělení: **růstový faktor** se naváže na receptor a kaskáda nakonec zapne geny, které buňku pošlou z G_{1} do fáze S. Co se stane, když se tento vypínač zasekne, ukáže poslední oddíl.' },
             { type: 'check', question: { kind: 'tf', q: 'Jedna molekula hormonu může díky signální kaskádě vyvolat změnu milionů molekul uvnitř buňky.', answer: true, explain: 'Každý krok kaskády aktivuje mnoho molekul dalšího kroku, takže se signál mnohonásobně zesílí.' } },
