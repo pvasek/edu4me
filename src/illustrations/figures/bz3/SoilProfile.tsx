@@ -1,7 +1,7 @@
 import { Figure, Fade, Lbl, Pop, f1, pat, rng, useFig } from "./kit";
 
 const LABEL =
-  "Půdní profil v řezu. Nahoře leží opad z listí a jehličí. Pod ním tmavý humusový horizont neboli ornice, nejbohatší na život: žížaly, houbová vlákna, larvy hmyzu, kořeny a miliardy bakterií, které rozkládají odumřelé zbytky na humus. Níže je světlejší podorničí s jílem a minerály, kam sahají už jen hluboké kořeny. Pod ním zvětralá matečná hornina z úlomků a nakonec pevná matečná hornina, skalní podloží, ze kterého půda zvětráváním vzniká.";
+  "Půdní profil v řezu. Nahoře leží opad z listí a jehličí. Pod ním tmavá humusová vrstva, nejbohatší na život: žížaly, houbová vlákna, larvy hmyzu, kořeny a miliardy bakterií, které rozkládají odumřelé zbytky na humus. Níže je světlejší podorničí s jílem a minerály, kam sahají už jen hluboké kořeny. Pod ním zvětralá matečná hornina z úlomků a nakonec pevná matečná hornina, skalní podloží, ze kterého půda zvětráváním vzniká.";
 
 const W = 400;
 const H = 470;
@@ -10,7 +10,7 @@ const X1 = 206;
 
 const HZ = [
   { y0: 46, y1: 66, cls: "bz3-soil-o", name: "opad", sub: "listí, jehličí" },
-  { y0: 66, y1: 160, cls: "bz3-soil-a", name: "humus (ornice)", sub: "tmavá, plná života" },
+  { y0: 66, y1: 160, cls: "bz3-soil-a", name: "humusová vrstva", sub: "tmavá, plná života" },
   { y0: 160, y1: 268, cls: "bz3-soil-b", name: "podorničí", sub: "jíl a minerály" },
   { y0: 268, y1: 360, cls: "bz3-soil-c", name: "zvětralá hornina", sub: "úlomky podloží" },
   { y0: 360, y1: 456, cls: "bz3-soil-r", name: "matečná hornina", sub: "pevné skalní podloží" },

@@ -172,7 +172,7 @@ export const GAMES: GameMeta[] = [
       },
       biologie: {
         1: 'znaky života, mikroskop, buňka a třídění',
-        2: 'viry, bakterie, protista, houby a lišejníky',
+        2: 'viry, bakterie, prvoci a řasy, houby a lišejníky',
         3: 'stavba, výživa a rozmnožování rostlin',
         4: 'bezobratlí živočichové',
         5: 'obratlovci a chování',
@@ -219,7 +219,7 @@ export const GAMES: GameMeta[] = [
       },
       biologie: {
         1: 'znaky života, mikroskop, buňka a třídění',
-        2: 'viry, bakterie, protista, houby a lišejníky',
+        2: 'viry, bakterie, prvoci a řasy, houby a lišejníky',
         3: 'stavba, výživa a rozmnožování rostlin',
         4: 'bezobratlí živočichové',
         5: 'obratlovci a chování',
@@ -383,7 +383,7 @@ export const GAMES: GameMeta[] = [
         1: 'skupiny organismů a buňky',
         2: 'mikroorganismy, houby a lišejníky',
         3: 'rostliny: mechy, kapradiny, jehličnany a čeledi',
-        4: 'bezobratlí: měkkýši, členovci, hmyz',
+        4: 'bezobratlí: od houbovců po hmyz',
         5: 'obratlovci: ryby, obojživelníci, plazi, ptáci a savci',
       },
     },
@@ -443,7 +443,7 @@ export const GAMES: GameMeta[] = [
     kind: 'energy',
     courses: {
       biologie: {
-        5: 'kdo koho loví mezi obratlovci',
+        5: 'kdo koho žere',
         8: 'potravní sítě českých ekosystémů a pyramida energie',
         12: 'populace, společenstva a toky energie',
       },

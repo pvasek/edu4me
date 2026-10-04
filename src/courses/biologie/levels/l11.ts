@@ -369,7 +369,7 @@ const level: LevelContent = {
             { type: 'table', headers: ['úsek (pH)', 'zdroj', 'enzym', 'co štěpí → na co'], rows: [
               ['ústa (asi 7)', 'slinné žlázy', 'slinná amyláza', 'škrob → maltóza'],
               ['žaludek (1,5–2)', 'žaludeční žlázy', 'pepsin (aktivuje ho $HCl$)', 'bílkoviny → peptidy'],
-              ['dvanáctník (asi 8)', 'slinivka břišní', 'amyláza, trypsin, lipáza', 'škrob → maltóza; bílkoviny → peptidy; tuky → mastné kyseliny + glycerol'],
+              ['dvanáctník (mírně zásaditý)', 'slinivka břišní', 'amyláza, trypsin, lipáza', 'škrob → maltóza; bílkoviny → peptidy; tuky → mastné kyseliny + glycerol'],
               ['tenké střevo (asi 8)', 'membrána buněk střeva', 'maltáza, laktáza, peptidázy', 'maltóza → glukóza; laktóza → glukóza + galaktóza; peptidy → aminokyseliny'],
             ] },
             { type: 'p', text: 'Tuky mají zvláštní problém: ve vodě tvoří velké kapky a lipáza se dostane jen k jejich povrchu. **Žluč** z jater je proto nejdřív rozbije na drobné kapičky (**emulgace**). Pozor, žluč sama nic neštěpí, jen zvětší plochu pro enzym – jako mycí prostředek, který rozptýlí mastnotu na talíři.' },

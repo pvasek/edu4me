@@ -32,10 +32,10 @@ const level: LevelContent = {
             { type: 'iconlist', items: [
               { icon: 'dna', title: 'Nukleová kyselina', text: 'DNA, nebo RNA: návod, podle kterého se dají vyrobit nové viry' },
               { icon: 'protein', title: 'Kapsida', text: 'bílkovinný obal, který nukleovou kyselinu chrání; často má tvar dvacetistěnu nebo šroubovice' },
-              { icon: 'balloon', title: 'Obal', text: 'tenká blána z tuků, kterou si virus „vypůjčí“ z buňky; mají ho jen některé viry, třeba chřipka nebo koronaviry' },
+              { icon: 'balloon', title: 'Obal', text: 'tenká blána z tuků, kterou si virus „vypůjčí“ z buňky; mají ho jen některé viry, třeba chřipka, koronaviry nebo virus oparu' },
             ] },
             { type: 'p', text: 'Na řezu dvěma viry najdeš všechny tři součásti: vlevo virus bez obalu, vpravo virus s obalem. Dole je porovnej s bakterií ve stejném měřítku:' },
-            { type: 'diagram', id: 'virus-structure', caption: 'Virus bez obalu (kapsida a nukleová kyselina) a virus s tukovým obalem a bílkovinnými výběžky. Vedle bakterie dlouhé 2 µm je virus chřipky jen tečka.' },
+            { type: 'diagram', id: 'virus-structure', caption: 'Virus bez obalu (kapsida a nukleová kyselina) a virus s tukovým obalem a bílkovinnými výběžky, například virus oparu. Vedle bakterie dlouhé 2 µm je virus chřipky jen tečka.' },
             { type: 'callout', variant: 'fact', text: 'Hotová virová částice mimo buňku se odborně jmenuje **virion**. Je to jen balíček s návodem – nic nedělá, dokud nenarazí na správnou buňku.' },
             { type: 'p', text: 'Virus je tedy jen návod zabalený v bílkovinách. Je takový balíček živý? To posoudíme podle znaků života, které už znáš.' },
             { type: 'check', question: { kind: 'choice', q: 'Z čeho se skládá každý virus?', options: ['z nukleové kyseliny a bílkovinné kapsidy', 'z buněčné stěny, cytoplazmy a jádra', 'jen z tukové blány', 'z mitochondrií a ribozomů'], answer: 0, explain: 'Každý virus má nukleovou kyselinu (DNA nebo RNA) a kapsidu z bílkovin. Tukový obal mají jen některé viry, buněčné části nemá žádný.' } },

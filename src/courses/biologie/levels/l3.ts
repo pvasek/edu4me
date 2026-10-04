@@ -923,7 +923,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Porovnej rostliny, které se u nás běžně používají k léčení, s těmi, kterým je lepší se vyhnout:' },
             { type: 'compare', columns: [
               { title: 'Léčivé rostliny', icon: 'pill', tone: 'good', points: ['heřmánek pravý – čaj proti zánětům', 'máta peprná – pomáhá při potížích s trávením', 'šalvěj lékařská – kloktání při bolesti v krku', 'lípa – květ do čaje při nachlazení', 'vrba – z látky v její kůře vznikl lék proti bolesti a horečce'] },
-              { title: 'Jedovaté rostliny', icon: 'hazard', tone: 'bad', points: ['oměj šalamounek – nejjedovatější rostlina Česka', 'rulík zlomocný – lesklé černé bobule', 'konvalinka vonná – celá rostlina', 'tis červený – jehlice a semena', 'zelené části bramboru a rajčete – solanin'] },
+              { title: 'Jedovaté rostliny', icon: 'hazard', tone: 'bad', points: ['oměj šalamounek – nejjedovatější rostlina Česka', 'rulík zlomocný – lesklé černé bobule', 'konvalinka vonná – celá rostlina', 'tis červený – jehlice a semena', 'zelené části bramboru a rajčete – solanin a příbuzné látky'] },
             ] },
             { type: 'p', text: 'Hranice mezi lékem a jedem je tenká. Náprstník červený je smrtelně jedovatý, a přesto se z látek v jeho listech dlouho vyráběly léky na srdce – rozhoduje přesně odměřená dávka. Nebezpečné jsou i rostliny, které si lidé spletou s jedlými. Otoč kartičky:' },
             { type: 'flipcards', cards: [

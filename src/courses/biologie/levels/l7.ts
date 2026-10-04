@@ -631,7 +631,7 @@ const level: LevelContent = {
         'Porovnat přírodní a umělý výběr na příkladu psů a košťálovin',
         'Vysvětlit vznik odolnosti bakterií na antibiotika jako evoluci, která probíhá dnes',
       ],
-      hook: 'Brokolice, kedluben, kapusta i růžičková kapusta jsou jeden a týž druh rostliny. A čivava je pořád vlk. Jak se z jednoho předka mohlo stát tolik různých podob?',
+      hook: 'Brokolice, kedluben, kapusta i růžičková kapusta jsou jeden a týž druh rostliny. A čivava pochází z vlka. Jak se z jednoho předka mohlo stát tolik různých podob?',
       sections: [
         {
           title: 'Darwin, Wallace a jedna velká myšlenka',
@@ -921,7 +921,7 @@ const level: LevelContent = {
         { kind: 'multi', q: 'Které podmínky pomáhají vzniku zkameněliny?', options: ['rychlé zasypání bahnem nebo pískem', 'nepřístup kyslíku', 'tvrdé části těla (kosti, schránky)', 'tělo ležící dlouho na povrchu', 'velký počet rozkladačů'], answers: [0, 1, 2], explain: 'Zasypání a nedostatek kyslíku zastaví rozklad a tvrdé části vydrží, než je nahradí minerály. Na povrchu tělo rozkladači rychle zničí.' },
         { kind: 'match', q: 'Přiřaď předchůdce člověka k tomu, čím je známý.', pairs: [
           ['australopitékové', 'chůze po dvou'],
-          ['člověk zručný', 'první kamenné nástroje'],
+          ['člověk zručný', 'kamenné nástroje'],
           ['člověk vzpřímený', 'oheň a odchod z Afriky'],
           ['člověk rozumný', 'umění a šíření po celém světě'],
         ], explain: 'Vzpřímená chůze přišla dřív než velký mozek. Nástroje, oheň a umění se objevovaly postupně.' },

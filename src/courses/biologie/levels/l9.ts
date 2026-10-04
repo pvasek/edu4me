@@ -551,9 +551,9 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Proč máš při horečce 41 °C v ohrožení život a proč pepsin v žaludku přestane pracovat ve střevě? Obojí souvisí s tím, že enzym je bílkovina s křehkým tvarem. Začneme teplotou:' },
             { type: 'graph', x: { label: 'teplota', unit: '°C', min: 0, max: 80, step: 10 }, y: { label: 'rychlost reakce', unit: '% maxima', min: 0, max: 100, step: 20 }, series: [
-              { label: 'lidský enzym', points: [[0, 6], [10, 12], [20, 25], [30, 50], [37, 90], [40, 100], [44, 75], [48, 40], [52, 12], [55, 0]], style: 'smooth', tone: 'a' },
+              { label: 'lidský enzym', points: [[0, 8], [7, 12], [17, 25], [27, 50], [37, 100], [41, 75], [45, 40], [49, 12], [52, 0]], style: 'smooth', tone: 'a' },
               { label: 'enzym termofilní bakterie', points: [[20, 4], [30, 9], [40, 18], [50, 35], [60, 68], [70, 100], [75, 85], [80, 45]], style: 'smooth', tone: 'b' },
-            ], marks: [{ x: 40, y: 100, label: 'optimum' }], caption: 'Do optima rychlost roste (asi dvojnásobně na každých 10 °C), nad optimem prudce klesá – enzym denaturuje.' },
+            ], marks: [{ x: 37, y: 100, label: 'optimum' }], caption: 'Do optima rychlost roste (asi dvojnásobně na každých 10 °C), nad optimem prudce klesá – enzym denaturuje.' },
             { type: 'p', text: 'Levá část křivky má jednoduché vysvětlení: teplejší molekuly se pohybují rychleji a častěji se srazí s aktivním centrem. Za optimem ale silný tepelný pohyb trhá vodíkové vazby, které drží tvar bílkoviny. Aktivní centrum se zdeformuje a substrát do něj nezapadne – enzym **denaturoval**.' },
             { type: 'callout', variant: 'warning', text: '==Denaturace teplem je nevratná==, zpomalení chladem je vratné. Enzym v lednici jen „spí“ a po ohřátí znovu pracuje; uvařený vaječný bílek už nikdy neprůhledný nebude. Proto se potraviny uchovávají v chladu, ale sterilizují varem.' },
             { type: 'p', text: 'Podobně působí pH: změna pH mění náboje na aktivním centru, takže substrát se váže hůř. Každý enzym má optimum pH podle místa, kde pracuje:' },

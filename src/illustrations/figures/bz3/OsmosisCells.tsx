@@ -1,7 +1,7 @@
 import { Arrow, Fade, Figure, Pop, f1, pat, rng, useFig } from "./kit";
 
 const LABEL =
-  "Osmóza u červené krvinky a rostlinné buňky ve třech roztocích. V hypotonickém roztoku, kde je venku méně rozpuštěných látek, voda proudí do buňky: krvinka nabobtná a praskne (hemolýza), rostlinná buňka se napne a pevná buněčná stěna ji udrží – vzniká turgor. V izotonickém roztoku voda proudí oběma směry stejně, krvinka má normální tvar a rostlinná buňka je ochablá. V hypertonickém roztoku s více solí venku voda z buňky odchází: krvinka se svraští (krenace) a u rostlinné buňky se protoplast odtrhne od stěny – plazmolýza.";
+  "Osmóza u červené krvinky a rostlinné buňky ve třech roztocích. V hypotonickém roztoku, kde je venku méně rozpuštěných látek, voda proudí do buňky: krvinka nabobtná a praskne (hemolýza), rostlinná buňka se napne a pevná buněčná stěna ji udrží – vzniká turgor. V izotonickém roztoku voda proudí oběma směry stejně, krvinka má normální tvar a rostlinná buňka je ochablá. V hypertonickém roztoku s více solí venku voda z buňky odchází: krvinka se svraští (plazmorhiza neboli krenace) a u rostlinné buňky se protoplast odtrhne od stěny – plazmolýza.";
 
 const W = 420;
 const H = 452;
@@ -135,7 +135,12 @@ function Plate() {
           </text>
           {i !== 1 && (
             <text x={c.x} y={R1 + 82} textAnchor="middle" className="bz3-lbl bz3-sm bz3-halo">
-              {i === 0 ? "(hemolýza)" : "(krenace)"}
+              {i === 0 ? "(hemolýza)" : "(plazmorhiza)"}
+            </text>
+          )}
+          {i === 2 && (
+            <text x={c.x} y={R1 + 100} textAnchor="middle" className="bz3-lbl bz3-sm bz3-muted-t bz3-halo">
+              = krenace
             </text>
           )}
         </Pop>

@@ -2,7 +2,7 @@ import { StepStrip } from "../../sequence/StepFigure";
 import { Fade, Figure, Frame, Lbl, StripBox, pat, useFig } from "./kit";
 
 const LABEL =
-  "Tři skupiny měkkýšů vedle sebe a jejich společné části těla: hlava, noha, útrobní vak s orgány a plášť, který vylučuje schránku. Plž (hlemýžď) má spirálně stočenou ulitu, plochou svalnatou nohu a hlavu s tykadly, oči má na koncích delších tykadel. Mlž (škeble) má schránku ze dvou lastur, sekerovitou nohu a sifony, ale nemá hlavu. Hlavonožec (chobotnice) má nohu přeměněnou v ramena s přísavkami a nálevku, velké oči na hlavě a schránka je vnitřní nebo chybí.";
+  "Tři skupiny měkkýšů vedle sebe a jejich společné části těla: hlava, noha, útrobní vak s orgány a plášť, který vylučuje schránku. Plž (hlemýžď) má spirálně stočenou ulitu, plochou svalnatou nohu a hlavu s tykadly, oči má na koncích delších tykadel. Mlž (škeble) má lasturu ze dvou misek, sekerovitou nohu a sifony, ale nemá hlavu. Hlavonožec (chobotnice) má nohu přeměněnou v ramena s přísavkami a nálevku, velké oči na hlavě a schránka je vnitřní nebo chybí.";
 
 const W = 240;
 const H = 196;
@@ -75,7 +75,7 @@ function Mussel() {
       ))}
       <circle cx={88} cy={50} r={5} className="bz2-o bz2-fill3" />
       <Fade delay={0.3}>
-        <Lbl x={8} y={24} tx={70} ty={72} className="bz2-b">2 lastury</Lbl>
+        <Lbl x={8} y={24} tx={70} ty={72} className="bz2-b">lastura</Lbl>
         <Lbl x={100} y={22} tx={120} ty={96} className="bz2-sm" sec>útrobní vak</Lbl>
         <Lbl x={134} y={188} tx={88} ty={168} className="bz2-b">noha</Lbl>
         <Lbl x={172} y={34} tx={220} ty={86} className="bz2-sm">sifony</Lbl>
@@ -144,7 +144,7 @@ export default function MolluscGroups() {
             {
               title: "Mlž – škeble",
               art: <Mussel />,
-              caption: "Dvě lastury, sekerovitá noha k zahrabávání; hlavu nemá, potravu filtruje.",
+              caption: "Lastura ze dvou misek, sekerovitá noha k zahrabávání; hlavu nemá, potravu filtruje.",
             },
             {
               title: "Hlavonožec – chobotnice",

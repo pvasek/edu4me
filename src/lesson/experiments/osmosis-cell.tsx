@@ -85,7 +85,7 @@ function osmosisLabel(kind: CellKind, nacl: number): string {
     lysis: 'Krvinka nasála tolik vody, že její membrána praskla a hemoglobin vytekl (hemolýza).',
     swollen: 'Krvinka nabobtnala a zakulatila se.',
     normal: 'Krvinka si drží svůj tvar.',
-    crenated: 'Krvinka ztratila vodu, zmenšila se a svraštila (krenace).',
+    crenated: 'Krvinka ztratila vodu, zmenšila se a svraštila (plazmorhiza, krenace).',
     turgid: 'Protoplast se tlačí na buněčnou stěnu, buňka je napjatá (turgor); stěna ji chrání před prasknutím.',
     flaccid: 'Protoplast jen přiléhá ke stěně, buňka je ochablá.',
     plasmolysis: 'Protoplast ztratil vodu a odtrhl se od buněčné stěny (plazmolýza).',

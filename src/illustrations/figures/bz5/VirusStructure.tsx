@@ -12,7 +12,7 @@ import {
 } from "./kit";
 
 const LABEL =
-  "Dva viry v řezu. Vlevo virus bez obalu: kapsida z bílkovinných dílků (kapsomer) ve tvaru dvacetistěnu chrání uvnitř stočenou nukleovou kyselinu, DNA nebo RNA. Vpravo obalený virus, jako je chřipka: kapsidu s RNA kryje obal z tuků vypůjčený z buňky a z obalu trčí bílkovinné výběžky, kterými se virus přichytí k buňce. Dole srovnání velikostí ve stejném měřítku: bakterie dlouhá 2 µm, virus chřipky 0,1 µm a virus obrny 0,03 µm.";
+  "Dva viry v řezu. Vlevo virus bez obalu: kapsida z bílkovinných dílků (kapsomer) ve tvaru dvacetistěnu chrání uvnitř stočenou nukleovou kyselinu, DNA nebo RNA. Vpravo obalený virus, jako je virus oparu (herpes): kapsidu ve tvaru dvacetistěnu s DNA kryje obal z tuků vypůjčený z buňky a z obalu trčí bílkovinné výběžky, kterými se virus přichytí k buňce. Dole srovnání velikostí ve stejném měřítku: bakterie dlouhá 2 µm, virus chřipky 0,1 µm a virus obrny 0,03 µm.";
 
 /** Corners of a regular hexagon (an icosahedron seen along a 3-fold axis). */
 const hexPts = (
@@ -105,7 +105,7 @@ function Naked() {
         <Lbl x={168} y={28} tx={160} ty={78} className="bz5-b">
           {"kapsida\nz bílkovin"}
         </Lbl>
-        <Lbl x={236} y={130} tx={cx + 70} ty={cy - 30} className="bz5-sm">
+        <Lbl x={222} y={130} tx={cx + 70} ty={cy - 30} className="bz5-sm">
           {"dílek\n(kapsomera)"}
         </Lbl>
         <Lbl
@@ -175,7 +175,7 @@ function Enveloped() {
       <Pop delay={0.25}>
         <Capsid cx={cx} cy={cy} r={52} />
       </Pop>
-      <Coil cx={cx} cy={cy} r={30} />
+      <Coil cx={cx} cy={cy} r={30} cls="bz5-dna" />
       <Fade delay={0.8}>
         <Lbl
           x={176}
@@ -197,9 +197,9 @@ function Enveloped() {
           y={268}
           tx={cx - 10}
           ty={cy + 8}
-          className="bz5-b bz5-red-t"
+          className="bz5-b bz5-violet-t"
         >
-          RNA
+          DNA
         </Lbl>
         <text
           x={290}
@@ -207,7 +207,7 @@ function Enveloped() {
           textAnchor="end"
           className="bz5-lbl bz5-sm bz5-muted-t"
         >
-          např. chřipka, koronavirus
+          např. virus oparu (herpes)
         </text>
       </Fade>
     </Frame>

@@ -255,7 +255,7 @@ const level: LevelContent = {
               { icon: 'ring', title: 'Granát', text: 'Tvrdost asi 7, sytě červený. Český granát (pyrop) z Českého středohoří a Podkrkonoší je proslulý šperkový kámen.' },
             ] },
             { type: 'p', text: 'Ne všechno, co se třpytí, je zlato. Na zlato si v potoce často „hraje“ pyrit nebo zlatavá slída. Odlišíš je podle vrypu a tvrdosti, barva ti nepomůže:' },
-            { type: 'table', headers: ['vlastnost', 'zlato', 'pyrit („kočičí zlato“)', 'zlatavá slída'], rows: [
+            { type: 'table', headers: ['vlastnost', 'zlato', 'pyrit', 'zlatavá slída'], rows: [
               ['barva', 'sytě žlutá', 'mosazně žlutá', 'zlatavá až stříbřitá'],
               ['vryp', 'žlutý', 'černozelený', 'bílý'],
               ['tvrdost', '2,5–3, dá se ohnout', '6–6,5, rýpe do skla', '2–3, štěpí se na lístky'],
@@ -840,7 +840,7 @@ const level: LevelContent = {
           icon: 'warning',
           blocks: [
             { type: 'p', text: 'Některé látky organismus neumí rozložit ani rychle vyloučit a hromadí je v těle (DDT a PCB v tuku, rtuť ve svalech). Patří k nim rtuť, insekticid DDT nebo průmyslové látky PCB. Predátor za život sní stovky kusů kořisti a s nimi i všechen jed, který v nich byl.' },
-            { type: 'p', text: 'Proto koncentrace jedu stoupá s každým patrem potravního řetězce. Tomuto jevu se říká **bioakumulace**. Sleduj naměřené hodnoty z jezera zamořeného DDT – v miligramech na kilogram:' },
+            { type: 'p', text: 'Proto koncentrace jedu stoupá s každým patrem potravního řetězce. Tomuto jevu se říká **bioakumulace** (přesněji **biomagnifikace**). Sleduj naměřené hodnoty z jezera zamořeného DDT – v miligramech na kilogram:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'drop', title: 'Voda', text: '0,000 003 mg/kg' },
               { icon: 'amoeba', title: 'Plankton', text: '0,04 mg/kg' },
