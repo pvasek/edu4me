@@ -18,7 +18,7 @@ export interface Population {
   year: number
   /** medium-variant projection (year after 2023) */
   projection?: boolean
-  /** total population, thousands */
+  /** total population, thousands, as summed from the package (about the end of the year; the UN's 1 July totals differ by under 1 %) */
   total: number
   /** porodnost / úmrtnost, ‰ (estimates only) */
   cbr?: number
