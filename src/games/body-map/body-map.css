@@ -1,0 +1,89 @@
+/* Mapa těla (prefix g-bm-). Theme tokens only. */
+.g-bm-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.g-bm-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.g-bm-q {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+.g-bm-prompt {
+  margin: 0;
+  font: 600 clamp(16px, 4.4vw, 18.5px) / 1.4 var(--font-body);
+}
+.g-bm-hint {
+  margin: 0;
+  font: 600 13.5px/1.35 var(--font-body);
+  color: var(--ink-soft);
+}
+.g-bm-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.g-bm-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.g-bm-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.g-bm-bonusbar > span {
+  transition: width 0.25s linear;
+}
+.g-bm-fig {
+  margin: 0;
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  padding: 6px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+.g-bm-fig figcaption {
+  font: italic 600 16px/1.2 var(--font-display);
+  color: var(--ink-soft);
+}
+.g-bm-svg {
+  /* the body continues beyond the cropped view box: never draw it over the slots */
+  overflow: hidden;
+}
+.g-bm-side text {
+  font: italic 700 19px/1 var(--font-display);
+  fill: var(--ink-soft);
+}
+.g-bm-side .g-bm-side-small {
+  font-size: 11px;
+  font-weight: 600;
+}
+.g-bm-status:empty {
+  display: none;
+}
+.g-bm-reveal {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-bm-why {
+  margin: 0;
+  font: 600 15.5px/1.5 var(--font-body);
+  padding: 8px 12px;
+  border-left: 3px double var(--accent);
+  background: var(--surface-2);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  overflow-wrap: anywhere;
+}

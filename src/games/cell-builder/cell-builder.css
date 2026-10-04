@@ -1,0 +1,156 @@
+/* Stavitel buňky (prefix g-cb-). Theme tokens only. */
+.g-cb-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.g-cb-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.g-cb-q {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+.g-cb-prompt {
+  margin: 0;
+  font: 600 clamp(16px, 4.4vw, 18.5px) / 1.4 var(--font-body);
+}
+.g-cb-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.g-cb-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.g-cb-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.g-cb-bonusbar > span {
+  transition: width 0.25s linear;
+}
+
+.g-cb-fig {
+  margin: 0;
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  padding: 6px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+.g-cb-fig .g-dnd-figure {
+  max-width: 460px;
+}
+.g-cb-fig figcaption {
+  font: italic 600 16px/1.2 var(--font-display);
+  color: var(--ink-soft);
+}
+.g-cb-svg {
+  overflow: visible;
+}
+
+.g-cb-missing {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-cb-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.g-cb-option {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 52px;
+  padding: 8px 10px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 15px/1.2 var(--font-body);
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-hard);
+}
+.g-cb-option svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.g-cb-option:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+.g-cb-option:disabled {
+  cursor: default;
+  box-shadow: none;
+}
+.g-cb-option:disabled:not(.ok):not(.bad) {
+  opacity: 0.55;
+}
+.g-cb-option.ok {
+  background: var(--good-soft);
+  border-color: var(--good);
+}
+.g-cb-option.bad {
+  background: var(--bad-soft);
+  border-color: var(--bad);
+}
+.g-cb-found {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  border: 2px solid var(--edge);
+  border-radius: 50%;
+  background: var(--good);
+  color: var(--surface);
+}
+.g-cb-found svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 3;
+}
+@media (min-width: 760px) {
+  .g-cb-missing {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    align-items: center;
+  }
+  .g-cb-options {
+    grid-template-columns: 1fr;
+  }
+}
+.g-cb-status:empty {
+  display: none;
+}
+.g-cb-reveal {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-cb-why {
+  margin: 0;
+  font: 600 15.5px/1.5 var(--font-body);
+  padding: 8px 12px;
+  border-left: 3px double var(--accent);
+  background: var(--surface-2);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  overflow-wrap: anywhere;
+}
