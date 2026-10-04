@@ -45,14 +45,9 @@ const level: LevelContent = {
           icon: 'skeleton',
           blocks: [
             { type: 'p', text: 'Proč má netopýr v křídle pět prstů? Létat by se dalo i s blánou napjatou na jediné kosti. Odpověď dává **srovnávací anatomie**: porovnává stavbu těl a hledá v nich stopy společného původu.' },
-            { type: 'p', text: 'Podívej se na přední končetinu čtyř savců. Funkce se úplně liší, ale kosti uvnitř jsou stejné a ve stejném pořadí:' },
-            { type: 'iconlist', items: [
-              { icon: 'muscle', title: 'Ruka člověka', text: 'úchop: pohyblivé prsty a protistojný palec' },
-              { icon: 'feather', title: 'Křídlo netopýra', text: 'let: extrémně prodloužené prsty napínají létací blánu' },
-              { icon: 'ocean', title: 'Ploutev velryby', text: 'plavání: krátké široké kosti, prsty s články navíc, vše uzavřené v jedné ploutvi' },
-              { icon: 'paw', title: 'Noha koně', text: 'běh: dlouhé záprstí, celá váha na jediném (třetím) prstu s kopytem' },
-            ] },
-            { type: 'p', text: 'Pod všemi čtyřmi tvary je stejný plán: jedna kost pažní, dvě kosti předloktí, zápěstí, záprstí a prsty. Takovým orgánům říkáme **homologické**: ==mají společný původ, i když dnes slouží jiné funkci.== Vznikly **divergencí** – rozbíháním potomků jednoho předka do různých prostředí.' },
+            { type: 'p', text: 'Podívej se na přední končetinu pěti obratlovců. Funkce se úplně liší – úchop, chůze, plavání, let –, ale kosti uvnitř jsou stejné a ve stejném pořadí. Sleduj barvy: stejná kost má na všech pěti končetinách stejnou barvu.' },
+            { type: 'diagram', id: 'pentadactyl-limb', caption: 'Přední končetina člověka, kočky, velryby, netopýra a ptáka. Velryba má krátké široké kosti a prsty s články navíc, netopýrovi se prsty extrémně prodloužily a napínají létací blánu, ptákovi kosti ruky srostly a některé prsty zakrněly.' },
+            { type: 'p', text: 'Pod všemi pěti tvary je stejný plán: jedna kost pažní, dvě kosti předloktí, zápěstí, záprstí a prsty. Takovým orgánům říkáme **homologické**: ==mají společný původ, i když dnes slouží jiné funkci.== Vznikly **divergencí** – rozbíháním potomků jednoho předka do různých prostředí.' },
             { type: 'p', text: 'Opačný případ vypadá podobně, ale původ má jiný. Porovnej oba typy podobnosti vedle sebe:' },
             { type: 'compare', columns: [
               { title: 'Homologické orgány', icon: 'family-tree', tone: 'a', points: ['**stejný původ** a stavební plán', 'funkce se může lišit', 'vznikají **divergencí**', 'končetina člověka, ploutev velryby, křídlo netopýra', 'list a úponka hrachu'] },
@@ -270,9 +265,9 @@ const level: LevelContent = {
             ] },
             { type: 'p', text: 'Že výběr na zobácích působí i dnes, změřili **Peter a Rosemary Grantovi** na ostrůvku Daphne Major. Po suchu v roce 1977 zbyla jen velká tvrdá semena a z asi 1 200 pěnkav středních (*Geospiza fortis*) přežilo jen kolem 180. Porovnej rozložení hloubky zobáku před suchem a u přeživších:' },
             { type: 'graph', x: { label: 'hloubka zobáku', unit: 'mm', min: 7, max: 12, step: 1 }, y: { label: 'podíl ptáků', unit: '%', min: 0, max: 30, step: 5 }, series: [
-              { label: 'před suchem', points: [[7.5, 1], [8, 4], [8.5, 12], [9, 22], [9.5, 25], [10, 20], [10.5, 11], [11, 4], [11.5, 1]], style: 'smooth', tone: 'a' },
-              { label: 'přeživší po suchu', points: [[8, 1], [8.5, 5], [9, 13], [9.5, 22], [10, 26], [10.5, 19], [11, 10], [11.5, 4]], style: 'smooth', tone: 'b' },
-            ], marks: [{ x: 9.4, label: 'průměr před' }, { x: 9.9, label: 'průměr po' }], caption: 'Zjednodušeno podle měření Grantových: přežily hlavně pěnkavy s hlubším zobákem a průměr se posunul asi o 0,5 mm.' },
+              { label: 'před suchem', points: [[7.5, 3], [8, 8], [8.5, 17], [9, 24], [9.5, 23], [10, 15], [10.5, 7], [11, 2], [11.5, 0]], style: 'smooth', tone: 'a' },
+              { label: 'přeživší po suchu', points: [[7.5, 1], [8, 3], [8.5, 8], [9, 17], [9.5, 24], [10, 23], [10.5, 15], [11, 7], [11.5, 2]], style: 'smooth', tone: 'b' },
+            ], marks: [{ x: 9.2, label: 'průměr před' }, { x: 9.7, label: 'průměr po' }], caption: 'Zjednodušeno podle měření Grantových: přežily hlavně pěnkavy s hlubším zobákem a průměr se posunul asi o 0,5 mm.' },
             { type: 'p', text: 'Výběr tu posunul celé rozložení jedním směrem – mluvíme o **směrovém výběru**. Protože hloubka zobáku je dědičná, měla už další generace zobáky v průměru hlubší. ==Adaptivní radiace je mnohokrát zopakovaný směrový výběr v různých prostředích.==' },
             { type: 'game', gameId: 'punnett', text: 'Křížení: sleduj, jak výběr mění podíl alel v populaci z generace na generaci.' },
             { type: 'p', text: 'Ještě rychlejší radiaci předvedly **cichlidy** ve východoafrických jezerech. Ve Viktoriině jezeře vzniklo kolem 500 druhů za pouhé desetitisíce let. Liší se čelistmi a zuby (oškrabují řasy ze skal, loví plankton, louskají plže) a hlavně barvou samců: samice si vybírají partnery podle barvy, takže pohlavní výběr izolaci urychluje.' },
@@ -412,14 +407,8 @@ const level: LevelContent = {
               { icon: 'cell', title: 'Mitochondriální DNA', text: 'dědí se jen po matce. Všechny dnešní linie se sbíhají k ženě, která žila v Africe před 150 000–200 000 lety („mitochondriální Eva“)' },
               { icon: 'compass', title: 'Rozmanitost klesá se vzdáleností od Afriky', text: 'nejméně jí mají původní obyvatelé Ameriky' },
             ] },
-            { type: 'p', text: 'Poslední bod je efekt zakladatele z lekce „Populační genetika“, opakovaný mnohokrát za sebou: každá skupina, která odešla dál, si odnesla jen část alel. Z rozdílů v DNA a z fosilií se dá sestavit trasa:' },
-            { type: 'process', layout: 'flow', steps: [
-              { icon: 'fossil', title: 'Afrika', text: 'vznik *H. sapiens* asi před 300 000 lety' },
-              { icon: 'compass', title: 'Odchod z Afriky', text: 'hlavní vlna asi před 70 000–60 000 lety; starší pokusy skončily slepou uličkou' },
-              { icon: 'ship', title: 'Asie a Austrálie', text: 'do Austrálie po moři asi před 50 000 lety, možná dřív' },
-              { icon: 'mountain', title: 'Evropa', text: 'asi před 45 000 lety' },
-              { icon: 'ice', title: 'Amerika', text: 'přes Beringii nejpozději asi před 15 000–20 000 lety' },
-            ], caption: 'Šíření člověka rozumného po světě (přibližná data)' },
+            { type: 'p', text: 'Poslední bod je efekt zakladatele z lekce „Populační genetika“, opakovaný mnohokrát za sebou: každá skupina, která odešla dál, si odnesla jen část alel. Z rozdílů v DNA a z fosilií se dá sestavit trasa. Na mapě sleduj šipky a data, v tisících let před dneškem:' },
+            { type: 'diagram', id: 'human-migration', caption: 'Šíření člověka rozumného (přibližná data). Hlavní vlna opustila Afriku před 70 000–60 000 lety, starší pokusy skončily slepou uličkou. Do Austrálie lidé dopluli po moři, do Ameriky přešli přes Beringii. Šrafovaně území neandertálců a denisovanů, křížky místa, kde se s nimi naši předkové křížili.' },
             { type: 'callout', variant: 'warning', text: 'Mitochondriální Eva nebyla jediná žena své doby. Žily s ní tisíce dalších, jen jejich mitochondriální linie se náhodou nedochovaly – jaderné geny od nich ale neseme dál.' },
             { type: 'p', text: 'Hypotéza „Out of Africa“ zvítězila – ale ne úplně čistě. Náhrada ostatních lidí nebyla dokonalá a DNA prozradila, že se s nimi naši předkové po cestě setkávali.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč podporuje největší genetická rozmanitost afrických populací hypotézu „Out of Africa“?', options: ['nejstarší populace měla nejvíc času hromadit mutace a odcházející skupiny si odnesly jen část alel', 'v Africe je víc mutagenního záření', 'Afričané se nikdy nekřížili s jinými skupinami', 'v Africe žije nejvíc lidí na světě'], answer: 0, explain: 'Rozmanitost roste s časem a ztrácí se při každém odchodu malé skupiny (efekt zakladatele). Proto je největší tam, kde druh vznikl.' } },
@@ -581,11 +570,8 @@ const level: LevelContent = {
             ], caption: 'Dvě krajní životní strategie' },
             { type: 'p', text: 'Pozor, nejde o dvě škatulky, ale o škálu – a srovnání je vždy relativní. Myš je r-stratég vedle slona, ale K-stratég vedle mšice. Většina druhů leží někde mezi.' },
             { type: 'callout', variant: 'fact', text: 'Hraboš polní předvádí r-strategii v praxi. V letech přemnožení (gradací) jich na hektaru pole mohou být stovky až tisíce, po zhroucení gradace zbudou jednotky.' },
-            { type: 'p', text: 'Strategie se odráží i v tom, kdy jedinci umírají. **Křivky přežívání** ukazují, kolik z 1 000 narozených se dožije určitého podílu maximální délky života:' },
-            { type: 'graph', x: { label: 'věk', unit: '% max. délky života', min: 0, max: 100, step: 20 }, y: { label: 'přeživší z 1 000', min: 0, max: 1000, step: 200 }, series: [
-              { label: 'typ I (člověk, slon)', points: [[0, 1000], [20, 980], [40, 960], [60, 900], [80, 700], [90, 400], [100, 0]], style: 'smooth', tone: 'a' },
-              { label: 'typ III (kapr, dub)', points: [[0, 1000], [5, 200], [10, 60], [20, 30], [40, 20], [60, 12], [80, 6], [100, 0]], style: 'smooth', tone: 'b' },
-            ], caption: 'K-stratégové umírají hlavně ve stáří (typ I), r-stratégové hlavně jako mláďata či semena (typ III).' },
+            { type: 'p', text: 'Strategie se odráží i v tom, kdy jedinci umírají. **Křivky přežívání** ukazují, kolik z 1 000 narozených se dožije určitého podílu maximální délky života. Svislá osa je logaritmická (každý dílek nahoru znamená desetkrát víc), aby byly vidět i poslední přeživší:' },
+            { type: 'diagram', id: 'survivorship-curves', caption: 'K-stratégové umírají hlavně ve stáří (typ I), r-stratégové hlavně jako mláďata či semena (typ III). U pěvců (typ II) umírá v každém věku zhruba stejný podíl jedinců, a na logaritmické ose proto vychází přímka.' },
             { type: 'p', text: 'Zatím jsme sledovali populaci jednoho druhu. Mezí jedné populace ale často bývá jiná populace – třeba ta, která ji loví.' },
             { type: 'check', question: { kind: 'multi', q: 'Které vlastnosti jsou typické pro r-stratégy?', options: ['mnoho potomků', 'rychlé dospívání', 'vysoká úmrtnost mláďat', 'dlouhá péče o mláďata', 'početnost stále blízko úživnosti prostředí'], answers: [0, 1, 2], explain: 'r-stratégové sázejí na rychlé množení: mnoho potomků, brzy dospívají a většina mláďat zahyne. Dlouhá péče a stabilní početnost patří K-stratégům.' } },
           ],
@@ -1053,7 +1039,7 @@ const level: LevelContent = {
               { icon: 'thermometer', title: 'Změna klimatu', text: 'nejrychleji sílící hrozba, která zesiluje ostatní' },
             ] },
             { type: 'p', text: 'Jak rychle druhy mizí dnes? Přímo to změřit nejde, ale dá se porovnat skutečnost s tím, co by se stalo přirozeným tempem:' },
-            { type: 'example', title: 'Jak rychle mizí savci', problem: 'Pozaďové vymírání savců se odhaduje na 2 druhy na milion druhů za rok. Savců je asi 5 500 druhů. Kolik by jich mělo vymřít za 500 let od roku 1500? Doložených vyhynutí savců je od té doby přes 80.', steps: [
+            { type: 'example', title: 'Jak rychle mizí savci', problem: 'Pozaďové vymírání savců se odhaduje na 2 druhy na milion druhů za rok. Savců je asi 5 500 druhů. Kolik by jich mělo vymřít za 500 let od roku 1500? Doložených vyhynutí savců je od té doby kolem 80.', steps: [
               'očekávaný počet = (2 / 1 000 000) · 5 500 druhů · 500 let',
               '= 5,5 druhu',
               'poměr skutečnosti a očekávání: 80 : 5,5 ≈ 15',
@@ -1098,7 +1084,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Ochranu přírody jsi poprvé potkal/a v lekci „Ochrana přírody a biodiverzita“. **Biologie ochrany přírody** rozlišuje dvě základní strategie: chránit druhy tam, kde žijí, nebo je zachránit mimo jejich domov. Porovnej je:' },
             { type: 'compare', columns: [
-              { title: 'Ochrana in situ (na místě)', icon: 'forest', tone: 'a', points: ['chráněná území: v Česku 4 národní parky (Krkonoše, Šumava, Podyjí, České Švýcarsko) a přes 20 CHKO', 'evropská soustava Natura 2000', 'propojení území koridory a ekodukty', 'obnova stanovišť a rewilding', 'světový cíl „30 × 30“: chránit 30 % souše a moří do roku 2030'] },
+              { title: 'Ochrana in situ (na místě)', icon: 'forest', tone: 'a', points: ['chráněná území: v Česku 4 národní parky (Krkonoše, Šumava, Podyjí, České Švýcarsko) a přes 25 CHKO', 'evropská soustava Natura 2000', 'propojení území koridory a ekodukty', 'obnova stanovišť a rewilding', 'světový cíl „30 × 30“: chránit 30 % souše a moří do roku 2030'] },
               { title: 'Ochrana ex situ (mimo místo)', icon: 'test-tube', tone: 'b', points: ['záchranné chovy v zoologických zahradách', 'genové banky semen (Svalbard v Norsku, Praha-Ruzyně)', 'kryobanky spermií, vajíček a tkání', 'botanické zahrady', 'jen pojistka: cílem je návrat do přírody'] },
             ], caption: 'Dvě strategie ochrany přírody' },
             { type: 'p', text: 'Proč nestačí jedna rezervace uprostřed polí? Malá izolovaná populace ztrácí genetickou rozmanitost driftem a příbuzenským křížením (lekce „Populační genetika“) a jediná nehoda ji může vyhladit. ==Proto dnes ochrana dbá hlavně na propojení území==, aby si populace mohly vyměňovat jedince a geny.' },

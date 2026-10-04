@@ -373,7 +373,7 @@ const level: LevelContent = {
               ['tenké střevo (asi 8)', 'membrána buněk střeva', 'maltáza, laktáza, peptidázy', 'maltóza → glukóza; laktóza → glukóza + galaktóza; peptidy → aminokyseliny'],
             ] },
             { type: 'p', text: 'Tuky mají zvláštní problém: ve vodě tvoří velké kapky a lipáza se dostane jen k jejich povrchu. **Žluč** z jater je proto nejdřív rozbije na drobné kapičky (**emulgace**). Pozor, žluč sama nic neštěpí, jen zvětší plochu pro enzym – jako mycí prostředek, který rozptýlí mastnotu na talíři.' },
-            { type: 'callout', variant: 'fact', text: 'Mléčný cukr laktózu štěpí laktáza. Většina dospělých lidí na světě ji po dětství přestane tvořit. V Evropě se ale rozšířila mutace, díky které laktáza zůstává, a většina Čechů proto pije mléko bez potíží.' },
+            { type: 'callout', variant: 'fact', text: 'Mléčný cukr laktózu štěpí laktáza. Většina dospělých lidí na světě ji po dětství přestane tvořit. V Evropě se ale rozšířila mutace, díky které laktáza zůstává. Mají ji asi tři čtvrtiny Čechů, a ti proto pijí mléko bez potíží i v dospělosti.' },
             { type: 'p', text: 'Potrava se tedy rozložila na glukózu, aminokyseliny, mastné kyseliny a glycerol. Teď je ještě musí tělo dostat ze střeva do krve.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď enzym k látce, kterou štěpí.', pairs: [
               ['pepsin', 'bílkoviny'],
@@ -481,15 +481,9 @@ const level: LevelContent = {
           title: 'Dialýza a transplantace',
           icon: 'first-aid',
           blocks: [
-            { type: 'p', text: 'Když ledviny selžou, hromadí se v krvi močovina, draslík a voda. Ztracenou funkci lze nahradit dvěma způsoby. Prvním je **hemodialýza**, umělá ledvina: místo glomerulu má polopropustnou membránu a místo zpětného vstřebávání chytře složený roztok. Sleduj cestu krve přístrojem:' },
-            { type: 'process', layout: 'flow', steps: [
-              { icon: 'blood', title: 'Krev z cévy v paži', text: 'proudí hadičkou do dialyzátoru' },
-              { icon: 'funnel', title: 'Polopropustná membrána', text: 'tisíce tenkých dutých vláken, za jejich stěnou teče dialyzační roztok' },
-              { icon: 'mixture', title: 'Difuze', text: 'močovina a přebytečný draslík přecházejí do roztoku, kde jich je méně; glukózy a potřebných iontů je v roztoku stejně jako v krvi, takže neodcházejí' },
-              { icon: 'fish', title: 'Protiproud', text: 'roztok teče proti krvi, takže rozdíl koncentrací vydrží po celé délce – stejně jako v žábrách' },
-              { icon: 'clock', title: 'Vyčištěná krev', text: 'se vrací do těla; sezení trvá asi 4 hodiny, třikrát týdně' },
-            ] },
-            { type: 'p', text: 'Dialýza zachrání život, ale ledvinu úplně nenahradí: neumí tvořit hormony a pacient musí přísně hlídat pití i sůl. Proto je nejlepším řešením **transplantace**. Porovnej obě možnosti:' },
+            { type: 'p', text: 'Když ledviny selžou, hromadí se v krvi močovina, draslík a voda. Ztracenou funkci lze nahradit dvěma způsoby. Prvním je **hemodialýza**, umělá ledvina: místo glomerulu má polopropustnou membránu a místo zpětného vstřebávání chytře složený roztok. Sleduj cestu krve přístrojem a ve zvětšeném výřezu i to, co projde stěnou vlákna:' },
+            { type: 'diagram', id: 'haemodialysis', caption: 'Krev teče z paže přes pumpu do dialyzátoru, tisíci dutých vláken shora dolů, a vrací se do žíly. Roztok kolem vláken proudí opačně. Močovina a draslík projdou membránou do roztoku, krvinky a bílkoviny zůstanou v krvi.' },
+            { type: 'p', text: 'Odchází jen to, čeho je v krvi víc než v roztoku: glukózy a potřebných iontů je v roztoku stejně jako v krvi, takže je krev neztrácí. Protiproud udrží rozdíl koncentrací po celé délce vlákna, stejně jako v žábrách. Přesto dialýza ledvinu úplně nenahradí: neumí tvořit hormony a pacient musí přísně hlídat pití i sůl. Proto je nejlepším řešením **transplantace**. Porovnej obě možnosti:' },
             { type: 'compare', columns: [
               { title: 'Hemodialýza', icon: 'clock', tone: 'a', points: ['dostupná hned', 'třikrát týdně asi 4 hodiny u přístroje', 'přísná dieta, omezené pití', 'jen částečná náhrada funkce'] },
               { title: 'Transplantace ledviny', icon: 'kidney', tone: 'b', points: ['ledvina od zemřelého nebo žijícího dárce (s jednou ledvinou se dá žít)', 'plná funkce, téměř normální život', 'celoživotní léky tlumící imunitu, aby tělo orgán neodmítlo', 'v Česku se ročně transplantuje kolem 500 ledvin'] },
@@ -957,13 +951,8 @@ const level: LevelContent = {
               { icon: 'magnifier', title: 'Výběr', text: 'najde se hybridom, který tvoří právě hledanou protilátku' },
               { icon: 'flask', title: 'Pěstování', text: 'klon se množí v bioreaktoru a vyrábí jednu protilátku ve velkém' },
             ] },
-            { type: 'p', text: 'Nejznámější použití možná máš doma: těhotenský test. Pracuje s protilátkami proti hormonu hCG, který tvoří placenta už pár dní po početí. Stejně fungují i rychlé antigenní testy na COVID-19:' },
-            { type: 'process', layout: 'flow', steps: [
-              { icon: 'drop', title: 'Moč na proužku', text: 'kapka moči vzlíná po proužku' },
-              { icon: 'protein', title: 'Barevné protilátky', text: 'hCG se naváže na pohyblivé protilátky s barevnou značkou' },
-              { icon: 'check', title: 'Testovací čára', text: 'pevně přichycené protilátky proti hCG zachytí komplex hCG s barevnou protilátkou a objeví se čára' },
-              { icon: 'equilibrium', title: 'Kontrolní čára', text: 'zachytí barevné protilátky vždy – ukazuje, že test proběhl správně' },
-            ] },
+            { type: 'p', text: 'Nejznámější použití možná máš doma: těhotenský test. Pracuje s protilátkami proti hormonu hCG, který tvoří placenta už pár dní po početí. Stejně fungují i rychlé antigenní testy na COVID-19. Sleduj, kudy kapka vzorku po proužku vzlíná a co se zachytí na které čáře:' },
+            { type: 'diagram', id: 'lateral-flow', caption: 'Barevné protilátky navážou hCG a kapalina je nese dál. Na testovací čáře T je zachytí pevně přichycené protilátky proti hCG, kontrolní čára C chytí barevné protilátky vždy – ukazuje, že test proběhl správně.' },
             { type: 'p', text: 'Drápatka vodní, emblém této úrovně, kdysi dělala stejnou práci: po injekci moči těhotné ženy do půl dne nakladla vajíčka, protože hCG působí i na její vaječníky. V polovině 20. století ji proto chovaly nemocnice po celém světě. Dnes léčba využívá monoklonální protilátky jako naváděné střely, které se navážou jen na buňky s určitým antigenem:' },
             { type: 'iconlist', items: [
               { icon: 'cell', title: 'Nádory', text: 'označí nádorové buňky pro imunitní systém nebo zablokují receptor, přes který rostou (třeba u některých nádorů prsu)' },
@@ -1047,7 +1036,9 @@ const level: LevelContent = {
               ['vítr', 'stoupne', 'odnáší vlhký vzduch od listu a udržuje rozdíl koncentrací'],
               ['sucho v půdě', 'klesne', 'kyselina abscisová zavře průduchy'],
             ] },
-            { type: 'p', text: 'Příjem vody se v laboratoři měří **potometrem**: uříznutý výhon je pod vodou nasazený na trubici s tenkou kapilárou. Jak výhon pije, posouvá se v kapiláře vzduchová bublina a ze vzdálenosti spočítáme objem vody:' },
+            { type: 'p', text: 'Příjem vody se v laboratoři měří **potometrem**: uříznutý výhon je pod vodou nasazený na trubici s tenkou kapilárou. Jak výhon pije, posouvá se v kapiláře vzduchová bublina k výhonu. Prohlédni si celou sestavu:' },
+            { type: 'diagram', id: 'potometer', caption: 'Potometr: výhon je vzduchotěsně zasazený do trubice s vodou, bublina v kapiláře se posouvá podle toho, kolik vody výhon nasaje. Nádržkou s kohoutkem se bublina vrací na začátek stupnice.' },
+            { type: 'p', text: 'Voda v kapiláře zaujímá tenký válec, takže objem nasáté vody je průřez kapiláry krát posun bubliny. Spočítejme to pro jedno měření:' },
             { type: 'example', title: 'Potometr', problem: 'Bublina v kapiláře o poloměru 0,5 mm se za 5 minut posunula o 30 mm. Jaká je rychlost příjmu vody v mm^{3} za minutu?', steps: [
               'Voda zaujímá v kapiláře válec, proto V = π · r^{2} · l',
               'V = 3,14 · (0,5 mm)^{2} · 30 mm = 3,14 · 0,25 mm^{2} · 30 mm ≈ 23,6 mm^{3}',

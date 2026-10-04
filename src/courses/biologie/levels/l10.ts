@@ -716,8 +716,9 @@ const level: LevelContent = {
             { type: 'table', headers: ['program', 'pro koho', 'vyšetření'], rows: [
               ['děložní čípek', 'ženy od 15 let, jednou ročně', 'stěr z čípku při preventivní gynekologické prohlídce'],
               ['prs', 'ženy od 45 let, jednou za 2 roky', 'mamografie'],
-              ['tlusté střevo', 'od 50 let', 'test na skryté krvácení ve stolici, případně kolonoskopie'],
+              ['tlusté střevo', '45–74 let (od roku 2026)', 'test na skryté krvácení ve stolici jednou za 2 roky, nebo kolonoskopie jednou za 10 let'],
               ['plíce', 'kuřáci a bývalí kuřáci 55–74 let', 'nízkodávkové CT'],
+              ['prostata', 'muži 50–69 let (od roku 2024)', 'krevní test PSA'],
             ], caption: 'Screening najde nádor v době, kdy je léčba nejúspěšnější.' },
             { type: 'callout', variant: 'tip', text: 'Genetický test na vrozené mutace *BRCA1* a *BRCA2* se doporučuje lidem se silnou rodinnou zátěží. Výsledek vždy vysvětlí genetický poradce – nezůstávej s ním sám/sama nad internetem.' },
             { type: 'p', text: 'Mutace jsou zdrojem nemocí, ale také nových alel. Jak se alely předávají, když sledujeme dva geny najednou nebo celé rodokmeny, ukáže lekce „Mendelovská genetika do hloubky“.' },
@@ -1207,8 +1208,8 @@ const level: LevelContent = {
           icon: 'lightning',
           blocks: [
             { type: 'p', text: 'DNA nese na každém nukleotidu fosfát se záporným nábojem, a v elektrickém poli proto putuje ke kladné elektrodě. Při **gelové elektroforéze** se vzorky nanesou do jamek v agarózovém gelu a pustí se proud. Gel funguje jako hustá síť: ==krátké úseky se jí protáhnou rychleji a doputují dál než dlouhé.==' },
-            { type: 'p', text: 'Tak se DNA využívá třeba k určení otcovství. Množí se úseky s krátkými opakováními (**STR**), jejichž počet opakování se mezi lidmi liší. Takhle může vypadat gel pro jeden úsek:' },
-            { type: 'structure', art: '    M    matka  dítě     A     B\n (−)\n   ==                   ==\n   ==     ==     ==\n   ==                         ==\n   ==            ==     ==\n   ==     ==                  ==\n (+)', caption: 'Schéma gelu: M je žebříček známých délek, A a B jsou dva muži. Kratší úseky doputovaly níž, ke kladné elektrodě.' },
+            { type: 'p', text: 'Tak se DNA využívá třeba k určení otcovství. Množí se úseky s krátkými opakováními (**STR**), jejichž počet opakování se mezi lidmi liší. Na gelu pro jeden takový úsek porovnej proužky dítěte s proužky matky a obou mužů:' },
+            { type: 'diagram', id: 'paternity-gel', caption: 'Gel pro jeden úsek STR: M je žebříček známých délek, A a B jsou dva muži. DNA putuje od záporné elektrody ke kladné; kratší úseky doputovaly níž.' },
             { type: 'p', text: 'Jak gel přečíst? Dítě dostalo jednu alelu od matky a jednu od otce, takže každý jeho proužek musí mít jeden z rodičů:' },
             { type: 'example', title: 'Kdo je otec?', problem: 'Podle gelu má dítě proužky ve 2. a 4. řadě odshora, matka ve 2. a 5., muž A v 1. a 4. a muž B ve 3. a 5. řadě. Kdo může být otcem?', steps: [
               'Proužek ve 2. řadě má dítě společný s matkou – ten zdědilo po ní.',
@@ -1234,7 +1235,7 @@ const level: LevelContent = {
             ] },
             { type: 'p', text: 'Číst už umíme. V roce 2012 Emmanuelle Charpentierová a Jennifer Doudnová ukázaly, jak DNA cíleně přepisovat. Využily obranný systém bakterií proti virům **CRISPR-Cas9** a v roce 2020 za něj dostaly Nobelovu cenu za chemii. Sleduj postup na obrázku:' },
             { type: 'diagram', id: 'crispr', caption: 'Vodicí RNA dovede enzym Cas9 k sekvenci, která k ní pasuje. Cas9 přestřihne oba řetězce a buňka zlom opraví – buď gen vyřadí, nebo podle dodané předlohy vloží nový úsek.' },
-            { type: 'p', text: 'Celý trik je ve **vodicí RNA** o 20 nukleotidech: změníš ji a Cas9 najde jakékoli jiné místo v genomu. Stejné párování bází, které drží dvoušroubovici, tu slouží jako adresa. Takhle funguje první lék založený na CRISPR, Casgevy (schválený 2023), proti srpkovité anémii:' },
+            { type: 'p', text: 'Celý trik je ve **vodicí RNA** o 20 nukleotidech: změníš ji a Cas9 najde jakékoli jiné místo v genomu. Stejné párování bází, které drží dvoušroubovici, tu slouží jako adresa. Takhle funguje první lék založený na CRISPR, Casgevy (schválený na konci roku 2023, v EU 2024), proti srpkovité anémii:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'blood', title: 'Odběr', text: 'z krve pacienta se získají krvetvorné kmenové buňky' },
               { icon: 'gene-scissors', title: 'Úprava', text: 'Cas9 vyřadí zesilovač genu, který v dospělosti vypíná výrobu fetálního hemoglobinu' },
@@ -1249,11 +1250,11 @@ const level: LevelContent = {
           title: 'GMO, genová terapie a etika',
           icon: 'balance-scale',
           blocks: [
-            { type: 'p', text: '**Geneticky modifikovaný organismus (GMO)** má DNA změněnou genovým inženýrstvím. Ve světě se pěstuje hlavně GM sója, kukuřice, bavlník a řepka, v Evropské unii je k pěstování povolená jediná odrůda kukuřice. Zastánci a odpůrci argumentují takto:' },
+            { type: 'p', text: '**Geneticky modifikovaný organismus (GMO)** má DNA změněnou genovým inženýrstvím. Ve světě se pěstuje hlavně GM sója, kukuřice, bavlník a řepka, v Evropské unii je k pěstování povolená jediná GM plodina, Bt kukuřice MON810. Zastánci a odpůrci argumentují takto:' },
             { type: 'compare', columns: [
               { title: 'Argumenty pro', tone: 'good', points: ['Bt kukuřice tvoří bílkovinu, která hubí housenky zavíječe kukuřičného: méně postřiků', 'zlatá rýže s beta-karotenem proti nedostatku vitaminu A', 'odolnost proti suchu a chorobám', 'u schválených plodin se ani po desítkách let výzkumu neprokázala škodlivost pro zdraví'] },
               { title: 'Rizika a argumenty proti', tone: 'bad', points: ['přenos genů do planých příbuzných druhů', 'škůdci a plevele si mohou vyvinout odolnost', 'závislost zemědělců na osivu velkých firem', 'menší rozmanitost pěstovaných odrůd'] },
-            ], caption: 'V Česku se Bt kukuřice pěstovala v letech 2005–2017. Potraviny s více než 0,9 % GM složky musí být v EU označené.' },
+            ], caption: 'V Česku se Bt kukuřice pěstovala v letech 2005–2016, nejvíc v roce 2008 (asi 8 400 ha). Potraviny s více než 0,9 % GM složky musí být v EU označené.' },
             { type: 'p', text: 'U člověka rozlišujeme dva druhy genové terapie. Rozdíl mezi nimi je zásadní, protože jen jeden se dědí:' },
             { type: 'compare', columns: [
               { title: 'Somatická genová terapie', tone: 'a', points: ['mění tělní buňky jednoho pacienta', 'na děti se nepřenese', 'schválené léky: Casgevy, Zolgensma na spinální svalovou atrofii', 'eticky se posuzuje podobně jako jiná léčba'] },

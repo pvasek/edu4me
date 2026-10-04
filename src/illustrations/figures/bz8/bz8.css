@@ -1,0 +1,864 @@
+.bz8 {
+  --lvl: var(--level, #555a9e);
+  --lvl-ink: color-mix(in srgb, var(--lvl) 72%, var(--ink));
+  --lvl-soft: color-mix(in srgb, var(--lvl) 16%, var(--surface));
+  --e: var(--blue);
+  --glass: color-mix(in srgb, var(--info-soft) 45%, var(--surface));
+  --water: color-mix(in srgb, #6f9fd8 30%, var(--surface));
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  container-type: inline-size;
+}
+.bz8-l11 {
+  --lvl: var(--level, #a84d6c);
+}
+.bz8-l12 {
+  --lvl: var(--level, #3f6699);
+}
+
+.bz8-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bz8-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.bz8-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.bz8-btn {
+  appearance: none;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 14px/1.1 var(--font-body);
+  min-height: 40px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.bz8-btn:hover {
+  background: var(--surface-2);
+}
+.bz8-btn[aria-pressed="true"] {
+  background: var(--lvl);
+  border-color: var(--lvl);
+  color: var(--on-level);
+}
+.bz8-host {
+  width: 100%;
+}
+
+.bz8-lbl {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16.5px;
+  fill: var(--ink-soft);
+}
+.bz8-b {
+  font-weight: 700;
+  fill: var(--ink);
+}
+.bz8-big {
+  font-size: 19px;
+}
+.bz8-sm {
+  font-size: 14.5px;
+}
+.bz8-lvl-t {
+  fill: var(--lvl-ink);
+}
+.bz8-acc-t {
+  fill: var(--accent);
+}
+.bz8-blue-t {
+  fill: var(--blue);
+}
+.bz8-red-t {
+  fill: var(--bad);
+}
+.bz8-muted-t {
+  fill: var(--muted);
+}
+.bz8-eq {
+  font: 600 14px var(--font-body);
+  fill: var(--ink);
+}
+.bz8-eq-sm {
+  font-size: 12.5px;
+}
+.bz8-eq-lg {
+  font-size: 16px;
+}
+.bz8-num {
+  font: 400 13px var(--font-mono);
+  fill: var(--ink);
+}
+.bz8-light-t {
+  fill: #fffaf0;
+}
+
+:where(.bz8-o:not([fill])) {
+  fill: none;
+}
+.bz8-o {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.bz8-thin {
+  stroke-width: 0.9;
+}
+.bz8-fill {
+  fill: var(--surface);
+}
+.bz8-fill2 {
+  fill: var(--surface-2);
+}
+.bz8-fill3 {
+  fill: var(--surface-3);
+}
+.bz8-glass {
+  fill: var(--glass);
+  fill-opacity: 0.55;
+}
+.bz8-ln {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+}
+.bz8-lvl-s {
+  stroke: var(--lvl-ink);
+}
+.bz8-lvl-f {
+  fill: var(--lvl);
+}
+.bz8-lvlsoft-f {
+  fill: var(--lvl-soft);
+}
+.bz8-dash {
+  stroke-dasharray: 5 4;
+}
+.bz8-dot2 {
+  stroke-dasharray: 1.5 4;
+}
+.bz8-lead {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  fill: none;
+}
+.bz8-dot {
+  fill: var(--ink-soft);
+}
+.bz8-nohit {
+  pointer-events: none;
+}
+.bz8-hl {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.4;
+}
+.bz8-hl-dark {
+  opacity: 0.6;
+}
+.bz8-hl-light {
+  stroke: #fffaf0;
+  stroke-width: 0.9;
+  opacity: 0.75;
+}
+.bz8-hl-shade {
+  stroke: #10131c;
+  stroke-width: 0.8;
+  opacity: 0.35;
+}
+.bz8-stip {
+  fill: var(--edge);
+  opacity: 0.35;
+}
+
+.bz8-arr {
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz8-arr-ink {
+  stroke: var(--edge);
+}
+.bz8-arr-acc {
+  stroke: var(--accent);
+}
+.bz8-arr-blue {
+  stroke: var(--blue);
+}
+.bz8-arr-lvl {
+  stroke: var(--lvl-ink);
+}
+.bz8-arr-red {
+  stroke: var(--bad);
+}
+.bz8-arr-green {
+  stroke: var(--good);
+}
+.bz8-arr-muted {
+  stroke: var(--muted);
+}
+.bz8-mk-ink {
+  fill: var(--edge);
+}
+.bz8-mk-acc {
+  fill: var(--accent);
+}
+.bz8-mk-blue {
+  fill: var(--blue);
+}
+.bz8-mk-lvl {
+  fill: var(--lvl-ink);
+}
+.bz8-mk-red {
+  fill: var(--bad);
+}
+.bz8-mk-green {
+  fill: var(--good);
+}
+.bz8-mk-muted {
+  fill: var(--muted);
+}
+
+.bz8-tag {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.bz8-tag-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+}
+
+.bz8-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 2 9;
+  animation: bz8-flow 1.1s linear infinite;
+}
+.bz8-flow-rev {
+  animation-direction: reverse;
+}
+@keyframes bz8-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+@container (max-width: 440px) {
+  .bz8-sec {
+    display: none;
+  }
+  .bz8-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+
+
+
+/* ---------------------------------------------------------------- narrow boost */
+.bz8-narrow .bz8-lbl {
+  font-size: 19px;
+}
+.bz8-narrow .bz8-lbl.bz8-sm {
+  font-size: 17px;
+}
+.bz8-narrow .bz8-lbl.bz8-big {
+  font-size: 21px;
+}
+.bz8-narrow .bz8-eq {
+  font-size: 16px;
+}
+.bz8-narrow .bz8-eq.bz8-eq-lg {
+  font-size: 17.5px;
+}
+.bz8-narrow .bz8-eq.bz8-eq-sm {
+  font-size: 14.5px;
+}
+.bz8-halo {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+.bz8-stripbox {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+}
+.bz8-strip-note {
+  margin: 0;
+  text-align: center;
+  font: italic 600 17px/1.3 var(--font-display);
+  color: var(--ink-soft);
+}
+.bz8-sym-t {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 19px;
+  fill: var(--ink);
+}
+.bz8-tone-lvl {
+  fill: var(--lvl-ink);
+}
+.bz8-tone-red {
+  fill: var(--bad);
+}
+.bz8-tone-green {
+  fill: var(--good);
+}
+.bz8-tone-blue {
+  fill: var(--blue);
+}
+.bz8-tone-acc {
+  fill: var(--accent);
+}
+.bz8-tone-muted {
+  fill: var(--muted);
+}
+.bz8-it {
+  font-style: italic;
+}
+.bz8-qs {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.bz8-num-badge circle {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz8-num-badge text {
+  font-family: var(--font-body);
+  font-weight: 800;
+  fill: var(--on-level);
+  pointer-events: none;
+}
+.bz8-vec {
+  stroke-width: 2.6;
+}
+.bz8-box {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.bz8-box-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.4;
+}
+.bz8-title {
+  font: italic 700 18px var(--font-display);
+  fill: var(--ink);
+}
+.bz8-narrow .bz8-title {
+  font-size: 20px;
+}
+.bz8-scale {
+  stroke: var(--ink);
+  stroke-width: 2.4;
+  stroke-linecap: butt;
+}
+.bz8-scale-t {
+  font: 600 12.5px var(--font-body);
+  fill: var(--ink-soft);
+}
+.bz8-narrow .bz8-scale-t {
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------------- biology fills
+   (token mixes, so the plate works on parchment and in the night-study theme) */
+.bz8-cyto {
+  fill: color-mix(in srgb, var(--yellow) 16%, var(--surface));
+}
+.bz8-nuc {
+  fill: color-mix(in srgb, var(--violet) 30%, var(--surface));
+}
+.bz8-nucleolus {
+  fill: color-mix(in srgb, var(--violet) 62%, var(--surface));
+}
+.bz8-mito {
+  fill: color-mix(in srgb, var(--accent) 38%, var(--surface));
+}
+.bz8-chl {
+  fill: color-mix(in srgb, var(--green) 62%, var(--surface));
+}
+.bz8-vac {
+  fill: color-mix(in srgb, var(--blue) 20%, var(--surface));
+}
+.bz8-wall {
+  fill: color-mix(in srgb, var(--yellow) 34%, var(--surface-3));
+}
+.bz8-leaf {
+  fill: color-mix(in srgb, var(--green) 46%, var(--surface));
+}
+.bz8-leaf2 {
+  fill: color-mix(in srgb, var(--green) 28%, var(--surface));
+}
+.bz8-stem {
+  fill: color-mix(in srgb, var(--green) 34%, var(--surface));
+}
+.bz8-root {
+  fill: color-mix(in srgb, var(--yellow) 30%, var(--surface));
+}
+.bz8-soil {
+  fill: color-mix(in srgb, var(--accent) 22%, var(--surface-2));
+}
+.bz8-petal {
+  fill: color-mix(in srgb, var(--pink) 38%, var(--surface));
+}
+.bz8-pollen {
+  fill: color-mix(in srgb, var(--yellow) 75%, var(--surface));
+}
+.bz8-bact {
+  fill: color-mix(in srgb, var(--teal) 30%, var(--surface));
+}
+.bz8-virus {
+  fill: color-mix(in srgb, var(--bad) 32%, var(--surface));
+}
+.bz8-rna {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz8-dna {
+  fill: none;
+  stroke: var(--violet);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz8-cap {
+  fill: color-mix(in srgb, var(--accent) 45%, var(--surface));
+}
+.bz8-hypha {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+}
+.bz8-flesh {
+  fill: color-mix(in srgb, var(--pink) 22%, var(--surface));
+}
+.bz8-skin {
+  fill: color-mix(in srgb, var(--accent) 26%, var(--surface));
+}
+.bz8-wbc {
+  fill: color-mix(in srgb, var(--violet) 18%, var(--surface));
+}
+.bz8-blood {
+  fill: color-mix(in srgb, var(--bad) 22%, var(--surface));
+}
+.bz8-water {
+  fill: color-mix(in srgb, var(--blue) 24%, var(--surface));
+}
+.bz8-shell {
+  fill: color-mix(in srgb, var(--yellow) 22%, var(--surface-2));
+}
+.bz8-animal {
+  fill: color-mix(in srgb, var(--muted) 22%, var(--surface));
+}
+.bz8-lvl-fill {
+  fill: color-mix(in srgb, var(--lvl) 30%, var(--surface));
+}
+.bz8-ribo {
+  fill: var(--ink-soft);
+}
+.bz8-spot {
+  fill: var(--ink);
+}
+.bz8-red-fill {
+  fill: color-mix(in srgb, var(--bad) 70%, var(--surface));
+}
+.bz8-ghost {
+  opacity: 0.35;
+}
+.bz8-faint {
+  opacity: 0.55;
+}
+
+/* ---------------------------------------------------------------- ambient loops */
+.bz8-wiggle {
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
+  animation: bz8-wiggle 0.9s ease-in-out infinite alternate;
+}
+@keyframes bz8-wiggle {
+  from {
+    transform: skewY(-4deg);
+  }
+  to {
+    transform: skewY(4deg);
+  }
+}
+.bz8-fall {
+  animation: bz8-fall 3s linear infinite;
+}
+@keyframes bz8-fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--fall, 40px));
+    opacity: 0;
+  }
+}
+.bz8-flow-up {
+  stroke-dasharray: 3 10;
+  animation: bz8-flow 1.3s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bz8-wiggle,
+  .bz8-fall,
+  .bz8-flow,
+  .bz8-flow-up {
+    animation: none;
+  }
+}
+
+/* ================================================================ bz8 plates */
+.bz8-good-t {
+  fill: var(--good);
+}
+.bz8-tone-violet {
+  fill: var(--violet);
+}
+
+/* paternity-gel */
+.bz8-gel {
+  fill: color-mix(in srgb, var(--blue) 9%, var(--surface));
+}
+.bz8-well {
+  fill: var(--paper);
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.bz8-band {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+}
+.bz8-band-ink {
+  fill: color-mix(in srgb, var(--ink-soft) 70%, var(--surface));
+}
+.bz8-band-mom {
+  fill: var(--accent);
+}
+.bz8-band-dad {
+  fill: var(--lvl);
+}
+.bz8-link {
+  fill: none;
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+}
+.bz8-link-mom {
+  stroke: var(--accent);
+}
+.bz8-link-dad {
+  stroke: var(--lvl-ink);
+}
+
+/* potometer */
+.bz8-stemline {
+  fill: none;
+  stroke: color-mix(in srgb, var(--green) 70%, var(--edge));
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.bz8-rubber {
+  fill: color-mix(in srgb, var(--ink-soft) 55%, var(--surface));
+}
+.bz8-glass-line {
+  stroke-width: 1.3;
+}
+.bz8-bubble {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.1;
+}
+.bz8-sun {
+  fill: color-mix(in srgb, var(--yellow) 70%, var(--surface));
+}
+.bz8-thermo-line {
+  stroke: var(--bad);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+/* haemodialysis */
+.bz8-vessel {
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  opacity: 0.75;
+}
+.bz8-vessel-a {
+  stroke: var(--bad);
+}
+.bz8-vessel-v {
+  stroke: var(--blue);
+}
+.bz8-tube {
+  fill: none;
+  stroke: color-mix(in srgb, var(--bad) 75%, var(--surface));
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz8-tube-d {
+  stroke: color-mix(in srgb, var(--blue) 45%, var(--surface));
+}
+.bz8-dialysate {
+  fill: color-mix(in srgb, var(--blue) 18%, var(--surface));
+}
+.bz8-blood-soft {
+  fill: color-mix(in srgb, var(--bad) 12%, var(--surface));
+}
+.bz8-blood-f {
+  fill: color-mix(in srgb, var(--bad) 55%, var(--surface));
+}
+.bz8-fibre {
+  fill: color-mix(in srgb, var(--bad) 45%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.7;
+}
+.bz8-flow-blood {
+  stroke: var(--bad);
+  stroke-width: 2;
+}
+.bz8-flow-dial {
+  stroke: var(--blue);
+  stroke-width: 1.6;
+}
+.bz8-membrane {
+  fill: color-mix(in srgb, var(--yellow) 45%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.bz8-rbc {
+  fill: color-mix(in srgb, var(--bad) 60%, var(--surface));
+}
+.bz8-protein {
+  fill: color-mix(in srgb, var(--violet) 40%, var(--surface));
+}
+.bz8-urea {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 0.6;
+}
+.bz8-kion {
+  fill: var(--accent);
+  stroke: var(--edge);
+  stroke-width: 0.6;
+}
+.bz8-glu {
+  fill: color-mix(in srgb, var(--yellow) 70%, var(--surface));
+}
+.bz8-spin {
+  animation: bz8-spin 2.4s linear infinite;
+}
+@keyframes bz8-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bz8-spin {
+    animation: none;
+  }
+}
+
+/* lateral-flow */
+.bz8-pad {
+  fill: color-mix(in srgb, var(--yellow) 22%, var(--surface));
+}
+.bz8-conj {
+  fill: color-mix(in srgb, var(--lvl) 22%, var(--surface));
+}
+.bz8-mem {
+  fill: var(--surface);
+}
+.bz8-wet {
+  fill: color-mix(in srgb, var(--blue) 26%, transparent);
+}
+.bz8-gold {
+  fill: var(--lvl);
+}
+.bz8-line-on {
+  fill: var(--lvl);
+}
+.bz8-line-off {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 0.8;
+  stroke-dasharray: 2 2;
+}
+.bz8-ab {
+  fill: none;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz8-ab-fix {
+  stroke: var(--ink-soft);
+}
+.bz8-ab-col {
+  stroke: var(--lvl-ink);
+}
+.bz8-hcg {
+  fill: var(--accent);
+}
+
+/* survivorship-curves */
+.bz8-grid {
+  stroke: var(--edge);
+  stroke-width: 0.6;
+  opacity: 0.3;
+  stroke-dasharray: 3 4;
+}
+.bz8-curve {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz8-curve-1 {
+  stroke: var(--lvl-ink);
+}
+.bz8-curve-2 {
+  stroke: var(--accent);
+}
+.bz8-curve-3 {
+  stroke: var(--teal);
+  stroke-dasharray: 8 4;
+}
+.bz8-teal-t {
+  fill: color-mix(in srgb, var(--teal) 80%, var(--ink));
+}
+
+/* human-migration */
+.bz8-sea {
+  fill: color-mix(in srgb, var(--blue) 14%, var(--surface));
+}
+.bz8-land {
+  fill: color-mix(in srgb, var(--yellow) 16%, var(--surface-2));
+}
+.bz8-nea {
+  fill: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.bz8-nea-o {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.3;
+  stroke-dasharray: 4 3;
+}
+.bz8-den {
+  fill: color-mix(in srgb, var(--violet) 30%, transparent);
+}
+.bz8-den-o {
+  fill: none;
+  stroke: var(--violet);
+  stroke-width: 1.3;
+  stroke-dasharray: 4 3;
+}
+rect.bz8-nea-o,
+rect.bz8-den-o {
+  stroke-dasharray: none;
+}
+.bz8-route {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz8-date {
+  font: italic 700 15px var(--font-display);
+  fill: var(--lvl-ink);
+}
+.bz8-narrow .bz8-date {
+  font-size: 19px;
+}
+.bz8-nea-t {
+  fill: color-mix(in srgb, var(--accent) 75%, var(--ink));
+}
+.bz8-den-t {
+  fill: color-mix(in srgb, var(--violet) 75%, var(--ink));
+}
+.bz8-narrow .bz8-lbl.bz8-leg {
+  font-size: 21px;
+}
+
+/* pentadactyl-limb */
+.bz8-bone {
+  stroke: var(--edge);
+  stroke-width: 0.9;
+  stroke-linejoin: round;
+}
+.bz8-bone-h .bz8-bone,
+.bz8-bone.bz8-bone-h {
+  fill: color-mix(in srgb, var(--accent) 55%, var(--surface));
+}
+.bz8-bone-ru .bz8-bone,
+.bz8-bone.bz8-bone-ru {
+  fill: color-mix(in srgb, var(--blue) 50%, var(--surface));
+}
+.bz8-bone.bz8-bone-c {
+  fill: color-mix(in srgb, var(--yellow) 70%, var(--surface));
+}
+.bz8-bone-d .bz8-bone,
+.bz8-bone.bz8-bone-d {
+  fill: color-mix(in srgb, var(--green) 55%, var(--surface));
+}
+.bz8-flipper {
+  fill: color-mix(in srgb, var(--blue) 12%, var(--surface-2));
+}
+.bz8-membrane-w {
+  fill: color-mix(in srgb, var(--ink-soft) 16%, var(--surface));
+}
+.bz8-feather {
+  fill: color-mix(in srgb, var(--surface-2) 70%, transparent);
+  stroke: var(--ink-soft);
+  stroke-width: 0.7;
+  opacity: 0.8;
+}
