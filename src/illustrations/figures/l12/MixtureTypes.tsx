@@ -137,7 +137,7 @@ const ITEMS: { name: string; kind: string; what: string; ex: string; draw: () =>
   { name: 'suspenze', kind: 'různorodá', what: 'pevná látka v kapalině', ex: 'bahnitá voda', draw: Suspension },
   { name: 'emulze', kind: 'různorodá', what: 'kapalina v kapalině', ex: 'mléko, majonéza', draw: Emulsion },
   { name: 'pěna', kind: 'různorodá', what: 'plyn v kapalině', ex: 'šlehačka', draw: Foam },
-  { name: 'aerosol', kind: 'různorodá', what: 'částice v plynu', ex: 'sprej (dým + mlha)', draw: Aerosol },
+  { name: 'aerosol', kind: 'různorodá', what: 'částice v plynu', ex: 'dým, mlha, sprej', draw: Aerosol },
   { name: 'dým', kind: 'různorodá', what: 'pevná látka v plynu', ex: 'kouř z komína', draw: Smoke },
   { name: 'mlha', kind: 'různorodá', what: 'kapalina v plynu', ex: 'oblak, opar', draw: Fog },
   { name: 'slitina', kind: 'stejnorodá', what: 'kov v kovu', ex: 'mosaz (Cu + Zn)', draw: Alloy },

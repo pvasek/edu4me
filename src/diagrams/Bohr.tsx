@@ -41,7 +41,7 @@ export default function Bohr({ props }: DiagramProps) {
         w={360}
         h={360}
         max={420}
-        label={`Bohrův model: ${el.name} (${plainChem(sym)}). Jádro: ${el.z} protonů, ${neutrons} neutronů. Elektronů ${electrons}, ve vrstvách ${shells
+        label={`Bohrův model: ${el.name} (${plainChem(sym)}). Jádro: protonů ${el.z}, neutronů ${neutrons}. Elektronů ${electrons}, ve vrstvách ${shells
           .map((n, i) => `${SHELL_NAMES[i]} ${n}`)
           .join(', ')}.`}
       >

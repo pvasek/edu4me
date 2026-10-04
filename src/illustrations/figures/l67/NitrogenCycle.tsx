@@ -138,7 +138,7 @@ export default function NitrogenCycle() {
           blesk
         </text>
         <text x={340} y={166} className="f67-lbl f67-sm f67-sec f67-halo">
-          <ChemText text="N_{2} + O_{2} → NO" />
+          <ChemText text="N_{2} + O_{2} → 2NO" />
         </text>
         <text x={286} y={390} textAnchor="middle" className="f67-lbl f67-b f67-halo">
           nitrifikace

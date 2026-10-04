@@ -27,9 +27,9 @@ const level: LevelContent = {
               type: 'molecule',
               molecules: ['glucose', 'fructose', 'ribose'],
               labels: ['glukóza – aldohexóza', 'fruktóza – ketohexóza', 'ribóza – aldopentóza'],
-              caption: 'Tři důležité **monosacharidy**, nejjednodušší sacharidy, které se hydrolýzou už dál neštěpí. Otoč modely a najdi skupinu $C=O$.',
+              caption: 'Tři důležité **monosacharidy**, nejjednodušší sacharidy, které se hydrolýzou už dál neštěpí. Modely ukazují kruhové formy, které v roztoku převažují; jak kruh z řetězce vznikne, uvidíš o oddíl dál.',
             },
-            { type: 'p', text: 'Skupinu $C=O$ mají všechny tři, ale ne na stejném místě. Právě podle toho se monosacharidy dělí do dvou skupin:' },
+            { type: 'p', text: 'V otevřeném řetězci mají všechny tři skupinu $C=O$, ale ne na stejném místě. Právě podle toho se monosacharidy dělí do dvou skupin:' },
             {
               type: 'compare',
               columns: [
@@ -88,7 +88,7 @@ const level: LevelContent = {
             },
             { type: 'callout', variant: 'remember', text: '==V přírodě převažují D-sacharidy== (D-glukóza, D-fruktóza, D-ribóza), zatímco bílkoviny stavějí z L-aminokyselin. Enzymy obě podoby rozliší stejně spolehlivě jako ruka levou a pravou rukavici.' },
             { type: 'callout', variant: 'warning', text: 'Písmena D a L neříkají, kterým směrem látka stáčí rovinu polarizovaného světla – to se značí (+) a (−). Třeba D-fruktóza stáčí světlo doleva.' },
-            { type: 'p', text: 'Fischerova projekce kreslí glukózu jako rovný řetězec. Ve skutečnosti má ale v roztoku otevřený řetězec jen nepatrná část molekul. Skupina $–OH$ na C5 zreaguje s aldehydovou skupinou na C1 na **poloacetal** (hemiacetal) a vznikne šestičlenný kruh s jedním atomem kyslíku. Fruktóza tvoří hlavně pětičlenný kruh.' },
+            { type: 'p', text: 'Fischerova projekce kreslí glukózu jako rovný řetězec. Ve skutečnosti má ale v roztoku otevřený řetězec jen nepatrná část molekul. Skupina $–OH$ na C5 zreaguje s aldehydovou skupinou na C1 na **poloacetal** (hemiacetal) a vznikne šestičlenný kruh s jedním atomem kyslíku. Fruktóza tvoří i pětičlenný kruh – právě v něm je vázaná v sacharóze.' },
             { type: 'p', text: 'Při uzavření kruhu se stane něco důležitého: na C1 vznikne nové chirální centrum, a tedy dvě možné podoby kruhu.' },
             { type: 'diagram', id: 'glucose-ring', caption: 'Z řetězce kruh. Uhlík C1 se při tom stane novým chirálním centrem, **anomerním uhlíkem**. Míří-li jeho $–OH$ na opačnou stranu kruhu než skupina $–CH2OH$ (v obvyklém nákresu dolů), jde o **α-glukózu**; míří-li na stejnou stranu (nahoru), o **β-glukózu**.' },
             { type: 'p', text: 'Na plochém nákresu se „nahoru“ a „dolů“ snadno splete. Ve 3D modelu sleduj jen uhlík C1 a jeho skupinu $–OH$:' },
@@ -171,7 +171,7 @@ const level: LevelContent = {
               ],
               caption: 'Tři polymery téže glukózy',
             },
-            { type: 'p', text: 'Drobný rozdíl mezi α a β rozhoduje o všem – i o otázce z úvodu. Vazby α(1->4) stáčejí řetězec do šroubovice, vazby β(1->4) ho nechají rovný, takže se řetězce celulózy skládají těsně vedle sebe. A naše trávicí enzymy umějí štěpit jen α-glykosidové vazby. ==Celulózu proto nestrávíme, a přesto je jako vláknina pro trávení užitečná.==' },
+            { type: 'p', text: 'Drobný rozdíl mezi α a β rozhoduje o všem – i o otázce z úvodu. Vazby α(1->4) stáčejí řetězec do šroubovice, vazby β(1->4) ho nechají rovný, takže se řetězce celulózy skládají těsně vedle sebe. A naše trávicí enzymy umějí štěpit vazby α(1->4) a α(1->6) škrobu, ne však vazby β(1->4) celulózy. ==Celulózu proto nestrávíme, a přesto je jako vláknina pro trávení užitečná.==' },
             { type: 'callout', variant: 'fact', text: 'Ani krávy celulózu samy nerozloží. Dělají to za ně mikroorganismy v bachoru, které mají enzym celulázu. Termiti na tom jsou podobně – bez střevních mikrobů by dřevo nestrávili.' },
             { type: 'p', text: 'Šroubovice škrobu má i praktické využití: díky ní škrob v jídle dokážeš jednoduchým pokusem, který s celulózou nevyjde.' },
             {
@@ -603,7 +603,7 @@ const level: LevelContent = {
           title: 'Steroidy a terpeny',
           icon: 'leaf',
           blocks: [
-            { type: 'p', text: 'Steroidy a terpeny nemají dlouhé řetězce, ale kruhy a větvené kostry. **Steroidy** mají za základ soustavu čtyř spojených kruhů – tří šestičlenných a jednoho pětičlenného. Nejznámější je **cholesterol**: je nezbytnou součástí buněčných membrán a tělo z něj vyrábí steroidní hormony, žlučové kyseliny a vitamin D.' },
+            { type: 'p', text: 'Steroidy a terpeny nejsou estery mastných kyselin: mají větvené uhlíkaté kostry, často uzavřené do kruhů. **Steroidy** mají za základ soustavu čtyř spojených kruhů – tří šestičlenných a jednoho pětičlenného. Nejznámější je **cholesterol**: je nezbytnou součástí buněčných membrán a tělo z něj vyrábí steroidní hormony, žlučové kyseliny a vitamin D.' },
             { type: 'molecule', molecules: ['cholesterol-core'], labels: ['steroidní kostra'], caption: 'Čtyři spojené kruhy – společný základ cholesterolu i steroidních hormonů' },
             { type: 'callout', variant: 'fact', text: 'Cholesterol není jed – většinu si ho tělo vyrobí samo v játrech. Potíž nastává, když ho krev přenáší příliš mnoho ve formě **LDL** a ten se ukládá ve stěnách cév. **HDL** naopak odvádí přebytek zpět do jater.' },
             { type: 'p', text: 'Odkud se steroidní kostra bere? Příroda ji skládá z menších dílů – stejných, z jakých rostliny staví své vůně. **Terpeny** (izoprenoidy) jsou poskládané z pětiuhlíkatých jednotek **izoprenu**, 2-methylbuta-1,3-dienu $CH2=C(CH3)–CH=CH2$. Počet jejich uhlíků je proto násobkem pěti. Rostliny z nich dělají vůně, barviva i obranné látky; mezi lipidy patří, protože jsou nepolární a ve vodě se nerozpouštějí. Podle počtu jednotek je chemici třídí takto:' },
@@ -922,7 +922,7 @@ const level: LevelContent = {
                 ['terciární', 'prostorový tvar celého řetězce', 'interakce **postranních řetězců**: disulfidové můstky $–S–S–$ (kovalentní), iontové vazby $–COO^-$ ··· $H3N^+–$, vodíkové vazby, hydrofobní interakce'],
                 ['kvartérní', 'spojení více řetězců (podjednotek)', 'stejné interakce jako u terciární struktury, tentokrát mezi řetězci'],
               ],
-              caption: 'Jen primární strukturu drží pevné kovalentní vazby. Vyšší úrovně stojí hlavně na slabých interakcích – proto je tak snadno rozruší teplo nebo změna pH.',
+              caption: 'Primární strukturu drží pevné kovalentní vazby. Vyšší úrovně stojí hlavně na slabých interakcích (kovalentní jsou z nich jen disulfidové můstky) – proto je tak snadno rozruší teplo nebo změna pH.',
             },
             { type: 'p', text: 'Sekundární struktura má dvě hlavní podoby. Drží je stejné vodíkové vazby, ale tvar je úplně jiný:' },
             {
@@ -959,7 +959,7 @@ const level: LevelContent = {
               type: 'iconlist',
               items: [
                 { icon: 'heat', title: 'Teplo', text: 'vaření vajec, pečení masa' },
-                { icon: 'lemon', title: 'Kyseliny a zásady', text: 'kysnutí mléka, marinování v citronové šťávě' },
+                { icon: 'lemon', title: 'Kyseliny a zásady', text: 'marinování masa v octu nebo citronové šťávě' },
                 { icon: 'hazard', title: 'Ionty těžkých kovů', text: '$Pb^{2+}$, $Hg^{2+}$, $Cu^{2+}$ – jeden z důvodů, proč jsou jedovaté' },
                 { icon: 'flask', title: 'Organická rozpouštědla', text: 'ethanol v dezinfekci ničí bílkoviny bakterií' },
                 { icon: 'sun', title: 'UV záření a mechanické namáhání', text: 'spálená kůže, šlehání sněhu z bílků' },
@@ -1142,7 +1142,7 @@ const level: LevelContent = {
                 ['2 · transferázy', 'přenos skupiny atomů z jedné molekuly na druhou', 'kinázy (přenášejí fosfát z ATP)'],
                 ['3 · hydrolázy', 'štěpení vazeb vodou (hydrolýza)', 'amyláza, lipáza, pepsin'],
                 ['4 · lyázy', 'štěpení vazeb bez vody, vznik dvojné vazby', 'pyruvátdekarboxyláza (odštěpí $CO2$)'],
-                ['5 · izomerázy', 'přeměna na izomer', 'glukosa-6-fosfátizomeráza'],
+                ['5 · izomerázy', 'přeměna na izomer', 'glukóza-6-fosfátizomeráza'],
                 ['6 · ligázy', 'spojení dvou molekul za spotřeby ATP', 'DNA-ligáza'],
                 ['7 · translokázy', 'přenos iontů a molekul přes membránu', 'sodno-draselná pumpa'],
               ],
@@ -1167,8 +1167,8 @@ const level: LevelContent = {
           title: 'Aktivní centrum: zámek a klíč',
           icon: 'catalyst',
           blocks: [
-            { type: 'p', text: 'Odpověď je v tvaru. Substrát se váže jen na malé místo obrovské molekuly enzymu – **aktivní centrum**. Je to prohlubeň z několika postranních řetězců aminokyselin, která vzniká díky terciární struktuře bílkoviny. Její tvar a náboj přesně odpovídají substrátu. Celá katalýza pak proběhne ve čtyřech krocích:' },
-            { type: 'diagram', id: 'enzyme-lock-key', caption: 'Enzymová katalýza ve čtyřech krocích: substrát zapadne do aktivního centra, v komplexu enzym–substrát (ES) se jeho vazby oslabí, substrát se přemění na produkty a ty se uvolní. Enzym vyjde z reakce nezměněný a může pracovat znovu: $E + S <=> ES -> E + P$. Poslední obrázek ukazuje inhibitor, který aktivní centrum zablokuje.' },
+            { type: 'p', text: 'Odpověď je v tvaru. Substrát se váže jen na malé místo obrovské molekuly enzymu – **aktivní centrum**. Je to prohlubeň z několika postranních řetězců aminokyselin, která vzniká díky terciární struktuře bílkoviny. Její tvar a náboj přesně odpovídají substrátu. Obrázek ukazuje celou katalýzu i to, jak ji může zablokovat cizí molekula:' },
+            { type: 'diagram', id: 'enzyme-lock-key', caption: 'Enzymová katalýza: substrát zapadne do aktivního centra, v komplexu enzym–substrát (ES) se jeho vazby oslabí, substrát se přemění na produkty a ty se uvolní. Enzym vyjde z reakce nezměněný a může pracovat znovu: $E + S <=> ES -> E + P$. Poslední obrázek ukazuje inhibitor, který aktivní centrum zablokuje.' },
             { type: 'p', text: 'Jak přesně do sebe enzym a substrát zapadnou? Popisují to dva modely, starší a novější:' },
             {
               type: 'compare',
@@ -1626,10 +1626,10 @@ const level: LevelContent = {
               type: 'process',
               layout: 'cycle',
               steps: [
-                { icon: 'gas-cloud', title: 'Fixace $CO2$', text: 'RuBisCO naváže $CO2$ na ribulosa-1,5-bisfosfát (C5), vzniknou dvě molekuly C3' },
+                { icon: 'gas-cloud', title: 'Fixace $CO2$', text: 'RuBisCO naváže $CO2$ na ribulóza-1,5-bisfosfát (C5), vzniknou dvě molekuly C3' },
                 { icon: 'battery', title: 'Redukce', text: 'ATP a NADPH ze světelné fáze redukují C3 na glyceraldehyd-3-fosfát' },
                 { icon: 'sugar', title: 'Výstup', text: 'část glyceraldehyd-3-fosfátu odchází na stavbu glukózy, škrobu a celulózy' },
-                { icon: 'arrow-cycle', title: 'Regenerace', text: 'zbytek se za spotřeby ATP přestaví zpět na ribulosa-1,5-bisfosfát' },
+                { icon: 'arrow-cycle', title: 'Regenerace', text: 'zbytek se za spotřeby ATP přestaví zpět na ribulóza-1,5-bisfosfát' },
               ],
               caption: 'Calvinův cyklus',
             },
@@ -1922,7 +1922,7 @@ const level: LevelContent = {
               type: 'process',
               layout: 'flow',
               steps: [
-                { icon: 'droplets', title: 'Lipidová obálka', text: 'mRNA je zabalená v tukových nanočásticích, které splynou s membránou buňky' },
+                { icon: 'droplets', title: 'Lipidová obálka', text: 'mRNA je zabalená v lipidových nanočásticích, které splynou s membránou buňky' },
                 { icon: 'factory', title: 'Translace na ribozomu', text: 'buňka podle mRNA chvíli vyrábí virovou bílkovinu' },
                 { icon: 'syringe', title: 'Imunitní odpověď', text: 'imunitní systém bílkovinu pozná a vytvoří protilátky a paměťové buňky' },
                 { icon: 'recycle', title: 'mRNA se rozloží', text: 'enzymy ji během několika dní rozštěpí na nukleotidy' },
@@ -2628,7 +2628,7 @@ const level: LevelContent = {
           title: 'Skleníkový efekt a změna klimatu',
           icon: 'earth',
           blocks: [
-            { type: 'p', text: 'Oxid uhličitý není jedovatý, a přesto mění klima celé planety. **Skleníkové plyny** – vodní pára, $CO2$, methan $CH4$ a oxid dusný $N2O$ – propustí sluneční záření, ale zčásti pohlcují **infračervené záření**, kterým ohřátá Země vyzařuje teplo, a část ho vracejí zpět. Tomu říkáme **skleníkový efekt**. Sleduj cestu záření na obrázku:' },
+            { type: 'p', text: 'Oxid uhličitý v běžných koncentracích nijak neškodí, a přesto mění klima celé planety. **Skleníkové plyny** – vodní pára, $CO2$, methan $CH4$ a oxid dusný $N2O$ – propustí sluneční záření, ale zčásti pohlcují **infračervené záření**, kterým ohřátá Země vyzařuje teplo, a část ho vracejí zpět. Tomu říkáme **skleníkový efekt**. Sleduj cestu záření na obrázku:' },
             { type: 'diagram', id: 'greenhouse-effect', caption: 'Sluneční záření projde atmosférou a ohřeje povrch, ohřátý povrch vyzařuje infračervené záření a skleníkové plyny ($CO2$, $CH4$, $H2O$) jeho část vracejí k Zemi. Bez tohoto přirozeného skleníkového efektu by byla průměrná teplota na Zemi asi −18 °C místo +15 °C.' },
             { type: 'p', text: 'Proč pohlcují teplo jen některé plyny? Hlavní složky vzduchu, dusík a kyslík, totiž skleníkové nejsou:' },
             { type: 'molecule', molecules: ['CO2', 'CH4', 'H2O', 'N2'], labels: ['$CO2$: pohlcuje IR', '$CH4$: pohlcuje IR', '$H2O$: pohlcuje IR', '$N2$: nepohlcuje'], caption: 'Infračervené záření rozkmitá vazby v molekule, ale pohltí se jen tehdy, když se při kmitání mění rozložení náboje. Dvouatomové molekuly $N2$ a $O2$ tuto podmínku nesplňují, $CO2$, $CH4$ a $H2O$ ano.' },

@@ -67,7 +67,7 @@ H — C — H
           icon: 'electron',
           blocks: [
             { type: 'p', text: 'Tady je háček: uhlík má v základním stavu jen dva nepárové elektrony ($2s^{2} 2p^{2}$), a přesto tvoří čtyři rovnocenné vazby. Vysvětlení znáš z úrovně 3: jeden elektron přeskočí z $2s$ do $2p$ a orbitaly se „smíchají“ v nové, stejně tvarované **hybridní orbitaly**. Tomu smíchání říkáme **hybridizace**.' },
-            { type: 'diagram', id: 'hybridization', caption: 'Tři typy hybridizace uhlíku: $sp^{3}$ (4 hybridní orbitaly, čtyřstěn, $CH4$), $sp^{2}$ (3 orbitaly v rovině a jeden nezhybridizovaný orbital p, $C2H4$) a $sp$ (2 orbitaly na přímce a dva orbitaly p, $C2H2$).' },
+            { type: 'diagram', id: 'hybridization', caption: 'Tři typy hybridizace uhlíku: $sp^{3}$ (4 hybridní orbitaly, čtyřstěn, $CH4$), $sp^{2}$ (3 orbitaly v rovině a jeden nehybridizovaný orbital p, $C2H4$) a $sp$ (2 orbitaly na přímce a dva orbitaly p, $C2H2$).' },
             { type: 'p', text: 'Z obrázku si odnes hlavně jedno: počet hybridních orbitalů určuje tvar okolí uhlíku. Tabulka to shrnuje i s úhly a příklady:' },
             { type: 'table', headers: ['Hybridizace', 'Vazby uhlíku', 'Tvar a úhel', 'Příklad'], rows: [
               ['$sp^{3}$', '4 jednoduché (4 σ)', 'čtyřstěn, 109,5°', 'methan, ethan, každý $CH3$'],
@@ -76,7 +76,7 @@ H — C — H
             ], caption: 'Hybridizace určuje tvar molekuly kolem každého uhlíku' },
             { type: 'p', text: 'Úhly 109,5°, 120° a 180° jsou nejlépe vidět na trojrozměrných modelech nejjednodušších zástupců:' },
             { type: 'molecule', molecules: ['CH4', 'C2H4', 'C2H2'], labels: ['$sp^{3}$: methan, 109,5°', '$sp^{2}$: ethen, 120°', '$sp$: ethyn, 180°'], caption: 'Otoč si modely: čtyřstěn, rovina a přímka' },
-            { type: 'p', text: 'Hybridní orbitaly tvoří **σ-vazby** přímo na spojnici jader. Nezhybridizované orbitaly p se překrývají bokem nad a pod rovinou a tvoří **π-vazby**. Každá dvojná vazba je tedy σ + π, trojná σ + 2π (víc v lekci o alkenech).' },
+            { type: 'p', text: 'Hybridní orbitaly tvoří **σ-vazby** přímo na spojnici jader. Nehybridizované orbitaly p se překrývají bokem nad a pod rovinou a tvoří **π-vazby**. Každá dvojná vazba je tedy σ + π, trojná σ + 2π (víc v lekci o alkenech).' },
             { type: 'callout', variant: 'tip', title: 'Rychlý trik', text: '==Spočítej, kolika atomům je uhlík přímo vázaný: 4 sousedé → $sp^{3}$, 3 sousedé → $sp^{2}$, 2 sousedé → $sp$.== Násobná vazba se počítá jako jeden soused.' },
             { type: 'p', text: 'Trik si vyzkoušej na molekule, ve které má každý uhlík jiné okolí:' },
             { type: 'example', title: 'Hybridizace v jedné molekule', problem: 'Urči hybridizaci obou uhlíků v kyselině octové $CH3-COOH$ a vazebné úhly kolem nich.', steps: [
@@ -313,8 +313,8 @@ Cl         H`, caption: '1-brom-1-chlorprop-1-en: který izomer to je?' },
               { icon: 'magnifier', title: 'Hlavní řetězec', text: 'nejdelší souvislý řetězec uhlíků; nemusí vést rovně. Při shodě vyber ten s více větvemi.' },
               { icon: 'calculator', title: 'Očíslování', text: 'od konce, ke kterému je **nejblíž první větev**, aby čísla poloh (**lokanty**) byla co nejnižší' },
               { icon: 'bond', title: 'Větve jako alkyly', text: 'methyl, ethyl…, před každou číslo uhlíku, na kterém visí' },
-              { icon: 'molecule', title: 'Násobící předpony', text: 'stejné větve spoj předponou di-, tri-, tetra-; každá má vlastní lokant: 2,2-dimethyl' },
-              { icon: 'book', title: 'Abecedně', text: 'různé větve podle abecedy, násobící předpony se nepočítají: ethyl před methyl' },
+              { icon: 'molecule', title: 'Násobicí předpony', text: 'stejné větve spoj předponou di-, tri-, tetra-; každá má vlastní lokant: 2,2-dimethyl' },
+              { icon: 'book', title: 'Abecedně', text: 'různé větve podle abecedy, násobicí předpony se nepočítají: ethyl před methyl' },
               { icon: 'check', title: 'Celý název', text: 'nakonec název hlavního řetězce; čísla odděl čárkou, číslo od písmene spojovníkem, vše jedním slovem' },
             ], caption: 'Šest kroků k názvu rozvětveného alkanu' },
             { type: 'p', text: 'Pravidla nejdřív vyzkoušej na nejjednodušším rozvětveném alkanu. Nejdelší řetězec tu má tři uhlíky a methyl visí na prostředním:' },
@@ -352,7 +352,7 @@ CH3 — CH — CH — CH2 — CH2 — CH3
               'Na uhlík 2 připoj dva methyly, na uhlík 4 jeden methyl.',
               'Doplň vodíky tak, aby měl každý uhlík čtyři vazby.',
             ], answer: '$CH3-C(CH3)2-CH2-CH(CH3)-CH3$, souhrnně $C8H18$ (vzorec už znáš z první lekce)' },
-            { type: 'callout', variant: 'warning', title: 'Nejčastější chyby', text: 'Název „1-methyl…“ nikdy nevznikne, methyl na konci řetězce ho jen prodlužuje. A když ti vyjde „2-ethyl…“, zvolil jsi hlavní řetězec moc krátký: 2-ethylpentan je ve skutečnosti 3-methylhexan.' },
+            { type: 'callout', variant: 'warning', title: 'Nejčastější chyby', text: 'Název „1-methyl…“ nikdy nevznikne, methyl na konci řetězce ho jen prodlužuje. A když ti vyjde „2-ethyl…“, zvolil/a jsi hlavní řetězec moc krátký: 2-ethylpentan je ve skutečnosti 3-methylhexan.' },
             { type: 'p', text: 'Alkany už umíš pojmenovat. Teď se podíváme, jak se chovají: proč jsou některé plyny a jiné pevné látky a proč tak dobře hoří.' },
             { type: 'check', question: { kind: 'text', q: 'Pojmenuj alkan $CH3-CH(CH3)-CH(CH3)-CH3$.', accept: ['2,3-dimethylbutan', '2,3 dimethylbutan', '2, 3-dimethylbutan'], explain: 'Hlavní řetězec má 4 uhlíky (butan), methyly jsou na C2 a C3 z obou stran: 2,3-dimethylbutan.' } },
             { type: 'check', question: { kind: 'choice', q: 'Který z názvů je utvořený správně?', options: ['3-methylhexan', '2-ethylpentan', '4-methylhexan', '1-methylpentan'], answer: 0, explain: '2-ethylpentan je správně 3-methylhexan, 4-methylhexan se má číslovat z druhé strany (3-methylhexan) a 1-methylpentan je prostě hexan.' } },
@@ -437,7 +437,7 @@ CH3 — CH — CH — CH2 — CH2 — CH3
             { type: 'p', text: 'Hlavním zdrojem alkanů jsou fosilní suroviny: zemní plyn a ropa. Liší se hlavně tím, jak pestrá je to směs:' },
             { type: 'compare', columns: [
               { title: 'Zemní plyn', icon: 'gas-cylinder', tone: 'a', points: ['převážně methan, obvykle přes 90 %', 'příměs ethanu, propanu a butanu'] },
-              { title: 'Ropa', icon: 'oil-barrel', tone: 'b', points: ['hustá směs stovek uhlovodíků', 'hlavně alkany a cykloalkany', 'menší podíl aromátů'] },
+              { title: 'Ropa', icon: 'oil-barrel', tone: 'b', points: ['kapalná směs tisíců uhlovodíků', 'hlavně alkany a cykloalkany', 'menší podíl aromátů'] },
             ] },
             { type: 'p', text: 'Ropu proto nejdřív musíme rozdělit. V rafinerii se dělí **frakční destilací** podle teplot varu, které už umíš odhadnout z délky řetězce:' },
             { type: 'diagram', id: 'fractional-distillation', caption: 'Frakční destilace: páry stoupají kolonou. Nahoře, kde je chladněji, kondenzují krátké molekuly s nízkou teplotou varu, dole ty dlouhé. U každé frakce je počet uhlíků, rozmezí teplot varu a použití (hranice se mezi rafineriemi trochu liší).' },
@@ -481,7 +481,7 @@ CH3 — CH — CH — CH2 — CH2 — CH3
   H2C     CH2
      \   /
       CH2`, caption: 'Cyklohexan $C6H12$. Ve vazebném vzorci je to prostě šestiúhelník.' },
-            { type: 'p', text: 'Kolem jednoduché vazby se atomy volně otáčejí. Podoby, které se liší jen natočením kolem jednoduchých vazeb, jsou **konformace**. Nejsou to izomery, molekula mezi nimi přechází miliardkrát za sekundu.' },
+            { type: 'p', text: 'Kolem jednoduché vazby se atomy volně otáčejí. Podoby, které se liší jen natočením kolem jednoduchých vazeb, jsou **konformace**. Nejsou to izomery, které by šly oddělit: molekula mezi nimi přechází miliardkrát za sekundu.' },
             { type: 'p', text: 'Ne všechny konformace jsou ale stejně výhodné. Porovnej ethan a cyklohexan:' },
             { type: 'compare', columns: [
               { title: 'Stabilnější', icon: 'check', tone: 'good', points: ['ethan: **nezákrytová** konformace, vodíky sousedních uhlíků míří „mezi sebe“', 'cyklohexan: **židlička**, úhly téměř čtyřstěnné, molekula není pnutá'] },
@@ -724,7 +724,7 @@ CH3 — CH — CH = CH — CH3
             { type: 'p', text: 'Aromáty jsou užitečné, některé z nich ale i nebezpečné. Tohle o jejich rizicích potřebuješ vědět:' },
             { type: 'iconlist', items: [
               { icon: 'hazard', title: 'Benzen je karcinogen', text: 'poškozuje kostní dřeň a prokazatelně způsobuje leukemii' },
-              { icon: 'flask', title: 'Náhrada toluenem', text: 'dřív běžné rozpouštědlo, dnes ho nahradil méně nebezpečný toluen' },
+              { icon: 'flask', title: 'Náhrada toluenem', text: 'benzen býval běžné rozpouštědlo, dnes ho nahradil méně nebezpečný toluen' },
               { icon: 'gas-cloud', title: 'Polycyklické aromáty', text: 'několik spojených benzenových kruhů; vznikají při nedokonalém hoření (cigaretový kouř, výfuky, připálené maso z grilu). Benzo[a]pyren je silný karcinogen.' },
             ] },
             { type: 'callout', variant: 'warning', title: 'Benzen × benzin', text: 'Neplést si: benzen je čistá látka $C6H6$, benzin je směs uhlovodíků z ropy. Benzenu smí být v benzinu v EU nejvýš 1 % objemu.' },
@@ -823,7 +823,7 @@ CH3 — CH — CH = CH — CH3
           title: 'Halogenderiváty',
           icon: 'ozone',
           blocks: [
-            { type: 'p', text: 'Halogenderiváty už jsi potkal/a u radikálové chlorace methanu. **Halogenderiváty** vzniknou náhradou vodíku atomem halogenu. Halogen se v názvu vyjadřuje vždy předponou **fluor-, chlor-, brom-, jod-** s lokantem, více stejných halogenů dostane násobící předponu.' },
+            { type: 'p', text: 'Halogenderiváty už jsi potkal/a u radikálové chlorace methanu. **Halogenderiváty** vzniknou náhradou vodíku atomem halogenu. Halogen se v názvu vyjadřuje vždy předponou **fluor-, chlor-, brom-, jod-** s lokantem, více stejných halogenů dostane násobicí předponu.' },
             { type: 'molecule', molecules: ['CH3Cl', 'vinyl-chloride', 'CCl2F2'], labels: ['chlormethan $CH3Cl$', 'chlorethen (vinylchlorid) $CH2=CHCl$, monomer PVC', 'dichlordifluormethan (freon) $CCl2F2$'] },
             { type: 'p', text: 'Podle stejného pravidla pojmenuješ i další halogenderiváty. Některé z nich znáš z laboratoře nebo z kuchyně:' },
             { type: 'table', headers: ['Vzorec', 'Název', 'Poznámka'], rows: [
@@ -920,7 +920,7 @@ CH3 — C — CH3        terciární
               ['propan $C3H8$', '44', '−42 °C', 'nerozpustný'],
               ['ethanol $C2H5OH$', '46', '78 °C', 'mísí se neomezeně'],
               ['butan-1-ol $C4H9OH$', '74', '118 °C', 'omezeně, asi 7 g ve 100 g vody'],
-              ['hexan-1-ol $C6H13OH$', '102', '157 °C', 'téměř nerozpustný'],
+              ['hexan-1-ol $C6H13OH$', '102', '157 °C', 'velmi málo, asi 0,6 g ve 100 g vody'],
             ], caption: 'Vodíkové můstky zvyšují teplotu varu, dlouhý řetězec snižuje rozpustnost' },
             { type: 'p', text: 'Stavbu alkoholů už znáš. Teď se dostaneme k otázce z úvodu: co se s alkoholem stane, když se oxiduje, třeba v našich játrech.' },
             { type: 'check', question: { kind: 'choice', q: 'Který alkohol je terciární?', options: ['2-methylpropan-2-ol', 'butan-2-ol', 'propan-1-ol', '2-methylpropan-1-ol'], answer: 0, explain: 'V 2-methylpropan-2-olu nese uhlík se skupinou $-OH$ tři methyly. Butan-2-ol je sekundární, propan-1-ol i 2-methylpropan-1-ol primární.' } },
@@ -1061,7 +1061,7 @@ CH3 — C — H        CH3 — C — CH3`, caption: 'Ethanal (aldehyd, vlevo) a 
               { icon: 'glass', title: 'Ethanal $CH3CHO$', text: 'acetaldehyd: meziprodukt odbourávání alkoholu' },
               { icon: 'sugar', title: 'Benzaldehyd $C6H5CHO$', text: 'vůně mandlí a marcipánu' },
               { icon: 'drop', title: 'Propanon $CH3COCH3$', text: 'aceton: odlakovač, rozpouštědlo' },
-              { icon: 'beaker', title: 'Butanon $CH3COCH2CH3$', text: 'methylethylketon: rozpouštědlo lepidel a barev' },
+              { icon: 'beaker', title: 'Butanon $CH3COCH2CH3$', text: 'ethylmethylketon (MEK): rozpouštědlo lepidel a barev' },
             ] },
             { type: 'p', text: 'Aldehydy a ketony jsou polární, ale netvoří vodíkové můstky (nemají vodík na kyslíku). Teploty varu mají proto mezi alkany a alkoholy: propanal vře při 48 °C, butan při −1 °C a propan-1-ol při 97 °C, při skoro stejné molární hmotnosti.' },
             { type: 'callout', variant: 'warning', title: 'Formaldehyd', text: 'Methanal je štiplavý plyn a jeho asi 37% vodný roztok, **formalín**, se používá ke konzervaci biologických preparátů. Formaldehyd je ale karcinogenní a dráždí oči i dýchací cesty. Uvolňuje se i z levného nábytku z dřevotřísky, proto nový nábytek dobře větrej.' },
@@ -1136,7 +1136,7 @@ CH3 — C — O — H`, caption: 'Kyselina ethanová (octová) $CH3COOH$' },
             { type: 'molecule', molecules: ['palmitic-acid'], labels: ['kyselina palmitová: dlouhý uhlovodíkový ocas a karboxyl na konci'] },
             { type: 'p', text: 'Karboxylové kyseliny jsou **slabé**: ve vodě odštěpí proton jen malá část molekul. Anion **karboxylát** je stabilizovaný, záporný náboj se rozdělí mezi oba kyslíky.' },
             { type: 'reaction', equation: 'CH3COOH + H2O <=> CH3COO^- + H3O^+', caption: 'kyselina octová je slabá kyselina, pK_{a} ≈ 4,8' },
-            { type: 'p', text: 'Se zásadami tvoří soli, **karboxyláty**: z kyseliny octové a $NaOH$ vznikne ethanoát sodný (octan sodný). Jsou silnější než kyselina uhličitá, takže vytěsní $CO2$ z uhličitanů i hydrogenuhličitanů.' },
+            { type: 'p', text: 'Se zásadami tvoří soli, **karboxyláty**: z kyseliny octové a $NaOH$ vznikne ethanoát sodný (octan sodný). Karboxylové kyseliny jsou silnější než kyselina uhličitá, takže vytěsní $CO2$ z uhličitanů i hydrogenuhličitanů.' },
             { type: 'reaction', equation: 'CH3COOH + NaHCO3 -> CH3COONa + H2O + CO2', caption: 'bezpečný domácí pokus: ocet + jedlá soda šumí' },
             { type: 'callout', variant: 'remember', text: 'Pořadí kyselosti: ==alkohol < fenol < karboxylová kyselina==. Ethanol s $NaOH$ nereaguje, fenol ano, ale jen karboxylová kyselina je dost silná na to, aby vytěsnila $CO2$ z jedlé sody.' },
             { type: 'p', text: 'Sílu kyseliny mění i to, co visí na řetězci. **Elektronegativní** atomy jako chlor táhnou elektrony k sobě (záporný indukční efekt, −I), záporný náboj karboxylátu se rozprostře a anion je stabilnější: kyselina je **silnější**. Alkyly elektrony naopak dodávají (+I) a kyselinu **oslabují**.' },
@@ -1330,7 +1330,7 @@ CH3 — C — NH2`, caption: 'Ethanamid (acetamid)' },
             { type: 'table', headers: ['Látka', 'Kde je volný pár dusíku', 'Zásaditost'], rows: [
               ['methylamin $CH3NH2$', 'methyl ho elektrony ještě „posiluje“', 'silnější než amoniak'],
               ['amoniak $NH3$', 'volný na dusíku', 'srovnávací standard'],
-              ['anilin $C6H5NH2$', 'částečně rozprostřený do benzenového kruhu', 'zhruba desetitisíckrát slabší zásada než amoniak'],
+              ['anilin $C6H5NH2$', 'částečně rozprostřený do benzenového kruhu', 'asi 40 000krát slabší zásada než amoniak'],
               ['ethanamid $CH3CONH2$', 'zaměstnaný skupinou $C=O$', 'prakticky neutrální'],
             ], caption: 'Čím víc je volný pár dostupný, tím silnější zásada. Stejná delokalizace, která dělá fenol kyselejším, dělá anilin méně zásaditým.' },
             { type: 'p', text: 'Hlavní využití anilinu jsou barviva. Celá cesta od benzenu k barvivu má pět kroků:' },
@@ -1421,7 +1421,7 @@ C6H5 — N = N — C6H4 — OH
           blocks: [
             { type: 'p', text: 'Mechanismus je příběh elektronů: kde byly, kam odešly a jaké vazby přitom vznikly nebo zanikly. Chemici ho kreslí **zahnutými šipkami**. Každá šipka ukazuje, kam se přesunou elektrony, nikdy ne atomy.' },
             { type: 'compare', columns: [
-              { title: 'Celá šipka (dvouhrotá)', icon: 'electron', tone: 'a', points: ['přesun **elektronového páru**', 'heterolytické štěpení, vznikají ionty', 'elektrofilní a nukleofilní mechanismy'] },
+              { title: 'Celá šipka (plný hrot)', icon: 'electron', tone: 'a', points: ['přesun **elektronového páru**', 'heterolytické štěpení, vznikají ionty', 'elektrofilní a nukleofilní mechanismy'] },
               { title: 'Poloviční šipka („rybářský háček“)', icon: 'sun', tone: 'b', points: ['přesun **jednoho elektronu**', 'homolytické štěpení, vznikají radikály', 'radikálová substituce: vazbu $Cl-Cl$ rozštěpí dvě poloviční šipky, každá k jednomu atomu'] },
             ], caption: 'Dva druhy zahnutých šipek' },
             { type: 'p', text: 'Aby šipky dávaly smysl, drží se tří pravidel:' },
@@ -1461,7 +1461,7 @@ C6H5 — N = N — C6H4 — OH
               { icon: 'flask', title: 'Aldehyd', text: 'dál: $K2Cr2O7$ + $H2SO4$, reflux (oxidace)' },
               { icon: 'lemon', title: 'Karboxylová kyselina', text: 'dál: alkohol + koncentrovaná $H2SO4$ (esterifikace)' },
               { icon: 'apple', title: 'Ester', text: 'vůně, rozpouštědla, tuky' },
-            ], caption: 'Hlavní „dálnice“ organické syntézy: každý krok zvýší oxidační stupeň uhlíku nebo vymění skupinu' },
+            ], caption: 'Hlavní „dálnice“ organické syntézy: každý krok zvýší oxidační číslo uhlíku nebo vymění skupinu' },
             { type: 'p', text: 'Z hlavní dálnice vedou i odbočky. Tahák shrnuje další přeměny, které už znáš:' },
             { type: 'table', headers: ['Z → na', 'Činidlo a podmínky', 'Typ reakce'], rows: [
               ['alken → halogenalkan', '$HX$', 'elektrofilní adice'],
@@ -1507,7 +1507,7 @@ C6H5 — N = N — C6H4 — OH
           ['$C6H6 + HNO3 -> C6H5NO2 + H2O$', 'elektrofilní substituce'],
           ['$CH3Br + OH^- -> CH3OH + Br^-$', 'nukleofilní substituce'],
         ], explain: 'Světlo a alkan znamenají radikály, dvojná vazba láká elektrofily k adici, benzen podléhá substituci a $OH^-$ je nukleofil.' },
-        { kind: 'choice', q: 'Co znázorňuje celá (dvouhrotá) zahnutá šipka v mechanismu?', options: ['přesun elektronového páru', 'přesun jednoho elektronu', 'přesun atomu vodíku', 'směr, kterým se molekula pohybuje'], answer: 0, explain: 'Celá šipka ukazuje, kam se přesune elektronový pár. Pro jeden elektron se kreslí poloviční šipka.' },
+        { kind: 'choice', q: 'Co znázorňuje celá zahnutá šipka (s plným hrotem) v mechanismu?', options: ['přesun elektronového páru', 'přesun jednoho elektronu', 'přesun atomu vodíku', 'směr, kterým se molekula pohybuje'], answer: 0, explain: 'Celá šipka ukazuje, kam se přesune elektronový pár. Pro jeden elektron se kreslí poloviční šipka.' },
         { kind: 'multi', q: 'Které přeměny prodlouží uhlíkatý řetězec o jeden uhlík?', options: ['halogenalkan + $KCN$', 'aldehyd + $HCN$', 'alkohol + $K2Cr2O7$', 'alken + $HBr$', 'ester + $NaOH$'], answers: [0, 1], explain: 'Jen kyanidový anion přináší nový uhlík: vznikne nitril nebo hydroxynitril. Ostatní reakce jen mění funkční skupiny nebo štěpí molekulu.' },
         { kind: 'tf', q: 'Azobarviva jsou barevná, protože azoskupina spojí dva aromatické kruhy do jednoho delokalizovaného systému, který pohlcuje viditelné světlo.', answer: true, explain: 'Dlouhý delokalizovaný systém π-elektronů pohlcuje část viditelného spektra a my vidíme doplňkovou barvu.' },
       ],
@@ -1523,7 +1523,7 @@ C6H5 — N = N — C6H4 — OH
         'Uvést přírodní polymery a rozlišit termoplasty, reaktoplasty a elastomery',
         'Vysvětlit recyklační kódy, mechanickou a chemickou recyklaci, bioplasty a problém mikroplastů',
       ],
-      hook: 'Rozhlédni se: telefon, mikina, kartáček na zuby, pneumatiky kola, a dokonce i DNA v tvých buňkách. To všechno jsou polymery, obří molekuly poskládané z tisíců stejných dílků jako vláček z vagonků. Jak se takový vláček staví a co s ním, až doslouží?',
+      hook: 'Rozhlédni se: telefon, mikina, kartáček na zuby, pneumatiky kola, a dokonce i DNA v tvých buňkách. To všechno jsou polymery, obří molekuly poskládané z tisíců malých dílků jako vláček z vagonků. Jak se takový vláček staví a co s ním, až doslouží?',
       sections: [
         {
           title: 'Monomer, polymer a opakující se jednotka',
@@ -1847,7 +1847,7 @@ n  C = C     →    ──┤ C — C  ├──
           title: 'NMR: co prozradí vodíky a uhlíky',
           icon: 'magnet',
           blocks: [
-            { type: 'p', text: 'Zatím víme, kolik molekula váží a jaké má skupiny. NMR přidá to hlavní: jak vypadá její kostra. Jádra $^{1}H$ a $^{13}C$ se chovají jako maličké magnety. V silném magnetickém poli pohlcují **rádiové vlny** a přesná frekvence závisí na tom, jaké elektrony a sousední atomy jádro obklopují, tedy na jeho **chemickém prostředí**. Tomu říká **nukleární magnetická rezonance** (NMR).' },
+            { type: 'p', text: 'Zatím víme, kolik molekula váží a jaké má skupiny. NMR přidá to hlavní: jak vypadá její kostra. Jádra $^{1}H$ a $^{13}C$ se chovají jako maličké magnety. V silném magnetickém poli pohlcují **rádiové vlny** a přesná frekvence závisí na tom, jaké elektrony a sousední atomy jádro obklopují, tedy na jeho **chemickém prostředí**. Tomu se říká **nukleární magnetická rezonance** (NMR).' },
             { type: 'p', text: 'Z jednoho ^{1}H NMR spektra tak vyčteš čtyři informace:' },
             { type: 'iconlist', items: [
               { icon: 'magnifier', title: 'Počet signálů', text: 'kolik je v molekule různých prostředí vodíků' },
@@ -1867,18 +1867,18 @@ n  C = C     →    ──┤ C — C  ├──
               ['$R-OH$', '1–5, proměnlivý'],
             ], caption: 'Orientační chemické posuny v ^{1}H NMR' },
             { type: 'p', text: 'Teď všechno spojíme na skutečném spektru ethanolu. Všimni si všech čtyř informací najednou:' },
-            { type: 'diagram', id: 'nmr-spectrum', caption: '^{1}H NMR spektrum ethanolu: triplet $CH3$ při 1,2 ppm (3 H), singlet $OH$ (1 H) a quartet $CH2$ při 3,7 ppm (2 H), posunutý doleva sousedním kyslíkem. Plochy signálů (integrace) jsou v poměru 3 : 1 : 2.' },
-            { type: 'callout', variant: 'remember', title: 'Pravidlo n + 1', text: '==Signál vodíků, které mají na sousedních uhlících n vodíků, se rozštěpí na n + 1 čar.== 0 sousedů: singlet, 1: dublet, 2: triplet, 3: quartet. Stejné (ekvivalentní) vodíky se navzájem neštěpí a vodík skupiny $-OH$ obvykle dává singlet.' },
+            { type: 'diagram', id: 'nmr-spectrum', caption: '^{1}H NMR spektrum ethanolu: triplet $CH3$ při 1,2 ppm (3 H), singlet $OH$ (1 H) a kvartet $CH2$ při 3,7 ppm (2 H), posunutý doleva sousedním kyslíkem. Plochy signálů (integrace) jsou v poměru 3 : 1 : 2.' },
+            { type: 'callout', variant: 'remember', title: 'Pravidlo n + 1', text: '==Signál vodíků, které mají na sousedních uhlících n vodíků, se rozštěpí na n + 1 čar.== 0 sousedů: singlet, 1: dublet, 2: triplet, 3: kvartet. Stejné (ekvivalentní) vodíky se navzájem neštěpí a vodík skupiny $-OH$ obvykle dává singlet.' },
             { type: 'p', text: 'Celé spektrum teď přečti krok za krokem, podle čtyř otázek ze začátku oddílu:' },
             { type: 'example', title: 'Čteme spektrum ethanolu', problem: 'Vysvětli ^{1}H NMR spektrum ethanolu $CH3-CH2-OH$ na obrázku.', steps: [
               'Tři různá prostředí ($CH3$, $CH2$, $OH$), tedy **tři signály**. Integrace 3 : 2 : 1.',
               '$CH3$ má za sousedy 2 vodíky skupiny $CH2$: 2 + 1 = 3 čáry, **triplet**, δ 1,2 (daleko od kyslíku).',
-              '$CH2$ má za sousedy 3 vodíky skupiny $CH3$: 3 + 1 = 4 čáry, **quartet**, δ 3,7 (vedle kyslíku).',
+              '$CH2$ má za sousedy 3 vodíky skupiny $CH3$: 3 + 1 = 4 čáry, **kvartet**, δ 3,7 (vedle kyslíku).',
               '$OH$ se rychle vyměňuje mezi molekulami, a proto je to **singlet**.',
-            ], answer: 'Dvojice triplet (3 H) + quartet (2 H) je typický podpis **ethylové skupiny** $CH3-CH2-$.' },
+            ], answer: 'Dvojice triplet (3 H) + kvartet (2 H) je typický podpis **ethylové skupiny** $CH3-CH2-$.' },
             { type: 'p', text: 'Vodíky ale nejsou všechno. **^{13}C NMR** ukazuje, kolik je v molekule **různých prostředí uhlíků**; každé dá jednu čáru v rozsahu δ 0–220 ppm a uhlík skupiny $C=O$ leží úplně vlevo, 160–220 ppm. Propan-1-ol má tři signály, symetrický propan-2-ol jen dva, protože oba jeho methyly jsou stejné.' },
             { type: 'p', text: 'Každá metoda ti teď dá jeden kousek skládačky. Zbývá je složit do jednoho obrázku.' },
-            { type: 'check', question: { kind: 'choice', q: 'Jak bude v ^{1}H NMR rozštěpený signál skupiny $CH3$ v chlorethanu $CH3-CH2Cl$?', options: ['triplet', 'quartet', 'singlet', 'dublet'], answer: 0, explain: 'Na sousedním uhlíku jsou 2 vodíky skupiny $CH2$, takže signál $CH3$ má 2 + 1 = 3 čáry.' } },
+            { type: 'check', question: { kind: 'choice', q: 'Jak bude v ^{1}H NMR rozštěpený signál skupiny $CH3$ v chlorethanu $CH3-CH2Cl$?', options: ['triplet', 'kvartet', 'singlet', 'dublet'], answer: 0, explain: 'Na sousedním uhlíku jsou 2 vodíky skupiny $CH2$, takže signál $CH3$ má 2 + 1 = 3 čáry.' } },
             { type: 'check', question: { kind: 'number', q: 'Kolik signálů má ^{1}H NMR spektrum propanonu (acetonu) $CH3COCH3$?', answer: 1, explain: 'Oba methyly jsou díky symetrii úplně stejné, všech 6 vodíků má jedno prostředí: jediný singlet.' } },
           ],
         },
@@ -1895,7 +1895,7 @@ n  C = C     →    ──┤ C — C  ├──
               { icon: 'check', title: 'Kontrola', text: 'sedí všechno? porovnej s databází' },
             ], caption: 'Postup určení struktury' },
             { type: 'p', text: 'Vyzkoušej postup na skutečném případu: na kapalině s ovocnou vůní.' },
-            { type: 'example', title: 'Určení neznámé látky', problem: 'Bezbarvá kapalina s ovocnou vůní: MS: $M^+$ při m/z 88, bez píku M + 2. IR: silný pás 1 740 cm^{−1} a 1 240 cm^{−1}, žádný široký pás $O-H$. ^{13}C NMR: 4 signály (jeden při 171 ppm). ^{1}H NMR: δ 4,1 (2 H, quartet), 2,0 (3 H, singlet), 1,3 (3 H, triplet). Co je to za látku?', steps: [
+            { type: 'example', title: 'Určení neznámé látky', problem: 'Bezbarvá kapalina s ovocnou vůní: MS: $M^+$ při m/z 88, bez píku M + 2. IR: silný pás 1 740 cm^{−1} a 1 240 cm^{−1}, žádný široký pás $O-H$. ^{13}C NMR: 4 signály (jeden při 171 ppm). ^{1}H NMR: δ 4,1 (2 H, kvartet), 2,0 (3 H, singlet), 1,3 (3 H, triplet). Co je to za látku?', steps: [
               'IR: $C=O$ a $C-O$, ale žádné $O-H$, takže nejde o kyselinu ani alkohol. Nejspíš **ester**.',
               'MS: M = 88 a žádný halogen. Ester $C4H8O2$ má 4 · 12 + 8 · 1 + 2 · 16 = 88. Sedí.',
               '^{13}C NMR: 4 různé uhlíky, signál 171 ppm je karbonyl esteru.',
@@ -1905,7 +1905,7 @@ n  C = C     →    ──┤ C — C  ├──
             ], answer: 'Neznámá látka je **ethyl-ethanoát** (ethylacetát), rozpouštědlo z odlakovače' },
             { type: 'p', text: 'Takhle vypadá molekula, ke které nás důkazy dovedly:' },
             { type: 'molecule', molecules: ['ethyl-acetate'], labels: ['ethyl-ethanoát $CH3COOCH2CH3$'] },
-            { type: 'callout', variant: 'tip', title: 'Pozor na izomer', text: 'Methyl-propanoát $CH3CH2COOCH3$ má stejný vzorec i podobné IR. Jeho singlet $CH3$ by ale ležel kolem 3,7 ppm (na kyslíku) a quartet $CH2$ kolem 2,3 ppm (vedle $C=O$). Rozhoduje chemický posun.' },
+            { type: 'callout', variant: 'tip', title: 'Pozor na izomer', text: 'Methyl-propanoát $CH3CH2COOCH3$ má stejný vzorec i podobné IR. Jeho singlet $CH3$ by ale ležel kolem 3,7 ppm (na kyslíku) a kvartet $CH2$ kolem 2,3 ppm (vedle $C=O$). Rozhoduje chemický posun.' },
             { type: 'p', text: 'NMR ale nepomáhá jen chemikům. **Magnetická rezonance (MR, anglicky MRI)** v nemocnici je ^{1}H NMR tvého těla. Signál dávají hlavně vodíky vody a tuků, a protože různé tkáně obsahují různě vody a tuku, počítač z něj složí detailní řezy mozkem, klouby nebo srdcem.' },
             { type: 'iconlist', items: [
               { icon: 'magnet', title: 'Silný magnet', text: '1,5–3 tesla, desítky tisíckrát silnější než magnetické pole Země' },
@@ -1939,7 +1939,7 @@ n  C = C     →    ──┤ C — C  ├──
         { kind: 'number', q: 'Látka má na TLC destičce $R_{f}$ = 0,35 a čelo rozpouštědla urazilo 8,0 cm. Jak daleko od startu je její skvrna?', answer: 2.8, tolerance: 0.05, unit: 'cm', explain: 'Vzdálenost skvrny = $R_{f}$ · vzdálenost čela = 0,35 · 8,0 cm = 2,8 cm.' },
         { kind: 'tf', q: 'Látka s jedním atomem bromu má v hmotnostním spektru dva molekulové píky M a M + 2 přibližně stejně vysoké.', answer: true, explain: 'Izotopy $^{79}Br$ a $^{81}Br$ jsou v přírodě zastoupené skoro stejně, proto jsou oba píky zhruba stejně vysoké.' },
         { kind: 'choice', q: 'Který pás najdeš v IR spektru propan-1-olu, ale ne v IR spektru propanalu?', options: ['široký pás $O-H$ kolem 3 200–3 550 cm^{−1}', 'silný pás $C=O$ kolem 1 730 cm^{−1}', 'pás $C-H$ kolem 2 900 cm^{−1}', 'pás $C=C$ kolem 1 650 cm^{−1}'], answer: 0, explain: 'Jen alkohol má skupinu $-OH$. Pás $C=O$ má naopak jen propanal, $C-H$ mají oba a $C=C$ ani jeden.' },
-        { kind: 'multi', q: 'Co platí o ^{1}H NMR spektru ethanolu $CH3CH2OH$?', options: ['má tři signály', 'signál $CH3$ je triplet', 'signál $CH2$ je quartet', 'integrace signálů je 1 : 1 : 1', 'signál $CH2$ leží při nižším δ než signál $CH3$'], answers: [0, 1, 2], explain: 'Tři prostředí s integrací 3 : 2 : 1. $CH3$ má dva sousední vodíky (triplet), $CH2$ tři (quartet) a leží při vyšším δ, protože sousedí s kyslíkem.' },
+        { kind: 'multi', q: 'Co platí o ^{1}H NMR spektru ethanolu $CH3CH2OH$?', options: ['má tři signály', 'signál $CH3$ je triplet', 'signál $CH2$ je kvartet', 'integrace signálů je 1 : 1 : 1', 'signál $CH2$ leží při nižším δ než signál $CH3$'], answers: [0, 1, 2], explain: 'Tři prostředí s integrací 3 : 2 : 1. $CH3$ má dva sousední vodíky (triplet), $CH2$ tři (kvartet) a leží při vyšším δ, protože sousedí s kyslíkem.' },
         { kind: 'number', q: 'Kolik signálů má ^{13}C NMR spektrum propan-2-olu $CH3-CH(OH)-CH3$?', answer: 2, explain: 'Oba methyly jsou symetrické a stejné, třetí uhlík nese $-OH$. Dvě prostředí, dva signály.' },
         { kind: 'choice', q: 'Látka $C3H6O$ má v IR silný pás 1 715 cm^{−1}, žádný pás $O-H$ a v ^{1}H NMR jediný signál (singlet, 6 H). Co to je?', options: ['propanon', 'propanal', 'prop-2-en-1-ol', 'cyklopropanol'], answer: 0, explain: 'Pás $C=O$ bez $O-H$ ukazuje keton nebo aldehyd. Jediný singlet znamená, že všech 6 vodíků je stejných: dva stejné methyly kolem $C=O$, tedy propanon (aceton). Propanal by měl tři signály včetně aldehydového kolem 9,8 ppm.' },
       ],
@@ -1948,7 +1948,7 @@ n  C = C     →    ──┤ C — C  ├──
 
   // ─────────────────────────────────────────────────────────────── boss
   boss: [
-    { kind: 'text', q: 'Pojmenuj alkan $CH3-CH2-CH(CH3)-CH2-CH(CH2CH3)-CH3$. Pozor na hlavní řetězec!', accept: ['3,5-dimethylheptan', '3,5 dimethylheptan', '3, 5-dimethylheptan'], explain: 'Nejdelší řetězec vede přes ethylovou skupinu a má 7 uhlíků. Methyly pak leží na C3 a C5: jde o stejnou látku jako 3,5-dimethylheptan.' },
+    { kind: 'text', q: 'Pojmenuj alkan $CH3-CH2-CH(CH3)-CH2-CH(CH2CH3)-CH3$. Pozor na hlavní řetězec!', accept: ['3,5-dimethylheptan', '3,5 dimethylheptan', '3, 5-dimethylheptan'], explain: 'Nejdelší řetězec vede přes ethylovou skupinu a má 7 uhlíků. Methyly pak leží na C3 a C5 při číslování z kterékoli strany: 3,5-dimethylheptan.' },
     { kind: 'multi', q: 'Která tvrzení o reakci propenu s $HBr$ jsou pravdivá?', options: [
       'Jde o elektrofilní adici',
       'Meziproduktem je karbokation',

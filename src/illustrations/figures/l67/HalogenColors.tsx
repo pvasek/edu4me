@@ -105,7 +105,7 @@ export default function HalogenColors() {
       max={640}
       compact={compact}
       boost={false}
-      label="Halogeny v odměrných válcích: fluor F2 je světle žlutý plyn, chlor Cl2 žlutozelený plyn, brom Br2 červenohnědá kapalina s hnědými parami a jod I2 fialově černé krystaly s fialovými parami. Směrem dolů ve skupině barva tmavne a teplota varu roste (−188 °C, −34 °C, 59 °C, 184 °C), elektronegativita klesá."
+      label="Halogeny ve skleněných válcích: fluor F2 je světle žlutý plyn, chlor Cl2 žlutozelený plyn, brom Br2 červenohnědá kapalina s hnědými parami a jod I2 fialově černé krystaly s fialovými parami. Směrem dolů ve skupině barva tmavne a teplota varu roste (−188 °C, −34 °C, 59 °C, 184 °C), elektronegativita klesá."
     >
       {JARS.map((_, k) => (
         <Jar key={k} x={pos[k][0]} y={pos[k][1]} k={k} />

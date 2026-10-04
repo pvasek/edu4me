@@ -162,7 +162,7 @@ const l31: Lesson = {
           type: 'callout',
           variant: 'fact',
           title: 'Líný dusík',
-          text: 'Vzduch je ze 78 % tvořen dusíkem, a přesto ho rostliny neumějí přímo využít. Trojná vazba v molekule $N2$ patří k nejpevnějším vůbec. Rozštípnout ji dokážou jen hlízkové bakterie, blesky a chemický průmysl při výrobě hnojiv.',
+          text: 'Vzduch je ze 78 % tvořen dusíkem, a přesto ho rostliny neumějí přímo využít. Trojná vazba v molekule $N2$ patří k nejpevnějším vůbec. Rozštípnout ji dokážou jen některé bakterie (třeba hlízkové bakterie v kořenech bobovitých rostlin), blesky a chemický průmysl při výrobě hnojiv.',
         },
         { type: 'p', text: 'Délka a pevnost vazby tedy závisí na velikosti atomů a na násobnosti vazby. Zatím jsme ale mlčky počítali s tím, že se oba atomy o elektrony dělí rovným dílem – a to platí jen u stejných atomů.' },
         {
@@ -1054,7 +1054,7 @@ const l37: Lesson = {
             ['3', '3 + 0', 'trojúhelníková (rovinná)', '120°', '$BF3$, $SO3$'],
             ['3', '2 + 1', 'lomená', 'asi 119°', '$SO2$'],
             ['4', '4 + 0', 'tetraedrická', '109,5°', '$CH4$, $CCl4$, $NH4^+$'],
-            ['4', '3 + 1', 'trigonální pyramida', '107°', '$NH3$, $H3O^+$'],
+            ['4', '3 + 1', 'trigonální pyramida', 'asi 107° ($NH3$)', '$NH3$, $H3O^+$'],
             ['4', '2 + 2', 'lomená', '104,5°', '$H2O$'],
           ],
           caption: 'Tvary pro dvě až čtyři elektronové oblasti.',
@@ -1064,7 +1064,7 @@ const l37: Lesson = {
           type: 'molecule',
           molecules: ['BeCl2', 'BF3', 'CH4'],
           labels: ['$BeCl2$: lineární, 180°', '$BF3$: trojúhelník, 120°', '$CH4$: tetraedr, 109,5°'],
-          caption: 'Tři tvary bez volných párů. Chlorid beryllitý má tvar přímky v plynném stavu; pevný tvoří dlouhé řetězce.',
+          caption: 'Tři tvary bez volných párů. Chlorid beryllnatý má tvar přímky v plynném stavu; pevný tvoří dlouhé řetězce.',
         },
         { type: 'p', text: 'Pozor, oblast není totéž co vazba: dvojná vazba se počítá jako jedna oblast. Proč na tom záleží, ukáže dvojice tříatomových molekul, které na papíře vypadají podobně:' },
         {
@@ -1360,7 +1360,7 @@ const l37: Lesson = {
           type: 'callout',
           variant: 'tip',
           title: 'Rychlý test',
-          text: 'Má centrální atom volné páry (jako $H2O$, $NH3$), nebo různé sousedy (jako $CH2Cl2$)? Pak je molekula s polárními vazbami skoro jistě polární. Souměrné molekuly bez volných párů se stejnými sousedy ($CO2$, $BF3$, $CH4$, $CCl4$, $SF6$) jsou nepolární.',
+          text: 'Má centrální atom volné páry (jako $H2O$, $NH3$), nebo různé sousedy (jako $CH2Cl2$)? Pak je molekula s polárními vazbami skoro jistě polární (výjimkou jsou souměrné tvary jako čtvercový $XeF4$). Souměrné molekuly bez volných párů se stejnými sousedy ($CO2$, $BF3$, $CH4$, $CCl4$, $SF6$) jsou nepolární.',
         },
         {
           type: 'callout',
@@ -1867,7 +1867,7 @@ const l33: Lesson = {
             ['teplota tání', 'nízká', 'velmi vysoká', 'vysoká', 'různá, většinou vysoká'],
             ['vodivost pevné látky', 'ne', 'ne (grafit ano)', 'ne', 'ano'],
             ['vodivost taveniny', 'ne', 'ne', 'ano', 'ano'],
-            ['mechanické vlastnosti', 'měkké', 'velmi tvrdé', 'tvrdé, ale křehké', 'kujné a tažné'],
+            ['mechanické vlastnosti', 'měkké', 'velmi tvrdé (grafit měkký)', 'tvrdé, ale křehké', 'kujné a tažné'],
             ['rozpustnost ve vodě', 'polární ano, nepolární ne', 'nerozpustné', 'často ano', 'nerozpustné (alkalické kovy s vodou reagují)'],
             ['příklady', '$H2O$, $CO2$, $I2$, cukr', 'diamant, grafit, $SiO2$', '$NaCl$, $MgO$, $CaF2$', '$Fe$, $Cu$, $Al$, ocel'],
           ],
@@ -2506,7 +2506,7 @@ const l35: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Obě látky z úvodu jsou složené jen ze železa a chloru. Liší se tím, kolik elektronů železo „dalo“ chloru, a právě to vyjadřuje jedno číslo. **Oxidační číslo** je myšlený (formální) náboj atomu. Dostaneš ho, když si představíš, že ==všechny vazebné elektronové páry patří vždy elektronegativnějšímu z obou atomů==, jako by všechny vazby byly iontové.',
+          text: 'Obě látky z úvodu jsou složené jen ze železa a chloru. Liší se tím, kolik elektronů železo „dalo“ chloru, a právě to vyjadřuje jedno číslo. **Oxidační číslo** je myšlený náboj atomu. Dostaneš ho, když si představíš, že ==všechny vazebné elektronové páry patří vždy elektronegativnějšímu z obou atomů==, jako by všechny vazby byly iontové.',
         },
         {
           type: 'p',
@@ -2544,7 +2544,7 @@ const l35: Lesson = {
               title: 'Oxidační číslo $Fe^{III}$',
               icon: 'atom',
               tone: 'b',
-              points: ['formální náboj atomu', 'římská číslice', 'má ho každý atom, i ten v molekule bez iontů, jako uhlík v $CO2$'],
+              points: ['myšlený náboj atomu', 'římská číslice', 'má ho každý atom, i ten v molekule bez iontů, jako uhlík v $CO2$'],
             },
           ],
           caption: 'Náboj iontu, nebo oxidační číslo?',
@@ -2898,7 +2898,7 @@ const l35: Lesson = {
     },
   ],
   summary: [
-    'Oxidační číslo je formální náboj atomu, pokud přidělíme vazebné elektrony elektronegativnějšímu atomu; píše se římskými číslicemi.',
+    'Oxidační číslo je myšlený náboj atomu, pokud přidělíme vazebné elektrony elektronegativnějšímu atomu; píše se římskými číslicemi.',
     'Prvky mají oxidační číslo 0, fluor −I, kyslík obvykle −II, vodík obvykle +I.',
     'Součet oxidačních čísel je v molekule 0 a v iontu se rovná jeho náboji.',
     'Koncovky pro I až VIII: -ný, -natý, -itý, -ičitý, -ičný/-ečný, -ový, -istý, -ičelý.',
@@ -3072,12 +3072,12 @@ const l36: Lesson = {
             { icon: 'gas-cylinder', title: '$N2O$ oxid dusný', text: '„rajský plyn“ v bombičkách do šlehačky' },
           ],
         },
-        { type: 'p', text: 'Oxidy kovů jsou většinou pevné látky, oxidy nekovů naopak tvoří malé molekuly. Prohlédni si čtyři z nich:' },
+        { type: 'p', text: 'Oxidy kovů jsou většinou pevné látky, oxidy nekovů naopak často tvoří malé molekuly. Prohlédni si čtyři z nich:' },
         {
           type: 'molecule',
           molecules: ['CO2', 'CO', 'SO2', 'NO2'],
           labels: ['oxid uhličitý', 'oxid uhelnatý', 'oxid siřičitý', 'oxid dusičitý: hnědý plyn z výfuků'],
-          caption: 'Molekulové oxidy nekovů jsou plyny.',
+          caption: 'Tyto čtyři molekulové oxidy nekovů jsou za běžných podmínek plyny.',
         },
         { type: 'p', text: 'Vzorec oxidu napíšeš z názvu křížovým pravidlem. Zopakujme postup na oxidu, který ještě neznáš:' },
         {
@@ -3177,7 +3177,7 @@ const l36: Lesson = {
         {
           type: 'callout',
           variant: 'fact',
-          text: 'Třiprocentní roztok peroxidu vodíku z lékárny dezinfikuje rány a odbarvuje vlasy. Na ráně pění, protože enzym z krve ho rychle rozkládá na vodu a kyslík. Koncentrovaný (30%) roztok ale leptá kůži, takže s ním jen v rukavicích a brýlích.',
+          text: 'Třiprocentní roztok peroxidu vodíku z lékárny dezinfikuje rány, silnější roztoky odbarvují vlasy. Na ráně pění, protože enzym z krve ho rychle rozkládá na vodu a kyslík. Koncentrovaný (30%) roztok ale leptá kůži, takže s ním jen v rukavicích a brýlích.',
         },
         { type: 'p', text: 'Peroxid tedy poznáš podle kyslíku s −I a jeho vzorec nikdy nekrátíš. Teď přijdou na řadu další záporné složky: halogeny a síra.' },
         {
@@ -3234,7 +3234,7 @@ const l36: Lesson = {
           title: 'Pokus doma',
           text: 'Zčernalý stříbrný řetízek je pokrytý sulfidem stříbrným $Ag2S$. Polož ho do misky vyložené alobalem, zasyp lžící jedlé sody a zalij horkou vodou. Za pár minut se stříbro vyjasní. Co se přitom děje, vysvětlí redoxní reakce v úrovni 6.',
         },
-        { type: 'p', text: 'Halogenidy a sulfidy jsou tedy jen oxidy s jinou zápornou složkou. U vodíku je to složitější: podle partnera může mít +I i −I.' },
+        { type: 'p', text: 'Halogenidy a sulfidy tedy pojmenuješ stejně jako oxidy, jen záporná složka má jiné oxidační číslo. U vodíku je to složitější: podle partnera může mít +I i −I.' },
         {
           type: 'check',
           question: {
@@ -3328,7 +3328,7 @@ const l36: Lesson = {
           type: 'callout',
           variant: 'fact',
           title: 'Karbidka',
-          text: 'Karbid vápenatý $CaC2$ je výjimka: obsahuje dvojici atomů uhlíku, podobně jako peroxid dvojici kyslíků, a proto neodpovídá oxidačnímu číslu −IV. S vodou uvolňuje hořlavý plyn acetylen $C2H2$, který svítil jeskyňářům v karbidových lampách. Acetylen je výbušný, s karbidem proto jen pod dohledem.',
+          text: 'Karbid vápenatý $CaC2$ je výjimka: obsahuje dvojici atomů uhlíku, podobně jako peroxid dvojici kyslíků, a uhlík v něm proto nemá −IV, ale −I. S vodou uvolňuje hořlavý plyn acetylen (ethyn) $C2H2$, který svítil jeskyňářům v karbidových lampách. Acetylen je výbušný, s karbidem proto jen pod dohledem.',
         },
         { type: 'p', text: 'Reakci karbidky s vodou zapíšeš takto:' },
         {

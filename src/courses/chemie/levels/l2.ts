@@ -23,13 +23,13 @@ const level: LevelContent = {
             { type: 'p', text: 'Tomuto pohledu se říká **částicový model látek**. Mezi částicemi je prostor a částice se hýbou, a to vysvětluje spoustu každodenních věcí:' },
             { type: 'iconlist', items: [
               { icon: 'sugar', title: 'Cukr se ve vodě rozpustí', text: 'jeho částice se rozptýlí mezi částice vody' },
-              { icon: 'gas-cloud', title: 'Vůně parfému dojde až k tobě', text: 'částice vůně se samy rozletí po místnosti' },
+              { icon: 'gas-cloud', title: 'Vůně parfému dojde až k tobě', text: 'částice voňavé látky se samy rozletí po místnosti' },
               { icon: 'balloon', title: 'Plyn se dá stlačit', text: 'mezi částicemi plynu je hodně volného místa' },
               { icon: 'drop', title: 'Kapka inkoustu obarví celou sklenici', text: 'částice barviva se samovolně promíchají s vodou (difuze)' },
             ] },
             { type: 'callout', variant: 'fact', title: 'Jak malý je atom?', text: 'Průměr atomu je zhruba 0,1 nm, tedy desetimiliontina milimetru. Řada deseti milionů atomů by měřila asi 1 mm.' },
             { type: 'p', text: 'Pohyb částic a prostor mezi nimi vysvětlují rozpouštění, vůně i stlačování plynů. Jak ale lidé vůbec přišli na to, že nějaké částice existují, když je nikdo nemohl vidět?' },
-            { type: 'check', question: { kind: 'choice', q: 'Proč jde plyn stlačit, ale kapalinu skoro vůbec ne?', options: ['Mezi částicemi plynu je hodně volného prostoru.', 'Částice plynu jsou menší než částice kapaliny.', 'Částice plynu se při stlačení zmenší.', 'Plyn se nesestává z částic.'], answer: 0, explain: 'V plynu jsou částice daleko od sebe, takže je jde přiblížit. V kapalině se částice téměř dotýkají a zmenšit se samy nemohou.' } },
+            { type: 'check', question: { kind: 'choice', q: 'Proč jde plyn stlačit, ale kapalinu skoro vůbec ne?', options: ['Mezi částicemi plynu je hodně volného prostoru.', 'Částice plynu jsou menší než částice kapaliny.', 'Částice plynu se při stlačení zmenší.', 'Plyn se neskládá z částic.'], answer: 0, explain: 'V plynu jsou částice daleko od sebe, takže je jde přiblížit. V kapalině se částice téměř dotýkají a zmenšit se samy nemohou.' } },
           ],
         },
         {
@@ -42,7 +42,7 @@ const level: LevelContent = {
               { icon: 'balance-scale', title: 'John Dalton, 1808', text: 'Vědecká **atomová teorie** opřená o měření hmotností látek při reakcích.' },
               { icon: 'pencil', title: 'Berzelius, kolem 1813', text: 'Písmenné značky prvků, které používáme dodnes.' },
             ], caption: 'Od úvahy k vědě: jak se zrodila představa o atomech' },
-            { type: 'p', text: 'Anglický učitel **John Dalton** pečlivě vážil látky před reakcí a po ní. Výsledky shrnul do **atomové teorie**, která stojí na čtyřech bodech (postulátech):' },
+            { type: 'p', text: 'Anglický učitel **John Dalton** zkoumal, v jakých hmotnostních poměrech se prvky slučují. Výsledky shrnul do **atomové teorie**, která stojí na čtyřech bodech (postulátech):' },
             { type: 'iconlist', items: [
               { icon: 'atom', title: '1. Látky jsou z atomů', text: 'atomy nelze rozdělit ani zničit' },
               { icon: 'balance-scale', title: '2. Atomy jednoho prvku jsou stejné', text: 'atomy různých prvků se liší hmotností' },
@@ -61,7 +61,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Dalton tak vysvětlil, proč se látky slučují v pevných poměrech. Ne všechno z jeho teorie ale za dvě stě let obstálo:' },
             { type: 'compare', columns: [
               { title: 'Co Dalton trefil', icon: 'check', tone: 'good', points: ['látky se skládají z atomů', 'sloučeniny mají stálé složení', 'při chemické reakci atomy nevznikají ani nezanikají, jen se přeskupí'] },
-              { title: 'Co dnes víme jinak', icon: 'cross', tone: 'bad', points: ['atom se skládá z ještě menších částic (příští lekce)', 'atomy jednoho prvku se mohou lišit hmotností: izotopy (lekce 3)', 'při jaderných reakcích se atom jednoho prvku mění na jiný (lekce o radioaktivitě)'] },
+              { title: 'Co dnes víme jinak', icon: 'cross', tone: 'bad', points: ['atom se skládá z ještě menších částic (příští lekce)', 'atomy jednoho prvku se mohou lišit hmotností: izotopy (lekce o izotopech)', 'při jaderných reakcích se atom jednoho prvku mění na jiný (lekce o radioaktivitě)'] },
             ] },
             { type: 'callout', variant: 'mascot', text: 'Dalton se v pár bodech spletl, ale pro chemické reakce jeho teorie platí dodnes. Každou rovnici, kterou budeš vyčíslovat, vlastně kontroluješ podle jeho čtvrtého postulátu!' },
             { type: 'p', text: 'Látky jsou tedy z atomů. V hotových látkách ale atomy často nejsou samy – podívejme se, v jakých podobách je potkáš.' },
@@ -126,7 +126,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Psát pořád „atom kyslíku“ nebo „molekula vody“ by bylo zdlouhavé. Proto má každý prvek svou **chemickou značku**: jedno nebo dvě písmena, většinou z latinského názvu. Systém zavedl švédský chemik **Jöns Jacob Berzelius** kolem roku 1813. Některé značky tak na první pohled nesedí k českému názvu:' },
             { type: 'elements', symbols: ['Na', 'K', 'Fe', 'Cu', 'Ag', 'Au', 'Pb', 'Hg'], caption: 'natrium, kalium, ferrum, cuprum, argentum, aurum, plumbum, hydrargyrum' },
-            { type: 'callout', variant: 'warning', title: 'Na velikosti písmen záleží', text: 'První písmeno je vždy velké, druhé malé. $Co$ je kobalt, kovový prvek. $CO$ je oxid uhelnatý, jedovatý plyn z molekul uhlíku a kyslíku.' },
+            { type: 'callout', variant: 'warning', title: 'Na velikosti písmen záleží', text: 'První písmeno je vždy velké, druhé malé. $Co$ je kobalt, kovový prvek. $CO$ je oxid uhelnatý, jedovatý plyn, jehož molekulu tvoří atom uhlíku a atom kyslíku.' },
             { type: 'p', text: 'Značka má dva významy: $Na$ znamená prvek sodík a zároveň **jeden atom** sodíku. Zápis $3Na$ jsou tedy tři atomy sodíku.' },
             { type: 'game', gameId: 'element-memory', text: 'Značky se nejlépe učí hrou. Zkus Pexeso prvků a spoj značky s českými názvy.' },
             { type: 'p', text: 'Ze značek se skládají chemické vzorce. Jak je přečíst, aby ti neutekl žádný atom, ukáže poslední oddíl.' },
@@ -389,12 +389,12 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'V minulé lekci jsi poznal/a tři částice atomu. Abys věděl/a, co přesně je v konkrétním atomu, nemusíš ho kreslit celý: stačí znát dvě čísla.' },
             { type: 'compare', columns: [
-              { title: '**Protonové číslo** $Z$', icon: 'ion-plus', tone: 'a', points: ['počet **protonů** v jádře', 'určuje prvek: každý atom se $Z = 6$ je uhlík, se $Z = 8$ kyslík', 'píše se ke značce **dolů**'] },
-              { title: '**Nukleonové číslo** $A$', icon: 'nucleus', tone: 'b', points: ['počet všech **nukleonů**: protonů a neutronů dohromady', 'z něj dopočítáš počet neutronů $N$ (neutronové číslo)', 'píše se ke značce **nahoru**'] },
+              { title: '**Protonové číslo** $Z$', icon: 'ion-plus', tone: 'a', points: ['počet **protonů** v jádře', 'určuje prvek: každý atom se $Z = 6$ je uhlík, se $Z = 8$ kyslík', 'píše se ke značce **vlevo dolů**'] },
+              { title: '**Nukleonové číslo** $A$', icon: 'nucleus', tone: 'b', points: ['počet všech **nukleonů**: protonů a neutronů dohromady', 'z něj dopočítáš počet neutronů $N$ (neutronové číslo)', 'píše se ke značce **vlevo nahoru**'] },
             ] },
             { type: 'p', text: 'Obě čísla spolu jednoduše souvisejí: nukleony jsou protony plus neutrony. Když od všech nukleonů odečteš protony, zbudou neutrony.' },
             { type: 'formula', text: '$A = Z + N$, tedy $N = A − Z$', caption: 'nukleonové číslo = protony + neutrony' },
-            { type: 'p', text: 'Zápisu konkrétního druhu atomu s oběma čísly se říká **nuklid**. Obě čísla se píší přímo ke značce prvku:' },
+            { type: 'p', text: 'Druhu atomu s určitým protonovým i nukleonovým číslem se říká **nuklid**. Zapisuje se tak, že se obě čísla připíší ke značce prvku:' },
             { type: 'formula', text: '$^{23}_{11}Na$', caption: 'nuklid sodíku: A = 23 nahoře, Z = 11 dole' },
             { type: 'callout', variant: 'remember', title: 'Teď už přesně', text: '**Chemický prvek** je látka složená z atomů se stejným protonovým číslem. Změníš-li počet protonů, změníš prvek.' },
             { type: 'p', text: 'Z nuklidu teď vyčteš všechny tři částice atomu. Elektrony v zápisu sice nejsou, ale v neutrálním atomu jich je stejně jako protonů.' },
@@ -483,7 +483,7 @@ const level: LevelContent = {
               'm = 16 · 1,66·10^{−27} kg = 26,56·10^{−27} kg.',
               'Převeď na správný tvar, kde před desetinnou čárkou stojí jen jedna číslice: 26,56·10^{−27} kg ≐ 2,66·10^{−26} kg.',
             ], answer: 'Atom kyslíku-16 váží asi 2,66·10^{−26} kg.' },
-            { type: 'callout', variant: 'fact', title: 'Kam zmizela hmotnost?', text: 'Osm protonů, osm neutronů a osm elektronů váží dohromady 16,13 u, atom kyslíku-16 ale jen 15,995 u. Část hmotnosti se při vzniku jádra změnila na energii, která jádro drží pohromadě ($E = mc^{2}$). Tomu se říká **hmotnostní úbytek**.' },
+            { type: 'callout', variant: 'fact', title: 'Kam zmizela hmotnost?', text: 'Osm protonů, osm neutronů a osm elektronů váží dohromady 16,13 u, atom kyslíku-16 ale jen 15,995 u. Při vzniku jádra se část hmotnosti uvolnila jako energie ($E = mc^{2}$) a stejně velkou energii bys musel/a dodat, abys jádro zase rozbil/a. Tomu rozdílu hmotností se říká **hmotnostní úbytek**.' },
             { type: 'p', text: 'Jednotka u nám umožní hmotnosti atomů porovnávat. Jak se ale dá zvážit jediný atom, a dokonce rozlišit jeho izotopy?' },
             { type: 'check', question: { kind: 'number', q: 'Atom má hmotnost 3,32·10^{−26} kg. Jaká je jeho relativní atomová hmotnost?', answer: 20, tolerance: 0.2, explain: '3,32·10^{−26} kg : 1,66·10^{−27} kg = 20. Je to neon-20.' } },
           ],
@@ -499,7 +499,7 @@ const level: LevelContent = {
               { icon: 'magnet', title: '3. Vychýlení', text: 'magnet dráhu iontů ohne: **lehčí ionty se ohnou víc**, těžší méně' },
               { icon: 'chart', title: '4. Detekce', text: 'detektor spočítá, kolik iontů které hmotnosti dopadlo' },
             ], caption: 'Princip hmotnostního spektrometru' },
-            { type: 'p', text: 'Proč se lehčí ionty ohnou víc? Magnet působí na všechny ionty se stejným nábojem stejně, ale lehčí ion se snáz stočí, podobně jako boční vítr snáz odfoukne pingpongový míček než ocelovou kuličku.' },
+            { type: 'p', text: 'Proč se lehčí ionty ohnou víc? Ionty se stejným nábojem magnet ovlivňuje srovnatelně, ale lehčí ion má menší setrvačnost a snáz se stočí, podobně jako boční vítr snáz odfoukne pingpongový míček než ocelovou kuličku.' },
             { type: 'p', text: 'Výsledkem je **hmotnostní spektrum**. Na vodorovné ose je hmotnost iontu (přesněji poměr hmotnosti a náboje $m/z$), na svislé relativní zastoupení. Každý izotop dá jednu čáru, **pík**.' },
             { type: 'structure', art: [
               '  %',
@@ -553,7 +553,7 @@ const level: LevelContent = {
         'Protonové číslo $Z$ je počet protonů a určuje prvek; nukleonové číslo $A$ je počet protonů a neutronů, $N = A − Z$.',
         'Izotopy mají stejné $Z$, ale různý počet neutronů (protium, deuterium, tritium; uhlík-12, uhlík-13 a uhlík-14).',
         'V iontu se mění jen počet elektronů: elektronů je $Z$ minus náboj, neutronů pořád $A − Z$.',
-        'Atomová hmotnostní jednotka 1 u je dvanáctina hmotnosti atomu uhlíku-12, asi 1,66·10^{−27} kg; $A_{r}$ je číslo bez jednotky, které říká, kolikrát je atom těžší.',
+        'Atomová hmotnostní jednotka 1 u je dvanáctina hmotnosti atomu uhlíku-12, asi 1,66·10^{−27} kg; $A_{r}$ je číslo bez jednotky, které říká, kolikrát je atom těžší než 1 u.',
         'Hmotnostní spektrometr ionty urychlí a v magnetickém poli roztřídí podle hmotnosti; výšky píků udávají zastoupení izotopů.',
         'Relativní atomová hmotnost je vážený průměr izotopů, proto má chlor 35,5 a měď 63,55.',
       ],
@@ -579,7 +579,7 @@ const level: LevelContent = {
         'Počítat s poločasem přeměny a vysvětlit radiouhlíkové datování',
         'Vysvětlit štěpení a fúzi, využití záření a jak se před ním chránit',
       ],
-      hook: 'Banán, žulová kuchyňská deska i ty sám jste trochu radioaktivní: ve tvém těle se každou sekundu přemění několik tisíc jader draslíku-40 a uhlíku-14. Nemusíš se bát, je to úplně přirozené. Pojď zjistit, co se v takovém jádře děje a jak z něj získat energii pro celé město.',
+      hook: 'Banán, žulová kuchyňská deska i ty jste trochu radioaktivní: ve tvém těle se každou sekundu přemění několik tisíc jader draslíku-40 a uhlíku-14. Nemusíš se bát, je to úplně přirozené. Pojď zjistit, co se v takovém jádře děje a jak z něj získat energii pro celé město.',
       sections: [
         {
           title: 'Objev radioaktivity a nestabilní jádra',
@@ -745,7 +745,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Štěpení a fúze jsou tedy dvě opačné cesty k energii z jádra: jedna jádra dělí, druhá spojuje. V praxi se liší takhle:' },
             { type: 'compare', columns: [
               { title: 'Štěpení', icon: 'explosion', tone: 'a', points: ['těžké jádro (uran-235) se rozdělí', 'spouští ho neutron, běží jako řetězová reakce', 'v elektrárnách od 50. let 20. století', 'radioaktivní odpad s dlouhým poločasem'] },
-              { title: 'Fúze', icon: 'sun', tone: 'b', points: ['lehká jádra (izotopy vodíku) se spojí', 'potřebuje přes 100 milionů °C', 'zatím jen v pokusných zařízeních: **ITER** ve Francii, tokamak COMPASS-U v Praze', 'palivo z vody a lithia, málo dlouhodobého odpadu'] },
+              { title: 'Fúze', icon: 'sun', tone: 'b', points: ['lehká jádra (izotopy vodíku) se spojí', 'na Zemi potřebuje přes 100 milionů °C (Slunci stačí 15 milionů díky obrovskému tlaku)', 'zatím jen v pokusných zařízeních: **ITER** ve Francii, tokamak COMPASS-U v Praze', 'palivo z vody a lithia, málo dlouhodobého odpadu'] },
             ] },
             { type: 'p', text: 'Jaderná energie je jen jedno z využití radioaktivity. Záření pomáhá i v medicíně a průmyslu, pokud víme, jak se před ním chránit.' },
             { type: 'check', question: { kind: 'choice', q: 'Doplň produkt štěpení: $^{235}_{92}U + ^{1}_{0}n -> ^{141}_{56}Ba + X + 3 ^{1}_{0}n$.', options: ['$^{92}_{36}Kr$', '$^{95}_{36}Kr$', '$^{92}_{38}Sr$', '$^{94}_{36}Kr$'], answer: 0, explain: 'Nukleony: 236 = 141 + A + 3, takže A = 92. Protony: 92 = 56 + Z, takže Z = 36, krypton.' } },
@@ -762,7 +762,7 @@ const level: LevelContent = {
               { icon: 'pill', title: 'Jod-131', text: 'štítná žláza ho vychytá, léčí se tak její nádory a nadměrná činnost' },
               { icon: 'magnifier', title: 'Technecium-99m', text: 'krátký poločas, jeho záření γ projde tělem až ke kameře' },
               { icon: 'factory', title: 'Průmysl', text: 'kontrola svárů a tloušťky plechů, sterilizace nástrojů a potravin zářením γ' },
-              { icon: 'warning', title: 'Hlásiče kouře', text: 'americium-241 ionizuje vzduch; kouř proud iontů přeruší a spustí alarm' },
+              { icon: 'warning', title: 'Hlásiče kouře', text: 'americium-241 ionizuje vzduch; kouř proud iontů zeslabí a spustí alarm' },
             ] },
             { type: 'p', text: 'Záření je užitečné, ale ve velké dávce škodí: ionizuje molekuly v buňkách a může poškodit DNA. Proto se měří dvě veličiny:' },
             { type: 'keyterms', items: [
@@ -964,8 +964,8 @@ const level: LevelContent = {
               ['10.', '141 362 (**obrovský skok**)', 'K'],
               ['11.', '159 076', 'K'],
             ] },
-            { type: 'callout', variant: 'remember', title: 'Jak číst data', text: 'Hledej **největší skok**. Počet elektronů před ním je počet valenčních elektronů, a tím i číslo hlavní skupiny (římské číslo).' },
-            { type: 'p', text: 'Stejné pravidlo použiješ i u neznámého prvku. Stačí najít největší skok:' },
+            { type: 'callout', variant: 'remember', title: 'Jak číst data', text: 'Hledej **první velký skok**, kde energie vzroste mnohonásobně víc než u předchozích elektronů. Počet elektronů před ním je počet valenčních elektronů, a tím i číslo hlavní skupiny (římské číslo).' },
+            { type: 'p', text: 'Stejné pravidlo použiješ i u neznámého prvku. Stačí najít první velký skok:' },
             { type: 'example', title: 'Čteme data', problem: 'Prvek 3. periody má postupné ionizační energie 578; 1 817; 2 745; 11 577 a 14 842 kJ/mol. Kolik má valenčních elektronů a o jaký prvek jde?', steps: [
               'Spočítej rozdíly sousedních hodnot: +1 239, +928, +8 832, +3 265 kJ/mol.',
               'Největší skok je mezi 3. a 4. elektronem. První tři jdou z vnější vrstvy, čtvrtý už ze zaplněné vrstvy L blíž jádru.',
@@ -987,7 +987,7 @@ const level: LevelContent = {
         'Vzácné plyny mají stabilní oktet (helium dvojici), ostatní atomy se k němu přibližují tvorbou iontů nebo vazeb.',
         'Kovy s 1–3 valenčními elektrony tvoří kationty, nekovy s 5–7 valenčními elektrony anionty.',
         'Ionizační energie je energie nutná k odtržení elektronu; nízká je u sodíku a draslíku, vysoká u vzácných plynů.',
-        'Postupné ionizační energie rostou a největší skok prozradí přechod do vnitřní vrstvy: počet elektronů před skokem je počet valenčních elektronů.',
+        'Postupné ionizační energie rostou a první velký skok prozradí přechod do vnitřní vrstvy: počet elektronů před skokem je počet valenčních elektronů.',
       ],
       quiz: [
         { kind: 'choice', q: 'Jak jsou rozmístěny elektrony v atomu síry ($Z = 16$)?', options: ['2, 8, 6', '2, 6, 8', '2, 14', '8, 8'], answer: 0, explain: 'K pojme 2, L 8 a zbylých 6 elektronů jde do vrstvy M.' },
@@ -1078,8 +1078,8 @@ const level: LevelContent = {
           title: 'Výstavbový princip: v jakém pořadí se orbitaly plní',
           icon: 'chart',
           blocks: [
-            { type: 'p', text: '**Výstavbový princip** (anglicky *Aufbau*) říká, že elektrony obsazují orbitaly postupně **od nejnižší energie**. Energie ale neroste přesně po vrstvách, podslupky se překrývají. Skutečné pořadí vypadá takhle:' },
-            { type: 'formula', text: '1s -> 2s -> 2p -> 3s -> 3p -> 4s -> 3d -> 4p -> 5s -> 4d -> 5p -> 6s -> 4f -> 5d -> 6p -> 7s', caption: 'celé pořadí zaplňování orbitalů' },
+            { type: 'p', text: '**Výstavbový princip** (německy *Aufbau*, „výstavba“) říká, že elektrony obsazují orbitaly postupně **od nejnižší energie**. Energie ale neroste přesně po vrstvách, podslupky se překrývají. Skutečné pořadí vypadá takhle:' },
+            { type: 'formula', text: '1s -> 2s -> 2p -> 3s -> 3p -> 4s -> 3d -> 4p -> 5s -> 4d -> 5p -> 6s -> 4f -> 5d -> 6p -> 7s', caption: 'pořadí zaplňování podslupek (dál pokračuje 5f, 6d, 7p)' },
             { type: 'p', text: 'Všimni si, že 4s předbíhá 3d a 6s dokonce 4f. Pořadí se ale nemusíš učit nazpaměť. Stačí **pravidlo n + l**: dřív se zaplní podslupka s menším součtem $n + l$, při stejném součtu ta s menším $n$. Orbital 4s má součet 4 + 0 = 4, orbital 3d 3 + 2 = 5, proto se 4s zaplní dřív.' },
             { type: 'p', text: 'Ještě rychlejší je pomůcka, kterou si nakreslíš na okraj sešitu: podslupky napiš do řádků podle vrstev a čti je šikmo.' },
             { type: 'structure', art: [
@@ -1142,7 +1142,7 @@ const level: LevelContent = {
             { type: 'callout', variant: 'tip', text: 'V některých učebnicích uvidíš zápis [Ar] 3d^{6} 4s^{2}, seřazený podle vrstev. Obě pořadí jsou správně, obsah je stejný.' },
             { type: 'game', gameId: 'electron-config', text: 'Ve hře Zaplň orbitaly rozmísťuješ šipky do rámečků. Dodrž výstavbový princip, Pauliho princip i Hundovo pravidlo!' },
             { type: 'p', text: 'Pravidla fungují u drtivé většiny prvků. U dvou známých kovů a u iontů ale musíš dát pozor.' },
-            { type: 'check', question: { kind: 'text', q: 'Napiš zkrácenou elektronovou konfiguraci sodíku ($Z = 11$). Horní indexy piš jako obyčejné číslice, např. 2p6.', accept: ['[Ne]3s1', '[Ne] 3s1', '[Ne]3s^1', '[Ne] 3s^{1}', '1s2 2s2 2p6 3s1', '1s22s22p63s1'], caseSensitive: true, placeholder: '[?] …', explain: 'Sodík má o jeden elektron víc než neon: [Ne] 3s^{1}.' } },
+            { type: 'check', question: { kind: 'text', q: 'Napiš zkrácenou elektronovou konfiguraci sodíku ($Z = 11$). Horní indexy piš jako obyčejné číslice, např. 2p6.', accept: ['[Ne]3s1', '[Ne] 3s1', '[Ne]3s^1', '[Ne] 3s^1', '[Ne]3s^{1}', '[Ne] 3s^{1}', '1s2 2s2 2p6 3s1', '1s22s22p63s1'], caseSensitive: true, placeholder: '[?] …', explain: 'Sodík má o jeden elektron víc než neon: [Ne] 3s^{1}.' } },
           ],
         },
         {
@@ -1175,7 +1175,7 @@ const level: LevelContent = {
               ['$Zn^{2+}$', 'Zn: [Ar] 4s^{2} 3d^{10}', '[Ar] 3d^{10}'],
               ['$Mn^{2+}$', 'Mn: [Ar] 4s^{2} 3d^{5}', '[Ar] 3d^{5}'],
             ] },
-            { type: 'callout', variant: 'fact', title: 'Proč rezavé železo', text: '$Fe^{3+}$ s napůl zaplněnou podslupkou 3d^{5} je stálejší než $Fe^{2+}$. Proto na vzduchu železnaté sloučeniny postupně přecházejí na železité a rez obsahuje železo $Fe^{III}$.' },
+            { type: 'callout', variant: 'fact', title: 'Proč rezavé železo', text: '$Fe^{3+}$ s napůl zaplněnou podslupkou 3d^{5} je stálejší než $Fe^{2+}$. Proto se na vzduchu sloučeniny s ionty $Fe^{2+}$ postupně mění na sloučeniny s ionty $Fe^{3+}$ a právě ty obsahuje rez.' },
             { type: 'p', text: 'Teď umíš zapsat konfiguraci atomu i iontu. V příští lekci uvidíš, že právě konfigurace určuje, kde prvek leží v periodické soustavě.' },
             { type: 'check', question: { kind: 'choice', q: 'Jaká je elektronová konfigurace mědi ($Z = 29$)?', options: ['[Ar] 4s^{1} 3d^{10}', '[Ar] 4s^{2} 3d^{9}', '[Ar] 4s^{2} 3d^{10}', '[Kr] 4s^{1}'], answer: 0, explain: 'Měď je výjimka: zaplněná podslupka 3d^{10} je stabilnější, proto jeden elektron přejde ze 4s do 3d.' } },
           ],
@@ -1223,7 +1223,7 @@ const level: LevelContent = {
             { type: 'process', layout: 'flow', steps: [
               { icon: 'book', title: '1869: Mendělejev', text: 'řadí prvky podle atomové hmotnosti, podobné pod sebe' },
               { icon: 'question', title: 'Volná místa', text: 'když se prvek nehodil, nechal políčko prázdné a předpověděl neznámý prvek' },
-              { icon: 'magnifier', title: '1875: gallium', text: 'objevené „ekahliník“ má předpovězené vlastnosti' },
+              { icon: 'magnifier', title: '1875: gallium', text: 'objevený „ekahliník“ má předpovězené vlastnosti' },
               { icon: 'magnifier', title: '1886: germanium', text: 'totéž pro „ekasilicium“' },
               { icon: 'atom', title: '1913: Moseley', text: 'skutečným pořadovým číslem je **protonové číslo** $Z$' },
             ] },
@@ -1292,7 +1292,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Kovy a nekovy se liší vlastnostmi, které poznáš i bez laboratoře: leskem, vodivostí nebo tím, jestli se dají kovat.' },
             { type: 'compare', columns: [
               { title: 'Kovy', icon: 'coin', tone: 'a', points: ['kovový lesk', 'dobře vedou teplo a elektřinu', 'kujné, tažné', 'při 25 °C pevné, kromě rtuti', 'tvoří **kationty**'] },
-              { title: 'Nekovy', icon: 'gas-cloud', tone: 'b', points: ['bez lesku, často barevné', 'většinou nevodí (izolanty)', 'pevné nekovy jsou křehké', 'plyny i pevné látky, brom je kapalina', 'tvoří **anionty**'] },
+              { title: 'Nekovy', icon: 'gas-cloud', tone: 'b', points: ['většinou bez lesku, často barevné', 'většinou nevodí (izolanty)', 'pevné nekovy jsou křehké', 'plyny i pevné látky, brom je kapalina', 'tvoří **anionty**'] },
             ] },
             { type: 'p', text: 'Mezi oběma světy stojí polokovy. Je jich jen pár a leží přesně na schodovité hranici:' },
             { type: 'elements', symbols: ['B', 'Si', 'Ge', 'As', 'Sb', 'Te'], caption: 'Polokovy: vlastnosti mají na pomezí kovů a nekovů' },
@@ -1340,7 +1340,7 @@ const level: LevelContent = {
           title: 'Ionizační energie, elektronová afinita a elektronegativita',
           icon: 'chart',
           blocks: [
-            { type: 'p', text: 'Stejné tři faktory, které řídí velikost atomu, rozhodují i o tom, jak snadno atom elektron odevzdá a jak ochotně ho přijme. Popisují to čtyři veličiny:' },
+            { type: 'p', text: 'Stejné tři faktory, které řídí velikost atomu, rozhodují i o tom, jak snadno atom elektron odevzdá a jak ochotně ho přijme. Popisují to čtyři pojmy:' },
             { type: 'keyterms', items: [
               { term: 'Ionizační energie', def: 'energie na odtržení elektronu z atomu v plynném stavu (z lekce o vrstvách)' },
               { term: '**Elektronová afinita**', def: 'energie, která se **uvolní**, když atom v plynném stavu přijme elektron. Pro $Cl(g) + e^- -> Cl^-(g)$ je to 349 kJ/mol.' },
@@ -1355,8 +1355,8 @@ const level: LevelContent = {
               ['1. ionizační energie (kJ/mol)', '520', '496', '419'],
               ['elektronegativita', '0,98', '0,93', '0,82'],
             ], caption: 'Alkalické kovy shora dolů: atom roste, elektron se odtrhne snáz' },
-            { type: 'callout', variant: 'fact', title: 'Rekordmani v přijímání elektronů', text: 'Největší elektronovou afinitu mají halogeny, jednomu elektronu chybí do oktetu. Chlor (349 kJ/mol) ji má dokonce o něco vyšší než fluor (328 kJ/mol): v malém atomu fluoru se elektrony víc odpuzují. Vzácné plyny elektron dobrovolně nepřijmou.' },
-            { type: 'callout', variant: 'tip', title: 'Směr k fluoru', text: 'Ionizační energie, elektronová afinita i elektronegativita rostou **směrem k fluoru** (vpravo nahoru). Atomový poloměr a kovový charakter rostou opačně, **směrem k franciu** (vlevo dolů). Některé tabulky píšou elektronovou afinitu se znaménkem minus (−349 kJ/mol), protože se energie uvolňuje; význam je stejný.' },
+            { type: 'callout', variant: 'fact', title: 'Rekordmani v přijímání elektronů', text: 'Největší elektronovou afinitu mají halogeny: do oktetu jim chybí jediný elektron. Chlor (349 kJ/mol) ji má dokonce o něco vyšší než fluor (328 kJ/mol): v malém atomu fluoru se elektrony víc odpuzují. Vzácné plyny elektron dobrovolně nepřijmou.' },
+            { type: 'callout', variant: 'tip', title: 'Vpravo nahoru, vlevo dolů', text: 'Ionizační energie, elektronová afinita i elektronegativita rostou **vpravo nahoru**: elektronegativita až k fluoru, ionizační energie až k heliu. Atomový poloměr a kovový charakter rostou opačně, **vlevo dolů** k franciu. Některé tabulky píšou elektronovou afinitu se znaménkem minus (−349 kJ/mol), protože se energie uvolňuje; význam je stejný.' },
             { type: 'callout', variant: 'warning', title: 'Dvě malé výjimky', text: 'První ionizační energie hliníku (578) je menší než hořčíku (738) a kyslíku (1 314) menší než dusíku (1 402 kJ/mol). Elektron 3p hliníku má vyšší energii než 3s, a v kyslíku se v jednom orbitalu 2p poprvé párují dva elektrony a odpuzují se.' },
             { type: 'p', text: 'S trendy v ruce teď můžeš předpovídat vlastnosti i prvků, o kterých nic nevíš.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč má chlor mnohem vyšší první ionizační energii než sodík?', options: ['Valenční elektrony chloru cítí větší efektivní náboj jádra, a přitom jsou ve stejné vrstvě.', 'Chlor má víc elektronových vrstev než sodík.', 'Chlor je plyn a sodík pevná látka.', 'Vnitřní elektrony chloru nestíní vůbec.'], answer: 0, explain: 'Oba mají 10 vnitřních elektronů a valenční elektrony ve vrstvě M. Chlor má ale o 6 protonů víc, takže efektivní náboj je asi +7 místo +1.' } },

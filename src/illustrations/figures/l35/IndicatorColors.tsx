@@ -45,7 +45,7 @@ function Cabbage({ x, y, w }: { x: number; y: number; w: number }) {
       {[
         { ph: 3, t: 'ocet' },
         { ph: 7, t: 'voda' },
-        { ph: 9.2, t: 'jedlá soda' },
+        { ph: 8.3, t: 'jedlá soda' },
       ].map((m) => (
         <g key={m.t}>
           <line x1={at(m.ph)} x2={at(m.ph)} y1={y + 26} y2={y + 36} className="f35-leader" />
@@ -64,7 +64,7 @@ export default function IndicatorColors() {
   return (
     <Figure
       level={5}
-      label="Barvy indikátorů v kyselém, neutrálním a zásaditém roztoku: lakmus červený, fialový, modrý; fenolftalein bezbarvý, bezbarvý, fialově růžový; methyloranž červená, žlutá, žlutá; univerzální indikátor oranžově červený, zelený, modrofialový. Výluh z červeného zelí je v octu červený, ve vodě fialový a v roztoku jedlé sody modrý až zelený."
+      label="Barvy indikátorů v kyselém, neutrálním a zásaditém roztoku: lakmus červený, fialový, modrý; fenolftalein bezbarvý, bezbarvý, červenofialový; methyloranž červená, žlutá, žlutá; univerzální indikátor oranžově červený, zelený, modrofialový. Výluh z červeného zelí je v octu červený, ve vodě fialový a v roztoku jedlé sody modrý až zelený."
       layouts={[
         {
           w: 400,

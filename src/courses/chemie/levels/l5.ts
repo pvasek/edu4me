@@ -104,7 +104,7 @@ const l51: Lesson = {
           type: 'check',
           question: {
             kind: 'choice',
-            q: 'Který ion vzniká podle Arrhenia ve vodném roztoku každé kyseliny?',
+            q: 'Který ion vzniká ve vodném roztoku každé kyseliny?',
             options: ['$H3O^+$', '$OH^-$', '$Cl^-$', '$Na^+$'],
             answer: 0,
             explain: 'Kyselina uvolňuje $H^+$, který se ve vodě hned naváže na molekulu vody a vznikne oxoniový kation $H3O^+$. Anion $Cl^-$ vzniká jen z $HCl$.',
@@ -150,7 +150,7 @@ const l51: Lesson = {
         {
           type: 'callout',
           variant: 'tip',
-          text: 'Technická kyselina chlorovodíková (asi 35%) se prodává pod tradičním názvem **kyselina solná**. Oba názvy jsou správně.',
+          text: 'Technická kyselina chlorovodíková (asi 31–33 %) se prodává pod tradičním názvem **kyselina solná**. Oba názvy jsou správně.',
         },
         {
           type: 'callout',
@@ -344,7 +344,7 @@ const l51: Lesson = {
         { type: 'reaction', equation: 'MgO + 2HCl -> MgCl2 + H2O', caption: 'Bílý oxid hořečnatý se v kyselině rozpustí na chlorid hořečnatý. Plyn nevzniká.' },
         { type: 'p', text: 'Uhličitan zase šumí, protože kromě soli a vody vzniká i oxid uhličitý:' },
         { type: 'reaction', equation: 'CaCO3 + 2HCl -> CaCl2 + H2O + CO2', caption: 'Vápenec šumí: vzniklá kyselina uhličitá se hned rozpadá na vodu a oxid uhličitý.' },
-        { type: 'p', text: 'Teď zkus celý postup sám/sama. U hliníku dá vyčíslení víc práce, protože jeho kation má jiný náboj než zinek:' },
+        { type: 'p', text: 'Teď zkus celý postup sám/sama. U hliníku dá vyčíslení víc práce, protože jeho kation má jiný náboj než kation zinku:' },
         {
           type: 'example',
           problem: 'Co vznikne reakcí hliníku s kyselinou chlorovodíkovou? Zapiš vyčíslenou rovnici.',
@@ -359,7 +359,7 @@ const l51: Lesson = {
         {
           type: 'callout',
           variant: 'warning',
-          text: 'Ušlechtilé kovy (měď, stříbro, zlato) s kyselinou chlorovodíkovou ani se zředěnou sírovou nereagují, proč, vysvětlí řada reaktivity kovů v úrovni 6. Kyselina dusičná rozpustí i měď, ale místo vodíku uvolní jedovaté oxidy dusíku. Vodík je hořlavý: pracuj s malými množstvími, v brýlích a daleko od plamene.',
+          text: 'Ušlechtilé kovy (měď, stříbro, zlato) s kyselinou chlorovodíkovou ani se zředěnou sírovou nereagují (proč, vysvětlí řada reaktivity kovů v úrovni 6). Kyselina dusičná rozpustí i měď, ale místo vodíku uvolní jedovaté oxidy dusíku. Vodík je hořlavý: pracuj s malými množstvími, v brýlích a daleko od plamene.',
         },
         {
           type: 'callout',
@@ -426,7 +426,7 @@ const l51: Lesson = {
         { type: 'h', text: 'Kyselé deště' },
         {
           type: 'p',
-          text: 'Kyseliny ale nevznikají jen v továrnách, tvoří se i v ovzduší. I úplně čistý déšť je mírně kyselý: rozpouští se v něm $CO2$ ze vzduchu a vzniká slabá kyselina uhličitá ($CO2 + H2O <=> H2CO3$), takže má pH asi 5,6 (co je pH, se dozvíš v lekci 5-3). **Kyselé deště** jsou mnohem kyselejší. Způsobuje je oxid siřičitý $SO2$ ze spalování uhlí se sírou a oxidy dusíku ($NO$, $NO2$) z motorů a elektráren.',
+          text: 'Kyseliny ale nevznikají jen v továrnách, tvoří se i v ovzduší. I úplně čistý déšť je mírně kyselý: rozpouští se v něm $CO2$ ze vzduchu a vzniká slabá kyselina uhličitá ($CO2 + H2O <=> H2CO3$), takže má pH asi 5,6 (co je pH, se dozvíš v lekci 5-3). **Kyselé deště** jsou mnohem kyselejší. Způsobuje je oxid siřičitý $SO2$ ze spalování uhlí, které obsahuje síru, a oxidy dusíku ($NO$, $NO2$) z motorů a elektráren.',
         },
         { type: 'diagram', id: 'acid-rain', caption: 'Od komína a výfuku ke kyselému dešti: $SO2$ z továren a oxidy dusíku z aut se v oblacích mění na kyselinu siřičitou, sírovou a dusičnou (rovnice pod obrázkem). Déšť s pH pod 5,6 poškozuje lesy a okyseluje jezera.' },
         { type: 'p', text: 'Co takový déšť způsobí, když dopadne na zem? Všimni si, že jde hlavně o reakce kyselin, které už znáš z minulého oddílu:' },
@@ -452,7 +452,7 @@ const l51: Lesson = {
             q: 'Které plyny přispívají ke vzniku kyselých dešťů?',
             options: ['$SO2$', '$NO2$', '$N2$', '$CH4$', '$SO3$'],
             answers: [0, 1, 4],
-            explain: 'Oxidy síry a dusíku tvoří s vodou kyseliny siřičitou, sírovou a dusičnou. Dusík $N2$ je nereaktivní a metan je skleníkový plyn, kyselinu netvoří.',
+            explain: 'Oxidy síry a dusíku tvoří s vodou kyseliny siřičitou, sírovou a dusičnou. Dusík $N2$ sám kyselinu netvoří (oxidy dusíku z něj vznikají až za vysoké teploty v motorech) a metan je skleníkový plyn bez kyselých vlastností.',
           },
         },
       ],
@@ -637,7 +637,7 @@ const l52: Lesson = {
         { type: 'formula', text: '$Ca(OH)2 -> Ca^{2+} + 2OH^-$' },
         {
           type: 'p',
-          text: 'V širším smyslu je **zásada** každý oxid nebo hydroxid kovu, který s kyselinou dává sůl a vodu. Zásady rozpustné ve vodě se nazývají **alkálie** a jejich roztoky jsou **alkalické**. ==Každá alkálie je zásada, ale ne každá zásada je alkálie.==',
+          text: 'V širším smyslu se **zásadou** nazývá každý hydroxid kovu, který s kyselinou dává sůl a vodu, i když se ve vodě nerozpouští. Zásady rozpustné ve vodě se nazývají **alkálie** a jejich roztoky jsou **alkalické**. ==Každá alkálie je zásada, ale ne každá zásada je alkálie.==',
         },
         { type: 'p', text: 'Kde vede hranice mezi alkálií a nerozpustnou zásadou? Podívej se, jak moc se rozpustnost jednotlivých hydroxidů liší:' },
         {
@@ -657,7 +657,7 @@ const l52: Lesson = {
         {
           type: 'compare',
           columns: [
-            { title: 'Alkálie', icon: 'drop', tone: 'a', points: ['rozpouštějí se, roztok má pH > 7', 'fenolftalein barví fialově růžově', 'koncentrované roztoky jsou žíravé', 'vznikají např. z alkalického kovu a vody'] },
+            { title: 'Alkálie', icon: 'drop', tone: 'a', points: ['rozpouštějí se, roztok má pH > 7', 'fenolftalein barví červenofialově', 'koncentrované roztoky jsou žíravé', 'vznikají např. z alkalického kovu a vody'] },
             { title: 'Nerozpustné hydroxidy', icon: 'powder', tone: 'b', points: ['vznikají jako barevné sraženiny', '$Cu(OH)2$ modrý, $Fe(OH)2$ zelenavý, $Fe(OH)3$ rezavě hnědý, $Al(OH)3$ bílý rosolovitý', 'fenolftalein nezbarví', 'zahřátím se rozkládají na oxid a vodu'] },
           ],
         },
@@ -828,7 +828,7 @@ const l52: Lesson = {
         { type: 'p', text: 'Kyselý oxid se chová jako kyselina, i když v něm žádný vodík není. Vzniká opět sůl a voda:' },
         { type: 'reaction', equation: '2NaOH + CO2 -> Na2CO3 + H2O', caption: 'Proto se $NaOH$ skladuje dobře uzavřený: pohlcuje $CO2$ ze vzduchu a mění se na uhličitan.' },
         { type: 'p', text: 'S hydroxidem vápenatým vzniká nerozpustný uhličitan, a proto je reakce dobře vidět:' },
-        { type: 'reaction', equation: 'Ca(OH)2 + CO2 -> CaCO3 + H2O', caption: 'Čirá **vápenná voda** (roztok $Ca(OH)2$) se po vydechnutí brčkem zakalí bílým $CaCO3$. Tak se dokazuje oxid uhličitý.' },
+        { type: 'reaction', equation: 'Ca(OH)2 + CO2 -> CaCO3 + H2O', caption: 'Čirá **vápenná voda** (roztok $Ca(OH)2$) se zakalí bílým $CaCO3$, když do ní brčkem vydechuješ. Tak se dokazuje oxid uhličitý.' },
         { type: 'p', text: 'Reakci s amonnou solí prozradí čich: zásada z ní vytlačí plynný amoniak.' },
         { type: 'reaction', equation: 'NH4Cl + NaOH -> NaCl + NH3 + H2O', caption: 'Za tepla uniká štiplavý amoniak a navlhčený červený lakmusový papírek nad zkumavkou zmodrá. Tak se dokazují amonné soli.' },
         {
@@ -1041,7 +1041,7 @@ const l53: Lesson = {
         { type: 'formula', text: '$[H3O^+]·[OH^-] = 1,0·10^{-14}$', caption: '**iontový součin vody** $K_{v}$ při 25 °C (proč platí, vysvětlí rovnováhy v úrovni 6)' },
         {
           type: 'p',
-          text: '==Iontový součin vody platí v každém vodném roztoku.== Když přidáš kyselinu, $[H3O^+]$ vzroste a $[OH^-]$ musí úměrně klesnout. Oba ionty jsou přítomné vždy, mění se jen jejich poměr.',
+          text: '==Iontový součin vody platí v každém vodném roztoku.== Když přidáš kyselinu, $[H3O^+]$ vzroste a $[OH^-]$ musí klesnout tak, aby jejich součin zůstal stejný. Oba ionty jsou přítomné vždy, mění se jen jejich poměr.',
         },
         {
           type: 'compare',
@@ -1384,7 +1384,7 @@ const l53: Lesson = {
             ['methylčerveň', '4,4–6,2', 'červená', 'žlutá'],
             ['lakmus', 'asi 4,5–8,3', 'červená', 'modrá'],
             ['bromthymolová modř', '6,0–7,6', 'žlutá', 'modrá'],
-            ['fenolftalein', '8,2–10,0', 'bezbarvá', 'fialově růžová'],
+            ['fenolftalein', '8,2–10,0', 'bezbarvá', 'červenofialová'],
             ['thymolftalein', '9,3–10,5', 'bezbarvá', 'modrá'],
           ],
           caption: 'Pod dolní hranicí přechodu má indikátor „kyselou“ barvu, nad horní hranicí „zásaditou“. Uvnitř přechodu vidíš směs obou barev, třeba oranžovou u methyloranže.',
@@ -1477,11 +1477,11 @@ const l53: Lesson = {
       q: 'Přiřaď k indikátoru v daném prostředí jeho barvu.',
       pairs: [
         ['lakmus v zásaditém roztoku', 'modrá'],
-        ['fenolftalein v zásaditém roztoku', 'fialově růžová'],
+        ['fenolftalein v zásaditém roztoku', 'červenofialová'],
         ['methyloranž v zásaditém roztoku', 'žlutá'],
         ['univerzální indikátor při pH 1', 'červená'],
       ],
-      explain: 'Lakmus v zásadách zmodrá, fenolftalein zrůžoví, methyloranž zežloutne a univerzální indikátor je v silně kyselém prostředí červený.',
+      explain: 'Lakmus v zásadách zmodrá, fenolftalein zfialoví, methyloranž zežloutne a univerzální indikátor je v silně kyselém prostředí červený.',
     },
     {
       kind: 'tf',
@@ -1839,7 +1839,7 @@ const l54: Lesson = {
           props: { kind: 'strong-strong' },
           caption: 'Titrace silné kyseliny silnou zásadou: v okolí bodu ekvivalence vyskočí pH zhruba ze 4 na 10.',
         },
-        { type: 'p', text: 'Křivka má tři různé úseky a každý říká, co se v baňce zrovna děje:' },
+        { type: 'p', text: 'Na křivce rozlišíš tři úseky a mezi nimi jeden klíčový bod. Každý říká, co se v baňce zrovna děje:' },
         {
           type: 'process',
           layout: 'flow',
@@ -2023,7 +2023,7 @@ const l55: Lesson = {
           layout: 'flow',
           steps: [
             { icon: 'heat', title: 'Zahřej kyselinu', text: 'zředěnou $H2SO4$ v kádince mírně ohřej' },
-            { icon: 'powder', title: 'Přidávej $CuO$', text: 'po lžičkách, dokud se černý prášek přestane rozpouštět' },
+            { icon: 'powder', title: 'Přidávej $CuO$', text: 'po lžičkách, až se černý prášek přestane rozpouštět' },
             { icon: 'funnel', title: 'Filtruj', text: 'nadbytečný $CuO$ zůstane na filtru, modrý filtrát projde' },
             { icon: 'burner', title: 'Zahusti', text: 'odpař část vody na odpařovací misce' },
             { icon: 'crystal', title: 'Krystalizuj', text: 'po ochlazení vyrostou modré krystaly $CuSO4·5H2O$' },
@@ -2394,7 +2394,7 @@ const l55: Lesson = {
             { icon: 'leaf', title: 'pentahydrát síranu měďnatého $CuSO4·5H2O$', text: 'postřik proti plísním ve vinicích, hubení řas' },
             { icon: 'soap', title: 'chlornan sodný $NaClO$', text: 'bělicí a dezinfekční prostředky na WC' },
             { icon: 'drop', title: 'manganistan draselný $KMnO4$', text: 'dezinfekce („hypermangan“)' },
-            { icon: 'hazard', title: 'dusitan sodný $NaNO2$', text: 'rychlosůl na maso (E250), ve větším množství jedovatý' },
+            { icon: 'hazard', title: 'dusitan sodný $NaNO2$', text: 'složka rychlosoli na maso (E250), ve větším množství jedovatý' },
           ],
         },
         {
@@ -2539,7 +2539,7 @@ const l56: Lesson = {
         { type: 'formula', text: '$NH3 + H2O <=> NH4^+ + OH^-$', caption: 'Tady je naopak voda kyselinou a amoniak zásadou.' },
         {
           type: 'p',
-          text: 'A bílý dým z úvodu? Plynný chlorovodík předá proton plynnému amoniaku a vznikne jemný prášek chloridu amonného. Voda ani hydroxidové anionty k tomu nejsou potřeba.',
+          text: 'A bílý dým z úvodu? Plynný chlorovodík předá proton plynnému amoniaku a vznikne jemný prášek chloridu amonného. Voda ani hydroxidové anionty k tomu nejsou potřeba. (Pokus patří do digestoře: výpary obou koncentrovaných roztoků leptají sliznice.)',
         },
         {
           type: 'particles',

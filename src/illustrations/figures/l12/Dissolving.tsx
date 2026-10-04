@@ -130,7 +130,7 @@ function Body({ step }: { step: 1 | 2 | 3 }) {
 }
 
 const LABEL =
-  'Rozpouštění kuchyňské soli ve vodě: molekuly vody obklopují ionty na povrchu krystalu chloridu sodného a odtrhávají je. Kation sodíku Na⁺ obklopí molekuly vody kyslíkem, anion chloru Cl⁻ vodíky. Obalené ionty se rozptýlí v roztoku.'
+  'Rozpouštění kuchyňské soli ve vodě: molekuly vody obklopují ionty na povrchu krystalu chloridu sodného a odtrhávají je. K sodnému kationtu Na⁺ se molekuly vody natočí kyslíkem, k chloridovému aniontu Cl⁻ vodíky. Obalené ionty se rozptýlí v roztoku.'
 
 export default function Dissolving() {
   return (
@@ -149,7 +149,7 @@ export default function Dissolving() {
           },
           {
             title: 'Odtrhne se Na⁺',
-            caption: 'Molekuly vody odtrhnou kation sodíku a obklopí ho kyslíkem.',
+            caption: 'Molekuly vody odtrhnou sodný kation a obklopí ho kyslíkem.',
             art: (
               <Frame w={600} h={390}>
                 <Body step={2} />
@@ -158,7 +158,7 @@ export default function Dissolving() {
           },
           {
             title: 'Odtrhne se Cl⁻',
-            caption: 'Anion chloru obklopí molekuly vody vodíky. Obalené ionty se rozptýlí v roztoku.',
+            caption: 'K chloridovému aniontu se molekuly vody natočí vodíky. Obalené ionty se rozptýlí v roztoku.',
             art: (
               <Frame w={600} h={390}>
                 <Body step={3} />

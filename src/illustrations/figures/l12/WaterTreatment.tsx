@@ -184,7 +184,7 @@ function Tower() {
 
 const STAGES: { name: string; sub: string; C: () => ReactNode }[] = [
   { name: 'česle', sub: 'hrubé nečistoty', C: Intake },
-  { name: 'čeření', sub: 'vznikají vločky', C: Coagulation },
+  { name: 'čiření', sub: 'vznikají vločky', C: Coagulation },
   { name: 'usazování', sub: 'vločky klesnou', C: Settling },
   { name: 'pískový filtr', sub: 'jemné částice', C: SandFilter },
   { name: 'dezinfekce', sub: 'chlor, ozon, UV', C: Disinfection },
@@ -282,7 +282,7 @@ export default function WaterTreatment() {
       level={1}
       max={900}
       className="f12-water"
-      label="Úpravna vody v řezu. Voda z řeky projde česlemi, které zachytí hrubé nečistoty. Při čeření se přidá síran hlinitý a vznikají vločky, na které se nalepí jemné nečistoty. V usazovací nádrži vločky klesnou ke dnu jako kal. Pískový filtr zachytí zbylé jemné částice. Dezinfekce chlorem, ozonem nebo UV zářením zničí bakterie a viry. Pitná voda se čerpá do vodojemu a odtud teče do domů."
+      label="Úpravna vody v řezu. Voda z řeky projde česlemi, které zachytí hrubé nečistoty. Při čiření se přidá síran hlinitý a vznikají vločky, na které se nalepí jemné nečistoty. V usazovací nádrži vločky klesnou ke dnu jako kal. Pískový filtr zachytí zbylé jemné částice. Dezinfekce chlorem, ozonem nebo UV zářením zničí bakterie a viry. Pitná voda se čerpá do vodojemu a odtud teče do domů."
     >
       <Wide />
       <Narrow />

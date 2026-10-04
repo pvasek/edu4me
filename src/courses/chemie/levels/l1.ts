@@ -302,7 +302,7 @@ const level: LevelContent = {
               'Porovnáme s tabulkou: hustotu 2,70 g/cm³ má hliník.',
             ], answer: 'Kvádr je z hliníku.' },
             { type: 'p', text: 'Vzorec jde použít i obráceně: když znáš hustotu a objem, spočítáš hmotnost, aniž bys cokoli vážil/a.' },
-            { type: 'example', title: 'Kolik váží olej?', problem: 'Jakou hmotnost má 1,5 litru jedlého oleje ($ρ$ = 0,92 g/cm³)?', steps: [
+            { type: 'example', title: 'Jakou hmotnost má olej?', problem: 'Jakou hmotnost má 1,5 litru jedlého oleje ($ρ$ = 0,92 g/cm³)?', steps: [
               'Převedeme objem: 1,5 l = 1500 cm³ (1 l = 1000 cm³) – hustota je v g/cm³, takže objem musí být v cm³',
               'Ze vzorce vyjádříme hmotnost: $m = ρ · V$',
               '$m$ = 0,92 g/cm³ · 1500 cm³ = 1380 g',
@@ -414,7 +414,7 @@ const level: LevelContent = {
               { icon: 'gas-cloud', title: 'Parfém', text: 'ucítíš ho na druhém konci místnosti' },
             ] },
             { type: 'callout', variant: 'tip', title: 'Domácí pokus', text: 'Dej jeden čajový sáček do studené a druhý do horké vody. V horké vodě se barva šíří mnohem rychleji: čím vyšší teplota, tím rychleji se částice pohybují. V plynech je difuze rychlejší než v kapalinách.' },
-            { type: 'p', text: 'Částice samotné nevidíš ani mikroskopem, jejich nárazy se ale dají pozorovat nepřímo. V roce 1827 pozoroval botanik Robert Brown mikroskopem drobná zrníčka z pylu ve vodě, která sebou neustále nepravidelně škubala. Tento **Brownův pohyb** vysvětlil v roce 1905 Albert Einstein: do zrníček ze všech stran nepravidelně narážejí neviditelné částice vody.' },
+            { type: 'p', text: 'Částice samotné nevidíš ani běžným mikroskopem, jejich nárazy se ale dají pozorovat nepřímo. V roce 1827 pozoroval botanik Robert Brown mikroskopem drobná zrníčka z pylu ve vodě, která sebou neustále nepravidelně škubala. Tento **Brownův pohyb** vysvětlil v roce 1905 Albert Einstein: do zrníček ze všech stran nepravidelně narážejí neviditelné částice vody.' },
             { type: 'callout', variant: 'fact', text: 'Einsteinovo vysvětlení Brownova pohybu patřilo k prvním přesvědčivým důkazům, že částice látek skutečně existují. Ještě kolem roku 1900 o tom někteří vědci pochybovali!' },
             { type: 'p', text: 'Teď víš, podle čeho látky poznáš a jak se chovají jejich částice. V příští lekci zjistíš, že většina látek kolem nás vůbec není čistá – jsou to směsi.' },
             { type: 'game', gameId: 'quickfire', text: 'Zkus **Bleskovou výzvu**: kolik otázek o skupenstvích a vlastnostech látek zodpovíš za 60 sekund?' },
@@ -506,7 +506,7 @@ const level: LevelContent = {
               { title: '**Koloid**', icon: 'bulb', tone: 'b', points: ['částice asi 1 nm až 1 μm', 'často zakalený nebo opalizuje, neusazuje se', 'dráha paprsku je vidět – Tyndallův jev', 'mléko, mlha, želatina, krev, vaječný bílek'] },
               { title: '**Hrubá (různorodá) směs**', icon: 'magnifier', tone: 'c', points: ['částice větší než 1 μm', 'složky rozeznáš, časem se usadí', 'zachytí je filtr', 'písek ve vodě, bahno'] },
             ] },
-            { type: 'p', text: 'Jak koloid poznáš? Posviť na něj **ze strany** úzkým paprskem světla. Koloidní částice rozptylují světlo do všech směrů, takže uvidíš celou dráhu paprsku jako svítící pruh. Tomu se říká **Tyndallův jev** (podle irského fyzika Johna Tyndalla). V pravém roztoku je částic příliš malých a paprsek zůstane neviditelný.' },
+            { type: 'p', text: 'Jak koloid poznáš? Posviť na něj **ze strany** úzkým paprskem světla. Koloidní částice rozptylují světlo do všech směrů, takže uvidíš celou dráhu paprsku jako svítící pruh. Tomu se říká **Tyndallův jev** (podle irského fyzika Johna Tyndalla). V pravém roztoku jsou částice příliš malé, a paprsek proto zůstane neviditelný.' },
             { type: 'p', text: 'Tyndallův jev vidíš častěji, než si myslíš – stačí, aby světlo procházelo mlhou, prachem nebo kouřem:' },
             { type: 'iconlist', items: [
               { icon: 'tree', title: 'Paprsky v ranním lese', text: 'kapičky mlhy rozptylují sluneční světlo' },
@@ -653,12 +653,12 @@ const level: LevelContent = {
             { type: 'p', text: 'Začneme metodou, při které většinu práce udělá gravitace: suspenzi stačí nechat chvíli stát.' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'mixture', title: 'Suspenze', text: 'pevné částice rozptýlené v kapalině' },
-              { icon: 'powder', title: '**Usazování** (sedimentace)', text: 'těžší pevné částice klesají vlivem gravitace ke dnu' },
+              { icon: 'powder', title: '**Usazování** (sedimentace)', text: 'pevné částice s větší hustotou než kapalina klesají vlivem gravitace ke dnu' },
               { icon: 'beaker', title: '**Dekantace**', text: 'kapalinu nad usazeninou opatrně slijeme' },
             ] },
             { type: 'p', text: 'Nejvíc šikovnosti chce poslední krok – slít kapalinu tak, aby se usazenina nezvířila. Podívej se, jak se to dělá:' },
             { type: 'diagram', id: 'separation', props: { method: 'decantation' }, caption: 'Dekantace: kapalina se opatrně slévá po skleněné tyčince do druhé kádinky, usazenina zůstává na dně' },
-            { type: 'p', text: 'Usazování je ale pomalé – jemné kalné částice klesají třeba celé hodiny. **Odstřeďování (centrifugace)** usazování mnohonásobně zrychlí. Směs se v odstředivce rychle točí a těžší částice se tlačí ke dnu. Využívá se v nemocnici, v mlékárně i doma:' },
+            { type: 'p', text: 'Usazování je ale pomalé – jemné kalné částice klesají třeba celé hodiny. **Odstřeďování (centrifugace)** usazování mnohonásobně zrychlí. Směs se v odstředivce rychle točí a částice s větší hustotou se hromadí u dna zkumavky. Využívá se v nemocnici, v mlékárně i doma:' },
             { type: 'iconlist', items: [
               { icon: 'blood', title: 'Krev', text: 'dělí se na krevní plazmu a krvinky' },
               { icon: 'milk', title: 'Mléko', text: 'odstřeďuje se z něj smetana' },
@@ -748,7 +748,7 @@ const level: LevelContent = {
               { icon: 'stopwatch', title: 'Nech vzlínat', text: 'než rozpouštědlo dojde skoro nahoru' },
               { icon: 'magnifier', title: 'Označ čelo', text: 'hned tužkou vyznač, kam až rozpouštědlo doputovalo' },
             ] },
-            { type: 'p', text: 'Barevné skvrny se dají i změřit. Jak daleko složka doputuje, vyjadřuje **retenční faktor** $R_{f}$. Je to podíl dvou vzdáleností měřených od startovní čáry. Proč podíl? Když necháš rozpouštědlo vzlínat déle, doputují všechny skvrny dál, ale jejich poměr k čelu rozpouštědla zůstane stejný.' },
+            { type: 'p', text: 'Barevné skvrny se dají i změřit. Jak daleko složka doputuje, vyjadřuje **retardační faktor** $R_{f}$. Je to podíl dvou vzdáleností měřených od startovní čáry. Proč podíl? Když necháš rozpouštědlo vzlínat déle, doputují všechny skvrny dál, ale jejich poměr k čelu rozpouštědla zůstane stejný.' },
             { type: 'formula', text: '$R_{f}$ = vzdálenost skvrny : vzdálenost čela rozpouštědla', caption: 'obě vzdálenosti měříš od startovní čáry; $R_{f}$ je číslo od 0 do 1 a nemá jednotku' },
             { type: 'p', text: 'Vyzkoušej si výpočet na barvivu ze zeleného bonbonu:' },
             { type: 'example', title: 'Které barvivo je v bonbonu?', problem: 'Na chromatogramu barviva ze zeleného bonbonu doputovalo rozpouštědlo 8,0 cm od startu. Žlutá skvrna je 6,0 cm od startu, modrá 2,4 cm. Známé žluté barvivo, které jsi nanesl/a vedle, dává skvrnu s $R_{f}$ = 0,75. Co z toho plyne?', steps: [
@@ -774,7 +774,7 @@ const level: LevelContent = {
               { icon: 'oil-barrel', title: 'Olej ze semen', text: 'ze semínek řepky se olej lisuje a zbytek extrahuje rozpouštědlem' },
             ] },
             { type: 'p', text: 'Dvě kapaliny, které se nemísí (třeba voda a olej), oddělíš v **dělicí nálevce**. Kapalina s větší hustotou je dole, takže ji kohoutem vypustíš jako první. V dělicí nálevce se dělá i extrakce z roztoku: hnědý roztok jodu ve vodě protřepeš s **cyklohexanem** (nebo technickým benzínem). Jod se v něm rozpouští mnohem lépe než ve vodě, a tak do něj „přestěhuje“.' },
-            { type: 'particles', caption: 'Extrakce jodu: cyklohexan se s vodou nemísí a je lehčí, proto tvoří horní vrstvu. Jod v něm září fialově, voda pod ním skoro odbarví.', boxes: [
+            { type: 'particles', caption: 'Extrakce jodu: cyklohexan se s vodou nemísí a je lehčí, proto tvoří horní vrstvu. Jod ho barví fialově, voda pod ním se skoro odbarví.', boxes: [
               { label: 'před: jod ve vodě', state: 'solution', items: [{ species: 'H2O', count: 8 }, { species: 'I2', count: 4 }], note: 'hnědý roztok' },
               { label: 'po: horní vrstva – cyklohexan', state: 'liquid', items: [{ species: 'cyclohexane', count: 4 }, { species: 'I2', count: 3 }], note: 'fialová' },
               { label: 'po: spodní vrstva – voda', state: 'solution', items: [{ species: 'H2O', count: 8 }, { species: 'I2', count: 1 }], note: 'skoro bezbarvá' },
@@ -918,7 +918,7 @@ const level: LevelContent = {
               'Při 20 °C se ve 100 g vody udrží rozpuštěných jen 31,6 g.',
               'Zbytek, který chladnější voda neudrží, se vyloučí jako krystaly: 110 g − 31,6 g = 78,4 g.',
             ], answer: 'Vyloučí se 78,4 g krystalů $KNO3$.' },
-            { type: 'p', text: 'Pozor, pravidlo „čím tepleji, tím víc se rozpustí“ platí jen pro pevné látky. U plynů je to naopak:' },
+            { type: 'p', text: 'Pozor, pravidlo „čím tepleji, tím víc se rozpustí“ platí jen pro většinu pevných látek. U plynů je to naopak:' },
             { type: 'compare', columns: [
               { title: 'Pevné látky', icon: 'crystal', tone: 'a', points: ['rozpustnost s teplotou většinou **roste**', 'dusičnan draselný strmě, sůl jen málo'] },
               { title: 'Plyny', icon: 'gas-cloud', tone: 'b', points: ['rozpustnost s teplotou **klesá**', 'teplá limonáda rychleji vyčichne', 'ryby mají v létě v teplé vodě méně kyslíku'] },
@@ -1071,7 +1071,7 @@ const level: LevelContent = {
             { type: 'elements', symbols: ['Ca', 'Mg'], caption: 'Vápník a hořčík – původci tvrdosti vody' },
             { type: 'p', text: 'Kolik těchto sloučenin voda obsahuje, poznáš v kuchyni i v koupelně:' },
             { type: 'compare', columns: [
-              { title: '**Tvrdá voda**', icon: 'crystal', tone: 'a', points: ['hodně sloučenin vápníku a hořčíku', 'v konvici a na topných spirálách tvoří **vodní kámen**', 'mýdlo a šampon v ní hůř pění', 'na sklenicích a bateriích zůstávají bílé skvrny'] },
+              { title: '**Tvrdá voda**', icon: 'crystal', tone: 'a', points: ['hodně sloučenin vápníku a hořčíku', 'v konvici a na topných spirálách tvoří **vodní kámen**', 'mýdlo a šampon v ní hůř pění', 'na sklenicích a vodovodních bateriích zůstávají bílé skvrny'] },
               { title: '**Měkká voda**', icon: 'rain', tone: 'b', points: ['málo sloučenin vápníku a hořčíku', 'dešťová voda', 'destilovaná voda'] },
             ] },
             { type: 'callout', variant: 'tip', title: 'Vodní kámen v konvici', text: 'Vodní kámen odstraníš octem nebo kyselinou citronovou – obojí ho rozpouští. Pak konvici důkladně vypláchni. Proč to funguje, zjistíš v úrovni 5.' },
@@ -1198,7 +1198,7 @@ const level: LevelContent = {
               { title: '**Ozonová vrstva**', icon: 'ozone', tone: 'good', points: ['ve stratosféře, asi 15–35 km nad Zemí', 'pohlcuje nebezpečné UV záření', 'chrání nás'] },
               { title: '**Přízemní ozon**', icon: 'lungs', tone: 'bad', points: ['u země, hlavně v létě ve městech', 'dráždí oči a plíce, poškozuje rostliny', 'škodí'] },
             ] },
-            { type: 'p', text: 'Ozonovou vrstvu ničily **freony** – plyny z ledniček a sprejů. Nad Antarktidou kvůli nim vznikla **ozonová díra**. Montrealský protokol z roku 1987 jejich výrobu zakázal a vrstva se pomalu obnovuje; nad Antarktidou by se měla zotavit kolem roku 2066.' },
+            { type: 'p', text: 'Ozonovou vrstvu ničily **freony** – plyny z ledniček a sprejů. Nad Antarktidou kvůli nim vznikla **ozonová díra**. Montrealský protokol z roku 1987 a jeho pozdější dodatky jejich výrobu postupně zakázaly a vrstva se pomalu obnovuje; nad Antarktidou by se měla zotavit kolem roku 2066.' },
             { type: 'p', text: 'Oxid siřičitý a oxidy dusíku ze seznamu škodlivin mají ještě jeden dopad – vracejí se na zem s deštěm. Sleduj jejich cestu:' },
             { type: 'diagram', id: 'acid-rain', caption: 'Kyselý déšť: od komínů a výfuků k lesům a jezerům' },
             { type: 'p', text: '**Kyselé deště** vznikají, když oxid siřičitý a oxidy dusíku reagují se vzdušnou vlhkostí na kyseliny (podrobně v úrovni 5). Poškozují lesy, okyselují jezera a rozpouštějí sochy z vápence a mramoru.' },

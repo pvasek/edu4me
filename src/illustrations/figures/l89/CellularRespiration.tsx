@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { Arrow, Draw, F, Fade, Figure, headAt, Plate, Pop, useHatch, useNarrow } from './kit'
 
 const LABEL =
-  'Buněčné dýchání krok za krokem. 1. Glykolýza probíhá v cytoplazmě: glukóza C6H12O6 se rozloží na 2 pyruváty a vzniknou 2 ATP a 2 NADH. 2. Pyruvát vstoupí do mitochondrie a v matrix se oxidační dekarboxylací mění na acetyl-CoA; uvolní se 2 CO2 a vzniknou 2 NADH. 3. V Krebsově cyklu v matrix se acetyl rozloží na 4 CO2 a vznikne 6 NADH, 2 FADH2 a 2 ATP. 4. Dýchací řetězec a ATP-syntáza ve vnitřní membráně mitochondrie (v kristách) předají elektrony z NADH a FADH2 kyslíku, O2 se redukuje na vodu a vznikne asi 26–28 ATP. Celkem asi 30–32 ATP z jedné molekuly glukózy; souhrnně C6H12O6 + 6 O2 → 6 CO2 + 6 H2O.'
+  'Buněčné dýchání krok za krokem. 1. Glykolýza probíhá v cytoplazmě: glukóza C6H12O6 se rozloží na 2 pyruváty a vzniknou 2 ATP a 2 NADH. 2. Pyruvát vstoupí do mitochondrie a v matrix se oxidační dekarboxylací mění na acetyl-CoA; uvolní se 2 CO2 a vzniknou 2 NADH. 3. V Krebsově cyklu v matrix se acetylové zbytky ze 2 acetyl-CoA oxidují na 4 CO2 a vznikne 6 NADH, 2 FADH2 a 2 ATP. 4. Dýchací řetězec a ATP-syntáza ve vnitřní membráně mitochondrie (v kristách) předají elektrony z NADH a FADH2 kyslíku, O2 se redukuje na vodu a vznikne asi 26–28 ATP. Celkem asi 30–32 ATP z jedné molekuly glukózy; souhrnně C6H12O6 + 6 O2 → 6 CO2 + 6 H2O.'
 
 const MEM = 'color-mix(in srgb, #c0602c 78%, var(--ink))'
 const OUTER = 'color-mix(in srgb, #e0955e 42%, var(--surface))'

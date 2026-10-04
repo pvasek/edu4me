@@ -137,7 +137,7 @@ const l4_1: Lesson = {
         {
           type: 'callout',
           variant: 'mascot',
-          text: 'Takže to kilo dřeva z krbu? Většina uletěla komínem jako $CO2$ a vodní pára. Kdybys zachytil všechny plyny, váha by seděla na gram. Chemie je poctivý účetní.',
+          text: 'Takže to kilo dřeva z krbu? Většina uletěla komínem jako $CO2$ a vodní pára. Kdybys zachytil všechny plyny a započítal i kyslík, který se při hoření spotřeboval, váha by seděla na gram. Chemie je poctivý účetní.',
         },
         { type: 'p', text: 'Celková hmotnost tedy sedí vždy. Další zákon jde hlouběji a ptá se, v jakém poměru se prvky slučují.' },
         {
@@ -167,7 +167,7 @@ const l4_1: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'Zákon zachování hmotnosti hlídá jen součet. Neříká, jestli se prvky mohou slučovat v libovolném poměru. Kolem roku 1799 si francouzský chemik **Joseph Louis Proust** všiml, že uhličitan měďnatý má vždy stejné složení, ať ho připravil v laboratoři, nebo vykopal v dole. Z toho vyvodil **zákon stálých poměrů slučovacích**: ==prvky se ve sloučenině slučují vždy v tomtéž hmotnostním poměru.== Nejlíp je to vidět na vodě. Ať ji rozložíš odkudkoli, na každý gram vodíku připadne 8 gramů kyslíku:',
+          text: 'Zákon zachování hmotnosti hlídá jen součet. Neříká, jestli se prvky mohou slučovat v libovolném poměru. Kolem roku 1799 si francouzský chemik **Joseph Louis Proust** všiml, že uhličitan měďnatý má vždy stejné složení, ať ho připravil v laboratoři, nebo vykopal v dole. Z toho vyvodil **zákon stálých poměrů slučovacích**: ==prvky se ve sloučenině slučují vždy v tomtéž hmotnostním poměru.== Nejlíp je to vidět na vodě. Ať pochází odkudkoli, na každý gram vodíku v ní připadá 8 gramů kyslíku:',
         },
         {
           type: 'formula',
@@ -1076,7 +1076,7 @@ const l4_2: Lesson = {
         '$Fe2O3 + C -> 2Fe + CO2$',
       ],
       answers: [0, 1, 3],
-      explain: 'U amoniaku chybí $3H2$. U redukce oxidu železitého nesedí kyslík ani uhlík; správně je $2Fe2O3 + 3C -> 4Fe + 3CO2$.',
+      explain: 'U amoniaku chybí $3H2$. U redukce oxidu železitého nesedí kyslík (3 ≠ 2); správně je $2Fe2O3 + 3C -> 4Fe + 3CO2$.',
     },
     {
       kind: 'choice',
@@ -1115,7 +1115,7 @@ const l4_3: Lesson = {
         {
           type: 'diagram',
           id: 'reaction-types',
-          caption: 'Čtyři základní typy reakcí: barevné tvary ukazují, co se spojí, co se rozpadne a kdo si s kým vymění místo. Pod každým schématem je skutečná rovnice, u syntézy třeba hoření hořčíku v bleskovém prášku.',
+          caption: 'Čtyři základní typy reakcí: barevné tvary ukazují, co se spojí, co se rozpadne a kdo si s kým vymění místo. Pod každým schématem je skutečná rovnice, u syntézy třeba hoření hořčíku na vzduchu.',
         },
         { type: 'p', text: 'Aby sis typy zapamatoval/a, tady je ke každému ještě jeden příklad:' },
         {
@@ -1295,7 +1295,7 @@ const l4_3: Lesson = {
           items: [
             { icon: 'drop', title: 'Kov a voda', text: 'nejreaktivnější kovy (K, Na, Ca) reagují už se studenou vodou za vzniku vodíku' },
             { icon: 'test-tube', title: 'Kov a kyselina', text: 'kov **vlevo od vodíku** vytěsní vodík z kyseliny chlorovodíkové; Cu, Ag a Au s ní nereagují' },
-            { icon: 'arrow-cycle', title: 'Kov a roztok soli', text: 'kov vytěsní z roztoku soli **každý kov, který stojí napravo od něj**' },
+            { icon: 'arrow-cycle', title: 'Kov a roztok soli', text: 'kov vytěsní z roztoku soli **každý kov, který stojí napravo od něj**; neplatí to pro K, Ca a Na, které reagují hlavně s vodou' },
           ],
         },
         { type: 'p', text: 'Vyzkoušej si předpovídat na čtyřech dvojicích. U každé najdi oba kovy (nebo kov a vodík) v řadě a porovnej, kdo stojí víc vlevo:' },
@@ -1459,7 +1459,7 @@ const l4_3: Lesson = {
               title: 'vratné ⇌',
               icon: 'equilibrium',
               tone: 'b',
-              points: ['$CaCO3 <=> CaO + CO2$ v uzavřené nádobě', 'rychlost závisí na teplotě'],
+              points: ['$CaCO3 <=> CaO + CO2$ v uzavřené nádobě', '$CO2 + H2O <=> H2CO3$ v sodovce'],
             },
           ],
           caption: 'Nevratná může být reakce rychlá (hoření) i pomalá (rezavění).',
@@ -1686,7 +1686,7 @@ const l4_4: Lesson = {
           type: 'keyterms',
           items: [
             { term: 'látkové množství $n$', def: 'veličina, která říká, kolik částic (atomů, molekul, iontů) látka obsahuje; jednotka **mol**' },
-            { term: 'mol', def: 'látkové množství, které obsahuje přesně 6,022·10^{23} částic' },
+            { term: 'mol', def: 'látkové množství, které obsahuje 6,022·10^{23} částic (zaokrouhleno, přesnou hodnotu najdeš níže)' },
             { term: 'Avogadrova konstanta $N_{A}$', def: '$N_{A}$ = 6,022·10^{23} mol^{−1}; počet částic v jednom molu' },
           ],
         },
@@ -1896,7 +1896,7 @@ const l4_4: Lesson = {
             '$V = n · V_{m}$ = 0,2 mol · 22,4 dm^{3}/mol',
             '$V$ = 4,48 dm^{3}',
           ],
-          answer: '$V$ ≈ 4,48 dm^{3} (skoro pět litrů)',
+          answer: '$V$ ≈ 4,48 dm^{3} (asi čtyři a půl litru)',
         },
         { type: 'p', text: 'A naopak: z objemu balonku zjistíš, kolik plyn váží.' },
         {
@@ -2297,7 +2297,7 @@ const l4_5: Lesson = {
       blocks: [
         {
           type: 'p',
-          text: 'V minulé lekci jsi převáděl/a gramy na moly. Teď to využiješ u roztoků. Hmotnostní zlomek $w$ říká, kolik gramů látky je ve 100 g roztoku. Reakce ale probíhají mezi **částicemi**, proto chemik používá **molární koncentraci**: počet molů látky v 1 dm^{3} roztoku.',
+          text: 'V minulé lekci jsi převáděl/a gramy na moly. Teď to využiješ u roztoků. Hmotnostní zlomek $w$ v procentech říká, kolik gramů látky je ve 100 g roztoku. Reakce ale probíhají mezi **částicemi**, proto chemik používá **molární koncentraci**: počet molů látky v 1 dm^{3} roztoku.',
         },
         {
           type: 'particles',
@@ -2336,7 +2336,7 @@ const l4_5: Lesson = {
         {
           type: 'example',
           title: 'Cukr v čaji',
-          problem: 'Do hrnku čaje (250 cm^{3}) hodíš dvě kostky cukru, dohromady 10 g sacharosy $C12H22O11$. Jaká je molární koncentrace cukru? ($A_{r}$: H 1, C 12, O 16; objem se rozpuštěním prakticky nezmění.)',
+          problem: 'Do hrnku čaje (250 cm^{3}) hodíš dvě kostky cukru, dohromady 10 g sacharózy $C12H22O11$. Jaká je molární koncentrace cukru? ($A_{r}$: H 1, C 12, O 16; objem se rozpuštěním prakticky nezmění.)',
           steps: [
             '$M(C12H22O11)$ = 12 · 12 + 22 · 1 + 11 · 16 = 144 + 22 + 176 = 342 g/mol',
             '$n$ = 10 g : 342 g/mol = 0,0292 mol',
@@ -2355,7 +2355,7 @@ const l4_5: Lesson = {
           type: 'check',
           question: {
             kind: 'number',
-            q: 'V 500 cm^{3} roztoku je rozpuštěno 0,2 mol glukosy. Jaká je molární koncentrace?',
+            q: 'V 500 cm^{3} roztoku je rozpuštěno 0,2 mol glukózy. Jaká je molární koncentrace?',
             answer: 0.4,
             tolerance: 0.005,
             unit: 'mol/dm³',
@@ -2388,7 +2388,7 @@ const l4_5: Lesson = {
           type: 'iconlist',
           items: [
             { icon: 'water-tap', title: 'Pitná voda', text: 'dusičnany nejvýše 50 mg/dm^{3}' },
-            { icon: 'blood', title: 'Krev nalačno', text: 'glukosa asi 0,7–1,0 g/dm^{3} (3,9–5,6 mmol/dm^{3})' },
+            { icon: 'blood', title: 'Krev nalačno', text: 'glukóza asi 0,7–1,0 g/dm^{3} (3,9–5,6 mmol/dm^{3})' },
             { icon: 'ocean', title: 'Mořská voda', text: 'asi 35 g rozpuštěných solí v 1 dm^{3}' },
             { icon: 'glass', title: 'Sladká limonáda', text: 'kolem 100 g cukru v 1 dm^{3}' },
           ],
@@ -2397,7 +2397,7 @@ const l4_5: Lesson = {
         {
           type: 'example',
           title: 'Cukr v plechovce',
-          problem: 'Sladká limonáda obsahuje 106 g cukru v 1 dm^{3}. Kolik gramů cukru vypiješ v plechovce o objemu 330 cm^{3}? Jaká je molární koncentrace cukru, když ho počítáme jako sacharosu ($M$ = 342 g/mol)?',
+          problem: 'Sladká limonáda obsahuje 106 g cukru v 1 dm^{3}. Kolik gramů cukru vypiješ v plechovce o objemu 330 cm^{3}? Jaká je molární koncentrace cukru, když ho počítáme jako sacharózu ($M$ = 342 g/mol)?',
           steps: [
             '$m = γ · V$ = 106 g/dm^{3} · 0,330 dm^{3} = 35 g',
             'To je asi sedm kostek cukru po 5 g.',
@@ -2441,7 +2441,7 @@ const l4_5: Lesson = {
           type: 'check',
           question: {
             kind: 'number',
-            q: 'Ve 200 cm^{3} roztoku je rozpuštěno 3,0 g glukosy. Jaká je hmotnostní koncentrace glukosy v g/dm^{3}?',
+            q: 'Ve 200 cm^{3} roztoku je rozpuštěno 3,0 g glukózy. Jaká je hmotnostní koncentrace glukózy v g/dm^{3}?',
             answer: 15,
             tolerance: 0.1,
             unit: 'g/dm³',
@@ -3130,7 +3130,7 @@ const l4_6: Lesson = {
           ],
           answer: 'Vznikne 36 g vody a zbude 8 g kyslíku. Kontrola: 4 + 40 = 36 + 8 = 44 g.',
         },
-        { type: 'p', text: 'Úlohu se železem a sírou znáš z první lekce, kde jsi ji počítal/a přes hmotnostní poměr. Přes moly to jde stejně dobře:' },
+        { type: 'p', text: 'Podobnou úlohu se železem a sírou znáš z první lekce, kde jsi ji počítal/a přes hmotnostní poměr. Přes moly to jde stejně dobře:' },
         {
           type: 'example',
           title: 'Železo a síra',
@@ -3615,7 +3615,7 @@ const boss: Question[] = [
   },
   {
     kind: 'tf',
-    q: 'Když 50 cm^{3} roztoku glukosy o hmotnostní koncentraci 90 g/dm^{3} zředíš vodou na 250 cm^{3}, bude mít nový roztok hmotnostní koncentraci 18 g/dm^{3}.',
+    q: 'Když 50 cm^{3} roztoku glukózy o hmotnostní koncentraci 90 g/dm^{3} zředíš vodou na 250 cm^{3}, bude mít nový roztok hmotnostní koncentraci 18 g/dm^{3}.',
     answer: true,
     explain: 'Glukosy je 90 g/dm^{3} · 0,050 dm^{3} = 4,5 g a ta se rozptýlí do 0,250 dm^{3}: 4,5 : 0,250 = 18 g/dm^{3}. Objem vzrostl pětkrát, koncentrace klesla pětkrát.',
   },

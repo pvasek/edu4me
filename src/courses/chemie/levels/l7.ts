@@ -19,7 +19,7 @@ const l71: Lesson = {
       title: 'Vodík: nejlehčí prvek vesmíru',
       icon: 'balloon',
       blocks: [
-        { type: 'p', text: 'Začneme plynem, který hoří. Vodík stojí v tabulce nad sodíkem – proč se tedy nechová jako kov?' },
+        { type: 'p', text: 'Začneme plynem, který hoří. Vodík stojí v tabulce nad lithiem a sodíkem – proč se tedy nechová jako kov?' },
         { type: 'elements', symbols: ['H'], caption: 'vodík, $Z = 1$' },
         { type: 'p', text: '**Vodík** má jediný proton a jediný elektron. V tabulce stojí nad alkalickými kovy, ale kovem není: tvoří dvouatomové molekuly $H2$, které drží pohromadě nepolární kovalentní vazba.' },
         {
@@ -188,7 +188,7 @@ const l71: Lesson = {
             { title: '$ZnO$ jako kyselý oxid', icon: 'soap', tone: 'b', points: ['reaguje se zásadou', '$ZnO + 2NaOH + H2O -> Na2[Zn(OH)4]$', 'vzniká tetrahydroxidozinečnatan sodný'] },
           ],
         },
-        { type: 'callout', variant: 'tip', title: 'Pravidlo palce', text: 'Čím víc vpravo a nahoře v tabulce prvek je, tím kyselejší oxid tvoří. U jednoho kovu platí: ==čím vyšší oxidační číslo, tím kyselejší oxid==. Proto je $CrO$ zásaditý, $Cr2O3$ amfoterní a $CrO3$ kyselý.' },
+        { type: 'callout', variant: 'tip', title: 'Orientační pravidlo', text: 'Čím víc vpravo a nahoře v tabulce prvek je, tím kyselejší oxid tvoří. U jednoho kovu platí: ==čím vyšší oxidační číslo, tím kyselejší oxid==. Proto je $CrO$ zásaditý, $Cr2O3$ amfoterní a $CrO3$ kyselý.' },
         { type: 'game', gameId: 'naming', text: 'Procvič si názvy oxidů, než půjdeš dál: oxid siřičitý, dusnatý, chromitý…' },
         { type: 'p', text: 'Typ oxidu teď odhadneš z polohy prvku v tabulce. Zbývá oxid, který se do žádné škatulky moc nevejde a bez kterého by nebyl život: voda.' },
         {
@@ -221,7 +221,7 @@ const l71: Lesson = {
           items: [
             { icon: 'ice', title: 'Nejvyšší hustota při 4 °C', text: 'vodíkové vazby drží molekuly ledu v řídké šestiúhelníkové mřížce: led plave, rybníky zamrzají odshora a ryby přežijí' },
             { icon: 'thermometer', title: 'Vysoká teplota varu (100 °C)', text: 'drží ji vodíkové vazby ($H2S$ vře už při −60 °C), a tak je voda na Zemi hlavně kapalná' },
-            { icon: 'ocean', title: 'Vysoká tepelná kapacita', text: '4,18 J/(g·K): energie se spotřebuje na trhání vodíkových vazeb, moře tlumí výkyvy teplot a voda chladí motory' },
+            { icon: 'ocean', title: 'Vysoká měrná tepelná kapacita', text: '4,18 J/(g·K): energie se spotřebuje na trhání vodíkových vazeb, moře tlumí výkyvy teplot a voda chladí motory' },
             { icon: 'droplets', title: 'Velké povrchové napětí', text: 'molekuly na povrchu se silně přitahují, vodoměrky chodí po hladině' },
           ],
         },
@@ -254,9 +254,9 @@ const l71: Lesson = {
         { type: 'p', text: 'Kterým směrem se kyslík z peroxidu vydá, nerozhoduje peroxid sám, ale jeho partner v reakci. Porovnej obě možnosti:' },
         {
           type: 'compare',
-          caption: 'Kdo vyhraje, rozhodne partner: se slabším oxidačním činidlem se peroxid chová jako oxidant, se silnějším (manganistan) jako reduktant.',
+          caption: 'Kdo vyhraje, rozhodne partner: s redukčním činidlem (jodid) se peroxid chová jako oxidant, se silnějším oxidačním činidlem (manganistan) jako reduktant.',
           columns: [
-            { title: 'jako oxidační činidlo', icon: 'soap', tone: 'a', points: ['kyslík $−I -> −II$, vzniká voda', '$H2O2 + 2I^- + 2H^+ -> I2 + 2H2O$', 'jodid zhnědne vyloučeným jodem', 'tak peroxid bělí vlasy a ničí bakterie'] },
+            { title: 'jako oxidační činidlo', icon: 'soap', tone: 'a', points: ['kyslík $−I -> −II$, vzniká voda', '$H2O2 + 2I^- + 2H^+ -> I2 + 2H2O$', 'roztok jodidu zhnědne vyloučeným jodem', 'tak peroxid bělí vlasy a ničí bakterie'] },
             { title: 'jako redukční činidlo', icon: 'gas-cloud', tone: 'b', points: ['kyslík $−I -> 0$, uniká $O2$', '$2MnO4^- + 5H2O2 + 6H^+ -> 2Mn^2+ + 5O2 + 8H2O$', 'fialový manganistan se odbarví a roztok šumí', 'reaguje jen se silnějším oxidačním činidlem'] },
           ],
         },
@@ -293,7 +293,7 @@ const l71: Lesson = {
     'S kovy 1. a 2. skupiny tvoří vodík iontové hydridy s aniontem $H^-$ ($NaH$, $CaH2$), s nekovy kovalentní molekulové hydridy ($CH4$, $NH3$, $HCl$).',
     'Kyslík tvoří dvě alotropické modifikace: dikyslík $O2$ a ozon $O3$.',
     'Nekovy tvoří kyselé oxidy, kovy 1. a 2. skupiny zásadité, $Al2O3$ a $ZnO$ jsou amfoterní a $CO$, $NO$ a $N2O$ neutrální.',
-    'Anomálie vody (hustota, bod varu, tepelná kapacita) způsobují vodíkové vazby; přechodnou tvrdost vody odstraní var, trvalou ne.',
+    'Anomálie vody (hustota, teplota varu, měrná tepelná kapacita) způsobují vodíkové vazby; přechodnou tvrdost vody odstraní var, trvalou ne.',
     'Peroxid vodíku má kyslík v oxidačním čísle $−I$: jodid oxiduje (sám se redukuje na vodu), manganistan ho naopak oxiduje na kyslík.',
   ],
   quiz: [
@@ -322,11 +322,11 @@ const l71: Lesson = {
       q: 'Přiřaď vlastnost vody k jejímu důsledku.',
       pairs: [
         ['největší hustota při 4 °C', 'rybníky nezamrzají až ke dnu'],
-        ['vysoká tepelná kapacita', 'moře zmírňuje podnebí na pobřeží'],
+        ['vysoká měrná tepelná kapacita', 'moře zmírňuje podnebí na pobřeží'],
         ['velké povrchové napětí', 'vodoměrka se udrží na hladině'],
         ['přítomnost $Ca(HCO3)2$', 'v konvici vzniká vodní kámen'],
       ],
-      explain: 'Hustota, tepelná kapacita a povrchové napětí jsou důsledky vodíkových vazeb, vodní kámen vzniká rozkladem hydrogenuhličitanů při varu.',
+      explain: 'Hustota, měrná tepelná kapacita a povrchové napětí jsou důsledky vodíkových vazeb, vodní kámen vzniká rozkladem hydrogenuhličitanů při varu.',
     },
     {
       kind: 'number',
@@ -383,7 +383,7 @@ const l72: Lesson = {
         { type: 'p', text: 'Slovo **halogen** znamená řecky „solitvorný“: s kovy halogeny přímo tvoří soli, chlor se sodíkem dá kuchyňskou sůl $NaCl$. Všechny mají 7 valenčních elektronů ($ns^2 np^5$), jediný chybějící elektron ochotně přijmou a změní se na **halogenidový anion** $X^-$.' },
         { type: 'molecule', molecules: ['F2', 'Cl2', 'Br2', 'I2'], labels: ['fluor', 'chlor', 'brom', 'jod'], caption: 'Jako prvky tvoří halogeny dvouatomové molekuly $X2$.' },
         { type: 'p', text: 'Molekuly jsou stavěné stejně, a přesto vypadá každý halogen jinak. Projdi skupinu shora dolů a sleduj barvu, skupenství a teplotu varu:' },
-        { type: 'diagram', id: 'halogen-colors', caption: 'Halogeny v odměrných válcích: u každého barva, skupenství a teplota varu. Směrem dolů barva tmavne, teplota varu roste a elektronegativita klesá (F 3,98, Cl 3,16, Br 2,96, I 2,66).' },
+        { type: 'diagram', id: 'halogen-colors', caption: 'Halogeny ve skleněných válcích: u každého barva, skupenství a teplota varu. Směrem dolů barva tmavne, teplota varu roste a elektronegativita klesá (F 3,98, Cl 3,16, Br 2,96, I 2,66).' },
         { type: 'p', text: 'Proč teplota varu roste? Větší molekuly mají více elektronů, a tak mezi nimi působí silnější **Londonovy (disperzní) síly**. Proto je fluor plyn, brom kapalina a jod pevná látka.' },
         { type: 'callout', variant: 'fact', text: 'Jod při zahřívání **sublimuje**: z lesklých krystalků rovnou stoupají fialové páry, které na studené ploše znovu krystalizují. Tak se jod i čistí.' },
         { type: 'p', text: 'Fyzikální trendy ve skupině tedy umíme vysvětlit velikostí molekul. Pro chemika je ale důležitější, jak ochotně halogeny reagují.' },
@@ -505,7 +505,7 @@ const l72: Lesson = {
           type: 'table',
           headers: ['halogenovodík', 'délka vazby H−X', 'energie vazby H−X', 'kyselina ve vodě'],
           rows: [
-            ['$HF$', '92 pm', '568 kJ/mol', 'slabá (p$K_{A}$ ≈ 3,2)'],
+            ['$HF$', '92 pm', '568 kJ/mol', 'slabá ($pK_{a}$ ≈ 3,2)'],
             ['$HCl$', '127 pm', '432 kJ/mol', 'silná'],
             ['$HBr$', '141 pm', '366 kJ/mol', 'silnější'],
             ['$HI$', '161 pm', '298 kJ/mol', 'nejsilnější'],
@@ -592,7 +592,7 @@ const l72: Lesson = {
         },
         { type: 'callout', variant: 'warning', title: 'Radon ve sklepě', text: 'Radon vzniká rozpadem uranu v horninách a hromadí se ve sklepech a přízemích. Česko má kvůli žulovému podloží jedno z nejvyšších radonových rizik v Evropě. Pomáhá pravidelné větrání a izolace podlah; měření radonu v domě se vyplatí.' },
         { type: 'callout', variant: 'fact', title: 'Sloučeniny „netečných“ plynů', text: 'V roce 1962 připravil Neil Bartlett první sloučeninu xenonu, brzy následovaly fluoridy $XeF2$, $XeF4$ a $XeF6$. Velký atom xenonu má valenční elektrony daleko od jádra a nejsilnější oxidační činidlo, fluor, mu je dokáže „vzít“. S heliem to nejde.' },
-        { type: 'p', text: 'Fluor, nejsilnější oxidační činidlo z druhého oddílu, vezme xenonu hned čtyři elektrony:' },
+        { type: 'p', text: 'Fluor, nejsilnější oxidační činidlo mezi prvky, vezme xenonu hned čtyři elektrony:' },
         { type: 'reaction', equation: 'Xe + 2F2 -> XeF4', caption: 'fluorid xenoničitý' },
         { type: 'p', text: 'Xenon má v $XeF4$ kolem sebe čtyři vazby a ještě dva volné elektronové páry. Ty se postaví proti sobě, a tak vyjde překvapivě plochá molekula:' },
         { type: 'molecule', molecules: ['XeF4'], labels: ['$XeF4$: čtvercová molekula'] },
@@ -672,7 +672,7 @@ const l72: Lesson = {
       q: 'Jak se jmenuje sloučenina $NaClO$, účinná složka bělidel?',
       accept: ['chlornan sodný', 'chlornan sodny'],
       placeholder: 'název',
-      explain: 'Chlor má v ní oxidační číslo $+I$ (koncovka -ná), jde o sůl kyseliny chlorné: chlornan sodný.',
+      explain: 'Chlor má v ní oxidační číslo $+I$ (koncovka -nan), jde o sůl kyseliny chlorné: chlornan sodný.',
     },
     {
       kind: 'number',
@@ -729,12 +729,12 @@ const l73: Lesson = {
           type: 'table',
           headers: ['oxidační číslo', 'příklad', 'název'],
           rows: [
-            ['$−II$', '$H2S$, $FeS2$, $ZnS$', 'sulfan (sirovodík), sulfidy'],
+            ['$−II$', '$H2S$, $Na2S$, $ZnS$', 'sulfan (sirovodík), sulfidy'],
             ['$0$', '$S8$', 'síra'],
             ['$+IV$', '$SO2$, $H2SO3$, $Na2SO3$', 'oxid siřičitý, kyselina siřičitá, siřičitany'],
             ['$+VI$', '$SO3$, $H2SO4$, $CaSO4$', 'oxid sírový, kyselina sírová, sírany'],
           ],
-          caption: 'V $FeS2$ (pyrit) jde o disulfid, síra v něm má formálně $−I$',
+          caption: 'Pozor na pyrit $FeS2$: je to disulfid, síra v něm má formálně $−I$',
         },
         { type: 'p', text: 'Hořením síry (a také uhlí a nafty, které síru obsahují) vzniká **oxid siřičitý**: bezbarvý, štiplavě páchnoucí a jedovatý plyn. Ve vzduchu se oxiduje a s vodou vytváří **kyselé deště**.' },
         { type: 'reaction', equation: 'S + O2 -> SO2', caption: 'síra hoří modrým plamenem' },
@@ -827,7 +827,7 @@ const l73: Lesson = {
         },
         { type: 'p', text: '**Amoniak** $NH3$ je bezbarvý, štiplavě páchnoucí plyn, výborně rozpustný ve vodě. Volný elektronový pár na dusíku přijme proton, a tak je amoniak zásada: $NH3 + H2O <=> NH4^+ + OH^-$. S chlorovodíkem tvoří bílý dým chloridu amonného.' },
         { type: 'reaction', equation: 'NH3 + HCl -> NH4Cl', caption: 'bílý dým chloridu amonného' },
-        { type: 'p', text: 'Neutralizací amoniaku kyselinami vznikají **amonné soli**, například $NH4NO3$ nebo $(NH4)2SO4$. Kation $NH4^+$ se chová podobně jako $K^+$: jeho soli jsou bílé, krystalické a všechny rozpustné ve vodě. Teplem se rozkládají: $NH4Cl$ se rozpadne na $NH3$ a $HCl$, které se na chladném místě znovu spojí (vypadá to jako sublimace), a z $NH4NO3$ vzniká rajský plyn $N2O$.' },
+        { type: 'p', text: 'Neutralizací amoniaku kyselinami vznikají **amonné soli**, například $NH4NO3$ nebo $(NH4)2SO4$. Kation $NH4^+$ se chová podobně jako $K^+$: jeho soli jsou bílé, krystalické a téměř všechny rozpustné ve vodě. Teplem se rozkládají: $NH4Cl$ se rozpadne na $NH3$ a $HCl$, které se na chladném místě znovu spojí (vypadá to jako sublimace), a z $NH4NO3$ vzniká rajský plyn $N2O$.' },
         { type: 'reaction', equation: 'NH4Cl + NaOH -> NaCl + NH3 + H2O', caption: 'silná zásada vytlačí z amonné soli slabší zásadu amoniak; poznáš ho po čichu a podle zmodrání vlhkého červeného lakmusu (důkaz $NH4^+$, lekce 7-7)' },
         { type: 'callout', variant: 'tip', title: 'Hnojiva a vápno zvlášť', text: 'Amonná hnojiva se nesmějí sypat společně s páleným nebo hašeným vápnem. Zásada z nich uvolní amoniak, dusík uteče do vzduchu a pole zůstane nepohnojené.' },
         { type: 'callout', variant: 'fact', text: 'Fritz Haber dostal v roce 1918 Nobelovu cenu. Díky jeho syntéze vznikají dusíkatá hnojiva a odhaduje se, že zhruba polovina atomů dusíku v tvém těle už jednou prošla Haberovým reaktorem.' },
@@ -871,7 +871,7 @@ const l73: Lesson = {
           ],
         },
         { type: 'p', text: 'První případ se často předvádí jako pokus, protože je na něm vidět obojí: oxidace mědi i redukce dusíku.' },
-        { type: 'reaction', equation: 'Cu + 4HNO3 -> Cu(NO3)2 + 2NO2 + 2H2O', caption: 'měď v koncentrované kyselině dusičné: roztok zmodrá ionty $Cu^2+$ a unikají hnědé dýmy $NO2$' },
+        { type: 'reaction', equation: 'Cu + 4HNO3 -> Cu(NO3)2 + 2NO2 + 2H2O', caption: 'měď v koncentrované kyselině dusičné: roztok se zbarví zeleně až modře (ionty $Cu^2+$) a unikají hnědé dýmy $NO2$' },
         { type: 'p', text: 'Oxidů dusíku je víc a nepleť si je: liší se barvou, jedovatostí i tím, jestli jsou kyselé, nebo neutrální.' },
         {
           type: 'compare',
@@ -956,7 +956,7 @@ const l73: Lesson = {
           ],
         },
         { type: 'p', text: 'Poslední řádek tabulky stojí za vysvětlení. Fosforečnan vápenatý z hornin je nerozpustný a rostlina z něj nic nemá. Kyselina sírová ho převede na rozpustnou sůl:' },
-        { type: 'reaction', equation: 'Ca3(PO4)2 + 2H2SO4 -> Ca(H2PO4)2 + 2CaSO4', caption: 'superfosfát: rozpustný dihydrogenfosforečnan vápenatý + sádra' },
+        { type: 'reaction', equation: 'Ca3(PO4)2 + 2H2SO4 -> Ca(H2PO4)2 + 2CaSO4', caption: 'superfosfát: rozpustný dihydrogenfosforečnan vápenatý + síran vápenatý' },
         { type: 'p', text: 'Hnojiva se porovnávají podle toho, kolik živiny obsahují. Spočítejme to pro ledek amonný:' },
         {
           type: 'example',
@@ -967,7 +967,7 @@ const l73: Lesson = {
           ],
           answer: 'Ledek amonný obsahuje 35 % dusíku, a proto je velmi účinným hnojivem.',
         },
-        { type: 'p', text: 'Co rostliny nevyužijí, skončí ve vodě a spustí **eutrofizaci**: přehnojení vod živinami, po kterém se ryby dusí. Proto EU od roku 2013 omezila fosfáty v pracích prostředcích. Proč se ale ryby dusí, když jim živiny samy neškodí? Sleduj řetěz událostí:' },
+        { type: 'p', text: 'Co rostliny nevyužijí, skončí ve vodě a spustí **eutrofizaci**: přehnojení vod živinami, po kterém se ryby dusí. Proto EU od roku 2013 omezila fosforečnany (fosfáty) v pracích prostředcích. Proč se ale ryby dusí, když jim živiny samy neškodí? Sleduj řetěz událostí:' },
         {
           type: 'process',
           layout: 'flow',
@@ -1088,7 +1088,7 @@ const l74: Lesson = {
       blocks: [
         { type: 'p', text: 'Jak může jeden prvek tvořit měkkou tuhu i nejtvrdší kámen? Začneme tím, co umí jediný atom uhlíku.' },
         { type: 'elements', symbols: ['C'], caption: 'uhlík, $Z = 6$, 14. skupina' },
-        { type: 'p', text: '**Uhlík** má 4 valenční elektrony, a tak tvoří 4 kovalentní vazby. Jeho atomy se ochotně spojují do řetězců, kruhů i prostorových sítí, a proto má uhlík víc alotropických modifikací než kterýkoli jiný prvek.' },
+        { type: 'p', text: '**Uhlík** má 4 valenční elektrony, a tak tvoří 4 kovalentní vazby. Jeho atomy se ochotně spojují do řetězců, kruhů i prostorových sítí, a proto má uhlík mnoho alotropických modifikací s velmi odlišnými vlastnostmi.' },
         { type: 'diagram', id: 'carbon-allotropes', caption: 'Diamant, grafit, grafen (jediná vrstva grafitu silná jeden atom), fulleren $C60$ (kulovitá molekula jako fotbalový míč) a nanotrubice (srolovaný grafen, pevnější než ocel): stejné atomy, jiné propojení' },
         { type: 'p', text: 'Na otázku z úvodu stačí porovnat první dva, diamant a grafit. Sleduj, kolik vazeb má v každém z nich jeden atom uhlíku:' },
         {
@@ -1098,7 +1098,7 @@ const l74: Lesson = {
             { title: 'grafit', icon: 'pencil', tone: 'b', points: ['vrstvy šestiúhelníků, každý C má 3 vazby', '4. elektron je volně pohyblivý', 'měkký, šedočerný, vede proud', 'tuhy, elektrody, mazivo, anody Li-ion baterií'] },
           ],
         },
-        { type: 'p', text: 'Vrstvy grafitu drží pohromadě jen slabé mezimolekulové síly, proto po sobě kloužou a tuha píše po papíře. ==Vlastnosti alotropů neurčuje prvek, ale způsob, jak jsou jeho atomy propojené.== Stejný princip platí i pro novější a méně známé formy uhlíku:' },
+        { type: 'p', text: 'Vrstvy grafitu drží pohromadě jen slabé disperzní síly, proto po sobě kloužou a tuha píše po papíře. ==Vlastnosti alotropů neurčuje prvek, ale způsob, jak jsou jeho atomy propojené.== Stejný princip platí i pro novější a méně známé formy uhlíku:' },
         {
           type: 'keyterms',
           items: [
@@ -1322,7 +1322,7 @@ const l74: Lesson = {
         {
           type: 'iconlist',
           items: [
-            { icon: 'glass', title: 'Sodnovápenaté sklo', text: 'písek $SiO2$ + soda $Na2CO3$ + vápenec $CaCO3$, tavení asi při 1 500 °C a rychlé ochlazení: okna, lahve, sklenice' },
+            { icon: 'glass', title: 'Sodnovápenaté sklo', text: 'písek $SiO2$ + soda $Na2CO3$ + vápenec $CaCO3$, tavení asi při 1 500 °C a ochlazení: okna, lahve, sklenice' },
             { icon: 'flask', title: 'Borosilikátové sklo', text: 'písek + oxid boritý: varné sklo, laboratorní nádobí' },
             { icon: 'diamond', title: 'Olovnatý křišťál', text: 'písek + oxid olovnatý: broušené sklo, lustry' },
             { icon: 'coffee', title: 'Keramika a porcelán', text: 'jíl, kaolín, živec, křemen; vypalování při 900–1 400 °C: cihly, dlaždice, hrnky' },
@@ -1341,7 +1341,7 @@ const l74: Lesson = {
             { title: 'beton', icon: 'factory', tone: 'b', points: ['cement + písek + štěrk + voda', 'tvrdne **hydratací**: minerály slínku se slučují s vodou', 'tvrdne i pod vodou'] },
           ],
         },
-        { type: 'callout', variant: 'fact', title: 'České sklo', text: 'Česká sklárna v Sázavě vyrábí varné sklo Simax, kterému nevadí prudké změny teploty. Olovnatý křišťál a broušené sklo z Čech jsou známé po celém světě už od 17. století.' },
+        { type: 'callout', variant: 'fact', title: 'České sklo', text: 'Česká sklárna v Sázavě vyrábí varné sklo Simax, kterému nevadí prudké změny teploty. Broušené sklo a křišťál z Čech jsou známé po celém světě už od 17. století.' },
         { type: 'p', text: 'Uhlík a křemík teď znáš od diamantu po beton. V příští lekci se přesuneme na levý okraj tabulky, k alkalickým kovům a kovům alkalických zemin.' },
         { type: 'game', gameId: 'quickfire', text: 'Diamant, grafit, pálené vápno, vodní sklo: rychlokvíz o uhlíku a křemíku!' },
         {
@@ -1495,7 +1495,7 @@ const l75: Lesson = {
           columns: [
             { title: 'lithium', icon: 'flame', tone: 'a', points: ['$4Li + O2 -> 2Li2O$', 'oxid lithný, kyslík $−II$'] },
             { title: 'sodík', icon: 'flame', tone: 'b', points: ['$2Na + O2 -> Na2O2$', 'peroxid sodný, kyslík $−I$'] },
-            { title: 'draslík', icon: 'flame', tone: 'c', points: ['$K + O2 -> KO2$', 'hyperoxid draselný, kyslík $−1/2$; v dýchacích přístrojích mění vydechovaný $CO2$ zpět na $O2$'] },
+            { title: 'draslík', icon: 'flame', tone: 'c', points: ['$K + O2 -> KO2$', 'hyperoxid draselný, kyslík $−1/2$; v dýchacích přístrojích pohlcuje vydechovaný $CO2$ a uvolňuje $O2$'] },
           ],
         },
         { type: 'callout', variant: 'warning', title: 'Pod olejem, ne pod vodou', text: 'Alkalické kovy se uchovávají pod **parafinovým olejem**, aby se nedostaly ke vzduchu a vlhkosti; lithium plave i na oleji, proto se často skladuje v argonu. Pokusy s nimi dělá jen učitel, s kouskem velkým jako hrášek, za ochranným štítem. Hořící sodík se nikdy nehasí vodou.' },
@@ -1524,13 +1524,13 @@ const l75: Lesson = {
       icon: 'bone',
       blocks: [
         { type: 'p', text: 'Takové kovy najdeš hned vedle, ve 2. skupině: vápník z tvých kostí i hořčík, který hoří oslnivým plamenem. Jsou stejně bouřlivé jako jejich sousedé?' },
-        { type: 'elements', symbols: ['Be', 'Mg', 'Ca', 'Sr', 'Ba', 'Ra'], caption: '2. skupina: beryllium a kovy alkalických zemin' },
+        { type: 'elements', symbols: ['Be', 'Mg', 'Ca', 'Sr', 'Ba', 'Ra'], caption: '2. skupina: kovy alkalických zemin (v užším, tradičním pojetí jen Ca, Sr, Ba a Ra)' },
         { type: 'p', text: 'Prvky 2. skupiny mají dva valenční elektrony $ns^2$ a tvoří kationty $M^2+$. Mají o proton víc než soused z 1. skupiny, takže jejich atomy jsou menší a elektrony drží pevněji; navíc musejí odevzdat elektrony dva. Proto jsou **méně reaktivní**. Směrem dolů součet prvních dvou ionizačních energií klesá, a reaktivita tak i tady roste: beryllium s vodou nereaguje, baryum prudce.' },
         {
           type: 'compare',
           columns: [
             { title: '1. skupina: alkalické kovy', icon: 'explosion', tone: 'a', points: ['1 valenční elektron $ns^1$', 'kationty $M^+$', 'měkké, nízké teploty tání', 's vodou prudce'] },
-            { title: '2. skupina: alkalické zeminy', icon: 'bone', tone: 'b', points: ['2 valenční elektrony $ns^2$', 'kationty $M^2+$', 'tvrdší, vyšší teploty tání', 's vodou mírněji, hořčík až s párou'] },
+            { title: '2. skupina: kovy alkalických zemin', icon: 'bone', tone: 'b', points: ['2 valenční elektrony $ns^2$', 'kationty $M^2+$', 'tvrdší, vyšší teploty tání', 's vodou mírněji, hořčík až s párou'] },
           ],
         },
         { type: 'p', text: 'Rozdíl je vidět na reakci s vodou. Vápník s ní reaguje podobně jako sodík, jen klidněji a se dvěma hydroxidovými skupinami v produktu:' },
@@ -1759,7 +1759,7 @@ const l75: Lesson = {
     },
   ],
   summary: [
-    'Alkalické kovy mají jeden valenční elektron, jsou měkké, lehké a silně redukční; reaktivita roste od lithia k ceziu, protože valenční elektron je dál od jádra a víc stíněný.',
+    'Alkalické kovy mají jeden valenční elektron, jsou měkké, lehké a silně redukční; reaktivita roste od lithia k cesiu, protože valenční elektron je dál od jádra a víc stíněný.',
     'S vodou tvoří hydroxid a vodík ($2M + 2H2O -> 2MOH + H2$), na vzduchu lithium hoří na oxid, sodík na peroxid a draslík na hyperoxid; uchovávají se pod parafinovým olejem.',
     'Kovy alkalických zemin tvoří ionty $M^2+$ a jsou méně reaktivní než kovy 1. skupiny; rozpustnost jejich hydroxidů dolů roste, síranů klesá.',
     'Uhličitany 2. skupiny se teplem rozkládají na oxid a $CO2$; směrem dolů jsou stálejší, protože větší kation méně polarizuje uhličitanový anion.',
@@ -1888,7 +1888,7 @@ const l76: Lesson = {
       title: 'Metalurgie: jak dostat kov z rudy',
       icon: 'lightning',
       blocks: [
-        { type: 'p', text: 'Kromě zlata a platiny se kovy v přírodě vyskytují vázané v **rudách**, hlavně jako oxidy, sulfidy a uhličitany. Získat kov znamená **redukovat** jeho kationty. ==Čím je kov reaktivnější, tím pevněji drží kyslík a tím silnější redukci potřebuje.== Metodu proto vybíráme podle řady reaktivity.' },
+        { type: 'p', text: 'Kromě několika ušlechtilých kovů (zlato, platina) se kovy v přírodě vyskytují vázané v **rudách**, hlavně jako oxidy, sulfidy a uhličitany. Získat kov znamená **redukovat** jeho kationty. ==Čím je kov reaktivnější, tím pevněji drží kyslík a tím silnější redukci potřebuje.== Metodu proto vybíráme podle řady reaktivity.' },
         {
           type: 'table',
           headers: ['reaktivita', 'kovy', 'jak se vyrábějí', 'příklad'],
@@ -2006,7 +2006,7 @@ const l76: Lesson = {
       blocks: [
         { type: 'p', text: 'Bez dalších přechodných kovů by nebyly kabely, baterie ani šperky. Čím se od sebe liší a proč každý slouží k něčemu jinému?' },
         { type: 'elements', symbols: ['Cu', 'Zn', 'Cr', 'Ag', 'Au', 'Pt'], caption: 'důležité přechodné kovy' },
-        { type: 'p', text: '**Měď** je načervenalý měkký kov a po stříbře nejlepší vodič elektřiny, proto jsou z ní kabely a vinutí motorů. Je ušlechtilá ($E° = +0,34 V$), se zředěnou $HCl$ nereaguje a rozpustí ji jen oxidující kyseliny (koncentrovaná $HNO3$ nebo horká $H2SO4$). Podobně má svou „specialitu“ každý z dalších kovů:' },
+        { type: 'p', text: '**Měď** je načervenalý měkký kov a po stříbře nejlepší vodič elektřiny, proto jsou z ní kabely a vinutí motorů. Je ušlechtilá ($E° = +0,34 V$), se zředěnou $HCl$ nereaguje a rozpustí ji jen oxidující kyseliny (kyselina dusičná nebo horká koncentrovaná $H2SO4$). Podobně má svou „specialitu“ každý z dalších kovů:' },
         {
           type: 'iconlist',
           items: [
@@ -2218,12 +2218,12 @@ const l76: Lesson = {
       kind: 'match',
       q: 'Přiřaď kov ke způsobu, jakým se získává z rudy.',
       pairs: [
-        ['draslík', 'elektrolýza taveniny chloridu'],
+        ['sodík', 'elektrolýza taveniny chloridu'],
         ['zinek', 'redukce oxidu uhlíkem'],
         ['měď', 'pražení sulfidové rudy'],
         ['zlato', 'vyskytuje se ryzí, stačí ho oddělit'],
       ],
-      explain: 'Čím reaktivnější kov, tím silnější redukci potřebuje. Draslík jen elektrolýzou, zinek zvládne uhlík, měď se uvolní už pražením a zlato je ryzí.',
+      explain: 'Čím reaktivnější kov, tím silnější redukci potřebuje. Sodík jen elektrolýzou, zinek zvládne uhlík, měď se uvolní už pražením a zlato je ryzí.',
     },
     {
       kind: 'match',
@@ -2314,7 +2314,7 @@ const l77: Lesson = {
           ],
         },
         { type: 'callout', variant: 'warning', text: 'Při důkazech nos ochranné brýle. Roztok $NaOH$ je žíravý, dusičnan stříbrný barví kůži černě a rozpustné sloučeniny barya jsou jedovaté. Plyny jako chlor a amoniak nikdy nečichej přímo, jen je k nosu opatrně ovívej rukou.' },
-        { type: 'p', text: 'Plamen tedy napoví kationty 1. a 2. skupiny a měď. Na ostatní kationty potřebujeme zkumavku a hydroxid sodný.' },
+        { type: 'p', text: 'Plamen tedy napoví většinu kationtů 1. a 2. skupiny (hořčík plamen nebarví) a měď. Na ostatní kationty potřebujeme zkumavku a hydroxid sodný.' },
         {
           type: 'check',
           question: {
@@ -2474,7 +2474,7 @@ const l77: Lesson = {
         { type: 'p', text: 'U síranu měďnatého je změna vidět i v rovnici: bílý prášek naváže pět molekul vody a zmodrá:' },
         { type: 'formula', text: '$CuSO4 + 5H2O -> CuSO4·5H2O$', caption: 'bílý bezvodý síran → modrá skalice' },
         { type: 'callout', variant: 'fact', title: 'Silikagel, který mění barvu', text: 'Sáčky silikagelu v krabicích od elektroniky někdy obsahují barevný indikátor: suchý je modrý nebo oranžový, nasycený vlhkostí růžový nebo zelený. V troubě ho vysušíš a barva se vrátí. Kobaltový indikátor se kvůli jedovatosti kobaltu dnes nahrazuje jinými.' },
-        { type: 'p', text: 'Oba důkazy ale řeknou jen, že voda **je přítomna**, ne že kapalina je **čistá** voda. Čistotu prozradí fyzikální vlastnosti: čistá voda vře za normálního tlaku přesně při 100 °C a taje při 0 °C. Rozpuštěné látky teplotu varu zvyšují, teplotu tání snižují a var probíhá v rozmezí teplot.' },
+        { type: 'p', text: 'Oba důkazy ale řeknou jen, že voda **je přítomna**, ne že kapalina je **čistá** voda. Čistotu prozradí fyzikální vlastnosti: čistá voda vře za normálního tlaku přesně při 100 °C a taje při 0 °C. Rozpuštěné netěkavé látky (třeba sůl) teplotu varu zvyšují, teplotu tání snižují a var probíhá v rozmezí teplot.' },
         {
           type: 'compare',
           columns: [
@@ -2505,7 +2505,7 @@ const l77: Lesson = {
           caption: 'Postup určení neznámé soli',
           steps: [
             { icon: 'magnifier', title: 'Pozoruj', text: 'barva, vzhled, rozpustnost ve vodě; modrý roztok napoví $Cu^2+$' },
-            { icon: 'flame', title: 'Plamen', text: 'kationty 1. a 2. skupiny a měď' },
+            { icon: 'flame', title: 'Plamen', text: 'většina kationtů 1. a 2. skupiny a měď' },
             { icon: 'test-tube', title: '$NaOH$ a $NH3$', text: 'po kapkách, pak v nadbytku; zahřát kvůli $NH4^+$' },
             { icon: 'gas-cloud', title: 'Zředěná kyselina', text: 'šumí? plyn do vápenné vody: uhličitan' },
             { icon: 'ion-minus', title: 'Další anionty', text: '$BaCl2$ na sírany, $AgNO3$ na halogenidy, Devardova slitina na dusičnany' },

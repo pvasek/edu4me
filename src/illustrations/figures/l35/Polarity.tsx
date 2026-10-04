@@ -154,7 +154,7 @@ export default function Polarity() {
   return (
     <Figure
       level={3}
-      label="Polarita molekul: v HCl nese vodík částečný kladný náboj δ+ a chlor δ−, dipól míří k chloru. Ve lomené molekule H2O míří oba dipóly vazeb ke kyslíku a sečtou se, voda je polární. Lineární CO2 má dva stejné opačné dipóly, které se vyruší, molekula je nepolární."
+      label="Polarita molekul: v HCl nese vodík částečný kladný náboj δ+ a chlor δ−, dipól míří k chloru. V lomené molekule H2O míří oba dipóly vazeb ke kyslíku a sečtou se, voda je polární. Lineární CO2 má dva stejné opačné dipóly, které se vyruší, molekula je nepolární."
       layouts={[
         {
           w: 560,

@@ -174,7 +174,7 @@ export default function HeatingCurve() {
     <Board
       level={1}
       max={680}
-      label="Křivka ohřevu vody: teplota v závislosti na čase při stálém dodávání tepla. Led se ohřívá z −20 °C na 0 °C. Při 0 °C teplota zůstává stejná, dokud led netaje – tání, led a voda vedle sebe. Pak se voda ohřívá z 0 °C na 100 °C. Při 100 °C je delší plató – var, voda a pára vedle sebe. Nakonec se ohřívá pára nad 100 °C. Na plató se teplota nemění, protože energie jde na změnu skupenství. Malé obrázky ukazují uspořádání částic v ledu, ve vodě a v páře."
+      label="Křivka ohřevu vody: teplota v závislosti na čase při stálém dodávání tepla. Led se ohřívá z −20 °C na 0 °C. Při 0 °C teplota zůstává stejná, dokud všechen led neroztaje – tání, led a voda vedle sebe. Pak se voda ohřívá z 0 °C na 100 °C. Při 100 °C je delší plató – var, voda a pára vedle sebe. Nakonec se ohřívá pára nad 100 °C. Na plató se teplota nemění, protože energie jde na změnu skupenství. Malé obrázky ukazují uspořádání částic v ledu, ve vodě a v páře."
     >
       <motion.svg className="f12-svg f12-wide" viewBox={`0 0 ${WIDE.w} ${WIDE.h}`} aria-hidden="true" style={{ ['--f12-fs' as string]: '17px' }}>
         <Chart d={WIDE} />
