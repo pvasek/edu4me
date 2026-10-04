@@ -41,7 +41,7 @@ export const CITIES: Record<CityId, City> = {
     name: 'Port-au-Prince',
     event: 'Haiti, 12. 1. 2010',
     magnitude: 7.0,
-    deaths: 'přes 200 000 obětí',
+    deaths: 'odhadem 100 000–316 000 obětí',
     vulnerability: 9,
     capacity: 2,
   },

@@ -21,7 +21,7 @@ const z10_1: Lesson = {
   hook: 'Každou sekundu se ze světového oceánu odpaří asi 13 milionů m³ vody – tolik, kolik odvede do moře 65 Amazonek. Proč tedy oceán nevysychá a souš se neutopí? Odpověď se nedá najít v jedné řece ani v jednom mraku. Musíme se na Zemi podívat jako na systém.',
   sections: [
     {
-      title: 'Pět sfér v jedné krajině',
+      title: 'Geosféry v jedné krajině',
       icon: 'earth',
       blocks: [
         { type: 'p', text: 'Na základní škole jsme probírali reliéf, podnebí, vody, půdy a krajinné pásy každý zvlášť, v úrovních „Reliéf Země“ a „Podnebí, vody a krajinné pásy“. Ve skutečné krajině ale nic z toho samo neexistuje: déšť vymílá svah, svah určuje, kam steče voda, a voda rozhoduje, co poroste. Na gymnáziu proto začneme tím, co všechno spolu souvisí.' },
@@ -37,7 +37,7 @@ const z10_1: Lesson = {
         { type: 'p', text: 'Sféry spolu neustále vyměňují **hmotu** (vodu, uhlík, živiny, úlomky hornin) a **energii** (teplo, pohybovou energii větru a vody). Jedna bouřka nad Krkonošemi zasáhne všechny najednou: atmosféra dodá srážky, voda vymílá svah (litosféra), odnáší půdu (pedosféra), stromy část vody zachytí (biosféra) a níže položená obec řeší povodeň.' },
         { type: 'callout', variant: 'warning', text: 'Pozor na záměnu: **krajinná sféra** je soustava geosfér, **krajinný pás** (deštný les, tajga…) je jen její pásmové uspořádání podle podnebí, které znáš z lekce „Krajinné pásy a změna klimatu“.' },
         { type: 'p', text: 'Když všechno souvisí se vším, potřebujeme nástroj, jak takovou spleť popsat a změřit. Tím nástrojem je model systému.' },
-        { type: 'check', question: { kind: 'multi', q: 'Které děje jsou výměnou hmoty nebo energie **mezi dvěma různými geosférami**?', options: ['transpirace: rostliny vydávají vodní páru do vzduchu', 'zvětrávání žuly, ze které vzniká půda', 'vítr žene vlny na hladině oceánu', 'voda proudí z jednoho jezera do druhého', 'podzemní voda teče v puklinách horniny k prameni'], answers: [0, 1, 2], explain: 'Transpirace propojuje biosféru s atmosférou, zvětrávání litosféru s pedosférou a vítr předává energii z atmosféry hydrosféře. Tok mezi dvěma jezery zůstává uvnitř hydrosféry.' } },
+        { type: 'check', question: { kind: 'multi', q: 'Které děje jsou výměnou hmoty nebo energie **mezi dvěma různými geosférami**?', options: ['transpirace: rostliny vydávají vodní páru do vzduchu', 'zvětrávání žuly, ze které vzniká půda', 'vítr žene vlny na hladině oceánu', 'voda proudí z jednoho jezera do druhého', 'podzemní voda teče v puklinách horniny k prameni'], answers: [0, 1, 2], explain: 'Transpirace propojuje biosféru s atmosférou, zvětrávání litosféru s pedosférou a vítr předává energii z atmosféry hydrosféře. Tok mezi dvěma jezery zůstává uvnitř hydrosféry a podzemní voda v puklinách je pořád voda hydrosféry, která horninou jen protéká.' } },
       ],
     },
     {
@@ -175,14 +175,14 @@ const z10_2: Lesson = {
     'Popsat tříbuňkový model cirkulace (Hadleyova, Ferrelova a polární buňka) a tryskové proudění',
     'Vysvětlit El Niño jako propojení oceánu a atmosféry a jeho dopady ve světě',
   ],
-  hook: 'V září 2026 vystoupala denní odchylka teploty hladiny rovníkového Tichého oceánu v oblasti Niño 3.4 na +3,1 °C – víc než kdy od začátku měření. Teplá voda uprostřed Pacifiku přitom dokáže přinést povodně do Peru, sucho do Austrálie a rekordní teplotu celé planetě. Jak může jedna skvrna teplé vody hýbat počasím na půlce Země?',
+  hook: 'V září 2026 vystoupala denní odchylka teploty hladiny rovníkového Tichého oceánu v oblasti Niño 3.4 na +3,1 °C – nejvíc od začátku denních družicových měření (1981). Teplá voda uprostřed Pacifiku přitom dokáže přinést povodně do Peru, sucho do Austrálie a rekordní teplotu celé planetě. Jak může jedna skvrna teplé vody hýbat počasím na půlce Země?',
   sections: [
     {
       title: 'Kolik energie Země dostává',
       icon: 'sun',
       blocks: [
         { type: 'p', text: 'V lekci „Krajinná sféra jako systém“ jsme řekli, že Země je téměř uzavřený systém: hmotu si nechává, ale energii přijímá a vydává. Pohání veškerý vítr, déšť i mořské proudy. Kolik jí tedy je a kam se poděje?' },
-        { type: 'p', text: 'Na horní hranici atmosféry dopadá ve střední vzdálenosti Země od Slunce **1 361 W/m²** na plochu kolmou k paprskům (sluneční konstanta). Země ale zachytí paprsky jen průřezem kruhu o ploše π · R², zatímco její povrch má plochu 4 · π · R². Navíc se otáčí, takže polovina je vždy ve tmě. Proto se v průměru na každý metr čtvereční za den i rok dostane čtvrtina:' },
+        { type: 'p', text: 'Na horní hranici atmosféry dopadá ve střední vzdálenosti Země od Slunce **1 361 W/m²** na plochu kolmou k paprskům (sluneční konstanta). Země ale zachytí paprsky jen průřezem kruhu o ploše π · R², zatímco její povrch má plochu 4 · π · R², tedy čtyřikrát větší. V tomto poměru je už započteno, že polovina Země je vždy ve tmě a že na zbytek dopadají paprsky šikmo. Proto se v průměru na každý metr čtvereční za den i rok dostane čtvrtina:' },
         { type: 'formula', text: '1 361 W/m² ÷ 4 ≐ 340 W/m²', caption: 'průměrný sluneční příkon na horní hranici atmosféry, přepočtený na celý povrch Země a celý rok' },
         { type: 'p', text: 'Těch 340 W/m² je 100 jednotek energetické bilance. Na obrázku sleduj, kam se rozdělí: kolik se hned odrazí, kolik pohltí vzduch a kolik povrch, a kudy energie zase odchází:' },
         { type: 'diagram', id: 'radiation-budget', caption: 'Energetická bilance Země (100 jednotek = 340 W/m², IPCC AR6): 29 jednotek se odrazí, 24 pohltí atmosféra, 47 povrch. Odchází 70 jednotek tepelného záření; zbytek, asi 0,7 W/m², Zemi ohřívá.' },
@@ -194,7 +194,7 @@ const z10_2: Lesson = {
           'Převedeme na stupně Celsia: 255 − 273 = −18 °C.',
         ], answer: 'Asi −18 °C. Skutečný průměr je asi +15 °C; rozdíl 33 °C dělá skleníkový efekt.' },
         { type: 'p', text: 'Výsledek −18 °C už znáš z lekce „Krajinné pásy a změna klimatu“; teď víš, odkud se bere. Dvě čísla, která v něm rozhodují, jsou albedo a síla skleníkového efektu. Podíváme se, jak s nimi teplota planety hýbe.' },
-        { type: 'check', question: { kind: 'number', q: 'Kolik W/m² by Země v průměru pohltila, kdyby její albedo kleslo z 0,30 na 0,25? (sluneční příkon 340 W/m²)', answer: 255, tolerance: 1, unit: 'W/m²', explain: '(1 − 0,25) · 340 W/m² = 255 W/m², tedy o 17 W/m² víc než při albedu 0,30. To je přes šestkrát víc, než dnes celkově přidává činnost lidí (asi 2,7 W/m²).' } },
+        { type: 'check', question: { kind: 'number', q: 'Kolik W/m² by Země v průměru pohltila, kdyby její albedo kleslo z 0,30 na 0,25? (sluneční příkon 340 W/m²)', answer: 255, tolerance: 1, unit: 'W/m²', explain: '(1 − 0,25) · 340 W/m² = 255 W/m², tedy o 17 W/m² víc než při albedu 0,30. To je víc než pětinásobek toho, co dnes celkově přidává činnost lidí (asi 3,1 W/m² v roce 2025, Indicators of Global Climate Change).' } },
       ],
     },
     {
@@ -256,7 +256,7 @@ const z10_2: Lesson = {
         { type: 'p', text: 'Tryskové proudění je „kolejnice“ pro tlakové níže, které k nám nosí déšť od Atlantiku. Obvykle se vlny posouvají k východu a počasí se střídá po několika dnech. Když ale proudění zeslábne a vlny se zastaví, vznikne **blokující situace**: nad jedním místem se týdny drží výše (horko, sucho), vedle níže (vytrvalé deště).' },
         { type: 'p', text: 'Dva extrémy, které budeme rozebírat v lekci „Hydrometeorologická rizika“, mají právě tuto příčinu. Srovnej je:' },
         { type: 'compare', columns: [
-          { title: 'Zaseknutý hřeben', icon: 'heat', tone: 'b', points: ['tlaková výše se drží týdny', 'jasno, slunce, žádný déšť', 'srpen 2003: vlna veder v západní Evropě, přes 70 000 obětí', 'sucho a požáry'] },
+          { title: 'Zaseknutý hřeben', icon: 'heat', tone: 'b', points: ['tlaková výše se drží týdny', 'jasno, slunce, žádný déšť', 'léto 2003 (vrchol v srpnu): vlna veder v Evropě, přes 70 000 obětí', 'sucho a požáry'] },
           { title: 'Zaseknutá brázda a níže', icon: 'rain', tone: 'c', points: ['níže stojí nebo krouží na místě', 'vytrvalé deště na stejné povodí', 'srpen 2002 a září 2024: povodně v Česku', 'přívalové a dlouhé srážky'] },
         ] },
         { type: 'p', text: 'Jestli oteplování Arktidy vlny tryskového proudění zpomaluje a blokující situace prodlužuje, je předmětem výzkumu a vědci se v tom zatím neshodují. Jistější je, že teplejší vzduch při blokádě unese víc páry a vyprší víc vody. Teplo ale nerozvádí jen vzduch. Druhým velkým hráčem je oceán.' },
@@ -284,8 +284,8 @@ const z10_2: Lesson = {
         ], points: [
           { lat: -12.05, lon: -77.04, label: 'Lima', kind: 'capital' },
           { lat: 1.35, lon: 103.82, label: 'Singapur', kind: 'capital' },
-        ], caption: 'El Niño se vyhlašuje, když je tříměsíční průměrná odchylka v oblasti Niño 3.4 aspoň +0,5 °C (NOAA). Nejsilnější dosud změřené epizody: 1997–98 (+2,4 °C) a 2015–16 (+2,6 °C).' },
-        { type: 'p', text: 'Dopady El Niña sahají daleko za Pacifik, protože přesun tropických dešťů změní i tryskové proudění. Celá planeta se navíc na rok až dva oteplí o několik desetin stupně, protože oceán vydá teplo do vzduchu. Proto rekordní roky přicházejí po El Niñu (2016, 2024) – a proto meteorologové po silném El Niñu z roku 2026 počítají s možností dalšího teplotního rekordu.' },
+        ], caption: 'El Niño se vyhlašuje, když je tříměsíční průměrná odchylka v oblasti Niño 3.4 aspoň +0,5 °C (NOAA). Nejsilnější ukončené epizody podle tříměsíčního průměru (NOAA): 1997–98 (+2,4 °C) a 2015–16 (+2,6 °C); El Niño 2026 je může překonat.' },
+        { type: 'p', text: 'Dopady El Niña sahají daleko za Pacifik, protože přesun tropických dešťů změní i tryskové proudění. Celá planeta se navíc na rok až dva oteplí o několik desetin stupně, protože oceán vydá teplo do vzduchu. Proto rekordní roky přicházejí po El Niñu (2016, 2024) – a proto meteorologové kvůli silnému El Niñu, který na podzim 2026 ještě sílí, počítají s možností dalšího teplotního rekordu v roce 2027.' },
         { type: 'p', text: 'Energie, vítr a oceán tedy tvoří jeden systém. To, co ho od roku 1850 vychyluje, je změna složení atmosféry – a tu zapisuje uhlíkový cyklus, kterému se věnuje příští lekce.' },
         { type: 'check', question: { kind: 'choice', q: 'Co se děje během El Niña?', options: ['pasáty zeslábnou, teplá voda se rozlije na východ Pacifiku a v Peru prší', 'pasáty zesílí a u Peru vystupuje víc studené vody', 'u Indonésie a Austrálie prší víc než obvykle', 'Golfský proud změní směr'], answer: 0, explain: 'Při El Niñu pasáty slábnou, teplá voda se přelije na východ, upwelling u Peru slábne a deště se přesouvají na pobřeží Jižní Ameriky. Indonésii a Austrálii postihuje sucho.' } },
       ],
@@ -337,7 +337,7 @@ const z10_3: Lesson = {
         { type: 'diagram', id: 'carbon-cycle', caption: 'Koloběh uhlíku: fotosyntéza, dýchání, rozklad, rozpouštění v oceánu, ukládání vápence, těžba a spalování fosilních paliv.' },
         { type: 'p', text: 'Schéma ukazuje cesty, ale ne velikosti. Pro zeměpisce jsou podstatné právě ty: jak velké jsou zásoby a jak rychle se mezi nimi uhlík přesouvá. Počítá se v gigatunách uhlíku (1 Gt C = 1 miliarda tun). Porovnej, kde ho je nejvíc:' },
         { type: 'table', headers: ['zásoba', 'uhlík (Gt C, řádově)', 'jak rychle se vyměňuje'], rows: [
-          ['usazené horniny (vápence, břidlice)', 'přes 60 000 000', 'miliony let'],
+          ['usazené horniny (vápence, břidlice)', 'desítky milionů', 'miliony let'],
           ['hlubinný oceán (rozpuštěný uhlík)', '≈ 37 000', 'staletí až tisíciletí'],
           ['půdy', '≈ 1 700', 'desetiletí až staletí'],
           ['permafrost (zmrzlá půda)', '≈ 1 400', 'dnes zmrzlý, při tání se uvolňuje'],
@@ -345,7 +345,7 @@ const z10_3: Lesson = {
           ['povrchová vrstva oceánu', '≈ 900', 'roky'],
           ['atmosféra', '≈ 870 (2019; před rokem 1750 asi 590)', 'roky'],
           ['vegetace', '≈ 450', 'roky až desetiletí'],
-        ], caption: 'Zásoby uhlíku na Zemi (zaokrouhleno podle IPCC AR6, 2021)' },
+        ], caption: 'Zásoby uhlíku na Zemi (zaokrouhleno podle IPCC AR6, 2021; horniny jen řádový odhad geochemiků)' },
         { type: 'p', text: 'Atmosféra je jedna z nejmenších zásob. Proto ji snadno rozkolísá i tok, který je proti oceánu nebo horninám nepatrný. ==Malá zásoba + změněný tok = rychlá změna koncentrace.==' },
         { type: 'p', text: 'Zásoby se od sebe liší i tím, jak rychle uhlík vydávají. To dělí celý cyklus na dvě úplně odlišné části.' },
         { type: 'check', question: { kind: 'choice', q: 'Ve které zásobě je na Zemi uloženo nejvíc uhlíku?', options: ['v usazených horninách', 'v atmosféře', 've vegetaci', 'v půdách'], answer: 0, explain: 'Vápence a další usazené horniny obsahují desítky milionů Gt C, mnohonásobně víc než oceán, půdy, vegetace a atmosféra dohromady.' } },
@@ -370,7 +370,7 @@ const z10_3: Lesson = {
       title: 'Jak člověk mění toky',
       icon: 'factory',
       blocks: [
-        { type: 'p', text: 'Podle Global Carbon Budget 2025 vypustilo lidstvo v roce 2025 ze spalování fosilních paliv a výroby cementu asi **38,1 Gt $CO2$** (10,4 Gt C), rekordně mnoho, a dalších asi **4,1 Gt $CO2$** odlesňováním a změnami využití krajiny. Kam se ty emise poději? Dlouhodobě se dělí zhruba takto:' },
+        { type: 'p', text: 'Podle Global Carbon Budget 2025 vypustilo lidstvo v roce 2025 ze spalování fosilních paliv a výroby cementu asi **38,1 Gt $CO2$** (10,4 Gt C; odhad), rekordně mnoho, a dalších asi **4,1 Gt $CO2$** odlesňováním a změnami využití krajiny. Kam se ty emise poději? Dlouhodobě se dělí zhruba takto:' },
         { type: 'iconlist', items: [
           { icon: 'cloud', title: 'Atmosféra: asi polovina', text: 'zvyšuje koncentraci a zesiluje skleníkový efekt' },
           { icon: 'ocean', title: 'Oceán: asi čtvrtina', text: '$CO2$ se rozpouští v mořské vodě; voda přitom okyseluje' },
@@ -393,8 +393,8 @@ const z10_3: Lesson = {
       blocks: [
         { type: 'p', text: 'Charles David Keeling začal v roce 1958 měřit $CO2$ na sopce Mauna Loa na Havaji, daleko od továren a lesů, kde je vzduch dobře promíchaný. Graf jeho měření, dnes vedený NOAA a Scrippsovým institutem, se jmenuje **Keelingova křivka**. Sleduj nejen růst, ale i to, jak se strmost mění:' },
         { type: 'graph', x: { label: 'rok', min: 1955, max: 2030, step: 10 }, y: { label: 'CO_{2}', unit: 'ppm', min: 300, max: 440, step: 20 }, series: [
-          { label: 'Mauna Loa, roční průměr', style: 'smooth', area: true, points: [[1959, 315.98], [1965, 320.04], [1970, 325.68], [1975, 331.11], [1980, 338.76], [1985, 346.35], [1990, 354.45], [1995, 360.82], [2000, 369.71], [2005, 379.8], [2010, 389.9], [2015, 401.01], [2020, 414.21], [2024, 424.61], [2025, 427]] },
-        ], marks: [{ x: 1959, y: 315.98, label: '1959: 316 ppm' }, { x: 2025, y: 427, label: '2025: ≈ 427 ppm' }, { y: 350, label: '350 ppm' }], caption: 'Roční průměry koncentrace $CO2$ na Mauna Loa (NOAA; rok 2025 odhadem podle Met Office). V květnu 2025 přesáhl měsíční průměr poprvé 430 ppm.' },
+          { label: 'Mauna Loa, roční průměr', style: 'smooth', area: true, points: [[1959, 315.98], [1965, 320.04], [1970, 325.68], [1975, 331.11], [1980, 338.76], [1985, 346.35], [1990, 354.45], [1995, 360.82], [2000, 369.71], [2005, 379.8], [2010, 389.9], [2015, 401.01], [2020, 414.21], [2024, 424.61], [2025, 427.35]] },
+        ], marks: [{ x: 1959, y: 315.98, label: '1959: 316 ppm' }, { x: 2025, y: 427.35, label: '2025: ≈ 427 ppm' }, { y: 350, label: '350 ppm' }], caption: 'Roční průměry koncentrace $CO2$ na Mauna Loa (NOAA GML). V květnu 2025 přesáhl měsíční průměr poprvé 430 ppm.' },
         { type: 'p', text: 'Křivka není přímka, ale zakřivuje se nahoru: přírůstky se zvětšují. Vypočti, jak se tempo změnilo:' },
         { type: 'example', title: 'Jak rychle $CO2$ přibývá?', problem: 'Z grafu: 1960 → 316,9 ppm, 1970 → 325,7 ppm; 2015 → 401,0 ppm, 2024 → 424,6 ppm. Porovnej průměrné roční přírůstky obou období.', steps: [
           '1960–1970: (325,7 − 316,9) ÷ 10 let ≐ 0,9 ppm za rok.',
@@ -468,9 +468,9 @@ const z10_4: Lesson = {
       blocks: [
         { type: 'p', text: 'V lekci „Uhlíkový cyklus a klima“ jsme viděli, že $CO2$ ve vzduchu stoupá naší vinou. Teď otázka, kterou si klade každý skeptik: projevuje se to opravdu na teplotě? Globální teplotu dnes nezávisle počítá několik institucí (Met Office, NASA, NOAA, Copernicus, japonská JMA) z milionů měření na pevnině i na moři. Uvádějí ji jako **odchylku** od předprůmyslového průměru let 1850–1900:' },
         { type: 'graph', x: { label: 'rok', min: 1980, max: 2030, step: 10 }, y: { label: 'odchylka teploty', unit: '°C', min: 0, max: 1.8, step: 0.3 }, series: [
-          { label: 'desetiletý průměr (HadCRUT5)', points: [[1985, 0.53], [1995, 0.70], [2005, 0.90], [2015, 1.10]] },
+          { label: 'desetiletý průměr (přibližně)', points: [[1985, 0.5], [1995, 0.65], [2005, 0.85], [2015, 1.09]] },
           { label: 'jednotlivé roky (WMO)', style: 'dots', points: [[2023, 1.45], [2024, 1.55], [2025, 1.44]] },
-        ], marks: [{ y: 1.5, label: 'Pařížská dohoda: 1,5 °C' }], caption: 'Odchylka globální průměrné teploty od průměru 1850–1900. Desetiletí 1981–1990 až 2011–2020 (přibližně, podle HadCRUT5 a WMO) a roky 2023–2025 (WMO, State of the Global Climate 2025).' },
+        ], marks: [{ y: 1.5, label: 'Pařížská dohoda: 1,5 °C' }], caption: 'Odchylka globální průměrné teploty od průměru 1850–1900. Desetiletí 1981–1990 až 2001–2010 zaokrouhleně podle HadCRUT5, 2011–2020 podle IPCC AR6 (1,09 °C); roky 2023–2025 podle WMO (State of the Global Climate 2025).' },
         { type: 'p', text: 'Každé desetiletí od 80. let je zhruba o 0,2 °C teplejší než předchozí. Posledních jedenáct let 2015–2025 je jedenáct nejteplejších let od roku 1850. Jednotlivé roky přitom kolísají kolem trendu: rok 2024 zvedl El Niño, v roce 2025 už nepůsobil.' },
         { type: 'p', text: 'Tady se chybuje nejčastěji. Cíl Pařížské dohody udržet oteplení „pod 1,5 °C“ se netýká jednoho roku, ale **dvacetiletého průměru**. Jeden rok nad hranicí cíl neruší a jeden chladnější rok trend nezastaví. Podle studie Indicators of Global Climate Change (2026) dosáhlo oteplení způsobené lidmi v roce 2025 asi **1,37 °C** a roste o 0,27 °C za desetiletí.' },
         { type: 'callout', variant: 'remember', text: 'Klima = průměr přes desetiletí. Jeden horký rok ani jedna chladná zima nejsou důkaz ani vyvrácení – rozhoduje trend.' },
@@ -487,7 +487,7 @@ const z10_4: Lesson = {
           { label: 'normál 1961–1990', tone: 'c', style: 'smooth', points: [[1, -0.2], [2, 1.4], [3, 5.1], [4, 9.8], [5, 14.8], [6, 18.2], [7, 19.7], [8, 19.1], [9, 15.2], [10, 10.3], [11, 5.1], [12, 1.7]] },
           { label: 'normál 1991–2020', tone: 'b', style: 'smooth', points: [[1, 1.6], [2, 2.7], [3, 6.3], [4, 11.5], [5, 16.1], [6, 19.6], [7, 21.5], [8, 21.0], [9, 16.0], [10, 10.9], [11, 6.1], [12, 2.6]] },
         ], caption: 'Měsíční teplotní normály stanice Praha-Klementinum (ČHMÚ, odvozeno z měsíčních zpráv o klementinské řadě 2024–2026). Roční průměr stoupl asi z 10,0 na 11,3 °C.' },
-        { type: 'p', text: 'Nový normál je teplejší ve všech dvanácti měsících: nejvíc v srpnu (o 1,9 °C), v červenci a lednu (o 1,8 °C) a v dubnu (o 1,7 °C), nejméně v říjnu (o 0,6 °C) a v prosinci (o 0,9 °C). Roční průměr stoupl o 1,3 °C, víc než globální průměr. Souš se totiž otepluje rychleji než oceán a město ještě přidává vlastní teplo (tepelný ostrov).' },
+        { type: 'p', text: 'Nový normál je teplejší ve všech dvanácti měsících: nejvíc v srpnu (o 1,9 °C), v červenci a lednu (o 1,8 °C) a v dubnu (o 1,7 °C), nejméně v říjnu (o 0,6 °C) a v září (o 0,8 °C). Roční průměr stoupl o 1,3 °C, víc než globální průměr. Souš se totiž otepluje rychleji než oceán a město ještě přidává vlastní teplo (tepelný ostrov).' },
         { type: 'p', text: 'Výměna normálu má jeden zrádný důsledek: když měříme novým, teplejším normálem, stejně teplý měsíc vypadá „normálně“. Spočítej to na skutečném červnu:' },
         { type: 'example', title: 'Červen 2026 dvojím metrem', problem: 'V červnu 2026 byla v Klementinu průměrná teplota 22,9 °C. Červnový normál 1991–2020 je 19,6 °C, normál 1961–1990 je 18,2 °C. Jaké jsou odchylky od obou normálů?', steps: [
           'Odchylka od normálu 1991–2020: 22,9 − 19,6 = +3,3 °C.',
@@ -547,14 +547,14 @@ const z10_4: Lesson = {
           ['SSP3-7.0', 'do roku 2100 asi dvojnásobek', '3,6 °C', '2,8–4,6 °C'],
           ['SSP5-8.5', 'dvojnásobek už kolem roku 2050', '4,4 °C', '3,3–5,7 °C'],
         ], caption: 'Oteplení proti 1850–1900 podle scénářů IPCC AR6 (2021, Souhrn pro politiky)' },
-        { type: 'p', text: 'Tabulka ukazuje, že rozdíl mezi scénáři je víc než 3 °C – stejně jako mezi dobou ledovou a dneškem. Vyzkoušej si, jakou cestu emisí bys musel/a nastavit, aby oteplení zůstalo pod 2 °C:' },
+        { type: 'p', text: 'Tabulka ukazuje, že rozdíl mezi scénáři je víc než 3 °C – zhruba polovina rozdílu mezi vrcholem poslední doby ledové a předprůmyslovou dobou (asi 6 °C). Vyzkoušej si, jakou cestu emisí bys musel/a nastavit, aby oteplení zůstalo pod 2 °C:' },
         { type: 'experiment', id: 'climate-scenario', caption: 'Nastav, jak rychle emise rostou, kdy vrcholí a jak rychle pak klesají. Model vybere nejbližší scénář IPCC podle součtu emisí $CO2$ v letech 2025–2100.' },
         { type: 'p', text: 'Všiml sis, že rozhoduje hlavně **součet** emisí, ne to, kdy přesně je vypustíme? Oteplení roste se součtem vypuštěného $CO2$ téměř lineárně: asi o 0,45 °C na každých 1 000 Gt $CO2$ (IPCC AR6). Z toho plyne **uhlíkový rozpočet**: kolik $CO2$ smíme ještě vypustit, abychom se hranici vyhnuli. Pro 1,5 °C (s pravděpodobností 50 %) zbývalo na začátku roku 2026 jen asi **130 Gt $CO2$** (Indicators of Global Climate Change, 2026).' },
         { type: 'example', title: 'Na jak dlouho rozpočet vystačí?', problem: 'Zbývající rozpočet pro 1,5 °C je 130 Gt $CO2$. Lidstvo vypouští asi 42 Gt $CO2$ ročně. Za kolik let ho vyčerpá, když se emise nezmění?', steps: [
           'Doba = rozpočet ÷ roční emise = 130 Gt ÷ 42 Gt/rok.',
           '130 ÷ 42 ≐ 3,1 roku.',
-        ], answer: 'Asi za tři roky, tedy v roce 2029. Proto studie z roku 2026 počítá s tím, že svět hranici 1,5 °C kolem roku 2030 překročí.' },
-        { type: 'p', text: 'Pro 2 °C zbývá zhruba osmkrát víc, asi 1 000 Gt $CO2$, ale i to by dnešním tempem vydrželo jen asi 25 let. Co se tedy dá dělat? Dvě strategie už znáš ze základní školy; teď je doplníme o to, co rozhodne o jejich úspěchu.' },
+        ], answer: 'Asi za tři roky, tedy v roce 2029. Stejná studie odhaduje, že oteplení způsobené lidmi dosáhne 1,5 °C kolem roku 2030.' },
+        { type: 'p', text: 'Pro 2 °C zbývá zhruba osmkrát víc, asi 1 050 Gt $CO2$, ale i to by dnešním tempem vydrželo jen asi 25 let. Co se tedy dá dělat? Dvě strategie už znáš ze základní školy; teď je doplníme o to, co rozhodne o jejich úspěchu.' },
         { type: 'check', question: { kind: 'number', q: 'Kolik °C oteplení odpovídá podle IPCC (0,45 °C na 1 000 Gt $CO2$) emisím 2 400 Gt $CO2$, které lidstvo vypustilo v letech 1850–2019?', answer: 1.08, tolerance: 0.03, unit: '°C', explain: '2 400 ÷ 1 000 · 0,45 °C = 1,08 °C. To odpovídá skutečně pozorovanému oteplení kolem roku 2019 (asi 1,1 °C).' } },
       ],
     },
@@ -632,7 +632,7 @@ const z10_5: Lesson = {
           { lat: 63.88, lon: -22.42, label: 'Reykjanes', kind: 'volcano' },
           { lat: 19.41, lon: -155.29, label: 'Kīlauea', kind: 'volcano' },
           { lat: 4.89, lon: -75.32, label: 'Nevado del Ruiz', kind: 'volcano' },
-        ], caption: 'Hranice desek, velká zemětřesení (magnitudo Mw podle USGS) a sopky zmíněné v lekci.' },
+        ], caption: 'Hranice desek, velká zemětřesení (momentové magnitudo Mw; u Japonska 2011 uvádí japonská JMA 9,0, USGS 9,1) a sopky zmíněné v lekci.' },
         { type: 'p', text: 'Všimni si, že nejsilnější zemětřesení (Japonsko, Chile, Sumatra) leží u hlubokomořských příkopů, tedy na **subdukčních** hranicích. Tabulka shrnuje, co se dá čekat na kterém typu hranice:' },
         { type: 'table', headers: ['hranice', 'zemětřesení', 'sopky', 'příklad'], rows: [
           ['rozbíhavá (oceánský hřbet, rift)', 'mělká, slabší (do M 7)', 'výlevné, řídká čedičová láva', 'Island, Východoafrický rift'],
@@ -651,8 +651,8 @@ const z10_5: Lesson = {
       blocks: [
         { type: 'p', text: 'Když se setká oceánská a pevninská deska, těžší oceánská se zanoří pod lehčí pevninskou. Na řezu sleduj tři věci: kde vznikne příkop, kde leží ohniska zemětřesení a odkud se bere magma pro sopky:' },
         { type: 'diagram', id: 'subduction-zone', caption: 'Subdukce u Jižní Ameriky: deska Nazca se rychlostí asi 7 cm za rok podsouvá pod Jihoamerickou desku. Příkop (Atacamský, 8 065 m), ohniska podél zanořující se desky až do 700 km a sopečný oblouk And.' },
-        { type: 'p', text: 'Nejničivější zemětřesení vznikají na styčné ploše obou desek pod příkopem. Desky se tam zaklesnou, pevninská deska se po desetiletí či staletí prohýbá a pak se náhle utrhne: pohne se o desítky metrů na ploše dlouhé stovky kilometrů. V roce 2011 se u Japonska pohnula plocha dlouhá asi 500 km. Protože se přitom zvedne mořské dno, vznikne **tsunami**.' },
-        { type: 'p', text: 'Sopky nad subdukcí mají jiný původ. Zanořující se deska v hloubce kolem 100 km uvolňuje vodu, ta sníží teplotu tání pláště nad ní a vznikne magma. Je bohaté na vodu, plyny a oxid křemičitý, proto je husté a výbušné. Tak vznikly Fudži, Merapi i Pinatubo.' },
+        { type: 'p', text: 'Nejničivější zemětřesení vznikají na styčné ploše obou desek pod příkopem. Desky se tam zaklesnou, pevninská deska se po desetiletí či staletí prohýbá a pak se náhle utrhne: pohne se o metry až desítky metrů na ploše dlouhé stovky kilometrů. V roce 2011 se u Japonska pohnula plocha dlouhá asi 500 km. Protože se přitom zvedne mořské dno, vznikne **tsunami**.' },
+        { type: 'p', text: 'Sopky nad subdukcí mají jiný původ. Zanořující se deska v hloubce kolem 100 km uvolňuje vodu, ta sníží teplotu tání pláště nad ní a vznikne magma. Je bohaté na vodu, plyny a oxid křemičitý, proto je vazké (hustě tekoucí) a výbušné. Tak vznikly Fudži, Merapi i Pinatubo.' },
         { type: 'callout', variant: 'warning', text: 'Pozor na záměnu: magma nad subdukcí nevzniká z roztavené zanořující se desky, ale z pláště nad ní, kterému voda z desky sníží teplotu tání.' },
         { type: 'p', text: 'Víme, kde a proč zemětřesení vznikají. Jak ale seismologové během pár minut zjistí, kde přesně ohnisko bylo a jak silné bylo?' },
         { type: 'check', question: { kind: 'tf', q: 'Ohniska zemětřesení v subdukční zóně leží s rostoucí vzdáleností od příkopu stále hlouběji.', answer: true, explain: 'Ohniska kopírují zanořující se desku: u příkopu jsou mělká, pod pevninou hlubší, až kolem 700 km.' } },
@@ -671,7 +671,7 @@ const z10_5: Lesson = {
           'd = 16 s ÷ 0,119 s/km ≐ 134 km.',
           'Pravidlo pro odhad: 1 ÷ 0,119 ≐ 8,4, tedy každá sekunda rozdílu ≈ 8 km.',
         ], answer: 'Ohnisko je asi 130 km daleko. Se třemi stanicemi se z průsečíku tří kružnic určí epicentrum.' },
-        { type: 'p', text: 'Sílu zemětřesení dnes udává **momentové magnitudo** Mw, vypočtené z plochy zlomu, posunu na něm a tuhosti horniny. Stará Richterova stupnice pro velká zemětřesení „saturuje“ (nerozliší M 8 od M 9), proto se už nepoužívá. Magnitudo je logaritmické:' },
+        { type: 'p', text: 'Sílu zemětřesení dnes udává **momentové magnitudo** Mw, vypočtené z plochy zlomu, posunu na něm a tuhosti horniny. Stará Richterova (lokální) stupnice pro velká zemětřesení „saturuje“ (nerozliší M 8 od M 9), proto se pro ně už nepoužívá. Magnitudo je logaritmické:' },
         { type: 'formula', text: 'E₂ ÷ E₁ = 10^{1,5 · (M₂ − M₁)}', caption: 'o 1 stupeň magnituda ≈ 32krát víc uvolněné energie, o 2 stupně = 1 000krát' },
         { type: 'p', text: 'Silná zemětřesení jsou přitom vzácnější. Podle dlouhodobého průměru USGS je na Zemi za rok asi 1 zemětřesení o magnitudu 8 a víc, asi 15 o magnitudu 7–7,9 a asi 130 o magnitudu 6–6,9. Na každý stupeň dolů tedy připadá zhruba desetkrát víc otřesů.' },
         { type: 'p', text: 'Pozor, magnitudo popisuje zemětřesení v ohnisku, ne škody. O škodách vypovídá **intenzita** (v Evropě stupnice EMS-98), a ta závisí na vzdálenosti, hloubce ohniska, podloží a hlavně na stavbách. Ještě než se k lidem dostaneme, podívejme se na druhou tektonickou hrozbu.' },
@@ -714,7 +714,7 @@ const z10_5: Lesson = {
           'Zemětřesení Mw 9,0 (podle USGS 9,1) v Japonském příkopu; otřesy trvaly několik minut. Budovy postavené podle přísných předpisů je z velké části vydržely.',
           'Varování před tsunami vyšlo během minut, vlna přišla na pobřeží Sanriku asi za 30 minut a místy vyběhla do výšky téměř 40 m. Přes 90 % obětí utonulo.',
           'Ochranné zdi vysoké až 10 m byly navrženy na menší tsunami a voda je přelila. Část lidí zdi uklidnily a neutekla.',
-          'Bilance japonské policie (březen 2026): 15 901 mrtvých a 2 519 pohřešovaných; tsunami zničila chlazení jaderné elektrárny Fukušima I.',
+          'Bilance japonské policie (2026): asi 15 900 mrtvých a 2 520 pohřešovaných; tsunami zničila chlazení jaderné elektrárny Fukušima I.',
         ] },
         { type: 'p', text: 'Ponaučení je obecné: připravenost snižuje riziko, ale **jen do síly, se kterou se počítalo**. Kdo staví ochranu na „historické maximum“, musí počítat i s událostí, která ho překoná.' },
         { type: 'check', question: { kind: 'tf', q: 'Systém včasného varování dokáže upozornit na zemětřesení dny předem.', answer: false, explain: 'Včasné varování využívá jen náskoku rychlých vln P před ničivými vlnami S a povrchovými vlnami. Dá sekundy až desítky sekund, ne dny.' } },
@@ -736,7 +736,7 @@ const z10_5: Lesson = {
           { title: 'Mnoho obětí (Haiti, Turecko a Sýrie)', icon: 'warning', tone: 'bad', points: ['domy z nezpevněného betonu a cihel', 'předpisy chybějí, nebo se nekontrolují', 'hustě zastavěná města přímo nad zlomem', 'slabá záchrana, válka nebo chudoba'] },
           { title: 'Málo obětí (Nový Zéland, Chile)', icon: 'shield', tone: 'good', points: ['stavby podle předpisů, které se vymáhají', 'zkušenost z předchozích zemětřesení', 'varování před tsunami a nácvik', 'fungující záchranný systém a pojištění'] },
         ] },
-        { type: 'p', text: 'Riziko tedy nevzniká v ohnisku, ale ve společnosti – a dá se změřit. Jak, ukáže vzorec riziko = hrozba × zranitelnost ÷ odolnost v lekci „Hydrometeorologická rizika“, kde ho použijeme i na povodně, cyklóny a vedra.' },
+        { type: 'p', text: 'Riziko tedy nevzniká v ohnisku, ale ve společnosti – a dá se změřit. Jak, ukáže vzorec riziko = hrozba × zranitelnost ÷ schopnost zvládnout v lekci „Hydrometeorologická rizika“, kde ho použijeme i na povodně, cyklóny a vedra.' },
         { type: 'check', question: { kind: 'choice', q: 'Zemětřesení na Haiti (M 7,0) a na Novém Zélandu (M 7,1) v roce 2010 měla skoro stejnou sílu. Co nejlépe vysvětluje rozdíl v počtu obětí?', options: ['rozdílná zranitelnost: kvalita staveb, předpisy, chudoba a záchranný systém', 'Nový Zéland neleží na hranici desek', 'na Haiti bylo zemětřesení ve skutečnosti mnohem silnější', 'Haiti leží blíž k rovníku'], answer: 0, explain: 'Hrozba byla podobná. Rozhodla zranitelnost: na Haiti se zřítily domy z nezpevněného betonu v hustě obydleném hlavním městě, na Novém Zélandu domy stavěné podle předpisů vydržely.' } },
       ],
     },
@@ -775,9 +775,9 @@ const z10_6: Lesson = {
     'Vysvětlit, za jakých podmínek vznikají tropické cyklóny, a zařadit cyklón podle Saffirovy–Simpsonovy stupnice',
     'Číst povodňový hydrogram (kulminační průtok, doba zpoždění, vzestupná a sestupná větev) a vysvětlit vliv krajiny',
     'Spočítat pravděpodobnost N-leté povodně za daný počet let',
-    'Použít vztah riziko = hrozba × zranitelnost ÷ odolnost a popsat cyklus zvládání katastrof',
+    'Použít vztah riziko = hrozba × zranitelnost ÷ schopnost zvládnout a popsat cyklus zvládání katastrof',
   ],
-  hook: 'V září 2024 napršelo v Jeseníkách za pět dní přes 500 mm – víc, než v Praze-Klementinu naprší za celý rok. ČHMÚ odhadl, že tak velká povodeň se tam v průměru vyskytne méně než jednou za 500 let. Znamená to, že další přijde nejdřív v roce 2524?',
+  hook: 'V září 2024 napršelo v Jeseníkách za pět dní přes 500 mm – víc, než v Praze-Klementinu naprší za celý rok. Hydrologové odhadli, že průtoky místy překonaly pětisetletou vodu, tedy povodeň, která v průměru přijde méně než jednou za 500 let. Znamená to, že další přijde nejdřív v roce 2524?',
   sections: [
     {
       title: 'Tropické cyklóny',
@@ -806,7 +806,7 @@ const z10_6: Lesson = {
           ['4', '209–251', 'zbořené střechy i zdi, oblast neobyvatelná týdny'],
           ['5', '252 a víc', 'zničená většina domů; Haiyan 2013 asi 315 km/h, Melissa (Jamajka 2025) asi 295 km/h'],
         ], caption: 'Saffirova–Simpsonova stupnice hurikánů (NHC)' },
-        { type: 'p', text: 'Pozor, nejvíc lidí v cyklónách nezabije vítr, ale voda. **Bouřkový příboj** (vzdutí moře) zvedne hladinu o několik metrů: v Taclobanu po Haiyanu asi o 5–6 m, přes 6 000 obětí. Katrina měla při dopadu „jen“ kategorii 3, ale protržené hráze zaplavily asi 80 % New Orleans. Druhým zabijákem jsou přívalové deště a povodně ve vnitrozemí. A povodně jsou hrozbou i v Česku.' },
+        { type: 'p', text: 'Pozor, nejvíc lidí v cyklónách nezabije vítr, ale voda. **Bouřkový příboj** (vzdutí moře) zvedne hladinu o několik metrů: v Taclobanu po Haiyanu asi o 5–6 m; na Filipínách zahynulo přes 6 000 lidí. Katrina měla při dopadu „jen“ kategorii 3, ale protržené hráze zaplavily asi 80 % New Orleans. Druhým zabijákem jsou přívalové deště a povodně ve vnitrozemí. A povodně jsou hrozbou i v Česku.' },
         { type: 'check', question: { kind: 'choice', q: 'Proč tropické cyklóny nevznikají přímo na rovníku, i když je tam moře nejteplejší?', options: ['Coriolisova síla je na rovníku nulová, takže se vzduch neroztočí do víru', 'na rovníku je vždy tlaková výše', 'na rovníku nefouká žádný vítr', 'voda na rovníku se nevypařuje'], answer: 0, explain: 'Vír potřebuje stáčení vzduchu, které způsobuje rotace Země. Coriolisova síla na rovníku chybí a roste se zeměpisnou šířkou, proto cyklóny vznikají asi od 5° dál.' } },
       ],
     },
@@ -827,8 +827,8 @@ const z10_6: Lesson = {
         { type: 'p', text: 'Při 60 mm odteče z lesa jen asi 6 % deště a vrchol (asi 3 m³/s) přijde za 10 hodin. Z polí odteče asi 30 % a řeka se za 5,5 hodiny vylije. Z města odteče asi 60 % deště a kulminace přes 50 m³/s přijde už za 3 hodiny. Stejný déšť, sedmnáctkrát vyšší vrchol: o povodni rozhoduje krajina stejně jako mrak.' },
         { type: 'p', text: 'U velké řeky se vlny z přítoků skládají. Body z hydrogramu Vltavy v Praze-Chuchli v srpnu 2002 ukazují dvě vlny po sobě: menší od 8. srpna a ničivou o týden později, kdy se setkala voda z Vltavské kaskády s povodní na Berounce:' },
         { type: 'graph', x: { label: 'den v srpnu 2002', min: 7, max: 18, step: 1 }, y: { label: 'Q', unit: 'm³/s', min: 0, max: 5500, step: 1000 }, series: [
-          { label: 'Vltava, Praha-Chuchle', style: 'dots', points: [[8.25, 400], [8.83, 1200], [14.5, 5160], [16.5, 2800]] },
-        ], marks: [{ y: 150, label: 'průměrný průtok ≈ 150 m³/s' }, { x: 14.5, y: 5160, label: 'kulminace 14. 8. ve 12 h: 5 160 m³/s' }], caption: 'Vybrané naměřené a odhadnuté průtoky Vltavy v Praze-Chuchli (Povodí Vltavy, ČHMÚ): 8. 8. ráno 400 a večer 1 200 m³/s, kulminace 14. 8. 5 160 m³/s (doba opakování asi 500 let), 16. 8. v poledne asi 2 800 m³/s (předpověď povodňové služby).' },
+          { label: 'Vltava, Praha-Chuchle', style: 'dots', points: [[8.25, 400], [8.83, 1200], [14.5, 5160]] },
+        ], marks: [{ y: 150, label: 'průměrný průtok ≈ 150 m³/s' }, { x: 14.5, y: 5160, label: 'kulminace 14. 8. ve 12 h: 5 160 m³/s' }], caption: 'Vybrané průtoky Vltavy v Praze-Chuchli (Povodí Vltavy, ČHMÚ): 8. 8. ráno 400 a večer 1 200 m³/s, kulminace 14. 8. ve 12 h 5 160 m³/s (doba opakování asi 500 let).' },
         { type: 'p', text: 'Kulminace 5 160 m³/s je asi 34krát víc než průměrný průtok. Hydrologové takovou povodeň označují dobou opakování 500 let. Co to číslo znamená – a co neznamená – si teď spočítáme.' },
         { type: 'check', question: { kind: 'choice', q: 'Jak se po zástavbě části povodí změní hydrogram po stejném dešti?', options: ['kulminace bude vyšší a přijde dřív', 'kulminace bude nižší a přijde později', 'změní se jen základní odtok', 'nezmění se nic, rozhoduje jen množství deště'], answer: 0, explain: 'Střechy, asfalt a kanalizace zmenší vsakování a urychlí odtok. Víc vody dorazí do řeky naráz, takže vrchol je vyšší a doba zpoždění kratší.' } },
       ],
@@ -868,24 +868,24 @@ const z10_6: Lesson = {
         { type: 'p', text: '**Vlna veder** je období několika dní po sobě s teplotami výrazně nad normálem. Často vzniká pod zaseknutým hřebenem tryskového proudění, jak jsme viděli v lekci „Energetická bilance a cirkulace atmosféry“. Dvě události ukazují, jak se horko, sucho a povodeň mohou řetězit:' },
         { type: 'compare', columns: [
           { title: 'Evropa, léto 2003', icon: 'heat', tone: 'b', points: ['blokující tlaková výše nad západní Evropou v srpnu', 'přes 70 000 obětí v Evropě, z toho asi 15 000 ve Francii (Robine a kol. 2008)', 'umírali hlavně staří a osamělí lidé v rozpálených městech', 'poučení: varovné „plány proti vedru“ a péče o seniory'] },
-          { title: 'Pákistán, 2022', icon: 'rain', tone: 'c', points: ['na jaře vedra přes 50 °C, v létě extrémně vydatný monzun', 'pod vodou asi třetina země, 33 milionů zasažených lidí', 'přes 1 700 obětí', 'škody a ztráty asi 30 mld. USD (PDNA 2022)'] },
+          { title: 'Pákistán, 2022', icon: 'rain', tone: 'c', points: ['na jaře vedra přes 50 °C, v létě extrémně vydatný monzun', 'povodně zasáhly asi třetinu území a 33 milionů lidí', 'přes 1 700 obětí', 'škody a ztráty asi 30 mld. USD (PDNA 2022)'] },
         ] },
         { type: 'p', text: 'Obě katastrofy mají společné to, že hrozbu znásobila zranitelnost: v Evropě stáří a samota, v Pákistánu chudoba, domy z nepálených cihel a život v nivách řek. Tím se dostáváme k tomu, jak riziko vlastně měřit.' },
         { type: 'check', question: { kind: 'tf', q: 'Hydrologické sucho může trvat ještě několik měsíců poté, co znovu začne normálně pršet.', answer: true, explain: 'Podzemní voda a nádrže se doplňují pomalu. Průtoky a hladiny proto zůstávají nízko i po návratu srážek.' } },
       ],
     },
     {
-      title: 'Riziko = hrozba × zranitelnost ÷ odolnost',
+      title: 'Riziko = hrozba × zranitelnost ÷ schopnost zvládnout',
       icon: 'shield',
       blocks: [
         { type: 'p', text: 'V lekci „Zemětřesení a sopky“ jsme zapsali riziko jako ohrožení krát zranitelnost. V lekci „Tektonická rizika“ jsme na čtyřech zemětřeseních viděli, že to nestačí: záleží i na tom, jak rychle a dobře se společnost s katastrofou vyrovná. Proto se vztah rozšiřuje o třetí veličinu:' },
-        { type: 'formula', text: 'R = H · V ÷ C', caption: 'R riziko; H hrozba (ohrožení): síla a četnost přírodního jevu; V zranitelnost: co a kdo je vystaven a jak křehký je; C odolnost: schopnost katastrofu zvládnout (varování, záchrana, peníze na obnovu)' },
+        { type: 'formula', text: 'R = H · V ÷ C', caption: 'R riziko; H hrozba (ohrožení): síla a četnost přírodního jevu; V zranitelnost: co a kdo je vystaven a jak křehký je; C schopnost zvládnout (kapacita): varování, záchrana, peníze na obnovu' },
         { type: 'p', text: 'Vztah není fyzikální zákon, ale model pro porovnávání: jednotlivé veličiny se odhadují indexy. Na obrázku porovnej, co dělá město zranitelným a co odolným:' },
         { type: 'diagram', id: 'hazard-risk', caption: 'Stejné zemětřesení M 7 pod dvěma městy: v bohatém městě s předpisy, varováním a záchranou je riziko nízké, v chudém městě s nezpevněnými domy vysoké.' },
-        { type: 'p', text: 'Vyzkoušej si, jak se riziko mění, když držíš hrozbu stejnou a měníš jen společnost. Porovnej Port-au-Prince (Haiti, leden 2010, M 7,0) a Christchurch (Nový Zéland, září 2010, M 7,1) a pak zkus snížit riziko Port-au-Prince na úroveň Christchurch:' },
-        { type: 'experiment', id: 'risk-index', caption: 'Indexy 1–10 jsou ilustrační. Riziko R = H · V ÷ C: Port-au-Prince 7 · 9 ÷ 2 = 31,5, Christchurch 7 · 2 ÷ 8 = 1,75.' },
-        { type: 'p', text: 'Všiml sis? Při stejné hrozbě vyšlo riziko Port-au-Prince osmnáctkrát vyšší. A hrozbu zemětřesení člověk zmenšit nemůže, ale zranitelnost a odolnost ano. U povodní jde zmenšit i hrozbu (poldry, retence v krajině), přesto platí totéž: nejlevnější je nestavět v cestě vodě. Jak se taková opatření plánují v čase, popisuje cyklus zvládání katastrof.' },
-        { type: 'check', question: { kind: 'number', q: 'Obec má hrozbu povodně H = 6, zranitelnost V = 5 a odolnost C = 3. Po výstavbě varovného systému a nácviku evakuace vzroste odolnost na C = 5. O kolik se sníží riziko R?', answer: 4, tolerance: 0.05, explain: 'Před: R = 6 · 5 ÷ 3 = 10. Po: R = 6 · 5 ÷ 5 = 6. Riziko kleslo o 4, tedy o 40 %.' } },
+        { type: 'p', text: 'Vyzkoušej si, jak se riziko mění, když držíš hrozbu stejnou a měníš jen společnost. Porovnej Port-au-Prince (Haiti, leden 2010, M 7,0) a Christchurch (Nový Zéland, září 2010, M 7,1 u Darfieldu, asi 40 km od města); hrozbu obou zemětřesení model zjednodušeně bere jako stejnou. Pak zkus snížit riziko Port-au-Prince na úroveň Christchurch:' },
+        { type: 'experiment', id: 'risk-index', caption: 'Indexy 1–10 jsou ilustrační odhady pro výuku, ne oficiální hodnoty. Riziko R = H · V ÷ C: Port-au-Prince 7 · 9 ÷ 2 = 31,5, Christchurch 7 · 2 ÷ 8 = 1,75.' },
+        { type: 'p', text: 'Všiml sis? Při stejné hrozbě vyšlo riziko Port-au-Prince osmnáctkrát vyšší. A hrozbu zemětřesení člověk zmenšit nemůže, ale zranitelnost a schopnost zvládnout ano. U povodní jde zmenšit i hrozbu (poldry, retence v krajině), přesto platí totéž: nejlevnější je nestavět v cestě vodě. Jak se taková opatření plánují v čase, popisuje cyklus zvládání katastrof.' },
+        { type: 'check', question: { kind: 'number', q: 'Obec má hrozbu povodně H = 6, zranitelnost V = 5 a schopnost zvládnout C = 3. Po výstavbě varovného systému a nácviku evakuace vzroste schopnost zvládnout na C = 5. O kolik se sníží riziko R?', answer: 4, tolerance: 0.05, explain: 'Před: R = 6 · 5 ÷ 3 = 10. Po: R = 6 · 5 ÷ 5 = 6. Riziko kleslo o 4, tedy o 40 %.' } },
       ],
     },
     {
@@ -901,7 +901,7 @@ const z10_6: Lesson = {
           ['reakce', 'zachraňovat a chránit', 'integrovaný záchranný systém, evakuace, pytle s pískem, vrtulníky na Jesenicku v roce 2024'],
           ['obnova', 'stavět lépe a jinde', 'oprava mostů a domů, výkup domů v nejohroženějších místech, úprava územních plánů'],
         ], caption: 'Cyklus zvládání katastrof na příkladu povodní v Česku' },
-        { type: 'p', text: 'Pražská ochrana, postavená po povodni 2002, v září 2024 zafungovala. Jeseníky ale zasáhla povodeň, se kterou nikdo nepočítal, větší než pětisetletá. Ponaučení z lekce „Tektonická rizika“ platí i tady: připravenost chrání jen do síly, se kterou se počítalo. Celosvětově se to snaží změnit Sendajský rámec OSN pro snižování rizika katastrof (2015–2030), který přesouvá peníze z reakce do prevence. Funguje to: Bangladéš po cyklónu Bhola z roku 1970 (300 000–500 000 obětí) postavil tisíce cyklónových úkrytů a varovný systém, a podobně silné cyklóny dnes zabíjejí řádově méně lidí.' },
+        { type: 'p', text: 'Pražská ochrana, postavená po povodni 2002, v září 2024 zafungovala. Jeseníky ale zasáhla povodeň, se kterou nikdo nepočítal, místy větší než pětisetletá. Ponaučení z lekce „Tektonická rizika“ platí i tady: připravenost chrání jen do síly, se kterou se počítalo. Celosvětově se to snaží změnit Sendajský rámec OSN pro snižování rizika katastrof (2015–2030), který přesouvá peníze z reakce do prevence. Funguje to: Bangladéš po cyklónu Bhola z roku 1970 (300 000–500 000 obětí) postavil tisíce cyklónových úkrytů a varovný systém, a podobně silné cyklóny dnes zabíjejí řádově méně lidí.' },
         { type: 'p', text: 'Povodně, sucha i cyklóny jsou rychlé projevy toho, jak se mění klima. Pomaleji, ale stejně jistě se mění celé krajiny – ledovce, pouště a pobřeží. Ty probereme v lekci „Krajiny ledovců, pouští a pobřeží“.' },
         { type: 'check', question: { kind: 'match', q: 'Přiřaď opatření k fázi cyklu zvládání katastrof.', pairs: [
           ['výstavba poldru nad obcí', 'prevence'],
@@ -918,7 +918,7 @@ const z10_6: Lesson = {
     'Hydrogram ukazuje kulminační průtok a dobu zpoždění; zástavba a odlesnění zvyšují kulminaci a zkracují zpoždění.',
     'N-letá povodeň má každý rok pravděpodobnost 1/N; aspoň jednou za n let P = 1 − (1 − 1/N)ⁿ, např. stoletá voda za 30 let asi 26 %.',
     'Sucho se šíří od meteorologického přes zemědělské k hydrologickému; vlny veder vznikají pod blokující výší (Evropa 2003, přes 70 000 obětí).',
-    'Riziko = hrozba × zranitelnost ÷ odolnost: stejná hrozba dává velmi různé riziko podle toho, jak je společnost zranitelná a připravená.',
+    'Riziko = hrozba × zranitelnost ÷ schopnost zvládnout: stejná hrozba dává velmi různé riziko podle toho, jak je společnost zranitelná a připravená.',
     'Cyklus zvládání katastrof má fáze prevence, připravenost, reakce a obnova; nejvíc ušetří fáze před událostí.',
   ],
   quiz: [
@@ -929,7 +929,7 @@ const z10_6: Lesson = {
     { kind: 'order', q: 'Seřaď části povodňového hydrogramu tak, jak jdou v čase po bouřce.', items: ['základní odtok před deštěm', 'nejsilnější déšť', 'vzestupná větev', 'kulminační průtok', 'sestupná větev'], explain: 'Řeka nejdřív nese jen základní odtok. Po nejintenzivnějším dešti průtok stoupá ke kulminaci; čas mezi nimi je doba zpoždění. Pak průtok pomaleji klesá.' },
     { kind: 'choice', q: 'Proč zahynulo ve vlně veder v roce 2003 ve Francii tolik lidí, i když jde o bohatou zemi?', options: ['zranitelní byli hlavně staří a osamělí lidé v rozpálených městech a chyběl varovný plán', 'Francie neměla žádné nemocnice', 'teploty tam byly vyšší než na Sahaře', 'vedra trvala celý rok'], answer: 0, explain: 'Hrozbu znásobila zranitelnost: senioři žijící sami v bytech pod střechami, letní dovolené a chybějící systém varování. Francie pak zavedla národní plán proti vedru.' },
     { kind: 'number', q: 'Při 60 mm deště odteče z povodí o ploše 20 km² asi 60 % srážek. Kolik m³ vody to je?', answer: 720000, tolerance: 1000, unit: 'm³', explain: 'Odtok = 0,6 · 60 mm = 36 mm = 0,036 m; objem = 0,036 m · 20 000 000 m² = 720 000 m³.' },
-    { kind: 'tf', q: 'Ve vzorci riziko = hrozba × zranitelnost ÷ odolnost zvýšení odolnosti riziko snižuje.', answer: true, explain: 'Odolnost je ve jmenovateli: čím lépe se společnost umí s katastrofou vyrovnat (varování, záchrana, obnova), tím menší je riziko.' },
+    { kind: 'tf', q: 'Ve vzorci riziko = hrozba × zranitelnost ÷ schopnost zvládnout zvýšení schopnosti zvládnout riziko snižuje.', answer: true, explain: 'Schopnost zvládnout je ve jmenovateli: čím lépe se společnost umí s katastrofou vyrovnat (varování, záchrana, obnova), tím menší je riziko.' },
   ],
 }
 
@@ -968,7 +968,7 @@ const z10_7: Lesson = {
         { type: 'example', title: 'Ledovce a hladina moře', problem: 'Aby hladina světového oceánu stoupla o 1 mm, musí do něj přitéct asi 362 Gt vody. O kolik zvedaly horské ledovce hladinu každý rok, když ztrácely 273 Gt ledu?', steps: [
           '273 Gt ÷ 362 Gt/mm ≐ 0,75 mm za rok.',
           'Za 24 let (2000–2023): 0,75 mm · 24 ≐ 18 mm.',
-        ], answer: 'Asi 0,75 mm za rok, celkem asi 18 mm za 24 let – to je zhruba pětina dnešního tempa vzestupu hladiny.' },
+        ], answer: 'Asi 0,75 mm za rok, tedy zhruba pětina dnešního tempa vzestupu hladiny (asi 4 mm za rok); celkem asi 18 mm za 24 let.' },
         { type: 'p', text: 'Pro lidi v horách a pod nimi jsou ale důležitější jiné dopady než hladina oceánu. Projdi je:' },
         { type: 'iconlist', items: [
           { icon: 'water-tap', title: 'Vodárenské věže', text: 'tající ledovce dodávají vodu do řek v suchém létě; na horách Asie a And závisí téměř dvě miliardy lidí' },
@@ -976,7 +976,7 @@ const z10_7: Lesson = {
           { icon: 'mountain', title: 'Tání permafrostu ve skalách', text: 'led přestává tmelit skály, přibývá skalních řícení a sesuvů' },
           { icon: 'suitcase', title: 'Cestovní ruch', text: 'mizí lyžařské ledovce a mění se horská krajina' },
         ] },
-        { type: 'p', text: 'Případ Blattenu spojuje vše, co víme o riziku. Švýcarští odborníci sledovali, jak se ledovec Birch pod tíhou skal ze sesouvajícího se svahu zrychluje z 0,8 na 1,5–2 m za den, a 19. května 2025 nechali všech asi 300 obyvatel do dvou hodin evakuovat. 28. května se ledovec zřítil a pohřbil asi 90 % vesnice. Pohřešuje se jeden člověk. Bez sledování a připravenosti by obětí byly desítky.' },
+        { type: 'p', text: 'Případ Blattenu spojuje vše, co víme o riziku. Švýcarští odborníci sledovali, jak se svah nad ledovcem Birch rozpadá a skály ledovec přetěžují, a 19. května 2025 nechali všech asi 300 obyvatel do dvou hodin evakuovat. V dalších dnech se ledovec zrychlil z asi 0,5 m na 10 m za den. 28. května se zřítil a pohřbil asi 90 % vesnice. Zahynul jeden člověk, pastevec, který byl mimo evakuované území. Bez sledování a připravenosti by obětí byly desítky.' },
         { type: 'p', text: 'Z hor se teď přesuneme do opačného extrému: do krajin, kde vody chybí.' },
         { type: 'check', question: { kind: 'number', q: 'Grónský ledový štít ztrácel v posledních desetiletích řádově 250 Gt ledu za rok. O kolik mm za rok to zvedá hladinu moře? (362 Gt ≐ 1 mm)', answer: 0.69, tolerance: 0.02, unit: 'mm', explain: '250 Gt ÷ 362 Gt/mm ≐ 0,69 mm za rok.' } },
       ],
@@ -1116,7 +1116,7 @@ const z10_8: Lesson = {
           { label: 'zdravá vegetace', style: 'smooth', tone: 'c', points: [[450, 4], [550, 10], [650, 5], [700, 12], [750, 40], [850, 45], [1100, 42], [1650, 25]] },
           { label: 'holá půda', style: 'smooth', tone: 'b', points: [[450, 10], [550, 15], [650, 20], [850, 28], [1100, 32], [1650, 35]] },
           { label: 'voda', style: 'smooth', tone: 'a', points: [[450, 6], [550, 5], [650, 3], [850, 1], [1100, 0], [1650, 0]] },
-        ], marks: [{ x: 665, label: 'červené pásmo' }, { x: 842, label: 'blízké infračervené' }], caption: 'Typické spektrální křivky odrazu (zjednodušeno). Chlorofyl pohlcuje modré a červené světlo, buněčná stavba listu silně odráží blízké infračervené záření.' },
+        ], marks: [{ x: 665, label: 'červené pásmo' }, { x: 842, label: 'blízké infračervené' }], caption: 'Typické spektrální křivky odrazu (zjednodušeno, ilustrační hodnoty). Chlorofyl pohlcuje modré a červené světlo, buněčná stavba listu silně odráží blízké infračervené záření.' },
         { type: 'p', text: 'Družice tedy nevidí „barvy“, ale čísla: pro každý pixel a každé pásmo jedno procento odrazu. Tomu se říká **pasivní** dálkový průzkum, protože využívá sluneční světlo. **Aktivní** přístroje, například radar, si vysílají vlastní signál; vidí i v noci a skrz oblaka, a proto se jimi mapují povodně, které obvykle přicházejí za deštivého počasí.' },
         { type: 'p', text: 'Kvalitu dat popisují tři druhy rozlišení. Než porovnáme konkrétní družice, ujasněme si je:' },
         { type: 'keyterms', items: [
@@ -1142,7 +1142,7 @@ const z10_8: Lesson = {
           '12 ha = 120 000 m².',
           'Sentinel-2: pixel 10 m × 10 m = 100 m²; 120 000 ÷ 100 = 1 200 pixelů.',
           'Landsat: pixel 30 m × 30 m = 900 m²; 120 000 ÷ 900 ≐ 133 pixelů.',
-        ], answer: 'Asi 1 200 pixelů na Sentinelu a 133 na Landsatu. Desetinásobně menší plocha pixelu dává devětkrát víc podrobností.' },
+        ], answer: 'Asi 1 200 pixelů na Sentinelu a 133 na Landsatu. Třikrát kratší strana pixelu znamená devětkrát menší plochu pixelu, a tedy devětkrát víc pixelů na stejné pole.' },
         { type: 'p', text: 'Pozor na častou záměnu: menší pixel neznamená automaticky lepší data. Pro sledování změn od 70. let je nenahraditelný Landsat, pro rychlé změny během sezóny Sentinel-2. Jak se z odrazů v pásmech dostaneme k informaci o rostlinách, ukazuje nejznámější index dálkového průzkumu.' },
         { type: 'check', question: { kind: 'choice', q: 'Studentka chce porovnat, jak se od roku 1985 zmenšil ledovec v Alpách. Která data jsou nejvhodnější?', options: ['snímky Landsat, protože jejich řada sahá až do roku 1972', 'jen snímky Sentinel-2, protože mají menší pixel', 'radarové snímky z jednoho dne', 'jediný snímek z roku 2025'], answer: 0, explain: 'Na srovnání změn za desetiletí je potřeba dlouhá řada. Sentinel-2 snímkuje teprve od roku 2015, Landsat od roku 1972.' } },
       ],
@@ -1222,7 +1222,7 @@ const z10_8: Lesson = {
           { lat: 49.938, lon: 17.903, label: 'Opava', kind: 'city' },
           { lat: 49.835, lon: 18.292, label: 'Ostrava', kind: 'city' },
           { lat: 50.083, lon: 17.235, label: 'Praděd', kind: 'peak' },
-        ], caption: 'Zájmové území projektu: na návětrné straně Jeseníků napršelo v polovině září 2024 během pěti dnů přes 500 mm (ČHMÚ); povodeň byla v regionu podle ČHMÚ větší než pětisetletá.' },
+        ], caption: 'Zájmové území projektu: na návětrné straně Jeseníků napršelo v polovině září 2024 během pěti dnů přes 500 mm (ČHMÚ); průtoky místy překonaly pětisetletou vodu (ČHMÚ).' },
         { type: 'p', text: 'Tak se v jednom projektu sejde celá úroveň: srážky z blokující níže, odtok v povodí, hydrogram, riziko a jeho snižování. Pozor na poslední krok, kde se chybuje nejčastěji: mapa bez měřítka, legendy, data a zdroje není výsledek analýzy, ale obrázek. Celou úroveň si teď zopakuj v bleskové výzvě:' },
         { type: 'game', gameId: 'quickfire', text: 'Blesková výzva: systémy Země, klima, tektonická a hydrometeorologická rizika a GIS na čas.' },
         { type: 'p', text: 'Tím končí přírodní polovina gymnaziálního zeměpisu. Stejné nástroje – systém, data, mapu a riziko – použijeme v úrovni „Obyvatelstvo, města a geopolitika“ na lidi, města a státy, začneme lekcí „Demografický přechod“.' },
@@ -1266,7 +1266,7 @@ const boss: Question[] = [
   { kind: 'number', q: 'Na seismické stanici dorazily vlny S o 40 s později než vlny P. Jak daleko je ohnisko? (každá sekunda rozdílu ≈ 8,4 km)', answer: 336, tolerance: 6, unit: 'km', explain: '40 s · 8,4 km/s = 336 km.' },
   { kind: 'order', q: 'Seřaď zemětřesení podle počtu obětí, od nejvyššího.', items: ['Haiti 2010 (M 7,0)', 'Turecko a Sýrie 2023 (M 7,8)', 'Japonsko 2011 (M 9,0)', 'Chile 2010 (M 8,8)', 'Nový Zéland 2010 (M 7,1)'], explain: 'Haiti přes 100 000, Turecko a Sýrie asi 59 500, Japonsko asi 18 400 mrtvých a pohřešovaných, Chile asi 525, Nový Zéland žádná přímá oběť. Počet obětí neodpovídá magnitudu, ale zranitelnosti.' },
   { kind: 'number', q: 'Jaká je pravděpodobnost, že dvacetiletá povodeň přijde aspoň jednou za 5 let? Výsledek uveď v procentech.', answer: 22.6, tolerance: 0.5, unit: '%', explain: 'P = 1 − (1 − 1/20)⁵ = 1 − 0,95⁵ ≐ 1 − 0,774 = 0,226, tedy asi 23 %.' },
-  { kind: 'match', q: 'Přiřaď jev k lekci a pojmu, který ho vysvětluje.', pairs: [
+  { kind: 'match', q: 'Přiřaď jev k pojmu, který ho vysvětluje.', pairs: [
     ['Atacama skoro bez srážek', 'studený proud a subtropická výše'],
     ['ústup čela ledovce', 'záporná bilance hmoty'],
     ['mizející pláže pod přehradou', 'záporná bilance sedimentů'],

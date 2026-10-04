@@ -220,7 +220,7 @@ function Plate() {
           voda z desky
         </text>
         <text x={360} y={196} className="gz6-lbl gz6-sm gz6-halo">
-          snižuje bod tání
+          snižuje teplotu tání
         </text>
         <text x={20} y={236} className="gz6-lbl gz6-sm">
           astenosféra

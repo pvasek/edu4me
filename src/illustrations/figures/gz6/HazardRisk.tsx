@@ -1,7 +1,7 @@
 import { Fade, Figure, Note, f1, pat, useFig, useLive } from "./kit";
 
 const LABEL =
-  "Riziko = hrozba × zranitelnost ÷ odolnost. Stejné zemětřesení o síle M 7 zasáhne dvě města. V bohatém městě stojí domy postavené podle protizemětřesných předpisů, lidé jsou varovaní a cvičení a záchranáři i nemocnice fungují, takže zranitelnost je malá a riziko nízké: škody, ale málo obětí. V chudém městě se hroutí domy z nezpevněných cihel a betonu v hustě zastavěných čtvrtích bez varování a záchrany, zranitelnost je velká a riziko vysoké. Skutečné příklady z roku 2010: zemětřesení na Haiti (M 7,0) zabilo podle odhadů 100 000 až 316 000 lidí, mnohem silnější zemětřesení v Chile (M 8,8, asi 500× víc uvolněné energie) asi 525 lidí.";
+  "Riziko = hrozba × zranitelnost ÷ kapacita (schopnost katastrofu zvládnout). Stejné zemětřesení o síle M 7 zasáhne dvě města. V bohatém městě stojí domy postavené podle protizemětřesných předpisů, lidé jsou varovaní a cvičení a záchranáři i nemocnice fungují, takže zranitelnost je malá a riziko nízké: škody, ale málo obětí. V chudém městě se hroutí domy z nezpevněných cihel a betonu v hustě zastavěných čtvrtích bez varování a záchrany, zranitelnost je velká a riziko vysoké. Skutečné příklady z roku 2010: zemětřesení na Haiti (M 7,0) zabilo podle odhadů 100 000 až 316 000 lidí, mnohem silnější zemětřesení v Chile (M 8,8, asi 500× víc uvolněné energie) asi 525 lidí.";
 
 const W = 460;
 const H = 420;
@@ -68,7 +68,7 @@ function Plate() {
     <>
       <Note x={10} y={6} w={W - 20} h={40} lvl>
         <text x={W / 2} y={32} textAnchor="middle" className="gz6-lbl gz6-b gz6-big">
-          riziko = hrozba × zranitelnost ÷ odolnost
+          riziko = hrozba × zranitelnost ÷ kapacita
         </text>
       </Note>
       <text x={W / 2} y={70} textAnchor="middle" className="gz6-lbl gz6-sm">
