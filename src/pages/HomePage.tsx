@@ -1,12 +1,9 @@
-import { Link } from 'react-router-dom'
 import { COURSES, nextLesson } from '../core/registry'
-import { albumElements } from '../core/badges'
-import { liveStreak, rankFromXp, rankTitle, useProgress } from '../core/progress'
+import { useProgress } from '../core/progress'
 import { MascotSays } from '../ui/Mascot'
 import { Icon } from '../ui/Icon'
-import { motion } from 'motion/react'
-import { Bar, CountUp, MLink, Page } from '../ui/anim'
-import { pressable, rise, stagger } from '../ui/motion'
+import { MLink, Page } from '../ui/anim'
+import { pressable } from '../ui/motion'
 import { LevelTile } from '../ui/LevelTile'
 
 function greeting() {
@@ -33,8 +30,6 @@ export function HomePage() {
   const doneCount = courses.reduce((a, c) => a + lessonsOf(c.id), 0)
   const total = courses.reduce((a, c) => a + c.levels.reduce((n, l) => n + l.lessons.length, 0), 0)
   const courseDone = nextCourse ? lessonsOf(nextCourse.id) : 0
-  const { rank, into, need } = rankFromXp(p.xp)
-  const streak = liveStreak(p)
   const name = p.settings.name ? `, ${p.settings.name}` : ''
 
   return (
@@ -88,42 +83,6 @@ export function HomePage() {
         </MLink>
       )}
 
-      <motion.section className="stat-row" aria-label="Tvoje statistiky" variants={stagger(0.08, 0.3)} initial="hidden" animate="show">
-        <motion.div className="stat card-flat" variants={rise}>
-          <span className="stat-label">Hodnost</span>
-          <strong className="stat-value">
-            {rank}. {rankTitle(rank)}
-          </strong>
-          <Bar value={into / need} color="var(--yellow)" label="Postup k další hodnosti" />
-          <span className="stat-sub tabnum">
-            {into} / {need} XP do další
-          </span>
-        </motion.div>
-        <motion.div className="stat card-flat" variants={rise}>
-          <span className="stat-label">Série</span>
-          <strong className="stat-value">
-            <Icon name="flame" style={{ color: streak ? 'var(--accent)' : 'var(--muted)' }} /> {streak}{' '}
-            {streak === 1 ? 'den' : streak >= 2 && streak <= 4 ? 'dny' : 'dní'}
-          </strong>
-          <span className="stat-sub">Nejdelší: {p.streak.best}</span>
-        </motion.div>
-        <motion.div className="stat card-flat" variants={rise}>
-          <span className="stat-label">Lekce</span>
-          <strong className="stat-value tabnum">
-            <CountUp value={doneCount} /> / {total}
-          </strong>
-          <Bar value={doneCount / total} label="Dokončené lekce" />
-        </motion.div>
-        <Link to="/profil" className="stat card-flat stat-link">
-          <span className="stat-label">Album prvků</span>
-          <strong className="stat-value tabnum">
-            <CountUp value={albumElements(p).length} /> / 118
-          </strong>
-          <span className="stat-sub">
-            Otevřít album <Icon name="arrowRight" width={14} height={14} />
-          </span>
-        </Link>
-      </motion.section>
 
       <section className="stack">
         <h2>Kurzy</h2>
