@@ -15,6 +15,7 @@ Repo /home/user/edu4me. Czech learning app for teens. You review **<COURSE> leve
 - Don't change ids, lesson titles (they must match `index.ts`) or the structure; don't add or remove lessons.
 - When an error has a correct form, fix it. When it is a matter of opinion or school tradition differs, don't change it: list it for the user.
 - Write each fix to disk at once.
+- Never run `git stash`, `git checkout`/`git restore` or anything that rewrites files you don't own: other agents' uncommitted work is in the same tree.
 
 ## Verify
 - `npx vitest run src/courses/<course>/content.test.ts -t "l<N> "` and `npx vitest run src/core/flow.test.ts -t "<course> l<N>\."`
