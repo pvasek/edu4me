@@ -103,7 +103,7 @@ const level: LevelContent = {
             { type: 'pyramid', step: 5, pyramids: [
               { label: 'Nigérie 2023', male: NGA_2023_M, female: NGA_2023_F, source: WPP },
               { label: 'Nigérie 2050', male: NGA_2050_M, female: NGA_2050_F, source: WPP_P },
-            ], caption: 'Nigérie: 230 mil. obyvatel (2023) → 361 mil. (2050, projekce). Silné ročníky dnešních dětí se posunou do věku rodičů.' },
+            ], caption: 'Nigérie: asi 228 mil. obyvatel (2023) → asi 359 mil. (2050, projekce). Silné ročníky dnešních dětí se posunou do věku rodičů.' },
             { type: 'p', text: 'Setrvačnost funguje i opačně. Vyzkoušej si to: zvol Česko a hledej porodnost, při které by za 50 let mělo stejně obyvatel jako dnes. Pak zvol Niger a sniž porodnost na 20 ‰:' },
             { type: 'experiment', id: 'birth-death-rates', caption: 'Porodnost a úmrtnost → přirozený přírůstek, úhrnná plodnost a pyramida za 50 let (model bez migrace).' },
             { type: 'p', text: 'Všiml/a sis? V Česku nestačí, aby se porodnost vyrovnala úmrtnosti: početné ročníky ze 70. let za 50 let vymřou a slabé ročníky narozené po roce 1995 je nenahradí. Niger poroste i s poloviční porodností, protože má tolik mladých lidí. ==Dnešní věková struktura určuje růst populace na desítky let dopředu.==' },
@@ -120,7 +120,7 @@ const level: LevelContent = {
             { type: 'pyramid', step: 5, pyramids: [
               { label: 'Jižní Korea 1970', male: KOR_1970_M, female: KOR_1970_F, source: WPP },
               { label: 'Jižní Korea 2050', male: KOR_2050_M, female: KOR_2050_F, source: WPP_P },
-            ], caption: 'Jižní Korea 1970 (32,9 mil.) a 2050 (projekce 44,9 mil.). Úhrnná plodnost klesla ze 4,5 (1970) na 0,8 (2025, Statistics Korea), jednu z nejnižších na světě.' },
+            ], caption: 'Jižní Korea 1970 (32,5 mil.) a 2050 (projekce 45,1 mil.). Úhrnná plodnost klesla ze 4,5 (1970) na 0,8 (2025, Statistics Korea), jednu z nejnižších na světě.' },
             { type: 'p', text: 'Korea prošla přechodem asi za 50 let, Evropa za 150. Z tohoto a dalších případů plynou hlavní výtky k modelu:' },
             { type: 'list', items: [
               '**Eurocentrismus:** model vychází ze zkušenosti Evropy. Dnešní rozvojové země „dovezly“ očkování a antibiotika, a úmrtnost u nich klesla mnohem rychleji než kdysi v Evropě.',
@@ -137,22 +137,22 @@ const level: LevelContent = {
           title: 'Projekce: jak daleko vidíme',
           icon: 'telescope',
           blocks: [
-            { type: 'p', text: 'Projekce není věštba, ale výpočet „co když“. Demograf vezme dnešní pyramidu a rok po roce ji posouvá: každou skupinu zestárne o rok, odečte zemřelé podle úmrtnosti v daném věku, přidá narozené podle plodnosti žen a připočte migraci. Výsledek je jen tak dobrý jako tyto předpoklady.' },
+            { type: 'p', text: 'Projekce není věštba, ale výpočet „co když“. Demograf vezme dnešní pyramidu a rok po roce ji posouvá: nechá každou skupinu zestárnout o rok, odečte zemřelé podle úmrtnosti v daném věku, přidá narozené podle plodnosti žen a připočte migraci. Výsledek je jen tak dobrý jako tyto předpoklady.' },
             { type: 'p', text: 'Proto OSN počítá několik variant a nejčastěji se cituje ta střední. Podívej se, jak podle ní vypadá budoucnost tří populačních obrů:' },
             { type: 'graph', x: { label: 'rok', min: 1950, max: 2100, step: 25 }, y: { label: 'počet obyvatel', unit: 'mil.', min: 0, max: 1800, step: 300 },
               series: [
-                { label: 'Indie', points: [[1950, 346], [1970, 557], [2000, 1059], [2025, 1464], [2050, 1680], [2075, 1671], [2100, 1505]], style: 'smooth', tone: 'a' },
-                { label: 'Čína', points: [[1950, 544], [1970, 822], [2000, 1264], [2025, 1416], [2050, 1260], [2075, 934], [2100, 633]], style: 'smooth', tone: 'b' },
-                { label: 'Nigérie', points: [[1950, 37], [1970, 55], [2000, 123], [2025, 238], [2050, 359], [2075, 447], [2100, 477]], style: 'smooth', tone: 'c' },
+                { label: 'Indie', points: [[1950, 346], [1970, 546], [2000, 1058], [2025, 1464], [2050, 1680], [2075, 1671], [2100, 1505]], style: 'smooth', tone: 'a' },
+                { label: 'Čína', points: [[1950, 544], [1970, 823], [2000, 1270], [2025, 1416], [2050, 1260], [2075, 934], [2100, 633]], style: 'smooth', tone: 'b' },
+                { label: 'Nigérie', points: [[1950, 37], [1970, 56], [2000, 126], [2025, 238], [2050, 359], [2075, 447], [2100, 477]], style: 'smooth', tone: 'c' },
               ],
               marks: [{ x: 2025, label: 'dnes' }],
               caption: 'Počet obyvatel Indie, Číny a Nigérie v milionech. Do roku 2023 odhady, potom střední varianta projekce (UN World Population Prospects 2024).' },
             { type: 'p', text: 'Čína dosáhla vrcholu kolem roku 2021 a do roku 2100 může mít méně než polovinu dnešního počtu obyvatel. Indie poroste ještě asi do roku 2060, až na 1,7 miliardy. Nigérie bude mít v roce 2100 asi 477 milionů lidí. Jak moc ale záleží na předpokladech, ukazuje Česko – dvě instituce, dvě projekce na rok 2050:' },
             { type: 'table', headers: ['projekce', 'Česko 2050', 'čím se liší'], rows: [
-              ['ČSÚ 2023, střední varianta', '10,69 mil.', 'počítá s trvale kladným migračním saldem'],
-              ['UN WPP 2024, střední varianta', '9,81 mil.', 'počítá s menším migračním ziskem'],
+              ['ČSÚ 2023, střední varianta', '10,69 mil.', 'plodnost 1,5 dítěte na ženu a migrační saldo +35 000 ročně'],
+              ['UN WPP 2024, střední varianta', '9,83 mil.', 'počítá s mnohem menším migračním ziskem'],
             ], caption: 'Výchozí stav: 10,9 mil. obyvatel (ČSÚ, konec roku 2025).' },
-            { type: 'p', text: 'Rozdíl skoro 900 tisíc lidí je víc než Brno, Ostrava a Plzeň dohromady. Obecně platí: čím dál do budoucnosti, tím víc se varianty rozcházejí. Nejistější jsou porodnost a migrace, úmrtnost se odhaduje nejlépe. Projekce přesto ukazují, že velká část světa bude stárnout – a některé státy se proto snaží porodnost řídit.' },
+            { type: 'p', text: 'Rozdíl asi 860 tisíc lidí je skoro tolik, kolik mají Brno, Ostrava a Plzeň dohromady. Obecně platí: čím dál do budoucnosti, tím víc se varianty rozcházejí. Nejistější jsou porodnost a migrace, úmrtnost se odhaduje nejlépe. Projekce přesto ukazují, že velká část světa bude stárnout – a některé státy se proto snaží porodnost řídit.' },
             { type: 'check', question: { kind: 'number', q: 'Podle střední varianty OSN bude mít Čína v roce 2100 asi 633 milionů obyvatel, v roce 2025 jich měla asi 1 416 milionů. O kolik procent počet obyvatel klesne? Zaokrouhli na celá procenta.', answer: 55, tolerance: 1, unit: '%', explain: '633 : 1 416 ≐ 0,447, tedy zůstane asi 45 %. Pokles je 100 % − 45 % ≐ 55 %.' } },
           ],
         },
@@ -169,8 +169,8 @@ const level: LevelContent = {
             { type: 'pyramid', step: 5, pyramids: [
               { label: 'Čína 1990', male: CHN_1990_M, female: CHN_1990_F, source: WPP },
               { label: 'Čína 2050', male: CHN_2050_M, female: CHN_2050_F, source: WPP_P },
-            ], caption: 'Čína 1990 (1,16 mld.) a 2050 (projekce 1,26 mld.): ze široké pyramidy se stane urna a lidé nad 65 let budou tvořit skoro třetinu obyvatel.' },
-            { type: 'p', text: 'Pozor na dvě časté chyby. Zaprvé, porodnost v Číně prudce klesala už v 70. letech, před politikou jednoho dítěte; ta pokles jen urychlila. Zadruhé, peníze samy porodnost výrazně nezvednou – rozhoduje, jestli jde sladit děti s prací a bydlením. Politika jednoho dítěte spolu s upřednostňováním synů navíc vychýlila poměr pohlaví při narození až na 118 chlapců na 100 dívek (2011); přirozený poměr je asi 105 : 100.' },
+            ], caption: 'Čína 1990 (1,15 mld.) a 2050 (projekce 1,26 mld.): ze široké pyramidy se stane urna a lidé nad 65 let budou tvořit skoro třetinu obyvatel.' },
+            { type: 'p', text: 'Pozor na dvě časté chyby. Zaprvé, porodnost v Číně prudce klesala už v 70. letech, před politikou jednoho dítěte; ta pokles jen urychlila. Zadruhé, peníze samy porodnost výrazně nezvednou – rozhoduje, jestli jde sladit děti s prací a bydlením. Politika jednoho dítěte spolu s upřednostňováním synů navíc vychýlila poměr pohlaví při narození kolem roku 2010 až na 118 chlapců na 100 dívek; přirozený poměr je asi 105 : 100.' },
             { type: 'p', text: 'Fázi přechodu z pyramidy a její podobu za 20 let si procvič ve hře:' },
             { type: 'game', gameId: 'pop-pyramid', text: 'Urči z pyramidy fázi demografického přechodu a odhadni, jak bude populace vypadat za 20 let.' },
             { type: 'p', text: 'Stárnoucí Evropu a východní Asii a mladou Afriku ale nespojují jen čísla v tabulkách. Spojuje je pohyb lidí, a ten vysvětlíme v lekci „Migrace a teorie migrace“.' },
@@ -184,7 +184,7 @@ const level: LevelContent = {
         'Úhrnná plodnost je počet dětí na jednu ženu; záchovná úroveň je asi 2,1, Česko mělo v roce 2025 jen 1,28.',
         'Setrvačnost populace znamená, že dnešní věková struktura určuje růst na desítky let: Nigérie poroste, i když porodnost klesá.',
         'Model vychází z Evropy, nepočítá s migrací a neurčuje tempo; Jižní Korea prošla přechodem za 50 let.',
-        'Projekce jsou výpočty „co když“; pro Česko v roce 2050 dává ČSÚ 10,69 mil. a OSN 9,81 mil. obyvatel.',
+        'Projekce jsou výpočty „co když“; pro Česko v roce 2050 dává ČSÚ 10,69 mil. a OSN 9,83 mil. obyvatel.',
         'Čína omezovala porodnost politikou jednoho dítěte, Francie ji podporuje rodinnou politikou; dnes obě porodnost podporují.',
       ],
       quiz: [
@@ -194,7 +194,7 @@ const level: LevelContent = {
         { kind: 'choice', q: 'Proč ve 4. a 5. fázi úmrtnost mírně roste, i když se lidé dožívají vyššího věku?', options: ['populace stárne a přibývá starých lidí', 'zhoršuje se zdravotní péče', 'roste kojenecká úmrtnost', 'lidé se stěhují do měst'], answer: 0, explain: 'Úmrtnost se počítá na všechny obyvatele. Když je v populaci víc starých lidí, víc lidí za rok zemře, i když každý žije déle.' },
         { kind: 'multi', q: 'Co obvykle vede k poklesu porodnosti?', options: ['delší vzdělávání dívek', 'stěhování rodin do měst', 'důchodový systém', 'vysoká kojenecká úmrtnost', 'práce dětí na rodinném statku'], answers: [0, 1, 2], explain: 'Vzdělání žen, městský život a zajištění ve stáří snižují počet dětí. Vysoká kojenecká úmrtnost a dětská práce na statku naopak porodnost drží vysoko.' },
         { kind: 'tf', q: 'Když úhrnná plodnost klesne na 2,1, počet obyvatel se okamžitě přestane měnit.', answer: false, explain: 'Kvůli setrvačnosti populace ještě desítky let roste (mladá populace), nebo klesá (stará populace), dokud se věková struktura neustálí.' },
-        { kind: 'choice', q: 'Proč se projekce ČSÚ a OSN pro Česko v roce 2050 liší skoro o 900 tisíc lidí?', options: ['vycházejí z jiných předpokladů, hlavně o migraci', 'jedna z nich počítá jen muže', 'OSN nezná dnešní počet obyvatel Česka', 'ČSÚ nepočítá se zemřelými'], answer: 0, explain: 'Obě začínají ze stejných dat, ale ČSÚ počítá s vyšším migračním saldem. Migrace je spolu s porodností nejnejistější část každé projekce.' },
+        { kind: 'choice', q: 'Proč se projekce ČSÚ a OSN pro Česko v roce 2050 liší asi o 860 tisíc lidí?', options: ['vycházejí z jiných předpokladů, hlavně o migraci', 'jedna z nich počítá jen muže', 'OSN nezná dnešní počet obyvatel Česka', 'ČSÚ nepočítá se zemřelými'], answer: 0, explain: 'Obě začínají ze stejných dat, ale ČSÚ počítá s vyšším migračním saldem. Migrace je spolu s porodností nejnejistější část každé projekce.' },
         { kind: 'text', q: 'Jak se nazývá průměrný počet dětí, které by porodila jedna žena za život? (dvě slova)', accept: ['úhrnná plodnost', 'plodnost úhrnná'], explain: 'Úhrnná plodnost nezávisí na věkovém složení populace, proto je přesnější než porodnost v ‰.' },
       ],
     },
@@ -219,9 +219,9 @@ const level: LevelContent = {
             { type: 'p', text: 'V roce 2024 žilo mimo zemi svého narození 304 milionů lidí, tedy 3,7 % lidstva; v roce 1990 jich bylo 154 milionů (UN DESA, International Migrant Stock 2024). Na mapě porovnej, kam míří nejvíc lidí a odkud jich nejvíc pochází:' },
             { type: 'map', view: 'world', highlight: [
               { codes: ['USA', 'DEU', 'SAU'], tone: 'a', label: 'nejvíc přistěhovalců: USA 52 mil., Německo 17 mil., Saúdská Arábie 14 mil.' },
-              { codes: ['IND', 'MEX', 'CHN', 'RUS'], tone: 'b', label: 'nejvíc vystěhovalců (země původu)' },
+              { codes: ['IND', 'CHN', 'MEX'], tone: 'b', label: 'nejvíc vystěhovalců: Indie, Čína, Mexiko' },
               { codes: ['ARE', 'QAT'], tone: 'c', label: 'přistěhovalci tvoří přes 70 % obyvatel' },
-            ], layers: ['names'], caption: 'Mezinárodní migranti v roce 2024 (UN DESA, International Migrant Stock 2024). Polovina všech migrantů žije v pouhých jedenácti státech.' },
+            ], layers: ['names'], caption: 'Mezinárodní migranti v roce 2024 (UN DESA, International Migrant Stock 2024). Jen v USA žije asi 17 % všech migrantů světa.' },
             { type: 'p', text: 'Mapa vyvrací dvě představy. Migranti nemíří jen do Evropy a Severní Ameriky: třetím největším cílem je Saúdská Arábie. A v Kataru a Spojených arabských emirátech tvoří přistěhovalci přes 70 % obyvatel – přijeli za prací na stavbách, ve službách a v ropném průmyslu. Jak to vypadá v datech o lidech, ukazuje pyramida:' },
             { type: 'pyramid', step: 5, pyramids: [
               { label: 'Spojené arabské emiráty 2023', male: ARE_2023_M, female: ARE_2023_F, source: WPP },
@@ -310,7 +310,7 @@ const level: LevelContent = {
               { lat: 16.97, lon: 7.99, label: 'Agadez', kind: 'city' },
               { lat: 35.5, lon: 12.6, label: 'Lampedusa', kind: 'place' },
               { lat: 28.1, lon: -15.4, label: 'Kanárské ostrovy', kind: 'place' },
-            ], caption: 'Hlavní trasy nelegální migrace z Afriky do EU. V roce 2025 zaznamenal Frontex asi 178 000 nelegálních přechodů vnějších hranic EU, o 26 % méně než v roce 2024; asi 40 % připadlo na centrální středomořskou trasu, západoafrická trasa klesla o 60 %.' },
+            ], caption: 'Hlavní trasy nelegální migrace z Afriky do EU. V roce 2025 zaznamenal Frontex asi 178 000 nelegálních přechodů vnějších hranic EU, o 26 % méně než v roce 2024; přes třetinu (asi 66 000) připadla na centrální středomořskou trasu, západoafrická trasa klesla asi o 60 %.' },
             { type: 'p', text: 'Čísla se rok od roku prudce mění podle dohod EU s Tureckem, Libyí, Tuniskem nebo Mauritánií: jedna trasa se uzavře a jinde se otevře. Pro srovnání: v roce 2015 připlulo do Evropy přes milion lidí. A přes milion lidí přišlo i v roce 2022 – z Ukrajiny, a to legálně. Pravidla shrnují tři pojmy:' },
             { type: 'keyterms', items: [
               { term: '**Schengenský prostor**', def: '29 států bez kontrol na vnitřních hranicích; od ledna 2025 plně i Bulharsko a Rumunsko' },
@@ -343,7 +343,7 @@ const level: LevelContent = {
         { kind: 'choice', q: 'Proč má pyramida Spojených arabských emirátů velký výběžek mužů ve věku 20–44 let?', options: ['přicházejí sem pracovní migranti, hlavně muži', 'v Emirátech se rodí víc chlapců než jinde', 'ženy se z Emirátů hromadně vystěhovaly', 'je to stopa po válce'], answer: 0, explain: 'Většinu obyvatel tvoří přistěhovalci za prací, převážně muži z jižní Asie. Pyramidu tak tvaruje migrace, ne porodnost.' },
         { kind: 'tf', q: 'Odliv mozků se týká jen nejchudších zemí světa.', answer: false, explain: 'Týká se i Česka: lékaři a sestry odcházejí za vyššími platy do Německa a Rakouska.' },
         { kind: 'multi', q: 'Které jsou meze gravitačního modelu?', options: ['nepočítá s jazykem a hranicemi', 'vzdálenost v kilometrech nevystihuje cenu a dobu cesty', 'přehlíží migrační sítě', 'počítá s tím, že větší místa přitahují víc migrantů', 'zahrnuje vzdálenost mezi místy'], answers: [0, 1, 2], explain: 'Model je jednoduchý: zná jen velikost a vzdálenost. Jazyk, hranice, cena cesty a sítě tok mění. Velikost a vzdálenost jsou naopak jeho podstata.' },
-        { kind: 'choice', q: 'Která trasa nelegální migrace do EU byla v roce 2025 nejvytíženější?', options: ['centrální středomořská (z Libye a Tuniska do Itálie)', 'západoafrická na Kanárské ostrovy', 'přes Arktidu', 'přes Bospor do Ruska'], answer: 0, explain: 'Podle Frontexu připadlo na centrální Středomoří asi 40 % nelegálních přechodů, západoafrická trasa naopak klesla o 60 %.' },
+        { kind: 'choice', q: 'Která trasa nelegální migrace do EU byla v roce 2025 nejvytíženější?', options: ['centrální středomořská (z Libye a Tuniska do Itálie)', 'západoafrická na Kanárské ostrovy', 'přes Arktidu', 'přes Bospor do Ruska'], answer: 0, explain: 'Podle Frontexu připadla na centrální Středomoří přes třetina nelegálních přechodů (asi 66 000), západoafrická trasa naopak klesla asi o 60 %.' },
       ],
     },
 
@@ -383,7 +383,7 @@ const level: LevelContent = {
           title: 'Modely vnitřní struktury města',
           icon: 'city',
           blocks: [
-            { type: 'p', text: 'Když se na velké město podíváš z letadla, nevypadá jako náhodná změť. Obchody, továrny a různé typy bydlení tvoří pásy a čtvrti. Sociologové a geografové z Chicaga se v první polovině 20. století pokusili najít pravidla a vznikly tři klasické modely.' },
+            { type: 'p', text: 'Když se na velké město podíváš z letadla, nevypadá jako náhodná změť. Obchody, továrny a různé typy bydlení tvoří pásy a čtvrti. Američtí sociologové, ekonomové a geografové (první z nich z Chicaga) se v první polovině 20. století pokusili najít pravidla a vznikly tři klasické modely.' },
             { type: 'p', text: 'Prohlédni si je vedle sebe a u každého si všimni, co tvoří hlavní uspořádání: kruhy, výseče, nebo několik jader.' },
             { type: 'diagram', id: 'urban-models', caption: 'Burgessův model soustředných zón (1925), Hoytův sektorový model (1939) a model mnoha jader (Harris–Ullman, 1945).' },
             { type: 'p', text: 'Za všemi modely stojí stejná logika jako za cenou pozemků: centrum je nejdostupnější, a proto nejdražší. Kdo potřebuje zákazníky (obchod, banky), zaplatí nejvíc; kdo potřebuje hodně místa (průmysl, rodinné domy), jde dál. Liší se tím, co dalšího vysvětlují:' },
@@ -435,7 +435,7 @@ const level: LevelContent = {
           icon: 'tent',
           blocks: [
             { type: 'p', text: 'Když do města přichází víc lidí, než kolik pro ně stihne vzniknout bytů, staví si obydlí sami – na cizí půdě, bez povolení, často bez vody. Takové čtvrti OSN nazývá **neformální sídla**, chudé a přelidněné čtvrti obecně **slumy**. Žije v nich přes 1,1 miliardy lidí (UN-Habitat).' },
-            { type: 'p', text: 'Najdi na mapě několik nejznámějších. Leží v Asii, Africe i Latinské Americe a mají různá jména – favela, bustí, katchi abadi:' },
+            { type: 'p', text: 'Najdi na mapě několik nejznámějších. Leží v Asii, Africe i Latinské Americe a mají různá jména – favela, basti, katchi abadi:' },
             { type: 'map', view: 'world', points: [
               { lat: 19.04, lon: 72.85, label: 'Dháravi (Bombaj)', kind: 'place' },
               { lat: 24.95, lon: 67.0, label: 'Orangi (Karáčí)', kind: 'place' },
@@ -596,7 +596,7 @@ const level: LevelContent = {
             ] },
             { type: 'p', text: 'Jak je na tom svět? Zpráva agentur OSN o stavu potravinové bezpečnosti a výživy (SOFI 2026) přinesla tato čísla za rok 2025:' },
             { type: 'table', headers: ['ukazatel (2025)', 'hodnota'], rows: [
-              ['podvyživení lidé na světě', 'asi 645 milionů (7,8 % lidstva), o 40 milionů méně než v roce 2024'],
+              ['podvyživení lidé na světě', 'asi 645 milionů (7,8 % lidstva); hlad ubývá třetí rok za sebou'],
               ['Afrika', 'asi 309 milionů, tedy zhruba každý pátý obyvatel'],
               ['Asie', 'asi 292 milionů'],
               ['potvrzený hladomor (IPC)', 'v srpnu 2025 v části Pásma Gazy, v listopadu 2025 v súdánských městech Al-Fášir a Kádugli'],
@@ -649,7 +649,7 @@ const level: LevelContent = {
           title: 'Jak se kultura šíří',
           icon: 'arrow-cycle',
           blocks: [
-            { type: 'p', text: 'V lekci „Jazyky, náboženství a kultury“ jsme si ukázali, jak pestrý je svět. Teď nás zajímá pohyb: jak se nový zvyk, jazyk nebo vynález dostane z místa vzniku – **ohniska** – jinam. Šíření kulturních jevů v prostoru se říká **kulturní difuze**; její typy popsal švédský geograf Torsten Hägerstrand.' },
+            { type: 'p', text: 'V lekci „Jazyky, náboženství a kultury“ jsme si ukázali, jak pestrý je svět. Teď nás zajímá pohyb: jak se nový zvyk, jazyk nebo vynález dostane z místa vzniku – **ohniska** – jinam. Šíření kulturních jevů v prostoru se říká **kulturní difuze**; jejím průkopníkem byl švédský geograf Torsten Hägerstrand.' },
             { type: 'p', text: 'Porovnej v obrázku tři hlavní typy. Rozhodující otázka zní: stěhují se lidé, nebo jen myšlenka?' },
             { type: 'diagram', id: 'cultural-diffusion', caption: 'Relokační difuze (s migranty), expanzní nákazová (od člověka k člověku) a expanzní hierarchická (od metropolí dolů).' },
             { type: 'p', text: 'U relokační difuze se kultura přesouvá spolu s lidmi a v ohnisku může i slábnout. U expanzní zůstává v ohnisku a jen přibývají další místa. Každý typ má své typické příklady:' },
@@ -676,7 +676,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Proč jsou rozšířená tak různě? **Univerzalistická** náboženství (křesťanství, islám, buddhismus) hledají věřící mezi všemi lidmi a šířila se misiemi i dobýváním. **Etnická** náboženství (hinduismus, judaismus) jsou spjatá s jedním národem a krajinou. U jazyků rozhoduje moc: jazyk vládců, obchodu a dnes internetu se stává **lingua franca**, společným dorozumívacím jazykem – dřív latina, dnes angličtina.' },
             { type: 'p', text: 'Opačnou stranou difuze je zánik. Z asi 7 100 jazyků světa je podle Ethnologue skoro polovina ohrožená, protože je děti už nepřebírají. Že se jazyk dá zachránit, ukazují tyto příklady:' },
             { type: 'iconlist', items: [
-              { icon: 'speech', title: 'Velština', text: 'povinná ve školách ve Walesu; po desetiletích úbytku se počet mluvčích stabilizoval' },
+              { icon: 'speech', title: 'Velština', text: 'povinný předmět ve školách ve Walesu, vlastní televize; mluví jí asi 18 % obyvatel Walesu (sčítání 2021)' },
               { icon: 'flag', title: 'Katalánština', text: 'úřední jazyk Katalánska a hlavní vyučovací jazyk jeho škol' },
               { icon: 'book', title: 'Hebrejština', text: 'z jazyka modliteb se ve 20. století stala mateřštinou milionů lidí v Izraeli' },
               { icon: 'house', title: 'Lužická srbština', text: 'západoslovanský jazyk v Německu u našich hranic; mluví jí už jen desítky tisíc lidí' },
@@ -790,7 +790,7 @@ const level: LevelContent = {
           icon: 'crown',
           blocks: [
             { type: 'p', text: 'V lekci „Státy a hranice“ jsme stát popsali čtyřmi znaky: území, obyvatelstvo, státní moc a uznání. Jádrem je **svrchovanost** (suverenita): stát sám rozhoduje o svém území a nikdo nad ním nestojí. Myšlenka pochází z Vestfálského míru (1648), který ukončil třicetiletou válku.' },
-            { type: 'p', text: 'Mezinárodní právo vychází z Montevidejské úmluvy (1933). Ta stanoví čtyři kritéria státu, o uznání ale mlčí – a právě tady začínají spory:' },
+            { type: 'p', text: 'Kritéria státu se v mezinárodním právu obvykle odvozují z Montevidejské úmluvy (1933). Ta stanoví čtyři kritéria státu, o uznání ale mlčí – a právě tady začínají spory:' },
             { type: 'keyterms', items: [
               { term: '**Kritéria státnosti** (Montevideo, 1933)', def: 'trvalé obyvatelstvo, vymezené území, vláda a schopnost vstupovat do vztahů s jinými státy' },
               { term: '**Vnitřní svrchovanost**', def: 'stát skutečně vykonává moc na svém území: zákony, policie, daně' },
@@ -848,7 +848,7 @@ const level: LevelContent = {
               ['Monako', '2,1 km²', 'asi 38 000', 'nejhustěji zalidněný stát světa; finance, kasino, závody formule 1'],
               ['Nauru', '21 km²', 'asi 12 000', 'ostrovní stát v Tichém oceánu, dříve bohatý z těžby fosfátů'],
               ['San Marino', '61 km²', 'asi 34 000', 'nejstarší dochovaná republika (podle tradice od roku 301)'],
-              ['Lichtenštejnsko', '160 km²', 'asi 40 000', 'průmysl a finance; knížecí rod s kořeny na Moravě (Lednice, Valtice)'],
+              ['Lichtenštejnsko', '160 km²', 'asi 40 000', 'průmysl a finance; knížecí rod po staletí vlastnil panství na Moravě (Lednice, Valtice)'],
             ], caption: 'Zaokrouhlené údaje kolem roku 2025 (UN WPP 2024, národní statistiky).' },
             { type: 'p', text: 'Mikrostáty přežily díky diplomacii, neutralitě a smlouvám se sousedy: obranu Monaka zajišťuje Francie, Vatikán a San Marino používají euro bez členství v EU. Jejich slabinou je závislost na sousedovi. Závislost na geografii ale znají i velké státy – podle toho, jaký mají tvar.' },
             { type: 'check', question: { kind: 'tf', q: 'Kaliningradská oblast je exkláva Ruska.', answer: true, explain: 'Patří Rusku, ale od jeho hlavního území ji dělí Litva a Bělorusko. Je to tedy exkláva.' } },
@@ -866,7 +866,7 @@ const level: LevelContent = {
               'Obdélník: obvod = 2 · (400 + 25) km = 850 km.',
               'Ze středu do rohu (Pythagorova věta): čtverec √(50^{2} + 50^{2}) ≐ 71 km, obdélník √(200^{2} + 12,5^{2}) ≐ 200 km.',
             ], answer: 'Protáhlý stát má při stejné rozloze víc než dvojnásobnou hranici a jeho nejvzdálenější místa leží skoro třikrát dál od středu: dražší obrana, doprava i správa.' },
-            { type: 'p', text: 'Pozor, tvar nic nepředurčuje. Fragmentovaná Indonésie drží pohromadě, i když se od ní Východní Timor oddělil, a rozpadají se i kompaktní státy. Česko je spíš protáhlé: od západu na východ měří asi 493 km, od severu k jihu jen asi 278 km. Tvar sám stát nerozbije, spory ale nejčastěji vznikají o to, komu území patří.' },
+            { type: 'p', text: 'Pozor, tvar nic nepředurčuje. Fragmentovaná Indonésie drží pohromadě, i když se od ní Východní Timor oddělil, a rozpadají se i kompaktní státy. Česko má poměrně kompaktní tvar, jen protažený od západu na východ: měří tak asi 493 km, od severu k jihu jen asi 278 km. Tvar sám stát nerozbije, spory ale nejčastěji vznikají o to, komu území patří.' },
             { type: 'check', question: { kind: 'choice', q: 'Jaký tvar má Chile?', options: ['protáhlý', 'kompaktní', 'perforovaný', 'fragmentovaný'], answer: 0, explain: 'Chile je asi 4 300 km dlouhé a v průměru jen kolem 180 km široké, což ztěžuje dopravu i správu mezi severem a jihem.' } },
           ],
         },
@@ -885,7 +885,7 @@ const level: LevelContent = {
             ], caption: 'Vybraná sporná území (stav 2026).' },
             { type: 'p', text: 'Kdo si území nárokuje a jak spor stojí, shrnuje tabulka:' },
             { type: 'table', headers: ['území', 'kdo si ho nárokuje', 'stav (2026)'], rows: [
-              ['Kašmír', 'Indie a Pákistán, menší část i Čína', 'rozdělen linií kontroly; zatím poslední ozbrojený střet Indie a Pákistánu v květnu 2025'],
+              ['Kašmír', 'Indie a Pákistán, menší část i Čína', 'rozdělen linií kontroly; ozbrojený střet Indie a Pákistánu naposledy v květnu 2025'],
               ['Západní Sahara', 'Maroko a Fronta Polisario (Saharská arabská demokratická republika)', 'většinu spravuje Maroko; Rada bezpečnosti OSN v roce 2025 označila marocký plán autonomie za základ jednání'],
               ['Krym', 'Ukrajina a Rusko', 'Rusko ho v roce 2014 anektovalo; Valné shromáždění OSN anexi neuznalo a potvrdilo územní celistvost Ukrajiny'],
               ['Falklandy (Malvíny)', 'Spojené království a Argentina', 'britské zámořské území; válka v roce 1982; obyvatelé v referendu 2013 hlasovali pro setrvání u Británie'],
@@ -1022,7 +1022,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Kluby států jako G7, G20 nebo BRICS nemají zakládací smlouvu ani stálý sekretariát s pravomocemi. Jsou to fóra, kde se hlavy států dohadují o ekonomice, financích a krizích. Jejich složení prozrazuje, jak se mění rozložení moci ve světě:' },
             { type: 'table', headers: ['skupina', 'členové', 'co představuje'], rows: [
-              ['G7 (od 1975)', 'USA, Japonsko, Německo, Spojené království, Francie, Itálie, Kanada (a EU)', 'vyspělé demokracie; Rusko bylo jako G8 členem do roku 2014'],
+              ['G7 (od 1975, se sedmi členy od 1976)', 'USA, Japonsko, Německo, Spojené království, Francie, Itálie, Kanada (a EU)', 'vyspělé demokracie; Rusko bylo jako G8 členem do roku 2014'],
               ['G20 (od 1999, summity od 2008)', '19 států, EU a od roku 2023 Africká unie', 'asi 85 % světového HDP a dvě třetiny lidstva; v roce 2026 předsedají USA, které na summit nepozvaly Jihoafrickou republiku'],
               ['BRICS (od 2009)', 'Brazílie, Rusko, Indie, Čína, Jihoafrická republika (2010), Egypt, Etiopie, Írán, SAE (2024), Indonésie (2025)', 'rostoucí ekonomiky globálního Jihu, téměř polovina lidstva; od roku 2024 i partnerské země'],
             ] },
@@ -1093,7 +1093,7 @@ const level: LevelContent = {
         'Vysvětlit, kdo je uprchlík podle mezinárodního práva a jaká jsou trvalá řešení',
         'Zhodnotit možnosti a meze mírových operací OSN',
       ],
-      hook: 'Podle Uppsalského programu dat o konfliktech (UCDP) probíhalo v roce 2024 na světě 61 ozbrojených konfliktů, ve kterých bojoval aspoň jeden stát – nejvíc od roku 1946. Proč, když máme OSN, mezinárodní právo a propojený světový obchod?',
+      hook: 'Podle Uppsalského programu dat o konfliktech (UCDP) probíhalo v roce 2025 na světě 65 ozbrojených konfliktů, ve kterých bojoval aspoň jeden stát – nejvíc od roku 1946. Proč, když máme OSN, mezinárodní právo a propojený světový obchod?',
       sections: [
         {
           title: 'Příčiny konfliktů',
@@ -1132,9 +1132,9 @@ const level: LevelContent = {
             { type: 'list', items: [
               '**1948 a 1967:** vznik Izraele a válka s arabskými státy; v roce 1967 Izrael obsadil Západní břeh Jordánu, Pásmo Gazy a východní Jeruzalém.',
               '**7. října 2023** zaútočilo hnutí Hamás na Izrael: asi 1 200 mrtvých a přes 250 unesených rukojmí. Následovala izraelská vojenská operace v Pásmu Gazy; podle ministerstva zdravotnictví v Gaze, které řídí Hamás, zemřelo do roku 2026 přes 70 000 Palestinců. V srpnu 2025 potvrdila klasifikace IPC v části Pásma hladomor.',
-              '**Říjen 2025:** začalo příměří podle plánu USA. Izraelská armáda drží přes polovinu Pásma Gazy a druhá fáze plánu (odzbrojení Hamásu, mezinárodní stabilizační síly) postupuje pomalu.',
+              '**Říjen 2025:** začalo příměří podle plánu USA. Izraelská armáda dál drží asi polovinu Pásma Gazy a o druhé fázi plánu (odzbrojení Hamásu, mezinárodní stabilizační síly) se stále jedná (stav k září 2026).',
               '**Sýrie:** po 13 letech občanské války padl v prosinci 2024 režim Bašára Asada.',
-              '**Írán:** 28. února 2026 zaútočily USA a Izrael na Írán; dubnové příměří v červenci 2026 skončilo a střety kolem Hormuzského průlivu pokračují (stav k září 2026).',
+              '**Írán:** 28. února 2026 zaútočily USA a Izrael na Írán. Příměří sjednané v dubnu 2026 obě strany porušují, od července se boje opakovaně obnovují hlavně kolem Hormuzského průlivu a mírová dohoda zatím není (stav k září 2026).',
             ] },
             { type: 'p', text: 'Pozor, jak o konfliktu mluvíš: čísla obětí pocházejí od stran konfliktu a OSN je používá jako nejlepší dostupný odhad, nikoli jako nezávisle ověřená data. Geograf popisuje, co se stalo, kde a s jakými důsledky; posuzovat vinu je úkol soudů a historiků. Druhý velký konflikt současnosti se odehrává mnohem blíž Česku.' },
             { type: 'check', question: { kind: 'choice', q: 'Co se stalo 7. října 2023?', options: ['Hamás zaútočil na Izrael, poté začala válka v Pásmu Gazy', 'padl režim Bašára Asada v Sýrii', 'začalo příměří v Pásmu Gazy', 'USA a Izrael zaútočily na Írán'], answer: 0, explain: 'Útok Hamásu zabil v Izraeli asi 1 200 lidí a odstartoval válku v Pásmu Gazy. Asadův režim padl v prosinci 2024, příměří začalo v říjnu 2025, útok na Írán přišel v únoru 2026.' } },
@@ -1159,10 +1159,10 @@ const level: LevelContent = {
             { type: 'process', layout: 'flow', steps: [
               { icon: 'flag', title: '2014', text: 'Rusko anektuje Krym; na Donbasu začínají boje s ozbrojenci podporovanými Ruskem' },
               { icon: 'explosion', title: '24. 2. 2022', text: 'plná ruská invaze; Valné shromáždění OSN ji odsoudilo hlasy 141 států' },
-              { icon: 'footprints', title: '2022–2026', text: 'miliony lidí na útěku; v dubnu 2026 žilo v zahraničí 5,8 mil. uprchlíků z Ukrajiny (UNHCR)' },
-              { icon: 'handshake', title: '2025–2026', text: 'jednání s účastí USA, krátká příměří (květen 2026); trvalý mír zatím nenastal' },
+              { icon: 'footprints', title: '2022–2026', text: 'miliony lidí na útěku; v dubnu 2026 žilo v zahraničí (bez Ruska) 5,8 mil. uprchlíků z Ukrajiny (UNHCR)' },
+              { icon: 'handshake', title: '2025–2026', text: 'jednání s účastí USA, krátké příměří zprostředkované USA (9.–11. května 2026); trvalý mír zatím nenastal' },
             ], caption: 'Válka na Ukrajině od roku 2014 (stav k říjnu 2026).' },
-            { type: 'p', text: 'Válka má celosvětový dosah. Ukrajina patří k největším vývozcům obilí a slunečnicového oleje, takže boje a blokády v Černém moři zvedají ceny potravin v Africe a Asii; v říjnu 2026 se proto znovu jedná o bezpečné plavbě po Černém moři. Válka také urychlila zbrojení v Evropě a vstup Finska a Švédska do NATO. Nejvíc lidí na útěku ale dnes není v Evropě – je v Africe.' },
+            { type: 'p', text: 'Válka má celosvětový dosah. Ukrajina patří k největším vývozcům obilí a slunečnicového oleje, takže boje a blokády v Černém moři zvedají ceny potravin v Africe a Asii; na podzim 2026 se proto za zprostředkování Turecka znovu jedná o bezpečné plavbě po Černém moři. Válka také urychlila zbrojení v Evropě a vstup Finska a Švédska do NATO. Nejvíc lidí na útěku ale dnes není v Evropě – je v Africe.' },
             { type: 'check', question: { kind: 'number', q: 'Ruskou invazi odsoudilo v březnu 2022 ve Valném shromáždění OSN 141 ze 193 členských států. Kolik je to procent? Zaokrouhli na celá procenta.', answer: 73, tolerance: 1, unit: '%', explain: '141 : 193 ≐ 0,73, tedy asi 73 % členů OSN.' } },
           ],
         },
@@ -1182,8 +1182,8 @@ const level: LevelContent = {
             ], caption: 'Súdán a centrální Sahel (stav 2026).' },
             { type: 'p', text: 'Oba konflikty mají jiné strany i jiné kořeny. Porovnej je:' },
             { type: 'compare', columns: [
-              { title: 'Súdán', icon: 'shield', tone: 'a', points: ['od dubna 2023 válka mezi armádou (SAF) a polovojenskými Silami rychlé podpory (RSF)', 'boj o moc po pádu Umara al-Bašíra (2019), o zlato a o půdu', 'v říjnu 2025 dobyly RSF po více než 500denním obléhání Al-Fášir v Dárfúru', 'největší krize vysídlení na světě: přes 8,6 mil. vnitřně vysídlených (IOM, červen 2026) a přes 4 mil. lidí v sousedních státech', 'hladomor potvrzený v Al-Fášir a Kádugli (IPC, listopad 2025)'] },
-              { title: 'Centrální Sahel', icon: 'dune', tone: 'b', points: ['od roku 2012 povstání džihádistických skupin (JNIM spojená s al-Káidou, Islámský stát)', 'vojenské převraty v Mali (2020, 2021), Burkině Faso (2022) a Nigeru (2023)', 'odchod francouzských vojsk (2022–2023) a mise OSN z Mali (2023), příchod ruských vojenských jednotek', 'v lednu 2025 státy vystoupily z hospodářského společenství ECOWAS a vytvořily vlastní alianci', 'od září 2025 blokuje JNIM dovoz paliva do Bamaka'] },
+              { title: 'Súdán', icon: 'shield', tone: 'a', points: ['od dubna 2023 válka mezi armádou (SAF) a polovojenskými Silami rychlé podpory (RSF)', 'boj o moc po pádu Umara al-Bašíra (2019), o zlato a o půdu', 'v říjnu 2025 dobyly RSF po více než 500denním obléhání Al-Fášir v Dárfúru', 'největší krize vysídlení na světě: asi 8,8 mil. vnitřně vysídlených (IOM, červen 2026) a přes 4 mil. lidí v sousedních státech', 'hladomor potvrzený v Al-Fášir a Kádugli (IPC, listopad 2025)'] },
+              { title: 'Centrální Sahel', icon: 'dune', tone: 'b', points: ['od roku 2012 povstání džihádistických skupin (JNIM spojená s al-Káidou, Islámský stát)', 'vojenské převraty v Mali (2020, 2021), Burkině Faso (2022) a Nigeru (2023)', 'odchod francouzských vojsk (2022–2023) a mise OSN z Mali (2023), příchod ruských vojenských jednotek', 'v lednu 2025 státy vystoupily z hospodářského společenství ECOWAS a vytvořily vlastní alianci', 'od září 2025 JNIM opakovaně blokuje dovoz paliva do Bamaka'] },
             ] },
             { type: 'p', text: 'Podnebí v Sahelu hraje roli, ale opatrně s ním: sucha a degradace půdy zostřují spory pastevců a zemědělců o vodu a pastviny, válku však samy nezpůsobí. Rozhoduje, zda stát dokáže spory řešit a lidem zajistit bezpečí a obživu. Kde to nedokáže, lidé utíkají – a tím se dostáváme k uprchlíkům.' },
             { type: 'check', question: { kind: 'choice', q: 'Kdo proti sobě bojuje ve válce v Súdánu, která začala v roce 2023?', options: ['súdánská armáda (SAF) a Síly rychlé podpory (RSF)', 'Súdán a Jižní Súdán', 'Súdán a Egypt', 'mírové síly OSN a džihádisté'], answer: 0, explain: 'Jde o boj o moc mezi dvěma ozbrojenými složkami, které spolu ještě v roce 2021 provedly převrat. Jižní Súdán se oddělil už v roce 2011.' } },
@@ -1223,7 +1223,7 @@ const level: LevelContent = {
               { icon: 'shield', title: 'Mírová operace', text: 'dohled nad příměřím, ochrana civilistů' },
               { icon: 'house', title: 'Budování míru', text: 'volby, policie, odminování, obnova' },
             ], caption: 'Od konfliktu k míru: mírová operace přichází až po příměří.' },
-            { type: 'p', text: 'Mise mají úspěchy (Libérie, Sierra Leone, Kambodža) i selhání: ve Rwandě v roce 1994 a ve Srebrenici v roce 1995 vojáci OSN genocidě nezabránili. Dnes je tíží nedostatek peněz. V roce 2025 působilo 11 misí s asi 50 000 vojáky a policisty a rozpočet na rok 2025/26 činil 5,38 mld. USD; protože někteří členové neplatí příspěvky, OSN počty snížila asi o čtvrtinu. Rada bezpečnosti rozhodla, že mise UNIFIL v Libanonu skončí koncem roku 2026.' },
+            { type: 'p', text: 'Mise mají úspěchy (Libérie, Sierra Leone, Kambodža) i selhání: ve Rwandě v roce 1994 a ve Srebrenici v roce 1995 vojáci OSN genocidě nezabránili. Dnes je tíží nedostatek peněz. V roce 2025 působilo 11 misí s více než 50 000 vojáky a policisty a rozpočet na rok 2025/26 činil 5,38 mld. USD; protože někteří členové neplatí příspěvky, OSN v říjnu 2025 oznámila snížení jejich počtu asi o čtvrtinu. Mandát mise UNIFIL v Libanonu podle rozhodnutí Rady bezpečnosti končí 31. prosince 2026 a během roku 2027 se mise stáhne.' },
             { type: 'callout', variant: 'fact', text: 'Čeští vojáci slouží od roku 1999 v misi NATO KFOR v Kosovu – jedné z nejdelších zahraničních misí české armády.' },
             { type: 'p', text: 'Obyvatelstvo, města, kultura i politika: všechny lekce této úrovně spojuje prostor – kdo kde žije, jak se pohybuje a kdo o území rozhoduje. Poslední úroveň „Globální hospodářství a udržitelnost“ ukáže, jak svět vydělává a jak dlouho to Země vydrží. Než do ní vstoupíš, otestuj se:' },
             { type: 'game', gameId: 'quickfire', text: 'Blesková výzva: obyvatelstvo, města, státy a konflikty.' },
@@ -1232,15 +1232,15 @@ const level: LevelContent = {
         },
       ],
       summary: [
-        'Konflikty mají mnohočetné příčiny: zdroje, identitu, území a boj o moc; v roce 2024 jich bylo nejvíc od roku 1946.',
-        'Na Blízkém východě po útoku Hamásu (7. 10. 2023) následovala válka v Gaze, příměří od října 2025 je křehké; v roce 2026 propukla válka s Íránem.',
+        'Konflikty mají mnohočetné příčiny: zdroje, identitu, území a boj o moc; v roce 2025 jich bylo nejvíc od roku 1946.',
+        'Na Blízkém východě po útoku Hamásu (7. 10. 2023) následovala válka v Gaze, příměří od října 2025 je křehké; v únoru 2026 začala válka USA a Izraele s Íránem.',
         'Rusko anektovalo Krym (2014) a v roce 2022 zahájilo plnou invazi; kontroluje asi 19 % Ukrajiny a trvalý mír zatím nenastal.',
         'Válka armády a RSF v Súdánu je největší krizí vysídlení na světě; centrální Sahel trápí džihádisté, převraty a slabé státy.',
         'Na konci roku 2025 bylo 117,8 milionu nuceně vysídlených; trvalá řešení jsou návrat, místní integrace a přesídlení.',
         'Mírové operace OSN stojí na souhlasu stran, nestrannosti a omezeném použití síly; dnes je oslabují škrty v rozpočtu.',
       ],
       quiz: [
-        { kind: 'tf', q: 'Podle UCDP probíhalo v roce 2024 nejvíc konfliktů se zapojením státu od roku 1946.', answer: true, explain: 'UCDP napočítalo 61 takových konfliktů, z toho 11 dosáhlo úrovně války.' },
+        { kind: 'tf', q: 'Podle UCDP probíhalo v roce 2025 nejvíc konfliktů se zapojením státu od roku 1946.', answer: true, explain: 'UCDP napočítalo 65 takových konfliktů, z toho 13 dosáhlo úrovně války (aspoň 1 000 mrtvých v bojích za rok).' },
         { kind: 'choice', q: 'Jakou část území Ukrajiny Rusko zhruba kontroluje (2026)?', options: ['asi 19 %', 'asi 5 %', 'asi 50 %', 'asi 80 %'], answer: 0, explain: 'Asi pětinu území včetně Krymu a většiny Donbasu.' },
         { kind: 'match', q: 'Přiřaď místo ke státu nebo území, kde leží.', pairs: [
           ['Al-Fášir', 'Súdán'],
@@ -1257,7 +1257,7 @@ const level: LevelContent = {
     },
   },
   boss: [
-    { kind: 'choice', q: 'Stát má porodnost 9 ‰, úmrtnost 12 ‰ a migrační saldo +5 ‰. Co platí?', options: ['je v 5. fázi demografického přechodu, ale počet obyvatel roste', 'počet obyvatel klesá o 3 ‰ ročně', 'je ve 2. fázi demografického přechodu', 'přirozený přírůstek je kladný'], answer: 0, explain: 'Přirozený přírůstek je 9 − 12 = −3 ‰ (5. fáze), migrační saldo +5 ‰ ho převáží: celkem +2 ‰ ročně. Tak dnes roste Česko.' },
+    { kind: 'choice', q: 'Stát má porodnost 9 ‰, úmrtnost 12 ‰ a migrační saldo +5 ‰. Co platí?', options: ['je v 5. fázi demografického přechodu, ale počet obyvatel roste', 'počet obyvatel klesá o 3 ‰ ročně', 'je ve 2. fázi demografického přechodu', 'přirozený přírůstek je kladný'], answer: 0, explain: 'Přirozený přírůstek je 9 − 12 = −3 ‰ (5. fáze), migrační saldo +5 ‰ ho převáží: celkem +2 ‰ ročně. Podobně dnes roste Česko: přirozený úbytek vyrovná přistěhování.' },
     { kind: 'number', q: 'Úhrnná plodnost v Česku byla v roce 2025 asi 1,28. O kolik procent je to pod záchovnou úrovní 2,1? Zaokrouhli na celá procenta.', answer: 39, tolerance: 1, unit: '%', explain: '(2,1 − 1,28) : 2,1 = 0,82 : 2,1 ≐ 0,39, tedy asi o 39 %.' },
     { kind: 'tf', q: 'Model demografického přechodu spolehlivě předpoví, ve kterém roce začne v daném státě klesat porodnost.', answer: false, explain: 'Model popisuje směr změn, ne jejich načasování. Proto jsou v části Afriky odchylky od očekávání.' },
     { kind: 'choice', q: 'Kterou myšlenku obsahují Ravensteinovy zákony migrace?', options: ['migrace probíhá po etapách: z vesnice do menšího města a odtud do velkoměsta', 'migranti posílají domů remitence', 'uprchlíka nelze vrátit tam, kde mu hrozí pronásledování', 'tok klesá s třetí mocninou vzdálenosti'], answer: 0, explain: 'Etapová migrace je jedním z Ravensteinových zákonů (1885). Remitence a non-refoulement jsou pozdější pojmy; gravitační model počítá s druhou mocninou vzdálenosti.' },
