@@ -494,7 +494,9 @@ const level: LevelContent = {
           icon: 'twins',
           blocks: [
             { type: 'p', text: 'Geny a prostředí působí na člověka vždy současně, takže se těžko oddělují. Příroda nám ale nabízí ideální pokus: **dvojčata**. Existují dva druhy a liší se právě tím, kolik genů sdílejí.' },
-            { type: 'p', text: 'Porovnej, jak oba druhy dvojčat vznikají a co to znamená pro jejich DNA:' },
+            { type: 'p', text: 'Podívej se nejdřív, jak oba druhy dvojčat vznikají – rozhoduje, kolik vajíček a spermií se na nich podílí:' },
+            { type: 'diagram', id: 'twins', caption: 'Jednovaječná dvojčata vznikají z jedné zygoty, dvojvaječná ze dvou.' },
+            { type: 'p', text: 'Z rozdílného vzniku plyne, kolik DNA dvojčata sdílejí. Porovnej, co to pro ně znamená:' },
             { type: 'compare', columns: [
               { title: 'Jednovaječná dvojčata', icon: 'twins', tone: 'a', points: ['jedno vajíčko + jedna spermie, zárodek se rozdělí', '**stejná DNA**', 'vždy stejného pohlaví', 'rozdíly mezi nimi způsobilo prostředí (a drobné náhody)'] },
               { title: 'Dvojvaječná dvojčata', icon: 'family-tree', tone: 'b', points: ['dvě vajíčka + dvě spermie', 'DNA podobná jako u sourozenců (asi z poloviny)', 'mohou být kluk a holka', 'rozdíly způsobují geny i prostředí'] },
@@ -806,7 +808,9 @@ const level: LevelContent = {
           icon: 'ocean',
           blocks: [
             { type: 'p', text: 'Mladá Země vypadala úplně jinak než dnes: sopky, blesky, horký oceán a atmosféra **bez kyslíku**. Přesto se v ní nejméně před 3,5 miliardy let objevil život. Jak se to stalo, nevíme jistě – vědci mají několik ověřitelných hypotéz.' },
-            { type: 'p', text: 'První krok se podařilo napodobit v laboratoři. Roku 1953 Stanley Miller uzavřel do baňky plyny podobné pradávné atmosféře ($CH4$, $NH3$, $H2$ a vodní páru) a nechal jimi procházet elektrické jiskry jako blesky. Za týden našel v baňce **aminokyseliny** – stavební kameny bílkovin. Další kroky si vědci představují takto:' },
+            { type: 'p', text: 'První krok se podařilo napodobit v laboratoři. Roku 1953 Stanley Miller se svým školitelem Haroldem Ureyem uzavřel do baňky plyny podobné pradávné atmosféře ($CH4$, $NH3$, $H2$ a vodní páru) a nechal jimi procházet elektrické jiskry jako blesky. Sleduj, kudy v jejich aparatuře kolovala voda a plyny:' },
+            { type: 'diagram', id: 'miller-urey', caption: 'Pokus Millera a Ureyho: vařící voda je „oceán“, jiskry jsou blesky, v chladiči pára zkapalní a v ohybu trubice se hromadí kapalina s aminokyselinami.' },
+            { type: 'p', text: 'Za týden našel Miller v kapalině **aminokyseliny** – stavební kameny bílkovin. Živá buňka v baňce nevznikla, ale pokus ukázal, že látky života mohou vzniknout samovolně. Další kroky si vědci představují takto:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'gas-cloud', title: 'Jednoduché látky', text: 'plyny a voda pradávné Země, energie z blesků, sopek a horkých pramenů' },
               { icon: 'molecule', title: 'Stavební kameny', text: 'aminokyseliny, cukry a báze vznikají samovolně' },

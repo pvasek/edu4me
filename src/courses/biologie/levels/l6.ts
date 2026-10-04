@@ -229,7 +229,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Krev musí obíhat bez přestávky, jinak by buňky za pár minut zůstaly bez kyslíku. Pohání ji **srdce** – dutý sval velký asi jako pěst, uložený v hrudníku mezi plícemi, mírně vlevo.' },
             { type: 'p', text: 'Srdce jsou vlastně dvě pumpy vedle sebe. Každá polovina má **předsíň**, která krev přijímá, a **komoru**, která ji vypuzuje ven. Na obrázku si všimni chlopní a toho, jakou krev vede která polovina:' },
-            { type: 'diagram', id: 'heart-circulation', caption: 'Pravá polovina srdce pumpuje odkysličenou krev do plic, levá okysličenou krev do celého těla. Chlopně pouštějí krev jen jedním směrem.' },
+            { type: 'diagram', id: 'heart-circulation', caption: 'Srdce zepředu: pravá polovina (na obrázku vlevo) pumpuje odkysličenou krev (modře) do plic, levá okysličenou (červeně) do celého těla. Chlopně pouštějí krev jen jedním směrem. Vedle je schéma dvojího oběhu, kterým projdeme v dalším oddílu.' },
             { type: 'p', text: 'Mezi předsíní a komorou a na výstupu z komor jsou **chlopně**. Fungují jako ventily: otevřou se jen jedním směrem, takže krev nemůže téct zpátky. Jejich klapání slyší lékař fonendoskopem jako „tu-dum“.' },
             { type: 'p', text: 'Proč má levá komora asi třikrát silnější stěnu než pravá? Pravá posílá krev jen do blízkých plic, levá ji musí protlačit až do prstů u nohou – ==silnější stěna vytvoří větší tlak==. Pozor na obrázky: pravou polovinu srdce bývá vidět vlevo, protože se na člověka díváme zepředu.' },
             { type: 'p', text: 'Srdce tedy pumpuje dvakrát – jednou do plic, jednou do těla. Pojďme sledovat, kudy krev cestuje.' },
@@ -270,8 +270,8 @@ const level: LevelContent = {
               'Minuta má 60 s, to je čtyřikrát víc než 15 s.',
               'Počet tepů proto vynásobíme čtyřmi: 19 · 4 = 76.',
             ], answer: '76 tepů za minutu – v klidu u dospívajících běžná hodnota (asi 60–100 za minutu).' },
-            { type: 'p', text: 'Při cvičení potřebují svaly víc kyslíku, a tak srdce bije rychleji. Nastav si intenzitu cvičení a sleduj, jak se tep mění během zátěže a po ní:' },
-            { type: 'experiment', id: 'pulse-exercise', caption: 'Tep v klidu, při cvičení a při zotavení.' },
+            { type: 'p', text: 'Při cvičení potřebují svaly víc kyslíku, a tak srdce bije rychleji. Vyber činnost a kondici a sleduj, jak se tep mění během pěti minut zátěže a pěti minut odpočinku:' },
+            { type: 'experiment', id: 'pulse-exercise', caption: 'Tep během 5 minut činnosti a 5 minut odpočinku. Čárkovaně je pro srovnání člověk s opačnou kondicí.' },
             { type: 'p', text: 'Všiml/a sis? Čím náročnější cvičení, tím vyšší tep, a po skončení tep nejdřív rychle a pak pomaleji klesá ke klidové hodnotě. Trénované srdce vypudí jedním stahem víc krve, a proto mu stačí bít pomaleji a rychleji se vrací do klidu.' },
             { type: 'p', text: 'Krev také tlačí na stěny tepen – to je **krevní tlak**. Lékař ho měří tlakoměrem na paži a zapíše dvě čísla, třeba **120/80** (v milimetrech rtuťového sloupce, mm Hg). Vyšší číslo je tlak při stahu komor (**systolický**), nižší tlak mezi stahy, kdy se srdce plní (**diastolický**). Trvale vysoký tlak nad 140/90 poškozuje cévy i srdce, a přitom nebolí.' },
             { type: 'p', text: 'A kolik krve srdce přečerpá? Stačí vědět, kolik vypudí jedním stahem, a vynásobit to tepem:' },
@@ -712,6 +712,8 @@ const level: LevelContent = {
               { term: '**Škára**', def: 'pevná a pružná vrstva s cévami, nervovými zakončeními, potními a mazovými žlázami a vlasovými váčky' },
               { term: '**Podkožní vazivo**', def: 'vrstva s tukem: tepelná izolace, zásoba energie, tlumí nárazy' },
             ] },
+            { type: 'p', text: 'Na řezu kůží najdeš všechny tři vrstvy i to, co v nich je. Všimni si, kolik různých věcí se vejde do pár milimetrů:' },
+            { type: 'diagram', id: 'skin-section', caption: 'Ve škáře jsou vlasové váčky s mazovými žlázami, stočené potní žlázy, cévy a receptory: hmatová tělíska pod pokožkou, volná nervová zakončení pro bolest a teplo a tlaková tělíska hlouběji.' },
             { type: 'p', text: 'Díky této stavbě zvládá kůže hned několik úkolů:' },
             { type: 'iconlist', items: [
               { icon: 'goggles', title: 'Ochrana', text: 'brání vstupu mikrobů a vysychání, melanin chrání před UV' },
@@ -800,13 +802,8 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'V předchozích lekcích jsme viděli, že svaly, srdce, plíce i potní žlázy musí pracovat sehraně. Rychlé zprávy mezi nimi nosí **nervová soustava**. Její základní jednotkou je nervová buňka – **neuron**. Jen v mozku jich je asi 86 miliard.' },
             { type: 'p', text: 'Neuron vypadá jinak než ostatní buňky: má výběžky, kterými zprávy přijímá a posílá dál. Signál jím běží vždy jedním směrem:' },
-            { type: 'process', layout: 'flow', steps: [
-              { icon: 'neuron', title: 'Dendrity', text: 'krátké větvené výběžky přijímají signál od jiných buněk' },
-              { icon: 'cell', title: 'Tělo neuronu', text: 'obsahuje jádro a zpracuje přijaté signály' },
-              { icon: 'lightning', title: 'Axon (neurit)', text: 'dlouhý výběžek vede elektrický signál; některé měří přes metr' },
-              { icon: 'droplets', title: 'Zakončení', text: 'na **synapsi** předá signál chemickou látkou další buňce nebo svalu' },
-            ], caption: 'Cesta signálu neuronem.' },
-            { type: 'p', text: 'Uvnitř neuronu je signál **elektrický**, mezi neurony **chemický**. Mnoho axonů obaluje tuková **myelinová pochva**, která funguje jako izolace kabelu – signál pak běží rychlostí až kolem 100 m/s. Svazky axonů tvoří **nervy**, které prostupují celým tělem.' },
+            { type: 'diagram', id: 'neuron-structure', caption: 'Dendrity přijímají signál, tělo neuronu s jádrem ho zpracuje, axon ho vede dál – některé axony měří přes metr – a jeho zakončení ho na **synapsi** předají další buňce nebo svalu.' },
+            { type: 'p', text: 'Uvnitř neuronu je signál **elektrický**, mezi neurony **chemický**. Mnoho axonů obaluje tuková **myelinová pochva**, která funguje jako izolace kabelu. Je přerušená **Ranvierovými zářezy** a signál mezi nimi přeskakuje – běží pak rychlostí až kolem 100 m/s. Svazky axonů tvoří **nervy**, které prostupují celým tělem.' },
             { type: 'callout', variant: 'fact', text: 'Signál z palce u nohy doběhne do míchy asi za setinu sekundy.' },
             { type: 'p', text: 'Nervy samy nerozhodují – jen vedou zprávy. Kde se o nich rozhoduje?' },
             { type: 'check', question: { kind: 'tf', q: 'Mezi dvěma neurony se signál předává chemickou látkou.', answer: true, explain: 'Na synapsi uvolní zakončení neuronu chemickou látku, která signál předá další buňce. Uvnitř neuronu je signál elektrický.' } },
@@ -996,7 +993,9 @@ const level: LevelContent = {
           title: 'Pohlavní soustava ženy a muže',
           icon: 'cell',
           blocks: [
-            { type: 'p', text: 'Úkolem pohlavní soustavy je vytvořit **pohlavní buňky** – vajíčka a spermie – a umožnit jejich setkání. U ženy navíc poskytuje domov vyvíjejícímu se dítěti. Porovnej obě soustavy:' },
+            { type: 'p', text: 'Úkolem pohlavní soustavy je vytvořit **pohlavní buňky** – vajíčka a spermie – a umožnit jejich setkání. U ženy navíc poskytuje domov vyvíjejícímu se dítěti. Prohlédni si nejdřív, kde jednotlivé orgány leží:' },
+            { type: 'diagram', id: 'reproductive-organs', caption: 'Pohlavní soustava ženy (zepředu) a muže (z boku v řezu).' },
+            { type: 'p', text: 'Každý z těchto orgánů má svou práci. Porovnej obě soustavy:' },
             { type: 'compare', columns: [
               { title: 'Žena', tone: 'a', points: ['**vaječníky** – dozrávají v nich vajíčka, tvoří hormony', '**vejcovody** – vedou vajíčko do dělohy; obvykle v nich dochází k oplození', '**děloha** – svalový orgán, ve kterém se vyvíjí plod', '**pochva** – spojuje dělohu s vnějším prostředím, je i porodní cestou'] },
               { title: 'Muž', tone: 'b', points: ['**varlata** v šourku – tvoří spermie a testosteron', '**nadvarlata** – v nich spermie dozrávají', '**chámovody** – vedou spermie; přidávají se k nim tekutiny z **prostaty** a semenných váčků', '**penis** s **močovou trubicí** – vyvádí moč i semeno, nikdy ne současně'] },

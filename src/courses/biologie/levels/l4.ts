@@ -122,12 +122,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Na začátku řady stojí **houbovci**. Dospělý houbovec je přisedlý na kameni nebo dřevě a celý život se nepohne z místa. Jeho tělo připomíná váček nebo vázu, jejíž stěnu protkávají tisíce drobných pórů.' },
             { type: 'p', text: 'Jak se může najíst někdo, kdo nemá ústa ani svaly? Houbovec si potravu přihání sám – žene vodu svým tělem. Sleduj její cestu:' },
-            { type: 'process', layout: 'flow', steps: [
-              { icon: 'droplets', title: 'Póry ve stěně', text: 'voda vtéká drobnými otvory dovnitř těla' },
-              { icon: 'cell', title: 'Límečkové buňky', text: 'mávají bičíkem, ženou vodu a zachytávají z ní bakterie a částečky potravy' },
-              { icon: 'sponge', title: 'Středová dutina', text: 'přefiltrovaná voda se shromáždí uprostřed těla' },
-              { icon: 'arrow-cycle', title: 'Vyvrhovací otvor', text: 'voda odchází velkým otvorem nahoře a odnáší odpadní látky' },
-            ], caption: 'Houbovec je živý filtr: voda vtéká póry a odtéká vyvrhovacím otvorem.' },
+            { type: 'diagram', id: 'sponge-flow', caption: 'Houbovec v řezu je živý filtr: voda vtéká póry do středové dutiny a odtéká vyvrhovacím otvorem. Límečkové buňky ji bičíky pohánějí a límečkem z ní zachytávají bakterie a částečky potravy.' },
             { type: 'p', text: 'Proč je houbovec tak jednoduchý? Jeho buňky spolu sice spolupracují, ale netvoří pravé tkáně ani orgány. Nemá nervy, svaly, trávicí dutinu ani srdce. Podívej se, z čeho se jeho tělo skládá a co z toho plyne:' },
             { type: 'iconlist', items: [
               { icon: 'crystal', title: 'Jehlice', text: 'drobné opěrné tělísko z vápence ($CaCO3$) nebo oxidu křemičitého ($SiO2$) drží tvar těla' },
@@ -214,6 +209,9 @@ const level: LevelContent = {
               { icon: 'thermometer', title: 'Bělení korálů', text: 'v příliš teplé vodě korály vypudí své řasy, zbělají a bez potravy mohou uhynout' },
               { icon: 'gas-cloud', title: 'Okyselování moří', text: 'oceán pohlcuje $CO2$ z ovzduší, voda je kyselejší a korálům se hůř staví vápencová kostra' },
             ] },
+            { type: 'p', text: 'Bělení korálů si vyzkoušej sám/sama. Rozhoduje, o kolik je moře teplejší než obvykle a jak dlouho to trvá. Nastav obojí a sleduj, kdy korál přijde o své řasy a kdy začne odumírat:' },
+            { type: 'experiment', id: 'coral-bleaching', caption: 'Řasy dávají korálu barvu i většinu potravy. Vybělený korál ještě žije, ale hladoví.' },
+            { type: 'p', text: 'Všiml/a sis? O půl stupně teplejší moře korálu nevadí, o 2 °C teplejší ho asi za dva týdny vybělí a asi za čtyři týdny začne odumírat. Když se voda včas ochladí, řasy se vrátí – proto vědci sledují nejen teplotu, ale i to, jak dlouho vlna horka trvá.' },
             { type: 'callout', variant: 'warning', title: 'Popálení od medúzy u moře', text: 'Postižené místo opláchni **mořskou** vodou, ne sladkou – ta by mohla spustit další žahavé buňky. Zbytky ramen nesahej holou rukou, odstraň je třeba plastovou kartou. Při dušnosti nebo silné reakci volej 112.' },
             { type: 'p', text: 'Žahavci mají paprsčité tělo bez hlavy. Další skupina už má hlavu, oči a dvoustrannou souměrnost – a přesto se dá zaměnit za kousek listu.' },
             { type: 'check', question: { kind: 'tf', q: 'Korály potřebují světlo, protože v jejich buňkách žijí řasy, které jim fotosyntézou dodávají potravu.', answer: true, explain: 'Řasy v buňkách korálů vyrábějí cukry z fotosyntézy. Proto korály rostou jen v mělké a čisté vodě, kam proniká světlo.' } },
@@ -837,8 +835,9 @@ const level: LevelContent = {
               { icon: 'star', title: 'Hadice', text: 'tenká, ohebná a rychlá ramena kolem malého terče' },
               { icon: 'fossil', title: 'Lilijice', text: 'přisedlé na stonku jako květina; zkamenělé články jejich stonků se hojně nacházejí v prvohorních vápencích Barrandienu u Prahy' },
             ] },
-            { type: 'p', text: 'Ostnokožci mají zařízení, které nemá nikdo jiný: **vodní cévní soustavu**. Je to síť kanálků naplněných mořskou vodou, která končí stovkami drobných **panožek** na spodní straně ramen.' },
-            { type: 'p', text: 'Jak takové panožky fungují? Sleduj jeden „krok“ hvězdice:' },
+            { type: 'p', text: 'Ostnokožci mají zařízení, které nemá nikdo jiný: **vodní cévní soustavu**. Je to síť kanálků naplněných mořskou vodou, která končí stovkami drobných **panožek** na spodní straně ramen. Prohlédni si hvězdici zespodu, řez jejím ramenem a hvězdici při lovu:' },
+            { type: 'diagram', id: 'starfish-feet', caption: 'Z okružního kanálku kolem úst vede do každého ramene paprsčitý kanálek. Když se ampulka stáhne, vtlačí vodu do panožky a ta se natáhne. Stovky panožek dokážou rozevřít i lasturu mlže.' },
+            { type: 'p', text: 'Z řezu ramenem už víš, že panožku natahuje tlak vody. Jak z toho vznikne chůze? Sleduj jeden „krok“ hvězdice:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'droplets', title: 'Natlačení vody', text: 'svaly vtlačí vodu z kanálků do panožky a ta se natáhne' },
               { icon: 'check', title: 'Přisátí', text: 'přísavka na konci panožky se přichytí ke dnu' },

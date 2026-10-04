@@ -344,11 +344,9 @@ const level: LevelContent = {
           icon: 'sun',
           blocks: [
             { type: 'p', text: 'Plazům se často říká „studenokrevní“. Ještěrka, která se hodinu vyhřívá na kameni, ale může mít tělo teplejší než ty. Přesnější je slovo **ektotermní**: teplo nevyrábějí, ale berou ho z okolí.' },
-            { type: 'p', text: 'Rozdíl je nejlépe vidět v grafu. Na vodorovné ose je teplota okolí, na svislé teplota těla. Sleduj, co se děje s ještěrkou a co s myší, když se ochladí:' },
-            { type: 'graph', x: { label: 'teplota okolí', unit: '°C', min: 0, max: 40, step: 10 }, y: { label: 'teplota těla', unit: '°C', min: 0, max: 45, step: 5 }, series: [
-              { label: 'ještěrka (ektoterm)', points: [[0, 2], [10, 12], [20, 22], [30, 32], [40, 40]], tone: 'a' },
-              { label: 'myš (endoterm)', points: [[0, 37], [10, 37], [20, 37], [30, 37], [40, 38]], style: 'dashed', tone: 'b' },
-            ], marks: [{ x: 10, y: 12, label: 'ráno: ještěrka je ztuhlá' }], caption: 'Teplota těla ještěrky stoupá a klesá s okolím, myš si drží asi 37 °C. Na slunci se ještěrka ohřeje víc než vzduch kolem.' },
+            { type: 'p', text: 'Rozdíl je nejlépe vidět, když teplotu okolí měníš sám/sama. Posouvej teplotu vzduchu a sleduj ještěrku a myš: graf ukazuje teplotu jejich těla, sloupce, kolik energie spálí:' },
+            { type: 'experiment', id: 'body-temperature', caption: 'Ještěrka sedí ve stínu; na slunci se ohřeje víc než vzduch kolem. Spotřeba energie je v násobcích toho, co myš spálí v teple.' },
+            { type: 'p', text: 'Všiml/a sis? Čára ještěrky stoupá šikmo s okolím, čára myši zůstává kolem 37 °C. Myš za to v chladu platí: spálí několikrát víc potravy. Ještěrka v chladu energii šetří – zato se skoro nehýbe.' },
             { type: 'p', text: 'Studená ještěrka je pomalá, protože chemické děje v jejím těle zpomalí. Proto se ráno vyhřívá na slunci a v poledním horku se schová do stínu: teplotu řídí **chováním**. V zimě upadá do **zimní strnulosti** v úkrytu pod zemí.' },
             { type: 'p', text: 'Má to i velkou výhodu. Kdo nevyrábí teplo, nemusí ani tolik jíst:' },
             { type: 'compare', columns: [

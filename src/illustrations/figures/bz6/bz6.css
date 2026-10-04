@@ -1,0 +1,1003 @@
+/* Biology figures, levels 4–7 (bz6). Engraved naturalist plates. */
+.bz6 {
+  --lvl: var(--level, #a0632c);
+  --lvl-ink: color-mix(in srgb, var(--lvl) 72%, var(--ink));
+  --lvl-soft: color-mix(in srgb, var(--lvl) 16%, var(--surface));
+  --lvl-mid: color-mix(in srgb, var(--lvl) 38%, var(--surface));
+  --oxy: #c0463a;
+  --deoxy: #3f6fb5;
+  --water: color-mix(in srgb, #6f9fd8 26%, var(--surface));
+  --flesh: color-mix(in srgb, #d98c7a 34%, var(--surface));
+  --flesh-2: color-mix(in srgb, #c46a5a 46%, var(--surface));
+  --bone: color-mix(in srgb, #e8dcbc 55%, var(--surface));
+  --shell: color-mix(in srgb, #b98a52 40%, var(--surface));
+  --soil: color-mix(in srgb, #8a5a2b 38%, var(--surface));
+  --soil-2: color-mix(in srgb, #5e3d1f 48%, var(--surface));
+  --leaf: color-mix(in srgb, #4f9a5a 42%, var(--surface));
+  --leaf-2: color-mix(in srgb, #8a9a3a 40%, var(--surface));
+  --chitin: color-mix(in srgb, #6b4a2b 48%, var(--surface));
+  --yolk: color-mix(in srgb, #e0b43a 55%, var(--surface));
+  --nerve: #d9a21b;
+  --gold: color-mix(in srgb, #e0b43a 60%, var(--surface));
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  container-type: inline-size;
+}
+.bz6-l5 {
+  --lvl: var(--level, #2c7a72);
+}
+.bz6-l6 {
+  --lvl: var(--level, #b8483a);
+}
+
+.bz6-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+.bz6-host {
+  width: 100%;
+}
+.bz6-plates {
+  width: 100%;
+  display: grid;
+  gap: 12px 18px;
+  align-items: center;
+}
+.bz6-plate {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.bz6-plate-t {
+  text-align: center;
+  font: 700 12.5px/1.2 var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lvl-ink);
+}
+.bz6-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.bz6-stripbox {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+}
+.bz6-strip-note {
+  margin: 0;
+  text-align: center;
+  font: italic 600 17px/1.3 var(--font-display);
+  color: var(--ink-soft);
+}
+
+/* ------------------------------------------------------------------ text */
+.bz6-lbl {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16.5px;
+  fill: var(--ink-soft);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 3.5px;
+  stroke-linejoin: round;
+}
+.bz6-b {
+  font-weight: 700;
+  fill: var(--ink);
+}
+.bz6-big {
+  font-size: 19px;
+}
+.bz6-sm {
+  font-size: 14.5px;
+}
+.bz6-xs {
+  font-size: 13px;
+}
+.bz6-up {
+  font-style: normal;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.bz6-lvl-t {
+  fill: var(--lvl-ink);
+}
+.bz6-red-t {
+  fill: var(--oxy);
+}
+.bz6-blue-t {
+  fill: var(--deoxy);
+}
+.bz6-muted-t {
+  fill: var(--muted);
+}
+.bz6-good-t {
+  fill: var(--good);
+}
+.bz6-bad-t {
+  fill: var(--bad);
+}
+.bz6-eq {
+  font: 600 14px var(--font-body);
+  fill: var(--ink);
+}
+.bz6-eq-sm {
+  font-size: 12.5px;
+}
+.bz6-num {
+  font: 400 13px var(--font-mono);
+  fill: var(--ink);
+}
+.bz6-halo {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+/* narrow containers: the plate fills ~330 px, so type is scaled by --k = viewBox width / 330
+   (set on every plate) to land at a fixed on-screen size */
+.bz6-narrow .bz6-lbl {
+  font-size: calc(19px * var(--k, 1));
+}
+.bz6-narrow .bz6-lbl.bz6-sm {
+  font-size: calc(17.5px * var(--k, 1));
+}
+.bz6-narrow .bz6-lbl.bz6-xs {
+  font-size: calc(15.5px * var(--k, 1));
+}
+.bz6-narrow .bz6-lbl.bz6-big {
+  font-size: calc(21px * var(--k, 1));
+}
+.bz6-narrow .bz6-eq {
+  font-size: calc(15px * var(--k, 1));
+}
+@container (max-width: 440px) {
+  .bz6-sec {
+    display: none;
+  }
+}
+.bz6-wide-only {
+  display: inline;
+}
+.bz6-is-narrow .bz6-wide-only {
+  display: none;
+}
+.bz6-narrow-only {
+  display: none;
+}
+.bz6-is-narrow .bz6-narrow-only {
+  display: inline;
+}
+
+/* ------------------------------------------------------------------ strokes */
+:where(.bz6-o:not([fill])) {
+  fill: none;
+}
+.bz6-o {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.bz6-thin {
+  stroke-width: 0.9;
+}
+.bz6-hair {
+  stroke-width: 0.6;
+}
+.bz6-ln {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz6-lvl-s {
+  stroke: var(--lvl-ink);
+}
+.bz6-dash {
+  stroke-dasharray: 5 4;
+}
+.bz6-dot2 {
+  stroke-dasharray: 1.5 4;
+}
+.bz6-lead {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  fill: none;
+}
+.bz6-dot {
+  fill: var(--ink-soft);
+}
+.bz6-nohit {
+  pointer-events: none;
+}
+.bz6-hl {
+  stroke: var(--edge);
+  stroke-width: 0.8;
+  opacity: 0.5;
+}
+.bz6-hl-dark {
+  opacity: 0.6;
+}
+.bz6-hl-light {
+  stroke: #fffaf0;
+  stroke-width: 0.9;
+  opacity: 0.75;
+}
+.bz6-stip {
+  fill: var(--edge);
+  opacity: 0.35;
+}
+
+/* ------------------------------------------------------------------ fills */
+.bz6-fill {
+  fill: var(--surface);
+}
+.bz6-fill2 {
+  fill: var(--surface-2);
+}
+.bz6-fill3 {
+  fill: var(--surface-3);
+}
+.bz6-lvl-f {
+  fill: var(--lvl);
+}
+.bz6-lvlsoft-f {
+  fill: var(--lvl-soft);
+}
+.bz6-lvlmid-f {
+  fill: var(--lvl-mid);
+}
+.bz6-water {
+  fill: var(--water);
+}
+.bz6-flesh {
+  fill: var(--flesh);
+}
+.bz6-flesh2 {
+  fill: var(--flesh-2);
+}
+.bz6-bone {
+  fill: var(--bone);
+}
+.bz6-shell {
+  fill: var(--shell);
+}
+.bz6-soil {
+  fill: var(--soil);
+}
+.bz6-soil2 {
+  fill: var(--soil-2);
+}
+.bz6-leaf {
+  fill: var(--leaf);
+}
+.bz6-leaf2 {
+  fill: var(--leaf-2);
+}
+.bz6-chitin {
+  fill: var(--chitin);
+}
+.bz6-yolk {
+  fill: var(--yolk);
+}
+.bz6-gold {
+  fill: var(--gold);
+}
+.bz6-oxy-f {
+  fill: color-mix(in srgb, var(--oxy) 55%, var(--surface));
+}
+.bz6-deoxy-f {
+  fill: color-mix(in srgb, var(--deoxy) 50%, var(--surface));
+}
+.bz6-oxy-soft {
+  fill: color-mix(in srgb, var(--oxy) 22%, var(--surface));
+}
+.bz6-deoxy-soft {
+  fill: color-mix(in srgb, var(--deoxy) 22%, var(--surface));
+}
+.bz6-ink-f {
+  fill: var(--edge);
+}
+/* eyes, pupils, egg cores: dark in both themes */
+.bz6 .bz6-ink-f {
+  fill: #20242e;
+}
+
+.bz6-paper-f {
+  fill: var(--surface);
+}
+.bz6-sky {
+  fill: color-mix(in srgb, #9cc3e6 22%, var(--surface));
+}
+.bz6-sun {
+  fill: #f2c94c;
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.bz6-hot {
+  fill: color-mix(in srgb, #d9603b 40%, var(--surface));
+}
+
+/* ------------------------------------------------------------------ arrows */
+.bz6-arr {
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz6-arr-ink {
+  stroke: var(--edge);
+}
+.bz6-arr-acc {
+  stroke: var(--accent);
+}
+.bz6-arr-blue {
+  stroke: var(--blue);
+}
+.bz6-arr-lvl {
+  stroke: var(--lvl-ink);
+}
+.bz6-arr-red {
+  stroke: var(--bad);
+}
+.bz6-arr-green {
+  stroke: var(--good);
+}
+.bz6-arr-muted {
+  stroke: var(--muted);
+}
+.bz6-arr-oxy {
+  stroke: var(--oxy);
+}
+.bz6-arr-deoxy {
+  stroke: var(--deoxy);
+}
+.bz6-mk-ink {
+  fill: var(--edge);
+}
+.bz6-mk-acc {
+  fill: var(--accent);
+}
+.bz6-mk-blue {
+  fill: var(--blue);
+}
+.bz6-mk-lvl {
+  fill: var(--lvl-ink);
+}
+.bz6-mk-red {
+  fill: var(--bad);
+}
+.bz6-mk-green {
+  fill: var(--good);
+}
+.bz6-mk-muted {
+  fill: var(--muted);
+}
+.bz6-mk-oxy {
+  fill: var(--oxy);
+}
+.bz6-mk-deoxy {
+  fill: var(--deoxy);
+}
+.bz6-thick {
+  stroke-width: 2.6;
+}
+.bz6-axis-l {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 1.6;
+  stroke-dasharray: 7 4;
+}
+
+/* ------------------------------------------------------------------ tags */
+.bz6-tag {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.bz6-tag-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+}
+.bz6-num-badge circle {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz6-num-badge text {
+  font-family: var(--font-body);
+  font-weight: 800;
+  fill: var(--on-level);
+  pointer-events: none;
+}
+.bz6-zoom {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 3;
+}
+
+/* ------------------------------------------------------------------ loops */
+.bz6-bubble {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+  animation: bz6-rise 2.4s ease-in infinite;
+}
+.bz6-still .bz6-bubble {
+  animation: none;
+}
+@keyframes bz6-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--rise, -40px));
+    opacity: 0;
+  }
+}
+.bz6-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 2 10;
+  stroke-width: 3;
+}
+.bz6-live .bz6-flow {
+  animation: bz6-flow 1.2s linear infinite;
+}
+@keyframes bz6-flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+.bz6-flow-oxy {
+  stroke: var(--oxy);
+}
+.bz6-flow-deoxy {
+  stroke: var(--deoxy);
+}
+.bz6-flow-water {
+  stroke: #3f7fc4;
+}
+.bz6-flow-ink {
+  stroke: var(--ink-soft);
+}
+.bz6-pulse {
+  fill: var(--nerve);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz6-nerve {
+  fill: none;
+  stroke: var(--nerve);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz6-nerve-m {
+  stroke: color-mix(in srgb, #c0463a 80%, var(--ink));
+}
+.bz6-nerve-s {
+  stroke: color-mix(in srgb, #3f6fb5 85%, var(--ink));
+}
+.bz6-nerve-i {
+  stroke: color-mix(in srgb, #7a5a8e 85%, var(--ink));
+}
+.bz6-sway {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.bz6-live .bz6-sway {
+  animation: bz6-sway 3.2s ease-in-out infinite alternate;
+}
+@keyframes bz6-sway {
+  from {
+    transform: rotate(-3deg);
+  }
+  to {
+    transform: rotate(3deg);
+  }
+}
+
+/* small strip panels: larger type so it reads at 150 px */
+.bz6-small .bz6-lbl {
+  font-size: 21px;
+}
+.bz6-small .bz6-lbl.bz6-sm {
+  font-size: 19px;
+}
+.bz6-small .bz6-lbl.bz6-xs {
+  font-size: 16px;
+}
+.bz6-small .bz6-lbl.bz6-big {
+  font-size: 23px;
+}
+
+.bz6-l7 {
+  --lvl: var(--level, #7a5290);
+}
+
+/* ------------------------------------------------------------------ sponge */
+.bz6-sponge {
+  fill: color-mix(in srgb, #d9b45a 34%, var(--surface));
+}
+.bz6-pore-edge {
+  stroke: var(--edge);
+  stroke-width: 7.5;
+  stroke-linecap: butt;
+}
+.bz6-pore {
+  stroke: var(--water);
+  stroke-width: 5;
+  stroke-linecap: butt;
+}
+.bz6-spicule {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+}
+.bz6-flag {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+}
+.bz6-food {
+  fill: color-mix(in srgb, #4f9a5a 70%, var(--ink));
+}
+.bz6-bact {
+  fill: color-mix(in srgb, #4f9a5a 55%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.bz6-cyto {
+  fill: color-mix(in srgb, var(--lvl) 12%, var(--surface));
+}
+.bz6-villus {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+}
+.bz6-flagellum {
+  stroke: var(--lvl-ink);
+  stroke-width: 1.8;
+}
+
+/* ------------------------------------------------------------------ starfish */
+.bz6-star {
+  fill: color-mix(in srgb, #d9783b 38%, var(--surface));
+}
+.bz6-spine {
+  stroke: color-mix(in srgb, #a0522d 70%, var(--ink));
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.bz6-groove {
+  stroke: color-mix(in srgb, #a0522d 40%, var(--surface));
+  stroke-width: 9;
+  stroke-linecap: round;
+  fill: none;
+}
+.bz6-foot {
+  fill: var(--lvl-mid);
+  stroke: var(--edge);
+  stroke-width: 0.7;
+}
+.bz6-canal {
+  fill: none;
+  stroke: #3f7fc4;
+  stroke-width: 1.8;
+  stroke-dasharray: 5 3;
+}
+.bz6-duct {
+  fill: none;
+  stroke: #3f7fc4;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.bz6-tube {
+  stroke: var(--lvl-ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.bz6-arm {
+  fill: none;
+  stroke: color-mix(in srgb, #d9783b 38%, var(--surface));
+  stroke-width: 24;
+  stroke-linecap: round;
+}
+.bz6-arm-edge {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 27;
+  stroke-linecap: round;
+}
+.bz6-shell-d {
+  fill: color-mix(in srgb, #3b4a6b 55%, var(--surface));
+}
+.bz6-stomach {
+  fill: color-mix(in srgb, #e8a0a0 60%, var(--surface));
+}
+.bz6-eq.bz6-blue-t {
+  fill: var(--deoxy);
+}
+.bz6-eq.bz6-red-t {
+  fill: var(--oxy);
+}
+.bz6-eq.bz6-lvl-t {
+  fill: var(--lvl-ink);
+}
+
+/* numbered legend under dense plates (narrow layout) */
+.bz6-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 12px;
+  font: italic 600 16px/1.25 var(--font-display);
+  color: var(--ink-soft);
+}
+.bz6-legend li {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.bz6-legend-n {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: var(--lvl);
+  color: var(--on-level);
+  font: 800 11.5px/1 var(--font-body);
+  font-style: normal;
+}
+
+/* ------------------------------------------------------------------ skin */
+.bz6-fatbg {
+  fill: color-mix(in srgb, #e8cf8a 30%, var(--surface));
+}
+.bz6-fat {
+  fill: color-mix(in srgb, #e8c45a 42%, var(--surface));
+  stroke: color-mix(in srgb, #b8902a 60%, var(--edge));
+  stroke-width: 0.8;
+}
+.bz6-dermis {
+  fill: color-mix(in srgb, #e8a0a0 26%, var(--surface));
+}
+.bz6-fibre {
+  fill: none;
+  stroke: color-mix(in srgb, #c46a5a 40%, var(--surface));
+  stroke-width: 1.4;
+}
+.bz6-corneum {
+  fill: color-mix(in srgb, #c9a46a 45%, var(--surface));
+}
+.bz6-artery,
+.bz6-vein {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+.bz6-artery {
+  stroke: color-mix(in srgb, var(--oxy) 80%, var(--surface));
+}
+.bz6-vein {
+  stroke: color-mix(in srgb, var(--deoxy) 80%, var(--surface));
+}
+.bz6-cap-a,
+.bz6-cap-v {
+  fill: none;
+  stroke-width: 1.6;
+}
+.bz6-cap-a {
+  stroke: var(--oxy);
+}
+.bz6-cap-v {
+  stroke: var(--deoxy);
+}
+.bz6 .bz6-nerve-fine {
+  stroke-width: 1.5;
+}
+.bz6-corp {
+  fill: color-mix(in srgb, var(--nerve) 30%, var(--surface));
+}
+.bz6-sweat {
+  fill: none;
+  stroke: color-mix(in srgb, #3f7fc4 70%, var(--ink));
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz6-follicle {
+  fill: color-mix(in srgb, #d98c7a 40%, var(--surface));
+}
+.bz6-sebum {
+  fill: color-mix(in srgb, #e0b43a 45%, var(--surface));
+}
+.bz6-muscle {
+  fill: none;
+  stroke: color-mix(in srgb, #b8483a 70%, var(--surface));
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.bz6 .bz6-hairshaft {
+  fill: none;
+  stroke: color-mix(in srgb, #6b4a2b 60%, var(--ink));
+  stroke-width: 3.4;
+  stroke-linecap: round;
+}
+
+/* ------------------------------------------------------------------ neuron */
+.bz6-dend {
+  fill: none;
+  stroke: color-mix(in srgb, var(--lvl) 55%, var(--surface));
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.bz6-dend-fine {
+  stroke-width: 3;
+}
+.bz6-axon {
+  fill: none;
+  stroke: color-mix(in srgb, var(--lvl) 55%, var(--surface));
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+.bz6-axon-fine {
+  stroke-width: 3.5;
+}
+.bz6-soma {
+  fill: color-mix(in srgb, var(--lvl) 40%, var(--surface));
+}
+.bz6-knob {
+  fill: color-mix(in srgb, var(--lvl) 55%, var(--surface));
+}
+.bz6-myelin {
+  fill: color-mix(in srgb, #f4e6b8 70%, var(--surface));
+}
+.bz6-spark {
+  fill: var(--nerve);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz6-eq.bz6-eq-lg {
+  font-size: 21px;
+}
+
+/* ------------------------------------------------------------------ reproductive organs */
+.bz6-uterus {
+  fill: color-mix(in srgb, #d98c7a 42%, var(--surface));
+}
+.bz6-cavity {
+  fill: color-mix(in srgb, #f0c8c0 45%, var(--surface));
+}
+.bz6-vagina {
+  fill: color-mix(in srgb, #e8a0a0 34%, var(--surface));
+}
+.bz6-ovary {
+  fill: color-mix(in srgb, #e8c45a 40%, var(--surface));
+}
+.bz6-tube-edge {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 8.5;
+  stroke-linecap: round;
+}
+.bz6-tube-f {
+  fill: none;
+  stroke: color-mix(in srgb, #e8a0a0 45%, var(--surface));
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+.bz6-fimb {
+  fill: none;
+  stroke: color-mix(in srgb, #c46a5a 70%, var(--edge));
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.bz6-egg {
+  fill: color-mix(in srgb, #e0b43a 60%, var(--surface));
+}
+.bz6-egg-dot {
+  fill: color-mix(in srgb, #b8902a 80%, var(--ink));
+}
+.bz6-bladder {
+  fill: color-mix(in srgb, #e0c45a 26%, var(--surface));
+}
+.bz6-vesicle {
+  fill: color-mix(in srgb, #b8a0c8 45%, var(--surface));
+}
+.bz6-prostate {
+  fill: color-mix(in srgb, #9a7ab0 45%, var(--surface));
+}
+.bz6-scrotum {
+  fill: color-mix(in srgb, #e8b8a0 30%, var(--surface));
+}
+.bz6-testis {
+  fill: color-mix(in srgb, #d98c7a 45%, var(--surface));
+}
+.bz6-epid {
+  fill: none;
+  stroke: color-mix(in srgb, #8a5a8e 70%, var(--surface));
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+.bz6-penis-edge {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 27;
+  stroke-linecap: round;
+}
+.bz6-penis {
+  fill: none;
+  stroke: color-mix(in srgb, #e8b8a0 45%, var(--surface));
+  stroke-width: 24;
+  stroke-linecap: round;
+}
+.bz6-glans {
+  fill: color-mix(in srgb, #d98c7a 40%, var(--surface));
+}
+.bz6-vas {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.bz6-urethra {
+  fill: none;
+  stroke: color-mix(in srgb, #c9a020 80%, var(--ink));
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-dasharray: 6 3;
+}
+
+/* ------------------------------------------------------------------ Miller–Urey */
+.bz6-glass {
+  fill: color-mix(in srgb, var(--info-soft) 40%, var(--surface));
+  fill-opacity: 0.7;
+}
+.bz6-glass-edge {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 9;
+  stroke-linejoin: round;
+}
+.bz6-glass-in {
+  fill: none;
+  stroke: color-mix(in srgb, var(--info-soft) 40%, var(--surface));
+  stroke-width: 6;
+  stroke-linejoin: round;
+}
+.bz6-amino {
+  fill: none;
+  stroke: color-mix(in srgb, #a0632c 60%, var(--surface));
+  stroke-width: 6;
+  stroke-linejoin: round;
+}
+.bz6-amino-t {
+  fill: color-mix(in srgb, #a0632c 80%, var(--ink));
+}
+.bz6-water-s {
+  fill: none;
+  stroke: var(--water);
+  stroke-width: 3;
+}
+.bz6-drop {
+  fill: #3f7fc4;
+}
+.bz6-electrode {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.bz6-spark-edge {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.bz6-spark-in {
+  fill: none;
+  stroke: #f2c94c;
+  stroke-width: 2.6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.bz6-spark-ray {
+  stroke: #e0a41b;
+  stroke-width: 1.6;
+}
+.bz6-live .bz6-sparks {
+  animation: bz6-spark 0.9s steps(2, jump-none) infinite;
+}
+@keyframes bz6-spark {
+  0%,
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.15;
+  }
+}
+.bz6-flame {
+  fill: #e8833a;
+  stroke: color-mix(in srgb, #b8483a 70%, var(--edge));
+  stroke-width: 1;
+}
+.bz6-flame-in {
+  fill: #f2c94c;
+}
+.bz6-live .bz6-flame {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: bz6-flick 0.6s ease-in-out infinite alternate;
+}
+@keyframes bz6-flick {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(0.92, 1.08);
+  }
+}
+
+/* ------------------------------------------------------------------ twins */
+.bz6-corona {
+  fill: color-mix(in srgb, #e0b43a 18%, var(--surface));
+  stroke: color-mix(in srgb, #b8902a 50%, var(--surface));
+  stroke-width: 1;
+  stroke-dasharray: 1.5 2.5;
+}
+.bz6-corona-f {
+  fill: color-mix(in srgb, #e0b43a 14%, var(--surface));
+}
+.bz6-tail {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+}
+.bz6-sperm {
+  fill: color-mix(in srgb, #3f6fb5 45%, var(--surface));
+}
+.bz6-child-a .bz6-o {
+  fill: var(--lvl-mid);
+}
+.bz6-child-b .bz6-o {
+  fill: color-mix(in srgb, #c9a020 45%, var(--surface));
+}
