@@ -13,6 +13,7 @@ export const KIND: Record<GameMeta['kind'], { title: string; icon: IconName; col
   energy: { title: 'Energie a látky', icon: 'flame', color: 'var(--cat-alkaline)' },
   circuit: { title: 'Elektřina', icon: 'bolt', color: 'var(--cat-metalloid)' },
   optics: { title: 'Světlo a vlny', icon: 'sun', color: 'var(--cat-halogen)' },
+  map: { title: 'Mapy a orientace', icon: 'pin', color: 'var(--cat-lanthanide)' },
 }
 
 export function GameCard({ game, courseId, levelId, note }: { game: GameMeta; courseId: string; levelId?: string; note?: string }) {

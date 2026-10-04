@@ -26,5 +26,23 @@ export const EXPERIMENTS = [
   'predator-prey',
   'body-temperature',
   'coral-bleaching',
+  // geography
+  'map-projection',
+  'day-night',
+  'sun-angle',
+  'tides',
+  'plate-motion',
+  'river-erosion',
+  'pressure-wind',
+  'lapse-rate',
+  'flood-hydrograph',
+  'doubling-time',
+  'birth-death-rates',
+  'sea-level-rise',
+  'albedo-balance',
+  'climate-scenario',
+  'risk-index',
+  'site-finder',
+  'energy-mix',
 ] as const
 export type ExperimentId = (typeof EXPERIMENTS)[number]

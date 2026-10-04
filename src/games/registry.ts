@@ -184,6 +184,20 @@ export const GAMES: GameMeta[] = [
         11: 'fyziologie a homeostáza',
         12: 'evoluce, populace a ekosystémy',
       },
+      zemepis: {
+        1: 'mapa, zeměpisná síť, měřítko a orientace',
+        2: 'tvar a pohyby Země, čas a roční období',
+        3: 'desky, sopky, pohoří, eroze a půdy',
+        4: 'počasí, podnebí, vody a krajinné pásy',
+        5: 'obyvatelstvo, migrace, kultury, sídla a státy',
+        6: 'hospodářství, doprava, obchod a globalizace',
+        7: 'regiony světa',
+        8: 'Evropa a Evropská unie',
+        9: 'Česko a jeho kraje',
+        10: 'systémy Země, změna klimatu a přírodní rizika',
+        11: 'demografie, města, kultura a geopolitika',
+        12: 'globální hospodářství, zdroje a udržitelnost',
+      },
     },
   },
   {
@@ -230,6 +244,20 @@ export const GAMES: GameMeta[] = [
         10: 'molekulární genetika a biotechnologie',
         11: 'fyziologie a homeostáza',
         12: 'evoluce, populace a ekosystémy',
+      },
+      zemepis: {
+        1: 'mapa, zeměpisná síť, měřítko a orientace',
+        2: 'tvar a pohyby Země, čas a roční období',
+        3: 'desky, sopky, pohoří, eroze a půdy',
+        4: 'počasí, podnebí, vody a krajinné pásy',
+        5: 'obyvatelstvo, migrace, kultury, sídla a státy',
+        6: 'hospodářství, doprava, obchod a globalizace',
+        7: 'regiony světa',
+        8: 'Evropa a Evropská unie',
+        9: 'Česko a jeho kraje',
+        10: 'systémy Země, změna klimatu a přírodní rizika',
+        11: 'demografie, města, kultura a geopolitika',
+        12: 'globální hospodářství, zdroje a udržitelnost',
       },
     },
   },
@@ -449,6 +477,97 @@ export const GAMES: GameMeta[] = [
       },
     },
   },
+  // geography
+  {
+    id: 'coordinates',
+    title: 'Zeměpisná síť',
+    blurb: 'Najdi místo podle zeměpisných souřadnic a přečti souřadnice z mapy.',
+    kind: 'map',
+    courses: {
+      zemepis: {
+        1: 'čtení a zápis zeměpisné šířky a délky',
+        2: 'rovník, obratníky, polární kruhy a teplotní pásy',
+      },
+    },
+  },
+  {
+    id: 'map-scale',
+    title: 'Měřítko mapy',
+    blurb: 'Přepočítej vzdálenost na mapě na skutečnou a zpět.',
+    kind: 'map',
+    courses: {
+      zemepis: {
+        1: 'číselné a grafické měřítko, výpočet vzdáleností',
+      },
+    },
+  },
+  {
+    id: 'contours',
+    title: 'Vrstevnice',
+    blurb: 'Přečti z vrstevnic výšku, sklon svahu a tvar terénu.',
+    kind: 'map',
+    courses: {
+      zemepis: {
+        1: 'nadmořská výška, vrstevnice a profil terénu',
+        3: 'tvary reliéfu: vrchol, hřbet, údolí, sedlo',
+        9: 'reliéf Česka na turistické mapě',
+      },
+    },
+  },
+  {
+    id: 'time-zones',
+    title: 'Časová pásma',
+    blurb: 'Kolik je hodin na druhém konci světa? Spočítej místní a pásmový čas.',
+    kind: 'map',
+    courses: {
+      zemepis: {
+        2: 'místní čas, časová pásma, letní čas a datová hranice',
+      },
+    },
+  },
+  {
+    id: 'climate-chart',
+    title: 'Klimatogram',
+    blurb: 'Přečti klimatogram a poznej, odkud je.',
+    kind: 'quiz',
+    courses: {
+      zemepis: {
+        4: 'čtení klimatogramu, podnebné pásy a krajinné pásy',
+        7: 'podnebí regionů světa',
+        10: 'typy podnebí a změna klimatu',
+        12: 'klima, voda a potraviny',
+      },
+    },
+  },
+  {
+    id: 'blind-map',
+    title: 'Slepá mapa',
+    blurb: 'Najdi na slepé mapě státy, pohoří, řeky a města.',
+    kind: 'map',
+    courses: {
+      zemepis: {
+        3: 'pohoří, sopky a desky světa',
+        7: 'státy a regiony kontinentů',
+        8: 'státy, hlavní města, řeky a pohoří Evropy',
+        9: 'kraje, města, řeky a pohoří Česka',
+        11: 'státy, hranice a ohniska konfliktů',
+      },
+    },
+  },
+  {
+    id: 'pop-pyramid',
+    title: 'Věková pyramida',
+    blurb: 'Přečti věkovou pyramidu a poznej, jak se obyvatelstvo vyvíjí.',
+    kind: 'quiz',
+    courses: {
+      zemepis: {
+        5: 'tvary pyramid, porodnost, úmrtnost a stárnutí',
+        6: 'pyramida a vyspělost státu',
+        11: 'demografický přechod a projekce obyvatelstva',
+        12: 'stárnutí, závislost a budoucnost populace',
+      },
+    },
+  },
 ]
 
 /** Levels (by number) a game supports in a course, with what it trains there; undefined = not in that course. */
@@ -491,4 +610,12 @@ export const GAME_COMPONENTS: Partial<Record<GameId, LazyExoticComponent<Compone
   'punnett': lazyWithReload(() => import('./punnett')),
   'dna-code': lazyWithReload(() => import('./dna-code')),
   'food-web': lazyWithReload(() => import('./food-web')),
+  // geography
+  'coordinates': lazyWithReload(() => import('./coordinates')),
+  'map-scale': lazyWithReload(() => import('./map-scale')),
+  'contours': lazyWithReload(() => import('./contours')),
+  'time-zones': lazyWithReload(() => import('./time-zones')),
+  'climate-chart': lazyWithReload(() => import('./climate-chart')),
+  'blind-map': lazyWithReload(() => import('./blind-map')),
+  'pop-pyramid': lazyWithReload(() => import('./pop-pyramid')),
 }

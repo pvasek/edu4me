@@ -17,6 +17,7 @@ import { ParticleScene } from '../illustrations/particles/ParticleScene'
 import { ReactionView } from '../illustrations/particles/ReactionView'
 import { CircuitView, ForcesView, GraphView, RaysView, WaveView } from '../illustrations/physics'
 import { BiologyBlock } from '../illustrations/biology'
+import { GeographyBlock } from '../illustrations/geography'
 import { ExperimentBlock } from './experiments/ExperimentBlock'
 import './blocks.css'
 
@@ -284,6 +285,21 @@ export function BlockView({
         <figure className="b-visual">
           <Replayable>
             <BiologyBlock block={block} />
+          </Replayable>
+          {block.caption && (
+            <figcaption>
+              <Md text={block.caption} />
+            </figcaption>
+          )}
+        </figure>
+      )
+    case 'map':
+    case 'climate':
+    case 'pyramid':
+      return (
+        <figure className="b-visual">
+          <Replayable>
+            <GeographyBlock block={block} />
           </Replayable>
           {block.caption && (
             <figcaption>

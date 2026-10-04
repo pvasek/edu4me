@@ -24,7 +24,7 @@ export interface GameMeta {
   /** One sentence, Czech, shown on the game card. */
   blurb: string
   /** Skill family, used for grouping and colour. */
-  kind: 'periodic' | 'build' | 'quiz' | 'lab' | 'motion' | 'energy' | 'circuit' | 'optics'
+  kind: 'periodic' | 'build' | 'quiz' | 'lab' | 'motion' | 'energy' | 'circuit' | 'optics' | 'map'
   /**
    * Courses the game belongs to → levels (by number) it supports there, each
    * with a short Czech description of what it trains at that level. Every

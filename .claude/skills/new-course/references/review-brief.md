@@ -53,3 +53,12 @@ Physics:
 - Czech symbols and units (*t* for time, *s* for path at ZŠ, km/h, kWh); *g ≐ 10 N/kg* at ZŠ, 9,81 m/s² at gymnázium; ≐ for rounded results
 - misconceptions stated as facts (a "centrifugal force" pushing outward, heavier things falling faster, current "used up" in a bulb)
 - found in review: *kmit* (full period) vs *kyv* (half); light is *soustřeďována / rozptylována* (not "sbíhá"); a mirage is gradual *lom*, never *ohyb* (= diffraction); *teplota tání / varu* (not bod); *ekvivalentní dávka* (not dávkový ekvivalent); free-body diagrams must balance and be drawn to scale
+
+Geography:
+- coordinates as Czech schools write them: *50° 05′ s. š., 14° 25′ v. d.* (s. š. / j. š., v. d. / z. d.); *zeměpisná šířka / délka*; *poledník*, *rovnoběžka*, *rovník*, *obratník Raka / Kozoroha*, *severní / jižní polární kruh*
+- *nadmořská výška* (m n. m.) vs *relativní výška*; *vrstevnice*, *výškový bod*, *kóta*; *měřítko* 1 : 50 000 (spaces around the colon)
+- *počasí* vs *podnebí*; *podnebný pás* vs *krajinný (vegetační) pás*; *tlaková výše / níže*; *pasáty*, *monzuny*; *teplá / studená fronta*
+- English traps: *watershed* is *rozvodí* (UK) or *povodí* (US) – check which is meant; *povodí* (basin) vs *úmoří* (sea it drains to); *climate zone* → *podnebný pás*; *continent* → *světadíl* vs *kontinent* (Evropa is a světadíl, Eurasie a kontinent); *Antarktida* (continent) vs *Antarktis* (region)
+- *litosférické desky*; earthquakes have a *magnitudo* (not "síla na Richterově stupnici") and an *intenzita*; *ohnisko* and *epicentrum*
+- population: *porodnost / úmrtnost* in ‰, *přirozený přírůstek*, *migrační saldo*, *hustota zalidnění* (obyv./km²), *věková pyramida*, *střední délka života*; never "rasy" for human groups
+- names: Czech exonyms (Peking, Vídeň, Mnichov, Řezno), *Česko* / *Česká republika*, current state names (Eswatini, Severní Makedonie, Myanmar); data with its year and source (ČSÚ, UN WPP, ČHMÚ normals 1991–2020)

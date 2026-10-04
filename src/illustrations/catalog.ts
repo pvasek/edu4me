@@ -32,6 +32,8 @@ export const CHEM_ICONS = [
   'wind-turbine', 'radiation',
   // biology (drawings in icon-paths-biology.ts)
   'virus', 'bacteria', 'amoeba', 'mushroom', 'lichen', 'moss', 'fern', 'root', 'flower', 'seed', 'sponge', 'jellyfish', 'worm', 'snail', 'spider', 'tick', 'bee', 'butterfly', 'starfish', 'frog', 'lizard', 'bird', 'mouse', 'deer', 'paw', 'skeleton', 'tooth', 'kidney', 'brain', 'neuron', 'baby', 'first-aid', 'chromosome', 'pea', 'twins', 'fossil', 'soil', 'food-chain', 'forest', 'pond', 'family-tree', 'cell-division', 'gene-scissors',
+  // geography (drawings in icon-paths-geography.ts)
+  'globe', 'map', 'pin', 'signpost', 'layers', 'moon', 'calendar', 'quake', 'canyon', 'cave', 'river', 'glacier', 'cliff', 'dune', 'tornado', 'snowflake', 'island', 'people', 'house', 'city', 'flag', 'border', 'wheat', 'tractor', 'pickaxe', 'container', 'train', 'plane', 'suitcase', 'handshake', 'speech', 'castle', 'tent', 'crown', 'shield', 'palm', 'penguin', 'binoculars', 'clipboard', 'dam', 'hourglass', 'footprints',
 ] as const
 export type ChemIcon = (typeof CHEM_ICONS)[number]
 
@@ -118,6 +120,21 @@ export const FIGURES = [
   // extra figures for levels 8–9 (bz7) and 10–12 (bz8)
   'forest-storeys', 'pond-zones', 'world-plates', 'cell-signalling', 'mitosis-stages',
   'paternity-gel', 'potometer', 'haemodialysis', 'lateral-flow', 'survivorship-curves', 'human-migration', 'pentadactyl-limb',
+  // ── geography (src/illustrations/figures/gz1…gz7, see spec/courses/zemepis/figures.md) ──
+  // gz1: levels 1–2 (maps, the Earth in space)
+  'geo-spheres', 'globe-grid', 'latitude-longitude', 'map-generalisation', 'map-symbols', 'contour-hill', 'contour-landforms', 'compass-rose', 'orientation-sun', 'trail-marks', 'projection-surfaces', 'mercator-sizes', 'gps-trilateration', 'gis-layers', 'earth-shape-evidence', 'eratosthenes', 'day-night', 'local-time', 'date-line', 'sun-rays-latitude', 'solstice-light', 'heat-zones', 'tides',
+  // gz2: level 3 (relief)
+  'continental-drift', 'earthquake-focus', 'volcano-types', 'hotspot-chain', 'tsunami', 'folding-faulting', 'weathering-types', 'karst', 'river-course', 'meander', 'glacial-valley', 'wind-landforms', 'coastal-erosion', 'coast-types', 'coral-atoll', 'soil-erosion',
+  // gz3: level 4 (weather, climate, water, biomes)
+  'atmosphere-layers', 'weather-station', 'cloud-types', 'pressure-wind', 'weather-fronts', 'synoptic-map', 'tropical-cyclone', 'global-circulation', 'monsoon', 'altitude-zones', 'water-distribution', 'ocean-currents', 'river-basin', 'lake-origins', 'groundwater', 'glacier-parts', 'biome-climate',
+  // gz4: levels 5–7 (people, economy, regions)
+  'demographic-transition', 'push-pull', 'settlement-hierarchy', 'urban-zones', 'urbanisation-stages', 'state-forms', 'economic-sectors', 'farming-systems', 'mining-types', 'industry-location', 'transport-modes', 'panama-canal', 'supply-chain', 'sahel-transect', 'himalaya-section', 'deforestation', 'polar-compare',
+  // gz5: levels 8–9 (Europe, Czechia, fieldwork)
+  'gulf-stream', 'eu-institutions', 'europe-relief', 'czech-watersheds', 'czech-geomorphology', 'czech-profile', 'czech-protected', 'suburbanisation-prague', 'fieldwork-cycle', 'land-use-transect',
+  // gz6: level 10 (Earth systems, hazards)
+  'system-model', 'drainage-basin-system', 'radiation-budget', 'el-nino', 'jet-stream', 'ice-core', 'climate-feedbacks', 'subduction-zone', 'seismic-waves', 'hazard-risk', 'disaster-cycle', 'storm-hydrograph', 'desertification', 'sea-level-causes', 'remote-sensing', 'gis-overlay',
+  // gz7: levels 11–12 (population, cities, geopolitics, global economy)
+  'migration-models', 'urban-models', 'gentrification', 'von-thunen', 'cultural-diffusion', 'border-types', 'state-shapes', 'un-system', 'weber-triangle', 'smile-curve', 'core-periphery', 'virtual-water', 'dam-impacts', 'energy-transition', 'circular-economy', 'planetary-boundaries', 'sdg-wheel', 'scenario-fan',
 ] as const
 export type FigureId = (typeof FIGURES)[number]
 

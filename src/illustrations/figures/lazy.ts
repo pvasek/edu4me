@@ -25,6 +25,13 @@ export const FIGURE_GROUPS = {
   bz6: () => import('./bz6').then((m) => m.FIGURES_BZ6),
   bz7: () => import('./bz7').then((m) => m.FIGURES_BZ7),
   bz8: () => import('./bz8').then((m) => m.FIGURES_BZ8),
+  gz1: () => import('./gz1').then((m) => m.FIGURES_GZ1),
+  gz2: () => import('./gz2').then((m) => m.FIGURES_GZ2),
+  gz3: () => import('./gz3').then((m) => m.FIGURES_GZ3),
+  gz4: () => import('./gz4').then((m) => m.FIGURES_GZ4),
+  gz5: () => import('./gz5').then((m) => m.FIGURES_GZ5),
+  gz6: () => import('./gz6').then((m) => m.FIGURES_GZ6),
+  gz7: () => import('./gz7').then((m) => m.FIGURES_GZ7),
 } satisfies Record<string, () => Promise<Registry>>
 export type FigureGroup = keyof typeof FIGURE_GROUPS
 
@@ -115,6 +122,41 @@ export const GROUP_FIGURES: Record<FigureGroup, readonly FigureId[]> = {
   bz8: [
     'paternity-gel', 'potometer', 'haemodialysis', 'lateral-flow', 'survivorship-curves', 'human-migration',
     'pentadactyl-limb',
+  ],
+  gz1: [
+    'geo-spheres', 'globe-grid', 'latitude-longitude', 'map-generalisation', 'map-symbols', 'contour-hill',
+    'contour-landforms', 'compass-rose', 'orientation-sun', 'trail-marks', 'projection-surfaces', 'mercator-sizes',
+    'gps-trilateration', 'gis-layers', 'earth-shape-evidence', 'eratosthenes', 'day-night', 'local-time', 'date-line',
+    'sun-rays-latitude', 'solstice-light', 'heat-zones', 'tides',
+  ],
+  gz2: [
+    'continental-drift', 'earthquake-focus', 'volcano-types', 'hotspot-chain', 'tsunami', 'folding-faulting',
+    'weathering-types', 'karst', 'river-course', 'meander', 'glacial-valley', 'wind-landforms', 'coastal-erosion',
+    'coast-types', 'coral-atoll', 'soil-erosion',
+  ],
+  gz3: [
+    'atmosphere-layers', 'weather-station', 'cloud-types', 'pressure-wind', 'weather-fronts', 'synoptic-map',
+    'tropical-cyclone', 'global-circulation', 'monsoon', 'altitude-zones', 'water-distribution', 'ocean-currents',
+    'river-basin', 'lake-origins', 'groundwater', 'glacier-parts', 'biome-climate',
+  ],
+  gz4: [
+    'demographic-transition', 'push-pull', 'settlement-hierarchy', 'urban-zones', 'urbanisation-stages',
+    'state-forms', 'economic-sectors', 'farming-systems', 'mining-types', 'industry-location', 'transport-modes',
+    'panama-canal', 'supply-chain', 'sahel-transect', 'himalaya-section', 'deforestation', 'polar-compare',
+  ],
+  gz5: [
+    'gulf-stream', 'eu-institutions', 'europe-relief', 'czech-watersheds', 'czech-geomorphology', 'czech-profile',
+    'czech-protected', 'suburbanisation-prague', 'fieldwork-cycle', 'land-use-transect',
+  ],
+  gz6: [
+    'system-model', 'drainage-basin-system', 'radiation-budget', 'el-nino', 'jet-stream', 'ice-core',
+    'climate-feedbacks', 'subduction-zone', 'seismic-waves', 'hazard-risk', 'disaster-cycle', 'storm-hydrograph',
+    'desertification', 'sea-level-causes', 'remote-sensing', 'gis-overlay',
+  ],
+  gz7: [
+    'migration-models', 'urban-models', 'gentrification', 'von-thunen', 'cultural-diffusion', 'border-types',
+    'state-shapes', 'un-system', 'weber-triangle', 'smile-curve', 'core-periphery', 'virtual-water', 'dam-impacts',
+    'energy-transition', 'circular-economy', 'planetary-boundaries', 'sdg-wheel', 'scenario-fan',
   ],
 }
 

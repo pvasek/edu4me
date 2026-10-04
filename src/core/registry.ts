@@ -2,6 +2,7 @@ import type { Course, LevelOutline } from './types'
 import { chemie } from '../courses/chemie'
 import { fyzika } from '../courses/fyzika'
 import { biologie } from '../courses/biologie'
+import { zemepis } from '../courses/zemepis'
 import { BY_SYMBOL } from '../courses/chemie/data/elements'
 
 /**
@@ -12,6 +13,7 @@ export const COURSES: Course[] = [
   chemie,
   fyzika,
   biologie,
+  zemepis,
   { id: 'matematika', title: 'Matematika', tagline: 'Čísla, funkce a geometrie hravě.', color: '#7a5290', available: false, levels: [] },
 ]
 

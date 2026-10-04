@@ -16,6 +16,13 @@ import { FIGURES_BZ5 } from './bz5'
 import { FIGURES_BZ6 } from './bz6'
 import { FIGURES_BZ7 } from './bz7'
 import { FIGURES_BZ8 } from './bz8'
+import { FIGURES_GZ1 } from './gz1'
+import { FIGURES_GZ2 } from './gz2'
+import { FIGURES_GZ3 } from './gz3'
+import { FIGURES_GZ4 } from './gz4'
+import { FIGURES_GZ5 } from './gz5'
+import { FIGURES_GZ6 } from './gz6'
+import { FIGURES_GZ7 } from './gz7'
 
 /** All named figures, imported eagerly: for tests only. The app loads groups lazily (lazy.ts). Each group file is owned by one figure agent. */
 export const FIGURE_COMPONENTS: Partial<Record<FigureId, ComponentType>> = {
@@ -37,4 +44,12 @@ export const FIGURE_COMPONENTS: Partial<Record<FigureId, ComponentType>> = {
   ...FIGURES_BZ6,
   ...FIGURES_BZ7,
   ...FIGURES_BZ8,
+  // geography
+  ...FIGURES_GZ1,
+  ...FIGURES_GZ2,
+  ...FIGURES_GZ3,
+  ...FIGURES_GZ4,
+  ...FIGURES_GZ5,
+  ...FIGURES_GZ6,
+  ...FIGURES_GZ7,
 }

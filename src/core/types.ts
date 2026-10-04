@@ -73,6 +73,13 @@ export type Block =
   /** A family pedigree chart: squares = males, circles = females, filled = affected, dot = carrier. */
   | { type: 'pedigree'; people: PedigreePerson[]; caption?: Inline }
   | { type: 'wave'; kind?: 'transverse' | 'longitudinal' | 'standing'; waves: WaveSpec[]; sum?: boolean; marks?: ('wavelength' | 'amplitude' | 'nodes')[]; caption?: Inline }
+  // ── geography: maps and charts drawn from data (rendered in src/illustrations/geography/) ──
+  /** A real map (Natural Earth data) of a fixed view: highlighted countries or Czech regions, points, routes, latitude bands and layers. */
+  | { type: 'map'; view: MapView; highlight?: MapHighlight[]; points?: MapPoint[]; routes?: MapRoute[]; bands?: MapBand[]; layers?: MapLayer[]; caption?: Inline }
+  /** A climate chart (klimatogram): monthly mean temperature (line) and precipitation (bars) of 1–2 places; yearly mean and total are computed. */
+  | { type: 'climate'; places: ClimatePlace[]; caption?: Inline }
+  /** A population (age–sex) pyramid of 1–2 populations; shares in % of the whole population. */
+  | { type: 'pyramid'; step: 5 | 10; pyramids: PyramidSpec[]; caption?: Inline }
 
 export interface PedigreePerson {
   id: string
@@ -86,6 +93,63 @@ export interface PedigreePerson {
 }
 
 export type Tone = 'a' | 'b' | 'c' | 'd'
+
+/** Map views: each has its own projection and frame (src/geo/views.ts). */
+export type MapView =
+  | 'world' | 'europe' | 'central-europe' | 'czechia' | 'africa' | 'asia' | 'middle-east'
+  | 'north-america' | 'latin-america' | 'oceania' | 'arctic' | 'antarctica'
+/** Optional layers: graticule (every 15° / 30°), its labels, the equator + tropics + polar circles, rivers, lakes, plate boundaries, Czech regions (czechia only), 15° time-zone stripes, Czech names of highlighted countries. */
+export type MapLayer = 'graticule' | 'graticule-labels' | 'tropics' | 'rivers' | 'lakes' | 'plates' | 'regions' | 'timezones' | 'names'
+export interface MapHighlight {
+  /** country codes from src/geo/codes.ts ("CZE", "DEU"), or Czech regions ("CZ-64") on the czechia view */
+  codes: string[]
+  tone?: Tone
+  /** legend entry, e.g. "státy EU" */
+  label?: Inline
+}
+export interface MapPoint {
+  /** degrees, north positive */
+  lat: number
+  /** degrees, east positive */
+  lon: number
+  label?: Inline
+  kind?: 'city' | 'capital' | 'peak' | 'volcano' | 'quake' | 'place'
+}
+export interface MapRoute {
+  points: { lat: number; lon: number }[]
+  label?: Inline
+  tone?: Tone
+  style?: 'line' | 'dashed'
+  /** arrowhead at the last point (a current, a migration, a trade flow) */
+  arrow?: boolean
+}
+/** A band between two latitudes, e.g. the tropics or the Sahel. */
+export interface MapBand {
+  from: number
+  to: number
+  label?: Inline
+  tone?: Tone
+}
+export interface ClimatePlace {
+  /** "Praha-Klementinum" */
+  name: Inline
+  /** 12 monthly means in °C, January first */
+  temp: number[]
+  /** 12 monthly totals in mm, January first */
+  precip: number[]
+  /** m above sea level */
+  altitude?: number
+  /** where the data come from, e.g. "ČHMÚ, normál 1991–2020" */
+  source?: string
+}
+export interface PyramidSpec {
+  /** "Česko 2024" */
+  label: Inline
+  /** % of the whole population per age group, youngest first; the last group is open ("85+") */
+  male: number[]
+  female: number[]
+  source?: string
+}
 
 export interface GraphAxis {
   /** quantity symbol or name, e.g. "t" or "čas" */
@@ -291,3 +355,11 @@ export type GameId =
   | 'punnett'
   | 'dna-code'
   | 'food-web'
+  // geography
+  | 'coordinates'
+  | 'map-scale'
+  | 'contours'
+  | 'time-zones'
+  | 'climate-chart'
+  | 'blind-map'
+  | 'pop-pyramid'

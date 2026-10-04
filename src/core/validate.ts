@@ -3,12 +3,15 @@ import { BY_SYMBOL } from '../courses/chemie/data/elements'
 import { CHEM_ICONS, FIGURES, MOLECULES, SPECIMENS } from '../illustrations/catalog'
 import { parseFormula } from '../courses/chemie/data/formula'
 import { EXPERIMENTS } from '../lesson/experiments/catalog'
+import { COUNTRY_NAMES, CZ_REGION_NAMES } from '../geo/codes'
 
 const ICONS = new Set<string>(CHEM_ICONS)
 const SPECS = new Set<string>(SPECIMENS)
-const VISUAL = new Set<string>(['flipcards', 'diagram', 'molecule', 'particles', 'reaction', 'process', 'iconlist', 'compare', 'elements', 'structure', 'graph', 'circuit', 'forces', 'rays', 'wave', 'experiment', 'punnett', 'pedigree'])
+const VISUAL = new Set<string>(['flipcards', 'diagram', 'molecule', 'particles', 'reaction', 'process', 'iconlist', 'compare', 'elements', 'structure', 'graph', 'circuit', 'forces', 'rays', 'wave', 'experiment', 'punnett', 'pedigree', 'map', 'climate', 'pyramid'])
 const CIRCUIT_KINDS = new Set<string>(['resistor', 'lamp', 'switch', 'switch-open', 'ammeter', 'voltmeter', 'ohmmeter', 'diode', 'diode-reverse', 'led', 'capacitor', 'coil', 'motor', 'fuse', 'breaker', 'rheostat', 'ldr', 'thermistor', 'bell', 'wire'])
 const MOLS = new Set<string>(MOLECULES)
+const MAP_VIEWS = new Set<string>(['world', 'europe', 'central-europe', 'czechia', 'africa', 'asia', 'middle-east', 'north-america', 'latin-america', 'oceania', 'arctic', 'antarctica'])
+const MAP_LAYERS = new Set<string>(['graticule', 'graticule-labels', 'tropics', 'rivers', 'lakes', 'plates', 'regions', 'timezones', 'names'])
 
 const DIAGRAMS = new Set<string>([...FIGURES, 'bohr', 'states', 'ph-scale', 'periodic-mini', 'energy-profile', 'titration-curve', 'orbitals', 'separation', 'galvanic', 'rate-curve', 'lab-safety'])
 
@@ -84,6 +87,26 @@ function checkBlock(b: Block, err: (m: string) => void) {
     const ids = new Set(b.people.map((p) => p.id))
     if (b.people.length < 3 || b.people.length > 18) err(`pedigree: ${b.people.length} people (want 3–18)`)
     for (const p of b.people) for (const par of p.parents ?? []) if (!ids.has(par)) err(`pedigree: ${p.id} has unknown parent ${par}`)
+  }
+  if (b.type === 'map') checkMap(b, err)
+  if (b.type === 'climate') {
+    if (b.places.length < 1 || b.places.length > 2) err(`climate: ${b.places.length} places (want 1–2)`)
+    for (const pl of b.places) {
+      if (pl.temp.length !== 12 || pl.precip.length !== 12) err(`climate ${pl.name}: need 12 monthly values of temp and precip`)
+      if (pl.temp.some((t) => !Number.isFinite(t) || t < -60 || t > 45)) err(`climate ${pl.name}: temperature outside −60…45 °C`)
+      if (pl.precip.some((r) => !Number.isFinite(r) || r < 0 || r > 2000)) err(`climate ${pl.name}: precipitation outside 0…2000 mm`)
+    }
+  }
+  if (b.type === 'pyramid') {
+    if (b.pyramids.length < 1 || b.pyramids.length > 2) err(`pyramid: ${b.pyramids.length} pyramids (want 1–2)`)
+    for (const py of b.pyramids) {
+      const n = py.male.length
+      if (n !== py.female.length) err(`pyramid ${py.label}: male and female need the same number of age groups`)
+      if (n < 5 || n > 21) err(`pyramid ${py.label}: ${n} age groups (want 5–21)`)
+      if ([...py.male, ...py.female].some((v) => !Number.isFinite(v) || v < 0)) err(`pyramid ${py.label}: shares must be ≥ 0`)
+      const sum = [...py.male, ...py.female].reduce((a, v) => a + v, 0)
+      if (Math.abs(sum - 100) > 2) err(`pyramid ${py.label}: shares add up to ${sum.toFixed(1)} %, want 100 %`)
+    }
   }
   if (b.type === 'circuit') {
     if (!b.parts.length) err('circuit without parts')
@@ -249,6 +272,27 @@ function visibleStrings(v: unknown, key = ''): string[] {
   if (Array.isArray(v)) return v.flatMap((x) => visibleStrings(x))
   if (v && typeof v === 'object') return Object.entries(v).flatMap(([k, x]) => visibleStrings(x, k))
   return []
+}
+
+function checkMap(b: Extract<Block, { type: 'map' }>, err: (m: string) => void) {
+  if (!MAP_VIEWS.has(b.view)) err(`map: unknown view ${b.view}`)
+  for (const l of b.layers ?? []) {
+    if (!MAP_LAYERS.has(l)) err(`map: unknown layer ${l}`)
+    if (l === 'regions' && b.view !== 'czechia') err('map: the regions layer exists only on the czechia view')
+  }
+  for (const h of b.highlight ?? [])
+    for (const c of h.codes)
+      if (!(c in COUNTRY_NAMES) && !(b.view === 'czechia' && c in CZ_REGION_NAMES)) err(`map: unknown code ${c} (see src/geo/codes.ts)`)
+  const ll = (lat: number, lon: number, what: string) => {
+    if (!(Math.abs(lat) <= 90) || !(Math.abs(lon) <= 180)) err(`map: ${what} at lat ${lat}, lon ${lon} is not a valid position`)
+  }
+  for (const p of b.points ?? []) ll(p.lat, p.lon, `point ${p.label ?? ''}`)
+  for (const r of b.routes ?? []) {
+    if (r.points.length < 2) err('map: a route needs 2+ points')
+    for (const p of r.points) ll(p.lat, p.lon, `route ${r.label ?? ''}`)
+  }
+  for (const band of b.bands ?? []) if (!(band.from < band.to) || Math.abs(band.from) > 90 || Math.abs(band.to) > 90) err(`map: band ${band.label ?? ''} needs −90 ≤ from < to ≤ 90`)
+  if (!b.highlight?.length && !b.points?.length && !b.routes?.length && !b.bands?.length && !b.layers?.length) err('map: show something (highlight, points, routes, bands or layers)')
 }
 
 /** Alleles of a genotype string: "AaBb" → [A, a, B, b]; "X^{A}Y" → [X^{A}, Y]; "I^{A}i" → [I^{A}, i]. */
