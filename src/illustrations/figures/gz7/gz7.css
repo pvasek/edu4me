@@ -1,0 +1,1088 @@
+.gz7 {
+  --lvl: var(--level, #7a5290);
+  --lvl-ink: color-mix(in srgb, var(--lvl) 72%, var(--ink));
+  --lvl-soft: color-mix(in srgb, var(--lvl) 16%, var(--surface));
+  --e: var(--blue);
+  --glass: color-mix(in srgb, var(--info-soft) 45%, var(--surface));
+  --water: color-mix(in srgb, #6f9fd8 30%, var(--surface));
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  container-type: inline-size;
+}
+.gz7-l11 {
+  --lvl: var(--level, #7a5290);
+}
+.gz7-l12 {
+  --lvl: var(--level, #3d6b5a);
+}
+
+.gz7-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gz7-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.gz7-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.gz7-btn {
+  appearance: none;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 14px/1.1 var(--font-body);
+  min-height: 40px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.gz7-btn:hover {
+  background: var(--surface-2);
+}
+.gz7-btn[aria-pressed="true"] {
+  background: var(--lvl);
+  border-color: var(--lvl);
+  color: var(--on-level);
+}
+.gz7-host {
+  width: 100%;
+}
+
+.gz7-lbl {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16.5px;
+  fill: var(--ink-soft);
+}
+.gz7-b {
+  font-weight: 700;
+  fill: var(--ink);
+}
+.gz7-big {
+  font-size: 19px;
+}
+.gz7-sm {
+  font-size: 14.5px;
+}
+.gz7-lvl-t {
+  fill: var(--lvl-ink);
+}
+.gz7-acc-t {
+  fill: var(--accent);
+}
+.gz7-blue-t {
+  fill: var(--blue);
+}
+.gz7-red-t {
+  fill: var(--bad);
+}
+.gz7-muted-t {
+  fill: var(--muted);
+}
+.gz7-eq {
+  font: 600 14px var(--font-body);
+  fill: var(--ink);
+}
+.gz7-eq-sm {
+  font-size: 12.5px;
+}
+.gz7-eq-lg {
+  font-size: 16px;
+}
+.gz7-num {
+  font: 400 13px var(--font-mono);
+  fill: var(--ink);
+}
+.gz7-light-t {
+  fill: #fffaf0;
+}
+
+:where(.gz7-o:not([fill])) {
+  fill: none;
+}
+.gz7-o {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.gz7-thin {
+  stroke-width: 0.9;
+}
+.gz7-fill {
+  fill: var(--surface);
+}
+.gz7-fill2 {
+  fill: var(--surface-2);
+}
+.gz7-fill3 {
+  fill: var(--surface-3);
+}
+.gz7-glass {
+  fill: var(--glass);
+  fill-opacity: 0.55;
+}
+.gz7-ln {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+}
+.gz7-lvl-s {
+  stroke: var(--lvl-ink);
+}
+.gz7-lvl-f {
+  fill: var(--lvl);
+}
+.gz7-lvlsoft-f {
+  fill: var(--lvl-soft);
+}
+.gz7-dash {
+  stroke-dasharray: 5 4;
+}
+.gz7-dot2 {
+  stroke-dasharray: 1.5 4;
+}
+.gz7-lead {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  fill: none;
+}
+.gz7-dot {
+  fill: var(--ink-soft);
+}
+.gz7-nohit {
+  pointer-events: none;
+}
+.gz7-hl {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.4;
+}
+.gz7-hl-dark {
+  opacity: 0.6;
+}
+.gz7-hl-light {
+  stroke: #fffaf0;
+  stroke-width: 0.9;
+  opacity: 0.75;
+}
+.gz7-hl-shade {
+  stroke: #10131c;
+  stroke-width: 0.8;
+  opacity: 0.35;
+}
+.gz7-stip {
+  fill: var(--edge);
+  opacity: 0.35;
+}
+
+.gz7-arr {
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz7-arr-ink {
+  stroke: var(--edge);
+}
+.gz7-arr-acc {
+  stroke: var(--accent);
+}
+.gz7-arr-blue {
+  stroke: var(--blue);
+}
+.gz7-arr-lvl {
+  stroke: var(--lvl-ink);
+}
+.gz7-arr-red {
+  stroke: var(--bad);
+}
+.gz7-arr-green {
+  stroke: var(--good);
+}
+.gz7-arr-muted {
+  stroke: var(--muted);
+}
+.gz7-mk-ink {
+  fill: var(--edge);
+}
+.gz7-mk-acc {
+  fill: var(--accent);
+}
+.gz7-mk-blue {
+  fill: var(--blue);
+}
+.gz7-mk-lvl {
+  fill: var(--lvl-ink);
+}
+.gz7-mk-red {
+  fill: var(--bad);
+}
+.gz7-mk-green {
+  fill: var(--good);
+}
+.gz7-mk-muted {
+  fill: var(--muted);
+}
+
+.gz7-tag {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.gz7-tag-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+}
+
+.gz7-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 2 9;
+  animation: gz7-flow 1.1s linear infinite;
+}
+.gz7-flow-rev {
+  animation-direction: reverse;
+}
+@keyframes gz7-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+@container (max-width: 440px) {
+  .gz7-sec {
+    display: none;
+  }
+  .gz7-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+
+
+
+/* ---------------------------------------------------------------- narrow boost */
+.gz7-narrow .gz7-lbl {
+  font-size: 19px;
+}
+.gz7-narrow .gz7-lbl.gz7-sm {
+  font-size: 17px;
+}
+.gz7-narrow .gz7-lbl.gz7-big {
+  font-size: 21px;
+}
+.gz7-narrow .gz7-eq {
+  font-size: 16px;
+}
+.gz7-narrow .gz7-eq.gz7-eq-lg {
+  font-size: 17.5px;
+}
+.gz7-narrow .gz7-eq.gz7-eq-sm {
+  font-size: 14.5px;
+}
+.gz7-halo {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+.gz7-stripbox {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+}
+.gz7-strip-note {
+  margin: 0;
+  text-align: center;
+  font: italic 600 17px/1.3 var(--font-display);
+  color: var(--ink-soft);
+}
+.gz7-sym-t {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 19px;
+  fill: var(--ink);
+}
+.gz7-tone-lvl {
+  fill: var(--lvl-ink);
+}
+.gz7-tone-red {
+  fill: var(--bad);
+}
+.gz7-tone-green {
+  fill: var(--good);
+}
+.gz7-tone-blue {
+  fill: var(--blue);
+}
+.gz7-tone-acc {
+  fill: var(--accent);
+}
+.gz7-tone-muted {
+  fill: var(--muted);
+}
+.gz7-it {
+  font-style: italic;
+}
+.gz7-qs {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.gz7-num-badge circle {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.gz7-num-badge text {
+  font-family: var(--font-body);
+  font-weight: 800;
+  fill: var(--on-level);
+  pointer-events: none;
+}
+.gz7-vec {
+  stroke-width: 2.6;
+}
+.gz7-box {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.gz7-box-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.4;
+}
+.gz7-title {
+  font: italic 700 18px var(--font-display);
+  fill: var(--ink);
+}
+.gz7-narrow .gz7-title {
+  font-size: 20px;
+}
+.gz7-scale {
+  stroke: var(--ink);
+  stroke-width: 2.4;
+  stroke-linecap: butt;
+}
+.gz7-scale-t {
+  font: 600 12.5px var(--font-body);
+  fill: var(--ink-soft);
+}
+.gz7-narrow .gz7-scale-t {
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------------- ambient loops */
+.gz7-wiggle {
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
+  animation: gz7-wiggle 0.9s ease-in-out infinite alternate;
+}
+@keyframes gz7-wiggle {
+  from {
+    transform: skewY(-4deg);
+  }
+  to {
+    transform: skewY(4deg);
+  }
+}
+.gz7-fall {
+  animation: gz7-fall 3s linear infinite;
+}
+@keyframes gz7-fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--fall, 40px));
+    opacity: 0;
+  }
+}
+.gz7-flow-up {
+  stroke-dasharray: 3 10;
+  animation: gz7-flow 1.3s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gz7-wiggle,
+  .gz7-fall,
+  .gz7-flow,
+  .gz7-flow-up {
+    animation: none;
+  }
+}
+
+
+/* ================================================================ gz7 shared */
+.gz7-stripbox {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+}
+.gz7-strip-note {
+  margin: 0;
+  text-align: center;
+  font: italic 600 17px/1.3 var(--font-display);
+  color: var(--ink-soft);
+}
+.gz7-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+  gap: 6px 14px;
+  font: 600 14.5px/1.25 var(--font-body);
+  color: var(--ink-soft);
+}
+.gz7-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.gz7-sw {
+  flex: none;
+  width: 22px;
+  height: 22px;
+}
+.gz7-sw-n {
+  font: 800 12px var(--font-body);
+  fill: var(--ink);
+}
+.gz7-small .gz7-lbl {
+  font-size: 19px;
+}
+.gz7-small .gz7-lbl.gz7-sm {
+  font-size: 17px;
+}
+.gz7-small .gz7-num {
+  font-size: 15px;
+}
+.gz7-good-t {
+  fill: var(--good);
+}
+.gz7-teal-t {
+  fill: color-mix(in srgb, var(--teal) 80%, var(--ink));
+}
+.gz7-grid {
+  stroke: var(--edge);
+  stroke-width: 0.6;
+  opacity: 0.3;
+  stroke-dasharray: 3 4;
+}
+
+/* geography fills (token mixes: parchment and night-study) */
+.gz7-sea {
+  fill: color-mix(in srgb, var(--blue) 30%, var(--info-soft));
+}
+.gz7-water {
+  fill: color-mix(in srgb, var(--blue) 30%, var(--surface));
+}
+.gz7-river {
+  fill: none;
+  stroke: color-mix(in srgb, var(--blue) 70%, var(--surface));
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz7-land {
+  fill: color-mix(in srgb, var(--yellow) 16%, var(--surface-2));
+}
+.gz7-land2 {
+  fill: color-mix(in srgb, var(--accent) 14%, var(--surface));
+}
+.gz7-other {
+  fill: color-mix(in srgb, var(--muted) 12%, var(--surface));
+}
+.gz7-state {
+  fill: color-mix(in srgb, var(--lvl) 34%, var(--surface));
+}
+.gz7-state2 {
+  fill: color-mix(in srgb, var(--accent) 30%, var(--surface));
+}
+.gz7-state3 {
+  fill: color-mix(in srgb, var(--teal) 28%, var(--surface));
+}
+.gz7-mount {
+  fill: color-mix(in srgb, var(--accent) 26%, var(--surface-2));
+}
+.gz7-field {
+  fill: color-mix(in srgb, var(--yellow) 40%, var(--surface));
+}
+.gz7-grass {
+  fill: color-mix(in srgb, var(--green) 24%, var(--surface));
+}
+.gz7-forest {
+  fill: color-mix(in srgb, var(--green) 52%, var(--surface));
+}
+.gz7-veg {
+  fill: color-mix(in srgb, var(--green) 36%, var(--yellow) 20%);
+}
+.gz7-house {
+  fill: var(--surface);
+}
+.gz7-house-lvl {
+  fill: color-mix(in srgb, var(--lvl) 40%, var(--surface));
+}
+.gz7-house-acc {
+  fill: color-mix(in srgb, var(--accent) 45%, var(--surface));
+}
+.gz7-lvl-fill {
+  fill: color-mix(in srgb, var(--lvl) 30%, var(--surface));
+}
+.gz7-lvl-strong {
+  fill: color-mix(in srgb, var(--lvl) 62%, var(--surface));
+}
+.gz7-acc-fill {
+  fill: color-mix(in srgb, var(--accent) 30%, var(--surface));
+}
+.gz7-red-fill {
+  fill: color-mix(in srgb, var(--bad) 30%, var(--surface));
+}
+.gz7-good-fill {
+  fill: color-mix(in srgb, var(--good) 30%, var(--surface));
+}
+.gz7-yel-fill {
+  fill: color-mix(in srgb, var(--yellow) 45%, var(--surface));
+}
+.gz7-blue-fill {
+  fill: color-mix(in srgb, var(--blue) 26%, var(--surface));
+}
+.gz7-gray-fill {
+  fill: color-mix(in srgb, var(--muted) 30%, var(--surface));
+}
+.gz7-ink-fill {
+  fill: color-mix(in srgb, var(--ink-soft) 55%, var(--surface));
+}
+.gz7-paper-fill {
+  fill: var(--surface);
+}
+.gz7-ghost {
+  opacity: 0.35;
+}
+.gz7-faint {
+  opacity: 0.55;
+}
+
+/* migration-models */
+.gz7-mig-thick {
+  stroke-width: 4;
+}
+.gz7-mig-thin {
+  stroke-width: 1.3;
+}
+.gz7-teal-fill {
+  fill: color-mix(in srgb, var(--teal) 34%, var(--surface));
+}
+
+/* urban-models */
+.gz7-zone-n circle {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.gz7-zone-n text {
+  font: 800 12.5px var(--font-body);
+  fill: var(--ink);
+  text-anchor: middle;
+}
+.gz7-rail {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.6;
+}
+.gz7-rail-ties {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 6;
+  stroke-dasharray: 1.2 5;
+}
+
+/* gentrification */
+.gz7-facade-old {
+  fill: color-mix(in srgb, var(--muted) 30%, var(--surface-2));
+}
+.gz7-facade-mid {
+  fill: color-mix(in srgb, var(--yellow) 26%, var(--surface));
+}
+.gz7-facade-new {
+  fill: color-mix(in srgb, var(--accent) 22%, var(--surface));
+}
+.gz7-facade-lux {
+  fill: color-mix(in srgb, var(--lvl) 20%, var(--surface));
+}
+.gz7-win {
+  fill: color-mix(in srgb, var(--blue) 16%, var(--surface));
+}
+.gz7-win-lit {
+  fill: color-mix(in srgb, var(--yellow) 55%, var(--surface));
+}
+.gz7-win-dark {
+  fill: color-mix(in srgb, var(--ink-soft) 70%, var(--surface));
+}
+.gz7-door {
+  fill: color-mix(in srgb, var(--accent) 45%, var(--surface));
+}
+.gz7-glass-f {
+  fill: color-mix(in srgb, var(--info-soft) 70%, var(--surface));
+}
+.gz7-plank {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 70%, var(--ink));
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+.gz7-crack {
+  stroke: var(--ink-soft);
+}
+.gz7-plant {
+  fill: none;
+  stroke: var(--good);
+  stroke-width: 2;
+}
+.gz7-rent-on {
+  fill: var(--lvl);
+}
+.gz7-rent-off {
+  fill: var(--surface);
+}
+.gz7-sign {
+  fill: var(--surface);
+}
+.gz7-sign-lux {
+  fill: color-mix(in srgb, var(--lvl) 55%, var(--surface));
+}
+.gz7-sign-t {
+  font: 800 8px var(--font-body);
+  letter-spacing: 0.04em;
+  fill: var(--ink);
+}
+.gz7-sign-cafe {
+  font-size: 8.5px;
+}
+.gz7-awning {
+  fill: color-mix(in srgb, var(--bad) 40%, var(--surface));
+}
+.gz7-scaffold {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 60%, var(--ink));
+  stroke-width: 1.4;
+}
+.gz7-person path,
+.gz7-person circle {
+  fill: color-mix(in srgb, var(--muted) 45%, var(--surface));
+}
+.gz7-person-y path {
+  fill: color-mix(in srgb, var(--yellow) 60%, var(--surface));
+}
+.gz7-person-n path {
+  fill: color-mix(in srgb, var(--lvl) 55%, var(--surface));
+}
+.gz7-mural1 {
+  fill: color-mix(in srgb, var(--pink) 55%, var(--surface));
+}
+.gz7-mural2 {
+  fill: color-mix(in srgb, var(--teal) 50%, var(--surface));
+}
+
+/* von-thunen */
+.gz7-vt {
+  fill: none;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+}
+.gz7-vt-faint {
+  stroke-width: 1.2;
+  stroke-dasharray: 4 4;
+  opacity: 0.6;
+}
+.gz7-vt-1 {
+  stroke: color-mix(in srgb, var(--green) 60%, var(--yellow) 10%);
+}
+.gz7-vt-2 {
+  stroke: color-mix(in srgb, var(--green) 80%, var(--ink));
+}
+.gz7-vt-3 {
+  stroke: color-mix(in srgb, var(--yellow) 75%, var(--accent));
+}
+.gz7-vt-4 {
+  stroke: color-mix(in srgb, var(--accent) 70%, var(--ink));
+}
+
+/* cultural-diffusion */
+.gz7-cd {
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.gz7-cd-0 {
+  fill: var(--surface);
+  stroke: var(--muted);
+}
+.gz7-cd-1 {
+  fill: var(--lvl);
+}
+.gz7-cd-2 {
+  fill: color-mix(in srgb, var(--lvl) 58%, var(--surface));
+}
+.gz7-cd-3 {
+  fill: color-mix(in srgb, var(--lvl) 28%, var(--surface));
+}
+.gz7-wave {
+  stroke: var(--lvl-ink);
+  opacity: 0.6;
+}
+.gz7-mig-mid {
+  stroke-width: 2.6;
+}
+
+/* border-types, state-shapes */
+.gz7-border {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2.6;
+  stroke-dasharray: 9 3 2 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.gz7-border-thin {
+  stroke-width: 1.4;
+}
+.gz7-border-cult {
+  stroke: var(--lvl-ink);
+}
+.gz7-shape {
+  stroke-width: 1.1;
+}
+
+/* un-system */
+.gz7-seat {
+  fill: color-mix(in srgb, var(--blue) 30%, var(--surface));
+}
+.gz7-veto {
+  font: 800 8.5px var(--font-body);
+  fill: var(--on-level);
+}
+.gz7-un-t {
+  fill: var(--ink);
+}
+
+/* weber-triangle */
+.gz7-haul {
+  stroke: color-mix(in srgb, var(--lvl) 70%, var(--surface));
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+.gz7-ore {
+  fill: color-mix(in srgb, var(--bad) 40%, var(--surface));
+}
+.gz7-coal {
+  fill: color-mix(in srgb, var(--ink-soft) 65%, var(--surface));
+}
+.gz7-smoke {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+/* smile-curve, scenario-fan */
+.gz7-curve {
+  fill: none;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz7-curve-now {
+  stroke: var(--lvl-ink);
+}
+.gz7-curve-past {
+  stroke: var(--muted);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+}
+.gz7-src {
+  font: 400 11.5px var(--font-body);
+  fill: var(--muted);
+}
+.gz7-narrow .gz7-src {
+  font-size: 13px;
+}
+
+/* core-periphery */
+.gz7-cp-name {
+  font: 800 14px var(--font-body);
+  letter-spacing: 0.08em;
+  fill: var(--ink);
+}
+.gz7-cp-per {
+  fill: color-mix(in srgb, var(--yellow) 30%, var(--surface));
+}
+.gz7-cp-arr {
+  stroke-width: 5;
+}
+
+/* virtual-water */
+.gz7-vw-bar {
+  fill: color-mix(in srgb, var(--blue) 62%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.gz7-light-t {
+  fill: #fffaf0;
+}
+.gz7-cup {
+  fill: color-mix(in srgb, var(--accent) 35%, var(--surface));
+}
+.gz7-beef {
+  fill: color-mix(in srgb, var(--bad) 45%, var(--surface));
+}
+
+/* dam-impacts */
+.gz7-dam-ground {
+  fill: color-mix(in srgb, var(--accent) 18%, var(--surface-2));
+}
+.gz7-sed {
+  fill: color-mix(in srgb, var(--accent) 40%, var(--surface));
+}
+.gz7-dam {
+  fill: color-mix(in srgb, var(--muted) 40%, var(--surface));
+}
+.gz7-wire {
+  fill: none;
+  stroke: var(--yellow);
+  stroke-width: 2;
+}
+.gz7-canal {
+  fill: none;
+  stroke: color-mix(in srgb, var(--blue) 60%, var(--surface));
+  stroke-width: 3;
+  stroke-dasharray: 8 3;
+}
+.gz7-fish {
+  fill: color-mix(in srgb, var(--teal) 45%, var(--surface));
+}
+.gz7-x {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+.gz7-halo-g {
+  paint-order: stroke;
+  stroke: color-mix(in srgb, var(--accent) 18%, var(--surface-2));
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+/* energy-transition */
+.gz7-et-coal {
+  fill: color-mix(in srgb, var(--ink) 75%, var(--surface));
+}
+.gz7-et-oil {
+  fill: color-mix(in srgb, var(--accent) 55%, var(--surface));
+}
+.gz7-et-gas {
+  fill: color-mix(in srgb, var(--blue) 45%, var(--surface));
+}
+.gz7-sun {
+  fill: color-mix(in srgb, var(--yellow) 70%, var(--surface));
+}
+.gz7-et-atom {
+  fill: var(--bad);
+}
+.gz7-et-batt {
+  fill: var(--good);
+}
+.gz7-et-fossil {
+  fill: color-mix(in srgb, var(--muted) 22%, var(--surface));
+}
+.gz7-et-green {
+  fill: color-mix(in srgb, var(--lvl) 18%, var(--surface));
+}
+.gz7-et-s-coal {
+  fill: color-mix(in srgb, var(--ink) 70%, var(--surface));
+}
+.gz7-et-s-gas {
+  fill: color-mix(in srgb, var(--accent) 45%, var(--surface));
+}
+.gz7-et-s-nuc {
+  fill: color-mix(in srgb, var(--violet) 40%, var(--surface));
+}
+.gz7-et-s-ren {
+  fill: color-mix(in srgb, var(--green) 50%, var(--surface));
+}
+.gz7-inv-t {
+  fill: var(--surface);
+}
+
+/* circular-economy */
+.gz7-box-bad {
+  fill: color-mix(in srgb, var(--bad) 16%, var(--surface));
+  stroke: var(--bad);
+  stroke-width: 1.3;
+}
+.gz7-ce-dump {
+  fill: color-mix(in srgb, var(--muted) 45%, var(--surface));
+}
+.gz7-ce-ring {
+  fill: color-mix(in srgb, var(--lvl) 7%, var(--surface));
+  stroke: var(--lvl-soft);
+  stroke-width: 18;
+}
+.gz7-ce-arr {
+  stroke-width: 3;
+}
+
+/* planetary-boundaries */
+.gz7-controls .gz7-legend {
+  width: 100%;
+}
+.gz7-legend b {
+  color: var(--ink);
+  white-space: nowrap;
+}
+.gz7-pb-zone-safe {
+  fill: color-mix(in srgb, var(--good) 22%, var(--surface));
+}
+.gz7-pb-zone-inc {
+  fill: color-mix(in srgb, var(--yellow) 16%, var(--surface));
+}
+.gz7-pb-zone-high {
+  fill: color-mix(in srgb, var(--bad) 10%, var(--surface));
+}
+.gz7-pb-safe {
+  fill: color-mix(in srgb, var(--good) 62%, var(--surface));
+}
+.gz7-pb-inc {
+  fill: color-mix(in srgb, var(--yellow) 70%, var(--surface));
+}
+.gz7-pb-high {
+  fill: color-mix(in srgb, var(--bad) 62%, var(--surface));
+}
+.gz7-pb-line {
+  fill: none;
+  stroke: var(--good);
+  stroke-width: 2.2;
+}
+.gz7-pb-line.gz7-dash {
+  stroke: var(--yellow);
+  stroke-width: 1.6;
+}
+
+/* sdg-wheel */
+.gz7-sdg-people {
+  fill: color-mix(in srgb, var(--accent) 45%, var(--surface));
+}
+.gz7-sdg-prosp {
+  fill: color-mix(in srgb, var(--yellow) 55%, var(--surface));
+}
+.gz7-sdg-planet {
+  fill: color-mix(in srgb, var(--green) 50%, var(--surface));
+}
+.gz7-sdg-peace {
+  fill: color-mix(in srgb, var(--blue) 45%, var(--surface));
+}
+.gz7-sdg-partner {
+  fill: color-mix(in srgb, var(--violet) 45%, var(--surface));
+}
+.gz7-sdg-n {
+  font: 800 17px var(--font-body);
+  fill: var(--ink);
+}
+.gz7-sdg-arc {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* scenario-fan */
+.gz7-sc {
+  stroke-width: 2.6;
+}
+.gz7-sc-1 {
+  stroke: var(--good);
+}
+.gz7-sc-2 {
+  stroke: color-mix(in srgb, var(--good) 50%, var(--yellow));
+}
+.gz7-sc-3 {
+  stroke: var(--yellow);
+}
+.gz7-sc-4 {
+  stroke: var(--accent);
+}
+.gz7-sc-5 {
+  stroke: var(--bad);
+}
+.gz7-sc-1-t {
+  fill: var(--good);
+}
+.gz7-sc-2-t {
+  fill: color-mix(in srgb, color-mix(in srgb, var(--good) 55%, var(--yellow)) 75%, var(--ink));
+}
+.gz7-sc-3-t {
+  fill: color-mix(in srgb, var(--yellow) 70%, var(--ink));
+}
+.gz7-sc-4-t {
+  fill: var(--accent);
+}
+.gz7-sc-5-t {
+  fill: var(--bad);
+}
+.gz7-sc-obs {
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+.gz7-sc-fan {
+  fill: color-mix(in srgb, var(--lvl) 14%, transparent);
+}
+.gz7-sc-goal {
+  fill: none;
+  stroke: var(--good);
+  stroke-width: 1.4;
+  stroke-dasharray: 6 4;
+}
+.gz7-sc-2050 {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+  stroke-dasharray: 2 4;
+}
+.gz7-sc-brace {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
