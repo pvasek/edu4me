@@ -1,0 +1,161 @@
+/* Klimatogram (prefix g-cc-) */
+.g-cc-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  min-width: 0;
+}
+.g-cc-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.g-cc-q {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+.g-cc-text {
+  margin: 0;
+  font: 600 16.5px/1.45 var(--font-body);
+}
+.g-cc-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.g-cc-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.g-cc-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.g-cc-bonusbar > span {
+  transition: width 0.25s linear;
+}
+.g-cc-stage {
+  min-width: 0;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 8px 4px 6px;
+}
+
+/* options */
+.g-cc-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  gap: 10px;
+}
+.g-cc-options.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.g-cc-option,
+.g-cc-month {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 8px 10px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 15.5px/1.25 var(--font-body);
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-hard);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s;
+}
+.g-cc-options.many .g-cc-option {
+  justify-content: flex-start;
+  text-align: left;
+  min-height: 44px;
+}
+.g-cc-option:hover:not(:disabled),
+.g-cc-month:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--shadow-color);
+}
+.g-cc-option:disabled,
+.g-cc-month:disabled {
+  cursor: default;
+  box-shadow: none;
+}
+.g-cc-option.right,
+.g-cc-month.right {
+  background: var(--good-soft);
+  border-width: 3px;
+}
+.g-cc-option.wrong,
+.g-cc-month.wrong {
+  background: var(--bad-soft);
+  text-decoration: line-through;
+}
+.g-cc-option.off,
+.g-cc-month.off {
+  opacity: 0.5;
+}
+.g-cc-option:focus-visible,
+.g-cc-month:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* month picker */
+.g-cc-months {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+.g-cc-month {
+  min-height: 44px;
+  padding: 6px 2px;
+  font: 700 15px/1 var(--font-body);
+}
+
+/* numeric answer */
+.g-cc-form {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-cc-field {
+  display: block;
+  max-width: 320px;
+}
+.g-cc-inwrap {
+  position: relative;
+  display: block;
+}
+.g-cc-input {
+  padding-right: 60px;
+  font-size: 21px;
+}
+.g-cc-unit {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 700 15px/1 var(--font-body);
+  color: var(--muted);
+  pointer-events: none;
+}
+.g-cc-status:empty {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .g-cc-option,
+  .g-cc-month,
+  .g-cc-bonusbar > span {
+    transition: none;
+  }
+}

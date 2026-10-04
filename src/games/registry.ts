@@ -534,7 +534,7 @@ export const GAMES: GameMeta[] = [
       zemepis: {
         4: 'čtení klimatogramu, podnebné pásy a krajinné pásy',
         7: 'podnebí regionů světa',
-        10: 'typy podnebí a změna klimatu',
+        10: 'typy podnebí podle Köppena, oceánské a kontinentální podnebí',
         12: 'klima, voda a potraviny',
       },
     },

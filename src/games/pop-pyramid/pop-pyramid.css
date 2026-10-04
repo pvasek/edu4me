@@ -1,0 +1,141 @@
+/* Klimatogram (prefix g-pp-) */
+.g-pp-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  min-width: 0;
+}
+.g-pp-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.g-pp-q {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+.g-pp-text {
+  margin: 0;
+  font: 600 16.5px/1.45 var(--font-body);
+}
+.g-pp-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.g-pp-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.g-pp-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.g-pp-bonusbar > span {
+  transition: width 0.25s linear;
+}
+.g-pp-stage {
+  min-width: 0;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 8px 4px 6px;
+}
+
+/* options */
+.g-pp-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  gap: 10px;
+}
+.g-pp-options.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.g-pp-option {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 8px 10px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 15.5px/1.25 var(--font-body);
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-hard);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s;
+}
+.g-pp-options.many .g-pp-option {
+  justify-content: flex-start;
+  text-align: left;
+  min-height: 44px;
+}
+.g-pp-option:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--shadow-color);
+}
+.g-pp-option:disabled {
+  cursor: default;
+  box-shadow: none;
+}
+.g-pp-option.right {
+  background: var(--good-soft);
+  border-width: 3px;
+}
+.g-pp-option.wrong {
+  background: var(--bad-soft);
+  text-decoration: line-through;
+}
+.g-pp-option.off {
+  opacity: 0.5;
+}
+.g-pp-option:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* numeric answer */
+.g-pp-form {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-pp-field {
+  display: block;
+  max-width: 320px;
+}
+.g-pp-inwrap {
+  position: relative;
+  display: block;
+}
+.g-pp-input {
+  padding-right: 76px;
+  font-size: 21px;
+}
+.g-pp-unit {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 700 15px/1 var(--font-body);
+  color: var(--muted);
+  pointer-events: none;
+}
+.g-pp-status:empty {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .g-pp-option,
+  .g-pp-bonusbar > span {
+    transition: none;
+  }
+}

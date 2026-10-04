@@ -1,0 +1,201 @@
+/* =====================================================================
+   Geography charts (src/illustrations/geography): klimatogram and věková
+   pyramida. Theme tokens only. Classes prefixed geo- (shared kit: ph-).
+   ===================================================================== */
+
+.geo-clim-set,
+.geo-clim-one,
+.geo-pyr-one,
+.geo-legend {
+  --geo-t: var(--bad);
+  --geo-p: var(--blue);
+  --geo-p-fill: color-mix(in srgb, var(--blue) 62%, var(--surface));
+  --geo-p-dense: var(--blue);
+  --geo-dry: color-mix(in srgb, var(--yellow) 26%, transparent);
+  --geo-m: var(--blue);
+  --geo-m-fill: color-mix(in srgb, var(--blue) 55%, var(--surface));
+  --geo-f: var(--pink);
+  --geo-f-fill: color-mix(in srgb, var(--pink) 50%, var(--surface));
+}
+.geo-clim-set {
+  width: 100%;
+  display: grid;
+  gap: var(--space-2);
+  container-type: inline-size;
+}
+.geo-clim-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4) var(--space-3);
+  justify-items: center;
+}
+@container (min-width: 520px) {
+  .geo-two .geo-clim-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+.geo-clim-one,
+.geo-pyr-one {
+  width: 100%;
+  max-width: 460px;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+/* header: place, altitude, yearly mean and total */
+.geo-clim-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px 12px;
+  text-align: center;
+  line-height: 1.25;
+}
+.geo-clim-name {
+  font: italic 700 18px/1.2 var(--font-display);
+  color: var(--ink);
+}
+.geo-clim-stats {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px 10px;
+  font: 500 13.5px/1.3 var(--font-body);
+  color: var(--ink-soft);
+}
+.geo-clim-stats b {
+  font-weight: 700;
+}
+.geo-t {
+  color: var(--geo-t);
+}
+.geo-p {
+  color: var(--geo-p);
+}
+.geo-source {
+  margin: 0;
+  font: 500 12px/1.3 var(--font-body);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* svg parts */
+.geo-dry {
+  fill: var(--geo-dry);
+}
+.geo-dry-key {
+  stroke: color-mix(in srgb, var(--yellow) 60%, transparent);
+  stroke-width: 1;
+}
+.geo-bar {
+  fill: var(--geo-p-fill);
+  stroke: var(--geo-p);
+  stroke-width: 1;
+}
+.geo-bar-dense {
+  fill: var(--geo-p-dense);
+}
+.geo-100 {
+  stroke: var(--geo-p);
+  stroke-width: 0.8;
+  stroke-dasharray: 3 3;
+  opacity: 0.7;
+}
+.geo-zero {
+  stroke-width: 1.8;
+}
+.geo-tline {
+  fill: none;
+  stroke: var(--geo-t);
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.geo-tdot {
+  fill: var(--geo-t);
+  stroke: var(--surface);
+  stroke-width: 1.2;
+}
+.geo-num-t {
+  fill: var(--geo-t);
+}
+.geo-num-p {
+  fill: var(--geo-p);
+}
+.geo-unit {
+  font: 700 11.5px var(--font-body);
+  fill: var(--ink-soft);
+}
+.geo-month {
+  font: 600 10.5px var(--font-body);
+  fill: var(--ink-soft);
+}
+.geo-mark {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-dasharray: 5 3;
+}
+
+/* pyramid */
+.geo-pbar {
+  stroke-width: 0.9;
+}
+.geo-pbar-m {
+  fill: var(--geo-m-fill);
+  stroke: var(--geo-m);
+}
+.geo-pbar-f {
+  fill: var(--geo-f-fill);
+  stroke: var(--geo-f);
+}
+.geo-age {
+  font: 600 10px var(--font-mono);
+  fill: var(--ink-soft);
+}
+.geo-age-lg {
+  font-size: 11.5px;
+}
+.geo-age-cap,
+.geo-axis-cap {
+  font: 600 11px var(--font-body);
+  fill: var(--muted);
+}
+.geo-sex {
+  font: italic 700 16px var(--font-display);
+}
+.geo-sex-m {
+  fill: var(--geo-m);
+}
+.geo-sex-f {
+  fill: var(--geo-f);
+}
+
+/* legend */
+.geo-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 16px;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--ink-soft);
+}
+.geo-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.geo-legend svg {
+  flex: none;
+  overflow: visible;
+}
+.ph-narrow .geo-month {
+  font-size: 10px;
+}
