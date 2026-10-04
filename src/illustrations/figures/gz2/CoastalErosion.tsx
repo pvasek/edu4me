@@ -6,7 +6,7 @@ import { T, Tree, waves } from "./land";
 const LABEL =
   "Jak moře rozrušuje skalní pobřeží, animace po krocích. 1. Vlny narážejí do skalního břehu a u hladiny vyhlodávají příbojový žlab; skála nad ním se zřítí a vzniká strmý útes, klif. 2. Vlny nejvíc rozrušují místa s puklinami a vyhloubí v nich jeskyni. 3. Když jeskyně projde skrz celý výběžek, vznikne skalní brána. 4. Strop brány se zřítí a zůstane samostatná skalní věž; tu moře dál obrušuje, až z ní zbude jen nízký pahýl.";
 const LABEL2 =
-  "Pláž a kosa na mapě. Vlny přicházejí ke břehu šikmo, ale voda stéká zpět kolmo, takže zrnka písku putují cik-cak podél pobřeží – je to pobřežní proud. Písek se usazuje v zátokách jako pláž; kde pobřeží končí nebo se stáčí, roste písečný val do moře, kosa, a za ní může vzniknout laguna. Příkladem je Kuršská kosa v Baltském moři, dlouhá 98 km.";
+  "Pláž a kosa na mapě. Vlny přicházejí ke břehu šikmo, ale voda stéká zpět kolmo, takže zrnka písku putují cik-cak podél pobřeží – je to pobřežní proud. Písek se usazuje v zátokách jako pláž; kde pobřeží končí nebo se stáčí, roste písečný val do moře, kosa, a za ní může vzniknout laguna. Příkladem je Kurská kosa v Baltském moři, dlouhá 98 km.";
 
 const W = 440;
 const H = 262;

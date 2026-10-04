@@ -2,7 +2,7 @@ import { DrawArrow, Fade, Figure, Pop, pat, useFig, useLive } from "./kit";
 import { T, waves } from "./land";
 
 const LABEL =
-  "Řetěz sopečných ostrovů nad horkou skvrnou na příkladu Havaje. Horká skvrna je sloupec horkého materiálu, který stoupá z hlubin pláště a stojí na místě. Tichomořská deska nad ní klouže k severozápadu rychlostí asi 7 až 10 cm za rok. Nad skvrnou vzniká sopka – dnes je to ostrov Havaj s činnými sopkami. Deska sopku odveze, sopka vyhasne a vedle ní vyroste nová. Proto jsou ostrovy tím starší a nižší, čím dál jsou od skvrny: Maui asi 1 milion let, Oahu asi 3, Kauai asi 5 milionů let, atol Midway asi 28 milionů let.";
+  "Řetěz sopečných ostrovů nad horkou skvrnou na příkladu Havaje. Horká skvrna je sloupec horkého materiálu, který stoupá z hlubin pláště a stojí na místě. Pacifická deska nad ní klouže k severozápadu rychlostí asi 7 až 10 cm za rok. Nad skvrnou vzniká sopka – dnes je to ostrov Havaj s činnými sopkami. Deska sopku odveze, sopka vyhasne a vedle ní vyroste nová. Proto jsou ostrovy tím starší a nižší, čím dál jsou od skvrny: Maui asi 1 milion let, Oahu asi 3, Kauai asi 5 milionů let, atol Midway asi 28 milionů let.";
 
 const W = 480;
 const H = 336;
@@ -97,7 +97,7 @@ function Plate() {
       <DrawArrow d={`M300 ${SF + 23} H128`} tone="lvl" delay={0.6} className="gz2-vec" />
       <T x={312} y={SF + 27} a="start" cls="gz2-sm gz2-b gz2-lvl-t">deska</T>
       <Fade delay={1.2}>
-        <T x={10} y={H - 16} a="start" cls="gz2-sm gz2-lvl-t">Tichomořská deska: ≈ 7–10 cm za rok k SZ</T>
+        <T x={10} y={H - 16} a="start" cls="gz2-sm gz2-lvl-t">Pacifická deska: ≈ 7–10 cm za rok k SZ</T>
       </Fade>
     </>
   );

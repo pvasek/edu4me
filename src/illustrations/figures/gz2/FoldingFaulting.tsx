@@ -3,7 +3,7 @@ import { Arrow, Figure, Frame, f1, pat, useFig, type P2 } from "./kit";
 import { T, poly } from "./land";
 
 const LABEL =
-  "Vrásy a zlomy v blokdiagramu. Když vnitřní síly vrstvy hornin stlačují z boků, vrstvy se zprohýbají do vrás: vyklenutá část vrásy je antiklinála (sedlo), prohnutá synklinála (koryto); tak vznikla vrásová pohoří jako Alpy nebo Himálaj. Když síly zemskou kůru roztahují, popraská na kry podél zlomů: vyzdvižená kra je hrást, poklesnutá kra mezi zlomy je příkopová propadlina, například Hornorýnský prolom mezi Vogézami a Schwarzwaldem nebo u nás Oherský příkop pod Krušnými horami.";
+  "Vrásy a zlomy v blokdiagramu. Když vnitřní síly vrstvy hornin stlačují z boků, vrstvy se zprohýbají do vrás: vyklenutá část vrásy je antiklinála (sedlo), prohnutá synklinála (koryto); tak vznikla vrásová pohoří jako Alpy nebo Himálaj. Když síly zemskou kůru roztahují, popraská na kry podél zlomů: vyzdvižená kra je hrásť, poklesnutá kra mezi zlomy je příkopová propadlina, například Hornorýnský prolom mezi Vogézami a Schwarzwaldem nebo u nás Oherský příkop pod Krušnými horami.";
 
 const W = 300;
 const H = 220;
@@ -127,8 +127,8 @@ function FaultsArt() {
       <Arrow d={`M152 ${T1 + 18} v26`} tone="red" />
       <Arrow d={`M${L + 4} 150 H4`} tone="red" className="gz2-vec" />
       <Arrow d={`M${R + DX - 4} 150 H${W - 2}`} tone="red" className="gz2-vec" />
-      <T x={70} y={42} cls="gz2-b">hrást</T>
-      <T x={232} y={42} cls="gz2-b">hrást</T>
+      <T x={70} y={42} cls="gz2-b">hrásť</T>
+      <T x={232} y={42} cls="gz2-b">hrásť</T>
       <T x={152} y={22} cls="gz2-b">příkopová</T>
       <T x={152} y={38} cls="gz2-b">propadlina</T>
       <path d="M152 44 V96" className="gz2-lead" />
@@ -155,7 +155,7 @@ export default function FoldingFaulting() {
             {
               title: "Tah: zlomy a kry",
               art: <Faults />,
-              caption: "Roztahovaná kůra popraská na kry: hrást se zvedne, příkopová propadlina poklesne (Oherský příkop pod Krušnými horami).",
+              caption: "Roztahovaná kůra popraská na kry: hrásť se zvedne, příkopová propadlina poklesne (Oherský příkop pod Krušnými horami).",
             },
           ]}
         />
