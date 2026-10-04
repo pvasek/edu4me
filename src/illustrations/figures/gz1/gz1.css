@@ -1,0 +1,997 @@
+.gz1 {
+  --lvl: var(--level, #2f7d86);
+  --lvl-ink: color-mix(in srgb, var(--lvl) 72%, var(--ink));
+  --lvl-soft: color-mix(in srgb, var(--lvl) 16%, var(--surface));
+  --e: var(--blue);
+  --glass: color-mix(in srgb, var(--info-soft) 45%, var(--surface));
+  --water: color-mix(in srgb, #6f9fd8 30%, var(--surface));
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  container-type: inline-size;
+}
+.gz1-l2 {
+  --lvl: var(--level, #3f5f99);
+}
+
+.gz1-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gz1-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.gz1-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.gz1-btn {
+  appearance: none;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 14px/1.1 var(--font-body);
+  min-height: 40px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.gz1-btn:hover {
+  background: var(--surface-2);
+}
+.gz1-btn[aria-pressed="true"] {
+  background: var(--lvl);
+  border-color: var(--lvl);
+  color: var(--on-level);
+}
+.gz1-host {
+  width: 100%;
+}
+
+.gz1-lbl {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16.5px;
+  fill: var(--ink-soft);
+}
+.gz1-b {
+  font-weight: 700;
+  fill: var(--ink);
+}
+.gz1-big {
+  font-size: 19px;
+}
+.gz1-sm {
+  font-size: 14.5px;
+}
+.gz1-lvl-t {
+  fill: var(--lvl-ink);
+}
+.gz1-acc-t {
+  fill: var(--accent);
+}
+.gz1-blue-t {
+  fill: var(--blue);
+}
+.gz1-red-t {
+  fill: var(--bad);
+}
+.gz1-muted-t {
+  fill: var(--muted);
+}
+.gz1-eq {
+  font: 600 14px var(--font-body);
+  fill: var(--ink);
+}
+.gz1-eq-sm {
+  font-size: 12.5px;
+}
+.gz1-eq-lg {
+  font-size: 16px;
+}
+.gz1-num {
+  font: 400 13px var(--font-mono);
+  fill: var(--ink);
+}
+.gz1-light-t {
+  fill: #fffaf0;
+}
+
+:where(.gz1-o:not([fill])) {
+  fill: none;
+}
+.gz1-o {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.gz1-thin {
+  stroke-width: 0.9;
+}
+.gz1-fill {
+  fill: var(--surface);
+}
+.gz1-fill2 {
+  fill: var(--surface-2);
+}
+.gz1-fill3 {
+  fill: var(--surface-3);
+}
+.gz1-glass {
+  fill: var(--glass);
+  fill-opacity: 0.55;
+}
+.gz1-ln {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+}
+.gz1-lvl-s {
+  stroke: var(--lvl-ink);
+}
+.gz1-lvl-f {
+  fill: var(--lvl);
+}
+.gz1-lvlsoft-f {
+  fill: var(--lvl-soft);
+}
+.gz1-dash {
+  stroke-dasharray: 5 4;
+}
+.gz1-dot2 {
+  stroke-dasharray: 1.5 4;
+}
+.gz1-lead {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  fill: none;
+}
+.gz1-dot {
+  fill: var(--ink-soft);
+}
+.gz1-nohit {
+  pointer-events: none;
+}
+.gz1-hl {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.4;
+}
+.gz1-hl-dark {
+  opacity: 0.6;
+}
+.gz1-hl-light {
+  stroke: #fffaf0;
+  stroke-width: 0.9;
+  opacity: 0.75;
+}
+.gz1-hl-shade {
+  stroke: #10131c;
+  stroke-width: 0.8;
+  opacity: 0.35;
+}
+.gz1-stip {
+  fill: var(--edge);
+  opacity: 0.35;
+}
+
+.gz1-arr {
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz1-arr-ink {
+  stroke: var(--edge);
+}
+.gz1-arr-acc {
+  stroke: var(--accent);
+}
+.gz1-arr-blue {
+  stroke: var(--blue);
+}
+.gz1-arr-lvl {
+  stroke: var(--lvl-ink);
+}
+.gz1-arr-red {
+  stroke: var(--bad);
+}
+.gz1-arr-green {
+  stroke: var(--good);
+}
+.gz1-arr-muted {
+  stroke: var(--muted);
+}
+.gz1-mk-ink {
+  fill: var(--edge);
+}
+.gz1-mk-acc {
+  fill: var(--accent);
+}
+.gz1-mk-blue {
+  fill: var(--blue);
+}
+.gz1-mk-lvl {
+  fill: var(--lvl-ink);
+}
+.gz1-mk-red {
+  fill: var(--bad);
+}
+.gz1-mk-green {
+  fill: var(--good);
+}
+.gz1-mk-muted {
+  fill: var(--muted);
+}
+
+.gz1-tag {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.gz1-tag-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+}
+
+.gz1-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 2 9;
+  animation: gz1-flow 1.1s linear infinite;
+}
+.gz1-flow-rev {
+  animation-direction: reverse;
+}
+@keyframes gz1-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+@container (max-width: 440px) {
+  .gz1-sec {
+    display: none;
+  }
+  .gz1-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+
+
+
+/* ---------------------------------------------------------------- narrow boost */
+.gz1-narrow .gz1-lbl {
+  font-size: 19px;
+}
+.gz1-narrow .gz1-lbl.gz1-sm {
+  font-size: 17px;
+}
+.gz1-narrow .gz1-lbl.gz1-big {
+  font-size: 21px;
+}
+.gz1-narrow .gz1-eq {
+  font-size: 16px;
+}
+.gz1-narrow .gz1-eq.gz1-eq-lg {
+  font-size: 17.5px;
+}
+.gz1-narrow .gz1-eq.gz1-eq-sm {
+  font-size: 14.5px;
+}
+.gz1-halo {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+.gz1-stripbox {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+}
+.gz1-strip-note {
+  margin: 0;
+  text-align: center;
+  font: italic 600 17px/1.3 var(--font-display);
+  color: var(--ink-soft);
+}
+.gz1-sym-t {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 19px;
+  fill: var(--ink);
+}
+.gz1-tone-lvl {
+  fill: var(--lvl-ink);
+}
+.gz1-tone-red {
+  fill: var(--bad);
+}
+.gz1-tone-green {
+  fill: var(--good);
+}
+.gz1-tone-blue {
+  fill: var(--blue);
+}
+.gz1-tone-acc {
+  fill: var(--accent);
+}
+.gz1-tone-muted {
+  fill: var(--muted);
+}
+.gz1-it {
+  font-style: italic;
+}
+.gz1-qs {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.gz1-num-badge circle {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.gz1-num-badge text {
+  font-family: var(--font-body);
+  font-weight: 800;
+  fill: var(--on-level);
+  pointer-events: none;
+}
+.gz1-vec {
+  stroke-width: 2.6;
+}
+.gz1-box {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.gz1-box-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.4;
+}
+.gz1-title {
+  font: italic 700 18px var(--font-display);
+  fill: var(--ink);
+}
+.gz1-narrow .gz1-title {
+  font-size: 20px;
+}
+.gz1-scale {
+  stroke: var(--ink);
+  stroke-width: 2.4;
+  stroke-linecap: butt;
+}
+.gz1-scale-t {
+  font: 600 12.5px var(--font-body);
+  fill: var(--ink-soft);
+}
+.gz1-narrow .gz1-scale-t {
+  font-size: 14px;
+}
+/* ---------------------------------------------------------------- ambient loops */
+.gz1-wiggle {
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
+  animation: gz1-wiggle 0.9s ease-in-out infinite alternate;
+}
+@keyframes gz1-wiggle {
+  from {
+    transform: skewY(-4deg);
+  }
+  to {
+    transform: skewY(4deg);
+  }
+}
+.gz1-fall {
+  animation: gz1-fall 3s linear infinite;
+}
+@keyframes gz1-fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--fall, 40px));
+    opacity: 0;
+  }
+}
+.gz1-flow-up {
+  stroke-dasharray: 3 10;
+  animation: gz1-flow 1.3s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gz1-wiggle,
+  .gz1-fall,
+  .gz1-flow,
+  .gz1-flow-up {
+    animation: none;
+  }
+}
+
+
+/* ---------------------------------------------------------------- geography fills
+   (token mixes, so the plate works on parchment and in the night-study theme) */
+.gz1-sea {
+  fill: color-mix(in srgb, var(--blue) 18%, var(--surface));
+}
+.gz1-sea2 {
+  fill: color-mix(in srgb, var(--blue) 30%, var(--surface));
+}
+.gz1-land {
+  fill: color-mix(in srgb, var(--yellow) 18%, var(--surface-2));
+}
+.gz1-land2 {
+  fill: color-mix(in srgb, var(--accent) 22%, var(--surface-2));
+}
+.gz1-forest {
+  fill: color-mix(in srgb, var(--green) 34%, var(--surface));
+}
+.gz1-meadow {
+  fill: color-mix(in srgb, var(--green) 16%, var(--surface));
+}
+.gz1-built {
+  fill: color-mix(in srgb, var(--bad) 22%, var(--surface));
+}
+.gz1-house {
+  fill: color-mix(in srgb, var(--bad) 45%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.7;
+}
+.gz1-rock {
+  fill: color-mix(in srgb, var(--accent) 30%, var(--surface-2));
+}
+.gz1-soil {
+  fill: color-mix(in srgb, var(--accent) 40%, var(--surface-2));
+}
+.gz1-air {
+  fill: color-mix(in srgb, var(--blue) 8%, var(--surface));
+}
+.gz1-ice {
+  fill: color-mix(in srgb, var(--blue) 6%, var(--surface));
+}
+.gz1-night {
+  fill: color-mix(in srgb, #10131c 46%, transparent);
+}
+.gz1-day {
+  fill: color-mix(in srgb, var(--yellow) 22%, transparent);
+}
+.gz1-sun {
+  fill: color-mix(in srgb, var(--yellow) 78%, var(--surface));
+}
+.gz1-sunray {
+  stroke: color-mix(in srgb, var(--yellow) 80%, var(--edge));
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.gz1-ray {
+  fill: none;
+  stroke: color-mix(in srgb, var(--yellow) 75%, var(--edge));
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.gz1-moon {
+  fill: color-mix(in srgb, var(--muted) 30%, var(--surface));
+}
+.gz1-grat {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+  opacity: 0.55;
+}
+.gz1-grat-back {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.25;
+  stroke-dasharray: 2 3;
+}
+.gz1-equator {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.gz1-pm {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.gz1-trop {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 4;
+}
+.gz1-polar {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 4;
+}
+.gz1-axis {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  stroke-dasharray: 7 4;
+}
+.gz1-road {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 4.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz1-road-in {
+  fill: none;
+  stroke: color-mix(in srgb, var(--yellow) 80%, var(--surface));
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz1-rail {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 3;
+}
+.gz1-rail-in {
+  fill: none;
+  stroke: var(--surface);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 6;
+}
+.gz1-river {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz1-border {
+  fill: none;
+  stroke: var(--violet);
+  stroke-width: 1.8;
+  stroke-dasharray: 9 3 2 3;
+}
+.gz1-contour {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 80%, var(--edge));
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+}
+.gz1-contour-b {
+  stroke-width: 1.9;
+}
+.gz1-ctr-t {
+  font: 600 11px var(--font-body);
+  fill: color-mix(in srgb, var(--accent) 80%, var(--edge));
+}
+.gz1-narrow .gz1-ctr-t {
+  font-size: 13px;
+}
+.gz1-good-t {
+  fill: var(--good);
+}
+.gz1-teal-t {
+  fill: color-mix(in srgb, var(--teal) 80%, var(--ink));
+}
+.gz1-small .gz1-lbl {
+  font-size: 19px;
+}
+.gz1-small .gz1-lbl.gz1-sm {
+  font-size: 17px;
+}
+.gz1-small .gz1-eq {
+  font-size: 16px;
+}
+
+/* geo-spheres */
+.gz1-sp {
+  fill-opacity: 0.42;
+}
+.gz1-sp-air {
+  fill: color-mix(in srgb, var(--blue) 30%, var(--surface));
+}
+.gz1-sp-water {
+  fill: color-mix(in srgb, var(--teal) 45%, var(--surface));
+}
+.gz1-sp-bio {
+  fill: color-mix(in srgb, var(--green) 50%, var(--surface));
+}
+.gz1-sp-soil {
+  fill: color-mix(in srgb, var(--accent) 45%, var(--surface));
+}
+.gz1-sp-rock {
+  fill: color-mix(in srgb, var(--muted) 50%, var(--surface));
+}
+.gz1-sp-human {
+  fill: color-mix(in srgb, var(--pink) 45%, var(--surface));
+}
+.gz1-halo-soft {
+  paint-order: stroke;
+  stroke: color-mix(in srgb, var(--surface) 70%, transparent);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+/* maps */
+.gz1-mapbg {
+  fill: color-mix(in srgb, var(--yellow) 8%, var(--surface));
+}
+.gz1-street {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ink-soft) 30%, var(--surface));
+  stroke-width: 9;
+  stroke-linecap: butt;
+}
+.gz1-extent {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 1.6;
+  stroke-dasharray: 3 2;
+}
+.gz1-lake {
+  fill: color-mix(in srgb, var(--blue) 34%, var(--surface));
+}
+.gz1-spring {
+  fill: var(--surface);
+  stroke: var(--blue);
+  stroke-width: 2;
+}
+.gz1-treemark {
+  fill: none;
+  stroke: color-mix(in srgb, var(--green) 70%, var(--edge));
+  stroke-width: 0.9;
+}
+.gz1-level {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.45;
+  stroke-dasharray: 4 4;
+}
+.gz1-proj {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 70%, var(--edge));
+  stroke-width: 0.8;
+  opacity: 0.6;
+  stroke-dasharray: 1.5 3;
+}
+
+/* compass-rose */
+.gz1-dir {
+  font: 700 15px var(--font-body);
+  fill: var(--ink-soft);
+}
+.gz1-dir-main {
+  font-size: 21px;
+  font-weight: 800;
+  fill: var(--ink);
+}
+.gz1-narrow .gz1-dir {
+  font-size: 18px;
+}
+.gz1-narrow .gz1-dir-main {
+  font-size: 24px;
+}
+.gz1-star-dark {
+  fill: color-mix(in srgb, var(--ink) 75%, var(--surface));
+}
+.gz1-north-dark {
+  fill: var(--lvl-ink);
+}
+.gz1-az-arc {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: 5 3;
+}
+.gz1-vec {
+  stroke-width: 3;
+}
+
+/* orientation-sun */
+.gz1-sunpath {
+  stroke: color-mix(in srgb, var(--yellow) 70%, var(--edge));
+}
+.gz1-shadow {
+  fill: color-mix(in srgb, var(--ink) 30%, transparent);
+}
+.gz1-stick {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 70%, var(--edge));
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.gz1-bark {
+  fill: color-mix(in srgb, var(--accent) 45%, var(--surface-2));
+}
+.gz1-moss {
+  fill: color-mix(in srgb, var(--green) 75%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.6;
+}
+
+/* trail-marks */
+.gz1-mark-w {
+  fill: #fbfaf5;
+}
+.gz1-bark-bg {
+  fill: color-mix(in srgb, var(--accent) 35%, var(--surface-2));
+  opacity: 0.6;
+}
+.gz1-post {
+  fill: color-mix(in srgb, var(--muted) 40%, var(--surface));
+}
+.gz1-sign-t {
+  font: 700 14px var(--font-body);
+  fill: #1f2a44;
+}
+.gz1-narrow .gz1-sign-t {
+  font-size: 16px;
+}
+
+/* projection-surfaces */
+.gz1-surf {
+  fill: color-mix(in srgb, var(--yellow) 30%, transparent);
+  fill-opacity: 0.55;
+}
+.gz1-touch {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 2.6;
+}
+.gz1-touch-l {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 2.2;
+}
+
+/* gps-trilateration */
+.gz1-panel {
+  fill: color-mix(in srgb, var(--blue) 45%, var(--surface));
+}
+.gz1-satn {
+  font: 800 11px var(--font-body);
+  fill: var(--on-level);
+}
+.gz1-range {
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.gz1-range-1 {
+  stroke: var(--accent);
+}
+.gz1-range-2 {
+  stroke: var(--lvl-ink);
+}
+.gz1-range-3 {
+  stroke: var(--violet);
+}
+
+/* gis-layers */
+.gz1-sheet {
+  fill: color-mix(in srgb, var(--surface) 82%, transparent);
+}
+.gz1-sheet-o {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.3;
+  vector-effect: non-scaling-stroke;
+}
+.gz1-field {
+  fill: color-mix(in srgb, var(--yellow) 45%, var(--surface));
+}
+.gz1-field2 {
+  fill: color-mix(in srgb, var(--yellow) 28%, var(--surface));
+}
+
+/* earth-shape-evidence */
+.gz1-hull {
+  fill: color-mix(in srgb, var(--accent) 50%, var(--surface));
+}
+.gz1-sail {
+  fill: var(--surface);
+}
+.gz1-veil {
+  fill: color-mix(in srgb, var(--surface) 62%, transparent);
+}
+.gz1-sight {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 4;
+}
+.gz1-space {
+  fill: #141a29;
+}
+.gz1-umbra {
+  fill: rgba(0, 0, 0, 0.45);
+}
+.gz1-eclipse {
+  fill: rgba(120, 30, 20, 0.72);
+}
+.gz1-cloud {
+  fill: none;
+  stroke: #f4f1ea;
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  opacity: 0.75;
+}
+.gz1-light-t {
+  fill: #e9dfc6;
+}
+
+/* day-night */
+.gz1-terminator {
+  fill: none;
+  stroke: color-mix(in srgb, var(--yellow) 70%, var(--edge));
+  stroke-width: 2;
+}
+.gz1-cz {
+  fill: var(--bad);
+  stroke: var(--surface);
+  stroke-width: 2;
+}
+
+/* local-time */
+.gz1-sector {
+  fill: color-mix(in srgb, var(--lvl) 35%, transparent);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+}
+.gz1-hour {
+  font: 700 13px var(--font-body);
+  fill: var(--ink-soft);
+}
+.gz1-narrow .gz1-hour {
+  font-size: 15px;
+}
+
+/* date-line */
+.gz1-ahead {
+  fill: color-mix(in srgb, var(--lvl) 16%, transparent);
+}
+.gz1-idl {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2.6;
+  stroke-linejoin: round;
+}
+.gz1-cal-top {
+  fill: color-mix(in srgb, var(--ink-soft) 55%, var(--surface));
+}
+.gz1-cal-day {
+  font: 800 13px var(--font-body);
+  fill: var(--on-level);
+}
+.gz1-cal-num {
+  font: 700 26px var(--font-display);
+  fill: var(--ink);
+}
+
+/* sun-rays-latitude */
+.gz1-hot-f {
+  fill: color-mix(in srgb, var(--bad) 22%, transparent);
+}
+.gz1-cold-f {
+  fill: color-mix(in srgb, var(--blue) 22%, transparent);
+}
+.gz1-hot-s {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+.gz1-cold-s {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+/* solstice-light */
+.gz1-par-day {
+  fill: none;
+  stroke: color-mix(in srgb, var(--yellow) 85%, var(--edge));
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.gz1-par-night {
+  fill: none;
+  stroke: #0d111c;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+/* heat-zones */
+.gz1-z-polar {
+  fill: color-mix(in srgb, var(--blue) 28%, var(--surface));
+}
+.gz1-z-temp {
+  fill: color-mix(in srgb, var(--green) 26%, var(--surface));
+}
+.gz1-z-trop {
+  fill: color-mix(in srgb, var(--bad) 26%, var(--surface));
+}
+
+/* tides */
+.gz1-hightide {
+  fill: color-mix(in srgb, var(--blue) 14%, var(--surface));
+}
+.gz1-hw {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.8;
+  stroke-dasharray: 6 3;
+}
+.gz1-lw {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 3;
+}
+
+/* mercator-sizes */
+.gz1-worldland {
+  fill: color-mix(in srgb, var(--yellow) 14%, var(--surface-2));
+  stroke: var(--edge);
+  stroke-width: 0.35;
+  stroke-opacity: 0.6;
+}
+.gz1-afr {
+  fill: color-mix(in srgb, var(--accent) 55%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.4;
+}
+.gz1-grl {
+  fill: color-mix(in srgb, var(--lvl) 65%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.6;
+}
+.gz1-ocean-ph {
+  fill: #3d5f8f;
+}
+.gz1-land-ph {
+  fill: #a89a6a;
+  stroke: #6f6a4a;
+  stroke-width: 0.4;
+}
+.gz1-globeland {
+  fill: color-mix(in srgb, var(--yellow) 26%, var(--surface-2));
+  stroke: var(--edge);
+  stroke-width: 0.5;
+  stroke-opacity: 0.7;
+}
