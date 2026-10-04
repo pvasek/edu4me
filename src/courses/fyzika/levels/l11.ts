@@ -87,7 +87,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Jak potenciál mezi deskami vypadá? Graf ukazuje desky 5 cm od sebe s napětím 100 V:' },
             { type: 'graph', x: { label: 'x', unit: 'cm', min: 0, max: 5, step: 1 }, y: { label: 'φ', unit: 'V', min: 0, max: 100, step: 20 }, series: [
               { label: 'potenciál mezi deskami', points: [[0, 100], [5, 0]] },
-            ], marks: [{ x: 2.5, y: 50, label: 'uprostřed 50 V' }], caption: 'Desky 5 cm od sebe, napětí 100 V: potenciál klesá rovnoměrně, o 20 V na každý centimetr. Sklon grafu je intenzita, E = 2 000 V/m.' },
+            ], marks: [{ x: 2.5, y: 50, label: 'uprostřed 50 V' }], caption: 'Desky 5 cm od sebe, napětí 100 V: potenciál klesá rovnoměrně, o 20 V na každý centimetr. Strmost poklesu udává velikost intenzity, E = 2 000 V/m.' },
             { type: 'p', text: 'Teď použijeme všechny tři vztahy najednou – pro proton, který přeletí mezi deskami.' },
             { type: 'example', title: 'Proton mezi deskami', problem: 'Desky jsou 2 cm od sebe a je mezi nimi napětí 300 V. Jaká je intenzita pole, jaká síla působí na proton a jakou práci vykoná pole, když proton přeletí od kladné desky k záporné?', steps: [
               'Vzdálenost převedeme na metry, d = 0,02 m: E = U / d = 300 V / 0,02 m = 15 000 V/m',
@@ -137,7 +137,7 @@ const level: LevelContent = {
               ['směr síly', 'jen přitažlivá', 'přitažlivá i odpudivá'],
               ['intenzita', 'K = F / m (N/kg)', 'E = F / Q (N/C = V/m)'],
               ['potenciál', 'E_{p} / m (J/kg)', 'φ = E_{p} / Q (V)'],
-              ['homogenní pole', 'u povrchu Země, U = g · h na kg', 'mezi deskami, U = E · d'],
+              ['homogenní pole', 'u povrchu Země, rozdíl potenciálů g · h', 'mezi deskami, U = E · d'],
               ['stínění', 'nelze', 'kovový obal (Faradayova klec)'],
             ], caption: 'Stejná matematika, jiné zdroje: obě síly klesají s 1/r^{2}.' },
             { type: 'p', text: 'Jeden rozdíl z tabulky má obrovské důsledky: elektrická síla umí i odpuzovat. Proto si obě síly dělí svět podle měřítka:' },
@@ -214,7 +214,7 @@ const level: LevelContent = {
       title: 'Kondenzátor a kapacita',
       goals: [
         'Počítat s kapacitou C = Q / U a s kapacitou deskového kondenzátoru C = ε_{0} · ε_{r} · S / d',
-        'Určit energii nabitého kondenzátoru E = ½ · C · U^{2} i z plochy pod grafem Q–U',
+        'Určit energii nabitého kondenzátoru E = ½ · C · U^{2} i z plochy pod grafem U–Q',
         'Spočítat výslednou kapacitu kondenzátorů zapojených sériově a paralelně',
         'Popsat nabíjení a vybíjení kondenzátoru grafem a časovou konstantou τ = R · C',
       ],
@@ -276,10 +276,10 @@ const level: LevelContent = {
           title: 'Energie nabitého kondenzátoru',
           icon: 'lightning',
           blocks: [
-            { type: 'p', text: 'Nabíjení stojí práci: každý další kousek náboje musíš přenést proti rostoucímu napětí. Práci najdeš jako **plochu pod grafem Q–U** (přesněji U v závislosti na Q). Graf je přímka, plocha je trojúhelník.' },
-            { type: 'graph', x: { label: 'U', unit: 'V', min: 0, max: 12, step: 2 }, y: { label: 'Q', unit: 'mC', min: 0, max: 1.4, step: 0.2 }, series: [
-              { label: 'C = 100 µF', points: [[0, 0], [12, 1.2]], area: true },
-            ], marks: [{ x: 12, y: 1.2, label: '12 V, 1,2 mC' }, { x: 7, y: 0.3, label: 'plocha = ½ · Q · U = 7,2 mJ' }], caption: 'Náboj roste s napětím přímo úměrně (sklon přímky = C). Plocha trojúhelníku pod přímkou je energie uložená v kondenzátoru.' },
+            { type: 'p', text: 'Nabíjení stojí práci: každý další kousek náboje musíš přenést proti rostoucímu napětí. Práci najdeš jako **plochu pod grafem U–Q** (napětí v závislosti na náboji). Graf je přímka, plocha je trojúhelník.' },
+            { type: 'graph', x: { label: 'Q', unit: 'mC', min: 0, max: 1.4, step: 0.2 }, y: { label: 'U', unit: 'V', min: 0, max: 14, step: 2 }, series: [
+              { label: 'C = 100 µF', points: [[0, 0], [1.2, 12]], area: true },
+            ], marks: [{ x: 1.2, y: 12, label: '1,2 mC, 12 V' }, { x: 0.8, y: 3, label: 'plocha = ½ · Q · U = 7,2 mJ' }], caption: 'Napětí roste s nábojem přímo úměrně (sklon přímky = 1/C). Plocha trojúhelníku pod přímkou je energie uložená v kondenzátoru.' },
             { type: 'p', text: 'Plocha trojúhelníku je polovina součinu jeho odvěsen, tedy ½ · Q · U. Když za Q dosadíš C · U, dostaneš další dva užitečné tvary:' },
             { type: 'formula', text: 'E = ½ · Q · U = ½ · C · U^{2} = Q^{2} / (2C)', caption: 'energie nabitého kondenzátoru v joulech; sídlí v elektrickém poli mezi deskami' },
             { type: 'p', text: 'Teď se můžeme vrátit k blesku z úvodu a ověřit, odkud se berou ty 8 kW.' },
@@ -303,7 +303,7 @@ const level: LevelContent = {
           title: 'Řazení kondenzátorů',
           icon: 'plug',
           blocks: [
-            { type: 'p', text: 'Když jeden kondenzátor nemá potřebnou kapacitu nebo nevydrží napětí, zapojíme jich víc. Při **paralelním** zapojení mají všechny kondenzátory stejné napětí a jejich náboje se sčítají. Při **sériovém** zapojení nese každý kondenzátor stejný náboj (zdroj přesouvá elektrony jen na krajní desky, vnitřní se nabijí indukcí) a sčítají se napětí.' },
+            { type: 'p', text: 'Když jeden kondenzátor nemá potřebnou kapacitu nebo nevydrží napětí, zapojíme jich víc. Při **paralelním** zapojení mají všechny kondenzátory stejné napětí a jejich náboje se sčítají. Při **sériovém** zapojení nese každý kondenzátor stejný náboj (zdroj přesouvá elektrony jen na krajní desky, vnitřní se nabijí elektrostatickou indukcí) a sčítají se napětí.' },
             { type: 'circuit', source: { kind: 'battery', label: 'U' }, parts: [
               { kind: 'switch' },
               { parallel: [[{ kind: 'capacitor', label: 'C_{1}' }], [{ kind: 'capacitor', label: 'C_{2}' }]] },
@@ -371,14 +371,14 @@ const level: LevelContent = {
               { icon: 'plug', title: 'Vyhlazení napětí', text: 'Ve zdroji a nabíječce kondenzátor „dobíjí“ mezery mezi vrcholy usměrněného napětí.' },
               { icon: 'clock', title: 'Časovač', text: 'Blikač nebo zpožděné zhasnutí světla v autě měří čas nabíjením přes rezistor – mění se R, mění se čas.' },
               { icon: 'car', title: 'Superkondenzátory', text: 'Tramvaje a autobusy do nich při brzdění ukládají energii a při rozjezdu ji během sekund vrátí.' },
-              { icon: 'phone', title: 'Paměť DRAM', text: 'Každý bit je malinký kondenzátor: nabitý = 1, vybitý = 0. Náboj uniká, a proto se musí tisíckrát za sekundu obnovovat.' },
+              { icon: 'phone', title: 'Paměť DRAM', text: 'Každý bit je malinký kondenzátor: nabitý = 1, vybitý = 0. Náboj uniká, a proto se musí zhruba každých 64 ms obnovovat.' },
             ], caption: 'Otoč kartu a zjisti, k čemu kondenzátor slouží.' },
             { type: 'p', text: 'Kondenzátor i akumulátor energii ukládají. Proč tedy kondenzátor nenahradí baterii v telefonu? Porovnej je:' },
             { type: 'compare', columns: [
               { title: '**Kondenzátor**', icon: 'lightning', tone: 'a', points: ['energie v elektrickém poli', 'nabije i vybije se za zlomek sekundy', 'málo energie na kilogram'] },
               { title: '**Akumulátor**', icon: 'battery', tone: 'b', points: ['energie v chemických vazbách', 'nabíjení trvá desítky minut až hodiny', 'mnohem víc energie na kilogram'] },
             ] },
-            { type: 'p', text: 'Kondenzátorem v obvodu teče proud jen chvíli. V další lekci se podíváme na obvody, kterými teče trvale – a na to, kolik napětí se ztratí přímo uvnitř zdroje.' },
+            { type: 'p', text: 'Obvodem s kondenzátorem teče proud jen chvíli. V další lekci se podíváme na obvody, kterými teče trvale – a na to, kolik napětí se ztratí přímo uvnitř zdroje.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď k zařízení vlastnost kondenzátoru, kterou využívá.', pairs: [
               ['blesk fotoaparátu', 'rychlé uvolnění nashromážděné energie'],
               ['dotykový displej', 'změna kapacity při přiblížení prstu'],
@@ -391,7 +391,7 @@ const level: LevelContent = {
       summary: [
         'Kondenzátor jsou dva vodiče oddělené izolantem; jeho kapacita C = Q / U se měří ve faradech.',
         'Deskový kondenzátor má kapacitu C = ε_{0} · ε_{r} · S / d – roste s plochou desek a permitivitou dielektrika, klesá s jejich vzdáleností.',
-        'Energie nabitého kondenzátoru je plocha pod grafem Q–U: E = ½ · Q · U = ½ · C · U^{2}.',
+        'Energie nabitého kondenzátoru je plocha pod grafem U–Q: E = ½ · Q · U = ½ · C · U^{2}.',
         'Paralelně se kapacity sčítají; sériově se sčítají jejich převrácené hodnoty, 1/C = 1/C_{1} + 1/C_{2}.',
         'Kondenzátor se přes rezistor nabíjí a vybíjí postupně; časová konstanta τ = R · C udává, za jak dlouho proběhne 63 % změny.',
         'Kondenzátory ukládají energii (blesk, defibrilátor), vyhlazují napětí, měří čas a slouží jako senzory (dotykový displej).',
@@ -514,7 +514,7 @@ const level: LevelContent = {
               { icon: 'check', title: 'Vyhodnoť', text: 'záporný proud teče opačně, než jsi odhadl – to není chyba' },
             ], caption: 'Postup řešení libovolné sítě' },
             { type: 'p', text: 'Postup použijeme na dvě baterie, které společně napájejí jeden spotřebič. Směry proudů zvolíme odhadem – jestli byly správně, ukáže až výpočet.' },
-            { type: 'example', title: 'Dvě baterie a žárovka', problem: 'Zdroj 12 V s odporem R_{1} = 2 Ω a zdroj 6 V s odporem R_{2} = 4 Ω jsou kladnými póly spojeny v horním uzlu, zápornými v dolním. Mezi uzly je spotřebič R_{3} = 4 Ω. Proudy I_{1}, I_{2} zvolíme ze zdrojů do horního uzlu, I_{3} z něj spotřebičem dolů. Urči všechny proudy.', steps: [
+            { type: 'example', title: 'Dvě baterie a žárovka', problem: 'Zdroj 12 V s vnitřním odporem R_{1} = 2 Ω a zdroj 6 V s vnitřním odporem R_{2} = 4 Ω jsou kladnými póly spojeny v horním uzlu, zápornými v dolním. Mezi uzly je spotřebič R_{3} = 4 Ω. Proudy I_{1}, I_{2} zvolíme ze zdrojů do horního uzlu, I_{3} z něj spotřebičem dolů. Urči všechny proudy.', steps: [
               'Uzel: I_{1} + I_{2} = I_{3}',
               'Smyčka se zdrojem 12 V a spotřebičem (obíháme po směru zvolených proudů, takže úbytky jsou kladné): 12 = 2 · I_{1} + 4 · I_{3}, tedy I_{1} = 6 − 2 · I_{3}',
               'Smyčka se zdrojem 6 V a spotřebičem: 6 = 4 · I_{2} + 4 · I_{3}, tedy I_{2} = 1,5 − I_{3}',
@@ -544,7 +544,7 @@ const level: LevelContent = {
               'Světlo: U_{2} = 9 V · 1 / (10 + 1) ≈ 0,82 V',
               'Obvod, který sepne při napětí nad 4 V, rozsvítí lampu jen ve tmě.',
             ], answer: 'Ve tmě 8,1 V, na světle asi 0,8 V.' },
-            { type: 'p', text: 'Stejně funguje teplotní senzor. Termistor NTC je tu nahoře a napětí měříme na pevném rezistoru dole, takže výstup s teplotou roste:' },
+            { type: 'p', text: 'Stejně funguje teplotní senzor. Termistor NTC je tu na místě R_{1} a napětí měříme na pevném rezistoru, takže výstup s teplotou roste:' },
             { type: 'circuit', source: { kind: 'battery', label: '5 V' }, parts: [
               { kind: 'thermistor', label: 'NTC' },
               { parallel: [[{ kind: 'resistor', label: 'R = 10 kΩ' }], [{ kind: 'voltmeter', label: 'U_{výst}' }]] },
@@ -574,7 +574,7 @@ const level: LevelContent = {
             { type: 'graph', x: { label: 'R', unit: 'Ω', min: 0, max: 10, step: 2 }, y: { label: 'P', unit: 'W', min: 0, max: 5, step: 1 }, series: [
               { label: 'U_{e} = 6 V, R_{i} = 2 Ω', points: curve((r) => (36 * r) / ((r + 2) * (r + 2)), 0, 10, 20, 3), style: 'smooth' },
             ], marks: [{ x: 2, y: 4.5, label: 'R = R_{i}: P_{max} = 4,5 W' }], caption: 'Výkon ve spotřebiči v závislosti na jeho odporu. Při R = R_{i} je P_{max} = U_{e}^{2} / (4 · R_{i}), ale účinnost je jen 50 %.' },
-            { type: 'callout', variant: 'fact', text: 'Přizpůsobení R = R_{i} se používá tam, kde jde o signál: anténa a přijímač, zesilovač a reproduktor. V rozvodné síti je naopak důležitá účinnost, a tak je vnitřní odpor zdrojů mnohem menší než odpor spotřebičů.' },
+            { type: 'callout', variant: 'fact', text: 'Přizpůsobení R = R_{i} se používá tam, kde jde o slabý signál: anténa, anténní kabel a vstup přijímače. V rozvodné síti je naopak důležitá účinnost, a tak je vnitřní odpor zdrojů mnohem menší než odpor spotřebičů.' },
             { type: 'p', text: 'Teď umíš počítat obvody se skutečnými zdroji, sítě i senzory. Zatím jsme ale neřešili, proč některé látky proud vedou a jiné ne – na to se podíváme v další lekci.' },
             { type: 'game', gameId: 'circuit-builder', text: 'Postav si obvod se skutečným zdrojem a ověř Kirchhoffovy zákony ve hře Stavitel obvodů.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč by ideální voltmetr měl mít nekonečně velký odpor?', options: ['aby jím netekl žádný proud a nezměnil napětí, které měří', 'aby se nepřehřál', 'aby vydržel vysoké napětí', 'aby jím mohl téct velký proud'], answer: 0, explain: 'Voltmetr je zapojen paralelně. Každý proud, který jím teče, mění rozdělení proudů a napětí v obvodu.' } },
@@ -616,7 +616,7 @@ const level: LevelContent = {
         'Spočítat hmotnost látky vyloučené při elektrolýze podle Faradayova zákona',
         'Rozlišit druhy výbojů v plynech a vysvětlit ionizaci nárazem',
       ],
-      hook: 'Křemík z písku, slaná voda a vzduch při bouřce – tři látky, které za normálních okolností vedou proud špatně nebo vůbec. Přesto je v nich schovaný tvůj mobil, pozlacený konektor i blesk. Stačí jim dodat nosiče náboje.',
+      hook: 'Křemík z písku, destilovaná voda a vzduch – tři látky, které za normálních okolností vedou proud špatně nebo vůbec. Přesto je v nich schovaný tvůj mobil, pozlacený konektor i blesk. Stačí jim dodat nosiče náboje.',
       sections: [
         {
           title: 'Pásový model: vodič, polovodič, izolant',
@@ -647,7 +647,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Mnohem víc nosičů dodá **příměs**: pár cizích atomů na milion atomů křemíku zvýší vodivost o mnoho řádů. Tomu se říká **dotování** a je to základní krok výroby čipů. Podle toho, jakou příměs zvolíš, dostaneš jeden ze dvou typů polovodiče:' },
             { type: 'compare', columns: [
               { title: '**Typ N**', icon: 'ion-minus', tone: 'a', points: ['příměs s 5 valenčními elektrony: fosfor, arsen', 'pátý elektron je navíc a snadno se uvolní', 'příměs je **donor** (dárce)', 'majoritní nosiče: **elektrony**'] },
-              { title: '**Typ P**', icon: 'ion-plus', tone: 'b', points: ['příměs se 3 valenčními elektrony: bor, galium', 'jedna vazba je neúplná – vznikne díra', 'příměs je **akceptor** (příjemce)', 'majoritní nosiče: **díry**'] },
+              { title: '**Typ P**', icon: 'ion-plus', tone: 'b', points: ['příměs se 3 valenčními elektrony: bor, gallium', 'jedna vazba je neúplná – vznikne díra', 'příměs je **akceptor** (příjemce)', 'majoritní nosiče: **díry**'] },
             ], caption: 'Křemík má 4 valenční elektrony; příměs s 5 nebo 3 elektrony určí typ vodivosti.' },
             { type: 'p', text: 'Shrňme pojmy, které budeme u diod a tranzistorů potřebovat pořád:' },
             { type: 'keyterms', items: [
@@ -682,7 +682,7 @@ const level: LevelContent = {
               'Rezistorem teče stejný proud jako LED: I = 0,015 A.',
               'R = U_{R} / I = 3,0 V / 0,015 A = 200 Ω',
             ], answer: 'R = 200 Ω (v praxi nejbližší vyšší řadová hodnota, třeba 220 Ω).' },
-            { type: 'callout', variant: 'tip', text: 'Čtyři diody v můstku z obou půlvln střídavého napětí udělají napětí jednoho směru. Takový **usměrňovač** je v každé nabíječce – přesněji v lekci „Střídavý proud a elektromagnetické vlny“.' },
+            { type: 'callout', variant: 'tip', text: 'Čtyři diody v můstku z obou půlvln střídavého napětí udělají napětí jednoho směru. Takový **usměrňovač** je v každé nabíječce a síťovém zdroji.' },
             { type: 'p', text: 'Dioda tedy pouští proud jen jedním směrem a LED potřebuje předřadný rezistor. Proč ale LED vůbec svítí – a co dalšího přechod PN dokáže?' },
             { type: 'check', question: { kind: 'number', q: 'Modrá LED potřebuje 3 V a 20 mA. Jaký předřadný rezistor potřebuješ při napájení z 9 V baterie?', answer: 300, tolerance: 2, unit: 'Ω', explain: 'U_{R} = 9 V − 3 V = 6 V; R = 6 V / 0,02 A = 300 Ω.' } },
           ],
@@ -756,7 +756,7 @@ const level: LevelContent = {
               'Energie 15,6 eV znamená, že elektron musí projít napětím U = 15,6 V (pro náboj e se eV a V číselně rovnají).',
               'V homogenním poli U = E · d, tedy d = U / E',
               'd = 15,6 V / 3 · 10^{6} V/m ≈ 5 · 10^{−6} m',
-            ], answer: 'Asi 5 µm – zhruba tolik je ve vzduchu dráha elektronu mezi srážkami, proto právě tady začíná lavina.' },
+            ], answer: 'Asi 5 µm. Mezi dvěma srážkami ale elektron ve vzduchu uletí v průměru jen asi 0,5 µm, takže energii k ionizaci nasbírá jen ten, který letí výjimečně daleko – proto je k lavině potřeba tak silné pole.' },
             { type: 'p', text: 'Podle tlaku plynu, proudu a tvaru elektrod vypadá samostatný výboj velmi různě:' },
             { type: 'iconlist', items: [
               { icon: 'lightning', title: 'Jiskrový výboj', text: 'krátký a hlasitý: jiskra v zapalovací svíčce, **blesk** (proud desítky kA, kanál až 30 000 °C)' },
@@ -764,7 +764,7 @@ const level: LevelContent = {
               { icon: 'bulb', title: 'Doutnavý výboj', text: 'za nízkého tlaku, barevně září: neonové reklamy, zářivky, výbojky' },
               { icon: 'wind', title: 'Koróna', text: 'tichý výboj u hrotů a vodičů vysokého napětí – bzučení pod dráty VVN' },
             ] },
-            { type: 'callout', variant: 'fact', text: 'Plně ionizovaný plyn je **plazma** – čtvrté skupenství. Je z něj Slunce a hvězdy, polární záře i náplň fúzních reaktorů. Ve vesmíru je plazma nejběžnějším stavem viditelné hmoty.' },
+            { type: 'callout', variant: 'fact', text: 'Silně ionizovaný plyn je **plazma** – čtvrté skupenství. Je z něj Slunce a hvězdy, polární záře i náplň fúzních reaktorů. Ve vesmíru je plazma nejběžnějším stavem viditelné hmoty.' },
             { type: 'callout', variant: 'warning', text: 'Blesk si hledá nejkratší cestu k zemi. Při bouřce se vyhni vyvýšeným místům, osamělým stromům a vodě; bezpečné je auto nebo budova s hromosvodem (Faradayova klec z lekce „Elektrické pole“).' },
             { type: 'p', text: 'Teď víš, jak vede proud kov, polovodič, elektrolyt i plyn. Pohybující se náboje ale kolem sebe vytvářejí ještě jedno pole – magnetické. To je téma další lekce.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď druh výboje k příkladu.', pairs: [
@@ -830,7 +830,7 @@ const level: LevelContent = {
             { type: 'table', headers: ['Zdroj pole', 'B'], rows: [
               ['magnetické pole Země v ČR', 'asi 50 µT'],
               ['magnet na ledničku', 'asi 5 mT'],
-              ['neodymový magnet u povrchu', 'asi 1 T'],
+              ['neodymový magnet u povrchu', 'až asi 1 T'],
               ['magnetická rezonance v nemocnici', '1,5–3 T'],
               ['supravodivé magnety LHC', '8,3 T'],
               ['neutronová hvězda (magnetar)', 'až 10^{11} T'],
@@ -846,11 +846,11 @@ const level: LevelContent = {
             { type: 'p', text: 'Že na vodič s proudem v poli působí síla, víš z pokusů. Teď ji spočítáme. Na přímý vodič délky l s proudem I v homogenním magnetickém poli působí **magnetická síla**. Je největší, když je vodič kolmý na indukční čáry, a nulová, když je s nimi rovnoběžný.' },
             { type: 'formula', text: 'F_{m} = B · I · l · sin α', caption: 'α je úhel mezi vodičem (směrem proudu) a vektorem B; síla je kolmá na vodič i na B' },
             { type: 'p', text: 'Z tohoto vztahu je definovaná tesla: **1 T** má pole, ve kterém na vodič dlouhý 1 m s proudem 1 A kolmým k poli působí síla 1 N. Směr síly určíš **Flemingovým pravidlem levé ruky**: indukční čáry vstupují do dlaně, natažené prsty ukazují směr proudu, odtažený palec směr síly.' },
-            { type: 'p', text: 'Jak se dá B změřit v praxi? Stačí zavěsit vodič do pole a sledovat, kdy magnetická síla vyrovná jeho tíhu:' },
+            { type: 'p', text: 'Jak se dá B změřit v praxi? Stačí zavěsit vodič do pole a sledovat, kdy magnetická síla vyrovná tíhovou sílu, která na něj působí:' },
             { type: 'forces', body: 'point', surface: 'none', forces: [
               { label: 'F_{m}', angle: 90, size: 3, tone: 'a' },
               { label: 'F_{G}', angle: 270, size: 3, tone: 'b' },
-            ], caption: 'Magnetické váhy: vodič s proudem visí v poli magnetu. Když je magnetická síla stejně velká jako tíha vodiče, vodič se vznáší – tak se dá B změřit.' },
+            ], caption: 'Magnetické váhy: vodič s proudem visí v poli magnetu. Když je magnetická síla stejně velká jako tíhová síla působící na vodič, vodič se vznáší – tak se dá B změřit.' },
             { type: 'p', text: 'Teď dosadíme čísla – a uvidíme, jak moc záleží na úhlu mezi vodičem a polem.' },
             { type: 'example', title: 'Vodič mezi póly magnetu', problem: 'Vodič dlouhý 20 cm, kterým teče proud 5 A, je v poli s indukcí 0,4 T. Jak velká síla na něj působí, je-li s indukčními čarami kolmý? A pod úhlem 30°?', steps: [
               'Kolmo: F = B · I · l = 0,4 T · 5 A · 0,2 m = 0,4 N',
@@ -919,7 +919,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Jak rychle pole se vzdáleností slábne, ukazuje graf pro proud 10 A. Pozor na rozdíl oproti bodovému náboji: B klesá jen s 1/d, ne s 1/d^{2}.' },
             { type: 'graph', x: { label: 'd', unit: 'cm', min: 0, max: 10, step: 2 }, y: { label: 'B', unit: 'µT', min: 0, max: 200, step: 50 }, series: [
               { label: 'vodič s proudem 10 A', points: curve((d) => 200 / d, 1, 10, 18, 1), style: 'smooth' },
-            ], marks: [{ y: 50, label: 'zemské pole ≈ 50 µT' }, { x: 4, y: 50, label: 'd = 4 cm' }], caption: 'Magnetická indukce u vodiče s proudem 10 A: ve dvojnásobné vzdálenosti poloviční. Už 4 cm od vodiče je pole stejně silné jako pole Země – proto kabely ruší kompas.' },
+            ], marks: [{ y: 50, label: 'zemské pole ≈ 50 µT' }, { x: 4, y: 50, label: 'd = 4 cm' }], caption: 'Magnetická indukce u vodiče s proudem 10 A: ve dvojnásobné vzdálenosti poloviční. Už 4 cm od vodiče je pole stejně silné jako pole Země – proto vodič s velkým proudem vychýlí kompas.' },
             { type: 'p', text: 'Pole jednoho vodiče je slabé. Když ale drát navineme do cívky, pole všech závitů se uvnitř sečte, takže B roste s počtem závitů na jednotku délky:' },
             { type: 'formula', text: 'B = μ_{0} · μ_{r} · N · I / l', caption: 'pole uvnitř dlouhé cívky (solenoidu): N počet závitů, l délka cívky, μ_{r} relativní permeabilita jádra' },
             { type: 'p', text: 'Jak takové pole vypadá uvnitř i vně cívky, ukazuje obrázek:' },
@@ -1270,7 +1270,7 @@ const level: LevelContent = {
               { kind: 'capacitor', label: 'C = 10 µF' },
               { kind: 'ammeter' },
             ], caption: 'Sériový obvod RLC napájený z generátoru s nastavitelnou frekvencí' },
-            { type: 'p', text: 'Protože napětí na cívce a kondenzátoru míří proti sobě, jejich reaktance se odečítají. Napětí na rezistoru je vůči nim posunuté o 90°, a tak se s jejich rozdílem skládá jako odvěsny v Pythagorově větě:' },
+            { type: 'p', text: 'Protože napětí na cívce a kondenzátoru míří proti sobě, jejich **reaktance** (společný název pro X_{L} a X_{C}) se odečítají. Napětí na rezistoru je vůči nim posunuté o 90°, a tak se s jejich rozdílem skládá jako odvěsny v Pythagorově větě:' },
             { type: 'formula', text: 'Z = √(R^{2} + (X_{L} − X_{C})^{2}),   I = U / Z', caption: 'impedance sériového obvodu RLC (Ω); U a I jsou efektivní hodnoty' },
             { type: 'p', text: 'Nejzajímavější je frekvence, při které se X_{L} a X_{C} vyrovnají a navzájem úplně vyruší. Z podmínky ω · L = 1 / (ω · C) plyne:' },
             { type: 'formula', text: 'f_{0} = 1 / (2π · √(L · C))', caption: 'rezonanční frekvence: X_{L} = X_{C}, impedance je nejmenší (Z = R) a proud největší' },
@@ -1286,7 +1286,7 @@ const level: LevelContent = {
               'V rezonanci Z = R = 20 Ω, I = 10 V / 20 Ω = 0,5 A',
             ], answer: 'Při 50 Hz teče jen 35 mA, v rezonanci při 159 Hz celých 0,5 A.' },
             { type: 'p', text: 'Stačilo změnit frekvenci a proud vzrostl čtrnáctkrát, přestože součástky zůstaly stejné. V tom je síla rezonance.' },
-            { type: 'callout', variant: 'fact', text: 'Tak se ladí rádio: otočný kondenzátor mění C, a tím f_{0}. Z tisíců vysílačů v anténě „rezonuje“ jen ten, jehož frekvence se shoduje s f_{0}. Stejný princip má rezonance u kyvadla a houpačky (lekce „Mechanické kmitání“).' },
+            { type: 'callout', variant: 'fact', text: 'Tak se ladí rádio: otočný kondenzátor mění C, a tím f_{0}. Anténa zachytí signály tisíců vysílačů, ale v obvodu „rezonuje“ jen ten, jehož frekvence se shoduje s f_{0}. Stejný princip má rezonance u kyvadla a houpačky (lekce „Mechanické kmitání“).' },
             { type: 'p', text: 'Rezonance vybírá jednu frekvenci. Pro rozvod elektřiny je ale důležitější jiná výhoda střídavého proudu: jeho napětí se dá snadno měnit.' },
             { type: 'check', question: { kind: 'number', q: 'Jaká je rezonanční frekvence obvodu s cívkou 1 mH a kondenzátorem 1 nF? Odpověz v kHz.', answer: 159, tolerance: 2, unit: 'kHz', explain: '√(L · C) = √(10^{−3} · 10^{−9}) s = 10^{−6} s; f_{0} = 1 / (2π · 10^{−6}) Hz ≈ 159 000 Hz = 159 kHz.' } },
           ],
@@ -1343,7 +1343,7 @@ const level: LevelContent = {
               'C = 1 / (39,5 · 10^{16} · 10^{−7}) F ≈ 2,5 · 10^{−11} F',
             ], answer: 'λ = 3 m, anténa 1,5 m, C ≈ 25 pF.' },
             { type: 'p', text: 'FM rádio je jen malý výsek mnohem širší rodiny vln. Elektromagnetické spektrum ukazuje všechny najednou:' },
-            { type: 'diagram', id: 'em-spectrum', caption: 'Elektromagnetické spektrum: od rádiových vln dlouhých kilometry po záření gama menší než atomové jádro. Liší se jen frekvencí a vlnovou délkou.' },
+            { type: 'diagram', id: 'em-spectrum', caption: 'Elektromagnetické spektrum: od rádiových vln dlouhých kilometry po záření gama s vlnovou délkou mnohem menší než atom. Liší se jen frekvencí a vlnovou délkou.' },
             { type: 'p', text: 'Kde se jednotlivé oblasti berou a k čemu je používáme, shrnuje tabulka:' },
             { type: 'table', headers: ['Oblast', 'Vlnová délka', 'Zdroj a využití'], rows: [
               ['rádiové vlny', 'm až km', 'oscilační obvody, antény: rozhlas, televize'],
