@@ -485,7 +485,7 @@ export const GAMES: GameMeta[] = [
     kind: 'map',
     courses: {
       zemepis: {
-        1: 'čtení a zápis zeměpisné šířky a délky',
+        1: 'čtení a zápis zeměpisné šířky a délky, porovnání poloh',
         2: 'rovník, obratníky, polární kruhy a teplotní pásy',
       },
     },
@@ -521,7 +521,7 @@ export const GAMES: GameMeta[] = [
     kind: 'map',
     courses: {
       zemepis: {
-        2: 'místní čas, časová pásma, letní čas a datová hranice',
+        2: 'místní sluneční čas, časová pásma, letní čas, lety a datová hranice',
       },
     },
   },
@@ -546,11 +546,11 @@ export const GAMES: GameMeta[] = [
     kind: 'map',
     courses: {
       zemepis: {
-        3: 'pohoří, sopky a desky světa',
-        7: 'státy a regiony kontinentů',
+        3: 'pohoří, sopky a hranice litosférických desek',
+        7: 'státy kontinentů',
         8: 'státy, hlavní města, řeky a pohoří Evropy',
-        9: 'kraje, města, řeky a pohoří Česka',
-        11: 'státy, hranice a ohniska konfliktů',
+        9: 'kraje, krajská města, řeky a pohoří Česka',
+        11: 'mikrostáty, enklávy, sporná území, typy hranic a konflikty',
       },
     },
   },

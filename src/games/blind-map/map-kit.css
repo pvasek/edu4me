@@ -1,0 +1,249 @@
+/* Shared map-game kit (Slepá mapa, Zeměpisná síť, Časová pásma), prefix g-mk- */
+.g-mk-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.g-mk-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.g-mk-q {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+.g-mk-text {
+  margin: 0;
+  font: 600 16.5px/1.45 var(--font-body);
+  overflow-wrap: anywhere;
+}
+.g-mk-text b,
+.g-mk-text strong {
+  font-weight: 800;
+}
+.g-mk-coord {
+  font-family: var(--font-mono);
+  font-size: 0.93em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.g-mk-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.g-mk-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.g-mk-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.g-mk-bonusbar > span {
+  transition: width 0.25s linear;
+}
+
+/* the map */
+.g-mk-map {
+  width: 100%;
+  max-width: 640px;
+  min-width: 0;
+  margin-inline: auto;
+}
+.g-mk-map .geo {
+  max-width: none;
+}
+.g-mk-map .geo-svg {
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r-sm);
+  touch-action: manipulation;
+}
+.g-mk-map.tapping .geo-svg {
+  cursor: crosshair;
+}
+.geo-svg .g-mk-over path,
+.geo-svg .g-mk-over circle {
+  vector-effect: none;
+}
+.g-mk-over text {
+  font-family: var(--font-body);
+  pointer-events: none;
+}
+.g-mk-mark {
+  pointer-events: none;
+}
+.g-mk-mark-tap circle,
+.g-mk-mark-tap path {
+  fill: none;
+  stroke: var(--ink);
+}
+.g-mk-mark-pin path {
+  fill: var(--accent);
+  stroke: var(--ink);
+}
+.g-mk-pin-eye {
+  fill: var(--surface);
+}
+.g-mk-mark-good circle {
+  fill: color-mix(in srgb, var(--good) 22%, transparent);
+  stroke: var(--good);
+}
+.g-mk-mark-good .g-mk-dot {
+  fill: var(--good);
+  stroke: none;
+}
+.g-mk-mark-bad path {
+  fill: none;
+  stroke: var(--bad);
+  stroke-linecap: round;
+}
+.g-mk-mark-num circle {
+  fill: var(--surface);
+  stroke: var(--ink);
+}
+.g-mk-mark-num text {
+  fill: var(--ink);
+  font-weight: 800;
+}
+.g-mk-mark-label {
+  fill: var(--ink);
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-linejoin: round;
+}
+.g-mk-trace path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: none;
+}
+.g-mk-trace-halo {
+  stroke: var(--surface);
+  opacity: 0.75;
+}
+.g-mk-trace-target .g-mk-trace-line {
+  stroke: var(--accent);
+}
+.g-mk-trace-good .g-mk-trace-line {
+  stroke: var(--good);
+}
+.g-mk-trace-bad .g-mk-trace-line {
+  stroke: var(--bad);
+  stroke-dasharray: 6 4;
+}
+.g-mk-trace-dot {
+  fill: var(--accent);
+  stroke: var(--ink);
+}
+.g-mk-trace-good .g-mk-trace-dot {
+  fill: var(--good);
+}
+
+/* below the map */
+.g-mk-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.g-mk-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.g-mk-notap {
+  font-size: 14px;
+  min-height: 40px;
+}
+.g-mk-notap svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* options */
+.g-mk-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.g-mk-options.wide {
+  grid-template-columns: minmax(0, 1fr);
+}
+.g-mk-option {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 8px 10px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 15.5px/1.25 var(--font-body);
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-hard);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s;
+  overflow-wrap: anywhere;
+}
+.g-mk-option:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--shadow-color);
+}
+.g-mk-option:disabled {
+  cursor: default;
+  box-shadow: none;
+}
+.g-mk-option.right {
+  background: var(--good-soft);
+  border-width: 3px;
+}
+.g-mk-option.wrong {
+  background: var(--bad-soft);
+  text-decoration: line-through;
+}
+.g-mk-option.off {
+  opacity: 0.5;
+}
+.g-mk-option:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+.g-mk-status:empty {
+  display: none;
+}
+@media (max-width: 420px) {
+  .g-mk-card {
+    padding: var(--space-3);
+    gap: 10px;
+  }
+  .g-mk-map {
+    max-width: none;
+    width: calc(100% + 2 * var(--space-3) - 6px);
+    margin-inline: calc(3px - var(--space-3));
+  }
+  .g-mk-text {
+    font-size: 15.5px;
+  }
+  .g-mk-option {
+    font-size: 14.5px;
+    min-height: 48px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .g-mk-option,
+  .g-mk-bonusbar > span {
+    transition: none;
+  }
+}

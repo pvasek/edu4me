@@ -1,0 +1,4 @@
+/* Slepá mapa (prefix g-bm-); the card, map, marks and options come from map-kit.css */
+.g-bm .g-mk-row .g-mk-hint {
+  flex: 1 1 auto;
+}

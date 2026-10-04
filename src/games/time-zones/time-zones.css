@@ -1,0 +1,26 @@
+/* Časová pásma (prefix g-tz-); the card, map and options come from blind-map/map-kit.css */
+.g-tz-form {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-tz-field {
+  display: block;
+  max-width: 260px;
+}
+.g-tz-inwrap {
+  position: relative;
+  display: block;
+}
+.g-tz-input {
+  padding-right: 56px;
+  font: 700 21px/1.2 var(--font-mono);
+}
+.g-tz-unit {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 600 15px/1 var(--font-mono);
+  color: var(--muted);
+  pointer-events: none;
+}
