@@ -45,6 +45,11 @@ type Step = { kind: 'read' } | { kind: 'quiz' } | { kind: 'done'; score: number;
 function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: string; levelId: string; levelColor: string; lesson: Lesson }) {
   const navigate = useNavigate()
   const [step, setStep] = useState<Step>({ kind: 'read' })
+  // the first step appears without the slide-in; later steps slide
+  const firstStep = useRef(true)
+  useEffect(() => {
+    firstStep.current = false
+  }, [])
   const [dir, setDir] = useState(1)
   const course = courseById(courseId)!
   const level = findLevel(course, levelId)!
@@ -80,8 +85,10 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
       </div>
 
       <div className="lesson-body">
-        <AnimatePresence mode="wait" custom={dir} initial={false}>
-        <motion.div key={step.kind} custom={dir} variants={slide} initial="enter" animate="center" exit="exit">
+        {/* no slide on the first render; not via AnimatePresence initial={false}, which would
+            also block the entrance of everything mounted later inside (figure replays) */}
+        <AnimatePresence mode="wait" custom={dir}>
+        <motion.div key={step.kind} custom={dir} variants={slide} initial={firstStep.current ? false : 'enter'} animate="center" exit="exit">
         {step.kind === 'read' && (
           <article className="lesson-read">
             <header className="lesson-intro stack">
