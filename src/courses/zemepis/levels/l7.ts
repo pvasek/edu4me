@@ -6,16 +6,19 @@ import type { LevelContent } from '../../../core/types'
  * - population: UN World Population Prospects 2024 (year 2024); cities: UN World Urbanization Prospects 2025;
  *   Austrálie ABS (31. 12. 2025); Kanada Statistics Canada (2025); Tuvalu sčítání 2022.
  * - economy: World Bank, HDP na obyvatele v běžných USD (2024; Čína a Indie 2025).
- * - climate charts (monthly means, normál 1991–2020 where stated):
- *   Chicago-O'Hare (NOAA/NWS, 1991–2020), Miami, Niamey, Bombaj, Verchojansk, Rijád, Quito, Manaus,
- *   Alice Springs (station normals 1991–2020 as compiled by Climates to Travel from WMO / national services),
- *   Utqiaġvik (NOAA, 1991–2020, rounded).
+ * - climate charts (monthly means, normál 1991–2020): Chicago-O'Hare, Niamey, Bombaj, Verchojansk, Manaus,
+ *   Alice Springs, Utqiaġvik = curated values of src/games/climate-chart/data.ts (Manaus also = l4.ts);
+ *   Miami temperatures and Rijád, Quito: Climates to Travel compilation (official tables not reachable in review).
  * - Niger pyramid: UN WPP 2024 (2024), absolute numbers via StatisticsTimes, shares computed.
  * - Amazon deforestation: INPE PRODES (2004–2025), INPE DETER (8/2025–7/2026, Mongabay 8/2026).
  * - Great Barrier Reef: AIMS Annual Summary Report of Coral Reef Condition 2024/25.
  * - Sea level: NASA (2025); Falepili: Australian High Commission Tuvalu (2025).
  * - Arctic sea ice: NSIDC (minimum 12. 9. 2026: 4,60 mil. km²); Northern Sea Route: CHNL (2025).
- * - Hormuz: shipping largely blocked since 28. 2. 2026 (US/Israel–Iran war; status September 2026).
+ * - Hormuz: shipping largely halted after the US/Israeli strikes on Iran from 28. 2. 2026; ceasefire 7. 4. 2026,
+ *   strait declared closed again 18. 4. 2026; traffic still far below normal in September 2026 (CRS, Al Jazeera, Lloyd's List).
+ * - Climate charts Niamey, Bombaj, Verchojansk, Manaus, Chicago, Alice Springs, Utqiaġvik: same values as
+ *   src/games/climate-chart/data.ts (1991–2020); Miami precipitation NOAA MIA 1991–2020 (67,41 in) converted to mm.
+ * - Cairo 32 mil. (UN WUP 2025, UN DESA 12/2025); Sudan: UNHCR Global Appeal 2026 (14 mil. displaced since 4/2023).
  */
 
 const level: LevelContent = {
@@ -75,13 +78,13 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: '**Region** je část zemského povrchu, která má něco společného a odlišuje se od okolí. Co přesně „společného“, si volí geograf podle toho, na co se ptá. Nejsnáz se region vymezí podle přírody: podle podnebí, rostlin a reliéfu.' },
             { type: 'p', text: 'Přírodní regiony už vlastně znáš. V lekci „Krajinné pásy a změna klimatu“ jsme viděli, že podnebí rozdělilo Zemi na pásy s typickou vegetací. Připomeň si je na obrázku a hledej, kde se opakují severně i jižně od rovníku:' },
-            { type: 'diagram', id: 'biomes', caption: 'Krajinné pásy Země: tropický deštný les, savana, poušť, step, listnatý les, tajga, tundra a polární pustiny. Každý pás je přírodní region.' },
+            { type: 'diagram', id: 'biomes', caption: 'Hlavní krajinné pásy Země: tropický deštný les, savana, poušť, listnatý les mírného pásu, tajga a tundra; stepi, hory a ledovce mapa řadí mezi ostatní. Každý pás je přírodní region.' },
             { type: 'p', text: 'Přírodní regiony mají jednu zvláštnost: jejich hranice nejsou čáry, ale široké přechody. Savana nekončí u žádného plotu, postupně řídne a mění se v polopoušť. Státní hranice je naopak přesná čára. Rozdíl ukazuje srovnání:' },
             { type: 'compare', columns: [
               { title: 'Přírodní region', icon: 'leaf', tone: 'a', points: ['vymezuje ho podnebí, reliéf, vegetace', 'hranice je přechodné pásmo', 'mění se pomalu (staletí, tisíciletí)', 'příklad: Sahara, Amazonie, Sibiř'] },
               { title: 'Politický region (stát)', icon: 'flag', tone: 'b', points: ['vymezují ho lidé dohodou nebo válkou', 'hranice je přesná čára', 'může se změnit za jeden den', 'příklad: Egypt, Brazílie, Rusko'] },
             ] },
-            { type: 'p', text: 'Sahara tedy zasahuje do více než deseti států a jediný stát, Rusko, sahá od tajgy po tundru. Přírodní mapa světa se s politickou nekryje. A lidé si svět dělí ještě po svém – podle jazyka, víry a bohatství.' },
+            { type: 'p', text: 'Sahara tedy zasahuje do deseti států a do Západní Sahary a jediný stát, Rusko, sahá od stepí přes tajgu až po tundru. Přírodní mapa světa se s politickou nekryje. A lidé si svět dělí ještě po svém – podle jazyka, víry a bohatství.' },
             { type: 'check', question: { kind: 'choice', q: 'Čím se liší hranice přírodního regionu od hranice státu?', options: ['přírodní hranice bývá široké přechodné pásmo, státní hranice je přesná čára', 'přírodní hranice je vždy řeka nebo hřeben hor', 'státní hranice se nikdy nemění', 'přírodní regiony nemají žádné hranice'], answer: 0, explain: 'Krajinné pásy do sebe postupně přecházejí, třeba savana v polopoušť. Státní hranici lidé vyměří jako přesnou čáru a mohou ji i změnit.' } },
           ],
         },
@@ -94,7 +97,7 @@ const level: LevelContent = {
             { type: 'map', view: 'world', highlight: [
               { codes: ['USA', 'CAN'], tone: 'b', label: 'Angloamerika (anglicky a francouzsky mluvící)' },
               { codes: ['MEX', 'GTM', 'BLZ', 'HND', 'SLV', 'NIC', 'CRI', 'PAN', 'CUB', 'DOM', 'HTI', 'PRI', 'COL', 'VEN', 'ECU', 'PER', 'BOL', 'CHL', 'ARG', 'URY', 'PRY', 'BRA', 'GUY', 'SUR', 'JAM', 'TTO', 'BHS'], tone: 'a', label: 'Latinská Amerika a Karibik' },
-            ], caption: 'Mexiko patří podle světadílů do Severní Ameriky, podle kultury do Latinské Ameriky. Hranice kulturního regionu vede po řece Rio Grande.' },
+            ], caption: 'Mexiko patří podle světadílů do Severní Ameriky, podle kultury do Latinské Ameriky. Hranice kulturního regionu vede po hranici USA a Mexika, zčásti po řece Rio Grande.' },
             { type: 'p', text: 'Mexiko je tedy zároveň v Severní i v Latinské Americe – podle toho, na co se ptáme. Třetí měřítko známe z lekce „Globalizace a rozvoj“: bohatství. Podle něj geografové mluví o globálním Severu a globálním Jihu. Ani tady „sever“ a „jih“ neznamenají polohu na glóbu:' },
             { type: 'compare', columns: [
               { title: 'Globální Sever', icon: 'factory', tone: 'a', points: ['vysoké HDP na obyvatele a HDI', 'většina lidí pracuje ve službách', 'stárnoucí obyvatelstvo', 'např. USA, Evropa, Japonsko, ale i Austrálie a Nový Zéland na jižní polokouli'] },
@@ -207,17 +210,17 @@ const level: LevelContent = {
           title: 'Od Sahary k pralesu',
           icon: 'dune',
           blocks: [
-            { type: 'p', text: 'Proč je na rovníku prales a o pár tisíc kilometrů severněji poušť? Odpověď znáš z lekce „Oběh vzduchu a podnebné pásy“: nad rovníkem vzduch stoupá a prší, v obratníkových oblastech vysokého tlaku klesá a vysychá.' },
+            { type: 'p', text: 'Proč je na rovníku prales a o pár tisíc kilometrů severněji poušť? Odpověď znáš z lekce „Oběh vzduchu a podnebné pásy“: nad rovníkem vzduch stoupá a prší, v obratníkových oblastech vysokého tlaku klesá, otepluje se a srážky v něm nevznikají.' },
             { type: 'p', text: 'Mezi pouští a pralesem leží přechodné pásy. Projdi řez Afrikou od severu k jihu a sleduj, jak přibývá srážek a vegetace:' },
             { type: 'diagram', id: 'sahel-transect', caption: 'Řez Afrikou: Sahara → Sahel → savana → tropický deštný les. Deštivý pás se v létě posouvá na sever, v zimě zpět k rovníku.' },
             { type: 'p', text: 'Nejzajímavější je úzký pás na jižním okraji Sahary – **Sahel** (arabsky „břeh“ pouště). Jak tu vypadá rok, ukazuje klimatogram hlavního města Nigeru. Hledej, kolik měsíců vůbec neprší:' },
             { type: 'climate', places: [
-              { name: 'Niamey (Niger)', temp: [24.7, 27.9, 31.9, 34.8, 34.7, 32.3, 29.7, 28.3, 29.8, 31.6, 29.1, 25.8], precip: [0, 0, 4, 6, 35, 70, 155, 170, 90, 10, 0, 0], altitude: 223, source: 'normál 1991–2020 (data WMO, zpracování Climates to Travel)' },
-            ], caption: 'Niamey: horko celý rok, asi 540 mm srážek za rok, skoro všechny od června do září.' },
-            { type: 'p', text: 'Srážek je za rok asi 540 mm, tedy podobně jako v Praze. Jenže v Niamey spadnou skoro všechny za čtyři měsíce a při teplotách kolem 30 °C se rychle odpaří. Osm měsíců je sucho. Když deštivý pás v některém roce na sever nedojde, období dešťů selže a s ním i úroda.' },
+              { name: 'Niamey (Niger)', temp: [24.6, 27.8, 31.9, 34.7, 34.5, 32.2, 29.5, 28.1, 29.6, 31.5, 29, 25.5], precip: [0, 0.3, 0.2, 9.8, 25.3, 78.6, 145.6, 192.6, 85.1, 16.7, 0, 0], altitude: 223, source: 'normál 1991–2020' },
+            ], caption: 'Niamey: horko celý rok, asi 550 mm srážek za rok, z toho přes 90 % od června do září.' },
+            { type: 'p', text: 'Srážek je za rok asi 550 mm, dokonce víc než v Praze (Klementinum asi 450 mm). Jenže v Niamey spadnou skoro všechny za čtyři měsíce a při teplotách kolem 30 °C se rychle odpaří. Osm měsíců je sucho. Když deštivý pás v některém roce na sever nedojde, období dešťů selže a s ním i úroda.' },
             { type: 'game', gameId: 'climate-chart', text: 'Klimatogram: poznáš, ze kterého regionu světa graf pochází?' },
             { type: 'p', text: 'Sahel tedy žije na hraně: jedno suché léto stačí k hladu. Podívejme se, co se v tomto pásu děje dnes.' },
-            { type: 'check', question: { kind: 'choice', q: 'Co je pro klimatogram Niamey (Sahel) nejtypičtější?', options: ['krátké období dešťů v létě a dlouhé suché období', 'déšť rovnoměrně po celý rok', 'mrazivá zima a teplé léto', 'skoro žádné srážky po celý rok'], answer: 0, explain: 'V Niamey spadne asi 540 mm, ale skoro všechno od června do září. Osm měsíců je sucho a teploty jsou celý rok vysoké.' } },
+            { type: 'check', question: { kind: 'choice', q: 'Co je pro klimatogram Niamey (Sahel) nejtypičtější?', options: ['krátké období dešťů v létě a dlouhé suché období', 'déšť rovnoměrně po celý rok', 'mrazivá zima a teplé léto', 'skoro žádné srážky po celý rok'], answer: 0, explain: 'V Niamey spadne asi 550 mm, ale skoro všechno od června do září. Osm měsíců je sucho a teploty jsou celý rok vysoké.' } },
           ],
         },
         {
@@ -238,7 +241,7 @@ const level: LevelContent = {
               { icon: 'wind', title: 'Eroze', text: 'vítr a lijáky odnášejí půdu' },
               { icon: 'dune', title: 'Dezertifikace', text: 'z polopouště se stává poušť' },
             ], caption: 'Dezertifikace: poušť se rozšiřuje tam, kde se sejde sucho s nadměrným využíváním půdy.' },
-            { type: 'p', text: 'Proti tomu stojí projekt **Velké zelené zdi**: od roku 2007 státy Africké unie obnovují stromy a půdu v pásu dlouhém asi 8 000 km napříč Sahelem. Daří se jen místy, protože region zasahují i války. V Mali, Burkině Faso a Nigeru se po roce 2020 chopily moci armády a bojují s ozbrojenými skupinami. V Súdánu zuří od dubna 2023 válka, která podle OSN vyhnala z domovů asi 14 milionů lidí – nejvíc na světě.' },
+            { type: 'p', text: 'Proti tomu stojí projekt **Velké zelené zdi**: od roku 2007 státy Africké unie obnovují stromy a půdu v pásu dlouhém asi 8 000 km napříč Sahelem. Daří se jen místy, protože region zasahují i války. V Mali, Burkině Faso a Nigeru se v letech 2020–2023 chopily moci armády a bojují s ozbrojenými skupinami. V Súdánu zuří od dubna 2023 válka, která podle OSN vyhnala z domovů asi 14 milionů lidí (UNHCR, konec roku 2025) – je to největší krize vysídlení na světě.' },
             { type: 'callout', variant: 'warning', text: 'Pozor na zjednodušení „Sahel je chudý, protože je tam poušť“. Sucho je jen jedna příčina. Chudobu prohlubuje rychlý růst obyvatel, eroze, slabé státy a války – a ty se navzájem posilují.' },
             { type: 'p', text: 'Rychlý růst obyvatel je tedy součástí sahelského problému. Podívejme se, proč Afričanů přibývá rychleji než kdekoli jinde.' },
             { type: 'check', question: { kind: 'multi', q: 'Co přispívá k dezertifikaci v Sahelu?', options: ['nadměrné spásání stády', 'kácení keřů a stromů na palivo', 'eroze půdy větrem a lijáky', 'příliš mnoho srážek v zimě', 'chladné podnebí'], answers: [0, 1, 2], explain: 'Poušť se šíří tam, kde se k suchu přidá spásání, kácení a následná eroze. V Sahelu v zimě skoro neprší a je tam horko.' } },
@@ -258,10 +261,10 @@ const level: LevelContent = {
             { type: 'table', headers: ['stát', 'obyvatel 2024', 'zajímavost'], rows: [
               ['Nigérie', '232,7 mil.', 'nejlidnatější stát Afriky; Lagos patří k nejrychleji rostoucím městům světa'],
               ['Etiopie', '132,1 mil.', 'vnitrozemský stát, nikdy nebyla dlouhodobě kolonií'],
-              ['Egypt', '116,5 mil.', 'Káhira má 25,6 mil. obyvatel – největší město Afriky (OSN 2025)'],
+              ['Egypt', '116,5 mil.', 'aglomerace Káhiry má asi 32 mil. obyvatel – největší město Afriky (OSN 2025)'],
               ['DR Kongo', '109,3 mil.', 'Kinšasa je největší francouzsky mluvící město světa'],
             ], caption: 'Nejlidnatější státy Afriky (UN WPP 2024); Káhira podle UN World Urbanization Prospects 2025.' },
-            { type: 'p', text: 'Mladé obyvatelstvo je velká šance: brzy bude mít Afrika nejvíc lidí v produktivním věku na světě. Potřebuje ale školy, práci a bydlení – a o těch rozhoduje hospodářství a hranice států, které Afrika zdědila.' },
+            { type: 'p', text: 'Mladé obyvatelstvo je velká šance: do roku 2050 přibude lidí v produktivním věku nejvíc právě v Africe. Potřebuje ale školy, práci a bydlení – a o těch rozhoduje hospodářství a hranice států, které Afrika zdědila.' },
             { type: 'check', question: { kind: 'number', q: 'Ve věkové pyramidě Nigeru tvoří skupiny 0–4, 5–9 a 10–14 let dohromady asi 17,7 %, 15,4 % a 13,5 % obyvatel. Kolik procent obyvatel je mladších 15 let?', answer: 46.6, tolerance: 0.2, unit: '%', explain: '17,7 % + 15,4 % + 13,5 % = 46,6 %. Skoro polovina obyvatel Nigeru jsou děti.' } },
           ],
         },
@@ -269,7 +272,7 @@ const level: LevelContent = {
           title: 'Hranice, suroviny a dva regiony',
           icon: 'border',
           blocks: [
-            { type: 'p', text: 'Proč mají některé africké státy hranice jako podle pravítka? Na **Berlínské konferenci** (1884–1885) si Afriku rozdělily evropské mocnosti. Hranice kreslily v Evropě, často po rovnoběžkách a polednících, bez ohledu na národy a jazyky.' },
+            { type: 'p', text: 'Proč mají některé africké státy hranice jako podle pravítka? Na **Berlínské konferenci** (1884–1885) se evropské mocnosti dohodly na pravidlech, jak si Afriku rozdělí. Hranice pak kreslily v Evropě, často po rovnoběžkách a polednících, bez ohledu na národy a jazyky.' },
             { type: 'p', text: 'Většina států získala nezávislost kolem roku 1960, ale koloniální hranice si ponechala. Proto žijí příbuzné národy v různých státech a různé národy v jednom státě. Co Afrika nabízí světu a co jí to přináší, shrnují karty:' },
             { type: 'iconlist', items: [
               { icon: 'pickaxe', title: 'Kobalt z DR Konga', text: 'asi tři čtvrtiny světové těžby; je v bateriích telefonů a elektromobilů' },
@@ -277,13 +280,13 @@ const level: LevelContent = {
               { icon: 'diamond', title: 'Diamanty z Botswany', text: 'příklad, jak může surovina pomoci, když stát dobře hospodaří' },
               { icon: 'coffee', title: 'Káva a kakao', text: 'Pobřeží slonoviny a Ghana vypěstují zhruba polovinu světového kakaa' },
             ] },
-            { type: 'p', text: 'Bohatství pod zemí často nedorazí k lidem. Ze surovin se vyváží hlavně nezpracovaná surovina a zisk zůstane malé skupině. Nigérie, největší producent ropy v Africe, měla v roce 2024 HDP asi 800 USD na obyvatele, Česko přes 30 000 USD (Světová banka). Afriku přitom geografové dělí na dva velmi odlišné regiony:' },
+            { type: 'p', text: 'Bohatství pod zemí často nedorazí k lidem. Ze surovin se vyváží hlavně nezpracovaná surovina a zisk zůstane malé skupině. Nigérie, největší producent ropy v Africe, měla v roce 2024 HDP jen asi 1 000 USD na obyvatele, Česko přes 30 000 USD (Světová banka). Afriku přitom geografové dělí na dva velmi odlišné regiony:' },
             { type: 'compare', columns: [
               { title: 'Severní Afrika', icon: 'dune', tone: 'a', points: ['Egypt, Libye, Tunisko, Alžírsko, Maroko', 'arabština a islám', 'Sahara a pobřeží Středozemního moře', 'blíže k Evropě a Blízkému východu'] },
               { title: 'Subsaharská Afrika', icon: 'tree', tone: 'b', points: ['státy jižně od Sahary', 'stovky jazyků, křesťanství, islám i tradiční náboženství', 'savany, pralesy, vysočiny', 'nejmladší a nejrychleji rostoucí obyvatelstvo'] },
             ], caption: 'Sahara dělí Afriku na dva kulturní regiony.' },
             { type: 'p', text: 'Afrika je tedy mladá, bohatá na suroviny, ale chudá na příjmy. V příští lekci přeskočíme do regionu, kde žije ještě víc lidí – do monzunové Asie.' },
-            { type: 'check', question: { kind: 'choice', q: 'Proč mají mnohé africké státy rovné hranice?', options: ['hranice nakreslily evropské mocnosti při dělení Afriky, často po rovnoběžkách a polednících', 'vedou podél rovných řek', 'tak se rozhodly africké národy po roce 1960, aby to bylo spravedlivé', 'protože v poušti nejsou žádné přírodní překážky, takže tam hranice vznikly samy'], answer: 0, explain: 'Afriku si na Berlínské konferenci (1884–1885) rozdělily evropské mocnosti. Hranice vedly často po rovnoběžkách a polednících a nové státy je po nezávislosti převzaly.' } },
+            { type: 'check', question: { kind: 'choice', q: 'Proč mají mnohé africké státy rovné hranice?', options: ['hranice nakreslily evropské mocnosti při dělení Afriky, často po rovnoběžkách a polednících', 'vedou podél rovných řek', 'tak se rozhodly africké národy po roce 1960, aby to bylo spravedlivé', 'protože v poušti nejsou žádné přírodní překážky, takže tam hranice vznikly samy'], answer: 0, explain: 'Dělení Afriky mezi evropské mocnosti odstartovala Berlínská konference (1884–1885). Hranice vedly často po rovnoběžkách a polednících a nové státy je po nezávislosti převzaly.' } },
           ],
         },
       ],
@@ -292,7 +295,7 @@ const level: LevelContent = {
         'Na východě se africká deska trhá podél Východoafrického příkopového systému; tam leží Kilimandžáro (5 895 m) a hluboká jezera.',
         'Sahel na jižním okraji Sahary dostane srážky jen v krátkém létě; sucha, dezertifikace a války z něj dělají jeden z nejzranitelnějších regionů světa.',
         'Afrika je nejmladší světadíl: v Nigeru je skoro polovina obyvatel mladších 15 let a Afriky se do roku 2050 rozroste z 1,5 na asi 2,5 mld. lidí.',
-        'Rovné hranice jsou dědictvím koloniálního dělení Afriky na Berlínské konferenci (1884–1885).',
+        'Rovné hranice jsou dědictvím koloniálního dělení Afriky, které odstartovala Berlínská konference (1884–1885).',
         'Afrika je bohatá na suroviny (kobalt, ropa, diamanty), ale většina států zůstává chudá.',
         'Sahara dělí Afriku na arabskou severní Afriku a subsaharskou Afriku.',
       ],
@@ -308,7 +311,7 @@ const level: LevelContent = {
         ], explain: 'Nigérie má přes 230 mil. obyvatel, DR Kongo vytěží asi tři čtvrtiny kobaltu světa, Káhira je největší africké město a Kilimandžáro leží v Tanzanii.' },
         { kind: 'tf', q: 'Ve věkové pyramidě Nigeru tvoří lidé starší 65 let méně než 3 % obyvatel.', answer: true, explain: 'Podle UN WPP 2024 je v Nigeru starších 65 let jen asi 2,6 % obyvatel, mladších 15 let asi 46,6 %.' },
         { kind: 'multi', q: 'Proč obyvatel Afriky přibývá tak rychle?', options: ['ženy mají v průměru hodně dětí', 'úmrtnost dětí klesla, takže většina dětí vyroste', 'obyvatelstvo je mladé, brzy samo založí rodiny', 'do Afriky se stěhuje víc lidí z jiných světadílů, než kolik jich odchází', 'lidé v Africe žijí déle než v Evropě'], answers: [0, 1, 2], explain: 'Vysoká porodnost, klesající úmrtnost a mladá struktura obyvatel. Přistěhovalectví ani delší život v tom roli nehrají – naděje dožití je v Africe nižší než v Evropě.' },
-        { kind: 'choice', q: 'V Niamey spadne asi 540 mm srážek za rok, podobně jako v Praze. Proč je tam přesto sucho?', options: ['srážky spadnou za čtyři měsíce a při vysokých teplotách se rychle odpaří', 'srážky padají jen jako sníh', 'v Niamey je zima, takže voda zamrzne', 'srážky spadnou jen v zimě, kdy je nikdo nepotřebuje'], answer: 0, explain: 'Rozhoduje rozložení srážek a výpar. V Sahelu prší jen od června do září a při teplotách kolem 30 °C se voda rychle odpaří; osm měsíců je sucho.' },
+        { kind: 'choice', q: 'V Niamey spadne asi 550 mm srážek za rok, víc než v Praze. Proč je tam přesto většinu roku sucho?', options: ['srážky spadnou za čtyři měsíce a při vysokých teplotách se rychle odpaří', 'srážky padají jen jako sníh', 'v Niamey je zima, takže voda zamrzne', 'srážky spadnou jen v zimě, kdy je nikdo nepotřebuje'], answer: 0, explain: 'Rozhoduje rozložení srážek a výpar. V Sahelu prší jen od června do září a při teplotách kolem 30 °C se voda rychle odpaří; osm měsíců je sucho.' },
       ],
     },
 
@@ -341,7 +344,7 @@ const level: LevelContent = {
               { lat: 28.61, lon: 77.21, label: 'Dillí', kind: 'capital' },
               { lat: 23.81, lon: 90.41, label: 'Dháka', kind: 'capital' },
               { lat: -6.21, lon: 106.85, label: 'Jakarta', kind: 'capital' },
-            ], caption: 'Monzunová Asie: východní, jižní a jihovýchodní Asie. Z Himálaje a Tibetu stékají Jang-c’-ťiang, Chuang-che, Mekong, Brahmaputra, Indus i přítoky Gangy.' },
+            ], caption: 'Monzunová Asie: východní, jižní a jihovýchodní Asie. Z Himálaje a Tibetu stékají Jang-c’-ťiang, Chuang-che, Mekong, Brahmaputra, Indus i Ganga.' },
             { type: 'p', text: 'Uprostřed regionu stojí Himaláje a Tibetská náhorní plošina, v průměru asi 4 500 m n. m. Jak tak vysoké hory vznikly? Indická deska se před desítkami milionů let srazila s euroasijskou a tlačí do ní dodnes:' },
             { type: 'diagram', id: 'himalaya-section', caption: 'Indická deska se podsouvá pod euroasijskou. Vrstvy hornin se vrásní a Himaláje i Tibet se zvedají o několik milimetrů ročně.' },
             { type: 'p', text: 'Himaláje jsou tedy **mladé pohoří**, jak víš z lekce „Jak vznikají pohoří“, a proto tak vysoké a strmé. Pro miliardy lidí jsou ale důležitější jinak: jsou zdrojem velkých řek a zastavují vzduch, který přináší déšť.' },
@@ -357,9 +360,9 @@ const level: LevelContent = {
             { type: 'diagram', id: 'monsoon', caption: 'Letní monzun: pevnina se ohřeje, vlhký vzduch proudí z oceánu na pevninu a prší. Zimní monzun: suchý vzduch proudí z chladné pevniny k moři.' },
             { type: 'p', text: 'Jak to vypadá v praxi, ukazuje klimatogram Bombaje (Mumbaje), největšího přístavu Indie. Porovnej srážky v červenci a v únoru:' },
             { type: 'climate', places: [
-              { name: 'Bombaj (Indie)', temp: [24, 25, 27.2, 28.8, 30.2, 29.4, 27.9, 27.8, 28, 28.8, 27.8, 25.5], precip: [0, 0, 0, 0, 20, 530, 710, 495, 330, 80, 15, 3], source: 'normál 1991–2020 (data IMD, zpracování Climates to Travel)' },
-            ], caption: 'Bombaj: přes 2 100 mm srážek za rok, z toho asi 95 % od června do září. Od prosince do dubna skoro neprší.' },
-            { type: 'p', text: 'Za čtyři letní měsíce tu spadne čtyřikrát víc vody než v Praze za celý rok. Všimni si i teploty: nejtepleji je v květnu, těsně před příchodem dešťů. Když monzun přijde pozdě nebo je slabý, hrozí neúroda; když je silný, zaplaví města i pole. Rekordy drží vesnice Mawsynram v pohoří Khásí na severovýchodě Indie s průměrem kolem 11 800 mm za rok.' },
+              { name: 'Bombaj (Indie)', temp: [24.6, 25.3, 27.6, 28.8, 30.2, 29.3, 27.9, 27.8, 27.9, 29, 28, 25.8], precip: [0.2, 0.2, 0.1, 0.1, 7.3, 526.3, 919.9, 560.8, 383.5, 91.3, 11, 1.6], source: 'normál 1991–2020 (IMD)' },
+            ], caption: 'Bombaj: asi 2 500 mm srážek za rok, z toho asi 95 % od června do září. Od prosince do dubna skoro neprší.' },
+            { type: 'p', text: 'Za čtyři letní měsíce tu spadne víc než pětkrát víc vody než v Praze za celý rok. Všimni si i teploty: nejtepleji je v květnu, těsně před příchodem dešťů. Když monzun přijde pozdě nebo je slabý, hrozí neúroda; když je silný, zaplaví města i pole. Rekordy drží vesnice Mawsynram v pohoří Khásí na severovýchodě Indie s průměrem kolem 11 800 mm za rok.' },
             { type: 'callout', variant: 'tip', text: 'Na klimatogramu poznáš monzun podle „hory“ srážek v létě a skoro prázdných zimních měsíců – při teplotách nad 20 °C po celý rok.' },
             { type: 'p', text: 'Monzunové deště tedy přinášejí vodu, řeky ji rozvádějí do nížin. Co na tom lidé pěstují a proč to uživí tolik lidí?' },
             { type: 'check', question: { kind: 'tf', q: 'Letní monzun v Indii vane z pevniny na moře, a proto je léto suché.', answer: false, explain: 'Je to obráceně. V létě se pevnina ohřeje, vlhký vzduch proudí z Indického oceánu na pevninu a přináší vydatné deště. Suchý je zimní monzun.' } },
@@ -369,7 +372,7 @@ const level: LevelContent = {
           title: 'Řeky a rýže',
           icon: 'wheat',
           blocks: [
-            { type: 'p', text: 'Velké asijské řeky každý rok rozlévají povodně a ukládají úrodné náplavy. V jejich nížinách a deltách – na Ganze, Brahmaputře, Jang-c’-ťiangu, Mekongu – vznikla nejstarší zemědělská civilizace a žije tu nejvíc lidí.' },
+            { type: 'p', text: 'Velké asijské řeky každý rok rozlévají povodně a ukládají úrodné náplavy. V jejich nížinách a deltách – na Ganze, Brahmaputře, Jang-c’-ťiangu, Mekongu – se rýže pěstuje tisíce let a žije tu nejvíc lidí.' },
             { type: 'p', text: 'Klíčem je **rýže**. Roste na zaplavených polích, která monzun s řekami zalévají, a ze stejné plochy uživí víc lidí než pšenice. Na svazích se pro ni budují terasy. Asie vypěstuje asi 90 % rýže světa a nejvíc Čína a Indie. Výsledek je vidět na hustotě zalidnění:' },
             { type: 'table', headers: ['stát', 'hustota zalidnění (obyv./km²)', 'pro srovnání'], rows: [
               ['Bangladéš', '≈ 1 170', 'skoro celý stát je delta Gangy a Brahmaputry'],
@@ -377,7 +380,7 @@ const level: LevelContent = {
               ['Japonsko', '≈ 330', 'lidé žijí hlavně v pobřežních nížinách'],
               ['Čína', '≈ 150', 'průměr: přeplněný východ, prázdný Tibet a pouště'],
               ['Česko', '≈ 138', ''],
-            ], caption: 'Hustota zalidnění 2024 (počet obyvatel UN WPP 2024 / rozloha státu), zaokrouhleno.' },
+            ], caption: 'Hustota zalidnění 2024 (počet obyvatel UN WPP 2024, Česko ČSÚ / rozloha státu), zaokrouhleno.' },
             { type: 'p', text: 'Pozor, průměrná hustota může klamat. Čína má průměr jen o málo vyšší než Česko, ale její obyvatelé se tísní na východě, v nížinách řek a na pobřeží. Hory a pouště na západě jsou skoro prázdné – jak jsme viděli v lekci „Kolik nás je a kde žijeme“.' },
             { type: 'callout', variant: 'fact', text: 'Na Jang-c’-ťiangu stojí přehrada Tři soutěsky, největší vodní elektrárna světa (22,5 GW). Kvůli její nádrži se muselo vystěhovat přes milion lidí.' },
             { type: 'p', text: 'Celý řetěz příčin, proč jsou monzunové nížiny tak lidnaté, si shrň v pěti krocích:' },
@@ -400,10 +403,10 @@ const level: LevelContent = {
             { type: 'p', text: 'Porovnej v tabulce počet obyvatel a bohatství. Sleduj, jak spolu souvisí:' },
             { type: 'table', headers: ['stát', 'obyvatel 2024', 'HDP na obyvatele', 'jak se mění'], rows: [
               ['Indie', '1 451 mil.', '≈ 2 700 USD', 'roste, mladé obyvatelstvo'],
-              ['Čína', '1 419 mil.', '≈ 13 900 USD', 'od roku 2022 ubývá, rychle stárne'],
+              ['Čína', '1 419 mil.', '≈ 13 000 USD', 'od roku 2022 ubývá, rychle stárne'],
               ['Indonésie', '283 mil.', '≈ 4 900 USD', 'roste'],
-              ['Japonsko', '124 mil.', '≈ 32 500 USD', 'ubývá, asi 29 % lidí je starších 65 let'],
-            ], caption: 'Obyvatelé: UN WPP 2024. HDP na obyvatele: Světová banka (Indie a Čína 2025, Indonésie a Japonsko 2024), zaokrouhleno.' },
+              ['Japonsko', '124 mil.', '≈ 33 000 USD', 'ubývá, asi 29 % lidí je starších 65 let'],
+            ], caption: 'Obyvatelé: UN WPP 2024. HDP na obyvatele: Světová banka 2024, zaokrouhleno.' },
             { type: 'p', text: 'Čína dlouho omezovala porodnost politikou jednoho dítěte, a dnes jí proto rychle ubývá mladých lidí. Indie je mladší a ještě poroste. Japonsko ukazuje budoucnost obou: málo dětí, hodně seniorů a ubývající obyvatelstvo. Přesto se lidé dál stěhují do měst. Podle OSN (2025) leží v monzunové Asii tři největší města světa. Najdi je na mapě:' },
             { type: 'map', view: 'asia', points: [
               { lat: -6.21, lon: 106.85, label: 'Jakarta 41,9 mil.', kind: 'capital' },
@@ -437,7 +440,7 @@ const level: LevelContent = {
         },
       ],
       summary: [
-        'Monzunovou Asii tvoří východní, jižní a jihovýchodní Asie; žije v ní skoro polovina lidstva.',
+        'Monzunovou Asii tvoří východní, jižní a jihovýchodní Asie; žije v ní víc než polovina lidstva.',
         'Himaláje (Mount Everest 8 849 m) a Tibet vznikly srážkou indické a euroasijské desky a pořád se zvedají.',
         'Letní monzun nese vlhký vzduch z oceánu a přináší vydatné deště, zimní monzun je suchý; v Bombaji spadne většina srážek od června do září.',
         'Úrodné nížiny a delty řek a pěstování rýže uživí velmi hustě zalidněné oblasti (Bangladéš přes 1 100 obyv./km²).',
@@ -472,7 +475,7 @@ const level: LevelContent = {
           title: 'Tři regiony, dvě krajnosti',
           icon: 'thermometer',
           blocks: [
-            { type: 'p', text: 'Zbytek Asie mimo monzunovou oblast dělíme na tři regiony. Mají společné jedno: monzun sem nedosáhne. Vzduch od oceánu zastaví hory nebo vzdálenost, a proto tu převládá suché podnebí.' },
+            { type: 'p', text: 'Zbytek Asie mimo monzunovou oblast dělíme na tři regiony. Mají společné jedno: na většinu jejich území monzun nedosáhne. Vzduch od oceánu zastaví hory nebo vzdálenost, a proto tu převládá suché podnebí.' },
             { type: 'p', text: 'Na mapě najdi Blízký východ mezi třemi světadíly, vnitrozemskou Střední Asii a obrovské Rusko, jehož asijskou část tvoří Sibiř a Dálný východ:' },
             { type: 'map', view: 'asia', highlight: [
               { codes: ['SAU', 'ARE', 'OMN', 'YEM', 'QAT', 'BHR', 'KWT', 'IRQ', 'IRN', 'SYR', 'JOR', 'ISR', 'PSX', 'LBN', 'TUR'], tone: 'a', label: 'Blízký východ (západní Asie)' },
@@ -485,11 +488,11 @@ const level: LevelContent = {
             { type: 'p', text: 'Oba konce regionu mají suché podnebí, ale každý jinak. Porovnej klimatogram Rijádu v Arabské poušti a Verchojansku na Sibiři. Hledej rozdíl mezi nejteplejším a nejstudenějším měsícem:' },
             { type: 'climate', places: [
               { name: 'Rijád (Saúdská Arábie)', temp: [14, 17.1, 21.5, 26.9, 32.5, 34.8, 36.1, 36.1, 32.7, 27.7, 20.3, 15.1], precip: [11, 6, 12, 14, 2, 0, 0, 0, 0, 1, 11, 9], source: 'průměry 1991–2020 (zpracování Climates to Travel)' },
-              { name: 'Verchojansk (Rusko)', temp: [-44.7, -41.6, -28, -11, 4.2, 14.2, 16.9, 12.5, 3.4, -13.4, -33.6, -43.3], precip: [5, 5, 5, 5, 15, 30, 35, 30, 20, 15, 10, 5], altitude: 137, source: 'normál 1991–2020, Roshydromet (zpracování Climates to Travel)' },
+              { name: 'Verchojansk (Rusko)', temp: [-44.7, -42.1, -28.9, -10.9, 4.2, 13.9, 16.5, 12.1, 2.8, -13.4, -33.7, -43.6], precip: [6, 5, 5, 4, 16, 30, 34, 30, 22, 13, 11, 6], altitude: 137, source: 'normál 1991–2020 (Roshydromet)' },
             ], caption: 'Rijád: horká poušť, jen asi 70 mm srážek za rok. Verchojansk: rozdíl lednové a červencové teploty přes 60 °C a jen asi 180 mm srážek.' },
-            { type: 'p', text: 'V Rijádu se teplota během roku mění asi o 22 °C, ve Verchojansku o neuvěřitelných 61,6 °C. To je **kontinentální podnebí** v nejvyhrocenější podobě: daleko od oceánu, který by teploty vyrovnával. Srážek mají obě místa málo – Verchojansk dostane méně vody než leckterá step.' },
+            { type: 'p', text: 'V Rijádu se teplota během roku mění asi o 22 °C, ve Verchojansku o neuvěřitelných 61,2 °C. To je **kontinentální podnebí** v nejvyhrocenější podobě: daleko od oceánu, který by teploty vyrovnával. Srážek mají obě místa málo – Verchojansk dostane méně vody než leckterá step.' },
             { type: 'p', text: 'Málo vody je osudem celého regionu. Na Blízkém východě se k tomu přidá ještě něco, co potřebuje celý svět: ropa.' },
-            { type: 'check', question: { kind: 'number', q: 'Ve Verchojansku je průměrná teplota v lednu −44,7 °C a v červenci 16,9 °C. Jaký je rozdíl (roční amplituda)?', answer: 61.6, tolerance: 0.2, unit: '°C', explain: '16,9 °C − (−44,7 °C) = 16,9 + 44,7 = 61,6 °C. Takovou amplitudu má jen extrémně kontinentální podnebí.' } },
+            { type: 'check', question: { kind: 'number', q: 'Ve Verchojansku je průměrná teplota v lednu −44,7 °C a v červenci 16,5 °C. Jaký je rozdíl (roční amplituda)?', answer: 61.2, tolerance: 0.2, unit: '°C', explain: '16,5 °C − (−44,7 °C) = 16,5 + 44,7 = 61,2 °C. Takovou amplitudu má jen extrémně kontinentální podnebí.' } },
           ],
         },
         {
@@ -508,10 +511,10 @@ const level: LevelContent = {
             ], routes: [
               { points: [{ lat: 28.5, lon: 50.0 }, { lat: 26.6, lon: 54.0 }, { lat: 26.4, lon: 56.4 }, { lat: 24.5, lon: 59.0 }, { lat: 21.0, lon: 61.0 }], label: 'trasa tankerů z Perského zálivu', tone: 'b', arrow: true },
             ], caption: 'Hormuzským průlivem (v nejužším místě široký asi 34 km) proplouvala asi pětina ropy, kterou svět spotřebuje.' },
-            { type: 'p', text: 'Takovému místu se říká **strategická úžina**: kdo je ovládne, může zastavit obchod celého světa. Přesně to se stalo v roce 2026. Po leteckých útocích USA a Izraele na Írán koncem února 2026 Írán průliv pro většinu lodí uzavřel. Ceny ropy prudce vzrostly a ani po dubnovém příměří není plavba průlivem bezpečná (stav k září 2026).' },
-            { type: 'p', text: 'Ropné státy vědí, že ropa jednou dojde nebo ji svět přestane potřebovat. Proto se snaží hospodářství rozšířit. Dvě cesty porovnává tabulka:' },
+            { type: 'p', text: 'Takovému místu se říká **strategická úžina**: kdo je ovládne, může zastavit obchod celého světa. Přesně to se stalo v roce 2026. Po leteckých útocích USA a Izraele na Írán od 28. února 2026 vyhlásil Írán průliv za uzavřený a plavba skoro ustala. Ceny ropy vyskočily vysoko nad 100 USD za barel. Ani po dubnovém příměří není plavba bezpečná a průlivem proplouvá jen zlomek dřívějšího počtu lodí (stav k září 2026).' },
+            { type: 'p', text: 'Ropné státy vědí, že ropa jednou dojde nebo ji svět přestane potřebovat. Proto se snaží hospodářství rozšířit. Tři příklady ukazuje tabulka:' },
             { type: 'table', headers: ['stát', 'co dělá', 'proč'], rows: [
-              ['Spojené arabské emiráty (Dubaj)', 'letecký uzel, přístav, cestovní ruch, finance', 'ropy mají méně, vsadily na služby'],
+              ['Spojené arabské emiráty (Dubaj)', 'letecký uzel, přístav, cestovní ruch, finance', 'Dubaj má na rozdíl od Abú Zabí ropy málo, vsadila na služby'],
               ['Saúdská Arábie', 'nová města, průmysl, turistika', 'snaží se snížit závislost na ropě'],
               ['Katar', 'vývoz zemního plynu', 'jedno z největších nalezišť plynu světa'],
             ], caption: 'Ropné státy Perského zálivu hledají, z čeho žít po ropě.' },
@@ -528,16 +531,16 @@ const level: LevelContent = {
             { type: 'iconlist', items: [
               { icon: 'river', title: 'Řeky Eufrat a Tigris', text: 'Mezopotámie, kolébka zemědělství; Turecko na horním toku staví přehrady a Iráku pak teče méně vody' },
               { icon: 'river', title: 'Řeka Jordán', text: 'o jeho vodu se dělí Izrael, Jordánsko, Sýrie a Palestinci; Mrtvé moře kvůli tomu klesá' },
-              { icon: 'drop', title: 'Fosilní podzemní voda', text: 'nahromadila se před tisíci lety, když bylo vlhčeji; čerpá se rychleji, než se doplní' },
+              { icon: 'drop', title: 'Fosilní podzemní voda', text: 'nahromadila se před mnoha tisíci lety, když bylo vlhčeji; čerpá se rychleji, než se doplní' },
               { icon: 'factory', title: 'Odsolování mořské vody', text: 'Saúdská Arábie je největší výrobce odsolené vody světa; spotřebuje ale hodně energie' },
             ] },
             { type: 'p', text: 'Na malém území se tu navíc potkávají tři velká náboženství. **Jeruzalém** je svatým městem židů, křesťanů i muslimů. Islám se dělí na dva hlavní směry, a i to na Blízkém východě rozhoduje o spojencích a nepřátelích:' },
             { type: 'keyterms', items: [
-              { term: '**Sunnité**', def: 'většina muslimů světa i většiny arabských států, např. Saúdské Arábie' },
+              { term: '**Sunnité**', def: 'většina muslimů světa (asi 85–90 %) i většiny arabských států, např. Saúdské Arábie' },
               { term: '**Šíité**', def: 'menšina muslimů; tvoří většinu v Íránu, Iráku a Bahrajnu' },
               { term: '**Mekka**', def: 'nejsvětější město islámu v Saúdské Arábii; každý rok sem putují miliony poutníků' },
             ] },
-            { type: 'p', text: 'Spory o půdu, vodu, víru a moc vedou ke konfliktům, které trvají desítky let: izraelsko-palestinský konflikt (od roku 2023 válka v Pásmu Gazy), občanská válka v Sýrii (2011–2024) nebo války kolem Íránu. Pozor ale na zjednodušení: konflikty nevznikají „kvůli náboženství“ samotnému. Vždy jde i o území, zdroje a politickou moc.' },
+            { type: 'p', text: 'Spory o půdu, vodu, víru a moc vedou ke konfliktům, které trvají desítky let: izraelsko-palestinský konflikt (2023–2025 válka v Pásmu Gazy, od října 2025 křehké příměří), občanská válka v Sýrii (2011–2024) nebo války kolem Íránu. Pozor ale na zjednodušení: konflikty nevznikají „kvůli náboženství“ samotnému. Vždy jde i o území, zdroje a politickou moc.' },
             { type: 'p', text: 'Nedostatek vody ale zasáhl i region dál na sever, kde způsobil jednu z největších ekologických katastrof 20. století.' },
             { type: 'check', question: { kind: 'multi', q: 'Odkud získávají státy Blízkého východu vodu?', options: ['z řek Eufrat, Tigris a Jordán', 'z fosilní podzemní vody', 'odsolováním mořské vody', 'z ledovců v Arabské poušti', 'z monzunových dešťů'], answers: [0, 1, 2], explain: 'Region má několik řek, čerpá podzemní vodu z vlhčích dob a odsoluje mořskou vodu. Monzun sem nedosahuje a ledovce v poušti nejsou.' } },
           ],
@@ -558,11 +561,11 @@ const level: LevelContent = {
             { type: 'table', headers: ['rok', 'rozloha Aralského jezera', 'co se dělo'], rows: [
               ['1960', '≈ 68 000 km²', 'čtvrté největší jezero světa, rybářství'],
               ['2018', '≈ 8 300 km²', 'zbylo asi 12 % plochy; dno se změnilo v solnou poušť Aralkum'],
-            ], caption: 'Aralské jezero na hranici Kazachstánu a Uzbekistánu (údaje pro roky 1960 a 2018 podle satelitních měření).' },
+            ], caption: 'Aralské jezero na hranici Kazachstánu a Uzbekistánu (1960 podle map, 2018 podle satelitních snímků).' },
             { type: 'p', text: 'Vítr z vyschlého dna roznáší sůl a zbytky pesticidů na pole a do plic lidí v okolí. Malá naděje přišla v roce 2005: Kazachstán postavil hráz Kokaral, Severní Aral se částečně zaplnil a ryby se vrátily. Velký jižní Aral ale skoro zmizel.' },
-            { type: 'callout', variant: 'warning', text: 'Aral je učebnicový příklad, jak zásah do jedné části povodí změní celou krajinu. Zavlažování pomohlo polím na horním toku, ale zničilo jezero na dolním.' },
+            { type: 'callout', variant: 'warning', text: 'Aral je učebnicový příklad, jak zásah do jedné části povodí změní celou krajinu. Zavlažování pomohlo polím podél řek, ale zničilo jezero na jejich konci.' },
             { type: 'p', text: 'Ze Střední Asie vede cesta na sever do ještě rozlehlejšího a ještě prázdnějšího regionu – na Sibiř.' },
-            { type: 'check', question: { kind: 'choice', q: 'Proč se zmenšilo Aralské jezero?', options: ['vodu z přítoků Amudarji a Syrdarji odvedli lidé na zavlažování bavlny', 'jezero se vypařilo kvůli sopečné činnosti', 'zemětřesení otevřelo trhlinu ve dně', 'začalo v regionu víc pršet a voda odtekla do oceánu'], answer: 0, explain: 'Od 60. let se voda z řek odváděla na pole bavlny. Do jezera přitékalo málo vody a ono vysychalo.' } },
+            { type: 'check', question: { kind: 'choice', q: 'Proč se zmenšilo Aralské jezero?', options: ['vodu jeho přítoků, Amudarji a Syrdarji, odvedli lidé na zavlažování bavlny', 'jezero se vypařilo kvůli sopečné činnosti', 'zemětřesení otevřelo trhlinu ve dně', 'začalo v regionu víc pršet a voda odtekla do oceánu'], answer: 0, explain: 'Od 60. let se voda z řek odváděla na pole bavlny. Do jezera přitékalo málo vody a ono vysychalo.' } },
           ],
         },
         {
@@ -591,16 +594,16 @@ const level: LevelContent = {
         },
       ],
       summary: [
-        'Západní, střední a severní Asii nedosáhne monzun, proto má suché podnebí: horké pouště na Blízkém východě, step ve Střední Asii, extrémně kontinentální podnebí na Sibiři.',
+        'Na většinu západní, střední a severní Asie monzun nedosáhne, proto má suché podnebí: horké pouště na Blízkém východě, step ve Střední Asii, extrémně kontinentální podnebí na Sibiři.',
         'Ve Verchojansku je rozdíl mezi lednem a červencem přes 60 °C – rekord kontinentálního podnebí.',
-        'Blízký východ má skoro polovinu známých zásob ropy; Hormuzským průlivem proplouvala asi pětina ropy světa a od února 2026 je kvůli válce s Íránem z velké části uzavřen.',
+        'Blízký východ má skoro polovinu známých zásob ropy; Hormuzským průlivem proplouvala asi pětina ropy světa; od března 2026 je plavba kvůli válce USA a Izraele s Íránem silně omezená (stav k září 2026).',
         'Vodu region bere z několika řek (Eufrat, Tigris, Jordán), z fosilní podzemní vody a z odsolování moře; spory o vodu, území, víru a moc vedou ke konfliktům.',
-        'Aralské jezero vyschlo na asi desetinu plochy, protože vodu jeho přítoků odvedli lidé na zavlažování bavlny.',
+        'Aralské jezero se zmenšilo na asi osminu plochy (2018), protože vodu jeho přítoků odvedli lidé na zavlažování bavlny.',
         'Sibiř je bohatá na ropu, plyn a kovy, ale řídce osídlená; lidé žijí hlavně na jihu podél Transsibiřské magistrály.',
         'Bajkal je nejhlubší jezero světa; permafrost s oteplováním taje a ničí stavby.',
       ],
       quiz: [
-        { kind: 'choice', q: 'Které podnebí má Verchojansk na Sibiři?', options: ['extrémně kontinentální: velmi studená zima, teplé léto, málo srážek', 'oceánské: mírná zima, chladné léto, hodně srážek', 'monzunové: deštivé léto, suchá zima, teplo celý rok', 'tropické: horko a déšť po celý rok'], answer: 0, explain: 'Daleko od oceánu se teplota mění extrémně: v lednu kolem −45 °C, v červenci kolem 17 °C, srážek jen asi 180 mm za rok.' },
+        { kind: 'choice', q: 'Které podnebí má Verchojansk na Sibiři?', options: ['extrémně kontinentální: velmi studená zima, teplé léto, málo srážek', 'oceánské: mírná zima, chladné léto, hodně srážek', 'monzunové: deštivé léto, suchá zima, teplo celý rok', 'tropické: horko a déšť po celý rok'], answer: 0, explain: 'Daleko od oceánu se teplota mění extrémně: v lednu kolem −45 °C, v červenci kolem 16,5 °C, srážek jen asi 180 mm za rok.' },
         { kind: 'tf', q: 'Blízký východ je bohatý na ropu i na sladkou vodu.', answer: false, explain: 'Ropy má region skoro polovinu světových zásob, ale sladké vody je tu velmi málo. Leží v pásu obratníkových pouští.' },
         { kind: 'match', q: 'Přiřaď místo k tomu, čím je známé.', pairs: [
           ['Hormuzský průliv', 'úžina, kterou proplouvají tankery s ropou'],
@@ -642,7 +645,7 @@ const level: LevelContent = {
               { lat: 45.42, lon: -75.7, label: 'Ottawa', kind: 'capital' },
             ], caption: 'Severní Amerika: na západě Kordillery (Skalnaté hory), na východě Appalačské pohoří, mezi nimi nížiny s Mississippi a Missouri a Velkými jezery.' },
             { type: 'p', text: 'Západní **Kordillery** jsou mladé pohoří na hranici desek, proto tu jsou zemětřesení a sopky (zlom San Andreas v Kalifornii). **Appalačské pohoří** na východě je staré a obroušené, podobně jako naše hory. Mezi nimi leží rovinaté **Velké planiny** a Centrální nížina. Největší z řek je Mississippi s přítokem Missouri, dlouhá přes 6 000 km.' },
-            { type: 'p', text: 'Na severu krajinu modelovaly ledovce, které tu v době ledové ležely několik kilometrů vysoko. Zanechaly po sobě tisíce jezer:' },
+            { type: 'p', text: 'Na severu krajinu modelovaly ledovce, které tu v době ledové byly mocné až asi 3 km. Zanechaly po sobě tisíce jezer:' },
             { type: 'keyterms', items: [
               { term: '**Velká jezera**', def: 'pět jezer na hranici USA a Kanady; Hořejší jezero je plochou největší sladkovodní jezero světa' },
               { term: '**Niagarské vodopády**', def: 'na řece Niagara mezi Erijským a Ontarijským jezerem' },
@@ -656,15 +659,15 @@ const level: LevelContent = {
           title: 'Podnebí bez příčných hor',
           icon: 'thermometer',
           blocks: [
-            { type: 'p', text: 'V Evropě nás před mrazivým vzduchem ze severu částečně chrání Alpy a další hory, které vedou napříč. V Severní Americe hory vedou od severu k jihu. Mezi Arktidou a Mexickým zálivem tak nestojí žádná překážka.' },
+            { type: 'p', text: 'V Evropě vedou velká pohoří (Pyreneje, Alpy, Karpaty) převážně od západu na východ: vlhký vzduch od Atlantiku proniká daleko do vnitrozemí a Středomoří chrání Alpy před studeným vzduchem ze severu. V Severní Americe hory vedou od severu k jihu. Mezi Arktidou a Mexickým zálivem tak nestojí žádná překážka.' },
             { type: 'p', text: 'Výsledek ukazují klimatogramy dvou měst. Chicago leží uprostřed nížiny u Michiganského jezera, Miami na jihu Floridy. Porovnej hlavně zimu:' },
             { type: 'climate', places: [
               { name: 'Chicago (USA)', temp: [-3.8, -1.8, 3.9, 9.8, 15.9, 21.4, 24.1, 23.2, 19.1, 12.2, 5.2, -0.8], precip: [51, 50, 62, 95, 114, 104, 94, 108, 81, 87, 61, 54], altitude: 201, source: 'NOAA, normál 1991–2020 (letiště O’Hare)' },
-              { name: 'Miami (USA)', temp: [20.3, 21.5, 22.8, 24.8, 26.7, 28.2, 28.9, 29, 28.3, 26.7, 23.8, 21.8], precip: [45, 55, 60, 85, 160, 265, 185, 245, 260, 195, 90, 60], altitude: 2, source: 'NOAA, normál 1991–2020 (zpracování Climates to Travel)' },
+              { name: 'Miami (USA)', temp: [20.3, 21.5, 22.8, 24.8, 26.7, 28.2, 28.9, 29, 28.3, 26.7, 23.8, 21.8], precip: [46, 55, 62, 85, 161, 267, 187, 243, 260, 194, 90, 62], altitude: 2, source: 'NOAA, normál 1991–2020 (letiště Miami)' },
             ], caption: 'Chicago: mírné kontinentální podnebí s mrazivou zimou a horkým létem. Miami: teplo celý rok, deštivé léto a podzim, kdy přicházejí bouřky a hurikány.' },
             { type: 'p', text: 'Chicago leží na stejné zeměpisné šířce jako Řím, a přesto má lednový průměr pod nulou: studený arktický vzduch sem proudí bez překážky. V létě sem naopak proudí horký vlhký vzduch z Mexického zálivu. Miami má teplo celý rok a nejvíc prší od června do října.' },
             { type: 'p', text: 'Když se uprostřed kontinentu potká studený vzduch ze severu s teplým a vlhkým z jihu, vznikají ty nejprudší bouřky na Zemi.' },
-            { type: 'check', question: { kind: 'tf', q: 'Chicago má chladnější zimy než Řím, i když leží na podobné zeměpisné šířce.', answer: true, explain: 'Chicago leží uprostřed kontinentu, daleko od teplého oceánu, a arktický vzduch k němu proudí bez překážky. Řím chrání moře i Alpy.' } },
+            { type: 'check', question: { kind: 'tf', q: 'Chicago má chladnější zimy než Řím, i když leží na podobné zeměpisné šířce.', answer: true, explain: 'Chicago leží uprostřed kontinentu a arktický vzduch k němu proudí bez překážky. Řím leží u teplého Středozemního moře a od severu ho chrání Alpy.' } },
           ],
         },
         {
@@ -692,31 +695,31 @@ const level: LevelContent = {
           title: 'Obyvatelé a města',
           icon: 'city',
           blocks: [
-            { type: 'p', text: 'Původními obyvateli Severní Ameriky jsou indiáni a na severu Inuité. Od 16. století sem přicházeli Evropané, násilím přivezení Afričané a později lidé z celého světa. USA a Kanada jsou dodnes státy přistěhovalců, jak jsme viděli v lekci „Migrace“.' },
+            { type: 'p', text: 'Původními obyvateli Severní Ameriky jsou Indiáni a na severu Inuité. Od 16. století sem přicházeli Evropané, násilím přivezení Afričané a později lidé z celého světa. USA a Kanada jsou dodnes státy přistěhovalců, jak jsme viděli v lekci „Migrace“.' },
             { type: 'p', text: 'Porovnej v tabulce oba státy Angloameriky a jejich jižního souseda Mexiko:' },
             { type: 'table', headers: ['stát', 'rozloha', 'obyvatel', 'kde lidé žijí'], rows: [
               ['USA', '9,8 mil. km²', '≈ 345 mil.', 'východní pobřeží, Kalifornie, Texas, Florida, okolí Velkých jezer'],
-              ['Kanada', '10,0 mil. km²', '≈ 41 mil.', 'asi tři čtvrtiny do 160 km od hranice s USA'],
+              ['Kanada', '10,0 mil. km²', '≈ 41 mil.', 'většina do 160 km od hranice s USA'],
               ['Mexiko', '2,0 mil. km²', '≈ 131 mil.', 'náhorní plošina kolem hlavního města'],
             ], caption: 'Obyvatelé: USA a Mexiko UN WPP 2024, Kanada Statistics Canada 2025, zaokrouhleno.' },
             { type: 'p', text: 'Kanada je rozlohou druhý největší stát světa, ale obyvatel má jen asi o desetinu víc než Polsko. Většina Kanaďanů žije na jihu, kde je nejtepleji – sever pokrývá tajga a tundra. V USA vznikl na severovýchodě pás skoro srostlých měst od Bostonu po Washington, kterému se říká **Megalopolis**. Největší města jsou New York, Los Angeles a Chicago, v Kanadě Toronto a Montréal.' },
             { type: 'p', text: 'Kanada a USA mají mnoho společného, ale přece jen se v něčem liší:' },
             { type: 'compare', columns: [
-              { title: 'USA', icon: 'flag', tone: 'a', points: ['federace 50 států', 'mluví se hlavně anglicky, ve velké části jihu i španělsky', 'tři čtvrtiny území mají mírné podnebí', 'nejvíc obyvatel z celé Ameriky'] },
+              { title: 'USA', icon: 'flag', tone: 'a', points: ['federace 50 států', 'mluví se hlavně anglicky, ve velké části jihu i španělsky', 'většina území leží v mírném pásu', 'nejvíc obyvatel z celé Ameriky'] },
               { title: 'Kanada', icon: 'flag', tone: 'b', points: ['federace provincií a teritorií', 'úřední jazyky angličtina a francouzština (Québec)', 'většinu území pokrývá tajga a tundra', 'řídce osídlená, obyvatelé na jihu'] },
             ] },
             { type: 'p', text: 'Lidé se tedy soustředí tam, kde je mírné podnebí, pobřeží a dobrá doprava. Stejná místa jsou i centry nejsilnější ekonomiky světa.' },
-            { type: 'check', question: { kind: 'tf', q: 'Většina Kanaďanů žije na severu Kanady, kde je nejvíc surovin.', answer: false, explain: 'Asi tři čtvrtiny Kanaďanů žijí do 160 km od hranice s USA, kde je nejmírnější podnebí. Sever pokrývá tajga a tundra.' } },
+            { type: 'check', question: { kind: 'tf', q: 'Většina Kanaďanů žije na severu Kanady, kde je nejvíc surovin.', answer: false, explain: 'Většina Kanaďanů (podle různých odhadů 70–90 %) žije do 160 km od hranice s USA, kde je nejmírnější podnebí. Sever pokrývá tajga a tundra.' } },
           ],
         },
         {
           title: 'Největší ekonomika světa',
           icon: 'coin',
           blocks: [
-            { type: 'p', text: 'USA mají největší ekonomiku světa: jejich HDP bylo v roce 2024 asi 29 bilionů USD, na obyvatele asi 85 800 USD (Světová banka). Kanada měla asi 53 000 USD na obyvatele, Mexiko jen asi 14 000 USD. Proč jsou USA tak bohaté?' },
+            { type: 'p', text: 'USA mají největší ekonomiku světa: jejich HDP bylo v roce 2024 asi 29 bilionů USD, na obyvatele asi 86 000 USD (Světová banka). Kanada měla přes 50 000 USD na obyvatele, Mexiko jen asi 14 000 USD. Proč jsou USA tak bohaté?' },
             { type: 'p', text: 'Část odpovědi je v přírodě: úrodné nížiny, suroviny, splavné řeky a dva oceány. Druhá část je v lidech a službách. Na kartách najdeš hlavní hospodářské oblasti:' },
             { type: 'iconlist', items: [
-              { icon: 'phone', title: 'Silicon Valley (Kalifornie)', text: 'technologické firmy, výzkum, univerzity – tady vzniká software celého světa' },
+              { icon: 'phone', title: 'Silicon Valley (Kalifornie)', text: 'technologické firmy, výzkum, univerzity – sídla firem, jejichž software a služby používá celý svět' },
               { icon: 'wheat', title: 'Kukuřičný pás (Corn Belt)', text: 'kukuřice a sója na Centrální nížině; velké farmy s málo pracovníky' },
               { icon: 'factory', title: 'Okolí Velkých jezer', text: 'tradiční průmysl (auta v Detroitu, ocel); po útlumu se mu říká „rezavý pás“' },
               { icon: 'oil-barrel', title: 'Texas a Alberta', text: 'ropa a zemní plyn; v kanadské Albertě i ropné písky' },
@@ -768,13 +771,13 @@ const level: LevelContent = {
         'Popsat povodí Amazonky a příčiny a vývoj odlesňování podle dat INPE',
         'Vysvětlit rychlou urbanizaci a velké nerovnosti v latinskoamerických městech',
       ],
-      hook: 'Quito a Manaus leží skoro na rovníku. V Manausu je celý rok přes 27 °C, v Quitu „věčné jaro“ kolem 14 °C. A les kolem Manausu je největší deštný prales světa – kolik ho ještě zbývá?',
+      hook: 'Quito a Manaus leží skoro na rovníku. V Manausu je celý rok kolem 27 °C, v Quitu „věčné jaro“ kolem 14 °C. A les kolem Manausu je největší deštný prales světa – kolik ho ještě zbývá?',
       sections: [
         {
           title: 'Co dělá Ameriku latinskou',
           icon: 'speech',
           blocks: [
-            { type: 'p', text: 'V lekci „Jak dělíme svět na regiony“ jsme viděli, že Latinská Amerika není světadíl, ale **kulturní region**. Patří k ní Mexiko, Střední Amerika, většina Karibiku a celá Jižní Amerika. Co ji drží pohromadě?' },
+            { type: 'p', text: 'V lekci „Jak dělíme svět na regiony“ jsme viděli, že Latinská Amerika není světadíl, ale **kulturní region**. Patří k ní Mexiko, Střední Amerika, většina Karibiku a skoro celá Jižní Amerika. Co ji drží pohromadě?' },
             { type: 'p', text: 'Především jazyk a dějiny. Od konce 15. století si region podmanili Španělé a Portugalci. Na mapě hledej jedinou velkou portugalsky mluvící zemi:' },
             { type: 'map', view: 'latin-america', highlight: [
               { codes: ['MEX', 'GTM', 'HND', 'SLV', 'NIC', 'CRI', 'PAN', 'CUB', 'DOM', 'PRI', 'COL', 'VEN', 'ECU', 'PER', 'BOL', 'CHL', 'ARG', 'URY', 'PRY'], tone: 'a', label: 'španělština' },
@@ -797,13 +800,13 @@ const level: LevelContent = {
           icon: 'mountain',
           blocks: [
             { type: 'p', text: '**Andy** se táhnou podél západního pobřeží Jižní Ameriky asi 7 000 km – jsou nejdelším pohořím světa. Pod Jižní Ameriku se tu podsouvá oceánská deska, a proto tu jsou sopky a silná zemětřesení, jak víš z lekce „Zemětřesení a sopky“. Nejvyšší hora **Aconcagua** (6 961 m) je nejvyšší horou mimo Asii.' },
-            { type: 'p', text: 'Co znamenají vysoké hory pro podnebí, ukáže srovnání dvou měst skoro na rovníku. Quito leží v Andách asi 2 800 m n. m., Manaus v Amazonii jen 67 m n. m.:' },
+            { type: 'p', text: 'Co znamenají vysoké hory pro podnebí, ukáže srovnání dvou měst skoro na rovníku. Quito leží v Andách asi 2 800 m n. m., Manaus v Amazonii necelých 100 m n. m.:' },
             { type: 'climate', places: [
               { name: 'Quito (Ekvádor)', temp: [14.6, 14.6, 14.6, 14.6, 14.6, 14.5, 14.4, 14.7, 14.8, 14.7, 14.4, 14.4], precip: [85, 110, 145, 170, 105, 40, 20, 30, 70, 115, 110, 100], source: 'normál 1991–2020, INAMHI (zpracování Climates to Travel)' },
-              { name: 'Manaus (Brazílie)', temp: [27.1, 27.1, 27.2, 27.1, 27.2, 27.4, 27.6, 28.2, 28.5, 28.5, 28.1, 27.4], precip: [285, 295, 300, 320, 245, 120, 75, 65, 75, 105, 170, 245], altitude: 67, source: 'normál 1991–2020, INMET (zpracování Climates to Travel)' },
-            ], caption: 'Quito a Manaus: obě města mají skoro stejnou teplotu po celý rok, ale Quito je o 13 °C chladnější. Manaus dostane asi 2 300 mm srážek, Quito asi 1 100 mm.' },
-            { type: 'p', text: 'Obě křivky jsou skoro rovné: u rovníku nejsou teplotní roční období. Rozdíl dělá jen nadmořská výška – teplota klesá asi o 0,65 °C na každých 100 m. Proto se v Andách krajina mění s výškou jako patra domu:' },
-            { type: 'diagram', id: 'altitude-zones', caption: 'Výšková stupňovitost: dole tropický les, výš horské lesy a pole, nad hranicí lesa horské louky a pastviny, nahoře sníh a led.' },
+              { name: 'Manaus (Brazílie)', temp: [26.6, 26.6, 26.6, 26.7, 27.0, 27.3, 27.5, 28.2, 28.6, 28.5, 28.0, 27.2], precip: [306, 297, 321, 331, 233, 117, 67, 56, 79, 114, 188, 254], source: 'INMET (Brazílie), normál 1991–2020' },
+            ], caption: 'Quito a Manaus: obě města mají skoro stejnou teplotu po celý rok, ale Quito je o 13 °C chladnější. Manaus dostane asi 2 360 mm srážek, Quito asi 1 100 mm.' },
+            { type: 'p', text: 'Obě křivky jsou skoro rovné: u rovníku nejsou teplotní roční období. Rozdíl dělá jen nadmořská výška – teplota klesá asi o 0,65 °C na každých 100 m. Proto se v horách krajina mění s výškou jako patra domu. Obrázek ukazuje patra Alp, která znáš z Evropy:' },
+            { type: 'diagram', id: 'altitude-zones', caption: 'Výšková stupňovitost na příkladu Alp: listnaté, smíšené a jehličnaté lesy, nad hranicí lesa kleč a alpínské louky, nahoře skály, sníh a led. V Andách u rovníku začíná řada dole tropickým deštným lesem a všechny stupně leží výš.' },
             { type: 'p', text: 'Lidé v Andách žijí hlavně ve středních patrech, kde není příliš horko ani zima: proto leží Quito, Bogotá i La Paz tak vysoko. Pod Andami na východě ale začíná úplně jiný svět – nekonečný prales.' },
             { type: 'game', gameId: 'climate-chart', text: 'Klimatogram: poznáš podle grafu, jestli je místo v horách, v pralese, nebo v poušti?' },
             { type: 'check', question: { kind: 'tf', q: 'Quito je chladnější než Manaus hlavně proto, že leží dál od rovníku.', answer: false, explain: 'Obě města leží skoro na rovníku. Quito je chladnější, protože leží asi 2 800 m n. m.; teplota klesá asi o 0,65 °C na 100 m.' } },
@@ -818,9 +821,9 @@ const level: LevelContent = {
             { type: 'diagram', id: 'deforestation', caption: 'Odlesňování Amazonie: podél silnic se kácí do stran („rybí kost“), les nahradí pastviny pro dobytek a pole sóji, nakonec zbude vyčerpaná půda.' },
             { type: 'p', text: 'Brazilský ústav pro výzkum vesmíru (INPE) měří kácení ze satelitů každý rok od srpna do července. Podívej se, jak se vyvíjelo:' },
             { type: 'graph', x: { label: 'rok', min: 2002, max: 2026, step: 4 }, y: { label: 'vykáceno', unit: 'tis. km²', min: 0, max: 30, step: 5 }, series: [
-              { label: 'brazilská Amazonie (INPE PRODES)', points: [[2004, 27.8], [2008, 12.9], [2012, 4.6], [2016, 7.9], [2019, 10.1], [2021, 13.0], [2023, 9.0], [2025, 5.8]], style: 'dots', tone: 'a' },
-            ], marks: [{ x: 2004, y: 27.8, label: 'rekord 2004' }, { x: 2025, y: 5.8, label: '2025: 5 796 km²' }], caption: 'Roční odlesnění brazilské Amazonie podle INPE PRODES (rok = období od srpna předchozího roku do července). Rok 2025 je předběžný údaj.' },
-            { type: 'p', text: 'Kácení klesalo, když stát les chránil a kontroloval, a rostlo, když ochranu oslabil (2019–2021). Od roku 2022 zase klesá: rychlé satelitní hlášení DETER zaznamenalo od srpna 2025 do července 2026 jen asi 2 900 km², nejméně od začátku měření. Pozor ale: i 5 800 km² za rok je plocha zhruba poloviny Středočeského kraje. Prales navíc trpí požáry a suchem, které satelity počítají zvlášť.' },
+              { label: 'brazilská Amazonie (INPE PRODES)', points: [[2004, 27.8], [2008, 12.9], [2012, 4.6], [2016, 7.9], [2019, 10.1], [2021, 13.0], [2023, 9.0], [2024, 6.5], [2025, 5.8]], style: 'dots', tone: 'a' },
+            ], marks: [{ x: 2004, y: 27.8, label: 'vrchol 2004' }, { x: 2025, y: 5.8, label: '2025: 5 796 km²' }], caption: 'Roční odlesnění brazilské Amazonie podle INPE PRODES (rok = období od srpna předchozího roku do července). Rok 2004 byl nejhorší od roku 1995, rok 2025 je předběžný odhad INPE.' },
+            { type: 'p', text: 'Kácení klesalo, když stát les chránil a kontroloval, a rostlo, když ochranu oslabil (2019–2021). Od roku 2022 zase klesá: rychlé satelitní hlášení DETER zaznamenalo od srpna 2025 do července 2026 jen asi 2 900 km², nejméně od roku 2013. Pozor ale: i 5 800 km² za rok je plocha zhruba poloviny Středočeského kraje. Prales navíc trpí požáry a suchem, které satelity počítají zvlášť.' },
             { type: 'callout', variant: 'warning', text: 'Odlesňování nezpůsobují „domorodci, kteří kácejí“. Hlavními příčinami jsou pastviny pro dobytek, pole sóji, nelegální těžba dřeva a zlata a nové silnice. Území původních obyvatel patří naopak k nejlépe zachovaným částem pralesa.' },
             { type: 'p', text: 'Zatímco prales ubývá, města Latinské Ameriky rostou. Podívejme se, jak se v nich žije.' },
             { type: 'check', question: { kind: 'multi', q: 'Co patří k hlavním příčinám odlesňování Amazonie?', options: ['pastviny pro dobytek', 'pole sóji', 'nelegální těžba dřeva a zlata', 'stavba lyžařských středisek', 'pěstování vinné révy'], answers: [0, 1, 2], explain: 'Prales nejčastěji nahrazují pastviny a sója; k tomu přispívá nelegální těžba a silnice, které otevřou les dalšímu kácení.' } },
@@ -833,14 +836,14 @@ const level: LevelContent = {
             { type: 'p', text: 'Latinská Amerika je jedním z nejvíc urbanizovaných regionů světa: ve městech žijí asi čtyři lidé z pěti. Lidé sem přicházeli z venkova za prací, školami a lékaři – proces, který znáš z lekce „Sídla a města“.' },
             { type: 'p', text: 'Na mapě najdi největší města regionu. Všimni si, že většina z nich leží u pobřeží nebo vysoko v horách:' },
             { type: 'map', view: 'latin-america', points: [
-              { lat: 19.43, lon: -99.13, label: 'Ciudad de México', kind: 'capital' },
+              { lat: 19.43, lon: -99.13, label: 'Mexiko (Ciudad de México)', kind: 'capital' },
               { lat: -23.55, lon: -46.63, label: 'São Paulo', kind: 'city' },
               { lat: -22.91, lon: -43.17, label: 'Rio de Janeiro', kind: 'city' },
               { lat: -34.6, lon: -58.38, label: 'Buenos Aires', kind: 'capital' },
               { lat: -12.05, lon: -77.04, label: 'Lima', kind: 'capital' },
               { lat: 4.71, lon: -74.07, label: 'Bogotá', kind: 'capital' },
               { lat: -15.79, lon: -47.88, label: 'Brasília', kind: 'capital' },
-            ], caption: 'Největší města Latinské Ameriky. Brasília byla postavena na přelomu 50. a 60. let 20. století uprostřed vnitrozemí, aby se země rozvíjela i mimo pobřeží.' },
+            ], caption: 'Největší města Latinské Ameriky a hlavní město Brazílie Brasília. Brasília byla postavena na přelomu 50. a 60. let 20. století uprostřed vnitrozemí, aby se země rozvíjela i mimo pobřeží.' },
             { type: 'p', text: 'Města rostla rychleji, než stihla stavět byty. Na svazích a okrajích proto vznikly čtvrti, které si lidé postavili sami: v Brazílii se jim říká **favely**. Hned vedle stojí hlídané čtvrti bohatých. Latinská Amerika patří k regionům s největšími rozdíly mezi bohatými a chudými na světě (Světová banka).' },
             { type: 'p', text: 'Bohatství regionu přitom stojí hlavně na surovinách a zemědělství. Hlavní vývozní artikly ukazují karty:' },
             { type: 'iconlist', items: [
@@ -850,7 +853,7 @@ const level: LevelContent = {
               { icon: 'coffee', title: 'Káva a banány', text: 'Brazílie a Kolumbie (káva), Ekvádor (banány)' },
               { icon: 'car', title: 'Továrny v Mexiku', text: 'montáž aut a elektroniky pro trh USA' },
             ] },
-            { type: 'p', text: 'Severní cíp regionu tvoří úzká pevninská šíje a ostrovy v Karibském moři. Jsou malé, ale pro světový obchod i pro počasí velmi důležité.' },
+            { type: 'p', text: 'Mezi Mexikem a Jižní Amerikou leží úzká pevninská šíje Střední Ameriky a ostrovy v Karibském moři. Jsou malé, ale pro světový obchod i pro počasí velmi důležité.' },
             { type: 'check', question: { kind: 'tf', q: 'Ve městech Latinské Ameriky žije menšina obyvatel, většina žije na venkově.', answer: false, explain: 'Latinská Amerika je silně urbanizovaná: ve městech žijí asi čtyři lidé z pěti.' } },
           ],
         },
@@ -861,8 +864,8 @@ const level: LevelContent = {
             { type: 'p', text: 'Střední Amerika je úzký most pevniny mezi oběma Amerikami. V nejužším místě, v Panamě, měří jen asi 50 km. Proto tu vznikl průplav, o kterém jsme mluvili v lekci „Doprava a spoje“.' },
             { type: 'p', text: 'Připomeň si, jak průplav převádí lodě přes šíji, která je o desítky metrů vyšší než moře:' },
             { type: 'diagram', id: 'panama-canal', caption: 'Panamský průplav: plavební komory zvednou lodě k Gatúnskému jezeru a zase je spustí k druhému oceánu; cesta kolem Jižní Ameriky odpadne.' },
-            { type: 'p', text: 'Region leží na rozhraní desek, a proto ho ohrožují sopky a zemětřesení: zemětřesení na Haiti v roce 2010 zabilo přes 200 000 lidí. Z teplého moře sem navíc přicházejí hurikány. V říjnu 2025 zasáhl Jamajku hurikán Melissa nejvyšší, 5. kategorie – nejsilnější, jaký kdy na ostrov dopadl. Chudé ostrovní státy se z takových katastrof vzpamatovávají roky.' },
-            { type: 'callout', variant: 'fact', text: 'Karibik žije hlavně z cestovního ruchu: pláže, korálové útesy a teplé moře. Každý silný hurikán proto zasáhne i jejich hlavní zdroj příjmů.' },
+            { type: 'p', text: 'Region leží na rozhraní desek, a proto ho ohrožují sopky a zemětřesení: zemětřesení na Haiti v roce 2010 zabilo podle odhadů přes 200 000 lidí. Z teplého moře sem navíc přicházejí hurikány. V říjnu 2025 zasáhl Jamajku hurikán Melissa nejvyšší, 5. kategorie – nejsilnější, jaký kdy na ostrov dopadl. Chudé ostrovní státy se z takových katastrof vzpamatovávají roky.' },
+            { type: 'callout', variant: 'fact', text: 'Karibik žije hlavně z cestovního ruchu: pláže, korálové útesy a teplé moře. Každý silný hurikán proto zasáhne i jeho hlavní zdroj příjmů.' },
             { type: 'p', text: 'Z Latinské Ameriky se teď vydáme přes celý Tichý oceán: v příští lekci nás čeká nejsušší obydlený světadíl a ostrovy, kterým stoupá moře až ke dveřím.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč ohrožují Střední Ameriku a Karibik zemětřesení i hurikány?', options: ['leží na rozhraní litosférických desek a u teplého moře', 'leží v polárním pásu', 'leží uprostřed velké stabilní pevniny', 'jsou chráněny Andami před větrem'], answer: 0, explain: 'Pohyby desek způsobují zemětřesení a sopky, teplé moře je zdrojem energie hurikánů.' } },
           ],
@@ -873,7 +876,7 @@ const level: LevelContent = {
         'Před příchodem Evropanů tu žili Mayové, Aztékové a Inkové; dnešní obyvatelstvo je velmi smíšené.',
         'Andy jsou nejdelší pohoří světa (asi 7 000 km) s Aconcaguou (6 961 m); u rovníku určuje podnebí hlavně nadmořská výška (Quito vs Manaus).',
         'Amazonka má největší povodí a nejvíc vody na světě; její prales ubývá kvůli pastvinám, sóje, těžbě a silnicím.',
-        'Odlesňování brazilské Amazonie kleslo z rekordních 27 772 km² (2004) na 5 796 km² (2025) podle INPE; satelitní hlášení za 2025/26 ukazují další pokles.',
+        'Odlesňování brazilské Amazonie kleslo z 27 772 km² (2004, nejvíc od roku 1995) na asi 5 800 km² (2025, předběžně) podle INPE; satelitní hlášení za 2025/26 ukazují další pokles.',
         'Asi čtyři z pěti obyvatel žijí ve městech; vedle bohatých čtvrtí stojí favely a nerovnosti patří k největším na světě.',
         'Střední Ameriku a Karibik ohrožují zemětřesení, sopky a hurikány (Melissa 2025); region žije z průplavu, zemědělství a cestovního ruchu.',
       ],
@@ -908,7 +911,7 @@ const level: LevelContent = {
           title: 'Kontinent a tisíce ostrovů',
           icon: 'island',
           blocks: [
-            { type: 'p', text: 'Austrálie a Oceánie je nejmenší světadíl rozlohou i počtem obyvatel. Tvoří ho jeden malý kontinent, Austrálie, a tisíce ostrovů roztroušených po Tichém oceánu. Mezi nimi jsou tisíce kilometrů vody.' },
+            { type: 'p', text: 'Austrálie a Oceánie je nejmenší světadíl rozlohou a nejméně lidnatý z obydlených světadílů. Tvoří ho jeden malý kontinent, Austrálie, a tisíce ostrovů roztroušených po Tichém oceánu. Mezi nimi jsou tisíce kilometrů vody.' },
             { type: 'p', text: 'Ostrovy Oceánie se dělí do tří skupin. Na mapě je najdi podle barev a hledej i Tuvalu blízko datové hranice:' },
             { type: 'map', view: 'oceania', highlight: [
               { codes: ['AUS'], tone: 'a', label: 'Austrálie' },
@@ -938,15 +941,15 @@ const level: LevelContent = {
             { type: 'p', text: 'Austrálie je nejsušší obydlený světadíl – sušší je jen Antarktida. Asi 70 % území tvoří pouště a polopouště. Proč, když ji ze všech stran obklopuje oceán?' },
             { type: 'p', text: 'Příčiny jsou tři a všechny znáš z lekce „Oběh vzduchu a podnebné pásy“:' },
             { type: 'iconlist', items: [
-              { icon: 'sun', title: 'Obratník Kozoroha', text: 'střed Austrálie leží v pásu vysokého tlaku, kde vzduch klesá a vysychá' },
+              { icon: 'sun', title: 'Obratník Kozoroha', text: 'střed Austrálie leží v pásu vysokého tlaku, kde vzduch klesá, otepluje se a srážky v něm nevznikají' },
               { icon: 'mountain', title: 'Velké předělové pohoří', text: 'na východním pobřeží zachytí vlhký vzduch od oceánu; vnitrozemí zůstane v dešťovém stínu' },
               { icon: 'ocean', title: 'Studený proud na západě', text: 'studené moře u západního pobřeží dává málo páry na déšť' },
             ] },
             { type: 'p', text: 'Jak vypadá rok v srdci Austrálie, ukazuje klimatogram Alice Springs. Pozor: leží na jižní polokouli. Hledej, kdy je léto:' },
             { type: 'climate', places: [
-              { name: 'Alice Springs (Austrálie)', temp: [29.7, 28.4, 25.7, 21.1, 15.8, 12.4, 12.3, 14.6, 20, 23.4, 26.4, 28.2], precip: [50, 40, 20, 20, 20, 10, 13, 4, 8, 20, 35, 40], altitude: 546, source: 'Bureau of Meteorology, normál 1991–2020 (zpracování Climates to Travel)' },
-            ], caption: 'Alice Springs: nejtepleji v lednu (léto jižní polokoule), jen asi 280 mm srážek za rok.' },
-            { type: 'p', text: 'Nejtepleji je v lednu a nejchladněji v červenci – roční období jsou proti nám obrácená, jak víš z lekce „Oběh Země kolem Slunce a roční období“. Ročně tu spadne jen asi 280 mm srážek. Proto žije většina z 27,8 milionu Australanů (ABS, prosinec 2025) na úrodném a vlhčím jihovýchodním pobřeží: v Sydney, Melbourne a Brisbane. Vnitrozemí („outback“) je skoro prázdné.' },
+              { name: 'Alice Springs (Austrálie)', temp: [29.7, 28.5, 25.7, 21.1, 15.8, 12.4, 12.3, 14.7, 20, 23.4, 26.4, 28.2], precip: [48.9, 40.7, 19.9, 19.9, 17.5, 10.3, 13, 3.8, 7.8, 18.7, 33, 41.3], altitude: 546, source: 'Bureau of Meteorology, normál 1991–2020' },
+            ], caption: 'Alice Springs: nejtepleji v lednu (léto jižní polokoule), jen asi 275 mm srážek za rok.' },
+            { type: 'p', text: 'Nejtepleji je v lednu a nejchladněji v červenci – roční období jsou proti nám obrácená, jak víš z lekce „Oběh Země kolem Slunce a roční období“. Ročně tu spadne jen asi 275 mm srážek. Proto žije většina z 27,8 milionu Australanů (ABS, prosinec 2025) na úrodném a vlhčím jihovýchodním pobřeží: v Sydney, Melbourne a Brisbane. Vnitrozemí („outback“) je skoro prázdné.' },
             { type: 'p', text: 'Pobřeží Austrálie ale nejsou jen města. U severovýchodního pobřeží leží největší stavba, kterou kdy vytvořily živé organismy.' },
             { type: 'check', question: { kind: 'multi', q: 'Proč je vnitrozemí Austrálie tak suché?', options: ['leží v pásu vysokého tlaku u obratníku', 'Velké předělové pohoří zachytí vlhký vzduch na východním pobřeží', 'u západního pobřeží teče studený mořský proud', 'leží v polárním pásu', 'má monzunové podnebí s deštivou zimou'], answers: [0, 1, 2], explain: 'Klesající vzduch u obratníku, dešťový stín za horami a studený proud na západě – tři příčiny sucha. Monzun zasahuje jen tropický sever Austrálie.' } },
           ],
@@ -963,12 +966,12 @@ const level: LevelContent = {
               { lat: -16.92, lon: 145.77, label: 'Cairns', kind: 'city' },
             ], caption: 'Velký bariérový útes u pobřeží Queenslandu, asi 2 300 km dlouhý.' },
             { type: 'p', text: 'Útes staví korálové polypy, drobní živočichové, kteří žijí v soužití s řasami. Když je moře příliš teplé, korály řasy vypudí a zbělají – **bělení korálů**. Pokud horko trvá dlouho, korály uhynou. Útes postihlo hromadné bělení v letech 1998, 2002, 2016, 2017, 2020, 2022, 2024 a 2025. Výsledek změřil australský institut AIMS:' },
-            { type: 'table', headers: ['část útesu', 'pokryv korálů 2024', 'pokryv korálů 2025'], rows: [
-              ['severní', '39,8 %', '30,0 %'],
-              ['střední', '33,2 %', '28,6 %'],
-              ['jižní', '38,9 %', '26,9 %'],
-            ], caption: 'Podíl dna pokrytého živými korály podle AIMS (zpráva 2024/25). Na severu a jihu jde o největší roční pokles za téměř 40 let měření.' },
-            { type: 'p', text: 'Příčinou je podle vědců hlavně oteplování oceánu při změně klimatu. Korály se umějí vzpamatovat, ale potřebují k tomu roky klidu – a horké roky přicházejí stále častěji.' },
+            { type: 'table', headers: ['část útesu', '2024', '2025', '2026'], rows: [
+              ['severní', '39,8 %', '30,0 %', '35,1 %'],
+              ['střední', '33,2 %', '28,6 %', '31,6 %'],
+              ['jižní', '38,9 %', '26,9 %', '26,4 %'],
+            ], caption: 'Pokryvnost korálů = podíl dna pokrytého živými korály, podle AIMS (zprávy 2024/25 a 2025/26). V roce 2025 šlo na severu a jihu o největší roční pokles za 39 let měření; v roce 2026 se sever a střed začaly zotavovat.' },
+            { type: 'p', text: 'Příčinou je podle vědců hlavně oteplování oceánu při změně klimatu, škodí i cyklony a hvězdice trnová koruna. Korály se umějí vzpamatovat, jak ukazuje rok 2026, ale potřebují k tomu roky klidu – a horké roky přicházejí stále častěji.' },
             { type: 'p', text: 'Moře tedy pro Austrálii znamená bohatství i hrozbu. Nejdéle s ním ale žijí lidé, kteří sem připluli jako první.' },
             { type: 'check', question: { kind: 'choice', q: 'Co způsobuje bělení korálů?', options: ['příliš teplá mořská voda, kvůli které korály vypudí řasy', 'příliš studená voda v zimě', 'rybáři, kteří korály natírají', 'sníh, který napadá na útes'], answer: 0, explain: 'V teplé vodě korály vypudí řasy, se kterými žijí, a zbělají. Trvá-li horko dlouho, korály hynou.' } },
           ],
@@ -977,8 +980,8 @@ const level: LevelContent = {
           title: 'První obyvatelé a Nový Zéland',
           icon: 'people',
           blocks: [
-            { type: 'p', text: 'Původní obyvatelé Austrálie, **Aboriginci**, a obyvatelé ostrovů Torresova průlivu tu žijí nejméně 50 000 let. Patří tak k nejstarším nepřetržitým kulturám světa. Dnes tvoří asi 3,8 % obyvatel Austrálie (ABS, 2021). Posvátnou horou je pro ně Uluru v poušti uprostřed kontinentu.' },
-            { type: 'p', text: 'Na Nový Zéland dorazili lidé mnohem později: polynéští mořeplavci **Maorové** asi kolem roku 1300, Evropané až v 19. století. Dnes se k Maorům hlásí asi 18 % obyvatel. Oba státy mají britské dějiny, ale jejich příroda se úplně liší:' },
+            { type: 'p', text: 'Původní obyvatelé Austrálie, **Aboriginci**, a obyvatelé ostrovů Torresova průlivu tu žijí nejméně 50 000 let. Patří tak k nejstarším nepřetržitým kulturám světa. Dnes tvoří asi 3,8 % obyvatel Austrálie (ABS, 2021). Pro místní Anangu je posvátná hora Uluru v poušti uprostřed kontinentu.' },
+            { type: 'p', text: 'Na Nový Zéland dorazili lidé mnohem později: polynéští mořeplavci **Maorové** asi kolem roku 1300, Evropané se tu začali usazovat až v 19. století. Dnes se k Maorům hlásí asi 18 % obyvatel. Oba státy mají britské dějiny, ale jejich příroda se úplně liší:' },
             { type: 'compare', columns: [
               { title: 'Austrálie', icon: 'dune', tone: 'a', points: ['starý, stabilní kontinent uprostřed desky', 'nízký a plochý, nejvyšší hora 2 228 m', 'skoro žádné sopky ani silná zemětřesení', 'pouště, savany, eukalyptové lesy'] },
               { title: 'Nový Zéland', icon: 'volcano', tone: 'b', points: ['ostrovy na hranici dvou desek', 'Jižní Alpy, Aoraki / Mount Cook 3 724 m', 'sopky, gejzíry a zemětřesení (Christchurch 2011)', 'deštné lesy, ledovce a fjordy'] },
@@ -992,13 +995,13 @@ const level: LevelContent = {
           title: 'Ostrovy, kterým stoupá moře',
           icon: 'ocean',
           blocks: [
-            { type: 'p', text: 'Proč tedy obyvatelé Tuvalu žádají o víza? Tuvalu tvoří devět korálových ostrovů a atolů o rozloze jen asi 26 km², na kterých žije asi 10 600 lidí (sčítání 2022). Nejvyšší bod leží jen asi 4,6 m nad mořem. Jak takový ostrov vznikl?' },
+            { type: 'p', text: 'Proč tedy obyvatelé Tuvalu žádají o víza? Tuvalu tvoří devět korálových ostrovů a atolů o rozloze jen asi 26 km², na kterých žilo asi 10 600 lidí (sčítání 2022). Nejvyšší bod leží jen asi 4,6 m nad mořem. Jak takový ostrov vznikl?' },
             { type: 'p', text: 'Odpověď najdeš v lekci „Pobřeží“: **atol** je prstenec korálů kolem laguny, který zbyl po potopené sopce. Sleduj na obrázku, jak vzniká:' },
             { type: 'diagram', id: 'coral-atoll', caption: 'Vznik atolu: korály rostou kolem sopečného ostrova; ostrov se pomalu potápí, korály rostou vzhůru a nakonec zbude jen prstenec kolem laguny.' },
             { type: 'p', text: 'Atol je tedy jen o málo vyšší než příliv. Hladina světového oceánu přitom od roku 1880 stoupla o 21–24 cm a stoupá stále rychleji: v roce 1993 asi o 2,1 mm ročně, v roce 2024 už o 4,5 mm ročně (NASA). Příčinou je tání ledovců a teplotní roztažnost oteplené vody. Vyzkoušej si, co znamená každý centimetr:' },
             { type: 'experiment', id: 'sea-level-rise', caption: 'Hladina moře stoupá: nízké pobřeží a atol mizí pod vodou. Proč moře stoupá, podrobněji vysvětlí lekce „Krajiny ledovců, pouští a pobřeží“.' },
             { type: 'p', text: 'Všiml/a sis? Atol nezmizí najednou. Už pár desítek centimetrů stačí, aby bouřkový příliv zaplavoval domy a slaná voda pronikla do studní a polí. Ostrov se stane neobyvatelným dřív, než ho moře zatopí.' },
-            { type: 'p', text: 'Ostrovní státy proto hledají východiska. Tuvalu a Austrálie podepsaly v roce 2023 smlouvu **Falepili**: od roku 2025 může každý rok 280 obyvatel Tuvalu získat australské trvalé pobytové vízum. Do prvního losování se přihlásilo přes 8 700 lidí včetně rodin, tedy počet odpovídající asi 82 % obyvatel. Sousední Kiribati koupilo pole na Fidži, aby mělo kde pěstovat potraviny.' },
+            { type: 'p', text: 'Ostrovní státy proto hledají východiska. Tuvalu a Austrálie podepsaly v roce 2023 smlouvu **Falepili**: od roku 2025 může každý rok 280 obyvatel Tuvalu získat australské trvalé pobytové vízum. Do prvního losování se v roce 2025 přihlásilo 8 750 lidí včetně rodin, tedy počet odpovídající asi 82 % obyvatel podle sčítání 2022. Sousední Kiribati koupilo pole na Fidži, aby mělo kde pěstovat potraviny.' },
             { type: 'callout', variant: 'warning', text: 'Ostrovy Tichého oceánu vypouštějí jen nepatrný zlomek skleníkových plynů. Změnu klimatu ale pocítí jako první. Je to jeden z nejjasnějších příkladů nespravedlnosti změny klimatu.' },
             { type: 'p', text: 'Led, jehož tání zvedá hladinu moře u Tuvalu, leží hlavně na opačných koncích Země. V poslední lekci úrovně se proto vydáme do polárních oblastí.' },
             { type: 'check', question: { kind: 'tf', q: 'Atol jako Tuvalu se stane neobyvatelným, až když ho moře úplně zatopí.', answer: false, explain: 'Už o něco vyšší hladina stačí, aby bouřkové vlny zaplavovaly domy a slaná voda zničila studny a pole. Ostrov přestane být obyvatelný dřív, než zmizí.' } },
@@ -1009,7 +1012,7 @@ const level: LevelContent = {
         'Austrálie a Oceánie je nejmenší světadíl: kontinent Austrálie, Nový Zéland a ostrovy Melanésie, Mikronésie a Polynésie.',
         'Austrálie je nejsušší obydlený světadíl: leží u obratníku v pásu vysokého tlaku, hory na východě zachytí vlhkost a na západě je studený proud.',
         'Většina z 27,8 mil. Australanů žije na jihovýchodním pobřeží; hlavním městem je Canberra.',
-        'Velký bariérový útes (asi 2 300 km) je největší soustava korálových útesů; kvůli teplému moři opakovaně bělá a v roce 2025 zaznamenal rekordní pokles korálů.',
+        'Velký bariérový útes (asi 2 300 km) je největší soustava korálových útesů; kvůli teplému moři opakovaně bělá, v roce 2025 zaznamenal na severu a jihu největší pokles korálů za 39 let měření.',
         'Aboriginci žijí v Austrálii nejméně 50 000 let, Maorové na Novém Zélandu asi od roku 1300.',
         'Nový Zéland leží na hranici desek (sopky, zemětřesení), Austrálie uprostřed stabilní desky.',
         'Hladina moře stoupá asi o 4,5 mm ročně (2024); nízké atoly jako Tuvalu se stávají neobyvatelnými, proto Tuvalu uzavřelo s Austrálií smlouvu Falepili.',
@@ -1023,8 +1026,8 @@ const level: LevelContent = {
           ['Polynésie', 'trojúhelník mezi Havajem, Novým Zélandem a Velikonočním ostrovem'],
         ], explain: 'Melanésie = „černé ostrovy“, Mikronésie = „malé ostrovy“, Polynésie = „mnoho ostrovů“.' },
         { kind: 'number', q: 'Hladina oceánu stoupá asi o 4,5 mm za rok. O kolik centimetrů by stoupla za 20 let, kdyby rychlost zůstala stejná?', answer: 9, tolerance: 0.1, unit: 'cm', explain: '4,5 mm · 20 = 90 mm = 9 cm. Ve skutečnosti se vzestup ještě zrychluje.' },
-        { kind: 'multi', q: 'Co platí o Velkém bariérovém útesu?', options: ['je největší soustavou korálových útesů na Zemi', 'leží u severovýchodního pobřeží Austrálie', 'opakovaně bělá kvůli příliš teplému moři', 'leží u pobřeží Nového Zélandu', 'vytvořily ho sopky'], answers: [0, 1, 2], explain: 'Útes tvoří korály u pobřeží Queenslandu. V letech 2024 a 2025 hromadně bělal a pokryv korálů rekordně klesl.' },
-        { kind: 'choice', q: 'Proč žije většina Australanů na jihovýchodním pobřeží?', options: ['je tam mírnější a vlhčí podnebí a úrodná půda', 'vnitrozemí je hornaté a zalesněné', 'na jihovýchodě jsou největší pouště', 'jinde nesmí lidé žít ze zákona'], answer: 0, explain: 'Vnitrozemí je suché (Alice Springs jen asi 280 mm srážek). Na jihovýchodě je víc srážek, mírné podnebí a úrodná půda.' },
+        { kind: 'multi', q: 'Co platí o Velkém bariérovém útesu?', options: ['je největší soustavou korálových útesů na Zemi', 'leží u severovýchodního pobřeží Austrálie', 'opakovaně bělá kvůli příliš teplému moři', 'leží u pobřeží Nového Zélandu', 'vytvořily ho sopky'], answers: [0, 1, 2], explain: 'Útes tvoří korály u pobřeží Queenslandu. V letech 2024 a 2025 hromadně bělal a pokryvnost korálů prudce klesla.' },
+        { kind: 'choice', q: 'Proč žije většina Australanů na jihovýchodním pobřeží?', options: ['je tam mírnější a vlhčí podnebí a úrodná půda', 'vnitrozemí je hornaté a zalesněné', 'na jihovýchodě jsou největší pouště', 'jinde nesmí lidé žít ze zákona'], answer: 0, explain: 'Vnitrozemí je suché (Alice Springs jen asi 275 mm srážek). Na jihovýchodě je víc srážek, mírné podnebí a úrodná půda.' },
         { kind: 'tf', q: 'Atol vzniká z korálů, které rostou kolem potápějícího se sopečného ostrova.', answer: true, explain: 'Korály rostou vzhůru, zatímco sopečný ostrov klesá. Nakonec zbude jen korálový prstenec kolem laguny.' },
       ],
     },
@@ -1074,8 +1077,8 @@ const level: LevelContent = {
             { type: 'p', text: 'Oba póly dostávají stejně málo slunečního záření. Přesto je Antarktida mnohem chladnější. Začněme u Arktidy: jak vypadá rok v nejsevernějším městě USA, Utqiaġviku na Aljašce?' },
             { type: 'p', text: 'Na klimatogramu sleduj, kolik měsíců je teplota nad nulou a kolik srážek spadne:' },
             { type: 'climate', places: [
-              { name: 'Utqiaġvik (Aljaška, USA)', temp: [-24.2, -24.4, -23.6, -15.6, -5.2, 2.2, 5.4, 4.3, 0.9, -6, -14.6, -21.3], precip: [8, 8, 8, 8, 8, 10, 25, 28, 20, 15, 10, 8], source: 'NOAA, normál 1991–2020 (srážky zaokrouhleny)' },
-            ], caption: 'Utqiaġvik (71° s. š.): jen čtyři měsíce nad nulou, asi 150 mm srážek za rok – polární podnebí, a přesto skoro poušť.' },
+              { name: 'Utqiaġvik (Aljaška, USA)', temp: [-24.2, -24.4, -23.6, -15.6, -5.2, 2.2, 5.4, 4.3, 0.9, -6, -14.6, -21.3], precip: [3.6, 5.3, 4.6, 4.6, 7.1, 11, 25, 28, 20, 14, 9.4, 5.6], source: 'NOAA, normál 1991–2020' },
+            ], caption: 'Utqiaġvik (71° s. š.): jen čtyři měsíce nad nulou, asi 140 mm srážek za rok – polární podnebí, a přesto skoro poušť.' },
             { type: 'p', text: 'Nad nulou jsou jen čtyři letní měsíce a srážek spadne méně než v mnoha pouštích. V Antarktidě je ale ještě mnohem chladněji. Porovnej průměrné roční teploty antarktických stanic:' },
             { type: 'table', headers: ['místo', 'poloha', 'průměrná roční teplota'], rows: [
               ['Utqiaġvik', 'arktické pobřeží Aljašky', '≈ −10 °C'],
@@ -1116,7 +1119,7 @@ const level: LevelContent = {
           icon: 'ship',
           blocks: [
             { type: 'p', text: 'Pod dnem Severního ledového oceánu leží podle odhadu USGS (2008) asi 13 % dosud neobjevené ropy a 30 % neobjeveného zemního plynu světa. A když led v létě ustupuje, otevírají se lodím cesty, které byly dřív zamrzlé.' },
-            { type: 'p', text: 'Na mapě porovnej dvě arktické cesty z Evropy do východní Asie s klasickou cestou přes Suezský průplav, která vede kolem poloviny zeměkoule:' },
+            { type: 'p', text: 'Klasická cesta z Evropy do východní Asie vede na jih přes Suezský průplav a Indický oceán. Na mapě najdi dvě kratší arktické cesty:' },
             { type: 'map', view: 'arctic', routes: [
               { points: [{ lat: 69.0, lon: 33.1 }, { lat: 70.4, lon: 58.0 }, { lat: 73.5, lon: 80.0 }, { lat: 77.8, lon: 104.0 }, { lat: 76.0, lon: 125.0 }, { lat: 74.5, lon: 150.0 }, { lat: 70.0, lon: 175.0 }, { lat: 66.0, lon: -169.0 }], label: 'Severní mořská cesta (podél Ruska)', tone: 'a', arrow: true },
               { points: [{ lat: 66.0, lon: -169.0 }, { lat: 71.3, lon: -156.8 }, { lat: 70.5, lon: -130.0 }, { lat: 74.5, lon: -100.0 }, { lat: 74.2, lon: -80.0 }, { lat: 70.0, lon: -60.0 }, { lat: 64.0, lon: -55.0 }], label: 'Severozápadní průjezd (Kanadské arktické souostroví)', tone: 'b', style: 'dashed' },
@@ -1124,7 +1127,7 @@ const level: LevelContent = {
               { lat: 68.97, lon: 33.08, label: 'Murmansk', kind: 'city' },
               { lat: 66.0, lon: -169.0, label: 'Beringův průliv', kind: 'place' },
             ], caption: 'Severní mořská cesta zkracuje plavbu z Evropy do východní Asie asi o třetinu. Je ale splavná jen v létě a na podzim, často s pomocí ledoborců.' },
-            { type: 'p', text: 'Arktické cesty mají ale háček. V roce 2025 proplulo celou Severní mořskou cestou 103 lodí s asi 3,2 mil. tun nákladu – rekord, ale nepatrný proti zhruba 26 000 lodím, které proplouvaly Suezským průplavem každý rok před krizí v Rudém moři. Plavba je možná jen pár měsíců, potřebuje drahé ledoborce a vede podél Ruska, které ji kontroluje.' },
+            { type: 'p', text: 'Arktické cesty mají ale háček. V roce 2025 proplulo celou Severní mořskou cestou 103 lodí s asi 3,2 mil. tun nákladu (CHNL, Rosatom) – víc než kdy dřív, ale nepatrně proti zhruba 26 000 lodím, které proplouvaly Suezským průplavem každý rok před krizí v Rudém moři. Plavba je možná jen pár měsíců, potřebuje drahé ledoborce a vede podél Ruska, které ji kontroluje.' },
             { type: 'callout', variant: 'warning', text: 'Ropa v ledovém moři je velké riziko: když dojde k havárii, ve tmě, mrazu a ledu se skoro nedá uklidit a rozkládá se mnohem pomaleji než v teplém moři.' },
             { type: 'p', text: 'Nové cesty a suroviny tedy otevírá tání ledu. Proč led ubývá a proč právě na pólech nejrychleji?' },
             { type: 'check', question: { kind: 'choice', q: 'Proč zatím Severní mořská cesta nenahradila cestu přes Suezský průplav?', options: ['je splavná jen několik měsíců v roce a často potřebuje ledoborce', 'je delší než cesta kolem Afriky', 'vede přes Antarktidu', 'je zakázána Antarktickou smlouvou'], answer: 0, explain: 'Cesta je kratší, ale led ji většinu roku uzavírá. V roce 2025 jí proplulo jen 103 lodí, Suezem dříve asi 26 000 ročně.' } },
@@ -1158,7 +1161,7 @@ const level: LevelContent = {
       summary: [
         'Arktida je zamrzlý Severní ledový oceán obklopený pevninami, Antarktida je světadíl pokrytý ledovým štítem a obklopený oceánem; Antarktis je celá jižní polární oblast.',
         'Antarktida je chladnější než Arktida, protože je vysoko položená a pokrytá ledem až 4,8 km silným; na stanici Vostok naměřili −89,2 °C.',
-        'Obě polární oblasti mají málo srážek; Utqiaġvik na Aljašce má asi 150 mm za rok.',
+        'Obě polární oblasti mají málo srážek; Utqiaġvik na Aljašce má asi 140 mm za rok.',
         'Antarktická smlouva (1959) vyhrazuje Antarktidu míru a vědě a Madridský protokol zakázal těžbu; Česko má stanici J. G. Mendela a od roku 2014 o Antarktidě spolurozhoduje.',
         'Arktida skrývá velké zásoby ropy a plynu a ustupující led otevírá Severní mořskou cestu, zatím ale jen na pár měsíců v roce.',
         'Arktida se otepluje asi čtyřikrát rychleji než průměr Země; plocha letního mořského ledu klesla z průměru 6,22 mil. km² (1981–2010) na 4,60 mil. km² v roce 2026.',
@@ -1180,7 +1183,7 @@ const level: LevelContent = {
     },
   },
   boss: [
-    { kind: 'choice', q: 'Ve kterém regionu leží místo, jehož klimatogram ukazuje: teplota 24–35 °C po celý rok, srážky asi 540 mm, skoro všechny od června do září, osm měsíců sucho?', options: ['Sahel', 'Amazonie', 'Sibiř', 'jihovýchodní pobřeží Austrálie'], answer: 0, explain: 'Horko celý rok a krátké letní období dešťů s dlouhým suchem je typické pro Sahel (např. Niamey). Amazonie má srážky skoro celý rok, Sibiř mrazivou zimu.' },
+    { kind: 'choice', q: 'Ve kterém regionu leží místo, jehož klimatogram ukazuje: teplota 24–35 °C po celý rok, srážky asi 550 mm, skoro všechny od června do září, osm měsíců sucho?', options: ['Sahel', 'Amazonie', 'Sibiř', 'jihovýchodní pobřeží Austrálie'], answer: 0, explain: 'Horko celý rok a krátké letní období dešťů s dlouhým suchem je typické pro Sahel (např. Niamey). Amazonie má srážky skoro celý rok, Sibiř mrazivou zimu.' },
     { kind: 'match', q: 'Přiřaď region k jeho současnému problému.', pairs: [
       ['Amazonie', 'odlesňování kvůli pastvinám a sóje'],
       ['Tuvalu', 'stoupající hladina moře'],
