@@ -2,7 +2,7 @@ import { StepFilm } from "../../sequence/StepFigure";
 import { Arrow, Figure, Frame, Lbl, Pop, pat, useFig } from "./kit";
 
 const LABEL =
-  "Endosymbiotická teorie ve stepech. Velká buňka s jádrem pohltí menší aerobní bakterii, ale nestráví ji. Bakterie v ní přežívá, dodává energii z dýchání a z jejích potomků se stanou mitochondrie. Později některá taková buňka pohltí sinici, která fotosyntetizuje, a z ní vznikne chloroplast – tak vznikli předci řas a rostlin. Důkazy: mitochondrie i chloroplasty mají dvojitou membránu, vlastní kruhovou DNA, malé ribozomy podobné bakteriálním a množí se samy dělením.";
+  "Endosymbiotická teorie po krocích. Velká buňka s jádrem pohltí menší aerobní bakterii, ale nestráví ji. Bakterie v ní přežívá, dodává energii z dýchání a z jejích potomků se stanou mitochondrie. Později některá taková buňka pohltí sinici, která fotosyntetizuje, a z ní vznikne chloroplast – tak vznikli předci řas a rostlin. Důkazy: mitochondrie i chloroplasty mají dvojitou membránu, vlastní kruhovou DNA, malé ribozomy podobné bakteriálním a množí se samy dělením.";
 
 const W = 360;
 const H = 230;

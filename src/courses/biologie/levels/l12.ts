@@ -30,7 +30,7 @@ const level: LevelContent = {
             ], answer: 'Kost je stará asi 17 200 let. Na dinosaury je uhlík nepoužitelný: po 50 000 letech ho zbývá příliš málo, proto se staré horniny datují třeba draslíkem $^{40}K$ nebo uranem.' },
             { type: 'p', text: 'Nejcennější jsou **přechodné fosilie**: organismy, které spojují znaky dvou skupin přesně v té kombinaci a v té době, jakou evoluční teorie předpovídá. Tady jsou čtyři slavné:' },
             { type: 'iconlist', items: [
-              { icon: 'fish', title: 'Tiktaalik (375 mil. let)', text: 'ryba s krkem, plícemi a ploutvemi s kostmi zápěstí. Vědci ho v roce 2004 hledali cíleně v kanadských horninách stáří, které předpověděla teorie – mezi rybami a prvními čtyřnožci.' },
+              { icon: 'fish', title: 'Tiktaalik (375 mil. let)', text: 'ryba s krkem, plícemi a ploutvemi s kostmi zápěstí. Vědci ho cíleně hledali v kanadských horninách stáří, které předpověděla teorie – mezi rybami a prvními čtyřnožci –, a v roce 2004 ho našli.' },
               { icon: 'bird', title: 'Archeopteryx (150 mil. let)', text: 'z vápenců v Bavorsku: peří a křídla jako pták, ale zuby, drápy na křídlech a dlouhý kostěný ocas jako malý dravý dinosaurus.' },
               { icon: 'ocean', title: 'Pakicetus a Ambulocetus (asi 50 mil. let)', text: 'suchozemští a obojživelní předci velryb s nohama. Prozradí je stavba ucha, jakou mají jen kytovci.' },
               { icon: 'paw', title: 'Hyracotherium (55 mil. let)', text: 'předek koní velký jako liška, se čtyřmi prsty na přední noze. Dnešní kůň došlapuje na jediný prst.' },
@@ -78,7 +78,7 @@ const level: LevelContent = {
               { icon: 'battery', title: 'ATP', text: 'stejná „energetická měna“ ve všech buňkách' },
               { icon: 'protein', title: 'Ribozomy a 20 aminokyselin', text: 'bílkoviny všech organismů se skládají ze stejné sady aminokyselin' },
             ] },
-            { type: 'p', text: 'Kdyby život vznikl víckrát nezávisle, nebyl by důvod, aby všichni používali stejný kód – bylo by možné nekonečně mnoho jiných. ==Společné vybavení je otiskem jediného společného předka všeho živého.==' },
+            { type: 'p', text: 'Kdyby život vznikl víckrát nezávisle, nebyl by důvod, aby všichni používali stejný kód – jiných možných kódů je obrovské množství. ==Společné vybavení je otiskem jediného společného předka všeho živého.==' },
             { type: 'p', text: 'Molekuly umějí příbuznost i měřit. Bílkovina **cytochrom c** (část dýchacího řetězce z lekce „Buněčné dýchání“) má u člověka 104 aminokyselin. Porovnej, v kolika z nich se od nás liší jiné organismy:' },
             { type: 'table', headers: ['organismus', 'odlišné aminokyseliny', 'společný předek s člověkem'], rows: [
               ['šimpanz', '0', '6–7 mil. let'],
@@ -102,7 +102,7 @@ const level: LevelContent = {
           title: 'Kladogram: rodokmen druhů',
           icon: 'family-tree',
           blocks: [
-            { type: 'p', text: 'Příbuzenské vztahy druhů zachycuje **fylogenetický strom** a obor, který je zkoumá, se nazývá **fylogeneze** (fylogenetika). Nejčastější podobou stromu je **kladogram**: větvený diagram, který ukazuje pořadí, v jakém se linie oddělovaly. Uzel (místo větvení) představuje společného předka, konce větví dnešní skupiny.' },
+            { type: 'p', text: 'Vývoj a příbuzenské vztahy skupin organismů se nazývají **fylogeneze**, obor, který je zkoumá, **fylogenetika**. Zachycuje je **fylogenetický strom**. Nejčastější podobou stromu je **kladogram**: větvený diagram, který ukazuje pořadí, v jakém se linie oddělovaly. Uzel (místo větvení) představuje společného předka, konce větví dnešní skupiny.' },
             { type: 'p', text: 'Kladogram se staví ze **sdílených odvozených znaků**: novinek, které se objevily u společného předka a zdědili je všichni jeho potomci. Podívej se, jak takový strom vypadá u obratlovců a kde na něm znaky sedí:' },
             { type: 'diagram', id: 'cladogram', caption: 'Každá značka na větvi je novinka, kterou mají všechny skupiny nad ní. Předek se všemi svými potomky tvoří **klad**.' },
             { type: 'p', text: 'Strom se čte podle uzlů, ne podle pořadí konců zleva doprava. Větve se dají kolem uzlu otočit jako mobil nad postýlkou a strom říká pořád totéž. ==Nejbližší příbuzní jsou ti, kdo mají nejmladšího společného předka.==' },
@@ -133,10 +133,10 @@ const level: LevelContent = {
           icon: 'cell',
           blocks: [
             { type: 'p', text: 'Dlouho se živý svět dělil hlavně podle stavby buňky na prokaryota a eukaryota (lekce „Prokaryotní a eukaryotní buňka“). V roce 1977 ale americký mikrobiolog **Carl Woese** porovnal sekvence ribozomální RNA, kterou má každá buňka, a čekalo ho překvapení.' },
-            { type: 'p', text: 'Některé „bakterie“ z horkých pramenů a bažin se od ostatních bakterií lišily stejně, jako se liší od nás. Woese je nazval **archea** a rozdělil život do tří **domén**:' },
+            { type: 'p', text: 'Některé „bakterie“ z horkých pramenů a bažin se od ostatních bakterií lišily stejně, jako se liší od nás. Woese je nazval archebakterie, dnes **archea**, a v roce 1990 rozdělil život do tří **domén**:' },
             { type: 'compare', columns: [
               { title: 'Bakterie (Bacteria)', icon: 'bacteria', tone: 'a', points: ['bez jádra', 'buněčná stěna z peptidoglykanu', 'všude: půda, voda, naše střevo', '*Escherichia coli*, sinice, hlízkové bakterie'] },
-              { title: 'Archea (Archaea)', icon: 'amoeba', tone: 'b', points: ['bez jádra, vzhledem jako bakterie', 'jiná stěna a jiné lipidy v membráně', 'přepis genů (RNA polymeráza, histony) podobný eukaryotům', 'horké prameny, slaná jezera, ale i oceán a bachor krav (metanogeny)'] },
+              { title: 'Archea (Archaea)', icon: 'amoeba', tone: 'b', points: ['bez jádra, vzhledem jako bakterie', 'jiná stěna a jiné lipidy v membráně', 'RNA polymeráza a histony podobné eukaryotům', 'horké prameny, slaná jezera, ale i oceán a bachor krav (metanogeny)'] },
               { title: 'Eukaryota (Eukarya)', icon: 'cell', tone: 'c', points: ['jádro a membránové organely', 'mitochondrie, u rostlin i chloroplasty', 'prvoci a řasy, houby, rostliny, živočichové'] },
             ], caption: 'Tři domény podle Woeseho, rozdělené podle ribozomální RNA' },
             { type: 'p', text: 'Tady pozor: archea vypadají pod mikroskopem jako bakterie, ale molekulárně mají v mnohém blíž k nám. ==O příbuznosti nerozhoduje vzhled buňky, ale sekvence.== Novější analýzy dokonce naznačují, že eukaryota vznikla z jedné skupiny archeí, do které se kdysi „nastěhovala“ bakterie – budoucí mitochondrie.' },
@@ -194,7 +194,7 @@ const level: LevelContent = {
               { title: 'Biologická (Ernst Mayr)', icon: 'family-tree', tone: 'b', points: ['druh tvoří populace, jejichž jedinci se v přírodě kříží a mají **plodné** potomky', 'od ostatních druhů je **reprodukčně izolovaný**', 'nepoužitelná u nepohlavních organismů a fosilií'] },
               { title: 'Fylogenetická', icon: 'dna', tone: 'c', points: ['nejmenší skupina se společným předkem, rozpoznatelná podle znaků a DNA', 'funguje i u bakterií', 'rozlišuje víc druhů než ostatní koncepce'] },
             ], caption: 'Tři koncepce druhu. Ve škole i v této lekci vycházíme hlavně z biologické.' },
-            { type: 'p', text: '==Podle biologické koncepce je druh hranice, přes kterou neteče tok genů.== Klíčové je slovo „plodné“. Proč, ukáže příklad muly: spočítejme, co se děje s jejími chromozomy.' },
+            { type: 'p', text: '==Podle biologické koncepce vede hranice druhu tam, kam už neteče tok genů.== Klíčové je slovo „plodné“. Proč, ukáže příklad muly: spočítejme, co se děje s jejími chromozomy.' },
             { type: 'example', title: 'Proč je mula neplodná', problem: 'Kůň má v tělních buňkách 64 chromozomů, osel 62. Kolik chromozomů má jejich kříženec mula a proč nemá potomky?', steps: [
               'Gameta koně nese polovinu: 64 : 2 = 32 chromozomů; gameta osla 62 : 2 = 31.',
               'Mula: 32 + 31 = 63 chromozomů.',
@@ -218,7 +218,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Jak izolace vzniká postupně, zkoumají vědci z Univerzity Karlovy na dvou slavících. **Slavík obecný** a **slavík tmavý** se potkávají v pásu napříč střední a východní Evropou a vzácně se kříží. Samci kříženců jsou plodní, samice ale neplodné. ==Bariéra je tu zatím jen „napůl“== – druhy vznikají pozvolna a izolace se zpevňuje dlouho.' },
             { type: 'p', text: 'Izolační bariéry ale nevznikají z ničeho, musí je vytvořit evoluce. A nejjednodušeji se to stane, když populaci rozdělí hora nebo moře.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď k typu izolace správný příklad.', pairs: [
-              ['časová', 'dva druhy ropuch se páří v jinou část jara'],
+              ['časová', 'dva druhy ropuch se páří v jiné části jara'],
               ['etologická', 'samice reaguje jen na zpěv samce svého druhu'],
               ['mechanická', 'stavba květu pasuje jen na jednoho opylovače'],
               ['postzygotická', 'kříženec koně a osla je neplodný'],
@@ -233,7 +233,7 @@ const level: LevelContent = {
             { type: 'p', text: 'U **alopatrické speciace** rozdělí populaci bariéra: pohoří, řeka, moře nebo ledovec. Sleduj, co se pak v obou izolovaných částech děje:' },
             { type: 'diagram', id: 'speciation', caption: 'Alopatrická speciace: jedna populace → bariéra → oddělený vývoj → dva druhy, které se už nekříží.' },
             { type: 'p', text: 'V každé části působí jiné mutace, jiný výběr a jiný genetický drift (lekce „Populační genetika“). Za tisíce generací se populace odliší tolik, že když bariéra zmizí, už se nekříží. Malá populace na ostrově se mění obzvlášť rychle, protože se v ní silně projeví efekt zakladatele.' },
-            { type: 'callout', variant: 'fact', text: 'Vrána obecná (černá) a vrána šedá se rozdělily v době ledové ve dvou oddělených útočištích. Dnes se potkávají v úzkém pásu napříč střední Evropou a kříží se tam, ale pás se nerozšiřuje: vrány si vybírají partnery podobného zbarvení. Speciace tu probíhá před našima očima.' },
+            { type: 'callout', variant: 'fact', text: 'Vrána černá a vrána šedá se rozdělily v době ledové ve dvou oddělených útočištích. Dnes se potkávají v úzkém pásu napříč střední Evropou a kříží se tam, ale pás se nerozšiřuje: vrány si vybírají partnery podobného zbarvení. Speciace tu probíhá před našima očima.' },
             { type: 'p', text: 'Druhy ale mohou vzniknout i bez bariéry, uprostřed jedné populace. Taková **sympatrická speciace** je vzácnější a potřebuje mechanismus, který tok genů přeruší okamžitě nebo velmi rychle. Známe dva hlavní:' },
             { type: 'compare', columns: [
               { title: 'Polyploidie', icon: 'chromosome', tone: 'a', points: ['chyba při meióze → gamety se dvěma sadami chromozomů', 'potomek má víc sad (např. 4n) a s rodiči už plodné potomky nemá', 'častá u rostlin: tak vznikla pšenice setá (6n = 42) i mnoho kapradin', 'nový druh vznikne během **jediné generace**'] },
@@ -313,7 +313,7 @@ const level: LevelContent = {
         { kind: 'text', q: 'Jak se nazývá rychlé rozrůznění jednoho předka v mnoho druhů, které využívají různé zdroje (dvě slova)?', accept: ['adaptivní radiace', 'adaptivni radiace'], explain: 'Adaptivní radiace, například u Darwinových pěnkav na Galapágách nebo u cichlid ve Viktoriině jezeře.' },
         { kind: 'multi', q: 'Které jevy mohou vést k sympatrické speciaci?', options: ['polyploidie u rostlin', 'přechod hmyzu na nového hostitele', 'výběr partnerů podle zbarvení u cichlid', 'vyzdvižení pohoří napříč areálem', 'oddělení ostrova od pevniny mořem'], answers: [0, 1, 2], explain: 'Sympatrická speciace probíhá bez geografické bariéry. Pohoří a moře jsou bariéry, vedou tedy k alopatrické speciaci.' },
         { kind: 'order', q: 'Seřaď kroky alopatrické speciace.', items: ['populace jednoho druhu žije v souvislém areálu', 'geografická bariéra populaci rozdělí', 'v každé části působí jiné mutace, výběr a drift', 'nahromadí se rozdíly včetně izolačních mechanismů', 'po zániku bariéry se populace už nekříží'], explain: 'Nejdřív musí bariéra zastavit tok genů, teprve pak se mohou rozdíly hromadit. Izolace se prověří, až se populace znovu potkají.' },
-        { kind: 'number', q: 'Pšenice setá je hexaploidní: má 6 sad po 7 chromozomech, tedy 42. Kolik chromozomů nese její pylové zrno (gameta)?', answer: 21, tolerance: 0, unit: 'chromozomů', explain: 'Gameta nese polovinu tělních chromozomů: 3 sady po 7, tedy 42 : 2 = 21.' },
+        { kind: 'number', q: 'Pšenice setá je hexaploidní: má 6 sad po 7 chromozomech, tedy 42. Kolik chromozomů nese její gameta, například samčí buňka z pylového zrna?', answer: 21, tolerance: 0, unit: 'chromozomů', explain: 'Gameta nese polovinu tělních chromozomů: 3 sady po 7, tedy 42 : 2 = 21.' },
         { kind: 'choice', q: 'Který příklad je koevoluce?', options: ['jedovatost čolků roste spolu s odolností užovek, které je loví', 'žirafa natahuje krk a delší krk předá mláďatům', 'kapr a delfín mají podobný tvar těla', 'mula je neplodná'], answer: 0, explain: 'Při koevoluci jsou dva druhy navzájem hybnou silou výběru: jedovatější čolci zvýhodňují odolnější užovky a naopak.' },
         { kind: 'tf', q: 'Darwinovy pěnkavy vznikly z jednoho druhu předka, který doletěl na Galapágy.', answer: true, explain: 'Asi 15 dnešních druhů se rozrůznilo z jednoho předka za 2–3 miliony let – učebnicová adaptivní radiace.' },
       ],
@@ -377,7 +377,7 @@ const level: LevelContent = {
           title: 'Rod Homo: nástroje, oheň a velký mozek',
           icon: 'flame',
           blocks: [
-            { type: 'p', text: 'Asi před 2,5 milionu let se v Africe objevuje rod **Homo** a s ním hojné kamenné nástroje. Během zhruba dvou milionů let se pak objem mozku ztrojnásobil. Hlavní postavy příběhu shrnuje tabulka:' },
+            { type: 'p', text: 'Asi před 2,5 milionu let se v Africe objevuje rod **Homo** a s ním hojné kamenné nástroje. Během dalších zhruba dvou milionů let se objem mozku oproti australopitékům ztrojnásobil. Hlavní postavy příběhu shrnuje tabulka:' },
             { type: 'table', headers: ['druh', 'kdy žil (před)', 'mozek', 'co nového'], rows: [
               ['*Australopithecus afarensis*', '3,9–2,9 mil. let', '400–500 cm^{3}', 'bipedie, ale ještě i šplhání'],
               ['*Homo habilis*', '2,4–1,4 mil. let', '550–700 cm^{3}', 'jednoduché kamenné nástroje'],
@@ -457,7 +457,7 @@ const level: LevelContent = {
         'Člověk patří mezi primáty a lidoopy; nejbližšími příbuznými jsou šimpanz a bonobo se společným předkem před 6–7 miliony let.',
         'Náš chromozom 2 vznikl splynutím dvou chromozomů předka, proto máme 46 chromozomů místo 48.',
         'Homininy spojuje bipedie, která předcházela velkému mozku o miliony let.',
-        'V rodu Homo se díky nástrojům, ohni a lepší stravě mozek ztrojnásobil; evoluce homininů je keř, ne žebřík.',
+        'V rodu Homo se díky nástrojům, ohni a lepší stravě mozek oproti australopitékům ztrojnásobil; evoluce homininů je keř, ne žebřík.',
         'Člověk rozumný vznikl v Africe asi před 300 000 lety a odtud osídlil svět, jak dokládají fosilie i DNA.',
         'Lidé mimo Afriku mají asi 1–2 % neandertálské DNA, někteří i DNA denisovanů.',
         'Kulturní evoluce se šíří učením a je mnohem rychlejší než biologická, ale obě se navzájem ovlivňují.',
@@ -506,7 +506,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Změnu velikosti populace za určité období tedy spočítáme jako rozdíl toho, co přibylo, a toho, co ubylo:' },
             { type: 'formula', text: 'ΔN = (B + I) − (D + E)', caption: 'B … narození, D … úhyny, I … přistěhovalí, E … vystěhovalí za dané období' },
             { type: 'p', text: 'Vyzkoušej si to na zvířeti z českého lesa, srnci obecném (*Capreolus capreolus*):' },
-            { type: 'example', title: 'Srnčí zvěř v honitbě', problem: 'V honitbě žilo na jaře 120 srnců a srn. Za rok se narodilo 50 kůzlat, 38 kusů uhynulo nebo bylo uloveno, 6 se přistěhovalo a 10 odešlo. Kolik jich je po roce a jaká je roční míra růstu?', steps: [
+            { type: 'example', title: 'Srnčí zvěř v honitbě', problem: 'V honitbě žilo na jaře 120 srnců a srn. Za rok se narodilo 50 srnčat, 38 kusů uhynulo nebo bylo uloveno, 6 se přistěhovalo a 10 odešlo. Kolik jich je po roce a jaká je roční míra růstu?', steps: [
               'ΔN = (50 + 6) − (38 + 10) = 56 − 48 = 8',
               'N = 120 + 8 = 128',
               'míra růstu = ΔN : N_{0} = 8 : 120 ≈ 0,067. Vztahujeme ji k počáteční velikosti, aby šly porovnávat malé a velké populace.',
@@ -531,7 +531,7 @@ const level: LevelContent = {
               'počet zdvojení: 24 h · 3 za hodinu = 72',
               'N = 1 · 2^{72} ≈ 4,7 · 10^{21} buněk',
               'hmotnost: 4,7 · 10^{21} · 10^{−12} g = 4,7 · 10^{9} g = 4 700 t',
-            ], answer: 'Za den by vzniklo asi 4 700 tun bakterií. Za dva dny (144 zdvojení) by jejich hmotnost tisíckrát převýšila hmotnost Země – v přírodě tedy exponenciální růst nikdy dlouho netrvá.' },
+            ], answer: 'Za den by vzniklo asi 4 700 tun bakterií. Za dva dny (144 zdvojení) by jejich hmotnost několikatisíckrát převýšila hmotnost Země – v přírodě tedy exponenciální růst nikdy dlouho netrvá.' },
             { type: 'p', text: 'Exponenciálně populace rostou jen krátce, hlavně když osídlí nové prostředí. Tak se šířily nepůvodní druhy, třeba králík v Austrálii nebo bolševník velkolepý podél českých řek.' },
             { type: 'p', text: 'Dřív nebo později ale dojde potrava, místo nebo zdraví. Jak vypadá růst, který naráží na meze prostředí?' },
             { type: 'check', question: { kind: 'number', q: 'Populace mšic se za příznivých podmínek zdvojnásobí každé 2 dny. Kolik mšic bude za 10 dní, když začneme se 30?', answer: 960, tolerance: 0, unit: 'mšic', explain: '10 dní : 2 dny = 5 zdvojení, takže N = 30 · 2^{5} = 30 · 32 = 960.' } },
@@ -580,9 +580,9 @@ const level: LevelContent = {
           title: 'Predátor a kořist',
           icon: 'paw',
           blocks: [
-            { type: 'p', text: 'Vztah predátora a kořisti jsi poprvé viděl/a v lekci „Populace a koloběhy látek“. Nejslavnější data pocházejí z Kanady: obchodní Společnost Hudsonova zálivu přes sto let vykupovala kožešiny zajíců měnavých a rysů kanadských. Počty kožešin kolísaly v pravidelných cyklech asi po 10 letech:' },
+            { type: 'p', text: 'Vztah predátora a kořisti jsi poprvé viděl/a v lekci „Populace a koloběhy látek“. Nejslavnější data pocházejí z Kanady: obchodní Společnost Hudsonova zálivu přes sto let vykupovala kožešiny zajíců amerických a rysů kanadských. Počty kožešin kolísaly v pravidelných cyklech asi po 10 letech:' },
             { type: 'graph', x: { label: 'čas', unit: 'roky', min: 0, max: 30, step: 5 }, y: { label: 'relativní početnost', min: 0, max: 100, step: 20 }, series: [
-              { label: 'zajíc měnavý', points: [[0, 20], [2.5, 60], [5, 100], [7.5, 50], [10, 15], [12.5, 55], [15, 100], [17.5, 50], [20, 15], [22.5, 55], [25, 100], [27.5, 50], [30, 15]], style: 'smooth', tone: 'a' },
+              { label: 'zajíc americký', points: [[0, 20], [2.5, 60], [5, 100], [7.5, 50], [10, 15], [12.5, 55], [15, 100], [17.5, 50], [20, 15], [22.5, 55], [25, 100], [27.5, 50], [30, 15]], style: 'smooth', tone: 'a' },
               { label: 'rys kanadský', points: [[0, 10], [2.5, 15], [5, 30], [7.5, 40], [10, 20], [12.5, 10], [15, 25], [17.5, 40], [20, 20], [22.5, 10], [25, 25], [27.5, 40], [30, 20]], style: 'smooth', tone: 'b' },
             ], caption: 'Cykly zajíců a rysů (zjednodušeno podle výkupu kožešin v Kanadě)' },
             { type: 'p', text: 'Všimni si, že vrcholy rysů přicházejí o rok či dva později než vrcholy zajíců. Za cyklem stojí zpětná vazba se zpožděním:' },
@@ -648,7 +648,7 @@ const level: LevelContent = {
         { kind: 'match', q: 'Přiřaď příklad k jevu, který ilustruje.', pairs: [
           ['hraboš polní', 'r-strategie a gradace'],
           ['slon africký', 'K-strategie a dlouhá péče o mládě'],
-          ['zajíc měnavý a rys kanadský', 'cykly predátor–kořist'],
+          ['zajíc americký a rys kanadský', 'cykly predátor–kořist'],
           ['sobi na ostrově svatého Matouše', 'přestřelení úživnosti a zhroucení populace'],
         ], explain: 'Každý z příkladů zazněl v lekci jako ukázka jednoho jevu populační ekologie.' },
         { kind: 'multi', q: 'Které faktory omezují populaci tím víc, čím je hustší?', options: ['konkurence o potravu', 'šíření nakažlivé nemoci', 'nedostatek úkrytů', 'pozdní jarní mráz', 'povodeň'], answers: [0, 1, 2], explain: 'Konkurence, nemoci a nedostatek úkrytů jsou faktory závislé na hustotě. Mráz a povodeň zasáhnou malou i velkou populaci stejně.' },
@@ -669,7 +669,7 @@ const level: LevelContent = {
         'Vysvětlit, co je klíčový druh, a odlišit ho od dominantního',
         'Popsat primární a sekundární sukcesi a spočítat Simpsonův index diverzity',
       ],
-      hook: 'Ekolog Robert Paine roky sbíral ze skal u pobřeží hvězdice a házel je do moře. Místo aby se ostatním živočichům ulevilo, zmizela ze skal většina druhů. Jak může jeden dravec držet pohromadě celé společenstvo?',
+      hook: 'Ekolog Robert Paine roky sbíral ze skal u pobřeží hvězdice a házel je do moře. Místo aby se ostatním živočichům ulevilo, zmizela ze skal skoro polovina druhů. Jak může jeden dravec držet pohromadě celé společenstvo?',
       sections: [
         {
           title: 'Ekologická nika',
@@ -722,7 +722,7 @@ const level: LevelContent = {
             { type: 'iconlist', items: [
               { icon: 'balance-scale', title: 'Konkurence (− / −)', text: 'koňadra a vrabec soupeří o dutinu, oba přijdou o čas a energii' },
               { icon: 'paw', title: 'Predace (+ / −)', text: 'rys loví srnce; býložravost je podobný vztah mezi housenkou a listem' },
-              { icon: 'tick', title: 'Parazitismus (+ / −)', text: 'klíště obecné saje krev, jmelí bere vodu a živiny stromu' },
+              { icon: 'tick', title: 'Parazitismus (+ / −)', text: 'klíště obecné saje krev, jmelí (poloparazit) bere stromu vodu a minerální látky' },
               { icon: 'mushroom', title: 'Mutualismus (+ / +)', text: 'mykorhiza hřibu a smrku, včela a květ, houba a řasa v lišejníku' },
               { icon: 'deer', title: 'Komenzalismus (+ / 0)', text: 'plody lopuchu se zachytí na srsti srnce, který je roznese a nic ho to nestojí' },
               { icon: 'tree', title: 'Amenzalismus (− / 0)', text: 'buk zastíní byliny pod sebou, aniž by z toho sám něco měl' },
@@ -766,7 +766,7 @@ const level: LevelContent = {
           icon: 'forest',
           blocks: [
             { type: 'p', text: 'Nech pole pár let neobdělané a změní se k nepoznání: nejdřív plevele, pak trávy, keře a nakonec les. Takové postupné, zákonité střídání společenstev se nazývá **ekologická sukcese**. Sleduj jednotlivé fáze:' },
-            { type: 'diagram', id: 'succession', caption: 'Sukcese na opuštěném poli: trávy → keře → pionýrské stromy → les' },
+            { type: 'diagram', id: 'succession', caption: 'Sukcese na opuštěném poli: plevele → trávy a byliny → keře → pionýrské stromy → les' },
             { type: 'p', text: 'Každé stadium mění prostředí pro to další: první rostliny tvoří humus, keře stíní a chrání před větrem, stromy nakonec zastíní světlomilné druhy, které jim cestu připravily. Konečné, relativně stálé stadium se nazývá **klimax** – ve většině Česka listnatý nebo smíšený les.' },
             { type: 'p', text: 'Podle toho, odkud sukcese startuje, rozlišujeme dva typy:' },
             { type: 'compare', columns: [
@@ -880,7 +880,7 @@ const level: LevelContent = {
               'Asimilace A = C − F = 100 J − 50 J = 50 J (to, co projde stěnou střeva)',
               'Produkce P = A − R = 50 J − 33 J = 17 J',
               'Kontrola: C = P + R + F = 17 + 33 + 50 = 100 J',
-            ], answer: 'Do těla housenky – a tedy k sýkoře, která ji uloví – se dostane jen 17 % energie z listí. Energie v trusu ale pro ekosystém ztracená není: využijí ji rozkladači.' },
+            ], answer: 'Do těla housenky – a tedy k dispozici sýkoře, která ji uloví – se dostane jen 17 % energie z listí. Energie v trusu ale pro ekosystém ztracená není: využijí ji rozkladači.' },
             { type: 'p', text: 'Pro celou trofickou úroveň se počítá **ekologická účinnost**: produkce vyšší úrovně dělená produkcí úrovně pod ní. V přírodě bývá 5–20 %, v průměru kolem 10 %. Výsledkem je pyramida energie:' },
             { type: 'diagram', id: 'energy-pyramid', caption: 'Pyramida energie: na každou vyšší úroveň přejde zhruba desetina energie.' },
             { type: 'p', text: 'Účinnost silně závisí na tom, kdo jí. Ptáci a savci prodýchají většinu energie na udržení stálé tělesné teploty, takže do růstu jim zbudou jen asi 1–3 % přijaté energie; hmyz a ryby uloží výrazně víc.' },
@@ -896,8 +896,8 @@ const level: LevelContent = {
             { type: 'p', text: 'Atomy uhlíku ve tvém těle už byly v dinosaurech, v pravěkých přesličkách i v atmosféře. ==Energie ekosystémem protéká, ale látky v něm kolují.== Organismy jsou jen jednou zastávkou na jejich cestě. Začneme uhlíkem, základem všech organických látek:' },
             { type: 'diagram', id: 'carbon-cycle', caption: 'Koloběh uhlíku: fotosyntéza ho z atmosféry odebírá, dýchání, rozklad a spalování ho vracejí.' },
             { type: 'p', text: 'Fotosyntéza a dýchání byly dlouho v rovnováze. Spalováním fosilních paliv ale vracíme do oběhu uhlík, který byl miliony let uložený v uhlí a ropě. Koncentrace $CO2$ proto vzrostla z asi 280 ppm před průmyslovou revolucí na víc než 420 ppm dnes. Oceány a vegetace pohltí zhruba polovinu našich emisí, zbytek zůstává ve vzduchu.' },
-            { type: 'p', text: 'U dusíku je problém opačný: vzduch ho obsahuje 78 %, ale jako $N2$ je pro rostliny i živočichy nepoužitelný. Trojnou vazbu v molekule $N2$ umí rozbít jen několik skupin bakterií. Sleduj, kudy dusík putuje:' },
-            { type: 'diagram', id: 'nitrogen-cycle', caption: 'Koloběh dusíku: bez bakterií by se dusík ze vzduchu do živých těl nedostal.' },
+            { type: 'p', text: 'U dusíku je problém opačný: vzduch ho obsahuje 78 %, ale jako $N2$ je pro rostliny i živočichy nepoužitelný. Trojnou vazbu v molekule $N2$ umí z organismů rozbít jen několik skupin bakterií. Sleduj, kudy dusík putuje:' },
+            { type: 'diagram', id: 'nitrogen-cycle', caption: 'Koloběh dusíku: bez bakterií by se dusík ze vzduchu do živých těl skoro nedostal.' },
             { type: 'p', text: 'Jednotlivé kroky koloběhu mají svá jména a své „pracovníky“:' },
             { type: 'keyterms', items: [
               { term: '**Fixace dusíku**', def: '$N2$ → $NH3$; hlízkové bakterie (*Rhizobium*) v kořenech bobovitých rostlin (hrách, jetel) a sinice. Průmyslově Haberova–Boschova syntéza pro hnojiva.' },
@@ -955,7 +955,7 @@ const level: LevelContent = {
               ['step', '0–15 °C', '250–750 mm', 'trávy, bez stromů', 'sysel, bizon'],
               ['listnatý les mírného pásu', '5–15 °C', '600–1 500 mm', 'buk, dub, javor; na zimu opadávají', 'jelen, jezevec'],
               ['tajga', '−5 až 5 °C', '300–900 mm', 'smrk, jedle, borovice, modřín', 'los, rosomák'],
-              ['tundra', '−15 až −5 °C', 'pod 400 mm', 'mechy, lišejníky, zakrslé vrby a břízy; permafrost', 'sob, polární liška'],
+              ['tundra', '−15 až −5 °C', 'pod 400 mm', 'mechy, lišejníky, zakrslé vrby a břízy; permafrost', 'sob, liška polární'],
             ], caption: 'Hlavní biomy (přibližné hodnoty)' },
             { type: 'p', text: 'Pozor, biom není ekosystém. Ekosystém je konkrétní rybník nebo les s konkrétními druhy; biom je souhrnná kategorie podobných ekosystémů po celém světě. Deštné lesy Amazonie, Konga a Bornea vypadají podobně, ale žijí v nich jiné druhy – ==podobný vzhled je výsledkem konvergence==, kterou znáš z lekce „Důkazy evoluce a fylogeneze“.' },
             { type: 'p', text: 'Biomy se opakují i od úpatí k vrcholu hor, protože s každými sto metry výšky klesne teplota asi o 0,6 °C. V Krkonoších proto stoupáš od listnatých lesů přes smrčiny podobné tajze až ke kosodřevině a k arkto-alpínské tundře nad horní hranicí lesa. Tím se dostáváme k Česku.' },
@@ -989,14 +989,14 @@ const level: LevelContent = {
         'Producenti zachytí jen malou část slunečního záření, zhruba jedno procento.',
         'Živočich rozdělí přijatou energii na produkci, dýchání a trus (C = P + R + F); na další trofickou úroveň přejde obvykle 5–20 % energie.',
         'Energie ekosystémem protéká a odchází jako teplo, látky jako uhlík, dusík a fosfor kolují dokola.',
-        'Dusík ze vzduchu fixují jen bakterie; fosfor nemá plynnou fázi a ve sladkých vodách bývá limitující, jeho nadbytek způsobuje eutrofizaci.',
+        'Vzdušný dusík fixují v přírodě hlavně bakterie; fosfor nemá plynnou fázi a ve sladkých vodách bývá limitující, jeho nadbytek způsobuje eutrofizaci.',
         'Biomy určuje hlavně teplota a srážky; podobný vzhled biomů na různých kontinentech je výsledkem konvergence.',
         'Česko leží v biomu listnatého lesa mírného pásu, ale jeho lesy dlouho tvořily hlavně smrkové monokultury.',
       ],
       quiz: [
         { kind: 'tf', q: 'Energie v ekosystému koluje dokola stejně jako uhlík.', answer: false, explain: 'Energie ekosystémem jen protéká: vstupuje jako světlo a odchází jako teplo. Dokola kolují látky.' },
         { kind: 'choice', q: 'Co je čistá primární produkce?', options: ['energie, kterou producenti zachytí, zmenšená o to, co sami prodýchají', 'všechna energie slunečního záření dopadající na ekosystém', 'energie uložená v tělech masožravců', 'energie, kterou rozkladači uvolní z mrtvých těl'], answer: 0, explain: 'ČPP = HPP − R. Je to energie, která zůstane v tělech producentů a je k dispozici býložravcům a rozkladačům.' },
-        { kind: 'number', q: 'Čistá primární produkce ekosystému je 10 000 kJ/m² za rok. Kolik energie zhruba získají masožraví konzumenti 1. řádu (jedí býložravce), je-li účinnost přenosu 10 %?', answer: 100, tolerance: 0, unit: 'kJ/m² za rok', explain: 'Býložravci získají 10 % z 10 000 kJ = 1 000 kJ, masožravci 10 % z 1 000 kJ = 100 kJ.' },
+        { kind: 'number', q: 'Čistá primární produkce ekosystému je 10 000 kJ/m² za rok. Kolik energie zhruba získají konzumenti 2. řádu (masožravci, kteří jedí býložravce), je-li účinnost přenosu 10 %?', answer: 100, tolerance: 0, unit: 'kJ/m² za rok', explain: 'Býložravci získají 10 % z 10 000 kJ = 1 000 kJ, masožravci 10 % z 1 000 kJ = 100 kJ.' },
         { kind: 'order', q: 'Seřaď kroky eutrofizace nádrže.', items: ['do vody se splachují hnojiva a odpadní vody s fosforem', 'přemnoží se sinice a řasy', 'odumřelá biomasa klesá ke dnu', 'rozkladači spotřebují kyslík u dna', 'hynou ryby'], explain: 'Příčinou je nadbytek živin; úhyn ryb způsobuje až nedostatek kyslíku při rozkladu velkého množství biomasy.' },
         { kind: 'multi', q: 'Které procesy vracejí $CO2$ do atmosféry?', options: ['buněčné dýchání', 'rozklad mrtvé biomasy', 'spalování fosilních paliv', 'sopečná činnost', 'fotosyntéza'], answers: [0, 1, 2, 3], explain: 'Dýchání, rozklad, spalování i sopky $CO2$ uvolňují. Fotosyntéza ho naopak z atmosféry odebírá.' },
         { kind: 'choice', q: 'Otevřený oceán má na metr čtvereční nízkou produkci. Proč přesto vyrobí obrovské množství biomasy?', options: ['pokrývá většinu povrchu Země', 'v oceánu není dýchání', 'mořské řasy mají účinnější fotosyntézu než všechny rostliny na souši', 'do oceánu se splavuje biomasa z pevnin'], answer: 0, explain: 'Malou produkci na metr čtvereční vyváží obrovská plocha. Moře tak vyrobí asi polovinu primární produkce Země.' },
@@ -1063,7 +1063,7 @@ const level: LevelContent = {
             { type: 'iconlist', items: [
               { icon: 'flower', title: 'Posun fenologie', text: 'jaro přichází dřív: rostliny kvetou a ptáci se vracejí z tahu o dny až týdny dříve než před půl stoletím' },
               { icon: 'bird', title: 'Nesoulad v čase', text: 'housenky se líhnou dřív, ale lejsek černohlavý se vrací z Afriky podle délky dne – jeho mláďata pak mají méně potravy' },
-              { icon: 'compass', title: 'Posun areálů', text: 'druhy se stěhují k pólům v průměru o 17 km za desetiletí a do hor o 11 m; horským druhům nad hranicí lesa místo dochází' },
+              { icon: 'compass', title: 'Posun areálů', text: 'druhy se stěhují v průměru o 17 km za desetiletí k pólům a o 11 m za desetiletí výš do hor; horským druhům nad hranicí lesa místo dochází' },
               { icon: 'ocean', title: 'Bělení korálů', text: 'v přehřátém moři korály vypudí symbiotické řasy a mohou uhynout' },
               { icon: 'droplets', title: 'Okyselení oceánů', text: 'oceán pohlcuje $CO2$ a vzniká kyselina uhličitá; ohrožuje plže, mlže a korály se schránkou z $CaCO3$' },
               { icon: 'tree', title: 'Sucho a škůdci', text: 'v Česku sucho oslabilo smrky a umožnilo kůrovcovou kalamitu' },
@@ -1090,7 +1090,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Proč nestačí jedna rezervace uprostřed polí? Malá izolovaná populace ztrácí genetickou rozmanitost driftem a příbuzenským křížením (lekce „Populační genetika“) a jediná nehoda ji může vyhladit. ==Proto dnes ochrana dbá hlavně na propojení území==, aby si populace mohly vyměňovat jedince a geny.' },
             { type: 'p', text: 'Že obě strategie fungují nejlépe společně, ukazují čtyři české příběhy:' },
             { type: 'iconlist', items: [
-              { icon: 'paw', title: 'Kůň Převalského', text: 've volné přírodě vyhynul. Zoo Praha desítky let vedla jeho plemennou knihu a od roku 2011 vozí koně zpět do Mongolska.' },
+              { icon: 'paw', title: 'Kůň Převalského', text: 've volné přírodě v 60. letech 20. století vyhynul. Zoo Praha desítky let vedla jeho plemennou knihu a od roku 2011 vozí koně zpět do Mongolska.' },
               { icon: 'deer', title: 'Rewilding v Milovicích', text: 'na bývalém vojenském prostoru od roku 2015 spásají krajinu divocí koně, zubři a pratuři. Brání zarůstání stepí a vracejí vzácné rostliny a motýly.' },
               { icon: 'forest', title: 'Návrat vlka', text: 'vlk se do Česka vrátil sám; od roku 2014 se tu opět rozmnožuje a žije už v řadě smeček.' },
               { icon: 'seed', title: 'Genová banka v Praze-Ruzyni', text: 'uchovává desítky tisíc vzorků semen kulturních rostlin a jejich starých odrůd.' },

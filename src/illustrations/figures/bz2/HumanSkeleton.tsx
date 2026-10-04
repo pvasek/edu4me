@@ -130,8 +130,8 @@ function Skeleton() {
         <Lbl x={8} y={500} tx={C - 26} ty={500} className="bz2-sm">holenní kost</Lbl>
         <Lbl x={392} y={142} tx={C + 46} ty={150} anchor="end" lx={340} ly={146} className="bz2-sm">lopatka</Lbl>
         <Lbl x={392} y={196} tx={C + 70} ty={190} anchor="end" lx={340} ly={196} className="bz2-sm">pažní kost</Lbl>
-        <Lbl x={392} y={276} tx={C + 92} ty={290} anchor="end" lx={350} ly={282} className="bz2-sm">loketní kost</Lbl>
-        <Lbl x={392} y={312} tx={C + 80} ty={304} anchor="end" lx={350} ly={312} className="bz2-sm" sec>vřetenní kost</Lbl>
+        <Lbl x={392} y={276} tx={C + 79} ty={290} anchor="end" lx={350} ly={282} className="bz2-sm">loketní kost</Lbl>
+        <Lbl x={392} y={312} tx={C + 94} ty={304} anchor="end" lx={350} ly={312} className="bz2-sm" sec>vřetenní kost</Lbl>
         <Lbl x={392} y={520} tx={C + 39} ty={512} anchor="end" lx={350} ly={516} className="bz2-sm">lýtková kost</Lbl>
       </Fade>
     </Frame>

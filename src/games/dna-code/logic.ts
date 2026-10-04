@@ -247,7 +247,7 @@ function codonTask(level: number, rng: () => number): Task {
     explain:
       aa === STOP
         ? `${codon} je stop kodon (${STOP_CODONS.join(', ')}) – žádná tRNA k němu nepasuje a překlad končí.`
-        : `${codon} = ${aaLabel(aa)}.${same.length > 1 ? ` Kód je degenerovaný: ${aa} kódují ${same.length} kodony (${same.join(', ')}).` : ' Je to jediný kodon pro tuto aminokyselinu.'}`,
+        : `${codon} = ${aaLabel(aa)}.${same.length > 1 ? ` Kód je degenerovaný: ${aa} kódují ${same.length} ${same.length <= 4 ? 'kodony' : 'kodonů'} (${same.join(', ')}).` : ' Je to jediný kodon pro tuto aminokyselinu.'}`,
   }
 }
 

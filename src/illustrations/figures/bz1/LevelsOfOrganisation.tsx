@@ -203,7 +203,7 @@ export default function LevelsOfOrganisation() {
           phoneColumns={2}
           steps={[
             { title: "Buňka", art: <Cell />, caption: "Základní jednotka života." },
-            { title: "Tkáň, pletivo", art: <Tissue />, caption: "Mnoho stejných buněk se stejnou prací." },
+            { title: "Tkáň, pletivo", art: <Tissue />, caption: "Mnoho podobných buněk se stejnou prací." },
             { title: "Orgán", art: <Organ />, caption: "Několik tkání tvoří část těla s úkolem." },
             { title: "Orgánová soustava", art: <OrganSystem />, caption: "Orgány, které spolupracují." },
             { title: "Organismus", art: <Organism />, caption: "Celý živý jedinec." },

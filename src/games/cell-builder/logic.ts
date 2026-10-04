@@ -112,7 +112,7 @@ function functionTask(level: number, set: LevelSet, cell: CellId, rng: Rng): Lab
   const parts = readingOrder(cell, sample(pool, Math.min(n, pool.length), rng))
   const slots: SlotDef[] = parts.map((p, k) => ({ id: `s-${p}`, num: k + 1, part: p, title: PARTS[p].name }))
   const tokens: TokenDef[] = parts.map((p) => ({ id: `f-${p}`, text: PARTS[p][fn]!, answer: `s-${p}` }))
-  const lacking = set.parts.filter((p) => surelyLacks(p, cell) && PARTS[p][fn])
+  const lacking = set.parts.filter((p) => surelyLacks(p, cell) && PARTS[p][fn] && !PARTS[p].jobWithout?.includes(cell))
   let explain = `${cap(PARTS[parts[0]].name)}: ${PARTS[parts[0]][fn]}.`
   if (lacking.length) {
     const d = pick(lacking, rng)
@@ -180,7 +180,8 @@ function missingTask(level: number, set: LevelSet, cell: CellId, rng: Rng): Miss
   const visible = drawnParts(cell, set.parts).filter((p) => MISSABLE.includes(p))
   const missing = pick(visible, rng)
   const present = sample(
-    visible.filter((p) => p !== missing),
+    // a hidden nucleus hides its nucleolus too
+    visible.filter((p) => p !== missing && !(missing === 'jadro' && p === 'jaderko')),
     2,
     rng,
   )

@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { Chloro, Figure, Pop, ScaleBar, f1, pat, rng, useCompact, useFig } from "./kit";
 
 const LABEL =
-  "Tabule pěti jednobuněčných eukaryot (protist) s měřítky v mikrometrech. Měňavka velká, asi 0,4 mm, mění tvar a leze pomocí panožek, potravu pohlcuje do potravních vakuol. Trepka velká, asi 0,25 mm, má tvar střevíčku a pokrytý brvami, kterými plave, se dvěma jádry a buněčnými ústy. Krásnoočko zelené, asi 50 µm, plave bičíkem, má červenou světločivnou skvrnu a chloroplasty, takže je řasou i prvokem. Rozsivka, asi 50 µm, je řasa ve skleněné křemité schránce. Dírkonožec, asi 0,5 mm, žije v moři v komůrkové vápenité schránce s póry, kterými vysouvá tenká vlákna.";
+  "Tabule pěti jednobuněčných eukaryot (protist) s měřítky v mikrometrech. Měňavka velká, asi 0,4 mm, mění tvar a leze pomocí panožek, potravu pohlcuje do potravních vakuol. Trepka velká, asi 0,25 mm, má tvar střevíčku, je pokrytá brvami, kterými plave, a má dvě jádra a buněčná ústa. Krásnoočko zelené, asi 50 µm, plave bičíkem, má červenou světločivnou skvrnu a chloroplasty, takže je řasou i prvokem. Rozsivka, asi 50 µm, je řasa ve skleněné křemité schránce. Dírkonožec, asi 0,5 mm, žije v moři v komůrkové vápenité schránce s póry, kterými vysouvá tenká vlákna.";
 
 const TW = 200;
 const TH = 190;

@@ -219,7 +219,7 @@ export interface AskResult {
 const countLine = (d: Distribution) => d.phenotypes.map((p) => `${p.count}× ${p.phen}`).join('; ')
 
 /** Czech "z" / "ze" before a number ("ze 4", "z 8"). */
-export const zOf = (n: number) => `${/^(2|3|4|6|7|1[2-47])$/.test(String(n)) || /^(2|3|4|6|7)\d\d$/.test(String(n)) ? 'ze' : 'z'} ${n}`
+export const zOf = (n: number) => `${/^(2|3|4|6|7|1[2-467])$/.test(String(n)) || /^(2|3|4|6|7)\d\d$/.test(String(n)) ? 'ze' : 'z'} ${n}`
 const nCells = (x: number) => `${x} ${x === 1 ? 'políčko' : x >= 2 && x <= 4 ? 'políčka' : 'políček'}`
 /** "1 ze 4 políček", "3 z 8 políček" */
 const kOf = (k: number, T: number) => `${k} ${zOf(T)} políček`

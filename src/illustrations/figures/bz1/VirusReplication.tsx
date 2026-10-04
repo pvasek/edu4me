@@ -3,7 +3,7 @@ import { StepFilm } from "../../sequence/StepFigure";
 import { Draw, Fade, Figure, Frame, Lbl, Pop, f1, pat, useFig } from "./kit";
 
 const LABEL =
-  "Jak se množí virus, na příkladu bakteriofága, viru napadajícího bakterie, v pěti krocích. 1 přichycení: virus dosedne vlákny na povrch bakterie. 2 vstříknutí: virus vstříkne do buňky svou nukleovou kyselinu, prázdný obal zůstane venku. 3 kopírování: buňka podle cizího návodu vyrábí kopie virové nukleové kyseliny a součásti obalu, vlastní DNA bakterie se rozpadá. 4 skládání: z dílů se složí desítky nových virů. 5 rozpad: buňka praskne a nové viry se uvolní a napadají další buňky.";
+  "Jak se množí virus, na příkladu bakteriofága, viru napadajícího bakterie, v pěti krocích. 1 přichycení: virus dosedne vlákny na povrch bakterie. 2 vstříknutí: virus vstříkne do buňky svou nukleovou kyselinu, prázdná kapsida zůstane venku. 3 kopírování: buňka podle cizího návodu vyrábí kopie virové nukleové kyseliny a bílkoviny kapsidy, vlastní DNA bakterie se rozpadá. 4 skládání: z dílů se složí desítky nových virů. 5 rozpad: buňka praskne a nové viry se uvolní a napadají další buňky.";
 
 const W = 360;
 const H = 250;
@@ -85,7 +85,7 @@ function S2() {
           {"nukleová kyselina\nviru"}
         </Lbl>
         <Lbl x={232} y={46} tx={194} ty={62}>
-          {"prázdný obal\nzůstane venku"}
+          {"prázdná kapsida\nzůstane venku"}
         </Lbl>
       </Fade>
     </Frame>
@@ -210,9 +210,9 @@ export default function VirusReplication() {
       <StepFilm
         label={LABEL}
         steps={[
-          { title: "Přichycení", caption: "Virus dosedne na povrch bakterie, kterou pozná podle tvaru.", art: <S1 /> },
+          { title: "Přichycení", caption: "Virus dosedne na bakterii a přichytí se na místa na jejím povrchu, která mu pasují.", art: <S1 /> },
           { title: "Vstříknutí", caption: "Do buňky vstříkne jen svou nukleovou kyselinu, návod na nové viry.", art: <S2 /> },
-          { title: "Kopírování", caption: "Buňka poslechne cizí návod: kopíruje ho a vyrábí díly obalu.", art: <S3 /> },
+          { title: "Kopírování", caption: "Buňka poslechne cizí návod: kopíruje ho a vyrábí díly kapsidy.", art: <S3 /> },
           { title: "Skládání", caption: "Z dílů se uvnitř buňky složí desítky nových virů.", art: <S4 /> },
           { title: "Rozpad buňky", caption: "Buňka praskne, viry se uvolní a napadají další buňky.", art: <S5 /> },
         ]}

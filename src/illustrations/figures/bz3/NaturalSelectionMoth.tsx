@@ -3,7 +3,7 @@ import { Figure, Frame, Pop, f1, pat, rng, useFig } from "./kit";
 import { Bird, Moth } from "./bio";
 
 const LABEL =
-  "Přírodní výběr u drsnokřídlece březového ve stepech. Na světlé kůře porostlé lišejníky splývají světlí motýli, tmaví jsou nápadní a ptáci je snáze uloví. Když průmyslové saze zčernaly kmeny, byli naopak nápadní světlí motýli a ptáci lovili hlavně je. Tmaví přežívali a měli víc potomků, takže po mnoha generacích tvořili většinu populace. Sloupec vpravo ukazuje podíl světlé a tmavé formy.";
+  "Přírodní výběr u drsnokřídlece březového krok za krokem. Na světlé kůře porostlé lišejníky splývají světlí motýli, tmaví jsou nápadní a ptáci je snáze uloví. Když průmyslové saze zčernaly kmeny, byli naopak nápadní světlí motýli a ptáci lovili hlavně je. Tmaví přežívali a měli víc potomků, takže po mnoha generacích tvořili většinu populace. Sloupec vpravo ukazuje podíl světlé a tmavé formy.";
 
 const W = 360;
 const H = 250;

@@ -51,14 +51,14 @@ const level: LevelContent = {
             { type: 'iconlist', items: [
               { icon: 'flower', title: 'Botanika', text: 'rostliny' },
               { icon: 'paw', title: 'Zoologie', text: 'živočichové' },
-              { icon: 'bacteria', title: 'Mikrobiologie', text: 'bakterie, viry a další mikroorganismy' },
+              { icon: 'bacteria', title: 'Mikrobiologie', text: 'bakterie a další mikroorganismy, ale také viry' },
               { icon: 'mushroom', title: 'Mykologie', text: 'houby' },
               { icon: 'cell', title: 'Cytologie', text: 'buňka' },
               { icon: 'heart', title: 'Anatomie a fyziologie', text: 'stavba těla a to, jak jeho orgány pracují' },
               { icon: 'dna', title: 'Genetika', text: 'dědičnost' },
               { icon: 'forest', title: 'Ekologie', text: 'vztahy organismů mezi sebou a s prostředím' },
             ] },
-            { type: 'p', text: 'Obory se navzájem prolínají. Když lékaři zkoumají, proč na některé bakterie přestávají účinkovat léky, potřebují mikrobiologii, genetiku i fyziologii najednou. Na základní škole se tyto obory spojují v předmětu **přírodopis**, který k nim přidává i neživou přírodu: horniny, půdu a vodu.' },
+            { type: 'p', text: 'Obory se navzájem prolínají. Když lékaři zkoumají, proč na některé bakterie přestávají účinkovat léky, potřebují mikrobiologii, genetiku i fyziologii najednou. Na základní škole se tyto obory spojují v předmětu **přírodopis**, který k nim přidává i neživou přírodu: nerosty, horniny a půdu.' },
             { type: 'callout', variant: 'fact', text: 'Biologie má silné české stopy. **Jan Evangelista Purkyně** jako jeden z prvních popsal buňky v živočišných tkáních a **Gregor Johann Mendel** v brněnském klášteře objevil pravidla dědičnosti.' },
             { type: 'p', text: 'Ať biolog zkoumá cokoli, postupuje podobně: neptá se, co si kdo myslí, ale co ukáže pokus. Jak takový postup vypadá, uvidíš v dalším oddílu.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď obor k tomu, co zkoumá.', pairs: [
@@ -410,7 +410,7 @@ const level: LevelContent = {
               { icon: 'sun', title: 'Chloroplasty', text: 'Obsahují zelené barvivo **chlorofyl** a pomocí světla v nich vzniká cukr. Proto jsou listy zelené.' },
               { icon: 'drop', title: 'Vakuola', text: 'Velký váček s vodou a rozpuštěnými látkami. Napíná buňku zevnitř jako vzduch duši kola; když chybí voda, rostlina vadne.' },
             ] },
-            { type: 'p', text: 'Pozor, chloroplasty nemá každá rostlinná buňka. Buňky kořene nebo pokožky cibule žijí bez světla, a proto zelené nejsou. Buněčnou stěnu ale má rostlinná buňka vždy.' },
+            { type: 'p', text: 'Pozor, chloroplasty nemá každá rostlinná buňka. Buňky kořene nebo pokožky cibule žijí bez světla, a proto zelené nejsou. Buněčnou stěnu ale mají prakticky všechny rostlinné buňky.' },
             { type: 'callout', variant: 'warning', text: 'Častá chyba: „rostliny mají chloroplasty místo mitochondrií“. Ne – rostlinné buňky mají **obojí**. Rostliny dýchají ve dne i v noci, stejně jako ty.' },
             { type: 'p', text: 'Části buňky si nejlépe zapamatuješ, když je sám/sama poskládáš. Ve hře postav rostlinnou a živočišnou buňku a zkontroluj, jestli ti nic nechybí:' },
             { type: 'game', gameId: 'cell-builder', text: 'Stavitel buňky: přetahuj části do rostlinné a živočišné buňky.' },
@@ -526,7 +526,7 @@ const level: LevelContent = {
               { term: '**Organismus**', def: 'celý živý jedinec' },
             ] },
             { type: 'p', text: 'Na obrázku jsou tytéž úrovně pro člověka a pro rostlinu. Projdi je zleva doprava a u každé úrovně si všimni, že obsahuje tu předchozí:' },
-            { type: 'diagram', id: 'levels-of-organisation', caption: 'Člověk: svalová buňka → svalová tkáň → srdce → oběhová soustava → člověk. Rostlina: buňka listu → asimilační pletivo → list → rostlina.' },
+            { type: 'diagram', id: 'levels-of-organisation', caption: 'Člověk: svalová buňka → svalová tkáň → srdce → oběhová soustava → člověk. Rostlina: buňka listu → asimilační pletivo → list → prýt (stonek s listy) → rostlina.' },
             { type: 'p', text: 'Ukažme si celou řadu ještě jednou na srdci, které ti právě teď bije:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'cell', title: 'Buňka', text: 'buňka srdečního svalu' },
@@ -535,7 +535,7 @@ const level: LevelContent = {
               { icon: 'blood', title: 'Orgánová soustava', text: 'oběhová soustava: srdce, cévy a krev' },
               { icon: 'skeleton', title: 'Organismus', text: 'člověk' },
             ] },
-            { type: 'p', text: 'Pozor na rozdíl v názvech: u živočichů mluvíme o **tkáních**, u rostlin o **pletivech**. Rostliny mají orgány (kořen, stonek, list, květ), ale orgánové soustavy u nich obvykle nerozlišujeme.' },
+            { type: 'p', text: 'Pozor na rozdíl v názvech: u živočichů mluvíme o **tkáních**, u rostlin o **pletivech**. Rostliny mají orgány (kořen, stonek, list, květ), ale soustavy u nich rozlišujeme jen hrubě: nadzemní **prýt** (stonek s listy) a kořen.' },
             { type: 'p', text: 'Tělo je tedy postavené z obrovského počtu buněk. Proč ale příroda nepostavila velké tělo z menšího počtu obřích buněk? Odpověď je v jednoduché geometrii.' },
             { type: 'check', question: { kind: 'order', q: 'Seřaď úrovně stavby těla od nejmenší.', items: ['buňka', 'tkáň', 'orgán', 'orgánová soustava', 'organismus'], explain: 'Buňky tvoří tkáň, tkáně orgán, orgány soustavu a soustavy celý organismus.' } },
           ],
@@ -641,7 +641,7 @@ const level: LevelContent = {
             { type: 'keyterms', items: [
               { term: '**Producenti** (výrobci)', def: 'autotrofní organismy, které vyrábějí potravu: tráva, dub, řasy' },
               { term: '**Konzumenti** (spotřebitelé)', def: 'živí se jinými organismy: býložravci (zajíc), masožravci (liška), všežravci (prase divoké, člověk)' },
-              { term: '**Rozkladači**', def: 'rozkládají odumřelá těla a odpad na jednoduché látky: houby, bakterie, žížaly' },
+              { term: '**Rozkladači** (destruenti)', def: 'rozkládají odumřelá těla a odpad na jednoduché látky: houby, bakterie, žížaly' },
             ] },
             { type: 'p', text: 'Všechny tři role do sebe zapadají v kruhu. Sleduj, kudy putují látky v dubovém lese:' },
             { type: 'process', layout: 'cycle', steps: [
@@ -802,11 +802,11 @@ const level: LevelContent = {
             { type: 'p', text: 'Vědecké jméno se píše podle pevných pravidel. Ukažme si je krok za krokem na vlkovi:' },
             { type: 'example', title: 'Jak se píše vědecké jméno', problem: 'Zapiš správně vědecké jméno vlka obecného.', steps: [
               'Rodové jméno *Canis* píšeme s **velkým** počátečním písmenem.',
-              'Druhové jméno *lupus* píšeme s **malým** písmenem.',
+              'Druhový přívlastek *lupus* píšeme s **malým** písmenem.',
               'V tištěném textu se obě slova píšou kurzívou, v ručně psaném textu je podtrhneme.',
               'Když se jméno v textu opakuje, rod se zkrátí na první písmeno: *C. lupus*.',
             ], answer: '*Canis lupus*' },
-            { type: 'p', text: 'Pozor, samotné druhové jméno nic neznamená: *lupus* bez *Canis* není žádný druh. Jednoznačná je teprve dvojice slov, podobně jako příjmení a jméno – příjmení (rod) mají společné i příbuzní, proto stojí první.' },
+            { type: 'p', text: 'Pozor, samotný druhový přívlastek nic neznamená: *lupus* bez *Canis* není žádný druh. Jednoznačná je teprve dvojice slov, podobně jako příjmení a jméno – příjmení (rod) mají společné i příbuzní, proto stojí první.' },
             { type: 'p', text: 'Rodové jméno už prozrazuje příbuznost: všechny druhy rodu *Canis* jsou si blízké. Linné ale šel dál a rody skládal do větších a větších skupin.' },
             { type: 'check', question: { kind: 'text', q: 'Jak se jmenuje rod, do kterého patří člověk rozumný (*Homo sapiens*)?', accept: ['Homo'], explain: 'První slovo vědeckého jména je rod: *Homo*. Druhé slovo *sapiens* upřesňuje druh.' } },
           ],
@@ -853,7 +853,7 @@ const level: LevelContent = {
             { type: 'iconlist', items: [
               { icon: 'leaf', title: 'Rostliny', text: 'mnohobuněčné, autotrofní, buněčná stěna z celulózy' },
               { icon: 'paw', title: 'Živočichové', text: 'mnohobuněční, heterotrofní, bez buněčné stěny, většinou se pohybují' },
-              { icon: 'mushroom', title: 'Houby', text: 'heterotrofní, stěna z chitinu, tělo z vláken; patří sem i kvasinky a plísně' },
+              { icon: 'mushroom', title: 'Houby', text: 'heterotrofní, stěna z chitinu, tělo většinou z vláken; patří sem i plísně a jednobuněčné kvasinky' },
               { icon: 'amoeba', title: 'Protista', text: 'pestrá směs hlavně jednobuněčných eukaryot: prvoci (trepka, měňavka) a mnohé řasy' },
             ] },
             { type: 'p', text: 'Pozor, houby nejsou rostliny, i když rostou v lese ze země a nehýbou se. Nemají chloroplasty a potravu si nevyrobí. Příbuzensky mají dokonce blíž k živočichům než k rostlinám.' },
@@ -900,7 +900,7 @@ const level: LevelContent = {
             { type: 'iconlist', items: [
               { icon: 'mushroom', title: 'Houby', text: 'dřív se řadily k rostlinám; dnes mají vlastní říši a víme, že mají blíž k živočichům' },
               { icon: 'bacteria', title: 'Sinice', text: 'dřív „modrozelené řasy“; nemají jádro, a proto patří mezi bakterie' },
-              { icon: 'fish', title: 'Velryba', text: 'tvarem připomíná rybu, ale dýchá plícemi a kojí mláďata – je to savec' },
+              { icon: 'fish', title: 'Velryba', text: 'tvarem připomíná rybu, ale dýchá plícemi a kojí mláďata, a tak ji už Linné zařadil mezi savce; DNA navíc ukázala, že jejím nejbližším žijícím příbuzným je hroch' },
             ] },
             { type: 'p', text: 'Systém organismů proto není hotová tabulka k naučení nazpaměť. Je to nejlepší současný odhad příbuznosti a s novými objevy se upravuje. To není chyba vědy, ale její síla.' },
             { type: 'p', text: 'Tím končí první úroveň: víš, co je život, jak vypadá buňka a jak se organismy třídí. V příští úrovni se podíváme na neviditelnou většinu života a začneme zvláštním případem v lekci „Viry: na hranici života“.' },
@@ -910,7 +910,7 @@ const level: LevelContent = {
       ],
       summary: [
         'Druh tvoří jedinci, kteří spolu mohou mít plodné potomky.',
-        'Každý druh má dvouslovné vědecké jméno podle Linného: rod s velkým písmenem a druh s malým, například *Canis lupus*.',
+        'Každý druh má dvouslovné vědecké jméno podle Linného: jméno rodu s velkým písmenem a druhový přívlastek s malým, například *Canis lupus*.',
         'Taxonomické kategorie od největší: doména, říše, kmen, třída, řád, čeleď, rod, druh.',
         'Život dělíme na tři domény: bakterie, archea a eukaryota; eukaryota na rostliny, živočichy, houby a protista.',
         'Dichotomický klíč vede přes dvojice protichůdných tvrzení až ke jménu organismu.',
@@ -918,7 +918,7 @@ const level: LevelContent = {
       ],
       quiz: [
         { kind: 'tf', q: 'Psi všech plemen patří k jednomu druhu.', answer: true, explain: 'Jezevčík i doga mohou mít spolu plodné potomky, a proto jsou oba pes domácí.' },
-        { kind: 'choice', q: 'Které vědecké jméno je zapsané správně?', options: ['*Quercus robur*', '*quercus Robur*', '*Quercus Robur*', '*robur Quercus*'], answer: 0, explain: 'Rod je první a s velkým písmenem, druhové jméno druhé a s malým: *Quercus robur*.' },
+        { kind: 'choice', q: 'Které vědecké jméno je zapsané správně?', options: ['*Quercus robur*', '*quercus Robur*', '*Quercus Robur*', '*robur Quercus*'], answer: 0, explain: 'Jméno rodu je první a s velkým písmenem, druhový přívlastek druhý a s malým: *Quercus robur*.' },
         { kind: 'text', q: 'Jak se jmenuje švédský přírodovědec, který zavedl dvouslovná vědecká jména?', accept: ['Linné', 'Carl Linné', 'Karel Linné', 'Linnaeus', 'Carl Linnaeus', 'Carl von Linné'], explain: 'Carl Linné v 18. století zavedl dvouslovná jména a systém kategorií.' },
         { kind: 'match', q: 'Přiřaď organismus k doméně nebo říši.', pairs: [
           ['sinice', 'bakterie'],
@@ -944,7 +944,7 @@ const level: LevelContent = {
       ['membrána', 'hranice s kontrolou'],
       ['buněčná stěna', 'hradby'],
     ], explain: 'Jádro řídí podle plánů v DNA, mitochondrie dodávají energii, membrána hlídá hranici a stěna drží tvar rostlinné buňky.' },
-    { kind: 'multi', q: 'Co najdeš v buňce listu, ale ne v buňce lidského svalu?', options: ['chloroplasty', 'buněčnou stěnu', 'velkou vakuolu', 'jádro', 'mitochondrie'], answers: [0, 1, 2], explain: 'Chloroplasty, stěna a velká vakuola jsou typické pro rostlinnou buňku. Jádro a mitochondrie má i svalová buňka.' },
+    { kind: 'multi', q: 'Co najdeš v buňce uvnitř listu, ale ne v buňce lidského svalu?', options: ['chloroplasty', 'buněčnou stěnu', 'velkou vakuolu', 'jádro', 'mitochondrie'], answers: [0, 1, 2], explain: 'Chloroplasty, stěna a velká vakuola jsou typické pro rostlinnou buňku. Jádro a mitochondrie má i svalová buňka.' },
     { kind: 'tf', q: 'Bakterie má prokaryotní buňku, protože nemá jádro.', answer: true, explain: 'Prokaryotní buňka nemá jádro, její DNA leží volně v cytoplazmě. Taková je buňka bakterií a sinic.' },
     { kind: 'order', q: 'Seřaď od nejmenšího celku po největší.', items: ['mitochondrie', 'buňka', 'tkáň', 'orgán', 'orgánová soustava', 'organismus'], explain: 'Mitochondrie je část buňky; buňky tvoří tkáně, tkáně orgány, orgány soustavy a ty celý organismus.' },
     { kind: 'number', q: 'Krychle má hranu 4 cm. Kolik cm^{2} povrchu připadá na 1 cm^{3} jejího objemu? (S = 6 · a · a, V = a · a · a)', answer: 1.5, tolerance: 0.01, explain: 'S = 6 · 4 · 4 = 96 cm^{2}, V = 4 · 4 · 4 = 64 cm^{3}, poměr 96 : 64 = 1,5 : 1. Čím větší krychle, tím menší poměr.' },

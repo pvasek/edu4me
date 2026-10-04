@@ -7,7 +7,7 @@ import { fixedShuffle, genotypeCounts, hardyWeinberg, isTaskQ, oneIn } from './h
 
 type G = 'AA' | 'Aa' | 'aa'
 const GENOTYPES: { g: G; formula: string; tone: string; says: string }[] = [
-  { g: 'AA', formula: 'p²', tone: 'c', says: 'zdraví (AA)' },
+  { g: 'AA', formula: 'p²', tone: 'c', says: 'zdraví homozygoti (AA)' },
   { g: 'Aa', formula: '2pq', tone: 'b', says: 'přenašeči (Aa)' },
   { g: 'aa', formula: 'q²', tone: 'd', says: 'nemocní (aa)' },
 ]

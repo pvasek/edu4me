@@ -88,7 +88,7 @@ function Alveolus() {
         <Eq x={150} y={176} t="CO_{2}" anchor="middle" className="bz2-gas bz2-blue-t" />
       </Fade>
       <text x={150} y={110} textAnchor="middle" className="bz2-lbl bz2-sm">vzduch</text>
-      <Lbl x={294} y={288} tx={150} ty={250} anchor="end" lx={240} ly={278} className="bz2-sm bz2-blue-t">krev bez O₂</Lbl>
+      <Lbl x={294} y={288} tx={150} ty={250} anchor="end" lx={240} ly={278} className="bz2-sm bz2-blue-t">odkysličená krev</Lbl>
       <Lbl x={294} y={24} tx={150} ty={22} anchor="end" className="bz2-sm bz2-red-t bz2-b">okysličená krev</Lbl>
       <Lbl x={6} y={300} tx={200} ty={216} lx={70} ly={290} className="bz2-sm" sec>vlásečnice</Lbl>
       <Lbl x={6} y={24} tx={30} ty={50} className="bz2-sm" sec>průdušinka</Lbl>

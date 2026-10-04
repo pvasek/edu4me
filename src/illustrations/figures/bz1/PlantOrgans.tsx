@@ -139,7 +139,7 @@ export default function PlantOrgans() {
           dřevní část (xylém)
         </text>
         <text x={240} y={72} className="bz1-lbl bz1-sm">
-          voda a minerály nahoru
+          voda a minerální látky
         </text>
         <path d="M226 104 V128" className="bz1-arr bz1-arr-acc" />
         <path d="M222 124 L226 132 L230 124 Z" className="bz1-mk bz1-mk-acc" />

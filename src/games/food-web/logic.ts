@@ -423,7 +423,7 @@ function efficiencyTask(level: number, ecos: string[], rng: Rng, used: Set<strin
       value: eff,
       unit: '%',
       tol: 0.5,
-      why: `Účinnost = ${cz(C)} : ${cz(P)} · 100 % = ${cz(eff)} %. Zbytek energie spotřebují producenti na dýchání, část se nesežere a skončí u rozkladačů.`,
+      why: `Účinnost = ${cz(C)} : ${cz(P)} · 100 % = ${cz(eff)} %. Zbytek se ke konzumentům nedostane: část rostlin nikdo nesežere (skončí u rozkladačů) a část sežrané potravy odejde nestrávená.`,
       focus: [prod, ...herb],
     }
   }
@@ -474,7 +474,7 @@ function biomassTask(level: number, ecos: string[], rng: Rng, used: Set<string>)
       key,
       level,
       eco: e,
-      text: `Řetězec ${chainText(c)}, účinnost přenosu 10 %. Kolik kg producentů (${nm(c[0])}) je potřeba, aby **${nm(top)}** přibral 1 kg?`,
+      text: `Řetězec ${chainText(c)}, účinnost přenosu 10 %. Kolik kg producentů (${nm(c[0])}) je potřeba na 1 kg přírůstku posledního článku (**${nm(top)}**)?`,
       value: v,
       unit: 'kg',
       tol: v * 0.01,

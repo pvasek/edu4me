@@ -6,7 +6,7 @@
 
 export const LEVELS = [
   { name: 'rostliny', role: 'producenti' },
-  { name: 'kobylka', role: 'konzument 1. řádu' },
+  { name: 'saranče', role: 'konzument 1. řádu' },
   { name: 'rejsek', role: 'konzument 2. řádu' },
   { name: 'sova', role: 'konzument 3. řádu' },
 ] as const

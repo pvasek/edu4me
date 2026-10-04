@@ -1,7 +1,7 @@
 import { DrawArrow, Fade, Frame, Lbl, Plates, pat, useFig } from "./kit";
 
 const LABEL =
-  "Močová soustava zepředu: dvě ledviny tvaru fazole po stranách páteře, do každé přivádí krev ledvinová tepna z srdečnice a odvádí ji ledvinová žíla do duté žíly. Z ledvin vedou močovody do močového měchýře a z něj ven močová trubice. Ledvina v řezu: na povrchu kůra, uvnitř dřeň s ledvinovými pyramidami a ledvinová pánvička, která sbírá moč do močovodu. Nefron: v ledvinovém tělísku se z klubíčka vlásečnic profiltruje primární moč, asi 180 litrů za den; kanálek vrátí do krve skoro všechnu vodu, glukózu a potřebné soli a zbude asi 1,5 litru definitivní moči.";
+  "Močová soustava zepředu: dvě ledviny tvaru fazole po stranách páteře, do každé přivádí krev ledvinová tepna ze srdečnice a odvádí ji ledvinová žíla do duté žíly. Z ledvin vedou močovody do močového měchýře a z něj ven močová trubice. Ledvina v řezu: na povrchu kůra, uvnitř dřeň s ledvinovými pyramidami a ledvinová pánvička, která sbírá moč do močovodu. Nefron: v ledvinovém tělísku se z klubíčka vlásečnic profiltruje primární moč, asi 180 litrů za den; kanálek vrátí do krve skoro všechnu vodu, glukózu a potřebné soli a zbude asi 1,5 litru definitivní moči.";
 
 function Bean({ x, y, flip = false }: { x: number; y: number; flip?: boolean }) {
   const { id } = useFig();

@@ -38,7 +38,7 @@ const level: LevelContent = {
             { type: 'p', text: 'V písku na mělkém mořském dně žije asi pět centimetrů dlouhý průhledný živočich: **kopinatec plžovitý** (*Branchiostoma lanceolatum*). Má všechny čtyři znaky strunatců, ale chybí mu lebka i páteř. Proto patří mezi **bezlebečné**.' },
             { type: 'p', text: 'Kopinatec je dobrý model toho, jak mohl vypadat předek obratlovců. Porovnej ho s rybou bod po bodu:' },
             { type: 'compare', columns: [
-              { title: 'Kopinatec (bezlebeční)', icon: 'worm', tone: 'a', points: ['struna hřbetní **celý život**', 'nemá lebku ani mozek, jen rozšířený konec nervové trubice', 'nemá srdce, krev pohánějí stažitelné cévy', 'nemá čelisti: filtruje drobné částice ze vody, která protéká žaberními štěrbinami'] },
+              { title: 'Kopinatec (bezlebeční)', icon: 'worm', tone: 'a', points: ['struna hřbetní **celý život**', 'nemá lebku ani mozek, jen rozšířený konec nervové trubice', 'nemá srdce, krev pohánějí stažitelné cévy', 'nemá čelisti: filtruje drobné částice z vody, která protéká žaberními štěrbinami'] },
               { title: 'Ryba (obratlovec)', icon: 'fish', tone: 'b', points: ['strunu v zárodku nahradí **páteř** z obratlů', 'mozek chrání **lebka**', 'krev pohání **srdce**', 'má **čelisti** a aktivně loví nebo spásá potravu'] },
             ], caption: 'Kopinatec ukazuje stavbu strunatce „bez nadstavby“. Obratlovci k ní přidali lebku, páteř, srdce a čelisti.' },
             { type: 'p', text: 'Kmen strunatců se tak dělí na tři skupiny. Dvě z nich žijí jen v moři a většina lidí je nikdy neviděla:' },
@@ -90,8 +90,8 @@ const level: LevelContent = {
               { icon: 'vector', title: 'Ploutve', text: 'ocasní pohání, hřbetní a řitní drží směr, párové prsní a břišní slouží jako kormidla a brzdy' },
               { icon: 'drop', title: 'Šupiny a sliz', text: 'chrání kůži a snižují tření ve vodě' },
             ] },
-            { type: 'callout', variant: 'warning', text: 'Plynový měchýř neslouží k dýchání. Ryba v něm nemá „zásobu vzduchu“: je to plovák, kterým nastavuje vztlak, podobně jako ponorka zatápí a vyfukuje nádrže.' },
-            { type: 'p', text: 'Ryby se většinou rozmnožují ve vodě: samice vypustí **jikry**, samec je polije **mlíčím** se spermiemi a oplození proběhne venku. Ne všechny ryby jsou ale postavené stejně, a právě to nás teď zajímá.' },
+            { type: 'callout', variant: 'warning', text: 'U našich ryb plynový měchýř neslouží k dýchání. Ryba v něm nemá „zásobu vzduchu“: je to plovák, kterým nastavuje vztlak, podobně jako ponorka zatápí a vyfukuje nádrže.' },
+            { type: 'p', text: 'Většina ryb má vnější oplození: samice vypustí do vody **jikry**, samec je polije **mlíčím** se spermiemi a oplození proběhne mimo tělo samice. Ne všechny ryby jsou ale postavené stejně, a právě to nás teď zajímá.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď orgán ryby k jeho úkolu.', pairs: [
               ['žábry', 'výměna kyslíku a $CO2$ s vodou'],
               ['plynový měchýř', 'vznášení v určité hloubce'],
@@ -107,11 +107,11 @@ const level: LevelContent = {
             { type: 'p', text: 'Žralok i kapr dýchají žábrami a mají ploutve. Přesto je biologové řadí do dvou různých tříd, protože se liší kostrou i tím, jak se rozmnožují. Plynový měchýř z minulého oddílu je dobrým vodítkem.' },
             { type: 'p', text: 'Porovnej obě skupiny. Všimni si hlavně kostry, krytí žaber a plynového měchýře:' },
             { type: 'compare', columns: [
-              { title: 'Paryby', icon: 'ocean', tone: 'a', points: ['kostra z **chrupavky**', '5–7 žaberních štěrbin bez skřelí', 'nemají plynový měchýř: musí plavat, jinak klesají; nadnáší je játra plná oleje', 'vnitřní oplození, mláďata nebo velká vejce', 'žralok, rejnok; jen v moři'] },
+              { title: 'Paryby', icon: 'ocean', tone: 'a', points: ['kostra z **chrupavky**', '5–7 žaberních štěrbin bez skřelí', 'nemají plynový měchýř: musí plavat, jinak klesají; nadnáší je játra plná oleje', 'vnitřní oplození, mláďata nebo velká vejce', 'žralok, rejnok; téměř všechny v moři'] },
               { title: 'Kostnaté ryby', icon: 'fish', tone: 'b', points: ['kostra z **kosti**', 'žábry kryté **skřelemi**', 'mají plynový měchýř', 'většinou vnější oplození, tisíce drobných jiker', 'kapr, štika, tuňák; ve sladké i slané vodě'] },
             ], caption: 'Paryby a kostnaté ryby: dvě třídy ryb' },
             { type: 'callout', variant: 'fact', text: 'Žraloci zabijí ročně na celém světě jen kolem deseti lidí. Lidé ročně uloví desítky milionů žraloků, hlavně kvůli ploutvím do polévky. Kdo by se tedy měl bát koho?' },
-            { type: 'p', text: 'Proč klade kapr statisíce jiker, kdežto žraločice jen pár mláďat? Kapr se o potomstvo nestará a většinu jiker sežerou jiní živočichové. Žralok vloží do každého mláděte hodně energie, takže mu stačí jich mít málo. Teď se z moře přesuneme k našim vodám.' },
+            { type: 'p', text: 'Proč klade kapr statisíce jiker, kdežto samice žraloka jen pár mláďat? Kapr se o potomstvo nestará a většinu jiker sežerou jiní živočichové. Žralok vloží do každého mláděte hodně energie, takže mu stačí jich mít málo. Teď se z moře přesuneme k našim vodám.' },
             { type: 'check', question: { kind: 'choice', q: 'Ryba má kostru z chrupavky, pět žaberních štěrbin bez skřelí a nemá plynový měchýř. Co to je?', options: ['paryba, například žralok', 'kostnatá ryba, například kapr', 'kopinatec', 'obojživelník'], answer: 0, explain: 'Chrupavčitá kostra, štěrbiny bez skřelí a chybějící plynový měchýř jsou znaky paryb.' } },
           ],
         },
@@ -132,14 +132,14 @@ const level: LevelContent = {
             { type: 'p', text: 'Losos a úhoř ukazují největší problém našich ryb. Jezy a přehrady jim přehradí cestu, a proto se dnes u jezů stavějí **rybí přechody**. Škodí také znečištění a vysychání toků.' },
             { type: 'callout', variant: 'mascot', text: 'Až budeš o Vánocích u kádě s kaprem, zkus mu najít postranní čáru. Je to ta tečkovaná linka na boku. A klidně mu pogratuluj, že má plynový měchýř.' },
             { type: 'p', text: 'Ryby vyřešily život ve vodě skvěle. Jenže na souši žábry nefungují. V příští lekci „Obojživelníci“ uvidíš, co se muselo změnit, když se obratlovci vydali z vody na břeh.' },
-            { type: 'check', question: { kind: 'tf', q: 'Pstruh obecný potřebuje teplou vodu chudou na kyslík, proto žije v rybnících.', answer: false, explain: 'Pstruh žije ve studených bystřinách. Studená tekoucí voda obsahuje víc kyslíku, kdežto v teplém rybníce ho je málo, a to snáší spíš kapr.' } },
+            { type: 'check', question: { kind: 'tf', q: 'Pstruh obecný potřebuje teplou vodu chudou na kyslík, proto žije v rybnících.', answer: false, explain: 'Pstruh žije ve studených bystřinách. Studená tekoucí voda obsahuje víc kyslíku, kdežto v teplém rybníce je ho málo, a to snáší spíš kapr.' } },
           ],
         },
       ],
       summary: [
         'Strunatci mají strunu hřbetní, nervovou trubici na hřbetě, žaberní štěrbiny v hltanu a ocas, aspoň v zárodku.',
         'Kopinatec patří mezi bezlebečné: strunu má celý život, ale chybí mu lebka a páteř.',
-        'Obratlovci mají lebku, páteř z obratlů, vnitřní kostru, čelisti a srdce.',
+        'Obratlovci mají lebku, páteř z obratlů, vnitřní kostru a srdce; ryby a všechny další skupiny mají i čelisti.',
         'Ryby dýchají žábrami, ve kterých krev teče proti proudu vody, a ve vodě je kyslíku asi třicetkrát méně než ve vzduchu.',
         'Plynový měchýř slouží ke vznášení, postranní čára k vnímání proudění vody.',
         'Paryby mají chrupavčitou kostru a žaberní štěrbiny bez skřelí, kostnaté ryby kostěnou kostru, skřele a plynový měchýř.',
@@ -154,8 +154,8 @@ const level: LevelContent = {
           ['pstruh obecný', 'studená horská bystřina'],
           ['kapr obecný', 'teplý rybník'],
           ['úhoř říční', 'tře se v Sargasovém moři'],
-          ['žralok', 'jen v moři'],
-        ], explain: 'Pstruh potřebuje chladnou vodu bohatou na kyslík, kapr snáší teplý rybník, úhoř táhne do moře a paryby žijí jen v moři.' },
+          ['žralok', 'moře'],
+        ], explain: 'Pstruh potřebuje chladnou vodu bohatou na kyslík, kapr snáší teplý rybník, úhoř táhne do moře a paryby žijí téměř jen v moři.' },
         { kind: 'tf', q: 'Žraloci nemají plynový měchýř, a když přestanou plavat, klesají ke dnu.', answer: true, explain: 'Paryby plynový měchýř nemají. Nadnáší je játra plná oleje a pohyb, ale bez plavání pomalu klesají.' },
         { kind: 'choice', q: 'Proč krev v žábrách teče proti proudu vody?', options: ['krev tak potkává stále čerstvější vodu a odebere z ní většinu kyslíku', 'aby voda tekla rychleji', 'aby se žábry ochladily', 'aby ryba mohla plavat pozpátku'], answer: 0, explain: 'Při protiproudu je voda vedle krve vždy o něco bohatší na kyslík, takže kyslík přechází do krve po celé délce žaberního lístku.' },
         { kind: 'order', q: 'Seřaď cestu vody rybou od vstupu po výstup.', items: ['ústa', 'hltan', 'žaberní lístky', 'otvor pod skřelí'], explain: 'Ryba nabírá vodu ústy, voda proteče hltanem přes žaberní lístky a odtéká ven pod skřelí.' },
@@ -178,13 +178,13 @@ const level: LevelContent = {
           icon: 'mountain',
           blocks: [
             { type: 'p', text: 'V minulé lekci jsme viděli, jak dokonale je ryba přizpůsobená vodě. Asi před 370 miliony let ale některé **lalokoploutvé ryby** začaly vylézat do mělčin a na břeh. Proč by to dělaly, a co je na souši čekalo?' },
-            { type: 'p', text: 'Na souši byla spousta potravy a žádní dravci, jenže pravidla života jsou tam jiná. Srovnej, co tělo potřebuje ve vodě a co na souši:' },
+            { type: 'p', text: 'Na souši byla spousta potravy (hmyz, pavoukovci) a žádní obratlovčí dravci, jenže pravidla života jsou tam jiná. Srovnej, co tělo potřebuje ve vodě a co na souši:' },
             { type: 'compare', columns: [
               { title: 'Ve vodě', icon: 'ocean', tone: 'a', points: ['voda tělo nadnáší', 'kyslík se bere žábrami', 'tělo nemůže vyschnout', 'zvuk a pohyb vnímá postranní čára'] },
-              { title: 'Na souši', icon: 'mountain', tone: 'b', points: ['tělo musí nést **kostra a končetiny**', 'žábry na vzduchu slepí a vyschnou: potřeba **plic**', 'kůže a vajíčka **vysychají**', 'zvuk se šíří vzduchem: potřeba **ušního bubínku**'] },
+              { title: 'Na souši', icon: 'mountain', tone: 'b', points: ['tělo musí nést **kostra a končetiny**', 'žábry se na vzduchu slepí a vyschnou: potřeba **plic**', 'kůže a vajíčka **vysychají**', 'zvuk se šíří vzduchem: potřeba **ušního bubínku**'] },
             ], caption: 'Co se mění, když živočich přejde z vody na souš' },
             { type: 'p', text: 'Obojživelníci vyřešili jen část těchto problémů. Končetiny a plíce mají, ale kůže a vajíčka jim stále vysychají. Jak se s tím vyrovnávají, ukazuje už jejich jméno: žijí „obojím životem“, ve vodě i na souši.' },
-            { type: 'check', question: { kind: 'choice', q: 'Který problém museli obratlovci na souši vyřešit, protože ve vodě neexistoval?', options: ['nést tělo bez nadnášení vodou', 'najít potravu', 'rozmnožovat se', 'vnímat okolí'], answer: 0, explain: 'Voda tělo nadnáší, vzduch ne. Na souši musí váhu těla nést pevná kostra a končetiny.' } },
+            { type: 'check', question: { kind: 'choice', q: 'Který problém museli obratlovci na souši vyřešit, protože ve vodě neexistoval?', options: ['nést tělo bez nadnášení vodou', 'najít potravu', 'rozmnožovat se', 'vnímat okolí'], answer: 0, explain: 'Voda tělo nadnáší, vzduch ne. Na souši musí tělo nést pevná kostra a končetiny.' } },
           ],
         },
         {
@@ -214,7 +214,7 @@ const level: LevelContent = {
               { icon: 'cross', title: 'Bez šupin', text: 'šupiny by přes kůži dýchat nedovolily' },
               { icon: 'warning', title: 'S jedovými žlázami', text: 'ropucha i mlok vylučují látky, které dráždí sliznice dravců' },
             ] },
-            { type: 'callout', variant: 'fact', text: 'Žáby přezimují zahrabané v bahně na dně tůní. Celou zimu nedýchají plícemi vůbec: kyslík jim stačí ten, který projde kůží ze studené vody.' },
+            { type: 'callout', variant: 'fact', text: 'Skokani často přezimují zahrabaní v bahně na dně tůní. Celou zimu nedýchají plícemi vůbec: kyslík jim stačí ten, který projde kůží ze studené vody.' },
             { type: 'p', text: 'Tenká vlhká kůže má ale dvě nevýhody. Na suchém vzduchu rychle vysychá, a proto obojživelníci žijí ve vlhku. A propustí do těla i jedy z vody, takže obojživelníci velmi citlivě reagují na znečištění. Jejich srdce má dvě síně a jednu komoru, takže se v něm krev bohatá na kyslík částečně mísí s odkysličenou.' },
             { type: 'p', text: 'Teplotu těla obojživelníci neudrží: mění se s okolím (podrobněji v lekci „Plazi“). Teď už víme, jak obojživelník funguje. Kdo jsou ale naši obojživelníci a jak je poznáme?' },
             { type: 'check', question: { kind: 'tf', q: 'Obojživelníci jsou citliví na znečištění vody, protože přes tenkou kůži do těla pronikají i škodlivé látky.', answer: true, explain: 'Kůže, která propouští kyslík, propouští i pesticidy a další jedy. Proto jsou obojživelníci dobrým ukazatelem čistoty prostředí.' } },
@@ -232,11 +232,11 @@ const level: LevelContent = {
             ] },
             { type: 'p', text: 'A teď konkrétní druhy, které můžeš potkat při procházce. U každého si všimni, čím je zvláštní:' },
             { type: 'iconlist', items: [
-              { icon: 'frog', title: 'Skokan hnědý', text: '*Rana temporaria*; nejhojnější žába, na jaře se tře jako jedna z prvních' },
+              { icon: 'frog', title: 'Skokan hnědý', text: '*Rana temporaria*; nejhojnější žába, na jaře klade vajíčka jako jedna z prvních' },
               { icon: 'leaf', title: 'Rosnička zelená', text: '*Hyla arborea*; malá zelená žabka s přísavnými terčíky na prstech, šplhá po keřích' },
               { icon: 'compass', title: 'Ropucha obecná', text: '*Bufo bufo*; bradavičnatá kůže s jedovými žlázami; na jaře putuje do rybníka, kde se narodila' },
               { icon: 'warning', title: 'Kuňka obecná', text: '*Bombina bombina*; při ohrožení ukáže oranžovočerné břicho: „jsem jedovatá“' },
-              { icon: 'lizard', title: 'Mlok skvrnitý', text: '*Salamandra salamandra*; černožlutý, v lesních potocích; samice klade rovnou vyvinuté larvy' },
+              { icon: 'lizard', title: 'Mlok skvrnitý', text: '*Salamandra salamandra*; černožlutý, ve vlhkých lesích u potoků; samice klade do potoka rovnou vyvinuté larvy' },
               { icon: 'pond', title: 'Čolek obecný', text: '*Lissotriton vulgaris*; na jaře ve vodě, samec má tehdy na hřbetě vlnitý hřeben' },
             ] },
             { type: 'p', text: 'Jedové žlázy a varovné barvy chrání obojživelníky před dravci. Proti největšímu nepříteli, který přichází v posledních desetiletích, jim ale nepomohou.' },
@@ -313,13 +313,13 @@ const level: LevelContent = {
             { type: 'diagram', id: 'amniotic-egg', caption: 'Vejce plazů a ptáků v řezu: skořápka, amnion s plodovou vodou, žloutek, alantois a zárodek.' },
             { type: 'p', text: 'Zárodek tak má „vlastní rybníček“ s potravou i odpadní nádobou. Jednotlivé části si zapamatuj podle toho, co dělají:' },
             { type: 'keyterms', items: [
-              { term: '**Skořápka**', def: 'u plazů kožovitá, u ptáků vápenatá; chrání před vyschnutím, ale propouští kyslík a $CO2$' },
+              { term: '**Skořápka**', def: 'u ještěrů a hadů většinou kožovitá, u ptáků, krokodýlů a mnoha želv vápenatá; chrání před vyschnutím, ale propouští kyslík a $CO2$' },
               { term: '**Amnion**', def: 'blána s plodovou vodou kolem zárodku; vodní prostředí uvnitř vejce' },
               { term: '**Žloutek**', def: 'zásoba potravy na celý vývoj' },
               { term: '**Alantois**', def: 'vak na odpadní látky, přes který zárodek také dýchá' },
             ] },
             { type: 'p', text: 'Vejce se skořápkou má jeden důsledek: spermie by se přes skořápku nedostaly. ==Plazi proto mají **vnitřní oplození**: vajíčko se oplodní v těle samice a teprve pak se obalí skořápkou.== Totéž platí pro ptáky a savce, kteří od plazů amnion zdědili.' },
-            { type: 'callout', variant: 'fact', text: 'I ty ses vyvíjel/a v amnionu. Plodová voda, ve které roste dítě v děloze, je přesně ta stejná blána, kterou „vynalezli“ plazi.' },
+            { type: 'callout', variant: 'fact', text: 'I ty ses vyvíjel/a v amnionu. Plodový vak s plodovou vodou, ve kterém roste dítě v děloze, je přesně ta blána, kterou „vynalezli“ plazi.' },
             { type: 'p', text: 'Vejce už vodu nepotřebuje. Aby se plaz mohl od vody vzdálit, musel ale ještě přestat vysychat sám. To je téma dalšího oddílu.' },
             { type: 'check', question: { kind: 'choice', q: 'Co v amniotickém vejci nahrazuje zárodku vodní prostředí?', options: ['amnion s plodovou vodou', 'žloutek', 'vápenatá skořápka', 'alantois'], answer: 0, explain: 'Amnion je blána naplněná plodovou vodou, ve které zárodek plave jako v malém rybníčku.' } },
           ],
@@ -347,7 +347,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Rozdíl je nejlépe vidět, když teplotu okolí měníš sám/sama. Posouvej teplotu vzduchu a sleduj ještěrku a myš: graf ukazuje teplotu jejich těla, sloupce, kolik energie spálí:' },
             { type: 'experiment', id: 'body-temperature', caption: 'Ještěrka sedí ve stínu; na slunci se ohřeje víc než vzduch kolem. Spotřeba energie je v násobcích toho, co myš spálí v teple.' },
             { type: 'p', text: 'Všiml/a sis? Čára ještěrky stoupá šikmo s okolím, čára myši zůstává kolem 37 °C. Myš za to v chladu platí: spálí několikrát víc potravy. Ještěrka v chladu energii šetří – zato se skoro nehýbe.' },
-            { type: 'p', text: 'Studená ještěrka je pomalá, protože chemické děje v jejím těle zpomalí. Proto se ráno vyhřívá na slunci a v poledním horku se schová do stínu: teplotu řídí **chováním**. V zimě upadá do **zimní strnulosti** v úkrytu pod zemí.' },
+            { type: 'p', text: 'Studená ještěrka je pomalá, protože chemické děje v jejím těle se zpomalí. Proto se ráno vyhřívá na slunci a v poledním horku se schová do stínu: teplotu řídí **chováním**. V zimě upadá do **zimní strnulosti** v úkrytu pod zemí.' },
             { type: 'p', text: 'Má to i velkou výhodu. Kdo nevyrábí teplo, nemusí ani tolik jíst:' },
             { type: 'compare', columns: [
               { title: 'Ektotermní (plazi, ryby, obojživelníci)', icon: 'sun', tone: 'a', points: ['teplo berou z okolí', 'jí až desetkrát méně než stejně velký savec', 'zima a noc je zpomalí', 'had vydrží týdny bez jídla'] },
@@ -470,9 +470,9 @@ const level: LevelContent = {
             { type: 'p', text: 'Lekce „Plazi“ skončila u toho, že ptáci jsou potomci dinosaurů. To, co je od plazů na první pohled odlišuje, je **peří**. Pero je z rohoviny stejně jako šupina, ale je mnohem složitější. Jak je postavené?' },
             { type: 'p', text: 'Vezmi do ruky pero a podívej se na něj zblízka (třeba lupou). Tyto pojmy ti pomohou popsat, co vidíš:' },
             { type: 'keyterms', items: [
-              { term: '**Osten (stvol)**', def: 'pevná střední osa pera, dole dutý brk' },
-              { term: '**Prapor**', def: 'plochá část pera po obou stranách ostnu' },
-              { term: '**Větve a paprsky**', def: 'z ostnu vybíhají větve, z větví drobné paprsky' },
+              { term: '**Osten**', def: 'pevná střední osa pera: dole dutý **brk**, nahoře **stvol**, který nese prapor' },
+              { term: '**Prapor**', def: 'plochá část pera po obou stranách stvolu' },
+              { term: '**Větve a paprsky**', def: 'ze stvolu vybíhají větve, z větví drobné paprsky' },
               { term: '**Háčky**', def: 'paprsky se navzájem zaklesnou háčky jako zip; rozčesané pero pták zobákem „zapne“' },
             ] },
             { type: 'p', text: 'Peří přitom neslouží jen k letu. Pštros nelétá, a peří přesto potřebuje. Projdi si všechny úkoly peří:' },
@@ -490,7 +490,7 @@ const level: LevelContent = {
           title: 'Tělo stavěné pro let',
           icon: 'bird',
           blocks: [
-            { type: 'p', text: 'Let je energeticky nejnáročnější způsob pohybu a každý gram navíc stojí sílu. Ptačí tělo proto musí být co nejlehčí, a přitom mít silné svaly. Prohlédni si kostru holuba a hledej, kde pták ušetřil váhu:' },
+            { type: 'p', text: 'Let je energeticky nejnáročnější způsob pohybu a každý gram navíc stojí sílu. Ptačí tělo proto musí být co nejlehčí, a přitom mít silné svaly. Prohlédni si kostru holuba a hledej, kde pták ušetřil hmotnost:' },
             { type: 'diagram', id: 'bird-flight', caption: 'Kostra ptáka: duté kosti s výztuhami, hrudní kost s hřebenem, vzdušné vaky a stavba pera.' },
             { type: 'p', text: 'Každé z těchto přizpůsobení řeší buď hmotnost, nebo dostatek energie pro svaly:' },
             { type: 'iconlist', items: [
@@ -502,15 +502,15 @@ const level: LevelContent = {
             ] },
             { type: 'callout', variant: 'warning', text: 'Pozor: ne všichni ptáci mají duté kosti a ne všichni létají. Tučňák „létá“ pod vodou a těžké kosti mu pomáhají se potopit. Pštros a kiwi ztratili schopnost letu úplně.' },
             { type: 'p', text: 'Ptáci jsou tedy endotermní jako savci: díky vzdušným vakům a srdci se dvěma komorami spálí dost potravy, aby udrželi vysokou teplotu. Teplo potřebují i jejich vejce, a tím se dostáváme k hnízdění.' },
-            { type: 'check', question: { kind: 'multi', q: 'Která přizpůsobení snižují hmotnost ptáka?', options: ['duté kosti', 'zobák bez zubů', 'srostlé a tenké kosti', 'hřeben hrudní kosti', 'srdce se dvěma komorami'], answers: [0, 1, 2], explain: 'Duté a tenké kosti a zobák bez zubů šetří váhu. Hřeben nese svaly a srdce zajišťuje kyslík, hmotnost nesnižují.' } },
+            { type: 'check', question: { kind: 'multi', q: 'Která přizpůsobení snižují hmotnost ptáka?', options: ['duté kosti', 'zobák bez zubů', 'srostlé a tenké kosti', 'hřeben hrudní kosti', 'srdce se dvěma komorami'], answers: [0, 1, 2], explain: 'Duté a tenké kosti a zobák bez zubů snižují hmotnost. Hřeben nese svaly a srdce zajišťuje kyslík, hmotnost nesnižují.' } },
           ],
         },
         {
           title: 'Vejce a péče o mláďata',
           icon: 'egg',
           blocks: [
-            { type: 'p', text: 'Ptáci zdědili po plazech vejce s blanami, které známe z lekce „Plazi“. Jejich vejce má ale tvrdou **vápenatou skořápku** a musí se **zahřívat**: zárodek je endoterm a potřebuje asi 37 °C. Proto rodiče na vejcích sedí.' },
-            { type: 'p', text: 'Uvnitř je to stejné vejce, jaké jsme viděli u plazů. U slepičího vejce z ledničky v něm najdeš žloutek se zárodečným terčíkem, bílek a vzduchovou bublinu na tupém konci:' },
+            { type: 'p', text: 'Ptáci zdědili po plazech vejce s blanami, které známe z lekce „Plazi“. Jejich vejce má ale tvrdou **vápenatou skořápku** a musí se **zahřívat**: zárodek se vyvíjí jen při teplotě kolem 37 °C a sám si teplo vyrobit neumí. Proto rodiče na vejcích sedí.' },
+            { type: 'p', text: 'Uvnitř je to stejné vejce, jaké jsme viděli u plazů. U slepičího vejce z ledničky v něm najdeš žloutek se zárodečným terčíkem, bílek a vzduchovou komůrku na tupém konci:' },
             { type: 'diagram', id: 'amniotic-egg', caption: 'Ptačí vejce v řezu: vápenatá skořápka, amnion, žloutek, alantois a zárodek.' },
             { type: 'p', text: 'Po vylíhnutí jsou mláďata dvou typů. Rozhoduje, jak dlouho se vyvíjela ve vejci:' },
             { type: 'compare', columns: [
@@ -549,7 +549,7 @@ const level: LevelContent = {
           title: 'Ptačí zpěv a ptáci kolem nás',
           icon: 'music',
           blocks: [
-            { type: 'p', text: 'Ptačí zpěv není jen hezká hudba. Zpívají hlavně samci na jaře a zpěv má dva úkoly: oznamuje sousedům „tady je moje území“ a láká samici. Zvuk vzniká v hlasovém orgánu zvaném **syrinx**, který leží tam, kde se průdušnice dělí na průdušky.' },
+            { type: 'p', text: 'Ptačí zpěv není jen hezká hudba. Zpívají hlavně samci na jaře a zpěv má dva úkoly: oznamuje sousedům „tady je moje území“ a láká samici. Zvuk vzniká v hlasovém orgánu zvaném **dolní hrtan** (syrinx), který leží tam, kde se průdušnice dělí na průdušky.' },
             { type: 'p', text: 'Zpěv je zčásti vrozený a zčásti naučený: mladý samec se ho učí od starších (víc v lekci „Chování živočichů“). Podle zpěvu i vzhledu poznáš nejčastější ptáky z okolí:' },
             { type: 'iconlist', items: [
               { icon: 'bird', title: 'Sýkora koňadra', text: '*Parus major*; žluté břicho, černá „kravata“; volá „ci-ci-be“' },
@@ -577,7 +577,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'V roce 1861 našli v německém Solnhofenu otisk zvířete starého asi 150 milionů let: **archeopteryx**. Měl peří a křídla jako pták, ale také znaky, které dnešní ptáci nemají. Porovnej ho s holubem:' },
             { type: 'compare', columns: [
-              { title: 'Archeopteryx', icon: 'fossil', tone: 'a', points: ['peří a křídla', '**zuby** v čelistech', '**drápy** na křídlech', 'dlouhý kostěný **ocas**', 'malý hřeben hrudní kosti, létal spíš krátce'] },
+              { title: 'Archeopteryx', icon: 'fossil', tone: 'a', points: ['peří a křídla', '**zuby** v čelistech', '**drápy** na křídlech', 'dlouhý kostěný **ocas**', 'hrudní kost bez výrazného hřebene, létal spíš krátce'] },
               { title: 'Holub', icon: 'bird', tone: 'b', points: ['peří a křídla', 'zobák bez zubů', 'prsty na křídle srostlé', 'krátký ocas, pera vyrůstají z kostrče', 'velký hřeben, výborný letec'] },
             ], caption: 'Archeopteryx: mozaika plazích a ptačích znaků' },
             { type: 'p', text: 'Od té doby paleontologové našli desítky opeřených dinosaurů, třeba velociraptora. ==Peří tedy vzniklo u dinosaurů dřív než let== a nejspíš sloužilo k zahřívání a předvádění. Dnes žije asi 11 000 druhů ptáků, v Česku jich hnízdí kolem dvou set.' },
@@ -597,7 +597,7 @@ const level: LevelContent = {
       ],
       quiz: [
         { kind: 'tf', q: 'Vlaštovky odlétají na zimu hlavně proto, že by u nás nenašly hmyz.', answer: true, explain: 'V zimě hmyz nelétá. Ptáci, kteří se jím živí, musí táhnout tam, kde potrava je.' },
-        { kind: 'choice', q: 'K čemu slouží hřeben (kýl) na hrudní kosti?', options: ['jsou na něm upnuté silné létací svaly', 'chrání srdce před nárazem', 'pták na něm sedí při zahřívání vajec', 'ukládá se v něm vzduch'], answer: 0, explain: 'Velké létací svaly potřebují pevný úpon. Ptáci, kteří nelétají, třeba pštros, hřeben nemají.' },
+        { kind: 'choice', q: 'K čemu slouží hřeben (kýl) na hrudní kosti?', options: ['jsou na něm upnuté silné létací svaly', 'chrání srdce před nárazem', 'pták na něm sedí při zahřívání vajec', 'ukládá se v něm vzduch'], answer: 0, explain: 'Velké létací svaly potřebují pevný úpon. Nelétaví běžci, třeba pštros, hřeben nemají.' },
         { kind: 'match', q: 'Přiřaď ptáka ke skupině podle chování v zimě.', pairs: [
           ['čáp bílý', 'tažný'],
           ['sýkora koňadra', 'stálý'],
@@ -627,7 +627,7 @@ const level: LevelContent = {
           title: 'Co dělá savce savcem',
           icon: 'mouse',
           blocks: [
-            { type: 'p', text: 'V lekci „Ptáci“ jsme viděli, že ptáci si udržují stálou teplotu. Savci to dokážou také, ale vyvinuli se z jiné větve dávných plazů, ještě před ptáky. Podle čeho je tedy poznáme? Podívej se na znaky, které mají jen savci:' },
+            { type: 'p', text: 'V lekci „Ptáci“ jsme viděli, že ptáci si udržují stálou teplotu. Savci to dokážou také, ale vyvinuli se z jiné větve dávných plazů, ještě před ptáky. Podle čeho je tedy poznáme? Podívej se na hlavní znaky savců. Kromě stálé teploty, kterou mají i ptáci, je žádná jiná dnešní skupina nemá:' },
             { type: 'iconlist', items: [
               { icon: 'milk', title: 'Mléčné žlázy', text: 'samice krmí mláďata mlékem; odtud jméno **savci**' },
               { icon: 'paw', title: 'Srst', text: 'chlupy z rohoviny izolují teplo, slouží jako hmat i maskování' },
@@ -647,7 +647,7 @@ const level: LevelContent = {
           icon: 'heat',
           blocks: [
             { type: 'p', text: 'V lekci „Plazi“ jsme viděli, že ještěrka bere teplo ze slunce. Savec je **endotermní**: teplo vyrábí sám spalováním potravy. Je aktivní i v noci a v zimě, ale musí hodně jíst. Kolik?' },
-            { type: 'p', text: 'Malé zvíře má velký povrch vzhledem k objemu (známe to z lekce „Od buňky k organismu“), a tak rychle ztrácí teplo. Spočítejme, co to znamená pro nejmenšího našeho savce:' },
+            { type: 'p', text: 'Malé zvíře má velký povrch vzhledem k objemu (známe to z lekce „Od buňky k organismu“), a tak rychle ztrácí teplo. Spočítejme, co to znamená pro jednoho z našich nejmenších savců:' },
             { type: 'example', title: 'Kdybys jedl/a jako rejsek', problem: 'Rejsek obecný váží 8 g a za den sní asi 7 g hmyzu. Kolik procent své hmotnosti sní? Kolik kilogramů jídla by denně potřeboval člověk o hmotnosti 60 kg, kdyby jedl stejně?', steps: [
               'Podíl jídla a hmotnosti: 7 g : 8 g = 0,875, tedy 87,5 % hmotnosti těla.',
               'Pro člověka: 60 kg · 0,875 = 52,5 kg jídla denně.',
@@ -704,7 +704,7 @@ const level: LevelContent = {
               { title: 'Vačnatci', icon: 'paw', tone: 'b', points: ['mládě se narodí velmi brzy, drobné a nevyvinuté', 'doroste ve **vaku** přisáté k bradavce', 'klokan, koala, vačice', 'hlavně Austrálie, některé v Americe'] },
               { title: 'Placentálové', icon: 'baby', tone: 'c', points: ['mládě se vyvíjí v děloze', 'živí ho **placenta** přes pupeční šňůru', 'rodí se poměrně vyvinuté', 'naprostá většina savců: myš, pes, člověk'] },
             ], caption: 'Tři cesty savců k mláděti' },
-            { type: 'p', text: '**Placenta** (plodový koláč) je orgán, ve kterém se těsně stýkají cévy matky a plodu. Kyslík a živiny přecházejí z krve matky do krve plodu a odpadní látky opačně. ==Krev matky a plodu se přitom nemísí.== Jak dlouho mládě v děloze zůstává, se mezi druhy hodně liší:' },
+            { type: 'p', text: '**Placenta** (plodový koláč) je orgán, ve kterém se těsně stýkají cévy matky a plodu. Kyslík, živiny a u člověka i část protilátek přecházejí z krve matky do krve plodu a odpadní látky opačně. ==Krev matky a plodu se přitom nemísí.== Jak dlouho mládě v děloze zůstává, se mezi druhy hodně liší:' },
             { type: 'table', headers: ['druh', 'březost / těhotenství', 'mláďat najednou'], rows: [
               ['klokan rudý (vačnatec)', 'asi 33 dní, mládě váží méně než 1 g', '1'],
               ['myš domácí', 'asi 20 dní', '5–8'],
@@ -722,14 +722,14 @@ const level: LevelContent = {
             { type: 'p', text: 'U ptáků jsme viděli krmivá a nekrmivá mláďata. U savců je to podobné. Porovnej myšata s hříbětem:' },
             { type: 'compare', columns: [
               { title: 'Mláďata bezmocná', icon: 'mouse', tone: 'a', points: ['holá a slepá', 'dlouho v hnízdě nebo noře', 'matka je zahřívá a nosí', 'myš, kočka, pes, králík'] },
-              { title: 'Mláďata vyspělá', icon: 'deer', tone: 'b', points: ['osrstěná, vidí a slyší', 'do hodiny po porodu stojí a běží', 'následují matku', 'kůň, srnec, kráva, zajíc'] },
+              { title: 'Mláďata vyspělá', icon: 'deer', tone: 'b', points: ['osrstěná, vidí a slyší', 'do hodiny po porodu stojí a běží', 'následují matku (hříbě, tele), nebo se ukryjí v trávě (srnče, zajíček)', 'kůň, srnec, kráva, zajíc'] },
             ], caption: 'Dva typy savčích mláďat' },
             { type: 'p', text: 'Proč ten rozdíl? Myš rodí v bezpečné noře, kdežto srnče se narodí v otevřené krajině, kde by bezmocné mládě snadno sežral dravec. Obě ale potřebují totéž: mléko.' },
             { type: 'p', text: 'Mléko obsahuje vodu, tuk, bílkoviny, cukr (laktózu) a protilátky. Kolik je v něm tuku, záleží na tom, jak rychle musí mládě vyrůst a jak je mu zima:' },
             { type: 'table', headers: ['savec', 'tuk v mléce', 'proč'], rows: [
               ['člověk', 'asi 4 %', 'mládě roste pomalu a je u matky dlouho'],
               ['kráva', 'asi 4 %', 'tele pije často a hodně'],
-              ['čepcol hřebenatý (tuleň)', 'až 60 %', 'mládě na ledu kojí jen 4 dny a musí rychle nabrat tuk'],
+              ['čepcol hřebenatý (tuleň)', 'až 60 %', 'matka kojí mládě na ledu jen 4 dny a to musí rychle nabrat tuk'],
             ], caption: 'Tuk v mléce různých savců' },
             { type: 'p', text: 'Péče o mláďata trvá u savců dlouho a mládě se při ní učí: hraje si, napodobuje matku, zkouší lovit. Proto mají savci velký a učenlivý mozek, a na ten se podíváme v posledním oddílu.' },
             { type: 'check', question: { kind: 'tf', q: 'Mláďata všech savců se rodí holá a slepá.', answer: false, explain: 'Myšata a koťata ano, ale hříbě nebo srnče se narodí osrstěné, vidí a do hodiny chodí.' } },
@@ -746,7 +746,7 @@ const level: LevelContent = {
               'Člověk: nejdřív převedeme 70 kg na 70 000 g, aby jednotky byly stejné; 1 350 g : 70 000 g ≈ 0,019 ≈ 1,9 %.',
               'Slon: 5 kg : 5 000 kg = 0,001 = 0,1 %.',
             ], answer: 'Myš 2 %, člověk asi 1,9 %, slon 0,1 %. Největší mozek má slon, poměrně největší myš.' },
-            { type: 'p', text: 'Tady je chyták: ani velikost, ani poměr mozku k tělu samy o sobě inteligenci neurčují. Myš má poměrně stejně velký mozek jako ty. Rozhoduje hlavně to, kolik nervových buněk je v mozkové kůře a jak jsou propojené, a v tom člověk vede.' },
+            { type: 'p', text: 'Tady je chyták: ani velikost, ani poměr mozku k tělu samy o sobě inteligenci neurčují. Myš má poměrně stejně velký mozek jako ty. Rozhoduje hlavně to, kolik nervových buněk je v mozkové kůře a jak jsou propojené: člověk jich tam má víc než slon i šimpanz.' },
             { type: 'compare', columns: [
               { title: 'Co mozek savce umí navíc', icon: 'brain', tone: 'a', points: ['učit se z vlastních zkušeností', 'hrát si a napodobovat', 'pamatovat si místa a jedince', 'řešit nové problémy'] },
               { title: 'Kde to vidíš', icon: 'paw', tone: 'b', points: ['potkan najde cestu bludištěm', 'koťata si hrají na lov', 'sloni poznají příbuzné po letech', 'šimpanz použije klacek jako nástroj'] },
@@ -774,7 +774,7 @@ const level: LevelContent = {
           ['myš domácí', 'placentálové'],
         ], explain: 'Ptakopysk klade vejce, klokan dokrmuje mládě ve vaku a myš ho živí placentou v děloze.' },
         { kind: 'choice', q: 'Lebka má široké zvlněné stoličky, žádné horní řezáky a nevýrazné špičáky. Čím se zvíře živilo?', options: ['rostlinami (býložravec)', 'masem (masožravec)', 'hmyzem', 'rybami'], answer: 0, explain: 'Chybějící horní řezáky a široké mlecí stoličky má kráva a další býložravci, kteří dlouho žvýkají trávu.' },
-        { kind: 'multi', q: 'Co přechází placentou z matky do plodu?', options: ['kyslík', 'živiny', 'protilátky', 'krvinky matky', 'odpadní látky plodu'], answers: [0, 1, 2], explain: 'Kyslík, živiny a část protilátek přecházejí k plodu. Odpadní látky jdou opačně a krev matky a plodu se nemísí.' },
+        { kind: 'multi', q: 'Co přechází u člověka placentou z matky do plodu?', options: ['kyslík', 'živiny', 'protilátky', 'krvinky matky', 'odpadní látky plodu'], answers: [0, 1, 2], explain: 'Kyslík, živiny a část protilátek přecházejí k plodu. Odpadní látky jdou opačně a krev matky a plodu se nemísí.' },
         { kind: 'tf', q: 'Čím větší mozek savec má, tím je vždy chytřejší.', answer: false, explain: 'Slon má větší mozek než člověk a myš má poměrně stejně velký mozek jako člověk. Rozhoduje hlavně počet a propojení nervových buněk v kůře.' },
         { kind: 'number', q: 'Srnče sní denně mléko a potravu o hmotnosti 600 g a váží 4 kg. Kolik procent své hmotnosti denně sní?', answer: 15, tolerance: 0.5, unit: '%', explain: '4 kg = 4 000 g; 600 g : 4 000 g = 0,15 = 15 %.' },
         { kind: 'order', q: 'Seřaď savce podle délky březosti od nejkratší.', items: ['myš domácí', 'člověk', 'slon africký'], explain: 'Myš asi 20 dní, člověk asi 280 dní a slon asi 22 měsíců.' },
@@ -802,11 +802,11 @@ const level: LevelContent = {
             { type: 'table', headers: ['řád', 'klíčový znak', 'příklad'], rows: [
               ['hmyzožravci', 'drobné ostré zuby, protáhlý čenich', 'ježek, krtek, rejsek'],
               ['letouni', 'křídla z kožní blány mezi prsty', 'netopýr, vrápenec'],
-              ['hlodavci', '2 hlodáky, rostou celý život', 'myš, veverka, bobr'],
+              ['hlodavci', 'v každé čelisti 2 hlodáky, rostou celý život', 'myš, veverka, bobr'],
               ['zajícovci', '4 horní řezáky (2 malé vzadu)', 'zajíc, králík'],
               ['šelmy', 'velké špičáky a trháky', 'vlk, rys, liška, vydra'],
               ['sudokopytníci', 'chodí na 2 prstech (3. a 4.)', 'jelen, srnec, prase, kráva'],
-              ['lichokopytníci', 'váha na prostředním prstu', 'kůň, nosorožec, tapír'],
+              ['lichokopytníci', 'tělo nese hlavně prostřední prst', 'kůň, nosorožec, tapír'],
               ['kytovci', 'ploutve, dýchací otvor na temeni', 'delfín, plejtvák'],
               ['primáti', 'palec proti prstům, oči dopředu', 'šimpanz, gorila, člověk'],
             ], caption: 'Hlavní řády savců' },
@@ -822,7 +822,7 @@ const level: LevelContent = {
             { type: 'iconlist', items: [
               { icon: 'paw', title: 'Ježek západní', text: '*Erinaceus europaeus*; hmyzožravec s bodlinami, zimu prospí v **zimním spánku** s teplotou kolem 5 °C' },
               { icon: 'soil', title: 'Krtek obecný', text: '*Talpa europaea*; lopatovité přední končetiny k hrabání, téměř nevidí, živí se žížalami' },
-              { icon: 'sound', title: 'Netopýři', text: 'jediní savci, kteří opravdu létají; v noci loví hmyz podle ozvěny svého hlasu (**echolokace**); všichni naši netopýři jsou chránění' },
+              { icon: 'sound', title: 'Netopýři', text: 'spolu s kaloni (dohromady **letouni**) jediní savci, kteří opravdu létají; v noci loví hmyz podle ozvěny svého hlasu (**echolokace**); všichni naši netopýři jsou chránění' },
               { icon: 'tree', title: 'Veverka obecná', text: '*Sciurus vulgaris*; hlodavec, ukládá zásoby a zapomenutými oříšky sází lesy' },
               { icon: 'water-tap', title: 'Bobr evropský', text: '*Castor fiber*; největší náš hlodavec, staví hráze; do Česka se vrátil a šíří se' },
             ] },
@@ -846,7 +846,7 @@ const level: LevelContent = {
             ], caption: 'Psovité a kočkovité šelmy' },
             { type: 'p', text: 'Do Česka se v posledních letech vracejí velké šelmy. Od roku 2014 se u nás znovu rozmnožují vlci a v pohraničních horách žije rys. Další šelmy možná znáš z přírody:' },
             { type: 'iconlist', items: [
-              { icon: 'paw', title: 'Vlk obecný', text: '*Canis lupus*; žije v rodinných smečkách, loví hlavně jeleny, srnce a prasata' },
+              { icon: 'paw', title: 'Vlk obecný', text: '*Canis lupus*; žije v rodinných smečkách, loví hlavně jeleny, srnce a divoká prasata' },
               { icon: 'eye', title: 'Rys ostrovid', text: '*Lynx lynx*; Šumava a Beskydy, plachý lovec srnců' },
               { icon: 'forest', title: 'Liška obecná', text: '*Vulpes vulpes*; přizpůsobivá, žije i ve městech' },
               { icon: 'soil', title: 'Jezevec lesní', text: '*Meles meles*; všežravá šelma, buduje rozsáhlé nory' },
@@ -861,7 +861,7 @@ const level: LevelContent = {
           title: 'Kopytníci: sudokopytníci a lichokopytníci',
           icon: 'deer',
           blocks: [
-            { type: 'p', text: 'Kopytníci jsou býložravci, kteří běhají po špičkách prstů krytých **kopyty** z rohoviny. Rozdělují se podle toho, na kolika prstech nesou váhu: **sudokopytníci** na dvou (jelen, prase, kráva), **lichokopytníci** na jednom nebo třech (kůň, nosorožec).' },
+            { type: 'p', text: 'Kopytníci jsou býložravci, kteří běhají po špičkách prstů krytých **kopyty** z rohoviny. Rozdělují se podle toho, na kolika prstech nesou hmotnost těla: **sudokopytníci** na dvou (jelen, prase, kráva), **lichokopytníci** na jednom nebo třech (kůň, nosorožec).' },
             { type: 'p', text: 'Mnozí sudokopytníci jsou **přežvýkavci**. Tráva obsahuje celulózu, kterou savec sám strávit neumí. Přežvýkavec proto má žaludek se čtyřmi oddíly a pomocníky: mikroorganismy. Sleduj cestu trávy krávou:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'leaf', title: 'Bachor', text: 'spolknutá tráva kvasí, bakterie a prvoci rozkládají celulózu' },
@@ -896,7 +896,7 @@ const level: LevelContent = {
               { icon: 'family-tree', title: 'Lidoopi', text: 'orangutan, gorila, šimpanz a bonobo; člověk je jejich blízký příbuzný' },
             ] },
             { type: 'p', text: 'Primáti nemají žádný jeden „vynález“, spíš ruce a mozek, které umí skoro všechno. Jak je to s přizpůsobením jiných savců, uvidíme na příkladu lišek z mrazu a z pouště.' },
-            { type: 'check', question: { kind: 'multi', q: 'Podle čeho poznáš, že delfín není ryba?', options: ['dýchá plícemi', 'kojí mláďata', 'má vodorovnou ocasní ploutev', 'má aerodynamický tvar těla', 'žije v moři'], answers: [0, 1, 2], explain: 'Plíce, kojení a vodorovná ocasní ploutev jsou savčí znaky. Tvar těla a život v moři má delfín společný s rybami.' } },
+            { type: 'check', question: { kind: 'multi', q: 'Podle čeho poznáš, že delfín není ryba?', options: ['dýchá plícemi', 'kojí mláďata', 'má vodorovnou ocasní ploutev', 'má proudnicový tvar těla', 'žije v moři'], answers: [0, 1, 2], explain: 'Plíce, kojení a vodorovná ocasní ploutev jsou savčí znaky. Tvar těla a život v moři má delfín společný s rybami.' } },
           ],
         },
         {
@@ -906,7 +906,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Savci žijí od Arktidy po Saharu. Tentýž plán těla se přitom přizpůsobil prostředí. Pěkně to ukazují dvě lišky: polární liška z mrazivé tundry a fenek z pouště.' },
             { type: 'compare', columns: [
               { title: 'Liška polární (tundra)', icon: 'cold', tone: 'a', points: ['**malé** zaoblené uši', 'krátký čenich a nohy', 'hustá bílá zimní srst', 'cíl: ztrácet co nejméně tepla'] },
-              { title: 'Fenek (poušť)', icon: 'sun', tone: 'b', points: ['**obrovské** uši plné cév', 'štíhlé tělo', 'krátká světlá srst', 'cíl: teplo co nejvíc vyzařovat'] },
+              { title: 'Fenek (poušť)', icon: 'sun', tone: 'b', points: ['**obrovské** uši plné cév', 'štíhlé tělo', 'světlá srst v barvě písku', 'cíl: teplo co nejvíc vyzařovat'] },
             ], caption: 'Uši jako radiátor: čím větší plocha, tím víc tepla tělo odevzdá.' },
             { type: 'p', text: 'Přizpůsobení vzniká v přírodě během tisíců generací. Člověk ale některé savce měnil sám: vybíral k chovu ty nejkrotší a nejužitečnější. Tomu se říká **domestikace** a začala dávno:' },
             { type: 'table', headers: ['domácí zvíře', 'divoký předek', 'domestikace (přibližně)'], rows: [
@@ -915,7 +915,7 @@ const level: LevelContent = {
               ['skot', 'pratur (vyhynul roku 1627)', 'před 10 000 lety'],
               ['prase', 'prase divoké', 'před 10 000 lety'],
               ['kočka', 'kočka plavá', 'před 9 500 lety'],
-              ['kůň', 'divoký kůň', 'před 5 500 lety'],
+              ['kůň', 'divoký kůň', 'před 4 000 až 5 500 lety'],
             ], caption: 'Domestikace savců' },
             { type: 'callout', variant: 'fact', text: 'V roce 1959 začali vědci v Novosibirsku chovat lišky a do další generace vybírali jen ty nejkrotší. Po pár desítkách generací lišky vrtěly ocasem, měly skvrnitou srst a klopené uši jako psi.' },
             { type: 'p', text: 'Domestikace tedy změnila hlavně chování: krotkost se dědí. Jak se zvířata chovají, co mají vrozené a co se učí, prozkoumáme v lekci „Chování živočichů“.' },
@@ -928,12 +928,12 @@ const level: LevelContent = {
         'Hmyzožravci (ježek, krtek), letouni (netopýři), hlodavci (myš, bobr) a zajícovci (zajíc) jsou většinou malí savci.',
         'Hlodavci mají v každé čelisti jeden pár hlodáků, zajícovci nahoře dva páry řezáků.',
         'Šelmy mají špičáky a trháky; psovité loví štvaním, kočkovité se zatažitelnými drápy ze zálohy.',
-        'Sudokopytníci nesou váhu na dvou prstech a přežvýkavci mají čtyřdílný žaludek; paroží se shazuje, rohy zůstávají.',
+        'Sudokopytníci nesou hmotnost těla na dvou prstech a přežvýkavci mají čtyřdílný žaludek; paroží se shazuje, rohy zůstávají.',
         'Kytovci jsou mořští savci s plícemi a vodorovnou ocasní ploutví; primáti mají palec proti prstům a oči vpředu.',
         'Savci se přizpůsobují prostředí (uši lišek) a člověk domestikací vyšlechtil psa, skot, ovci, prase, kočku i koně.',
       ],
       quiz: [
-        { kind: 'tf', q: 'Netopýři jsou jediní savci, kteří opravdu aktivně létají.', answer: true, explain: 'Netopýři mávají křídly z kožní blány. Poletuchy a další savci jen plachtí.' },
+        { kind: 'tf', q: 'Letouni (netopýři a kaloni) jsou jediní savci, kteří opravdu aktivně létají.', answer: true, explain: 'Letouni mávají křídly z kožní blány. Poletuchy a další savci jen plachtí.' },
         { kind: 'match', q: 'Přiřaď savce k jeho řádu.', pairs: [
           ['krtek obecný', 'hmyzožravci'],
           ['bobr evropský', 'hlodavci'],
@@ -942,7 +942,7 @@ const level: LevelContent = {
           ['kůň', 'lichokopytníci'],
         ], explain: 'Krtek je hmyzožravec, bobr hlodavec, rys kočkovitá šelma, srnec sudokopytník a kůň lichokopytník.' },
         { kind: 'choice', q: 'Proč se hlodák hlodavce stále sám ostří?', options: ['sklovina je jen na přední straně, měkčí zadní strana se obrušuje rychleji', 'hlodavec si ho brousí o kámen', 'hlodák je celý ze skloviny', 'hlodák se každý rok vymění'], answer: 0, explain: 'Tvrdá sklovina vpředu se obrušuje pomaleji než měkčí zadní strana, a tak vzniká ostrá hrana jako u dláta.' },
-        { kind: 'order', q: 'Seřaď oddíly žaludku přežvýkavce v pořadí, jak jimi prochází potrava (po přežvýknutí).', items: ['bachor', 'čepec', 'kniha', 'slez'], explain: 'Tráva kvasí v bachoru, přes čepec se vrací k přežvýkání, v knize se vstřebá voda a ve slezu působí trávicí šťávy.' },
+        { kind: 'order', q: 'Seřaď oddíly žaludku přežvýkavce v pořadí, jak jimi prochází potrava.', items: ['bachor', 'čepec', 'kniha', 'slez'], explain: 'Tráva kvasí v bachoru, přes čepec se vrací k přežvýkání, v knize se vstřebá voda a ve slezu působí trávicí šťávy.' },
         { kind: 'tf', q: 'Kráva shazuje rohy každý rok na jaře.', answer: false, explain: 'Rohy mají kostěný čep s rohovinovou pochvou a zůstávají celý život. Každý rok shazuje paroží jelen nebo srnec.' },
         { kind: 'multi', q: 'Které znaky mají primáti?', options: ['palec postavitelný proti ostatním prstům', 'oči vpředu a prostorové vidění', 'velký mozek', 'kopyta', 'čtyřdílný žaludek'], answers: [0, 1, 2], explain: 'Palec, oči vpředu a velký mozek souvisejí s životem ve stromech. Kopyta a čtyřdílný žaludek mají kopytníci.' },
         { kind: 'choice', q: 'Který divoký předek dal vznik psu?', options: ['vlk obecný', 'liška obecná', 'šakal', 'rys ostrovid'], answer: 0, explain: 'Pes vznikl domestikací vlka před více než 15 000 lety, dřív než kterékoli jiné domácí zvíře.' },
@@ -972,7 +972,7 @@ const level: LevelContent = {
               { title: 'Vrozené chování (instinkt)', icon: 'dna', tone: 'a', points: ['funguje hned napoprvé, bez učení', 'u všech jedinců druhu stejné', 'těžko se mění', 'pavouk tká síť, novorozenec saje, mládě sýkory otevírá zobák'] },
               { title: 'Naučené chování', icon: 'book', tone: 'b', points: ['získané zkušeností během života', 'každý jedinec se ho učí jinak', 'dá se změnit a přizpůsobit', 'vrána otvírá ořechy pod koly aut, pes podá tlapku'] },
             ], caption: 'Vrozené a naučené chování' },
-            { type: 'p', text: 'Vrozené chování často spouští jednoduchý **klíčový podnět**. Holandský biolog Niko Tinbergen zjistil, že mládě racka klove do červené skvrny na zobáku rodiče, a tím si řekne o potravu. Klove i do dřevěné tyčky s červenou tečkou.' },
+            { type: 'p', text: 'Vrozené chování často spouští jednoduchý **klíčový podnět**. Nizozemský biolog Niko Tinbergen zjistil, že mládě racka klove do červené skvrny na zobáku rodiče, a tím si řekne o potravu. Klove i do dřevěné tyčky s červenou tečkou.' },
             { type: 'p', text: 'Pozor, většina chování je směsí obojího. Mladá pěnkava vychovaná bez dospělých zazpívá jen zjednodušenou píseň: kostru má vrozenou, ale celou ji musí slyšet a naučit se. Jak takové učení probíhá, ukazují tři slavné pokusy.' },
             { type: 'check', question: { kind: 'multi', q: 'Které chování je vrozené?', options: ['pavouk křižák upřede první síť', 'novorozené mládě saje mléko', 'mládě racka klove do červené skvrny na zobáku', 'pes podá tlapku na povel', 'sýkory se naučí otvírat víčka lahví s mlékem'], answers: [0, 1, 2], explain: 'Síť, sání a klování do skvrny zvládne zvíře napoprvé bez učení. Podání tlapky a otvírání lahví jsou naučené.' } },
           ],
@@ -1023,12 +1023,12 @@ const level: LevelContent = {
             { type: 'p', text: 'Zvířata si informace předávají **signály**. Signál musí odesílatel vyslat a příjemce ho musí umět vnímat, a tak každý druh používá ty smysly, které má nejlepší. Podívej se, kolik „kanálů“ zvířata používají:' },
             { type: 'iconlist', items: [
               { icon: 'sound', title: 'Zvuk', text: 'zpěv ptáků, vytí vlků, kvákání žab; zvuk dojde daleko i v lese' },
-              { icon: 'eye', title: 'Zrak', text: 'barvy a postoje: pes cení zuby, páv roztáhne ocas, kuňka ukáže břicho' },
+              { icon: 'eye', title: 'Zrak', text: 'barvy a postoje: pes cení zuby, páv roztáhne vlečku, kuňka ukáže břicho' },
               { icon: 'gas-cloud', title: 'Pach', text: 'značkování území močí a pachovými žlázami; **feromony** lákají partnera na velkou dálku' },
               { icon: 'paw', title: 'Dotek', text: 'opice si navzájem probírají srst, což upevňuje přátelství' },
               { icon: 'bee', title: 'Tanec', text: 'včela tancem ukáže ostatním směr a vzdálenost ke květům' },
             ] },
-            { type: 'p', text: 'Některé signály jsou překvapivě přesné. Africké kočkodany mají různé varovné volání pro levharta, orla a hada: na „levharta“ ostatní vyšplhají do korun, na „orla“ se schovají v křoví a na „hada“ se postaví a prohlížejí zem.' },
+            { type: 'p', text: 'Některé signály jsou překvapivě přesné. Africké kočkodany mají různá varovná volání pro levharta, orla a hada: na „levharta“ ostatní vyšplhají do korun, na „orla“ se schovají v křoví a na „hada“ se postaví a prohlížejí zem.' },
             { type: 'p', text: 'Pozor, signál není totéž co lidská řeč. Zvířata si předávají jen omezený počet zpráv o tom, co se děje teď. Nejčastěji jde o tři věci: kde je čí území, kdo je vhodný partner a kdo má ve skupině hlavní slovo.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď signál ke smyslu, kterým ho příjemce vnímá.', pairs: [
               ['vytí vlků', 'sluch'],
@@ -1042,12 +1042,12 @@ const level: LevelContent = {
           title: 'Teritorium, námluvy a život ve skupině',
           icon: 'family-tree',
           blocks: [
-            { type: 'p', text: 'Signály nejčastěji slouží k tomu, aby zvířata nemusela bojovat. Kos zpívá z antény, srnec si čelem otírá pach o keře a vlk značkuje stezky: všichni tím oznamují své **teritorium**, tedy území s potravou a místem k hnízdění, které brání.' },
+            { type: 'p', text: 'Signály nejčastěji slouží k tomu, aby zvířata nemusela bojovat. Kos zpívá z antény, srnec si čelem otírá pach o keře a vlk značkuje stezky: všichni tím oznamují své **teritorium**, tedy území s potravou a místem k rozmnožování, které brání.' },
             { type: 'p', text: 'Na jaře a na podzim přichází čas **námluv**. Samec musí samici přesvědčit, že je zdravý a silný. Každý druh na to má vlastní obřad:' },
             { type: 'iconlist', items: [
               { icon: 'bird', title: 'Tetřívek obecný', text: 'samci se na jaře slétají na **tokaniště**, bublají a předvádějí se; samice si vybere' },
-              { icon: 'deer', title: 'Jelen evropský', text: 'v září **troubí** a souboje parožím rozhodnou, kdo bude mít laně' },
-              { icon: 'star', title: 'Páv', text: 'samice volí samce s nejokázalejším ocasem' },
+              { icon: 'deer', title: 'Jelen lesní', text: 'v září, v době **říje**, troubí a souboje parožím rozhodnou, kdo bude mít laně' },
+              { icon: 'star', title: 'Páv', text: 'samice volí samce s nejokázalejší **vlečkou** z prodloužených per nad ocasem' },
               { icon: 'pond', title: 'Potápka roháč', text: 'pár předvádí synchronizovaný „tanec“ na hladině' },
             ] },
             { type: 'p', text: 'Mnohá zvířata žijí ve skupinách. Skupina má výhody i nevýhody, a podle toho, co převáží, je druh samotář, nebo společenský:' },

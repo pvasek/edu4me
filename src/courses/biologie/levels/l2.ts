@@ -163,7 +163,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'V minulé lekci jsme viděli, že virus buňkou není. **Bakterie** už ano: je to celá živá buňka, jen mnohem jednodušší než ta naše. V lekci „Buňka: základ života“ jsme jí říkali **prokaryotní** – nemá pravé jádro ohraničené membránou.' },
             { type: 'p', text: 'Na obrázku najdi, kde bakterie uchovává svou DNA, když jádro nemá, a čím se pohybuje:' },
-            { type: 'diagram', id: 'bacterial-cell', caption: 'Bakteriální buňka: stěna, membrána, cytoplazma s ribozomy, nukleoid, plazmid, bičík a pilusy. Dole tři základní tvary bakterií.' },
+            { type: 'diagram', id: 'bacterial-cell', caption: 'Bakteriální buňka: stěna, membrána, cytoplazma s ribozomy, nukleoid, plazmid, bičík a fimbrie (pili). Dole tři základní tvary bakterií.' },
             { type: 'p', text: 'Některé části známe i z našich buněk (membrána, cytoplazma, ribozomy). Tyhle jsou ale pro bakterii typické:' },
             { type: 'keyterms', items: [
               { term: '**Nukleoid**', def: 'oblast v cytoplazmě, kde leží hlavní kruhová molekula DNA; není oddělená membránou' },
@@ -182,13 +182,13 @@ const level: LevelContent = {
           icon: 'microscope',
           blocks: [
             { type: 'p', text: 'Když lékař posílá vzorek z krku do laboratoře, první otázka zní: jak bakterie vypadají? Tvar je první vodítko, o jakou bakterii jde.' },
-            { type: 'p', text: 'Bakterie mají tři základní tvary. V tabulce ke každému najdeš příklad, který se ti v životě může připomenout:' },
+            { type: 'p', text: 'Bakterie mají tři základní tvary. V tabulce ke každému najdeš příklad, se kterým se můžeš setkat i ty:' },
             { type: 'table', headers: ['tvar', 'název', 'příklad'], rows: [
               ['kulička', '**koky**; v řetízku streptokoky, ve shlucích stafylokoky', 'streptokoky způsobují angínu'],
               ['tyčinka', '**tyčinky** (bacily)', '*Escherichia coli* ve střevě, salmonely, mléčné bakterie v jogurtu'],
               ['spirála', '**spirily** a spirochety', 'borelie, původce lymeské boreliózy'],
             ], caption: 'Tvar bakterie je vidět i ve světelném mikroskopu při zvětšení kolem 1 000×.' },
-            { type: 'p', text: 'Zkus si to: na přední straně karty je nemoc nebo potravina, na zadní bakterie, která za ní stojí. Než kartu otočíš, tipni si její tvar.' },
+            { type: 'p', text: 'Zkus si to: na přední straně karty je nemoc nebo potravina, na zadní bakterie, která za ní stojí. Než kartu otočíš, tipni si, jaký tvar ta bakterie má.' },
             { type: 'flipcards', cards: [
               { icon: 'thermometer', title: 'Angína', text: '**streptokoky** – koky spojené do řetízků' },
               { icon: 'milk', title: 'Jogurt', text: '**mléčné bakterie** – tyčinky a koky' },
@@ -226,9 +226,9 @@ const level: LevelContent = {
               'Počet dělení: 3 h = 180 min, 180 min : 20 min = 9 dělení.',
               'Každé dělení počet zdvojnásobí: 2 · 2 · … · 2 (9krát) = 512.',
               'Začínáme s 10 bakteriemi: 10 · 512 = 5 120.',
-            ], answer: 'Po 3 hodinách asi 5 120 bakterií. Za dalších 6 hodin by jich byly miliony.' },
+            ], answer: 'Po 3 hodinách asi 5 120 bakterií. Za dalších 6 hodin by jich bylo přes miliardu.' },
             { type: 'callout', variant: 'tip', text: 'Proto patří jídlo do lednice. V chladu se bakterie dělí mnohem pomaleji – místo 20 minut třeba jednou za několik hodin.' },
-            { type: 'p', text: 'Proč tedy bakterie nezaplavily celou Zemi? Dřív nebo později jim dojde potrava a otráví se vlastními odpadními látkami, a růst se zastaví. Některé bakterie si ale potravu umí vyrobit samy – a to jsou sinice.' },
+            { type: 'p', text: 'Proč tedy bakterie nezaplavily celou Zemi? Dřív nebo později jim dojde potrava nebo je otráví jejich vlastní odpadní látky a růst se zastaví. Některé bakterie si ale potravu umí vyrobit samy – a to jsou sinice.' },
             { type: 'check', question: { kind: 'number', q: 'Bakterie se dělí každých 30 minut. Kolik bakterií vznikne z jedné bakterie za 2 hodiny?', answer: 16, tolerance: 0, explain: '2 h = 120 min, 120 : 30 = 4 dělení. 2 · 2 · 2 · 2 = 16 bakterií.' } },
           ],
         },
@@ -236,19 +236,19 @@ const level: LevelContent = {
           title: 'Sinice: bakterie, které daly Zemi kyslík',
           icon: 'sun',
           blocks: [
-            { type: 'p', text: '**Sinice** jsou bakterie, které mají zelené barvivo **chlorofyl** a fotosyntézou si z vody, $CO2$ a světla vyrábějí cukr. Při tom uvolňují kyslík $O2$ – stejně jako rostliny, jen o miliardy let dřív. (Fotosyntéze se budeme věnovat v lekci „Fotosyntéza a dýchání rostlin“.)' },
+            { type: 'p', text: '**Sinice** jsou bakterie, které mají zelené barvivo **chlorofyl** a fotosyntézou si z vody a $CO2$ za pomoci světla vyrábějí cukr. Při tom uvolňují kyslík $O2$ – stejně jako rostliny, jen o miliardy let dřív. (Fotosyntéze se budeme věnovat v lekci „Fotosyntéza a dýchání rostlin“.)' },
             { type: 'p', text: 'Proč jsou sinice tak důležité? Jejich příběh je vlastně příběhem vzduchu, který dýcháš:' },
             { type: 'iconlist', items: [
-              { icon: 'fossil', title: 'Před 3,5 miliardy let', text: 'sinice tvoří vrstevnaté útvary – stromatolity, nejstarší stopy života' },
+              { icon: 'fossil', title: 'Před 3,5 miliardy let', text: 'sinice a jiné bakterie tvoří vrstevnaté útvary – stromatolity, jedny z nejstarších stop života' },
               { icon: 'gas-cloud', title: 'Kyslíková revoluce', text: 'asi před 2,4 miliardy let jejich kyslík začal plnit atmosféru' },
-              { icon: 'ocean', title: 'Dnes', text: 'v mořích vyrábějí sinice velkou část kyslíku a jsou potravou planktonu' },
+              { icon: 'ocean', title: 'Dnes', text: 'v mořích vyrábějí sinice velkou část kyslíku a jsou potravou drobných živočichů planktonu' },
               { icon: 'leaf', title: 'Předek chloroplastů', text: 'chloroplasty rostlin jsou nejspíš potomci sinic, které kdysi pohltila jiná buňka' },
             ] },
             { type: 'p', text: 'Sinice ale umějí i škodit. Když se v létě v rybníce nebo přehradě přemnoží, vznikne **vodní květ**. Sleduj, jak jedna příčina vede k druhé:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'fertilizer', title: 'Živiny', text: 'z polí a odpadních vod se do vody dostane fosfor a dusík' },
               { icon: 'sun', title: 'Teplo a světlo', text: 'v létě se sinice dělí velmi rychle' },
-              { icon: 'bacteria', title: 'Vodní květ', text: 'hladina se zbarví do zelena, sinice tvoří kašovitý povlak a toxiny' },
+              { icon: 'bacteria', title: 'Vodní květ', text: 'hladina se zbarví dozelena, sinice tvoří na hladině kašovitý povlak a uvolňují jedovaté látky (toxiny)' },
               { icon: 'fish', title: 'Úhyn ryb', text: 'odumřelé sinice se rozkládají a rozklad spotřebuje kyslík ve vodě' },
             ] },
             { type: 'callout', variant: 'warning', text: 'Do vody s vodním květem se nekoupej: toxiny sinic dráždí kůži a oči a mohou vyvolat průjem nebo alergii. Hygienické stanice v létě zveřejňují stav koupacích vod.' },
@@ -284,7 +284,7 @@ const level: LevelContent = {
         'Bakterie se množí dělením; za dobrých podmínek se jejich počet zdvojnásobí každých asi 20 minut.',
         'Sinice jsou fotosyntetizující bakterie; před miliardami let naplnily atmosféru kyslíkem.',
         'Přemnožené sinice vytvářejí vodní květ, který je jedovatý a může způsobit úhyn ryb.',
-        'Většina bakterií je užitečná (půda, střevo, jogurt), některé způsobují nemoci jako angínu, boreliózu nebo salmonelózu.',
+        'Většina bakterií nám neškodí a mnohé jsou užitečné (půda, střevo, jogurt); některé způsobují nemoci jako angínu, boreliózu nebo salmonelózu.',
       ],
       quiz: [
         { kind: 'tf', q: 'Bakterie nemají žádnou DNA, protože nemají jádro.', answer: false, explain: 'Bakterie DNA mají – leží volně v cytoplazmě v nukleoidu. Chybí jen jaderná membrána.' },
@@ -324,7 +324,7 @@ const level: LevelContent = {
             { type: 'compare', columns: [
               { title: 'Bakterie', icon: 'bacteria', tone: 'a', points: ['prokaryotní buňka, bez jádra', 'žádné mitochondrie ani chloroplasty', 'velikost 1–5 µm'] },
               { title: 'Prvok nebo jednobuněčná řasa', icon: 'amoeba', tone: 'b', points: ['eukaryotní buňka s jádrem', 'mitochondrie, u řas i chloroplasty, často vakuoly', 'velikost obvykle 10–500 µm'] },
-            ], caption: 'Buňka prvoka je zhruba stokrát objemnější než bakterie a uvnitř má „oddělení“ jako naše buňky.' },
+            ], caption: 'Buňka prvoka bývá desetkrát až stokrát delší než bakterie a uvnitř má „oddělení“ jako naše buňky.' },
             { type: 'p', text: 'Organismy, které jsou eukaryotní, ale nejsou to rostliny, živočichové ani houby, se nazývají **protista**. Není to jedna příbuzenská skupina, spíš „šuplík“, kam vědci odkládají vše, co se jinam nevejde.' },
             { type: 'callout', variant: 'fact', text: 'Proto se třídění protist často mění. Jak souvisí systém s příbuzností, jsme viděli v lekci „Rozmanitost a třídění života“.' },
             { type: 'p', text: 'Prvoci, kteří se pohybují a loví potravu, připomínají malá zvířátka; řasy s chloroplasty spíš rostliny. Nejdřív se podíváme na ty „zvířecí“.' },
@@ -342,10 +342,10 @@ const level: LevelContent = {
             { type: 'table', headers: ['organismus', 'pohyb', 'výživa', 'kde žije'], rows: [
               ['**měňavka** (*Amoeba*)', 'vysouvá **panožky**, buňka „teče“', 'obteče potravu a pohltí ji do potravní vakuoly', 'bahno tůní a rybníků'],
               ['**trepka** (*Paramecium*)', 'tisíce krátkých **brv** veslují', 'brvy hrnou bakterie do buněčných úst', 'stojaté vody, nálevy'],
-              ['**krásnoočko** (*Euglena*)', 'jeden dlouhý **bičík**', 'na světle fotosyntéza, ve tmě přijímá potravu', 'louže, rybníky'],
+              ['**krásnoočko** (*Euglena*)', 'jeden dlouhý **bičík**', 'na světle fotosyntéza, ve tmě přijímá hotové živiny z vody', 'louže, rybníky'],
               ['**dírkonošci**', 'panožky vystrčené otvory ve schránce', 'chytají drobné řasy a částečky', 'moře, jejich schránky jsou z $CaCO3$'],
             ], caption: 'Panožky, brvy a bičík jsou tři hlavní způsoby pohybu prvoků.' },
-            { type: 'p', text: 'Pozor na **krásnoočko**: má chloroplasty jako rostlina, a přitom se pohybuje a ve tmě přijímá potravu jako živočich. Je to živý důkaz, že hranice mezi „rostlinami“ a „živočichy“ u jednobuněčných neplatí.' },
+            { type: 'p', text: 'Pozor na **krásnoočko**: má chloroplasty jako rostlina, a přitom se pohybuje a ve tmě přijímá hotové živiny jako živočich. Je to živý důkaz, že hranice mezi „rostlinami“ a „živočichy“ u jednobuněčných neplatí.' },
             { type: 'callout', variant: 'fact', text: 'Sladkovodní prvoci do sebe neustále nasávají vodu. **Pulzující vakuola** ji pumpuje ven, jinak by buňka praskla. U trepky se vyprázdní každých několik sekund.' },
             { type: 'p', text: 'Prvoky uvidíš sám/sama ve školním mikroskopu. Jak velký obraz dostaneš, spočítáš stejně jako v lekci „Mikroskop a pozorování“:' },
             { type: 'example', title: 'Trepka pod mikroskopem', problem: 'Trepka měří 0,25 mm. Pozoruješ ji objektivem 10× a okulárem 10×. Jak velká se ti bude zdát?', steps: [
@@ -369,7 +369,7 @@ const level: LevelContent = {
             { type: 'diagram', id: 'malaria-cycle', caption: 'Bodnutí komára → množení v jaterních buňkách → množení v krvinkách a horečka → pohlavní buňky nasaje další komár → v komárovi vzniknou noví zárodci.' },
             { type: 'p', text: 'Proč je malárie tak vážná? Hromadné praskání krvinek způsobuje záchvaty vysoké horečky a chudokrevnost. Malárií onemocní přes 200 milionů lidí ročně a zemře asi 600 000, většinou malé děti v Africe.' },
             { type: 'callout', variant: 'tip', text: 'Kdo cestuje do tropů, potřebuje moskytiéru, repelent a podle doporučení lékaře i léky proti malárii. V Česku malárie běžně nehrozí: komáři *Anopheles* tu žijí, ale zimnička ne.' },
-            { type: 'p', text: 'Podobně funguje **trypanozoma**, prvok s bičíkem, který žije v krvi. V Africe ji přenáší moucha tse-tse a způsobuje **spavou nemoc**, při níž nemocný slábne a upadá do spánku. Nejlepší ochranou je přerušit přenašeče: komáry, mouchy nebo klíšťata.' },
+            { type: 'p', text: 'Podobně funguje **trypanozoma**, prvok s bičíkem, který žije v krvi. V Africe ji přenáší moucha tse-tse a způsobuje **spavou nemoc**, při níž nemocný slábne a upadá do spánku. Proti takovým nemocem se nejlépe chráníme tak, že se bráníme přenašečům – komárům a mouchám.' },
             { type: 'p', text: 'Prvoci tedy umějí lovit, plavat i parazitovat. Teď se podíváme na protista, která si potravu vyrábějí sama ze světla – na řasy.' },
             { type: 'check', question: { kind: 'tf', q: 'Malárii způsobuje virus, který přenáší komár.', answer: false, explain: 'Malárii způsobuje prvok zimnička (*Plasmodium*). Komár *Anopheles* je jen přenašeč.' } },
           ],
@@ -378,7 +378,7 @@ const level: LevelContent = {
           title: 'Řasy: od Chlorelly po chaluhy',
           icon: 'leaf',
           blocks: [
-            { type: 'p', text: 'Krásnoočko jsme viděli dělat fotosyntézu. **Řasy** to dělají celý život: mají chloroplasty a z vody, $CO2$ a světla vyrábějí cukry. Na rozdíl od rostlin ale nemají kořeny, stonky ani listy; jejich tělo se jmenuje **stélka**.' },
+            { type: 'p', text: 'Krásnoočko jsme viděli dělat fotosyntézu. **Řasy** to dělají celý život: mají chloroplasty a z vody a $CO2$ za pomoci světla vyrábějí cukry. Na rozdíl od rostlin ale nemají kořeny, stonky ani listy; jejich tělo se jmenuje **stélka**.' },
             { type: 'p', text: 'Řasy jsou neuvěřitelně různé – od buňky menší než trepka po „stromy“ podmořských lesů. Projdi si nejdůležitější skupiny od nejmenších po největší:' },
             { type: 'iconlist', items: [
               { icon: 'cell', title: 'Jednobuněčné zelené řasy', text: '*Chlorella* v rybnících; zelený povlak na kůře stromů a na plotech tvoří také drobné zelené řasy' },
@@ -405,7 +405,7 @@ const level: LevelContent = {
               { icon: 'droplets', title: 'Zooplankton', text: 'drobní korýši (např. kril) a prvoci spásají fytoplankton' },
               { icon: 'fish', title: 'Ryby a velryby', text: 'plejtvák obrovský spořádá denně několik tun krilu' },
             ] },
-            { type: 'p', text: 'Fotosyntézou fytoplanktonu vzniká zhruba ==polovina kyslíku, který na Zemi vzniká==. Druhou polovinu vyrobí rostliny na souši. Co to znamená pro tebe, si můžeš hrubě spočítat:' },
+            { type: 'p', text: 'Fytoplankton vyrobí fotosyntézou zhruba ==polovinu veškerého kyslíku, který na Zemi vzniká==. Druhou polovinu vyrobí rostliny na souši. Co to znamená pro tebe, si můžeš hrubě spočítat:' },
             { type: 'example', title: 'Každý druhý nádech', problem: 'Člověk se v klidu nadechne asi 15krát za minutu. Kolik nádechů denně „vděčí“ za svůj kyslík řasám a sinicím v moři, když vyrobí asi polovinu kyslíku?', steps: [
               'Za hodinu: 15 · 60 = 900 nádechů.',
               'Za den: 900 · 24 = 21 600 nádechů.',
@@ -429,16 +429,16 @@ const level: LevelContent = {
         { kind: 'tf', q: 'Protista jsou jedna úzce příbuzná skupina organismů.', answer: false, explain: 'Protista jsou pestrý „šuplík“ eukaryot, která nejsou rostliny, živočichové ani houby. Příbuzensky tvoří více skupin.' },
         { kind: 'choice', q: 'Který prvok má chloroplasty a zároveň se aktivně pohybuje bičíkem?', options: ['krásnoočko', 'měňavka', 'trepka', 'zimnička'], answer: 0, explain: 'Krásnoočko má chloroplasty i bičík. Na světle fotosyntetizuje, ve tmě přijímá potravu.' },
         { kind: 'order', q: 'Seřaď kroky životního cyklu zimničky, začni bodnutím komára.', items: ['komár vpustí zimničky do krve člověka', 'zimničky se množí v jaterních buňkách', 'zimničky napadají červené krvinky a ty praskají', 'nový komár nasaje zimničky s krví nemocného'], explain: 'Zimnička se nejdřív množí v játrech, pak v krvinkách. Nového komára nakazí, když nemocného bodne.' },
-        { kind: 'match', q: 'Přiřaď řasu nebo prvka k tomu, čím je zvláštní.', pairs: [
+        { kind: 'match', q: 'Přiřaď řasu nebo prvoka k tomu, čím je zvláštní.', pairs: [
           ['rozsivka', 'schránka z oxidu křemičitého'],
           ['ruduchy', 'vyrábí se z nich agar'],
           ['dírkonošci', 'ze schránek vznikla křída a vápenec'],
-          ['chaluhy', 'hnědé mořské řasy dlouhé i přes 40 m'],
+          ['chaluhy', 'hnědé mořské řasy, některé dlouhé přes 40 m'],
         ], explain: 'Rozsivky mají „skleněnou“ schránku, z ruduch se vyrábí agar, dírkonošci zanechali vápencové schránky a chaluhy tvoří podmořské lesy.' },
         { kind: 'tf', q: 'Spirulina je sinice, ne řasa.', answer: true, explain: 'Spirulina nemá jádro – je to sinice, tedy fotosyntetizující bakterie.' },
         { kind: 'number', q: 'Měňavka měří 0,4 mm. Jak velká se bude zdát při celkovém zvětšení 40×?', answer: 16, tolerance: 0.1, unit: 'mm', explain: '0,4 mm · 40 = 16 mm.' },
         { kind: 'choice', q: 'Proč by se prvok ve sladké vodě bez pulzující vakuoly dostal do potíží?', options: ['nasával by vodu, až by praskl', 'nemohl by se pohybovat', 'nemohl by dělat fotosyntézu', 'vyschl by'], answer: 0, explain: 'Do buňky ve sladké vodě neustále proniká voda. Pulzující vakuola ji pumpuje ven, jinak by buňka praskla.' },
-        { kind: 'multi', q: 'Proč je fytoplankton důležitý pro celou Zemi?', options: ['vyrábí asi polovinu kyslíku', 'je základem potravy v moři', 'jeho schránky vytvořily vrstvy křídy a vápence', 'způsobuje malárii', 'živí se rybami'], answers: [0, 1, 2], explain: 'Fytoplankton vyrábí kyslík, živí zooplankton a tím celé mořské potravní řetězce a zanechal po sobě i horniny. Malárii způsobuje zimnička.' },
+        { kind: 'multi', q: 'Proč je plankton důležitý pro celou Zemi?', options: ['vyrábí asi polovinu kyslíku', 'je základem potravy v moři', 'jeho schránky vytvořily vrstvy křídy a vápence', 'způsobuje malárii', 'živí se rybami'], answers: [0, 1, 2], explain: 'Fytoplankton vyrábí kyslík a živí zooplankton, a tím celé mořské potravní řetězce. Schránky dírkonošců a dalších planktonních organismů po sobě zanechaly i horniny. Malárii způsobuje zimnička.' },
       ],
     },
 
@@ -501,7 +501,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Houba nemá ústa ani žaludek. Hyfy vylučují do okolí trávicí enzymy, ty rozloží potravu venku a houba pak rozpuštěné látky nasaje celým povrchem. Podle toho, **odkud** potravu bere, rozlišujeme tři skupiny:' },
             { type: 'compare', columns: [
               { title: 'Rozkladači (saprotrofové)', icon: 'recycle', tone: 'a', points: ['rozkládají mrtvé listí, dřevo a těla', 'vracejí živiny do půdy', 'např. hlíva ústřičná, žampion, plísně na chlebu'] },
-              { title: 'Parazité', icon: 'warning', tone: 'bad', points: ['berou látky živým organismům a škodí jim', 'václavka napadá a hubí stromy', 'padlí na listech, námel na žitu, plíseň nohou u člověka'] },
+              { title: 'Parazité', icon: 'warning', tone: 'bad', points: ['berou látky živým organismům a škodí jim', 'václavka napadá a hubí stromy', 'padlí na listech, námel na žitu, kožní plíseň (mykóza) nohou u člověka'] },
               { title: 'Mykorhiza', icon: 'tree', tone: 'good', points: ['hyfy obalí kořeny stromu', 'houba dává stromu vodu a minerální látky, strom houbě cukry', 'hřib smrkový se smrkem, kozák s břízou'] },
             ], caption: 'Tři způsoby, jak houby získávají potravu.' },
             { type: 'p', text: 'Bez rozkladačů by les zmizel pod metry neshnilého listí a dřeva. Houby jsou spolu s bakteriemi hlavními **rozkladači** na Zemi – v lekci „Jak se organismy živí a rozmnožují“ jsme o nich mluvili jako o skupině, která uzavírá koloběh látek.' },
@@ -528,7 +528,7 @@ const level: LevelContent = {
               { icon: 'hazard', title: 'Kropidlák (*Aspergillus*)', text: 'na plesnivých oříšcích a obilí tvoří **aflatoxiny**, jedy poškozující játra' },
               { icon: 'lemon', title: 'Kropidlák v průmyslu', text: 'vyrábí se jím kyselina citronová a sójová omáčka' },
             ] },
-            { type: 'p', text: 'Pozor na plesnivé jídlo: zelená skvrna na povrchu je jen „plodnice“ plísně. Hyfy už jsou hluboko uvnitř a s nimi i jedy, které nejsou vidět.' },
+            { type: 'p', text: 'Pozor na plesnivé jídlo: zelená skvrna na povrchu je jen ta část plísně, která tvoří výtrusy. Hyfy už jsou hluboko uvnitř a s nimi i jedy, které nejsou vidět.' },
             { type: 'callout', variant: 'warning', text: 'Plesnivý chléb, džem nebo ořechy vyhoď celé. Odkrojit jen zelené místo nestačí.' },
             { type: 'p', text: 'Kvasinky a plísně tedy umějí krmit, léčit i otrávit. Nejvíc ale rozhoduje o zdraví, kterou houbu si přineseš z lesa.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč těsto s droždím nakyne?', options: ['kvasinky při kvašení uvolňují oxid uhličitý, který tvoří bubliny', 'kvasinky vyrábějí kyslík', 'plíseň v těstě vytváří vlákna', 'droždí nasaje vodu a nabobtná'], answer: 0, explain: 'Kvasinky rozkládají cukr na etanol a $CO2$. Bublinky plynu těsto nadýchnou.' } },
@@ -549,14 +549,14 @@ const level: LevelContent = {
             { type: 'p', text: 'Proč je muchomůrka zelená tak zrádná? Chutná dobře a první potíže přijdou až za 6–24 hodin. Jed mezitím ničí buňky jater. Ukažme si, jak se podle tabulky rozhoduje:' },
             { type: 'example', title: 'Bílá houba s prstenem', problem: 'Našel/našla jsi pod dubem bělavou houbu s prstenem na třeni. Je to žampion?', steps: [
               'Podívej se na lupeny: jsou bílé, ne růžové ani hnědé. To žampion vylučuje.',
-              'Opatrně vyhrab celou nohu: dole je hlíza obalená blanitou pochvou.',
+              'Opatrně vyhrab celý třeň: dole je hlíza obalená blanitou pochvou.',
               'Bílé lupeny + prsten + hlíza v pochvě jsou znaky muchomůrky (zelené nebo jízlivé).',
             ], answer: 'Není to žampion, ale smrtelně jedovatá muchomůrka. Houbu nesbírej a umyj si ruce.' },
             { type: 'p', text: 'Nejlepší ochrana je jednoduchá: sbírat jen to, co bezpečně znáš. Tato pravidla dodržují i zkušení houbaři:' },
             { type: 'iconlist', items: [
               { icon: 'check', title: 'Jen jisté druhy', text: 'sbírej jen houby, které bezpečně poznáš; při sebemenší pochybnosti houbu nech v lese' },
               { icon: 'phone', title: 'Aplikaci nevěř', text: 'fotka v mobilu neukáže lupeny ani hlízu v zemi; aplikace se umějí splést' },
-              { icon: 'magnifier', title: 'Celá plodnice', text: 'vyber houbu i s nohou, ať vidíš spodek třeně; mladé neotevřené plodnice nesbírej' },
+              { icon: 'magnifier', title: 'Celá plodnice', text: 'vyber houbu i s celým třeněm, ať vidíš jeho spodek; mladé neotevřené plodnice nesbírej' },
               { icon: 'cross', title: 'Žádné „lidové testy“', text: 'stříbrná lžička ani okusování zvířaty jedovatost neprozradí' },
             ] },
             { type: 'callout', variant: 'warning', title: 'Podezření na otravu houbami', text: 'Volej **155** nebo 112, případně se poraď s Toxikologickým informačním střediskem (224 919 293). Zbytky hub, i z jídla, uschovej – pomohou určit, o jakou houbu šlo.' },
@@ -582,10 +582,10 @@ const level: LevelContent = {
         { kind: 'choice', q: 'Proč roste hřib smrkový hlavně pod smrky?', options: ['jeho podhoubí žije v mykorhize s kořeny smrku', 'parazituje na jehličí', 'potřebuje stín, jinak by mu shořel chlorofyl', 'živí se pryskyřicí'], answer: 0, explain: 'Hřib smrkový tvoří se smrkem mykorhizu: houba stromu dodává vodu a minerální látky, strom houbě cukry.' },
         { kind: 'choice', q: 'Proč je otrava muchomůrkou zelenou tak nebezpečná?', options: ['první potíže přijdou až za 6–24 hodin, kdy jed už ničí játra', 'houba je hořká, a tak ji nikdo nepozná', 'jed působí jen na děti', 'potíže přijdou hned a rychle zmizí'], answer: 0, explain: 'Zpožděné příznaky jsou zrádné: člověk si otravu dlouho nespojí s houbami a jed mezitím poškozuje játra.' },
         { kind: 'match', q: 'Přiřaď plíseň nebo kvasinku k tomu, čím je známá.', pairs: [
-          ['kvasinka pivní', 'kyne v těstě'],
+          ['kvasinka pivní', 'kypří těsto'],
           ['štětičkovec', 'penicilin a niva'],
           ['kropidlák', 'aflatoxiny na plesnivých ořeších'],
-        ], explain: 'Kvasinka pivní kvasí cukr v těstě i pivu, štětičkovec dal penicilin a zraje v sýrech, kropidlák tvoří aflatoxiny.' },
+        ], explain: 'Kvasinka pivní kvasí cukr v těstě i pivu, štětičkovec dal penicilin a pomáhá zrát sýrům, kropidlák tvoří aflatoxiny.' },
       ],
     },
 
@@ -674,7 +674,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Podle odpovědí rozlišujeme tři typy soužití. Znaménko + v názvu znamená zisk, 0 žádný vliv a − ztrátu:' },
             { type: 'compare', columns: [
               { title: 'Mutualismus (+ / +)', icon: 'check', tone: 'good', points: ['oba partneři získávají', 'lišejník (houba a řasa), mykorhiza', 'včela a květ', 'bakterie v našem střevě'] },
-              { title: 'Komenzalismus (+ / 0)', icon: 'idea', tone: 'a', points: ['jeden získá, druhému se nic nestane', 'lišejník na kůře stromu', 'roztoči, kteří žijí z odumřelých šupinek naší kůže'] },
+              { title: 'Komenzalismus (+ / 0)', icon: 'idea', tone: 'a', points: ['jeden získá, druhému se nic nestane', 'lišejník na kůře stromu', 'přísavka, ryba přichycená na žralokovi, se sveze a sbírá zbytky jeho kořisti'] },
               { title: 'Parazitismus (+ / −)', icon: 'warning', tone: 'bad', points: ['parazit žije na úkor hostitele', 'klíště, zimnička, viry', 'václavka na stromě'] },
             ], caption: 'Mutualismus je oboustranně výhodný, komenzalismus pomáhá jen jednomu a parazit žije na úkor hostitele.' },
             { type: 'p', text: 'Zajímavé je, že lišejník je v přehledu dvakrát. Mezi houbou a řasou uvnitř je to mutualismus. Lišejník na kmeni ale strom jen využívá jako místo k životu a nijak ho neživí, proto je to komenzalismus.' },
@@ -699,7 +699,7 @@ const level: LevelContent = {
             { type: 'p', text: 'V lekci „Houby“ jsme poznali **mykorhizu**: hyfy hub obalí kořeny a houba si se stromem vyměňuje látky. Teď k ní přidáme druhé podzemní partnerství – s bakteriemi.' },
             { type: 'p', text: 'Porovnej oba vztahy. Všimni si, že rostlina v obou případech „platí“ stejně – cukry z fotosyntézy:' },
             { type: 'compare', columns: [
-              { title: 'Mykorhiza (houba + kořen)', icon: 'mushroom', tone: 'a', points: ['hyfy prodlouží kořeny mnohonásobně', 'houba dodává vodu, fosfor a další minerální látky', 'rostlina dává cukry', 'má ji většina rostlin, od smrku po orchideje'] },
+              { title: 'Mykorhiza (houba + kořen)', icon: 'mushroom', tone: 'a', points: ['hyfy mnohonásobně zvětší plochu, kterou kořeny sají vodu', 'houba dodává vodu, fosfor a další minerální látky', 'rostlina dává cukry', 'má ji většina rostlin, od smrku po orchideje'] },
               { title: 'Hlízky (bakterie + kořen)', icon: 'bacteria', tone: 'b', points: ['**hlízkové bakterie** žijí v hlízkách na kořenech **bobovitých** (hrách, fazole, jetel, vojtěška)', 'poutají dusík $N2$ ze vzduchu do látek, které rostlina využije', 'rostlina dává cukry a úkryt'] },
             ], caption: 'Dvě podzemní partnerství, bez kterých by rostliny rostly mnohem hůř.' },
             { type: 'p', text: 'Proč je poutání dusíku tak cenné? Vzduch je ze 78 % dusík, ale rostliny ho z $N2$ využít neumějí. Hlízkové bakterie ano, a proto zemědělci sejí jetel nebo vojtěšku, aby si půda „odpočinula“ a obohatila se o dusík bez umělých hnojiv. (Celý koloběh dusíku probereme v lekci „Populace a koloběhy látek“.)' },
@@ -766,7 +766,7 @@ const level: LevelContent = {
               { icon: 'blood', title: 'Krev a tělní tekutiny', text: 'HIV, žloutenka typu B; pomáhají jednorázové jehly a kondom' },
               { icon: 'tick', title: 'Přenašeči', text: 'klíště (borelióza, encefalitida), komár (malárie); pomáhá repelent a prohlídka těla' },
             ] },
-            { type: 'callout', variant: 'fact', text: 'Mezi nakažením a prvními příznaky uplyne **inkubační doba** – u chřipky 1–3 dny, u klíšťové encefalitidy 1–2 týdny. Člověk přitom může mikroby šířit, i když se ještě cítí zdravý.' },
+            { type: 'callout', variant: 'fact', text: 'Mezi nakažením a prvními příznaky uplyne **inkubační doba** – u chřipky 1–3 dny, u klíšťové encefalitidy 1–2 týdny. U některých nemocí, třeba u chřipky, přitom člověk může mikroby šířit, i když se ještě cítí zdravý.' },
             { type: 'p', text: 'Cesty přenosu tedy známe. Nejjednodušší a nejlevnější způsob, jak je přerušit, má každý z nás doslova po ruce.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď nemoc k hlavní cestě přenosu.', pairs: [
               ['chřipka', 'kapénky ve vzduchu'],
@@ -826,7 +826,7 @@ const level: LevelContent = {
               { icon: 'earth', title: '1980 – konec pravých neštovic', text: 'díky očkování na celém světě vymizela nemoc, která zabíjela miliony lidí' },
               { icon: 'syringe', title: 'Dnes', text: 'v Česku se děti očkují například proti černému kašli, spalničkám, tetanu nebo žloutence typu B' },
             ] },
-            { type: 'p', text: 'Očkování chrání i ty, kdo očkovaní být nemohou – miminka nebo lidi s nemocemi. Když je chráněných dost, nemocný nemá koho nakazit a řetěz přenosu se přetrhne. Tomu se říká **kolektivní imunita**. Vyzkoušej si: nastav, kolik procent lidí je očkovaných, a sleduj, jak daleko se nemoc rozšíří. Pak přepni z chřipky na spalničky.' },
+            { type: 'p', text: 'Očkování chrání i ty, kdo očkovaní být nemohou – miminka nebo lidi s nemocemi. Když je chráněných dost, nemocný nemá koho nakazit a řetěz přenosu se přetrhne. Tomu se říká **kolektivní imunita**. Vyzkoušej si: nastav, kolik procent lidí je očkovaných, a sleduj, jak daleko se nemoc rozšíří. Začni spalničkami, pak přepni na chřipku a porovnej.' },
             { type: 'experiment', id: 'herd-immunity', caption: 'Nákaza se šíří od nemocného k vnímavým lidem; očkovaní ji nepředají dál. R_{0} je počet lidí, které by jeden nemocný nakazil v populaci bez ochrany.' },
             { type: 'p', text: 'Všiml/a sis? Pod určitou hranicí se nemoc šíří skoro celou populací, nad ní se rychle zastaví. U chřipky stačí chránit asi polovinu lidí, u spalniček skoro všechny. Proč takový rozdíl? Spočítejme hranici pro spalničky:' },
             { type: 'example', title: 'Kolik lidí musí být chráněno proti spalničkám', problem: 'Jeden nemocný se spalničkami by v populaci bez ochrany nakazil asi 15 lidí (R_{0} ≈ 15). Kolik procent lidí musí být chráněno, aby se nákaza nešířila dál?', steps: [
@@ -834,7 +834,7 @@ const level: LevelContent = {
               'Z 15 lidí, které potká a mohl by nakazit, tedy smí být nechráněný jen 1, chráněných musí být 14.',
               '14 : 15 ≈ 0,93, tedy 93 %. Žádná vakcína nechrání úplně každého, proto se doporučuje rezerva.',
             ], answer: 'Chráněno musí být asi 93 %, prakticky se proti spalničkám doporučuje proočkovanost aspoň 95 %.' },
-            { type: 'callout', variant: 'fact', text: 'Když proočkovanost klesne, nemoci se vracejí. V roce 2024 se v Česku rozšířil černý kašel nejvíc za několik desítek let.' },
+            { type: 'callout', variant: 'fact', text: 'Když proočkovanost klesne nebo ochrana po očkování časem zeslábne, nemoci se vracejí. V roce 2024 se v Česku rozšířil černý kašel nejvíc za několik desítek let.' },
             { type: 'p', text: 'Očkování brání virům i bakteriím. Proti bakteriím, které už v těle jsou, máme ještě antibiotika – jenže ta přestávají fungovat.' },
             { type: 'check', question: { kind: 'number', q: 'Jeden nemocný by bez ochrany nakazil 4 lidi. Kolik procent lidí musí být chráněno, aby každý nemocný nakazil nejvýš jednoho dalšího?', answer: 75, tolerance: 1, unit: '%', explain: 'Ze 4 lidí smí být nechráněný jen 1, chránění musí být 3. 3 : 4 = 0,75 = 75 %.' } },
           ],
@@ -852,7 +852,7 @@ const level: LevelContent = {
               { icon: 'warning', title: 'Odolná populace', text: 'stejné antibiotikum už nezabírá' },
             ] },
             { type: 'p', text: 'Ještě horší je, že geny odolnosti často leží na **plazmidech**, které si bakterie předávají – i mezi různými druhy. Antibiotikum tak nevytváří odolnost, ale vybírá ty, které ji už mají. Jak takový výběr pohání evoluci, uvidíš v lekci „Evoluce a přírodní výběr“.' },
-            { type: 'p', text: 'Každý z nás může vzniku odolných bakterií zpomalit. Stačí dodržovat čtyři pravidla:' },
+            { type: 'p', text: 'Každý z nás může vznik odolných bakterií zpomalit. Stačí dodržovat čtyři pravidla:' },
             { type: 'iconlist', items: [
               { icon: 'first-aid', title: 'Jen od lékaře', text: 'antibiotika ber, jen když je předepíše lékař – ne na viry, rýmu nebo chřipku' },
               { icon: 'clock', title: 'Přesně podle pokynů', text: 've správné dávce a v pravidelných časech, tak dlouho, jak lékař určil' },
@@ -877,7 +877,7 @@ const level: LevelContent = {
             ] },
             { type: 'p', text: 'Proto po léčbě antibiotiky často přijde průjem: lék poškodil i užitečné střevní bakterie. Mikrobiomu nejvíc pomáhá pestrá strava s vlákninou (zelenina, ovoce, luštěniny, celozrnné pečivo) a kysané potraviny jako jogurt, kefír nebo kysané zelí.' },
             { type: 'callout', variant: 'mascot', text: 'Takže až budeš příště jíst fazole, nekrmíš jen sebe, ale i svých čtyřicet bilionů spolubydlících. Doufám, že jsou vděční.' },
-            { type: 'p', text: 'Tím končí naše cesta mikrosvětem: od virů na hranici života přes bakterie, prvoky a houby až k lišejníkům a mikrobům v nás. V další úrovni začneme lekcí „Mechy a kapradiny“ a uvidíme, jak se život přestěhoval z vody na souš.' },
+            { type: 'p', text: 'Tím končí naše cesta mikrosvětem: od virů na hranici života přes bakterie, prvoky a houby až k lišejníkům a mikrobům v nás. V další úrovni začneme lekcí „Mechy a kapradiny“ a uvidíme, jak se rostliny přestěhovaly z vody na souš.' },
             { type: 'check', question: { kind: 'multi', q: 'Co dělají bakterie našeho mikrobiomu?', options: ['rozkládají vlákninu', 'vyrábějí vitamin K', 'brání uchycení choroboplodných bakterií', 'vyrábějí protilátky místo bílých krvinek', 'provádějí fotosyntézu ve střevě'], answers: [0, 1, 2], explain: 'Střevní bakterie tráví vlákninu, vyrábějí vitaminy a zabírají místo škodlivým bakteriím. Protilátky vyrábějí naše bílé krvinky.' } },
           ],
         },

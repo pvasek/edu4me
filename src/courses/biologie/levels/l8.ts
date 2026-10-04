@@ -25,8 +25,8 @@ const level: LevelContent = {
             { type: 'table', headers: ['vrstva', 'hloubka', 'z čeho je', 'skupenství'], rows: [
               ['zemská kůra', 'pod oceány 5–10 km, pod pevninou 30–70 km', 'žula, čedič a další horniny', 'pevná'],
               ['plášť', 'do 2 900 km', 'horniny bohaté na hořčík a železo', 'pevný, ale velmi pomalu teče'],
-              ['vnější jádro', '2 900–5 100 km', 'železo a nikl', '**tekuté**'],
-              ['vnitřní jádro', '5 100–6 370 km', 'železo a nikl, asi 5 000 °C', 'pevné'],
+              ['vnější jádro', '2 900–5 150 km', 'železo a nikl', '**tekuté**'],
+              ['vnitřní jádro', '5 150–6 370 km', 'železo a nikl, asi 5 500 °C', 'pevné'],
             ], caption: 'Vrstvy Země od povrchu ke středu' },
             { type: 'p', text: 'Pozor na častý omyl: plášť není moře roztavené lávy. Je z pevné horniny, která je tak horká, že se za miliony let pomalu přelévá jako hodně tuhý vosk. A proč je vnitřní jádro pevné, když je nejteplejší? Obrovský tlak nedovolí železu roztát.' },
             { type: 'p', text: 'Pro pohyb kontinentů jsou důležité ještě dva pojmy. Nedělí Zemi podle složení, ale podle toho, jak je hornina tuhá:' },
@@ -66,7 +66,7 @@ const level: LevelContent = {
               { icon: 'vector', title: 'Výstup', text: 'pomalu stoupá vzhůru k litosféře' },
               { icon: 'compass', title: 'Proud pod deskou', text: 'rozlévá se do stran a táhne desky s sebou' },
               { icon: 'cold', title: 'Pokles', text: 'ochlazená, těžší hornina klesá zpět do hloubky' },
-            ], caption: 'Tepelné (konvekční) proudění v plášti. Jeden oběh trvá desítky milionů let.' },
+            ], caption: 'Tepelné (konvekční) proudění v plášti. Jeden oběh trvá desítky až stovky milionů let.' },
             { type: 'p', text: 'Které desky jsou největší a kam se posouvají? Najdi na mapě nejdřív **Euroasijskou desku** – Česko leží celé na ní, daleko od jejích okrajů. Šipky ukazují směr pohybu, barevné čáry hranice desek:' },
             { type: 'diagram', id: 'world-plates', caption: 'Hlavní litosférické desky: Pacifická, Severoamerická, Jihoamerická, Euroasijská, Africká, Indoaustralská a Antarktická, k nim menší desky jako Nazca. Největší je Pacifická, skoro celá leží pod Tichým oceánem.' },
             { type: 'p', text: 'Všimni si, že hranice desek vedou většinou po dně oceánů, ne podél pobřeží kontinentů. Jedna deska tak často nese pevninu i kus oceánského dna – Jihoamerická deska sahá až doprostřed Atlantiku.' },
@@ -91,7 +91,7 @@ const level: LevelContent = {
             ], caption: 'Hranice litosférických desek' },
             { type: 'p', text: 'Pozor, tady se často chybuje: nová kůra vzniká hlavně na dně oceánů, ne na pevnině. A na transformní hranici sopky nejsou – kůra tam nevzniká ani nezaniká, desky se jen o sebe třou.' },
             { type: 'p', text: 'Jak vzniká pohoří? Když do sebe narazí dvě pevninské desky, ani jedna se nezanoří, protože jsou z lehkých hornin. Kůra se proto mačká a zvedá jako ubrus, který posunuješ po stole. Tak Indie narazila do Asie a vyzdvihla Himálaj, který roste dodnes.' },
-            { type: 'callout', variant: 'fact', text: 'Na vrcholu Mount Everestu leží vápenec s mořskými zkamenělinami. Kdysi byl na dně moře, dnes je skoro 9 km nad ním.' },
+            { type: 'callout', variant: 'fact', text: 'Na vrcholu Mount Everestu leží vápenec s mořskými zkamenělinami. Kdysi byl na dně moře, dnes je skoro 9 km nad jeho hladinou.' },
             { type: 'p', text: 'Desky se ale většinou nepohybují plynule: zaklesnou se, napětí roste – a pak se náhle uvolní. Tak vzniká zemětřesení.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď místo k typu hranice desek.', pairs: [
               ['Island', 'rozbíhavá hranice'],
@@ -111,14 +111,14 @@ const level: LevelContent = {
               { term: '**Ohnisko**', def: 'místo v hloubce, kde se hornina utrhne a uvolní energii' },
               { term: '**Epicentrum**', def: 'místo na povrchu přímo nad ohniskem; otřesy jsou tu nejsilnější' },
               { term: '**Magnituda**', def: 'číslo vyjadřující uvolněnou energii; o stupeň vyšší magnituda znamená asi 32krát víc energie' },
-              { term: '**Tsunami**', def: 'vlna vyvolaná zemětřesením pod mořem; na volném oceánu je nízká, u břehu se zvedne i do výšky desítek metrů' },
+              { term: '**Tsunami**', def: 'vlna vyvolaná nejčastěji zemětřesením pod mořem; na volném oceánu je nízká, u břehu se zvedne i do výšky desítek metrů' },
               { term: '**Magma a láva**', def: 'roztavená hornina; dokud je pod zemí, je to magma, když vyteče na povrch, je to láva' },
             ] },
             { type: 'p', text: 'Česko leží uprostřed desky, takže silná zemětřesení ani činné sopky tu nemáme. Přesto po nich najdeš stopy:' },
             { type: 'iconlist', items: [
               { icon: 'volcano', title: 'Komorní hůrka u Chebu', text: 'malá vyhaslá sopka, jedna z nejmladších u nás; zkoumal ji i básník J. W. Goethe' },
               { icon: 'mountain', title: 'Říp a České středohoří', text: 'zbytky sopek starých desítky milionů let' },
-              { icon: 'wave', title: 'Zemětřesné roje na Chebsku', text: 'série slabých otřesů, které čidla zaznamenají několikrát ročně' },
+              { icon: 'wave', title: 'Zemětřesné roje na Chebsku', text: 'opakované série mnoha slabých otřesů; většinu zaznamenají jen citlivé přístroje' },
               { icon: 'drop', title: 'Karlovarské prameny', text: 'horká voda a $CO2$ z hlubin prozrazují, že kůra pod západními Čechami je stále neklidná' },
             ] },
             { type: 'callout', variant: 'warning', text: 'Při zemětřesení venku se vzdal od budov, stromů a sloupů. Uvnitř se schovej pod pevný stůl a chraň si hlavu. Nepoužívej výtah.' },
@@ -191,7 +191,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Oba pojmy se snadno pletou, proto je porovnej vedle sebe:' },
             { type: 'compare', columns: [
               { title: 'Nerost (minerál)', icon: 'crystal', tone: 'a', points: ['přírodní látka, většinou neživého původu', 'má určité chemické složení, např. křemen $SiO2$', 'částice jsou uspořádané v pravidelné **krystalové mřížce**', 'jako jedna kostka stavebnice'] },
-              { title: 'Hornina', icon: 'mountain', tone: 'b', points: ['směs jednoho nebo více nerostů', 'složení se kus od kusu trochu liší', 'tvoří velká tělesa zemské kůry', 'jako stavba z mnoha kostek'] },
+              { title: 'Hornina', icon: 'mountain', tone: 'b', points: ['je tvořena jedním nebo (častěji) více nerosty', 'složení se kus od kusu trochu liší', 'tvoří velká tělesa zemské kůry', 'jako stavba z mnoha kostek'] },
             ] },
             { type: 'p', text: 'Nejlépe je to vidět na žule. Prohlédni si ji lupou a rozeznáš tři druhy zrn:' },
             { type: 'iconlist', items: [
@@ -214,7 +214,7 @@ const level: LevelContent = {
               { icon: 'pencil', title: 'Vryp', text: 'barva prášku, který nerost zanechá na neglazované porcelánové destičce' },
               { icon: 'sun', title: 'Lesk', text: 'kovový, skelný, perleťový nebo matný' },
               { icon: 'diamond', title: 'Tvrdost', text: 'odolnost proti rýpnutí, měří se Mohsovou stupnicí 1–10' },
-              { icon: 'feather', title: 'Štěpnost', text: 'nerost se láme podle rovných ploch, např. slída na tenké lístky' },
+              { icon: 'feather', title: 'Štěpnost', text: 'nerost se štěpí (rozpadá) podle rovných ploch, např. slída na tenké lístky' },
             ] },
             { type: 'p', text: 'Proč je vryp spolehlivější než barva? Barvu změní i nepatrná příměs. Křemen bývá čirý, fialový (ametyst) i růžový (růženín), ale jeho prášek je vždy bílý. A černý hematit dělá červenohnědý vryp.' },
             { type: 'p', text: 'Tvrdost se zkouší rýpáním: tvrdší nerost rýpe do měkčího, nikdy obráceně. Friedrich Mohs proto seřadil deset nerostů od nejměkčího po nejtvrdší. Ve třetím sloupci jsou pomůcky, které máš po ruce:' },
@@ -258,7 +258,7 @@ const level: LevelContent = {
             { type: 'table', headers: ['vlastnost', 'zlato', 'pyrit („kočičí zlato“)', 'zlatavá slída'], rows: [
               ['barva', 'sytě žlutá', 'mosazně žlutá', 'zlatavá až stříbřitá'],
               ['vryp', 'žlutý', 'černozelený', 'bílý'],
-              ['tvrdost', '2,5–3, dá se ohnout', '6–6,5, rýpe do skla', '2–3, láme se na lístky'],
+              ['tvrdost', '2,5–3, dá se ohnout', '6–6,5, rýpe do skla', '2–3, štěpí se na lístky'],
             ], caption: 'Jak odlišit zlato od napodobenin' },
             { type: 'p', text: 'Nerosty tedy umíme poznat. Teď se vrátíme o krok výš, k horninám, a zeptáme se, jak vznikají.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď nerost k jeho typické vlastnosti.', pairs: [
@@ -279,13 +279,13 @@ const level: LevelContent = {
               { title: 'Usazené (sedimentární)', icon: 'fossil', tone: 'b', points: ['vznikají usazením a zpevněním úlomků, schránek nebo rostlin', 'z úlomků: **pískovec**, slepenec', 'z organismů: **vápenec** ze schránek, **uhlí** z rostlin', 'jsou ve vrstvách a skrývají **zkameněliny**'] },
               { title: 'Přeměněné (metamorfované)', icon: 'weight', tone: 'c', points: ['vznikají z jiné horniny vysokým tlakem a teplotou, bez roztavení', 'z vápence vznikne **mramor**', 'ze žuly nebo z usazenin vznikne **rula**', 'nerosty bývají usměrněné do pásků'] },
             ] },
-            { type: 'p', text: 'Proč má žula velká zrna a čedič drobná, když obě vznikly z taveniny? Rozhoduje čas. Magma pod zemí chladne tisíce let a krystaly stihnou narůst. Láva na povrchu ztuhne za pár dní a krystalky zůstanou malinké.' },
-            { type: 'p', text: 'U usazených hornin je vznik nejdelší. Takhle se z rozdrolených hor stane pískovec:' },
+            { type: 'p', text: 'Proč má žula velká zrna a čedič drobná, když obě vznikly z taveniny? Rozhoduje čas. Magma hluboko pod zemí chladne tisíce až miliony let a krystaly stihnou narůst. Láva na povrchu ztuhne za dny až roky a krystalky zůstanou malinké.' },
+            { type: 'p', text: 'Usazené horniny vznikají úplně jinak: postupně, vrstvu po vrstvě. Takhle se z rozdrolených hor stane pískovec:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'mountain', title: 'Zvětrávání', text: 'skála se rozpadá na úlomky' },
               { icon: 'rain', title: 'Odnos', text: 'voda a vítr úlomky odnášejí' },
               { icon: 'ocean', title: 'Usazování', text: 'na dně moře nebo jezera se ukládají vrstvy' },
-              { icon: 'weight', title: 'Zpevnění', text: 'tíha dalších vrstev úlomky stlačí a stmelí' },
+              { icon: 'weight', title: 'Zpevnění', text: 'tíha dalších vrstev úlomky stlačí a tmel z vody je spojí' },
             ], caption: 'Vznik usazené horniny trvá statisíce až miliony let.' },
             { type: 'callout', variant: 'fact', text: 'Usazené horniny tvoří jen malou část objemu zemské kůry, ale pokrývají asi tři čtvrtiny povrchu souše.' },
             { type: 'p', text: 'Tyto tři skupiny ale nejsou uzavřené přihrádky. Každá hornina se může během milionů let proměnit v jinou – a právě to ukazuje koloběh hornin.' },
@@ -324,7 +324,7 @@ const level: LevelContent = {
               { icon: 'volcano', title: 'Panská skála', text: 'čedič z dávné sopky, ztuhlý do šestibokých sloupů jako varhany' },
               { icon: 'flame', title: 'Uhlí', text: 'černé uhlí na Ostravsku z prvohorních pralesů, hnědé uhlí na Mostecku z třetihorních bažin' },
             ] },
-            { type: 'p', text: 'Proč tvoří čedič na Panské skále sloupy? Láva při chladnutí smršťuje a praská podobně jako bahno v louži, které vysychá. Trhliny se nejčastěji setkávají do šestiúhelníků.' },
+            { type: 'p', text: 'Proč tvoří čedič na Panské skále sloupy? Ztuhlá láva se při chladnutí smršťuje a praská podobně jako bahno v louži, které vysychá. Trhliny se nejčastěji setkávají do šestiúhelníků.' },
             { type: 'p', text: 'Horniny ale nevydrží věčně. Mráz, voda a kořeny je pomalu drolí – a z drobných úlomků vzniká něco, bez čeho bychom nežili. O tom je lekce „Půda a voda“.' },
             { type: 'check', question: { kind: 'multi', q: 'Kde v Česku najdeš usazené horniny?', options: ['pískovcová skalní města Adršpachu', 'vápence Českého krasu', 'čedičové sloupy Panské skály', 'žula Šumavy', 'uhelné sloje na Mostecku'], answers: [0, 1, 4], explain: 'Pískovec, vápenec i uhlí jsou usazené horniny. Čedič a žula jsou vyvřelé.' } },
           ],
@@ -419,7 +419,7 @@ const level: LevelContent = {
           title: 'Pomalý vznik, rychlý zánik',
           icon: 'clock',
           blocks: [
-            { type: 'p', text: 'Půda vzniká z matečné horniny zvětráváním a činností organismů. Je to práce na staletí: ==v našich podmínkách vznikne zhruba 1 cm půdy za 100 let, často i pomaleji.== Proto se půda počítá mezi neobnovitelné zdroje.' },
+            { type: 'p', text: 'Půda vzniká z matečné horniny zvětráváním a činností organismů. Je to práce na staletí: ==v našich podmínkách vznikne zhruba 1 cm půdy za 100 let, často i pomaleji.== Proto se půda počítá mezi prakticky neobnovitelné zdroje.' },
             { type: 'p', text: 'Kolik času skrývá ornice pod pluhem a kolik času stojí jedna bouřka, si spočítej:' },
             { type: 'example', title: 'Kolik let leží v poli', problem: 'Ornice na poli je silná 30 cm. Když 1 cm půdy vzniká asi 100 let, jak dlouho se tvořila? A jak dlouho bude trvat obnova 2 cm, které smyje prudký liják z holého svahu?', steps: [
               'Doba vzniku = tloušťka · doba na 1 cm',
@@ -567,13 +567,13 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Každý organismus potřebuje energii a látky na stavbu těla. Podle toho, jak je získává, má v ekosystému jednu ze tří rolí:' },
             { type: 'iconlist', items: [
-              { icon: 'sun', title: 'Producenti (výrobci)', text: 'zelené rostliny, řasy a sinice; fotosyntézou vyrábějí cukry z $CO2$, vody a světla a živí tak sebe i všechny ostatní' },
+              { icon: 'sun', title: 'Producenti (výrobci)', text: 'zelené rostliny, řasy a sinice; fotosyntézou vyrábějí z $CO2$ a vody pomocí energie světla cukry a živí tak sebe i všechny ostatní' },
               { icon: 'paw', title: 'Konzumenti (spotřebitelé)', text: 'živočichové, kteří jedí jiné organismy: býložravci, masožravci i všežravci' },
-              { icon: 'mushroom', title: 'Rozkladači', text: 'bakterie a houby rozkládají mrtvá těla, listí a trus na jednoduché látky' },
+              { icon: 'mushroom', title: 'Rozkladači (destruenti)', text: 'bakterie a houby rozkládají mrtvá těla, listí a trus na jednoduché látky' },
             ] },
             { type: 'p', text: 'Konzumenty dál třídíme podle toho, kolik kroků je dělí od rostliny:' },
             { type: 'table', headers: ['konzument', 'čím se živí', 'příklady'], rows: [
-              ['1. řádu (býložravec)', 'rostlinami', 'housenka, kobylka, zajíc, srnec'],
+              ['1. řádu (býložravec)', 'rostlinami', 'housenka, saranče, zajíc, srnec'],
               ['2. řádu', 'býložravci', 'sýkora, skokan, rejsek'],
               ['3. řádu', 'jinými masožravci', 'užovka jedoucí žáby, krahujec lovící sýkory'],
             ], caption: 'Řády konzumentů' },
@@ -588,7 +588,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: '**Potravní řetězec** ukazuje, kdo koho jí. Začíná vždy producentem a každý další článek se živí tím předchozím. Tady je řetězec z doubravy:' },
             { type: 'process', layout: 'flow', steps: [
-              { icon: 'tree', title: 'Dub letní', text: 'producent: listy vyrábí fotosyntézou' },
+              { icon: 'tree', title: 'Dub letní', text: 'producent: v listech vyrábí fotosyntézou cukry' },
               { icon: 'butterfly', title: 'Housenka', text: 'konzument 1. řádu: žere listy' },
               { icon: 'bird', title: 'Sýkora koňadra', text: 'konzument 2. řádu: krmí mláďata housenkami' },
               { icon: 'bird', title: 'Krahujec obecný', text: 'konzument 3. řádu: loví drobné ptáky' },
@@ -764,8 +764,8 @@ const level: LevelContent = {
               { label: 'bez omezení', points: [[0, 20], [1, 40], [2, 80], [3, 160], [4, 320], [5, 640], [5.6, 970]], style: 'dashed', tone: 'b' },
               { label: 'skutečná populace', points: [[0, 20], [1, 39], [2, 74], [3, 135], [4, 230], [5, 357], [6, 494], [7, 611], [8, 692], [9, 742], [10, 770]], style: 'smooth', tone: 'a' },
             ], marks: [{ y: 800, label: 'nejvíc, kolik prostředí uživí' }], caption: 'Bez omezení by se populace každý rok zdvojnásobila. Skutečná populace se zpomalí a ustálí. Podrobně v lekci „Populační ekologie“.' },
-            { type: 'p', text: 'Všiml/a sis, že obě křivky začínají stejně? Na začátku je potravy dost pro všechny a brzdy se projeví až s rostoucím počtem. Nejvíc přitom omezuje ten faktor, kterého je **nejméně** – i kdyby všeho ostatního bylo dost.' },
-            { type: 'callout', variant: 'fact', text: 'V roce 1859 vypustil farmář v Austrálii 24 králíků. Neměli tam predátory ani nemoci, a tak se jich za necelých sto let rozmnožilo na stovky milionů.' },
+            { type: 'p', text: 'Všiml/a sis, že obě křivky začínají stejně? Na začátku je potravy dost pro všechny a brzdy se projeví až s rostoucím počtem. Nejvíc přitom omezuje ten faktor, kterého je vzhledem k potřebě **nejméně** – i kdyby všeho ostatního bylo dost.' },
+            { type: 'callout', variant: 'fact', text: 'V roce 1859 vypustil farmář v Austrálii 24 králíků. Neměli tam skoro žádné přirozené nepřátele ani nemoci, a tak se jich za necelých sto let rozmnožilo na stovky milionů.' },
             { type: 'p', text: 'Jednou z nejzajímavějších brzd jsou predátoři. Jejich vztah s kořistí totiž působí oběma směry.' },
             { type: 'check', question: { kind: 'tf', q: 'Populace roste, dokud ji nezabrzdí nějaký omezující faktor, například nedostatek potravy.', answer: true, explain: 'Každá populace by bez brzd rostla stále rychleji. Zastaví ji potrava, prostor, predátoři, nemoci nebo počasí.' } },
           ],
@@ -776,7 +776,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Káně lesní a hraboš polní jsou staří sousedé. Když je hrabošů hodně, káně mají dost potravy a vyvedou víc mláďat. Pak se ale karta obrátí.' },
             { type: 'p', text: 'Sleduj, jak se počet obou druhů mění v čase. Všimni si, že vrcholy dravců přicházejí vždy o něco později než vrcholy kořisti:' },
-            { type: 'graph', x: { label: 'čas', unit: 'roky', min: 0, max: 8, step: 1 }, y: { label: 'početnost', unit: '% maxima', min: 0, max: 100, step: 20 }, series: [
+            { type: 'graph', x: { label: 'čas', unit: 'roky', min: 0, max: 8, step: 1 }, y: { label: 'početnost (relativní)', min: 0, max: 100, step: 20 }, series: [
               { label: 'hraboš (kořist)', points: [[0, 30], [1, 70], [2, 100], [3, 55], [4, 25], [5, 30], [6, 70], [7, 100], [8, 55]], style: 'smooth', tone: 'a' },
               { label: 'káně (dravec)', points: [[0, 20], [1, 25], [2, 45], [3, 60], [4, 45], [5, 25], [6, 25], [7, 45], [8, 60]], style: 'smooth', tone: 'b' },
             ], caption: 'Cyklus kořisti a dravce (zjednodušeně): po přemnožení hrabošů přibude dravců, po jejich poklesu ubude i dravců.' },
@@ -823,15 +823,15 @@ const level: LevelContent = {
             { type: 'diagram', id: 'nitrogen-cycle', caption: 'Koloběh dusíku: bakterie poutají $N2$ ze vzduchu, rostliny přijímají dusičnany, rozkladači a bakterie vracejí dusík do půdy a do vzduchu.' },
             { type: 'p', text: 'Hlavní kroky si shrňme. U každého si všimni, kdo ho provádí – skoro všude jsou to bakterie:' },
             { type: 'table', headers: ['krok', 'co se děje', 'kdo to dělá'], rows: [
-              ['poutání dusíku', '$N2$ ze vzduchu → sloučeniny dusíku v půdě', 'hlízkové bakterie v kořenech bobovitých rostlin (jetel, hrách, vojtěška), sinice; trochu i blesky'],
-              ['příjem', 'kořeny nasávají dusičnany $NO3^-$', 'rostliny'],
+              ['poutání dusíku (fixace)', '$N2$ ze vzduchu → sloučeniny dusíku v půdě', 'hlízkové bakterie v kořenech bobovitých rostlin (jetel, hrách, vojtěška), sinice; trochu i blesky'],
+              ['příjem (asimilace)', 'kořeny nasávají dusičnany $NO3^-$', 'rostliny'],
               ['potrava', 'dusík v bílkovinách putuje řetězcem', 'živočichové'],
-              ['rozklad', 'z mrtvých těl a moči vzniká amoniak a amonné ionty $NH4^+$', 'rozkladači'],
+              ['rozklad (amonizace)', 'z mrtvých těl a moči vzniká amoniak a amonné ionty $NH4^+$', 'rozkladači'],
               ['nitrifikace', '$NH4^+$ → dusičnany', 'nitrifikační bakterie'],
               ['denitrifikace', 'dusičnany → $N2$ zpět do vzduchu', 'denitrifikační bakterie v podmáčené půdě'],
             ], caption: 'Koloběh dusíku krok za krokem' },
             { type: 'callout', variant: 'tip', text: 'Zemědělci odedávna střídají plodiny: po jeteli nebo hrachu zůstane půda bohatší na dusík a obilí pak roste lépe. Dnes se dusík dodává i průmyslovými hnojivy.' },
-            { type: 'p', text: 'Uhlík a dusík kolují a nikomu neškodí. Jsou ale látky, které příroda neumí rozložit – a ty se v potravním řetězci hromadí.' },
+            { type: 'p', text: 'Uhlík a dusík příroda stále znovu využívá. Jsou ale látky, které příroda neumí rozložit – a ty se v potravním řetězci hromadí.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč se o jeteli a hrachu říká, že „hnojí“ půdu?', options: ['v hlízkách na jejich kořenech žijí bakterie, které poutají dusík ze vzduchu', 'jejich listy obsahují nejvíc uhlíku', 'kořeny vylučují vápník', 'rychle rostou a zastíní plevel'], answer: 0, explain: 'Hlízkové bakterie mění $N2$ ze vzduchu na sloučeniny dusíku, které po rostlině zůstanou v půdě.' } },
           ],
         },
@@ -839,7 +839,7 @@ const level: LevelContent = {
           title: 'Jedy, které se hromadí',
           icon: 'warning',
           blocks: [
-            { type: 'p', text: 'Některé látky organismus neumí rozložit ani vyloučit a ukládá je v tuku. Patří k nim rtuť, insekticid DDT nebo průmyslové látky PCB. Predátor za život sní stovky kusů kořisti a s nimi i všechen jed, který v nich byl.' },
+            { type: 'p', text: 'Některé látky organismus neumí rozložit ani rychle vyloučit a hromadí je v těle (DDT a PCB v tuku, rtuť ve svalech). Patří k nim rtuť, insekticid DDT nebo průmyslové látky PCB. Predátor za život sní stovky kusů kořisti a s nimi i všechen jed, který v nich byl.' },
             { type: 'p', text: 'Proto koncentrace jedu stoupá s každým patrem potravního řetězce. Tomuto jevu se říká **bioakumulace**. Sleduj naměřené hodnoty z jezera zamořeného DDT – v miligramech na kilogram:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'drop', title: 'Voda', text: '0,000 003 mg/kg' },
@@ -879,7 +879,7 @@ const level: LevelContent = {
         ], explain: 'Každý z dějů je jeden krok v koloběhu látek nebo v osudu jedu v přírodě.' },
         { kind: 'order', q: 'Seřaď úrovně od nejmenší po největší.', items: ['jedinec', 'populace', 'společenstvo', 'ekosystém', 'biosféra'], explain: 'Jedinci tvoří populaci, populace společenstvo, společenstvo s prostředím ekosystém a všechny ekosystémy biosféru.' },
         { kind: 'tf', q: 'Rostliny umějí přijímat dusík přímo jako plyn $N2$ ze vzduchu.', answer: false, explain: 'Molekulu $N2$ umějí rozbít jen některé bakterie. Rostliny berou dusík z půdy jako dusičnany.' },
-        { kind: 'choice', q: 'Proč mají nejvíc rtuti velké dravé ryby, jako je tuňák?', options: ['jsou na vrcholu řetězce a za život snědí mnoho menších ryb s rtutí', 'rtuť se tvoří v jejich játrech', 'žijí nejblíž dna', 'přijímají rtuť žábrami nejrychleji ze všech ryb'], answer: 0, explain: 'Rtuť se z těla nevylučuje, takže se hromadí s každou snědenou kořistí – to je bioakumulace.' },
+        { kind: 'choice', q: 'Proč mají nejvíc rtuti velké dravé ryby, jako je tuňák?', options: ['jsou na vrcholu řetězce a za život snědí mnoho menších ryb s rtutí', 'rtuť se tvoří v jejich játrech', 'žijí nejblíž dna', 'přijímají rtuť žábrami nejrychleji ze všech ryb'], answer: 0, explain: 'Rtuť se z těla vylučuje jen velmi pomalu, takže se hromadí s každou snědenou kořistí – to je bioakumulace.' },
         { kind: 'multi', q: 'Co může omezit růst populace hraboše polního?', options: ['nedostatek potravy po suchém létě', 'velký počet kání a poštolek', 'nemoc šířící se v husté populaci', 'dostatek úkrytů', 'mírná zima'], answers: [0, 1, 2], explain: 'Hlad, predátoři a nemoci zvyšují úmrtnost. Dostatek úkrytů a mírná zima naopak růstu pomáhají.' },
       ],
     },
@@ -1126,7 +1126,7 @@ const level: LevelContent = {
           title: 'Změna klimatu a život',
           icon: 'thermometer',
           blocks: [
-            { type: 'p', text: 'Atmosféra funguje jako peřina. Skleníkové plyny, hlavně $CO2$ a metan $CH4$, propustí sluneční záření k zemi, ale část tepla, které vyzařuje povrch, zadrží. Bez tohoto **skleníkového efektu** by na Zemi bylo v průměru asi −18 °C místo dnešních +15 °C.' },
+            { type: 'p', text: 'Atmosféra funguje jako peřina. Skleníkové plyny – vodní pára, $CO2$ a metan $CH4$ – propustí sluneční záření k zemi, ale část tepla, které vyzařuje povrch, zadrží. Bez tohoto **skleníkového efektu** by na Zemi bylo v průměru asi −18 °C místo dnešních +15 °C.' },
             { type: 'p', text: 'Na obrázku sleduj cestu slunečního záření a tepla. Všimni si, kde do ní zasahují skleníkové plyny:' },
             { type: 'diagram', id: 'greenhouse-effect', caption: 'Skleníkový efekt: sluneční záření ohřeje povrch, skleníkové plyny část vyzařovaného tepla vrátí zpět k zemi.' },
             { type: 'p', text: 'Problém tedy není skleníkový efekt sám, ale jeho zesilování. V lekci „Populace a koloběhy látek“ jsme viděli, že spalováním fosilních paliv vracíme do vzduchu uhlík uložený miliony let. Graf ukazuje měření $CO2$ na observatoři Mauna Loa na Havaji:' },
@@ -1139,7 +1139,7 @@ const level: LevelContent = {
               'Počet let: 2025 − 1960 = 65 let',
               'Průměr na rok: 110 ppm : 65 let ≈ 1,7 ppm za rok',
             ], answer: 'V průměru asi 1,7 ppm ročně; v posledních letech už přes 2 ppm ročně.' },
-            { type: 'p', text: 'Země se od průmyslové revoluce oteplila zhruba o 1,2 °C, Česko ještě víc. Na živé přírodě je to už vidět:' },
+            { type: 'p', text: 'Země se od průmyslové revoluce oteplila o víc než 1,2 °C, Česko ještě víc. Na živé přírodě je to už vidět:' },
             { type: 'iconlist', items: [
               { icon: 'flower', title: 'Dřívější jaro', text: 'stromy raší a kvetou o dny až týdny dřív než před 50 lety' },
               { icon: 'bird', title: 'Ptáci mění tah', text: 'někteří tažní ptáci přilétají dřív nebo už na zimu neodlétají' },

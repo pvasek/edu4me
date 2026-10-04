@@ -1,7 +1,7 @@
 import { Draw, Fade, Frame, Lbl, Num, Plates, pat, useFig } from "./kit";
 
 const LABEL =
-  "Trávicí soustava člověka zepředu a co se kde tráví. Trávicí trubice vede z dutiny ústní jícnem do žaludku, pak do tenkého střeva, které začíná dvanáctníkem, dál do tlustého střeva a konečníku. Připojené jsou trávicí žlázy: slinné žlázy, játra se žlučníkem a slinivka břišní. 1. Ústa: zuby rozmělní potravu, sliny začnou štěpit škrob. 2. Žaludek: kyselina chlorovodíková zabíjí mikroby, pepsin štěpí bílkoviny. 3. Dvanáctník: žluč z jater rozbije tuky na kapičky, šťáva ze slinivky štěpí cukry, tuky i bílkoviny. 4. Tenké střevo: dokončí trávení a živiny se vstřebají do krve. 5. Tlusté střevo: vstřebá vodu, bakterie rozkládají zbytky.";
+  "Trávicí soustava člověka zepředu a co se kde tráví. Trávicí trubice vede z dutiny ústní jícnem do žaludku, pak do tenkého střeva, které začíná dvanáctníkem, dál do tlustého střeva a konečníku. Připojené jsou trávicí žlázy: slinné žlázy, játra se žlučníkem a slinivka břišní. 1. Ústa: zuby rozmělní potravu, sliny začnou štěpit škrob. 2. Žaludek: kyselina chlorovodíková zabíjí mikroby, pepsin štěpí bílkoviny. 3. Dvanáctník: žluč z jater rozbije tuky na kapičky, šťáva ze slinivky štěpí škrob, tuky i bílkoviny. 4. Tenké střevo: dokončí trávení a živiny se vstřebají do krve. 5. Tlusté střevo: vstřebá vodu, bakterie rozkládají zbytky.";
 
 const GUT = "bz2-o bz2-gut2";
 

@@ -2,7 +2,7 @@ import { StepStrip } from "../../sequence/StepFigure";
 import { Dashed, Fade, Figure, Frame, Shade, StripBox, blob, useFig, pat } from "./kit";
 
 const LABEL =
-  "Souměrnost těla živočichů ve čtyřech obrázcích. Houbovec nemá žádnou osu souměrnosti, její tělo je nepravidelné. Medúza má souměrnost paprsčitou: tělem vede více rovin souměrnosti středem, jako u koláče. Žížala a brouk jsou souměrní dvoustranně: jediná rovina je dělí na levou a pravou polovinu, mají přední konec s hlavou a tělo složené z článků.";
+  "Souměrnost těla živočichů ve čtyřech obrázcích. Houbovec nemá žádnou osu souměrnosti, jeho tělo je nepravidelné. Medúza má souměrnost paprsčitou: tělem vede více rovin souměrnosti středem, jako u koláče. Žížala a brouk jsou souměrní dvoustranně: jediná rovina je dělí na levou a pravou polovinu, mají přední konec s hlavou a tělo složené z článků.";
 
 const W = 200;
 const H = 200;

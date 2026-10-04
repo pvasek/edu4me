@@ -143,7 +143,7 @@ export default function CellPlantAnimal() {
             {
               title: "Živočišná buňka",
               art: <AnimalCell />,
-              caption: "Nemá stěnu ani chloroplasty, a proto může měnit tvar.",
+              caption: "Nemá buněčnou stěnu, a proto může měnit tvar. Nemá ani chloroplasty.",
             },
             {
               title: "Rostlinná buňka",
@@ -154,7 +154,7 @@ export default function CellPlantAnimal() {
         />
         <p className="bz1-strip-note">
           Společné: membrána, cytoplazma, jádro, mitochondrie.{" "}
-          <span style={{ color: "var(--lvl-ink)" }}>Jen u rostlin: stěna, chloroplasty, vakuola.</span>
+          <span style={{ color: "var(--lvl-ink)" }}>Jen u rostlin: stěna, chloroplasty, velká vakuola.</span>
         </p>
       </div>
     </Figure>

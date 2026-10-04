@@ -2,7 +2,7 @@ import { StepFilm } from "../../sequence/StepFigure";
 import { Arrow, Draw, Fade, Figure, Frame, Pop, pat, useFig } from "./kit";
 
 const LABEL =
-  "Životní cyklus tasemnice dobytčí, animace po krocích. 1. Dospělá tasemnice žije ve střevě člověka, přichycená hlavičkou se čtyřmi přísavkami (háčky tasemnice dobytčí nemá). 2. Zralé články plné vajíček odcházejí se stolicí ven, na pole nebo pastvu. 3. Kráva (u tasemnice dlouhočlenné prase) spolkne vajíčka s trávou, larvy pronikají krví do svalů. 4. Ve svalovině se z larvy stane boubel, váček s hlavičkou budoucí tasemnice. 5. Člověk sní syrové nebo nedostatečně tepelně upravené maso a boubel mu ve střevě vyroste v novou tasemnici. 6. Prevence: maso důkladně tepelně upravit, veterinární kontrola masa, mytí rukou a hygiena.";
+  "Životní cyklus tasemnice bezbranné, animace po krocích. 1. Dospělá tasemnice žije ve střevě člověka, přichycená hlavičkou se čtyřmi přísavkami (háčky tasemnice bezbranná nemá). 2. Zralé články plné vajíček odcházejí se stolicí ven, na pole nebo pastvu. 3. Kráva (u tasemnice dlouhočlenné prase) spolkne vajíčka s trávou, larvy pronikají krví do svalů. 4. Ve svalovině se z larvy stane boubel, váček s hlavičkou budoucí tasemnice. 5. Člověk sní syrové nebo nedostatečně tepelně upravené maso a boubel mu ve střevě vyroste v novou tasemnici. 6. Prevence: maso důkladně tepelně upravit, veterinární kontrola masa, mytí rukou a hygiena.";
 
 const W = 440;
 const H = 290;

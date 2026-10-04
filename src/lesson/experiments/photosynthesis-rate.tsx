@@ -52,7 +52,7 @@ function limitingText(limiting: Factor[]): string {
 function photoLabel(light: number, co2: number, temp: number): string {
   const { rate, limiting } = photosynthesisRate(light, co2, temp)
   const head = `Kádinka s vodou a větvičkou vodního moru pod lampou. Intenzita světla ${light} %, koncentrace CO₂ ${czNum(co2, 2)} %, teplota ${temp} °C. `
-  if (rate < 0.5) return head + (temp >= 45 ? 'Při takové teplotě se enzymy rozpadají a rostlina kyslík nevytváří.' : 'Rostlina nevytváří žádné bublinky kyslíku.')
+  if (rate < 0.5) return head + (temp >= 45 ? 'Při takové teplotě se enzymy poškodí a rostlina kyslík nevytváří.' : 'Rostlina nevytváří žádné bublinky kyslíku.')
   const why =
     limiting.length === 0
       ? 'Všechny tři faktory jsou nasycené, rostlina pracuje naplno.'

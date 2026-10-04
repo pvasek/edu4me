@@ -1,7 +1,7 @@
 import { Fade, Figure, Lbl, Pop, f1, pat, rng, useFig } from "./kit";
 
 const LABEL =
-  "Živočišná eukaryotní buňka tak, jak ji ukazuje elektronový mikroskop. Uprostřed je jádro s dvojitou jadernou membránou s póry a s tmavým jadérkem. Na jádro navazuje drsné endoplazmatické retikulum posázené ribozomy, které vyrábí bílkoviny, a hladké ER bez ribozomů, které tvoří lipidy. Golgiho aparát ze zploštělých váčků bílkoviny upravuje a balí do měchýřků. Lyzozom obsahuje trávicí enzymy, mitochondrie s dvojitou membránou a kristami vyrábějí ATP. V cytoplazmě jsou volné ribozomy a cytoskelet z vláken a mikrotubulů, celé to obaluje cytoplazmatická membrána.";
+  "Živočišná eukaryotní buňka tak, jak ji ukazuje elektronový mikroskop. Uprostřed je jádro s dvojitou jadernou membránou s póry a s tmavým jadérkem. Na jádro navazuje drsné endoplazmatické retikulum posázené ribozomy, které vyrábí bílkoviny, a hladké ER bez ribozomů, které tvoří lipidy. Golgiho aparát ze zploštělých váčků bílkoviny upravuje a balí do měchýřků. Lysozom obsahuje trávicí enzymy, mitochondrie s dvojitou membránou a kristami vyrábějí ATP. V cytoplazmě jsou volné ribozomy a cytoskelet z vláken a mikrotubulů, celé to obaluje cytoplazmatická membrána.";
 
 const W = 440;
 const H = 420;
@@ -164,7 +164,7 @@ function Plate() {
         <Lbl x={W - 6} y={196} tx={262} ty={175} anchor="end" className="bz3-sm bz3-b">ribozomy</Lbl>
         <Lbl x={W - 6} y={246} tx={318} ty={250} anchor="end" className="bz3-sm bz3-b">Golgiho aparát</Lbl>
         <Lbl x={W - 6} y={296} tx={326} ty={293} anchor="end" className="bz3-sm bz3-b">měchýřek</Lbl>
-        <Lbl x={W - 6} y={344} tx={244} ty={330} anchor="end" className="bz3-sm bz3-b">lyzozom</Lbl>
+        <Lbl x={W - 6} y={344} tx={244} ty={330} anchor="end" className="bz3-sm bz3-b">lysozom</Lbl>
         <Lbl x={W - 6} y={392} tx={246} ty={254} anchor="end" lx={350} ly={380} className="bz3-sm bz3-b">centrozom</Lbl>
       </Fade>
     </>

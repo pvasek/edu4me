@@ -81,7 +81,7 @@ const tx = (d: number) => TX0 + (Math.min(d, DAYS_MAX) / DAYS_MAX) * (TX1 - TX0)
 
 function coralLabel(t: number, days: number): string {
   const over = t - MMM
-  const sea = `Moře má ${czNum(t)} °C, ${over > 0 ? `o ${czNum(over)} °C víc` : over < 0 ? `o ${czNum(-over)} °C méně` : 'stejně'} než obvyklé letní maximum ${MMM} °C, a to ${dayWord(days)}. `
+  const sea = `Moře má ${czNum(t)} °C, ${over > 0 ? `o ${czNum(over)} °C víc` : over < 0 ? `o ${czNum(-over)} °C méně` : 'tedy ne víc'} než obvyklé letní maximum ${MMM} °C, a to ${dayWord(days)}. `
   const a = Math.round(algaeShare(dhw(t, days)) * 100)
   const dead = Math.round(deadShare(dhw(t, days)) * 100)
   return (

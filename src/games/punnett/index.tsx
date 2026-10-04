@@ -158,7 +158,7 @@ export default function Punnett({ levelId, onFinish }: GameProps) {
       setQTries(1)
       jolt.shake()
       const extra = picked.some((k) => !q.answer.includes(k))
-      say('bad', extra ? 'Něco z vybraného gameta být nemůže: gameta nese z každého genu jen jednu alelu, a to takovou, kterou rodič má.' : 'Chybí ti některá gameta. Zkus projít všechny kombinace.')
+      say('bad', extra ? 'Některá z vybraných gamet vzniknout nemůže: gameta nese z každého genu jen jednu alelu, a to takovou, kterou rodič má.' : 'Chybí ti některá gameta. Zkus projít všechny kombinace.')
       return
     }
     setQOk(false)

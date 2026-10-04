@@ -2,7 +2,7 @@ import { StepFilm } from "../../sequence/StepFigure";
 import { Arrow, Figure, Frame, Liquid, Pop, f1, pat, useFig } from "./kit";
 
 const LABEL =
-  "Jak vzniká zkamenělina, ve stepech. Ryba uhyne a klesne na dno jezera. Měkké části se rozloží a kostru rychle zasypou vrstvy bahna a písku, takže se k ní nedostane kyslík ani mrchožrouti. Pod tlakem dalších vrstev se usazeniny mění v horninu a voda s rozpuštěnými minerály postupně nahradí kosti kamenem. Pohyby zemské kůry pak vrstvy vyzdvihnou, déšť a řeky obrušují povrch, až eroze zkamenělinu odkryje a paleontolog ji najde ve skalní stěně.";
+  "Jak vzniká zkamenělina, krok za krokem. Ryba uhyne a klesne na dno jezera. Měkké části se rozloží a kostru rychle zasypou vrstvy bahna a písku, takže se k ní nedostane kyslík ani mrchožrouti. Pod tlakem dalších vrstev se usazeniny mění v horninu a voda s rozpuštěnými minerály postupně nahradí kosti kamenem. Pohyby zemské kůry pak vrstvy vyzdvihnou, déšť a řeky obrušují povrch, až eroze zkamenělinu odkryje a paleontolog ji najde ve skalní stěně.";
 
 const W = 360;
 const H = 240;

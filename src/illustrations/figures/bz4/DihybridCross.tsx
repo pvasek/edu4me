@@ -96,7 +96,7 @@ export default function DihybridCross() {
       {/* gametes */}
       <Fade delay={0.6}>
         <text x={GX + 2 * CELL} y={GY - 38} textAnchor="middle" className="bz4-lbl bz4-sm bz4-b">
-          pylová zrna (♂)
+          samčí gamety (♂)
         </text>
         <text
           x={GX - 50}
@@ -105,7 +105,7 @@ export default function DihybridCross() {
           transform={`rotate(-90 ${GX - 50} ${GY + 2 * CELL})`}
           className="bz4-lbl bz4-sm bz4-b"
         >
-          vajíčka (♀)
+          vaječné buňky (♀)
         </text>
         {GAM.map((g, i) => (
           <g key={g}>

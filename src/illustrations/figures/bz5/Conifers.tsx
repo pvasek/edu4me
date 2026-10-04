@@ -3,7 +3,7 @@ import { StepStrip } from "../../sequence/StepFigure";
 import { Draw, Fade, Figure, Frame, Pop, f1, useFig } from "./kit";
 
 const LABEL =
-  "Větvičky a šišky čtyř českých jehličnanů. Smrk ztepilý: jehlice jednotlivě kolem celé větvičky, čtyřhranné a pichlavé, dlouhé šišky visí dolů a opadávají celé. Jedle bělokorá: ploché tupé jehlice ve dvou řadách, vespod se dvěma bílými proužky, šišky stojí na větvi vzhůru a rozpadají se na šupiny. Borovice lesní: dlouhé jehlice po dvou ve svazečku, malé kuželovité šišky. Modřín opadavý: měkké jehlice ve svazečcích po mnoha na krátkých výhonech, na zimu opadávají; malé vzpřímené šištice zůstávají na větvích.";
+  "Větvičky a šišky čtyř českých jehličnanů. Smrk ztepilý: jehlice jednotlivě kolem celé větvičky, čtyřhranné a pichlavé, dlouhé šišky visí dolů a opadávají celé. Jedle bělokorá: ploché tupé jehlice ve dvou řadách, vespod se dvěma bílými proužky, šišky stojí na větvi vzhůru a rozpadají se na šupiny. Borovice lesní: dlouhé jehlice po dvou ve svazečku, malé kuželovité šišky. Modřín opadavý: měkké jehlice ve svazečcích po mnoha na krátkých výhonech, na zimu opadávají; malé vzpřímené šišky zůstávají na větvích.";
 
 const W = 220;
 const H = 200;

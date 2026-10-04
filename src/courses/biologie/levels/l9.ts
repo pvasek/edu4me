@@ -32,7 +32,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Těmto prvkům říkáme **biogenní prvky**. Podle množství je dělíme na **makrobiogenní** (C, H, O, N, P, S, Ca, K, Na, Cl, Mg) a **mikrobiogenní neboli stopové** (Fe, I, Zn, Cu, Mn, Se…). Stopové prvky jsou potřeba v nepatrném množství, ale jejich nedostatek způsobí nemoc:' },
             { type: 'iconlist', items: [
               { icon: 'blood', title: 'Železo (Fe)', text: 'v hemoglobinu váže kyslík; nedostatek způsobí chudokrevnost' },
-              { icon: 'brain', title: 'Jód (I)', text: 'součást hormonů štítné žlázy; proto se jodiduje kuchyňská sůl' },
+              { icon: 'brain', title: 'Jód (I)', text: 'součást hormonů štítné žlázy; proto se do kuchyňské soli přidává jód (jodidovaná sůl)' },
               { icon: 'leaf', title: 'Hořčík (Mg)', text: 'střed molekuly chlorofylu, potřebují ho i mnohé enzymy' },
               { icon: 'neuron', title: 'Sodík a draslík (Na, K)', text: 'jejich ionty na membránách umožňují vzruch v nervech' },
               { icon: 'bone', title: 'Vápník a fosfor (Ca, P)', text: 'fosforečnan vápenatý zpevňuje kosti a zuby' },
@@ -70,9 +70,9 @@ const level: LevelContent = {
             ] },
             { type: 'p', text: 'Jak moc pocení chladí? Spočítejme to na běžci. Pro srovnání potřebujeme ještě měrnou tepelnou kapacitu lidského těla, ta je asi 3,5 kJ/(kg · °C) – o něco menší než u vody, protože tělo není jen voda.' },
             { type: 'example', title: 'Chlazení potem', problem: 'Běžec (70 kg) za hodinu odpaří z kůže asi 1 kg potu. Kolik tepla tím odvede? O kolik °C by se jeho tělo ohřálo, kdyby se teplo nemohlo odpařováním ztrácet?', steps: [
-              'Teplo odvedené odpařením: Q = m · L = 1 kg · 2 400 kJ/kg = 2 400 kJ',
+              'Teplo odvedené odpařením (l je měrné skupenské teplo vypařování): Q = m · l = 1 kg · 2 400 kJ/kg = 2 400 kJ',
               'Kdyby teplo zůstalo v těle, ohřálo by ho: Δt = Q : (m · c) – dělíme hmotností těla a jeho tepelnou kapacitou',
-              'Δt = 2 400 kJ : (70 kg · 3,5 kJ/(kg · °C)) ≈ 9,8 °C',
+              'Δt = 2 400 kJ : (70 kg · 3,5 kJ/(kg · °C)) ≐ 9,8 °C',
             ], answer: 'Pocení odvede asi 2 400 kJ. Bez něj by teplota těla stoupla asi o 10 °C – smrtelně. Proto je při horku tak nebezpečná dehydratace.' },
             { type: 'callout', variant: 'fact', text: 'Hustotní anomálii pozná každý rybář: v zimě má voda u dna rybníka 4 °C, i když je venku −15 °C. Nejhustší voda klesá ke dnu a led nahoře celý rybník izoluje.' },
             { type: 'p', text: 'Voda je tedy prostředí, ve kterém buňka žije. Co ale v té vodě plave a z čeho je postavená sama buňka? To jsou biomakromolekuly.' },
@@ -115,12 +115,12 @@ const level: LevelContent = {
             { type: 'p', text: 'Obě reakce jsou zrcadlové: jedna vodu uvolňuje, druhá ji spotřebovává.' },
             { type: 'compare', columns: [
               { title: 'Kondenzace', icon: 'bond', tone: 'a', points: ['monomer + monomer → polymer + **voda**', 'buňka staví, potřebuje k tomu energii', 'glykosidová vazba (cukry), peptidová (bílkoviny), fosfodiesterová (DNA)', 'příklad: z glukózy vzniká glykogen v játrech'] },
-              { title: 'Hydrolýza', icon: 'droplets', tone: 'b', points: ['polymer + **voda** → monomery', 'buňka rozkládá, energie se uvolňuje', 'štěpí ji enzymy: amyláza, pepsin, lipáza', 'příklad: trávení škrobu z rohlíku na glukózu'] },
+              { title: 'Hydrolýza', icon: 'droplets', tone: 'b', points: ['polymer + **voda** → monomery', 'buňka rozkládá, energie se uvolňuje', 'katalyzují ji enzymy: amyláza, pepsin, lipáza', 'příklad: trávení škrobu z rohlíku na glukózu'] },
             ], caption: 'Kondenzace a hydrolýza jsou dvě strany jedné reakce.' },
             { type: 'p', text: 'Pozor na lipidy: tuk vzniká také kondenzací (glycerol + tři mastné kyseliny → tuk + 3 molekuly vody). ==Lipidy ale nejsou polymery==, protože nevznikají opakováním stejné jednotky do dlouhého řetězce.' },
             { type: 'p', text: 'Kolik vody kondenzací vznikne, spočítáš jednoduše: každá nová vazba uvolní jednu molekulu. Ukažme si to na hormonu, který znáš z diabetu.' },
-            { type: 'example', title: 'Kolik vody uvolní inzulín', problem: 'Inzulín má dva řetězce: řetězec A má 21 aminokyselin, řetězec B 30. Kolik molekul vody se uvolní, když buňka oba řetězce poskládá z volných aminokyselin?', steps: [
-              'Řetězec z n monomerů má n − 1 vazeb (jako n korálků na niti spojí n − 1 uzlů).',
+            { type: 'example', title: 'Kolik vody uvolní inzulín', problem: 'Inzulín má dva řetězce: řetězec A má 21 aminokyselin, řetězec B 30. Kolik molekul vody se uvolní, když se oba řetězce poskládají z volných aminokyselin?', steps: [
+              'Řetězec z n monomerů má n − 1 vazeb (jako n dětí v řadě se drží za ruce na n − 1 místech).',
               'Řetězec A: 21 − 1 = 20 peptidových vazeb → 20 molekul vody',
               'Řetězec B: 30 − 1 = 29 peptidových vazeb → 29 molekul vody',
             ], answer: '20 + 29 = 49 molekul vody' },
@@ -193,7 +193,7 @@ const level: LevelContent = {
             { type: 'keyterms', items: [
               { term: '**Jádro a jadérko**', def: 'jádro chrání DNA, obal má dvě membrány s póry; v jadérku vznikají podjednotky ribozomů' },
               { term: '**Ribozomy**', def: 'syntéza bílkovin podle mRNA; volné v cytoplazmě nebo přisedlé na ER; **nemají membránu**' },
-              { term: '**Drsné endoplazmatické retikulum (ER)**', def: 'membránové kanálky posázené ribozomy; vznikají a skládají se v něm bílkoviny určené na membrány nebo na export' },
+              { term: '**Drsné endoplazmatické retikulum (ER)**', def: 'membránové kanálky posázené ribozomy; na nich vznikají bílkoviny určené na membrány nebo na export a v dutině ER se skládají' },
               { term: '**Hladké ER**', def: 'bez ribozomů; syntéza lipidů a steroidních hormonů, odbourávání jedů (v játrech), zásoba $Ca^{2+}$ ve svalech' },
               { term: '**Golgiho aparát**', def: 'stoh plochých váčků; bílkoviny upravuje (např. připojí cukry), třídí a balí do váčků – „pošta“ buňky' },
               { term: '**Lysozomy**', def: 'váčky s trávicími enzymy (kyselé pH asi 5); rozkládají pohlcené částice i opotřebované organely' },
@@ -236,7 +236,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Proč mají mitochondrie a chloroplasty dvojitou membránu a vlastní DNA, když jádro by mohlo všechno řídit samo? Americká bioložka Lynn Margulisová v roce 1967 obhájila odpověď, která tehdy zněla bláznivě: ty organely byly kdysi **samostatné bakterie**.' },
             { type: 'p', text: 'Podle **endosymbiotické teorie** pohltila velká buňka menší bakterii, ale nestrávila ji. Obě z toho měly prospěch a soužití se stalo trvalým. Takhle vypadal příběh ve dvou dějstvích:' },
-            { type: 'diagram', id: 'endosymbiosis', caption: 'Hostitelská buňka pohltí aerobní bakterii → z ní vznikne mitochondrie. Později jedna z jejích potomků pohltí sinici → z ní vznikne chloroplast.' },
+            { type: 'diagram', id: 'endosymbiosis', caption: 'Hostitelská buňka pohltí aerobní bakterii → z ní vznikne mitochondrie. Později jeden z jejích potomků pohltí sinici → z ní vznikne chloroplast.' },
             { type: 'p', text: 'Teorie je dnes přijímaná, protože ji podporuje mnoho nezávislých důkazů. Každý z nich by sám mohl být náhoda, všechny dohromady sotva:' },
             { type: 'list', items: [
               '**dvojitá membrána**: vnitřní pochází z bakterie, vnější z měchýřku, kterým ji hostitel pohltil',
@@ -244,10 +244,10 @@ const level: LevelContent = {
               '**ribozomy typu 70S**, tedy bakteriální, ne eukaryotní 80S',
               'množí se **dělením** jako bakterie; buňka je nedokáže vyrobit „z ničeho“',
               '**velikost** 1–10 µm odpovídá bakteriím',
-              'sekvence jejich DNA jsou nejbližší příbuzné **α-proteobakterií** (mitochondrie) a **sinic** (chloroplasty)',
+              'podle sekvencí DNA jsou jejich nejbližšími příbuznými **α-proteobakterie** (u mitochondrií) a **sinice** (u chloroplastů)',
             ] },
             { type: 'callout', variant: 'fact', text: 'Antibiotikum chloramfenikol blokuje bakteriální ribozomy 70S. Ve vysokých dávkách proto škodí i lidským mitochondriím – nepřímý, ale výmluvný důkaz jejich bakteriálního původu.' },
-            { type: 'p', text: 'Teď víme, co v buňce je a odkud se to vzalo. Zbývá otázka, jak to vědci vůbec zjistili, když jsou organely menší než vlnová délka světla.' },
+            { type: 'p', text: 'Teď víme, co v buňce je a odkud se to vzalo. Zbývá otázka, jak to vědci vůbec zjistili, když jsou ribozomy nebo membrány ER menší než vlnová délka světla.' },
             { type: 'check', question: { kind: 'multi', q: 'Které pozorování podporuje endosymbiotickou teorii vzniku mitochondrií?', options: ['mitochondrie mají vlastní kruhovou DNA', 'mitochondrie mají ribozomy typu 70S', 'mitochondrie se množí dělením', 'mitochondrie obsahují enzymy dýchání', 'mitochondrie se vyskytují ve svalových buňkách nejhojněji'], answers: [0, 1, 2], explain: 'Kruhová DNA, ribozomy 70S a dělení jsou znaky bakterií. Enzymy dýchání a hojnost ve svalech ukazují jen funkci mitochondrií, ne jejich původ.' } },
           ],
         },
@@ -256,7 +256,7 @@ const level: LevelContent = {
           icon: 'microscope',
           blocks: [
             { type: 'p', text: 'Ze světelného mikroskopu znáš zvětšení okulár × objektiv. Proč ale ani nejlepší světelný mikroskop neukáže ribozom, i když bychom obraz zvětšili třeba milionkrát? Klíčem je pojem **rozlišovací schopnost**.' },
-            { type: 'p', text: '**Zvětšení** říká, kolikrát je obraz větší než předmět. **Rozlišovací schopnost** (rozlišení) je nejmenší vzdálenost dvou bodů, které ještě vidíme jako dva oddělené body. Je omezená vlnovou délkou použitého záření – proto elektrony s mnohem kratší vlnovou délkou vidí dál než světlo:' },
+            { type: 'p', text: '**Zvětšení** říká, kolikrát je obraz větší než předmět. **Rozlišovací schopnost** (rozlišení) je nejmenší vzdálenost dvou bodů, které ještě vidíme jako dva oddělené body. Je omezená vlnovou délkou použitého záření – proto elektronový mikroskop, který místo světla používá elektrony s mnohem kratší vlnovou délkou, rozliší mnohem jemnější detaily:' },
             { type: 'compare', columns: [
               { title: 'Světelný mikroskop', icon: 'microscope', tone: 'a', points: ['viditelné světlo', 'rozlišení asi **0,2 µm** (200 nm)', 'užitečné zvětšení do asi 1 500×', 'barevný obraz, i **živé** buňky', 'uvidíš buňky, jádro, chloroplasty'] },
               { title: 'Transmisní elektronový (TEM)', icon: 'lightning', tone: 'b', points: ['svazek elektronů **prochází** tenkým řezem', 'rozlišení až 0,1 nm, u buněk asi **1 nm**', 'zvětšení až 1 000 000×', 'černobílý řez, vzorek ve vakuu, **mrtvý**', 'uvidíš ribozomy, membrány ER, kristy mitochondrií'] },
@@ -333,7 +333,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'V lekci „Prokaryotní a eukaryotní buňka“ jsme viděli, že membrány ohraničují buňku i každou organelu. Teď se podíváme, z čeho membrána je a jak dokáže jedny látky pustit a jiné zadržet.' },
             { type: 'p', text: 'Základem membrány jsou **fosfolipidy**. Mají polární hlavičku, která má ráda vodu (hydrofilní), a dva nepolární ocásky, které vodě utíkají (hydrofobní). Ve vodě se samy uspořádají do dvojvrstvy – hlavičkami ven, ocásky k sobě:' },
-            { type: 'diagram', id: 'lipid-bilayer', caption: 'Fosfolipidová dvojvrstva s cholesterolem a kanálovou bílkovinou. Uvnitř membrány je nepolární „olejová“ vrstva asi 5 nm silná.' },
+            { type: 'diagram', id: 'lipid-bilayer', caption: 'Fosfolipidová dvojvrstva s cholesterolem a kanálovou bílkovinou. Uvnitř je nepolární „olejová“ vrstva, celá membrána je silná jen asi 7–8 nm.' },
             { type: 'p', text: 'V roce 1972 popsali Singer a Nicolson membránu jako **tekutou mozaiku**. „Tekutá“ proto, že se fosfolipidy i bílkoviny v rovině membrány neustále pohybují. „Mozaika“ proto, že jsou v ní jako kamínky rozeseté různé bílkoviny:' },
             { type: 'keyterms', items: [
               { term: '**Kanálové bílkoviny**', def: 'tvoří póry pro určité ionty nebo vodu (akvaporiny)' },
@@ -363,7 +363,7 @@ const level: LevelContent = {
             ], caption: 'Prostá a usnadněná difuze jsou pasivní: vždy jen po koncentračním spádu a bez ATP.' },
             { type: 'p', text: 'Jak rychle difuze probíhá, závisí na třech věcech. Čím větší plocha a čím větší rozdíl koncentrací, tím víc látky projde; čím silnější vrstva, tím déle cesta trvá:' },
             { type: 'formula', text: 'rychlost difuze ∼ plocha · rozdíl koncentrací : tloušťka vrstvy', caption: 'Fickův zákon v jednoduché podobě' },
-            { type: 'callout', variant: 'fact', text: 'Plicní sklípky to splňují dokonale: dohromady mají plochu asi 70 m² (půlka tenisového kurtu) a stěna mezi vzduchem a krví je silná jen asi 0,5 µm.' },
+            { type: 'callout', variant: 'fact', text: 'Plicní sklípky to splňují dokonale: dohromady mají plochu asi 70 m² (zhruba badmintonový kurt) a stěna mezi vzduchem a krví je silná jen asi 0,5 µm.' },
             { type: 'p', text: 'Difuze ve všech podobách vede látky „z kopce“. Zvláštní a pro život zásadní případ je ale difuze samotné vody.' },
             { type: 'check', question: { kind: 'choice', q: 'Jak se do buňky dostane glukóza z krve, když je jí v krvi víc než v buňce?', options: ['usnadněnou difuzí přenašečem, bez spotřeby ATP', 'prostou difuzí přímo fosfolipidovou dvojvrstvou', 'aktivním transportem se spotřebou ATP', 'jen fagocytózou'], answer: 0, explain: 'Glukóza je velká polární molekula, sama dvojvrstvou neprojde. Jde ale po spádu, takže stačí přenašeč a energie není potřeba.' } },
           ],
@@ -402,7 +402,7 @@ const level: LevelContent = {
           icon: 'salt',
           blocks: [
             { type: 'p', text: 'Teď se vrátíme k infuzi z úvodu. Podle koncentrace vnějšího roztoku vůči buňce rozlišujeme roztoky **hypotonické** (řidší než buňka, vyšší Ψ), **izotonické** (stejné) a **hypertonické** (koncentrovanější, nižší Ψ). Jak na ně reaguje živočišná a rostlinná buňka, ukazuje obrázek:' },
-            { type: 'diagram', id: 'osmosis-cells', caption: 'Červená krvinka a rostlinná buňka v hypotonickém, izotonickém a hypertonickém roztoku: hemolýza, turgor, krenace a plazmolýza.' },
+            { type: 'diagram', id: 'osmosis-cells', caption: 'Červená krvinka a rostlinná buňka v hypotonickém, izotonickém a hypertonickém roztoku: hemolýza, turgor, plazmorhiza (krenace) a plazmolýza.' },
             { type: 'p', text: 'Vyzkoušej si to sám/sama. Vyber krvinku, nastav koncentraci $NaCl$ a sleduj, kam teče voda. Pak to samé zkus s rostlinnou buňkou. Najdi koncentraci, při které se krvinka nemění, a pak tu, při které praskne.' },
             { type: 'experiment', id: 'osmosis-cell', caption: 'Krvinka nebo rostlinná buňka v roztoku $NaCl$ od 0 do 3 %. Krevní plazma je izotonická s asi 0,9 % $NaCl$.' },
             { type: 'p', text: 'Všiml/a sis? Krvinka v řidším roztoku nasává vodu, až praskne (**hemolýza**). Rostlinná buňka sice vodu nasává také, ale pevná **buněčná stěna** ji zastaví: vznikne napětí zvané **turgor**, které drží rostlinu vzpřímenou. V hypertonickém roztoku se krvinka svraští a protoplast rostlinné buňky se odtrhne od stěny – **plazmolýza**.' },
@@ -410,9 +410,9 @@ const level: LevelContent = {
             { type: 'table', headers: ['roztok', 'voda teče', 'červená krvinka', 'rostlinná buňka'], rows: [
               ['hypotonický (např. destilovaná voda)', 'do buňky', 'nabobtná a praskne – **hemolýza**', 'pevná, napjatá – **turgor**'],
               ['izotonický (0,9 % $NaCl$)', 'stejně tam i zpět', 'beze změny', 'ochablá'],
-              ['hypertonický (např. 3 % $NaCl$)', 'z buňky', 'svraští se – **krenace**', 'protoplast se odtrhne od stěny – **plazmolýza**'],
+              ['hypertonický (např. 3 % $NaCl$)', 'z buňky', 'svraští se – **plazmorhiza** (krenace)', 'protoplast se odtrhne od stěny – **plazmolýza**'],
             ] },
-            { type: 'callout', variant: 'tip', text: 'Proto se zelenina v lednici „vzpamatuje“ ve studené vodě (turgor), okurky se v soli scvrknou (plazmolýza) a solení i cukření konzervuje: bakterie v hypertonickém prostředí ztratí vodu a nemnoží se.' },
+            { type: 'callout', variant: 'tip', text: 'Proto se zvadlý salát ve studené vodě „vzpamatuje“ (turgor), okurky se v soli scvrknou (plazmolýza) a solení i cukření konzervuje: bakterie v hypertonickém prostředí ztratí vodu a nemnoží se.' },
             { type: 'p', text: 'Difuze i osmóza jdou po spádu, samy od sebe. Buňka ale často potřebuje opak: nashromáždit látku tam, kde už jí je hodně. To stojí energii.' },
             { type: 'check', question: { kind: 'tf', q: 'Rostlinná buňka v destilované vodě praskne stejně jako červená krvinka.', answer: false, explain: 'Rostlinnou buňku chrání pevná buněčná stěna. Voda do ní vstupuje jen do chvíle, než tlak stěny (turgor) další přítok zastaví.' } },
           ],
@@ -421,7 +421,7 @@ const level: LevelContent = {
           title: 'Transport s energií: pumpy a váčky',
           icon: 'battery',
           blocks: [
-            { type: 'p', text: 'Nervová buňka má uvnitř asi třicetkrát víc draselných iontů než krev kolem ní, a přesto je dál nabírá. Difuze by rozdíl postupně vyrovnala. Buňka proto používá **aktivní transport**: bílkovinné **pumpy**, které přenášejí látky **proti koncentračnímu spádu** a spotřebovávají přitom ATP.' },
+            { type: 'p', text: 'Nervová buňka má uvnitř asi třicetkrát víc draselných iontů než tekutina kolem ní, a přesto je dál nabírá. Difuze by rozdíl postupně vyrovnala. Buňka proto používá **aktivní transport**: bílkovinné **pumpy**, které přenášejí látky **proti koncentračnímu spádu** a spotřebovávají přitom ATP.' },
             { type: 'p', text: 'Pasivní a aktivní transport se snadno pletou. Postav je vedle sebe:' },
             { type: 'compare', columns: [
               { title: 'Pasivní transport', icon: 'gas-cloud', tone: 'a', points: ['po spádu, z vyšší koncentrace do nižší', 'bez ATP', 'prostá difuze, usnadněná difuze, osmóza', 'zastaví se, když se koncentrace vyrovnají'] },
@@ -445,7 +445,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Všechny látky, o kterých jsme mluvili, musí projít **povrchem** buňky, ale spotřebovává je celý její **objem**. V lekci „Od buňky k organismu“ jsme si ukázali, že s růstem buňky objem roste rychleji než povrch. Teď to spočítáme přesně.' },
             { type: 'p', text: 'Buňku si zjednodušíme na krychli s hranou a. Povrch má šest stěn, objem je hrana na třetí:' },
-            { type: 'formula', text: 'S = 6 · a^{2}     V = a^{3}     S : V = 6 : a', caption: 'Poměr povrchu k objemu klesá s rostoucí hranou: dvakrát větší buňka má poloviční S : V.' },
+            { type: 'formula', text: 'S = 6 · a^{2}     V = a^{3}     S : V = 6 : a', caption: 'Poměr povrchu k objemu klesá s rostoucí hranou: buňka s dvakrát delší hranou má poloviční S : V.' },
             { type: 'p', text: 'Ukažme si, co to znamená pro skutečné buňky – bakterii a velkou eukaryotní buňku.' },
             { type: 'example', title: 'Bakterie proti vajíčku', problem: 'Porovnej poměr S : V bakterie (krychle s hranou 1 µm) a velké buňky (krychle s hranou 100 µm, asi jako lidské vajíčko).', steps: [
               'Bakterie: S = 6 · 1² = 6 µm², V = 1³ = 1 µm³, S : V = 6 µm⁻¹.',
@@ -472,7 +472,7 @@ const level: LevelContent = {
         'Membrána je fosfolipidová dvojvrstva s bílkovinami, cholesterolem a cukernými řetízky – tekutá mozaika.',
         'Malé nepolární molekuly projdou prostou difuzí, ionty a velké polární molekuly potřebují kanály nebo přenašeče.',
         'Osmóza je difuze vody přes polopropustnou membránu; voda teče z vyššího vodního potenciálu do nižšího.',
-        'V hypotonickém roztoku krvinka praskne, rostlinná buňka je díky stěně jen napjatá (turgor); v hypertonickém roztoku nastane krenace, resp. plazmolýza.',
+        'V hypotonickém roztoku krvinka praskne, rostlinná buňka je díky stěně jen napjatá (turgor); v hypertonickém roztoku se krvinka svraští (plazmorhiza) a u rostlinné buňky nastane plazmolýza.',
         'Aktivní transport (pumpy) přenáší látky proti spádu za cenu ATP; velké částice buňka přijímá endocytózou a vylučuje exocytózou.',
         'S rostoucí velikostí klesá poměr povrchu k objemu (pro krychli S : V = 6 : a), proto jsou buňky malé a organismy si výměnné plochy zvětšují.',
       ],
@@ -485,7 +485,7 @@ const level: LevelContent = {
           ['aktivní transport', 'sodno-draselná pumpa'],
           ['fagocytóza', 'bílá krvinka pohltí bakterii'],
         ], explain: 'Osmóza je pohyb vody, usnadněná difuze využívá přenašeč bez ATP, pumpa spotřebuje ATP a fagocytóza pohltí celou částici do váčku.' },
-        { kind: 'choice', q: 'Co se stane s červenou krvinkou v 3% roztoku $NaCl$?', options: ['ztratí vodu a svraští se (krenace)', 'nasaje vodu a praskne (hemolýza)', 'nezmění se', 'odtrhne se od buněčné stěny'], answer: 0, explain: 'Roztok 3 % $NaCl$ je hypertonický, má nižší vodní potenciál než krvinka, takže voda z krvinky odtéká. Plazmolýza nastává jen u buněk se stěnou.' },
+        { kind: 'choice', q: 'Co se stane s červenou krvinkou v 3% roztoku $NaCl$?', options: ['ztratí vodu a svraští se (plazmorhiza)', 'nasaje vodu a praskne (hemolýza)', 'nezmění se', 'odtrhne se od buněčné stěny'], answer: 0, explain: 'Roztok 3 % $NaCl$ je hypertonický, má nižší vodní potenciál než krvinka, takže voda z krvinky odtéká. Plazmolýza nastává jen u buněk se stěnou.' },
         { kind: 'number', q: 'Sodno-draselná pumpa spotřebovala 1 000 molekul ATP. Kolik iontů $Na^+$ vyčerpala z buňky?', answer: 3000, tolerance: 0, unit: 'iontů', explain: 'Za jednu molekulu ATP vyčerpá 3 ionty $Na^+$ (a dovnitř přenese 2 ionty $K^+$): 1 000 · 3 = 3 000.' },
         { kind: 'tf', q: 'Když se hrana krychlové buňky zdvojnásobí, její poměr povrchu k objemu se také zdvojnásobí.', answer: false, explain: 'S : V = 6 : a, takže dvojnásobná hrana znamená poloviční poměr. Povrch vzroste čtyřikrát, objem osmkrát.' },
         { kind: 'choice', q: 'Rostlinu zalévanou slanou vodou začnou vadnout listy. Proč?', options: ['půdní roztok má nižší vodní potenciál než buňky kořene, takže voda z kořene odtéká', 'sůl ucpe cévy v kořeni', 'sůl zabrání fotosyntéze v listech', 'rostlina sůl rozkládá a spotřebovává na to vodu'], answer: 0, explain: 'Slaná půda má zápornější vodní potenciál než kořen. Voda teče z vyššího potenciálu do nižšího – z kořene ven, a buňky ztrácejí turgor.' },
@@ -539,7 +539,7 @@ const level: LevelContent = {
               ['pepsin', 'bílkoviny → peptidy', 'žaludek (pH asi 2)'],
               ['lipáza', 'tuky → glycerol + mastné kyseliny', 'tenké střevo'],
               ['kataláza', '$2H2O2 -> 2H2O + O2$', 'játra, téměř všechny buňky'],
-              ['DNA-polymeráza', 'nukleotidy → nové vlákno DNA', 'jádro při dělení buňky'],
+              ['DNA-polymeráza', 'nukleotidy → nové vlákno DNA', 'jádro při zdvojení DNA před dělením buňky'],
             ], caption: 'Několik důležitých enzymů' },
             { type: 'p', text: 'Aktivní centrum je tedy přesně tvarovaná kapsa. A tvar bílkoviny, jak víme z lekce „Chemie života“, drží slabé vazby – které lze snadno porušit.' },
             { type: 'check', question: { kind: 'choice', q: 'Co nejlépe vystihuje model indukovaného přizpůsobení?', options: ['aktivní centrum se při navázání substrátu mírně změní a substrát obejme', 'aktivní centrum má neměnný tvar jako zámek', 'substrát se přizpůsobí enzymu a enzym se nezmění', 'enzym se při reakci spotřebuje a vznikne nový'], answer: 0, explain: 'Podle Koshlanda je aktivní centrum pružné. Přizpůsobení napne vazby v substrátu a usnadní reakci.' } },
@@ -555,7 +555,7 @@ const level: LevelContent = {
               { label: 'enzym termofilní bakterie', points: [[20, 4], [30, 9], [40, 18], [50, 35], [60, 68], [70, 100], [75, 85], [80, 45]], style: 'smooth', tone: 'b' },
             ], marks: [{ x: 40, y: 100, label: 'optimum' }], caption: 'Do optima rychlost roste (asi dvojnásobně na každých 10 °C), nad optimem prudce klesá – enzym denaturuje.' },
             { type: 'p', text: 'Levá část křivky má jednoduché vysvětlení: teplejší molekuly se pohybují rychleji a častěji se srazí s aktivním centrem. Za optimem ale silný tepelný pohyb trhá vodíkové vazby, které drží tvar bílkoviny. Aktivní centrum se zdeformuje a substrát do něj nezapadne – enzym **denaturoval**.' },
-            { type: 'callout', variant: 'warning', text: '==Denaturace teplem je nevratná==, chlad je vratný. Enzym v lednici jen „spí“ a po ohřátí znovu pracuje; uvařený vaječný bílek už nikdy neprůhledný nebude. Proto se potraviny uchovávají v chladu, ale sterilizují varem.' },
+            { type: 'callout', variant: 'warning', text: '==Denaturace teplem je nevratná==, zpomalení chladem je vratné. Enzym v lednici jen „spí“ a po ohřátí znovu pracuje; uvařený vaječný bílek už nikdy neprůhledný nebude. Proto se potraviny uchovávají v chladu, ale sterilizují varem.' },
             { type: 'p', text: 'Podobně působí pH: změna pH mění náboje na aktivním centru, takže substrát se váže hůř. Každý enzym má optimum pH podle místa, kde pracuje:' },
             { type: 'graph', x: { label: 'pH', min: 0, max: 12, step: 1 }, y: { label: 'rychlost reakce', unit: '% maxima', min: 0, max: 100, step: 20 }, series: [
               { label: 'pepsin (žaludek)', points: [[0, 20], [1, 70], [2, 100], [3, 70], [4, 25], [5, 5], [6, 0]], style: 'smooth', tone: 'a' },
@@ -569,7 +569,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Dvojnásobek na deset stupňů', problem: 'Amyláza rozloží při 17 °C za minutu 5 mg škrobu. Kolik zhruba rozloží při 37 °C, když se rychlost do optima zdvojnásobí každých 10 °C?', steps: [
               'Rozdíl teplot: 37 °C − 17 °C = 20 °C, to jsou dva kroky po 10 °C.',
               'Každý krok rychlost zdvojnásobí: 5 mg · 2 · 2.',
-            ], answer: 'Asi 20 mg škrobu za minutu. Nad optimem by tento odhad neplatil, enzym by se začal rozpadat.' },
+            ], answer: 'Asi 20 mg škrobu za minutu. Nad optimem by tento odhad neplatil, enzym by denaturoval.' },
             { type: 'p', text: 'Teplotu a pH tedy umíme číst z grafu. Rychlost ale závisí i na tom, kolik substrátu je k dispozici – a na molekulách, které enzymu překážejí.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč pepsin přestane pracovat, když se dostane ze žaludku do tenkého střeva?', options: ['pH stoupne k 8, změní se náboje v aktivním centru a pepsin se váže hůř', 've střevě je vyšší teplota a pepsin denaturuje', 've střevě už nejsou žádné bílkoviny', 'pepsin se ve střevě spotřebuje reakcí'], answer: 0, explain: 'Pepsin má optimum kolem pH 2. Ve slabě zásaditém prostředí střeva se mění náboje v aktivním centru. Teplota je v žaludku i ve střevě stejná.' } },
           ],
@@ -590,7 +590,7 @@ const level: LevelContent = {
               { title: 'Kompetitivní inhibitor', icon: 'enzyme', tone: 'a', points: ['tvarem se podobá substrátu', 'obsadí **aktivní centrum**, soutěží se substrátem', 'vysoká koncentrace substrátu ho vytlačí', 'V_{max} zůstává stejná, jen se k ní dojde pomaleji', 'příklad: etanol jako lék při otravě metanolem'] },
               { title: 'Nekompetitivní (alosterický) inhibitor', icon: 'warning', tone: 'b', points: ['váže se **jinde** než v aktivním centru', 'změní tvar celého enzymu', 'víc substrátu nepomůže', 'V_{max} klesne', 'příklad: ionty těžkých kovů ($Hg^{2+}$, $Pb^{2+}$)'] },
             ] },
-            { type: 'callout', variant: 'fact', text: 'Otrava metanolem se léčí… alkoholem. Etanol soutěží s metanolem o aktivní centrum jaterního enzymu, takže se metanol nemění na jedovatou kyselinu mravenčí a stihne se vyloučit. Proto se tak léčila hromadná otrava metanolem v Česku v roce 2012.' },
+            { type: 'callout', variant: 'fact', text: 'Otrava metanolem se léčí… alkoholem. Etanol soutěží s metanolem o aktivní centrum jaterního enzymu, takže se metanol nemění na jedovatou kyselinu mravenčí a stihne se vyloučit. Tak se léčili i mnozí otrávení při hromadné otravě metanolem v Česku v roce 2012.' },
             { type: 'p', text: 'Inhibitory tedy nejsou jen jedy – mnoho léků funguje právě jako inhibitor enzymu (aspirin, penicilin, léky na HIV). A buňka sama je používá k řízení svých drah.' },
             { type: 'check', question: { kind: 'tf', q: 'Účinek kompetitivního inhibitoru lze zmírnit zvýšením koncentrace substrátu.', answer: true, explain: 'Kompetitivní inhibitor soutěží se substrátem o aktivní centrum. Když je substrátu mnohem víc, obsadí většinu center on.' } },
           ],
@@ -630,8 +630,8 @@ const level: LevelContent = {
             { type: 'p', text: 'V těle je ATP v každé chvíli jen málo a stále se recykluje. Kolik ho vlastně za den „protočíš“, spočítáme z denní spotřeby.' },
             { type: 'example', title: 'Kolik ATP za den', problem: 'Člověk v klidu protočí za den asi tolik ATP, kolik sám váží. Kolik molů ATP to je u člověka s hmotností 60 kg? Molární hmotnost ATP je 507 g/mol.', steps: [
               'Převedeme na gramy, protože molární hmotnost je v g/mol: 60 kg = 60 000 g.',
-              'n = m : M = 60 000 g : 507 g/mol ≈ 118 mol',
-              'Energie: 118 mol · 30,5 kJ/mol ≈ 3 600 kJ – to je jen část denního příjmu z potravy, zbytek odejde jako teplo.',
+              'n = m : M = 60 000 g : 507 g/mol ≐ 118 mol',
+              'Energie: 118 mol · 30,5 kJ/mol ≐ 3 600 kJ – to je jen část denního příjmu z potravy, zbytek odejde jako teplo.',
             ], answer: 'Asi 118 mol ATP za den. Každá molekula ATP se proto během dne obnoví mnohasetkrát.' },
             { type: 'p', text: 'ATP je tedy drobná mince, kterou buňka pořád utrácí a dobíjí. Odkud se bere energie na dobíjení, ukáže příští lekce „Buněčné dýchání“.' },
             { type: 'check', question: { kind: 'number', q: 'Svalová buňka při hydrolýze ATP uvolnila 61 kJ. Kolik molů ATP spotřebovala? Počítej s 30,5 kJ/mol.', answer: 2, tolerance: 0.05, unit: 'mol', explain: 'n = 61 kJ : 30,5 kJ/mol = 2 mol ATP.' } },
@@ -682,12 +682,12 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'V lekci „Enzymy a metabolismus“ jsme viděli, že buňka platí za práci ATP. Teď zjistíme, odkud bere energii na jeho dobíjení. Hlavním zdrojem je **buněčné dýchání** – rozklad glukózy kyslíkem. Souhrnně vypadá stejně jako hoření cukru:' },
             { type: 'reaction', equation: 'C6H12O6 + 6O2 -> 6CO2 + 6H2O', caption: 'Glukóza + kyslík → oxid uhličitý + voda; uvolní se asi 2 870 kJ na 1 mol glukózy.' },
-            { type: 'p', text: 'Kdyby buňka glukózu opravdu spálila najednou, uvolnila by všechnu energii v jediném záblesku tepla a ATP by z toho nemělo nic. Proto ji rozkládá **po malých krocích**, každý řídí jeden enzym a energie se uvolňuje po malých dávkách. Celá cesta má čtyři fáze:' },
+            { type: 'p', text: 'Kdyby buňka glukózu opravdu spálila najednou, uvolnila by všechnu energii v jediném záblesku tepla a žádné ATP by z ní nevzniklo. Proto ji rozkládá **po malých krocích**, každý řídí jeden enzym a energie se uvolňuje po malých dávkách. Celá cesta má čtyři fáze:' },
             { type: 'diagram', id: 'cellular-respiration', caption: 'Glykolýza v cytoplazmě → oxidační dekarboxylace pyruvátu a Krebsův cyklus v matrix mitochondrie → dýchací řetězec a ATP-syntáza na vnitřní membráně (kristách).' },
             { type: 'p', text: 'Jak dobře buňka energii zachytí? Spočítáme **účinnost**: kolik energie z glukózy skončí v ATP.' },
             { type: 'example', title: 'Účinnost dýchání', problem: 'Z 1 mol glukózy (2 870 kJ) vznikne asi 32 mol ATP. Hydrolýza 1 mol ATP uvolní 30,5 kJ. Jaká je účinnost dýchání?', steps: [
               'Energie uložená v ATP: 32 mol · 30,5 kJ/mol = 976 kJ',
-              'Účinnost = užitečná energie : celková energie = 976 kJ : 2 870 kJ ≈ 0,34',
+              'Účinnost = užitečná energie : celková energie = 976 kJ : 2 870 kJ ≐ 0,34',
             ], answer: 'Asi 34 %. Zbytek se uvolní jako teplo – proto se při běhu zahřeješ. Automobilový motor má účinnost podobnou nebo nižší.' },
             { type: 'p', text: 'Celkový obraz máme. Teď půjdeme fázi po fázi, a začneme tam, kde glukóza do buňky vstupuje – v cytoplazmě.' },
             { type: 'check', question: { kind: 'number', q: 'Kvasinka by z 1 mol glukózy (2 870 kJ) získala 30 mol ATP po 30,5 kJ. Jaká by byla účinnost v procentech? Zaokrouhli na celá procenta.', answer: 32, tolerance: 1, unit: '%', explain: '30 · 30,5 kJ = 915 kJ; 915 : 2 870 ≈ 0,32, tedy asi 32 %.' } },
@@ -702,12 +702,12 @@ const level: LevelContent = {
               { term: '**NAD^{+} → NADH**', def: 'koenzym, který přijme dva elektrony a proton a odveze je do dýchacího řetězce' },
               { term: '**FAD → FADH_{2}**', def: 'podobný přenašeč, odevzdá o něco méně energie' },
             ] },
-            { type: 'p', text: 'První fáze, **glykolýza** („štěpení cukru“), probíhá v cytoplazmě a nepotřebuje kyslík. Je tak stará, že ji mají všechny organismy od bakterií po člověka. Sleduj, co se při ní děje:' },
+            { type: 'p', text: 'První fáze, **glykolýza** („štěpení cukru“), probíhá v cytoplazmě a nepotřebuje kyslík. Je tak stará, že ji mají téměř všechny organismy od bakterií po člověka. Sleduj, co se při ní děje:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'sugar', title: 'Glukóza (6 C)', text: 'vstupuje do cytoplazmy' },
               { icon: 'battery', title: 'Investice', text: 'buňka do glukózy vloží 2 ATP, aby ji „rozhýbala“' },
               { icon: 'cell-division', title: 'Rozštěpení', text: 'vzniknou dvě molekuly se 3 uhlíky' },
-              { icon: 'lightning', title: 'Výnos', text: 'odeberou se elektrony (2 NADH) a vznikne 4 ATP' },
+              { icon: 'lightning', title: 'Výnos', text: 'odeberou se elektrony (2 NADH) a vzniknou 4 ATP' },
               { icon: 'molecule', title: '2 pyruváty (3 C)', text: 'čistý zisk: **2 ATP a 2 NADH**' },
             ], caption: 'Glykolýza: glukóza → 2 pyruváty, čistě 2 ATP a 2 NADH' },
             { type: 'p', text: 'Je-li v buňce kyslík, pyruvát vstoupí do **matrix mitochondrie**. Tam proběhne **oxidační dekarboxylace pyruvátu** (spojovací reakce): od pyruvátu se odštěpí $CO2$, odeberou se elektrony na NADH a zbylá dvouuhlíková skupina (acetyl) se naváže na koenzym A. Vznikne **acetyl-CoA** – palivo pro další fázi.' },
@@ -770,7 +770,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Při sprintu nestačí krev přivádět do svalů kyslík. Dýchací řetězec se zastaví, NADH nemá komu elektrony odevzdat a buňce dojde NAD^{+}. Bez NAD^{+} by se zastavila i glykolýza – a s ní poslední zdroj ATP. Řešením je **kvašení** (fermentace): buňka vrátí elektrony z NADH zpět na pyruvát a NAD^{+} se uvolní pro další kolo glykolýzy.' },
             { type: 'p', text: 'Ve svalech a v bakteriích jogurtu se pyruvát mění na kyselinu mléčnou (laktát):' },
-            { type: 'reaction', equation: 'C6H12O6 -> 2C3H6O3', caption: 'Mléčné kvašení souhrnně: glukóza → 2 kyselina mléčná. Výtěžek jen 2 ATP.' },
+            { type: 'reaction', equation: 'C6H12O6 -> 2C3H6O3', caption: 'Mléčné kvašení souhrnně: glukóza → 2 molekuly kyseliny mléčné. Výtěžek jen 2 ATP.' },
             { type: 'p', text: 'Kvasinky a některé bakterie volí jinou cestu, kterou znáš z lekce „Houby“: pyruvát rozloží na etanol a $CO2$. Oba typy kvašení porovnej s aerobním dýcháním:' },
             { type: 'compare', columns: [
               { title: 'Aerobní dýchání', icon: 'lungs', tone: 'good', points: ['potřebuje $O2$', 'glukóza → $CO2$ + $H2O$', '**30–32 ATP** na glukózu', 'cytoplazma + mitochondrie'] },
@@ -791,7 +791,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Pro glukózu je to snadné: 6 $CO2$ na 6 $O2$, tedy RQ = 1. Tuky obsahují málo kyslíku a hodně vodíku, a proto na jejich spálení padne víc $O2$. Přesvědč se výpočtem:' },
             { type: 'example', title: 'RQ tuku', problem: 'Kyselina palmitová, typická mastná kyselina, se spaluje podle rovnice $C16H32O2 + 23O2 -> 16CO2 + 16H2O$. Jaký je její respirační kvocient?', steps: [
               'Z rovnice: vzniká 16 $CO2$, spotřebuje se 23 $O2$.',
-              'RQ = 16 : 23 ≈ 0,70',
+              'RQ = 16 : 23 ≐ 0,70',
             ], answer: 'RQ ≈ 0,7 – typická hodnota pro spalování tuků.' },
             { type: 'p', text: 'Naměřené RQ proto přímo ukazuje palivo. Bílkoviny leží mezi cukry a tuky, a hodnoty nad 1 znamenají, že se k dýchání přidalo něco dalšího:' },
             { type: 'table', headers: ['RQ', 'co se spaluje nebo děje'], rows: [
@@ -803,7 +803,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Jak se RQ mění při sportu, ukazuje graf. Čím intenzivnější výkon, tím víc sval sahá po glukóze, protože ta dá víc ATP na každou molekulu spotřebovaného kyslíku:' },
             { type: 'graph', x: { label: 'intenzita zátěže', unit: '% maxima', min: 20, max: 100, step: 20 }, y: { label: 'RQ', min: 0.7, max: 1.1, step: 0.1 }, series: [
               { label: 'naměřené RQ', points: [[20, 0.8], [40, 0.84], [60, 0.9], [80, 0.97], [100, 1.06]], style: 'smooth', tone: 'a' },
-            ], marks: [{ y: 1, label: 'jen sacharidy' }, { y: 0.7, label: 'jen tuky' }], caption: 'Při chůzi spaluješ hlavně tuky, při sprintu hlavně glukózu. Nad RQ = 1 se přidává vydýchávání $CO2$ z rozkladu laktátu.' },
+            ], marks: [{ y: 1, label: 'jen sacharidy' }, { y: 0.7, label: 'jen tuky' }], caption: 'Při chůzi spaluješ hlavně tuky, při sprintu hlavně glukózu. Nad RQ = 1 se přidává $CO2$, který se v krvi uvolní z hydrogenuhličitanu při neutralizaci kyseliny mléčné.' },
             { type: 'p', text: 'Buněčné dýchání glukózu spaluje. V příští lekci „Fotosyntéza“ uvidíme opačný děj: jak rostlina z $CO2$, vody a světla glukózu vyrobí.' },
             { type: 'check', question: { kind: 'number', q: 'Při pokusu člověk za minutu spotřeboval 400 ml $O2$ a vydechl 320 ml $CO2$. Jaký je jeho RQ?', answer: 0.8, tolerance: 0.01, explain: 'RQ = 320 ml : 400 ml = 0,8. Odpovídá spalování bílkovin nebo smíšené stravy.' } },
           ],
@@ -936,7 +936,7 @@ const level: LevelContent = {
             { type: 'iconlist', items: [
               { icon: 'sun', title: 'Světlo', text: 'limituje ráno, večer, ve stínu lesa a v zimě' },
               { icon: 'gas-cloud', title: '$CO2$', text: 'limituje za jasného dne; skleníky proto přidávají $CO2$ až na 0,1 %' },
-              { icon: 'thermometer', title: 'Teplota', text: 'limituje v chladném jaru; nad optimem denaturují enzymy' },
+              { icon: 'thermometer', title: 'Teplota', text: 'limituje za chladného jara; nad optimem denaturují enzymy' },
             ] },
             { type: 'p', text: 'V horku ale hrozí rostlinám ještě jedna past, která nesouvisí přímo s teplotou enzymů. Některé rostliny ji obcházejí chytrými triky.' },
             { type: 'check', question: { kind: 'choice', q: 'Rostlina na plató křivky při 0,04 % $CO2$ dostane silnější lampu. Co se stane s rychlostí fotosyntézy?', options: ['nezmění se, protože ji teď limituje $CO2$', 'zdvojnásobí se', 'klesne, protože světlo ničí chlorofyl', 'zvýší se, ale jen v noci'], answer: 0, explain: 'Na plató už světla je dost. Rychlost brzdí jiný faktor, tady nedostatek $CO2$. Pomohlo by přidat $CO2$.' } },
@@ -946,11 +946,11 @@ const level: LevelContent = {
           title: 'Rostliny C3, C4 a CAM',
           icon: 'heat',
           blocks: [
-            { type: 'p', text: 'RuBisCO má jednu slabinu: neumí dobře rozlišit $CO2$ a $O2$. Za horka rostlina zavře průduchy, aby neztrácela vodu, $CO2$ v listu dojde a RuBisCO začne vázat kyslík. Vzniká zbytečný produkt a část už navázaného uhlíku se ztratí – **fotorespirace**. V horkém dni může spolknout čtvrtinu i víc výnosu.' },
+            { type: 'p', text: 'RuBisCO má jednu slabinu: neumí dobře rozlišit $CO2$ a $O2$. Za horka rostlina zavře průduchy, aby neztrácela vodu, $CO2$ v listu dojde a RuBisCO začne vázat kyslík. Vzniká zbytečný produkt a část už navázaného uhlíku se ztratí – **fotorespirace**. Za horkého dne může spolknout čtvrtinu i víc výnosu.' },
             { type: 'p', text: 'Většina rostlin v Česku (pšenice, brambory, buk) jsou **rostliny C3**: první stálý produkt fixace má tři uhlíky a jejich RuBisCO s fotorespirací bojovat neumí. Rostliny teplých a suchých oblastí ale vyvinuly dva triky, jak ke RuBisCO dopravit dost $CO2$:' },
             { type: 'compare', columns: [
               { title: 'C3', icon: 'leaf', tone: 'a', points: ['$CO2$ váže přímo RuBisCO', 'mírné klima, dost vody', 'fotorespirace v horku vysoká', 'pšenice, rýže, brambory, buk, většina rostlin ČR'] },
-              { title: 'C4', icon: 'sun', tone: 'b', points: ['**prostorové oddělení**: $CO2$ nejdřív zachytí jiný enzym (PEP-karboxyláza) do čtyřuhlíkaté látky v buňkách mezofylu', 'ta ho dopraví do buněk pochvy cévního svazku a tam ho uvolní RuBisCO', 'téměř bez fotorespirace, rychlý růst v horku', 'kukuřice, cukrová třtina, proso'] },
+              { title: 'C4', icon: 'sun', tone: 'b', points: ['**prostorové oddělení**: $CO2$ nejdřív zachytí jiný enzym (PEP-karboxyláza) do čtyřuhlíkaté látky v buňkách mezofylu', 'ta ho dopraví do buněk pochvy cévního svazku, tam se $CO2$ uvolní a naváže ho RuBisCO', 'téměř bez fotorespirace, rychlý růst v horku', 'kukuřice, cukrová třtina, proso'] },
               { title: 'CAM', icon: 'cold', tone: 'c', points: ['**časové oddělení**: průduchy otevřené v **noci**, $CO2$ se uloží jako kyselina jablečná ve vakuole', 've dne průduchy zavřené, $CO2$ se uvolní pro Calvinův cyklus', 'extrémně šetří vodou, roste pomalu', 'kaktusy, ananas, netřesk střešní (*Sempervivum tectorum*), rozchodníky'] },
             ], caption: 'Tři způsoby fixace $CO2$. C4 dělí kroky mezi dva typy buněk, CAM mezi noc a den.' },
             { type: 'callout', variant: 'fact', text: 'Netřesk na střechách a zídkách je česká rostlina CAM. Listy rostlin CAM jsou ráno znatelně kyselejší než večer: v noci se v nich hromadí kyselina jablečná a přes den se spotřebuje na fotosyntézu.' },
@@ -1039,8 +1039,8 @@ const level: LevelContent = {
               { title: 'Živočišná buňka', icon: 'cell', tone: 'a', points: ['prstenec z aktinových vláken se stahuje', 'buňka se zaškrtí **rýhou** jako balonek stažený provázkem'] },
               { title: 'Rostlinná buňka', icon: 'leaf', tone: 'b', points: ['stěnu zaškrtit nejde', 'váčky z Golgiho aparátu se seřadí uprostřed a splynou v **buněčnou přepážku**', 'z ní vyroste nová stěna'] },
             ] },
-            { type: 'callout', variant: 'tip', text: 'Pořadí fází si zapamatuješ podle „**P**rávě **M**ámu **A**nička **T**elefonuje“: profáze, metafáze, anafáze, telofáze.' },
-            { type: 'p', text: 'Mitóza tvoří kopie – proto jí roste tělo a hojí se rány. Pohlavní buňky ale kopiemi být nesmějí, jinak by se počet chromozomů v každé generaci zdvojnásobil.' },
+            { type: 'callout', variant: 'tip', text: 'Pořadí fází si zapamatuješ podle věty „**P**epa **M**aluje **A**ničce **T**ulipán“: profáze, metafáze, anafáze, telofáze.' },
+            { type: 'p', text: 'Mitóza tvoří kopie – díky ní roste tělo a hojí se rány. Pohlavní buňky ale kopiemi být nesmějí, jinak by se počet chromozomů v každé generaci zdvojnásobil.' },
             { type: 'check', question: { kind: 'order', q: 'Seřaď děje mitózy od začátku do konce.', items: ['chromozomy se spiralizují a zviditelní', 'chromozomy se seřadí v ekvatoriální rovině', 'sesterské chromatidy putují k pólům', 'kolem chromozomů vzniknou dva jaderné obaly', 'cytokineze rozdělí buňku'], explain: 'Profáze, metafáze, anafáze, telofáze a nakonec cytokineze, která rozdělí cytoplazmu.' } },
           ],
         },
@@ -1050,7 +1050,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Z lekce „DNA, geny a chromozomy“ víš, že lidská tělní buňka má 46 chromozomů – 23 párů, jeden chromozom z každého páru od matky, druhý od otce. Buňka se dvěma sadami je **diploidní** (2n = 46). Vajíčko a spermie musí být **haploidní** (n = 23), aby oplozené vajíčko mělo zase 46. Proto vznikají **meiózou**.' },
             { type: 'p', text: 'Meióza jsou dvě dělení za sebou bez replikace DNA mezi nimi. Porovnej ji s mitózou na obrázku:' },
-            { type: 'diagram', id: 'mitosis-meiosis', caption: 'Mitóza: 1 diploidní buňka → 2 shodné diploidní buňky. Meióza: 1 diploidní buňka → 4 geneticky odlišné haploidní buňky; v první fázi si homologní chromozomy vymění úseky (crossing-over).' },
+            { type: 'diagram', id: 'mitosis-meiosis', caption: 'Mitóza: 1 diploidní buňka → 2 shodné diploidní buňky. Meióza: 1 diploidní buňka → 4 geneticky odlišné haploidní buňky; v profázi prvního dělení si homologní chromozomy vymění úseky (crossing-over).' },
             { type: 'p', text: 'Klíč je v **prvním** dělení. Homologní chromozomy (otcův a matčin chromozom téhož páru) se k sobě přiloží a pak se rozejdou každý jinam. Teprve druhé dělení rozdělí sesterské chromatidy – stejně jako mitóza. Shrnutí rozdílů:' },
             { type: 'compare', columns: [
               { title: 'Mitóza', icon: 'cell-division', tone: 'a', points: ['jedno dělení', '2 dceřiné buňky', 'diploidní (2n → 2n)', 'geneticky **shodné**', 'růst, hojení, nepohlavní rozmnožování'] },
@@ -1078,7 +1078,7 @@ const level: LevelContent = {
               'Vajíčko má stejně možností a oba výběry jsou nezávislé, proto násobíme: 8,4 · 10^{6} · 8,4 · 10^{6}.',
               'Výsledek je asi 7 · 10^{13}.',
             ], answer: 'Asi 70 bilionů možných kombinací – a crossing-over k tomu přidává další. Proto je každý člověk geneticky jedinečný.' },
-            { type: 'p', text: 'Meióza tedy z jednoho genomu vytvoří nekonečnou rozmanitost, na které pracuje přírodní výběr. Buňky se ale nedělí, kdy se jim zachce: o dělení rozhodují signály zvenčí.' },
+            { type: 'p', text: 'Meióza a oplození tedy z genů dvou rodičů vytvoří obrovskou rozmanitost, na které pracuje přírodní výběr. Buňky se ale nedělí, kdy se jim zachce: o dělení rozhodují signály zvenčí.' },
             { type: 'check', question: { kind: 'number', q: 'Octomilka má 4 páry chromozomů. Kolik různých kombinací chromozomů může vzniknout v jejích pohlavních buňkách jen díky nezávislé kombinaci?', answer: 16, tolerance: 0, unit: 'kombinací', explain: '2^{4} = 2 · 2 · 2 · 2 = 16.' } },
           ],
         },
@@ -1095,7 +1095,7 @@ const level: LevelContent = {
             ], caption: 'Signální dráha: receptor → přenos signálu (kaskáda) → odpověď buňky' },
             { type: 'p', text: 'Proč tak složitě, místo aby hormon rovnou spustil reakci? Kaskáda signál **zesílí**: každá aktivovaná molekula zapne mnoho molekul dalšího stupně. Navíc se v každém kroku dá signál přibrzdit nebo zkombinovat s jiným. Na obrázku sleduj, jak počet molekul roste krok za krokem:' },
             { type: 'diagram', id: 'cell-signalling', caption: 'Zesílení signálu v jaterní buňce (přibližné počty): 1 molekula adrenalinu → asi 100 molekul cAMP → kinázy → asi 10 000 enzymů štěpících glykogen → asi 100 milionů molekul glukózy.' },
-            { type: 'callout', variant: 'remember', text: 'Buňka odpoví jen na signál, pro který má **receptor**. Proto adrenalin rozbuší srdce a uvolní cukr z jater, ale na kožní buňky nepůsobí. Steroidní hormony (testosteron, estrogen) projdou membránou samy a jejich receptory jsou uvnitř buňky.' },
+            { type: 'callout', variant: 'remember', text: 'Buňka odpoví jen na signál, pro který má **receptor**. Proto adrenalin rozbuší srdce a uvolní cukr z jater, ale buňky bez jeho receptoru nechá v klidu. Steroidní hormony (testosteron, estrogen) projdou membránou samy a jejich receptory jsou uvnitř buňky.' },
             { type: 'p', text: 'Stejným způsobem dostávají buňky pokyn k dělení: **růstový faktor** se naváže na receptor a kaskáda nakonec zapne geny, které buňku pošlou z G_{1} do fáze S. Co se stane, když se tento vypínač zasekne, ukáže poslední oddíl.' },
             { type: 'check', question: { kind: 'tf', q: 'Jedna molekula hormonu může díky signální kaskádě vyvolat změnu milionů molekul uvnitř buňky.', answer: true, explain: 'Každý krok kaskády aktivuje mnoho molekul dalšího kroku, takže se signál mnohonásobně zesílí.' } },
           ],
@@ -1118,7 +1118,7 @@ const level: LevelContent = {
               { title: 'Tumor-supresorový gen', icon: 'warning', tone: 'bad', points: ['zdravý gen dělení brzdí nebo spouští apoptózu', 'mutace ho vyřadí', 'jako **brzda**, která nebrzdí', 'příklad: p53, „strážce genomu“, porušený asi v polovině nádorů'] },
             ] },
             { type: 'callout', variant: 'fact', text: 'Některé léky proti rakovině míří právě na dělení. Paklitaxel, původně získaný z kůry tisu, zablokuje mikrotubuly dělicího vřeténka a buňka uvízne v mitóze. Zasáhne ale i zdravé rychle se dělící buňky – proto při chemoterapii padají vlasy.' },
-            { type: 'p', text: 'Riziko můžeš snížit: nekouřit, chránit se před UV zářením a nechat se očkovat proti HPV, viru, který způsobuje rakovinu děložního čípku. O mutacích a nádorech bude řeč v úrovni 10 v lekci „Mutace a nádory“; tu otevře lekce „DNA a její replikace“, kde uvidíš, jak buňka ve fázi S kopíruje DNA.' },
+            { type: 'p', text: 'Riziko můžeš snížit: nekouřit, chránit se před UV zářením a nechat se očkovat proti HPV, viru, který způsobuje rakovinu děložního čípku. O mutacích a nádorech bude řeč v úrovni 10 v lekci „Mutace a nádory“; úroveň 10 ale začne lekcí „DNA a její replikace“, kde uvidíš, jak buňka ve fázi S kopíruje DNA.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč se rakovina objevuje častěji ve vyšším věku?', options: ['ke ztrátě kontroly dělení je obvykle potřeba několik mutací a ty se během života hromadí', 'starší buňky se dělí rychleji', 'staří lidé nemají kontrolní body', 'gen p53 vzniká až ve stáří'], answer: 0, explain: 'Nádor obvykle vzniká, až když se v jedné buněčné linii nahromadí mutace v onkogenech i v tumor-supresorových genech. Na to je potřeba čas.' } },
           ],
         },
@@ -1143,7 +1143,7 @@ const level: LevelContent = {
         ], explain: 'Crossing-over probíhá při párování homologních chromozomů v první meiotické profázi, chromatidy se v mitóze oddělují v anafázi a DNA se kopíruje ve fázi S.' },
         { kind: 'number', q: 'Buňka v G_{1} obsahuje 6 pg DNA. Kolik pg DNA bude obsahovat v metafázi mitózy?', answer: 12, tolerance: 0, unit: 'pg', explain: 'Ve fázi S se DNA zdvojí, takže v G_{2} i v metafázi má buňka 12 pg. Každá dceřiná buňka pak dostane zpět 6 pg.' },
         { kind: 'multi', q: 'Čím se meióza liší od mitózy?', options: ['vznikají čtyři buňky místo dvou', 'dceřiné buňky jsou haploidní', 'probíhá crossing-over', 'před dělením se nereplikuje DNA', 'dceřiné buňky jsou geneticky shodné'], answers: [0, 1, 2], explain: 'Meióza dává 4 haploidní, geneticky odlišné buňky a v její první fázi probíhá crossing-over. DNA se replikuje i před meiózou, jen ne mezi oběma děleními.' },
-        { kind: 'choice', q: 'Proč na adrenalin reagují buňky jater, ale ne buňky kůže?', options: ['jen buňky jater mají na membráně receptor pro adrenalin', 'adrenalin se ke kůži nedostane krví', 'kožní buňky adrenalin rozloží', 'adrenalin projde jen membránou jaterních buněk'], answer: 0, explain: 'Odpověď buňky závisí na tom, zda má pro signál receptor. Adrenalin rozvádí krev po celém těle, ale reagují jen buňky s jeho receptorem.' },
+        { kind: 'choice', q: 'Adrenalin rozvádí krev po celém těle. Proč přesto nereagují všechny buňky?', options: ['reagují jen buňky, které mají receptor pro adrenalin', 'adrenalin se k ostatním buňkám krví nedostane', 'ostatní buňky adrenalin hned rozloží', 'adrenalin projde jen membránou jaterních buněk'], answer: 0, explain: 'Odpověď buňky závisí na tom, zda má pro signál receptor. Adrenalin rozvádí krev po celém těle, ale reagují jen buňky s jeho receptorem.' },
         { kind: 'tf', q: 'Mutace v genu p53 může způsobit, že buňka s poškozenou DNA nezastaví cyklus a nespustí apoptózu.', answer: true, explain: 'p53 je tumor-supresorový gen: zastavuje cyklus při poškození DNA a spouští apoptózu. Když je vyřazený, poškozené buňky se dělí dál.' },
         { kind: 'choice', q: 'Lék zablokuje tvorbu dělicího vřeténka. Ve kterém kontrolním bodě se buňky zastaví?', options: ['v kontrolním bodě M, protože chromozomy nejsou upnuté na vřeténko', 'v kontrolním bodě G_{1}', 've fázi S', 'nezastaví se, vřeténko není potřeba'], answer: 0, explain: 'Kontrolní bod M pustí buňku do anafáze, až když jsou všechny chromozomy upnuté na vlákna vřeténka. Bez vřeténka buňka uvízne v mitóze.' },
       ],

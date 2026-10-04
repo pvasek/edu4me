@@ -180,7 +180,7 @@ export default function PepperedMoth() {
           />
         </>
       }
-      challenge="Nastav prostředí, ve kterém tmaví můry za 10 generací převládnou."
+      challenge="Nastav prostředí, ve kterém tmavé můry za 10 generací převládnou."
       done={gen >= 10 && hist[10] > 0.5}
     />
   )

@@ -5,7 +5,7 @@ import { Control, Experiment, Readout } from './kit'
 import { LEVELS, producersNeeded, pyramid } from './energy-pyramid.model'
 
 /**
- * "Vyzkoušej si" for b8-4: energy flowing up a food chain rostliny → kobylka → rejsek →
+ * "Vyzkoušej si" for b8-4: energy flowing up a food chain rostliny → saranče → rejsek →
  * sova. The learner sets the producers' energy and the transfer efficiency and sees how
  * little reaches the top predator.
  */
@@ -39,7 +39,7 @@ const width = (e: number, base: number) => Math.max(MIN_W, MAX_W * Math.sqrt(e /
 
 function pyramidLabel(levels: number[], eff: number): string {
   const parts = LEVELS.map((l, i) => `${l.name} ${kj(levels[i])} kJ`).join(', ')
-  return `Energetická pyramida potravního řetězce rostliny, kobylka, rejsek, sova. Energie v patrech: ${parts}. Na každé další patro přejde jen ${eff} % energie, zbytek organismy spotřebují na život a uvolní jako teplo.`
+  return `Energetická pyramida potravního řetězce rostliny, saranče, rejsek, sova. Energie v patrech: ${parts}. Na každé další patro přejde jen ${eff} % energie, zbytek organismy spotřebují na život a uvolní jako teplo.`
 }
 
 function Picture({ levels, eff }: { levels: number[]; eff: number }) {

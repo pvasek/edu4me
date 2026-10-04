@@ -41,7 +41,7 @@ export interface Cell {
 
 export const CELLS: Record<CellId, Cell> = {
   plant: { id: 'plant', name: 'rostlinná buňka', acc: 'rostlinnou buňku', inName: 'v rostlinné buňce', short: 'rostlinná', note: 'Rostlinnou buňku poznáš podle buněčné stěny, chloroplastů a velké vakuoly.' },
-  animal: { id: 'animal', name: 'živočišná buňka', acc: 'živočišnou buňku', inName: 'v živočišné buňce', short: 'živočišná', note: 'Živočišná buňka nemá stěnu, chloroplasty ani velkou vakuolu, a proto nemá pevný tvar.' },
+  animal: { id: 'animal', name: 'živočišná buňka', acc: 'živočišnou buňku', inName: 'v živočišné buňce', short: 'živočišná', note: 'Živočišná buňka nemá stěnu, chloroplasty ani velkou vakuolu; bez stěny nemá pevný tvar.' },
   bacterium: { id: 'bacterium', name: 'bakteriální buňka', acc: 'bakteriální buňku', inName: 'v bakteriální buňce', short: 'bakteriální', note: 'Bakterie nemá jádro ani organely s membránou – je to prokaryotní buňka.' },
 }
 
@@ -65,6 +65,8 @@ export interface Part {
   fn9?: string
   /** Why a cell does not have it (one clause). */
   lacks?: Partial<Record<CellId, string>>
+  /** Cells that lack the structure but still do its job (never offered there as a wrong function). */
+  jobWithout?: CellId[]
 }
 
 export const PARTS: Record<PartId, Part> = {
@@ -97,6 +99,7 @@ export const PARTS: Record<PartId, Part> = {
     fn1: 'uchovává dědičnou informaci (DNA) a řídí činnost buňky',
     fn9: 'uchovává DNA za dvojitým jaderným obalem; probíhá v něm replikace a přepis DNA do RNA',
     lacks: { bacterium: 'bakterie má DNA volně v cytoplazmě (nukleoid)' },
+    jobWithout: ['bacterium'],
   },
   jaderko: {
     id: 'jaderko',
@@ -112,12 +115,13 @@ export const PARTS: Record<PartId, Part> = {
     fn1: 'buněčné dýchání – uvolňuje energii z cukru',
     fn9: 'buněčné dýchání: Krebsův cyklus a dýchací řetězec tvoří většinu ATP',
     lacks: { bacterium: 'bakterie nemá organely s membránou, dýchá na cytoplazmatické membráně' },
+    jobWithout: ['bacterium'],
   },
   chloroplast: {
     id: 'chloroplast',
     name: 'chloroplast',
     in: ['plant'],
-    fn1: 'fotosyntéza – ze světla, vody a CO₂ vyrábí cukr',
+    fn1: 'fotosyntéza – pomocí světla vyrábí z vody a CO₂ cukr',
     fn9: 'fotosyntéza: v tylakoidech světelná fáze, ve stromatu Calvinův cyklus',
     lacks: {
       animal: 'živočichové nefotosyntetizují, potravu přijímají',
@@ -180,6 +184,7 @@ export const PARTS: Record<PartId, Part> = {
       plant: 'buňky krytosemenných rostlin centrioly nemají, vřeténko tvoří bez nich',
       bacterium: 'bakterie nemá centrioly ani mikrotubuly',
     },
+    jobWithout: ['plant'],
   },
   vacek: {
     id: 'vacek',

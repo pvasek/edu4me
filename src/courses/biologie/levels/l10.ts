@@ -124,7 +124,7 @@ const level: LevelContent = {
               ['výběr správného nukleotidu polymerázou', 'asi 10^{−5}'],
               ['zpětné čtení: polymeráza chybný nukleotid hned vyštípne', 'asi 10^{−7}'],
               ['oprava chybných párů po replikaci', 'asi 10^{−9}'],
-            ], caption: 'Každá pojistka sníží počet chyb zhruba stokrát.' },
+            ], caption: 'Každá další pojistka sníží počet chyb zhruba stokrát.' },
             { type: 'p', text: 'Kolik chyb to dělá v jedné lidské buňce? Spočítáme to z velikosti genomu:' },
             { type: 'example', title: 'Chyby při jednom dělení', problem: 'Tělní buňka člověka má asi 6,4 · 10^{9} párů bází. Kolik nových chyb vznikne při jednom zkopírování, je-li výsledná chybovost 10^{−9} na nukleotid?', steps: [
               'Počet chyb = počet zkopírovaných párů · chybovost.',
@@ -179,7 +179,7 @@ const level: LevelContent = {
       ],
       quiz: [
         { kind: 'tf', q: 'Mezi cytosinem a guaninem jsou tři vodíkové vazby, mezi adeninem a thyminem dvě.', answer: true, explain: 'Proto jsou úseky bohaté na páry C–G pevnější a k jejich rozdělení je potřeba vyšší teplota.' },
-        { kind: 'choice', q: 'Z čí laboratoře pocházel rentgenový snímek, podle kterého Watson a Crick poznali šroubovicový tvar DNA?', options: ['Rosalind Franklinové', 'Erwina Chargaffa', 'Gregora Mendela', 'Matthewa Meselsona'], answer: 0, explain: '„Fotografii 51“ pořídil v roce 1952 Raymond Gosling v laboratoři Rosalind Franklinové. Watson a Crick ji viděli bez jejího vědomí.' },
+        { kind: 'choice', q: 'Z čí laboratoře pocházel rentgenový snímek, podle kterého Watson a Crick poznali šroubovicový tvar DNA?', options: ['Rosalind Franklinové', 'Erwina Chargaffa', 'Gregora Mendela', 'Matthewa Meselsona'], answer: 0, explain: '„Fotografii 51“ pořídil v roce 1952 Raymond Gosling v laboratoři Rosalind Franklinové. Watsonovi ji bez jejího vědomí ukázal Maurice Wilkins.' },
         { kind: 'match', q: 'Přiřaď enzym k jeho úloze při replikaci.', pairs: [
           ['helikáza', 'rozplétá dvoušroubovici'],
           ['primáza', 'klade krátký RNA primer'],
@@ -255,7 +255,7 @@ const level: LevelContent = {
           title: 'Úpravy mRNA: introny ven, exony zůstávají',
           icon: 'gene-scissors',
           blocks: [
-            { type: 'p', text: 'Když vědci v roce 1977 porovnali gen s jeho hotovou mRNA, čekalo je překvapení: gen byl mnohem delší. Eukaryotní geny jsou rozdělené na úseky, které se překládají do bílkoviny (**exony**), a vložené úseky, které se vystřihnou (**introny**). Prvnímu přepisu proto říkáme **pre-mRNA**.' },
+            { type: 'p', text: 'Když vědci v roce 1977 porovnali gen s jeho hotovou mRNA, čekalo je překvapení: gen byl mnohem delší. Eukaryotní geny jsou rozdělené na úseky, které zůstanou ve zralé mRNA a nesou návod na bílkovinu (**exony**), a vložené úseky, které se vystřihnou (**introny**). Prvnímu přepisu proto říkáme **pre-mRNA**.' },
             { type: 'p', text: 'Než pre-mRNA opustí jádro, projde úpravami. Sleduj je v pořadí:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'pencil', title: 'Přepis', text: 'vznikne pre-mRNA s exony i introny' },
@@ -446,7 +446,7 @@ const level: LevelContent = {
             { type: 'p', text: 'U eukaryot RNA polymeráza sama na promotor nenasedne. Potřebuje bílkoviny zvané **transkripční faktory**. Některé se vážou přímo k promotoru, jiné na vzdálené úseky DNA, **zesilovače** (enhancery), které mohou ležet i desítky tisíc párů bází od genu. DNA se ohne do smyčky a zesilovač se dostane k promotoru.' },
             { type: 'p', text: 'Každý typ buňky má jinou sadu aktivních faktorů, a jejich kombinace rozhoduje, které geny se přepíšou. Často je spouští signál zvenčí, třeba hormon. Signalizaci z lekce „Buněčný cyklus a signalizace“ tu vidíš až do jádra:' },
             { type: 'process', layout: 'flow', steps: [
-              { icon: 'drop', title: 'Signál', text: 'steroidní hormon (např. estrogen) projde membránou' },
+              { icon: 'drop', title: 'Signál', text: 'steroidní hormon (např. kortizol) projde membránou' },
               { icon: 'protein', title: 'Receptor', text: 'hormon se naváže na receptor v cytoplazmě' },
               { icon: 'cell', title: 'Do jádra', text: 'komplex hormon–receptor vstoupí do jádra' },
               { icon: 'dna', title: 'Vazba na DNA', text: 'receptor funguje jako transkripční faktor a sedne na zesilovač' },
@@ -481,7 +481,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Epigenetické značky nejsou úplně pevné. Mění se s věkem a reagují na prostředí, třeba na stravu, kouření nebo stres. Dokládají to jednovaječná dvojčata, která znáš z lekce „Proměnlivost a mutace“.' },
             { type: 'callout', variant: 'fact', text: 'Studie z roku 2005 ukázala, že tříletá jednovaječná dvojčata mají metylaci DNA téměř stejnou, kdežto u padesátiletých dvojčat se značky výrazně liší – tím víc, čím odlišněji žila.' },
             { type: 'p', text: '==Epigenetická změna mění, zda se gen čte, ne co je v něm napsáno.== Na rozdíl od mutace se dá v principu vrátit, a proto se už používají léky, které nádorovým buňkám odstraňují nevhodné metylové značky. Třetí nástroj regulace, malé molekuly RNA, se našel u nenápadného červa – symbolu této úrovně.' },
-            { type: 'check', question: { kind: 'tf', q: 'Epigenetická změna mění pořadí bází v DNA.', answer: false, explain: 'Epigenetické značky (metylace DNA, úpravy histonů) mění jen přístupnost genu. Pořadí bází zůstává stejné; změnu pořadí by byla mutace.' } },
+            { type: 'check', question: { kind: 'tf', q: 'Epigenetická změna mění pořadí bází v DNA.', answer: false, explain: 'Epigenetické značky (metylace DNA, úpravy histonů) mění jen přístupnost genu. Pořadí bází zůstává stejné; změna pořadí by už byla mutace.' } },
           ],
         },
         {
@@ -601,7 +601,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Báze může do DNA také přibýt (**inzerce**) nebo z ní vypadnout (**delece**). Ribozom čte mRNA po trojicích od start kodonu a nemá žádné mezery, podle kterých by se srovnal. Jedna báze navíc nebo méně proto posune **čtecí rámec** pro všechny další kodony.' },
             { type: 'p', text: 'Ukážeme to na krátké mRNA. Nahoře je původní sekvence, dole táž sekvence po deleci jediné báze A ve druhém kodonu:' },
-            { type: 'structure', art: 'původní: AUG AAA GCU UGG GGC UAA\n         Met Lys Ala Trp Gly stop\n\ndelece:  AUG AAG CUU GGG GCU AA…\n         Met Lys Leu Gly Ala …', caption: 'Od místa delece se mění všechny další aminokyseliny a ztratí se i stop kodon.' },
+            { type: 'structure', art: 'původní: AUG AAA GCU UGG GGC UAA\n         Met Lys Ala Trp Gly stop\n\ndelece:  AUG AAG CUU GGG GCU AA…\n         Met Lys Leu Gly Ala …', caption: 'Za místem delece se mění všechny další aminokyseliny a ztratí se i stop kodon.' },
             { type: 'p', text: 'Za místem chyby se změní všechny aminokyseliny a stop kodon se buď ztratí, nebo se objeví předčasně. ==Posunová mutace obvykle zničí funkci bílkoviny.== Výjimkou je inzerce nebo delece tří bází (či jejich násobku), která rámec zachová – jako u nejčastější alely cystické fibrózy:' },
             { type: 'example', title: 'Cystická fibróza', problem: 'Nejčastější alela cystické fibrózy (ΔF508) vznikla delecí tří nukleotidů v genu *CFTR*. Proč je bílkovina jen o jednu aminokyselinu kratší, a ne úplně zpřeházená?', steps: [
               'Tři chybějící nukleotidy odpovídají přesně jednomu kodonu.',
@@ -659,7 +659,7 @@ const level: LevelContent = {
               { icon: 'hazard', title: 'Chemické mutageny', text: 'benzo[a]pyren z cigaretového kouře a připáleného masa se váže na guanin; aflatoxin z plesnivých ořechů' },
               { icon: 'virus', title: 'Viry', text: 'HPV a virus hepatitidy B vnášejí geny, které vyřadí kontrolu buněčného cyklu' },
             ] },
-            { type: 'p', text: 'Buňka poškození neustále opravuje, každý den v každé buňce desítky tisíc. Princip nejčastější opravy, **vystřižení poškozeného úseku**, ukazuje tento sled:' },
+            { type: 'p', text: 'Buňka poškození neustále opravuje, každý den v každé buňce desítky tisíc. Princip jedné z hlavních oprav, **vystřižení poškozeného úseku**, ukazuje tento sled:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'magnifier', title: 'Rozpoznání', text: 'opravné bílkoviny najdou deformovaný úsek, např. thyminový dimer' },
               { icon: 'gene-scissors', title: 'Vystřižení', text: 'poškozený kousek jednoho řetězce se vystřihne' },
@@ -834,7 +834,7 @@ const level: LevelContent = {
               'Frekvence rekombinace: 391 / 2 300 · 100 % ≈ 17 %.',
             ], answer: 'Geny jsou od sebe vzdálené asi 17 cM.' },
             { type: 'callout', variant: 'remember', text: 'Frekvence rekombinace nikdy nepřesáhne 50 %. Geny velmi daleko od sebe se chovají, jako by ležely na různých chromozomech.' },
-            { type: 'p', text: 'Vazba se týká genů na stejném autozomu. Zvláštním případem jsou geny na pohlavních chromozomech, a k nim přidáme ještě dvě odchylky od schématu „jeden gen, dvě alely, jeden znak“.' },
+            { type: 'p', text: 'Vazbu jsme ukázali na genech ležících na stejném autozomu. Zvláštním případem jsou geny na pohlavních chromozomech, a k nim přidáme ještě dvě odchylky od schématu „jeden gen, dvě alely, jeden znak“.' },
             { type: 'check', question: { kind: 'number', q: 'Zpětné křížení dalo 1 000 potomků, z toho 80 rekombinantů. Jak daleko od sebe geny leží?', answer: 8, tolerance: 0.1, unit: 'cM', explain: 'Frekvence rekombinace = 80 / 1 000 · 100 % = 8 %, tedy 8 cM.' } },
           ],
         },
@@ -883,9 +883,9 @@ const level: LevelContent = {
               { id: 'b3', sex: 'm', affected: true, parents: ['a2', 'a1'] },
               { id: 'q1', sex: 'f', label: 'partnerka' },
               { id: 'c1', sex: 'm', affected: true, parents: ['q1', 'b1'], label: 'vnuk' },
-              { id: 'c2', sex: 'f', parents: ['q1', 'b1'] },
+              { id: 'c2', sex: 'f', affected: true, parents: ['q1', 'b1'] },
             ], caption: 'Rodina 2: znak v každé generaci a nemocný otec má nemocného syna.' },
-            { type: 'p', text: 'Tady má každý nemocný nemocného rodiče a znak nepřeskakuje generace, což ukazuje na **dominantní** dědičnost (tak se dědí třeba Huntingtonova choroba). Nemocný otec navíc předal znak synovi, a to u dědičnosti vázané na X nejde. Zbývá **autozomálně dominantní** typ.' },
+            { type: 'p', text: 'Tady má každý nemocný nemocného rodiče a znak nepřeskakuje generace, což ukazuje na **dominantní** dědičnost (tak se dědí třeba Huntingtonova choroba). Nemocný otec navíc předal znak synovi, a to u dědičnosti vázané na X nejde; nemocná vnučka zase vylučuje dědičnost vázanou na Y. Zbývá **autozomálně dominantní** typ.' },
             { type: 'callout', variant: 'tip', text: 'Přenašeče kreslíme tečkou, jen když o nich víme. V reálném rodokmenu je často prozradí až nemocné dítě, jako dědečka a babičku v rodině 1.' },
             { type: 'p', text: 'Z rodokmenu tedy poznáme typ dědičnosti a z něj spočítáme rizika pro další děti. Zbývá poslední otázka: jak poznat, že se skutečné počty od teorie liší jen náhodou?' },
             { type: 'check', question: { kind: 'choice', q: 'V rodokmenu mají znak jen muži; nemocní synové mají zdravé matky a nemocné dědečky z matčiny strany. Jaký typ dědičnosti je nejpravděpodobnější?', options: ['recesivní vázaná na X', 'autozomálně dominantní', 'autozomálně recesivní', 'vázaná na Y'], answer: 0, explain: 'Dědeček předá X s alelou dceři (přenašečce) a ta ho předá synovi. Dědičnost vázaná na Y by šla z otce na syna, ne přes matku.' } },

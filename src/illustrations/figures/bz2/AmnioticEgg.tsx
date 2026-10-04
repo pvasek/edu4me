@@ -1,7 +1,7 @@
 import { Fade, Figure, Lbl, Pop, pat, useFig } from "./kit";
 
 const LABEL =
-  "Amniotické vajíčko plazů a ptáků v řezu. Na povrchu je pórovitá skořápka, kterou prochází vzduch, ale voda se neodpaří; na tupém konci je vzduchová komůrka. Pod skořápkou je blána chorion, uvnitř bílek se zásobou vody. Zárodek leží v amnionu, váčku s plodovou vodou, takže se vyvíjí jako ve vlastním malém rybníčku. Pod ním je velký žloutkový váček se zásobou živin, který zárodek vyživuje krevními cévami. Alantois je váček na odpadní látky a přes skořápku jím zárodek dýchá.";
+  "Amniotické vajíčko plazů a ptáků v řezu. Na povrchu je pórovitá skořápka, kterou prochází vzduch, ale voda jí uniká jen pomalu; na tupém konci je vzduchová komůrka. Pod skořápkou je blána chorion, uvnitř bílek se zásobou vody. Zárodek leží v amnionu, váčku s plodovou vodou, takže se vyvíjí jako ve vlastním malém rybníčku. Pod ním je velký žloutkový váček se zásobou živin, který zárodek vyživuje krevními cévami. Alantois je váček na odpadní látky a přes skořápku jím zárodek dýchá.";
 
 function Egg() {
   const { id } = useFig();

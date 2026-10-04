@@ -243,7 +243,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Porovnej obě části cévního svazku. Liší se tím, co vezou, a směrem:' },
             { type: 'compare', columns: [
               { title: 'Dřevní část', icon: 'drop', tone: 'a', points: ['vede **vodu a minerální látky**', 'jen jedním směrem: **z kořene vzhůru**', 'tvoří ji cévy – trubice z odumřelých buněk', 've stromech z ní vzniká dřevo'] },
-              { title: 'Lýková část', icon: 'sugar', tone: 'b', points: ['vede **cukry** a další látky vyrobené v listech', 'oběma směry: **tam, kde jsou potřeba**', 'tvoří ji sítkovice – živé buňky', 've stromech leží těsně pod kůrou'] },
+              { title: 'Lýková část', icon: 'sugar', tone: 'b', points: ['vede **cukry** a další látky vyrobené v listech', 'oběma směry: **tam, kde jsou potřeba**', 'tvoří ji sítkovice – živé buňky', 've stromech tvoří vnitřní vrstvu kůry'] },
             ], caption: 'Dřevní a lýková část cévního svazku.' },
             { type: 'p', text: 'Pozor na častou chybu: míza neteče jen vzhůru. Cukry z listů putují lýkem dolů do kořenů, na jaře ze zásob v kořenech vzhůru do pupenů a v létě do plodů.' },
             { type: 'callout', variant: 'fact', text: 'Proto strom uhyne, když mu někdo oloupe kůru dokola kmene. Přeruší lýko a kořeny přestanou dostávat cukry.' },
@@ -263,7 +263,7 @@ const level: LevelContent = {
           title: 'List: továrna s dveřmi',
           icon: 'leaf',
           blocks: [
-            { type: 'p', text: 'List je hlavní **továrna** rostliny: zachytává světlo a vyrábí v něm živiny (jak přesně, uvidíš v lekci „Fotosyntéza a dýchání rostlin“). Zvenku vidíš **čepel**, **řapík** a **žilky**, což jsou cévní svazky. Co je ale uvnitř?' },
+            { type: 'p', text: 'List je hlavní **továrna** rostliny: zachytává světlo a s jeho pomocí vyrábí živiny (jak přesně, uvidíš v lekci „Fotosyntéza a dýchání rostlin“). Zvenku vidíš **čepel**, **řapík** a **žilky**, což jsou cévní svazky. Co je ale uvnitř?' },
             { type: 'p', text: 'Představ si list rozříznutý napříč a zvětšený pod mikroskopem. Prohlédni si ho shora dolů:' },
             { type: 'diagram', id: 'leaf-cross-section', caption: 'Průřez listem: kutikula, horní pokožka, palisádový a houbovitý parenchym, cévní svazek a spodní pokožka s průduchy.' },
             { type: 'p', text: 'Každá vrstva listu má svou práci:' },
@@ -393,7 +393,7 @@ const level: LevelContent = {
             ], answer: 'Hmota vrby skoro vůbec nepochází ze zeminy. Van Helmont usoudil, že vrba je „z vody“.' },
             { type: 'p', text: 'Van Helmont měl pravdu jen napůl. Voda je důležitá, ale velkou část hmoty dřeva tvoří uhlík, a ten přichází odjinud. Porovnej jeho závěr s tím, co víme dnes:' },
             { type: 'compare', columns: [
-              { title: 'Van Helmont (1648)', icon: 'book', tone: 'a', points: ['vrba nevznikla ze zeminy – pravda', 'celá vrba je z vody – omyl', 'o plynech ve vzduchu tehdy nikdo nic nevěděl'] },
+              { title: 'Van Helmont (1648)', icon: 'book', tone: 'a', points: ['vrba nevznikla ze zeminy – pravda', 'celá vrba je z vody – omyl', 'že rostlina bere látku ze vzduchu, tehdy netušil'] },
               { title: 'Dnes víme', icon: 'leaf', tone: 'b', points: ['uhlík přichází ze vzduchu jako $CO2$ průduchy', 'voda dodá hlavně vodík', 'ze zeminy jsou jen minerální látky, malý podíl hmoty', 'energii na stavbu dodává světlo'] },
             ] },
             { type: 'p', text: 'Rostlina si tedy staví tělo ze vzduchu a vody pomocí světla. Tomuto ději se říká fotosyntéza – podívejme se, jak probíhá.' },
@@ -504,7 +504,7 @@ const level: LevelContent = {
             ] },
             { type: 'p', text: 'Na fotosyntéze tak stojí mnohem víc věcí, než by se zdálo:' },
             { type: 'iconlist', items: [
-              { icon: 'bread', title: 'Veškerá potrava', text: 'každý potravní řetězec začíná u rostlin nebo řas' },
+              { icon: 'bread', title: 'Téměř všechna potrava', text: 'potravní řetězce začínají u rostlin, řas a sinic' },
               { icon: 'molecule', title: 'Kyslík ve vzduchu', text: 'zhruba polovinu vyrobí řasy a sinice v oceánech, zbytek suchozemské rostliny' },
               { icon: 'tree', title: 'Dřevo, papír, bavlna', text: 'jsou z celulózy, kterou rostlina poskládala z glukózy' },
               { icon: 'fuel', title: 'Uhlí, ropa, zemní plyn', text: 'uložená energie dávných rostlin a řas' },
@@ -588,7 +588,7 @@ const level: LevelContent = {
               { title: 'Opylení větrem', icon: 'wind', tone: 'a', points: ['květy nenápadné, bez vůně a nektaru', 'obrovské množství lehkého suchého pylu', 'často kvetou před olistěním, aby pylu nepřekážely listy', 'líska, bříza, olše, trávy, obilí'] },
               { title: 'Opylení hmyzem', icon: 'bee', tone: 'b', points: ['velké barevné květy, vůně, sladký nektar', 'méně pylu, ale lepkavého – přilepí se na hmyz', 'kvetou, když hmyz létá', 'jabloň, třešeň, jetel, šalvěj, slunečnice'] },
             ], caption: 'Rostliny opylované větrem (větrosnubné) a hmyzem (hmyzosnubné).' },
-            { type: 'p', text: 'Většina rostlin potřebuje pyl z **jiné** rostliny téhož druhu, protože míchání vloh dává potomkům větší rozmanitost. Některé, třeba hrách nebo pšenice, se ale umějí opylit i vlastním pylem.' },
+            { type: 'p', text: 'Mnoho rostlin potřebuje pyl z **jiné** rostliny téhož druhu, protože míchání vloh dává potomkům větší rozmanitost. Některé, třeba hrách nebo pšenice, se ale umějí opylit i vlastním pylem.' },
             { type: 'callout', variant: 'fact', text: 'Pylovou alergii způsobuje hlavně pyl větrosnubných rostlin – břízy, trav nebo pelyňku. Hmyzosnubné květy ho do vzduchu skoro nepouštějí.' },
             { type: 'p', text: 'Květy a hmyz se během milionů let přizpůsobovaly navzájem. Tomu se říká **koevoluce** a vede k překvapivým „dohodám“:' },
             { type: 'iconlist', items: [
@@ -650,7 +650,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Pozor na kuchyňskou past: rajče, okurka, paprika i dýně jsou botanicky plody, i když jim v obchodě říkáme zelenina. Jahoda je zase **souplodí**: červená dužina je zdužnatělé květní lůžko a skutečné plody jsou drobné nažky na jejím povrchu.' },
             { type: 'p', text: 'Jak se ale semena dostanou daleko? Každý plod má svou „dopravu“:' },
             { type: 'iconlist', items: [
-              { icon: 'wind', title: 'Větrem', text: 'chmýří pampelišky, křídla plodů javoru a lípy' },
+              { icon: 'wind', title: 'Větrem', text: 'chmýří pampelišky, křídlaté plody javoru a jasanu' },
               { icon: 'bird', title: 'Sežráním', text: 'ptáci spolknou bobule a semena vyloučí jinde – sladká dužnina je odměna' },
               { icon: 'paw', title: 'Přichycením', text: 'háčky lopuchu a svízele se zachytí v srsti; podle lopuchu vznikl suchý zip' },
               { icon: 'ocean', title: 'Vodou', text: 'plody olše plavou po potoce, kokosový ořech přepluje oceán' },
@@ -762,7 +762,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Jak se jehličnany rozmnožují? Na jaře mají dva druhy šištic. Samčí šištice uvolní oblaka pylu, vítr ho zanese na samičí šištice a z nich se po oplození stanou šišky se semeny. U borovice to celé trvá skoro dva roky.' },
             { type: 'callout', variant: 'fact', text: 'Žlutý prášek na kalužích a autech v květnu je pyl jehličnanů. Lidé mu říkají „sírový déšť“, ale se sírou nemá nic společného.' },
             { type: 'callout', variant: 'warning', text: 'Tis červený (*Taxus baccata*) je skoro celý jedovatý, jehlice i semena. Jedovatý není jen červený dužnatý míšek kolem semene. Tis je u nás chráněný a často roste v parcích.' },
-            { type: 'p', text: 'Jehličnanů je jen hrstka. Krytosemenných rostlin jsou tisíce a botanici je nejdřív dělí podle počtu děloh v semeni.' },
+            { type: 'p', text: 'Jehličnanů je jen hrstka. Krytosemenných rostlin jsou statisíce a botanici je nejdřív dělí podle počtu děloh v semeni.' },
             { type: 'check', question: { kind: 'choice', q: 'Větvička má jehlice po dvou ve svazečku. Který je to strom?', options: ['borovice lesní', 'smrk ztepilý', 'jedle bělokorá', 'modřín opadavý'], answer: 0, explain: 'Jehlice po dvou ve svazečku má borovice. Smrk a jedle mají jehlice jednotlivě, modřín ve svazečcích po mnoha.' } },
           ],
         },
@@ -776,7 +776,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Tytéž znaky přehledně vedle sebe:' },
             { type: 'compare', columns: [
               { title: 'Jednoděložné', icon: 'bread', tone: 'a', points: ['1 děloha', 'listy úzké, žilnatina **souběžná**', 'kořeny **svazčité**', 'části květu po **třech** (3, 6)', 'cévní svazky ve stonku roztroušené, stonek nedřevnatí', 'trávy, obilí, lilie, tulipán, orchideje'] },
-              { title: 'Dvouděložné', icon: 'leaf', tone: 'b', points: ['2 dělohy', 'listy široké, žilnatina **zpeřená** nebo **dlanitá**', '**hlavní kořen** s postranními', 'části květu po **čtyřech** nebo **pěti**', 'cévní svazky v kruhu, stonek může dřevnatět', 'dub, jabloň, hrách, růže, slunečnice'] },
+              { title: 'Dvouděložné', icon: 'leaf', tone: 'b', points: ['2 dělohy', 'listy široké, žilnatina **síťnatá** (zpeřená nebo dlanitá)', '**hlavní kořen** s postranními', 'části květu po **čtyřech** nebo **pěti**', 'cévní svazky v kruhu, stonek může dřevnatět', 'dub, jabloň, hrách, růže, slunečnice'] },
             ] },
             { type: 'p', text: 'Stačí zkombinovat pár znaků a rostlinu zařadíš, aniž bys rozřezával/a semeno. Zkusme to na tulipánu ze zahrádky:' },
             { type: 'example', title: 'Kam patří tulipán?', problem: 'Tulipán má dlouhé úzké listy, šest stejných okvětních lístků a pod cibulí svazek tenkých kořenů. Je jednoděložný, nebo dvouděložný?', steps: [
@@ -799,7 +799,7 @@ const level: LevelContent = {
               { icon: 'pea', title: 'Bobovité', text: 'motýlovitý květ, plod lusk, na kořenech hlízky; hrách, fazol, jetel, čočka' },
               { icon: 'leaf', title: 'Hluchavkovité', text: 'čtyřhranná lodyha, pyskaté květy, vonné listy; máta, šalvěj, levandule, tymián' },
               { icon: 'flower', title: 'Hvězdnicovité', text: 'úbor – mnoho drobných květů vypadá jako jeden; slunečnice, sedmikráska, pampeliška, heřmánek' },
-              { icon: 'bread', title: 'Lipnicovité', text: 'jednoděložné; duté stéblo s kolénky, plod obilka; pšenice, žito, kukuřice, rákos' },
+              { icon: 'bread', title: 'Lipnicovité', text: 'jednoděložné; stéblo s kolénky, většinou duté; plod obilka; pšenice, žito, kukuřice, rákos' },
               { icon: 'sun', title: 'Liliovité', text: 'jednoděložné; 6 okvětních lístků, cibule; lilie zlatohlavá, tulipán, kandík psí zub' },
             ] },
             { type: 'callout', variant: 'fact', text: 'Nenápadný plevel huseníček rolní (*Arabidopsis thaliana*) z čeledi brukvovitých je pro vědce „laboratorní myš“ mezi rostlinami. Roste rychle, je malý a v roce 2000 to byla první rostlina, jejíž DNA vědci celou přečetli.' },
@@ -841,7 +841,7 @@ const level: LevelContent = {
               'Bod 2: jehlice rostou jednotlivě → 2b, jdi na bod 3.',
               'Bod 3: jehlice jsou ploché s bílými proužky → 3b.',
             ], answer: 'Je to **jedle bělokorá**.' },
-            { type: 'callout', variant: 'tip', text: 'Když si nejsi jistý/á, vrať se o krok zpět a zkus druhou možnost. Dobrý klíč používá znaky, které jsou vidět pořád: jehlice jsou na stromě celý rok, šištice jen pár týdnů.' },
+            { type: 'callout', variant: 'tip', text: 'Když si nejsi jistý/á, vrať se o krok zpět a zkus druhou možnost. Dobrý klíč staví na znacích, které jsou vidět většinu roku, třeba na jehlicích. Šištice jsou na stromě jen pár týdnů.' },
             { type: 'game', gameId: 'id-key', text: 'Zahraj si Určovací klíč: odpovídej na otázky o nakreslené rostlině, dokud ji nepojmenuješ.' },
             { type: 'p', text: 'Teď umíš rostliny třídit i určovat. V poslední lekci úrovně, „Rostliny a člověk“, uvidíš, co rostliny znamenají pro nás – od chleba po léky.' },
             { type: 'check', question: { kind: 'text', q: 'Podle klíče: jehlice rostou ve svazečcích po mnoha a na zimu opadávají. Který je to strom?', accept: ['modřín', 'modřín opadavý'], explain: 'Bod 1a vede přímo k modřínu opadavému, jedinému našemu opadavému jehličnanu.' } },
@@ -889,7 +889,7 @@ const level: LevelContent = {
           title: 'Od trávy k chlebu',
           icon: 'bread',
           blocks: [
-            { type: 'p', text: 'V lekci „Nahosemenné a krytosemenné“ jsme mezi lipnicovitými potkali pšenici a žito. Před 10 000 lety ale žádné pole neexistovalo – lidé sbírali semena planých trav. Jak se z plané trávy stala obilnina, která dnes živí miliardy lidí?' },
+            { type: 'p', text: 'V lekci „Nahosemenné a krytosemenné“ jsme mezi lipnicovitými potkali pšenici a žito. Ještě před 12 000 lety ale žádné pole neexistovalo – lidé sbírali semena planých trav. Jak se z plané trávy stala obilnina, která dnes živí miliardy lidí?' },
             { type: 'p', text: 'Proměna plané rostliny v kulturní plodinu se nazývá **domestikace**. Neproběhla naráz, ale opakovaným výběrem po stovky generací:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'seed', title: 'Sběr', text: 'lidé sbírají semena planých trav' },
@@ -903,7 +903,7 @@ const level: LevelContent = {
               { title: 'Planá tráva', icon: 'leaf', tone: 'a', points: ['klas se po dozrání rozpadne a zrna vypadají', 'malá zrna', 'semena klíčí postupně, i za několik let', 'dozrává nerovnoměrně'] },
               { title: 'Kulturní pšenice', icon: 'bread', tone: 'b', points: ['klas drží pohromadě, dá se sklidit', 'velká zrna', 'po zasetí vyklíčí všechna najednou', 'celé pole dozraje naráz'] },
             ], caption: 'Co je výhodné pro planou rostlinu, je pro zemědělce na obtíž – a naopak.' },
-            { type: 'p', text: 'Stejným výběrem vznikla i zelenina. Z jediného druhu, plané brukve zelné z mořského pobřeží, lidé vyšlechtili zelí, kapustu, květák, brokolici i kedluben – podle toho, jestli vybírali velké listy, poupata, nebo stonek:' },
+            { type: 'p', text: 'Stejným výběrem vznikla i zelenina. Z jediného druhu, plané brukve zelné z mořského pobřeží, lidé vyšlechtili zelí, kapustu, květák, brokolici i kedluben – podle toho, jestli vybírali velké listy, pupeny, květenství, nebo stonek:' },
             { type: 'diagram', id: 'artificial-selection', caption: 'Planá brukev zelná a odrůdy, které z ní člověk vyšlechtil. Tomuto výběru se říká umělý výběr; víc o něm v lekci „Evoluce a přírodní výběr“.' },
             { type: 'p', text: 'Plodiny se k nám dostaly z různých koutů světa. Velká skupina připlula až po objevení Ameriky v roce 1492:' },
             { type: 'compare', columns: [
@@ -987,7 +987,7 @@ const level: LevelContent = {
           title: 'Chráněné rostliny Česka',
           icon: 'star',
           blocks: [
-            { type: 'p', text: 'V Česku roste asi 3 000 původních druhů rostlin a mnoho z nich ubývá. Nejčastějším důvodem není trhání kytic, ale **ničení míst, kde rostou**: odvodnění mokřadů a rašelinišť, rozorání luk, přehnojování a zarůstání opuštěných pastvin.' },
+            { type: 'p', text: 'V Česku roste přes 2 000 původních druhů cévnatých rostlin a mnoho z nich ubývá. Nejčastějším důvodem není trhání kytic, ale **ničení míst, kde rostou**: odvodnění mokřadů a rašelinišť, rozorání luk, přehnojování a zarůstání opuštěných pastvin.' },
             { type: 'p', text: 'Nejvzácnější druhy chrání zákon. Některé z nich možná potkáš na výletě:' },
             { type: 'iconlist', items: [
               { icon: 'flower', title: 'Koniklec velkokvětý', text: 'chlupaté fialové květy brzy na jaře na suchých stráních' },
