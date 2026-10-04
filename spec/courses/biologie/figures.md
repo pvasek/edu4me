@@ -136,3 +136,25 @@ Data-shaped pictures don't need a named figure: use the **parametric blocks** `p
 | `reproductive-organs` | Male and female reproductive systems as clean, respectful textbook diagrams with Czech labels. |
 | `miller-urey` | The Miller–Urey apparatus: "ocean" flask heated, "atmosphere" gases, sparks, condenser, amino acids collecting. |
 | `twins` | Identical (one egg splits) vs fraternal twins (two eggs, two sperm) as a StepStrip. |
+
+## bz7 – extra figures for levels 8–9 (`src/illustrations/figures/bz7/`)
+
+| id | What it shows |
+|---|---|
+| `forest-storeys` | Cross-section of a Czech mixed forest: tree, shrub, herb and moss storeys plus the soil/litter layer, with typical species and the light reaching each storey. |
+| `pond-zones` | Pond in section: shore reed belt, floating-leaf zone, open water with plankton, bottom mud; typical plants and animals of each zone. |
+| `world-plates` | World map of the major lithospheric plates with arrows of motion, boundary types marked, and the Atlantic ridge, Himalaya, Andes and Iceland called out. |
+| `cell-signalling` | Signal cascade: hormone binds a membrane receptor → relay (second messenger) → amplification at each step → cell response; one molecule outside, thousands of products inside. |
+| `mitosis-stages` | StepFilm of mitosis in one cell: interphase, prophase, metaphase, anaphase, telophase + cytokinesis, with chromosome counts. |
+
+## bz8 – extra figures for levels 10–12 (`src/illustrations/figures/bz8/`)
+
+| id | What it shows |
+|---|---|
+| `paternity-gel` | Gel electrophoresis lanes: ladder, mother, child, two candidate fathers; every child band comes from mother or the true father. |
+| `potometer` | Potometer: leafy shoot sealed in a tube, air bubble moving along a capillary scale; conditions that speed transpiration. |
+| `haemodialysis` | Haemodialysis: blood from the arm through the dialyser (semi-permeable membrane, counter-current dialysate) and back; what passes and what stays. |
+| `lateral-flow` | Lateral-flow (antigen/pregnancy) test strip: sample pad → antibodies with colour → test line → control line; positive vs negative. |
+| `survivorship-curves` | Survivorship curves types I, II, III on a log scale (human, songbird, oak/fish) with the r/K link. |
+| `human-migration` | World map of the spread of Homo sapiens out of Africa with approximate dates; Neanderthal and Denisovan ranges and interbreeding marked. |
+| `pentadactyl-limb` | Homologous forelimbs of human, cat, whale, bat and bird with matching bones coloured the same (humerus, radius/ulna, carpals, digits). |

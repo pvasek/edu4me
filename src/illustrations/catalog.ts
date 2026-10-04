@@ -114,6 +114,9 @@ export const FIGURES = [
   // extra figures for levels 1–3 (bz5) and 4–7 (bz6)
   'life-signs', 'microscope-history', 'wet-mount', 'size-scale', 'virus-structure', 'malaria-cycle', 'root-tip', 'conifers', 'celery-transpiration', 'carboniferous-forest',
   'sponge-flow', 'starfish-feet', 'skin-section', 'neuron-structure', 'reproductive-organs', 'miller-urey', 'twins',
+  // extra figures for levels 8–9 (bz7) and 10–12 (bz8)
+  'forest-storeys', 'pond-zones', 'world-plates', 'cell-signalling', 'mitosis-stages',
+  'paternity-gel', 'potometer', 'haemodialysis', 'lateral-flow', 'survivorship-curves', 'human-migration', 'pentadactyl-limb',
 ] as const
 export type FigureId = (typeof FIGURES)[number]
 
