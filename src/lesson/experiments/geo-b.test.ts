@@ -124,7 +124,7 @@ describe('doubling-time model', () => {
     for (const r of [0.5, 1, 2, 3, 4]) expect(Math.abs(dt.doublingTime(r) / dt.ruleOf70(r) - 1)).toBeLessThan(0.02)
   })
   it('countries: Niger ≈ 21 years, Indie ≈ 77 years', () => {
-    expect(dt.doublingTime(dt.COUNTRIES.niger.r)).toBeCloseTo(20.7, 1)
+    expect(dt.doublingTime(dt.COUNTRIES.niger.r)).toBeCloseTo(21.3, 1)
     expect(dt.doublingTime(dt.COUNTRIES.indie.r)).toBeCloseTo(77.4, 1)
     expect(dt.countryOf(0.9)).toBe('indie')
     expect(dt.countryOf(1.5)).toBe('')

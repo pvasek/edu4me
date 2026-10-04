@@ -3,7 +3,7 @@ import type { ReactElement } from "react";
 import { Arrow, Figure, Frame, FrontLine, pat, useFig } from "./kit";
 
 const LABEL =
-  "Atmosférické fronty v řezu, obě postupují zleva doprava. Studená fronta: těžký studený vzduch se jako klín podsouvá pod teplý vzduch a prudce ho zvedá; rozhraní je strmé, vznikají kupovitá a bouřková oblaka (kumulonimby), krátké silné přeháňky a bouřky, po přechodu se ochladí. Na mapě je to modrá čára s trojúhelníky. Teplá fronta: lehčí teplý vzduch pomalu vyklouzává vzhůru po ustupujícím studeném vzduchu; rozhraní je mírné, oblaka jsou vrstevnatá – řasy daleko před frontou, vyvýšená sloha a u země dešťová sloha s dlouhým vytrvalým deštěm, po přechodu se oteplí. Na mapě je to červená čára s půlkruhy. Okluzní fronta vzniká, když studená fronta dožene teplou, a kreslí se fialově se střídajícími se trojúhelníky a půlkruhy.";
+  "Atmosférické fronty v řezu, obě postupují zleva doprava. Studená fronta: těžký studený vzduch se jako klín podsouvá pod teplý vzduch a prudce ho zvedá; rozhraní je strmé, vznikají kupovitá a bouřková oblaka (kumulonimby), krátké silné přeháňky a bouřky, po přechodu se ochladí. Na mapě je to modrá čára s trojúhelníky. Teplá fronta: lehčí teplý vzduch pomalu klouže vzhůru po ustupujícím studeném vzduchu; rozhraní je mírné, oblaka jsou vrstevnatá – řasy daleko před frontou, vyvýšená sloha a u země dešťová sloha s dlouhým vytrvalým deštěm, po přechodu se oteplí. Na mapě je to červená čára s půlkruhy. Okluzní fronta vzniká, když studená fronta dožene teplou, a kreslí se fialově se střídajícími se trojúhelníky a půlkruhy.";
 
 const W = 440;
 const H = 290;

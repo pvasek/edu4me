@@ -123,7 +123,7 @@ export default function DoublingTime() {
           max={480}
           label={label(r)}
           className="xp-dt"
-          footer={<p className="xp-src">Přírůstek obyvatel: Niger a Indie 2023 (OSN, World Population Prospects 2024), Česko 2024 (ČSÚ).</p>}
+          footer={<p className="xp-src">Přírůstek obyvatel: Niger 2025 a Indie 2023 (OSN, World Population Prospects 2024), Česko 2024 (ČSÚ).</p>}
         >
           <Graph r={r} />
         </Plate>

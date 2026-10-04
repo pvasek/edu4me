@@ -4,7 +4,7 @@
  * this is ≈ 69,3 / r, rounded to the "rule of 70": T ≈ 70 / r.
  *
  * Growth rates (whole population change, births − deaths + migration):
- * - Niger 3,4 % and Indie 0,9 %: UN World Population Prospects 2024, year 2023
+ * - Niger 3,3 % (2025) and Indie 0,9 % (2023): UN World Population Prospects 2024
  *   (computed from the WPP 2024 population estimates 2022 → 2023: 3,36 %, 0,89 %),
  * - Česko 0,1 %: ČSÚ 2024 (+8,9 tis. to 10,9 mil., +0,08 %; natural decrease
  *   −27,9 tis., migration +36,8 tis.).
@@ -22,7 +22,7 @@ export const factor = (rPct: number, years: number) => (1 + rPct / 100) ** years
 
 export type Country = 'niger' | 'indie' | 'cesko'
 export const COUNTRIES: Record<Country, { name: string; r: number; source: string }> = {
-  niger: { name: 'Niger', r: 3.4, source: 'UN WPP 2024, rok 2023' },
+  niger: { name: 'Niger', r: 3.3, source: 'UN WPP 2024, rok 2025' },
   indie: { name: 'Indie', r: 0.9, source: 'UN WPP 2024, rok 2023' },
   cesko: { name: 'Česko', r: 0.1, source: 'ČSÚ, rok 2024' },
 }

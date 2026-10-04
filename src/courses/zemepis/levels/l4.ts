@@ -6,7 +6,8 @@ import type { LevelContent } from '../../../core/types'
  * - Praha-Ruzyně: ČHMÚ, normál 1991–2020
  * - Manaus: INMET (Brazílie), normál 1991–2020
  * - Káhira (letiště): normál 1991–2020 (NOAA / WMO)
- * - Jakutsk: Roshydromet (pogodaiklimat.ru), dlouhodobé průměry
+ * - Jakutsk: pogodaiklimat.ru (Roshydromet), normál 1991–2020 – same values as src/games/climate-chart/data.ts
+ * - Manaus: same values as src/games/climate-chart/data.ts (INMET 1991–2020, yearly mean 27,4 °C)
  */
 
 const level: LevelContent = {
@@ -46,11 +47,11 @@ const level: LevelContent = {
             { type: 'p', text: 'Pro zeměpis jsou nejdůležitější dvě spodní vrstvy. Tady jsou jejich hlavní znaky:' },
             { type: 'keyterms', items: [
               { term: '**Troposféra**', def: 'nejnižší vrstva, nad Českem do výšky asi 11 km (nad rovníkem asi 17 km, nad póly asi 8 km); je v ní skoro všechna vodní pára, a proto tu vzniká **počasí**; teplota s výškou klesá' },
-              { term: '**Stratosféra**', def: 'od horní hranice troposféry do asi 50 km; vzduch je suchý a klidný, létají tu dálková letadla' },
+              { term: '**Stratosféra**', def: 'od horní hranice troposféry do asi 50 km; vzduch je suchý a klidný; dálková letadla létají kolem její spodní hranice, asi v 10–12 km' },
               { term: '**Ozonová vrstva**', def: 'část stratosféry ve výšce asi 15–35 km s vyšším obsahem ozonu $O3$; pohlcuje většinu nebezpečného ultrafialového (UV) záření' },
             ] },
             { type: 'p', text: 'Jak ozon chrání život na Zemi a proč se v 80. letech nad Antarktidou objevila „ozonová díra“, ukazuje další obrázek:' },
-            { type: 'diagram', id: 'ozone-layer', caption: 'Ozon ve stratosféře zachytí většinu UV záření. Freony ho rozkládaly, a proto je Montrealský protokol (1987) zakázal.' },
+            { type: 'diagram', id: 'ozone-layer', caption: 'Ozon ve stratosféře zachytí většinu UV záření. Freony ho rozkládaly, a proto je Montrealský protokol (1987) postupně zakázal.' },
             { type: 'p', text: 'Pozor, tyhle dva problémy se často pletou: ozonová díra a oteplování planety jsou dvě různé věci. Ozonová vrstva nás chrání před UV zářením, oteplování způsobují skleníkové plyny.' },
             { type: 'p', text: 'Počasí tedy vzniká v troposféře. Čím ho ale popíšeme? K tomu potřebujeme několik měřitelných veličin.' },
             { type: 'check', question: { kind: 'tf', q: 'Počasí vzniká hlavně ve stratosféře, protože tam leží ozonová vrstva.', answer: false, explain: 'Počasí vzniká v troposféře, kde je skoro všechna vodní pára. Stratosféra je suchá a klidná.' } },
@@ -87,7 +88,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'V troposféře teplota s výškou klesá. Když teplý vlhký vzduch stoupá, ochlazuje se. Studený vzduch ale udrží méně vodní páry, a tak se pára srazí (**kondenzuje**) na drobné kapičky nebo krystalky ledu. Tak vzniká oblak.' },
             { type: 'p', text: 'Oblaka se dělí podle výšky a tvaru. Prohlédni si je a najdi to jediné, které sahá přes všechna patra:' },
-            { type: 'diagram', id: 'cloud-types', caption: 'Druhy oblaků podle výšky: řasy (cirrus) vysoko, kupy (cumulus) a sloha (stratus) nízko; bouřkový oblak kumulonimbus sahá od země až k hranici troposféry.' },
+            { type: 'diagram', id: 'cloud-types', caption: 'Druhy oblaků podle výšky: řasy (cirrus) vysoko, kupy (cumulus) a sloha (stratus) nízko; bouřkový oblak kumulonimbus sahá od nízkého patra až k hranici troposféry.' },
             { type: 'p', text: 'Z oblaků se dá číst i počasí. Ploché šedé slohy přinášejí mrholení, pěkné bílé kupy v létě znamenají slunečné počasí. Kupa, která roste do výšky a nahoře se rozšíří do „kovadliny“, je **kumulonimbus** – bouřkový oblak s přívalovým deštěm, blesky a někdy kroupami.' },
             { type: 'callout', variant: 'tip', text: 'Ráno se v létě podívej na oblohu. Když kupy už dopoledne rychle rostou do výšky, odpoledne nejspíš přijde bouřka.' },
             { type: 'p', text: 'Oblaka a srážky už známe. Kde a jak se ale všechny prvky počasí měří tak, aby se daly porovnat po celém světě?' },
@@ -118,11 +119,11 @@ const level: LevelContent = {
               { title: 'Podnebí (klima)', icon: 'calendar', tone: 'b', points: ['**dlouhodobý** průměrný stav a obvyklý průběh počasí', 'počítá se z nejméně 30 let měření', 'mění se jen pomalu, za desítky let', 'příklad: „V Praze bývá v červenci v průměru 19 °C.“'] },
             ], caption: 'Počasí je to, co máš na sobě dnes. Podnebí je to, co máš ve skříni.' },
             { type: 'p', text: 'Průměr třiceti let se nazývá **klimatický normál**. Dnes se používá normál let 1991–2020. Rekordy do něj patří taky, jen se v průměru „rozpustí“ mezi tisíci obyčejných dní.' },
-            { type: 'callout', variant: 'fact', text: 'Nejvyšší teplota v Česku byla naměřena 20. srpna 2012 v Dobřichovicích: 40,4 °C. Nejnižší 11. února 1929 v Litvínovicích u Českých Budějovic: −42,2 °C. Obojí je počasí jednoho dne, ne podnebí.' },
+            { type: 'callout', variant: 'fact', text: 'Nejvyšší teplota v Česku byla naměřena 28. června 2026 v Doksanech na Litoměřicku: 41,9 °C (ČHMÚ). Nejnižší 11. února 1929 v Litvínovicích u Českých Budějovic: −42,2 °C. Obojí je počasí jednoho dne, ne podnebí.' },
             { type: 'p', text: 'Pozor na argument „letos je studená zima, takže se Země neotepluje“. Jedna zima je počasí. O podnebí rozhoduje průměr mnoha let.' },
             { type: 'p', text: 'Víme, z čeho je atmosféra a jak popsat počasí. Proč se ale počasí vůbec mění a odkud se bere vítr? To vysvětlí tlak vzduchu v lekci „Tlak, vítr a fronty“.' },
             { type: 'game', gameId: 'swipe', text: 'Pravda, nebo lež? Rozhodni, jestli jde o počasí, nebo o podnebí – a další tvrzení z této úrovně.' },
-            { type: 'check', question: { kind: 'multi', q: 'Které věty popisují podnebí (ne počasí)?', options: ['V Praze bývá nejtepleji v červenci.', 'Zítra bude v Ostravě pršet.', 'V Káhiře spadne za rok v průměru jen asi 25 mm srážek.', 'Dnes v poledne bylo v Brně 31 °C.', 'Na Sněžce je průměrná roční teplota kolem 1 °C.'], answers: [0, 2, 4], explain: 'Podnebí popisuje dlouhodobé průměry a obvyklý průběh. Zítřejší déšť a dnešních 31 °C jsou počasí.' } },
+            { type: 'check', question: { kind: 'multi', q: 'Které věty popisují podnebí (ne počasí)?', options: ['V Praze bývá nejtepleji v červenci.', 'Zítra bude v Ostravě pršet.', 'V Káhiře spadne za rok v průměru jen asi 25 mm srážek.', 'Dnes v poledne bylo v Brně 31 °C.', 'Na Sněžce je průměrná roční teplota jen o málo vyšší než 0 °C.'], answers: [0, 2, 4], explain: 'Podnebí popisuje dlouhodobé průměry a obvyklý průběh. Zítřejší déšť a dnešních 31 °C jsou počasí.' } },
           ],
         },
       ],
@@ -202,7 +203,7 @@ const level: LevelContent = {
             { type: 'diagram', id: 'weather-fronts', caption: 'Studená fronta je strmá, s bouřkovými oblaky. Teplá fronta je mírná a dlouhá, s vrstevnatými oblaky.' },
             { type: 'p', text: 'Z obrázku vyplývá i počasí, které fronty přinesou. Shrnuto vedle sebe:' },
             { type: 'compare', columns: [
-              { title: 'Teplá fronta', icon: 'heat', tone: 'b', points: ['teplý vzduch pomalu **vyklouzává** po studeném', 'rozhraní mírně skloněné, oblaka ve vrstvách', 'dlouhý, vytrvalý déšť, i celý den', 'potom se oteplí', 'na mapě červená čára s půlkruhy'] },
+              { title: 'Teplá fronta', icon: 'heat', tone: 'b', points: ['teplý vzduch pomalu **klouže** vzhůru po studeném', 'rozhraní mírně skloněné, oblaka ve vrstvách', 'dlouhý, vytrvalý déšť, i celý den', 'potom se oteplí', 'na mapě červená čára s půlkruhy'] },
               { title: 'Studená fronta', icon: 'cold', tone: 'a', points: ['studený vzduch se **podsouvá** pod teplý a zvedá ho', 'rozhraní strmé, vznikají kupy a kumulonimby', 'krátké přeháňky, bouřky, nárazový vítr', 'potom se ochladí a vyjasní', 'na mapě modrá čára s trojúhelníčky'] },
             ] },
             { type: 'p', text: 'Pozor na směr: půlkruhy a trojúhelníčky na čáře fronty ukazují, kam se fronta pohybuje, ne odkud přišla.' },
@@ -217,7 +218,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Mapa, na které meteorologové kreslí tlak a fronty, se jmenuje **synoptická mapa** (z řeckého „vidět společně“). Na jedné ploše ukazuje stav počasí nad celou Evropou ve stejnou chvíli.' },
             { type: 'p', text: 'Zkus mapu přečíst: najdi výši a níži, pak fronty, a nakonec zjisti, co čeká Česko:' },
             { type: 'diagram', id: 'synoptic-map', caption: 'Synoptická mapa Evropy: střed tlakové výše a níže, izobary, teplá, studená a okluzní fronta.' },
-            { type: 'p', text: 'Fronty jsou většinou svázané s níží a s ní putují od západu na východ. Když je fronta západně od Česka a míří k nám, za den dva tu nejspíš bude pršet. Husté izobary prozradí silný vítr.' },
+            { type: 'p', text: 'Fronty jsou většinou svázané s níží a s ní putují od západu na východ. Když je fronta západně od Česka a míří k nám, za den dva tu nejspíš bude pršet. Když studená fronta dožene teplou, spojí se v **okluzní frontu** (fialová čára s trojúhelníčky i půlkruhy). Husté izobary prozradí silný vítr.' },
             { type: 'p', text: 'Jak se z takové mapy stane předpověď na tvém telefonu? Postup má pět kroků:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'gauge', title: 'Měření', text: 'tisíce stanic, balony, letadla, lodě, radary' },
@@ -239,12 +240,12 @@ const level: LevelContent = {
             { type: 'p', text: 'Nejdřív si je porovnej, pak se podíváme na každý zvlášť:' },
             { type: 'iconlist', items: [
               { icon: 'lightning', title: 'Bouřka', text: 'kumulonimbus s blesky, hromem, přívalovým deštěm a kroupami; v Česku hlavně v létě odpoledne, trvá desítky minut' },
-              { icon: 'tornado', title: 'Tornádo', text: 'úzký vír pod bouřkovým oblakem, široký desítky až stovky metrů; vítr přes 300 km/h, trvá minuty' },
+              { icon: 'tornado', title: 'Tornádo', text: 'úzký vír pod bouřkovým oblakem, široký desítky až stovky metrů; vítr až přes 300 km/h, trvá minuty' },
               { icon: 'wind', title: 'Hurikán (tajfun, cyklon)', text: 'obří tropická tlaková níže široká stovky kilometrů; vítr nejméně 119 km/h, trvá dny až týdny' },
             ] },
             { type: 'callout', variant: 'fact', text: 'Tornáda nejsou jen v Americe. 24. června 2021 prošlo tornádo jihem Moravy (Hrušky, Moravská Nová Ves, Mikulčice, Lužice, Hodonín) a zahynulo 6 lidí. Bylo to nejsilnější tornádo v Česku od začátku záznamů.' },
             { type: 'p', text: 'Hurikán vzniká jen nad teplým oceánem (voda aspoň kolem 26 °C) a energii čerpá z odpařené vody. Na obrázku najdi oko, kde je klid, a pás nejsilnějšího větru kolem něj:' },
-            { type: 'diagram', id: 'tropical-cyclone', caption: 'Tropická cyklona: klidné oko, stěna oka s nejsilnějším větrem a spirální pásy deště. V Atlantiku se jmenuje hurikán, v západním Tichém oceánu tajfun, v Indickém oceánu cyklon.' },
+            { type: 'diagram', id: 'tropical-cyclone', caption: 'Tropická cyklona: klidné oko, stěna oka s nejsilnějším větrem a spirální pásy deště. V Atlantiku a východním Tichém oceánu se jmenuje hurikán, v severozápadním Tichém oceánu tajfun, v Indickém oceánu a u Austrálie cyklon.' },
             { type: 'p', text: 'Zpátky k bouřce. Jak daleko je? Blesk vidíš hned, ale hrom k tobě letí rychlostí zvuku, asi 340 m/s, tedy zhruba 1 km za 3 sekundy. Stačí počítat sekundy mezi bleskem a hromem:' },
             { type: 'example', title: 'Jak daleko je bouřka', problem: 'Mezi bleskem a hromem napočítáš 12 sekund. Jak daleko je bouřka?', steps: [
               'Zvuk urazí asi 1 km za 3 s.',
@@ -304,7 +305,7 @@ const level: LevelContent = {
               { icon: 'vector', title: 'Ve výšce', text: 'vzduch se rozlévá k severu a k jihu a cestou chladne' },
               { icon: 'dune', title: 'Kolem 30°', text: 'vzduch klesá a otepluje se; tlaková výše, jasno a sucho – pásmo pouští (Sahara, Arábie)' },
               { icon: 'wind', title: 'Pasáty', text: 'při zemi se vzduch vrací k rovníku jako stálé větry, na severní polokouli od severovýchodu' },
-            ], caption: 'Tomuto oběhu se říká Hadleyho buňka. Na každé polokouli je jedna.' },
+            ], caption: 'Tomuto oběhu se říká Hadleyova buňka. Na každé polokouli je jedna.' },
             { type: 'p', text: 'Z oběhu vyplývá důležitá věc: o srážkách nerozhoduje jen teplo, ale hlavně to, jestli vzduch stoupá, nebo klesá. Proto leží největší pouště světa kolem obratníků, ne na rovníku.' },
             { type: 'keyterms', items: [
               { term: '**Pasáty**', def: 'stálé větry mezi obratníky a rovníkem; na severní polokouli vanou od severovýchodu, na jižní od jihovýchodu' },
@@ -325,13 +326,13 @@ const level: LevelContent = {
             { type: 'map', view: 'asia', highlight: [{ codes: ['IND', 'BGD'], tone: 'c', label: 'Indie a Bangladéš' }], routes: [
               { points: [{ lat: 2, lon: 62 }, { lat: 10, lon: 68 }, { lat: 19, lon: 74 }], label: 'letní monzun (červen–září)', tone: 'a', arrow: true },
               { points: [{ lat: 3, lon: 86 }, { lat: 14, lon: 89 }, { lat: 24, lon: 91 }], tone: 'a', arrow: true },
-              { points: [{ lat: 28, lon: 86 }, { lat: 20, lon: 82 }, { lat: 10, lon: 78 }], label: 'zimní monzun (prosinec–únor)', tone: 'b', style: 'dashed', arrow: true },
+              { points: [{ lat: 28, lon: 86 }, { lat: 20, lon: 82 }, { lat: 10, lon: 78 }], label: 'zimní monzun (listopad–únor)', tone: 'b', style: 'dashed', arrow: true },
             ], points: [
               { lat: 25.3, lon: 91.58, label: 'Mawsynram', kind: 'place' },
               { lat: 19.08, lon: 72.88, label: 'Bombaj', kind: 'city' },
             ], caption: 'Letní monzun přináší Indii většinu ročních srážek. Na svazích hor u Mawsynramu spadne v průměru kolem 11 900 mm ročně.' },
             { type: 'p', text: 'Mawsynram a sousední Čerápuňdží v Indii patří k nejdeštivějším místům světa. Pro srovnání: v Praze spadne asi 500 mm za rok, tedy zhruba 24krát méně.' },
-            { type: 'callout', variant: 'fact', text: 'Čerápuňdží drží světový rekord: od srpna 1860 do července 1861 tu za 12 měsíců napršelo 26 461 mm – přes 26 metrů vody.' },
+            { type: 'callout', variant: 'fact', text: 'Čerápuňdží drží světový rekord (WMO): od srpna 1860 do července 1861 tu za 12 měsíců napršelo 26 470 mm – přes 26 metrů vody.' },
             { type: 'p', text: 'Monzun je pro Indii život i hrozba: přináší vodu pro rýži, ale i povodně. Když se opozdí, hrozí sucho a hlad. Teď už známe hlavní větry Země a můžeme rozdělit svět na podnebné pásy.' },
             { type: 'check', question: { kind: 'tf', q: 'Letní monzun v Indii vane z pevniny na moře a přináší sucho.', answer: false, explain: 'Je to naopak: v létě vane vlhký vzduch od Indického oceánu na rozpálenou pevninu a přináší období dešťů.' } },
           ],
@@ -393,12 +394,12 @@ const level: LevelContent = {
             { type: 'p', text: 'Vyzkoušej si výstup na horu. Sleduj, jak klesá teplota a jak se mění krajina kolem:' },
             { type: 'experiment', id: 'lapse-rate', caption: 'S každými 100 m výšky se ochladí asi o 0,65 °C. Výškové stupně rostlin podrobněji v lekci „Krajinné pásy a změna klimatu“.' },
             { type: 'p', text: 'Všiml sis? Výstup o tisíc metrů ochladí vzduch asi o 6,5 °C – skoro jako cesta o 1 000 km na sever. Zkusme to spočítat pro skutečnou horu:' },
-            { type: 'example', title: 'Z Prahy na Sněžku', problem: 'Stanice Praha-Ruzyně leží ve výšce 364 m n. m. a průměrná roční teplota je tu asi 9,1 °C. Jakou průměrnou teplotu můžeš čekat na Sněžce (1 603 m n. m.)?', steps: [
+            { type: 'example', title: 'Z Prahy na Sněžku', problem: 'Stanice Praha-Ruzyně leží ve výšce 364 m n. m. a průměrná roční teplota je tu podle ČHMÚ (normál 1991–2020) 9,0 °C. Jakou průměrnou teplotu můžeš čekat na Sněžce (1 603 m n. m.)?', steps: [
               'Rozdíl výšek: 1 603 m − 364 m = 1 239 m',
               'Kolikrát je v tom 100 m: 1 239 : 100 ≐ 12,4',
               'Ochlazení: 12,4 · 0,65 °C ≐ 8,1 °C',
-              'Teplota na Sněžce: 9,1 °C − 8,1 °C = 1,0 °C',
-            ], answer: 'Na Sněžce čekáme průměrnou roční teplotu asi 1 °C. Měření na vrcholu dávají podobné číslo.' },
+              'Teplota na Sněžce: 9,0 °C − 8,1 °C = 0,9 °C',
+            ], answer: 'Na Sněžce čekáme průměrnou roční teplotu asi 1 °C. Dlouhodobý průměr naměřený na vrcholu je jen o málo vyšší než 0 °C, odhad tedy sedí dobře.' },
             { type: 'callout', variant: 'warning', title: 'Teplotní inverze', text: 'V zimě se někdy pravidlo obrátí: studený vzduch se drží v údolí a nad ním leží teplejší vrstva jako poklice. Pak je na horách slunečno, zatímco v kotlinách mlha a smog z komínů a aut. Typicky na Ostravsku nebo v pražské kotlině.' },
             { type: 'p', text: 'Teď známe všechno, co podnebí určuje: zeměpisnou šířku, oběh vzduchu, vzdálenost od oceánu a nadmořskou výšku. V lekci „Klimatogram“ se naučíme podnebí kteréhokoli místa přečíst z jednoho grafu.' },
             { type: 'check', question: { kind: 'number', q: 'Na úpatí hory ve výšce 500 m n. m. je 15 °C. Jaká teplota bude asi na vrcholu ve výšce 2 500 m n. m.? Počítej s ochlazením 0,65 °C na 100 m.', answer: 2, tolerance: 0.2, unit: '°C', explain: 'Rozdíl 2 000 m = 20 · 100 m. Ochlazení 20 · 0,65 = 13 °C, takže 15 − 13 = 2 °C.' } },
@@ -482,7 +483,7 @@ const level: LevelContent = {
               'Nejvyšší sloupec: červenec, 79 mm. Nejvíc prší v létě, kdy se tvoří bouřky; žádné suché období ale Praha nemá.',
               'Teplé léto, mrazivá zima kolem 0 °C, čtyři roční období a asi 500 mm srážek: mírný pás, přechodné podnebí.',
             ], answer: 'Nejtepleji je v červenci (18,9 °C), nejchladněji v lednu (−0,6 °C), roční amplituda je 19,5 °C a za rok spadne asi 507 mm, nejvíc v červenci.' },
-            { type: 'callout', variant: 'tip', text: 'Průměrnou roční teplotu spočítáš jako průměr 12 měsíců. U Prahy-Ruzyně vychází asi 9,1 °C.' },
+            { type: 'callout', variant: 'tip', text: 'Průměrnou roční teplotu spočítáš jako průměr 12 měsíců. U Prahy-Ruzyně vychází asi 9,1 °C; ČHMÚ z denních měření uvádí 9,0 °C, rozdíl dělá zaokrouhlení měsíčních hodnot.' },
             { type: 'p', text: 'Praha má čtyři roční období a srážky během celého roku. Teď se podívejme, jak vypadá klimatogram místa, kde zima vůbec neexistuje.' },
             { type: 'check', question: { kind: 'number', q: 'Nejteplejší měsíc má průměr 21 °C, nejchladnější −4 °C. Jaká je roční amplituda teploty?', answer: 25, tolerance: 0.1, unit: '°C', explain: '21 − (−4) = 21 + 4 = 25 °C. Odečíst záporné číslo znamená přičíst.' } },
           ],
@@ -493,12 +494,12 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Manaus leží v Brazílii uprostřed amazonského pralesa, jen 3° jižně od rovníku. Podle toho, co víme z lekce „Oběh vzduchu a podnebné pásy“, čekáme teplo a hodně deště. Ověřme to v klimatogramu:' },
             { type: 'climate', places: [
-              { name: 'Manaus (Brazílie)', temp: [27.1, 27.1, 27.2, 27.1, 27.2, 27.4, 27.6, 28.2, 28.5, 28.5, 28.1, 27.4], precip: [305, 297, 320, 330, 234, 117, 67, 56, 79, 114, 188, 254], source: 'INMET (Brazílie), normál 1991–2020' },
+              { name: 'Manaus (Brazílie)', temp: [26.6, 26.6, 26.6, 26.7, 27.0, 27.3, 27.5, 28.2, 28.6, 28.5, 28.0, 27.2], precip: [306, 297, 321, 331, 233, 117, 67, 56, 79, 114, 188, 254], source: 'INMET (Brazílie), normál 1991–2020' },
             ], caption: 'Manaus: teplota skoro rovná čára, srážky přes 2 300 mm za rok.' },
-            { type: 'p', text: 'Čára teploty je skoro vodorovná: od 27,1 °C do 28,5 °C. Roční amplituda je jen 1,4 °C – menší, než je v Praze rozdíl mezi ránem a odpolednem. Za rok tu spadne asi 2 360 mm, skoro pětkrát víc než v Praze.' },
+            { type: 'p', text: 'Čára teploty je skoro vodorovná: od 26,6 °C do 28,6 °C. Roční amplituda je jen 2,0 °C – menší, než je v Praze rozdíl mezi ránem a odpolednem. Za rok tu spadne asi 2 360 mm, skoro pětkrát víc než v Praze.' },
             { type: 'p', text: 'Pozor na past: v tropech nemá smysl mluvit o létě a zimě podle teploty. Roční období se tu poznají podle srážek. V Manausu je období dešťů od prosince do května a sušší období od července do září. I nejsušší srpen (56 mm) má ale skoro tolik srážek jako pražský květen (60 mm).' },
             { type: 'p', text: 'Manaus ukázal, jak vypadá vlhký tropický klimatogram. Úplný opak najdeme v poušti – a nejlépe ho uvidíme vedle Prahy.' },
-            { type: 'check', question: { kind: 'tf', q: 'V Manausu se roční období rozlišují hlavně podle srážek, ne podle teploty.', answer: true, explain: 'Teplota se během roku mění jen o 1,4 °C, zato srážky kolísají od asi 56 mm v srpnu po 330 mm v dubnu.' } },
+            { type: 'check', question: { kind: 'tf', q: 'V Manausu se roční období rozlišují hlavně podle srážek, ne podle teploty.', answer: true, explain: 'Teplota se během roku mění jen o 2 °C, zato srážky kolísají od asi 56 mm v srpnu po 331 mm v dubnu.' } },
           ],
         },
         {
@@ -531,16 +532,16 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Jakutsk leží na 62° s. š. hluboko ve vnitrozemí Sibiře, kam mírný a vlhký vzduch od oceánů skoro nedojde. V lekci „Oběh vzduchu a podnebné pásy“ jsme odhadli, že tak daleko od moře bude podnebí silně pevninské. Postavme ho proti Manausu, kde se teplota skoro nemění:' },
             { type: 'climate', places: [
-              { name: 'Jakutsk (Rusko)', temp: [-36.9, -32.9, -19.1, -3.7, 8.0, 17.0, 19.9, 15.6, 6.4, -6.9, -25.9, -37.0], precip: [9.7, 8.5, 6.3, 13.0, 20.1, 29.5, 40.1, 37.1, 29.6, 18.6, 16.9, 8.5], source: 'Roshydromet (pogodaiklimat.ru), dlouhodobé průměry' },
-              { name: 'Manaus (Brazílie)', temp: [27.1, 27.1, 27.2, 27.1, 27.2, 27.4, 27.6, 28.2, 28.5, 28.5, 28.1, 27.4], precip: [305, 297, 320, 330, 234, 117, 67, 56, 79, 114, 188, 254], source: 'INMET (Brazílie), normál 1991–2020' },
+              { name: 'Jakutsk (Rusko)', temp: [-36.9, -32.9, -19.1, -3.7, 8.0, 17.0, 19.9, 15.6, 6.4, -6.9, -25.9, -37.0], precip: [10, 9, 6, 8, 20, 30, 40, 37, 30, 19, 17, 9], source: 'pogodaiklimat.ru (Roshydromet), normál 1991–2020' },
+              { name: 'Manaus (Brazílie)', temp: [26.6, 26.6, 26.6, 26.7, 27.0, 27.3, 27.5, 28.2, 28.6, 28.5, 28.0, 27.2], precip: [306, 297, 321, 331, 233, 117, 67, 56, 79, 114, 188, 254], source: 'INMET (Brazílie), normál 1991–2020' },
             ], caption: 'Jakutsk a Manaus: obří a skoro nulová roční amplituda.' },
             { type: 'p', text: 'Teplotní čára Jakutska kreslí obří oblouk: v zimě kolem −37 °C, v červenci skoro 20 °C. Spočítejme roční amplitudu přesně:' },
-            { type: 'example', title: 'Roční amplituda v Jakutsku', problem: 'Nejteplejší měsíc v Jakutsku je červenec (19,9 °C), nejchladnější prosinec (−37,0 °C) a těsně za ním leden (−36,9 °C). Jaká je roční amplituda? Kolikrát je větší než v Manausu (1,4 °C)?', steps: [
+            { type: 'example', title: 'Roční amplituda v Jakutsku', problem: 'Nejteplejší měsíc v Jakutsku je červenec (19,9 °C), nejchladnější prosinec (−37,0 °C) a těsně za ním leden (−36,9 °C). Jaká je roční amplituda? Kolikrát je větší než v Manausu (2,0 °C)?', steps: [
               'Amplituda = nejteplejší − nejchladnější = 19,9 − (−37,0)',
               'Odečíst záporné číslo = přičíst: 19,9 + 37,0 = 56,9 °C',
-              'Porovnání s Manausem: 56,9 : 1,4 ≐ 41',
-            ], answer: 'Roční amplituda v Jakutsku je asi 57 °C, zhruba čtyřicetkrát víc než v Manausu.' },
-            { type: 'p', text: 'Srážek je v Jakutsku málo, asi 240 mm za rok, a nejvíc jich spadne v létě – typický znak pevninského podnebí. Půda tu do hloubky stovek metrů nikdy nerozmrzne; o tomto **permafrostu** víc v lekci „Řeky, jezera a ledovce“.' },
+              'Porovnání s Manausem: 56,9 : 2,0 ≐ 28',
+            ], answer: 'Roční amplituda v Jakutsku je asi 57 °C, asi 28krát víc než v Manausu.' },
+            { type: 'p', text: 'Srážek je v Jakutsku málo, asi 235 mm za rok, a nejvíc jich spadne v létě – typický znak pevninského podnebí. Půda tu do hloubky stovek metrů nikdy nerozmrzne; o tomto **permafrostu** víc v lekci „Řeky, jezera a ledovce“.' },
             { type: 'p', text: 'Teď máš v ruce čtyři „vzorové“ klimatogramy: mírný pás, vlhké tropy, poušť a pevninskou Sibiř. Procvič si je na dalších místech světa v mini-hře:' },
             { type: 'game', gameId: 'climate-chart', text: 'Klimatogram: najdi nejteplejší měsíc, roční amplitudu a období sucha a přiřaď graf k místu nebo krajinnému pásu.' },
             { type: 'p', text: 'Podnebí jsme tedy přečetli z grafů. Z klimatogramu ale vyčteme i to, kolik vody místo dostává. Kde se ta voda na Zemi bere a kam teče, zjistíme v lekci „Voda na Zemi“.' },
@@ -552,7 +553,7 @@ const level: LevelContent = {
         'Klimatogram ukazuje průměrnou teplotu každého měsíce (čára, °C) a průměrné srážky (sloupce, mm) za 30 let.',
         'Čteme ho v krocích: nejteplejší a nejchladnější měsíc, roční amplituda, roční úhrn srážek, období sucha a nakonec podnebný pás.',
         'Roční amplituda je rozdíl teplot nejteplejšího a nejchladnějšího měsíce; u záporné teploty se odečtení mění v přičtení.',
-        'Praha má amplitudu 19,5 °C a asi 507 mm srážek za rok; Manaus 1,4 °C a asi 2 360 mm.',
+        'Praha má amplitudu 19,5 °C a asi 507 mm srážek za rok; Manaus 2,0 °C a asi 2 360 mm.',
         'Káhira je poušť s asi 25 mm srážek za rok; Jakutsk má pevninské podnebí s amplitudou kolem 57 °C.',
         'V tropech se roční období poznají podle srážek; na jižní polokouli je nejtepleji kolem ledna.',
       ],
@@ -560,9 +561,9 @@ const level: LevelContent = {
         { kind: 'tf', q: 'Klimatogram ukazuje počasí jednoho konkrétního roku.', answer: false, explain: 'Klimatogram ukazuje průměry za 30 let (dnes 1991–2020), tedy podnebí, ne počasí jednoho roku.' },
         { kind: 'choice', q: 'Jak se vypočítá roční amplituda teploty?', options: ['teplota nejteplejšího měsíce minus teplota nejchladnějšího měsíce', 'součet teplot všech 12 měsíců', 'průměr teplot všech 12 měsíců', 'nejvyšší teplota naměřená za celou historii'], answer: 0, explain: 'Amplituda je rozdíl mezi nejteplejším a nejchladnějším měsícem; ukazuje, jak moc se během roku mění teplota.' },
         { kind: 'match', q: 'Přiřaď klimatogram k místu.', pairs: [
-          ['teplota celý rok 27–28 °C, přes 2 300 mm srážek', 'Manaus'],
+          ['teplota celý rok kolem 27 °C, přes 2 300 mm srážek', 'Manaus'],
           ['teplota 14–29 °C, za rok asi 25 mm srážek', 'Káhira'],
-          ['zima kolem −37 °C, léto kolem 20 °C, asi 240 mm srážek', 'Jakutsk'],
+          ['zima kolem −37 °C, léto kolem 20 °C, asi 235 mm srážek', 'Jakutsk'],
           ['leden kolem 0 °C, červenec kolem 19 °C, asi 500 mm srážek', 'Praha'],
         ], explain: 'Vlhké tropy mají rovnou teplotu a hodně srážek, poušť skoro žádné srážky, pevninská Sibiř obří amplitudu a Praha je mezi tím.' },
         { kind: 'number', q: 'Stanice má v únoru průměr −3 °C a v červenci 17 °C. Jaká je roční amplituda?', answer: 20, tolerance: 0.1, unit: '°C', explain: '17 − (−3) = 17 + 3 = 20 °C.' },
@@ -615,7 +616,7 @@ const level: LevelContent = {
               'Ledovce: 69 % ze 3 l = 0,69 · 3 l ≐ 2,1 l',
               'Podzemní voda: 30 % ze 3 l = 0,9 l',
               'Řeky, jezera a vzduch: 1 % ze 3 l = 0,03 l = 30 ml',
-            ], answer: 'Ze 100 l vody ve vaně by řeky a jezera tvořila jen asi 30 ml – jeden panák.' },
+            ], answer: 'Ze 100 l vody ve vaně by řeky a jezera tvořila jen asi 30 ml – dvě polévkové lžíce.' },
             { type: 'p', text: 'Pozor na častý omyl: většina sladké vody není v řekách a jezerech, ale v ledu Antarktidy a Grónska. Druhou největší zásobárnou je podzemní voda, ze které pijeme i v Česku.' },
             { type: 'p', text: 'Sladké vody je tedy málo. Pojďme se nejdřív podívat na tu obrovskou slanou část – na světový oceán.' },
             { type: 'check', question: { kind: 'tf', q: 'Většina sladké vody na Zemi je v řekách a jezerech.', answer: false, explain: 'Asi 69 % sladké vody je v ledovcích a asi 30 % pod zemí. V řekách, jezerech a ve vzduchu je jen asi 1 %.' } },
@@ -649,7 +650,7 @@ const level: LevelContent = {
             { type: 'map', view: 'world', routes: [
               { points: [{ lat: 25, lon: -80 }, { lat: 32, lon: -78 }, { lat: 38, lon: -70 }, { lat: 42, lon: -55 }], label: 'Golfský proud (teplý)', tone: 'd', arrow: true },
               { points: [{ lat: 43, lon: -50 }, { lat: 50, lon: -30 }, { lat: 58, lon: -12 }, { lat: 66, lon: 4 }, { lat: 71, lon: 20 }], label: 'Severoatlantský proud (teplý)', tone: 'd', arrow: true },
-              { points: [{ lat: 30, lon: 128 }, { lat: 34, lon: 136 }, { lat: 37, lon: 145 }], label: 'Kuro-šio (teplý)', tone: 'd', arrow: true },
+              { points: [{ lat: 30, lon: 128 }, { lat: 33, lon: 136 }, { lat: 37, lon: 145 }], label: 'Kuro-šio (teplý)', tone: 'd', arrow: true },
               { points: [{ lat: 64, lon: -60 }, { lat: 55, lon: -55 }, { lat: 45, lon: -51 }], label: 'Labradorský proud (studený)', tone: 'c', arrow: true },
               { points: [{ lat: -45, lon: -77 }, { lat: -30, lon: -74 }, { lat: -15, lon: -78 }, { lat: -5, lon: -83 }], label: 'Humboldtův (Peruánský) proud (studený)', tone: 'c', arrow: true },
               { points: [{ lat: -34, lon: 16 }, { lat: -25, lon: 13 }, { lat: -15, lon: 10 }], label: 'Benguelský proud (studený)', tone: 'c', arrow: true },
@@ -673,7 +674,7 @@ const level: LevelContent = {
             { type: 'compare', columns: [
               { title: 'Vlny z větru', icon: 'wind', tone: 'a', points: ['vítr tře o hladinu a rozvlní ji', 'čím silnější a delší vítr, tím vyšší vlny', 'voda se v nich hlavně točí na místě, nepluje s vlnou', 'u břehu se lámou v příboj'] },
               { title: 'Tsunami', icon: 'quake', tone: 'b', points: ['vzniká hlavně při zemětřesení pod mořem', 'na otevřeném oceánu nízká, ale rychlá jako letadlo', 'u břehu se zvedne do výšky i desítek metrů', 'nemá s větrem ani přílivem nic společného'] },
-              { title: 'Příliv a odliv', icon: 'moon', tone: 'c', points: ['způsobuje hlavně přitažlivost Měsíce', 'hladina stoupá a klesá dvakrát denně', 'rozdíl jsou obvykle desítky centimetrů až metry', 'dá se přesně předpovědět'] },
+              { title: 'Příliv a odliv', icon: 'moon', tone: 'c', points: ['způsobuje hlavně přitažlivost Měsíce', 'hladina stoupá a klesá většinou dvakrát denně', 'rozdíl jsou obvykle desítky centimetrů až metry', 'dá se přesně předpovědět'] },
             ] },
             { type: 'p', text: 'Pozor na záměnu: tsunami se někdy nesprávně říká „přílivová vlna“. S přílivem ale nemá nic společného – je to vlna z otřesu mořského dna.' },
             { type: 'p', text: 'Oceán je tedy obří zásobárna slané vody, která proudí a vlní se. Sladká voda na pevnině má svou vlastní cestu – v řekách, jezerech, ledovcích a pod zemí. Tou se budeme zabývat v lekci „Řeky, jezera a ledovce“.' },
@@ -771,13 +772,13 @@ const level: LevelContent = {
               'Porovnáme podílem: 5 160 : 150',
               '5 160 : 150 ≐ 34',
             ], answer: 'Prahou teklo asi 34krát víc vody než obvykle – každou sekundu přes 5 milionů litrů.' },
-            { type: 'p', text: 'Česko zažilo v posledních třiceti letech tři velké povodně. Každá zasáhla jinou část země:' },
+            { type: 'p', text: 'Z velkých povodní posledních třiceti let si připomeňme tři. Každá zasáhla jinou část země:' },
             { type: 'iconlist', items: [
-              { icon: 'river', title: 'Červenec 1997', text: 'Morava a Odra; zatopená Olomouc, Otrokovice, Troubky; zahynulo 60 lidí' },
+              { icon: 'river', title: 'Červenec 1997', text: 'Morava a Odra; zatopená Olomouc, Otrokovice, Troubky; zahynulo přes 50 lidí' },
               { icon: 'city', title: 'Srpen 2002', text: 'Vltava a Labe; zatopené pražské metro, Karlín, Český Krumlov' },
-              { icon: 'rain', title: 'Září 2024', text: 'Jeseníky a Slezsko, řeky Bělá, Opava a Odra; zničené Jeseník, Krnov, Opava' },
+              { icon: 'rain', title: 'Září 2024', text: 'Jeseníky a Slezsko, řeky Bělá, Opava a Odra; těžce zasažené Jeseník, Krnov a Opava' },
             ] },
-            { type: 'p', text: 'Pozor na pojem **stoletá voda**. Neznamená povodeň, která přijde jednou za sto let. Znamená průtok, který se v průměru objeví jednou za 100 let – klidně ale dvakrát za deset let.' },
+            { type: 'p', text: 'Pozor na pojem **stoletá voda**. Neznamená, že povodeň přijde přesně jednou za sto let. Je to průtok, který je dosažen nebo překročen v dlouhodobém průměru jednou za 100 let – klidně ale i dvakrát za deset let.' },
             { type: 'p', text: 'Řeky tedy odvádějí vodu do moře. Někde se ale voda na své cestě zastaví a zůstane v jezeře.' },
             { type: 'check', question: { kind: 'tf', q: 'Když přijde stoletá voda, další taková povodeň může přijít nejdřív za sto let.', answer: false, explain: 'Stoletá voda je průtok, který se objevuje v průměru jednou za 100 let. Může přijít i dva roky po sobě.' } },
           ],
@@ -867,7 +868,7 @@ const level: LevelContent = {
         'Vysvětlit přirozený a zesílený skleníkový efekt a odlišit ho od ozonové díry',
         'Uvést hlavní dopady oteplování na svět i na Česko a rozdíl mezi zmírňováním a přizpůsobením',
       ],
-      hook: 'Kdybys šel pěšky z Konga na severní pól, prošel bys pralesem, savanou, pouští, lesy, tajgou a tundrou až k ledu. A když vylezeš na Kilimandžáro, projdeš skoro totéž za tři dny. Proč?',
+      hook: 'Kdybys šel pěšky z Konga na severní pól, prošel bys pralesem, savanou, pouští, lesy, tajgou a tundrou až k ledu. A když vylezeš na Kilimandžáro, projdeš něco podobného za pár dní. Proč?',
       sections: [
         {
           title: 'Podnebí rozhoduje, co roste',
@@ -932,7 +933,7 @@ const level: LevelContent = {
             { type: 'p', text: 'V lekci „Oběh vzduchu a podnebné pásy“ jsme spočítali, že s každými 100 m výšky se ochladí asi o 0,65 °C. Rostliny na to reagují: v horách se krajina mění po pásech nad sebou. Tomu říkáme **výšková stupňovitost**.' },
             { type: 'p', text: 'Na obrázku vystoupej od úpatí hory k vrcholu. Sleduj hlavně horní hranici lesa a sněžnou čáru:' },
             { type: 'diagram', id: 'altitude-zones', caption: 'Výškové stupně hor: listnaté a smíšené lesy, jehličnaté lesy, horní hranice lesa, kosodřevina a horské louky, nad sněžnou čárou trvalý sníh a led.' },
-            { type: 'p', text: 'V Krkonoších končí les asi ve výšce 1 250–1 350 m. Výš rostou jen kosodřevina a horské louky, na Sněžce skoro jako v tundře. V tropech jsou stupně posunuté výš: na Kilimandžáru (5 895 m n. m.), jen 3° jižně od rovníku, roste dole prales a na vrcholu leží ledovec.' },
+            { type: 'p', text: 'V Krkonoších končí les asi ve výšce 1 200–1 350 m. Výš rostou jen kosodřevina a horské louky, na Sněžce skoro jako v tundře. V tropech jsou stupně posunuté výš: na Kilimandžáru (5 895 m n. m.), jen 3° jižně od rovníku, roste dole prales a na vrcholu leží zbytky ledovců.' },
             { type: 'callout', variant: 'tip', text: 'Výstup o tisíc metrů do výšky změní krajinu podobně jako cesta o stovky až tisíc kilometrů směrem k pólu.' },
             { type: 'p', text: 'Krajinné pásy jsou tedy obrazem podnebí. Jenže podnebí se dnes mění rychleji než kdy v historii lidstva – a krajinné pásy se začínají posouvat. Proč se Země otepluje?' },
             { type: 'check', question: { kind: 'tf', q: 'Na horách v tropech je horní hranice lesa níž než v Krkonoších.', answer: false, explain: 'V tropech je u úpatí mnohem tepleji, takže všechny výškové stupně jsou posunuté výš, i horní hranice lesa.' } },
@@ -948,7 +949,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Přirozený skleníkový efekt je pro život nutný: bez něj by průměrná teplota Země byla asi −18 °C místo dnešních asi +15 °C. Problém je, že lidé ho **zesilují**. Spalováním uhlí, ropy a zemního plynu a kácením lesů přidáváme do vzduchu další $CO2$.' },
             { type: 'p', text: 'Jak rychle $CO2$ přibývá, ukazují přesná měření na observatoři Mauna Loa na Havaji, která běží od roku 1958:' },
             { type: 'graph', x: { label: 'rok', min: 1960, max: 2025, step: 10 }, y: { label: 'CO_{2}', unit: 'ppm', min: 260, max: 440, step: 20 }, series: [
-              { label: 'Mauna Loa, roční průměr', points: [[1960, 316.9], [1970, 325.7], [1980, 338.8], [1990, 354.5], [2000, 369.7], [2010, 389.9], [2020, 414.2], [2024, 424.6]], style: 'smooth', area: true },
+              { label: 'Mauna Loa, roční průměr', points: [[1960, 316.9], [1970, 325.7], [1980, 338.8], [1990, 354.5], [2000, 369.7], [2010, 390.1], [2020, 414.2], [2024, 424.6]], style: 'smooth', area: true },
             ], marks: [{ y: 280, label: 'před průmyslovou revolucí: 280 ppm' }], caption: 'Koncentrace $CO2$ v ovzduší (ppm = částic na milion), NOAA, Mauna Loa. Před rokem 1800 bylo ve vzduchu asi 280 ppm.' },
             { type: 'p', text: 'Za 64 let stoupla koncentrace z asi 317 na skoro 425 ppm – o třetinu. Tak rychle se v posledních stovkách tisíc let neměnila nikdy.' },
             { type: 'p', text: 'Pozor na nejčastější záměnu: ozonová díra s oteplováním nesouvisí. Ozonová vrstva chrání před UV zářením a obnovuje se díky zákazu freonů. Oteplování způsobují skleníkové plyny.' },
@@ -960,7 +961,7 @@ const level: LevelContent = {
           title: 'Co oteplování mění',
           icon: 'thermometer',
           blocks: [
-            { type: 'p', text: 'Země je dnes v průměru asi o 1,3 °C teplejší než v letech 1850–1900. Rok 2024 byl podle Světové meteorologické organizace (WMO) nejteplejší od začátku měření, asi o 1,55 °C teplejší než předprůmyslový průměr. Zní to málo – ale v nejchladnější fázi poslední doby ledové, kdy ledovec sahal až k severu dnešního Polska, byla Země chladnější jen asi o 5–6 °C než dnes.' },
+            { type: 'p', text: 'Země je dnes v průměru o víc než 1,3 °C teplejší než v letech 1850–1900. Rok 2024 byl podle Světové meteorologické organizace (WMO) nejteplejší od začátku měření, asi o 1,55 °C teplejší než předprůmyslový průměr. Zní to málo – ale v nejchladnější fázi poslední doby ledové, kdy ledovec sahal až k severu dnešního Polska, byla Země chladnější jen asi o 6 °C než dnes.' },
             { type: 'p', text: 'Oteplení o jednotky stupňů nemění jen teploměr. Změní celý oběh vody a vzduchu, který jsme v této úrovni poznali:' },
             { type: 'iconlist', items: [
               { icon: 'heat', title: 'Vlny veder', text: 'horké dny přes 30 °C jsou v Česku mnohem častější než před 50 lety' },
@@ -968,7 +969,7 @@ const level: LevelContent = {
               { icon: 'rain', title: 'Přívalové deště', text: 'teplejší vzduch unese víc vodní páry, a když prší, tak víc najednou' },
               { icon: 'glacier', title: 'Tání ledovců', text: 'horské ledovce ustupují, v Alpách už některé zmizely' },
               { icon: 'ocean', title: 'Stoupání hladiny moří', text: 'od roku 1900 o víc než 20 cm: voda se teplem roztahuje a přitéká z ledovců' },
-              { icon: 'tree', title: 'Posun krajinných pásů', text: 'pásy se stěhují k pólům a do hor; smrkové lesy v nížinách Česka hynou suchem a kůrovcem' },
+              { icon: 'tree', title: 'Posun krajinných pásů', text: 'pásy se stěhují k pólům a do hor; smrkové lesy v nižších polohách Česka hynou suchem a kůrovcem' },
             ] },
             { type: 'p', text: 'Co se s tím dá dělat? Lidé mají dvě cesty a potřebují obě. Pozor, nepleť si je:' },
             { type: 'compare', columns: [
@@ -985,9 +986,9 @@ const level: LevelContent = {
         'Krajinný pás je území s podobným podnebím, rostlinstvem a živočišstvem; určují ho hlavně teplota a srážky.',
         'V tropech rozhoduje voda: deštný les (přes 2 000 mm), savana (období sucha), poušť (pod 250 mm).',
         'Od mírného pásu k pólům se střídají step, listnaté lesy, tajga, tundra a polární pustiny; Česko leží v pásu listnatých a smíšených lesů.',
-        'V horách se krajina mění po výškových stupních, protože s výškou se ochlazuje; v Krkonoších končí les asi v 1 250–1 350 m.',
+        'V horách se krajina mění po výškových stupních, protože s výškou se ochlazuje; v Krkonoších končí les asi v 1 200–1 350 m.',
         'Přirozený skleníkový efekt drží Zemi asi na +15 °C; lidé ho zesilují, $CO2$ vzrostl z 280 ppm na přes 420 ppm.',
-        'Země je asi o 1,3 °C teplejší než v letech 1850–1900; přibývá veder, sucha a přívalových dešťů, ledovce tají a moře stoupá.',
+        'Země je o víc než 1,3 °C teplejší než v letech 1850–1900; přibývá veder, sucha a přívalových dešťů, ledovce tají a moře stoupá.',
         'Zmírňování snižuje emise skleníkových plynů, přizpůsobení chrání před dopady, které už nastaly.',
       ],
       quiz: [
@@ -1003,12 +1004,12 @@ const level: LevelContent = {
     // ── end of lessons
   },
   boss: [
-    { kind: 'choice', q: 'Ve které vrstvě atmosféry leží ozonová vrstva a létají dálková dopravní letadla?', options: ['ve stratosféře', 'v troposféře', 'v mezosféře', 'v termosféře'], answer: 0, explain: 'Stratosféra začíná nad troposférou (nad Českem asi v 11 km); je suchá a klidná a ve výšce asi 15–35 km v ní leží ozonová vrstva.' },
+    { kind: 'choice', q: 'Ve které vrstvě atmosféry je skoro všechna vodní pára a vzniká počasí?', options: ['v troposféře', 've stratosféře', 'v mezosféře', 'v termosféře'], answer: 0, explain: 'Troposféra sahá nad Českem do asi 11 km a je v ní skoro všechna vodní pára, proto tu vznikají oblaka a srážky. Nad ní leží suchá stratosféra s ozonovou vrstvou.' },
     { kind: 'number', q: 'Na pole o ploše 1 ha (10 000 m²) napršelo 20 mm. Kolik kubických metrů vody na něj spadlo?', answer: 200, tolerance: 1, unit: 'm³', explain: '20 mm = 20 l na 1 m². 20 l · 10 000 = 200 000 l = 200 m³.' },
     { kind: 'tf', q: 'Po přechodu studené fronty se obvykle ochladí a vyjasní.', answer: true, explain: 'Studená fronta přinese přeháňky a bouřky a za ní přichází chladnější vzduch, často s jasnější oblohou.' },
     { kind: 'choice', q: 'Jak proudí vzduch kolem tlakové níže na severní polokouli?', options: ['krouží proti směru hodinových ručiček a stáčí se do středu níže', 'krouží po směru hodinových ručiček a ven z níže', 'proudí přímo do středu bez stáčení', 'stojí na místě'], answer: 0, explain: 'Vzduch proudí do níže, ale otáčení Země ho stáčí doprava, a tak kolem níže krouží proti směru hodinových ručiček.' },
     { kind: 'choice', q: 'Proč je v Irsku mírnější zima než ve stejné zeměpisné šířce ve vnitrozemí Sibiře?', options: ['západní větry přinášejí vzduch od oceánu ohřátého Severoatlantským proudem', 'Irsko leží blíž ke Slunci', 'v Irsku je vyšší nadmořská výška', 'nad Irskem je trvale tlaková výše'], answer: 0, explain: 'Oceán drží teplo a teplý proud ho přináší až k Evropě; západní větry ho ženou nad pevninu. Sibiř je od oceánu daleko, a má proto pevninské podnebí.' },
-    { kind: 'number', q: 'Stanice Praha-Ruzyně (364 m n. m.) má průměrnou roční teplotu 9,1 °C. Jakou teplotu odhadneš pro místo o 1 000 m výš? (0,65 °C na 100 m)', answer: 2.6, tolerance: 0.2, unit: '°C', explain: '1 000 m = 10 · 100 m; ochlazení 10 · 0,65 = 6,5 °C; 9,1 − 6,5 = 2,6 °C.' },
+    { kind: 'number', q: 'Stanice Praha-Ruzyně (364 m n. m.) má průměrnou roční teplotu 9,0 °C. Jakou teplotu odhadneš pro místo o 1 000 m výš? (0,65 °C na 100 m)', answer: 2.5, tolerance: 0.2, unit: '°C', explain: '1 000 m = 10 · 100 m; ochlazení 10 · 0,65 = 6,5 °C; 9,0 − 6,5 = 2,5 °C.' },
     { kind: 'number', q: 'V Káhiře je nejtepleji v srpnu (29,2 °C) a nejchladněji v lednu (14,4 °C). Jaká je roční amplituda teploty?', answer: 14.8, tolerance: 0.1, unit: '°C', explain: '29,2 − 14,4 = 14,8 °C.' },
     { kind: 'match', q: 'Přiřaď popis klimatogramu ke krajinnému pásu.', pairs: [
       ['teplo a přes 2 000 mm srážek po celý rok', 'tropický deštný les'],

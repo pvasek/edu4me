@@ -2,12 +2,12 @@ import { motion } from "motion/react";
 import { DrawArrow, Fade, Figure, pat, useCompact, useFig } from "./kit";
 
 const LABEL =
-  "Podíl pracujících v primárním, sekundárním a terciérním sektoru ve třech státech. Etiopie, stát s nízkými příjmy: zemědělství 62 %, průmysl 7 %, služby 31 % (ILO 2023). Indie, stát se středními příjmy: zemědělství 46 %, průmysl 24 %, služby 30 % (PLFS 2023/24). Česko, stát s vysokými příjmy: zemědělství 3 %, průmysl 35 %, služby 62 % (ČSÚ 2023). S rozvojem ubývá lidí v zemědělství a přibývá jich ve službách.";
+  "Podíl pracujících v primárním, sekundárním a terciérním sektoru ve třech státech. Etiopie, stát s nízkými příjmy: zemědělství asi 62 %, průmysl asi 10 %, služby asi 28 % (ILO, odhad 2023). Indie, stát se středními příjmy: zemědělství 46 %, průmysl 24 %, služby 30 % (PLFS 2023/24). Česko, stát s vysokými příjmy: zemědělství 3 %, průmysl 36 %, služby 61 % (ČSÚ 2023). S rozvojem ubývá lidí v zemědělství a přibývá jich ve službách.";
 
 const ROWS = [
-  { name: "Etiopie", inc: "nízké příjmy", src: "ILO 2023", v: [62, 7, 31] },
+  { name: "Etiopie", inc: "nízké příjmy", src: "ILO 2023", v: [62, 10, 28] },
   { name: "Indie", inc: "střední příjmy", src: "PLFS 2023/24", v: [46, 24, 30] },
-  { name: "Česko", inc: "vysoké příjmy", src: "ČSÚ 2023", v: [3, 35, 62] },
+  { name: "Česko", inc: "vysoké příjmy", src: "ČSÚ 2023", v: [3, 36, 61] },
 ];
 const SECT = [
   { k: "p", t: "primární", s: "zemědělství, lesy, rybolov" },

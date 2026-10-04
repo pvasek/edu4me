@@ -8,7 +8,7 @@ type Mode = "road" | "rail" | "water" | "air" | "pipe";
 const MODES: { k: Mode; t: string; load: string; v: [number, number, number, number] }[] = [
   { k: "road", t: "silniční", load: "kamion ≈ 25 t", v: [3, 3, 1, 3] },
   { k: "rail", t: "železniční", load: "vlak ≈ 1 500 t", v: [2, 2, 3, 1] },
-  { k: "water", t: "vodní", load: "loď až 200 000 t", v: [2, 1, 5, 1] },
+  { k: "water", t: "vodní", load: "loď až 400 000 t", v: [2, 1, 5, 1] },
   { k: "air", t: "letecká", load: "letadlo ≈ 100 t", v: [5, 5, 1, 5] },
   { k: "pipe", t: "potrubní", load: "ropa, plyn bez přestávky", v: [1, 1, 4, 1] },
 ];

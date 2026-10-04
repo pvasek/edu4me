@@ -12,7 +12,7 @@ const level: LevelContent = {
       id: 'z6-1',
       title: 'Sektory hospodářství',
       goals: [
-        'Zařadit pracovní činnost do primárního, sekundárního, terciárního nebo kvartérního sektoru',
+        'Zařadit pracovní činnost do primárního, sekundárního, terciérního nebo kvartérního sektoru',
         'Vysvětlit, proč v bohatých státech pracuje v zemědělství málo lidí a ve službách většina',
         'Spočítat HDP na obyvatele a vysvětlit, proč se státy porovnávají i v paritě kupní síly',
       ],
@@ -27,14 +27,14 @@ const level: LevelContent = {
             { type: 'keyterms', items: [
               { term: '**Primární sektor**', def: 'získává suroviny přímo z přírody: zemědělství, lesnictví, rybolov a těžba' },
               { term: '**Sekundární sektor**', def: 'suroviny zpracovává na výrobky: průmysl, stavebnictví, výroba energie' },
-              { term: '**Terciární sektor**', def: 'poskytuje služby: obchod, doprava, zdravotnictví, školství, cestovní ruch' },
+              { term: '**Terciérní sektor**', def: 'poskytuje služby: obchod, doprava, zdravotnictví, školství, cestovní ruch' },
               { term: '**Kvartérní sektor**', def: 'pracuje s informacemi a znalostmi: věda a výzkum, vývoj softwaru, poradenství' },
             ] },
             { type: 'p', text: 'Nejlépe je to vidět, když sledujeme jeden výrobek od začátku do konce. Vezměme rohlík ze snídaně:' },
             { type: 'process', layout: 'flow', steps: [
               { icon: 'wheat', title: 'Pole', text: 'zemědělec vypěstuje pšenici – primární sektor' },
               { icon: 'factory', title: 'Mlýn a pekárna', text: 'z pšenice je mouka a z mouky rohlík – sekundární sektor' },
-              { icon: 'container', title: 'Doprava a obchod', text: 'řidič rohlík rozveze, prodavačka prodá – terciární sektor' },
+              { icon: 'container', title: 'Doprava a obchod', text: 'řidič rohlík rozveze, prodavačka prodá – terciérní sektor' },
               { icon: 'idea', title: 'Výzkum a aplikace', text: 'šlechtitel vyvine odolnější odrůdu, programátor aplikaci na nákup – kvartérní sektor' },
             ], caption: 'Na jednom rohlíku se podílejí všechny čtyři sektory.' },
             { type: 'p', text: 'Pozor na jednu past: těžbu uhlí nebo rudy řadíme v zeměpise do **primárního** sektoru, protože bere suroviny přímo ze země. Statistiky Českého statistického úřadu ji ale počítají k průmyslu. Proto se čísla z různých zdrojů o kousek liší.' },
@@ -42,7 +42,7 @@ const level: LevelContent = {
             { type: 'check', question: { kind: 'match', q: 'Přiřaď povolání k sektoru hospodářství.', pairs: [
               ['rybář na Třeboňsku', 'primární sektor'],
               ['dělnice v automobilce', 'sekundární sektor'],
-              ['zdravotní sestra', 'terciární sektor'],
+              ['zdravotní sestra', 'terciérní sektor'],
               ['vědkyně vyvíjející nový lék', 'kvartérní sektor'],
             ], explain: 'Rybář bere potravu z přírody, dělnice zpracovává díly na výrobek, sestra poskytuje službu a vědkyně vytváří nové znalosti.' } },
           ],
@@ -54,13 +54,13 @@ const level: LevelContent = {
             { type: 'p', text: 'Kdybys v každé zemi potkal sto pracujících lidí a zeptal se jich, co dělají, dostal bys velmi různé odpovědi. Podíly pracujících v sektorech se jmenují **struktura zaměstnanosti** a patří k nejlepším ukazatelům toho, jak je stát rozvinutý.' },
             { type: 'p', text: 'Porovnej čtyři státy z různých koutů světa. Sleduj hlavně první sloupec čísel – zemědělství:' },
             { type: 'table', headers: ['stát', 'zemědělství', 'průmysl a stavebnictví', 'služby', 'zdroj'], rows: [
-              ['Etiopie', '62 %', '7 %', '31 %', 'ILO 2023'],
+              ['Etiopie', 'asi 62 %', 'asi 10 %', 'asi 28 %', 'ILO, odhad 2023'],
               ['Indie', '46 %', '24 %', '30 %', 'PLFS 2023/24'],
               ['Česko', '3 %', '36 %', '61 %', 'ČSÚ 2023'],
               ['USA', '1,6 %', '19 %', '79 %', 'ILO 2023'],
             ], caption: 'Podíl pracujících v sektorech (zaokrouhleno). ILO = Mezinárodní organizace práce, PLFS = indický výběrový průzkum pracovních sil.' },
             { type: 'p', text: 'Stejný rozdíl ukazuje obrázek jako sloupce: v chudé zemi tvoří zemědělství většinu sloupce, v bohaté jen tenký proužek dole.' },
-            { type: 'diagram', id: 'economic-sectors', caption: 'Zaměstnanost v primárním, sekundárním a terciárním sektoru ve státě s nízkými, středními a vysokými příjmy.' },
+            { type: 'diagram', id: 'economic-sectors', caption: 'Zaměstnanost v primárním, sekundárním a terciérním sektoru ve státě s nízkými, středními a vysokými příjmy.' },
             { type: 'p', text: 'Proč v USA stačí v zemědělství necelé dvě procenta lidí? Jeden americký farmář s traktory, kombajny, hnojivy a počítačem v kabině obdělá stovky hektarů. Etiopský rolník má často jen motyku, pár krav a políčko o velikosti fotbalového hřiště – a pěstuje hlavně pro svou rodinu.' },
             { type: 'callout', variant: 'fact', text: 'Česko má jeden z nejvyšších podílů lidí pracujících v průmyslu v celé Evropské unii. Za to vděčí hlavně automobilkám a strojírenství – o nich bude lekce „Průmysl“.' },
             { type: 'p', text: 'Tabulka je jen snímek jednoho roku. Zajímavější je sledovat, jak se struktura zaměstnanosti v jedné zemi mění během století.' },
@@ -72,7 +72,7 @@ const level: LevelContent = {
           icon: 'chart',
           blocks: [
             { type: 'p', text: 'Dnešní bohaté státy kdysi vypadaly jako dnešní Etiopie: většina lidí pracovala na poli. Jak se to změnilo, ukazují dlouhé řady údajů z USA.' },
-            { type: 'p', text: 'Graf ukazuje, jaký podíl pracujících Američanů byl zaměstnán v zemědělství. Všimni si, jak rychle čára klesá v polovině 20. století, kdy se rozšířily traktory a umělá hnojiva:' },
+            { type: 'p', text: 'Graf ukazuje, jaký podíl pracujících Američanů byl zaměstnán v zemědělství. Všimni si, jak rychle čára klesá v polovině 20. století, kdy se rozšířily traktory a průmyslová hnojiva:' },
             { type: 'graph', x: { label: 'rok', min: 1900, max: 2025, step: 25 }, y: { label: 'podíl v zemědělství', unit: '%', min: 0, max: 45, step: 5 }, series: [
               { label: 'USA', points: [[1900, 41], [1930, 21.5], [1945, 16], [1970, 4], [2000, 1.9], [2023, 1.6]], style: 'smooth', area: true },
             ], marks: [{ x: 1900, y: 41, label: '41 %' }, { x: 2023, y: 1.6, label: '1,6 %' }], caption: 'Podíl pracujících v zemědělství v USA (USDA, ILO). Za sto let klesl z 41 % na necelá 2 %.' },
@@ -92,22 +92,22 @@ const level: LevelContent = {
           title: 'HDP: kolik země za rok vytvoří',
           icon: 'coin',
           blocks: [
-            { type: 'p', text: 'Ekonomové potřebují jedno číslo, které řekne, jak velké je hospodářství státu. Jmenuje se **hrubý domácí produkt (HDP)**: je to hodnota všech výrobků a služeb, které se v zemi za jeden rok vyrobily a prodaly, vyjádřená v penězích.' },
+            { type: 'p', text: 'Ekonomové potřebují jedno číslo, které řekne, jak velké je hospodářství státu. Jmenuje se **hrubý domácí produkt (HDP)**: je to hodnota všech výrobků a služeb, které se na území státu za jeden rok vytvořily, vyjádřená v penězích.' },
             { type: 'p', text: 'Do HDP se počítá jen to, co se prodá nebo za co někdo zaplatí. Porovnej, co do něj patří a co ne:' },
             { type: 'compare', columns: [
               { title: 'Počítá se do HDP', icon: 'check', tone: 'good', points: ['rohlík koupený v pekárně', 'auto vyrobené v Mladé Boleslavi', 'oprava kola v servisu', 'plat učitelky a lékaře'] },
               { title: 'Nepočítá se do HDP', icon: 'cross', tone: 'bad', points: ['koláč, který upeče babička pro rodinu', 'úklid vlastního pokoje', 'dobrovolná pomoc v útulku', 'výrobky, které stát jen dovezl'] },
             ], caption: 'HDP měří jen to, co se prodá. Užitečnou práci doma nevidí.' },
-            { type: 'p', text: 'Velké HDP mají hlavně velké a bohaté státy. Odhady Mezinárodního měnového fondu (MMF) pro rok 2025 jsou v bilionech dolarů – jeden bilion je tisíc miliard:' },
+            { type: 'p', text: 'Velké HDP mají hlavně velké a bohaté státy. Odhady Mezinárodního měnového fondu (MMF) z dubna 2026 pro rok 2025 jsou v bilionech dolarů – jeden bilion je tisíc miliard:' },
             { type: 'table', headers: ['pořadí', 'stát', 'HDP 2025 (bilionů USD)'], rows: [
-              ['1.', 'USA', '30,6'],
-              ['2.', 'Čína', '19,4'],
+              ['1.', 'USA', '30,8'],
+              ['2.', 'Čína', '19,6'],
               ['3.', 'Německo', '5,0'],
-              ['4.', 'Japonsko', '4,3'],
-              ['5.', 'Indie', '4,1'],
-              ['', 'celý svět', 'asi 117'],
-            ], caption: 'Největší ekonomiky světa podle HDP (MMF, odhad 2025). Samotné USA vytvoří víc než čtvrtinu světového HDP.' },
-            { type: 'p', text: 'Z tabulky ale nepoznáš, jestli se v zemi žije dobře. Indie má podobné HDP jako Japonsko, jenže žije v ní skoro dvanáctkrát víc lidí. HDP se proto musí podělit počtem obyvatel.' },
+              ['4.', 'Japonsko', '4,4'],
+              ['5.', 'Spojené království', '4,0'],
+              ['6.', 'Indie', '3,9'],
+            ], caption: 'Největší ekonomiky světa podle HDP (MMF, World Economic Outlook duben 2026, odhad za rok 2025, zaokrouhleno). Samotné USA vytvoří asi čtvrtinu světového HDP.' },
+            { type: 'p', text: 'Z tabulky ale nepoznáš, jestli se v zemi žije dobře. Indie má jen o málo menší HDP než Japonsko, jenže žije v ní skoro dvanáctkrát víc lidí. HDP se proto musí podělit počtem obyvatel.' },
             { type: 'check', question: { kind: 'multi', q: 'Které činnosti se započítají do HDP?', options: ['zaplacený oběd ve školní jídelně', 'výroba aut v Kvasinách', 'zalévání zahrádky pro vlastní radost', 'oprava mobilu v servisu', 'pomoc spolužákovi s úkolem zadarmo'], answers: [0, 1, 3], explain: 'HDP měří zboží a služby, za které se platí. Práce zadarmo a doma se do něj nepočítá, i když je užitečná.' } },
           ],
         },
@@ -118,18 +118,18 @@ const level: LevelContent = {
             { type: 'p', text: 'Aby šly porovnat malé a velké státy, dělí se HDP počtem obyvatel. Výsledek, **HDP na obyvatele**, říká, kolik hodnoty v průměru připadá na jednoho člověka:' },
             { type: 'formula', text: 'HDP na obyvatele = HDP : počet obyvatel', caption: 'obvykle v amerických dolarech (USD) za rok' },
             { type: 'p', text: 'Spočítejme to pro Česko. Pozor na nuly: miliardy a miliony je dobré rozepsat.' },
-            { type: 'example', title: 'HDP na obyvatele Česka', problem: 'HDP Česka bylo v roce 2024 asi 347 mld. USD a v Česku žilo asi 10,9 mil. lidí. Kolik HDP připadá na jednoho obyvatele?', steps: [
-              'Rozepíšeme čísla: 347 mld. = 347 000 000 000 USD, 10,9 mil. = 10 900 000 obyvatel.',
-              'Vydělíme: 347 000 000 000 : 10 900 000 ≐ 31 800.',
+            { type: 'example', title: 'HDP na obyvatele Česka', problem: 'HDP Česka bylo v roce 2024 asi 346 mld. USD a v Česku žilo asi 10,9 mil. lidí. Kolik HDP připadá na jednoho obyvatele?', steps: [
+              'Rozepíšeme čísla: 346 mld. = 346 000 000 000 USD, 10,9 mil. = 10 900 000 obyvatel.',
+              'Vydělíme: 346 000 000 000 : 10 900 000 ≐ 31 700.',
               'Kontrola odhadem: 350 mld. : 11 mil. ≈ 32 000 – sedí.',
-            ], answer: 'HDP na obyvatele Česka ≐ 31 800 USD za rok (Světová banka uvádí pro rok 2024 stejnou hodnotu).' },
+            ], answer: 'HDP na obyvatele Česka ≐ 31 700 USD za rok (Světová banka uvádí pro rok 2024 stejnou hodnotu).' },
             { type: 'p', text: 'Takto vypadá HDP na obyvatele států, které už známe z tabulky zaměstnanosti. Všimni si Číny: celkové HDP má obrovské, na jednoho obyvatele ale méně než polovinu českého.' },
             { type: 'table', headers: ['stát', 'HDP na obyvatele 2024 (USD)'], rows: [
-              ['USA', '84 500'],
-              ['Česko', '31 800'],
+              ['USA', '85 800'],
+              ['Česko', '31 700'],
               ['Čína', '13 300'],
               ['Indie', '2 700'],
-              ['Etiopie', '1 100'],
+              ['Etiopie', 'asi 1 000'],
             ], caption: 'HDP na obyvatele v běžných cenách (Světová banka 2024, zaokrouhleno).' },
             { type: 'p', text: 'Jenže za dolar se v různých zemích koupí různé množství věcí. Stříhání vlasů stojí v Indii zlomek toho, co v Praze. Proto ekonomové přepočítávají HDP i v **paritě kupní síly** (PKS): ptají se, kolik věcí by si lidé za své peníze skutečně koupili.' },
             { type: 'compare', columns: [
@@ -137,10 +137,10 @@ const level: LevelContent = {
               { title: 'HDP v paritě kupní síly', icon: 'balance-scale', tone: 'b', points: ['přepočet podle cen zboží a služeb v zemi', 'lépe ukáže, jak se v zemi skutečně žije', 'rozdíly mezi bohatými a chudými jsou menší'] },
             ] },
             { type: 'p', text: 'O kolik se obraz změní? Vyzkoušej si to na Indii, kde jsou ceny služeb a jídla nízké.' },
-            { type: 'example', title: 'Indie v paritě kupní síly', problem: 'Podle MMF (odhad 2025) bylo HDP na obyvatele Indie v běžném kurzu asi 2 800 USD, v paritě kupní síly asi 12 100 mezinárodních dolarů. Kolikrát víc vychází v paritě?', steps: [
-              'Vydělíme hodnotu v paritě hodnotou v kurzu: 12 100 : 2 800 ≐ 4,3.',
+            { type: 'example', title: 'Indie v paritě kupní síly', problem: 'Podle MMF (odhad 2025) bylo HDP na obyvatele Indie v běžném kurzu asi 2 700 USD, v paritě kupní síly asi 12 000 mezinárodních dolarů. Kolikrát víc vychází v paritě?', steps: [
+              'Vydělíme hodnotu v paritě hodnotou v kurzu: 12 000 : 2 700 ≐ 4,4.',
               'Proč tolik? Ceny jídla, bydlení a služeb jsou v Indii mnohem nižší než v USA, takže za jeden dolar se tam koupí víc.',
-            ], answer: 'V paritě kupní síly vychází HDP na obyvatele Indie asi 4,3krát vyšší. Indové jsou tedy chudší než Američané, ale ne „třicetkrát“, jak by naznačil kurz.' },
+            ], answer: 'V paritě kupní síly vychází HDP na obyvatele Indie asi 4,4krát vyšší. Indové jsou tedy chudší než Američané, ale ne „třicetkrát“, jak by naznačil kurz.' },
             { type: 'callout', variant: 'fact', text: 'Evropská unie porovnává státy v paritě kupní síly. Česko dosáhlo v roce 2024 asi 91 % průměru EU (Eurostat, ČSÚ) – nejvíc ze zemí Visegrádské skupiny.' },
             { type: 'p', text: 'HDP na obyvatele je užitečné, ale je to jen průměr: neřekne, jestli peníze má pár boháčů, nebo většina lidí. K dalším měřítkům rozvoje se vrátíme v lekci „Globalizace a rozvoj“. Nejdřív se ale podíváme na první sektor: jak svět pěstuje jídlo.' },
             { type: 'check', question: { kind: 'number', q: 'Stát má HDP 60 mld. USD a 5 mil. obyvatel. Jaké je jeho HDP na obyvatele?', answer: 12000, tolerance: 1, unit: 'USD', explain: '60 000 000 000 USD : 5 000 000 = 12 000 USD na obyvatele.' } },
@@ -148,18 +148,18 @@ const level: LevelContent = {
         },
       ],
       summary: [
-        'Primární sektor bere suroviny z přírody, sekundární je zpracovává, terciární poskytuje služby a kvartérní pracuje se znalostmi.',
-        'V chudých státech pracuje většina lidí v zemědělství (Etiopie 62 %), v bohatých jen pár procent (USA 1,6 %).',
+        'Primární sektor bere suroviny z přírody, sekundární je zpracovává, terciérní poskytuje služby a kvartérní pracuje se znalostmi.',
+        'V chudých státech pracuje většina lidí v zemědělství (Etiopie asi 62 %), v bohatých jen pár procent (USA 1,6 %).',
         'S rozvojem se pracující přesouvají ze zemědělství do průmyslu a pak do služeb; stroje přitom vyrábějí víc s méně lidmi.',
         'Česko má jeden z nejvyšších podílů pracujících v průmyslu v EU, ale i tak většina lidí pracuje ve službách.',
         'HDP je hodnota všech prodaných výrobků a služeb za rok; největší ho mají USA a Čína.',
-        'HDP na obyvatele = HDP : počet obyvatel; Česko mělo v roce 2024 asi 31 800 USD.',
+        'HDP na obyvatele = HDP : počet obyvatel; Česko mělo v roce 2024 asi 31 700 USD.',
         'Parita kupní síly bere v úvahu ceny v dané zemi, a proto lépe ukazuje, jak se v ní skutečně žije.',
       ],
       quiz: [
         { kind: 'tf', q: 'Těžbu uhlí řadíme v zeměpise do primárního sektoru.', answer: true, explain: 'Těžba bere surovinu přímo z přírody, stejně jako zemědělství nebo rybolov. Statistiky ji někdy počítají k průmyslu, proto se čísla mírně liší.' },
-        { kind: 'choice', q: 'Který stát měl v roce 2025 největší HDP na světě?', options: ['USA', 'Čína', 'Německo', 'Indie'], answer: 0, explain: 'USA s asi 30,6 bilionu USD, druhá je Čína s asi 19,4 bilionu USD (MMF).' },
-        { kind: 'order', q: 'Seřaď státy od nejvyššího HDP na obyvatele po nejnižší (Světová banka 2024).', items: ['USA', 'Česko', 'Čína', 'Indie', 'Etiopie'], explain: 'USA asi 84 500 USD, Česko 31 800, Čína 13 300, Indie 2 700 a Etiopie 1 100 USD na obyvatele.' },
+        { kind: 'choice', q: 'Který stát měl v roce 2025 největší HDP na světě?', options: ['USA', 'Čína', 'Německo', 'Indie'], answer: 0, explain: 'USA s asi 30,8 bilionu USD, druhá je Čína s asi 19,6 bilionu USD (MMF, duben 2026).' },
+        { kind: 'order', q: 'Seřaď státy od nejvyššího HDP na obyvatele po nejnižší (Světová banka 2024).', items: ['USA', 'Česko', 'Čína', 'Indie', 'Etiopie'], explain: 'USA asi 85 800 USD, Česko 31 700, Čína 13 300, Indie 2 700 a Etiopie asi 1 000 USD na obyvatele.' },
         { kind: 'tf', q: 'Čína má větší celkové HDP než Česko, a proto má i vyšší HDP na obyvatele.', answer: false, explain: 'Čína má přes 1,4 miliardy obyvatel. Její HDP na obyvatele (asi 13 300 USD) je menší než polovina českého.' },
         { kind: 'choice', q: 'Proč se HDP přepočítává i v paritě kupní síly?', options: ['protože za stejné peníze se v různých zemích koupí různé množství zboží', 'protože některé státy nemají vlastní měnu', 'aby se do HDP započítala práce v domácnosti', 'aby bohaté státy vyšly ještě bohatší'], answer: 0, explain: 'Parita kupní síly bere v úvahu, že jídlo nebo služby jsou v chudých zemích levnější. Lépe tak ukáže skutečnou životní úroveň.' },
         { kind: 'number', q: 'Stát má HDP 900 mld. USD a 45 mil. obyvatel. Kolik je HDP na obyvatele?', answer: 20000, tolerance: 1, unit: 'USD', explain: '900 000 000 000 : 45 000 000 = 20 000 USD na obyvatele.' },
@@ -219,7 +219,7 @@ const level: LevelContent = {
           title: 'Kde roste, co jíme',
           icon: 'wheat',
           blocks: [
-            { type: 'p', text: 'Přes polovinu kalorií, které lidstvo sní, dodávají jen tři obiloviny: pšenice, rýže a kukuřice. K nim přidejme kávu a banány, které cestují přes půl světa až do tvé kuchyně.' },
+            { type: 'p', text: 'Zhruba polovinu kalorií, které lidstvo sní, dodávají jen tři obiloviny: pšenice, rýže a kukuřice. K nim přidejme kávu a banány, které cestují přes půl světa až do tvé kuchyně.' },
             { type: 'p', text: 'Tabulka ukazuje největší pěstitele podle FAO, Organizace OSN pro výživu a zemědělství. U každé plodiny si všimni, proč roste právě tam:' },
             { type: 'table', headers: ['plodina', 'největší pěstitelé', 'proč tam'], rows: [
               ['pšenice', 'Čína, Indie, Rusko', 'mírný pás, úrodné černozemě a sprašové půdy'],
@@ -262,7 +262,7 @@ const level: LevelContent = {
           title: 'Hlad a plýtvání',
           icon: 'bread',
           blocks: [
-            { type: 'p', text: 'Svět vypěstuje dost kalorií pro všech více než 8 miliard lidí. Přesto podle OSN v roce 2024 hladovělo asi 673 milionů lidí, tedy zhruba každý dvanáctý člověk (FAO, zpráva SOFI 2025). Nejhorší je situace v Africe, kde trpí hladem asi každý pátý.' },
+            { type: 'p', text: 'Svět vypěstuje dost kalorií pro všech více než 8 miliard lidí. Přesto podle OSN v roce 2025 hladovělo asi 645 milionů lidí, tedy zhruba každý třináctý člověk (FAO, zpráva SOFI 2026). Nejhorší je situace v Africe, kde trpí hladem asi každý pátý.' },
             { type: 'p', text: 'Hlad tedy nevzniká hlavně tím, že by jídla bylo málo. Má jiné příčiny, které se často sčítají:' },
             { type: 'iconlist', items: [
               { icon: 'shield', title: 'Války a konflikty', text: 'zničená pole, uprchlíci, zablokované cesty (Súdán, Gaza, Jemen)' },
@@ -274,7 +274,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Plýtvání v jedné třídě', problem: 'Ve třídě je 25 žáků. Kolik jídla by jejich domácnosti vyhodily za rok, kdyby každý z nich vyhodil průměrných 79 kg?', steps: [
               'Vynásobíme počet žáků množstvím na jednoho: 25 · 79 kg = 1 975 kg.',
               'Převedeme na tuny: 1 975 kg ≐ 2 t.',
-            ], answer: 'Asi 2 tuny jídla za rok – zhruba hmotnost dvou osobních aut.' },
+            ], answer: 'Asi 2 tuny jídla za rok – zhruba hmotnost dvou malých osobních aut.' },
             { type: 'callout', variant: 'mascot', text: 'Rohlík, který zbyde, nemusí do koše. Ze starého pečiva jsou výborné krutony nebo knedlíky – a ušetříš i za nákup.' },
             { type: 'p', text: 'Jídlo tedy umíme vypěstovat, potíž je v tom, kam doputuje. S hlubšími otázkami výživy se potkáš na gymnáziu. Primární sektor ale nekončí na poli: v příští lekci „Nerostné suroviny a energie“ půjdeme pod zem.' },
             { type: 'check', question: { kind: 'choice', q: 'Co je podle OSN hlavní příčinou hladu ve světě?', options: ['války, chudoba a sucha, i když jídla se celkově vypěstuje dost', 'na Zemi se nevypěstuje dost jídla pro všechny', 'lidé v Africe nechtějí pěstovat obilí', 'chybí ledničky na skladování'], answer: 0, explain: 'Celková produkce by stačila pro všechny. Lidé hladovějí hlavně kvůli konfliktům, chudobě a výkyvům počasí.' } },
@@ -287,7 +287,7 @@ const level: LevelContent = {
         'Plantáže v tropech pěstují jednu plodinu na prodej do světa, například kávu, banány nebo kakao.',
         'Nejvíc pšenice a rýže sklízejí Čína a Indie, kukuřice USA a kávy Brazílie (FAO 2023).',
         'Akvakultura už dává víc než polovinu ryb a vodních živočichů, protože mnoho populací ryb je přelovených.',
-        'V roce 2024 hladovělo asi 673 milionů lidí, hlavně kvůli válkám, chudobě a suchu, zatímco asi pětina jídla v obchodech a domácnostech skončí v koši.',
+        'V roce 2025 hladovělo asi 645 milionů lidí, hlavně kvůli válkám, chudobě a suchu, zatímco asi pětina jídla v obchodech a domácnostech skončí v koši.',
       ],
       quiz: [
         { kind: 'choice', q: 'Které zemědělství je intenzivní?', options: ['zavlažované rýžové políčko ve Vietnamu', 'pastvina ovcí v australském vnitrozemí', 'dobytek volně se pasoucí v pampě', 'kočovní pastevci s kozami v Sahelu'], answer: 0, explain: 'Na rýžovém poli se do malé plochy vkládá hodně práce a vody a sklízí se i dvakrát ročně. Ostatní příklady jsou extenzivní.' },
@@ -316,7 +316,7 @@ const level: LevelContent = {
           title: 'Co nám dává zemská kůra',
           icon: 'pickaxe',
           blocks: [
-            { type: 'p', text: 'V lekci „Zemědělství a výživa světa“ jsme brali z přírody to, co roste. Teď sáhneme hlouběji: pod povrchem leží **nerostné suroviny**, tedy nerosty a horniny, které člověk těží a využívá. Jak nerosty a horniny vznikají, znáš z biologie z lekce „Nerosty a horniny“.' },
+            { type: 'p', text: 'V lekci „Zemědělství a výživa světa“ jsme brali z přírody to, co roste. Teď sáhneme hlouběji: pod povrchem leží **nerostné suroviny**, tedy nerosty a horniny, které člověk těží a využívá. Jak nerosty a horniny vznikají, probereš podrobně v biologii v lekci „Nerosty a horniny“.' },
             { type: 'p', text: 'Suroviny se dělí do tří skupin podle toho, k čemu je potřebujeme:' },
             { type: 'iconlist', items: [
               { icon: 'fuel', title: 'Energetické suroviny', text: 'uhlí, ropa, zemní plyn a uran: z nich se vyrábí teplo, elektřina a pohonné hmoty' },
@@ -343,7 +343,7 @@ const level: LevelContent = {
               ['ropa', 'USA, Saúdská Arábie, Rusko', 'benzin, nafta, plasty'],
               ['zemní plyn', 'USA, Rusko, Írán', 'vytápění, elektřina, průmysl'],
               ['uhlí', 'Čína (přes polovinu světa), Indie, Indonésie', 'elektřina, výroba oceli'],
-              ['železná ruda', 'Austrálie, Brazílie, Čína', 'ocel na auta, mosty a stavby'],
+              ['železná ruda', 'Austrálie, Brazílie, Čína a Indie', 'ocel na auta, mosty a stavby'],
               ['lithium', 'Austrálie, Chile, Čína', 'baterie mobilů a elektromobilů'],
               ['kobalt', 'DR Kongo (asi tři čtvrtiny světa), Indonésie', 'baterie'],
               ['vzácné zeminy', 'Čína (asi dvě třetiny těžby), USA, Myanmar', 'magnety v motorech, větrnících a sluchátkách'],
@@ -354,9 +354,9 @@ const level: LevelContent = {
               { codes: ['AUS', 'CHL'], tone: 'c', label: 'lithium' },
               { codes: ['COD'], tone: 'b', label: 'kobalt' },
               { codes: ['CHN'], tone: 'd', label: 'uhlí a vzácné zeminy' },
-            ], points: [{ lat: 50.73, lon: 13.77, label: 'Cínovec', kind: 'place' }], layers: ['names'], caption: 'Hlavní těžaři ropy, lithia, kobaltu a vzácných zemin (Energy Institute, USGS, údaje za rok 2024).' },
+            ], points: [{ lat: 50.73, lon: 13.77, label: 'Cínovec', kind: 'place' }], layers: ['names'], caption: 'Hlavní těžaři ropy, uhlí, lithia, kobaltu a vzácných zemin (Energy Institute, USGS, údaje za rok 2024).' },
             { type: 'p', text: 'Proč na tom záleží? Když jeden stát ovládá většinu suroviny, může ji ostatním zdražit nebo omezit. Čína v roce 2025 omezila vývoz některých vzácných zemin a evropským automobilkám začaly chybět magnety do motorů. Proto se Evropa snaží těžit a recyklovat víc sama.' },
-            { type: 'callout', variant: 'warning', text: 'Bohatství pod zemí nezaručuje bohatství lidí. DR Kongo má největší zásoby kobaltu, a přesto patří k nejchudším státům světa. Kobalt tam často kopou ručně i děti.' },
+            { type: 'callout', variant: 'warning', text: 'Bohatství pod zemí nezaručuje bohatství lidí. DR Kongo má největší zásoby kobaltu, a přesto patří k nejchudším státům světa. Část kobaltu tam lidé kopou ručně, někdy i děti.' },
             { type: 'p', text: 'Víme, kde suroviny leží. Jak se ale dostanou na povrch – a co přitom zůstane po krajině?' },
             { type: 'check', question: { kind: 'choice', q: 'Který stát těží asi tři čtvrtiny světového kobaltu?', options: ['Demokratická republika Kongo', 'Austrálie', 'Saúdská Arábie', 'Česko'], answer: 0, explain: 'Podle USGS pochází z DR Konga asi tři čtvrtiny světové těžby kobaltu (2024).' } },
           ],
@@ -403,16 +403,16 @@ const level: LevelContent = {
             { type: 'p', text: 'Pozor, tady se snadno spletou dvě různé věci. Veškerá energie zahrnuje i benzin v autech a plyn v kotlích, elektřina je jen její část. Proto vypadají oba „recepty“ úplně jinak:' },
             { type: 'compare', columns: [
               { title: 'Svět: veškerá energie', icon: 'earth', tone: 'a', points: ['ropa asi třetina (hlavně doprava)', 'uhlí a zemní plyn každé asi čtvrtina', 'fosilní paliva dohromady přes 80 %', 'jádro, voda, vítr, slunce a biomasa dohromady méně než pětina'] },
-              { title: 'Česko: výroba elektřiny', icon: 'plug', tone: 'b', points: ['jaderné elektrárny Dukovany a Temelín asi 40 %', 'uhelné elektrárny asi třetina', 'zbytek zemní plyn, slunce, biomasa a bioplyn, voda a vítr', 'podíl uhlí rychle klesá'] },
-            ], caption: 'Svět: Energy Institute, Statistical Review of World Energy 2025 (rok 2024). Česko: Energetický regulační úřad (ERÚ), rok 2024. Zaokrouhleno.' },
+              { title: 'Česko: výroba elektřiny', icon: 'plug', tone: 'b', points: ['jaderné elektrárny Dukovany a Temelín přes 40 % (2025: asi 43 %)', 'uhelné elektrárny asi třetina', 'zbytek zemní plyn, slunce, biomasa a bioplyn, voda a vítr', 'podíl uhlí rychle klesá'] },
+            ], caption: 'Svět: Energy Institute, Statistical Review of World Energy 2026 (rok 2025). Česko: Energetický regulační úřad (ERÚ), rok 2025. Zaokrouhleno.' },
             { type: 'p', text: 'Procenta z mixu se dají převést na skutečnou spotřebu. Zkus to pro jednu domácnost:' },
-            { type: 'example', title: 'Odkud svítí tvoje lampa', problem: 'Rodina spotřebuje za rok 3 000 kWh elektřiny. Kolik z toho by pocházelo z jádra, kdyby její elektřina měla stejné složení jako česká výroba (jádro 40 %)?', steps: [
+            { type: 'example', title: 'Odkud svítí tvoje lampa', problem: 'Rodina spotřebuje za rok 3 000 kWh elektřiny. Kolik z toho by pocházelo z jádra, kdyby její elektřina měla stejné složení jako česká výroba (jádro zaokrouhleně 40 %)?', steps: [
               '40 % je 0,4 celku.',
               '3 000 kWh · 0,4 = 1 200 kWh.',
             ], answer: 'Asi 1 200 kWh za rok, tedy dvě pětiny spotřeby rodiny.' },
             { type: 'p', text: 'Mix se mění. Svět i Česko chtějí méně uhlí, protože jeho spalování nejvíc přispívá ke změně klimatu. Jak rychle a čím ho nahradit, se dozvíš na gymnáziu v lekci „Energetická bezpečnost“. Než se pustíš do průmyslu, který energii spotřebovává nejvíc, otestuj se v Bleskové výzvě.' },
             { type: 'game', gameId: 'quickfire', text: 'Blesková výzva: suroviny, energie a sektory hospodářství na čas.' },
-            { type: 'check', question: { kind: 'choice', q: 'Který zdroj vyrábí v Česku nejvíc elektřiny (2024)?', options: ['jaderné elektrárny', 'větrné elektrárny', 'vodní elektrárny', 'sluneční elektrárny'], answer: 0, explain: 'Dukovany a Temelín vyrábějí asi 40 % české elektřiny, uhelné elektrárny asi třetinu (ERÚ 2024).' } },
+            { type: 'check', question: { kind: 'choice', q: 'Který zdroj vyrábí v Česku nejvíc elektřiny (2025)?', options: ['jaderné elektrárny', 'větrné elektrárny', 'vodní elektrárny', 'sluneční elektrárny'], answer: 0, explain: 'Dukovany a Temelín vyrobily v roce 2025 asi 43 % české elektřiny, uhelné elektrárny asi třetinu (ERÚ).' } },
           ],
         },
       ],
@@ -422,7 +422,7 @@ const level: LevelContent = {
         'Mělká ložiska se těží povrchově, hluboká hlubinně; po těžbě se krajina rekultivuje, například na jezero Most.',
         'Fosilní paliva a uran jsou neobnovitelné zdroje, slunce, vítr, voda a biomasa obnovitelné; jádro je neobnovitelné, ale nízkoemisní.',
         'Ve světě dodávají fosilní paliva přes 80 % veškeré energie, nejvíc ropa.',
-        'Českou elektřinu vyrábějí hlavně jaderné (asi 40 %) a uhelné elektrárny (asi třetina).',
+        'Českou elektřinu vyrábějí hlavně jaderné (přes 40 %) a uhelné elektrárny (asi třetina).',
       ],
       quiz: [
         { kind: 'tf', q: 'Jaderná energie patří mezi obnovitelné zdroje, protože neuvolňuje $CO2$.', answer: false, explain: 'Jaderná energie je nízkoemisní, ale uran se těží a jeho zásoby jsou omezené, takže je neobnovitelná.' },
@@ -528,13 +528,13 @@ const level: LevelContent = {
           title: 'Auta: příklad z Česka',
           icon: 'car',
           blocks: [
-            { type: 'p', text: 'Automobilový průmysl je největší obor českého hospodářství. V Česku vyrábějí auta tři automobilky – Škoda, Hyundai a Toyota – a kolem nich stovky firem, které dodávají díly: sedačky, světla, pneumatiky nebo elektroniku.' },
+            { type: 'p', text: 'Automobilový průmysl je největší obor českého průmyslu. V Česku vyrábějí auta tři automobilky – Škoda, Hyundai a Toyota – a kolem nich stovky firem, které dodávají díly: sedačky, světla, pneumatiky nebo elektroniku.' },
             { type: 'p', text: 'Graf ukazuje, kolik osobních aut se v Česku vyrobilo. Všimni si poklesu v letech 2020 a 2021, kdy přišla pandemie a pak chyběly čipy z Asie:' },
             { type: 'graph', x: { label: 'rok', min: 2000, max: 2024, step: 4 }, y: { label: 'vyrobená osobní auta', unit: 'tis.', min: 0, max: 1600, step: 200 }, series: [
               { label: 'Česko', points: [[2000, 455], [2005, 602], [2010, 1070], [2015, 1298], [2019, 1434], [2020, 1152], [2021, 1105], [2022, 1218], [2023, 1400], [2024, 1450]], area: true },
             ], marks: [{ x: 2021, y: 1105, label: 'nedostatek čipů' }], caption: 'Výroba osobních aut v Česku v tisících kusů (Sdružení automobilového průmyslu, zaokrouhleno). Od roku 2010 přes milion aut ročně.' },
-            { type: 'p', text: 'Proč zrovna Česko? Má tradici – Laurin & Klement začali v Mladé Boleslavi vyrábět auta už v roce 1905 – a zručné a vzdělané lidi. Leží uprostřed Evropy blízko německých zákazníků a dodavatelů. Po roce 1991 se Škoda stala součástí koncernu Volkswagen a přišly velké investice.' },
-            { type: 'p', text: 'Na mapě najdeš české automobilky. Za hranicí jsou hned další – Slovensko vyrábí auta ve čtyřech závodech:' },
+            { type: 'p', text: 'Proč zrovna Česko? Má tradici – Laurin & Klement začali v Mladé Boleslavi vyrábět auta už v roce 1905 – a zručné a vzdělané lidi. Leží uprostřed Evropy blízko německých zákazníků a dodavatelů. V roce 1991 se Škoda stala součástí koncernu Volkswagen a přišly velké investice.' },
+            { type: 'p', text: 'Na mapě najdeš české automobilky. Za hranicí jsou hned další – Slovensko vyrábí auta ve čtyřech závodech a u Košic rozjíždí pátý (Volvo):' },
             { type: 'map', view: 'central-europe', highlight: [{ codes: ['CZE', 'SVK'], tone: 'a', label: 'Česko a Slovensko' }], points: [
               { lat: 50.41, lon: 14.91, label: 'Mladá Boleslav (Škoda)', kind: 'city' },
               { lat: 50.21, lon: 16.26, label: 'Kvasiny (Škoda)', kind: 'place' },
@@ -553,7 +553,7 @@ const level: LevelContent = {
             ], answer: 'Česko asi 133 aut na 1 000 obyvatel, Čína asi 22. Na obyvatele vyrábí víc už jen Slovensko (asi 180 aut na 1 000 obyvatel).' },
             { type: 'p', text: 'Pozor, tak silný obor je zároveň riziko. Když se auta v Evropě prodávají hůř nebo chybějí díly, trpí tisíce firem a celé regiony. Přechod na elektromobily navíc mění, co se vyrábí: motor a převodovka mají méně dílů a přibývají baterie.' },
             { type: 'p', text: 'Auta, díly i suroviny musí neustále cestovat mezi dodavateli, továrnami a zákazníky. Bez dopravy by průmysl nefungoval – a o ní je příští lekce „Doprava a spoje“.' },
-            { type: 'check', question: { kind: 'number', q: 'Slovensko vyrobilo asi 990 000 aut a má 5,4 mil. obyvatel. Kolik aut připadá na 1 000 obyvatel? Zaokrouhli na celé číslo.', answer: 183, tolerance: 2, unit: 'aut', explain: '990 000 : 5 400 000 ≐ 0,183; na 1 000 obyvatel je to asi 183 aut – nejvíc na světě.' } },
+            { type: 'check', question: { kind: 'number', q: 'Slovensko vyrobilo v roce 2024 asi 990 000 aut a má 5,4 mil. obyvatel. Kolik aut připadá na 1 000 obyvatel? Zaokrouhli na celé číslo.', answer: 183, tolerance: 2, unit: 'aut', explain: '990 000 : 5 400 000 ≐ 0,183; na 1 000 obyvatel je to asi 183 aut – nejvíc na světě.' } },
           ],
         },
       ],
@@ -562,7 +562,7 @@ const level: LevelContent = {
         'Tradiční průmyslové oblasti (Ostravsko, Porúří, Horní Slezsko) vznikly u uhlí a stály na hutích a strojírenství.',
         'Moderní a hi-tech průmysl potřebuje hlavně vzdělané lidi, výzkum a dobré spojení, proto roste u univerzit a letišť.',
         'Deindustrializace znamená úbytek průmyslu v bohatých zemích; po zavřených továrnách zůstávají brownfieldy, které se dají znovu využít.',
-        'Automobilový průmysl je největší obor Česka; Škoda, Hyundai a Toyota vyrobí kolem 1,4 milionu aut ročně.',
+        'Automobilový průmysl je největší průmyslový obor Česka; Škoda, Hyundai a Toyota vyrobí kolem 1,4 milionu aut ročně.',
         'Na obyvatele vyrábějí nejvíc aut na světě Slovensko a Česko; v celkovém počtu vede Čína s asi třetinou světové výroby.',
       ],
       quiz: [
@@ -586,7 +586,7 @@ const level: LevelContent = {
         'Popsat Panamský a Suezský průplav a co se stane, když se zavřou',
         'Vysvětlit, že internet vede hlavně kabely po dně oceánů',
       ],
-      hook: 'Tvoje mikina z Bangladéše cestovala do Česka asi měsíc, většinu cesty v kontejneru na lodi. Proč ne letadlem? A jak je možné, že když v roce 2021 uvízla v Suezském průplavu jediná loď, chybělo zboží v obchodech po celém světě?',
+      hook: 'Tvoje mikina z Bangladéše cestovala do Česka asi měsíc, většinu cesty v kontejneru na lodi. Proč ne letadlem? A jak je možné, že když v roce 2021 uvízla v Suezském průplavu jediná loď, zpozdilo se zboží po celém světě?',
       sections: [
         {
           title: 'Pět druhů dopravy',
@@ -670,9 +670,9 @@ const level: LevelContent = {
             { type: 'p', text: 'Každé úzké hrdlo hlídá jiný proud zboží. Projdi si ta nejdůležitější:' },
             { type: 'iconlist', items: [
               { icon: 'ship', title: 'Malacký průliv', text: 'mezi Malajsií a Sumatrou; tudy pluje zboží mezi Asií a Evropou a ropa pro Čínu, Japonsko a Koreu' },
-              { icon: 'oil-barrel', title: 'Hormuzský průliv', text: 'výjezd z Perského zálivu; proteče jím asi pětina ropy, kterou svět spotřebuje (EIA 2024)' },
+              { icon: 'oil-barrel', title: 'Hormuzský průliv', text: 'výjezd z Perského zálivu; proteče jím asi pětina ropy, kterou svět spotřebuje (EIA 2024); když se po útocích USA a Izraele na Írán na jaře 2026 doprava průlivem téměř zastavila, ohrozilo to dodávky ropy do celého světa' },
               { icon: 'warning', title: 'Bab al-Mandab', text: 'jižní vstup do Rudého moře a k Suezskému průplavu; od konce roku 2023 tu povstalci z Jemenu útočili na lodě' },
-              { icon: 'wheat', title: 'Bospor', text: 'úžina v Istanbulu, jediná cesta z Černého moře do světa: obilí z Ukrajiny, ropa z Ruska' },
+              { icon: 'wheat', title: 'Bospor', text: 'průliv v Istanbulu, spolu s Dardanelami jediná cesta z Černého moře do světa: obilí z Ukrajiny, ropa z Ruska' },
             ] },
             { type: 'p', text: 'Dvě z úzkých hrdel na mapě nevytvořila příroda, ale lidé. Jsou to průplavy – umělé zkratky mezi moři a oceány.' },
             { type: 'check', question: { kind: 'choice', q: 'Kterým úzkým hrdlem proteče asi pětina ropy spotřebované ve světě?', options: ['Hormuzským průlivem', 'Bosporem', 'Panamským průplavem', 'Lamanšským průlivem'], answer: 0, explain: 'Hormuzský průliv je jediný výjezd z Perského zálivu, kde leží velká ropná pole Saúdské Arábie, Iráku, Kuvajtu, Íránu a Emirátů.' } },
@@ -683,14 +683,14 @@ const level: LevelContent = {
           icon: 'globe',
           blocks: [
             { type: 'p', text: 'Bez průplavů by lodě z Asie do Evropy musely objíždět celou Afriku a lodě z New Yorku do Kalifornie celou Jižní Ameriku. Dva nejslavnější průplavy proto patří k nejcennějším kilometrům na světě. Panamský průplav je i znakem této úrovně.' },
-            { type: 'p', text: 'Panamský průplav vede přes hory, a tak lodě musí nejdřív vystoupat. Na řezu sleduj, jak je **plavební komory** zvednou až k umělému Gatúnskému jezeru a na druhé straně zase spustí:' },
+            { type: 'p', text: 'Panamský průplav vede přes kopcovitou Panamskou šíji, a tak lodě musí nejdřív vystoupat. Na řezu sleduj, jak je **plavební komory** zvednou až k umělému Gatúnskému jezeru a na druhé straně zase spustí:' },
             { type: 'diagram', id: 'panama-canal', caption: 'Panamský průplav v řezu: plavební komory zvednou lodě asi o 26 m ke Gatúnskému jezeru a na druhé straně je spustí k moři.' },
             { type: 'p', text: 'Oba průplavy si porovnej. Liší se délkou, stářím i tím, jak lodě převádějí:' },
             { type: 'compare', columns: [
-              { title: 'Panamský průplav', icon: 'ship', tone: 'a', points: ['spojuje Atlantský a Tichý oceán', 'dlouhý asi 82 km, otevřen 1914, od roku 2016 i nové větší komory', 'plavební komory: každé proplutí spotřebuje asi 200 mil. litrů sladké vody z jezera', 'cesta New York – San Francisco je díky němu asi o 14 000 km kratší než kolem mysu Horn'] },
+              { title: 'Panamský průplav', icon: 'ship', tone: 'a', points: ['spojuje Atlantský a Tichý oceán', 'dlouhý asi 82 km, otevřen 1914, od roku 2016 i nové větší komory', 'plavební komory: každé proplutí spotřebuje asi 200 mil. litrů sladké vody z jezera', 'cesta New York – San Francisco je díky němu asi o 13 000 km kratší než kolem mysu Horn (asi 9 500 místo 22 500 km)'] },
               { title: 'Suezský průplav', icon: 'ship', tone: 'b', points: ['spojuje Středozemní a Rudé moře, tedy Evropu s Asií', 'dlouhý asi 193 km, otevřen 1869', 'bez plavebních komor: obě moře mají stejnou hladinu', 'normálně tudy pluje velká část obchodu mezi Asií a Evropou'] },
             ] },
-            { type: 'p', text: 'Obě zkratky se v posledních letech ukázaly jako křehké. V roce 2021 uvízla napříč Suezským průplavem obří loď *Ever Given* a šest dní stály stovky lodí. Od konce roku 2023 útočili jemenští povstalci na lodě v Rudém moři a v roce 2024 průplavem proplula jen zhruba polovina obvyklého počtu lodí. Panamský průplav zase v letech 2023–2024 zasáhlo sucho: v Gatúnském jezeře chyběla voda pro komory, a tak denně směla proplout jen asi dvě třetiny lodí.' },
+            { type: 'p', text: 'Obě zkratky se v posledních letech ukázaly jako křehké. V roce 2021 uvízla napříč Suezským průplavem obří loď *Ever Given* a šest dní stály stovky lodí. Od konce roku 2023 útočili jemenští povstalci na lodě v Rudém moři a v roce 2024 průplavem proplula jen zhruba polovina obvyklého počtu lodí. Panamský průplav zase v letech 2023–2024 zasáhlo sucho: v Gatúnském jezeře chyběla voda pro komory, a tak místo obvyklých 36 lodí denně jich v nejhorší době smělo proplout jen 22.' },
             { type: 'p', text: 'Kolik stojí objížďka kolem Afriky? Spočítej to pro loď ze Šanghaje do Rotterdamu.' },
             { type: 'example', title: 'Objížďka kolem Afriky', problem: 'Trasa Šanghaj – Rotterdam přes Suez měří asi 19 500 km, kolem mysu Dobré naděje asi 25 500 km. Loď pluje rychlostí 30 km/h. O kolik dní déle pluje kolem Afriky?', steps: [
               'Rozdíl vzdáleností: 25 500 km − 19 500 km = 6 000 km.',
@@ -698,7 +698,7 @@ const level: LevelContent = {
               'Na dny: 200 h : 24 ≐ 8 dní.',
             ], answer: 'Asi o 8 dní déle – a s tím víc paliva, vyšší ceny dopravy a zpožděné zboží.' },
             { type: 'p', text: 'Lodě tedy vozí zboží. Jenže svět si dnes posílá i něco, co nic neváží: data. I ta ale cestují po dně oceánů.' },
-            { type: 'check', question: { kind: 'tf', q: 'Suezský průplav nepotřebuje plavební komory, protože Středozemní a Rudé moře mají zhruba stejnou hladinu.', answer: true, explain: 'Suezský průplav vede rovinatou pouští mezi dvěma moři se stejnou hladinou. Panamský průplav naopak překonává hory, proto má komory.' } },
+            { type: 'check', question: { kind: 'tf', q: 'Suezský průplav nepotřebuje plavební komory, protože Středozemní a Rudé moře mají zhruba stejnou hladinu.', answer: true, explain: 'Suezský průplav vede rovinatou pouští mezi dvěma moři se stejnou hladinou. Panamský průplav naopak překonává kopcovitou šíji, proto má komory.' } },
           ],
         },
         {
@@ -776,7 +776,7 @@ const level: LevelContent = {
           title: 'Služby kolem nás',
           icon: 'handshake',
           blocks: [
-            { type: 'p', text: 'V lekci „Sektory hospodářství“ jsme zjistili, že v Česku pracuje ve službách asi 61 % lidí a v USA skoro 80 %. Terciární sektor je tedy největší „patro“ hospodářství. Co všechno do něj patří?' },
+            { type: 'p', text: 'V lekci „Sektory hospodářství“ jsme zjistili, že v Česku pracuje ve službách asi 61 % lidí a v USA skoro 80 %. Terciérní sektor je tedy největší „patro“ hospodářství. Co všechno do něj patří?' },
             { type: 'p', text: 'Služby nic nevyrábějí, ale něco pro nás dělají. Tady jsou hlavní skupiny, se kterými se potkáš každý týden:' },
             { type: 'iconlist', items: [
               { icon: 'coin', title: 'Obchod a finance', text: 'supermarket, e-shop, banka, pojišťovna' },
@@ -802,7 +802,7 @@ const level: LevelContent = {
             ], marks: [{ x: 2020, y: 407, label: 'pandemie covidu-19' }], caption: 'Mezinárodní příjezdy turistů ve světě v milionech (UN Tourism, zaokrouhleno). V roce 2024 se cestovní ruch vrátil skoro na úroveň roku 2019.' },
             { type: 'p', text: 'Za 75 let se počet cest do zahraničí zvýšil více než padesátkrát. V roce 2020 kvůli pandemii covidu-19 zavřely hranice a cestování kleslo asi o 70 %, pak se rychle vrátilo. Kam lidé jezdí nejvíc?' },
             { type: 'iconlist', items: [
-              { icon: 'castle', title: 'Francie', text: 'asi 100 mil. zahraničních návštěvníků (2024): Paříž, Alpy, Azurové pobřeží' },
+              { icon: 'castle', title: 'Francie', text: 'asi 100 mil. zahraničních návštěvníků (2024, Atout France): Paříž, Alpy, Azurové pobřeží' },
               { icon: 'sun', title: 'Španělsko', text: 'asi 94 mil. (2024): pláže, ostrovy, Barcelona' },
               { icon: 'city', title: 'USA', text: 'asi 72 mil. (2024): New York, národní parky, Florida' },
             ] },
@@ -828,7 +828,7 @@ const level: LevelContent = {
             ], answer: 'Asi 5 hostů na jednoho obyvatele za rok.' },
             { type: 'p', text: 'Takový nápor má dvě strany. Porovnej je:' },
             { type: 'compare', columns: [
-              { title: 'Přínosy', icon: 'coin', tone: 'good', points: ['cestovní ruch tvoří asi pětinu chorvatského HDP', 'práce v hotelech, restauracích a na lodích', 'peníze na opravy památek, silnic a přístavů', 'poznávání jiných kultur'] },
+              { title: 'Přínosy', icon: 'coin', tone: 'good', points: ['cestovní ruch se i s navazujícími obory podílí asi pětinou až čtvrtinou na chorvatském HDP', 'práce v hotelech, restauracích a na lodích', 'peníze na opravy památek, silnic a přístavů', 'poznávání jiných kultur'] },
               { title: 'Problémy', icon: 'warning', tone: 'bad', points: ['přeplněná města a pláže, fronty', 'byty se mění na apartmány pro turisty, místní se odstěhují', 'odpadky, hluk, spotřeba vody v suchém létě', 'práce jen v sezoně, v zimě města vymírají'] },
             ] },
             { type: 'p', text: 'Když turistů přijede víc, než místo snese, mluví se o **overtourismu** (přetížení cestovním ruchem). Dubrovník proto omezil počet výletních lodí, které mohou kotvit v jeden den, a Benátky od roku 2024 vybírají vstupné od jednodenních návštěvníků. I centrum Prahy řeší podobné potíže.' },
@@ -841,7 +841,7 @@ const level: LevelContent = {
           title: 'Vývoz a dovoz',
           icon: 'container',
           blocks: [
-            { type: 'p', text: 'Žádný stát nevyrobí všechno sám. Česko nemá banány ani ropu, Saúdská Arábie zase nevyrábí auta. Státy si proto zboží a služby vyměňují. K tomu potřebujeme tři pojmy:' },
+            { type: 'p', text: 'Žádný stát nevyrobí všechno sám. Česko nemá banány a skoro žádnou ropu, Saúdská Arábie zase dováží většinu potravin. Státy si proto zboží a služby vyměňují. K tomu potřebujeme tři pojmy:' },
             { type: 'keyterms', items: [
               { term: '**Vývoz (export)**', def: 'zboží a služby, které stát prodá do ciziny – Škodovky do Německa, ubytování českým turistům v Chorvatsku' },
               { term: '**Dovoz (import)**', def: 'zboží a služby, které stát koupí z ciziny – banány z Ekvádoru, mobily z Číny' },
@@ -854,7 +854,7 @@ const level: LevelContent = {
             ], answer: 'Obchodní bilance je aktivní, přebytek 20 mld. USD.' },
             { type: 'p', text: 'Kdo prodává do světa nejvíc zboží? Podle Světové obchodní organizace (WTO) to byly v roce 2024 tyto tři státy. Na mapě je pro srovnání i Česko:' },
             { type: 'map', view: 'world', highlight: [
-              { codes: ['CHN', 'USA', 'DEU'], tone: 'a', label: 'největší vývozci zboží: Čína (3,58 bil. USD), USA (2,07 bil. USD), Německo (1,66 bil. USD)' },
+              { codes: ['CHN', 'USA', 'DEU'], tone: 'a', label: 'největší vývozci zboží: Čína (asi 3,6 bil. USD), USA (asi 2,1 bil. USD), Německo (asi 1,7 bil. USD)' },
               { codes: ['CZE'], tone: 'b', label: 'Česko' },
             ], layers: ['names'], caption: 'Největší vývozci zboží na světě v roce 2024 (WTO).' },
             { type: 'p', text: 'Česko je malé, ale velmi otevřené: vývoz zboží a služeb odpovídá víc než dvěma třetinám jeho HDP. Vyváží hlavně auta, stroje a elektroniku. Asi třetina českého vývozu míří do Německa, proto se říká, že když Německo kýchne, Česko dostane rýmu.' },
@@ -871,11 +871,11 @@ const level: LevelContent = {
             { type: 'map', view: 'world', highlight: [
               { codes: ['AUT', 'BEL', 'BGR', 'HRV', 'CYP', 'CZE', 'DNK', 'EST', 'FIN', 'FRA', 'DEU', 'GRC', 'HUN', 'IRL', 'ITA', 'LVA', 'LTU', 'LUX', 'MLT', 'NLD', 'POL', 'PRT', 'ROU', 'SVK', 'SVN', 'ESP', 'SWE'], tone: 'a', label: 'Evropská unie (jednotný trh)' },
               { codes: ['USA', 'CAN', 'MEX'], tone: 'b', label: 'USMCA (Severní Amerika)' },
-              { codes: ['BRA', 'ARG', 'URY', 'PRY'], tone: 'c', label: 'Mercosur (Jižní Amerika)' },
-              { codes: ['BRN', 'KHM', 'IDN', 'LAO', 'MYS', 'MMR', 'PHL', 'SGP', 'THA', 'VNM'], tone: 'd', label: 'ASEAN (jihovýchodní Asie)' },
+              { codes: ['BRA', 'ARG', 'URY', 'PRY', 'BOL'], tone: 'c', label: 'Mercosur (Jižní Amerika)' },
+              { codes: ['BRN', 'KHM', 'IDN', 'LAO', 'MYS', 'MMR', 'PHL', 'SGP', 'THA', 'VNM', 'TLS'], tone: 'd', label: 'ASEAN (jihovýchodní Asie)' },
             ], caption: 'Velké obchodní bloky světa.' },
-            { type: 'p', text: 'Nejtěsněji je propojená **Evropská unie**. Má jednotný trh: zboží, služby, lidé a peníze se mezi 27 státy pohybují bez cel a kontrol. Proto může Škoda poslat auto do Francie stejně snadno jako do Brna. Podrobněji o EU v lekci „Evropská unie a integrace“.' },
-            { type: 'p', text: 'Pravidla obchodu pro celý svět hlídá **Světová obchodní organizace (WTO)**, jejímž členem je 166 států. Řeší spory, když jeden stát druhému nespravedlivě zvýší cla. Pozor: obchodní blok neznamená, že státy obchodují jen mezi sebou. Když v roce 2025 USA zvýšily cla na dovoz z mnoha zemí, dotklo se to i evropských automobilek a jejich českých dodavatelů.' },
+            { type: 'p', text: 'Nejtěsněji je propojená **Evropská unie**. Má jednotný trh: zboží, služby, lidé a peníze se mezi 27 státy pohybují bez cel a většinou i bez hraničních kontrol. Proto může Škoda poslat auto do Francie stejně snadno jako do Brna. Podrobněji o EU v lekci „Evropská unie a integrace“.' },
+            { type: 'p', text: 'Pravidla obchodu pro celý svět hlídá **Světová obchodní organizace (WTO)**, která má 166 členů (státy, EU i samostatná celní území). Řeší spory, když jeden stát druhému nespravedlivě zvýší cla. Pozor: obchodní blok neznamená, že státy obchodují jen mezi sebou. Když v roce 2025 USA zvýšily cla na dovoz z mnoha zemí, dotklo se to i evropských automobilek a jejich českých dodavatelů.' },
             { type: 'p', text: 'Zboží, služby, lidé i peníze se dnes pohybují po celém světě rychleji než kdykoli dřív. Tomu se říká globalizace a v příští lekci „Globalizace a rozvoj“ uvidíme, komu pomáhá a komu ne. Než tam vyrazíš, rozhodni v rychlé hře, co je pravda a co lež.' },
             { type: 'game', gameId: 'swipe', text: 'Pravda, nebo lež? Tvrzení o hospodářství, dopravě a obchodu.' },
             { type: 'check', question: { kind: 'choice', q: 'Co je hlavní výhodou obchodního bloku pro jeho členy?', options: ['snížená nebo zrušená cla mezi členy, takže obchod je levnější', 'členové spolu nesmějí obchodovat', 'každý člen musí mít stejnou měnu', 'členové vybírají vyšší cla mezi sebou'], answer: 0, explain: 'Uvnitř bloku zboží přejíždí hranice levněji nebo bez cla. Společnou měnu mají jen někteří (euro v části EU).' } },
@@ -941,7 +941,7 @@ const level: LevelContent = {
           title: 'Nadnárodní firmy',
           icon: 'factory',
           blocks: [
-            { type: 'p', text: '**Nadnárodní firma** (anglicky *transnational corporation*) má sídlo v jednom státě, ale továrny, obchody a kanceláře v mnoha dalších. Patří sem Apple, Samsung, IKEA nebo Volkswagen – a Volkswagenu od roku 1991 patří i Škoda.' },
+            { type: 'p', text: '**Nadnárodní firma** (anglicky *transnational corporation*) má sídlo v jednom státě, ale továrny, obchody a kanceláře v mnoha dalších. Patří sem Apple, Samsung, IKEA nebo Volkswagen – a do koncernu Volkswagen patří od roku 1991 i Škoda.' },
             { type: 'p', text: 'Když taková firma postaví továrnu v nějaké zemi, přináší jí výhody i rizika. Porovnej je:' },
             { type: 'compare', columns: [
               { title: 'Co přináší', icon: 'check', tone: 'good', points: ['pracovní místa a mzdy', 'nové technologie a znalosti', 'zakázky pro místní dodavatele', 'daně pro stát a obce'] },
@@ -1072,7 +1072,7 @@ const level: LevelContent = {
     { kind: 'match', q: 'Přiřaď činnost k sektoru hospodářství.', pairs: [
       ['těžba železné rudy v Austrálii', 'primární sektor'],
       ['montáž mobilů v Číně', 'sekundární sektor'],
-      ['hotel v Dubrovníku', 'terciární sektor'],
+      ['hotel v Dubrovníku', 'terciérní sektor'],
       ['vývoj čipu v laboratoři', 'kvartérní sektor'],
     ], explain: 'Těžba bere suroviny z přírody, montáž je výroba, hotel poskytuje službu a vývoj čipu tvoří nové znalosti.' },
     { kind: 'number', q: 'Stát má HDP 1 200 mld. USD a 40 mil. obyvatel. Jaké je jeho HDP na obyvatele?', answer: 30000, tolerance: 1, unit: 'USD', explain: '1 200 000 000 000 : 40 000 000 = 30 000 USD na obyvatele – podobně jako Česko.' },
