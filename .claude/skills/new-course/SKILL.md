@@ -14,6 +14,7 @@ A course is built in this order, and every phase finishes before the next one st
 | 3. Course structure | `src/courses/<id>/index.ts` + specs for figures and games | tsc clean, ids final |
 | 4. Shared building blocks | figures, icons, games, experiments, vignettes (parallel agents) | catalog tests pass |
 | 5. Lessons | `src/courses/<id>/levels/lN.ts` (one agent per level) | validator + teaching thread pass |
+| 5b. Independent review | terminology, facts, questions, figure labels (one reviewer per level, not the author) | review reports, open points to the user |
 | 6. Wiring and release | course visible in the app, specs updated | full check, visual check, deploy |
 
 Read first: `CLAUDE.md`, `spec/README.md`, `spec/content-guidelines.md` (especially **Teaching thread** and **Experiments**), `spec/illustration-guide.md`, and one finished course as the model: `spec/courses/fyzika/syllabus.md` + `src/courses/fyzika/` (the most recent and complete).
@@ -79,6 +80,10 @@ Brief: [references/lesson-brief.md](references/lesson-brief.md). The format, in 
 
 Agents verify with the content validator and the teaching-thread check (commands in the brief). Commit each level locally as soon as it passes; never commit a level that is still being written. **Don't push** while the course is incomplete: its content test and `catalog-complete` fail until every level and figure exists, and every push runs CI (pushing `main` deploys).
 
+## 5b. Independent subject review
+
+Tests check structure, not biology or physics. Before release, every level is read by a **reviewer agent that did not write it**, acting as a strict Czech teacher: brief [references/review-brief.md](references/review-brief.md). The authors plan in English and write in Czech, so the typical error is a term that is fine in English and wrong in a Czech school (*spermie* for a moss, *potravinový řetězec*). Reviewers fix clear errors, list debatable points; the orchestrator commits each level and shows the user the open points. Add every new trap the reviewers find to the brief's trap list. One more reviewer reads the texts of the course's games.
+
 ## 6. Wiring and release
 
 Finish [references/wiring-checklist.md](references/wiring-checklist.md): `available: true`, badges, album/emblems, vignettes, course in `COURSES`, specs (README, spec/README, roadmap, architecture), recomputed lesson minutes.
@@ -91,6 +96,7 @@ Before pushing: `npx tsc --noEmit -p tsconfig.json && npx vitest run && npx vite
 - Physics-style quantities are plain text with `_{}`/`^{}`; `$…$` is chemistry mode only.
 - One file per level. A split file (like chemie `l6b.ts`) must be listed explicitly in agent briefs or it gets skipped.
 - Agents share the scratchpad: give each its own subfolder, and forbid temporary files in `src/`.
+- A course written by agents that think in English carries Czech terminology errors that no test catches (a figure even copied *spermie* for mosses from the lesson). The independent review (5b) is not optional.
 - Bridges must link back to the text just before and name the next thing concretely; a vague allusion confuses (see the rejected example in content-guidelines).
 - Vector art means real paths. Never wrap a PNG in an SVG.
 - Raster images from generators can carry metadata. Strip it, and prefer drawing in code.

@@ -1,0 +1,36 @@
+# Brief: independent subject review of one level (Q & Why)
+
+Repo /home/user/edu4me. Czech learning app for teens. You review **<COURSE> level <N> – <title>** (`src/courses/<course>/levels/l<N>.ts`, lessons <ids>) as a strict Czech **<subject> teacher** would before giving it to a class. You did not write this text. Assume it contains errors: it was written by agents that plan in English and write in Czech, so expect calques and English concepts forced onto Czech terms. Other reviewers work on other levels at the same time.
+
+## What to check, in this order
+1. **Czech school terminology.** Every term as Czech textbooks for ZŠ / gymnázium use it, and the right term for the right group or context. Start with the trap list below, but read every sentence: the list is not complete. Spelling of terms (Czech forms, e.g. *chromozom*, *bílkoviny* at ZŠ).
+2. **Facts.** Every claim, number, date, name, example and explanation. Watch for oversimplifications that become false ("tepny vedou okysličenou krev"), misconceptions stated as facts, mixed-up causes. Verify anything you are not certain of with WebSearch (Czech sources first).
+3. **Questions.** Every quiz, check and level-test question: exactly one defensible answer (or exactly the stated set for `multi`), correct `answer` index, `explain` that is true and matches the answer, no trick wording, numbers that compute.
+4. **Figures, experiments and parametric blocks used in this level.** Labels, captions and aria-labels say the same as the lesson and are correct. Open each figure component (ids → `src/illustrations/figures/lazy.ts` → the group folder) and read its texts. If a *drawing* is wrong (not just a label), describe it in the report, don't redraw.
+5. **Order and level.** Nothing is used before the lesson that introduces it (see the syllabus); the language fits the stage (ZŠ short and concrete, gymnázium precise).
+
+## How to fix
+- Fix clear errors yourself in your level file. Keep the teaching thread intact (`spec/content-guidelines.md`): when you rewrite a sentence, keep its role (opening, bridge, closing).
+- Text in figure, experiment or game files: change only with exact small `Edit`s of the wrong string (other reviewers may edit other strings in the same file); never rewrite such a file.
+- Don't change ids, lesson titles (they must match `index.ts`) or the structure; don't add or remove lessons.
+- When an error has a correct form, fix it. When it is a matter of opinion or school tradition differs, don't change it: list it for the user.
+- Write each fix to disk at once.
+
+## Verify
+- `npx vitest run src/courses/<course>/content.test.ts -t "l<N> "` and `npx vitest run src/core/flow.test.ts -t "<course> l<N>\."`
+- `npx tsc --noEmit -p tsconfig.json` (no errors in files you touched); if you edited a figure, experiment or game, run its tests too.
+- Don't commit.
+
+## Report
+Write `<scratchpad>/review/<course>/l<N>.md`: a table of fixes (where · before → after · why) and a list "Pro rozhodnutí" (debatable points with your recommendation). Reply in ≤ 120 words: number of fixes by category (terminology / facts / questions / figures), the worst three, and how many open points.
+
+## Trap list (extend it whenever a review finds a new trap)
+General: decimal comma; a space between number and unit; Czech quotes „…“; English calques (*potravinový řetězec* → *potravní řetězec*; *proteiny* → *bílkoviny* at ZŠ; *rodina* → *čeleď*).
+
+Biology:
+- sex cells: animals *vajíčko*, *spermie*; mosses, ferns, algae *vaječná buňka*, *spermatozoid* (zárodečník, pelatka); seed plants *samčí buňky* from the pollen, *vaječná buňka* in the *vajíčko* (ovule) → seed; never *spermie* for a plant
+- *plod* (botany) vs *ovoce* (food); *semeno* vs *plod*; *souplodí* (strawberry, raspberry)
+- *tepna* / *žíla* by direction (from / to the heart), not by oxygen (plicní tepna carries deoxygenated blood)
+- taxonomy ranks: říše, kmen (botany also oddělení), třída, řád, čeleď, rod, druh
+- *přírodní výběr*; *producent, konzument, rozkladač (destruent)*; *společenstvo*, *populace*, *ekosystém*
+- *pavoukovci* are not insects; *netopýr* and *velryba* are mammals; viruses are not cells
