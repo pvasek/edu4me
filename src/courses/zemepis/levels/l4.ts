@@ -748,7 +748,7 @@ const level: LevelContent = {
               { lat: 50.18, lon: 16.82, label: 'Klepý (Hora tří moří)', kind: 'peak' },
               { lat: 50.87, lon: 14.24, label: 'Hřensko (Labe opouští Česko)', kind: 'place' },
               { lat: 50.09, lon: 14.42, label: 'Praha', kind: 'capital' },
-            ], caption: 'Řeky Česka. Na vrcholu Klepý (1 144 m n. m.) u Králického Sněžníku se stýkají úmoří Severního, Baltského a Černého moře.' },
+            ], caption: 'Řeky Česka. Na vrcholu Klepý (1 145 m n. m.) u Králického Sněžníku se stýkají úmoří Severního, Baltského a Černého moře.' },
             { type: 'p', text: 'Jaký kus Česka patří ke kterému moři, ukazuje tabulka. Všimni si, že skoro dvě třetiny území odvodňuje Labe:' },
             { type: 'table', headers: ['úmoří', 'hlavní řeka a kam ústí', 'podíl území Česka'], rows: [
               ['Severní moře', 'Labe (s Vltavou, Ohří, Jizerou) – ústí za Hamburkem', '≐ 63 %'],

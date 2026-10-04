@@ -146,7 +146,7 @@ const level: LevelContent = {
           icon: 'river',
           blocks: [
             { type: 'p', text: 'V lekci „Řeky, jezera a ledovce“ jsme zjistili, že přes Česko vede hlavní evropské rozvodí. Teď to spojíme s polohou státu: proč je to pro zemi bez moře tak důležité?' },
-            { type: 'p', text: 'Česko odvodňují tři velké řeky. Labe s Vltavou odvádí vodu do Severního moře, Odra do Baltského a Morava s Dyjí přes Dunaj do Černého moře. Úmoří se stýkají na hoře **Klepý** (1 144 m) u Králického Sněžníku, které se proto říká Hora tří moří.' },
+            { type: 'p', text: 'Česko odvodňují tři velké řeky. Labe s Vltavou odvádí vodu do Severního moře, Odra do Baltského a Morava s Dyjí přes Dunaj do Černého moře. Úmoří se stýkají na hoře **Klepý** (1 145 m) u Králického Sněžníku, které se proto říká Hora tří moří.' },
             { type: 'p', text: 'Na obrázku najdi tři povodí, rozvodí mezi nimi a Horu tří moří:' },
             { type: 'diagram', id: 'czech-watersheds', caption: 'Úmoří Česka: Severní moře (Labe, asi 63 % území), Černé moře (Morava a Dyje přes Dunaj, asi 28 %), Baltské moře (Odra, asi 9 %).' },
             { type: 'p', text: 'Skoro všechna voda v našich řekách u nás spadne jako déšť nebo sníh a pak odteče k sousedům. V suchém roce nám ji tedy nikdo „nepošle“. A co do řek vypustíme, dostanou po proudu Němci, Poláci, Slováci a další. Proto se o čistotě Labe nebo Odry jedná v mezinárodních komisích.' },
@@ -178,7 +178,7 @@ const level: LevelContent = {
         { kind: 'tf', q: 'Morava a Moravskoslezský kraj jsou dvě jména pro totéž území.', answer: false, explain: 'Morava je historická země, kraj je dnešní správní celek. Moravskoslezský kraj zahrnuje jen část Moravy a k tomu české Slezsko.' },
         { kind: 'choice', q: 'Které území přibylo k Československu v roce 1920 od Německa?', options: ['Hlučínsko', 'Valticko', 'Podkarpatská Rus', 'Šluknovský výběžek'], answer: 0, explain: 'Hlučínsko u Opavy patřilo do roku 1920 Německu. Valticko přibylo ve stejném roce od Rakouska.' },
         { kind: 'number', q: 'Česko má rozlohu 78 871 km², Slovensko 49 035 km². O kolik km² je Česko větší?', answer: 29836, tolerance: 0, unit: 'km²', explain: '78 871 − 49 035 = 29 836 km², Česko je tedy asi o 60 % větší.' },
-        { kind: 'text', q: 'Jak se jmenuje hora u Králického Sněžníku, na které se stýkají úmoří tří moří?', accept: ['Klepý', 'Klepy', 'Hora tří moří'], explain: 'Na vrcholu Klepý (1 144 m) se stýkají úmoří Severního, Baltského a Černého moře.' },
+        { kind: 'text', q: 'Jak se jmenuje hora u Králického Sněžníku, na které se stýkají úmoří tří moří?', accept: ['Klepý', 'Klepy', 'Hora tří moří'], explain: 'Na vrcholu Klepý (1 145 m) se stýkají úmoří Severního, Baltského a Černého moře.' },
         { kind: 'choice', q: 'Místo A leží na 51° s. š., místo B na stejném poledníku na 48° 30′ s. š. Jak daleko jsou od sebe?', options: ['asi 278 km', 'asi 180 km', 'asi 493 km', 'asi 111 km'], answer: 0, explain: 'Rozdíl je 2° 30′ = 2,5° a jeden stupeň šířky měří asi 111 km: 2,5 · 111 ≐ 278 km.' },
       ],
     },
