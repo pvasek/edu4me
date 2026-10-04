@@ -266,7 +266,7 @@ export function datelineTask(rng: Rng): ChoiceTask {
   const wrongs = [day, (day + (west ? 6 : 1)) % 7, (day + 2) % 7, (day + 5) % 7].map((d) => WEEKDAYS[d])
   const route = west
     ? { text: 'z Aljašky na Čukotku (na západ)', from: { lat: 65.6, lon: -168.1 }, to: { lat: 66.1, lon: 169.8 } }
-    : { text: 'ze Samoy na Havajské ostrovy (na východ)', from: { lat: -13.8, lon: 172.1 }, to: { lat: 21.3, lon: -157.9 } }
+    : { text: 'z Fidži na Havajské ostrovy (na východ)', from: { lat: -18.1, lon: 178.4 }, to: { lat: 21.3, lon: -157.9 } }
   return {
     type: 'choice',
     key: `date:${west ? 'w' : 'e'}:${day}`,

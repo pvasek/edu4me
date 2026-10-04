@@ -99,7 +99,7 @@ export const POLAR: (Place & { view: 'arctic' | 'antarctica'; note?: string })[]
     lon: 25.7294,
     code: 'FIN',
     view: 'arctic',
-    note: 'Severní polární kruh vede asi 8 km severně od centra města (u „Santovy vesnice“).',
+    note: 'Severní polární kruh vede jen několik kilometrů severně od centra (vyznačený je u „Santovy vesnice“). Lom světla v atmosféře ale zvedá Slunce nad obzor, takže tu zhruba od 6. června do 7. července nezapadá.',
   },
   { name: 'stanice McMurdo', lat: -77.8463, lon: 166.6682, code: 'ATA', view: 'antarctica' },
   { name: 'jižní pól', lat: -90, lon: 0, code: 'ATA', view: 'antarctica' },

@@ -178,7 +178,7 @@ export function denominatorTask(s: number): NumberTask {
     type: 'number',
     key: `den-${s}`,
     eyebrow: 'Z grafického na číselné',
-    text: `Na mapě odpovídá 1${NB}cm skutečným ${n.text}. Jaké je číselné měřítko mapy?`,
+    text: `1${NB}cm na mapě odpovídá ve skutečnosti ${n.text}. Jaké je číselné měřítko mapy?`,
     answer: s,
     unit: '',
     prefix: `1${NB}:`,

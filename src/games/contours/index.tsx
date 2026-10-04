@@ -187,7 +187,7 @@ export default function Contours({ levelId, onFinish }: GameProps) {
           {t.kind !== 'interval' && (
             <figcaption className="g-ct-legend">
               <span className="g-ct-key g-ct-key-c" aria-hidden="true" /> vrstevnice po {t.map.interval} m
-              <span className="g-ct-key g-ct-key-ci" aria-hidden="true" /> zesílené po {5 * t.map.interval} m
+              <span className="g-ct-key g-ct-key-ci" aria-hidden="true" /> zdůrazněné po {5 * t.map.interval} m
             </figcaption>
           )}
         </figure>

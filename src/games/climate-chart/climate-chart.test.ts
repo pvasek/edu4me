@@ -39,7 +39,7 @@ describe('climate-chart data', () => {
     // [station, yearly mean °C or null, yearly total mm] as printed in the source table
     const yearly: [string, number | null, number][] = [
       ['manaus', 27.4, 2362],
-      ['praha', 11.5, 454],
+      ['praha', 11.3, 454], // ČHMÚ temperature normal
       ['brno', 10.3, 522],
       ['snezka', 1.4, 1091],
       ['singapur', null, 2113],

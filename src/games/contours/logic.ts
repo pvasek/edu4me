@@ -275,7 +275,7 @@ export function onContourTask(rng: Rng): ChoiceTask {
       reveal: [],
       options: opts.map((x) => ({ id: String(x), label: `${x}${NB}m` })),
       answer: String(L),
-      why: `Popsané (zesílené) vrstevnice jsou po ${5 * i}${NB}m, tenké mezi nimi po ${i}${NB}m. Odpočítej je od nejbližšího čísla: X leží na vrstevnici ${L}${NB}m.`,
+      why: `Popsané (zdůrazněné) vrstevnice jsou po ${5 * i}${NB}m, tenké mezi nimi po ${i}${NB}m. Odpočítej je od nejbližšího čísla: X leží na vrstevnici ${L}${NB}m.`,
     }
   }
   return fail('on-contour')
@@ -816,7 +816,7 @@ export function highestTask(rng: Rng): ChoiceTask {
       kind: 'highest',
       level: 9,
       eyebrow: 'Turistická mapa',
-      text: 'Který z vrcholů A–D je nejvyšší?',
+      text: `Který z vrcholů A–${'ABCD'[cand.length - 1]} je nejvyšší?`,
       map: tm.m,
       marks: order.map((o, k) => ({ ...o.p, label: 'ABCD'[k] })),
       segs: [],

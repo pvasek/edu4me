@@ -146,8 +146,8 @@ function choice(right: string, wrong: string[], rng: Rng) {
 /** One line about a feature: its note, how it formed, or its age. */
 export function featureWhy(f: Feature): string {
   if (f.note) return f.note
-  if (f.mechWhy) return `${f.name}: ${f.mechWhy}`
-  if (f.age) return `${f.name}: ${f.age === 'old' ? 'staré pohoří, vyvrásněné v prvohorách a dnes zarovnané' : 'mladé pohoří, vyvrásněné v třetihorách'}.`
+  if (f.mechWhy) return f.mechWhy.startsWith(f.name) ? f.mechWhy : `${f.name}: ${f.mechWhy}`
+  if (f.age) return `${f.name}: ${f.age === 'old' ? 'staré pohoří, vyvrásněné v prvohorách a dnes snížené erozí' : 'mladé pohoří, vyvrásněné v třetihorách'}.`
   return `${f.name}.`
 }
 const feat = (f: Feature): Target => ({ kind: 'feature', id: f.id, name: f.name, parts: f.parts })
@@ -213,7 +213,10 @@ export function mechTask(f: Feature, rng: Rng): ChoiceTask {
   }
 }
 
-export const AGE_TEXT = { young: 'mladé pohoří (alpínsko-himálajské vrásnění)', old: 'staré pohoří (vrásnění v prvohorách)' } as const
+/** "pohoří Alpy", but "Skandinávské pohoří" without the word twice. */
+const rangeName = (f: Feature) => (f.name.includes('pohoří') ? f.name : `pohoří ${f.name}`)
+const capName = (f: Feature) => rangeName(f)[0].toUpperCase() + rangeName(f).slice(1)
+export const AGE_TEXT = { young: 'mladé pohoří (alpínské vrásnění v třetihorách)', old: 'staré pohoří (vrásnění v prvohorách)' } as const
 export function ageTask(f: Feature, rng: Rng): ChoiceTask {
   const a = f.age!
   const opts = shuffle([AGE_TEXT.young, AGE_TEXT.old], rng)
@@ -222,11 +225,11 @@ export function ageTask(f: Feature, rng: Rng): ChoiceTask {
     key: 'f:' + f.id,
     level: 3,
     eyebrow: 'Mladá a stará pohoří',
-    text: `Je vyznačené pohoří ${f.name} mladé, nebo staré?`,
+    text: `Je vyznačené ${rangeName(f)} mladé, nebo staré?`,
     why:
       a === 'young'
-        ? `Pohoří ${f.name} se vyvrásnilo v třetihorách a zvedá se dodnes: vysoké, ostré štíty, časté zemětřesení.`
-        : `Pohoří ${f.name} se vyvrásnilo v prvohorách; eroze ho za stovky milionů let snížila a zaoblila.`,
+        ? `${capName(f)} vzniklo při alpínském vrásnění (hlavně v třetihorách): má vysoké, ostré štíty, eroze ho ještě nestihla snížit.`
+        : `${capName(f)} se vyvrásnilo v prvohorách; eroze ho za stovky milionů let snížila a zaoblila.`,
     view: f.view,
     layers: H3,
     highlight: [],

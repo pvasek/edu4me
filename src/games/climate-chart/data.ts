@@ -1,7 +1,7 @@
 /**
  * Klimatogram – curated climate normals of real stations (monthly mean temperature °C,
  * monthly precipitation mm, January first). Every set is the 1991–2020 normal from the
- * station's climate table on English Wikipedia (`ref`; the tables cite the national
+ * station's climate table on English Wikipedia (Praha-Klementinum temperatures: ČHMÚ) (`ref`; the tables cite the national
  * weather services, WMO and NOAA), checked in October 2026: the 12 values were read
  * one by one and their sum / mean compared with the table's yearly value.
  * Darwin: the table has no daily mean, so it is the mean of the daily maximum and minimum.
@@ -25,6 +25,8 @@ export interface Station {
   region: string
   /** krajinný pás (biome) of the place, where it is clear-cut */
   biome?: Biome
+  /** on the coast with a sea-moderated climate (the only stations offered as the oceanic one in 'ocean' pairs) */
+  coastal?: true
   temp: number[]
   precip: number[]
   /** normal period (shown under the chart) */
@@ -54,10 +56,12 @@ export const STATIONS: Station[] = [
     lon: 14.42,
     region: 'střední Evropa',
     biome: 'listnatý a smíšený les',
-    temp: [1.8, 2.9, 6.5, 11.7, 16.2, 19.7, 21.6, 21.1, 16.2, 11, 6.3, 2.8],
+    // temperature: the ČHMÚ normal 1991–2020 as used in its monthly Klementinum reports (yearly 11,3 °C,
+    // the same set as lesson z10-4); precipitation: the station table on English Wikipedia
+    temp: [1.6, 2.7, 6.3, 11.5, 16.1, 19.6, 21.5, 21, 16, 10.9, 6.1, 2.6],
     precip: [18.1, 16.2, 26.3, 24.7, 58.1, 68.6, 67.4, 61.9, 33.9, 29.8, 26.2, 22.6],
     source: 'normál 1991–2020',
-    ref: 'https://en.wikipedia.org/wiki/Prague',
+    ref: 'https://www.chmi.cz (měsíční zprávy Praha-Klementinum); https://en.wikipedia.org/wiki/Prague',
   },
   {
     id: 'brno',
@@ -87,6 +91,7 @@ export const STATIONS: Station[] = [
   },
   {
     id: 'londyn',
+    coastal: true,
     name: 'Londýn-Heathrow',
     country: 'Spojené království',
     lat: 51.48,
@@ -101,6 +106,7 @@ export const STATIONS: Station[] = [
   },
   {
     id: 'rim',
+    coastal: true,
     name: 'Řím-Ciampino',
     country: 'Itálie',
     lat: 41.8,
@@ -129,6 +135,7 @@ export const STATIONS: Station[] = [
   },
   {
     id: 'reykjavik',
+    coastal: true,
     name: 'Reykjavík',
     country: 'Island',
     lat: 64.13,
@@ -221,6 +228,7 @@ export const STATIONS: Station[] = [
   },
   {
     id: 'tokio',
+    coastal: true,
     name: 'Tokio',
     country: 'Japonsko',
     lat: 35.69,
@@ -245,6 +253,7 @@ export const STATIONS: Station[] = [
   },
   {
     id: 'bombaj',
+    coastal: true,
     name: 'Bombaj',
     country: 'Indie',
     lat: 19.08,
@@ -257,6 +266,7 @@ export const STATIONS: Station[] = [
   },
   {
     id: 'singapur',
+    coastal: true,
     name: 'Singapur',
     country: 'Singapur',
     lat: 1.35,
@@ -321,6 +331,7 @@ export const STATIONS: Station[] = [
   },
   {
     id: 'kapske-mesto',
+    coastal: true,
     name: 'Kapské Město',
     country: 'Jihoafrická republika',
     lat: -33.97,
@@ -348,6 +359,7 @@ export const STATIONS: Station[] = [
   },
   {
     id: 'lima',
+    coastal: true,
     name: 'Lima',
     country: 'Peru',
     lat: -12.02,
@@ -375,6 +387,7 @@ export const STATIONS: Station[] = [
   },
   {
     id: 'buenos-aires',
+    coastal: true,
     name: 'Buenos Aires',
     country: 'Argentina',
     lat: -34.59,
@@ -412,6 +425,7 @@ export const STATIONS: Station[] = [
   },
   {
     id: 'los-angeles',
+    coastal: true,
     name: 'Los Angeles',
     country: 'USA',
     lat: 34.05,
@@ -425,6 +439,7 @@ export const STATIONS: Station[] = [
   },
   {
     id: 'sydney',
+    coastal: true,
     name: 'Sydney',
     country: 'Austrálie',
     lat: -33.86,
@@ -450,6 +465,7 @@ export const STATIONS: Station[] = [
   },
   {
     id: 'darwin',
+    coastal: true,
     name: 'Darwin',
     country: 'Austrálie',
     lat: -12.42,

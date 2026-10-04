@@ -84,7 +84,8 @@ export const STAGE_NAMES: Record<number, string> = {
 export function stageOf(p: Population): number | undefined {
   const { cbr, cdr } = p
   if (cbr === undefined || cdr === undefined) return undefined
-  if (cbr >= 30 && cdr <= 15) return 2
+  // 30–35 ‰ with fast-falling fertility (Ethiopia, Nigeria) is between stages 2 and 3 (lesson z11-1 counts 31 ‰ and falling as stage 3): left out
+  if (cbr >= 35 && cdr <= 15) return 2
   if (cbr >= 15 && cbr <= 25 && cbr - cdr >= 5) return 3
   if (cbr <= 13 && cbr - cdr >= 1) return 4
   if (cdr - cbr >= 1) return 5
@@ -403,7 +404,7 @@ function taskOf(kind: TaskKind, level: number, rng: Rng, used: Set<string>, seen
           ...base(p, { hideName: false }),
           mode: 'number',
           text: `${label(p)}: ${shares}. Spočítej **index ekonomické závislosti** – kolik dětí a seniorů připadá na 100 lidí ve věku 15–64?`,
-          why: `(${czn(s.young, 1)} + ${czn(s.old, 1)}) : ${czn(s.work, 1)} · 100 ≐ ${czn(v, 1)}. ${v >= 70 ? 'Na každého pracujícího připadá hodně závislých.' : ''}`.trim(),
+          why: `(${czn(s.young, 1)} + ${czn(s.old, 1)}) : ${czn(s.work, 1)} · 100 ≐ ${czn(v, 1)}. ${v >= 70 ? 'Na lidi v produktivním věku připadá hodně závislých.' : ''}`.trim(),
           value: v,
           tol: 1.5,
           unit: 'na 100',
@@ -415,7 +416,7 @@ function taskOf(kind: TaskKind, level: number, rng: Rng, used: Set<string>, seen
         ...base(p, { hideName: false }),
         mode: 'number',
         text: `${label(p)}: ${shares}. Kolik lidí v produktivním věku (15–64) připadá na **jednoho seniora**?`,
-        why: `${czn(s.work, 1)} : ${czn(s.old, 1)} ≐ ${czn(v, 1)}. ${v < 4 ? 'Na důchod jednoho seniora přispívá málo pracujících – důchodový systém je pod tlakem.' : 'Pracujících je zatím na jednoho seniora dost.'}`,
+        why: `${czn(s.work, 1)} : ${czn(s.old, 1)} ≐ ${czn(v, 1)}. ${v < 4 ? 'Na důchod jednoho seniora přispívá málo lidí v produktivním věku – důchodový systém je pod tlakem.' : 'Lidí v produktivním věku je zatím na jednoho seniora dost.'}`,
         value: v,
         tol: 0.2,
         unit: 'lidí',
@@ -427,7 +428,7 @@ function taskOf(kind: TaskKind, level: number, rng: Rng, used: Set<string>, seen
 
 function typeWhy(ty: PyrType): string {
   if (ty === 'progresivni') return 'Široká základna: dětí je mnohem víc než rodičů, populace roste.'
-  if (ty === 'stacionarni') return 'Dětí je zhruba stejně jako rodičů: tvar zvonu, počet obyvatel se mění málo.'
+  if (ty === 'stacionarni') return 'Dětí je zhruba stejně jako rodičů: tvar zvonu. Dětí se už nerodí víc než dřív, růst počtu obyvatel se zpomaluje nebo zastavuje.'
   return 'Základna je užší než střed: dětí je méně než rodičů, populace stárne (tvar urny).'
 }
 
@@ -435,8 +436,8 @@ function stageWhy(p: Population, st: number): string {
   const inc = czn(Math.round((p.cbr! - p.cdr!) * 10) / 10, 1)
   if (st === 2) return `Úmrtnost už je nízká, ale porodnost vysoká: přirozený přírůstek ${inc} ‰, obyvatel rychle přibývá.`
   if (st === 3) return `Porodnost klesá, ale je stále vyšší než úmrtnost: přírůstek ${inc} ‰.`
-  if (st === 4) return `Porodnost i úmrtnost jsou nízké a blízko sebe: přírůstek jen ${inc} ‰.`
-  return `Porodnost je nižší než úmrtnost: přirozený úbytek ${inc} ‰.`
+  if (st === 4) return `Porodnost i úmrtnost jsou nízké: přírůstek jen ${inc} ‰.`
+  return `Porodnost je nižší než úmrtnost: přirozený přírůstek je záporný (${inc} ‰), obyvatel bez migrace ubývá.`
 }
 
 /* ------------------------------------------------------------------ round */

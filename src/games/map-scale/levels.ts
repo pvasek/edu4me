@@ -56,7 +56,7 @@ export const PURPOSES: Purpose[] = [
   {
     text: 'Potřebuješ vidět vrstevnice a turistické značky kolem Sněžky.',
     cls: 'hiking',
-    why: 'Vrstevnice a značené cesty kreslí turistické mapy ve středním měřítku.',
+    why: 'Vrstevnice a značené cesty mají turistické mapy v měřítku 1 : 25 000 až 1 : 50 000.',
   },
   {
     text: 'Jedete autem z Prahy do Ostravy a chcete vybrat dálnice a silnice.',

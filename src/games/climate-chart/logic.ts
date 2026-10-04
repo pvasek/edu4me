@@ -152,7 +152,7 @@ export const IRRIGATION_NAMES: Record<Irrigation, string> = {
 }
 /** Irrigation need from the Walter–Lieth dry months; undefined when it is not clear-cut. */
 export function irrigationOf(s: Station): Irrigation | undefined {
-  if (!dryClear(s)) return undefined
+  if (!dryClear(s) || koppen(s).main === 'E') return undefined
   const n = dryCount(s)
   if (n === 0) return 'none'
   if (n <= 9) return 'season'
@@ -263,7 +263,7 @@ function taskOf(kind: TaskKind, level: number, pool: Station[], rng: Rng, used: 
         const why =
           kind === 'wettest'
             ? `Nejvyšší sloupec je ${roman(i)} (${MONTHS[i]}): ${fmtP(s.precip[i])}. Je to ${placeLine(s)}.`
-            : `Teplotní křivka je ${kind === 'warmest' ? 'nejvýš' : 'nejníž'} v ${roman(i)} (${MONTHS[i]}): ${fmtT(s.temp[i])}. Je to ${placeLine(s)}.`
+            : `Teplotní křivka je ${kind === 'warmest' ? 'nejvýš' : 'nejníž'} ${IN_MONTH[i]} (${roman(i)}): ${fmtT(s.temp[i])}. Je to ${placeLine(s)}.`
         return { ...base(s, { marks: [[i]] }), mode: 'month', text, why, answer: [i] }
       }
       return undefined
@@ -276,7 +276,7 @@ function taskOf(kind: TaskKind, level: number, pool: Station[], rng: Rng, used: 
         ...base(s, { marks: [[st.warmest, st.coldest]] }),
         mode: 'number',
         text: 'Jaká je tu **roční amplituda teploty** (rozdíl mezi nejteplejším a nejchladnějším měsícem)? Odečti z grafu.',
-        why: `${MONTHS_ROMAN[st.warmest]}: ${fmtT(s.temp[st.warmest])}, ${MONTHS_ROMAN[st.coldest]}: ${fmtT(s.temp[st.coldest])} → ${czn(s.temp[st.warmest], 1)} − (${czn(s.temp[st.coldest], 1)}) = ${fmtT(st.range)}. ${st.range >= 20 ? 'Velká amplituda = vnitrozemské (kontinentální) podnebí.' : st.range <= 8 ? 'Malá amplituda: moře nebo tropy vyrovnávají teplotu.' : ''} Je to ${placeLine(s)}.`.trim(),
+        why: `${MONTHS_ROMAN[st.warmest]}: ${fmtT(s.temp[st.warmest])}, ${MONTHS_ROMAN[st.coldest]}: ${fmtT(s.temp[st.coldest])} → ${czn(s.temp[st.warmest], 1)} − ${s.temp[st.coldest] < 0 ? `(${czn(s.temp[st.coldest], 1)})` : czn(s.temp[st.coldest], 1)} = ${fmtT(st.range)}.${st.range >= 20 ? ' Velká amplituda je znakem pevninského (kontinentálního) podnebí.' : st.range <= 8 ? ' Malá amplituda: moře nebo tropy vyrovnávají teplotu.' : ''} Je to ${placeLine(s)}.`,
         value: st.range,
         tol: 1.5,
         unit: '°C',
@@ -422,10 +422,10 @@ function taskOf(kind: TaskKind, level: number, pool: Station[], rng: Rng, used: 
         for (const b of pool) {
           if (a.id === b.id || !fresh([b.id]) || used.has(`${kind}:${b.id}:${a.id}`)) continue
           if (kind === 'ocean') {
-            if (Math.sign(a.lat) !== Math.sign(b.lat) || Math.abs(a.lat - b.lat) > 12) continue
+            if (!a.coastal || Math.sign(a.lat) !== Math.sign(b.lat) || Math.abs(a.lat - b.lat) > 12) continue
             if (statsOf(b).range - statsOf(a).range < 10) continue
           } else {
-            if (!dryClear(a) || !dryClear(b) || dryCount(b) - dryCount(a) < 3) continue
+            if (!dryClear(a) || !dryClear(b) || koppen(a).main === 'E' || koppen(b).main === 'E' || dryCount(b) - dryCount(a) < 3) continue
           }
           pairs.push([a, b]) // a = the answer for 'ocean' (smaller range); b for 'irrig-pair' (more dry months)
         }
@@ -484,17 +484,17 @@ function biomeWhy(s: Station): string {
   const st = statsOf(s)
   switch (s.biome) {
     case 'tropický deštný les':
-      return 'Celý rok horko a vlhko, žádné suché období.'
+      return `Celý rok horko a za rok spadne ${fmtP(st.totalP)} srážek; dlouhé suché období tu není.`
     case 'savana':
       return `Horko celý rok, ale ${st.dryCount} měsíců sucha: období dešťů a období sucha se střídají.`
     case 'poušť a polopoušť':
       return `Za rok jen ${fmtP(st.totalP)} srážek – téměř všechny měsíce jsou suché.`
     case 'středomořské křoviny a lesy':
-      return 'Léto je suché a horké, prší hlavně v zimě.'
+      return 'Léto je suché a teplé až horké, prší hlavně v zimě.'
     case 'step':
       return `Málo srážek (${fmtP(st.totalP)}), mrazivá zima a teplé léto.`
     case 'listnatý a smíšený les':
-      return 'Mírná zima, teplé léto a srážky po celý rok.'
+      return 'Chladná zima, teplé léto a srážky po celý rok.'
     case 'tajga':
       return `Dlouhá mrazivá zima (${fmtT(s.temp[st.coldest])}), krátké teplé léto.`
     case 'tundra':
