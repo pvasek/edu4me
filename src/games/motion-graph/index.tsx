@@ -331,7 +331,7 @@ export default function MotionGraph({ levelId, onFinish }: GameProps) {
 }
 
 function hintUnit(t: NumTask): string {
-  if (t.kind === 'slope') return 'zrychlení se měří v m/s² (metr za sekundu za sekundu).'
+  if (t.kind === 'slope') return 'zrychlení se měří v m/s² (metr za sekundu na druhou).'
   if (t.kind === 'avg') return 'rychlost se měří v m/s.'
   return 'dráha je délka, měří se v metrech.'
 }

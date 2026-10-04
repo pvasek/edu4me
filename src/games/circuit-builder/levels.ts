@@ -388,7 +388,9 @@ const C11: Record<string, Gen<ChangeTask>> = {
     const [r1, r2, r3] = [pick(R11, rng), pick(R11, rng), pick(R11, rng)]
     const [burnt, other] = shuffle(['Z2', 'Z3'], rng)
     const t = pick(['Z1', other], rng)
-    return change(11, `mixRi-${burnt}-${t}-${ue}-${ri}-${r1}-${r2}-${r3}`, { ue, ri, net: ser(lamp('Z1', r1), par(lamp('Z2', r2), lamp('Z3', r3))) }, { burnt }, t)
+    const task = change(11, `mixRi-${burnt}-${t}-${ue}-${ri}-${r1}-${r2}-${r3}`, { ue, ri, net: ser(lamp('Z1', r1), par(lamp('Z2', r2), lamp('Z3', r3))) }, { burnt }, t)
+    // with R_i every lamp changes; a change under 2 % would be graded "svítí stejně" with a wrong reason
+    return task.answer === 'same' ? null : task
   },
 }
 
@@ -449,7 +451,7 @@ const BU6: Record<string, Gen<BuildTask>> = {
       [lamp('Z1', 6), lamp('Z2', 6), volt(), wire('W1')],
       { t: 'voltSource' },
       'Obě žárovky svítí a voltmetr měří **napětí zdroje**.',
-      'Voltmetr se připojuje paralelně; do série by obvod přerušil.',
+      'Voltmetr se připojuje paralelně; v sérii by kvůli svému velkému odporu proud téměř zastavil.',
     ),
   independent: () =>
     build(

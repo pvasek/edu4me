@@ -202,7 +202,7 @@ function buoyancyTask(liquids: readonly string[], rng: Rng, level: number): Numb
   const Vm3 = inDm3 ? V / 1000 : V / 1e6
   const F = round6(buoyantForce(Vm3, l.rho))
   const o = outcomeOf(m.rho, l.rho)
-  const how = o === 'plave' ? 'je přidržovaný celý pod hladinou' : 'je celý ponořený'
+  const how = o === 'plave' ? 'držíme celé pod hladinou' : 'je celé ponořené'
   return {
     key: `buoyancy:${m.id}`,
     level,
@@ -212,7 +212,7 @@ function buoyancyTask(liquids: readonly string[], rng: Rng, level: number): Numb
     unit: 'N',
     tol: Math.max(0.01, F * REL_TOL),
     symbol: 'F_{vz}',
-    text: `${cap(m.object)} o objemu **${cz(V)} ${inDm3 ? 'dm^{3}' : 'cm^{3}'}** ${how} ${l.inName} (ρ = ${rho(l.rho)}). Jak velká vztlaková síla na něj působí? (g = 10 N/kg)`,
+    text: `Těleso (${m.name}) o objemu **${cz(V)} ${inDm3 ? 'dm^{3}' : 'cm^{3}'}** ${how} ${l.inName} (ρ = ${rho(l.rho)}). Jak velká vztlaková síla na něj působí? (g = 10 N/kg)`,
     liquid: l,
     body: look(m),
     outcome: o,
@@ -325,7 +325,7 @@ function forcesTask(liquids: readonly string[], rng: Rng, level: number): Predic
       kind: 'forces',
       answer: 'predict',
       options: ['plave', 'vznasi', 'klesne'],
-      text: `Těleso o objemu **${cz(V)} dm^{3}** má tíhu **F_{G} = ${cz(FG)} N**. Ponoříme ho celé ${l.inName} (ρ = ${rho(l.rho)}) a pustíme. Co udělá? (g = 10 N/kg)`,
+      text: `Na těleso o objemu **${cz(V)} dm^{3}** působí tíhová síla **F_{G} = ${cz(FG)} N**. Ponoříme ho celé ${l.inName} (ρ = ${rho(l.rho)}) a pustíme. Co udělá? (g = 10 N/kg)`,
       liquid: l,
       body: { rho: rb, color: '#b8bec8', shape: 'block', label: 'těleso' },
       outcome: o,

@@ -153,7 +153,7 @@ export default function RayOptics({ levelId, onFinish }: GameProps) {
       setTries(1)
       jolt.shake()
       say('bad', `Tady ne. ${hint} Zkus to znovu.`)
-    } else wrongFinal(`Ani teď. ${hint} Obraz je ${propsText({ real: ap > 0, size: Math.abs(imageOf(s.f, s.a).Z!) > 1 ? 'zvětšený' : 'zmenšený', inverted: img.y < 0 })}.`)
+    } else wrongFinal(`Ani teď. ${hint} Obraz je ${propsText(propsOf(imageOf(s.f, s.a)))}.`)
   }
 
   const checkProps = () => {
@@ -178,7 +178,7 @@ export default function RayOptics({ levelId, onFinish }: GameProps) {
     if (status !== 'play' || task.kind !== 'refract') return
     setPicked(b)
     if (b === task.answer) right(true, `Správně: ${BEND_TEXT[b]}.`)
-    else wrongFinal(`Kdepak. Paprsek ${BEND_TEXT[task.answer]}.`)
+    else wrongFinal(`Kdepak. Správně: ${BEND_TEXT[task.answer]}.`)
   }
 
   const giveUp = () => {

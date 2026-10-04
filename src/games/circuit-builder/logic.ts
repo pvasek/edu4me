@@ -387,7 +387,7 @@ export function checkGoal(c: Circuit, goal: Goal): GoalCheck {
     case 'voltSource': {
       const U = reading(on, sOn, 'V')
       if (!within(U, sOn.U, 0.005)) return { ok: false, why: `Voltmetr ukazuje ${q(U, 'V')}, to je napětí jen na části obvodu, ne na zdroji (${q(sOn.U, 'V')}).` }
-      return { ok: true, why: 'Voltmetr je připojený paralelně přímo ke zdroji, proudem se jím skoro nic neztrácí.' }
+      return { ok: true, why: 'Voltmetr je připojený paralelně přímo ke zdroji a teče jím jen nepatrný proud.' }
     }
     case 'independent': {
       for (const b of lamps) {

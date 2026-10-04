@@ -295,7 +295,7 @@ export const ANGLE_SCENES: AngleScene[] = [
   {
     id: 'horses',
     title: 'Kláda a dva koně',
-    text: 'Dva koně táhnou kládu po louce, lano uvázané ke stromu ji drží na místě.',
+    text: 'Dva koně táhnou kládu po louce, lano uvázané ke stromu ji drží na místě. Tření o zem zanedbej.',
     body: 'box',
     unit: 'N',
     forces: [

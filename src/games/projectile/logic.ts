@@ -255,7 +255,7 @@ export function missText(task: ThrowTask, shot: Shot): string {
 
 export function explainOrbit(b: Body): string {
   const v = orbitalVelocity(b)
-  return `Tíha tu působí jako dostředivá síla: g = v² / R, tedy v = √(g · R) = √(${cz(b.g, 2)} m/s² · ${cz(b.R, 0)} m) ≈ ${cz(v, 0)} m/s = ${cz(v / 1000, 2)} km/s.`
+  return `Gravitační síla tu působí jako dostředivá síla: g = v² / R, tedy v = √(g · R) = √(${cz(b.g, 2)} m/s² · ${cz(b.R, 0)} m) ≈ ${cz(v, 0)} m/s = ${cz(v / 1000, 2)} km/s.`
 }
 
 /** What a satellite launched at `v` (m/s) just above the surface would do. */

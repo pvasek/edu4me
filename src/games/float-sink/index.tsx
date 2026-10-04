@@ -30,7 +30,7 @@ const KIND_LABEL: Record<Task['kind'], string> = {
   fraction: 'Ponor',
   ship: 'Loď s nákladem',
   capacity: 'Loď s nákladem',
-  forces: 'Tíha a vztlak',
+  forces: 'Tíhová a vztlaková síla',
 }
 
 /** Small picture on the answer buttons: where the block ends up. */

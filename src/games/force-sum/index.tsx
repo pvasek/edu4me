@@ -203,7 +203,7 @@ export default function ForceSum({ levelId, onFinish }: GameProps) {
   let figure: ReactNode
   let legend: ReactNode = null
   if (vectorTask) {
-    const label = `${t.title}: ${t.forces.map((f) => `síla ${f.who} ${f.mass !== undefined ? `(hmotnost ${cz(f.mass)} kg)` : `${cz(f.mag)} ${u}`} ${axisOnly ? DIR_WORD[f.angle] : `pod úhlem ${f.angle}°`}`).join(', ')}`
+    const label = `${t.title}: ${t.forces.map((f) => `${f.who} ${f.mass !== undefined ? `(hmotnost ${cz(f.mass)} kg)` : `${cz(f.mag)} ${u}`} ${axisOnly ? DIR_WORD[f.angle] : `pod úhlem ${f.angle}°`}`).join(', ')}`
     figure = (
       <Scene
         forces={t.forces}

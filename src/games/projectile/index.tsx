@@ -417,7 +417,7 @@ function OrbitRound({ task, last, onPoints, onNext }: { task: OrbitTask; last: b
         </div>
         <OrbitScene task={task} tried={tried} reveal={status !== 'play'} />
         <p className="g-pr-goal">
-          Jak rychle musí těleso letět vodorovně těsně nad povrchem {b.of}, aby nespadlo a obíhalo po kružnici? Tíha je tu dostředivá síla: g = v² / R.
+          Jak rychle musí těleso letět vodorovně těsně nad povrchem {b.of}, aby nespadlo a obíhalo po kružnici? Gravitační síla je tu dostředivá: g = v² / R.
         </p>
       </div>
 
