@@ -21,8 +21,13 @@ Repo /home/user/edu4me. Czech learning app for teens. You review **<COURSE> leve
 - `npx tsc --noEmit -p tsconfig.json` (no errors in files you touched); if you edited a figure, experiment or game, run its tests too.
 - Don't commit.
 
-## Report
-Write `<scratchpad>/review/<course>/l<N>.md`: a table of fixes (where · before → after · why) and a list "Pro rozhodnutí" (debatable points with your recommendation). Reply in ≤ 120 words: number of fixes by category (terminology / facts / questions / figures), the worst three, and how many open points.
+## Report (written as you go)
+Create `<scratchpad>/review/<course>/l<N>.md` at the start and update it after every lesson, so an interruption loses nothing and a restarted reviewer knows where to continue (if the file already exists, continue from it). It contains:
+- a **coverage table**: one row per lesson and one for the level test (boss): id · all sections read · quiz and checks checked · figures/experiments checked · number of fixes. Every lesson is read completely, top to bottom; no sampling. If something was not finished, the row says so.
+- a table of fixes (where · before → after · why);
+- "Pro rozhodnutí": debatable points with your recommendation.
+
+Reply in ≤ 120 words: fixes by category (terminology / facts / questions / figures), the worst three, open points, and confirm the coverage table is complete.
 
 ## Trap list (extend it whenever a review finds a new trap)
 General: decimal comma; a space between number and unit; Czech quotes „…“; English calques (*potravinový řetězec* → *potravní řetězec*; *proteiny* → *bílkoviny* at ZŠ; *rodina* → *čeleď*).
