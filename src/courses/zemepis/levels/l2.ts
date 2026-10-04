@@ -12,7 +12,7 @@ const level: LevelContent = {
         'Znát hlavní rozměry Země: obvod asi 40 000 km a poloměr asi 6 371 km',
         'Zopakovat Eratosthenův výpočet obvodu Země ze stínu a vzdálenosti dvou měst',
       ],
-      hook: 'Před 2 200 lety změřil jeden Řek obvod Země jen pomocí stínu tyče a vzdálenosti mezi dvěma městy. Spletl se o pár procent. Dnes zjistíš, jak to dokázal – a proč nejvyšší hora světa není vrchol nejdál od středu Země.',
+      hook: 'Před víc než 2 200 lety změřil jeden Řek obvod Země jen pomocí stínu tyče a vzdálenosti mezi dvěma městy – a trefil se překvapivě blízko. Dnes zjistíš, jak to dokázal – a proč nejvyšší hora světa není vrchol nejdál od středu Země.',
       sections: [
         {
           title: 'Země ve sluneční soustavě',
@@ -21,7 +21,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Než začneme Zemi měřit, podívejme se, kde vlastně je. Země je jedna z osmi planet, které obíhají kolem **Slunce**. Od Slunce je vzdálená asi 150 milionů km – světlo z něj k nám letí 8 minut a 20 sekund.' },
             { type: 'p', text: 'Najdi Zemi v pořadí planet. Všimni si, že patří mezi čtyři malé kamenné planety blízko Slunce:' },
             { type: 'diagram', id: 'solar-system', caption: 'Sluneční soustava (vzdálenosti ani velikosti nejsou v měřítku). Země je třetí planeta od Slunce, mezi Venuší a Marsem.' },
-            { type: 'p', text: 'Země má proti sousedkám štěstí. Je od Slunce tak daleko, že voda na jejím povrchu nevře jako na Venuši ani celá nezamrzá jako na Marsu. Je to jediná planeta, o které víme, že na ní žijí organismy.' },
+            { type: 'p', text: 'Země má proti sousedkám štěstí. Je od Slunce v takové vzdálenosti, že na jejím povrchu může být kapalná voda: na Venuši je na ni příliš horko, na Marsu je zamrzlá. Je to jediná planeta, o které víme, že na ní žijí organismy.' },
             { type: 'callout', variant: 'fact', text: 'Fyzika se sluneční soustavě věnuje v lekci „Sluneční soustava a vesmír“. Zeměpis zajímá hlavně to, co z pohybů Země plyne pro lidi: den a noc, čas, roční období a příliv.' },
             { type: 'p', text: 'Víme tedy, kde Země je. Jaký má ale tvar? Dnes to víme z fotek z vesmíru, lidé to však poznali dávno předtím.' },
             { type: 'check', question: { kind: 'choice', q: 'Kolikátá planeta od Slunce je Země?', options: ['třetí', 'druhá', 'čtvrtá', 'pátá'], answer: 0, explain: 'Pořadí od Slunce: Merkur, Venuše, Země, Mars. Země je třetí.' } },
@@ -74,7 +74,7 @@ const level: LevelContent = {
           title: 'Jak velká je Země',
           icon: 'ruler',
           blocks: [
-            { type: 'p', text: 'Obvod Země je asi **40 000 km**. To není náhoda: na konci 18. století Francouzi zavedli metr jako desetimiliontinu vzdálenosti od severního pólu k rovníku. Čtvrt poledníku má tedy 10 000 km a celý obvod 40 000 km.' },
+            { type: 'p', text: 'Obvod Země je asi **40 000 km**. To není náhoda: na konci 18. století Francouzi zavedli metr jako desetimiliontinu vzdálenosti od severního pólu k rovníku. Čtvrt poledníku má tedy asi 10 000 km a celý obvod asi 40 000 km.' },
             { type: 'p', text: 'Tady jsou hlavní rozměry Země pohromadě. Všimni si, že obvod přes póly je kvůli zploštění o něco kratší než obvod podél rovníku:' },
             { type: 'iconlist', items: [
               { icon: 'globe', title: 'Délka rovníku', text: '40 075 km' },
@@ -123,7 +123,7 @@ const level: LevelContent = {
             ], caption: 'Mount Everest (Nepál a Čína, 28° s. š.) a Chimborazo (Ekvádor, 1° 28′ j. š.) – sopka v Andách skoro na rovníku.' },
             { type: 'p', text: 'Chimborazo leží téměř na rovníku, kde je Země „nejtlustší“. Jeho vrchol je proto od středu Země asi 6 384,4 km daleko, asi o 2 km dál než vrchol Everestu, i když je nad mořem o 2,6 km nižší. Rozdíl dvou měřítek shrnuje tabulka:' },
             { type: 'table', headers: ['hora', 'nadmořská výška', 'vzdálenost vrcholu od středu Země'], rows: [
-              ['Mount Everest', '8 849 m n. m.', 'asi 6 382,2 km'],
+              ['Mount Everest', '8 849 m n. m.', 'asi 6 382,3 km'],
               ['Chimborazo', '6 263 m n. m.', 'asi 6 384,4 km'],
             ], caption: 'Nejvyšší nad mořem není totéž co nejdál od středu Země.' },
             { type: 'callout', variant: 'fact', text: 'Chimborazo je znakem této úrovně. Když vystoupáš na jeho vrchol, jsi blíž ke hvězdám než kdokoli jiný, kdo stojí na pevné zemi.' },
@@ -199,9 +199,9 @@ const level: LevelContent = {
             { type: 'p', text: 'Slunce osvětluje vždy jen tu polovinu Země, která je k němu natočená. Na ní je **den**, na odvrácené polovině **noc**. Protože se Země točí, každé místo se střídavě dostává do světla a do stínu.' },
             { type: 'p', text: 'Na obrázku najdi hranici mezi světlem a stínem. Říká se jí **rozhraní dne a noci** (terminátor). Šipka ukazuje, kam se Země otáčí:' },
             { type: 'diagram', id: 'day-night', caption: 'Otáčející se Země osvětlená z jedné strany. Kde místa otáčením vstupují do světla, právě vychází Slunce; kde ze světla odcházejí, zapadá.' },
-            { type: 'p', text: 'Vyzkoušej si to. Posouvej čas a sleduj, kdy se Praha dostane z noci do dne. Všimni si, kterým směrem se přitom rozhraní po povrchu posouvá:' },
-            { type: 'experiment', id: 'day-night', caption: 'Země se otáčí k východu, a proto se den po jejím povrchu šíří od východu k západu.' },
-            { type: 'p', text: 'Všiml sis? Ráno dorazí světlo nejdřív na Moravu a teprve potom do Čech. ==Den „putuje“ po Zemi od východu na západ, protože Země se točí od západu na východ.==' },
+            { type: 'p', text: 'Vyzkoušej si to na mapě světa. Posouvej čas v Greenwichi a sleduj, kdy se Praha dostane z noci do dne. Všimni si, kterým směrem se přitom noční stín po mapě posouvá:' },
+            { type: 'experiment', id: 'day-night', caption: 'Noční polovina Země na mapě světa a místní čas v Praze, New Yorku a Tokiu. Země se otáčí k východu, a proto se den po jejím povrchu šíří od východu k západu.' },
+            { type: 'p', text: 'Všiml sis? Ráno dorazí světlo nejdřív do Tokia, pak do Prahy a nakonec do New Yorku – a v Česku nejdřív na Moravu, teprve potom do Čech. ==Den „putuje“ po Zemi od východu na západ, protože Země se točí od západu na východ.==' },
             { type: 'callout', variant: 'fact', text: 'Den a noc trvají dohromady 24 hodin. Jak dlouhý je v nich den a jak dlouhá noc, závisí na ročním období a na zeměpisné šířce. To vysvětlí lekce „Oběh Země kolem Slunce a roční období“.' },
             { type: 'p', text: 'Ze Země ale nevidíme, že se točíme. Vidíme, jak se pohybuje Slunce. Podívejme se, co přesně na obloze dělá.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč se na Zemi střídá den a noc?', options: ['Země se otáčí kolem své osy', 'Země obíhá kolem Slunce', 'Slunce obíhá kolem Země', 'Měsíc zakrývá Slunce'], answer: 0, explain: 'Den a noc způsobuje otáčení (rotace) Země. Každé místo se jednou za 24 hodin natočí ke Slunci a zase od něj.' } },
@@ -220,7 +220,7 @@ const level: LevelContent = {
               { icon: 'moon', title: 'Noc', text: 'místo je natočené od Slunce' },
             ], caption: 'Zdánlivá denní dráha Slunce, jak ji vidíme z Česka.' },
             { type: 'p', text: 'Pozor na častý omyl: Slunce nevychází vždy přesně na východě. Přesně na východě vychází jen kolem rovnodenností v březnu a v září. V létě vychází severněji a jeho denní oblouk je delší, v zimě jižněji a oblouk je krátký.' },
-            { type: 'callout', variant: 'tip', text: 'Zdánlivě se pohybují i hvězdy. V noci se celá obloha pomalu otáčí kolem **Polárky**, protože zemská osa míří právě k ní.' },
+            { type: 'callout', variant: 'tip', text: 'Zdánlivě se pohybují i hvězdy. V noci se celá obloha pomalu otáčí kolem **Polárky**, protože zemská osa míří skoro přesně k ní.' },
             { type: 'p', text: 'Nejdůležitější okamžik zdánlivé dráhy je poledne, kdy je Slunce nejvýš. Podle něj si lidé po staletí řídili čas.' },
             { type: 'check', question: { kind: 'choice', q: 'Kterým směrem je z Česka vidět Slunce v poledne?', options: ['na jihu', 'na severu', 'na východě', 'přímo nad hlavou'], answer: 0, explain: 'Česko leží daleko na sever od rovníku, proto je Slunce v poledne vždy na jihu a nikdy přímo nad hlavou.' } },
           ],
@@ -243,7 +243,7 @@ const level: LevelContent = {
           icon: 'calculator',
           blocks: [
             { type: 'p', text: 'Země se za 24 hodin otočí o celý kruh, tedy o 360°. Za jednu hodinu se proto otočí o 360° : 24 = 15°. Odtud pochází nejdůležitější vztah této lekce:' },
-            { type: 'formula', text: '15° = 1 h   ·   1° = 4 min   ·   1′ = 4 s', caption: 'rozdíl místních časů dvou míst podle rozdílu jejich zeměpisných délek' },
+            { type: 'formula', text: '15° = 1 h;   1° = 4 min;   1′ = 4 s', caption: 'rozdíl místních časů dvou míst podle rozdílu jejich zeměpisných délek' },
             { type: 'p', text: 'Postup je vždy stejný: zjisti rozdíl zeměpisných délek, převeď ho na čas a rozhodni, které místo je dál na východě (to má čas pozdější). Vyzkoušej si to na Praze a Greenwichi:' },
             { type: 'example', title: 'Praha a Greenwich', problem: 'Praha leží na 14° 25′ v. d., Greenwich na nultém poledníku (0°). V Praze je místní poledne, 12:00. Kolik je v Greenwichi podle místního času?', steps: [
               'Rozdíl délek: 14° 25′ − 0° = 14° 25′.',
@@ -341,7 +341,7 @@ const level: LevelContent = {
             { type: 'map', view: 'world', layers: ['timezones'], highlight: [
               { codes: ['CHN'], tone: 'a', label: 'Čína: jeden čas UTC+8, i když se rozkládá přes 60° délky' },
               { codes: ['IND'], tone: 'b', label: 'Indie: posun o půl hodiny, UTC+5:30' },
-              { codes: ['ESP'], tone: 'c', label: 'Španělsko: středoevropský čas, i když leží u nultého poledníku' },
+              { codes: ['ESP'], tone: 'c', label: 'Španělsko: středoevropský čas (kromě Kanárských ostrovů), i když leží u nultého poledníku' },
             ], caption: 'Pruhy po 15° ukazují teoretická časová pásma. Skutečné hranice pásem určují státy.' },
             { type: 'p', text: 'Všimni si Číny: na jejím západě vychází Slunce v zimě až kolem desáté dopoledne, protože hodiny tam ukazují stejný čas jako v Pekingu, o víc než 3 000 km východněji. Jeden čas pro celý stát je tam důležitější než Slunce.' },
             { type: 'callout', variant: 'fact', text: 'Rozdíl mezi nejzazšími pásmy je 26 hodin: tichomořské ostrovy Kiribati mají UTC+14, neobydlený Bakerův ostrov UTC−12. Kiribati proto vítají nový rok jako první na světě.' },
@@ -353,7 +353,7 @@ const level: LevelContent = {
           title: 'Středoevropský a letní čas',
           icon: 'calendar',
           blocks: [
-            { type: 'p', text: 'Česko leží v pásmu se středním poledníkem 15° v. d. Ten prochází přímo naším územím, třeba Jindřichovým Hradcem, kde ho na náměstí připomíná značka v dlažbě. Platí u nás **středoevropský čas (SEČ)**, tedy **UTC+1**.' },
+            { type: 'p', text: 'Česko leží v pásmu se středním poledníkem 15° v. d. Ten prochází přímo naším územím, třeba Jindřichovým Hradcem, kde ho v historickém centru připomíná značka v dlažbě. Platí u nás **středoevropský čas (SEČ)**, tedy **UTC+1**.' },
             { type: 'p', text: 'Část roku ale hodiny ukazují o hodinu víc. V létě platí **středoevropský letní čas (SELČ)**, tedy **UTC+2**. Kdy se přechází, ukazuje roční koloběh pro rok 2026:' },
             { type: 'process', layout: 'cycle', steps: [
               { icon: 'calendar', title: 'Poslední neděle v březnu', text: '29. 3. 2026: ve 2:00 se hodiny posunou na 3:00, spíme o hodinu kratší dobu' },
@@ -446,7 +446,7 @@ const level: LevelContent = {
         { kind: 'tf', q: 'Při přeletu datové hranice z Ameriky do Asie se datum posune o den zpět.', answer: false, explain: 'Z Ameriky do Asie letíš přes hranici na západ, a tam je datum o den napřed. Z úterý se stane středa.' },
         { kind: 'choice', q: 'Kdy se v Česku přechází z letního času na středoevropský?', options: ['poslední neděli v říjnu', 'poslední neděli v březnu', '1. září', 'o zimním slunovratu'], answer: 0, explain: 'Poslední neděli v říjnu se ve 3:00 SELČ hodiny vracejí na 2:00 SEČ. V roce 2026 to je 25. října.' },
         { kind: 'number', q: 'V červenci odlétáš z Prahy v 9:00 SELČ (UTC+2) a letíš 11 hodin do Pekingu (UTC+8). Kolik hodin bude v Pekingu, až přistaneš? Odpověz celým číslem hodin.', answer: 2, tolerance: 0, unit: 'h', explain: '9:00 SELČ = 7:00 UTC. Přílet 7:00 + 11 h = 18:00 UTC. V Pekingu 18:00 + 8 h = 26:00, tedy 2:00 následujícího dne.' },
-        { kind: 'multi', q: 'Která tvrzení o časových pásmech platí?', options: ['Čína má jeden čas pro celý stát', 'Indie má posun od UTC o půl hodiny', 'Španělsko používá středoevropský čas', 'všechny státy světa mají letní čas', 'časová pásma vedou všude přesně po polednících'], answers: [0, 1, 2], explain: 'Čína má UTC+8, Indie UTC+5:30 a Španělsko SEČ. Letní čas má jen část států a na pevnině pásma sledují hranice států.' },
+        { kind: 'multi', q: 'Která tvrzení o časových pásmech platí?', options: ['Čína má jeden čas pro celý stát', 'Indie má posun od UTC o půl hodiny', 'pevninské Španělsko používá středoevropský čas', 'všechny státy světa mají letní čas', 'časová pásma vedou všude přesně po polednících'], answers: [0, 1, 2], explain: 'Čína má UTC+8, Indie UTC+5:30 a pevninské Španělsko SEČ. Letní čas má jen část států a na pevnině pásma sledují hranice států.' },
       ],
     },
 
@@ -475,7 +475,7 @@ const level: LevelContent = {
               { icon: 'speed', title: 'Rychlost', text: 'asi 30 km/s, tedy přes 100 000 km/h' },
               { icon: 'arrow-cycle', title: 'Směr', text: 'stejný jako otáčení: při pohledu od severu proti směru hodinových ručiček' },
             ] },
-            { type: 'p', text: 'Kalendářní rok má 365 dní, ale Země potřebuje o necelou čtvrtinu dne víc. Kdybychom to neřešili, kalendář by Zemi utíkal a za 400 let by Vánoce vycházely na podzim. Proto vkládáme přestupné roky:' },
+            { type: 'p', text: 'Kalendářní rok má 365 dní, ale Země potřebuje o necelou čtvrtinu dne víc. Kdybychom to neřešili, kalendář by Zemi utíkal: za 400 let by se posunul o víc než tři měsíce a Vánoce by vycházely na konec léta. Proto vkládáme přestupné roky:' },
             { type: 'example', title: 'Proč je přestupný rok', problem: 'Každý rok „chybí“ asi ¼ dne. Kolik to dělá za 4 roky a co s tím uděláme?', steps: [
               '4 · ¼ dne = 1 den.',
               'Každý čtvrtý rok proto přidáme 29. února a rok má 366 dní.',
@@ -514,7 +514,7 @@ const level: LevelContent = {
             { type: 'diagram', id: 'solstice-light', caption: 'Země 21. června a 21. prosince. V červnu stojí Slunce kolmo nad obratníkem Raka a celé okolí severního pólu je osvětlené; v prosinci je tomu naopak.' },
             { type: 'p', text: 'Jak se délka dne v Praze mění během celého roku, ukazuje graf. Nemění se rovnoměrně: kolem rovnodenností přibývá nebo ubývá skoro 4 minuty denně, kolem slunovratů jen pár vteřin.' },
             { type: 'graph', x: { label: 'den v roce', min: 0, max: 365, step: 30 }, y: { label: 'délka dne', unit: 'h', min: 0, max: 24, step: 4 }, series: [
-              { label: 'Praha (50° s. š.)', style: 'smooth', tone: 'a', area: true, points: [[1, 8.2], [15, 8.6], [32, 9.3], [46, 10.1], [60, 11], [79, 12.2], [91, 12.9], [105, 13.8], [121, 14.7], [135, 15.4], [152, 16.1], [172, 16.4], [182, 16.3], [196, 16], [213, 15.2], [227, 14.5], [244, 13.5], [266, 12.2], [274, 11.6], [288, 10.8], [305, 9.8], [319, 9], [335, 8.4], [355, 8.1], [365, 8.2]] },
+              { label: 'Praha (50° s. š.)', style: 'smooth', tone: 'a', area: true, points: [[1, 8.2], [15, 8.6], [32, 9.3], [46, 10.1], [60, 11], [79, 12.2], [91, 12.9], [105, 13.8], [121, 14.7], [135, 15.4], [152, 16.1], [172, 16.4], [182, 16.3], [196, 16], [213, 15.2], [227, 14.5], [244, 13.5], [266, 12.1], [274, 11.6], [288, 10.8], [305, 9.8], [319, 9], [335, 8.4], [355, 8.1], [365, 8.2]] },
             ], marks: [
               { x: 172, y: 16.4, label: '21. 6.: 16 h 23 min' },
               { x: 355, y: 8.1, label: '21. 12.: 8 h 3 min' },
@@ -636,7 +636,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: '**Výška Slunce** je úhel mezi Sluncem a obzorem. Nejvýš je Slunce v poledne. O rovnodennosti stojí v poledne kolmo nad rovníkem (90°) a s každým stupněm zeměpisné šířky severněji nebo jižněji je o stupeň níž.' },
             { type: 'p', text: 'O slunovratech se Slunce posune o 23,5° na sever nebo na jih, a o tolik je na naší polokouli výš, nebo níž. Pro místo na severní polokouli se zeměpisnou šířkou φ to dává tři jednoduchá pravidla:' },
-            { type: 'formula', text: 'rovnodennost: h = 90° − φ   ·   21. června: h = 90° − φ + 23,5°   ·   21. prosince: h = 90° − φ − 23,5°', caption: 'h … výška Slunce v poledne, φ … zeměpisná šířka místa (severní polokoule)' },
+            { type: 'formula', text: 'rovnodennost: h = 90° − φ;   21. června: h = 90° − φ + 23,5°;   21. prosince: h = 90° − φ − 23,5°', caption: 'h … výška Slunce v poledne, φ … zeměpisná šířka místa (severní polokoule)' },
             { type: 'p', text: 'Vyzkoušejme pravidla na Praze, která leží zhruba na 50° s. š.:' },
             { type: 'example', title: 'Slunce nad Prahou', problem: 'Jak vysoko je Slunce v Praze (φ ≐ 50° s. š.) v poledne o rovnodennosti, 21. června a 21. prosince?', steps: [
               'Rovnodennost: h = 90° − 50° = 40°.',
@@ -644,7 +644,7 @@ const level: LevelContent = {
               '21. prosince je o 23,5° níž: h = 40° − 23,5° = 16,5°.',
             ], answer: 'V létě 63,5°, v zimě jen 16,5° – rozdíl celých 47°. Proto je v prosinci i v poledne stín víc než třikrát delší, než jsi vysoký/á.' },
             { type: 'p', text: 'Teď si to vyzkoušej sám/sama. Nastav zeměpisnou šířku a datum a sleduj výšku Slunce a délku dne. Zkus Prahu v červnu a v prosinci a potom posuň šířku za 66,5° s. š.:' },
-            { type: 'experiment', id: 'sun-angle', caption: 'Výška Slunce v poledne a délka dne podle zeměpisné šířky a data. Za polárním kruhem v červnu Slunce nezapadne.' },
+            { type: 'experiment', id: 'sun-angle', caption: 'Výška Slunce v poledne a délka dne podle zeměpisné šířky a data. Za polárním kruhem v červnu Slunce nezapadne. Pokus počítá se středem Slunce bez lomu světla v ovzduší, proto vychází den asi o čtvrt hodiny kratší než skutečný (Praha 21. června asi 16 h 10 min místo 16 h 23 min).' },
             { type: 'p', text: 'Všiml sis? Na rovníku je Slunce v poledne celý rok vysoko a den má stále asi 12 hodin. Čím dál od rovníku, tím víc se léto a zima liší.' },
             { type: 'callout', variant: 'warning', text: 'Pozor: v Česku Slunce nikdy nevystoupá kolmo nad hlavu, ani v létě. Kolmo (v **nadhlavníku**, zenitu) může svítit jen mezi 23,5° s. š. a 23,5° j. š.' },
             { type: 'p', text: 'Hranice 23,5° a 66,5°, na které jsme právě narazili, nejsou náhodné. Mají svá jména a najdeš je na každém glóbusu.' },
@@ -669,7 +669,7 @@ const level: LevelContent = {
               { lat: 66.5, lon: 25.73, label: 'Rovaniemi (na polárním kruhu)', kind: 'city' },
               { lat: 50.09, lon: 14.42, label: 'Praha', kind: 'capital' },
             ], caption: 'Rovník, obratníky (23° 26′) a polární kruhy (66° 34′). Asuán je starověká Syéné z Eratosthenova pokusu.' },
-            { type: 'p', text: 'Všimni si Asuánu: leží skoro na obratníku Raka. Proto tam Eratosthenés o slunovratu viděl Slunce kolmo nad studnou. Praha leží mezi obratníkem a polárním kruhem, kde Slunce nikdy nesvítí kolmo, ale vždy vyjde a zapadne.' },
+            { type: 'p', text: 'Všimni si Asuánu: leží skoro na obratníku Raka. Proto tam o slunovratu svítilo Slunce v poledne kolmo do studny, o které se Eratosthenés doslechl. Praha leží mezi obratníkem a polárním kruhem, kde Slunce nikdy nesvítí kolmo, ale vždy vyjde a zapadne.' },
             { type: 'p', text: 'Obratníky a polární kruhy tedy rozdělují Zemi na pět pruhů. A v každém z nich Slunce hřeje jinak.' },
             { type: 'check', question: { kind: 'tf', q: 'Na obratníku Kozoroha stojí Slunce v poledne kolmo nad hlavou kolem 21. června.', answer: false, explain: 'Nad obratníkem Kozoroha (jižní polokoule) je Slunce v nadhlavníku kolem 21. prosince. 21. června je kolmo nad obratníkem Raka.' } },
           ],
@@ -809,8 +809,8 @@ const level: LevelContent = {
             { type: 'p', text: 'Za slapy může hlavně přitažlivost Měsíce. Měsíc přitahuje nejsilněji vodu na straně Země, která je k němu blíž, slaběji střed Země a nejslaběji vodu na odvrácené straně. Voda se proto vzdouvá na dvou místech najednou. Sleduj obě vzdutí na obrázku:' },
             { type: 'diagram', id: 'tides', caption: 'Měsíc vytváří dvě slapová vzdutí: jedno na straně k Měsíci, druhé na straně odvrácené. Místo, které se pod nimi otáčí, má dva přílivy a dva odlivy denně.' },
             { type: 'p', text: 'Pozor, tady se často chybuje: druhé vzdutí na odvrácené straně není chyba obrázku. Přivrácená voda se k Měsíci „předbíhá“, odvrácená za Zemí „zaostává“. Země se pod oběma vzdutími otočí jednou za den, a proto každé místo projde dvěma přílivy.' },
-            { type: 'p', text: 'Vyzkoušej si to. Posouvej Měsíc kolem Země a sleduj, kam se vzdutí natočí:' },
-            { type: 'experiment', id: 'tides', caption: 'Dvě slapová vzdutí se natáčejí za Měsícem: jedno k němu, druhé na opačnou stranu Země.' },
+            { type: 'p', text: 'Vyzkoušej si to. Posouvej čas od novu, tím posouváš Měsíc kolem Země. Zatím nech slapy počítat jen od Měsíce a sleduj, kam se vzdutí natočí:' },
+            { type: 'experiment', id: 'tides', caption: 'Dvě slapová vzdutí se natáčejí za Měsícem: jedno k němu, druhé na opačnou stranu Země. Graf dole ukazuje hladinu v přístavu: dva přílivy a dva odlivy za 24 h 50 min.' },
             { type: 'p', text: 'Všiml sis? Vzdutí míří vždy k Měsíci a od něj, ať je Měsíc kdekoli. Příliv je tedy dvakrát denně, ale proč se den za dnem posouvá o 50 minut? Měsíc se mezitím posune po své dráze a Země se musí otočit o kousek víc, aby ho „dohnala“.' },
             { type: 'p', text: 'Měsíc ale není jediné těleso, které na moře působí. Své slapy vyvolává i Slunce – a záleží na tom, jak stojí vůči Měsíci.' },
             { type: 'check', question: { kind: 'choice', q: 'Na pobřeží je příliv v 6:00. Mezi dvěma přílivy uplyne asi 12 h 25 min. Kdy bude další příliv?', options: ['v 18:25', 'v 18:00', 've 12:25', 'v 6:00 dalšího dne'], answer: 0, explain: '6:00 + 12 h 25 min = 18:25. Další den ráno bude příliv asi v 6:50, o necelou hodinu později než dnes.' } },
@@ -821,7 +821,7 @@ const level: LevelContent = {
           icon: 'sun',
           blocks: [
             { type: 'p', text: 'Slunce je mnohem hmotnější než Měsíc, ale je také mnohem dál. Jeho slapový účinek je proto necelá polovina účinku Měsíce. Někdy se oba účinky sčítají, jindy se částečně ruší.' },
-            { type: 'p', text: 'Porovnej dvě situace. Rozhoduje, jestli Slunce, Země a Měsíc stojí v jedné přímce, nebo do pravého úhlu:' },
+            { type: 'p', text: 'Porovnej dvě situace. Rozhoduje, jestli Slunce, Země a Měsíc stojí v jedné přímce, nebo do pravého úhlu. V pokusu nahoře to uvidíš, když zapneš slapy Měsíce i Slunce a posouváš čas od novu:' },
             { type: 'compare', columns: [
               { title: 'Skočný příliv', icon: 'sun', tone: 'a', points: ['Slunce, Země a Měsíc v jedné přímce', 'za **novu** a **úplňku**', 'účinky Slunce a Měsíce se sčítají', 'nejvyšší příliv a nejnižší odliv'] },
               { title: 'Hluchý příliv', icon: 'moon', tone: 'b', points: ['Slunce a Měsíc vůči Zemi v pravém úhlu', 'za **první** a **poslední čtvrti**', 'účinky se částečně ruší', 'nejmenší rozdíl mezi přílivem a odlivem'] },
@@ -845,8 +845,8 @@ const level: LevelContent = {
             { type: 'p', text: 'Porovnej rozdíl hladin mezi přílivem a odlivem na několika místech:' },
             { type: 'table', headers: ['místo', 'největší rozdíl hladin'], rows: [
               ['zátoka Fundy (Kanada)', 'až 16 m – nejvíc na světě'],
-              ['zátoka Mont-Saint-Michel (Francie)', 'až asi 14 m – nejvíc v Evropě'],
-              ['Waddenské moře (Nizozemsko, Německo, Dánsko)', 'asi 2–4 m'],
+              ['zátoka Mont-Saint-Michel (Francie)', 'až asi 15 m – jedny z největších v Evropě'],
+              ['Waddenské moře (Nizozemsko, Německo, Dánsko)', 'asi 1,5–4 m'],
               ['Středozemní moře', 'většinou jen desítky centimetrů'],
             ], caption: 'Rozdíl hladin při skočném přílivu podle tvaru pobřeží.' },
             { type: 'p', text: 'Evropská místa z tabulky najdi na mapě. Všimni si, že velké slapy mají pobřeží otevřená k Atlantiku, kdežto Středozemní moře je s oceánem spojené jen úzkým Gibraltarským průlivem:' },
@@ -887,12 +887,12 @@ const level: LevelContent = {
         'Fáze Měsíce (nov, první čtvrť, úplněk, poslední čtvrť) se opakují každých 29,5 dne; při seřazení Slunce, Země a Měsíce do přímky může nastat zatmění.',
         'Příliv a odliv (slapy) způsobuje hlavně přitažlivost Měsíce, která vytváří dvě vzdutí vody, proto je příliv dvakrát denně.',
         'Za novu a úplňku se účinky Slunce a Měsíce sčítají (skočný příliv), za čtvrtí se částečně ruší (hluchý příliv).',
-        'Výška přílivu závisí na tvaru pobřeží: v zátoce Fundy až 16 m, u Mont-Saint-Michel až asi 14 m, ve Středozemním moři jen desítky centimetrů.',
+        'Rozdíl hladin mezi přílivem a odlivem závisí na tvaru pobřeží: v zátoce Fundy až 16 m, u Mont-Saint-Michel až asi 15 m, ve Středozemním moři jen desítky centimetrů.',
         'Slapové elektrárny (La Rance, Sihwa) vyrábějí předvídatelně elektřinu, ale vhodných míst je málo.',
       ],
       quiz: [
         { kind: 'tf', q: 'Příliv nastává na jednom místě pobřeží zhruba dvakrát denně.', answer: true, explain: 'Země se otočí pod dvěma slapovými vzdutími, proto jsou dva přílivy a dva odlivy za necelých 25 hodin.' },
-        { kind: 'choice', q: 'Co způsobuje příliv a odliv nejvíc?', options: ['přitažlivost Měsíce', 'vítr od moře', 'otáčení Země bez vlivu Měsíce', 'tání ledovců'], answer: 0, explain: 'Hlavní příčinou je přitažlivost Měsíce. Slunce přidává necelou polovinu jeho účinku, vítr ovlivňuje jen vlny.' },
+        { kind: 'choice', q: 'Co způsobuje příliv a odliv nejvíc?', options: ['přitažlivost Měsíce', 'vítr od moře', 'otáčení Země bez vlivu Měsíce', 'tání ledovců'], answer: 0, explain: 'Hlavní příčinou je přitažlivost Měsíce. Slunce přidává necelou polovinu jeho účinku, vítr způsobuje hlavně vlny.' },
         { kind: 'order', q: 'Seřaď fáze Měsíce, jak jdou po sobě od novu.', items: [
           'nov',
           'první čtvrť',

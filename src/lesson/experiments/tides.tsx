@@ -164,11 +164,11 @@ function tideLabel(days: number, sun: boolean): string {
   const a = Math.round(amplitude(days, sun) * 100)
   return (
     `Pohled shora na Zemi, Měsíc a Slunce, ${dayWord(days)} po novu (fáze Měsíce: ${PHASE[phase(days)]}). ` +
-    `Oceán je vytažený do dvou přílivových vln, jedna míří k Měsíci, druhá na opačnou stranu; mezi nimi je odliv. ` +
+    `Oceán je vytažený do dvou slapových vzdutí, jedno míří k Měsíci, druhé na opačnou stranu; mezi nimi je odliv. ` +
     (sun
       ? `Se Sluncem je příliv ${a} % přílivu od samotného Měsíce, je to ${KIND[tideKind(days, sun)]}. `
       : 'Počítá se jen působení Měsíce. ') +
-    'Každý přístav projde oběma vlnami za 24 h 50 min, má tedy dva přílivy a dva odlivy.'
+    'Každý přístav projde oběma vzdutími za 24 h 50 min, má tedy dva přílivy a dva odlivy.'
   )
 }
 

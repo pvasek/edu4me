@@ -2,7 +2,7 @@ import { StepStrip } from "../../sequence/StepFigure";
 import { Draw, Fade, Figure, Frame, Pop, StripBox, f1 } from "./kit";
 
 const LABEL =
-  "Jak se měří zeměpisné souřadnice. Zeměpisná šířka φ je úhel ve středu Země mezi rovinou rovníku a spojnicí se středem; měří se od rovníku k severu (s. š.) nebo k jihu (j. š.) od 0° do 90°. Zeměpisná délka λ je úhel mezi nultým poledníkem a poledníkem místa při pohledu nad severním pólem; měří se na východ (v. d.) nebo na západ (z. d.) od 0° do 180°. Praha leží na 50° 05′ s. š. a 14° 25′ v. d.";
+  "Jak se měří zeměpisné souřadnice. Zeměpisná šířka φ je úhel ve středu Země mezi rovinou rovníku a spojnicí místa se středem Země; měří se od rovníku k severu (s. š.) nebo k jihu (j. š.) od 0° do 90°. Zeměpisná délka λ je úhel mezi nultým poledníkem a poledníkem místa při pohledu nad severním pólem; měří se na východ (v. d.) nebo na západ (z. d.) od 0° do 180°. Praha leží na 50° 05′ s. š. a 14° 25′ v. d.";
 
 const W = 300;
 const H = 306;
