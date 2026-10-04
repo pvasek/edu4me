@@ -1221,12 +1221,12 @@ const l74: Lesson = {
         { type: 'elements', symbols: ['Si'], caption: 'křemík, $Z = 14$, pod uhlíkem' },
         { type: 'p', text: '**Křemík** je po kyslíku druhým nejrozšířenějším prvkem zemské kůry (asi 28 %), volný se ale nevyskytuje. Je to lesklý, křehký **polokov** a **polovodič**: jeho vodivost roste s teplotou a dá se řídit dopováním stopami jiných prvků.' },
         { type: 'reaction', equation: 'SiO2 + 2C -> Si + 2CO', caption: 'výroba křemíku redukcí křemene koksem v elektrické peci' },
-        { type: 'p', text: '**Oxid křemičitý** $SiO2$ (křemen, písek) taje asi při 1 700 °C, zatímco $CO2$ je plyn. Větší atom křemíku totiž netvoří s kyslíkem dvojné vazby, a tak místo malých molekul vzniká **obří kovalentní mřížka**.' },
+        { type: 'p', text: '**Oxid křemičitý** $SiO2$ (křemen, písek) taje asi při 1 700 °C, zatímco $CO2$ je plyn. Větší atom křemíku totiž netvoří s kyslíkem dvojné vazby, a tak místo malých molekul vzniká **atomová krystalová mřížka**: kovalentní krystal, v němž jsou vazbami propojené všechny atomy, stejně jako v diamantu.' },
         {
           type: 'compare',
           columns: [
             { title: 'oxid uhličitý $CO2$', icon: 'gas-cloud', tone: 'a', points: ['malé molekuly $O=C=O$', 'dvojné vazby', 'mezi molekulami jen slabé síly', 'za běžných podmínek plyn'] },
-            { title: 'oxid křemičitý $SiO2$', icon: 'crystal', tone: 'b', points: ['obří kovalentní mřížka', 'jednoduché vazby: každý Si na 4 kyslíky, každý O na 2 křemíky', 'při tání se musí trhat kovalentní vazby', 'pevný, taje asi při 1 700 °C'] },
+            { title: 'oxid křemičitý $SiO2$', icon: 'crystal', tone: 'b', points: ['atomová krystalová mřížka', 'jednoduché vazby: každý Si na 4 kyslíky, každý O na 2 křemíky', 'při tání se musí trhat kovalentní vazby', 'pevný, taje asi při 1 700 °C'] },
           ],
         },
         { type: 'p', text: 'Celá mřížka se skládá z jedné opakující se „cihly“. Najdeš ji v křemeni i ve všech silikátech:' },
@@ -1249,7 +1249,7 @@ const l74: Lesson = {
           type: 'check',
           question: {
             kind: 'tf',
-            q: 'Oxid křemičitý má vysokou teplotu tání, protože tvoří obří kovalentní mřížku, zatímco $CO2$ tvoří malé molekuly.',
+            q: 'Oxid křemičitý má vysokou teplotu tání, protože tvoří atomovou krystalovou mřížku, zatímco $CO2$ tvoří malé molekuly.',
             answer: true,
             explain: 'V $SiO2$ je každý atom propojený kovalentními vazbami s celou sítí, při tání se musí vazby trhat. Molekuly $CO2$ drží pohromadě jen slabé síly.',
           },
@@ -1367,7 +1367,7 @@ const l74: Lesson = {
     'Nedokonalým spalováním vzniká jedovatý $CO$, který se váže na hemoglobin; $CO2$ je skleníkový plyn a zakalí vápennou vodu.',
     'Vápencový cyklus: $CaCO3 -> CaO -> Ca(OH)2 -> CaCO3$, tedy pálení, hašení a tuhnutí malty.',
     'Krasové jeskyně a krápníky vznikají díky rovnováze $CaCO3 + H2O + CO2 <=> Ca(HCO3)2$.',
-    'Křemík je polovodič; $SiO2$ tvoří obří kovalentní mřížku, proto je pevný s vysokou teplotou tání.',
+    'Křemík je polovodič; $SiO2$ tvoří atomovou krystalovou mřížku, proto je pevný s vysokou teplotou tání.',
     'Ze silikátových surovin vzniká sklo, keramika a cement.',
     'Ve 14. skupině roste směrem dolů kovový charakter (C nekov, Si a Ge polokovy, Sn a Pb kovy) a stálost oxidačního čísla $+II$, proto je $PbO2$ silné oxidační činidlo.',
   ],
@@ -1421,7 +1421,7 @@ const l74: Lesson = {
       q: 'Přiřaď oxid prvku 14. skupiny k jeho vlastnosti.',
       pairs: [
         ['$CO2$', 'kyselý plyn z malých molekul'],
-        ['$SiO2$', 'kyselý, obří kovalentní mřížka'],
+        ['$SiO2$', 'kyselý, atomová krystalová mřížka'],
         ['$SnO2$', 'amfoterní'],
         ['$PbO2$', 'silné oxidační činidlo'],
       ],

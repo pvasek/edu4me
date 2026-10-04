@@ -221,7 +221,7 @@ const L3: FindPrompt[] = [
   h('P', 'Nekov 3. periody, který tvoří anion $X^{3-}$', 'ion', all(period(3), ionIs(-3)), 'Fosfor v 15. skupině: $P^{3-}$.'),
   h('S', 'Prvek 3. periody, který tvoří anion $X^{2-}$', 'ion', all(period(3), ionIs(-2)), 'Síra přijme 2 elektrony: sulfidový anion $S^{2-}$.'),
   h('O', 'Prvek 2. periody, který tvoří anion $X^{2-}$', 'ion', all(period(2), ionIs(-2)), 'Kyslík: oxidový anion $O^{2-}$.'),
-  h('Si', 'Prvek 3. periody, jehož oxid $XO2$ tvoří obří kovalentní mřížku', 'oxide', at(3, 14), 'Oxid křemičitý $SiO2$ (křemen) nemá molekuly, je to obří mřížka.'),
+  h('Si', 'Prvek 3. periody, jehož oxid $XO2$ tvoří atomovou krystalovou mřížku', 'oxide', at(3, 14), 'Oxid křemičitý $SiO2$ (křemen) nemá molekuly, je to atomová krystalová mřížka.'),
   h('C', 'Nekov 2. periody, jehož oxid $XO2$ tvoří malé lineární molekuly', 'oxide', at(2, 14), 'Oxid uhličitý $O=C=O$ je lineární a nepolární.'),
   h('S', 'Prvek 3. periody, jehož oxid s nejvyšším oxidačním číslem má vzorec $XO3$', 'oxide', at(3, 16), 'Oxid sírový $SO3$: síra má oxidační číslo VI.'),
   h('Cl', 'Prvek 3. periody, jehož oxid s nejvyšším oxidačním číslem má vzorec $X2O7$', 'oxide', at(3, 17), 'Oxid chloristý $Cl2O7$: chlor má VII.'),

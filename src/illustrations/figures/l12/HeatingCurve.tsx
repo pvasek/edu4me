@@ -1,16 +1,21 @@
 import { motion } from 'motion/react'
 import { Board, Fade, Pop, drawV, rng } from './kit'
 
-/** Heating curve of water: [time, °C] corners (time in arbitrary units of supplied heat). */
+/**
+ * Heating curve of water: [time, °C] corners (time in arbitrary units of supplied heat).
+ * Schematic, but the order is physical: slope ∝ 1/c, so ice (c ≈ 2,1 kJ/(kg·K)) and steam
+ * (c ≈ 2,0) rise about twice as steeply as liquid water (c ≈ 4,18); the boiling plateau is
+ * clearly longer than the melting one (L_v ≈ 6,8 · L_t, compressed here to 2,4×).
+ */
 const PTS: [number, number][] = [
   [0, -20],
-  [1, 0],
-  [3.6, 0],
-  [6.4, 100],
-  [11.8, 100],
-  [12.8, 120],
+  [0.48, 0], // ice: 41.7 °C per unit
+  [3.48, 0], // melting: 3 units
+  [8.28, 100], // water: 20.8 °C per unit
+  [15.48, 100], // boiling: 7.2 units
+  [15.94, 120], // steam: 43.5 °C per unit
 ]
-const TMAX = 13
+const TMAX = 16.4
 
 type State = 'solid' | 'liquid' | 'gas'
 
@@ -72,6 +77,8 @@ function Chart({ d }: { d: Dims }) {
   const curve = P.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(' ')
   const mid = (i: number) => [(P[i][0] + P[i + 1][0]) / 2, (P[i][1] + P[i + 1][1]) / 2] as const
   const box = narrow ? 34 : 42
+  // the ice segment is short and steep, so keep the melting labels clear of the y axis
+  const meltX = Math.max(mid(1)[0], X0 + 36)
   const ticks = narrow ? [-20, 0, 50, 100, 120] : [-20, 0, 20, 40, 60, 80, 100, 120]
   return (
     <>
@@ -123,10 +130,10 @@ function Chart({ d }: { d: Dims }) {
 
       {/* plateau labels */}
       <Fade delay={0.65}>
-        <text className="f12-t f12-hc-lab" x={mid(1)[0]} y={P[1][1] - 30} textAnchor="middle">
+        <text className="f12-t f12-hc-lab" x={meltX} y={P[1][1] - 30} textAnchor="middle">
           tání
         </text>
-        <text className="f12-small" x={mid(1)[0]} y={P[1][1] - 12} textAnchor="middle">
+        <text className="f12-small" x={meltX} y={P[1][1] - 12} textAnchor="middle">
           led + voda
         </text>
       </Fade>
@@ -174,7 +181,7 @@ export default function HeatingCurve() {
     <Board
       level={1}
       max={680}
-      label="Křivka ohřevu vody: teplota v závislosti na čase při stálém dodávání tepla. Led se ohřívá z −20 °C na 0 °C. Při 0 °C teplota zůstává stejná, dokud všechen led neroztaje – tání, led a voda vedle sebe. Pak se voda ohřívá z 0 °C na 100 °C. Při 100 °C je delší plató – var, voda a pára vedle sebe. Nakonec se ohřívá pára nad 100 °C. Na plató se teplota nemění, protože energie jde na změnu skupenství. Malé obrázky ukazují uspořádání částic v ledu, ve vodě a v páře."
+      label="Křivka ohřevu vody: teplota v závislosti na čase při stálém dodávání tepla. Led se ohřívá z −20 °C na 0 °C. Při 0 °C teplota zůstává stejná, dokud všechen led neroztaje – tání, led a voda vedle sebe. Pak se voda ohřívá z 0 °C na 100 °C, pomaleji než led (úsek je méně strmý). Při 100 °C je mnohem delší plató – var, voda a pára vedle sebe. Nakonec se pára ohřívá nad 100 °C, opět strměji než voda. Na plató se teplota nemění, protože energie jde na změnu skupenství. Malé obrázky ukazují uspořádání částic v ledu, ve vodě a v páře."
     >
       <motion.svg className="f12-svg f12-wide" viewBox={`0 0 ${WIDE.w} ${WIDE.h}`} aria-hidden="true" style={{ ['--f12-fs' as string]: '17px' }}>
         <Chart d={WIDE} />

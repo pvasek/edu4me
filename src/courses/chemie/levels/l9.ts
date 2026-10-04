@@ -2347,7 +2347,7 @@ const level: LevelContent = {
               items: [
                 { icon: 'cold', title: 'Chlazení a mrazení', text: 'zpomalí růst mikrobů i enzymové reakce' },
                 { icon: 'heat', title: 'Pasterace a sterilace', text: 'teplo zničí mikroby; mléko se pasteruje asi 15 s při 72 °C, konzervy se sterilují nad 100 °C' },
-                { icon: 'salt', title: 'Solení, cukření, sušení', text: 'mikrobům chybí volná voda, osmózou ji ztrácejí; uzené maso, marmeláda, sušené ovoce' },
+                { icon: 'salt', title: 'Solení, cukření, sušení', text: 'mikrobům chybí volná voda, osmózou ji ztrácejí; solené ryby, marmeláda, sušené ovoce' },
                 { icon: 'lemon', title: 'Okyselení', text: 'při pH pod asi 4,5 se většina bakterií nemnoží; kysané zelí, nálev s octem' },
                 { icon: 'gas-cloud', title: 'Ochranná atmosféra', text: 'balení s dusíkem (E 941) nebo $CO2$ (E 290) místo vzduchu' },
                 { icon: 'flask', title: 'Konzervanty', text: 'kyselina sorbová (E 200), benzoan sodný (E 211), oxid siřičitý ve víně (E 220), dusitany (E 250)' },

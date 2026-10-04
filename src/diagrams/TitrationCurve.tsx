@@ -56,7 +56,7 @@ export default function TitrationCurve({ props }: DiagramProps) {
         className="dg-touch"
         onPointerMove={onMove}
         onPointerLeave={() => setHover(null)}
-        label={`Titrační křivka: ${fmt(s.va, 0)} cm³ ${weak ? 'kyseliny octové' : 'kyseliny chlorovodíkové'} 0,1 mol/dm³ titrované NaOH 0,1 mol/dm³. Na začátku pH ${fmt(titrationPH(kind, 0))}, bod ekvivalence při ${fmt(vEq, 0)} cm³ a pH ${fmt(phEq)}.${weak ? ` V polovině ekvivalence pH = pKa = ${fmt(s.pKa, 2)}.` : ''} Barevné pásy: fenolftalein pH 8,2–10, methyloranž pH 3,1–4,4.`}
+        label={`Titrační křivka: ${fmt(s.va, 0)} cm³ ${weak ? 'kyseliny octové' : 'kyseliny chlorovodíkové'} 0,1 mol/dm³ titrované NaOH 0,1 mol/dm³. Na začátku pH ${fmt(titrationPH(kind, 0))}, bod ekvivalence při ${fmt(vEq, 0)} cm³ a pH ${fmt(phEq)}. Barevné pásy: fenolftalein pH 8,2–10, methyloranž pH 3,1–4,4.`}
       >
         {/* indicator bands */}
         {BANDS.map((b) => (

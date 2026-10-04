@@ -2386,6 +2386,10 @@ const l34: Lesson = {
           text: 'Molekulu na hladině táhnou sousedé jen do stran a dovnitř kapaliny, proto se povrch „stahuje“. Voda má díky vodíkovým vazbám povrchové napětí mimořádně velké: kapky jsou kulaté a vodoměrky běhají po hladině.',
         },
         {
+          type: 'p',
+          text: 'Stejné síly rozhodují i o tom, jak kapalina teče. **Viskozita** je odpor kapaliny proti tečení: glycerol nebo med tečou mnohem pomaleji než voda, protože jejich větší molekuly tvoří víc vodíkových vazeb najednou a dlouhé molekuly se navíc do sebe zaplétají. Platí to obecně: čím silnější mezimolekulové síly a delší molekuly, tím je kapalina viskóznější.',
+        },
+        {
           type: 'callout',
           variant: 'tip',
           title: 'Pokus doma',

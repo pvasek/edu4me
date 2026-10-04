@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { Atom, Draw, F, Fade, Figure, headAt, Plate, Pop, useHatch, useNarrow } from './kit'
 
 const LABEL =
-  'Cyklus ATP a ADP. Hydrolýzou ATP (adenosintrifosfátu) vodou vzniká ADP a anorganický fosfát Pi a uvolní se asi 30 kJ/mol energie, kterou buňka využije k práci: ke stahu svalů, k aktivnímu transportu látek přes membrány a k syntéze nových látek. Opačně se z ADP a fosfátu znovu tvoří ATP; energii k tomu dodává potrava přes buněčné dýchání. Dole je náčrt molekuly ATP: adenin, ribosa a tři fosfátové skupiny P–P–P, mezi fosfáty dvě makroergní (energeticky bohaté) vazby, značené vlnovkou.'
+  'Cyklus ATP a ADP. Hydrolýzou ATP (adenosintrifosfátu) vodou vzniká ADP a anorganický fosfát Pi a uvolní se asi 30 kJ/mol energie, kterou buňka využije k práci: ke stahu svalů, k aktivnímu transportu látek přes membrány a k syntéze nových látek. Opačně se z ADP a fosfátu znovu tvoří ATP; energii k tomu dodává potrava přes buněčné dýchání. Dole je náčrt molekuly ATP: adenin, ribóza a tři fosfátové skupiny P–P–P, mezi fosfáty dvě makroergní (energeticky bohaté) vazby, značené vlnovkou.'
 
 export default function AtpCycle() {
   return (
@@ -115,7 +115,7 @@ function AtpSketch({ x, y, gap, narrow }: { x: number; y: number; gap: number; n
         adenin
       </text>
       <text className="f89-lb f89-sm" x={rx} y={y + 38} textAnchor="middle">
-        ribosa
+        ribóza
       </text>
       <text className="f89-lb f89-sm" x={px[1]} y={y + 38} textAnchor="middle">
         {narrow ? '3 fosfáty' : '3 fosfátové skupiny'}

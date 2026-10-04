@@ -1224,6 +1224,7 @@ const l4_3: Lesson = {
           ],
           answer: '$Pb(NO3)2 + 2KI -> PbI2(s) + 2KNO3$',
         },
+        { type: 'p', text: 'Jméno má pokus podle druhého kroku: sraženina $PbI2$ se v horké vodě rozpustí a při chladnutí z roztoku znovu krystalizuje jako lesklé zlaté šupinky, které pomalu padají ke dnu jako déšť.' },
         {
           type: 'callout',
           variant: 'warning',

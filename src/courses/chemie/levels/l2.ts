@@ -739,7 +739,7 @@ const level: LevelContent = {
               { icon: 'lightning', title: 'Generátor', text: 'otáčení se mění na elektřinu' },
               { icon: 'cloud', title: 'Chladicí věže', text: 'odvádějí zbylé teplo; stoupá z nich jen vodní pára, ne kouř' },
             ], caption: 'Tlakovodní jaderná elektrárna, jako Temelín a Dukovany' },
-            { type: 'callout', variant: 'fact', title: 'Jádro v Česku', text: 'Elektrárny **Dukovany** (4 bloky, od roku 1985) a **Temelín** (2 bloky, od roku 2000) vyrábějí přes třetinu elektřiny v Česku. Vyhořelé palivo zůstává radioaktivní tisíce let, proto se připravuje hlubinné úložiště.' },
+            { type: 'callout', variant: 'fact', title: 'Jádro v Česku', text: 'Elektrárny **Dukovany** (4 bloky, od roku 1985) a **Temelín** (2 bloky, od roku 2000) vyrábějí přes třetinu elektřiny v Česku. Vyhořelé palivo zůstává radioaktivní desítky tisíc let, proto se připravuje hlubinné úložiště.' },
             { type: 'p', text: 'Při **jaderné fúzi** (slučování) se naopak lehká jádra spojí v těžší. Tak svítí **Slunce**: v jeho nitru se při teplotě asi 15 milionů °C mění vodík na helium.' },
             { type: 'formula', text: '$^{2}_{1}H + ^{3}_{1}H -> ^{4}_{2}He + ^{1}_{0}n$', caption: 'fúze deuteria a tritia, se kterou počítají budoucí fúzní elektrárny' },
             { type: 'p', text: 'Štěpení a fúze jsou tedy dvě opačné cesty k energii z jádra: jedna jádra dělí, druhá spojuje. V praxi se liší takhle:' },

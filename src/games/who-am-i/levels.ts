@@ -98,7 +98,7 @@ const L3_ROWS: [string, string, Hint, string][] = [
   ['Na', 'Jsem měkký kov a ve sloučeninách ochotně odevzdávám svůj jediný valenční elektron.', { label: 'Oxid', text: 'Můj oxid má vzorec $X2O$, můj chlorid $XCl$ tvoří iontovou mřížku.' }, 'Tvořím kation $M^+$ s konfigurací neonu.'],
   ['Mg', 'Jsem kov a ve sloučeninách odevzdávám dva valenční elektrony.', { label: 'Oxid', text: 'Můj oxid má vzorec $XO$, můj nitrid $X3N2$.' }, 'Tvořím kation $M^{2+}$ s konfigurací neonu.'],
   ['Al', 'Jsem lehký kov se třemi valenčními elektrony.', { label: 'Oxid', text: 'Můj oxid má vzorec $X2O3$.' }, 'Tvořím kation $M^{3+}$ s konfigurací neonu.'],
-  ['Si', 'Jsem polokov se 4 valenčními elektrony, stejně jako uhlík nade mnou.', { label: 'Oxid', text: 'Můj oxid $XO2$ netvoří molekuly, ale obří kovalentní mřížku, a taje až kolem 1 700 °C.' }, 'Jednoduché ionty netvořím, vazby sdílím.'],
+  ['Si', 'Jsem polokov se 4 valenčními elektrony, stejně jako uhlík nade mnou.', { label: 'Oxid', text: 'Můj oxid $XO2$ netvoří molekuly, ale atomovou krystalovou mřížku, a taje až kolem 1 700 °C.' }, 'Jednoduché ionty netvořím, vazby sdílím.'],
   ['P', 'Jsem nekov s 5 valenčními elektrony.', { label: 'Oxid', text: 'Můj oxid s oxidačním číslem V má vzorec $X4O10$, zjednodušeně $X2O5$.' }, 'S reaktivními kovy tvořím anion $X^{3-}$ s konfigurací argonu.'],
   ['S', 'Jsem žlutý nekov se 6 valenčními elektrony.', { label: 'Oxid', text: 'Tvořím dva důležité oxidy: $XO2$ a $XO3$.' }, 'S kovy tvořím anion $X^{2-}$ s konfigurací argonu.'],
   ['Cl', 'Jsem nekov se 7 valenčními elektrony a jako prvek tvořím dvouatomové molekuly.', { label: 'Oxid', text: 'Můj oxid s nejvyšším oxidačním číslem má vzorec $X2O7$.' }, 'Tvořím anion $X^-$ s konfigurací argonu.'],

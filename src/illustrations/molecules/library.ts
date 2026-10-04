@@ -622,10 +622,10 @@ const DEFS: Record<MoleculeId, Def> = {
       return m.hs()
     },
   },
-  glucose: { name: 'glukosa', formula: 'C6H12O6', build: () => pyranose('beta') },
-  'alpha-glucose': { name: 'α-glukosa', formula: 'C6H12O6', build: () => pyranose('alpha') },
+  glucose: { name: 'glukóza', formula: 'C6H12O6', build: () => pyranose('beta') },
+  'alpha-glucose': { name: 'α-glukóza', formula: 'C6H12O6', build: () => pyranose('alpha') },
   fructose: {
-    name: 'fruktosa',
+    name: 'fruktóza',
     formula: 'C6H12O6',
     build: () => {
       const m = b()
@@ -642,7 +642,7 @@ const DEFS: Record<MoleculeId, Def> = {
     },
   },
   ribose: {
-    name: 'ribosa',
+    name: 'ribóza',
     formula: 'C5H10O5',
     build: () => {
       const m = b()
