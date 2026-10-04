@@ -59,7 +59,7 @@ export const GROUP_FIGURES: Record<FigureGroup, readonly FigureId[]> = {
     'measuring-instruments', 'vernier-caliper', 'displacement-volume', 'density-column', 'brownian-motion',
     'thermometer-scales', 'thermal-expansion', 'electroscope', 'magnet-field', 'earth-magnetism', 'center-of-gravity',
     'lever-types', 'pulley-systems', 'hydraulic-press', 'hydrostatic-pressure', 'archimedes-principle', 'float-sink',
-    'barometer', 'pendulum-energy',
+    'barometer', 'pendulum-energy', 'calorimeter-mixing',
   ],
   fz2: [
     'heat-transfer', 'four-stroke-engine', 'heat-pump', 'sound-wave', 'ear-anatomy', 'echo-sonar', 'eclipses',

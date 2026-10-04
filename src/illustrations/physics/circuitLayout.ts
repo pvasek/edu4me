@@ -23,11 +23,13 @@ export const SYMBOL: Record<CircuitComponentKind, { body: number; up: number; do
   voltmeter: { body: 12, up: 12, down: 12 },
   ohmmeter: { body: 12, up: 12, down: 12 },
   diode: { body: 8, up: 9, down: 9 },
+  'diode-reverse': { body: 8, up: 9, down: 9 },
   led: { body: 8, up: 20, down: 9 },
   capacitor: { body: 4, up: 12, down: 12 },
   coil: { body: 16, up: 9, down: 2 },
   motor: { body: 13, up: 13, down: 13 },
   fuse: { body: 14, up: 6, down: 6 },
+  breaker: { body: 14, up: 8, down: 5 },
   rheostat: { body: 15, up: 14, down: 13 },
   ldr: { body: 15, up: 23, down: 7 },
   thermistor: { body: 15, up: 13, down: 12 },
@@ -56,6 +58,8 @@ export interface PlacedComp {
   /** index of the part in `parts`, branch index for group members */
   part: number
   branch?: number
+  /** current flows through it (a lamp then glows) */
+  live: boolean
 }
 
 export interface CircuitLayout {
@@ -114,13 +118,23 @@ function item(p: CircuitPart, i: number): Item {
   }
 }
 
-const conducts = (c: CircuitComponent, ac: boolean) => c.kind !== 'switch-open' && (ac || c.kind !== 'capacitor')
-const branchConducts = (b: CircuitComponent[], ac: boolean) => b.every((c) => conducts(c, ac))
+/**
+ * Does (steady) current pass the component? An open switch never conducts; on a DC source a
+ * capacitor and a diode in reverse bias (`diode-reverse`) block it. On AC both conduct (a diode
+ * lets one half-wave through). `diodes: false` treats reverse diodes as conducting (is the loop
+ * closed apart from them?).
+ */
+const conducts = (c: CircuitComponent, ac: boolean, diodes = true) =>
+  c.kind !== 'switch-open' && (ac || (c.kind !== 'capacitor' && (!diodes || c.kind !== 'diode-reverse')))
+const branchConducts = (b: CircuitComponent[], ac: boolean, diodes = true) => b.every((c) => conducts(c, ac, diodes))
 
-/** Is there a closed path for (steady) current through the whole circuit? */
-export function circuitClosed(source: CircuitSource, parts: CircuitPart[]): boolean {
+/**
+ * Is there a closed path for (steady) current through the whole circuit?
+ * With `diodes: false`, reverse-biased diodes count as conducting.
+ */
+export function circuitClosed(source: CircuitSource, parts: CircuitPart[], diodes = true): boolean {
   const ac = source.kind === 'ac'
-  return parts.every((p) => (isGroup(p) ? p.parallel.some((b) => branchConducts(b, ac)) : conducts(p, ac)))
+  return parts.every((p) => (isGroup(p) ? p.parallel.some((b) => branchConducts(b, ac, diodes)) : conducts(p, ac, diodes)))
 }
 
 export function layoutCircuit(source: CircuitSource, parts: CircuitPart[], narrow = false): CircuitLayout {
@@ -222,7 +236,7 @@ export function layoutCircuit(source: CircuitSource, parts: CircuitPart[], narro
       if (t1 > from) wires.push([P(s, from, d), P(s, t1, d)])
     }
 
-    const putComp = (c: CircuitComponent, s: Side, t: number, d: number, part: number, branch?: number): number => {
+    const putComp = (c: CircuitComponent, s: Side, t: number, d: number, part: number, branch?: number, live = true): number => {
       const [x, y] = P(s, t, d)
       const sym = SYMBOL[c.kind]
       const along = sym.body
@@ -260,7 +274,7 @@ export function layoutCircuit(source: CircuitSource, parts: CircuitPart[], narro
           lbox = { x: lx - tw, y: y - LABEL / 2, w: tw, h: LABEL }
         }
       }
-      comps.push({ kind: c.kind, label: c.label, x, y, side: s, rot: ROT[s], box, lx, ly, anchor, lbox, part, branch })
+      comps.push({ kind: c.kind, label: c.label, x, y, side: s, rot: ROT[s], box, lx, ly, anchor, lbox, part, branch, live })
       return along
     }
 
@@ -303,7 +317,7 @@ export function layoutCircuit(source: CircuitSource, parts: CircuitPart[], narro
             const bcuts: [number, number][] = []
             b.forEach((c, j) => {
               const mid = u + bl[j] / 2
-              bcuts.push([mid, putComp(c, s, mid, d, it.part, k)])
+              bcuts.push([mid, putComp(c, s, mid, d, it.part, k, branchConducts(b, ac))])
               u += bl[j] + bg
             })
             if (k === 0) cuts.push(...bcuts)
@@ -341,6 +355,8 @@ export function layoutCircuit(source: CircuitSource, parts: CircuitPart[], narro
     }
 
     const closed = circuitClosed(source, parts)
+    const flowing = closed && mainOk
+    for (const c of comps) c.live = c.live && flowing
     const main = `M0 0 H${W} V${H} H0 Z`
     const all: Box[] = [{ x: 0, y: 0, w: W, h: H }, sbox]
     if (slbox) all.push(slbox)
@@ -360,7 +376,7 @@ export function layoutCircuit(source: CircuitSource, parts: CircuitPart[], narro
       w: W,
       h: H,
       box: { x: minX, y: minY, w: maxX - minX, h: maxY - minY },
-      flows: closed && mainOk ? [main, ...flows] : [],
+      flows: flowing ? [main, ...flows] : [],
       closed,
     }
   }

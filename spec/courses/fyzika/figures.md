@@ -27,6 +27,7 @@ Many physics pictures don't need a named figure: use the **parametric blocks** i
 | `float-sink` | Three bodies in water: sinks (F_G > F_vz), hovers (=), floats (<), with force arrows and densities. |
 | `barometer` | Torricelli's mercury barometer (760 mm) and an aneroid barometer; pressure falling with altitude (mountain inset). |
 | `pendulum-energy` | Pendulum at three positions with E_k / E_p bars (energy conservation), friction making it lose height slowly. |
+| `calorimeter-mixing` | School calorimeter in section (used in f4-1 and f10-2): thin metal vessel with cold water on cork feet inside an insulating jacket, lid, thermometer (rises 20 → 44 °C), ring stirrer. Toggle „horká voda“ (a can of hot water) / „horký kov“ (a heated cylinder on a thread); heat arrows into the water and a panel t₁ → t ← t₂ with Q_odevzdané = Q_přijaté. The calorimeter's heat capacity C_k is left to the caption (gymnázium). |
 
 ## fz2 – levels 4–6 (`src/illustrations/figures/fz2/`)
 
@@ -109,4 +110,4 @@ Many physics pictures don't need a named figure: use the **parametric blocks** i
 
 ## Reusable chemistry figures (already drawn)
 
-`states` (diagram: particle states), `maxwell-boltzmann`, `radiation-penetration`, `nuclear-fission`, `half-life`, `rutherford-experiment`, `atom-scale`, `hydrogen-isotopes`, `heating-curve`, `calorimeter`, `electrolysis`, `li-ion-battery`, `fuel-cell`, `greenhouse-effect`, `flame-tests` (see `src/illustrations/catalog.ts`). Use them where they fit the physics story.
+`states` (diagram: particle states), `maxwell-boltzmann`, `radiation-penetration`, `nuclear-fission`, `half-life`, `rutherford-experiment`, `atom-scale`, `hydrogen-isotopes`, `heating-curve`, `calorimeter` (chemistry coffee-cup calorimeter with a reaction; physics uses `calorimeter-mixing`), `electrolysis`, `li-ion-battery`, `fuel-cell`, `greenhouse-effect`, `flame-tests` (see `src/illustrations/catalog.ts`). Use them where they fit the physics story.

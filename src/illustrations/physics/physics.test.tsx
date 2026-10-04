@@ -187,11 +187,12 @@ describe('circuit layout', () => {
     { kind: 'thermistor', label: 'R_{T}' },
     { kind: 'bell', label: 'Z' },
     { kind: 'diode', label: 'D' },
+    { kind: 'breaker', label: 'J' },
   ]
   it('lays nested parallel groups without overlaps (wide and narrow)', () => {
     for (const narrow of [false, true]) {
       const lay = check(nested, narrow)
-      expect(lay.comps.length).toBe(16)
+      expect(lay.comps.length).toBe(17)
       const sides = new Set(lay.comps.map((c) => c.side))
       expect(sides.has('top') && sides.has('right')).toBe(true)
       expect(lay.junctions.length).toBe(4 + 4)
@@ -214,6 +215,34 @@ describe('circuit layout', () => {
     expect(circuitClosed(src, [{ parallel: [[{ kind: 'lamp' }, { kind: 'switch-open' }], [{ kind: 'lamp' }]] }])).toBe(true)
     expect(circuitClosed(src, [{ kind: 'capacitor' }])).toBe(false)
     expect(circuitClosed({ kind: 'ac' }, [{ kind: 'capacitor' }])).toBe(true)
+    // a diode in reverse bias blocks direct current
+    expect(circuitClosed(src, [{ kind: 'diode' }, { kind: 'lamp' }])).toBe(true)
+    expect(circuitClosed(src, [{ kind: 'diode-reverse' }, { kind: 'lamp' }])).toBe(false)
+    expect(circuitClosed(src, [{ kind: 'diode-reverse' }, { kind: 'lamp' }], false)).toBe(true)
+    expect(circuitClosed(src, [{ kind: 'breaker' }, { kind: 'lamp' }])).toBe(true)
+  })
+  it('draws a reverse diode without current and with the lamp off', () => {
+    const fwd = layoutCircuit(src, [{ kind: 'switch' }, { kind: 'diode' }, { kind: 'lamp' }])
+    expect(fwd.flows.length).toBe(1)
+    expect(fwd.comps.find((c) => c.kind === 'lamp')!.live).toBe(true)
+    const rev = layoutCircuit(src, [{ kind: 'switch' }, { kind: 'diode-reverse' }, { kind: 'lamp' }])
+    expect(rev.flows.length).toBe(0)
+    expect(rev.comps.every((c) => !c.live)).toBe(true)
+    const label = svgOf(renderToStaticMarkup(<CircuitView source={src} parts={[{ kind: 'switch' }, { kind: 'diode-reverse', label: 'D' }, { kind: 'lamp' }]} />))
+    expect(label).toContain('závěrném směru')
+    expect(label).toContain('žárovka nesvítí')
+    expect(label).not.toContain('rozpojený')
+    const html = renderToStaticMarkup(<CircuitView source={src} parts={[{ kind: 'diode', label: 'D' }, { kind: 'lamp' }]} />)
+    expect(html).toContain('ph-lamp-on')
+    // a blocked side branch: the other branch still lights its lamp
+    const side = layoutCircuit(src, [{ parallel: [[{ kind: 'lamp' }], [{ kind: 'diode-reverse' }, { kind: 'lamp' }]] }])
+    expect(side.comps.filter((c) => c.kind === 'lamp').map((c) => c.live)).toEqual([true, false])
+  })
+  it('names a circuit breaker once', () => {
+    const label = svgOf(renderToStaticMarkup(<CircuitView source={{ kind: 'ac', label: '230 V' }} parts={[{ kind: 'breaker', label: 'jistič 16 A' }, { kind: 'lamp' }]} />))
+    expect(label).toContain('jistič 16 A')
+    expect(label).not.toContain('jistič jistič')
+    expect(label).not.toContain('pojistka')
   })
   it('renders every symbol', () => {
     const html = renderToStaticMarkup(<CircuitView source={src} parts={nested} />)

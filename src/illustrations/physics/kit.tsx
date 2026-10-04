@@ -184,6 +184,8 @@ export function placeBox(
   taken: Box[],
   segs: [[number, number], [number, number]][] = [],
   bounds?: Box,
+  /** the whole drawing: a label sticking out of it would be clipped, so it loses to any other spot */
+  canvas?: Box,
 ): Box {
   let best = cands[0]
   let bestScore = Infinity
@@ -193,6 +195,8 @@ export function placeBox(
     for (const s of segs) if (segHitsBox(s[0], s[1], c)) score += 3
     if (bounds && (c.x < bounds.x || c.y < bounds.y || c.x + c.w > bounds.x + bounds.w || c.y + c.h > bounds.y + bounds.h))
       score += 6
+    if (canvas && (c.x < canvas.x || c.y < canvas.y || c.x + c.w > canvas.x + canvas.w || c.y + c.h > canvas.y + canvas.h))
+      score += 100
     if (score < bestScore) {
       best = c
       bestScore = score

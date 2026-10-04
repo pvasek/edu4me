@@ -1,5 +1,5 @@
 import type { CircuitComponent, CircuitComponentKind, CircuitPart, CircuitSource } from '../../core/types'
-import { SOURCE_BODY, layoutCircuit, type CircuitLayout } from './circuitLayout'
+import { SOURCE_BODY, circuitClosed, layoutCircuit, type CircuitLayout } from './circuitLayout'
 import { Draw, Fade, Label, Plate, f1, say, url, useNarrow, usePlate } from './kit'
 
 const NAME: Record<CircuitComponentKind, string> = {
@@ -11,11 +11,13 @@ const NAME: Record<CircuitComponentKind, string> = {
   voltmeter: 'voltmetr',
   ohmmeter: 'ohmmetr',
   diode: 'dioda',
+  'diode-reverse': 'dioda v závěrném směru',
   led: 'svítivá dioda (LED)',
   capacitor: 'kondenzátor',
   coil: 'cívka',
   motor: 'elektromotor',
   fuse: 'pojistka',
+  breaker: 'jistič',
   rheostat: 'reostat',
   ldr: 'fotorezistor',
   thermistor: 'termistor',
@@ -29,7 +31,13 @@ const SOURCE_NAME: Record<CircuitSource['kind'], string> = {
   ac: 'zdroj střídavého napětí',
 }
 
-const compText = (c: CircuitComponent) => NAME[c.kind] + (c.label ? ` ${say(c.label)}` : '')
+/** Name + label; a label that already starts with the name ("jistič 16 A") is read once. */
+const compText = (c: CircuitComponent) => {
+  const t = c.label ? say(c.label) : ''
+  // "D (závěrný směr)" already says the diode is reversed
+  if (c.kind === 'diode-reverse' && /závěrn/i.test(t)) return `dioda ${t}`
+  return t.toLowerCase().startsWith(NAME[c.kind]) ? t : NAME[c.kind] + (t ? ` ${t}` : '')
+}
 
 export function circuitLabel(source: CircuitSource, parts: CircuitPart[], closed: boolean): string {
   const bits = parts.map((p) =>
@@ -37,24 +45,39 @@ export function circuitLabel(source: CircuitSource, parts: CircuitPart[], closed
       ? `paralelně spojené větve (${p.parallel.map((b, i) => `${i + 1}. větev: ${b.length ? b.map(compText).join(' a ') : 'vodič'}`).join('; ')})`
       : compText(p),
   )
+  const dc = source.kind !== 'ac'
+  const all = parts.flatMap((p) => ('parallel' in p ? p.parallel.flat() : [p]))
+  let state: string
+  if (closed) {
+    state = 'Obvod je uzavřený, prochází jím proud.'
+    // a side branch blocked by a reverse diode (the rest of the circuit conducts)
+    if (dc && all.some((c) => c.kind === 'diode-reverse')) state += ' Větví s diodou v závěrném směru proud neprochází.'
+  } else if (dc && circuitClosed(source, parts, false)) {
+    // the loop is closed, only a reverse diode blocks the current
+    state =
+      'Obvod je uzavřený, ale dioda je zapojena v závěrném směru, a proto jím proud neprochází' +
+      (all.some((c) => c.kind === 'lamp') ? ' a žárovka nesvítí.' : '.')
+  } else state = 'Obvod je rozpojený, proud jím neprochází.'
   return (
     `Schéma elektrického obvodu. Zdroj: ${SOURCE_NAME[source.kind]}${source.label ? ` ${say(source.label)}` : ''}. ` +
     `Za sebou jsou zapojeny: ${bits.join(', ')}. ` +
-    (closed ? 'Obvod je uzavřený, prochází jím proud.' : 'Obvod je rozpojený, proud jím neprochází.')
+    state
   )
 }
 
 /** A component symbol in local coordinates: horizontal, centred on 0 0, "up" is the label side. */
-function Symbol({ kind, rot }: { kind: CircuitComponentKind; rot: number }) {
+function Symbol({ kind, rot, live }: { kind: CircuitComponentKind; rot: number; live?: boolean }) {
   const { id } = usePlate()
   const arrow = url(id, 'as-ink')
   switch (kind) {
     case 'resistor':
       return <rect x={-15} y={-6.5} width={30} height={13} className="ph-part ph-part-fill" />
     case 'lamp':
+      // a lamp with current through it glows (static, also with reduced motion)
       return (
         <g className="ph-part">
-          <circle r={11} className="ph-part-fill" />
+          {live && <circle r={16} className="ph-lamp-glow" />}
+          <circle r={11} className={live ? 'ph-lamp-on' : 'ph-part-fill'} />
           <path d="M-7.8 -7.8 L7.8 7.8 M-7.8 7.8 L7.8 -7.8" />
         </g>
       )
@@ -77,6 +100,14 @@ function Symbol({ kind, rot }: { kind: CircuitComponentKind; rot: number }) {
           <text y={4.6} className="ph-part-t" transform={rot ? `rotate(${-rot})` : undefined}>
             {kind === 'ammeter' ? 'A' : kind === 'voltmeter' ? 'V' : kind === 'ohmmeter' ? 'Ω' : 'M'}
           </text>
+        </g>
+      )
+    case 'diode-reverse':
+      // the same symbol turned round: the arrow points against the current (from − to +)
+      return (
+        <g className="ph-part">
+          <path d="M8 -8.5 L8 8.5 L-7 0 Z" className="ph-part-fill" />
+          <path d="M-7.5 -8.5 V8.5" />
         </g>
       )
     case 'diode':
@@ -102,6 +133,15 @@ function Symbol({ kind, rot }: { kind: CircuitComponentKind; rot: number }) {
         <g className="ph-part">
           <rect x={-14} y={-5.5} width={28} height={11} className="ph-part-fill" />
           <path d="M-14 0 H14" />
+        </g>
+      )
+    case 'breaker':
+      // circuit breaker (ČSN EN 60617-7, 07-13-05): a closed contact with a cross on the fixed contact
+      return (
+        <g className="ph-part">
+          <path d="M-14 0 H-10 L11 -7" />
+          <path d="M9 0 H14" />
+          <path d="M5 -4 L13 4 M5 4 L13 -4" style={{ strokeWidth: 1.6 }} />
         </g>
       )
     case 'rheostat':
@@ -249,7 +289,7 @@ export function CircuitView({ source, parts }: { source: CircuitSource; parts: C
       {lay.comps.map((c, i) => (
         <Fade key={i} delay={0.35 + (i / Math.max(1, n)) * 0.6}>
           <g transform={`translate(${f1(c.x)} ${f1(c.y)}) rotate(${c.rot})`}>
-            <Symbol kind={c.kind} rot={c.rot} />
+            <Symbol kind={c.kind} rot={c.rot} live={c.live} />
           </g>
           {c.label && c.kind !== 'wire' && <Label x={c.lx} y={c.ly} text={c.label} anchor={c.anchor} className="ph-lbl-sm" />}
         </Fade>

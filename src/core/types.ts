@@ -115,7 +115,7 @@ export interface GraphMark {
 
 export type CircuitComponentKind =
   | 'resistor' | 'lamp' | 'switch' | 'switch-open' | 'ammeter' | 'voltmeter' | 'ohmmeter'
-  | 'diode' | 'led' | 'capacitor' | 'coil' | 'motor' | 'fuse' | 'rheostat' | 'ldr' | 'thermistor' | 'bell' | 'wire'
+  | 'diode' | 'diode-reverse' | 'led' | 'capacitor' | 'coil' | 'motor' | 'fuse' | 'breaker' | 'rheostat' | 'ldr' | 'thermistor' | 'bell' | 'wire'
 export interface CircuitComponent {
   kind: CircuitComponentKind
   /** short label, e.g. "R₁", "Ž", "2 Ω" */

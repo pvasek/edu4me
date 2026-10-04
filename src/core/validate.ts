@@ -7,7 +7,7 @@ import { EXPERIMENTS } from '../lesson/experiments/catalog'
 const ICONS = new Set<string>(CHEM_ICONS)
 const SPECS = new Set<string>(SPECIMENS)
 const VISUAL = new Set<string>(['flipcards', 'diagram', 'molecule', 'particles', 'reaction', 'process', 'iconlist', 'compare', 'elements', 'structure', 'graph', 'circuit', 'forces', 'rays', 'wave', 'experiment', 'punnett', 'pedigree'])
-const CIRCUIT_KINDS = new Set<string>(['resistor', 'lamp', 'switch', 'switch-open', 'ammeter', 'voltmeter', 'ohmmeter', 'diode', 'led', 'capacitor', 'coil', 'motor', 'fuse', 'rheostat', 'ldr', 'thermistor', 'bell', 'wire'])
+const CIRCUIT_KINDS = new Set<string>(['resistor', 'lamp', 'switch', 'switch-open', 'ammeter', 'voltmeter', 'ohmmeter', 'diode', 'diode-reverse', 'led', 'capacitor', 'coil', 'motor', 'fuse', 'breaker', 'rheostat', 'ldr', 'thermistor', 'bell', 'wire'])
 const MOLS = new Set<string>(MOLECULES)
 
 const DIAGRAMS = new Set<string>([...FIGURES, 'bohr', 'states', 'ph-scale', 'periodic-mini', 'energy-profile', 'titration-curve', 'orbitals', 'separation', 'galvanic', 'rate-curve', 'lab-safety'])

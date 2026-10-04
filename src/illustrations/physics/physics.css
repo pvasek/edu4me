@@ -259,6 +259,15 @@
 .ph-current {
   fill: var(--ph-b);
 }
+/* a lamp with current through it */
+.ph-lamp-on {
+  fill: color-mix(in srgb, #f3c94b 62%, var(--surface));
+}
+.ph-lamp-glow {
+  fill: #f3c94b;
+  fill-opacity: 0.3;
+  stroke: none;
+}
 
 /* ---------------------------------------------------------------- forces */
 .ph-vec {

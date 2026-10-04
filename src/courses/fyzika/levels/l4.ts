@@ -151,8 +151,8 @@ const level: LevelContent = {
             { type: 'formula', text: 'Q_{1} = Q_{2}', caption: 'kalorimetrická rovnice: teplo odevzdané teplejším tělesem = teplo přijaté chladnějším tělesem' },
             { type: 'p', text: 'Když za obě tepla dosadíme Q = m · c · Δt, dostaneme rovnici pro výslednou teplotu. Pozor na rozdíly teplot: vždy odečítáme nižší teplotu od vyšší, aby obě strany vyšly kladné.' },
             { type: 'formula', text: 'm_{1} · c_{1} · (t_{1} − t) = m_{2} · c_{2} · (t − t_{2})', caption: 't_{1} teplota teplejšího tělesa, t_{2} teplota chladnějšího, t výsledná teplota' },
-            { type: 'p', text: 'Pravidlo platí jen tehdy, když teplo neutíká do okolí. Proto se takové pokusy dělají v kalorimetru:' },
-            { type: 'diagram', id: 'calorimeter', caption: 'Kalorimetr je dobře izolovaná nádoba s teploměrem a míchadlem. Teplo z něj skoro neuniká, takže teplo odevzdané se rovná teplu přijatému. Obrázek pochází z chemie, proto je vztah zapsán jako q = m · c · ΔT a c vody jako 4,18 J/(g·K); je to totéž jako naše Q = m · c · Δt a 4 200 J/(kg·°C).' },
+            { type: 'p', text: 'Pravidlo platí jen tehdy, když teplo neutíká do okolí. Proto se takové pokusy dělají v **kalorimetru**. Prohlédni si, z čeho se skládá a kudy teplo teče:' },
+            { type: 'diagram', id: 'calorimeter-mixing', caption: 'Kalorimetr: kovová nádoba s vodou v izolačním plášti, víčko, teploměr a míchačka. Teplo skoro neuniká ven, takže co teplejší těleso odevzdá, to studená voda přijme: Q_{1} = Q_{2}. Přepínačem pod obrázkem vyměníš horkou vodu za horký kov.' },
             { type: 'p', text: 'Co se uvnitř děje, ukáže měření: plechovku s horkou vodou ponoříme do studené a sledujeme oba teploměry.' },
             { type: 'graph', x: { label: 'čas', unit: 'min', min: 0, max: 10, step: 2 }, y: { label: 'teplota', unit: '°C', min: 0, max: 90, step: 10 }, series: [
               { label: 'horká voda 0,2 kg', style: 'smooth', tone: 'a', points: [[0, 80], [1, 65], [2, 56], [3, 50], [4, 47], [6, 45], [8, 44.3], [10, 44]] },
@@ -915,7 +915,7 @@ const level: LevelContent = {
             { type: 'callout', variant: 'tip', title: 'Pravidlo tří sekund', text: 'Zvuk urazí 1 km zhruba za 3 s. Počet sekund od blesku k hromu vyděl třemi a máš vzdálenost v kilometrech. Když je to méně než 30 s (asi 10 km), jdi do budovy nebo do auta.' },
             { type: 'callout', variant: 'fact', text: 'Indiáni prý přikládali ucho ke kolejím, aby slyšeli blížící se vlak. Ocelí zvuk letí asi 15× rychleji než vzduchem a navíc tolik neslábne.' },
             { type: 'p', text: 'Zvuk ale nemusí letět jen dál. Když narazí na překážku, vrátí se zpátky.' },
-            { type: 'check', question: { kind: 'number', q: 'Od blesku k hromu uplyne 9 s. Jak daleko je bouřka? Počítej s rychlostí zvuku 340 m/s a výsledek uveď v kilometrech.', answer: 3.06, tolerance: 0.1, unit: 'km', explain: 's = v · t = 340 m/s · 9 s = 3 060 m ≈ 3,1 km.' } },
+            { type: 'check', question: { kind: 'number', q: 'Od blesku k hromu uplyne 9 s. Jak daleko je bouřka? Počítej s rychlostí zvuku 340 m/s a výsledek uveď v kilometrech.', answer: 3.06, tolerance: 0.1, unit: 'km', explain: 's = v · t = 340 m/s · 9 s = 3 060 m ≐ 3,1 km.' } },
           ],
         },
         {
@@ -1021,8 +1021,8 @@ const level: LevelContent = {
             { type: 'p', text: 'Vyzkoušej si vztah f = 1 / T na ladičce z minulé lekce.' },
             { type: 'example', title: 'Komorní a', problem: 'Ladička kmitá s frekvencí 440 Hz. Jaká je doba jednoho kmitu?', steps: [
               'f = 1 / T, a proto T = 1 / f.',
-              'T = 1 / 440 Hz ≈ 0,0023 s',
-            ], answer: 'T ≈ 0,0023 s, tedy asi 2,3 tisíciny sekundy.' },
+              'T = 1 / 440 Hz ≐ 0,0023 s',
+            ], answer: 'T ≐ 0,0023 s, tedy asi 2,3 tisíciny sekundy.' },
             { type: 'p', text: 'A obráceně: když znáš dobu jednoho kmitu, spočítáš frekvenci.' },
             { type: 'example', title: 'Z periody na frekvenci', problem: 'Struna vykoná jeden kmit za 0,005 s. Jakou má frekvenci?', steps: [
               'f = 1 / T = 1 / 0,005 s',
@@ -1201,7 +1201,7 @@ const level: LevelContent = {
     { kind: 'tf', q: 'V horách vře voda při nižší teplotě než u moře.', answer: true, explain: 'S nadmořskou výškou klesá tlak vzduchu, a proto klesá i teplota varu. Na Sněžce vře voda asi při 95 °C.' },
     { kind: 'order', q: 'Seřaď doby čtyřdobého zážehového motoru, začni pracovním zdvihem.', items: ['pracovní zdvih', 'výfuk', 'sání', 'stlačení'], explain: 'Cyklus se opakuje dokola: po pracovním zdvihu jde výfuk, pak sání nové směsi a její stlačení, načež přijde další zážeh.' },
     { kind: 'number', q: 'Naftový motor vykoná práci 90 kJ, spálením nafty se v něm uvolní 240 kJ tepla. Jaká je jeho účinnost?', answer: 37.5, tolerance: 0.5, unit: '%', explain: 'η = W / Q · 100 % = 90 kJ / 240 kJ · 100 % = 37,5 %.' },
-    { kind: 'number', q: 'Od blesku k hromu uplyne 12 s. Jak daleko je bouřka? (v = 340 m/s, výsledek v km)', answer: 4.08, tolerance: 0.1, unit: 'km', explain: 's = v · t = 340 m/s · 12 s = 4 080 m ≈ 4,1 km.' },
+    { kind: 'number', q: 'Od blesku k hromu uplyne 12 s. Jak daleko je bouřka? (v = 340 m/s, výsledek v km)', answer: 4.08, tolerance: 0.1, unit: 'km', explain: 's = v · t = 340 m/s · 12 s = 4 080 m ≐ 4,1 km.' },
     { kind: 'number', q: 'Sonar ponorky zachytí ozvěnu od skalního útesu za 3 s. Jak daleko je útes? (Rychlost zvuku ve vodě 1 500 m/s.)', answer: 2250, tolerance: 10, unit: 'm', explain: 's = v · t / 2 = 1 500 m/s · 3 s / 2 = 2 250 m.' },
     { kind: 'choice', q: 'Struna kmitá s periodou 0,004 s. Jaký tón vydává?', options: ['250 Hz, slyšitelný tón', '4 Hz, infrazvuk', '25 000 Hz, ultrazvuk', '0,004 Hz, infrazvuk'], answer: 0, explain: 'f = 1 / T = 1 / 0,004 s = 250 Hz. To je v rozsahu 16–20 000 Hz, tedy slyšitelný tón.' },
   ],

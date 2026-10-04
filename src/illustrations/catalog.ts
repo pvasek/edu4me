@@ -89,6 +89,7 @@ export const FIGURES = [
   'measuring-instruments', 'vernier-caliper', 'displacement-volume', 'density-column', 'brownian-motion', 'thermometer-scales',
   'thermal-expansion', 'electroscope', 'magnet-field', 'earth-magnetism', 'center-of-gravity', 'lever-types', 'pulley-systems',
   'hydraulic-press', 'hydrostatic-pressure', 'archimedes-principle', 'float-sink', 'barometer', 'pendulum-energy',
+  'calorimeter-mixing',
   // levels 4–6
   'heat-transfer', 'four-stroke-engine', 'heat-pump', 'sound-wave', 'ear-anatomy', 'echo-sonar', 'eclipses', 'moon-phases',
   'reflection-law', 'curved-mirrors', 'refraction', 'total-internal-reflection', 'eye-anatomy', 'vision-defects',

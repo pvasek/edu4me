@@ -699,7 +699,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Všechny zásuvky a světla v bytě jsou zapojené **paralelně**. Každý spotřebič tak dostane plné napětí 230 V, na které je vyrobený, a můžeš ho zapínat nezávisle na ostatních. Prohlédni si, jak vede elektřina od elektroměru k zásuvkám:' },
             { type: 'diagram', id: 'home-wiring', caption: 'Elektroinstalace v domě: elektroměr, rozvodnice s jističi a chráničem, zásuvky paralelně na jednom okruhu.' },
             { type: 'p', text: 'Jeden okruh z tohoto rozvodu, třeba kuchyň, nakreslíme jako schéma:' },
-            { type: 'circuit', source: { kind: 'ac', label: '230 V' }, parts: [{ kind: 'fuse', label: 'jistič 16 A' }, { parallel: [[{ kind: 'resistor', label: 'konvice' }], [{ kind: 'resistor', label: 'toustovač' }], [{ kind: 'motor', label: 'lednička' }], [{ kind: 'lamp', label: 'lampa' }]] }], caption: 'Jeden kuchyňský okruh: spotřebiče jsou paralelně, jejich proudy se sčítají a všechny tečou přes jistič.' },
+            { type: 'circuit', source: { kind: 'ac', label: '230 V' }, parts: [{ kind: 'breaker', label: 'jistič 16 A' }, { parallel: [[{ kind: 'resistor', label: 'konvice' }], [{ kind: 'resistor', label: 'toustovač' }], [{ kind: 'motor', label: 'lednička' }], [{ kind: 'lamp', label: 'lampa' }]] }], caption: 'Jeden kuchyňský okruh: spotřebiče jsou paralelně, jejich proudy se sčítají a všechny tečou přes jistič. Jistič má ve schématu značku sepnutého kontaktu s křížkem.' },
             { type: 'p', text: 'Paralelní zapojení má ale háček: proudy všech spotřebičů okruhu tečou přes jeden jistič. Co se stane, když jich zapneš moc najednou?' },
             { type: 'example', title: 'Kdy vypadne jistič', problem: 'Na kuchyňském okruhu s jističem 16 A běží zároveň konvice (8,7 A), mikrovlnka (5,2 A), toustovač (3,5 A) a kávovar (6,5 A). Vydrží to jistič?', steps: [
               'Spotřebiče jsou paralelně, proudy se sčítají',
@@ -918,7 +918,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'V rozvodnici (rozvaděči) v bytě najdeš řadu páček. Každá hlídá jeden okruh. Chrání dvě různé věci: **vedení** před přehřátím a **lidi** před úrazem.' },
             { type: 'p', text: 'Nejdřív se podívej, kde v okruhu sedí jistič:' },
-            { type: 'circuit', source: { kind: 'ac', label: '230 V, 50 Hz' }, parts: [{ kind: 'fuse', label: 'jistič 16 A' }, { parallel: [[{ kind: 'resistor', label: 'konvice' }], [{ kind: 'motor', label: 'pračka' }], [{ kind: 'switch', label: 'vypínač' }, { kind: 'lamp', label: 'lampa' }]] }], caption: 'Jistič je v sérii s celým okruhem: všechny proudy okruhu tečou přes něj.' },
+            { type: 'circuit', source: { kind: 'ac', label: '230 V, 50 Hz' }, parts: [{ kind: 'breaker', label: 'jistič 16 A' }, { parallel: [[{ kind: 'resistor', label: 'konvice' }], [{ kind: 'motor', label: 'pračka' }], [{ kind: 'switch', label: 'vypínač' }, { kind: 'lamp', label: 'lampa' }]] }], caption: 'Jistič je v sérii s celým okruhem: všechny proudy okruhu tečou přes něj.' },
             { type: 'p', text: 'Jistič a proudový chránič se často pletou, ale hlídají každý něco jiného:' },
             { type: 'compare', columns: [
               { title: '**Jistič** (dříve pojistka)', icon: 'plug', tone: 'a', points: [
@@ -1098,7 +1098,8 @@ const level: LevelContent = {
             { type: 'diagram', id: 'pn-diode', caption: 'Dioda v propustném směru vede a LED svítí; v závěrném směru proud neteče.' },
             { type: 'p', text: 'Ve schématu má dioda značku se šipkou. Zapojíme ji do série se žárovkou:' },
             { type: 'circuit', source: { kind: 'battery', label: '4,5 V' }, parts: [{ kind: 'switch', label: 'S' }, { kind: 'diode', label: 'D (propustný směr)' }, { kind: 'lamp', label: 'Ž' }], caption: 'Dioda zapojená v **propustném směru**: šipka značky míří ve směru proudu (od + k −) a žárovka svítí.' },
-            { type: 'p', text: 'Když stejnou diodu otočíme a nic jiného neměníme, je v **závěrném směru**: proud neteče a žárovka nesvítí. Je to třetí krok obrázku nahoře.' },
+            { type: 'p', text: 'Teď stejnou diodu otočíme a nic jiného neměníme. Šipka značky míří proti směru proudu, dioda je v **závěrném směru**. Sleduj žárovku:' },
+            { type: 'circuit', source: { kind: 'battery', label: '4,5 V' }, parts: [{ kind: 'switch', label: 'S' }, { kind: 'diode-reverse', label: 'D (závěrný směr)' }, { kind: 'lamp', label: 'Ž' }], caption: 'Dioda zapojená v **závěrném směru**: spínač je sepnutý, a přesto obvodem proud neteče a žárovka nesvítí. Přechod P–N se rozšířil – je to třetí krok obrázku nahoře.' },
             { type: 'p', text: 'Kdy přesně dioda začne vést? Ukáže to její voltampérová charakteristika. Porovnej ji v duchu s přímkou rezistoru z lekce „Elektrický odpor a Ohmův zákon“:' },
             { type: 'graph', x: { label: 'U', unit: 'V', min: -2, max: 1, step: 0.5 }, y: { label: 'I', unit: 'mA', min: 0, max: 50, step: 10 }, series: [
               { label: 'křemíková dioda', points: [[-2, 0], [0, 0], [0.4, 0], [0.5, 1], [0.55, 3], [0.6, 8], [0.65, 18], [0.7, 35], [0.72, 48]] },

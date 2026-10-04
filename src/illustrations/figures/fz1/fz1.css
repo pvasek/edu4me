@@ -797,3 +797,11 @@
   stroke-linejoin: miter;
   stroke-linecap: square;
 }
+/* calorimeter-mixing */
+.fz1-metal-s {
+  stroke: color-mix(in srgb, #7d8796 75%, var(--edge));
+  fill: none;
+}
+.fz1-hotwater {
+  fill: color-mix(in srgb, #d0453a 26%, var(--surface));
+}

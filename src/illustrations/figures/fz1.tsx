@@ -3,6 +3,7 @@ import type { FigureId } from '../catalog'
 import ArchimedesPrinciple from './fz1/ArchimedesPrinciple'
 import Barometer from './fz1/Barometer'
 import BrownianMotion from './fz1/BrownianMotion'
+import CalorimeterMixing from './fz1/CalorimeterMixing'
 import CenterOfGravity from './fz1/CenterOfGravity'
 import DensityColumn from './fz1/DensityColumn'
 import DisplacementVolume from './fz1/DisplacementVolume'
@@ -41,4 +42,5 @@ export const FIGURES_FZ1: Partial<Record<FigureId, ComponentType>> = {
   'float-sink': FloatSink,
   barometer: Barometer,
   'pendulum-energy': PendulumEnergy,
+  'calorimeter-mixing': CalorimeterMixing,
 }

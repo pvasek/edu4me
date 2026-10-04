@@ -24,6 +24,7 @@ const MINE = [
   'float-sink',
   'barometer',
   'pendulum-energy',
+  'calorimeter-mixing',
 ] as const
 
 describe('physics figures fz1 (levels 1–3)', () => {

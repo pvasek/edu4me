@@ -166,6 +166,7 @@ export function GraphView({
     { x: ax - 8 - yLabelW, y: Y1 - 6, w: yLabelW + 4, h: Y0 - Y1 + 12 },
   ]
   const plot: Box = { x: X0, y: Y1 - 8, w: X1 - X0 + 10, h: Y0 - Y1 + 8 }
+  const canvas: Box = { x: 2, y: 2, w: W - 4, h: H - 4 }
   const markEls = marks.map((m, i) => {
     const size = 14.5
     const w = textW(m.label, size) + 4
@@ -182,7 +183,7 @@ export function GraphView({
         { x: cx - w / 2, y: cy - 12 - h, w, h },
         { x: cx - w / 2, y: cy + 10, w, h },
       ]
-      const b = placeBox(c, taken, segs, plot)
+      const b = placeBox(c, taken, segs, plot, canvas)
       return (
         <Fade key={i} delay={delay}>
           <path d={`M${f1(cx)} ${f1(ay)} V${f1(cy)} H${f1(ax)}`} className="ph-guide" />
@@ -201,6 +202,8 @@ export function GraphView({
         ],
         taken,
         segs,
+        undefined,
+        canvas,
       )
       return (
         <Fade key={i} delay={delay}>
@@ -220,6 +223,8 @@ export function GraphView({
         ],
         taken,
         segs,
+        undefined,
+        canvas,
       )
       return (
         <Fade key={i} delay={delay}>
