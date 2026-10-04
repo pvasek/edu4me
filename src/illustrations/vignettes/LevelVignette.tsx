@@ -4,6 +4,8 @@ import { fyzika } from '../../courses/fyzika'
 import { PhysicsVignette } from './PhysicsVignette'
 import { biologie } from '../../courses/biologie'
 import { BiologyVignette } from './BiologyVignette'
+import { zemepis } from '../../courses/zemepis'
+import { GeographyVignette } from './GeographyVignette'
 
 /** Level colours in course order (mirrors src/courses/chemie/index.ts). */
 const LEVEL_COLORS = ['#b8483a', '#bd6a26', '#9c7a12', '#56834a', '#2c7a72', '#3f6699', '#555a9e', '#7a5290', '#a84d6c']
@@ -53,6 +55,8 @@ export function LevelVignette({
   const uid = useId().replace(/:/g, '')
   if (course === 'biologie')
     return <BiologyVignette level={level} size={size} color={color ?? biologie.levels[level - 1]?.color ?? '#56834a'} className={className} />
+  if (course === 'zemepis')
+    return <GeographyVignette level={level} size={size} color={color ?? zemepis.levels[level - 1]?.color ?? '#2f7d86'} className={className} />
   if (course === 'fyzika')
     return <PhysicsVignette level={level} size={size} color={color ?? fyzika.levels[level - 1]?.color ?? '#3f6699'} className={className} />
   const idx = Math.min(9, Math.max(1, Math.round(level))) - 1

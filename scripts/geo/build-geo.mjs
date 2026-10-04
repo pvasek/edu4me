@@ -118,7 +118,9 @@ const NAMES_CS = {
   Weser: 'Vezera', Ems: 'Emže', Mosel: 'Mosela', Moselle: 'Mosela', Maas: 'Máza', Meuse: 'Máza', Tiber: 'Tibera',
   Tevere: 'Tibera', Maritsa: 'Marica', Vardar: 'Vardar', Mures: 'Mureș', 'Mureș': 'Mureș', Olt: 'Olt', Siret: 'Siret',
   Desna: 'Desna', 'Pripyat': 'Pripjať', 'Pripyat’': 'Pripjať', Dvina: 'Severní Dvina', Neva: 'Něva', Narva: 'Narva',
-  Kemijoki: 'Kemijoki', Glomma: 'Glomma', Dalälven: 'Dalälven', 'Shannon': 'Shannon', Severn: 'Severn',
+  Drau: 'Dráva', Mur: 'Mura', Raab: 'Rába', Ipel: 'Ipeľ', Prypyat: 'Pripjať', 'Zakhidnyy Buh': 'Bug', Latorytsya: 'Latorica',
+  Slana: 'Slaná', Schelde: 'Šelda', Neckar: 'Neckar', Salzach: 'Salzach', Enns: 'Enže', Traun: 'Traun', Hornád: 'Hornád',
+  Dunajec: 'Dunajec', Dnepre: 'Dněpr', Sukhona: 'Suchona', Vychegda: 'Vyčegda', 'Svir’': 'Svir', Kemijoki: 'Kemijoki', Glomma: 'Glomma', Dalälven: 'Dalälven', 'Shannon': 'Shannon', Severn: 'Severn',
   // Asia
   'Chang Jiang': "Jang-c'-ťiang", Yangtze: "Jang-c'-ťiang", Jinsha: "Jang-c'-ťiang", Tongtian: "Jang-c'-ťiang",
   Tuotuo: "Jang-c'-ťiang", Huang: 'Chuang-che', 'Huang He': 'Chuang-che', Ganges: 'Ganga', Ganga: 'Ganga',
@@ -162,6 +164,75 @@ const NAMES_CS = {
   'Vodní nádrž Lipno': 'Lipno', 'Orlík': 'Orlík', 'Lake Saimaa': 'Saimaa', 'Lake Inari': 'Inari', Inarijärvi: 'Inari',
   'Lake Chany': 'Čany', Mälaren: 'Mälaren', 'Lake Titicaca': 'Titicaca', 'Caspian Sea': 'Kaspické moře',
 }
+/**
+ * Rivers that Natural Earth names wrongly, keyed by geometry: the feature's ne_id plus its first point (the build
+ * fails if a new Natural Earth release changes either, so the fix is re-checked). Each entry gives the real name,
+ * or splits the line at a longitude where one river becomes another, or cuts off a stray part.
+ * Checked against the real courses (towns on the river) in 2026-10.
+ */
+const RIVER_FIX = {
+  // NE "Svitava": really the Jihlava (Mušov – Ivančice – Třebíč – Jihlava – Batelov); west of the source area
+  // (15,26° E) NE runs on through the Nežárka and Lužnice into the Vltava basin: dropped
+  1159120229: { start: [16.6, 48.914], name: 'Jihlava', cutWest: 15.26 },
+  1159127681: { start: [16.61, 48.9], name: 'Jihlava' },
+  // NE "Oder": the Moravice (Hrubý Jeseník – Slezská Harta – Hradec nad Moravicí) and below its mouth at
+  // Opava-Komárov (17,95° E) the Opava down to Ostrava
+  1159110035: { start: [17.2, 50.04], split: 17.95, west: 'Moravice', east: 'Opava' },
+  // NE "Uhlava": the Mže (Tachov – Stříbro) and from Plzeň (13,38° E) the Berounka down to Praha-Lahovice
+  1159110739: { start: [12.535, 49.971], split: 13.38, west: 'Mže', east: 'Berounka' },
+  // NE "Elbe" (a short tributary): the (Divoká) Orlice, Orlické hory – Týniště – Hradec Králové
+  1159112353: { start: [16.41, 50.36], name: 'Orlice' },
+  // unnamed in NE: the Nitra (Prievidza – Nitra – Komárno)
+  1159107823: { start: [18.58, 48.97], name: 'Nitra' },
+  // features without ne_id (the main 1:10m file) are keyed by "NE name@first point"
+  // the Serbian Morava, not to be merged with the Czech Morava under one name
+  'Morava@21.346,42.242': { start: [21.346, 42.242], name: 'Velká Morava' },
+  // 1:50m "Drava": really the Mura (Murau – Graz) down to its mouth at Legrad (16,86° E), then the Dráva
+  'Drava@13.822,47.090': { start: [13.822, 47.09], split: 16.86, west: 'Mura', east: 'Dráva' },
+  // unnamed in NE: the upper and middle Tisa (Ukraine – Tokaj – Szeged); NE names only the part below Szeged
+  '@24.256,48.322': { start: [24.256, 48.322], name: 'Tisa' },
+}
+const fixKey = (f) => {
+  if (RIVER_FIX[f.properties.ne_id]) return f.properties.ne_id
+  const p = linesOf(f.geometry)[0]?.[0]
+  return p ? `${f.properties.name ?? ''}@${p[0].toFixed(3)},${p[1].toFixed(3)}` : ''
+}
+
+/** A river feature as named pieces: [name, lines], with RIVER_FIX applied. */
+function riverPieces(f) {
+  const fix = RIVER_FIX[fixKey(f)]
+  const lines = linesOf(f.geometry)
+  if (!fix) return [[csName(f.properties.name), lines]]
+  const [x0, y0] = lines[0][0]
+  if (Math.abs(x0 - fix.start[0]) > 0.02 || Math.abs(y0 - fix.start[1]) > 0.02)
+    throw new Error(`RIVER_FIX ${f.properties.ne_id} (${f.properties.name}): geometry changed, re-check the fix`)
+  if (fix.cutWest !== undefined)
+    return [[fix.name, lines.map((l) => {
+      const i = l.findIndex(([x]) => x < fix.cutWest)
+      return i < 0 ? l : l.slice(0, i)
+    }).filter((l) => l.length >= 2)]]
+  if (fix.split !== undefined) {
+    const west = []
+    const east = []
+    for (const l of lines) {
+      let cur = null
+      let side = null
+      for (const p of l) {
+        const sd = p[0] < fix.split ? 'w' : 'e'
+        if (sd !== side) {
+          const prev = cur && cur[cur.length - 1]
+          cur = prev ? [prev] : []
+          ;(sd === 'w' ? west : east).push(cur)
+          side = sd
+        }
+        cur.push(p)
+      }
+    }
+    return [[fix.west, west.filter((l) => l.length >= 2)], [fix.east, east.filter((l) => l.length >= 2)]]
+  }
+  return [[fix.name, lines]]
+}
+
 const csName = (n) => (n ? (NAMES_CS[n] ?? NAMES_CS[n.trim()] ?? n) : '')
 
 // ------------------------------------------------------------------ geometry helpers
@@ -670,9 +741,9 @@ function buildView(id, src) {
   // ---- rivers (grouped by Czech/NE name)
   const riverMap = new Map()
   for (const f of src.rivers) {
-    const name = csName(f.properties.name)
     const rank = f.properties.scalerank ?? 9
-    for (const line of linesOf(f.geometry)) {
+    for (const [name, lines] of riverPieces(f))
+    for (const line of lines) {
       const sh = lonShift(line, clip)
       const l2 = sh ? line.map(([x, y]) => [x + sh, y]) : line
       for (const part of clipLine(l2, clip)) {
@@ -685,7 +756,7 @@ function buildView(id, src) {
         }
         const s = simplify(pts, tolQ * 0.8, cosAt)
         if (s.length < 2) continue
-        const key = name || '#' + (f.properties.rivernum ?? f.properties.ne_id ?? Math.random())
+        const key = name || '#' + (f.properties.rivernum ?? f.properties.ne_id ?? f.properties.name_en ?? riverMap.size)
         if (!riverMap.has(key)) riverMap.set(key, [name, rank, []])
         const g = riverMap.get(key)
         g[1] = Math.min(g[1], rank)

@@ -63,7 +63,23 @@ Pure helpers: `project(view, lon, lat)` → SVG [x, y]; `invert(view, x, y)` →
 
 `src/geo/data/<view>.ts` (one per view) and `plates.ts`, generated, each its own lazily loaded chunk; app code reaches them only through `src/geo/load.ts` (`loadView`, `loadPlates`; a test checks the import graph). The lesson block loads `GeoMap` itself lazily (`src/illustrations/geography/MapBlockView.tsx`). Format (`src/geo/types.ts`): a topology per view (shared borders stored once as arcs, so coasts and borders are told apart and neighbours stay gap-free), coordinates quantised to `q` degrees and stored as zigzag-varint deltas in base64url strings. Total ≈ 380 KB of JS (world ≈ 64 KB, czechia ≈ 12 KB).
 
-River names: Czech exonyms from the table `NAMES_CS` in the build script (Labe, Vltava, Morava, Dyje, Ohře, Sázava, Svratka, Svitava, Úhlava, Lužická Nisa, Kladská Nisa, Odra, Dunaj, Rýn, Visla, Volha, Nil, Amazonka, Jang-c'-ťiang, Chuang-che, Ganga, …); others keep the Natural Earth name. Natural Earth has no Berounka, Jizera, Otava, Lužnice, Opava, Bečva or Jihlava.
+### Rivers and their names
+
+Rivers are grouped by name (`peekView(view).rivers`: `{ name, rank, parts }`); games and figures read these names. Names are Czech exonyms from `NAMES_CS` in the build script; unlisted ones keep the Natural Earth name; a few minor ones have none.
+
+Natural Earth misnames some rivers. `RIVER_FIX` in the build script corrects them **by geometry** (the feature's `ne_id`, or "NE name@first point" for the main 1:10m file, plus a check of the first point so a new NE release fails loudly):
+
+| Natural Earth | Real course | In the data |
+|---|---|---|
+| "Svitava" (1:10m Europe) | Jihlava: Mušov – Ivančice – Třebíč – Jihlava – Batelov; NE runs on west of the source through the Nežárka and Lužnice into the Vltava basin | `Jihlava`, cut at 15,26° E |
+| "Oder" (short, 1:10m Europe) | Moravice (Hrubý Jeseník – Slezská Harta – Hradec nad Moravicí), then the Opava from Opava-Komárov to Ostrava | `Moravice` / `Opava`, split at 17,95° E |
+| "Uhlava" | Mže (Tachov – Stříbro), from Plzeň the Berounka to Praha-Lahovice | `Mže` / `Berounka`, split at 13,38° E |
+| "Elbe" (short tributary) | (Divoká) Orlice – Týniště – Hradec Králové | `Orlice` |
+| unnamed | Nitra; upper and middle Tisa | `Nitra`, `Tisa` |
+| "Morava" in Serbia | Velká Morava (must not merge with the Czech Morava) | `Velká Morava` |
+| 1:50m "Drava" | Mura down to Legrad, then the Dráva | `Mura` / `Dráva`, split at 16,86° E |
+
+Czech rivers in the `czechia` and `central-europe` data (checked against towns on their courses, `geo.test.tsx`): Labe, Vltava, Ohře, Berounka (+ Mže), Sázava, Morava, Dyje, Svratka (through Brno), Jihlava, Odra, Opava (only below the Moravice mouth), Moravice, Orlice, Lužická Nisa, Kladská Nisa (source in Králický Sněžník). Natural Earth has **no** Otava, Lužnice, Jizera, Svitava, Bečva, Oslava, Radbuza, Úhlava, Úslava or Ploučnice; do not ask for them in games or captions. Neighbours: Dunaj, Inn, Isara, Mohan, Sála, Spréva, Bílý / Černý Halštrov, Cvikovská Mulda, Bobr, Odra, Visla, Varta, Dunajec, Váh, Nitra, Hron, Ipeľ, Hornád, Slaná, Rába, Mura, Dráva, Tisa, Traun, Enže, Salzach. Wider views: Rýn, Dunaj, Labe, Odra, Visla, Volha, Dněpr, Dněstr, Don, Seina, Loira, Rhôna, Pád, Temže, Tajo, Ebro, Nil, Kongo, Niger, Zambezi, Amazonka, Paraná, Orinoko, Mississippi, Missouri, Jang-c'-ťiang, Chuang-che, Ganga, Brahmaputra, Indus, Mekong, Ob, Irtyš, Jenisej, Lena, Amur, Eufrat, Tigris, Murray, Darling.
 
 ## Regenerating
 

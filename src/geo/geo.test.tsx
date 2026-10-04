@@ -94,6 +94,63 @@ describe('codes and data', () => {
   })
 })
 
+/** Distance (km, approx.) from a place to the nearest point of a named river in a view's data. */
+function riverDist(view: (typeof MAP_VIEW_IDS)[number], name: string, lat: number, lon: number): number {
+  const r = peekView(view)!.rivers.filter((x) => x.name === name)
+  expect(r.length, `${view}: ${name}`).toBeGreaterThan(0)
+  let best = Infinity
+  const c = Math.cos((lat * Math.PI) / 180)
+  for (const x of r)
+    for (const p of x.parts)
+      for (let i = 0; i + 3 < p.length; i += 2) {
+        // distance to segment, in degrees with longitude scaled
+        const ax = p[i] * c
+        const ay = p[i + 1]
+        const bx = p[i + 2] * c - ax
+        const by = p[i + 3] - ay
+        const px = lon * c - ax
+        const py = lat - ay
+        const t = Math.max(0, Math.min(1, (px * bx + py * by) / (bx * bx + by * by || 1)))
+        best = Math.min(best, Math.hypot(px - t * bx, py - t * by))
+      }
+  return best * 111
+}
+
+describe('river names follow the real courses (Natural Earth errors fixed in RIVER_FIX)', () => {
+  for (const v of ['czechia', 'central-europe'] as const)
+    it(v, () => {
+      const names = new Set(peekView(v)!.rivers.map((r) => r.name))
+      expect(names.has('Svitava'), 'NE "Svitava" is the Jihlava').toBe(false)
+      // Brno lies on the Svratka
+      expect(riverDist(v, 'Svratka', 49.195, 16.608)).toBeLessThan(2)
+      // the Jihlava: Jihlava, Třebíč, Ivančice; nothing west of its source (no stray run into the Vltava basin)
+      expect(riverDist(v, 'Jihlava', 49.396, 15.591)).toBeLessThan(2.5)
+      expect(riverDist(v, 'Jihlava', 49.215, 15.882)).toBeLessThan(2.5)
+      expect(riverDist(v, 'Jihlava', 49.104, 16.364)).toBeLessThan(2.5)
+      const jw = Math.min(...peekView(v)!.rivers.filter((r) => r.name === 'Jihlava').flatMap((r) => r.parts.flatMap((p) => Array.from(p).filter((_, i) => i % 2 === 0))))
+      expect(jw).toBeGreaterThan(15.2)
+      // the Opava: from the Moravice mouth at Opava-Komárov to Ostrava (NE lacks its upper course through Krnov);
+      // the Moravice above it; the Odra rises in the Oderské vrchy and does not run past Opava
+      expect(riverDist(v, 'Opava', 49.89, 18.13)).toBeLessThan(3)
+      expect(riverDist(v, 'Opava', 49.86, 18.23)).toBeLessThan(3)
+      expect(riverDist(v, 'Moravice', 49.87, 17.87)).toBeLessThan(3)
+      expect(riverDist(v, 'Odra', 49.663, 17.831)).toBeLessThan(4)
+      expect(riverDist(v, 'Odra', 49.72, 18.08)).toBeLessThan(4)
+      expect(riverDist(v, 'Odra', 49.94, 17.4)).toBeGreaterThan(10)
+      // the Berounka from Plzeň to Praha, the Orlice to Hradec Králové, the Vltava through Praha, the Labe at Mělník
+      expect(riverDist(v, 'Berounka', 49.96, 14.07)).toBeLessThan(3)
+      expect(riverDist(v, 'Orlice', 50.15, 16.08)).toBeLessThan(3)
+      expect(riverDist(v, 'Vltava', 50.09, 14.42)).toBeLessThan(3)
+      expect(riverDist(v, 'Labe', 50.35, 14.47)).toBeLessThan(4)
+      expect(riverDist(v, 'Morava', 49.59, 17.25)).toBeLessThan(4)
+      expect(riverDist(v, 'Ohře', 50.53, 14.13)).toBeLessThan(4)
+    })
+  it('the Serbian Morava is not merged with the Czech one', () => {
+    const cz = peekView('central-europe')!.rivers.find((r) => r.name === 'Morava')!
+    for (const p of cz.parts) for (let i = 1; i < p.length; i += 2) expect(p[i]).toBeGreaterThan(47.5)
+  })
+})
+
 describe('hit tests', () => {
   it('finds the state under a city', () => {
     for (const v of ['world', 'europe', 'central-europe'] as const) {
