@@ -1,0 +1,878 @@
+.bz5 {
+  --lvl: var(--level, #56834a);
+  --lvl-ink: color-mix(in srgb, var(--lvl) 72%, var(--ink));
+  --lvl-soft: color-mix(in srgb, var(--lvl) 16%, var(--surface));
+  --e: var(--blue);
+  --glass: color-mix(in srgb, var(--info-soft) 45%, var(--surface));
+  --water: color-mix(in srgb, #6f9fd8 30%, var(--surface));
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  container-type: inline-size;
+}
+.bz5-l2 {
+  --lvl: var(--level, #7a6a2e);
+}
+.bz5-l3 {
+  --lvl: var(--level, #3f7d3a);
+}
+
+.bz5-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bz5-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.bz5-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.bz5-btn {
+  appearance: none;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 14px/1.1 var(--font-body);
+  min-height: 40px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.bz5-btn:hover {
+  background: var(--surface-2);
+}
+.bz5-btn[aria-pressed="true"] {
+  background: var(--lvl);
+  border-color: var(--lvl);
+  color: var(--on-level);
+}
+.bz5-host {
+  width: 100%;
+}
+
+.bz5-lbl {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16.5px;
+  fill: var(--ink-soft);
+}
+.bz5-b {
+  font-weight: 700;
+  fill: var(--ink);
+}
+.bz5-big {
+  font-size: 19px;
+}
+.bz5-sm {
+  font-size: 14.5px;
+}
+.bz5-lvl-t {
+  fill: var(--lvl-ink);
+}
+.bz5-acc-t {
+  fill: var(--accent);
+}
+.bz5-blue-t {
+  fill: var(--blue);
+}
+.bz5-red-t {
+  fill: var(--bad);
+}
+.bz5-muted-t {
+  fill: var(--muted);
+}
+.bz5-eq {
+  font: 600 14px var(--font-body);
+  fill: var(--ink);
+}
+.bz5-eq-sm {
+  font-size: 12.5px;
+}
+.bz5-eq-lg {
+  font-size: 16px;
+}
+.bz5-num {
+  font: 400 13px var(--font-mono);
+  fill: var(--ink);
+}
+.bz5-light-t {
+  fill: #fffaf0;
+}
+
+:where(.bz5-o:not([fill])) {
+  fill: none;
+}
+.bz5-o {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.bz5-thin {
+  stroke-width: 0.9;
+}
+.bz5-fill {
+  fill: var(--surface);
+}
+.bz5-fill2 {
+  fill: var(--surface-2);
+}
+.bz5-fill3 {
+  fill: var(--surface-3);
+}
+.bz5-glass {
+  fill: var(--glass);
+  fill-opacity: 0.55;
+}
+.bz5-ln {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+}
+.bz5-lvl-s {
+  stroke: var(--lvl-ink);
+}
+.bz5-lvl-f {
+  fill: var(--lvl);
+}
+.bz5-lvlsoft-f {
+  fill: var(--lvl-soft);
+}
+.bz5-dash {
+  stroke-dasharray: 5 4;
+}
+.bz5-dot2 {
+  stroke-dasharray: 1.5 4;
+}
+.bz5-lead {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  fill: none;
+}
+.bz5-dot {
+  fill: var(--ink-soft);
+}
+.bz5-nohit {
+  pointer-events: none;
+}
+.bz5-hl {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.4;
+}
+.bz5-hl-dark {
+  opacity: 0.6;
+}
+.bz5-hl-light {
+  stroke: #fffaf0;
+  stroke-width: 0.9;
+  opacity: 0.75;
+}
+.bz5-hl-shade {
+  stroke: #10131c;
+  stroke-width: 0.8;
+  opacity: 0.35;
+}
+.bz5-stip {
+  fill: var(--edge);
+  opacity: 0.35;
+}
+
+.bz5-arr {
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz5-arr-ink {
+  stroke: var(--edge);
+}
+.bz5-arr-acc {
+  stroke: var(--accent);
+}
+.bz5-arr-blue {
+  stroke: var(--blue);
+}
+.bz5-arr-lvl {
+  stroke: var(--lvl-ink);
+}
+.bz5-arr-red {
+  stroke: var(--bad);
+}
+.bz5-arr-green {
+  stroke: var(--good);
+}
+.bz5-arr-muted {
+  stroke: var(--muted);
+}
+.bz5-mk-ink {
+  fill: var(--edge);
+}
+.bz5-mk-acc {
+  fill: var(--accent);
+}
+.bz5-mk-blue {
+  fill: var(--blue);
+}
+.bz5-mk-lvl {
+  fill: var(--lvl-ink);
+}
+.bz5-mk-red {
+  fill: var(--bad);
+}
+.bz5-mk-green {
+  fill: var(--good);
+}
+.bz5-mk-muted {
+  fill: var(--muted);
+}
+
+.bz5-tag {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.bz5-tag-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+}
+
+.bz5-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 2 9;
+  animation: bz5-flow 1.1s linear infinite;
+}
+.bz5-flow-rev {
+  animation-direction: reverse;
+}
+@keyframes bz5-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+@container (max-width: 440px) {
+  .bz5-sec {
+    display: none;
+  }
+  .bz5-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+
+/* ---------------------------------------------------------------- narrow boost */
+.bz5-narrow .bz5-lbl {
+  font-size: 19px;
+}
+.bz5-narrow .bz5-lbl.bz5-sm {
+  font-size: 17px;
+}
+.bz5-narrow .bz5-lbl.bz5-big {
+  font-size: 21px;
+}
+.bz5-narrow .bz5-eq {
+  font-size: 16px;
+}
+.bz5-narrow .bz5-eq.bz5-eq-lg {
+  font-size: 17.5px;
+}
+.bz5-narrow .bz5-eq.bz5-eq-sm {
+  font-size: 14.5px;
+}
+.bz5-halo {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+.bz5-stripbox {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+}
+.bz5-strip-note {
+  margin: 0;
+  text-align: center;
+  font: italic 600 17px/1.3 var(--font-display);
+  color: var(--ink-soft);
+}
+.bz5-sym-t {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 19px;
+  fill: var(--ink);
+}
+.bz5-tone-lvl {
+  fill: var(--lvl-ink);
+}
+.bz5-tone-red {
+  fill: var(--bad);
+}
+.bz5-tone-green {
+  fill: var(--good);
+}
+.bz5-tone-blue {
+  fill: var(--blue);
+}
+.bz5-tone-acc {
+  fill: var(--accent);
+}
+.bz5-tone-muted {
+  fill: var(--muted);
+}
+.bz5-it {
+  font-style: italic;
+}
+.bz5-qs {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.bz5-num-badge circle {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz5-num-badge text {
+  font-family: var(--font-body);
+  font-weight: 800;
+  fill: var(--on-level);
+  pointer-events: none;
+}
+.bz5-vec {
+  stroke-width: 2.6;
+}
+.bz5-box {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.bz5-box-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.4;
+}
+.bz5-title {
+  font: italic 700 18px var(--font-display);
+  fill: var(--ink);
+}
+.bz5-narrow .bz5-title {
+  font-size: 20px;
+}
+.bz5-scale {
+  stroke: var(--ink);
+  stroke-width: 2.4;
+  stroke-linecap: butt;
+}
+.bz5-scale-t {
+  font: 600 12.5px var(--font-body);
+  fill: var(--ink-soft);
+}
+.bz5-narrow .bz5-scale-t {
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------------- biology fills
+   (token mixes, so the plate works on parchment and in the night-study theme) */
+.bz5-cyto {
+  fill: color-mix(in srgb, var(--yellow) 16%, var(--surface));
+}
+.bz5-nuc {
+  fill: color-mix(in srgb, var(--violet) 30%, var(--surface));
+}
+.bz5-nucleolus {
+  fill: color-mix(in srgb, var(--violet) 62%, var(--surface));
+}
+.bz5-mito {
+  fill: color-mix(in srgb, var(--accent) 38%, var(--surface));
+}
+.bz5-chl {
+  fill: color-mix(in srgb, var(--green) 62%, var(--surface));
+}
+.bz5-vac {
+  fill: color-mix(in srgb, var(--blue) 20%, var(--surface));
+}
+.bz5-wall {
+  fill: color-mix(in srgb, var(--yellow) 34%, var(--surface-3));
+}
+.bz5-leaf {
+  fill: color-mix(in srgb, var(--green) 46%, var(--surface));
+}
+.bz5-leaf2 {
+  fill: color-mix(in srgb, var(--green) 28%, var(--surface));
+}
+.bz5-stem {
+  fill: color-mix(in srgb, var(--green) 34%, var(--surface));
+}
+.bz5-root {
+  fill: color-mix(in srgb, var(--yellow) 30%, var(--surface));
+}
+.bz5-soil {
+  fill: color-mix(in srgb, var(--accent) 22%, var(--surface-2));
+}
+.bz5-petal {
+  fill: color-mix(in srgb, var(--pink) 38%, var(--surface));
+}
+.bz5-pollen {
+  fill: color-mix(in srgb, var(--yellow) 75%, var(--surface));
+}
+.bz5-bact {
+  fill: color-mix(in srgb, var(--teal) 30%, var(--surface));
+}
+.bz5-virus {
+  fill: color-mix(in srgb, var(--bad) 32%, var(--surface));
+}
+.bz5-rna {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz5-dna {
+  fill: none;
+  stroke: var(--violet);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz5-cap {
+  fill: color-mix(in srgb, var(--accent) 45%, var(--surface));
+}
+.bz5-hypha {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+}
+.bz5-flesh {
+  fill: color-mix(in srgb, var(--pink) 22%, var(--surface));
+}
+.bz5-skin {
+  fill: color-mix(in srgb, var(--accent) 26%, var(--surface));
+}
+.bz5-wbc {
+  fill: color-mix(in srgb, var(--violet) 18%, var(--surface));
+}
+.bz5-blood {
+  fill: color-mix(in srgb, var(--bad) 22%, var(--surface));
+}
+.bz5-water {
+  fill: color-mix(in srgb, var(--blue) 24%, var(--surface));
+}
+.bz5-shell {
+  fill: color-mix(in srgb, var(--yellow) 22%, var(--surface-2));
+}
+.bz5-animal {
+  fill: color-mix(in srgb, var(--muted) 22%, var(--surface));
+}
+.bz5-lvl-fill {
+  fill: color-mix(in srgb, var(--lvl) 30%, var(--surface));
+}
+.bz5-ribo {
+  fill: var(--ink-soft);
+}
+.bz5-spot {
+  fill: var(--ink);
+}
+.bz5-red-fill {
+  fill: color-mix(in srgb, var(--bad) 70%, var(--surface));
+}
+.bz5-ghost {
+  opacity: 0.35;
+}
+.bz5-faint {
+  opacity: 0.55;
+}
+
+/* ---------------------------------------------------------------- ambient loops */
+.bz5-wiggle {
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
+  animation: bz5-wiggle 0.9s ease-in-out infinite alternate;
+}
+@keyframes bz5-wiggle {
+  from {
+    transform: skewY(-4deg);
+  }
+  to {
+    transform: skewY(4deg);
+  }
+}
+.bz5-fall {
+  animation: bz5-fall 3s linear infinite;
+}
+@keyframes bz5-fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--fall, 40px));
+    opacity: 0;
+  }
+}
+.bz5-flow-up {
+  stroke-dasharray: 3 10;
+  animation: bz5-flow 1.3s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bz5-wiggle,
+  .bz5-fall,
+  .bz5-flow,
+  .bz5-flow-up {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------- plates (main plate + insets) */
+.bz5-plates {
+  width: 100%;
+  display: grid;
+  gap: 12px 18px;
+  align-items: center;
+}
+.bz5-plate {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.bz5-plate-t {
+  text-align: center;
+  font: 700 12.5px/1.2 var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lvl-ink);
+}
+
+/* ---------------------------------------------------------------- bz5 figure fills */
+.bz5-zone-a {
+  fill: color-mix(in srgb, var(--lvl) 7%, transparent);
+}
+.bz5-zone-b {
+  fill: color-mix(in srgb, var(--lvl) 15%, transparent);
+}
+.bz5-zone-t {
+  font: italic 700 14px var(--font-display);
+  fill: var(--lvl-ink);
+}
+.bz5-narrow .bz5-zone-t {
+  font-size: 15.5px;
+}
+.bz5-ant {
+  fill: color-mix(in srgb, var(--ink) 70%, var(--surface));
+}
+.bz5-hair {
+  fill: color-mix(in srgb, var(--accent) 45%, var(--surface));
+}
+.bz5-blood-in {
+  fill: color-mix(in srgb, var(--bad) 12%, var(--surface));
+}
+.bz5-capso {
+  fill: color-mix(in srgb, var(--bad) 45%, var(--surface));
+}
+.bz5-envelope {
+  fill: color-mix(in srgb, var(--yellow) 30%, var(--surface));
+}
+.bz5-violet-t {
+  fill: var(--violet);
+}
+.bz5-onion-skin {
+  stroke: color-mix(in srgb, var(--yellow) 60%, var(--ink));
+}
+.bz5-onion {
+  fill: color-mix(in srgb, var(--yellow) 22%, var(--surface));
+}
+.bz5-onion-cell {
+  fill: color-mix(in srgb, #c9952e 22%, var(--surface));
+  stroke: color-mix(in srgb, #8a5a14 70%, var(--ink));
+}
+.bz5-lugol {
+  fill: color-mix(in srgb, #b07a1c 62%, var(--surface));
+}
+.bz5-lugol-nuc {
+  fill: color-mix(in srgb, #7a4a10 80%, var(--surface));
+}
+.bz5-lugol-t {
+  fill: color-mix(in srgb, #9a6514 85%, var(--ink));
+}
+.bz5-bulb {
+  fill: color-mix(in srgb, var(--bad) 50%, var(--surface));
+}
+.bz5-paper {
+  fill: var(--surface-2);
+}
+.bz5-blue-s {
+  stroke: var(--blue);
+}
+.bz5-brass {
+  fill: color-mix(in srgb, #c9a03a 45%, var(--surface));
+}
+.bz5-leather {
+  fill: color-mix(in srgb, #7a4a2a 45%, var(--surface));
+}
+.bz5-gilt {
+  stroke: color-mix(in srgb, #b8901f 85%, var(--ink));
+}
+.bz5-flame {
+  fill: color-mix(in srgb, var(--accent) 70%, #f2c14e);
+  stroke: var(--accent);
+  stroke-width: 0.8;
+}
+.bz5-cork-bg {
+  fill: color-mix(in srgb, #b5864e 30%, var(--surface));
+}
+.bz5-cork-cell {
+  fill: color-mix(in srgb, #b5864e 10%, var(--surface));
+}
+.bz5-hist .bz5-svg {
+  max-width: 300px;
+  margin-inline: auto;
+}
+.bz5-hist .bz5-lbl.bz5-sm {
+  font-size: 17.5px;
+}
+.bz5-larva {
+  fill: color-mix(in srgb, var(--green) 55%, var(--yellow));
+}
+.bz5-seed {
+  fill: color-mix(in srgb, #8a6a48 45%, var(--surface));
+}
+.bz5-stem-s {
+  stroke: color-mix(in srgb, var(--green) 70%, var(--ink));
+}
+.bz5-egg {
+  fill: color-mix(in srgb, #9fc4d8 35%, var(--surface));
+}
+.bz5-chick {
+  fill: color-mix(in srgb, var(--yellow) 60%, var(--surface));
+}
+.bz5-nest {
+  fill: color-mix(in srgb, #8a6a48 40%, var(--surface));
+}
+.bz5-fish {
+  fill: color-mix(in srgb, var(--teal) 35%, var(--surface));
+}
+.bz5-cat {
+  fill: color-mix(in srgb, #c98a3a 40%, var(--surface));
+}
+.bz5-cat-s {
+  fill: none;
+  stroke: color-mix(in srgb, #c98a3a 40%, var(--surface));
+  stroke-linecap: round;
+}
+.bz5-stripe {
+  stroke: color-mix(in srgb, #7a4a1a 80%, var(--ink));
+  stroke-width: 2.4;
+}
+.bz5-salt-top {
+  fill: var(--surface);
+}
+.bz5-salt {
+  fill: color-mix(in srgb, var(--blue) 10%, var(--surface));
+}
+.bz5-salt-dark {
+  fill: color-mix(in srgb, var(--blue) 22%, var(--surface));
+}
+.bz5-flame-in {
+  fill: color-mix(in srgb, #f2c14e 80%, var(--surface));
+}
+.bz5-x {
+  stroke: var(--bad);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.bz5-signs .bz5-svg {
+  max-width: 240px;
+  margin-inline: auto;
+}
+.bz5-lbl-n {
+  font-weight: 600;
+  fill: var(--ink-soft);
+}
+.bz5-root-f {
+  fill: color-mix(in srgb, var(--yellow) 24%, var(--surface));
+}
+.bz5-div-f {
+  fill: color-mix(in srgb, var(--lvl) 22%, var(--surface));
+}
+.bz5-nuc-dot {
+  fill: color-mix(in srgb, var(--violet) 60%, var(--surface));
+}
+.bz5-cap-f {
+  fill: color-mix(in srgb, var(--accent) 22%, var(--surface));
+}
+.bz5-hairs {
+  stroke-width: 1.1;
+  stroke: color-mix(in srgb, var(--yellow) 40%, var(--ink));
+}
+.bz5-soil-light {
+  fill: color-mix(in srgb, var(--accent) 12%, var(--surface));
+}
+.bz5-grain {
+  fill: color-mix(in srgb, #a07850 45%, var(--surface));
+}
+.bz5-hair-wall {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 15;
+  stroke-linecap: round;
+}
+.bz5-hair-in {
+  fill: none;
+  stroke: color-mix(in srgb, var(--yellow) 24%, var(--surface));
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+.bz5-drop {
+  fill: var(--blue);
+  stroke: var(--surface);
+  stroke-width: 0.8;
+}
+.bz5-hair-in {
+  stroke: color-mix(in srgb, var(--yellow) 36%, var(--surface));
+}
+.bz5-twig {
+  stroke: color-mix(in srgb, #7a5a3a 75%, var(--ink));
+  stroke-width: 3.2;
+}
+.bz5-twig-f {
+  fill: color-mix(in srgb, #7a5a3a 55%, var(--surface));
+}
+.bz5-needle {
+  stroke: color-mix(in srgb, var(--green) 72%, var(--ink));
+  stroke-width: 1.7;
+}
+.bz5-needle-soft {
+  stroke: color-mix(in srgb, var(--green) 60%, var(--yellow));
+  stroke-width: 1.1;
+}
+.bz5-needle-f {
+  fill: color-mix(in srgb, var(--green) 55%, var(--surface));
+}
+.bz5-stripe-w {
+  stroke: #f4f1ea;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+.bz5-cone {
+  fill: color-mix(in srgb, #9a6a3a 50%, var(--surface));
+}
+.bz5-conifers .bz5-svg {
+  max-width: 320px;
+  margin-inline: auto;
+}
+.bz5 {
+  --dye: #c2305a;
+}
+.bz5-dye-water {
+  fill: color-mix(in srgb, var(--dye) 45%, var(--surface));
+}
+.bz5-dye-s {
+  fill: none;
+  stroke: var(--dye);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.bz5-dye-f {
+  fill: color-mix(in srgb, var(--dye) 80%, var(--surface));
+}
+.bz5-dye-t {
+  fill: color-mix(in srgb, var(--dye) 80%, var(--ink));
+}
+.bz5-stem-light {
+  fill: color-mix(in srgb, var(--green) 18%, var(--surface));
+}
+.bz5-mosq {
+  fill: color-mix(in srgb, #8a7a5a 40%, var(--surface));
+}
+.bz5-wing {
+  fill: color-mix(in srgb, var(--info-soft) 40%, var(--surface));
+  fill-opacity: 0.6;
+}
+.bz5-gut {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 50%, var(--surface));
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+.bz5-gland {
+  fill: color-mix(in srgb, var(--lvl) 45%, var(--surface));
+}
+.bz5-red-cell {
+  fill: color-mix(in srgb, var(--bad) 45%, var(--surface));
+}
+.bz5-plasmo {
+  fill: color-mix(in srgb, var(--violet) 60%, var(--surface));
+}
+.bz5-plasmo-ring {
+  fill: none;
+  stroke: var(--violet);
+  stroke-width: 1.6;
+}
+.bz5-plasmo-dot {
+  fill: var(--violet);
+}
+.bz5-plasmo-cyst {
+  fill: color-mix(in srgb, var(--violet) 35%, var(--surface));
+}
+.bz5-plasmo-t {
+  fill: color-mix(in srgb, var(--violet) 85%, var(--ink));
+}
+.bz5-liver-bg {
+  fill: color-mix(in srgb, #8a3a2a 18%, var(--surface));
+}
+.bz5-liver {
+  fill: color-mix(in srgb, #8a3a2a 30%, var(--surface));
+}
+.bz5-fever {
+  stroke: var(--bad);
+  stroke-width: 2;
+}
+.bz5-bark {
+  fill: color-mix(in srgb, #6a5a3a 40%, var(--surface));
+}
+.bz5-peat {
+  fill: color-mix(in srgb, #7a5a2a 40%, var(--surface));
+}
+.bz5-peat-dark {
+  fill: color-mix(in srgb, #4a3418 70%, var(--surface));
+}
+.bz5-sand {
+  fill: color-mix(in srgb, var(--yellow) 26%, var(--surface));
+}
+.bz5-clay {
+  fill: color-mix(in srgb, #8a8478 26%, var(--surface));
+}
+.bz5-coal {
+  fill: #23211f;
+}

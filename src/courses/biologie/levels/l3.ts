@@ -126,6 +126,8 @@ const level: LevelContent = {
           icon: 'fossil',
           blocks: [
             { type: 'p', text: 'Cévy a pevné stonky umožnily kapraďorostům vyrůst do výšky. V **karbonu**, období prvohor asi před 360–300 miliony let, pokrývaly bažinaté pralesy velkou část pevniny, také území dnešního Česka.' },
+            { type: 'p', text: 'Takhle mohl karbonský prales vypadat. Pod ním je řez zemí, ve kterém je vidět, co z takového lesa zbylo:' },
+            { type: 'diagram', id: 'carboniferous-forest', caption: 'Šupinovníky, pečetníky, kalamity a stromové kapradiny v bažině, nad nimi obří vážka Meganeura. Dole se z rostlinných zbytků pod vrstvami písku a jílu stává černé uhlí.' },
             { type: 'p', text: 'Stromy těch lesů byly obří příbuzní dnešních drobných rostlin. Porovnej, jak vypadali tehdy a jak dnes:' },
             { type: 'table', headers: ['skupina', 'v karbonu', 'dnes v Česku'], rows: [
               ['plavuně', 'šupinovníky a pečetníky – stromy přes 30 m', 'plavuň vidlačka, plazí se při zemi'],
@@ -220,13 +222,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Kořen má tři úkoly: rostlinu **upevňuje** v půdě, **nasává vodu s minerálními látkami** a často **ukládá zásoby**. Nejtěžší je nasávání, protože voda je v půdě rozptýlená mezi drobnými zrnky. Jak ji kořen dokáže sesbírat?' },
             { type: 'p', text: 'Odpověď najdeš na špičce kořene. Projdi ji od samého konce vzhůru:' },
-            { type: 'process', layout: 'flow', steps: [
-              { icon: 'cell', title: 'Kořenová čepička', text: 'chrání špičku, když se kořen prodírá půdou' },
-              { icon: 'cell-division', title: 'Dělivá zóna', text: 'buňky se tu rychle dělí' },
-              { icon: 'ruler', title: 'Prodlužovací zóna', text: 'nové buňky se natahují a tlačí špičku hlouběji' },
-              { icon: 'root', title: 'Zóna kořenových vlásků', text: 'tenké výběžky buněk pokožky nasávají vodu' },
-              { icon: 'family-tree', title: 'Zóna větvení', text: 'vyrůstají z ní postranní kořeny' },
-            ] },
+            { type: 'diagram', id: 'root-tip', caption: 'Špička kořene zdola: čepička chrání, v dělivé zóně se buňky dělí, v prodlužovací se natahují a v zóně kořenových vlásků nasávají vodu. Nad ní z kořene vyrůstají postranní kořeny.' },
             { type: 'p', text: 'Proč zrovna vlásky? Jsou tenké a je jich obrovské množství, takže kořen se dotýká půdy na obrovské ploše. Je to stejný trik jako u malých buněk v lekci „Od buňky k organismu“: čím větší povrch, tím víc toho projde dovnitř.' },
             { type: 'callout', variant: 'fact', text: 'Vědci jednou opatrně vypláchli z půdy kořeny jediné rostliny žita. Kořeny měřily dohromady přes 600 km a kořenové vlásky dokonce přes 10 000 km.' },
             { type: 'p', text: 'Kořeny různých rostlin se liší i celkovým tvarem. Najdeš dva hlavní typy kořenové soustavy:' },
@@ -297,6 +293,8 @@ const level: LevelContent = {
               { icon: 'cloud', title: 'Průduch', text: 'zbytek uniká jako vodní pára do vzduchu' },
             ] },
             { type: 'p', text: 'Že voda opravdu stoupá cévami, si můžeš ukázat doma s řapíkatým celerem a potravinářskou barvou:' },
+            { type: 'diagram', id: 'celery-transpiration', caption: 'Řapík celeru v obarvené vodě: po několika hodinách se obarví žilky listů a na průřezu svítí barevné tečky – cévní svazky.' },
+            { type: 'p', text: 'Takhle pokus provedeš krok za krokem:' },
             { type: 'example', title: 'Celer v obarvené vodě', problem: 'Jak ukázat, kudy v rostlině stoupá voda?', steps: [
               'Do sklenice s vodou přidej několik kapek modrého nebo červeného potravinářského barviva.',
               'Řapík celeru dole čerstvě seřízni, aby byly cévy otevřené, a postav ho do sklenice.',
@@ -752,13 +750,8 @@ const level: LevelContent = {
           title: 'Naše jehličnany',
           icon: 'tree',
           blocks: [
-            { type: 'p', text: 'V českých lesech rostou čtyři hlavní jehličnaté stromy. Na dálku vypadají podobně, ale prozradí je jehlice a šišky. Tabulka shrnuje, na co se dívat:' },
-            { type: 'table', headers: ['strom', 'jehlice', 'šišky'], rows: [
-              ['smrk ztepilý (*Picea abies*)', 'jednotlivě, čtyřhranné, pichlavé', 'visí dolů, opadávají celé'],
-              ['jedle bělokorá (*Abies alba*)', 'jednotlivě, ploché, tupé, vespod dva bílé proužky', 'stojí vzhůru, rozpadají se na stromě'],
-              ['borovice lesní (*Pinus sylvestris*)', 'po dvou ve svazečku, dlouhé', 'malé, kuželovité, dozrávají dva roky'],
-              ['modřín opadavý (*Larix decidua*)', 'měkké, ve svazečcích po mnoha, na zimu opadávají', 'malé, vzpřímené, zůstávají na větvích i roky'],
-            ] },
+            { type: 'p', text: 'V českých lesech rostou čtyři hlavní jehličnaté stromy: smrk ztepilý (*Picea abies*), jedle bělokorá (*Abies alba*), borovice lesní (*Pinus sylvestris*) a modřín opadavý (*Larix decidua*). Na dálku vypadají podobně, ale prozradí je jehlice a šišky. Porovnej, na co se dívat:' },
+            { type: 'diagram', id: 'conifers', caption: 'Smrk: jehlice jednotlivě, šišky visí. Jedle: ploché jehlice, šišky stojí. Borovice: jehlice po dvou. Modřín: svazečky měkkých jehlic, které na zimu opadají.' },
             { type: 'p', text: 'Teď se vyzkoušej. Na přední straně kartičky je poznávací znamení, na zadní odpověď:' },
             { type: 'flipcards', cards: [
               { icon: 'tree', title: 'Na zimu shazuji jehlice. Kdo jsem?', text: '**Modřín opadavý** – jediný náš jehličnan, který na podzim zežloutne a jehlice shodí.' },

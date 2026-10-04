@@ -34,6 +34,8 @@ const level: LevelContent = {
               { icon: 'protein', title: 'Kapsida', text: 'bílkovinný obal, který nukleovou kyselinu chrání; často má tvar dvacetistěnu nebo šroubovice' },
               { icon: 'balloon', title: 'Obal', text: 'tenká blána z tuků, kterou si virus „vypůjčí“ z buňky; mají ho jen některé viry, třeba chřipka nebo koronaviry' },
             ] },
+            { type: 'p', text: 'Na řezu dvěma viry najdeš všechny tři součásti: vlevo virus bez obalu, vpravo virus s obalem. Dole je porovnej s bakterií ve stejném měřítku:' },
+            { type: 'diagram', id: 'virus-structure', caption: 'Virus bez obalu (kapsida a nukleová kyselina) a virus s tukovým obalem a bílkovinnými výběžky. Vedle bakterie dlouhé 2 µm je virus chřipky jen tečka.' },
             { type: 'callout', variant: 'fact', text: 'Hotová virová částice mimo buňku se odborně jmenuje **virion**. Je to jen balíček s návodem – nic nedělá, dokud nenarazí na správnou buňku.' },
             { type: 'p', text: 'Virus je tedy jen návod zabalený v bílkovinách. Je takový balíček živý? To posoudíme podle znaků života, které už znáš.' },
             { type: 'check', question: { kind: 'choice', q: 'Z čeho se skládá každý virus?', options: ['z nukleové kyseliny a bílkovinné kapsidy', 'z buněčné stěny, cytoplazmy a jádra', 'jen z tukové blány', 'z mitochondrií a ribozomů'], answer: 0, explain: 'Každý virus má nukleovou kyselinu (DNA nebo RNA) a kapsidu z bílkovin. Tukový obal mají jen některé viry, buněčné části nemá žádný.' } },
@@ -364,12 +366,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Parazit žije na úkor jiného organismu – hostitele. U virů jsme viděli parazity uvnitř buněk; někteří prvoci jsou parazité celých těl a patří k nejnebezpečnějším původcům nemocí na světě.' },
             { type: 'p', text: 'Nejznámější je **zimnička** (*Plasmodium*), původce **malárie**. Má dva hostitele, člověka a komára, a mezi nimi koluje v kruhu. Sleduj, kde se v kruhu množí:' },
-            { type: 'process', layout: 'cycle', steps: [
-              { icon: 'syringe', title: 'Bodnutí komára', text: 'samice komára rodu *Anopheles* vpustí se slinami zimničky do krve' },
-              { icon: 'stomach', title: 'Játra', text: 'zimničky se nejprve množí v jaterních buňkách' },
-              { icon: 'blood', title: 'Červené krvinky', text: 'pak napadají krvinky, množí se v nich a krvinky hromadně praskají – přichází horečka' },
-              { icon: 'arrow-cycle', title: 'Nový komár', text: 'komár, který nemocného bodne, nasaje zimničky a v jeho těle se vyvinou další' },
-            ] },
+            { type: 'diagram', id: 'malaria-cycle', caption: 'Bodnutí komára → množení v jaterních buňkách → množení v krvinkách a horečka → pohlavní buňky nasaje další komár → v komárovi vzniknou noví zárodci.' },
             { type: 'p', text: 'Proč je malárie tak vážná? Hromadné praskání krvinek způsobuje záchvaty vysoké horečky a chudokrevnost. Malárií onemocní přes 200 milionů lidí ročně a zemře asi 600 000, většinou malé děti v Africe.' },
             { type: 'callout', variant: 'tip', text: 'Kdo cestuje do tropů, potřebuje moskytiéru, repelent a podle doporučení lékaře i léky proti malárii. V Česku malárie běžně nehrozí: komáři *Anopheles* tu žijí, ale zimnička ne.' },
             { type: 'p', text: 'Podobně funguje **trypanozoma**, prvok s bičíkem, který žije v krvi. V Africe ji přenáší moucha tse-tse a způsobuje **spavou nemoc**, při níž nemocný slábne a upadá do spánku. Nejlepší ochranou je přerušit přenašeče: komáry, mouchy nebo klíšťata.' },
