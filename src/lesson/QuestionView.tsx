@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useImperativeHandle, useMemo, useState, type Ref } from 'react'
 import type { Question } from '../core/types'
 import { correctAnswerText, isCorrect, shuffle, type Answer } from '../core/check'
 import { Md } from '../core/markup'
@@ -17,22 +17,34 @@ const KIND_HINT: Record<Question['kind'], string> = {
   match: 'Spoj dvojice',
 }
 
+/** Lets a parent own the "Zkontrolovat" button (the quiz's single bottom button). */
+export interface QuestionControls {
+  submit: () => void
+}
+
 /**
  * Renders any question kind. Calls `onAnswered(correct)` once the learner
  * presses "Zkontrolovat". Feedback and explanation are shown in place.
+ * With `controls`, the question has no button of its own: the parent calls
+ * `submit()` and learns from `onReadyChange` when an answer is complete.
  */
 export function QuestionView({
   question,
   onAnswered,
   compact = false,
+  controls,
+  onReadyChange,
 }: {
   question: Question
   onAnswered?: (correct: boolean) => void
   compact?: boolean
+  controls?: Ref<QuestionControls>
+  onReadyChange?: (ready: boolean) => void
 }) {
   const [answer, setAnswer] = useState<Answer | null>(null)
   const [result, setResult] = useState<boolean | null>(null)
   const done = result !== null
+  const isReady = ready(question, answer)
 
   const submit = () => {
     if (!answer || done) return
@@ -40,6 +52,8 @@ export function QuestionView({
     setResult(ok)
     onAnswered?.(ok)
   }
+  useImperativeHandle(controls, () => ({ submit }))
+  useEffect(() => onReadyChange?.(isReady && !done), [isReady, done, onReadyChange])
 
   return (
     <div className={`qv${compact ? ' qv-compact' : ''}${done ? (result ? ' qv-ok' : ' qv-bad') : ''}`}>
@@ -48,9 +62,9 @@ export function QuestionView({
         <Md text={question.q} />
       </div>
       <Inputs question={question} answer={answer} setAnswer={setAnswer} locked={done} onEnter={submit} />
-      {!done && (
+      {!done && !controls && (
         <div className="qv-actions">
-          <button type="button" className="btn btn-primary" disabled={!ready(question, answer)} onClick={submit}>
+          <button type="button" className="btn btn-primary" disabled={!isReady} onClick={submit}>
             Zkontrolovat
           </button>
         </div>

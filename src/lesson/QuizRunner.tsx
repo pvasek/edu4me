@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import type { Question } from '../core/types'
-import { QuestionView } from './QuestionView'
+import { QuestionView, type QuestionControls } from './QuestionView'
 import { Icon } from '../ui/Icon'
 import { AnimatePresence, motion } from 'motion/react'
 import { bump, slide, spring } from '../ui/motion'
@@ -18,6 +18,8 @@ export function QuizRunner({
   const [i, setI] = useState(0)
   const [score, setScore] = useState(0)
   const [answered, setAnswered] = useState(false)
+  const [ready, setReady] = useState(false)
+  const question = useRef<QuestionControls>(null)
   const [streak, setStreak] = useState(0)
   const q = questions[i]
   const last = i === questions.length - 1
@@ -27,6 +29,7 @@ export function QuizRunner({
     else {
       setI(i + 1)
       setAnswered(false)
+      setReady(false)
     }
   }
 
@@ -62,6 +65,8 @@ export function QuizRunner({
         <QuestionView
           key={i}
           question={q}
+          controls={question}
+          onReadyChange={setReady}
           onAnswered={(ok) => {
             setAnswered(true)
             if (ok) {
@@ -73,9 +78,16 @@ export function QuizRunner({
       </motion.div>
       </AnimatePresence>
       <div className="bottom-bar">
-        <button type="button" className="btn btn-primary btn-lg" disabled={!answered} onClick={next}>
-          {last ? 'Vyhodnotit' : 'Další otázka'} <Icon name="arrowRight" />
-        </button>
+        {/* one button in one place: check the answer, then go on */}
+        {answered ? (
+          <button type="button" className="btn btn-primary btn-lg" onClick={next}>
+            {last ? 'Vyhodnotit' : 'Další otázka'} <Icon name="arrowRight" />
+          </button>
+        ) : (
+          <button type="button" className="btn btn-primary btn-lg" disabled={!ready} onClick={() => question.current?.submit()}>
+            Zkontrolovat <Icon name="check" />
+          </button>
+        )}
       </div>
     </div>
   )
