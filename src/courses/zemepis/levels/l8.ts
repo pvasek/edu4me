@@ -22,11 +22,12 @@ import type { LevelContent } from '../../../core/types'
  *   the end of 2027; Russia ≈ 12 % of EU gas imports in 2025 (Council of the EU).
  * - GDP per capita in PPS, EU = 100 (Eurostat 2024): Česko 91, Polsko 79, Maďarsko 77, Slovensko 75.
  * - tourism: Francie 102 mil. foreign tourists 2025, Španělsko 96,8 mil. 2025 (INE Frontur).
- * - migration: Frontex (2015 ≈ 1,8 mil. detected crossings; Jan–Nov 2025 ≈ 166 900, central Mediterranean ≈ 40 %);
- *   IOM Missing Migrants (≈ 33 000 dead or missing in the Mediterranean since 2014); Pact on Migration and Asylum applies
- *   from 12. 6. 2026.
+ * - migration: Frontex (2015 ≈ 1,8 mil. detected crossings; 2025 almost 178 000, −26 %, central Mediterranean the busiest
+ *   route with over a third); IOM Missing Migrants (32 238 dead or missing in the Mediterranean 2014 – June 2025);
+ *   Pact on Migration and Asylum applies from 12. 6. 2026. Cyprus: Schengen accession not decided by Sept 2026.
  * - Slovakia: 1,07 mil. cars in 2025 = 196 per 1 000 inhabitants (ZAP SR); Denmark: wind 60 % of electricity produced
- *   in 2025 (Energinet); Poland: coal 51 % of electricity in 2025 (Ember).
+ *   in 2025 (Energinet); Poland: coal ≈ half of electricity in 2025
+ *   (sources give 51–53 %).
  */
 
 const level: LevelContent = {
@@ -63,7 +64,7 @@ const level: LevelContent = {
             ], routes: [
               { points: [{ lat: 68.5, lon: 66.0 }, { lat: 64.0, lon: 59.5 }, { lat: 58.0, lon: 59.0 }, { lat: 54.0, lon: 58.6 }, { lat: 51.8, lon: 55.1 }, { lat: 51.2, lon: 51.4 }, { lat: 47.1, lon: 51.9 }],
                 label: 'hranice Evropy a Asie (Ural, řeka Ural)', tone: 'a', style: 'dashed' },
-            ], caption: 'Evropa: největší poloostrovy a okrajová moře. Na východě vede hranice s Asií po Uralu (vpravo nahoře) a dál po řece Uralu ke Kaspickému moři, které už leží za okrajem mapy.' },
+            ], caption: 'Evropa: největší poloostrovy a okrajová moře. Na východě vede hranice s Asií po Uralu (vpravo nahoře) a dál po řece Uralu ke Kaspickému moři, které leží skoro celé už za pravým okrajem mapy.' },
             { type: 'p', text: 'Evropa má **nejčlenitější pobřeží** ze všech světadílů; jejími největšími ostrovy jsou Velká Británie a Island. Proto je moře skoro všude blízko: obchodovalo se po něm už ve starověku a dodnes je to znát na podnebí. Než se k podnebí dostaneme, podívejme se, jaký povrch se mezi těmi moři rozkládá.' },
             { type: 'check', question: { kind: 'choice', q: 'Na kterém poloostrově leží Španělsko a Portugalsko?', options: ['na Pyrenejském', 'na Apeninském', 'na Balkánském', 'na Skandinávském'], answer: 0, explain: 'Pyrenejský poloostrov dostal jméno podle pohoří Pyreneje, které ho odděluje od Francie. Na Apeninském leží Itálie, na Balkánském třeba Řecko.' } },
           ],
@@ -117,8 +118,8 @@ const level: LevelContent = {
           icon: 'ocean',
           blocks: [
             { type: 'p', text: 'Bergen v Norsku leží na 60° s. š., stejně daleko na sever jako jih Grónska. Přesto tam v lednu průměrná teplota neklesá pod nulu. V lekci „Voda na Zemi“ jsme poznali Golfský proud – teď uvidíme, co přesně dělá s Evropou.' },
-            { type: 'p', text: 'Na obrázku sleduj, kudy teplá voda teče a jak se liší dvě místa na stejné rovnoběžce na obou stranách Atlantiku:' },
-            { type: 'diagram', id: 'gulf-stream', caption: 'Golfský proud a jeho pokračování, Severoatlantský proud, nesou teplou vodu z Karibiku až k Norsku. Bergen má v lednu teploty nad nulou, Labrador na stejné rovnoběžce silné mrazy.' },
+            { type: 'p', text: 'Na obrázku sleduj, kudy teplá voda teče a jak se liší dvě místa na obou stranách Atlantiku – norský Bergen a Nain na Labradoru, který leží dokonce jižněji:' },
+            { type: 'diagram', id: 'gulf-stream', caption: 'Golfský proud a jeho pokračování, Severoatlantský proud, nesou teplou vodu z Karibiku až k Norsku. Bergen má v lednu průměrnou teplotu nad nulou, Nain na pobřeží Labradoru, ležící ještě jižněji, silné mrazy.' },
             { type: 'p', text: 'Teplo z oceánu ale musí někdo dopravit nad pevninu. Dělají to **západní větry**, které znáš z lekce „Oběh vzduchu a podnebné pásy“. Hlavní pohoří střední a jižní Evropy (Alpy, Karpaty) se táhnou od západu na východ, a tak vlhký atlantský vzduch proniká hluboko do pevniny. Čím dál od oceánu, tím je ho méně: podnebí se mění z **oceánského** přes **přechodné** (Česko) na **pevninské**.' },
             { type: 'p', text: 'Rozdíl je nejlíp vidět v klimatogramech. Porovnej Londýn u Atlantiku s Moskvou uprostřed Východoevropské roviny. Sleduj hlavně, jak moc se liší léto a zima:' },
             { type: 'climate', places: [
@@ -201,7 +202,7 @@ const level: LevelContent = {
         'Popsat hlavní migrační proudy do Evropy i uvnitř ní',
         'Zařadit evropské jazyky do skupin, popsat rozšíření náboženství a ukázat státy a hlavní města na mapě',
       ],
-      hook: 'Za dvě hodiny jízdy z Prahy uslyšíš němčinu, polštinu nebo maďarštinu. Evropa je jen o kousek větší než USA, a přece v ní leží kolem 45 států a mluví se tu desítkami jazyků. Kdo jsou Evropané a kde žijí?',
+      hook: 'Pár hodin jízdy z Prahy a uslyšíš němčinu, polštinu nebo maďarštinu. Evropa je jen o kousek větší než USA, a přece v ní leží kolem 45 států a mluví se tu desítkami jazyků. Kdo jsou Evropané a kde žijí?',
       sections: [
         {
           title: 'Kolik nás je a kde žijeme',
@@ -217,7 +218,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Průměr ale skrývá velké rozdíly. Na mapě porovnej nejhustěji a nejřidčeji zalidněné státy:' },
             { type: 'map', view: 'europe', highlight: [
               { codes: ['NLD', 'BEL', 'GBR', 'DEU', 'CHE', 'LUX', 'MLT'], tone: 'a', label: 'přes 200 obyv./km²' },
-              { codes: ['NOR', 'SWE', 'FIN', 'ISL', 'RUS'], tone: 'c', label: 'pod 30 obyv./km²' },
+              { codes: ['NOR', 'SWE', 'FIN', 'ISL', 'LVA', 'RUS'], tone: 'c', label: 'pod 30 obyv./km²' },
             ], points: [
               { lat: 55.75, lon: 37.62, label: 'Moskva', kind: 'capital' },
               { lat: 51.5, lon: -0.13, label: 'Londýn', kind: 'capital' },
@@ -286,7 +287,7 @@ const level: LevelContent = {
               { codes: ['RUS', 'UKR', 'BLR', 'MDA', 'ROU', 'BGR', 'SRB', 'MNE', 'MKD', 'GRC', 'CYP', 'GEO'], tone: 'c', label: 'pravoslavná tradice' },
               { codes: ['ALB', 'KOS', 'BIH', 'TUR'], tone: 'd', label: 'islámská tradice' },
             ], caption: 'Převažující náboženská tradice podle států (zjednodušeně; v mnoha státech je dnes velká část lidí bez vyznání). V Německu, Nizozemsku a Švýcarsku žijí katolíci i protestanti; Česko a Estonsko patří k nejméně věřícím zemím světa.' },
-            { type: 'p', text: 'Hranice mezi katolickým západem a pravoslavným východem jde napříč Evropou a často i napříč jazyky. Chorvati a Srbové si rozumějí skoro jako Češi a Slováci, ale Chorvati jsou většinou katolíci a píšou latinkou, Srbové jsou pravoslavní a píšou i cyrilicí. Jazyk a víra tak vytvářejí národy – a ty mají své státy.' },
+            { type: 'p', text: 'Hranice mezi katolickým západem a pravoslavným východem jde napříč Evropou a často i napříč jazyky. Chorvati a Srbové si rozumějí skoro jako Češi a Slováci, ale Chorvati jsou většinou katolíci a píšou latinkou, Srbové jsou pravoslavní a píšou cyrilicí i latinkou. Jazyk a víra tak vytvářejí národy – a ty mají své státy.' },
             { type: 'check', question: { kind: 'choice', q: 'Který jazyk je příbuzný finštině?', options: ['maďarština', 'polština', 'rumunština', 'řečtina'], answer: 0, explain: 'Maďarština, finština a estonština patří k ugrofinským jazykům, které nejsou indoevropské. Polština je slovanská, rumunština románská.' } },
           ],
         },
@@ -433,7 +434,7 @@ const level: LevelContent = {
               { codes: ['AUT', 'BEL', 'BGR', 'HRV', 'CZE', 'DNK', 'EST', 'FIN', 'FRA', 'DEU', 'GRC', 'HUN', 'ITA', 'LVA', 'LTU', 'LUX', 'MLT', 'NLD', 'POL', 'PRT', 'ROU', 'SVK', 'SVN', 'ESP', 'SWE'], tone: 'a', label: 'v EU i v Schengenu (25)' },
               { codes: ['ISL', 'NOR', 'CHE', 'LIE'], tone: 'b', label: 'v Schengenu, ale ne v EU (4)' },
               { codes: ['IRL', 'CYP'], tone: 'c', label: 'v EU, ale ne v Schengenu (2)' },
-            ], caption: 'Schengenský prostor v roce 2026: 29 států. Irsko si drží společný cestovní prostor se Spojeným královstvím, Kypr zatím přijat nebyl.' },
+            ], caption: 'Schengenský prostor na podzim 2026: 29 států. Irsko si drží společný cestovní prostor se Spojeným královstvím; o přijetí Kypru státy EU zatím nerozhodly.' },
             { type: 'p', text: 'Pozor: i v Schengenu musíš mít u sebe doklad – občanku nebo pas – a státy mohou kontroly na čas obnovit. Německo kontroluje své hranice, včetně té s Českem, od roku 2023 a naposledy kontroly prodloužilo do března 2027.' },
             { type: 'p', text: 'Druhým okruhem je **eurozóna**: státy, které platí společnou měnou euro. Od 1. ledna 2026 jich je 21, posledním přibylo Bulharsko. Euro řídí Evropská centrální banka ve Frankfurtu nad Mohanem. Mapa ukazuje, kdo euro má a kdo ne:' },
             { type: 'map', view: 'europe', highlight: [
@@ -471,7 +472,7 @@ const level: LevelContent = {
       ],
       summary: [
         'Evropská integrace začala v roce 1951 společenstvím uhlí a oceli, aby se mezi Francií a Německem už nikdy nemohla vést válka.',
-        'Evropská unie vznikla v roce 1993 v Maastrichtu; dnes má 27 členů a devět kandidátů, Spojené království odešlo v roce 2020.',
+        'Evropská unie vznikla v roce 1993 na základě smlouvy z Maastrichtu; dnes má 27 členů a devět kandidátů, Spojené království odešlo v roce 2020.',
         'Evropský parlament volí občané, Evropská komise navrhuje zákony a Rada EU je schvaluje spolu s Parlamentem; Rada Evropy není orgán EU.',
         'Jednotný trh stojí na volném pohybu zboží, služeb, osob a kapitálu.',
         'Schengenský prostor má 29 států bez pravidelných kontrol na hranicích; eurozóna má od roku 2026 21 států včetně Slovenska a Bulharska.',
@@ -509,7 +510,7 @@ const level: LevelContent = {
           title: 'Region u Atlantiku',
           icon: 'map',
           blocks: [
-            { type: 'p', text: 'Ze všech regionů Evropy leží západ a sever nejblíž Atlantiku. Z lekce „Příroda Evropy“ víme, že Golfský proud a západní větry jim dávají vlhké oceánské podnebí s mírnými zimami. Které státy sem patří?' },
+            { type: 'p', text: 'Ze všech regionů Evropy leží západ a sever nejblíž Atlantiku. Z lekce „Příroda Evropy“ víme, že Golfský proud a západní větry dávají západu regionu a pobřeží Norska vlhké oceánské podnebí s mírnými zimami; ve Finsku a ve vnitrozemí Švédska jsou ale zimy mrazivé. Které státy sem patří?' },
             { type: 'p', text: 'Na mapě najdeš dvě skupiny států. Všimni si, kolik z nich leží na ostrovech nebo poloostrovech:' },
             { type: 'map', view: 'europe', highlight: [
               { codes: ['GBR', 'IRL', 'FRA', 'BEL', 'NLD', 'LUX'], tone: 'a', label: 'západní Evropa' },
@@ -583,16 +584,16 @@ const level: LevelContent = {
           title: 'Severské státy',
           icon: 'snowflake',
           blocks: [
-            { type: 'p', text: '**Severské státy** jsou Norsko, Švédsko, Finsko, Dánsko a Island. Leží daleko na severu: jejich severní části jsou za polárním kruhem, kde je v létě **polární den** a v zimě **polární noc**, které známe z lekce „Oběh Země kolem Slunce a roční období“. Přesto patří k nejbohatším státům světa.' },
+            { type: 'p', text: '**Severské státy** jsou Norsko, Švédsko, Finsko, Dánsko a Island. Leží daleko na severu: Norsko, Švédsko a Finsko zasahují za severní polární kruh, kde je v létě **polární den** a v zimě **polární noc**, které známe z lekce „Oběh Země kolem Slunce a roční období“. Přesto patří k nejbohatším státům světa.' },
             { type: 'p', text: 'Žije tu jen asi 28 milionů lidí, ale každý stát umí využít to, co mu dala příroda. Podívej se, z čeho žijí:' },
             { type: 'iconlist', items: [
               { icon: 'oil-barrel', title: 'Norsko', text: 'ropa a plyn ze Severního moře; zisky ukládá do státního fondu pro budoucí generace; elektřina skoro jen z vodních elektráren' },
               { icon: 'tree', title: 'Švédsko', text: 'lesy a dřevo, železná ruda z Kiruny; firmy Volvo, IKEA, Spotify' },
               { icon: 'pond', title: 'Finsko', text: 'tisíce jezer a lesy: papír a dřevo; mobilní sítě (Nokia)' },
-              { icon: 'wind-turbine', title: 'Dánsko', text: 'vepřové maso a mléko; větrné elektrárny vyrobily 60 % jeho elektřiny (2025); LEGO' },
+              { icon: 'wind-turbine', title: 'Dánsko', text: 'vepřové maso a mléko; větrné elektrárny daly asi 60 % elektřiny vyrobené v Dánsku (2025); LEGO' },
               { icon: 'volcano', title: 'Island', text: 'sopky a gejzíry: geotermální energie; rybolov a cestovní ruch' },
             ] },
-            { type: 'p', text: 'Peníze z přírody využívají severské státy pro všechny: mají vysoké daně, ale také bezplatné školy a zdravotnictví a silnou pomoc lidem v nouzi. Tomu se říká **severský model**. Na severu Skandinávie žijí také **Sámové**, původní obyvatelé Laponska, kteří chovají soby.' },
+            { type: 'p', text: 'Peníze z přírody využívají severské státy pro všechny: mají vysoké daně, ale také bezplatné školy a zdravotnictví a silnou pomoc lidem v nouzi. Tomu se říká **severský model**. Na severu Skandinávie žijí také **Sámové**, původní obyvatelé Laponska; někteří z nich dodnes chovají soby.' },
             { type: 'p', text: 'Severské státy nemají k Evropské unii stejný vztah. Norsko odmítlo vstup v referendech v letech 1972 a 1994 a Islanďané 29. srpna 2026 těsně odmítli obnovit jednání o vstupu (52,8 % hlasů proti). Oba státy jsou ale v Schengenu i v Evropském hospodářském prostoru. Finsko (2023) a Švédsko (2024) zase po ruském útoku na Ukrajinu opustily dlouhou neutralitu a vstoupily do NATO.' },
             { type: 'game', gameId: 'quickfire', text: 'Blesková výzva: státy, města a hospodářství západní a severní Evropy.' },
             { type: 'p', text: 'Sever Evropy je chladný, řídce osídlený a bohatý. Úplně jiná je jižní Evropa: slunce, davy turistů a staré civilizace. Tam nás zavede lekce „Jižní a jihovýchodní Evropa“.' },
@@ -607,9 +608,9 @@ const level: LevelContent = {
       ],
       summary: [
         'Západní Evropu tvoří Spojené království, Irsko, Francie a Benelux, severní Evropu Norsko, Švédsko, Finsko, Dánsko a Island.',
-        'Celý region má vlhké oceánské podnebí s mírnými zimami díky Golfskému proudu a západním větrům.',
+        'Západ regionu a pobřeží Norska mají díky Golfskému proudu a západním větrům oceánské podnebí s mírnými zimami; Finsko a vnitrozemí Švédska mají zimy mrazivé.',
         'Ve Spojeném království začala průmyslová revoluce; Londýn je světové finanční centrum a v roce 2020 stát z EU vystoupil.',
-        'Francie je největší stát EU, jejím největším zemědělským výrobcem a nejnavštěvovanější zemí světa.',
+        'Francie je rozlohou největší stát EU, jejím největším zemědělským výrobcem a nejnavštěvovanější zemí světa.',
         'Asi čtvrtina Nizozemska leží pod hladinou moře a chrání ji hráze; Rotterdam je největší přístav Evropy, Brusel sídlem EU a NATO.',
         'Severské státy bohatnou z přírody (ropa, lesy, rudy, vítr, geotermální energie) a peníze využívají v severském modelu pro všechny.',
         'Norsko a Island nejsou v EU, ale jsou v Schengenu; Finsko a Švédsko vstoupily po roce 2022 do NATO.',
@@ -709,7 +710,7 @@ const level: LevelContent = {
           icon: 'border',
           blocks: [
             { type: 'p', text: 'Balkánský poloostrov dostal jméno podle pohoří Balkán v Bulharsku. Je hornatý a na západě krasový: podél Jadranu se táhnou **Dinárské hory** z vápence. Slovo **kras** dokonce pochází z náhorní plošiny Kras ve Slovinsku. Proč je ale mapa Balkánu tak rozdrobená?' },
-            { type: 'p', text: 'Odpověď je v dějinách. Na Balkáně se po staletí střetávaly říše: Byzanc, Osmanská (turecká) říše a Rakousko-Uhersko. Proto tu vedle sebe žijí katolíci, pravoslavní i muslimové a mluví se slovanskými jazyky, řečtinou, albánštinou i rumunštinou. Ve 20. století spojila většinu jižních Slovanů **Jugoslávie**. Na mapě najdi státy, které vznikly jejím rozpadem:' },
+            { type: 'p', text: 'Odpověď je v dějinách. Na Balkáně se po staletí střetávaly říše: Byzanc, Osmanská (turecká) říše a habsburská monarchie (později Rakousko-Uhersko). Proto tu vedle sebe žijí katolíci, pravoslavní i muslimové a mluví se slovanskými jazyky, řečtinou, albánštinou i rumunštinou. Ve 20. století spojila většinu jižních Slovanů **Jugoslávie**. Na mapě najdi státy, které vznikly jejím rozpadem:' },
             { type: 'map', view: 'europe', highlight: [
               { codes: ['SVN', 'HRV', 'BIH', 'SRB', 'MNE', 'MKD', 'KOS'], tone: 'a', label: 'státy vzniklé rozpadem Jugoslávie' },
               { codes: ['ALB', 'GRC', 'BGR', 'ROU'], tone: 'b', label: 'další státy jihovýchodní Evropy' },
@@ -734,10 +735,10 @@ const level: LevelContent = {
               { points: [{ lat: 38.4, lon: 27.1 }, { lat: 39.1, lon: 26.5 }, { lat: 37.98, lon: 23.73 }], label: 'východní Středomoří (Turecko → Řecko)', tone: 'c', arrow: true },
               { points: [{ lat: 40.64, lon: 22.94 }, { lat: 42.0, lon: 21.43 }, { lat: 44.8, lon: 20.46 }, { lat: 47.5, lon: 19.04 }, { lat: 48.21, lon: 16.37 }, { lat: 48.14, lon: 11.58 }], label: 'balkánská trasa (2015)', tone: 'd', style: 'dashed', arrow: true },
             ], points: [{ lat: 35.5, lon: 12.6, label: 'Lampedusa', kind: 'place' }], caption: 'Hlavní migrační trasy do EU (zjednodušeně). Další trasa vede přes Atlantik ze západní Afriky na Kanárské ostrovy.' },
-            { type: 'p', text: 'V roce 2015 zaznamenala agentura **Frontex**, která hlídá vnější hranici EU, asi 1,8 milionu nelegálních přechodů hranice (někteří lidé byli započteni víckrát); velkou část tvořili uprchlíci z války v Sýrii. Od té doby jich výrazně ubylo: za prvních 11 měsíců roku 2025 to bylo asi 167 000 a nejvíc lidí, asi 40 %, připlulo přes centrální Středomoří do Itálie. Cesta je smrtelně nebezpečná: od roku 2014 ve Středozemním moři zemřelo nebo zmizelo asi 33 000 lidí (Mezinárodní organizace pro migraci).' },
+            { type: 'p', text: 'V roce 2015 zaznamenala agentura **Frontex**, která hlídá vnější hranici EU, asi 1,8 milionu nelegálních přechodů hranice (někteří lidé byli započteni víckrát); velkou část tvořili uprchlíci z války v Sýrii. Od té doby jich výrazně ubylo: v roce 2025 to bylo necelých 178 000 a víc než třetina lidí připlula přes centrální Středomoří do Itálie. Cesta je smrtelně nebezpečná: od roku 2014 ve Středozemním moři zemřelo nebo zmizelo víc než 32 000 lidí (Mezinárodní organizace pro migraci, 2025).' },
             { type: 'p', text: 'Jak s migrací zacházet, je jedna z největších sporných otázek v EU. Od června 2026 platí nový **Pakt o migraci a azylu**: rychlejší kontroly na vnější hranici a sdílení odpovědnosti mezi státy. Spory ukazují, že jih Evropy čelí tlaku zvenčí. Střed a východ Evropy zase prošly za posledních 35 let dvěma velkými zlomy – o nich je lekce „Střední a východní Evropa“.' },
             { type: 'game', gameId: 'swipe', text: 'Pravda, nebo lež? Středomoří, Balkán a cestovní ruch.' },
-            { type: 'check', question: { kind: 'tf', q: 'V roce 2025 vedla nejvytíženější migrační trasa do EU přes centrální Středomoří do Itálie.', answer: true, explain: 'Podle agentury Frontex připadalo na centrální Středomoří asi 40 % všech nelegálních vstupů do EU. Lidé vyplouvají hlavně z Libye a Tuniska.' } },
+            { type: 'check', question: { kind: 'tf', q: 'V roce 2025 vedla nejvytíženější migrační trasa do EU přes centrální Středomoří do Itálie.', answer: true, explain: 'Podle agentury Frontex připadala na centrální Středomoří víc než třetina všech nelegálních přechodů hranice EU, víc než na kteroukoli jinou trasu. Lidé vyplouvají hlavně z Libye a Tuniska.' } },
           ],
         },
       ],
@@ -747,7 +748,7 @@ const level: LevelContent = {
         'Itálie má bohatý průmyslový sever a chudší jih; Španělsko, Portugalsko a Řecko žijí hodně z cestovního ruchu.',
         'Cestovní ruch přináší práci a peníze, ale také drahé bydlení, davy a nedostatek vody; města se začínají bránit.',
         'Mapu Balkánu utvořily říše a rozpad Jugoslávie ve válkách 90. let; Slovinsko a Chorvatsko jsou v EU, ostatní státy západního Balkánu jsou kandidáty.',
-        'Přes Středozemní moře vedou hlavní migrační trasy do EU; od roku 2014 na nich zemřelo nebo zmizelo asi 33 000 lidí.',
+        'Přes Středozemní moře vedou hlavní migrační trasy do EU; od roku 2014 na nich zemřelo nebo zmizelo víc než 32 000 lidí.',
       ],
       quiz: [
         { kind: 'tf', q: 'Ve Středomoří spadne za rok méně srážek než v poušti, proto je léto suché.', answer: false, explain: 'V Římě spadne za rok přes 700 mm, víc než v Praze. Srážky ale padají hlavně v zimě, léto je suché kvůli tlakové výši.' },
@@ -759,7 +760,7 @@ const level: LevelContent = {
           ['Řecko', 'tisíce ostrovů a lodní doprava'],
           ['Portugalsko', 'mys Roca, nejzápadnější bod pevninské Evropy'],
         ], explain: 'Každý stát jižní Evropy má jiný povrch: Itálie nížinu pod Alpami, Španělsko vnitrozemskou plošinu, Řecko ostrovy a Portugalsko atlantské pobřeží.' },
-        { kind: 'choice', q: 'Proč na Balkáně žijí vedle sebe katolíci, pravoslavní i muslimové?', options: ['po staletí se tu střetávaly různé říše, mimo jiné Osmanská a Rakousko-Uhersko', 'přistěhovali se sem až v 21. století', 'všichni obyvatelé mluví stejným jazykem', 'Balkán byl vždy jedním státem'], answer: 0, explain: 'Osmanská říše přinesla islám, západ ovlivnilo katolické Rakousko-Uhersko a Řím, východ pravoslavná Byzanc.' },
+        { kind: 'choice', q: 'Proč na Balkáně žijí vedle sebe katolíci, pravoslavní i muslimové?', options: ['po staletí se tu střetávaly různé říše, mimo jiné Osmanská říše a habsburská monarchie', 'přistěhovali se sem až v 21. století', 'všichni obyvatelé mluví stejným jazykem', 'Balkán byl vždy jedním státem'], answer: 0, explain: 'Osmanská říše přinesla islám, západ ovlivnila katolická habsburská monarchie a Řím, východ pravoslavná Byzanc.' },
         { kind: 'tf', q: 'Chorvatsko je členem EU a platí eurem.', answer: true, explain: 'Chorvatsko vstoupilo do EU v roce 2013 a od 1. 1. 2023 je v eurozóně i v Schengenu.' },
         { kind: 'text', q: 'Jak se jmenuje stát, který existoval na Balkáně ve 20. století a rozpadl se v letech 1991–1992?', accept: ['Jugoslávie', 'Jugoslavie'], explain: 'Z Jugoslávie vzniklo sedm států: Slovinsko, Chorvatsko, Bosna a Hercegovina, Srbsko, Černá Hora, Severní Makedonie a Kosovo.' },
         { kind: 'number', q: 'Ostrov má 900 000 obyvatel a za rok na něj přijede 13,5 milionu turistů. Kolik turistů připadá na jednoho obyvatele?', answer: 15, tolerance: 0, explain: '13 500 000 : 900 000 = 15. Podobný nápor turistů zažívají oblíbené ostrovy, třeba Mallorca.' },
@@ -819,7 +820,7 @@ const level: LevelContent = {
               { title: 'Německo', icon: 'car', tone: 'a', points: ['auta (Volkswagen, BMW, Mercedes-Benz), strojírenství, chemie', 'Porúří: z uhelného a ocelářského kraje oblast služeb a vědy; poslední černouhelný důl zavřen 2018', 'v roce 2023 zavřelo poslední jaderné elektrárny; z obnovitelných zdrojů dnes vyrábí víc než polovinu elektřiny', 'největší obchodní partner Česka: míří sem asi třetina českého vývozu'] },
               { title: 'Rakousko', icon: 'mountain', tone: 'b', points: ['Alpy zabírají asi dvě třetiny území', 'cestovní ruch, hlavně zimní sporty', 'asi 60 % elektřiny z vodních elektráren', 'neutrální stát, není v NATO; Vídeň má asi 2 miliony obyvatel'] },
             ] },
-            { type: 'p', text: 'Německo bylo v letech 1949–1990 rozdělené na západní a východní stát a Berlín přetínala zeď. Ani 35 let po sjednocení v roce 1990 nejsou rozdíly pryč: na východě Německa jsou mzdy dodnes nižší a mladí lidé odcházejí na západ. Podobnou cestu z plánovaného hospodářství prošli i naši další sousedé – Polsko, Slovensko a Maďarsko.' },
+            { type: 'p', text: 'Německo bylo v letech 1949–1990 rozdělené na západní a východní stát a Berlín přetínala zeď. Ani 35 let po sjednocení v roce 1990 nejsou rozdíly pryč: na východě Německa jsou mzdy dodnes nižší a mladí lidé odcházejí na západ. Podobnou cestu z plánovaného hospodářství prošly i Polsko, Slovensko a Maďarsko.' },
             { type: 'check', question: { kind: 'tf', q: 'Rakousko je neutrální stát a není členem NATO.', answer: true, explain: 'Rakousko je neutrální od roku 1955. Je v EU, ale do NATO nevstoupilo.' } },
           ],
         },
@@ -830,7 +831,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Polsko, Slovensko a Maďarsko mají s Českem hodně společného: podobné dějiny, vstup do EU v roce 2004 a spolupráci ve **Visegrádské skupině** (V4), založené v roce 1991. Přírodou i hospodářstvím se ale liší.' },
             { type: 'p', text: 'Každý stát má svou silnou stránku. Podívej se, čím je který známý:' },
             { type: 'iconlist', items: [
-              { icon: 'wheat', title: 'Polsko', text: 'hlavně nížiny (jméno od slova pole – rovina, pláň); Baltské moře a ledovcová Mazurská jezera na severu, Tatry na jihu; z uhlí vyrábí pořád asi polovinu elektřiny (51 % v roce 2025)' },
+              { icon: 'wheat', title: 'Polsko', text: 'hlavně nížiny (jméno od slova pole – rovina, pláň); Baltské moře a ledovcová Mazurská jezera na severu, Tatry na jihu; z uhlí vyrábí pořád zhruba polovinu elektřiny (2025)' },
               { icon: 'car', title: 'Slovensko', text: 'Karpaty a Tatry; světová jednička ve výrobě aut na obyvatele: 1,07 milionu aut v roce 2025, tedy 196 na každých 1 000 obyvatel; platí eurem od roku 2009' },
               { icon: 'drop', title: 'Maďarsko', text: 'Panonská pánev s Velkou uherskou nížinou, Dunaj a Tisa, jezero Balaton; termální prameny; ugrofinský jazyk' },
             ] },
@@ -851,13 +852,13 @@ const level: LevelContent = {
               { icon: 'shield', title: 'NATO a EU', text: 'Česko, Polsko a Maďarsko vstupují do NATO 1999, Slovensko 2004; všechny čtyři do EU 2004' },
               { icon: 'chart', title: 'dohánění západu', text: 'mzdy a životní úroveň rostou' },
             ], caption: 'Transformace střední Evropy po roce 1989 (zjednodušeně).' },
-            { type: 'p', text: 'Transformace nebyla bezbolestná: staré doly a hutě se zavíraly a v některých krajích vznikla vysoká nezaměstnanost. Celkově ale státy V4 západ rychle dohánějí. Tabulka ukazuje HDP na obyvatele v **paritě kupní síly** – tedy podle toho, kolik si za své příjmy lidé opravdu koupí; průměr EU je 100:' },
+            { type: 'p', text: 'Transformace nebyla bezbolestná: staré doly a hutě se zavíraly a v některých krajích vznikla vysoká nezaměstnanost. Celkově ale státy V4 západ rychle dohánějí. Tabulka ukazuje HDP na obyvatele v **paritě kupní síly** – tedy přepočtené tak, aby se vzaly v úvahu rozdílné ceny v jednotlivých státech; průměr EU je 100:' },
             { type: 'table', headers: ['stát', 'HDP na obyvatele (EU = 100)'], rows: [
               ['Česko', '91'],
               ['Polsko', '79'],
               ['Maďarsko', '77'],
               ['Slovensko', '75'],
-            ], caption: 'HDP na obyvatele v paritě kupní síly, 2024 (Eurostat). V roce 2004 měly všechny čtyři státy výrazně méně; Polsko tehdy nedosahovalo ani poloviny průměru EU.' },
+            ], caption: 'HDP na obyvatele v paritě kupní síly, 2024 (Eurostat). V roce 2004 měly všechny čtyři státy výrazně méně; Polsko tehdy mělo jen asi polovinu průměru EU.' },
             { type: 'p', text: 'Česko je dnes na úrovni Slovinska. Dál na východ, za hranicí EU, ale proběhla transformace úplně jinak – a dnes tam zuří válka.' },
             { type: 'check', question: { kind: 'order', q: 'Seřaď události od nejstarší.', items: ['sametová revoluce', 'vstup Česka do NATO', 'vstup Česka do EU', 'vstup Slovenska do eurozóny'], explain: 'Sametová revoluce 1989, NATO 1999, EU 2004, Slovensko zavedlo euro v roce 2009.' } },
           ],
@@ -882,7 +883,7 @@ const level: LevelContent = {
           icon: 'shield',
           blocks: [
             { type: 'p', text: 'Válka není jen téma dějepisu. Mění hranice, pohyb lidí, obchod, energii i životní prostředí – a to jsou otázky geografie. Co se stalo a co to znamená pro mapu Evropy?' },
-            { type: 'p', text: 'V roce 2014 Rusko obsadilo a připojilo ukrajinský poloostrov Krym; většina států světa to neuznává. Zároveň podpořilo ozbrojené separatisty v Donbasu. **24. února 2022** zahájilo Rusko útok na celou Ukrajinu. Na podzim 2026 válka pokračuje: Rusko okupuje asi pětinu území Ukrajiny (asi 19 % včetně Krymu) a jednání o příměří zatím k míru nevedla. Mapa ukazuje, jak válka změnila bezpečnostní mapu Evropy:' },
+            { type: 'p', text: 'V roce 2014 Rusko obsadilo a připojilo ukrajinský poloostrov Krym; většina států světa to neuznává. Zároveň podpořilo ozbrojené separatisty v Donbasu. **24. února 2022** zahájilo Rusko útok na celou Ukrajinu. Na podzim 2026 válka pokračuje: Rusko okupuje asi pětinu území Ukrajiny (asi 19 % včetně Krymu, léto 2026) a jednání o příměří zatím k míru nevedla. Mapa ukazuje, jak válka změnila bezpečnostní mapu Evropy:' },
             { type: 'map', view: 'europe', highlight: [
               { codes: ['UKR'], tone: 'a', label: 'Ukrajina – napadený stát' },
               { codes: ['RUS', 'BLR'], tone: 'b', label: 'Rusko a jeho spojenec Bělorusko' },
@@ -918,7 +919,7 @@ const level: LevelContent = {
       ],
       quiz: [
         { kind: 'tf', q: 'Česko sousedí se čtyřmi státy: Německem, Polskem, Rakouskem a Slovenskem.', answer: true, explain: 'Česko má čtyři sousedy. Nejdelší hranici má s Německem, nejkratší se Slovenskem.' },
-        { kind: 'choice', q: 'Co znamená, že Česko dosahuje 91 % průměru EU v HDP na obyvatele v paritě kupní síly?', options: ['lidé si za své příjmy koupí asi o desetinu méně než průměrný obyvatel EU', 'Česko má 91 % obyvatel EU', 'Česko vyrábí 91 % aut v EU', 'v Česku pracuje 91 % lidí'], answer: 0, explain: 'Parita kupní síly bere v úvahu i ceny v každém státě. Průměr EU je 100, Česko má 91.' },
+        { kind: 'choice', q: 'Co znamená, že Česko dosahuje 91 % průměru EU v HDP na obyvatele v paritě kupní síly?', options: ['Česko vytvoří na obyvatele asi o desetinu méně zboží a služeb než průměr EU (po zohlednění cen)', 'Česko má 91 % obyvatel EU', 'Česko vyrábí 91 % aut v EU', 'v Česku pracuje 91 % lidí'], answer: 0, explain: 'Parita kupní síly bere v úvahu i ceny v každém státě. Průměr EU je 100, Česko má 91.' },
         { kind: 'match', q: 'Přiřaď stát k tomu, co je pro něj typické.', pairs: [
           ['Slovensko', 'nejvíc aut na obyvatele na světě'],
           ['Maďarsko', 'Panonská pánev a jezero Balaton'],
