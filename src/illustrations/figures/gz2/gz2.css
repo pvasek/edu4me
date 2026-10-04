@@ -1,0 +1,674 @@
+.gz2 {
+  --lvl: var(--level, #8a5a2b);
+  --gz2-grass-line: color-mix(in srgb, var(--green) 62%, var(--surface));
+  --lvl-ink: color-mix(in srgb, var(--lvl) 72%, var(--ink));
+  --lvl-soft: color-mix(in srgb, var(--lvl) 16%, var(--surface));
+  --e: var(--blue);
+  --glass: color-mix(in srgb, var(--info-soft) 45%, var(--surface));
+  --water: color-mix(in srgb, #6f9fd8 30%, var(--surface));
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  container-type: inline-size;
+}
+.gz2-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gz2-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.gz2-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.gz2-btn {
+  appearance: none;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 14px/1.1 var(--font-body);
+  min-height: 40px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.gz2-btn:hover {
+  background: var(--surface-2);
+}
+.gz2-btn[aria-pressed="true"] {
+  background: var(--lvl);
+  border-color: var(--lvl);
+  color: var(--on-level);
+}
+.gz2-host {
+  width: 100%;
+}
+
+.gz2-lbl {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16.5px;
+  fill: var(--ink-soft);
+}
+.gz2-b {
+  font-weight: 700;
+  fill: var(--ink);
+}
+.gz2-big {
+  font-size: 19px;
+}
+.gz2-sm {
+  font-size: 14.5px;
+}
+.gz2-lvl-t {
+  fill: var(--lvl-ink);
+}
+.gz2-acc-t {
+  fill: var(--accent);
+}
+.gz2-blue-t {
+  fill: var(--blue);
+}
+.gz2-red-t {
+  fill: var(--bad);
+}
+.gz2-muted-t {
+  fill: var(--muted);
+}
+.gz2-eq {
+  font: 600 14px var(--font-body);
+  fill: var(--ink);
+}
+.gz2-eq-sm {
+  font-size: 12.5px;
+}
+.gz2-eq-lg {
+  font-size: 16px;
+}
+.gz2-num {
+  font: 400 13px var(--font-mono);
+  fill: var(--ink);
+}
+.gz2-light-t {
+  fill: #fffaf0;
+}
+
+:where(.gz2-o:not([fill])) {
+  fill: none;
+}
+.gz2-o {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.gz2-thin {
+  stroke-width: 0.9;
+}
+.gz2-fill {
+  fill: var(--surface);
+}
+.gz2-fill2 {
+  fill: var(--surface-2);
+}
+.gz2-fill3 {
+  fill: var(--surface-3);
+}
+.gz2-glass {
+  fill: var(--glass);
+  fill-opacity: 0.55;
+}
+.gz2-ln {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+}
+.gz2-lvl-s {
+  stroke: var(--lvl-ink);
+}
+.gz2-lvl-f {
+  fill: var(--lvl);
+}
+.gz2-lvlsoft-f {
+  fill: var(--lvl-soft);
+}
+.gz2-dash {
+  stroke-dasharray: 5 4;
+}
+.gz2-dot2 {
+  stroke-dasharray: 1.5 4;
+}
+.gz2-lead {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  fill: none;
+}
+.gz2-dot {
+  fill: var(--ink-soft);
+}
+.gz2-nohit {
+  pointer-events: none;
+}
+.gz2-hl {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.4;
+}
+.gz2-hl-dark {
+  opacity: 0.6;
+}
+.gz2-hl-light {
+  stroke: #fffaf0;
+  stroke-width: 0.9;
+  opacity: 0.75;
+}
+.gz2-hl-shade {
+  stroke: #10131c;
+  stroke-width: 0.8;
+  opacity: 0.35;
+}
+.gz2-stip {
+  fill: var(--edge);
+  opacity: 0.35;
+}
+
+.gz2-arr {
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz2-arr-ink {
+  stroke: var(--edge);
+}
+.gz2-arr-acc {
+  stroke: var(--accent);
+}
+.gz2-arr-blue {
+  stroke: var(--blue);
+}
+.gz2-arr-lvl {
+  stroke: var(--lvl-ink);
+}
+.gz2-arr-red {
+  stroke: var(--bad);
+}
+.gz2-arr-green {
+  stroke: var(--good);
+}
+.gz2-arr-muted {
+  stroke: var(--muted);
+}
+.gz2-mk-ink {
+  fill: var(--edge);
+}
+.gz2-mk-acc {
+  fill: var(--accent);
+}
+.gz2-mk-blue {
+  fill: var(--blue);
+}
+.gz2-mk-lvl {
+  fill: var(--lvl-ink);
+}
+.gz2-mk-red {
+  fill: var(--bad);
+}
+.gz2-mk-green {
+  fill: var(--good);
+}
+.gz2-mk-muted {
+  fill: var(--muted);
+}
+
+.gz2-tag {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.gz2-tag-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+}
+
+.gz2-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 2 9;
+  animation: gz2-flow 1.1s linear infinite;
+}
+.gz2-flow-rev {
+  animation-direction: reverse;
+}
+@keyframes gz2-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+@container (max-width: 440px) {
+  .gz2-sec {
+    display: none;
+  }
+  .gz2-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+
+
+
+/* ---------------------------------------------------------------- narrow boost */
+.gz2-narrow .gz2-lbl {
+  font-size: 19px;
+}
+.gz2-narrow .gz2-lbl.gz2-sm {
+  font-size: 17px;
+}
+.gz2-narrow .gz2-lbl.gz2-big {
+  font-size: 21px;
+}
+.gz2-narrow .gz2-eq {
+  font-size: 16px;
+}
+.gz2-narrow .gz2-eq.gz2-eq-lg {
+  font-size: 17.5px;
+}
+.gz2-narrow .gz2-eq.gz2-eq-sm {
+  font-size: 14.5px;
+}
+.gz2-halo {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+.gz2-stripbox {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+}
+.gz2-strip-note {
+  margin: 0;
+  text-align: center;
+  font: italic 600 17px/1.3 var(--font-display);
+  color: var(--ink-soft);
+}
+.gz2-sym-t {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 19px;
+  fill: var(--ink);
+}
+.gz2-tone-lvl {
+  fill: var(--lvl-ink);
+}
+.gz2-tone-red {
+  fill: var(--bad);
+}
+.gz2-tone-green {
+  fill: var(--good);
+}
+.gz2-tone-blue {
+  fill: var(--blue);
+}
+.gz2-tone-acc {
+  fill: var(--accent);
+}
+.gz2-tone-muted {
+  fill: var(--muted);
+}
+.gz2-it {
+  font-style: italic;
+}
+.gz2-qs {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.gz2-num-badge circle {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.gz2-num-badge text {
+  font-family: var(--font-body);
+  font-weight: 800;
+  fill: var(--on-level);
+  pointer-events: none;
+}
+.gz2-vec {
+  stroke-width: 2.6;
+}
+.gz2-box {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.gz2-box-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.4;
+}
+.gz2-title {
+  font: italic 700 18px var(--font-display);
+  fill: var(--ink);
+}
+.gz2-narrow .gz2-title {
+  font-size: 20px;
+}
+.gz2-scale {
+  stroke: var(--ink);
+  stroke-width: 2.4;
+  stroke-linecap: butt;
+}
+.gz2-scale-t {
+  font: 600 12.5px var(--font-body);
+  fill: var(--ink-soft);
+}
+.gz2-narrow .gz2-scale-t {
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------------- geography fills
+   (token mixes, so the plate works on parchment and in the night-study theme) */
+.gz2-good-t {
+  fill: var(--good);
+}
+.gz2-teal-t {
+  fill: color-mix(in srgb, var(--teal) 80%, var(--ink));
+}
+.gz2-sky {
+  fill: color-mix(in srgb, var(--blue) 6%, var(--surface));
+}
+.gz2-sea {
+  fill: color-mix(in srgb, var(--blue) 26%, var(--surface));
+}
+.gz2-sea2 {
+  fill: color-mix(in srgb, var(--blue) 40%, var(--surface));
+}
+.gz2-water {
+  fill: color-mix(in srgb, var(--blue) 30%, var(--surface));
+}
+.gz2-river {
+  fill: none;
+  stroke: color-mix(in srgb, var(--blue) 70%, var(--surface));
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz2-land {
+  fill: color-mix(in srgb, var(--yellow) 16%, var(--surface-2));
+}
+.gz2-grass {
+  fill: color-mix(in srgb, var(--green) 30%, var(--surface));
+}
+.gz2-forest {
+  fill: color-mix(in srgb, var(--green) 50%, var(--surface));
+}
+.gz2-rock {
+  fill: color-mix(in srgb, var(--muted) 30%, var(--surface));
+}
+.gz2-rock2 {
+  fill: color-mix(in srgb, var(--muted) 46%, var(--surface));
+}
+.gz2-lime {
+  fill: color-mix(in srgb, var(--yellow) 18%, var(--surface-3));
+}
+.gz2-sed {
+  fill: color-mix(in srgb, var(--yellow) 30%, var(--surface));
+}
+.gz2-sand {
+  fill: color-mix(in srgb, var(--yellow) 42%, var(--surface));
+}
+.gz2-soil {
+  fill: color-mix(in srgb, var(--accent) 30%, var(--surface-2));
+}
+.gz2-humus {
+  fill: color-mix(in srgb, var(--accent) 34%, var(--ink-soft));
+}
+.gz2-loess {
+  fill: color-mix(in srgb, var(--yellow) 50%, var(--accent));
+  fill-opacity: 0.55;
+}
+.gz2-crust {
+  fill: color-mix(in srgb, var(--accent) 26%, var(--surface));
+}
+.gz2-ocrust {
+  fill: color-mix(in srgb, var(--muted) 40%, var(--surface));
+}
+.gz2-mantle {
+  fill: color-mix(in srgb, var(--bad) 18%, var(--surface));
+}
+.gz2-magma {
+  fill: color-mix(in srgb, var(--bad) 62%, var(--yellow));
+}
+.gz2-lava {
+  fill: none;
+  stroke: color-mix(in srgb, var(--bad) 75%, var(--yellow));
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz2-basalt {
+  fill: color-mix(in srgb, var(--ink-soft) 58%, var(--surface));
+}
+.gz2-ash {
+  fill: color-mix(in srgb, var(--ink-soft) 30%, var(--surface));
+}
+.gz2-ice {
+  fill: color-mix(in srgb, #e6f0fa 72%, var(--surface));
+}
+.gz2-snow {
+  fill: var(--surface);
+}
+.gz2-coral {
+  fill: color-mix(in srgb, var(--pink) 45%, var(--surface));
+}
+.gz2-lvl-fill {
+  fill: color-mix(in srgb, var(--lvl) 30%, var(--surface));
+}
+.gz2-tree {
+  fill: color-mix(in srgb, var(--green) 55%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.gz2-trunk {
+  stroke: color-mix(in srgb, var(--accent) 50%, var(--edge));
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.gz2-roof {
+  fill: color-mix(in srgb, var(--bad) 40%, var(--surface));
+}
+.gz2-quake {
+  fill: var(--bad);
+}
+.gz2-fos-a {
+  fill: color-mix(in srgb, var(--blue) 55%, var(--surface));
+}
+.gz2-fos-b {
+  fill: color-mix(in srgb, var(--accent) 60%, var(--surface));
+}
+.gz2-fit {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz2-root {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 55%, var(--edge));
+  stroke-width: 3.2;
+  stroke-linecap: round;
+}
+.gz2-lichen {
+  fill: color-mix(in srgb, var(--yellow) 55%, var(--green));
+  fill-opacity: 0.75;
+}
+.gz2-icecrack {
+  fill: #dcecfb;
+}
+.gz2-shale {
+  fill: color-mix(in srgb, var(--muted) 34%, var(--surface-2));
+}
+.gz2-hollow {
+  fill: var(--paper);
+}
+.gz2-krap {
+  fill: color-mix(in srgb, var(--yellow) 30%, var(--surface));
+}
+.gz2-flowline {
+  fill: none;
+  stroke: color-mix(in srgb, var(--blue) 25%, var(--surface));
+  stroke-width: 2;
+}
+.gz2-bank {
+  fill: none;
+  stroke: var(--edge);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz2-oxbow {
+  fill: none;
+  stroke: color-mix(in srgb, var(--blue) 40%, var(--green));
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+}
+.gz2-flood {
+  fill: color-mix(in srgb, var(--blue) 35%, transparent);
+}
+.gz2-slope-l {
+  fill: color-mix(in srgb, var(--green) 26%, var(--surface-2));
+}
+.gz2-slope-r {
+  fill: color-mix(in srgb, var(--green) 14%, var(--surface-3));
+}
+.gz2-moraine {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ink-soft) 70%, var(--surface));
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 2 3;
+}
+.gz2-hole {
+  fill: color-mix(in srgb, #10131c 72%, var(--surface));
+}
+.gz2-lagoon {
+  fill: color-mix(in srgb, var(--teal) 30%, var(--surface));
+}
+.gz2-mud {
+  fill: color-mix(in srgb, var(--accent) 45%, var(--surface));
+}
+.gz2-rill {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 55%, var(--ink));
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.gz2-terrace {
+  fill: color-mix(in srgb, var(--accent) 40%, var(--ink-soft));
+  opacity: 0.6;
+}
+.gz2-ghost {
+  opacity: 0.35;
+}
+.gz2-faint {
+  opacity: 0.55;
+}
+.gz2-grid {
+  stroke: var(--edge);
+  stroke-width: 0.6;
+  opacity: 0.3;
+  stroke-dasharray: 3 4;
+}
+.gz2-trace {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.3;
+  stroke-linejoin: round;
+}
+.gz2-wave {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 2.2;
+}
+.gz2-fault {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.gz2-smoke {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  opacity: 0.7;
+}
+
+/* ---------------------------------------------------------------- ambient loops */
+.gz2-wiggle {
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
+  animation: gz2-wiggle 0.9s ease-in-out infinite alternate;
+}
+@keyframes gz2-wiggle {
+  from {
+    transform: skewY(-4deg);
+  }
+  to {
+    transform: skewY(4deg);
+  }
+}
+.gz2-fall {
+  animation: gz2-fall 3s linear infinite;
+}
+@keyframes gz2-fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--fall, 40px));
+    opacity: 0;
+  }
+}
+.gz2-flow-up {
+  stroke-dasharray: 3 10;
+  animation: gz2-flow 1.3s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gz2-wiggle,
+  .gz2-fall,
+  .gz2-flow,
+  .gz2-flow-up {
+    animation: none;
+  }
+}
