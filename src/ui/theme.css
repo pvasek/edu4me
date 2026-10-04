@@ -162,6 +162,16 @@
 }
 html {
   -webkit-text-size-adjust: 100%;
+  /* never scroll sideways on a phone, even if an animation or a too-wide
+     drawing pokes out for a moment (hidden on html only: on body it would
+     turn body into a scroll container and break the sticky bars) */
+  overflow-x: hidden;
+}
+@supports (overflow: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
 }
 body {
   margin: 0;

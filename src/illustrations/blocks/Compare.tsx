@@ -9,7 +9,7 @@ import '../illustrations.css'
 const DEFAULT_TONES = ['a', 'b', 'c'] as const
 
 const plate: Variants = {
-  hidden: (side: number) => ({ opacity: 0, x: side * 40, y: side === 0 ? 20 : 0 }),
+  hidden: (side: number) => ({ opacity: 0, x: side * 12, y: side === 0 ? 20 : 12 }),
   show: { opacity: 1, x: 0, y: 0, transition: { duration: 0.5, ease: ease.out } },
 }
 const seal: Variants = {
