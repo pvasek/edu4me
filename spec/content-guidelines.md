@@ -5,6 +5,7 @@ How lessons, questions and level tests are written. Applies to every course; che
 ## Language and tone
 
 - **Czech only** in everything the learner sees. Use correct Czech typography: „uvozovky“, a decimal comma (`22,99`), a non-breaking space where it matters (`10 g`, `25 °C`), an en dash for ranges (`5–7`).
+- **≐ vs ≈** (Czech school convention): **≐** („rovná se přibližně“) for a rounded result of a calculation or a rounded value of a quantity, e.g. `v = 100 m : 9,58 s ≐ 10,4 m/s`, `n ≐ 0,25 mol`, `g ≐ 10 N/kg`, `π ≐ 3,14`. **≈** („je přibližně, asi“) only for estimates and orders of magnitude, approximations in a model and comparisons, e.g. `≈ 10⁹ buněk`, `sin α ≈ α pro malé úhly`, `A ≈ B`. Words („asi“, „zhruba“) are often better than either sign in running text.
 - Address the learner as **ty**, informally but with respect. Talk like a good older sibling who likes chemistry, not like a textbook.
 - Audience: **teens 14–18**. Levels 1–2 assume nothing beyond primary-school maths. Later levels can be demanding (gymnázium / A-level), but every new term is explained where it first appears.
 - Short sentences. One idea per paragraph. Paragraphs of at most 3–4 sentences.
