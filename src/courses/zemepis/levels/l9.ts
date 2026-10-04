@@ -16,9 +16,9 @@ import type { LevelContent } from '../../../core/types'
  * - economy: Eurostat/ČSÚ HDP v PPS 2024 = 91 % EU; ČSÚ míra nezaměstnanosti červen 2026 3,3 %;
  *   MPSV podíl nezaměstnaných podle krajů 31. 3. 2026; ČSÚ regionální účty 2024 (Praha 2,1× průměr);
  *   SAP – výroba aut 2025 (1 445 776; Škoda 947 140, Hyundai 276 175, Toyota 222 461); ERÚ 2025 (hrubá výroba
- *   76,4 TWh; jádro ≈ 40 %, uhlí ≈ třetina, OZE ≈ 16 %); Dukovany II (smlouva s KHNP 2025, stavba od 2029,
+ *   76,25 TWh; jádro ≈ 40 %, uhlí ≈ třetina, OZE ≈ 16 %); Dukovany II (smlouva s KHNP 2025, stavba od 2029,
  *   1. blok 2036 – plán); Sev.en: Počerady a Chvaletice nejdřív do jara 2027; ŘSD: 1 556 km dálnic
- *   (19. 12. 2025, D1 dokončena); ČSÚ cestovní ruch 2025 (23,6 mil. hostů, Praha 8,27 mil.); UNESCO 17 zápisů.
+ *   (19. 12. 2025; other sources 1 543 km – text says „asi 1 550 km“; plan 2 094 km), D1 dokončena 12/2025; ČSÚ cestovní ruch 2025 (23,6 mil. hostů, Praha 8,27 mil.); UNESCO 17 zápisů.
  * - environment: povodně 2002 (17 obětí, ≈ 73 mld. Kč) and 2024 (6 obětí, ≈ 70 mld. Kč); Intersucho/CzechGlobe
  *   (sucho od 2015 nejhorší za 500 let); kůrovec – rekordní těžba 2019–2020; 4 národní parky, 27 CHKO
  *   (Soutok nejmladší); NP Křivoklátsko nebyl vyhlášen (MŽP 2026 s ním nepočítá).
@@ -80,7 +80,7 @@ const level: LevelContent = {
               ['nejsevernější', 'Lobendava (Šluknovský výběžek)', '51° 03′ s. š.'],
               ['nejjižnější', 'Vyšší Brod (osada Studánky)', '48° 33′ s. š.'],
               ['nejzápadnější', 'Krásná u Aše', '12° 05′ v. d.'],
-              ['nejvýchodnější', 'Bukovec (Těšínsko)', '18° 51′ v. d.'],
+              ['nejvýchodnější', 'Bukovec (Těšínsko)', '18° 52′ v. d.'],
             ], caption: 'Krajní body Česka (ČÚZK, zaokrouhleno na minuty)' },
             { type: 'p', text: 'Z rozdílu zeměpisných šířek spočítáš, jak je Česko „vysoké“. Jeden stupeň šířky měří podél poledníku všude asi 111 km, protože obvod Země je asi 40 000 km a kruh má 360°:' },
             { type: 'example', title: 'Od severu k jihu', problem: 'Jak daleko je od nejsevernějšího k nejjižnějšímu bodu Česka?', steps: [
@@ -154,7 +154,7 @@ const level: LevelContent = {
             { type: 'iconlist', items: [
               { icon: 'container', title: 'Vnitrozemí', text: 'bez moře; zboží z lodí jede přes přístavy sousedů' },
               { icon: 'train', title: 'Křižovatka', text: 'cesty sever–jih i západ–východ, dálnice a železnice do všech sousedních států' },
-              { icon: 'river', title: 'Střecha Evropy', text: 'voda odtéká do tří moří, žádná velká řeka k nám nepřitéká' },
+              { icon: 'river', title: 'Střecha Evropy', text: 'voda odtéká do tří moří, ze sousedních států k nám přitéká jen málo vody' },
               { icon: 'cloud', title: 'Mírný pás', text: 'přechodné podnebí mezi oceánským a pevninským' },
             ] },
             { type: 'game', gameId: 'blind-map', text: 'Slepá mapa Česka: najdi řeky, pohoří, kraje a krajská města.' },
@@ -173,7 +173,7 @@ const level: LevelContent = {
       ],
       quiz: [
         { kind: 'tf', q: 'Česko je vnitrozemský stát.', answer: true, explain: 'Česko nemá přístup k moři; zboží z lodí k nám jezdí přes přístavy sousedních států.' },
-        { kind: 'choice', q: 'Kde leží nejvýchodnější bod Česka?', options: ['v obci Bukovec na Těšínsku', 'v Lobendavě', 'v Krásné u Aše', 'na Sněžce'], answer: 0, explain: 'Bukovec (18° 51′ v. d.) je nejvýchodnější, Lobendava nejsevernější a Krásná u Aše nejzápadnější bod.' },
+        { kind: 'choice', q: 'Kde leží nejvýchodnější bod Česka?', options: ['v obci Bukovec na Těšínsku', 'v Lobendavě', 'v Krásné u Aše', 'na Sněžce'], answer: 0, explain: 'Bukovec (18° 52′ v. d.) je nejvýchodnější, Lobendava nejsevernější a Krásná u Aše nejzápadnější bod.' },
         { kind: 'match', q: 'Přiřaď historickou zemi k jejímu centru.', pairs: [['Čechy', 'Praha'], ['Morava', 'Brno'], ['české Slezsko', 'Opava']], explain: 'Praha je centrem Čech, Brno (dříve Olomouc) Moravy a Opava českého Slezska.' },
         { kind: 'tf', q: 'Morava a Moravskoslezský kraj jsou dvě jména pro totéž území.', answer: false, explain: 'Morava je historická země, kraj je dnešní správní celek. Moravskoslezský kraj zahrnuje jen část Moravy a k tomu české Slezsko.' },
         { kind: 'choice', q: 'Které území přibylo k Československu v roce 1920 od Německa?', options: ['Hlučínsko', 'Valticko', 'Podkarpatská Rus', 'Šluknovský výběžek'], answer: 0, explain: 'Hlučínsko u Opavy patřilo do roku 1920 Německu. Valticko přibylo ve stejném roce od Rakouska.' },
@@ -198,12 +198,12 @@ const level: LevelContent = {
           title: 'Starý masiv a mladé Karpaty',
           icon: 'mountain',
           blocks: [
-            { type: 'p', text: 'V lekci „Jak vznikají pohoří“ jsme na mapě Česka rozlišili starý Český masiv a mladé Karpaty. Teď uvidíme, že právě tyhle dva celky dávají tvar celé české krajině.' },
-            { type: 'p', text: 'Většinu území – celé Čechy a západ Moravy a Slezska – zabírá **Český masiv**. Jeho horniny jsou staré stovky milionů let, hory jsou obroušené a mají oblé vrcholy. Na východě začínají **Západní Karpaty**: mladá vrásová pohoří jako Beskydy, Javorníky nebo Bílé Karpaty. Mezi oběma celky leží sníženiny, třeba Hornomoravský úval s úrodnou Hanou nebo Moravská brána.' },
+            { type: 'p', text: 'V lekci „Jak vznikají pohoří“ jsme na mapě Česka rozlišili starý Český masiv a mladé Karpaty. Teď uvidíme, že právě tyhle dvě jednotky dávají tvar celé české krajině.' },
+            { type: 'p', text: 'Většinu území – celé Čechy a západ Moravy a Slezska – zabírá **Český masiv**; v horopisném členění se jeho území jmenuje **Česká vysočina**. Jeho horniny jsou staré stovky milionů let, hory jsou obroušené a mají oblé vrcholy. Na východě začínají **Západní Karpaty**: mladá vrásová pohoří jako Beskydy, Javorníky nebo Bílé Karpaty. Na styku obou jednotek leží sníženiny, třeba Hornomoravský úval s úrodnou Hanou nebo Moravská brána; geomorfologové je řadí už ke Karpatům.' },
             { type: 'p', text: 'Na mapě obou celků najdi hlavní pohoří a nížiny. Sleduj, kudy vede hranice, kde Český masiv končí a začínají Karpaty:' },
-            { type: 'diagram', id: 'czech-geomorphology', caption: 'Dva horopisné celky Česka: starý Český masiv (Krkonoše, Šumava, Českomoravská vrchovina, Polabí) a mladé Západní Karpaty (Beskydy) na východě.' },
+            { type: 'diagram', id: 'czech-geomorphology', caption: 'Dvě hlavní horopisné jednotky Česka: starý Český masiv (Krkonoše, Šumava, Českomoravská vrchovina, Polabí) a mladé Západní Karpaty (Beskydy) na východě.' },
             { type: 'p', text: 'Nejvyšší hory leží po obvodu Čech a na severu Moravy. Jejich vrcholy shrnuje tabulka:' },
-            { type: 'table', headers: ['pohoří', 'nejvyšší vrchol', 'výška', 'celek'], rows: [
+            { type: 'table', headers: ['pohoří', 'nejvyšší vrchol', 'výška', 'jednotka'], rows: [
               ['Krkonoše', 'Sněžka', '1 603 m', 'Český masiv'],
               ['Hrubý Jeseník', 'Praděd', '1 491 m', 'Český masiv'],
               ['Šumava', 'Plechý', '1 378 m', 'Český masiv'],
@@ -324,7 +324,7 @@ const level: LevelContent = {
       ],
       quiz: [
         { kind: 'tf', q: 'Nejnižším místem Česka je hladina Labe v Hřensku.', answer: true, explain: 'Labe opouští Česko u Hřenska ve výšce asi 115 m n. m.; níž se v Česku nedostaneš.' },
-        { kind: 'choice', q: 'Ve kterém horopisném celku leží Sněžka?', options: ['v Českém masivu', 've Západních Karpatech', 'v Alpách', 'v Dinárských horách'], answer: 0, explain: 'Krkonoše se Sněžkou patří ke starému Českému masivu, proto mají oblé hřbety.' },
+        { kind: 'choice', q: 'Ve které horopisné jednotce leží Sněžka?', options: ['v Českém masivu', 've Západních Karpatech', 'v Alpách', 'v Dinárských horách'], answer: 0, explain: 'Krkonoše se Sněžkou patří ke starému Českému masivu, proto mají oblé hřbety.' },
         { kind: 'number', q: 'Klínovec má 1 244 m n. m. a Hřensko 115 m n. m. O kolik metrů je Klínovec výš?', answer: 1129, tolerance: 0, unit: 'm', explain: '1 244 m − 115 m = 1 129 m.' },
         { kind: 'order', q: 'Seřaď vrcholy od nejvyššího po nejnižší.', items: ['Sněžka', 'Praděd', 'Plechý', 'Lysá hora', 'Klínovec'], explain: 'Sněžka 1 603 m, Praděd 1 491 m, Plechý 1 378 m, Lysá hora 1 323 m, Klínovec 1 244 m.' },
         { kind: 'choice', q: 'Proč je na Žatecku a Lounsku tak sucho?', options: ['leží ve srážkovém stínu Krušných hor', 'leží vysoko v horách', 'je tam přímořské podnebí', 'neteče tam žádná řeka'], answer: 0, explain: 'Vzduch od západu zprší vodu na návětrné straně Krušných hor a za nimi sestupuje suchý. Spadne tu méně než 450 mm za rok.' },
@@ -368,7 +368,7 @@ const level: LevelContent = {
             { type: 'p', text: 'V lekci „Porodnost, úmrtnost a věková pyramida“ jsme zjistili, že v Česku víc lidí umírá, než se rodí. Jak se ale počet narozených dětí měnil v posledních desetiletích?' },
             { type: 'p', text: 'Sleduj v grafu dva vrcholy a dva hluboké poklesy:' },
             { type: 'graph', x: { label: 'rok', min: 1960, max: 2025, step: 10 }, y: { label: 'narozené děti', unit: 'tis.', min: 0, max: 220, step: 40 },
-              series: [{ label: 'živě narození', points: [[1960, 128.9], [1970, 147.9], [1974, 194.2], [1980, 153.8], [1990, 130.6], [1999, 89.5], [2000, 90.9], [2008, 119.6], [2010, 117.2], [2015, 110.8], [2020, 110.2], [2021, 111.8], [2024, 84.3], [2025, 77.6]], area: true }],
+              series: [{ label: 'živě narození', points: [[1960, 128.9], [1970, 147.9], [1974, 194.2], [1980, 153.8], [1990, 130.6], [1999, 89.5], [2000, 90.9], [2008, 119.6], [2010, 117.2], [2015, 110.8], [2020, 110.2], [2021, 111.8], [2022, 101.3], [2023, 91.2], [2024, 84.3], [2025, 77.6]], area: true }],
               marks: [{ x: 1974, y: 194.2, label: '1974' }, { x: 1999, y: 89.5, label: '1999' }, { x: 2025, y: 77.6, label: '2025' }],
               caption: 'Počet živě narozených dětí v Česku za rok, v tisících (ČSÚ).' },
             { type: 'p', text: 'Vrchol v 70. letech způsobila silná poválečná generace a státní podpora mladých rodin. Po roce 1990 začali mladí lidé víc studovat, cestovat a mít děti později, a tak porodnost prudce klesla. Menší vlna kolem roku 2008 jsou děti silných ročníků ze 70. let. V roce 2025 se narodilo jen 77 600 dětí, nejméně od začátku záznamů.' },
@@ -509,7 +509,7 @@ const level: LevelContent = {
               '947 140 : 1 445 776 ≐ 0,655.',
               '0,655 · 100 % ≐ 65,5 %.',
             ], answer: 'Škoda vyrobila asi 65 % aut, tedy skoro dvě třetiny.' },
-            { type: 'p', text: 'Na mapě najdi všechny čtyři automobilové závody. Všimni si, že leží blízko dálnic a velkých měst, kde je dost pracovníků:' },
+            { type: 'p', text: 'Na mapě najdi všechny čtyři automobilové závody. Všimni si, že většina z nich leží blízko dálnic a velkých měst, kde je dost pracovníků:' },
             { type: 'map', view: 'czechia', layers: ['rivers'], points: [
               PRAHA,
               { lat: 50.41, lon: 14.91, label: 'Mladá Boleslav (Škoda)', kind: 'city' },
@@ -550,7 +550,7 @@ const level: LevelContent = {
           icon: 'lightning',
           blocks: [
             { type: 'p', text: 'V lekci „Nerostné suroviny a energie“ jsme viděli, že českou elektřinu vyrábějí hlavně jaderné a uhelné elektrárny. Kde stojí a jak se to mění?' },
-            { type: 'p', text: 'V roce 2025 se v Česku vyrobilo 76,4 TWh elektřiny (ERÚ). Asi 40 % daly jaderné elektrárny Dukovany a Temelín, asi třetinu uhelné elektrárny a asi 16 % obnovitelné zdroje – hlavně slunce, biomasa a voda. Hnědé uhlí se těží povrchově v Severočeské hnědouhelné pánvi na Mostecku.' },
+            { type: 'p', text: 'V roce 2025 se v Česku vyrobilo asi 76 TWh elektřiny (ERÚ). Asi 40 % daly jaderné elektrárny Dukovany a Temelín, asi třetinu uhelné elektrárny a asi 16 % obnovitelné zdroje – hlavně slunce, biomasa a voda. Hnědé uhlí se těží povrchově v Severočeské hnědouhelné pánvi na Mostecku.' },
             { type: 'p', text: 'Na mapě najdi obě jaderné elektrárny a velké uhelné elektrárny. Všimni si, že většina uhelných stojí přímo u dolů na severu Čech:' },
             { type: 'map', view: 'czechia', layers: ['rivers'], points: [
               { lat: 49.18, lon: 14.38, label: 'Temelín (jádro)', kind: 'place' },
@@ -577,7 +577,7 @@ const level: LevelContent = {
           icon: 'train',
           blocks: [
             { type: 'p', text: 'V lekci „Poloha a území Česka“ jsme viděli, že Česko leží na křižovatce cest Evropy. Jak hustá je u nás dopravní síť?' },
-            { type: 'p', text: 'Česko má jednu z nejhustších železničních sítí v Evropě, přes 9 000 km tratí. Dálnic bylo na konci roku 2025 1 556 km (ŘSD). V prosinci 2025 byla po skoro 60 letech stavby dokončena **D1** z Prahy přes Brno do Ostravy – stavět se začala už v roce 1967.' },
+            { type: 'p', text: 'Česko má jednu z nejhustších železničních sítí v Evropě, přes 9 000 km tratí. Dálnic bylo na konci roku 2025 asi 1 550 km (ŘSD). V prosinci 2025 byla po skoro 60 letech stavby dokončena **D1** z Prahy přes Brno do Ostravy – stavět se začala už v roce 1967.' },
             { type: 'p', text: 'Na mapě jsou tři důležité dálnice. Každá vede z Prahy jiným směrem – k Moravě, k Bavorsku a k Sasku:' },
             { type: 'map', view: 'czechia', points: [
               PRAHA,
@@ -590,7 +590,7 @@ const level: LevelContent = {
               { label: 'D5 Praha – Plzeň – Německo', tone: 'b', points: [{ lat: 50.03, lon: 14.30 }, { lat: 49.96, lon: 14.07 }, { lat: 49.73, lon: 13.37 }, { lat: 49.66, lon: 12.55 }] },
               { label: 'D8 Praha – Ústí – Německo', tone: 'c', points: [{ lat: 50.15, lon: 14.45 }, { lat: 50.51, lon: 14.05 }, { lat: 50.63, lon: 14.03 }, { lat: 50.78, lon: 13.95 }] },
             ], caption: 'Dálnice D1, D5 a D8 (zjednodušeně)' },
-            { type: 'p', text: 'Zbývá postavit ještě asi 350 km dálnic, třeba D35 jako druhé spojení Čech a Moravy. Na železnici se připravují první vysokorychlostní tratě: vlaky by po nich jezdily až 320 km/h a z Prahy do Brna by trvaly asi hodinu.' },
+            { type: 'p', text: 'Podle plánu zbývá postavit ještě přes 500 km dálnic, třeba D35 jako druhé spojení Čech a Moravy. Na železnici se připravují první vysokorychlostní tratě: vlaky by po nich jezdily až 320 km/h a z Prahy do Brna by trvaly asi hodinu.' },
             { type: 'callout', variant: 'fact', text: 'Česko má i lodní dopravu: po Labi se dá doplout z Děčína až do Hamburku. V suchých létech je ale v Labi tak málo vody, že lodě musí čekat v přístavu.' },
             { type: 'p', text: 'Po dálnicích a železnicích nejezdí jen zboží, ale i lidé na dovolenou – a turistů přijíždí do Česka čím dál víc.' },
             { type: 'check', question: { kind: 'number', q: 'Auto jede po D1 z Prahy do Brna (asi 200 km) průměrnou rychlostí 100 km/h. Kolik hodin jede?', answer: 2, tolerance: 0, unit: 'h', explain: 'Čas = dráha : rychlost = 200 km : 100 km/h = 2 h. Rychlovlak by to podle plánu zvládl asi za hodinu.' } },
@@ -633,7 +633,7 @@ const level: LevelContent = {
         'Česko je průmyslová země; největším oborem je výroba aut: v roce 2025 to bylo 1 445 776 vozů, z toho skoro dvě třetiny od Škody.',
         'Zemědělství zaměstná jen asi 3 % lidí; v nížinách se pěstuje pšenice a cukrová řepa, na vrchovinách brambory a řepka, na Žatecku chmel a na jižní Moravě víno.',
         'Elektřinu vyrábějí hlavně jaderné elektrárny (asi 40 %) a uhelné elektrárny (asi třetina); uhlí bude ubývat a v Dukovanech se mají stavět nové bloky.',
-        'Česko má hustou železniční síť a 1 556 km dálnic; dálnice D1 z Prahy do Ostravy byla dokončena v roce 2025.',
+        'Česko má hustou železniční síť a asi 1 550 km dálnic; dálnice D1 z Prahy do Ostravy byla dokončena v roce 2025.',
         'V roce 2025 se v Česku ubytovalo 23,6 milionu hostů, víc než třetina z nich v Praze.',
         'Praha je nejbohatší region, Ústecký a Moravskoslezský kraj mají po útlumu uhlí a oceli nejvyšší nezaměstnanost.',
       ],
@@ -705,7 +705,7 @@ const level: LevelContent = {
               ['Pardubický', 'Pardubice', 'perník, dostihy Velká pardubická, Litomyšl, chemie'],
               ['Vysočina', 'Jihlava', 'Českomoravská vrchovina, Dukovany, Telč a Třebíč (UNESCO)'],
               ['Jihomoravský', 'Brno', 'víno, Lednicko-valtický areál, Moravský kras, univerzity'],
-              ['Olomoucký', 'Olomouc', 'úrodná Haná, Praděd a Jeseníky, sloup Nejsvětější Trojice'],
+              ['Olomoucký', 'Olomouc', 'úrodná Haná, Jeseníky, sloup Nejsvětější Trojice (UNESCO)'],
               ['Zlínský', 'Zlín', 'Baťa a obuv, Valašsko, zahrady v Kroměříži'],
               ['Moravskoslezský', 'Ostrava', 'uhlí a ocel, Dolní Vítkovice, Beskydy, Hyundai'],
             ], caption: 'Kraje Česka a jejich typické znaky' },
@@ -793,7 +793,7 @@ const level: LevelContent = {
       quiz: [
         { kind: 'tf', q: 'Kraje v Česku existují od roku 2000.', answer: true, explain: 'Kraje zřídil ústavní zákon z roku 1997 a fungují od 1. ledna 2000.' },
         { kind: 'choice', q: 'Kde sídlí krajský úřad Středočeského kraje?', options: ['v Praze', 'v Kladně', 'v Mladé Boleslavi', 'v Kolíně'], answer: 0, explain: 'Krajský úřad Středočeského kraje sídlí v Praze, ačkoli Praha ke kraji nepatří.' },
-        { kind: 'match', q: 'Přiřaď kraj k jeho krajskému městu.', pairs: [['Vysočina', 'Jihlava'], ['Jihočeský', 'České Budějovice'], ['Ústecký', 'Ústí nad Labem'], ['Karlovarský', 'Karlovy Vary']], explain: 'Kraj Vysočina je jediný, jehož jméno neodpovídá krajskému městu – sídlí v Jihlavě.' },
+        { kind: 'match', q: 'Přiřaď kraj k jeho krajskému městu.', pairs: [['Vysočina', 'Jihlava'], ['Jihočeský', 'České Budějovice'], ['Ústecký', 'Ústí nad Labem'], ['Karlovarský', 'Karlovy Vary']], explain: 'Ne každý kraj se jmenuje po svém krajském městě: kraj Vysočina spravuje Jihlava, Jihočeský kraj České Budějovice.' },
         { kind: 'order', q: 'Seřaď kraje podle počtu obyvatel od největšího.', items: ['Středočeský', 'Hlavní město Praha', 'Jihomoravský', 'Moravskoslezský', 'Karlovarský'], explain: 'Středočeský 1,48 mil., Praha 1,41 mil., Jihomoravský 1,23 mil., Moravskoslezský 1,18 mil., Karlovarský 0,29 mil. (ČSÚ, 2025).' },
         { kind: 'number', q: 'Liberecký kraj má 448 610 obyvatel a rozlohu 3 163 km². Jaká je jeho hustota zalidnění?', answer: 142, tolerance: 1, unit: 'obyv./km²', explain: '448 610 : 3 163 ≐ 142 obyv./km², tedy trochu nad průměrem Česka.' },
         { kind: 'multi', q: 'Které ukazatele se hodí pro srovnání krajů různé velikosti?', options: ['hustota zalidnění', 'HDP na obyvatele', 'podíl nezaměstnaných', 'počet nezaměstnaných', 'počet obyvatel'], answers: [0, 1, 2], explain: 'Hustota, HDP na obyvatele a podíl nezaměstnaných jsou přepočtené na obyvatele nebo plochu. Počty závisejí hlavně na velikosti kraje.' },
@@ -839,7 +839,7 @@ const level: LevelContent = {
               { icon: 'fertilizer', title: 'Hnojiva z polí', text: 'dusík a fosfor smývá déšť do potoků a nádrží' },
               { icon: 'house', title: 'Malé obce', text: 'některé ještě nemají vlastní čistírnu' },
               { icon: 'warning', title: 'Sinice', text: 'v teplé vodě plné živin se přemnoží a koupání v nádrži bývá zakázané' },
-              { icon: 'fish', title: 'Havárie', text: 'v září 2020 otrávily kyanidy řeku Bečvu a uhynulo přes 40 tun ryb' },
+              { icon: 'fish', title: 'Havárie', text: 'v září 2020 otrávily kyanidy řeku Bečvu a uhynulo asi 40 tun ryb' },
             ] },
             { type: 'p', text: 'Znečištění je jedna starost. Druhou je, že vody bývá buď příliš mnoho, nebo příliš málo.' },
             { type: 'check', question: { kind: 'tf', q: 'Kvalita vody v českých řekách je dnes horší než v 80. letech.', answer: false, explain: 'Je to naopak: díky čistírnám odpadních vod se kvalita vody od 90. let výrazně zlepšila. Problémem zůstávají hnojiva, sinice a havárie.' } },
@@ -860,7 +860,7 @@ const level: LevelContent = {
               { lat: 50.23, lon: 17.20, label: 'Jeseník', kind: 'city' },
               { lat: 50.09, lon: 17.70, label: 'Krnov', kind: 'city' },
               { lat: 49.94, lon: 17.90, label: 'Opava', kind: 'city' },
-            ], caption: 'Nejvíc zasažené kraje při povodních v srpnu 2002 (Vltava, Labe, Berounka) a v září 2024 (Bělá, Opava, Odra, Morava).' },
+            ], caption: 'Kraje, které nejvíc zasáhly povodně v srpnu 2002 a v září 2024. Rozvodněné řeky uvádí tabulka pod mapou.' },
             { type: 'p', text: 'Čísla obou povodní vedle sebe ukazuje tabulka:' },
             { type: 'table', headers: ['', 'srpen 2002', 'září 2024'], rows: [
               ['příčina', 'dvě vlny vydatných dešťů', 'několikadenní lijáky z tlakové níže Boris'],
@@ -1039,7 +1039,7 @@ const level: LevelContent = {
               { icon: 'pencil', title: 'Čárkování', text: 'každé vozidlo jedna čárka, pátou čárkou čtyři přeškrtni' },
               { icon: 'calculator', title: 'Přepočet', text: 'počet za 15 minut · 4 = počet za hodinu' },
             ], caption: 'Sčítání dopravy krok za krokem' },
-            { type: 'p', text: 'Proč přepočítávat na hodinu? Výsledky různě dlouhých měření pak porovnáš mezi sebou i s celostátním sčítáním dopravy ŘSD. Vyzkoušej si to:' },
+            { type: 'p', text: 'Proč přepočítávat na hodinu? Výsledky různě dlouhých měření pak můžeš porovnat mezi sebou. Vyzkoušej si to:' },
             { type: 'example', title: 'Ráno a odpoledne', problem: 'Za 15 minut v 7:30 jsi napočítal 38 osobních aut, ve 14:00 jen 12. Kolik aut projede za hodinu v obou časech a kolikrát víc je jich ráno?', steps: [
               'Hodina má čtyři čtvrthodiny, proto násobíme čtyřmi.',
               '7:30: 38 · 4 = 152 aut za hodinu.',
@@ -1122,7 +1122,7 @@ const level: LevelContent = {
     },
   },
   boss: [
-    { kind: 'choice', q: 'Ve kterém kraji leží nejvýchodnější bod Česka?', options: ['v Moravskoslezském', 've Zlínském', 'v Olomouckém', 'v Jihomoravském'], answer: 0, explain: 'Obec Bukovec (18° 51′ v. d.) leží na Těšínsku v Moravskoslezském kraji.' },
+    { kind: 'choice', q: 'Ve kterém kraji leží nejvýchodnější bod Česka?', options: ['v Moravskoslezském', 've Zlínském', 'v Olomouckém', 'v Jihomoravském'], answer: 0, explain: 'Obec Bukovec (18° 52′ v. d.) leží na Těšínsku v Moravskoslezském kraji.' },
     { kind: 'tf', q: 'Celé území Česka patří do povodí Labe.', answer: false, explain: 'Labe odvodňuje asi 63 % území; zbytek patří k povodí Moravy a Dyje (Černé moře) a Odry (Baltské moře).' },
     { kind: 'number', q: 'Lobendava leží na 51° 03′ s. š., Praha na 50° 05′ s. š. Jak daleko je Lobendava severně od Prahy? (1° šířky ≐ 111 km)', answer: 107, tolerance: 3, unit: 'km', explain: 'Rozdíl je 58′ ≐ 0,97°; 0,97 · 111 km ≐ 107 km.' },
     { kind: 'multi', q: 'Která pohoří patří k Českému masivu?', options: ['Krkonoše', 'Šumava', 'Moravskoslezské Beskydy', 'Krušné hory', 'Bílé Karpaty'], answers: [0, 1, 3], explain: 'Krkonoše, Šumava a Krušné hory jsou stará pohoří Českého masivu. Beskydy a Bílé Karpaty patří k mladým Západním Karpatům.' },

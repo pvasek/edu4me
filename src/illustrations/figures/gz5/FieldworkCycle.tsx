@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { DrawArrow, Fade, Figure, Num, Pop } from "./kit";
 
 const LABEL =
-  "Cyklus terénního výzkumu na příkladu dopravy u školy. 1. otázka: je u školy ráno hustý provoz? 2. hypotéza: ráno projede víc aut než odpoledne. 3. plán a sběr dat: sčítání aut v 7:30 a ve 14:00. 4. zpracování: mapa a graf z naměřených dat. 5. závěr: platí hypotéza, nebo ne, a proč? 6. prezentace: plakát nebo výstava ve škole. Výsledky vedou k nové otázce a cyklus začíná znovu.";
+  "Cyklus terénního výzkumu na příkladu dopravy u školy. 1. otázka: kdy jezdí kolem školy nejvíc aut? 2. hypotéza: ráno projede víc aut než odpoledne. 3. plán a sběr dat: sčítání aut v 7:30 a ve 14:00. 4. zpracování: mapa a graf z naměřených dat. 5. závěr: platí hypotéza, nebo ne, a proč? 6. prezentace: plakát nebo výstava ve škole. Výsledky vedou k nové otázce a cyklus začíná znovu.";
 
 const W = 440;
 const H = 372;
@@ -54,7 +54,7 @@ const ICONS: Record<number, ReactNode> = {
 };
 
 const STEPS: Step[] = [
-  { n: 1, x: LX, y: ROWS[0], title: "otázka", ex: ["Je u školy ráno", "hustý provoz?"], icon: ICONS[1] },
+  { n: 1, x: LX, y: ROWS[0], title: "otázka", ex: ["Kdy jezdí kolem", "školy nejvíc aut?"], icon: ICONS[1] },
   { n: 2, x: LX, y: ROWS[1], title: "hypotéza", ex: ["Ráno projede víc", "aut než odpoledne."], icon: ICONS[2] },
   { n: 3, x: LX, y: ROWS[2], title: "plán a sběr dat", ex: ["sčítání aut", "v 7:30 a ve 14:00"], icon: ICONS[3] },
   { n: 4, x: RX, y: ROWS[2], title: "zpracování", ex: ["mapa a graf", "z naměřených dat"], icon: ICONS[4] },

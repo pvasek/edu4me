@@ -3,7 +3,7 @@ import type { P2 } from "./kit";
 import { Key, MapFig, MapText, llPath, type LL } from "./mapkit";
 
 const LABEL =
-  "Mapa Česka se dvěma horopisnými celky. Většinu území zabírá Český masiv: staré pohoří vyvrásněné v prvohorách a od té doby obroušené na zaoblené hřbety a plošiny – Krušné hory, Šumava, Brdy, Krkonoše se Sněžkou (1 603 m), Jeseníky, Českomoravská vrchovina a nížina Polabí. Na východě Moravy a ve Slezsku leží mladé Západní Karpaty, vyvrásněné ve třetihorách, s ostřejšími hřbety – Beskydy s Lysou horou (1 323 m), Bílé Karpaty a Chřiby. Přerušovaná čára zjednodušeně ukazuje hranici mezi nimi: od Znojma přes Brno, Prostějov a Moravskou bránu k Ostravě. Dolnomoravský úval na jihu patří k Vídeňské pánvi.";
+  "Mapa Česka se dvěma hlavními horopisnými jednotkami. Většinu území zabírá Český masiv: staré pohoří vyvrásněné v prvohorách a od té doby obroušené na zaoblené hřbety a plošiny – Krušné hory, Šumava, Brdy, Krkonoše se Sněžkou (1 603 m), Jeseníky, Českomoravská vrchovina a nížina Polabí. Na východě Moravy a ve Slezsku leží mladé Západní Karpaty, vyvrásněné ve třetihorách, s ostřejšími hřbety – Beskydy s Lysou horou (1 323 m), Bílé Karpaty a Chřiby. Přerušovaná čára zjednodušeně ukazuje hranici mezi nimi: od Znojma přes Brno, Prostějov a Moravskou bránu k Ostravě. Dolnomoravský úval na jihu patří k Vídeňské pánvi.";
 
 /** boundary Český masiv | Západní Karpaty, simplified through real places [lon, lat] */
 const EDGE: LL[] = [
