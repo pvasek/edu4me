@@ -1,0 +1,1628 @@
+.bz3 {
+  --lvl: var(--level, #7a5290);
+  --lvl-ink: color-mix(in srgb, var(--lvl) 72%, var(--ink));
+  --lvl-soft: color-mix(in srgb, var(--lvl) 16%, var(--surface));
+  --e: var(--blue);
+  --glass: color-mix(in srgb, var(--info-soft) 45%, var(--surface));
+  --water: color-mix(in srgb, #6f9fd8 30%, var(--surface));
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  container-type: inline-size;
+}
+.bz3-l8 {
+  --lvl: var(--level, #8a5a2b);
+}
+.bz3-l9 {
+  --lvl: var(--level, #1f6f8b);
+}
+
+.bz3-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bz3-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.bz3-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.bz3-btn {
+  appearance: none;
+  border: 1.5px solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 14px/1.1 var(--font-body);
+  min-height: 40px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.bz3-btn:hover {
+  background: var(--surface-2);
+}
+.bz3-btn[aria-pressed="true"] {
+  background: var(--lvl);
+  border-color: var(--lvl);
+  color: var(--on-level);
+}
+.bz3-host {
+  width: 100%;
+}
+
+.bz3-lbl {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16.5px;
+  fill: var(--ink-soft);
+}
+.bz3-b {
+  font-weight: 700;
+  fill: var(--ink);
+}
+.bz3-big {
+  font-size: 19px;
+}
+.bz3-sm {
+  font-size: 14.5px;
+}
+.bz3-lvl-t {
+  fill: var(--lvl-ink);
+}
+.bz3-acc-t {
+  fill: var(--accent);
+}
+.bz3-blue-t {
+  fill: var(--blue);
+}
+.bz3-red-t {
+  fill: var(--bad);
+}
+.bz3-muted-t {
+  fill: var(--muted);
+}
+.bz3-eq {
+  font: 600 14px var(--font-body);
+  fill: var(--ink);
+}
+.bz3-eq-sm {
+  font-size: 12.5px;
+}
+.bz3-eq-lg {
+  font-size: 16px;
+}
+.bz3-num {
+  font: 400 13px var(--font-mono);
+  fill: var(--ink);
+}
+.bz3-light-t {
+  fill: #fffaf0;
+}
+
+:where(.bz3-o:not([fill])) {
+  fill: none;
+}
+.bz3-o {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.bz3-thin {
+  stroke-width: 0.9;
+}
+.bz3-fill {
+  fill: var(--surface);
+}
+.bz3-fill2 {
+  fill: var(--surface-2);
+}
+.bz3-fill3 {
+  fill: var(--surface-3);
+}
+.bz3-glass {
+  fill: var(--glass);
+  fill-opacity: 0.55;
+}
+.bz3-ln {
+  stroke: var(--edge);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+}
+.bz3-lvl-s {
+  stroke: var(--lvl-ink);
+}
+.bz3-lvl-f {
+  fill: var(--lvl);
+}
+.bz3-lvlsoft-f {
+  fill: var(--lvl-soft);
+}
+.bz3-dash {
+  stroke-dasharray: 5 4;
+}
+.bz3-dot2 {
+  stroke-dasharray: 1.5 4;
+}
+.bz3-lead {
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  fill: none;
+}
+.bz3-dot {
+  fill: var(--ink-soft);
+}
+.bz3-nohit {
+  pointer-events: none;
+}
+.bz3-hl {
+  stroke: var(--edge);
+  stroke-width: 0.7;
+  opacity: 0.4;
+}
+.bz3-hl-dark {
+  opacity: 0.6;
+}
+.bz3-hl-light {
+  stroke: #fffaf0;
+  stroke-width: 0.9;
+  opacity: 0.75;
+}
+.bz3-hl-shade {
+  stroke: #10131c;
+  stroke-width: 0.8;
+  opacity: 0.35;
+}
+.bz3-stip {
+  fill: var(--edge);
+  opacity: 0.35;
+}
+
+.bz3-arr {
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz3-arr-ink {
+  stroke: var(--edge);
+}
+.bz3-arr-acc {
+  stroke: var(--accent);
+}
+.bz3-arr-blue {
+  stroke: var(--blue);
+}
+.bz3-arr-lvl {
+  stroke: var(--lvl-ink);
+}
+.bz3-arr-red {
+  stroke: var(--bad);
+}
+.bz3-arr-green {
+  stroke: var(--good);
+}
+.bz3-arr-muted {
+  stroke: var(--muted);
+}
+.bz3-mk-ink {
+  fill: var(--edge);
+}
+.bz3-mk-acc {
+  fill: var(--accent);
+}
+.bz3-mk-blue {
+  fill: var(--blue);
+}
+.bz3-mk-lvl {
+  fill: var(--lvl-ink);
+}
+.bz3-mk-red {
+  fill: var(--bad);
+}
+.bz3-mk-green {
+  fill: var(--good);
+}
+.bz3-mk-muted {
+  fill: var(--muted);
+}
+
+.bz3-atom-b {
+  stroke: none;
+}
+.bz3-atom-o {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.bz3-atom-t {
+  font-family: var(--font-body);
+  font-weight: 800;
+  pointer-events: none;
+}
+.bz3-atom-t-l {
+  fill: #fffaf0;
+}
+.bz3-atom-t-d {
+  fill: #1f2a44;
+}
+
+.bz3-badge {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.5;
+}
+.bz3-badge-t {
+  font: 800 15px var(--font-body);
+  fill: var(--ink);
+}
+.bz3-tag {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.bz3-tag-lvl {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+}
+
+.bz3-pipe-o {
+  fill: none;
+  stroke: var(--edge);
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+}
+.bz3-pipe-i {
+  fill: none;
+  stroke: var(--surface);
+  stroke-linecap: square;
+  stroke-linejoin: round;
+}
+.bz3-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 2 9;
+  animation: bz3-flow 1.1s linear infinite;
+}
+.bz3-flow-rev {
+  animation-direction: reverse;
+}
+@keyframes bz3-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+.bz3-wire {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.bz3-bubble {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+  animation: bz3-rise 2.4s ease-in infinite;
+}
+@keyframes bz3-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--rise, -40px));
+    opacity: 0;
+  }
+}
+
+.bz3-flicker {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: bz3-flicker 1.3s ease-in-out infinite alternate;
+}
+@keyframes bz3-flicker {
+  0% {
+    transform: scale(1, 1) skewX(0deg);
+  }
+  30% {
+    transform: scale(0.95, 1.06) skewX(-2deg);
+  }
+  60% {
+    transform: scale(1.04, 0.95) skewX(2deg);
+  }
+  100% {
+    transform: scale(0.97, 1.03) skewX(-1deg);
+  }
+}
+@container (max-width: 440px) {
+  .bz3-sec {
+    display: none;
+  }
+  .bz3-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}
+
+.bz3-e {
+  fill: #2f5fb3;
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz3-e-t {
+  font: 800 8.5px var(--font-body);
+  fill: #fffaf0;
+  pointer-events: none;
+}
+.bz3-flame-o {
+  stroke: color-mix(in srgb, var(--edge) 60%, transparent);
+  stroke-width: 0.8;
+}
+.bz3-ion-t {
+  font: 800 8px var(--font-body);
+}
+
+.bz3-curve {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bz3-narrow .bz3-lbl {
+  font-size: 21px;
+}
+.bz3-narrow .bz3-lbl.bz3-sm {
+  font-size: 18.5px;
+}
+.bz3-narrow .bz3-lbl.bz3-big {
+  font-size: 23px;
+}
+.bz3-narrow .bz3-eq {
+  font-size: 17px;
+}
+.bz3-narrow .bz3-eq.bz3-eq-lg {
+  font-size: 18.5px;
+}
+.bz3-narrow .bz3-eq.bz3-eq-sm {
+  font-size: 15px;
+}
+.bz3-narrow .bz3-num {
+  font-size: 16px;
+}
+.bz3-halo {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 8px;
+  stroke-linejoin: round;
+}
+.bz3-stripbox {
+  display: grid;
+  gap: 10px;
+}
+.bz3-strip-note {
+  margin: 0;
+  text-align: center;
+  font: italic 600 17px/1.3 var(--font-display);
+  color: var(--ink-soft);
+}
+
+.bz3-sym-t {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 19px;
+  fill: var(--ink);
+}
+.bz3-narrow .bz3-sym-t {
+  font-size: 22px;
+}
+.bz3-tone-lvl {
+  fill: var(--lvl-ink);
+}
+.bz3-tone-red {
+  fill: var(--bad);
+}
+.bz3-tone-green {
+  fill: var(--good);
+}
+.bz3-tone-blue {
+  fill: var(--blue);
+}
+.bz3-tone-acc {
+  fill: var(--accent);
+}
+.bz3-tone-muted {
+  fill: var(--muted);
+}
+.bz3-vec {
+  stroke-width: 2.8;
+}
+.bz3-axis {
+  stroke-width: 1.4;
+}
+.bz3-endon circle {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.4;
+}
+.bz3-endon path {
+  stroke: var(--edge);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.bz3-endon-acc circle:first-child {
+  stroke: var(--accent);
+}
+.bz3-endon-acc path {
+  stroke: var(--accent);
+}
+.bz3 .bz3-endon .bz3-endon-dot {
+  fill: var(--accent);
+  stroke: none;
+}
+.bz3-endon-ink .bz3-endon-dot {
+  fill: var(--edge);
+}
+.bz3-pole-t {
+  font: 800 17px var(--font-body);
+  fill: #fffaf0;
+  pointer-events: none;
+}
+.bz3-field {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.bz3-field-soft {
+  opacity: 0.55;
+}
+.bz3 .bz3-wire {
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.bz3 {
+  --bz3-n: #c0463a;
+  --bz3-s: #3f6fb5;
+}
+.bz3 .bz3-wire-thin {
+  stroke-width: 2;
+}
+.bz3-curve-lvl {
+  stroke: var(--lvl-ink);
+}
+.bz3-num-badge circle {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz3-num-badge text {
+  font-family: var(--font-body);
+  font-weight: 800;
+  fill: var(--on-level);
+  pointer-events: none;
+}
+.bz3-legend .bz3-lbl {
+  font-size: 15.5px;
+}
+.bz3-legend-lg .bz3-lbl {
+  font-size: 27px;
+}
+
+/* ------------------------------------------------------------ biology (bz3) */
+.bz3-rule {
+  stroke: var(--line);
+  stroke-width: 1.2;
+}
+.bz3-b-num {
+  font-weight: 700;
+}
+.bz3-chr {
+  fill: color-mix(in srgb, var(--lvl) 34%, var(--surface));
+}
+.bz3-chr-sex {
+  fill: color-mix(in srgb, var(--accent) 45%, var(--surface));
+}
+.bz3-band {
+  stroke: var(--edge);
+  stroke-width: 0.9;
+  opacity: 0.55;
+}
+.bz3-rung {
+  stroke: var(--ink-soft);
+  stroke-width: 1.2;
+  opacity: 0.6;
+}
+.bz3-strand {
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.bz3-strand-a {
+  stroke: var(--lvl-ink);
+}
+.bz3-strand-b {
+  stroke: var(--blue);
+}
+.bz3-wrap {
+  stroke-width: 1.6;
+}
+.bz3-histone {
+  fill: color-mix(in srgb, var(--yellow) 45%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.bz3-fibre {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 2.6;
+}
+.bz3-chr-big {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 15;
+  stroke-linecap: round;
+}
+.bz3-chr-big-in {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+.bz3-chr-col {
+  stroke: color-mix(in srgb, var(--lvl) 45%, var(--surface));
+}
+.bz3-centro {
+  fill: var(--edge);
+}
+.bz3-stalk {
+  fill: none;
+  stroke: #4f7f3e;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.bz3-petal {
+  stroke-width: 1.1;
+}
+.bz3-vein {
+  fill: none;
+  stroke: #5b3a73;
+  stroke-width: 0.6;
+  opacity: 0.55;
+}
+.bz3-calyx {
+  fill: #6e9a52;
+  stroke: var(--edge);
+  stroke-width: 0.9;
+  stroke-linejoin: round;
+}
+.bz3-shine-dot {
+  fill: #fffaf0;
+  opacity: 0.8;
+}
+.bz3-cross {
+  font: 700 30px var(--font-body);
+  fill: var(--ink-soft);
+}
+.bz3-gamete {
+  fill: var(--lvl-soft);
+  stroke: var(--lvl-ink);
+  stroke-width: 1.3;
+}
+.bz3-allele {
+  font: 700 17px var(--font-body);
+  fill: var(--ink);
+}
+.bz3-allele-sm {
+  font-size: 15px;
+}
+.bz3-rbc {
+  fill: #c8453a;
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.bz3-rbc-in {
+  fill: #e07a6c;
+  stroke: #8f2a22;
+  stroke-width: 0.7;
+  opacity: 0.85;
+}
+.bz3-ant {
+  stroke: var(--edge);
+  stroke-width: 0.9;
+  stroke-linejoin: round;
+}
+.bz3-ant-stalk {
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz3-group {
+  font: 700 26px var(--font-display);
+  fill: var(--ink);
+}
+.bz3-group-sm {
+  font-size: 22px;
+}
+.bz3-chr-x {
+  fill: color-mix(in srgb, var(--accent) 40%, var(--surface));
+}
+.bz3-chr-y {
+  fill: color-mix(in srgb, var(--blue) 35%, var(--surface));
+}
+.bz3-gene-ok {
+  fill: var(--good);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.bz3-gene-bad {
+  fill: var(--bad);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.bz3-chr-name {
+  font: 700 18px var(--font-body);
+  fill: var(--ink);
+}
+.bz3-ped {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.8;
+}
+.bz3-ped-on {
+  fill: var(--lvl);
+}
+.bz3-ped-dot {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz3-moth-o {
+  stroke: color-mix(in srgb, #1d1c1e 70%, transparent);
+  stroke-width: 0.7;
+  stroke-linejoin: round;
+}
+.bz3-moth-spots {
+  fill: none;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+}
+.bz3-moth-ant {
+  fill: none;
+  stroke: #3a3530;
+  stroke-width: 0.7;
+}
+.bz3-bird {
+  fill: #6b5a48;
+  stroke: #2b2420;
+  stroke-width: 0.9;
+  stroke-linejoin: round;
+}
+.bz3-bird-wing {
+  fill: #4a3e33;
+  stroke: #2b2420;
+  stroke-width: 0.8;
+}
+.bz3-bird-eye {
+  fill: #fffaf0;
+}
+.bz3-gene-locus {
+  fill: var(--lvl);
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.bz3 text {
+  font-variant-numeric: lining-nums;
+}
+.bz3-bark {
+  fill: #b9b2a2;
+}
+.bz3-bark-soot {
+  fill: #3a3532;
+}
+.bz3-lichen {
+  fill: #dfe3cf;
+  stroke: #8f9a7a;
+  stroke-width: 0.7;
+  opacity: 0.95;
+}
+.bz3-furrow {
+  fill: none;
+  stroke: #6e6556;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
+.bz3-furrow-soot {
+  stroke: #1d1a19;
+  opacity: 0.95;
+}
+.bz3-share-dark {
+  fill: #2b2a2c;
+}
+.bz3-share-light {
+  fill: #ece7da;
+}
+.bz3-share-t {
+  font: 700 13px var(--font-body);
+  fill: var(--ink);
+}
+.bz3-eaten {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2;
+}
+.bz3-eaten-x {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.bz3-midrib {
+  fill: none;
+  stroke: color-mix(in srgb, #2f4a2a 70%, transparent);
+  stroke-width: 0.8;
+}
+.bz3-stem {
+  fill: none;
+  stroke: #4f7f3e;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.bz3-stem-thin {
+  stroke-width: 1.6;
+}
+.bz3-stem-thick {
+  stroke-width: 5;
+}
+.bz3-flower-y {
+  fill: #f2cf3a;
+  stroke: #8a6a10;
+  stroke-width: 0.5;
+}
+.bz3-eon1 {
+  fill: color-mix(in srgb, #c0463a 30%, var(--surface));
+}
+.bz3-eon2 {
+  fill: color-mix(in srgb, #e0b43a 30%, var(--surface));
+}
+.bz3-eon3 {
+  fill: color-mix(in srgb, #4f9a5a 26%, var(--surface));
+}
+.bz3-eon4 {
+  fill: color-mix(in srgb, var(--lvl) 45%, var(--surface));
+}
+.bz3-eon-t {
+  font: 700 11px var(--font-body);
+  letter-spacing: 0.02em;
+  fill: var(--ink-soft);
+}
+.bz3-hand {
+  stroke: var(--lvl-ink);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+.bz3-hand-hub {
+  fill: var(--lvl-ink);
+}
+.bz3-fish {
+  fill: color-mix(in srgb, #8fa3a8 70%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.3;
+  stroke-linejoin: round;
+}
+.bz3-bone {
+  fill: none;
+  stroke: #f4efe2;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.bz3-bone path,
+.bz3-bone-stone path {
+  fill: none;
+}
+.bz3-bone .bz3-bone-f {
+  fill: #f4efe2;
+  stroke: #5a4a3a;
+  stroke-width: 1;
+}
+.bz3-bone-stone {
+  fill: none;
+  stroke: #4a4038;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.bz3-bone-stone .bz3-bone-f {
+  fill: #6b5d50;
+}
+.bz3-bone-eye {
+  fill: #2b2420;
+  stroke: none;
+}
+.bz3-settle {
+  fill: none;
+  stroke: #a8865a;
+  stroke-width: 2;
+  stroke-dasharray: 1.5 6;
+  stroke-linecap: round;
+}
+.bz3-mineral {
+  fill: var(--blue);
+}
+.bz3-rain {
+  stroke: var(--blue);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.bz3-cloud {
+  fill: var(--surface-2);
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.bz3-person {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1.6;
+}
+.bz3-person-l {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bz3-find {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+}
+.bz3-halo {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.bz3-crust {
+  fill: #7a5c3e;
+}
+.bz3-mantle {
+  fill: color-mix(in srgb, #d9803a 62%, var(--surface));
+}
+.bz3-ocore {
+  fill: color-mix(in srgb, #e8a83a 75%, var(--surface));
+}
+.bz3-icore {
+  fill: #f3d26b;
+}
+.bz3 .bz3-conv {
+  stroke-width: 2.2;
+}
+.bz3-num-sm {
+  font-size: 12px;
+}
+.bz3-oplate {
+  fill: color-mix(in srgb, #6b7a8a 55%, var(--surface));
+}
+.bz3-cplate {
+  fill: color-mix(in srgb, #a0784a 50%, var(--surface));
+}
+.bz3-cplate-2 {
+  fill: color-mix(in srgb, #8a9a5a 45%, var(--surface));
+}
+.bz3-magma {
+  fill: none;
+  stroke: #d9403a;
+  stroke-width: 6;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+.bz3-magma-thin {
+  stroke-width: 3.5;
+}
+.bz3-smoke {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.bz3-snow {
+  fill: #fffaf0;
+  stroke: var(--edge);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.bz3-fault {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2.4;
+  stroke-dasharray: 6 3;
+}
+.bz3-road {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 4;
+  stroke-dasharray: 8 4;
+}
+.bz3-granite {
+  fill: #e6dcd0;
+}
+.bz3-grain-dark {
+  fill: #2f2c2e;
+}
+.bz3-grain-pink {
+  fill: #d9a08a;
+  stroke: #8a5a4a;
+  stroke-width: 0.5;
+}
+.bz3-grain-light {
+  fill: #f6f2ea;
+  stroke: #9a948a;
+  stroke-width: 0.5;
+}
+.bz3-sky {
+  fill: color-mix(in srgb, var(--info-soft) 70%, var(--surface));
+}
+.bz3-sand {
+  fill: #e2cf9e;
+}
+.bz3-pebble {
+  fill: #c9b083;
+  stroke: #6e5a3a;
+  stroke-width: 0.7;
+}
+.bz3-pebble-2 {
+  fill: #a8987a;
+}
+.bz3-gneiss {
+  fill: #cfc8bf;
+}
+.bz3-foli {
+  fill: none;
+  stroke: #8a8178;
+  stroke-width: 3;
+}
+.bz3-foli-dark {
+  stroke: #3d3836;
+  stroke-width: 2.2;
+}
+.bz3-magma-f {
+  fill: #c8402e;
+}
+.bz3-magma-glow {
+  fill: none;
+  stroke: #f6c34a;
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+.bz3 .bz3-arr-w {
+  stroke-width: 2.4;
+}
+.bz3-nob {
+  font-weight: 600;
+  fill: var(--ink-soft);
+}
+.bz3-soil-o {
+  fill: #8a6a3a;
+}
+.bz3-soil-a {
+  fill: #4a3426;
+}
+.bz3-soil-b {
+  fill: #a0703e;
+}
+.bz3-soil-c {
+  fill: #c9a86e;
+}
+.bz3-soil-r {
+  fill: #8f8a84;
+}
+.bz3-litter {
+  fill: #c0802e;
+  stroke: #5a3a1a;
+  stroke-width: 0.7;
+}
+.bz3-stone {
+  fill: #a8a29a;
+  stroke: #3d3836;
+  stroke-width: 0.9;
+  stroke-linejoin: round;
+}
+.bz3-crack {
+  fill: none;
+  stroke: #3d3836;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.bz3-grass {
+  fill: none;
+  stroke: #4f7f3e;
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+.bz3-leaf-s {
+  fill: #6f9a52;
+  stroke: #2f4a2a;
+  stroke-width: 0.8;
+}
+.bz3-root {
+  fill: none;
+  stroke: #e8d5b0;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.bz3-worm {
+  fill: none;
+  stroke: #d98a8a;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.bz3-worm-ring {
+  fill: none;
+  stroke: #8a4a4a;
+  stroke-width: 0.9;
+}
+.bz3-hypha {
+  fill: none;
+  stroke: #f4efe2;
+  stroke-width: 0.9;
+  stroke-linecap: round;
+}
+.bz3-grub {
+  fill: none;
+  stroke: #f1e8d0;
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+.bz3-grub-head {
+  fill: #b8782e;
+  stroke: #3d2a1a;
+  stroke-width: 0.8;
+}
+.bz3-land {
+  fill: color-mix(in srgb, #8a9a5a 45%, var(--surface));
+}
+.bz3-gw {
+  fill: color-mix(in srgb, #5d93d6 35%, var(--surface));
+}
+.bz3-river {
+  fill: none;
+  stroke: #5d93d6;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.bz3-river-flow {
+  fill: none;
+  stroke: #e8f0fa;
+  stroke-width: 1.4;
+  stroke-dasharray: 3 9;
+  stroke-linecap: round;
+}
+.bz3-river-flow.bz3-live {
+  animation: bz3-flow 1.4s linear infinite;
+}
+.bz3-trunk {
+  fill: none;
+  stroke: #6b4a2b;
+  stroke-width: 3;
+}
+.bz3-crown {
+  fill: #5c8f4e;
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz3-sun {
+  fill: #f2c94c;
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.bz3-sunray {
+  fill: none;
+  stroke: #d9a21b;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.bz3-raining.bz3-live .bz3-rain {
+  stroke-dasharray: 8 6;
+  animation: bz3-fall 0.7s linear infinite;
+}
+@keyframes bz3-fall {
+  to {
+    stroke-dashoffset: -14;
+  }
+}
+.bz3 .bz3-thin-arr {
+  stroke-width: 1.4;
+}
+.bz3-medal {
+  fill: var(--surface);
+}
+.bz3-medal-d {
+  fill: color-mix(in srgb, #8a6a3a 18%, var(--surface));
+}
+.bz3-decomp-box {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.2;
+  stroke-dasharray: 5 4;
+}
+.bz3-oak {
+  fill: #6f9a52;
+  stroke: var(--edge);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.bz3-acorn {
+  fill: #b8862e;
+  stroke: #4a3010;
+  stroke-width: 0.9;
+}
+.bz3-acorn-cup {
+  fill: #7a5a2e;
+  stroke: #3d2a10;
+  stroke-width: 0.8;
+}
+.bz3-cat {
+  fill: #8dbb52;
+  stroke: #2f4a1a;
+  stroke-width: 0.9;
+}
+.bz3-cat-head {
+  fill: #5c7a2e;
+  stroke: #2f4a1a;
+  stroke-width: 0.9;
+}
+.bz3-tail {
+  fill: none;
+  stroke: #8a7a6a;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.bz3-mouse {
+  fill: #a8866a;
+  stroke: #3d2a1a;
+  stroke-width: 1;
+}
+.bz3-ear {
+  fill: #c9a088;
+}
+.bz3-eye {
+  fill: #1d1a19;
+}
+.bz3-eye-l {
+  fill: #fffaf0;
+}
+.bz3-tit-belly {
+  fill: #f2cf3a;
+  stroke: #3d3010;
+  stroke-width: 0.9;
+}
+.bz3-tit-back {
+  fill: #7a9a5a;
+  stroke: #2f3a1a;
+  stroke-width: 0.9;
+}
+.bz3-tit-head {
+  fill: #1d1a19;
+}
+.bz3-tit-cheek {
+  fill: #fffaf0;
+}
+.bz3-tit-stripe {
+  fill: none;
+  stroke: #1d1a19;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.bz3-beak {
+  fill: #3d3836;
+}
+.bz3-owl {
+  fill: #9a7048;
+  stroke: #3d2a1a;
+  stroke-width: 1;
+}
+.bz3-owl-face {
+  fill: #d9bc94;
+  stroke: #5a3a1a;
+  stroke-width: 0.9;
+}
+.bz3-fox {
+  fill: #d9762e;
+  stroke: #4a2a10;
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.bz3-fox-in {
+  fill: #3d2a1a;
+}
+.bz3-fox-white {
+  fill: #fbf6ea;
+}
+.bz3-stipe {
+  fill: #ece2c8;
+  stroke: #4a3a2a;
+  stroke-width: 1;
+}
+.bz3-cap {
+  fill: #8a5a2e;
+  stroke: #3d2a10;
+  stroke-width: 1.1;
+}
+.bz3-hypha-dark {
+  stroke: var(--ink-soft);
+}
+.bz3-shrub {
+  fill: #5f8a48;
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz3-berry {
+  fill: #c8402e;
+}
+.bz3-birch {
+  fill: none;
+  stroke: #f4efe2;
+  stroke-width: 4.5;
+  stroke-linecap: round;
+}
+.bz3-birch-mark {
+  fill: none;
+  stroke: #1d1a19;
+  stroke-width: 1.4;
+}
+.bz3-crown-light {
+  fill: #9cc46e;
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz3-oak-trunk {
+  fill: #6b4a2b;
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz3-tier {
+  stroke: none;
+}
+.bz3-tier-0 {
+  fill: color-mix(in srgb, #6f9a52 45%, var(--surface));
+}
+.bz3-tier-1 {
+  fill: color-mix(in srgb, #c9b04a 42%, var(--surface));
+}
+.bz3-tier-2 {
+  fill: color-mix(in srgb, #d98a3a 40%, var(--surface));
+}
+.bz3-tier-3 {
+  fill: color-mix(in srgb, #c0463a 40%, var(--surface));
+}
+.bz3-kj {
+  font: 700 15px var(--font-mono);
+  fill: var(--ink);
+}
+.bz3-birch-o {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 6.5;
+  stroke-linecap: round;
+}
+.bz3-cyto {
+  fill: color-mix(in srgb, var(--lvl) 7%, var(--surface));
+}
+.bz3-membrane {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 3.2;
+}
+.bz3-membrane-in {
+  fill: none;
+  stroke: color-mix(in srgb, var(--lvl) 40%, var(--surface));
+  stroke-width: 1.2;
+}
+.bz3-mt {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ink-soft) 55%, transparent);
+  stroke-width: 1;
+  stroke-dasharray: 6 2;
+}
+.bz3-centriole {
+  fill: var(--surface-3);
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.bz3-nucleus {
+  fill: color-mix(in srgb, var(--violet) 22%, var(--surface));
+}
+.bz3-env {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.bz3-pore {
+  stroke: var(--surface);
+  stroke-width: 3.2;
+}
+.bz3-nucleolus {
+  fill: color-mix(in srgb, var(--violet) 55%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz3-chromatin {
+  fill: none;
+  stroke: color-mix(in srgb, var(--violet) 70%, var(--ink));
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.bz3-er {
+  fill: color-mix(in srgb, var(--blue) 22%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz3-ribo {
+  fill: var(--edge);
+}
+.bz3-ser {
+  fill: none;
+  stroke: color-mix(in srgb, var(--blue) 45%, var(--surface));
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.bz3-golgi {
+  fill: color-mix(in srgb, var(--accent) 30%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz3-vesicle {
+  fill: color-mix(in srgb, var(--accent) 22%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz3-lyso {
+  fill: color-mix(in srgb, var(--bad) 35%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.bz3-mito {
+  fill: color-mix(in srgb, var(--lvl) 35%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.bz3-mito-in {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.bz3-cristae {
+  fill: none;
+  stroke: var(--lvl-ink);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+.bz3-bact {
+  fill: color-mix(in srgb, var(--accent) 30%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.bz3-cyano {
+  fill: color-mix(in srgb, #4f9a5a 45%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.bz3-thyl {
+  fill: none;
+  stroke: #2f6a3a;
+  stroke-width: 1.4;
+}
+.bz3-dna-ring {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 1.4;
+}
+.bz3-dna-big {
+  stroke-width: 2.2;
+  stroke-dasharray: 5 2;
+}
+.bz3-vac {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 2;
+}
+.bz3-chloro {
+  fill: color-mix(in srgb, #4f9a5a 40%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.bz3-granum {
+  fill: #2f7a3e;
+  stroke: none;
+}
+.bz3 .bz3-cristae-big {
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.bz3-mem-heads {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 55%, var(--surface));
+  stroke-width: 22;
+  stroke-dasharray: 4 2.4;
+}
+.bz3-mem-tails {
+  fill: none;
+  stroke: color-mix(in srgb, var(--yellow) 22%, var(--surface));
+  stroke-width: 12;
+}
+.bz3-mem-mid {
+  fill: none;
+  stroke: color-mix(in srgb, var(--yellow) 60%, var(--surface));
+  stroke-width: 0.8;
+  stroke-dasharray: 2 2;
+}
+.bz3-protein {
+  fill: color-mix(in srgb, var(--lvl) 40%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.3;
+}
+.bz3-pump {
+  fill: color-mix(in srgb, var(--accent) 38%, var(--surface));
+}
+.bz3-o2 {
+  fill: #d9493b;
+  stroke: var(--edge);
+  stroke-width: 0.7;
+}
+.bz3-h {
+  fill: #f4f1ea;
+  stroke: var(--edge);
+  stroke-width: 0.7;
+}
+.bz3-ion {
+  fill: #8a63c9;
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.bz3-food {
+  fill: color-mix(in srgb, #4f9a5a 55%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+.bz3-secr {
+  fill: var(--accent);
+  stroke: var(--edge);
+  stroke-width: 0.7;
+}
+.bz3-burst {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.bz3-wall {
+  fill: color-mix(in srgb, #8a9a5a 50%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.4;
+}
+.bz3-wall-in {
+  fill: color-mix(in srgb, var(--info-soft) 60%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.bz3-proto {
+  fill: color-mix(in srgb, #8dbb72 35%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.1;
+}
+.bz3-proto-soft {
+  fill: color-mix(in srgb, #8dbb72 28%, var(--surface));
+}
+.bz3-vacuole {
+  fill: color-mix(in srgb, #5d93d6 28%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.bz3-sol {
+  fill: color-mix(in srgb, #5d93d6 9%, var(--surface));
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.bz3-salt {
+  fill: var(--muted);
+  opacity: 0.7;
+}
+.bz3-chrom {
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.bz3-cellbg {
+  fill: color-mix(in srgb, var(--lvl) 8%, var(--surface));
+}
+.bz3-spindle {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 0.8;
+  stroke-dasharray: 3 2;
+}
+.bz3-cross-line {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+.bz3-thylakoid {
+  fill: #3f8a4a;
+  stroke: var(--edge);
+  stroke-width: 0.9;
+}
+.bz3-lamella {
+  fill: none;
+  stroke: #3f8a4a;
+  stroke-width: 2.4;
+}
+.bz3-zoom {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+.bz3-phase-l {
+  fill: color-mix(in srgb, #4f9a5a 14%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.bz3-phase-d {
+  fill: color-mix(in srgb, var(--lvl) 10%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.2;
+}
+.bz3-psys {
+  fill: #6fae5a;
+  stroke: var(--edge);
+  stroke-width: 1.1;
+}
+.bz3-tiny {
+  font: 700 10px var(--font-body);
+  fill: #10200f;
+}
+.bz3-tiny-l {
+  font: 600 11.5px var(--font-body);
+  fill: var(--ink-soft);
+}
+.bz3-light {
+  fill: none;
+  stroke: #e0a41b;
+  stroke-width: 2.4;
+  stroke-dasharray: 7 4;
+  stroke-linecap: round;
+}
+.bz3-thin-line {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+}
