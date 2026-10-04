@@ -34,3 +34,13 @@ Biology:
 - taxonomy ranks: říše, kmen (botany also oddělení), třída, řád, čeleď, rod, druh
 - *přírodní výběr*; *producent, konzument, rozkladač (destruent)*; *společenstvo*, *populace*, *ekosystém*
 - *pavoukovci* are not insects; *netopýr* and *velryba* are mammals; viruses are not cells
+
+Chemistry:
+- Czech systematic names with the right endings (oxid uhličitý, kyselina sírová, hydroxid sodný, síran měďnatý); *oxidační číslo*; *látkové množství* (mol), *molární hmotnost* (g/mol), *relativní atomová hmotnost* (no unit)
+- *prvek* / *sloučenina* / *směs*; *atom* / *molekula* / *ion* (*kationt*, *aniont*); *teplota tání / varu* (not bod); *skupenství*; *exotermní / endotermní*
+- safety notes as Czech schools teach them (*nejdřív voda, potom kyselina*)
+
+Physics:
+- *hmotnost* (kg) vs *tíha*, *tíhová síla* (N); never "váha" for mass in a physics sentence; *teplo* vs *teplota*; *tlak* vs *tlaková síla*; *rychlost* vs *velikost rychlosti*; *elektrické napětí* vs *proud*
+- Czech symbols and units (*t* for time, *s* for path at ZŠ, km/h, kWh); *g ≐ 10 N/kg* at ZŠ, 9,81 m/s² at gymnázium; ≐ for rounded results
+- misconceptions stated as facts (a "centrifugal force" pushing outward, heavier things falling faster, current "used up" in a bulb)
