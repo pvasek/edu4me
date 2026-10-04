@@ -1,9 +1,13 @@
 import type { Block } from '../../core/types'
+import { ClimateView } from './ClimateView'
+import { MapBlockView } from './MapBlockView'
+import { PyramidView } from './PyramidView'
 
 type GeographyBlockData = Extract<Block, { type: 'map' | 'climate' | 'pyramid' }>
 
 /** Parametric geography drawings: the `map`, `climate` and `pyramid` blocks. Placeholder until the renderers are built. */
 export function GeographyBlock({ block }: { block: GeographyBlockData }) {
-  const what = block.type === 'map' ? 'Mapa' : block.type === 'climate' ? 'Klimatogram' : 'Věková pyramida'
-  return <svg viewBox="0 0 10 4" role="img" aria-label={`${what}: obrázek se připravuje`} />
+  if (block.type === 'climate') return <ClimateView places={block.places} />
+  if (block.type === 'pyramid') return <PyramidView step={block.step} pyramids={block.pyramids} />
+  return <MapBlockView block={block} />
 }

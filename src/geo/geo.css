@@ -1,0 +1,368 @@
+/* =====================================================================
+   GeoMap (src/geo): real maps from Natural Earth. Theme tokens only;
+   tone a is the level colour, b–d the vintage palette (as in physics).
+   Stroke widths are screen px (non-scaling); text sizes are set in JS.
+   ===================================================================== */
+
+.geo {
+  --geo-a: color-mix(in srgb, var(--level, var(--blue)) 78%, var(--ink));
+  --geo-b: var(--accent);
+  --geo-c: var(--teal);
+  --geo-d: var(--pink);
+  --geo-sea: color-mix(in srgb, color-mix(in srgb, var(--blue) 70%, var(--teal)) 24%, var(--surface));
+  --geo-land: var(--surface);
+  --geo-land-out: color-mix(in srgb, var(--surface-2) 75%, var(--surface));
+  --geo-coast: color-mix(in srgb, var(--edge) 72%, transparent);
+  --geo-border: color-mix(in srgb, var(--edge) 62%, transparent);
+  --geo-water: color-mix(in srgb, var(--blue) 78%, var(--surface));
+  --geo-grid: color-mix(in srgb, var(--blue) 38%, transparent);
+  --geo-plate: var(--bad);
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+  display: grid;
+  gap: var(--space-2);
+  color: var(--ink);
+}
+/* night theme: land lighter than the sea (as on dark atlas plates) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .geo {
+    --geo-land: var(--surface-3);
+    --geo-land-out: var(--surface-2);
+    --geo-sea: color-mix(in srgb, var(--blue) 9%, var(--paper));
+  }
+}
+:root[data-theme='dark'] .geo {
+  --geo-land: var(--surface-3);
+  --geo-land-out: var(--surface-2);
+  --geo-sea: color-mix(in srgb, var(--blue) 9%, var(--paper));
+}
+.geo-box {
+  width: 100%;
+  min-width: 0;
+}
+.geo-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font-body);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.geo-svg path,
+.geo-svg circle,
+.geo-svg line {
+  vector-effect: non-scaling-stroke;
+}
+
+.geo-tone-a { --t: var(--geo-a); }
+.geo-tone-b { --t: var(--geo-b); }
+.geo-tone-c { --t: var(--geo-c); }
+.geo-tone-d { --t: var(--geo-d); }
+
+/* ---------------------------------------------------------------- base map */
+.geo-sea {
+  fill: var(--geo-sea);
+  stroke: none;
+}
+.geo-land path {
+  fill: var(--geo-land);
+  /* the same colour as a thin stroke hides seams where rings meet (antimeridian, clip edges) */
+  stroke: var(--geo-land);
+  stroke-width: 0.6;
+  stroke-linejoin: round;
+}
+.geo-land path.geo-out {
+  fill: var(--geo-land-out);
+  stroke: var(--geo-land-out);
+}
+.geo-hl {
+  fill: color-mix(in srgb, var(--t) 30%, var(--geo-land));
+  stroke: color-mix(in srgb, var(--t) 30%, var(--geo-land));
+  stroke-width: 0.6;
+  fill-rule: evenodd;
+}
+.geo-hl-hatch {
+  fill-rule: evenodd;
+  stroke: none;
+}
+.geo-hatch {
+  stroke: var(--t);
+  opacity: 0.55;
+}
+.geo-land path,
+.geo-lake {
+  fill-rule: evenodd;
+}
+.geo-lake {
+  fill: var(--geo-sea);
+  stroke: var(--geo-water);
+  stroke-width: 0.5;
+  stroke-opacity: 0.6;
+}
+.geo-coast {
+  fill: none;
+  stroke: var(--geo-coast);
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.geo-border {
+  fill: none;
+  stroke: var(--geo-border);
+  stroke-width: 0.85;
+  stroke-linejoin: round;
+}
+.geo-fine .geo-border {
+  stroke: color-mix(in srgb, var(--edge) 75%, transparent);
+  stroke-width: 1.5;
+}
+.geo-region-border {
+  fill: none;
+  stroke: var(--geo-border);
+  stroke-width: 0.7;
+  stroke-dasharray: 3 2;
+}
+.geo-river {
+  fill: none;
+  stroke: var(--geo-water);
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.geo-river-0 { stroke-width: 1.4; }
+.geo-river-1 { stroke-width: 1; }
+.geo-river-2 { stroke-width: 0.7; stroke-opacity: 0.85; }
+.geo-fine .geo-river-0 { stroke-width: 1.8; }
+.geo-fine .geo-river-1 { stroke-width: 1.2; }
+.geo-fine .geo-river-2 { stroke-width: 0.8; }
+.geo-grat {
+  fill: none;
+  stroke: var(--geo-grid);
+  stroke-width: 0.5;
+}
+.geo-frame {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 1.1;
+}
+
+/* ---------------------------------------------------------------- layers */
+.geo-tropic {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 0.9;
+  stroke-dasharray: 5 3;
+}
+.geo-tropic-equator {
+  stroke-width: 1.3;
+  stroke-dasharray: none;
+}
+.geo-tropic-polar {
+  stroke: var(--blue);
+}
+.geo-tz {
+  fill: color-mix(in srgb, var(--ink) 7%, transparent);
+  stroke: color-mix(in srgb, var(--ink) 18%, transparent);
+  stroke-width: 0.5;
+}
+.geo-band {
+  fill: color-mix(in srgb, var(--t) 16%, transparent);
+  stroke: none;
+}
+.geo-band-hatch {
+  stroke: none;
+  opacity: 0.45;
+}
+.geo-band-edge {
+  fill: none;
+  stroke: var(--t);
+  stroke-width: 0.9;
+  stroke-dasharray: 4 3;
+}
+.geo-plate {
+  fill: none;
+  stroke: var(--geo-plate);
+  stroke-width: 1.3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.geo-plate-sub {
+  stroke-width: 2.1;
+}
+.geo-route {
+  fill: none;
+  stroke: var(--t);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.geo-route-dash {
+  stroke-dasharray: 7 5;
+}
+.geo-route-head {
+  fill: var(--t);
+  stroke: none;
+}
+.geo-selected {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+.geo-hover {
+  fill: color-mix(in srgb, var(--ink) 8%, transparent);
+  stroke: var(--ink);
+  stroke-width: 1.2;
+  pointer-events: none;
+}
+.geo-interactive .geo-svg {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.geo-tiny {
+  fill: color-mix(in srgb, var(--t) 70%, var(--geo-land));
+  stroke: var(--edge);
+  stroke-width: 1;
+}
+
+/* ---------------------------------------------------------------- symbols */
+.geo-sym-ring {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 1.4;
+}
+.geo-sym-dot {
+  fill: var(--ink);
+  stroke: none;
+}
+.geo-sym-halo {
+  stroke: var(--surface);
+  stroke-width: 1.2;
+}
+.geo-sym-peak {
+  fill: var(--ink);
+  stroke: var(--surface);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.geo-sym-volcano {
+  fill: var(--bad);
+  stroke: var(--surface);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.geo-sym-plume {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+.geo-sym-quake {
+  fill: var(--warn);
+  stroke: var(--ink);
+  stroke-width: 0.9;
+  stroke-linejoin: round;
+}
+.geo-sym-pin {
+  fill: var(--accent);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+.geo-sym-pin-eye {
+  fill: var(--surface);
+}
+
+/* ---------------------------------------------------------------- text */
+.geo-t {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-linejoin: round;
+  fill: var(--ink);
+}
+.geo-t-pt {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+}
+.geo-t-name {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  fill: var(--ink-soft);
+}
+.geo-t-region {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+.geo-t-line {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  fill: var(--accent);
+}
+.geo-t-band {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  fill: color-mix(in srgb, var(--t) 80%, var(--ink));
+}
+.geo-t-tz,
+.geo-t-grid {
+  font-family: var(--font-mono);
+  fill: var(--muted);
+}
+.geo-t-tz {
+  fill: var(--ink-soft);
+}
+
+/* ---------------------------------------------------------------- legend */
+.geo-foot {
+  display: grid;
+  gap: var(--space-1);
+  justify-items: center;
+}
+.geo-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-1) var(--space-4);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.geo-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.geo-legend li span {
+  overflow-wrap: anywhere;
+}
+.geo-legend svg {
+  flex: none;
+}
+.geo-leg-area {
+  fill: color-mix(in srgb, var(--t) 30%, var(--geo-land));
+  stroke: var(--t);
+  stroke-width: 1.2;
+}
+.geo-leg-band {
+  fill: color-mix(in srgb, var(--t) 22%, transparent);
+  stroke: var(--t);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+.geo-leg-line {
+  stroke: var(--t);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.geo-credit {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}

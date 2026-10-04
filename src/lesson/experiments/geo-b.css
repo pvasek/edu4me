@@ -1,0 +1,172 @@
+/* Geography experiments (pressure-wind, lapse-rate, flood-hydrograph, doubling-time,
+   birth-death-rates, sea-level-rise). Classes prefixed xp-<id>-. */
+
+/* small source note under a plate */
+.xp-src {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------- pressure-wind */
+.xp-pw-iso {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 0.9;
+  opacity: 0.7;
+}
+.xp-pw-flow {
+  fill: none;
+  stroke: var(--ph-a);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.xp-pw-run {
+  fill: none;
+  stroke: var(--surface);
+  stroke-linecap: round;
+  stroke-dasharray: 2 16;
+  animation: xp-pw-run var(--dur, 4s) linear infinite;
+}
+@keyframes xp-pw-run {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .xp-pw-run {
+    animation: none;
+    display: none;
+  }
+}
+.xp-pw-centre {
+  font: 800 26px var(--font-body);
+  fill: var(--ink);
+}
+
+/* ---------------------------------------------------------------- lapse-rate */
+.xp-lr-belt-listnate {
+  fill: color-mix(in srgb, var(--green) 30%, var(--surface));
+}
+.xp-lr-belt-smisene {
+  fill: color-mix(in srgb, var(--green) 46%, var(--surface));
+}
+.xp-lr-belt-smrkove {
+  fill: color-mix(in srgb, color-mix(in srgb, var(--green) 70%, var(--ink)) 62%, var(--surface));
+}
+.xp-lr-belt-kosodrevina {
+  fill: color-mix(in srgb, color-mix(in srgb, var(--green) 50%, var(--yellow)) 40%, var(--surface));
+}
+.xp-lr-belt-hole {
+  fill: color-mix(in srgb, var(--muted) 22%, var(--surface));
+}
+.xp-lr-tree {
+  fill: color-mix(in srgb, var(--green) 70%, var(--ink));
+  stroke: var(--edge);
+  stroke-width: 0.8;
+}
+.xp-lr-cold {
+  fill: color-mix(in srgb, var(--blue) 80%, var(--ink));
+}
+.xp-lr-now {
+  font-weight: 800;
+  fill: var(--ink);
+}
+
+/* ---------------------------------------------------------------- flood-hydrograph */
+.xp-fh-rain {
+  fill: color-mix(in srgb, var(--blue) 55%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 0.7;
+}
+.xp-fh-other {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.3;
+  stroke-dasharray: 4 3;
+}
+.xp-fh-flood {
+  fill: var(--bad);
+  fill-opacity: 0.22;
+}
+.xp-fh-bank {
+  stroke: var(--bad);
+  stroke-width: 1.3;
+  stroke-dasharray: 6 4;
+}
+.xp-fh-bank-t {
+  fill: var(--bad);
+}
+
+/* ---------------------------------------------------------------- doubling-time */
+.xp-dt-other {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 3;
+}
+
+/* ---------------------------------------------------------------- birth-death-rates */
+.xp-bd-m {
+  fill: color-mix(in srgb, var(--teal) 55%, var(--surface));
+  stroke: color-mix(in srgb, var(--teal) 70%, var(--ink));
+  stroke-width: 0.6;
+}
+.xp-bd-f {
+  fill: color-mix(in srgb, var(--pink) 50%, var(--surface));
+  stroke: color-mix(in srgb, var(--pink) 70%, var(--ink));
+  stroke-width: 0.6;
+}
+.xp-bd-start {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.4;
+  stroke-dasharray: 4 2.5;
+  stroke-linejoin: round;
+}
+/* ---------------------------------------------------------------- sea-level-rise */
+.xp-sl-ground {
+  fill: color-mix(in srgb, var(--yellow) 26%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+.xp-sl-green {
+  fill: none;
+  stroke: color-mix(in srgb, var(--green) 70%, var(--surface));
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.xp-sl-water {
+  fill: color-mix(in srgb, var(--blue) 42%, var(--surface));
+  fill-opacity: 0.82;
+}
+.xp-sl-level {
+  stroke: color-mix(in srgb, var(--blue) 80%, var(--ink));
+  stroke-width: 1.8;
+}
+.xp-sl-today {
+  stroke: var(--ink-soft);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+.xp-sl-house {
+  fill: var(--surface);
+  stroke: var(--edge);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.xp-sl-roof {
+  fill: color-mix(in srgb, var(--accent) 55%, var(--surface));
+  stroke: var(--edge);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+.xp-sl-palm {
+  fill: none;
+  stroke: color-mix(in srgb, var(--green) 75%, var(--ink));
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
