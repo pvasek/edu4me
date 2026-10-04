@@ -2,7 +2,8 @@ import { useId, type ReactNode } from 'react'
 import { Md } from '../../core/markup'
 import './experiments.css'
 
-const fmt = (v: number, digits: number) => v.toLocaleString('cs-CZ', { minimumFractionDigits: digits, maximumFractionDigits: digits })
+/** Czech number with a decimal comma and a real minus sign (−), not a hyphen. */
+const fmt = (v: number, digits: number) => v.toLocaleString('cs-CZ', { minimumFractionDigits: digits, maximumFractionDigits: digits }).replace('-', '−')
 
 /** A labelled slider with its value and unit (Czech decimal comma). */
 export function Control({
