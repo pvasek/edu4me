@@ -625,7 +625,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Katabolismus energii uvolňuje na jiném místě a v jiný čas, než ji anabolismus nebo sval potřebují. Buňka proto energii „platí“ univerzální měnou – **ATP** (adenosintrifosfát). Podívej se, jak se ATP utrácí a zase dobíjí:' },
             { type: 'diagram', id: 'atp-cycle', caption: 'Hydrolýzou ATP na ADP a fosfát se uvolní asi 30 kJ/mol. Energie z potravy (buněčné dýchání) zase ATP z ADP a fosfátu obnoví.' },
             { type: 'p', text: 'Zapsáno rovnicí – všimni si, že se při hydrolýze spotřebuje voda, stejně jako při štěpení polymerů:' },
-            { type: 'formula', text: 'ATP + $H2O$ -> ADP + P_{i}     ΔG ≈ −30,5 kJ/mol', caption: 'P_{i} … anorganický fosfát. Uvolněná energie pohání svalový stah, pumpy a syntézy.' },
+            { type: 'formula', text: 'ATP + $H2O$ -> ADP + P_{i}     ΔG ≐ −30,5 kJ/mol', caption: 'P_{i} … anorganický fosfát. Uvolněná energie pohání svalový stah, pumpy a syntézy.' },
             { type: 'p', text: 'Proč zrovna ATP, a ne rovnou glukóza? Glukóza nese asi 2 870 kJ/mol – to je jako platit v obchodě s rohlíky tisícikorunou. ATP je drobná mince: dost energie na jeden krok, ale ne tolik, aby se zbytek promarnil jako teplo. Buňka **spřáhne** reakci, která energii potřebuje, s hydrolýzou ATP.' },
             { type: 'p', text: 'V těle je ATP v každé chvíli jen málo a stále se recykluje. Kolik ho vlastně za den „protočíš“, spočítáme z denní spotřeby.' },
             { type: 'example', title: 'Kolik ATP za den', problem: 'Člověk v klidu protočí za den asi tolik ATP, kolik sám váží. Kolik molů ATP to je u člověka s hmotností 60 kg? Molární hmotnost ATP je 507 g/mol.', steps: [
@@ -690,7 +690,7 @@ const level: LevelContent = {
               'Účinnost = užitečná energie : celková energie = 976 kJ : 2 870 kJ ≐ 0,34',
             ], answer: 'Asi 34 %. Zbytek se uvolní jako teplo – proto se při běhu zahřeješ. Automobilový motor má účinnost podobnou nebo nižší.' },
             { type: 'p', text: 'Celkový obraz máme. Teď půjdeme fázi po fázi, a začneme tam, kde glukóza do buňky vstupuje – v cytoplazmě.' },
-            { type: 'check', question: { kind: 'number', q: 'Kvasinka by z 1 mol glukózy (2 870 kJ) získala 30 mol ATP po 30,5 kJ. Jaká by byla účinnost v procentech? Zaokrouhli na celá procenta.', answer: 32, tolerance: 1, unit: '%', explain: '30 · 30,5 kJ = 915 kJ; 915 : 2 870 ≈ 0,32, tedy asi 32 %.' } },
+            { type: 'check', question: { kind: 'number', q: 'Kvasinka by z 1 mol glukózy (2 870 kJ) získala 30 mol ATP po 30,5 kJ. Jaká by byla účinnost v procentech? Zaokrouhli na celá procenta.', answer: 32, tolerance: 1, unit: '%', explain: '30 · 30,5 kJ = 915 kJ; 915 : 2 870 ≐ 0,32, tedy asi 32 %.' } },
           ],
         },
         {
@@ -792,7 +792,7 @@ const level: LevelContent = {
             { type: 'example', title: 'RQ tuku', problem: 'Kyselina palmitová, typická mastná kyselina, se spaluje podle rovnice $C16H32O2 + 23O2 -> 16CO2 + 16H2O$. Jaký je její respirační kvocient?', steps: [
               'Z rovnice: vzniká 16 $CO2$, spotřebuje se 23 $O2$.',
               'RQ = 16 : 23 ≐ 0,70',
-            ], answer: 'RQ ≈ 0,7 – typická hodnota pro spalování tuků.' },
+            ], answer: 'RQ ≐ 0,7 – typická hodnota pro spalování tuků.' },
             { type: 'p', text: 'Naměřené RQ proto přímo ukazuje palivo. Bílkoviny leží mezi cukry a tuky, a hodnoty nad 1 znamenají, že se k dýchání přidalo něco dalšího:' },
             { type: 'table', headers: ['RQ', 'co se spaluje nebo děje'], rows: [
               ['asi 0,7', 'tuky (hladovění, dlouhý klidný pohyb)'],

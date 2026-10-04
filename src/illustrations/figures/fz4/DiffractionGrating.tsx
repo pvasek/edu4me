@@ -1,7 +1,7 @@
 import { Angle, Draw, Fade, Figure, Pop, Qty, Sym, f1 } from "./kit";
 
 const LABEL =
-  "Optická mřížka v bílém světle. Bílé světlo dopadá kolmo na mřížku s mřížkovou konstantou d (zde 300 vrypů na milimetr, d ≈ 3,3 µm). Za mřížkou vznikají ostrá maxima pod úhly, pro které platí d · sin α = k · λ. Střední maximum nultého řádu k = 0 zůstane bílé, protože tam se zesílí všechny barvy. V prvním řádu k = ±1 a ve druhém řádu k = ±2 se světlo rozloží na spektrum: fialová (400 nm) je nejblíže středu, červená (700 nm) se ohýbá nejvíc – opačně než v hranolu. Spektra druhého řádu jsou dvakrát širší.";
+  "Optická mřížka v bílém světle. Bílé světlo dopadá kolmo na mřížku s mřížkovou konstantou d (zde 300 vrypů na milimetr, d ≐ 3,3 µm). Za mřížkou vznikají ostrá maxima pod úhly, pro které platí d · sin α = k · λ. Střední maximum nultého řádu k = 0 zůstane bílé, protože tam se zesílí všechny barvy. V prvním řádu k = ±1 a ve druhém řádu k = ±2 se světlo rozloží na spektrum: fialová (400 nm) je nejblíže středu, červená (700 nm) se ohýbá nejvíc – opačně než v hranolu. Spektra druhého řádu jsou dvakrát širší.";
 
 const XG = 124; // grating
 const XS = 394; // screen

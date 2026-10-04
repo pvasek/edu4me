@@ -208,7 +208,7 @@ const level: LevelContent = {
           icon: 'leaf',
           blocks: [
             { type: 'p', text: 'Všechen ten škrob a celulózu postavila rostlina z glukózy, kterou si sama vyrobila. Glukózu vyrábějí zelené rostliny, řasy a sinice při **fotosyntéze**: z oxidu uhličitého a vody s pomocí světla a zeleného barviva **chlorofylu**. Jako vedlejší produkt uvolní kyslík. Celý děj shrnuje jedna rovnice:' },
-            { type: 'reaction', equation: '6CO2 + 6H2O -> C6H12O6 + 6O2', caption: 'Souhrnná rovnice fotosyntézy. Děj je silně endotermní (ΔH ≈ +2 800 kJ/mol) a energii mu dodává světlo. Z glukózy pak rostlina skládá škrob i celulózu.' },
+            { type: 'reaction', equation: '6CO2 + 6H2O -> C6H12O6 + 6O2', caption: 'Souhrnná rovnice fotosyntézy. Děj je silně endotermní (ΔH ≐ +2 800 kJ/mol) a energii mu dodává světlo. Z glukózy pak rostlina skládá škrob i celulózu.' },
             { type: 'p', text: 'Opačný děj, **buněčné dýchání**, probíhá v tvých buňkách: glukóza se oxiduje kyslíkem zpět na $CO2$ a vodu a uvolněná energie se ukládá do molekul **ATP** (adenosintrifosfátu), univerzální „baterie“ buňky. ==Sluneční energie se tak přes sacharidy dostane až do tvých svalů.==' },
             { type: 'callout', variant: 'tip', title: 'Podrobnosti později', text: 'Jak rostlina světlo zachytí a jak buňka glukózu krok za krokem „spaluje“, rozebereme v lekci **Metabolismus: ATP, dýchání a fotosyntéza**.' },
             { type: 'p', text: 'S rovnicí fotosyntézy se počítá stejně jako s každou jinou: koeficienty udávají poměr látkových množství. Kolik kyslíku tedy rostlina vyrobí?' },
@@ -835,7 +835,7 @@ const level: LevelContent = {
                 'Postranní řetězec glycinu ($–H$) nemá kyselou ani zásaditou skupinu, takže pI = ($pK_{a1}$ + $pK_{a2}$) / 2.',
                 'pI = (2,34 + 9,60) / 2 = 11,94 / 2',
               ],
-              answer: 'pI ≈ 5,97. Při pH 5,97 je glycin amfion a v elektrickém poli se nepohybuje.',
+              answer: 'pI ≐ 5,97. Při pH 5,97 je glycin amfion a v elektrickém poli se nepohybuje.',
             },
             { type: 'p', text: 'Glycin vyšel kolem 6. Porovnej ho s aminokyselinami, které mají v postranním řetězci další kyselou nebo zásaditou skupinu:' },
             {
@@ -1031,7 +1031,7 @@ const level: LevelContent = {
       summary: [
         '2-aminokyseliny mají aminoskupinu i karboxylovou skupinu na stejném uhlíku a liší se postranním řetězcem $R$.',
         'Kromě glycinu jsou aminokyseliny chirální; bílkoviny stavějí jen z L-aminokyselin.',
-        'V roztoku tvoří aminokyseliny amfiony; v izoelektrickém bodě (u glycinu pI ≈ 6,0) je jejich celkový náboj nulový.',
+        'V roztoku tvoří aminokyseliny amfiony; v izoelektrickém bodě (u glycinu pI ≐ 6,0) je jejich celkový náboj nulový.',
         'Peptidová vazba $–CO–NH–$ vzniká kondenzací karboxylové skupiny a aminoskupiny za odštěpení vody.',
         'Primární strukturu drží peptidové vazby, sekundární vodíkové vazby hlavního řetězce, terciární a kvartérní interakce postranních řetězců včetně disulfidových můstků.',
         'Denaturace ničí prostorovou strukturu, ne peptidové vazby; způsobuje ji teplo, kyseliny, zásady, těžké kovy nebo alkohol.',
@@ -1043,7 +1043,7 @@ const level: LevelContent = {
           q: 'Alanin má $pK_{a}$ karboxylové skupiny 2,34 a $pK_{a}$ aminoskupiny 9,69. Jaký je jeho izoelektrický bod? Zaokrouhli na jedno desetinné místo.',
           answer: 6,
           tolerance: 0.05,
-          explain: 'Alanin má neutrální postranní řetězec, takže pI = (2,34 + 9,69) / 2 ≈ 6,0.',
+          explain: 'Alanin má neutrální postranní řetězec, takže pI = (2,34 + 9,69) / 2 ≐ 6,0.',
         },
         {
           kind: 'tf',
@@ -1477,7 +1477,7 @@ const level: LevelContent = {
               caption: 'ATP schematicky. Vlnovka ~ značí makroergní vazbu. Hydrolýzou se obvykle odštěpí koncový fosfát γ.',
             },
             { type: 'p', text: 'Energii buňce dodá právě odštěpení posledního fosfátu. Zapisuje se takto:' },
-            { type: 'formula', text: 'ATP + $H2O$ -> ADP + P_{i}', caption: 'Hydrolýza ATP: ΔG ≈ −30,5 kJ/mol za standardních podmínek, v buňce asi −50 kJ/mol. P_{i} je anorganický fosfát.' },
+            { type: 'formula', text: 'ATP + $H2O$ -> ADP + P_{i}', caption: 'Hydrolýza ATP: ΔG ≐ −30,5 kJ/mol za standardních podmínek, v buňce asi −50 kJ/mol. P_{i} je anorganický fosfát.' },
             { type: 'p', text: 'ADP se po rozštěpení neztratí – buňka ho znovu „dobije“. Každá molekula tak koloběhem projde za den stovkykrát, a proto ti stačí těch pár set gramů:' },
             { type: 'diagram', id: 'atp-cycle', caption: 'Koloběh ATP a ADP jako dobíjecí baterie. Katabolické děje (hlavně dýchání) dodávají energii na připojení fosfátu k ADP; svalový stah, syntéza bílkovin nebo přenos iontů přes membránu ji spotřebují štěpením ATP.' },
             { type: 'callout', variant: 'warning', title: 'Energie není „v jedné vazbě“', text: 'Přetržení každé vazby energii spotřebuje, nikdy ji neuvolní. Hydrolýza ATP energii uvolňuje proto, že produkty (ADP a fosfát, dobře obklopené vodou) jsou dohromady mnohem stabilnější než ATP a voda. „Makroergní vazba“ je jen zkratka.' },
@@ -1511,7 +1511,7 @@ const level: LevelContent = {
           icon: 'lungs',
           blocks: [
             { type: 'p', text: '**Buněčné dýchání** je oxidace glukózy kyslíkem. Souhrnně je to stejná reakce jako hoření, jen rozdělená do desítek kroků, takže se velká část energie zachytí do ATP. Celková rovnice je obrácená fotosyntéza:' },
-            { type: 'reaction', equation: 'C6H12O6 + 6O2 -> 6CO2 + 6H2O', caption: 'ΔG ≈ −2 870 kJ/mol. Uhlík glukózy (průměrné oxidační číslo 0) se oxiduje na $C^{IV}$ v $CO2$, kyslík se redukuje na $O^{−II}$ ve vodě.' },
+            { type: 'reaction', equation: 'C6H12O6 + 6O2 -> 6CO2 + 6H2O', caption: 'ΔG ≐ −2 870 kJ/mol. Uhlík glukózy (průměrné oxidační číslo 0) se oxiduje na $C^{IV}$ v $CO2$, kyslík se redukuje na $O^{−II}$ ve vodě.' },
             { type: 'p', text: 'Elektrony z glukózy nejdou na kyslík přímo. Nejdřív je převezmou **přenašeče elektronů** – koenzymy vyrobené z vitaminů skupiny B:' },
             {
               type: 'keyterms',
@@ -1691,7 +1691,7 @@ const level: LevelContent = {
               problem: 'Dospívající přijme každý den o 800 kJ víc, než vydá. Za jak dlouho přibere 1 kg tukové tkáně? Tuková tkáň je asi z 80 % tvořena tukem, tuk dává 37 kJ/g.',
               steps: [
                 'Tuk tvoří jen 80 % tkáně, proto násobíme 0,8. Energie v 1 kg tukové tkáně: 1 000 g · 0,8 · 37 kJ/g = 29 600 kJ',
-                'počet dní: 29 600 kJ / 800 kJ za den ≈ 37 dní',
+                'počet dní: 29 600 kJ / 800 kJ za den ≐ 37 dní',
               ],
               answer: 'Asi za 37 dní, tedy zhruba 5 týdnů. Za rok se malý denní přebytek nasčítá skoro na 10 kg.',
             },
@@ -1705,7 +1705,7 @@ const level: LevelContent = {
                 answer: 52.8,
                 tolerance: 1,
                 unit: 'min',
-                explain: '2 200 kJ / 2 500 kJ/h = 0,88 h, tedy 0,88 · 60 ≈ 53 minut.',
+                explain: '2 200 kJ / 2 500 kJ/h = 0,88 h, tedy 0,88 · 60 ≐ 53 minut.',
               },
             },
           ],
@@ -1713,7 +1713,7 @@ const level: LevelContent = {
       ],
       summary: [
         'Metabolismus tvoří katabolismus (rozklad, energie se uvolňuje) a anabolismus (syntéza, energie se spotřebovává).',
-        'ATP je energetická měna buňky; hydrolýza na ADP a fosfát (ΔG ≈ −30,5 kJ/mol) pohání spřažené děje, které by samy neproběhly.',
+        'ATP je energetická měna buňky; hydrolýza na ADP a fosfát (ΔG ≐ −30,5 kJ/mol) pohání spřažené děje, které by samy neproběhly.',
         '$NAD^+$ a FAD přenášejí elektrony z oxidovaných živin do dýchacího řetězce jako NADH a $FADH2$.',
         'Glykolýza v cytoplazmě, citrátový cyklus v matrix a dýchací řetězec s ATP-syntázou na vnitřní membráně mitochondrie dají z glukózy asi 30–32 ATP.',
         'Bez kyslíku buňka obnovuje $NAD^+$ kvašením: mléčným na laktát, nebo alkoholovým na ethanol a $CO2$; zisk jsou jen 2 ATP.',
@@ -2242,7 +2242,7 @@ const level: LevelContent = {
               problem: 'Dospívající o hmotnosti 60 kg vypije za odpoledne dvě plechovky energetického nápoje, každou s 80 mg kofeinu. Jaká je to dávka na kilogram? Evropský úřad pro bezpečnost potravin (EFSA) považuje u dětí a dospívajících za bezpečné nejvýše 3 mg/kg za den.',
               steps: [
                 'celkový kofein: 2 · 80 mg = 160 mg',
-                'Limity se udávají na kilogram hmotnosti, proto dělíme hmotností: 160 mg / 60 kg ≈ 2,7 mg/kg',
+                'Limity se udávají na kilogram hmotnosti, proto dělíme hmotností: 160 mg / 60 kg ≐ 2,7 mg/kg',
               ],
               answer: 'Asi 2,7 mg/kg – těsně pod hranicí EFSA. Třetí plechovka by ji překročila (4 mg/kg).',
             },
@@ -2286,9 +2286,9 @@ const level: LevelContent = {
               problem: 'Muž o hmotnosti 70 kg vypije 0,5 l piva s 4 % obj. alkoholu. Hustota ethanolu je 0,79 g/cm³ a játra odbourají asi 0,1 g ethanolu na kilogram hmotnosti za hodinu. Jak dlouho bude alkohol odbourávat?',
               steps: [
                 '4 % obj. znamená 4 cm³ ethanolu ve 100 cm³ nápoje. Objem ethanolu: 500 cm³ · 0,04 = 20 cm³',
-                'Rychlost odbourávání je v gramech, proto objem převedeme na hmotnost: 20 cm³ · 0,79 g/cm³ ≈ 15,8 g',
+                'Rychlost odbourávání je v gramech, proto objem převedeme na hmotnost: 20 cm³ · 0,79 g/cm³ ≐ 15,8 g',
                 'rychlost odbourávání: 0,1 g/(kg·h) · 70 kg = 7 g/h',
-                'doba: 15,8 g / 7 g/h ≈ 2,3 h',
+                'doba: 15,8 g / 7 g/h ≐ 2,3 h',
               ],
               answer: 'Asi 2,3 hodiny; lehčí člověk potřebuje ještě déle. Proto se v Česku za volant smí jen s nulovým alkoholem v krvi.',
             },
@@ -2556,7 +2556,7 @@ const level: LevelContent = {
               problem: 'Methan má spalné teplo 890 kJ/mol a $M(CH4) = 16 g/mol$. Kolik energie uvolní spálení 1 g methanu?',
               steps: [
                 'energie na 1 mol: 890 kJ',
-                'Z molu na gram převedeme dělením molární hmotností: 890 kJ/mol / 16 g/mol ≈ 55,6 kJ/g',
+                'Z molu na gram převedeme dělením molární hmotností: 890 kJ/mol / 16 g/mol ≐ 55,6 kJ/g',
               ],
               answer: 'Asi 55,6 kJ/g. Tabulková výhřevnost (asi 50 kJ/g) je menší, protože voda odchází komínem jako pára a její kondenzační teplo se nevyužije.',
             },
@@ -2567,7 +2567,7 @@ const level: LevelContent = {
               steps: [
                 'Uhlí: na 1 mol $CO2$ se uvolní 394 kJ.',
                 'Methan: na 1 mol $CO2$ se uvolní 890 kJ.',
-                'Srovnávat musíme při stejné energii, proto počítáme pro 1 000 kJ: uhlí 1 000 / 394 ≈ 2,5 mol $CO2$, methan 1 000 / 890 ≈ 1,1 mol $CO2$.',
+                'Srovnávat musíme při stejné energii, proto počítáme pro 1 000 kJ: uhlí 1 000 / 394 ≐ 2,5 mol $CO2$, methan 1 000 / 890 ≐ 1,1 mol $CO2$.',
               ],
               answer: 'Zemní plyn vypustí na stejnou energii zhruba o polovinu méně $CO2$, protože část energie získá oxidací vodíku na vodu.',
             },
@@ -2580,7 +2580,7 @@ const level: LevelContent = {
                 answer: 29.7,
                 tolerance: 0.3,
                 unit: 'kJ/g',
-                explain: '1 367 kJ/mol / 46 g/mol ≈ 29,7 kJ/g. Výhřevnost v tabulce (asi 27 kJ/g) je nižší, protože nepočítá s kondenzací vodní páry.',
+                explain: '1 367 kJ/mol / 46 g/mol ≐ 29,7 kJ/g. Výhřevnost v tabulce (asi 27 kJ/g) je nižší, protože nepočítá s kondenzací vodní páry.',
               },
             },
           ],
@@ -2651,9 +2651,9 @@ const level: LevelContent = {
               problem: 'Kolik kilogramů $CO2$ vznikne spálením 1 kg oktanu (modelové složky benzínu)? $M(C8H18) = 114 g/mol$, $M(CO2) = 44 g/mol$.',
               steps: [
                 'Rovnice: $2C8H18 + 25O2 -> 16CO2 + 18H2O$, z 1 mol oktanu tedy vznikne 8 mol $CO2$.',
-                '$n(C8H18) = 1 000 g / 114 g/mol ≈ 8,77 mol$',
-                '$n(CO2) = 8 · 8,77 mol ≈ 70,2 mol$',
-                '$m(CO2) = 70,2 mol · 44 g/mol ≈ 3 090 g$',
+                '$n(C8H18) = 1 000 g / 114 g/mol ≐ 8,77 mol$',
+                '$n(CO2) = 8 · 8,77 mol ≐ 70,2 mol$',
+                '$m(CO2) = 70,2 mol · 44 g/mol ≐ 3 090 g$',
               ],
               answer: 'Asi 3,1 kg $CO2$ – víc než samo palivo. Většinu hmotnosti dodá kyslík ze vzduchu.',
             },
@@ -2842,7 +2842,7 @@ const level: LevelContent = {
           answer: 15.4,
           tolerance: 0.3,
           unit: '%',
-          explain: 'Výchozí látky: $16 + 2 · 18 = 52 g/mol$. Produkt: $4 · 2 = 8 g/mol$. Atomová ekonomie = 8 / 52 · 100 % ≈ 15,4 %. Většina hmoty skončí v $CO2$.',
+          explain: 'Výchozí látky: $16 + 2 · 18 = 52 g/mol$. Produkt: $4 · 2 = 8 g/mol$. Atomová ekonomie = 8 / 52 · 100 % ≐ 15,4 %. Většina hmoty skončí v $CO2$.',
         },
         {
           kind: 'order',
@@ -2979,7 +2979,7 @@ const level: LevelContent = {
       answer: 50.5,
       tolerance: 0.5,
       unit: 'kJ/g',
-      explain: '2 220 kJ/mol / 44 g/mol ≈ 50,5 kJ/g – podobně jako methan. Uhlovodíky s velkým podílem vodíku patří k nejvýhřevnějším palivům.',
+      explain: '2 220 kJ/mol / 44 g/mol ≐ 50,5 kJ/g – podobně jako methan. Uhlovodíky s velkým podílem vodíku patří k nejvýhřevnějším palivům.',
     },
     {
       kind: 'choice',

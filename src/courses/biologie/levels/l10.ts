@@ -150,7 +150,7 @@ const level: LevelContent = {
             { type: 'p', text: '==Velikost genomu neodpovídá složitosti organismu.== U člověka kóduje bílkoviny jen asi 1,5 % DNA; zbytek tvoří regulační úseky, introny, opakující se sekvence a pozůstatky dávných virů. Kolik metrů DNA to dělá v jedné buňce?' },
             { type: 'example', title: 'Dva metry v jádře', problem: 'Tělní buňka člověka má dvě sady chromozomů, celkem asi 6,4 · 10^{9} bp. Jeden pár bází zabírá na délku 0,34 nm. Jak dlouhá by byla všechna DNA buňky natažená do jedné nitě?', steps: [
               'Délka = počet párů bází · délka jednoho páru.',
-              '6,4 · 10^{9} · 0,34 nm ≈ 2,2 · 10^{9} nm.',
+              '6,4 · 10^{9} · 0,34 nm ≐ 2,2 · 10^{9} nm.',
               'Převod: 1 m = 10^{9} nm, takže 2,2 · 10^{9} nm = 2,2 m.',
             ], answer: 'Asi 2,2 m DNA v jádře o průměru kolem 6 µm.' },
             { type: 'p', text: 'Uložit dva metry do jádra je jako nacpat 20 km tenkého vlákna do tenisového míčku – a přitom musí jít kterýkoli kousek rychle přečíst. Buňka proto DNA sbaluje v několika patrech:' },
@@ -190,7 +190,7 @@ const level: LevelContent = {
         { kind: 'multi', q: 'Která tvrzení o replikaci DNA platí?', options: ['každá nová molekula obsahuje jeden původní řetězec', 'po 1. generaci v lehkém dusíku našli Meselson a Stahl jen hybridní proužek', 'původní dvoušroubovice zůstane pohromadě celá', 'nové řetězce rostou ve směru 3′ → 5′', 'oba původní řetězce slouží jako předloha'], answers: [0, 1, 4], explain: 'Replikace je semikonzervativní: řetězce se rozdělí a každý je předlohou. Nové řetězce rostou ve směru 5′ → 3′.' },
         { kind: 'order', q: 'Seřaď úrovně sbalení DNA od nejtenčí po nejhustší.', items: ['dvoušroubovice DNA (2 nm)', 'nukleozomy na histonech (11 nm)', 'chromatinové vlákno (30 nm)', 'chromozom v mitóze'], explain: 'DNA se nejdřív ovine kolem histonů, nukleozomy se stočí do vlákna a to se ve smyčkách sbalí do chromozomu.' },
         { kind: 'tf', q: 'Na opožďujícím řetězci vzniká nová DNA souvisle bez přerušení.', answer: false, explain: 'Opožďující řetězec vzniká po krátkých Okazakiho fragmentech, protože polymeráza staví jen ve směru 5′ → 3′, tedy od vidličky pryč.' },
-        { kind: 'number', q: 'Genom *E. coli* má 4,6 · 10^{6} bp. Replikace začíná v jednom počátku a postupuje dvěma vidličkami opačnými směry, každá rychlostí 1 000 nukleotidů za sekundu. Za kolik minut se genom zkopíruje?', answer: 38, tolerance: 1.5, unit: 'min', explain: 'Každá vidlička zkopíruje polovinu: 2,3 · 10^{6} bp : 1 000 bp/s = 2 300 s ≈ 38 min.' },
+        { kind: 'number', q: 'Genom *E. coli* má 4,6 · 10^{6} bp. Replikace začíná v jednom počátku a postupuje dvěma vidličkami opačnými směry, každá rychlostí 1 000 nukleotidů za sekundu. Za kolik minut se genom zkopíruje?', answer: 38, tolerance: 1.5, unit: 'min', explain: 'Každá vidlička zkopíruje polovinu: 2,3 · 10^{6} bp : 1 000 bp/s = 2 300 s ≐ 38 min.' },
       ],
     },
 
@@ -267,8 +267,8 @@ const level: LevelContent = {
             { type: 'p', text: 'Introny nejsou zanedbatelná drobnost, u člověka tvoří většinu délky genu. Ukazuje to extrémní příklad:' },
             { type: 'example', title: 'Gen dystrofinu', problem: 'Gen pro svalovou bílkovinu dystrofin měří asi 2 200 000 bp, jeho zralá mRNA asi 14 000 nukleotidů. Kolik procent genu tvoří introny?', steps: [
               'Exony dohromady odpovídají délce zralé mRNA, asi 14 000 nukleotidů.',
-              'Podíl exonů: 14 000 : 2 200 000 ≈ 0,006 = 0,6 %.',
-              'Introny: 100 % − 0,6 % ≈ 99,4 %.',
+              'Podíl exonů: 14 000 : 2 200 000 ≐ 0,006 = 0,6 %.',
+              'Introny: 100 % − 0,6 % ≐ 99,4 %.',
             ], answer: 'Přes 99 % genu dystrofinu tvoří introny. Přepis celého genu trvá asi 16 hodin.' },
             { type: 'p', text: 'Proč by buňka přepisovala tolik textu, který pak zahodí? Introny umožňují **alternativní sestřih**: z jedné pre-mRNA lze spojit různé kombinace exonů a získat různé bílkoviny. Porovnej, co dělají s tímtéž genem dvě různé tkáně:' },
             { type: 'compare', columns: [
@@ -797,7 +797,7 @@ const level: LevelContent = {
               'Každý gen zvlášť: z Aa × Aa vznikne aa s pravděpodobností 1/4, stejně tak bb a cc.',
               'Potomek má být aa a zároveň bb a zároveň cc: 1/4 · 1/4 · 1/4 = 1/64.',
               'Dominantní fenotyp má u jednoho genu pravděpodobnost 3/4, u všech tří zároveň (3/4)^{3} = 27/64.',
-            ], answer: 'P(aabbcc) = 1/64 ≈ 1,6 %; P(dominantní ve všech třech znacích) = 27/64 ≈ 42 %.' },
+            ], answer: 'P(aabbcc) = 1/64 ≐ 1,6 %; P(dominantní ve všech třech znacích) = 27/64 ≐ 42 %.' },
             { type: 'p', text: 'Pravidlo součtu potřebuješ, když lze k výsledku dojít víc cestami. Typický případ přichází z genetického poradenství:' },
             { type: 'example', title: 'Dvě děti přenašečů', problem: 'Oba rodiče jsou přenašeči cystické fibrózy (Aa). Mají dvě děti. Jaká je pravděpodobnost, že právě jedno z nich bude nemocné?', steps: [
               'Pro každé dítě: nemocné 1/4, zdravé 3/4; děti jsou na sobě nezávislé.',
@@ -831,7 +831,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Spočítejme vzdálenost genů z Morganových dat:' },
             { type: 'example', title: 'Genetická mapa', problem: 'Jak daleko od sebe leží geny pro barvu těla a délku křídel podle Morganových výsledků?', steps: [
               'Rekombinanti jsou potomci, kteří nevypadají jako rodiče: 206 + 185 = 391.',
-              'Frekvence rekombinace: 391 / 2 300 · 100 % ≈ 17 %.',
+              'Frekvence rekombinace: 391 / 2 300 · 100 % ≐ 17 %.',
             ], answer: 'Geny jsou od sebe vzdálené asi 17 cM.' },
             { type: 'callout', variant: 'remember', text: 'Frekvence rekombinace nikdy nepřesáhne 50 %. Geny velmi daleko od sebe se chovají, jako by ležely na různých chromozomech.' },
             { type: 'p', text: 'Vazbu jsme ukázali na genech ležících na stejném autozomu. Zvláštním případem jsou geny na pohlavních chromozomech, a k nim přidáme ještě dvě odchylky od schématu „jeden gen, dvě alely, jeden znak“.' },
@@ -912,8 +912,8 @@ const level: LevelContent = {
             { type: 'p', text: 'Teď už můžeš rozsoudit Mendelova semena z úvodu lekce:' },
             { type: 'example', title: 'Mendel pod lupou', problem: 'Odpovídá Mendelův výsledek 315 : 108 : 101 : 32 (celkem 556 semen) poměru 9 : 3 : 3 : 1?', steps: [
               'Očekávané počty: 556 · 9/16 = 312,75; 556 · 3/16 = 104,25 (dvakrát); 556 · 1/16 = 34,75.',
-              'Příspěvky (O − E)²/E: (315 − 312,75)²/312,75 ≈ 0,016; (108 − 104,25)²/104,25 ≈ 0,135; (101 − 104,25)²/104,25 ≈ 0,101; (32 − 34,75)²/34,75 ≈ 0,218.',
-              'Součet: χ² ≈ 0,47.',
+              'Příspěvky (O − E)²/E: (315 − 312,75)²/312,75 ≐ 0,016; (108 − 104,25)²/104,25 ≐ 0,135; (101 − 104,25)²/104,25 ≐ 0,101; (32 − 34,75)²/34,75 ≐ 0,218.',
+              'Součet: χ² ≐ 0,47.',
               'Čtyři skupiny → 3 stupně volnosti → kritická hodnota 7,81. Platí 0,47 < 7,81.',
             ], answer: 'Odchylka je malá a dá se vysvětlit náhodou: výsledek odpovídá poměru 9 : 3 : 3 : 1.' },
             { type: 'p', text: 'Pro Morganova data vyjde χ² ≈ 1 000, víc než stokrát nad kritickou hodnotou. Taková odchylka náhodou nevznikne, a právě proto Morgan usoudil, že geny jsou vázané. ==Test neříká, že hypotéza je pravdivá; říká jen, jestli ji data vyvracejí.==' },
@@ -1012,7 +1012,7 @@ const level: LevelContent = {
               'Nemocní: q² = 1 / 2 500 = 0,0004.',
               'q = √0,0004 = 0,02, tedy 2 % alel v genofondu.',
               'p = 1 − q = 0,98.',
-              'Přenašeči: 2pq = 2 · 0,98 · 0,02 ≈ 0,039.',
+              'Přenašeči: 2pq = 2 · 0,98 · 0,02 ≐ 0,039.',
             ], answer: 'Asi 3,9 % lidí, zhruba jeden z 25, je přenašečem – stokrát víc, než je nemocných.' },
             { type: 'p', text: 'Vyzkoušej si, jak poměr přenašečů a nemocných závisí na frekvenci alely. Posuvníkem měň q, sleduj obě čísla a pak splň úkol z příkladu:' },
             { type: 'experiment', id: 'hardy-weinberg', caption: 'Každá tečka je jeden člověk ze 100: genotypy AA, Aa a aa v podílech p², 2pq a q².' },
@@ -1146,7 +1146,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Kolikrát EcoRI stříhá?', problem: 'Jak často se v náhodné DNA objeví šestinukleotidová sekvence GAATTC? Kolikrát zhruba EcoRI rozstříhá genom *E. coli* (4,6 · 10^{6} bp)?', steps: [
               'Na každé pozici je správná báze s pravděpodobností 1/4.',
               'Šest správných bází za sebou: (1/4)^{6} = 1/4 096.',
-              'Počet míst v genomu: 4,6 · 10^{6} / 4 096 ≈ 1 100.',
+              'Počet míst v genomu: 4,6 · 10^{6} / 4 096 ≐ 1 100.',
             ], answer: 'Asi jednou za 4 000 bp; genom *E. coli* by EcoRI rozstříhal přibližně na 1 100 kousků.' },
             { type: 'p', text: 'Nůžky a lepidlo tedy máme. Teď je použijeme k úkolu, který změnil medicínu: přimět bakterii, aby vyráběla lidský inzulin.' },
             { type: 'check', question: { kind: 'number', q: 'Restrikční enzym rozpoznává sekvenci čtyř bází. Jednou za kolik párů bází se v náhodné DNA objeví jeho místo?', answer: 256, tolerance: 0, unit: 'bp', explain: '(1/4)^{4} = 1/256, takže místo se objeví v průměru jednou za 256 bp.' } },
@@ -1193,8 +1193,8 @@ const level: LevelContent = {
             { type: 'p', text: 'Kolik to dělá po běžných třiceti cyklech?' },
             { type: 'example', title: 'Třicet cyklů', problem: 'Vzorek obsahuje 10 molekul cílové DNA. Kolik kopií vznikne po 30 cyklech PCR?', steps: [
               'N = N_{0} · 2^{n} = 10 · 2^{30}.',
-              '2^{10} = 1 024 ≈ 10^{3}, takže 2^{30} ≈ 1,07 · 10^{9}.',
-              'N ≈ 10 · 1,07 · 10^{9} ≈ 1,1 · 10^{10}.',
+              '2^{10} = 1 024 ≈ 10^{3}, takže 2^{30} ≐ 1,07 · 10^{9}.',
+              'N ≐ 10 · 1,07 · 10^{9} ≐ 1,1 · 10^{10}.',
             ], answer: 'Asi 10 miliard kopií – dost na to, aby byla DNA vidět na gelu.' },
             { type: 'p', text: 'Celý postup od PCR po čtení výsledku ukazuje obrázek. Jeho druhou polovinu, gel, si vysvětlíme v dalším oddílu:' },
             { type: 'diagram', id: 'pcr-electrophoresis', caption: 'PCR: denaturace, nasednutí primerů a prodlužování; v každém cyklu se počet kopií zdvojí. Gelová elektroforéza pak úseky DNA rozdělí podle délky.' },
@@ -1313,7 +1313,7 @@ const level: LevelContent = {
     { kind: 'multi', q: 'Které mutace v kódující oblasti mohou vést ke zkrácené bílkovině?', options: ['nesmyslová mutace', 'delece jednoho nukleotidu', 'inzerce dvou nukleotidů', 'tichá mutace', 'záměnová mutace Glu → Asp'], answers: [0, 1, 2], explain: 'Nesmyslová mutace vytvoří stop kodon přímo, posunové mutace často vytvoří předčasný stop kodon v posunutém rámci. Tichá a záměnová mutace délku nemění.' },
     { kind: 'choice', q: 'Kolik různých genotypů vznikne při křížení AaBb × AaBb?', options: ['9', '16', '4', '3'], answer: 0, explain: 'U každého genu vzniknou tři genotypy (AA, Aa, aa a BB, Bb, bb), dohromady 3 · 3 = 9. Políček čtverce je 16, ale některá se opakují.' },
     { kind: 'number', q: 'Zpětné křížení dalo 420 a 380 potomků rodičovských typů a 110 a 90 rekombinantů. Jak daleko od sebe geny leží?', answer: 20, tolerance: 0.1, unit: 'cM', explain: 'Rekombinanti: 110 + 90 = 200 z 1 000 potomků, tedy 20 % = 20 cM.' },
-    { kind: 'number', q: 'Recesivní nemoc postihuje 1 z 40 000 lidí. Kolik procent lidí jsou přenašeči?', answer: 0.995, tolerance: 0.02, unit: '%', explain: 'q = √(1/40 000) = 0,005, p = 0,995. 2pq = 2 · 0,995 · 0,005 ≈ 0,00995, tedy asi 1 %, jeden člověk ze sta.' },
+    { kind: 'number', q: 'Recesivní nemoc postihuje 1 z 40 000 lidí. Kolik procent lidí jsou přenašeči?', answer: 0.995, tolerance: 0.02, unit: '%', explain: 'q = √(1/40 000) = 0,005, p = 0,995. 2pq = 2 · 0,995 · 0,005 ≐ 0,00995, tedy asi 1 %, jeden člověk ze sta.' },
     { kind: 'tf', q: 'Efekt zakladatele může způsobit, že vzácná alela je v nové populaci mnohem častější než v původní.', answer: true, explain: 'Malá zakládající skupina nese náhodný vzorek alel. Když mezi zakladateli náhodou byl přenašeč, alela je v nové populaci rázem častá.' },
     { kind: 'order', q: 'Seřaď kroky určení otcovství z DNA.', items: ['odběr vzorků (stěr z úst)', 'izolace DNA', 'namnožení úseků STR pomocí PCR', 'elektroforéza v gelu', 'porovnání proužků dítěte, matky a muže'], explain: 'DNA se nejdřív získá a namnoží, pak se úseky rozdělí podle délky a porovnají se proužky.' },
     { kind: 'choice', q: 'Proč se zárodečná úprava genů člověka považuje za eticky závažnější než somatická genová terapie?', options: ['změna se přenese na všechny další generace, které s ní nemohou souhlasit', 'je technicky jednodušší', 'nepoužívá CRISPR', 'týká se jen rostlin'], answer: 0, explain: 'Somatická terapie mění buňky jednoho pacienta, který s léčbou souhlasí. Zárodečná změna se dědí a její rizika by nesli potomci.' },

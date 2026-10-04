@@ -1119,7 +1119,7 @@ const l53: Lesson = {
             'To není celá mocnina deseti, použij kalkulačku: log 0,05 = −1,30.',
             'pH = −(−1,30) = 1,30.',
           ],
-          answer: 'pH ≈ 1,3',
+          answer: 'pH ≐ 1,3',
         },
         { type: 'p', text: 'Postup jde i obrátit: z naměřeného pH zjistíš, kolik je v roztoku $H3O^+$.' },
         {
@@ -1129,9 +1129,9 @@ const l53: Lesson = {
           steps: [
             'Z definice pH plyne $[H3O^+] = 10^{−pH}$.',
             '$[H3O^+]$ = 10^{−2,9} mol/dm^{3}; na kalkulačce 10^{x} s x = −2,9.',
-            '10^{−2,9} ≈ 0,0013 = 1,3·10^{-3}.',
+            '10^{−2,9} ≐ 0,0013 = 1,3·10^{-3}.',
           ],
-          answer: '$[H3O^+]$ ≈ 1,3·10^{-3} mol/dm^{3}',
+          answer: '$[H3O^+]$ ≐ 1,3·10^{-3} mol/dm^{3}',
         },
         { type: 'p', text: 'pH kyselin už spočítáš. V roztoku zásady ale převažují $OH^-$ a s nimi se počítá trochu jinak.' },
         {
@@ -1208,7 +1208,7 @@ const l53: Lesson = {
             'pOH = −log 0,04 = 1,40.',
             'pH = 14 − 1,40 = 12,60.',
           ],
-          answer: 'pH ≈ 12,6',
+          answer: 'pH ≐ 12,6',
         },
         {
           type: 'callout',
@@ -1737,7 +1737,7 @@ const l54: Lesson = {
             '$n(NaOH)$ = 0,100 mol/dm^{3} · 0,0134 dm^{3} = 1,34·10^{-3} mol = $n(CH3COOH)$ v 10,0 cm^{3} zředěného roztoku.',
             '$c$(zředěný) = 1,34·10^{-3} mol : 0,0100 dm^{3} = 0,134 mol/dm^{3}.',
             'Ocet jsi zředil/a desetkrát, takže $c$(ocet) = 10 · 0,134 mol/dm^{3} = 1,34 mol/dm^{3}.',
-            'Pro zajímavost: 1,34 mol/dm^{3} · 60 g/mol ≈ 80 g kyseliny v 1 dm^{3}, to odpovídá běžnému 8% octu.',
+            'Pro zajímavost: 1,34 mol/dm^{3} · 60 g/mol ≐ 80 g kyseliny v 1 dm^{3}, to odpovídá běžnému 8% octu.',
           ],
           answer: '$c(CH3COOH)$ = 1,34 mol/dm^{3}',
         },
@@ -2731,10 +2731,10 @@ const l56: Lesson = {
           problem: 'Kyselina octová o koncentraci 0,10 mol/dm^{3} má $[H3O^+]$ = 1,3·10^{-3} mol/dm^{3}. Urči stupeň disociace a pH a porovnej je s kyselinou chlorovodíkovou stejné koncentrace.',
           steps: [
             'α = 0,0013 mol/dm^{3} : 0,10 mol/dm^{3} = 0,013, tedy 1,3 %.',
-            'pH = −log 0,0013 ≈ 2,9.',
+            'pH = −log 0,0013 ≐ 2,9.',
             'Kyselina chlorovodíková o koncentraci 0,10 mol/dm^{3} je disociovaná úplně (α = 1), $[H3O^+]$ = 0,10 mol/dm^{3} a pH = 1.',
           ],
-          answer: 'α = 1,3 %, pH ≈ 2,9 (kyselina chlorovodíková: pH 1)',
+          answer: 'α = 1,3 %, pH ≐ 2,9 (kyselina chlorovodíková: pH 1)',
         },
         {
           type: 'callout',
@@ -3039,7 +3039,7 @@ const boss: Question[] = [
     q: 'Smícháš 50 cm^{3} $HCl$ o koncentraci 0,10 mol/dm^{3} a 40 cm^{3} $NaOH$ o koncentraci 0,10 mol/dm^{3}. Jaké pH má výsledný roztok?',
     answer: 1.95,
     tolerance: 0.05,
-    explain: '$n(HCl)$ = 0,0050 mol, $n(NaOH)$ = 0,0040 mol. Zbude 0,0010 mol $HCl$ v 0,090 dm^{3}: $[H3O^+]$ = 0,011 mol/dm^{3}, pH = −log 0,011 ≈ 1,95.',
+    explain: '$n(HCl)$ = 0,0050 mol, $n(NaOH)$ = 0,0040 mol. Zbude 0,0010 mol $HCl$ v 0,090 dm^{3}: $[H3O^+]$ = 0,011 mol/dm^{3}, pH = −log 0,011 ≐ 1,95.',
   },
   {
     kind: 'number',

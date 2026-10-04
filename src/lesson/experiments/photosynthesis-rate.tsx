@@ -273,7 +273,7 @@ export default function PhotosynthesisRate() {
       controls={
         <>
           <Control label="intenzita světla" unit="%" value={light} min={0} max={100} step={5} onChange={setLight} />
-          <Control label="CO₂ (vzduch ≈ 0,04 %)" unit="%" value={co2} min={0} max={0.2} step={0.01} digits={2} onChange={(v) => setCo2(Math.round(v * 100) / 100)} />
+          <Control label="CO₂ (vzduch ≐ 0,04 %)" unit="%" value={co2} min={0} max={0.2} step={0.01} digits={2} onChange={(v) => setCo2(Math.round(v * 100) / 100)} />
           <Control label="teplota" unit="°C" value={temp} min={0} max={50} step={1} onChange={setTemp} />
         </>
       }

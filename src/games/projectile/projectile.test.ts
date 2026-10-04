@@ -65,7 +65,7 @@ describe('projectile physics', () => {
     expect(orbitFate(BODIES.zeme, 7900)).toBe('circle')
     expect(orbitFate(BODIES.zeme, 9000)).toBe('ellipse')
     expect(orbitFate(BODIES.zeme, 11200)).toBe('escape')
-    expect(explainOrbit(BODIES.mesic)).toContain('≈ 1\u00a0677 m/s = 1,68 km/s')
+    expect(explainOrbit(BODIES.mesic)).toContain('≐ 1\u00a0677 m/s = 1,68 km/s')
   })
 
   it('uses the real g values', () => {

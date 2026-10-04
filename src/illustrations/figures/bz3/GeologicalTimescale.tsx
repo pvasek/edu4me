@@ -87,7 +87,7 @@ function Plate() {
           24 h = 4,6 mld. let
         </text>
         <text x={CX} y={CY + 54} textAnchor="middle" className="bz3-lbl bz3-sm">
-          1 h ≈ 190 mil. let
+          1 h ≐ 190 mil. let
         </text>
       </Fade>
 

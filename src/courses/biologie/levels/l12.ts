@@ -509,7 +509,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Srnčí zvěř v honitbě', problem: 'V honitbě žilo na jaře 120 srnců a srn. Za rok se narodilo 50 srnčat, 38 kusů uhynulo nebo bylo uloveno, 6 se přistěhovalo a 10 odešlo. Kolik jich je po roce a jaká je roční míra růstu?', steps: [
               'ΔN = (50 + 6) − (38 + 10) = 56 − 48 = 8',
               'N = 120 + 8 = 128',
-              'míra růstu = ΔN : N_{0} = 8 : 120 ≈ 0,067. Vztahujeme ji k počáteční velikosti, aby šly porovnávat malé a velké populace.',
+              'míra růstu = ΔN : N_{0} = 8 : 120 ≐ 0,067. Vztahujeme ji k počáteční velikosti, aby šly porovnávat malé a velké populace.',
             ], answer: 'Po roce žije v honitbě 128 kusů, populace roste asi o 6,7 % za rok.' },
             { type: 'p', text: 'Míra růstu je klíčové číslo. Co se stane, když zůstane stejná rok za rokem a nic ji nebrzdí?' },
             { type: 'check', question: { kind: 'number', q: 'Na ostrově žilo 200 zajíců. Za rok se jich narodilo 140 a 90 uhynulo; nikdo nepřišel ani neodešel. Kolik zajíců žije na ostrově po roce?', answer: 250, tolerance: 0, unit: 'zajíců', explain: 'ΔN = (140 + 0) − (90 + 0) = 50, takže N = 200 + 50 = 250.' } },
@@ -529,7 +529,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Teď už rozumíš i otázce ze začátku lekce. Spočítejme, kolik bakterií by vzniklo z jediné za jeden den:' },
             { type: 'example', title: 'Bakterie bez brzd', problem: 'Bakterie se za ideálních podmínek dělí každých 20 minut a váží asi 10^{−12} g. Kolik buněk a jaká hmotnost vznikne z jedné za 24 hodin?', steps: [
               'počet zdvojení: 24 h · 3 za hodinu = 72',
-              'N = 1 · 2^{72} ≈ 4,7 · 10^{21} buněk',
+              'N = 1 · 2^{72} ≐ 4,7 · 10^{21} buněk',
               'hmotnost: 4,7 · 10^{21} · 10^{−12} g = 4,7 · 10^{9} g = 4 700 t',
             ], answer: 'Za den by vzniklo asi 4 700 tun bakterií. Za dva dny (144 zdvojení) by jejich hmotnost několikatisíckrát převýšila hmotnost Země – v přírodě tedy exponenciální růst nikdy dlouho netrvá.' },
             { type: 'p', text: 'Exponenciálně populace rostou jen krátce, hlavně když osídlí nové prostředí. Tak se šířily nepůvodní druhy, třeba králík v Austrálii nebo bolševník velkolepý podél českých řek.' },
@@ -1042,7 +1042,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Jak rychle mizí savci', problem: 'Pozaďové vymírání savců se odhaduje na 2 druhy na milion druhů za rok. Savců je asi 5 500 druhů. Kolik by jich mělo vymřít za 500 let od roku 1500? Doložených vyhynutí savců je od té doby kolem 80.', steps: [
               'očekávaný počet = (2 / 1 000 000) · 5 500 druhů · 500 let',
               '= 5,5 druhu',
-              'poměr skutečnosti a očekávání: 80 : 5,5 ≈ 15',
+              'poměr skutečnosti a očekávání: 80 : 5,5 ≐ 15',
             ], answer: 'Savci vymírají nejméně asi 15× rychleji než přirozeným tempem. Je to spodní odhad: mnoho druhů vyhyne dřív, než je stihneme popsat.' },
             { type: 'p', text: 'Je to tedy šesté hromadné vymírání? Podíl vyhynulých druhů je zatím malý – jednotky procent hodnocených druhů, zdaleka ne tři čtvrtiny. Tempo je ale tak vysoké, že by se k hromadnému vymírání mohlo dostat během staletí. Proto vědci často píšou, že ==ke šestému vymírání směřujeme==, ne že jsme uprostřed něj.' },
             { type: 'p', text: 'Mezi pěti příčinami je jedna, která sílí nejrychleji a zesiluje i ostatní: změna klimatu. Podívejme se, co dělá s živými organismy.' },
@@ -1072,7 +1072,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Oceán kyselejší o čtvrtinu', problem: 'Povrchová voda oceánu měla před průmyslovou revolucí pH asi 8,2, dnes asi 8,1. Kolikrát vzrostla koncentrace iontů $H^+$?', steps: [
               'pH = −log c($H^+$), takže c($H^+$) = 10^{−pH}',
               'poměr = 10^{−8,1} : 10^{−8,2} = 10^{0,1}',
-              '10^{0,1} ≈ 1,26',
+              '10^{0,1} ≐ 1,26',
             ], answer: 'Koncentrace $H^+$ vzrostla asi o 26 %, tedy zhruba o čtvrtinu. Mlžům a korálům se pak hůř staví schránky z uhličitanu vápenatého.' },
             { type: 'p', text: 'Ničení stanovišť, invazní druhy i změnu klimatu tedy známe. Jaké nástroje má ochrana přírody, aby je zmírnila?' },
             { type: 'check', question: { kind: 'number', q: 'Areál druhu se posouvá k pólu rychlostí 17 km za desetiletí. O kolik kilometrů se posune za 50 let?', answer: 85, tolerance: 0, unit: 'km', explain: '50 let je 5 desetiletí: 5 · 17 km = 85 km.' } },
@@ -1114,7 +1114,7 @@ const level: LevelContent = {
             { type: 'p', text: 'S tím souvisí **udržitelnost**: využívat zdroje tak, abychom neomezili možnosti budoucích generací. Měřítkem je **ekologická stopa** – plocha, kterou lidstvo potřebuje na výrobu všeho, co spotřebuje, a na pohlcení odpadu. Dnes lidstvo spotřebuje tolik, kolik by obnovilo asi 1,7 Země. Spočítejme, co to znamená v kalendáři:' },
             { type: 'example', title: 'Den ekologického dluhu', problem: 'Lidstvo potřebuje za rok zdroje 1,7 planety Země. Kterým dnem v roce spotřebuje to, co Země za celý rok obnoví?', steps: [
               'Země obnoví zdroje na 365 dní, my je spotřebováváme 1,7× rychleji.',
-              '365 dní : 1,7 ≈ 215 dní',
+              '365 dní : 1,7 ≐ 215 dní',
               'Leden až červenec mají v nepřestupném roce 212 dní, takže 215. den je 3. srpna.',
             ], answer: 'Lidstvo vyčerpá roční „rozpočet“ planety zhruba na začátku srpna. Zbytek roku žije na dluh – z lesů, ryb a půdy, které se nestihnou obnovit.' },
             { type: 'p', text: 'Čísla jako 1,7 Země nebo 15× rychlejší vymírání zní hrozivě. Jak moc jim můžeme věřit a kde končí jistota vědy?' },

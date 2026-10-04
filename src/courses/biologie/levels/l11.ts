@@ -93,7 +93,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Pocení je nejúčinnější chlazení, jaké máme: voda při odpaření odebere kůži velké množství tepla. Kolik potu tedy musí tělo vyrobit? Spočítejme to pro běžce.' },
             { type: 'example', title: 'Kolik se běžec zapotí', problem: 'Běžec při závodě vyrábí o 700 W více tepla než v klidu. Všechno toto teplo má odvést pocení. Odpaření 1 kg potu odebere kůži asi 2 400 kJ. Kolik potu musí běžec za hodinu odpařit?', steps: [
               'Teplo za hodinu: watt je joule za sekundu, takže Q = P · t = 700 W · 3 600 s = 2 520 000 J = 2 520 kJ',
-              'Hmotnost potu: m = Q / 2 400 kJ/kg = 2 520 kJ / 2 400 kJ/kg ≈ 1,05 kg',
+              'Hmotnost potu: m = Q / 2 400 kJ/kg = 2 520 kJ / 2 400 kJ/kg ≐ 1,05 kg',
               '1 kg potu má objem přibližně 1 litr',
             ], answer: 'Asi 1 litr potu za hodinu. Proto musí běžec pít, jinak hrozí dehydratace a přehřátí.' },
             { type: 'p', text: 'Pot ale chladí, jen když se odpaří. V dusném vlhkém vzduchu stéká po kůži a teplo neodvádí – proto je horko s vysokou vlhkostí nebezpečnější než suché.' },
@@ -243,9 +243,9 @@ const level: LevelContent = {
             { type: 'formula', text: 'Q = SV · f', caption: 'Q … minutový srdeční výdej (l/min), SV … tepový objem, tedy krev vypuzená komorou při jednom stahu (ml), f … tepová frekvence (za minutu)' },
             { type: 'p', text: 'Vyzkoušej vztah na studentovi v klidu a při sprintu.' },
             { type: 'example', title: 'Srdce v klidu a při sprintu', problem: 'V klidu má student tepový objem 70 ml a tep 72 za minutu. Při sprintu stoupne tepový objem na 110 ml a tep na 180 za minutu. Kolik krve srdce přečerpá za minutu v obou případech?', steps: [
-              'Klid: Q = 70 ml · 72 /min = 5 040 ml/min ≈ 5,0 l/min',
-              'Sprint: Q = 110 ml · 180 /min = 19 800 ml/min ≈ 19,8 l/min',
-              'Poměr: 19,8 : 5,0 ≈ 4',
+              'Klid: Q = 70 ml · 72 /min = 5 040 ml/min ≐ 5,0 l/min',
+              'Sprint: Q = 110 ml · 180 /min = 19 800 ml/min = 19,8 l/min',
+              'Poměr: 19,8 : 5,0 ≐ 4',
             ], answer: 'Asi 5 l/min v klidu a 20 l/min při sprintu. Srdce zvýší výdej zhruba čtyřikrát, a to zvýšením tepu i tepového objemu.' },
             { type: 'callout', variant: 'fact', text: 'Vytrvalci mají větší komory a tepový objem v klidu kolem 100 ml. Stejných 5 l/min proto zvládnou s tepem kolem 50 za minutu.' },
             { type: 'p', text: 'Srdce tedy krev dodá. Aby ale protekla celým tělem až do kapilár, musí mít tlak – a ten umíme změřit.' },
@@ -260,7 +260,7 @@ const level: LevelContent = {
             { type: 'keyterms', items: [
               { term: '**Systolický tlak**', def: 'nejvyšší tlak v tepnách při stahu komor, u zdravého mladého člověka asi 120 mm Hg' },
               { term: '**Diastolický tlak**', def: 'nejnižší tlak v tepnách během ochabnutí komor, asi 80 mm Hg' },
-              { term: '**mm Hg**', def: 'milimetr rtuťového sloupce, tradiční jednotka tlaku v medicíně; 120 mm Hg ≈ 16 kPa' },
+              { term: '**mm Hg**', def: 'milimetr rtuťového sloupce, tradiční jednotka tlaku v medicíně; 120 mm Hg ≐ 16 kPa' },
             ] },
             { type: 'p', text: 'Tlakoměrem měříme tlak na paži, tedy ve velké tepně. Cestou k menším cévám se tlak ztrácí – nejvíc v tepénkách, které kladou největší odpor. Graf ukazuje tlak na cestě od levé komory zpět k srdci:' },
             { type: 'graph', x: { label: 'cesta krve od levé komory', min: 0, max: 6, step: 1 }, y: { label: 'p', unit: 'mm Hg', min: 0, max: 130, step: 20 }, series: [
@@ -446,7 +446,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Ledvina jako „vracečka“', problem: 'Ledviny filtrují 125 ml plazmy za minutu a člověk vyloučí za den 1,5 l moči. Kolik litrů filtrátu vznikne za den a kolik procent se ho vstřebá zpět?', steps: [
               'Filtrát za den: 125 ml/min · 60 min/h · 24 h = 180 000 ml = 180 l',
               'Vstřebá se zpět: 180 l − 1,5 l = 178,5 l',
-              'Podíl: 178,5 l / 180 l · 100 % ≈ 99,2 %',
+              'Podíl: 178,5 l / 180 l · 100 % ≐ 99,2 %',
             ], answer: 'Za den vznikne asi 180 l filtrátu a přes 99 % z něj se vrátí do krve. Celý objem krevní plazmy (asi 3 l) tak ledvinami projde zhruba šedesátkrát denně.' },
             { type: 'p', text: 'Glukózu vracejí přenašeče v proximálním kanálku a ty mají omezenou kapacitu. Když je glykémie vyšší než asi 10 mmol/l, přenašeče jsou plně obsazené a zbytek glukózy odtéká do moči. Proto se cukrovka dřív poznávala podle sladké moči – a proto diabetik hodně močí a má žízeň: glukóza v moči strhává s sebou vodu.' },
             { type: 'p', text: 'Ledvina tedy umí vodu vracet. Kolik jí vrátí, ale nerozhoduje sama – dostává pokyn z mozku.' },
@@ -507,7 +507,7 @@ const level: LevelContent = {
         { kind: 'choice', q: 'Proč pepsin pracuje v žaludku, a ne v dvanáctníku?', options: ['jeho optimum je v kyselém prostředí kolem pH 2', 'v dvanáctníku nejsou žádné bílkoviny', 'pepsin vyrábí jen žaludek a v dvanáctníku by se rozpustil', 'v dvanáctníku je příliš chladno'], answer: 0, explain: 'Pepsin má optimum při pH asi 2, které v žaludku udržuje kyselina chlorovodíková. V zásaditém dvanáctníku přebírá štěpení bílkovin trypsin.' },
         { kind: 'order', q: 'Seřaď cestu filtrátu nefronem.', items: ['Bowmanův váček', 'proximální kanálek', 'Henleova klička', 'distální kanálek', 'sběrný kanálek'], explain: 'Filtrát vzniká v Bowmanově váčku, pak projde kanálky a Henleovou kličkou a ze sběrného kanálku odtéká jako moč.' },
         { kind: 'multi', q: 'Co u zdravého člověka prochází v glomerulu do filtrátu?', options: ['voda', 'glukóza', 'močovina', 'červené krvinky', 'velké bílkoviny krevní plazmy'], answers: [0, 1, 2], explain: 'Filtrem projdou malé molekuly. Krvinky a velké bílkoviny zůstanou v krvi – jejich výskyt v moči je známkou nemoci ledvin.' },
-        { kind: 'number', q: 'Za den vznikne 180 l filtrátu a vyloučí se 2,4 l moči. Kolik procent filtrátu se vstřebá zpět?', answer: 98.67, tolerance: 0.1, unit: '%', explain: '(180 − 2,4) / 180 · 100 % = 177,6 / 180 · 100 % ≈ 98,7 %.' },
+        { kind: 'number', q: 'Za den vznikne 180 l filtrátu a vyloučí se 2,4 l moči. Kolik procent filtrátu se vstřebá zpět?', answer: 98.67, tolerance: 0.1, unit: '%', explain: '(180 − 2,4) / 180 · 100 % = 177,6 / 180 · 100 % ≐ 98,7 %.' },
         { kind: 'choice', q: 'Proč má člověk s neléčenou cukrovkou glukózu v moči?', options: ['přenašeče v proximálním kanálku nestihnou vrátit všechnu přefiltrovanou glukózu', 'glomerulus diabetika propouští glukózu, zdravý ne', 'játra posílají glukózu přímo do močového měchýře', 'chybí mu ADH'], answer: 0, explain: 'Glukóza se filtruje u každého. Nad asi 10 mmol/l je jí ale ve filtrátu víc, než přenašeče zvládnou vrátit, a zbytek odtéká do moči.' },
         { kind: 'tf', q: 'Alkohol tlumí uvolňování ADH, a proto se po něm víc močí.', answer: true, explain: 'Bez ADH jsou sběrné kanálky pro vodu málo propustné a odtéká více zředěné moči.' },
         { kind: 'match', q: 'Přiřaď živočicha k tomu, jak hospodaří s vodou a dusíkem.', pairs: [
@@ -1041,8 +1041,8 @@ const level: LevelContent = {
             { type: 'p', text: 'Voda v kapiláře zaujímá tenký válec, takže objem nasáté vody je průřez kapiláry krát posun bubliny. Spočítejme to pro jedno měření:' },
             { type: 'example', title: 'Potometr', problem: 'Bublina v kapiláře o poloměru 0,5 mm se za 5 minut posunula o 30 mm. Jaká je rychlost příjmu vody v mm^{3} za minutu?', steps: [
               'Voda zaujímá v kapiláře válec, proto V = π · r^{2} · l',
-              'V = 3,14 · (0,5 mm)^{2} · 30 mm = 3,14 · 0,25 mm^{2} · 30 mm ≈ 23,6 mm^{3}',
-              'Rychlost: 23,6 mm^{3} / 5 min ≈ 4,7 mm^{3}/min',
+              'V = 3,14 · (0,5 mm)^{2} · 30 mm = 3,14 · 0,25 mm^{2} · 30 mm ≐ 23,6 mm^{3}',
+              'Rychlost: 23,6 mm^{3} / 5 min ≐ 4,7 mm^{3}/min',
             ], answer: 'Asi 4,7 mm^{3} vody za minutu. Potometr měří příjem vody, ne přímo transpiraci – malá část vody zůstane v buňkách nebo se spotřebuje při fotosyntéze.' },
             { type: 'p', text: 'Jak se příjem a výdej vody mění během dne, ukazuje měření na stromu. Sleduj, která křivka vede a která ji s odstupem následuje:' },
             { type: 'graph', x: { label: 'čas', unit: 'h', min: 0, max: 24, step: 4 }, y: { label: 'tok vody', unit: 'g/h', min: 0, max: 60, step: 10 }, series: [
@@ -1155,7 +1155,7 @@ const level: LevelContent = {
           ['špenát', 'dlouhodenní rostlina'],
           ['rajče', 'neutrální rostlina'],
         ], explain: 'Chryzantéma kvete na podzim při dlouhých nocích, špenát v létě při krátkých, rajče kvete bez ohledu na délku dne.' },
-        { kind: 'number', q: 'Bublina v potometru s kapilárou o poloměru 0,5 mm se posunula o 24 mm za 4 minuty. Jaká je rychlost příjmu vody v mm^{3} za minutu? (π ≈ 3,14)', answer: 4.71, tolerance: 0.05, unit: 'mm³/min', explain: 'V = 3,14 · 0,25 mm² · 24 mm ≈ 18,84 mm³; 18,84 mm³ / 4 min ≈ 4,71 mm³/min.' },
+        { kind: 'number', q: 'Bublina v potometru s kapilárou o poloměru 0,5 mm se posunula o 24 mm za 4 minuty. Jaká je rychlost příjmu vody v mm^{3} za minutu? (π ≐ 3,14)', answer: 4.71, tolerance: 0.05, unit: 'mm³/min', explain: 'V = 3,14 · 0,25 mm² · 24 mm ≐ 18,84 mm³; 18,84 mm³ / 4 min ≐ 4,71 mm³/min.' },
         { kind: 'choice', q: 'Bramborová hlíza na jaře, kdy z ní raší nová nať, je pro floém…', options: ['zdroj', 'spotřebič', 'ani zdroj, ani spotřebič', 'součást xylému'], answer: 0, explain: 'Na jaře hlíza rozkládá škrob a posílá cukry do rostoucí nati, je tedy zdrojem. V létě byla spotřebičem.' },
         { kind: 'tf', q: 'Etylen je plynný hormon, který urychluje zrání plodů.', answer: true, explain: 'Etylen se šíří vzduchem, a proto jedno zralé jablko urychlí zrání ostatních plodů kolem.' },
       ],

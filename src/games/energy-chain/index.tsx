@@ -225,7 +225,7 @@ export default function EnergyChain({ levelId, onFinish }: GameProps) {
     const r = checkNumber(text, t)
     if (r.kind === 'invalid') return say('info', 'Napiš číslo, třeba 32,5. Čárka i tečka platí.')
     const s = (Date.now() - start) / 1000
-    if (r.kind === 'ok') return win(s, ` ${plain(t.symbol)} ≈ ${answerOf(t)}.`)
+    if (r.kind === 'ok') return win(s, ` ${plain(t.symbol)} ≐ ${answerOf(t)}.`)
     if (tries === 0) {
       setTries(1)
       const hint =

@@ -2,7 +2,7 @@ import { StepStrip } from "../../sequence/StepFigure";
 import { Arrow, Figure, Frame, Qty, Sym, Travel, pat, useFig } from "./kit";
 
 const LABEL =
-  "Světelné hodiny a dilatace času, srovnání dvou pohledů. Hodiny v klidu: foton létá svisle mezi dvěma zrcadly vzdálenými L, jeden tik trvá Δt₀ = 2L / c. Tytéž hodiny letí kolem pozorovatele rychlostí v: foton podle něj letí šikmo po delší dráze, ale stejnou rychlostí c. Polovina tiku tvoří pravoúhlý trojúhelník s přeponou c · Δt/2, odvěsnou L a odvěsnou v · Δt/2. Z Pythagorovy věty (c · Δt/2)² = L² + (v · Δt/2)² vyjde Δt = γ · Δt₀, kde Lorentzův faktor γ = 1 / √(1 − v²/c²). Na obrázku je v = 0,625 c, takže γ ≈ 1,28 a tik pohybujících se hodin trvá o 28 % déle.";
+  "Světelné hodiny a dilatace času, srovnání dvou pohledů. Hodiny v klidu: foton létá svisle mezi dvěma zrcadly vzdálenými L, jeden tik trvá Δt₀ = 2L / c. Tytéž hodiny letí kolem pozorovatele rychlostí v: foton podle něj letí šikmo po delší dráze, ale stejnou rychlostí c. Polovina tiku tvoří pravoúhlý trojúhelník s přeponou c · Δt/2, odvěsnou L a odvěsnou v · Δt/2. Z Pythagorovy věty (c · Δt/2)² = L² + (v · Δt/2)² vyjde Δt = γ · Δt₀, kde Lorentzův faktor γ = 1 / √(1 − v²/c²). Na obrázku je v = 0,625 c, takže γ ≐ 1,28 a tik pohybujících se hodin trvá o 28 % déle.";
 
 const W = 320;
 const H = 250;
@@ -164,7 +164,7 @@ export default function LightClock() {
         />
         <p className="fz4-strip-note">
           (c·Δt/2)² = L² + (v·Δt/2)² ⇒ Δt = γ · Δt₀, γ = 1 / √(1 − v²/c²); zde v
-          = 0,625 c, γ ≈ 1,28
+          = 0,625 c, γ ≐ 1,28
         </p>
       </div>
     </Figure>

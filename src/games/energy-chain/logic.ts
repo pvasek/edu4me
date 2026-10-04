@@ -164,8 +164,8 @@ function etaTask(rng: Rng, level: number, variant: 'w' | 'q2'): NumberTask {
     flow: { mode: 'engine', hot: 'palivo', cold: 'okolí', machine: 'motor', unit: u, q1, w, q2, unknown: variant === 'w' ? [] : ['w'] },
     explain:
       variant === 'w'
-        ? `η = W / Q_{1} = ${cz(w)} ${u} : ${cz(q1)} ${u} ≈ ${cz(eta, 1)} %.`
-        : `W = Q_{1} − Q_{2} = ${cz(q1)} − ${cz(q2)} = ${cz(w)} ${u}; η = W / Q_{1} ≈ ${cz(eta, 1)} %.`,
+        ? `η = W / Q_{1} = ${cz(w)} ${u} : ${cz(q1)} ${u} ≐ ${cz(eta, 1)} %.`
+        : `W = Q_{1} − Q_{2} = ${cz(q1)} − ${cz(q2)} = ${cz(w)} ${u}; η = W / Q_{1} ≐ ${cz(eta, 1)} %.`,
   }
 }
 
@@ -208,7 +208,7 @@ function carnotTask(rng: Rng, level: number): NumberTask {
     value: eta,
     tol: PCT_TOL,
     flow: { mode: 'engine', hot: `ohřívač ${cz(t1)} °C`, cold: `chladič ${cz(t2)} °C`, machine: 'stroj', unit: '', q1: 100, w: eta, q2: 100 - eta, unknown: ['w', 'q2'], relative: true },
-    explain: `Teploty v kelvinech: T_{1} = ${cz(T1)} K, T_{2} = ${cz(T2)} K; η_{max} = 1 − T_{2}/T_{1} ≈ ${cz(eta, 1)} %.`,
+    explain: `Teploty v kelvinech: T_{1} = ${cz(T1)} K, T_{2} = ${cz(T2)} K; η_{max} = 1 − T_{2}/T_{1} ≐ ${cz(eta, 1)} %.`,
   }
 }
 
@@ -247,8 +247,8 @@ function copTask(rng: Rng, level: number): NumberTask {
     },
     explain:
       sc.kind === 'fridge'
-        ? `ε = Q_{2} / W = ${cz(q2)} : ${cz(w)} ≈ ${cz(eps)}. Do kuchyně odchází Q_{1} = Q_{2} + W = ${cz(q1)} ${u}.`
-        : `Do domu jde Q_{1} = Q_{2} + W = ${cz(q2)} + ${cz(w)} = ${cz(q1)} ${u}; ε = Q_{1} / W ≈ ${cz(eps)}.`,
+        ? `ε = Q_{2} / W = ${cz(q2)} : ${cz(w)} ≐ ${cz(eps)}. Do kuchyně odchází Q_{1} = Q_{2} + W = ${cz(q1)} ${u}.`
+        : `Do domu jde Q_{1} = Q_{2} + W = ${cz(q2)} + ${cz(w)} = ${cz(q1)} ${u}; ε = Q_{1} / W ≐ ${cz(eps)}.`,
   }
 }
 

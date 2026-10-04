@@ -625,7 +625,7 @@ const level: LevelContent = {
             ], caption: 'Řecky *autos* = sám, *heteros* = jiný, *trofé* = výživa.' },
             { type: 'p', text: 'Pozor, tady se chybuje nejčastěji: rostlina si potravu **nebere z půdy**. Z půdy čerpá vodu a trochu minerálních látek, ale většina hmoty stromu vznikla z oxidu uhličitého ze vzduchu. První stopu k tomu našel už v 17. století pokus s vrbou:' },
             { type: 'example', title: 'Vrba Jana Baptisty van Helmonta', problem: 'Van Helmont zasadil vrbu o hmotnosti 2,3 kg do nádoby s 90 kg vysušené zeminy a pět let ji jen zaléval. Vrba pak vážila asi 77 kg, zeminy ubylo jen asi 0,06 kg. Odkud se vzala hmota vrby?', steps: [
-              'Vrba přibrala 77 kg − 2,3 kg ≈ 75 kg.',
+              'Vrba přibrala 77 kg − 2,3 kg ≐ 75 kg.',
               'Zemina ubyla jen o 0,06 kg, to je proti 75 kg zanedbatelné. Z půdy tedy hmota nepřišla.',
               'Van Helmont usoudil, že z vody. Dnes víme, že vedle vody dodal většinu hmoty oxid uhličitý ze vzduchu, který rostlina fotosyntézou zabudovala do cukru.',
             ], answer: 'Hmota vrby vznikla hlavně ze vzduchu a z vody, ne z půdy.' },

@@ -65,5 +65,5 @@ export function indicatorExplain(acid: AcidId, picked: IndicatorId): string {
   const third = Math.round(fractionAtPh(pKa, INDICATORS.methyloranz.to) * 100)
   if (picked === RIGHT_INDICATOR)
     return `Správně! V bodě ekvivalence je v baňce octan sodný a pH je asi 8,7. Fenolftalein mění barvu při pH 8,2–10,0, tedy právě ve skoku pH.`
-  return `Methyloranž mění barvu při pH 3,1–4,4. Kyselina octová (pK_{a} 4,76) by jí zežloutla už po asi ${third} % potřebného NaOH, dávno před bodem ekvivalence (pH ≈ 8,7). Titruješ proto s fenolftaleinem.`
+  return `Methyloranž mění barvu při pH 3,1–4,4. Kyselina octová (pK_{a} 4,76) by jí zežloutla už po asi ${third} % potřebného NaOH, dávno před bodem ekvivalence (pH ≐ 8,7). Titruješ proto s fenolftaleinem.`
 }

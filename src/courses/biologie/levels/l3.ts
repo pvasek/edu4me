@@ -943,7 +943,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Vzpomeň si na transpiraci z lekce „Kořen, stonek a list“: vzrostlý strom vypaří za horký den stovky litrů vody. K vypaření vody je potřeba teplo a strom ho bere z okolního vzduchu. Proto je v létě v aleji o několik stupňů chladněji než na rozpáleném betonu.' },
             { type: 'p', text: 'Jak velké chlazení to je? Porovnejme strom s klimatizací:' },
             { type: 'example', title: 'Strom jako klimatizace', problem: 'Vzrostlá lípa vypaří za horký den asi 400 litrů vody. Na vypaření 1 litru vody se spotřebuje asi 0,63 kWh tepla. Kolika klimatizacím s chladicím výkonem 2,5 kW, které běží 10 hodin, to odpovídá?', steps: [
-              'Teplo, které strom odebere vzduchu: 400 · 0,63 kWh ≈ 250 kWh.',
+              'Teplo, které strom odebere vzduchu: 400 · 0,63 kWh ≐ 250 kWh.',
               'Jedna klimatizace odvede za 10 hodin 2,5 kW · 10 h = 25 kWh.',
               'Počet klimatizací: 250 kWh : 25 kWh = 10.',
             ], answer: 'Jedna vzrostlá lípa chladí asi jako 10 klimatizací – a nepotřebuje elektřinu.' },

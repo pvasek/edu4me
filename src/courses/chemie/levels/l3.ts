@@ -1295,7 +1295,7 @@ const l37: Lesson = {
         {
           type: 'keyterms',
           items: [
-            { term: 'dipólový moment μ', def: 'míra polarity: součin částečného náboje a vzdálenosti nábojů, μ = q · d. Udává se v jednotkách debye (D), 1 D ≈ 3,34 · 10^{−30} C·m' },
+            { term: 'dipólový moment μ', def: 'míra polarity: součin částečného náboje a vzdálenosti nábojů, μ = q · d. Udává se v jednotkách debye (D), 1 D ≐ 3,34 · 10^{−30} C·m' },
             { term: 'nepolární molekula', def: 'molekula s dipólovým momentem 0: nepolární vazby, nebo souměrný tvar' },
           ],
         },

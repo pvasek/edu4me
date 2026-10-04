@@ -345,7 +345,7 @@ const level: LevelContent = {
           title: 'Teplo ze slunce: ektotermie',
           icon: 'sun',
           blocks: [
-            { type: 'p', text: 'Plazům se často říká „studenokrevní“. Ještěrka, která se hodinu vyhřívá na kameni, ale může mít tělo teplejší než ty. Přesnější je slovo **ektotermní**: teplo nevyrábějí, ale berou ho z okolí.' },
+            { type: 'p', text: 'Plazi patří mezi **živočichy s proměnlivou teplotou těla**, kterým se tradičně říká „studenokrevní“; ptáci a savci mají naopak **stálou teplotu těla** a říká se jim „teplokrevní“. Ještěrka, která se hodinu vyhřívá na kameni, ale může mít tělo teplejší než ty. Přesnější je proto slovo **ektotermní**: teplo nevyrábějí, ale berou ho z okolí. Ptáci a savci jsou **endotermní**, teplo si vyrábějí sami.' },
             { type: 'p', text: 'Rozdíl je nejlépe vidět, když teplotu okolí měníš sám/sama. Posouvej teplotu vzduchu a sleduj ještěrku a myš: graf ukazuje teplotu jejich těla, sloupce, kolik energie spálí:' },
             { type: 'experiment', id: 'body-temperature', caption: 'Ještěrka sedí ve stínu; na slunci se ohřeje víc než vzduch kolem. Spotřeba energie je v násobcích toho, co myš spálí v teple.' },
             { type: 'p', text: 'Všiml/a sis? Čára ještěrky stoupá šikmo s okolím, čára myši zůstává kolem 37 °C. Myš za to v chladu platí: spálí několikrát víc potravy. Ještěrka v chladu energii šetří – zato se skoro nehýbe.' },
@@ -539,7 +539,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Jak víme, kam ptáci letí? Ornitologové jim dávají na nohu lehký **kroužek** s číslem. Když se pták najde jinde, víme, kudy letěl. Z takových údajů se dá spočítat i rychlost tahu:' },
             { type: 'example', title: 'Jak rychle letí vlaštovka', problem: 'Vlaštovka okroužkovaná v Česku byla za 6 týdnů nalezena v jižní Africe, asi 10 000 km daleko. Kolik kilometrů průměrně uletěla za den?', steps: [
               'Převedeme týdny na dny, protože se ptáme na kilometry za den: 6 · 7 = 42 dní.',
-              'Vydělíme vzdálenost počtem dní: 10 000 km : 42 dní ≈ 238 km za den.',
+              'Vydělíme vzdálenost počtem dní: 10 000 km : 42 dní ≐ 238 km za den.',
             ], answer: 'Asi 240 km denně, a to včetně zastávek na odpočinek a krmení.' },
             { type: 'p', text: 'Při orientaci ptáci kombinují několik „přístrojů“: polohu Slunce ve dne, hvězdy v noci, **magnetické pole Země** a známé orientační body jako řeky a pobřeží. Mladí čápi najdou cestu i bez rodičů, směr tahu mají zčásti vrozený.' },
             { type: 'callout', variant: 'fact', text: 'Rekordmanem je **rybák dlouhoocasý**. Hnízdí v Arktidě a zimuje u Antarktidy, takže za rok nalétá kolem 70 000 km.' },
@@ -606,7 +606,7 @@ const level: LevelContent = {
           ['brkoslav severní', 'zimní host'],
         ], explain: 'Čáp odlétá do Afriky, sýkora zůstává celý rok a brkoslav k nám přilétá na zimu ze severu.' },
         { kind: 'multi', q: 'Podle čeho se ptáci orientují při tahu?', options: ['poloha Slunce', 'hvězdy', 'magnetické pole Země', 'zbarvení květin', 'výška stromů'], answers: [0, 1, 2], explain: 'Ptáci kombinují Slunce, hvězdy a magnetické pole, k tomu známé orientační body krajiny.' },
-        { kind: 'number', q: 'Rybák dlouhoocasý nalétá za rok asi 70 000 km. Kolik je to průměrně kilometrů za den (rok = 365 dní)? Zaokrouhli na celé kilometry.', answer: 192, tolerance: 1, unit: 'km', explain: '70 000 km : 365 dní ≈ 191,8 km, tedy asi 192 km každý den celý rok.' },
+        { kind: 'number', q: 'Rybák dlouhoocasý nalétá za rok asi 70 000 km. Kolik je to průměrně kilometrů za den (rok = 365 dní)? Zaokrouhli na celé kilometry.', answer: 192, tolerance: 1, unit: 'km', explain: '70 000 km : 365 dní ≐ 191,8 km, tedy asi 192 km každý den celý rok.' },
         { kind: 'choice', q: 'Které mládě je krmivé?', options: ['holé a slepé mládě sýkory v budce', 'kuře, které hned zobe zrní', 'kachně, které plave za matkou', 'koroptví kuře běžící v trávě'], answer: 0, explain: 'Krmivá mláďata se líhnou holá a slepá a rodiče je krmí v hnízdě. Kuře, kachně a koroptev jsou nekrmivá.' },
         { kind: 'tf', q: 'Archeopteryx měl zuby a drápy na křídlech, jaké dnešní ptáci nemají.', answer: true, explain: 'Archeopteryx kombinoval ptačí peří s plazími znaky: zuby, drápy na křídlech a dlouhý kostěný ocas.' },
         { kind: 'choice', q: 'Co je na krmítku pro ptáky v zimě nevhodné?', options: ['chleba a slané pečivo', 'slunečnice', 'lůj', 'směs semen'], answer: 0, explain: 'Pečivo bobtná v žaludku a sůl ptákům škodí. Slunečnice, semena a lůj jsou správná zimní potrava.' },
@@ -745,7 +745,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Znamená větší mozek chytřejší zvíře? Spočítejme, jakou část hmotnosti těla tvoří mozek u myši, člověka a slona:' },
             { type: 'example', title: 'Mozek a tělo', problem: 'Myš: mozek 0,4 g, tělo 20 g. Člověk: mozek 1 350 g, tělo 70 kg. Slon: mozek 5 kg, tělo 5 000 kg. Kolik procent hmotnosti těla tvoří mozek?', steps: [
               'Myš: 0,4 g : 20 g = 0,02 = 2 %.',
-              'Člověk: nejdřív převedeme 70 kg na 70 000 g, aby jednotky byly stejné; 1 350 g : 70 000 g ≈ 0,019 ≈ 1,9 %.',
+              'Člověk: nejdřív převedeme 70 kg na 70 000 g, aby jednotky byly stejné; 1 350 g : 70 000 g ≐ 0,019 = 1,9 %.',
               'Slon: 5 kg : 5 000 kg = 0,001 = 0,1 %.',
             ], answer: 'Myš 2 %, člověk asi 1,9 %, slon 0,1 %. Největší mozek má slon, poměrně největší myš.' },
             { type: 'p', text: 'Tady je chyták: ani velikost, ani poměr mozku k tělu samy o sobě inteligenci neurčují. Myš má poměrně stejně velký mozek jako ty. Rozhoduje hlavně to, kolik nervových buněk je v mozkové kůře a jak jsou propojené: člověk jich tam má víc než slon i šimpanz.' },

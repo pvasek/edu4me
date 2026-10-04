@@ -108,7 +108,7 @@ function Body() {
         <g>
           <rect className="f12-inset-plain" x={372} y={36} width={236} height={120} rx={6} />
           <text className="f12-t f12-t-strong" x={386} y={62}>
-            zbylé ≈ 1 %
+            zbylé ≐ 1 %
           </text>
           <motion.g variants={{ hidden: { scaleX: 0 }, show: { scaleX: 1, transition: { delay: 1.61, duration: 0.8 } } }} style={{ transformBox: 'fill-box', transformOrigin: '0% 50%' }}>
             <rect className="f12-air-ar-bar" x={386} y={76} width={196} height={26} />

@@ -245,7 +245,7 @@ export default function MicroscopeZoom() {
       readouts={
         <>
           <Readout label="zvětšení = okulár × objektiv" value={magText(step)} />
-          <Readout label="průměr zorného pole ≈" value={step.field} digits={0} unit="µm" />
+          <Readout label="průměr zorného pole ≐" value={step.field} digits={0} unit="µm" />
         </>
       }
       challenge="Najdi zvětšení, při kterém uvidíš jádro buňky."

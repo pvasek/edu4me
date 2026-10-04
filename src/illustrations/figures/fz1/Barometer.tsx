@@ -118,8 +118,8 @@ function Mountain({ w }: { w: number }) {
   const d = `M0 ${base} L${snez - 40} ${base - 10} L${snez} ${y(1603)} L${snez + 34} ${base - 16} L${ever - 70} ${base - 60} L${ever} ${y(8849)} L${ever + 30} ${y(6500)} L${w} ${base}Z`
   const rows: [number, string, string, number][] = [
     [0, '0 m', '1 013 hPa', 6],
-    [1603, 'Sněžka 1 603 m', '≈ 840 hPa', snez],
-    [8849, 'Everest 8 849 m', '≈ 330 hPa', ever],
+    [1603, 'Sněžka 1 603 m', '≐ 840 hPa', snez],
+    [8849, 'Everest 8 849 m', '≐ 330 hPa', ever],
   ]
   return (
     <g>

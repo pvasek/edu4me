@@ -1707,7 +1707,7 @@ const l4_4: Lesson = {
             'Dosadíme: $N$ = 2,5 mol · 6,022·10^{23} mol^{−1}',
             'Jednotky mol a mol^{−1} se vykrátí: $N$ = 15,055·10^{23}',
           ],
-          answer: '$N$ ≈ 1,51·10^{24} molekul $CO2$',
+          answer: '$N$ ≐ 1,51·10^{24} molekul $CO2$',
         },
         { type: 'p', text: 'A teď obráceně, z počtu atomů na moly:' },
         {
@@ -1897,7 +1897,7 @@ const l4_4: Lesson = {
             '$V = n · V_{m}$ = 0,2 mol · 22,4 dm^{3}/mol',
             '$V$ = 4,48 dm^{3}',
           ],
-          answer: '$V$ ≈ 4,48 dm^{3} (asi čtyři a půl litru)',
+          answer: '$V$ ≐ 4,48 dm^{3} (asi čtyři a půl litru)',
         },
         { type: 'p', text: 'A naopak: z objemu balonku zjistíš, kolik plyn váží.' },
         {
@@ -1928,10 +1928,10 @@ const l4_4: Lesson = {
               title: 'pokojové podmínky',
               icon: 'thermometer',
               tone: 'b',
-              points: ['20 °C (293,15 K) a 101,325 kPa', '$V_{m}$ ≈ 24 dm^{3}/mol', 'zadání „při pokojové teplotě“'],
+              points: ['20 °C (293,15 K) a 101,325 kPa', '$V_{m}$ ≐ 24 dm^{3}/mol', 'zadání „při pokojové teplotě“'],
             },
           ],
-          caption: 'Proč zrovna 24? Zahřátím z 273 K na 293 K se plyn roztáhne: 22,4 · 293 / 273 ≈ 24,0 dm^{3}/mol.',
+          caption: 'Proč zrovna 24? Zahřátím z 273 K na 293 K se plyn roztáhne: 22,4 · 293 / 273 ≐ 24,0 dm^{3}/mol.',
         },
         { type: 'p', text: 'Pokojovou hodnotu použiješ třeba u šumivé tablety ve sklenici:' },
         {
@@ -2037,7 +2037,7 @@ const l4_4: Lesson = {
             '$V$ = 2 mol · 8,314 J·K^{−1}·mol^{−1} · 298,15 K : 100 000 Pa',
             '$V$ = 0,0496 m^{3} = 49,6 dm^{3}',
           ],
-          answer: '$V$ ≈ 49,6 dm^{3}',
+          answer: '$V$ ≐ 49,6 dm^{3}',
         },
         { type: 'p', text: 'Teď příklad z kuchyně, kde musíš nejdřív z hmotnosti spočítat moly:' },
         {
@@ -2081,7 +2081,7 @@ const l4_4: Lesson = {
             answer: 124.7,
             tolerance: 1,
             unit: 'kPa',
-            explain: '$p = nRT / V$ = 0,5 · 8,314 · 300 : 0,010 m^{3} = 124 710 Pa ≈ 124,7 kPa.',
+            explain: '$p = nRT / V$ = 0,5 · 8,314 · 300 : 0,010 m^{3} = 124 710 Pa ≐ 124,7 kPa.',
           },
         },
       ],
@@ -2162,7 +2162,7 @@ const l4_4: Lesson = {
           problem: 'Cukr obsahuje 40,0 % C, 6,7 % H a 53,3 % O. Jeho molární hmotnost je 180 g/mol. Urči empirický i molekulový vzorec. ($A_{r}$: H 1, C 12, O 16)',
           steps: [
             'Ve 100 g: $n(C)$ = 40,0 : 12 = 3,33 mol; $n(H)$ = 6,7 : 1 = 6,7 mol; $n(O)$ = 53,3 : 16 = 3,33 mol',
-            'Vydělíme nejmenším (3,33): C 1, H 2,01 ≈ 2, O 1, empirický vzorec $CH2O$',
+            'Vydělíme nejmenším (3,33): C 1, H 2,01 ≐ 2, O 1, empirický vzorec $CH2O$',
             '$M(CH2O)$ = 12 + 2 + 16 = 30 g/mol',
             'Kolikrát se vejde do 180? 180 : 30 = 6, proto vše násobíme šesti.',
           ],
@@ -2260,7 +2260,7 @@ const l4_4: Lesson = {
       q: 'Jaký objem zaujme 0,5 mol $CO2$ při pokojové teplotě 20 °C a normálním tlaku?',
       options: ['12 dm^{3}', '11,2 dm^{3}', '24 dm^{3}', '22 dm^{3}'],
       answer: 0,
-      explain: 'Při 20 °C je $V_{m}$ ≈ 24 dm^{3}/mol: $V$ = 0,5 · 24 = 12 dm^{3}. Hodnota 11,2 dm^{3} by platila při 0 °C. Druh plynu nehraje roli.',
+      explain: 'Při 20 °C je $V_{m}$ ≐ 24 dm^{3}/mol: $V$ = 0,5 · 24 = 12 dm^{3}. Hodnota 11,2 dm^{3} by platila při 0 °C. Druh plynu nehraje roli.',
     },
     {
       kind: 'number',
@@ -2343,7 +2343,7 @@ const l4_5: Lesson = {
             '$n$ = 10 g : 342 g/mol = 0,0292 mol',
             '$c$ = 0,0292 mol : 0,250 dm^{3} = 0,117 mol/dm^{3}',
           ],
-          answer: '$c$ ≈ 0,12 mol/dm^{3}',
+          answer: '$c$ ≐ 0,12 mol/dm^{3}',
         },
         {
           type: 'callout',
@@ -2404,7 +2404,7 @@ const l4_5: Lesson = {
             'To je asi sedm kostek cukru po 5 g.',
             '$c = γ / M$ = 106 g/dm^{3} : 342 g/mol = 0,31 mol/dm^{3}',
           ],
-          answer: 'V plechovce je asi 35 g cukru; $c$ ≈ 0,31 mol/dm^{3}.',
+          answer: 'V plechovce je asi 35 g cukru; $c$ ≐ 0,31 mol/dm^{3}.',
         },
         { type: 'p', text: 'Hmotnostní koncentrace se hodí i ke kontrole limitů, třeba u vody ze studny:' },
         {
@@ -2416,7 +2416,7 @@ const l4_5: Lesson = {
             '60 mg/dm^{3} > 50 mg/dm^{3}: limit je překročen.',
             '$c = γ / M$ = 0,060 g/dm^{3} : 62 g/mol = 9,7·10^{−4} mol/dm^{3}',
           ],
-          answer: '$γ$ = 60 mg/dm^{3}, voda limit překračuje (a nesmí se z ní připravovat kojenecká strava); $c$ ≈ 0,97 mmol/dm^{3}.',
+          answer: '$γ$ = 60 mg/dm^{3}, voda limit překračuje (a nesmí se z ní připravovat kojenecká strava); $c$ ≐ 0,97 mmol/dm^{3}.',
         },
         { type: 'p', text: 'Pozor, tady se snadno spletou dvě veličiny se stejnou jednotkou g/dm^{3}:' },
         {
@@ -2579,7 +2579,7 @@ const l4_5: Lesson = {
             '$n$ = 9 g : 58,5 g/mol = 0,154 mol',
             'Je to v 1 dm^{3}, proto $c$ = 0,154 mol/dm^{3}.',
           ],
-          answer: '$c$ ≈ 0,154 mol/dm^{3}',
+          answer: '$c$ ≐ 0,154 mol/dm^{3}',
         },
         { type: 'p', text: 'U koncentrované kyseliny už hustota od vody znatelně odbíhá, a tak dosadíme rovnou do vzorce:' },
         {
@@ -2592,7 +2592,7 @@ const l4_5: Lesson = {
             '$c = w · ρ / M$ = 0,36 · 1180 g/dm^{3} : 36,5 g/mol',
             '$c$ = 11,6 mol/dm^{3}',
           ],
-          answer: '$c$ ≈ 11,6 mol/dm^{3}, v praxi se říká „asi dvanáctimolární“.',
+          answer: '$c$ ≐ 11,6 mol/dm^{3}, v praxi se říká „asi dvanáctimolární“.',
         },
         { type: 'p', text: 'Vzorec jde použít i obráceně, z koncentrace zpátky na procenta:' },
         {
@@ -2604,7 +2604,7 @@ const l4_5: Lesson = {
             '$w$ = 2,0 mol/dm^{3} · 58,5 g/mol : 1080 g/dm^{3}',
             '$w$ = 117 : 1080 = 0,108',
           ],
-          answer: '$w$ ≈ 10,8 %',
+          answer: '$w$ ≐ 10,8 %',
         },
         {
           type: 'callout',
@@ -3051,7 +3051,7 @@ const l4_6: Lesson = {
             '$T$ = 298,15 K; $p$ = 101 300 Pa',
             '$V = nRT / p$ = 1,50 · 8,314 · 298,15 : 101 300 = 0,0367 m^{3}',
           ],
-          answer: '$V$ ≈ 36,7 dm^{3}, a to za pouhých 30 milisekund.',
+          answer: '$V$ ≐ 36,7 dm^{3}, a to za pouhých 30 milisekund.',
         },
         { type: 'p', text: 'A co když jsou plynné i reaktanty? Vezmi si hoření propanu:' },
         {
@@ -3596,7 +3596,7 @@ const boss: Question[] = [
     answer: 1.92,
     tolerance: 0.03,
     unit: 'kg',
-    explain: '$n = pV / RT$ = 15 000 000 Pa · 0,010 m^{3} : (8,314 · 300) = 60,1 mol; $m$ = 60,1 · 32 g/mol = 1924 g ≈ 1,92 kg.',
+    explain: '$n = pV / RT$ = 15 000 000 Pa · 0,010 m^{3} : (8,314 · 300) = 60,1 mol; $m$ = 60,1 · 32 g/mol = 1924 g ≐ 1,92 kg.',
   },
   {
     kind: 'text',

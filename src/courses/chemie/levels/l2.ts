@@ -217,8 +217,8 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Dalton si atom představoval jako nedělitelnou kuličku. Dnes víme, že uprostřed je nepatrné **atomové jádro** a kolem něj **elektronový obal**. Obojí tvoří jen tři druhy částic:' },
             { type: 'compare', columns: [
-              { title: '**Proton** $p^+$', icon: 'ion-plus', tone: 'a', points: ['v jádře', 'kladný náboj', 'relativní hmotnost ≈ 1'] },
-              { title: '**Neutron** $n^0$', icon: 'nucleus', tone: 'b', points: ['v jádře', 'bez náboje', 'relativní hmotnost ≈ 1, o chlup víc než proton'] },
+              { title: '**Proton** $p^+$', icon: 'ion-plus', tone: 'a', points: ['v jádře', 'kladný náboj', 'relativní hmotnost ≐ 1'] },
+              { title: '**Neutron** $n^0$', icon: 'nucleus', tone: 'b', points: ['v jádře', 'bez náboje', 'relativní hmotnost ≐ 1, o chlup víc než proton'] },
               { title: '**Elektron** $e^-$', icon: 'electron', tone: 'c', points: ['v elektronovém obalu', 'záporný náboj', 'asi 1836krát lehčí než proton'] },
             ] },
             { type: 'p', text: 'Abychom s těmito částicemi mohli počítat, potřebujeme i přesná čísla. Všimni si hlavně hmotností: proton a neutron váží skoro stejně, elektron téměř nic.' },

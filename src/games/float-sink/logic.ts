@@ -166,7 +166,7 @@ function mvTask(liquids: readonly string[], rng: Rng, level: number): PredictTas
       liquid: l,
       body: { ...look(m, rb), label: 'neznámé těleso' },
       outcome: want,
-      explain: `ρ = m/V = ${cz(mass, 1)} g : ${V} cm^{3} ≈ ${cz(rb / 1000, 3)} g/cm^{3} = ${rho(Math.round(rb))} (${m.name}). ${compareLine(Math.round(rb), l.rho)}`,
+      explain: `ρ = m/V = ${cz(mass, 1)} g : ${V} cm^{3} ≐ ${cz(rb / 1000, 3)} g/cm^{3} = ${rho(Math.round(rb))} (${m.name}). ${compareLine(Math.round(rb), l.rho)}`,
     }
   }
 }
@@ -240,7 +240,7 @@ function fractionTask(liquids: readonly string[], rng: Rng, level: number): Numb
       liquid: l,
       body: look(m),
       outcome: 'plave',
-      explain: `Plovoucí těleso se ponoří tak, aby F_{vz} = F_{G}, takže V_{pon} : V = ρ_{t} : ρ_{k} = ${cz(m.rho)} : ${cz(l.rho)} ≈ ${cz(pct, 1)} %.`,
+      explain: `Plovoucí těleso se ponoří tak, aby F_{vz} = F_{G}, takže V_{pon} : V = ρ_{t} : ρ_{k} = ${cz(m.rho)} : ${cz(l.rho)} ≐ ${cz(pct, 1)} %.`,
     }
   }
 }

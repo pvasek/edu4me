@@ -59,13 +59,13 @@ const level: LevelContent = {
           icon: 'speed',
           blocks: [
             { type: 'p', text: 'Rozsvítíš a pokoj je hned světlý, jako by světlo nepotřebovalo vůbec žádný čas. Ve skutečnosti je jen neuvěřitelně rychlé. Ve vakuu urazí za jednu sekundu asi **300 000 km**, tedy sedmapůlkrát kolem celé Země. Rychlost světla ve vakuu značíme **c**.' },
-            { type: 'formula', text: 'c ≈ 300 000 km/s = 3 · 10^{8} m/s', caption: 'rychlost světla ve vakuu (přesně 299 792 458 m/s); ve vzduchu je skoro stejná, ve vodě a skle menší' },
+            { type: 'formula', text: 'c ≐ 300 000 km/s = 3 · 10^{8} m/s', caption: 'rychlost světla ve vakuu (přesně 299 792 458 m/s); ve vzduchu je skoro stejná, ve vodě a skle menší' },
             { type: 'p', text: 'Když znáš rychlost, spočítáš čas stejně jako u auta: **t = s / c**. Na Zemi jsou vzdálenosti tak malé, že světlo dorazí prakticky okamžitě. Ve vesmíru už je to jinak.' },
             { type: 'example', title: 'Jak staré je sluneční světlo', problem: 'Slunce je od Země vzdálené asi 150 000 000 km. Za jak dlouho k nám doletí jeho světlo?', steps: [
               's = 150 000 000 km, c = 300 000 km/s',
               't = s / c = 150 000 000 km / 300 000 km/s = 500 s',
               'Pro představu převedeme na minuty: 500 s = 8 · 60 s + 20 s = 8 min 20 s',
-            ], answer: 't ≈ 500 s, tedy asi 8 minut a 20 sekund' },
+            ], answer: 't ≐ 500 s, tedy asi 8 minut a 20 sekund' },
             { type: 'p', text: 'Stejně spočítáš, jak dlouho k nám letí světlo z dalších těles. Všimni si, jak se ze sekund stanou hodiny a nakonec roky:' },
             { type: 'iconlist', items: [
               { icon: 'orbit', title: 'Měsíc', text: '384 000 km, světlo letí asi 1,3 s' },
@@ -151,7 +151,7 @@ const level: LevelContent = {
       summary: [
         'Zdroje světla světlo samy vydávají (teplotní i luminiscenční), ostatní tělesa vidíme, protože světlo odrážejí.',
         'Ve stejnorodém prostředí se světlo šíří přímočaře, znázorňujeme ho paprsky.',
-        'Rychlost světla ve vakuu je c ≈ 300 000 km/s; světlo od Slunce k nám letí asi 8 minut 20 sekund.',
+        'Rychlost světla ve vakuu je c ≐ 300 000 km/s; světlo od Slunce k nám letí asi 8 minut 20 sekund.',
         'Světelný rok je vzdálenost, kterou světlo urazí za rok, asi 9,5 bilionu km.',
         'Za neprůhledným tělesem vzniká stín; plošný zdroj vytváří kolem plného stínu i polostín.',
         'Zatmění Slunce nastává při novu, zatmění Měsíce při úplňku; fáze Měsíce vznikají tím, jakou část jeho osvětlené poloviny vidíme.',
@@ -352,10 +352,10 @@ const level: LevelContent = {
           icon: 'calculator',
           blocks: [
             { type: 'p', text: 'Jak moc látka světlo zpomalí, udává **index lomu n**. Je to poměr rychlosti světla ve vakuu a rychlosti světla v dané látce, tedy kolikrát je světlo v látce pomalejší. Je to číslo bez jednotky, vždy aspoň 1, protože rychleji než ve vakuu světlo nejde.' },
-            { type: 'formula', text: 'n = c / v', caption: 'n index lomu (bez jednotky), c ≈ 300 000 km/s rychlost světla ve vakuu, v rychlost světla v látce' },
+            { type: 'formula', text: 'n = c / v', caption: 'n index lomu (bez jednotky), c ≐ 300 000 km/s rychlost světla ve vakuu, v rychlost světla v látce' },
             { type: 'p', text: 'Jaká čísla tu běžně vycházejí? Tady jsou indexy lomu několika průhledných látek, od vzduchu po diamant:' },
             { type: 'iconlist', items: [
-              { icon: 'wind', title: 'Vzduch', text: 'n ≈ 1,0003, prakticky jako vakuum' },
+              { icon: 'wind', title: 'Vzduch', text: 'n ≐ 1,0003, prakticky jako vakuum' },
               { icon: 'drop', title: 'Voda', text: 'n = 1,33' },
               { icon: 'glass', title: 'Sklo', text: 'n ≈ 1,5 (podle druhu 1,45–1,9)' },
               { icon: 'diamond', title: 'Diamant', text: 'n = 2,42, světlo v něm jde skoro 2,5krát pomaleji' },

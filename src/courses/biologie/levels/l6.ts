@@ -488,7 +488,7 @@ const level: LevelContent = {
               { icon: 'leaf', title: 'Vláknina', text: 'nestravitelná, a přesto pomáhá střevům' },
               { icon: 'water-tap', title: 'Voda', text: 'tvoří asi 60 % těla' },
             ] },
-            { type: 'p', text: 'Energii v potravinách měříme v **kilojoulech** (kJ); starší jednotkou jsou kilokalorie (1 kcal ≈ 4,2 kJ). Gram každé živiny ale dá jiné množství energie:' },
+            { type: 'p', text: 'Energii v potravinách měříme v **kilojoulech** (kJ); starší jednotkou jsou kilokalorie (1 kcal ≐ 4,2 kJ). Gram každé živiny ale dá jiné množství energie:' },
             { type: 'table', headers: ['živina', 'energie v 1 g'], rows: [
               ['sacharidy', '17 kJ'],
               ['bílkoviny', '17 kJ'],
@@ -679,8 +679,8 @@ const level: LevelContent = {
             { type: 'p', text: 'Proč nejdřív propustit skoro všechno a pak to pracně vracet? Ledvina tak nemusí „znát“ každý jed zvlášť: co si tělo aktivně nevezme zpět, odejde. O kolik vody jde, ukáže výpočet:' },
             { type: 'example', title: 'Kolik vody se vrátí', problem: 'Ledviny vytvoří za den 180 l primární moči, ven odejde 1,5 l. Kolik procent vody se vrátí zpět do krve?', steps: [
               'Vrátí se 180 l − 1,5 l = 178,5 l.',
-              'Podíl: 178,5 l : 180 l ≈ 0,992',
-              'Na procenta: 0,992 · 100 % ≈ 99,2 %',
+              'Podíl: 178,5 l : 180 l ≐ 0,992',
+              'Na procenta: 0,992 · 100 % = 99,2 %',
             ], answer: 'Zpět do krve se vrátí asi 99 % vody.' },
             { type: 'p', text: 'Když ledviny selžou, odpad se v krvi hromadí. Pak pomůže **dialýza** – přístroj, který krev čistí místo ledvin, obvykle třikrát týdně po několik hodin – nebo transplantace ledviny od dárce.' },
             { type: 'p', text: 'Ledviny tedy nevyhazují jen odpad, ale i vodu – a přesně tolik, kolik je potřeba. Jak tělo hlídá, kolik to je?' },

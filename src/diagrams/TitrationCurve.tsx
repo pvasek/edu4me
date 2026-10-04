@@ -123,7 +123,7 @@ export default function TitrationCurve({ props }: DiagramProps) {
           bod ekvivalence
         </text>
         <text className="dg-t dg-small dg-strong" x={X(vEq) + 12} y={Y(phEq) + 39}>
-          {fmt(vEq, 0)} cm³, pH {weak ? '≈' : '='} {fmt(phEq)}
+          {fmt(vEq, 0)} cm³, pH {weak ? '≐' : '='} {fmt(phEq)}
         </text>
 
         {/* readout */}

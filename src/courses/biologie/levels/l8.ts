@@ -1137,7 +1137,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Roční přírůstek $CO2$', problem: 'V roce 1960 bylo ve vzduchu 317 ppm $CO2$, v roce 2025 asi 427 ppm. O kolik ppm přibývalo v průměru za rok?', steps: [
               'Přírůstek celkem: 427 ppm − 317 ppm = 110 ppm',
               'Počet let: 2025 − 1960 = 65 let',
-              'Průměr na rok: 110 ppm : 65 let ≈ 1,7 ppm za rok',
+              'Průměr na rok: 110 ppm : 65 let ≐ 1,7 ppm za rok',
             ], answer: 'V průměru asi 1,7 ppm ročně; v posledních letech už přes 2 ppm ročně.' },
             { type: 'p', text: 'Země se od průmyslové revoluce oteplila o víc než 1,2 °C, Česko ještě víc. Na živé přírodě je to už vidět:' },
             { type: 'iconlist', items: [

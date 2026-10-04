@@ -832,7 +832,7 @@ const level: LevelContent = {
             { type: 'example', title: 'Kolik lidí musí být chráněno proti spalničkám', problem: 'Jeden nemocný se spalničkami by v populaci bez ochrany nakazil asi 15 lidí (R_{0} ≈ 15). Kolik procent lidí musí být chráněno, aby se nákaza nešířila dál?', steps: [
               'Aby se nákaza zastavila, smí každý nemocný nakazit v průměru nejvýš 1 dalšího člověka.',
               'Z 15 lidí, které potká a mohl by nakazit, tedy smí být nechráněný jen 1, chráněných musí být 14.',
-              '14 : 15 ≈ 0,93, tedy 93 %. Žádná vakcína nechrání úplně každého, proto se doporučuje rezerva.',
+              '14 : 15 ≐ 0,93, tedy 93 %. Žádná vakcína nechrání úplně každého, proto se doporučuje rezerva.',
             ], answer: 'Chráněno musí být asi 93 %, prakticky se proti spalničkám doporučuje proočkovanost aspoň 95 %.' },
             { type: 'callout', variant: 'fact', text: 'Když proočkovanost klesne nebo ochrana po očkování časem zeslábne, nemoci se vracejí. V roce 2024 se v Česku rozšířil černý kašel nejvíc za několik desítek let.' },
             { type: 'p', text: 'Očkování brání virům i bakteriím. Proti bakteriím, které už v těle jsou, máme ještě antibiotika – jenže ta přestávají fungovat.' },

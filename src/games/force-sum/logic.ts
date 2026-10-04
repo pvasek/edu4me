@@ -421,11 +421,11 @@ export function explain(t: Task): string {
   const u = t.unit
   if (t.kind === 'component') {
     const fn = t.axis === 'x' ? 'cos' : 'sin'
-    return `F_{${t.axis}} = F · ${fn} α = ${cz(t.force.mag)} ${u} · ${fn} ${t.force.angle}° ≈ ${fmt(t.answer)} ${u}.`
+    return `F_{${t.axis}} = F · ${fn} α = ${cz(t.force.mag)} ${u} · ${fn} ${t.force.angle}° ≐ ${fmt(t.answer)} ${u}.`
   }
   if (t.kind === 'incline') {
     const fn = t.part === 'par' ? 'sin' : 'cos'
-    return `F_{G} = m · g = ${cz(t.mass)} kg · 9,81 N/kg ≈ ${fmt(t.weight)} ${u}; F_{${t.part === 'par' ? 1 : 2}} = F_{G} · ${fn} ${t.alpha}° ≈ ${fmt(t.answer)} ${u}.`
+    return `F_{G} = m · g = ${cz(t.mass)} kg · 9,81 N/kg ≐ ${fmt(t.weight)} ${u}; F_{${t.part === 'par' ? 1 : 2}} = F_{G} · ${fn} ${t.alpha}° ≐ ${fmt(t.answer)} ${u}.`
   }
   if (t.level === 2) {
     const notes = weightNotes(t.forces)
@@ -449,8 +449,8 @@ export function explain(t: Task): string {
   const comps = `F_{x} = ${fmt(s.x)} ${u}, F_{y} = ${fmt(s.y)} ${u}`
   const r = toPolar(s)
   if (t.kind === 'resultant')
-    return `Sečti složky: ${comps} → F = √(F_{x}^{2} + F_{y}^{2}) ≈ ${fmt(r.mag)} ${u}, úhel ≈ ${cz(r.angle, 0)}°.`
-  return `${comps}, výslednice ≈ ${fmt(r.mag)} ${u} pod úhlem ${cz(r.angle, 0)}°. F je stejně velká a opačná: ${fmt(t.answer.mag)} ${u}, ${cz(t.answer.angle, 0)}°.`
+    return `Sečti složky: ${comps} → F = √(F_{x}^{2} + F_{y}^{2}) ≐ ${fmt(r.mag)} ${u}, úhel ≐ ${cz(r.angle, 0)}°.`
+  return `${comps}, výslednice ≐ ${fmt(r.mag)} ${u} pod úhlem ${cz(r.angle, 0)}°. F je stejně velká a opačná: ${fmt(t.answer.mag)} ${u}, ${cz(t.answer.angle, 0)}°.`
 }
 
 /** Hint after a first wrong try. */

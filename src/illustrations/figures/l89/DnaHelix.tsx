@@ -236,7 +236,7 @@ function Scene() {
           páry uvnitř
         </text>
         <text className="f89-f f89-sm f89-muted" x={cx} y={yEnd + 30} textAnchor="middle">
-          1 otáčka ≈ 10 párů bází
+          1 otáčka ≐ 10 párů bází
         </text>
       </Fade>
       <Fade delay={0.4}>

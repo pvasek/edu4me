@@ -126,7 +126,7 @@ export default function FloatSink({ levelId, onFinish }: GameProps) {
       award(tries === 0 ? 100 + timeBonus(s, BONUS_MAX, BONUS_FULL, BONUS_ZERO) : 50)
       setFrozen(s)
       setStatus('won')
-      say('good', `Správně! ${t.symbol} ≈ ${cz(t.value, 2)} ${t.unit}.`)
+      say('good', `Správně! ${t.symbol} ≐ ${cz(t.value, 2)} ${t.unit}.`)
       jolt.pop()
       return
     }

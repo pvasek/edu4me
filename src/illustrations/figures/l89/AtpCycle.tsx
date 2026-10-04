@@ -191,7 +191,7 @@ function Scene() {
 
       {/* energy out: work */}
       <Fade delay={0.65}>
-        <Box {...L.out} tone="out" title={n ? 'energie se uvolní ≈ 30 kJ/mol' : 'energie se uvolní'} lines={n ? ['svaly · transport · syntéza látek', '→ práce buňky'] : ['≈ 30 kJ na 1 mol ATP', '• svaly – stah vláken', '• aktivní transport přes membránu', '• syntéza bílkovin a DNA']} />
+        <Box {...L.out} tone="out" title={n ? 'energie se uvolní ≐ 30 kJ/mol' : 'energie se uvolní'} lines={n ? ['svaly · transport · syntéza látek', '→ práce buňky'] : ['≐ 30 kJ na 1 mol ATP', '• svaly – stah vláken', '• aktivní transport přes membránu', '• syntéza bílkovin a DNA']} />
       </Fade>
       <Draw d={L.outPath} className="f89-lvstroke" delay={0.7} dur={0.6} style={{ strokeWidth: 2.6 }} />
       <Fade delay={1.25} dur={0.2}>

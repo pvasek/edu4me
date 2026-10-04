@@ -505,7 +505,7 @@ const l72: Lesson = {
           type: 'table',
           headers: ['halogenovodík', 'délka vazby H−X', 'energie vazby H−X', 'kyselina ve vodě'],
           rows: [
-            ['$HF$', '92 pm', '568 kJ/mol', 'slabá ($pK_{a}$ ≈ 3,2)'],
+            ['$HF$', '92 pm', '568 kJ/mol', 'slabá ($pK_{a}$ ≐ 3,2)'],
             ['$HCl$', '127 pm', '432 kJ/mol', 'silná'],
             ['$HBr$', '141 pm', '366 kJ/mol', 'silnější'],
             ['$HI$', '161 pm', '298 kJ/mol', 'nejsilnější'],

@@ -101,7 +101,7 @@ const level: LevelContent = {
           blocks: [
             { type: 'p', text: 'Voda má tíhu. Každá vrstva tlačí na vrstvy pod sebou, a proto tlak v kapalině s hloubkou roste. Tlak způsobený tíhou kapaliny se jmenuje **hydrostatický tlak**.' },
             { type: 'p', text: 'Jak velký ten tlak je? Představ si sloupec vody nad každým čtverečním metrem dna: čím je vyšší a čím je kapalina hustší, tím větší je jeho tíha. Proto ve vzorci najdeš hloubku i hustotu:' },
-            { type: 'formula', text: 'p = h · ρ · g', caption: 'h – hloubka pod hladinou (m), ρ – hustota kapaliny (kg/m³), g ≈ 10 N/kg; tlak vyjde v pascalech' },
+            { type: 'formula', text: 'p = h · ρ · g', caption: 'h – hloubka pod hladinou (m), ρ – hustota kapaliny (kg/m³), g ≐ 10 N/kg; tlak vyjde v pascalech' },
             { type: 'p', text: 'Že tlak opravdu roste s hloubkou, uvidíš na nádobě s dírkami nad sebou. Sleduj, jak daleko stříká voda z každé z nich:' },
             { type: 'diagram', id: 'hydrostatic-pressure', caption: 'Z nejnižší dírky stříká voda nejdál, protože tam je tlak největší. Proto je i hráz přehrady dole nejsilnější.' },
             { type: 'p', text: 'Tlak je přímo úměrný hloubce: dvakrát hlouběji znamená dvakrát větší tlak. V grafu je to proto přímka:' },
@@ -226,7 +226,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Ověřit to můžeš v přelivné nádobě: vodu, kterou těleso vytlačí, zachytíš do kádinky a změříš její tíhu.' },
             { type: 'diagram', id: 'archimedes-principle', caption: 'Těleso ponořené do přelivné nádoby vytlačí vodu. Tíha vytlačené vody je přesně rovna vztlakové síle.' },
             { type: 'p', text: 'Tíhu vytlačené kapaliny spočítáme z jejího objemu a hustoty: hmotnost je m = V · ρ_{k} a tíha m · g. Dohromady dostaneme vzorec pro vztlakovou sílu:' },
-            { type: 'formula', text: 'F_{vz} = V · ρ_{k} · g', caption: 'V – objem ponořené části tělesa (m³), ρ_{k} – hustota kapaliny (kg/m³), g ≈ 10 N/kg' },
+            { type: 'formula', text: 'F_{vz} = V · ρ_{k} · g', caption: 'V – objem ponořené části tělesa (m³), ρ_{k} – hustota kapaliny (kg/m³), g ≐ 10 N/kg' },
             { type: 'p', text: 'Vyzkoušej vzorec na kameni z prvního oddílu. Vyjdou stejné 2 N, jaké ukázal siloměr?' },
             { type: 'example', title: 'Kámen ve vodě', problem: 'Kámen má objem 200 cm³. Jak velká vztlaková síla na něj působí po úplném ponoření do vody (ρ = 1 000 kg/m³)?', steps: [
               'Převod: 200 cm³ = 0,000 2 m³ (hustota je v kg/m³, proto i objem musí být v m³).',
@@ -380,7 +380,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Hydrostatický tlak už znáš z vody. Vzduch je taky tekutina, jen mnohem řidší, a funguje podobně. Země je obalená vrstvou vzduchu, **atmosférou**, vysokou stovky kilometrů. Vzduch je lehký, ale ne bez hmotnosti: 1 m³ vzduchu u země má asi 1,3 kg. Celý sloupec vzduchu nad tebou tlačí na všechno pod sebou. Tomu tlaku se říká **atmosférický tlak** p_{a}.' },
             { type: 'keyterms', items: [ { term: '**atmosféra**', def: 'plynný obal Země' }, { term: '**atmosférický tlak** p_{a}', def: 'tlak způsobený tíhou vzduchu nad námi' }, { term: '**hektopascal** (hPa)', def: '100 Pa; jednotka z předpovědí počasí' } ] },
             { type: 'p', text: 'Tlak vzduchu se během dne i s počasím trochu mění. Pro výpočty se proto používá dohodnutá hodnota, normální atmosférický tlak:' },
-            { type: 'formula', text: 'p_{n} = 101 325 Pa ≈ 100 kPa', caption: 'normální atmosférický tlak u hladiny moře; v předpovědi počasí se udává v hektopascalech: 1 013 hPa (1 hPa = 100 Pa)' },
+            { type: 'formula', text: 'p_{n} = 101 325 Pa ≐ 100 kPa', caption: 'normální atmosférický tlak u hladiny moře; v předpovědi počasí se udává v hektopascalech: 1 013 hPa (1 hPa = 100 Pa)' },
             { type: 'p', text: 'Sto kilopascalů zní nevinně. Spočítej si ale, jakou silou to tlačí na obyčejný stůl:' },
             { type: 'example', title: 'Jak silně tlačí vzduch na stůl', problem: 'Deska stolu má rozměry 1,2 m × 0,8 m. Jak velkou silou na ni shora tlačí vzduch (p_{a} = 100 kPa)?', steps: [
               'S = 1,2 m · 0,8 m = 0,96 m²',
@@ -610,7 +610,7 @@ const level: LevelContent = {
               { icon: 'car', title: 'Osobní auto', text: 'asi 80 kW' },
               { icon: 'radiation', title: 'Blok jaderné elektrárny Temelín', text: 'asi 1 000 MW' },
             ] },
-            { type: 'callout', variant: 'fact', title: 'Koňská síla', text: 'Starší jednotkou výkonu je **koňská síla** (k): 1 k ≈ 735 W. Podobnou jednotku zavedl James Watt, aby zákazníkům ukázal, kolik koní jeho parní stroj nahradí. V technickém průkazu auta dnes najdeš výkon v kW.' },
+            { type: 'callout', variant: 'fact', title: 'Koňská síla', text: 'Starší jednotkou výkonu je **koňská síla** (k): 1 k ≐ 735 W. Podobnou jednotku zavedl James Watt, aby zákazníkům ukázal, kolik koní jeho parní stroj nahradí. V technickém průkazu auta dnes najdeš výkon v kW.' },
             { type: 'p', text: 'Ze vztahu pro výkon spočítáš i práci: W = P · t. Motor o výkonu 2 kW vykoná za 10 s práci 2 000 W · 10 s = 20 000 J.' },
             { type: 'callout', variant: 'tip', title: 'Změř svůj výkon', text: 'Změř výšku schodiště (počet schodů × výška jednoho schodu) a stopkami čas, za který ho vyběhneš. Výkon spočítáš jako P = m · g · h / t. Běžný teenager zvládne krátce 400–700 W.' },
             { type: 'p', text: 'Výkon říká, jak rychle stroj pracuje. Neříká ale, kolik energie přitom přijde nazmar – to popisuje účinnost.' },
@@ -768,7 +768,7 @@ const level: LevelContent = {
           icon: 'mountain',
           blocks: [
             { type: 'p', text: 'Když těleso zvedneš, vykonáš práci W = m · g · h. Ta se neztratí: těleso ji má uloženou jako **polohovou (potenciální) energii tíhovou** E_{p}. Když ho pustíš, při pádu ji může zase proměnit v práci.' },
-            { type: 'formula', text: 'E_{p} = m · g · h', caption: 'm – hmotnost (kg), g ≈ 10 N/kg, h – výška nad zvolenou nulovou hladinou (m)' },
+            { type: 'formula', text: 'E_{p} = m · g · h', caption: 'm – hmotnost (kg), g ≐ 10 N/kg, h – výška nad zvolenou nulovou hladinou (m)' },
             { type: 'p', text: 'Ověř si na batohu, že energie, kterou těleso získá, je přesně práce, kterou jsi při zvedání vykonal/a:' },
             { type: 'example', title: 'Batoh ve čtvrtém patře', problem: 'Vyneseš batoh o hmotnosti 5 kg z přízemí do 4. patra, které je 12 m vysoko. O kolik se zvětší jeho polohová energie?', steps: [
               'E_{p} = m · g · h',
@@ -948,7 +948,7 @@ const level: LevelContent = {
           title: 'Energie v jídle',
           icon: 'apple',
           blocks: [
-            { type: 'p', text: 'Na každém obalu potravin najdeš **energetickou hodnotu**, obvykle na 100 g. Udává se v kilojoulech (kJ) a v kilokaloriích (kcal): 1 kcal ≈ 4,2 kJ.' },
+            { type: 'p', text: 'Na každém obalu potravin najdeš **energetickou hodnotu**, obvykle na 100 g. Udává se v kilojoulech (kJ) a v kilokaloriích (kcal): 1 kcal ≐ 4,2 kJ.' },
             { type: 'p', text: 'Tady je pár běžných svačin a energie, kterou ti dodají:' },
             { type: 'iconlist', items: [
               { icon: 'bread', title: 'Rohlík', text: 'asi 550 kJ' },
@@ -1069,7 +1069,7 @@ const level: LevelContent = {
       summary: [
         'Energie má mnoho forem: mechanickou, vnitřní, chemickou, elektrickou, jadernou a energii záření.',
         'Energetický řetězec ukazuje, jak se energie mění krok za krokem; většina řetězců na Zemi začíná na Slunci a končí jako teplo v okolí.',
-        'Energetická hodnota potravin se udává v kJ (1 kcal ≈ 4,2 kJ); dospívající člověk potřebuje asi 9–12 MJ denně.',
+        'Energetická hodnota potravin se udává v kJ (1 kcal ≐ 4,2 kJ); dospívající člověk potřebuje asi 9–12 MJ denně.',
         'Výhřevnost udává, kolik energie uvolní 1 kg paliva; benzín má asi 44 MJ/kg, suché dřevo asi 15 MJ/kg.',
         'Obnovitelné zdroje (Slunce, vítr, voda, biomasa) se samy doplňují, neobnovitelné (uhlí, ropa, plyn, uran) se vyčerpají.',
         'Doma ušetříš energii úspornými spotřebiči, vypínáním stand-by, pokličkou na hrnci a rozumným topením a větráním.',
@@ -1083,7 +1083,7 @@ const level: LevelContent = {
           ['letící míč', 'pohybová energie'],
           ['světlo z lampy', 'energie záření'],
         ], explain: 'Baterie uchovává energii v chemických látkách, horký čaj má víc vnitřní energie, míč se pohybuje a lampa vyzařuje světlo.' },
-        { kind: 'number', q: 'Sušenka má energetickou hodnotu 150 kcal. Kolik je to kJ? (1 kcal ≈ 4,2 kJ)', answer: 630, tolerance: 5, unit: 'kJ', explain: '150 kcal · 4,2 kJ/kcal = 630 kJ.' },
+        { kind: 'number', q: 'Sušenka má energetickou hodnotu 150 kcal. Kolik je to kJ? (1 kcal ≐ 4,2 kJ)', answer: 630, tolerance: 5, unit: 'kJ', explain: '150 kcal · 4,2 kJ/kcal = 630 kJ.' },
         { kind: 'multi', q: 'Co ti pomůže ušetřit energii doma?', options: ['vařit s pokličkou', 'nechávat nabíječku stále v zásuvce', 'vyměnit žárovky za LED', 'větrat krátce a naplno', 'mít v zimě celý den pootevřené okno'], answers: [0, 2, 3], explain: 'Poklička, LED a krátké větrání šetří energii. Nabíječka v zásuvce a pootevřené okno ji naopak zbytečně spotřebovávají.' },
         { kind: 'order', q: 'Seřaď paliva od nejmenší výhřevnosti po největší.', items: ['suché dřevo', 'černé uhlí', 'benzín', 'vodík'], explain: 'Dřevo asi 15 MJ/kg, černé uhlí asi 28 MJ/kg, benzín asi 44 MJ/kg a vodík asi 120 MJ/kg.' },
         { kind: 'number', q: 'Kolik energie se uvolní spálením 2 kg benzínu (44 MJ/kg)?', answer: 88, tolerance: 0.5, unit: 'MJ', explain: 'E = 2 kg · 44 MJ/kg = 88 MJ.' },

@@ -51,7 +51,7 @@ function Bend() {
         n = 1,33
       </text>
       <text x={10} y={186} className="fz2-eq">
-        α = 50°, β ≈ 35°
+        α = 50°, β ≐ 35°
       </text>
     </Frame>
   )
