@@ -1,0 +1,378 @@
+/* Vrstevnice (prefix g-ct-) */
+.g-ct-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.g-ct-top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.g-ct-q {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+.g-ct-text {
+  margin: 0;
+  font: 600 16.5px/1.45 var(--font-body);
+}
+.g-ct-bonus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 280px;
+  color: var(--warn);
+}
+.g-ct-bonus svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.g-ct-bonusbar {
+  flex: 1;
+  height: 8px;
+}
+.g-ct-bonusbar > span {
+  transition: width 0.25s linear;
+}
+
+/* the map */
+.g-ct-stage {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+.g-ct-map {
+  display: block;
+  width: 100%;
+  max-width: 580px;
+  height: auto;
+  border-radius: var(--r-sm);
+}
+.g-ct-paper {
+  fill: var(--surface);
+}
+.g-ct-frame {
+  fill: none;
+  stroke: var(--edge);
+  stroke-width: 2;
+}
+.g-ct-c,
+.g-ct-ci {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 0.75;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+.g-ct-ci {
+  stroke-width: 1.6;
+  opacity: 1;
+}
+.g-ct-label {
+  fill: var(--accent);
+  font: 700 9px/1 var(--font-mono);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.g-ct-stream {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.g-ct-sname {
+  fill: var(--blue);
+  font: italic 700 11px/1 var(--font-display);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 3px;
+}
+.g-ct-trail-halo {
+  fill: none;
+  stroke: var(--surface);
+  stroke-width: 4.5;
+  stroke-linejoin: round;
+}
+.g-ct-trail {
+  fill: none;
+  stroke: var(--bad);
+  stroke-width: 2.4;
+  stroke-dasharray: 7 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.g-ct-hut-house {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 1.3;
+  stroke-linejoin: round;
+}
+.g-ct-hut-text,
+.g-ct-hill {
+  fill: var(--ink);
+  font: italic 700 10.5px/1 var(--font-display);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 3px;
+}
+.g-ct-spot {
+  fill: var(--ink);
+}
+.g-ct-spot-text {
+  fill: var(--ink);
+  font: 700 8.5px/1 var(--font-mono);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 3px;
+}
+
+/* markers and overlays */
+.g-ct-mark-ring {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+.g-ct-mark-dot {
+  fill: var(--ink);
+}
+.g-ct-mark-lead {
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+.g-ct-mark-badge,
+.g-ct-cand-badge {
+  fill: var(--ink);
+  stroke: var(--surface);
+  stroke-width: 1.5;
+}
+.g-ct-cand-badge {
+  fill: var(--violet);
+}
+.g-ct-mark-text {
+  fill: var(--surface);
+  font: 800 10px/1 var(--font-body);
+}
+.g-ct-bar-halo {
+  stroke: var(--surface);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.g-ct-bar {
+  stroke: var(--ink);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.g-ct-line {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  stroke-dasharray: 5 3;
+}
+.g-ct-cand-halo {
+  fill: none;
+  stroke: var(--surface);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.g-ct-cand {
+  fill: none;
+  stroke: var(--violet);
+  stroke-width: 2.6;
+  stroke-dasharray: 6 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.g-ct-flow {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2.2;
+  stroke-dasharray: 3 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.g-ct-flow-head {
+  fill: var(--blue);
+}
+.g-ct-scale-bg {
+  fill: var(--surface);
+  opacity: 0.9;
+}
+.g-ct-scale-b {
+  fill: var(--ink);
+}
+.g-ct-scale-w {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 0.8;
+}
+.g-ct-scale-t {
+  fill: var(--ink);
+  font: 700 8px/1 var(--font-mono);
+}
+
+/* legend under the map */
+.g-ct-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 6px;
+  font: italic 600 14px/1.2 var(--font-display);
+  color: var(--ink-soft);
+}
+.g-ct-key {
+  display: inline-block;
+  width: 22px;
+  height: 0;
+  border-top: 1px solid var(--accent);
+  margin-left: 8px;
+}
+.g-ct-key-ci {
+  border-top-width: 2.5px;
+}
+
+/* height profiles */
+.g-ct-profile {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.g-ct-pgrid {
+  stroke: var(--line);
+  stroke-width: 0.8;
+}
+.g-ct-ptext {
+  fill: var(--muted);
+  font: 600 9px/1 var(--font-mono);
+}
+.g-ct-parea {
+  fill: var(--accent-soft);
+  opacity: 0.8;
+}
+.g-ct-pline {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.g-ct-paxis {
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+.g-ct-pend {
+  fill: var(--ink);
+  font: 800 10px/1 var(--font-body);
+}
+
+/* options */
+.g-ct-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.g-ct-options.profiles {
+  grid-template-columns: minmax(0, 1fr);
+}
+.g-ct-option {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 8px 10px;
+  border: var(--bw) solid var(--edge);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 16px/1.2 var(--font-body);
+  cursor: pointer;
+  box-shadow: var(--shadow-hard);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s;
+}
+.g-ct-options.profiles .g-ct-option {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 6px 10px 4px;
+}
+.g-ct-optlabel {
+  font: italic 700 15px/1.1 var(--font-display);
+  text-align: left;
+}
+.g-ct-option:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--shadow-color);
+}
+.g-ct-option:disabled {
+  cursor: default;
+  box-shadow: none;
+}
+.g-ct-option.right {
+  background: var(--good-soft);
+  border-width: 3px;
+}
+.g-ct-option.wrong {
+  background: var(--bad-soft);
+  text-decoration: line-through;
+}
+.g-ct-option.off {
+  opacity: 0.5;
+}
+.g-ct-option:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* numeric answer */
+.g-ct-form {
+  display: grid;
+  gap: var(--space-3);
+}
+.g-ct-field {
+  display: block;
+  max-width: 260px;
+}
+.g-ct-inwrap {
+  position: relative;
+  display: block;
+}
+.g-ct-input {
+  padding-right: 44px;
+  font-size: 21px;
+}
+.g-ct-unit {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 600 15px/1 var(--font-mono);
+  color: var(--muted);
+  pointer-events: none;
+}
+.g-ct-status:empty {
+  display: none;
+}
+@media (max-width: 420px) {
+  .g-ct-card {
+    padding: var(--space-3);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .g-ct-option,
+  .g-ct-bonusbar > span {
+    transition: none;
+  }
+}

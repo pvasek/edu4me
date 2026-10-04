@@ -497,7 +497,7 @@ export const GAMES: GameMeta[] = [
     kind: 'map',
     courses: {
       zemepis: {
-        1: 'číselné a grafické měřítko, výpočet vzdáleností',
+        1: 'číselné a grafické měřítko, výpočet vzdáleností, měření pravítkem',
       },
     },
   },
@@ -508,9 +508,9 @@ export const GAMES: GameMeta[] = [
     kind: 'map',
     courses: {
       zemepis: {
-        1: 'nadmořská výška, vrstevnice a profil terénu',
-        3: 'tvary reliéfu: vrchol, hřbet, údolí, sedlo',
-        9: 'reliéf Česka na turistické mapě',
+        1: 'výška bodu, interval vrstevnic, sklon svahu a profil terénu',
+        3: 'tvary reliéfu (vrchol, hřbet, údolí, sedlo, kotlina) a kudy teče potok',
+        9: 'turistická mapa: nejvyšší vrchol, stoupání, nejstrmější úsek, kam steče voda',
       },
     },
   },
