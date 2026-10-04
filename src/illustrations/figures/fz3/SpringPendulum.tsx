@@ -1,7 +1,7 @@
 import { Angle, Arrow, Axes, Draw, Fade, Figure, Pop, Sym, pat, sine, useFig } from './kit'
 
 const LABEL =
-  'Mechanické kmitání. Vlevo pružinový oscilátor: těleso o hmotnosti m na pružině o tuhosti k kmitá kolem rovnovážné polohy s amplitudou A; perioda T = 2π·√(m/k). Vpravo matematické kyvadlo délky l, kyvadlo kmitá s malou výchylkou kolem svislé polohy; perioda T = 2π·√(l/g) nezávisí na hmotnosti. Dole graf výchylky x v závislosti na čase t: kosinusoida s amplitudou A a periodou T.'
+  'Mechanické kmitání. Vlevo pružinový oscilátor: těleso o hmotnosti m na pružině o tuhosti k kmitá kolem rovnovážné polohy s amplitudou y_m; perioda T = 2π·√(m/k). Vpravo matematické kyvadlo délky l, kyvadlo kmitá s malou výchylkou kolem svislé polohy; perioda T = 2π·√(l/g) nezávisí na hmotnosti. Dole graf výchylky y v závislosti na čase t: kosinusoida s amplitudou y_m a periodou T.'
 
 const SX = 110 // spring axis
 const TOP = 36 // ceiling
@@ -37,8 +37,8 @@ function SpringSide() {
       <path d={`M60 ${EQ + 14} H176`} className="fz3-o fz3-thin fz3-dash" />
       <path d={`M150 ${EQ + 14 - A} H176 M150 ${EQ + 14 + A} H176`} className="fz3-o fz3-thin" />
       <Arrow d={`M170 ${EQ + 14 - A + 3} V${EQ + 14 + A - 3}`} tone="ink" both />
-      <Sym x={182} y={EQ + 4} t="A" anchor="start" />
-      <Sym x={182} y={EQ + 38} t="A" anchor="start" />
+      <Sym x={182} y={EQ + 4} t="y_{m}" anchor="start" />
+      <Sym x={182} y={EQ + 38} t="y_{m}" anchor="start" />
       <g className="fz3-spring">
         <path d={coil(TOP, EQ)} className="fz3-o fz3-coilspring" />
       </g>
@@ -90,11 +90,11 @@ function Graph() {
   const amp = 38
   return (
     <g>
-      <Axes x={ox} y={oy} w={372} h={amp + 20} down={amp + 12} xl="t" yl="x" delay={0.3} />
+      <Axes x={ox} y={oy} w={372} h={amp + 20} down={amp + 12} xl="t" yl="y" delay={0.3} />
       <Draw d={sine(ox, oy, 350, amp, T, Math.PI / 2)} className="fz3-curve fz3-curve-lvl" delay={0.6} />
       <Fade delay={1.3}>
         <path d={`M${ox - 4} ${oy - amp} H${ox + T}`} className="fz3-o fz3-thin fz3-dash" />
-        <Sym x={ox - 8} y={oy - amp + 6} t="A" anchor="end" />
+        <Sym x={ox - 8} y={oy - amp + 6} t="y_{m}" anchor="end" />
         <path
           d={`M${ox} ${oy - amp - 12} V${oy - amp - 4} M${ox} ${oy - amp - 8} H${ox + T} M${ox + T} ${oy - amp - 12} V${oy - amp - 4}`}
           className="fz3-o fz3-thin"
