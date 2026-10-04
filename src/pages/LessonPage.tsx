@@ -2,7 +2,7 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { courseById, findLevel, levelHref } from '../core/registry'
 import { useLevelContent } from '../core/useLevelContent'
-import { completeLesson, getProgress, starsFor } from '../core/progress'
+import { completeLesson, getProgress, starsFor, useProgress } from '../core/progress'
 import type { Lesson, LessonSection } from '../core/types'
 import { Md, plain } from '../core/markup'
 import { BlockView } from '../lesson/BlockView'
@@ -58,6 +58,8 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
   const elements = useMemo(() => lessonElements(lesson), [lesson])
   const quiz = useMemo(() => buildLessonQuiz(lesson), [lesson])
   const alreadyDone = Boolean(getProgress().lessons[`${courseId}:${lesson.id}`])
+  // live record: shown at the top and before the quiz once the lesson is finished
+  const record = useProgress().lessons[`${courseId}:${lesson.id}`]
 
   const order = { read: 0, quiz: 1, done: 2 }
   const go = (s: Step) => {
@@ -98,6 +100,7 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
               <h1>
                 <Md text={lesson.title} />
               </h1>
+              {record && <DoneStamp record={record} onQuiz={() => go({ kind: 'quiz' })} />}
               <MascotSays mood="wow" size={84}>
                 <Md text={lesson.hook} />
               </MascotSays>
@@ -168,12 +171,24 @@ function LessonPlayer({ courseId, levelId, levelColor, lesson }: { courseId: str
                 </motion.ul>
                 <span className="note notebook-note">zapiš si to!</span>
               </div>
-              <MascotSays mood="think">
-                Teď si to ověříme. Kvíz má <strong>{quiz.length} otázek</strong> z celé lekce, za každou správnou odpověď dostaneš XP.
-              </MascotSays>
+              {record ? (
+                <MascotSays mood="happy">
+                  Tuhle lekci už máš hotovou, nejlepší výsledek v kvízu: <strong>{record.best} z {record.max}</strong>. Chceš ho zkusit
+                  překonat?
+                </MascotSays>
+              ) : (
+                <MascotSays mood="think">
+                  Teď si to ověříme. Kvíz má <strong>{quiz.length} otázek</strong> z celé lekce, za každou správnou odpověď dostaneš XP.
+                </MascotSays>
+              )}
               <div className="bottom-bar">
+                {record && nextOutline && (
+                  <button className="btn btn-lg" onClick={() => navigate(`/c/${courseId}/l/${levelId}/${nextOutline.id}`)}>
+                    Další lekce <Icon name="arrowRight" />
+                  </button>
+                )}
                 <button className="btn btn-primary btn-lg" onClick={() => go({ kind: 'quiz' })}>
-                  Spustit kvíz <Icon name="play" />
+                  {record ? 'Kvíz znovu' : 'Spustit kvíz'} <Icon name={record ? 'refresh' : 'play'} />
                 </button>
               </div>
             </section>
@@ -369,5 +384,28 @@ function SectionNav({ sections }: { sections: LessonSection[] }) {
         </AnimatePresence>
       </div>
     </>
+  )
+}
+
+/** "Hotovo" stamp at the top of a finished lesson: best quiz result, date, and a shortcut to the quiz. */
+function DoneStamp({ record, onQuiz }: { record: { completedAt: string; best: number; max: number }; onQuiz: () => void }) {
+  const pct = record.max ? Math.round((record.best / record.max) * 100) : 0
+  const date = new Date(record.completedAt).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'numeric', year: 'numeric' })
+  return (
+    <div className="done-stamp" role="status">
+      <span className="done-stamp-mark" aria-hidden="true">
+        <Icon name="check" />
+      </span>
+      <span className="done-stamp-text">
+        <strong>Hotovo</strong>
+        <span>
+          Kvíz: nejlépe {record.best} z {record.max} ({pct} %) · dokončeno {date}
+        </span>
+      </span>
+      <Stars n={starsFor(record.best, record.max)} size={18} />
+      <button type="button" className="btn btn-sm" onClick={onQuiz}>
+        <Icon name="refresh" width={14} height={14} /> Kvíz znovu
+      </button>
+    </div>
   )
 }
