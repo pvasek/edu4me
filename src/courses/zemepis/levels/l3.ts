@@ -21,7 +21,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Hory, údolí i mořské dno jsou jen svrchní kůže planety. Abychom pochopili, proč se povrch Země hýbe, musíme se podívat pod něj. Stavbu nitra už znáš z lekce „Stavba Země a desková tektonika“ v biologii, tady si ji jen krátce zopakujeme.' },
             { type: 'p', text: 'Na řezu Zemí sleduj hlavně jednu věc: jak tenká je vrstva, na které stojí všechny hory světa, proti vrstvám pod ní.' },
             { type: 'diagram', id: 'earth-layers', caption: 'Řez Zemí: zemská kůra, plášť (do 2 900 km), tekuté vnější jádro a pevné vnitřní jádro. Kůra je na obrázku zakreslená silnější, než ve skutečnosti je.' },
-            { type: 'p', text: 'Kdyby Země byla velká jako jablko, byla by kůra tenčí než jeho slupka. Pro zeměpis je ale důležitější jiné dělení: podle toho, jak je hornina tuhá.' },
+            { type: 'p', text: 'Kdyby Země byla velká jako jablko, byla by kůra tenčí než jeho slupka. Pro geografii je ale důležitější jiné dělení: podle toho, jak je hornina tuhá.' },
             { type: 'keyterms', items: [
               { term: '**Litosféra**', def: 'zemská kůra se svrchní pevnou částí pláště, silná asi 100 km; je tuhá a rozlámaná na desky' },
               { term: '**Astenosféra**', def: 'horká vrstva pláště pod litosférou; hornina v ní velmi pomalu teče, a proto po ní desky mohou klouzat' },
@@ -76,7 +76,7 @@ const level: LevelContent = {
           title: 'Tři druhy hranic',
           icon: 'quake',
           blocks: [
-            { type: 'p', text: 'Sousední desky se mohou od sebe vzdalovat, k sobě přibližovat, nebo se otírat podél sebe. Pro zeměpisce je důležité, že každý pohyb zanechá na povrchu jiný tvar.' },
+            { type: 'p', text: 'Sousední desky se mohou od sebe vzdalovat, k sobě přibližovat, nebo se otírat podél sebe. Pro geografa je důležité, že každý pohyb zanechá na povrchu jiný tvar.' },
             { type: 'p', text: 'Na obrázku jsou všechny tři hranice vedle sebe. Sleduj šipky pohybu a podívej se, co nad hranicí vyrostlo nebo se propadlo:' },
             { type: 'diagram', id: 'plate-boundaries', caption: 'Rozbíhavá hranice (vzniká hřbet a nová kůra), sbíhavá hranice (příkop a sopky, nebo vrásové pohoří) a transformní hranice (zlom, desky se posouvají podél sebe).' },
             { type: 'p', text: 'Tabulka shrnuje, jaký tvar povrchu na které hranici hledat. Poslední sloupec ti pomůže najít příklady na mapě z minulého oddílu:' },
@@ -253,7 +253,7 @@ const level: LevelContent = {
           icon: 'shield',
           blocks: [
             { type: 'p', text: 'Zemětřesení ani výbuch sopky zastavit nejde. Přesto v roce 2010 zemětřesení o magnitudu 8,8 v Chile zabilo zhruba 500 lidí a slabší zemětřesení o magnitudu 7,0 na Haiti odhadem přes 100 000. Proč?' },
-            { type: 'p', text: 'Zeměpisci oddělují dvě věci: jak silná je přírodní hrozba a jak snadno ublíží lidem v daném místě. Teprve dohromady dávají riziko:' },
+            { type: 'p', text: 'Geografové oddělují dvě věci: jak silná je přírodní hrozba a jak snadno ublíží lidem v daném místě. Teprve dohromady dávají riziko:' },
             { type: 'formula', text: 'riziko = ohrožení × zranitelnost', caption: 'ohrožení … jak silný a častý je přírodní jev; zranitelnost … jak špatně jsou na něj lidé připraveni (slabé domy, chudoba, chybějící varování)' },
             { type: 'p', text: 'Proto se tolik lišilo Chile od Haiti. Srovnej, co dělá místo zranitelným a co odolným:' },
             { type: 'compare', columns: [
@@ -402,7 +402,7 @@ const level: LevelContent = {
           title: 'Nížiny, vysočiny a plošiny',
           icon: 'chart',
           blocks: [
-            { type: 'p', text: 'Jak nadmořskou výšku čteš z vrstevnic, víš z lekce „Mapové značky a výškopis“. Zeměpisci podle ní dělí povrch na dvě skupiny: **nížiny** leží do 200 m n. m., **vysočiny** nad 200 m n. m.' },
+            { type: 'p', text: 'Jak nadmořskou výšku čteš z vrstevnic, víš z lekce „Mapové značky a výškopis“. Geografové podle ní dělí povrch na dvě skupiny: **nížiny** leží do 200 m n. m., **vysočiny** nad 200 m n. m.' },
             { type: 'p', text: 'Výška ale neříká všechno. Krajina ve stejné výšce může být rovná jako stůl, nebo rozbrázděná údolími. Několik příkladů ze světa:' },
             { type: 'iconlist', items: [
               { icon: 'river', title: 'Nížina', text: 'Amazonská nížina, Polabí, Dolnomoravský úval; nejníž ze souše leží břeh Mrtvého moře, přes 430 m pod hladinou oceánu' },
@@ -472,7 +472,7 @@ const level: LevelContent = {
             { type: 'p', text: 'V lekci „Jak vznikají pohoří“ zvedaly povrch vnitřní síly. Teď nastupují vnější činitelé, které ho obrušují. Jejich první krok je **zvětrávání**: rozpad horniny přímo na místě, kde leží. Tři druhy zvětrávání znáš z biologie, z lekce „Půda a voda“.' },
             { type: 'p', text: 'Na obrázku jsou všechny tři druhy vedle sebe. U každého si všimni, co přesně horninu rozbíjí:' },
             { type: 'diagram', id: 'weathering-types', caption: 'Mechanické zvětrávání (mráz roztrhne puklinu), chemické (voda s oxidem uhličitým rozpouští vápenec) a biologické (kořeny a lišejníky).' },
-            { type: 'p', text: 'Pro zeměpis je důležité, že každý druh převládá v jiném podnebí. Proto vypadají skály v horách jinak než v tropech:' },
+            { type: 'p', text: 'Pro geografii je důležité, že každý druh převládá v jiném podnebí. Proto vypadají skály v horách jinak než v tropech:' },
             { type: 'table', headers: ['druh', 'co horninu rozbíjí', 'kde převládá', 'co vzniká'], rows: [
               ['**mechanické**', 'mráz v puklinách, střídání horka a chladu', 'vysoké hory, pouště, polární oblasti', 'ostré úlomky, sutě pod skalami, kamenná moře'],
               ['**chemické**', 'voda rozpouští nebo mění nerosty', 'teplé a vlhké oblasti, vápencové krajiny', 'jíl, rozpuštěný vápenec, jeskyně'],
@@ -895,7 +895,7 @@ const level: LevelContent = {
           title: 'Pedosféra: tenká kůže souše',
           icon: 'soil',
           blocks: [
-            { type: 'p', text: 'V lekci „Zvětrávání a eroze“ se skála rozpadala na úlomky. Kde úlomky zůstanou ležet a zabydlí je život, vzniká **půda**. Souvislé vrstvě půdy na souši říkají zeměpisci **pedosféra**. Je tenká – většinou jen desítky centimetrů až pár metrů – ale živí skoro všechno, co jíme.' },
+            { type: 'p', text: 'V lekci „Zvětrávání a eroze“ se skála rozpadala na úlomky. Kde úlomky zůstanou ležet a zabydlí je život, vzniká **půda**. Souvislé vrstvě půdy na souši říkají geografové **pedosféra**. Je tenká – většinou jen desítky centimetrů až pár metrů – ale živí skoro všechno, co jíme.' },
             { type: 'p', text: 'Půda vzniká tam, kde se potkávají horniny, vzduch, voda a život. Proto ji ovlivňuje hned několik **půdotvorných činitelů**:' },
             { type: 'iconlist', items: [
               { icon: 'mountain', title: 'Matečná hornina', text: 'z ní půda vzniká; z vápence je jiná půda než ze žuly nebo z písku' },
@@ -916,7 +916,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Když půdu prokopeš až ke skále, uvidíš vrstvy různé barvy. Říká se jim **půdní horizonty** a všechny dohromady tvoří **půdní profil**. Z biologie, z lekce „Půda a voda“, víš, že nejtmavší je vrstva nahoře.' },
             { type: 'p', text: 'Projdi si profil od povrchu dolů a sleduj, jak ubývá humusu a přibývá úlomků horniny:' },
             { type: 'diagram', id: 'soil-profile', caption: 'Půdní profil: opad, tmavá humusová vrstva, světlejší podorničí, zvětralá a nakonec pevná matečná hornina.' },
-            { type: 'p', text: 'Zeměpisci a zemědělci označují hlavní horizonty písmeny. Podle nich se dá půda popsat i rychle v terénu:' },
+            { type: 'p', text: 'Geografové a zemědělci označují hlavní horizonty písmeny. Podle nich se dá půda popsat i rychle v terénu:' },
             { type: 'keyterms', items: [
               { term: '**Horizont A** (humusový)', def: 'tmavá svrchní vrstva s humusem a kořeny; na poli je to ornice' },
               { term: '**Horizont B** (podorničí)', def: 'světlejší vrstva, kam voda zanáší jíl, železo a živiny z horní vrstvy' },
@@ -1002,7 +1002,7 @@ const level: LevelContent = {
           title: 'Jak půdu chránit',
           icon: 'leaf',
           blocks: [
-            { type: 'p', text: 'Z biologie, z lekce „Půda a voda“, víš, že krajina s mezemi a mokřady zadrží vodu jako houba. Zeměpisec se dívá ještě na tvar terénu: jak hospodařit na svahu, aby voda nestékala a vítr nefoukal přes holé lány.' },
+            { type: 'p', text: 'Z biologie, z lekce „Půda a voda“, víš, že krajina s mezemi a mokřady zadrží vodu jako houba. Geograf se dívá ještě na tvar terénu: jak hospodařit na svahu, aby voda nestékala a vítr nefoukal přes holé lány.' },
             { type: 'p', text: 'Opatření proti erozi se dají rozdělit podle toho, proti komu bojují. Většina pomáhá proti oběma:' },
             { type: 'iconlist', items: [
               { icon: 'tractor', title: 'Orba po vrstevnici', text: 'brázdy napříč svahem zachytí vodu, místo aby ji vedly dolů' },

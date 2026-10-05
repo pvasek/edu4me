@@ -1,6 +1,6 @@
 ---
 name: new-course
-description: Build a new Q & Why course (school subject) end to end, the way Chemie, Fyzika, Biologie and Zeměpis were built. Use whenever the user wants a new class, course or subject ("nový kurz", "nový předmět", "add biology", "create a maths course"), or wants an existing course's syllabus rebuilt. Covers curriculum research (ZŠ 2. stupeň → gymnázium / pre-university), the syllabus, the course structure, lessons with the teaching thread, visuals, in-lesson experiments, mini-games and wiring the course into the app.
+description: Build a new Q & Why course (school subject) end to end, the way Chemie, Fyzika, Biologie and Geografie were built. Use whenever the user wants a new class, course or subject ("nový kurz", "nový předmět", "add biology", "create a maths course"), or wants an existing course's syllabus rebuilt. Covers curriculum research (ZŠ 2. stupeň → gymnázium / pre-university), the syllabus, the course structure, lessons with the teaching thread, visuals, in-lesson experiments, mini-games and wiring the course into the app.
 ---
 
 # Build a new course

@@ -1,7 +1,7 @@
 import type { LevelContent } from '../../../core/types'
 
 /*
- * Zeměpis – level 5 „Lidé na Zemi“ (ZŠ 7. třída).
+ * Geografie – level 5 „Lidé na Zemi“ (ZŠ 7. třída).
  * Data sources (verified 2026-10): UN World Population Prospects 2024 (medium variant, values for 2025;
  * life expectancy estimates 2023), ČSÚ (pohyb obyvatelstva 2025), UNHCR Global Trends 2025 (stav ke konci 2025),
  * Eurostat (dočasná ochrana, červenec 2026), UN World Urbanization Prospects 2025, Pew Research Center (2025, stav 2020),
@@ -731,7 +731,7 @@ const level: LevelContent = {
             ] },
             { type: 'p', text: 'Proč se lidé stěhují do měst? Funguje stejný model push–pull jako u migrace: na venkově ubývá práce v zemědělství (push), město láká prací, školami a službami (pull). V Česku dnes žije ve městech asi 7 z 10 lidí.' },
             { type: 'callout', variant: 'warning', text: 'Pozor: podíl obyvatel měst se v různých statistikách liší podle toho, co se za město považuje. OSN v roce 2025 zavedla nový jednotný způsob počítání, proto starší učebnice uvádějí jiná čísla.' },
-            { type: 'p', text: 'Když města rostou, slévají se s okolím do obrovských celků. Pro ně má zeměpis přesné pojmy.' },
+            { type: 'p', text: 'Když města rostou, slévají se s okolím do obrovských celků. Pro ně má geografie přesné pojmy.' },
             { type: 'check', question: { kind: 'choice', q: 'Co je urbanizace?', options: ['růst podílu obyvatel žijících ve městech', 'stěhování z měst na venkov', 'výstavba silnic mezi vesnicemi', 'pokles počtu obyvatel státu'], answer: 0, explain: 'Urbanizace znamená, že ve městech žije stále větší část obyvatel a šíří se městský způsob života.' } },
           ],
         },

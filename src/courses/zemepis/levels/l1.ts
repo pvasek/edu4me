@@ -5,20 +5,20 @@ const level: LevelContent = {
     // ───────────────────────────────────────────────────────────── z1-1
     'z1-1': {
       id: 'z1-1',
-      title: 'Co je zeměpis a jak se ptá',
+      title: 'Co je geografie a jak se ptá',
       goals: [
-        'Vysvětlit, že zeměpis se ptá „kde to je“ a hlavně „proč je to právě tam“',
+        'Vysvětlit, že geografie se ptá „kde to je“ a hlavně „proč je to právě tam“',
         'Rozlišit fyzickou a socioekonomickou geografii a přiřadit k nim příklady',
         'Použít pojmy místo, poloha a region a vybrat vhodný zdroj odpovědi (mapa, snímek, statistika, terénní výzkum)',
         'Nakreslit mentální mapu své cesty do školy a porovnat ji se skutečnou mapou',
       ],
-      hook: 'Proč leží skoro každé velké město v Česku u řeky? A proč je pekárna zrovna u zastávky, kde ráno čeká nejvíc lidí? Na otázku „kde a proč tam“ odpovídá zeměpis – a ty se ho ptáš každý den, jen o tom nevíš.',
+      hook: 'Proč leží skoro každé velké město v Česku u řeky? A proč je pekárna zrovna u zastávky, kde ráno čeká nejvíc lidí? Na otázku „kde a proč tam“ odpovídá geografie – a ty se ho ptáš každý den, jen o tom nevíš.',
       sections: [
         {
           title: 'Kde a proč tam',
           icon: 'question',
           blocks: [
-            { type: 'p', text: 'Slovo **geografie** pochází z řečtiny: *gé* je Země a *grafein* znamená psát nebo popisovat. Česky říkáme **zeměpis**. Zeměpis ale nejen popisuje, kde co je. Hlavně se ptá, ==proč je to právě tam==.' },
+            { type: 'p', text: 'Slovo **geografie** pochází z řečtiny: *gé* je Země a *grafein* znamená psát nebo popisovat. Ve škole se jí dlouho říkalo **zeměpis**. Geografie ale nejen popisuje, kde co je. Hlavně se ptá, ==proč je to právě tam==.' },
             { type: 'p', text: 'Ukažme si to na největších městech Česka. Podívej se, kde na mapě leží, a hledej, co mají společného:' },
             { type: 'map', view: 'czechia', layers: ['rivers'], points: [
               { lat: 50.09, lon: 14.42, label: 'Praha', kind: 'capital' },
@@ -32,19 +32,19 @@ const level: LevelContent = {
             ], caption: 'Velká města Česka a řeky. Sleduj modré čáry: každé z měst leží u řeky, mnohá přímo na soutoku dvou řek.' },
             { type: 'p', text: 'Žádná náhoda. Řeka dávala lidem vodu, ryby a sílu pro mlýny. Po řece se dalo plavit a přes brod se dalo přejít. Hradec Králové leží na soutoku Labe a Orlice, České Budějovice na soutoku Vltavy a Malše.' },
             { type: 'callout', variant: 'fact', text: 'Plzeň má řeky hned čtyři: Mži, Radbuzu, Úhlavu a Úslavu. Ve městě se postupně slévají a dál pokračují jako Berounka.' },
-            { type: 'p', text: 'Řeka je kus přírody, město je dílo lidí. Zeměpis proto zkoumá obojí – a podle toho se dělí na dvě velké části.' },
+            { type: 'p', text: 'Řeka je kus přírody, město je dílo lidí. Geografie proto zkoumá obojí – a podle toho se dělí na dvě velké části.' },
             { type: 'check', question: { kind: 'choice', q: 'Proč vznikla většina velkých měst v Česku u řek?', options: ['řeka dávala vodu, obživu, energii pro mlýny a cestu pro dopravu', 'u řek je vždycky nejtepleji', 'zákon kdysi přikazoval stavět města jen u řek', 'u řek nikdy nehrozí povodně'], answer: 0, explain: 'Voda, ryby, mlýny, plavba a brody přitahovaly lidi. U řek ale hrozí povodně – i to je zeměpisná otázka.' } },
           ],
         },
         {
-          title: 'Příroda a lidé: dvě části zeměpisu',
+          title: 'Příroda a lidé: dvě části geografie',
           icon: 'earth',
           blocks: [
-            { type: 'p', text: 'U měst a řek jsme viděli, že se v zeměpisu potkává příroda s lidmi. **Fyzická geografie** zkoumá přírodu: povrch, podnebí, vody, půdy, rostliny a živočichy. **Socioekonomická (humánní) geografie** zkoumá lidi: kde bydlí, čím se živí, jak cestují a obchodují.' },
+            { type: 'p', text: 'U měst a řek jsme viděli, že se v geografii potkává příroda s lidmi. **Fyzická geografie** zkoumá přírodu: povrch, podnebí, vody, půdy, rostliny a živočichy. **Socioekonomická (humánní) geografie** zkoumá lidi: kde bydlí, čím se živí, jak cestují a obchodují.' },
             { type: 'p', text: 'Obě části se setkávají v krajině. Obrázek ukazuje **krajinnou sféru** jako několik obalů Země, které se navzájem prolínají:' },
             { type: 'diagram', id: 'geo-spheres', caption: 'Krajinná sféra: litosféra (horniny a povrch), atmosféra (vzduch), hydrosféra (voda), pedosféra (půda), biosféra (život) a lidská společnost. Každá sféra ovlivňuje ostatní.' },
-            { type: 'p', text: 'Pozor, sféry nejsou oddělené krabičky. Když dlouho neprší (atmosféra), klesne voda v řece (hydrosféra), vysychá půda (pedosféra) a zemědělci sklidí méně (lidé). Zeměpis sleduje právě tyhle vazby.' },
-            { type: 'p', text: 'Jak poznáš, do které části zeměpisu otázka patří? Porovnej příklady v obou sloupcích:' },
+            { type: 'p', text: 'Pozor, sféry nejsou oddělené krabičky. Když dlouho neprší (atmosféra), klesne voda v řece (hydrosféra), vysychá půda (pedosféra) a zemědělci sklidí méně (lidé). Geografie sleduje právě tyhle vazby.' },
+            { type: 'p', text: 'Jak poznáš, do které části geografie otázka patří? Porovnej příklady v obou sloupcích:' },
             { type: 'compare', columns: [
               { title: 'Fyzická geografie', icon: 'mountain', tone: 'a', points: ['Proč je Sněžka nejvyšší horou Česka?', 'Kde v Česku nejvíc prší?', 'Proč se Vltava v létě ohřeje víc než horský potok?', 'Kde rostou bukové lesy?'] },
               { title: 'Socioekonomická geografie', icon: 'people', tone: 'b', points: ['Proč se lidé stěhují z měst na vesnice kolem nich?', 'Kudy vede dálnice z Prahy do Brna?', 'Kde v Česku vyrábějí auta?', 'Kolik lidí žije v tvé obci?'] },
@@ -57,7 +57,7 @@ const level: LevelContent = {
           title: 'Místo, poloha a region',
           icon: 'pin',
           blocks: [
-            { type: 'p', text: 'Zeměpisec se ptá „kde“, takže potřebuje přesná slova pro to, o čem mluví. Tvoje škola, Sněžka nebo nádraží jsou **místa**. Každé místo má svou **polohu** (kde leží) a své vlastnosti (jaké to tam je).' },
+            { type: 'p', text: 'Geograf se ptá „kde“, takže potřebuje přesná slova pro to, o čem mluví. Tvoje škola, Sněžka nebo nádraží jsou **místa**. Každé místo má svou **polohu** (kde leží) a své vlastnosti (jaké to tam je).' },
             { type: 'keyterms', items: [
               { term: '**Místo**', def: 'konkrétní bod nebo malé území se jménem: tvoje škola, Karlův most, Sněžka' },
               { term: '**Poloha**', def: 'kde místo leží: přesně (souřadnice, adresa), nebo vzhledem k jiným místům („u řeky“, „na kopci za městem“)' },
@@ -72,15 +72,15 @@ const level: LevelContent = {
               { lat: 49.4, lon: 15.59, label: 'Jihlava', kind: 'city' },
             ], caption: 'Kraje Česka. Kraj je **správní region**: jeho hranici určil zákon a v krajském městě sídlí krajský úřad (Vysočina má úřad v Jihlavě).' },
             { type: 'p', text: 'Region ale nemusí mít úřední hranici. Krkonoše jsou **přírodní region**, protože je spojuje hornatý povrch, a přitom leží ve dvou krajích. Hanou zase vymezují lidé podle nářečí a tradic. Pozor tedy: region není jen jiné slovo pro kraj.' },
-            { type: 'p', text: 'Pojmenovat umíme. Teď se podíváme, jaké otázky si zeměpisec klade a kde na ně hledá odpovědi.' },
+            { type: 'p', text: 'Pojmenovat umíme. Teď se podíváme, jaké otázky si geograf klade a kde na ně hledá odpovědi.' },
             { type: 'check', question: { kind: 'tf', q: 'Region je vždy totéž co kraj.', answer: false, explain: 'Kraj je jen jeden druh regionu (správní). Regionem jsou i Krkonoše (přírodní region) nebo Haná (region podle nářečí a tradic).' } },
           ],
         },
         {
-          title: 'Jak se zeměpisec ptá a kde hledá odpovědi',
+          title: 'Jak se geograf ptá a kde hledá odpovědi',
           icon: 'magnifier',
           blocks: [
-            { type: 'p', text: 'U měst na řekách jsme se zeptali „kde“ a pak „proč“. Zeměpisec takových otázek klade víc, obvykle v tomhle pořadí:' },
+            { type: 'p', text: 'U měst na řekách jsme se zeptali „kde“ a pak „proč“. Geograf takových otázek klade víc, obvykle v tomhle pořadí:' },
             { type: 'list', items: [
               '**Kde to je?** – poloha na mapě',
               '**Jaké to tam je?** – povrch, počasí, lidé, domy',
@@ -96,7 +96,7 @@ const level: LevelContent = {
               { icon: 'clipboard', title: 'Terénní výzkum', text: 'jdeš ven, pozoruješ, měříš, počítáš a ptáš se lidí' },
             ] },
             { type: 'p', text: 'Nejlépe funguje, když zdroje zkombinuješ. Tak to vypadá na problému, který možná znáš od své školy:' },
-            { type: 'example', title: 'Nebezpečný přechod', problem: 'Rodiče si stěžují, že přechod před školou je nebezpečný. Jak to prozkoumá zeměpisec?', steps: [
+            { type: 'example', title: 'Nebezpečný přechod', problem: 'Rodiče si stěžují, že přechod před školou je nebezpečný. Jak to prozkoumá geograf?', steps: [
               'Otázka: Proč je zrovna tenhle přechod nebezpečný?',
               'Mapa: přechod leží hned za zatáčkou na hlavní silnici – řidiči na něj špatně vidí.',
               'Terénní výzkum: ráno mezi 7:30 a 8:00 spočítáš auta a děti, které přecházejí.',
@@ -124,17 +124,17 @@ const level: LevelContent = {
               { icon: 'phone', title: 'Porovnání', text: 'otevři mapu v telefonu a porovnej ji se svou kresbou' },
             ] },
             { type: 'p', text: 'Při porovnání si nejspíš všimneš tří věcí. Místa, která máš rád/a, jsi nakreslil/a větší. Vzdálenosti nesedí, protože cesta, kterou chodíš s kamarády, ti připadá kratší. A ulice, kudy nikdy nechodíš, na tvé mapě úplně chybějí.' },
-            { type: 'callout', variant: 'mascot', text: 'Na mé mentální mapě je cukrárna obrovská a škola malinká. Zeměpisci říkají, že to je v pořádku – mentální mapa ukazuje, jak svět vnímáme, ne jak opravdu vypadá.' },
+            { type: 'callout', variant: 'mascot', text: 'Na mé mentální mapě je cukrárna obrovská a škola malinká. Geografové říkají, že to je v pořádku – mentální mapa ukazuje, jak svět vnímáme, ne jak opravdu vypadá.' },
             { type: 'p', text: 'Mentální mapa je osobní a nepřesná. Aby si lidé na celé Zemi rozuměli, potřebují pro každé místo přesnou „adresu“. Tu dává glóbus se zeměpisnou sítí – to je téma lekce „Glóbus a zeměpisná síť“.' },
             { type: 'check', question: { kind: 'tf', q: 'Mentální mapa ukazuje vzdálenosti přesně, protože cestu známe nazpaměť.', answer: false, explain: 'Mentální mapa zkresluje: známá a oblíbená místa zvětšuje, vzdálenosti odhaduje podle pocitu a neznámé ulice vynechává.' } },
           ],
         },
       ],
       summary: [
-        'Zeměpis (geografie) se ptá, kde co je, a hlavně proč je to právě tam.',
+        'Geografie (zeměpis) se ptá, kde co je, a hlavně proč je to právě tam.',
         'Fyzická geografie zkoumá přírodu, socioekonomická geografie zkoumá lidi a jejich činnost; obě se potkávají v krajinné sféře.',
         'Místo má svou polohu a vlastnosti; region je území se společnou vlastností nebo s hranicí, kterou určili lidé – kraj je jen jeden druh regionu.',
-        'Odpovědi zeměpisec hledá na mapě, na leteckých a družicových snímcích, ve statistikách a terénním výzkumem.',
+        'Odpovědi geograf hledá na mapě, na leteckých a družicových snímcích, ve statistikách a terénním výzkumem.',
         'Mentální mapa je představa okolí v naší hlavě; je osobní a zkreslená.',
       ],
       quiz: [
@@ -147,7 +147,7 @@ const level: LevelContent = {
           ['lesní půda', 'pedosféra'],
         ], explain: 'Atmosféra je vzduch, hydrosféra voda, litosféra horniny a povrch, pedosféra půda.' },
         { kind: 'choice', q: 'Který z příkladů je **přírodní region**?', options: ['Krkonoše', 'Jihomoravský kraj', 'obec Lobendava', 'Karlův most'], answer: 0, explain: 'Krkonoše spojuje hornatý povrch, ne úřední hranice; leží dokonce ve dvou krajích. Kraj je správní region, obec a most jsou místa.' },
-        { kind: 'multi', q: 'Které zdroje použije zeměpisec, aby zjistil, jak se za 30 let zvětšilo město?', options: ['staré a nové letecké snímky', 'statistiku počtu obyvatel', 'starou a novou mapu', 'předpověď počasí na zítřek', 'jídelníček školní jídelny'], answers: [0, 1, 2], explain: 'Snímky a mapy z různých let ukážou nové ulice a domy, statistika ukáže růst počtu obyvatel. Předpověď počasí ani jídelníček o růstu města nic neřeknou.' },
+        { kind: 'multi', q: 'Které zdroje použije geograf, aby zjistil, jak se za 30 let zvětšilo město?', options: ['staré a nové letecké snímky', 'statistiku počtu obyvatel', 'starou a novou mapu', 'předpověď počasí na zítřek', 'jídelníček školní jídelny'], answers: [0, 1, 2], explain: 'Snímky a mapy z různých let ukážou nové ulice a domy, statistika ukáže růst počtu obyvatel. Předpověď počasí ani jídelníček o růstu města nic neřeknou.' },
         { kind: 'order', q: 'Seřaď zeměpisné otázky tak, jak obvykle jdou za sebou.', items: ['Kde to je?', 'Jaké to tam je?', 'Proč je to právě tam?', 'Jak se to mění a co s tím uděláme?'], explain: 'Nejdřív polohu, pak popis, potom příčiny a nakonec vývoj a řešení.' },
         { kind: 'tf', q: 'Česko je rozdělené na 14 krajů a jedním z nich je hlavní město Praha.', answer: true, explain: 'Česko má 13 krajů a hlavní město Prahu, které má postavení kraje – dohromady 14.' },
         { kind: 'choice', q: 'Hradec Králové a České Budějovice mají společné to, že leží…', options: ['na soutoku dvou řek', 'na nejvyšší hoře svého kraje', 'na hranici s Rakouskem', 'u moře'], answer: 0, explain: 'Hradec Králové leží na soutoku Labe a Orlice, České Budějovice na soutoku Vltavy a Malše. Soutoky byly pro vznik měst výhodné.' },

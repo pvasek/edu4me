@@ -1,6 +1,6 @@
 # Maps (src/geo)
 
-Real maps for the Zeměpis course: the `map` lesson block, figures that need real coastlines and the map games. No hand-drawn outlines: everything is drawn from open data by one renderer, `GeoMap`.
+Real maps for the Geografie course (id `zemepis`): the `map` lesson block, figures that need real coastlines and the map games. No hand-drawn outlines: everything is drawn from open data by one renderer, `GeoMap`.
 
 ## Data and licences
 

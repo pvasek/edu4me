@@ -1,4 +1,4 @@
-# Zeměpis – named figures
+# Geografie – named figures
 
 Named figures are engraved SVG components used by the `diagram` block (`{ type: 'diagram', id }`). Ids live in `src/illustrations/catalog.ts`, components in `src/illustrations/figures/<group>/`, each group registered in `figures/<group>.tsx` and lazily in `figures/lazy.ts`. Style: `spec/illustration-guide.md` (processes as `StepFilm`, comparisons as `StepStrip`).
 

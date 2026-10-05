@@ -25,7 +25,7 @@ const z10_1: Lesson = {
       icon: 'earth',
       blocks: [
         { type: 'p', text: 'Na základní škole jsme probírali reliéf, podnebí, vody, půdy a krajinné pásy každý zvlášť, v úrovních „Reliéf Země“ a „Podnebí, vody a krajinné pásy“. Ve skutečné krajině ale nic z toho samo neexistuje: déšť vymílá svah, svah určuje, kam steče voda, a voda rozhoduje, co poroste. Na gymnáziu proto začneme tím, co všechno spolu souvisí.' },
-        { type: 'p', text: 'Zeměpisci dělí povrch planety na **geosféry**. Tam, kde se navzájem dotýkají a prolínají, vzniká **krajinná sféra** (fyzickogeografická sféra): tenká vrstva od spodní stratosféry po hloubku několika set metrů pod povrchem, ve které žijeme. Projdi si, co do ní patří:' },
+        { type: 'p', text: 'Geografové dělí povrch planety na **geosféry**. Tam, kde se navzájem dotýkají a prolínají, vzniká **krajinná sféra** (fyzickogeografická sféra): tenká vrstva od spodní stratosféry po hloubku několika set metrů pod povrchem, ve které žijeme. Projdi si, co do ní patří:' },
         { type: 'iconlist', items: [
           { icon: 'cloud', title: 'Atmosféra', text: 'vzduch; rozvádí teplo a vodní páru, mění se v ní počasí' },
           { icon: 'ocean', title: 'Hydrosféra', text: 'oceány, řeky, jezera, podzemní voda; patří k ní i led a sníh (kryosféra)' },
@@ -335,7 +335,7 @@ const z10_3: Lesson = {
       blocks: [
         { type: 'p', text: 'V lekci „Energetická bilance a cirkulace atmosféry“ jsme viděli, že teplotu Země drží skleníkové plyny. Nejdůležitější z těch, které přidávají lidé, je oxid uhličitý. Jeho množství ve vzduchu ale nejde pochopit bez celého systému, ve kterém uhlík koluje: **uhlíkového cyklu**. Nejdřív si připomeň schéma z chemie:' },
         { type: 'diagram', id: 'carbon-cycle', caption: 'Koloběh uhlíku: fotosyntéza, dýchání, rozklad, rozpouštění v oceánu, ukládání vápence, těžba a spalování fosilních paliv.' },
-        { type: 'p', text: 'Schéma ukazuje cesty, ale ne velikosti. Pro zeměpisce jsou podstatné právě ty: jak velké jsou zásoby a jak rychle se mezi nimi uhlík přesouvá. Počítá se v gigatunách uhlíku (1 Gt C = 1 miliarda tun). Porovnej, kde ho je nejvíc:' },
+        { type: 'p', text: 'Schéma ukazuje cesty, ale ne velikosti. Pro geografa jsou podstatné právě ty: jak velké jsou zásoby a jak rychle se mezi nimi uhlík přesouvá. Počítá se v gigatunách uhlíku (1 Gt C = 1 miliarda tun). Porovnej, kde ho je nejvíc:' },
         { type: 'table', headers: ['zásoba', 'uhlík (Gt C, řádově)', 'jak rychle se vyměňuje'], rows: [
           ['usazené horniny (vápence, břidlice)', 'desítky milionů', 'miliony let'],
           ['hlubinný oceán (rozpuštěný uhlík)', '≈ 37 000', 'staletí až tisíciletí'],
@@ -859,7 +859,7 @@ const z10_6: Lesson = {
       title: 'Sucho a vlny veder',
       icon: 'heat',
       blocks: [
-        { type: 'p', text: 'Sucho nezačíná ani nekončí jedním dnem a dá se měřit několika způsoby. Zeměpisci a hydrologové proto rozlišují, kde se nedostatek vody projeví. Porovnej tři druhy sucha, které na sebe navazují:' },
+        { type: 'p', text: 'Sucho nezačíná ani nekončí jedním dnem a dá se měřit několika způsoby. Geografové a hydrologové proto rozlišují, kde se nedostatek vody projeví. Porovnej tři druhy sucha, které na sebe navazují:' },
         { type: 'process', layout: 'flow', steps: [
           { icon: 'cloud', title: 'Meteorologické sucho', text: 'týdny až měsíce s podnormálními srážkami a vysokým výparem' },
           { icon: 'wheat', title: 'Zemědělské sucho', text: 'v půdě chybí vláha, rostliny vadnou, klesají výnosy' },
@@ -1225,7 +1225,7 @@ const z10_8: Lesson = {
         ], caption: 'Zájmové území projektu: na návětrné straně Jeseníků napršelo v polovině září 2024 během pěti dnů přes 500 mm (ČHMÚ); průtoky místy překonaly pětisetletou vodu (ČHMÚ).' },
         { type: 'p', text: 'Tak se v jednom projektu sejde celá úroveň: srážky z blokující níže, odtok v povodí, hydrogram, riziko a jeho snižování. Pozor na poslední krok, kde se chybuje nejčastěji: mapa bez měřítka, legendy, data a zdroje není výsledek analýzy, ale obrázek. Celou úroveň si teď zopakuj v bleskové výzvě:' },
         { type: 'game', gameId: 'quickfire', text: 'Blesková výzva: systémy Země, klima, tektonická a hydrometeorologická rizika a GIS na čas.' },
-        { type: 'p', text: 'Tím končí přírodní polovina gymnaziálního zeměpisu. Stejné nástroje – systém, data, mapu a riziko – použijeme v úrovni „Obyvatelstvo, města a geopolitika“ na lidi, města a státy, začneme lekcí „Demografický přechod“.' },
+        { type: 'p', text: 'Tím končí přírodní polovina gymnaziální geografie. Stejné nástroje – systém, data, mapu a riziko – použijeme v úrovni „Obyvatelstvo, města a geopolitika“ na lidi, města a státy, začneme lekcí „Demografický přechod“.' },
         { type: 'check', question: { kind: 'order', q: 'Seřaď kroky projektu s otevřenými daty.', items: ['položit otázku a hypotézu', 'najít a stáhnout data', 'udělat analýzu v GIS (zóny, překrytí, plochy)', 'vytvořit mapu s legendou a zdroji', 'zformulovat závěr k hypotéze'], explain: 'Bez otázky nevíš, jaká data hledat; analýza pracuje s daty a výsledkem je mapa a závěr, který hypotézu potvrdí nebo vyvrátí.' } },
       ],
     },

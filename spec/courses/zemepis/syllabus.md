@@ -1,4 +1,4 @@
-# Zeměpis – syllabus
+# Geografie – syllabus
 
 From "where am I and how do I find the way?" to the level expected at the Czech maturita and at university entrance (A-level / AP Human Geography). **12 levels, 85 lessons** (6–8 per level), plus a level test and mini-games in every level. Czech only; levels 1–9 for ZŠ (age 12–15, *zeměpis*, from 2026 *geografie*), levels 10–12 for gymnázium (age 15–19, *geografie*).
 
@@ -66,7 +66,7 @@ Each lesson lists its **core content**. Lessons must cover every bullet and must
 ### Level 1 – Mapa a orientace
 *Goal: read any map and find the way with a map, a compass and a phone.*
 
-- **z1-1 Co je zeměpis a jak se ptá** – geography as „kde a proč tam"; physical vs human geography; place, space, region; the geographer's questions and sources (map, photo, statistics, fieldwork); mental map of one's own surroundings.
+- **z1-1 Co je geografie a jak se ptá** – geography as „kde a proč tam"; physical vs human geography; place, space, region; the geographer's questions and sources (map, photo, statistics, fieldwork); mental map of one's own surroundings.
 - **z1-2 Glóbus a zeměpisná síť** – the globe as a model; poles, equator, meridians and parallels; the prime meridian (Greenwich); latitude and longitude in degrees and minutes, N/S, E/W; reading and writing coordinates; worked examples (Prague 50° 05′ s. š., 14° 25′ v. d.).
 - **z1-3 Mapa a měřítko** – map vs plan vs globe; numerical and graphical scale; large vs small scale; computing real distances from the map and back, with units (cm → km); worked examples; why scale limits detail (generalisation).
 - **z1-4 Mapové značky a výškopis** – legend, point/line/area symbols; altitude (nadmořská výška) and relative height; contour lines (vrstevnice) and their interval; colour hypsometry; reading slopes, hills and valleys from contours; drawing a simple profile.

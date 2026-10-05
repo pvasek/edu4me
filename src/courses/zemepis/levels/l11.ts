@@ -1,7 +1,7 @@
 import type { LevelContent } from '../../../core/types'
 
 /*
- * Zeměpis – level 11 „Obyvatelstvo, města a geopolitika“ (gymnázium G2–G3, AP/A-level).
+ * Geografie – level 11 „Obyvatelstvo, města a geopolitika“ (gymnázium G2–G3, AP/A-level).
  * Data sources (verified 2026-10): UN World Population Prospects 2024 (pyramids: shares from the wpp2024 package,
  * the same numbers as src/games/pop-pyramid/data.ts; totals and projections, medium variant), ČSÚ (2025, projekce 2023),
  * INSEE (bilan démographique 2025), Statistics Korea (2025), UN DESA International Migrant Stock 2024,

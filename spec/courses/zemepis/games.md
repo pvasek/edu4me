@@ -1,4 +1,4 @@
-# Zeměpis – mini-games
+# Geografie – mini-games
 
 Games are listed per course in `src/games/registry.ts` (`courses.zemepis`: level number → what the game trains there). Every listed level has its own content set in the game. Playing without a level mixes all of them. Progress is stored under `zemepis:<gameId>`.
 

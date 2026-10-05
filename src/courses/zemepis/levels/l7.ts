@@ -1,7 +1,7 @@
 import type { LevelContent } from '../../../core/types'
 
 /*
- * Zeměpis, level 7 – Regiony světa (ZŠ 7.–8. třída).
+ * Geografie, level 7 – Regiony světa (ZŠ 7.–8. třída).
  * Every region is described with the tools of levels 1–6. Data and sources:
  * - population: UN World Population Prospects 2024 (year 2024); cities: UN World Urbanization Prospects 2025;
  *   Austrálie ABS (31. 12. 2025); Kanada Statistics Canada (2025); Tuvalu sčítání 2022.
@@ -68,7 +68,7 @@ const level: LevelContent = {
               { lat: 9.1, lon: -79.7, label: 'Panamská šíje (Severní | Jižní Amerika)', kind: 'place' },
             ], caption: 'Hranice světadílů. Hranici Evropy a Asie vedou učebnice po Uralu, řece Uralu a Kaspickém moři a dál po Kavkaze nebo po Kumo-manyčské sníženině – v detailu se liší.' },
             { type: 'callout', variant: 'fact', text: 'Tichý oceán je sám větší než všechna pevnina Země dohromady (pevnina má asi 149 mil. km²).' },
-            { type: 'p', text: 'Světadíly jsou ale pro zeměpis příliš velké celky. V Asii se vedle sebe najde poušť i prales, miliardové státy i liduprázdná tundra. Proto je dělíme na menší **regiony** – a první měřítko, podle kterého to jde, je příroda.' },
+            { type: 'p', text: 'Světadíly jsou ale pro geografii příliš velké celky. V Asii se vedle sebe najde poušť i prales, miliardové státy i liduprázdná tundra. Proto je dělíme na menší **regiony** – a první měřítko, podle kterého to jde, je příroda.' },
             { type: 'check', question: { kind: 'tf', q: 'Evropa je samostatný kontinent, protože ji ze všech stran obklopuje moře.', answer: false, explain: 'Evropa je světadíl, ale ne kontinent. S Asií tvoří jednu souvislou pevninu – Eurasii. Hranice mezi nimi je jen dohoda lidí (Ural, Kaspické moře, Kavkaz).' } },
           ],
         },
@@ -111,7 +111,7 @@ const level: LevelContent = {
           title: 'Mentální mapa a její omyly',
           icon: 'map',
           blocks: [
-            { type: 'p', text: 'V lekci „Co je zeměpis a jak se ptá“ sis kreslil/a **mentální mapu** svého okolí: obraz místa, který máme v hlavě. Mentální mapu máme i o celém světě – a bývá v ní víc omylů, než bychom čekali.' },
+            { type: 'p', text: 'V lekci „Co je geografie a jak se ptá“ sis kreslil/a **mentální mapu** svého okolí: obraz místa, který máme v hlavě. Mentální mapu máme i o celém světě – a bývá v ní víc omylů, než bychom čekali.' },
             { type: 'p', text: 'Část omylů pochází z map, které vídáme nejčastěji. Jak Mercatorovo zobrazení zvětšuje území u pólů, víš z lekce „Druhy map a jejich zkreslení“. Tady jsou čtyři omyly, které se v mentálních mapách objevují nejčastěji:' },
             { type: 'iconlist', items: [
               { icon: 'globe', title: '„Grónsko je velké jako Afrika“', text: 'Na Mercatorově mapě ano, ve skutečnosti je Afrika asi 14× větší (30,3 vs 2,2 mil. km²).' },
@@ -138,7 +138,7 @@ const level: LevelContent = {
               { icon: 'coin', title: 'Hospodářství', text: 'suroviny, zemědělství, průmysl, HDP' },
               { icon: 'warning', title: 'Současný problém', text: 'co region právě teď řeší a proč' },
             ], caption: 'Pět kroků, kterými popíšeme každý region světa.' },
-            { type: 'p', text: 'Nejdůležitější je poslední krok: najít vazby. Proč je Sahel chudý? Kvůli podnebí, ale také kvůli rychlému růstu obyvatel a válkám. Zeměpis je silný právě tím, že spojuje přírodu a lidi v jednom vysvětlení.' },
+            { type: 'p', text: 'Nejdůležitější je poslední krok: najít vazby. Proč je Sahel chudý? Kvůli podnebí, ale také kvůli rychlému růstu obyvatel a válkám. Geografie je silná právě tím, že spojuje přírodu a lidi v jednom vysvětlení.' },
             { type: 'callout', variant: 'mascot', text: 'Na každý region se budu ptát jednou otázkou. A první zní: proč je Afrika nejmladší světadíl? Tipni si odpověď, než otevřeš další lekci.' },
             { type: 'p', text: 'Teď máme nástroje i postup. V příští lekci je použijeme na Afriku – světadíl pouští, pralesů a nejrychleji rostoucího obyvatelstva.' },
             { type: 'check', question: { kind: 'order', q: 'Seřaď kroky, kterými v této úrovni popisujeme každý region.', items: ['poloha a reliéf', 'podnebí a krajinné pásy', 'obyvatelé a města', 'hospodářství', 'současný problém'], explain: 'Začínáme přírodou (reliéf, podnebí), pak přidáme lidi a hospodářství a nakonec hledáme, jak se to všechno projevuje v současném problému regionu.' } },

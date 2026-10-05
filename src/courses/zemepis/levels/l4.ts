@@ -1,7 +1,7 @@
 import type { LevelContent } from '../../../core/types'
 
 /*
- * Zeměpis, level 4 – Podnebí, vody a krajinné pásy (ZŠ 6.–7. třída).
+ * Geografie, level 4 – Podnebí, vody a krajinné pásy (ZŠ 6.–7. třída).
  * Climate charts use real station normals:
  * - Praha-Ruzyně: ČHMÚ, normál 1991–2020
  * - Manaus: INMET (Brazílie), normál 1991–2020
@@ -44,7 +44,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Atmosféra nemá ostrou horní hranici, řídne postupně. Polovina všeho vzduchu je ale níž než 6 km nad zemí. Vědci ji dělí na vrstvy podle toho, jak se s výškou mění teplota.' },
             { type: 'p', text: 'Projdi obrázek odspodu nahoru. Všimni si, kam sahá Everest, kde létají letadla a kde obíhá vesmírná stanice:' },
             { type: 'diagram', id: 'atmosphere-layers', caption: 'Vrstvy atmosféry: troposféra, stratosféra s ozonovou vrstvou, mezosféra a termosféra.' },
-            { type: 'p', text: 'Pro zeměpis jsou nejdůležitější dvě spodní vrstvy. Tady jsou jejich hlavní znaky:' },
+            { type: 'p', text: 'Pro geografii jsou nejdůležitější dvě spodní vrstvy. Tady jsou jejich hlavní znaky:' },
             { type: 'keyterms', items: [
               { term: '**Troposféra**', def: 'nejnižší vrstva, nad Českem do výšky asi 11 km (nad rovníkem asi 17 km, nad póly asi 8 km); je v ní skoro všechna vodní pára, a proto tu vzniká **počasí**; teplota s výškou klesá' },
               { term: '**Stratosféra**', def: 'od horní hranice troposféry do asi 50 km; vzduch je suchý a klidný; dálková letadla létají kolem její spodní hranice, asi v 10–12 km' },
@@ -341,7 +341,7 @@ const level: LevelContent = {
           title: 'Podnebné pásy',
           icon: 'globe',
           blocks: [
-            { type: 'p', text: 'Teplotní pásy z lekce „Osvětlení Země a teplotní pásy“ dělily Zemi jen podle tepla. **Podnebné pásy** přidávají i srážky a větry, které jsme právě poznali. Zeměpisci jich rozlišují pět a každý se opakuje na severní i jižní polokouli.' },
+            { type: 'p', text: 'Teplotní pásy z lekce „Osvětlení Země a teplotní pásy“ dělily Zemi jen podle tepla. **Podnebné pásy** přidávají i srážky a větry, které jsme právě poznali. Geografové jich rozlišují pět a každý se opakuje na severní i jižní polokouli.' },
             { type: 'p', text: 'Na mapě najdi nejdřív Česko a pak místa rekordů. Hranice pásů jsou zjednodušené – ve skutečnosti se ohýbají podle oceánů a pohoří:' },
             { type: 'map', view: 'world', bands: [
               { from: -23.5, to: 23.5, tone: 'b', label: 'tropický pás' },
@@ -438,7 +438,7 @@ const level: LevelContent = {
         'Popsat, jak se klimatogram kreslí (osy, čára teploty, sloupce srážek)',
         'Porovnat podnebí dvou míst podle jejich klimatogramů a přiřadit klimatogram k podnebnému pásu',
       ],
-      hook: 'Kdybys měl jen jeden obrázek, abys kamarádovi z Brazílie vysvětlil, jaké je podnebí v Praze, co bys nakreslil? Zeměpisci na to mají graf, který se vejde na dlaň: klimatogram.',
+      hook: 'Kdybys měl jen jeden obrázek, abys kamarádovi z Brazílie vysvětlil, jaké je podnebí v Praze, co bys nakreslil? Geografové na to mají graf, který se vejde na dlaň: klimatogram.',
       sections: [
         {
           title: 'Podnebí v jednom grafu',
@@ -626,7 +626,7 @@ const level: LevelContent = {
           title: 'Světový oceán',
           icon: 'ocean',
           blocks: [
-            { type: 'p', text: 'Všechna moře a oceány jsou propojené v jeden **světový oceán**. Zeměpisci ho dělí na čtyři oceány, dnes se často přidává i pátý – Jižní oceán kolem Antarktidy.' },
+            { type: 'p', text: 'Všechna moře a oceány jsou propojené v jeden **světový oceán**. Geografové ho dělí na čtyři oceány, dnes se často přidává i pátý – Jižní oceán kolem Antarktidy.' },
             { type: 'p', text: 'Oceány se liší velikostí i tím, které světadíly omývají. Seřazené od největšího:' },
             { type: 'iconlist', items: [
               { icon: 'ocean', title: 'Tichý oceán', text: 'největší a nejhlubší, zabírá asi třetinu povrchu Země – víc než všechna pevnina dohromady; v něm Mariánský příkop, hluboký skoro 11 km' },

@@ -146,13 +146,13 @@ export const BADGES: Badge[] = [
     }),
   ),
   // geography
-  { id: 'zemepis-first', title: 'První výprava', description: 'Dokonči první lekci zeměpisu.', icon: 'target', color: '#2f7d86', course: 'zemepis', earned: (p) => courseLessonsDone(p, 'zemepis') >= 1 },
-  { id: 'zemepis-all', title: 'Zeměpisec', description: `Dokonči všech ${ZEMEPIS_LESSONS} lekcí zeměpisu.`, icon: 'trophy', color: '#2f7d86', course: 'zemepis', earned: (p) => courseLessonsDone(p, 'zemepis') >= ZEMEPIS_LESSONS },
+  { id: 'zemepis-first', title: 'První výprava', description: 'Dokonči první lekci geografie.', icon: 'target', color: '#2f7d86', course: 'zemepis', earned: (p) => courseLessonsDone(p, 'zemepis') >= 1 },
+  { id: 'zemepis-all', title: 'Geograf', description: `Dokonči všech ${ZEMEPIS_LESSONS} lekcí geografie.`, icon: 'trophy', color: '#2f7d86', course: 'zemepis', earned: (p) => courseLessonsDone(p, 'zemepis') >= ZEMEPIS_LESSONS },
   ...ZEMEPIS_LEVEL_BADGES.map(
     ([id, title], i): Badge => ({
       id: `zemepis-level-${id}`,
       title,
-      description: `Zvládni závěrečnou výzvu ${i + 1}. úrovně zeměpisu.`,
+      description: `Zvládni závěrečnou výzvu ${i + 1}. úrovně geografie.`,
       icon: 'trophy',
       color: zemepis.levels[i]?.color ?? '#2f7d86',
       course: 'zemepis',

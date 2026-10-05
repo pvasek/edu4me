@@ -39,7 +39,7 @@ Badges in `src/core/badges.ts` (a badge with `course` is shown only once that co
 - one badge per chemistry level test (Pán látek … Biochemik);
 - physics: První měření (first physics lesson), Fyzik (all physics lessons), one badge per physics level test (Měřič … Kvantový fyzik);
 - biology: První pozorování (first biology lesson), Biolog (all biology lessons), one badge per biology level test (Pozorovatel buněk … Darwinovec).
-- geography: První výprava (first geography lesson), Zeměpisec (all geography lessons), one badge per geography level test (Kartograf … Stratég planety).
+- geography: První výprava (first geography lesson), Geograf (all geography lessons), one badge per geography level test (Kartograf … Stratég planety).
 
 New badges pop up as a toast.
 

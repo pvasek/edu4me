@@ -12,7 +12,7 @@ const load = (n: number) => () =>
 
 export const zemepis: Course = {
   id: 'zemepis',
-  title: 'Zeměpis',
+  title: 'Geografie',
   tagline: 'Od mapy a kompasu přes planetu, podnebí a lidi až po regiony světa, Česko a globální výzvy.',
   color: '#2f7d86',
   icon: 'globe',
@@ -23,7 +23,7 @@ export const zemepis: Course = {
       id: 'l1', number: 1, title: 'Mapa a orientace', subtitle: 'Zeměpisná síť, měřítko, výškopis, orientace a digitální mapy',
       stage: 'ZŠ 6. třída', color: '#2f7d86', symbol: 'Gr', emblemName: 'Greenwich', load: load(1),
       lessons: [
-        { id: 'z1-1', icon: 'question', title: 'Co je zeměpis a jak se ptá', minutes: 13 },
+        { id: 'z1-1', icon: 'question', title: 'Co je geografie a jak se ptá', minutes: 13 },
         { id: 'z1-2', icon: 'globe', title: 'Glóbus a zeměpisná síť', minutes: 13 },
         { id: 'z1-3', icon: 'ruler', title: 'Mapa a měřítko', minutes: 13 },
         { id: 'z1-4', icon: 'mountain', title: 'Mapové značky a výškopis', minutes: 13 },

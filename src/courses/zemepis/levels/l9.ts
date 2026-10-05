@@ -1,7 +1,7 @@
 import type { LevelContent } from '../../../core/types'
 
 /*
- * Zeměpis – level 9 „Česko“ (ZŠ 9. třída).
+ * Geografie – level 9 „Česko“ (ZŠ 9. třída).
  * Czechia described with the tools of levels 1–8; earlier lessons are referred to by title, not re-taught.
  * Data sources (verified 2026-10 by web search, values rounded in the text):
  * - population: ČSÚ, pohyb obyvatelstva 2025 (10 915 839 k 31. 12. 2025; 77 600 narozených, 113 300 zemřelých,

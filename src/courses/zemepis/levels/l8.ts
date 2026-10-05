@@ -1,7 +1,7 @@
 import type { LevelContent } from '../../../core/types'
 
 /*
- * Zeměpis, level 8 – Evropa (ZŠ 8. třída).
+ * Geografie, level 8 – Evropa (ZŠ 8. třída).
  * Europe is described with the tools of levels 1–6; level 7 is the model. Data and sources (checked October 2026):
  * - climate charts (normál 1991–2020, the curated station set of the climate-chart game, src/games/climate-chart/data.ts):
  *   Londýn-Heathrow, Moskva (VDNCh), Řím-Ciampino; Praha-Ruzyně: ČHMÚ, normál 1991–2020.
@@ -835,7 +835,7 @@ const level: LevelContent = {
               { icon: 'car', title: 'Slovensko', text: 'Karpaty a Tatry; světová jednička ve výrobě aut na obyvatele: 1,07 milionu aut v roce 2025, tedy 196 na každých 1 000 obyvatel; platí eurem od roku 2009' },
               { icon: 'drop', title: 'Maďarsko', text: 'Panonská pánev s Velkou uherskou nížinou, Dunaj a Tisa, jezero Balaton; termální prameny; ugrofinský jazyk' },
             ] },
-            { type: 'p', text: 'Pozor: Slovensko vyrábí nejvíc aut na obyvatele na světě, ale ne nejvíc aut celkem – to Čína. Čísla „na obyvatele“ a „celkem“ se v zeměpise pletou často. Jak se z těchto států staly výrobci aut pro celou Evropu, vysvětluje jejich proměna po roce 1989.' },
+            { type: 'p', text: 'Pozor: Slovensko vyrábí nejvíc aut na obyvatele na světě, ale ne nejvíc aut celkem – to Čína. Čísla „na obyvatele“ a „celkem“ se v geografii pletou často. Jak se z těchto států staly výrobci aut pro celou Evropu, vysvětluje jejich proměna po roce 1989.' },
             { type: 'check', question: { kind: 'choice', q: 'Který stát je světovou jedničkou ve výrobě aut na obyvatele?', options: ['Slovensko', 'Německo', 'Polsko', 'Maďarsko'], answer: 0, explain: 'Slovensko vyrobilo v roce 2025 asi 196 aut na 1 000 obyvatel. Továrny tam mají Volkswagen, Kia, Stellantis a Jaguar Land Rover.' } },
           ],
         },

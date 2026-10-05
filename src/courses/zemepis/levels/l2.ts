@@ -22,7 +22,7 @@ const level: LevelContent = {
             { type: 'p', text: 'Najdi Zemi v pořadí planet. Všimni si, že patří mezi čtyři malé kamenné planety blízko Slunce:' },
             { type: 'diagram', id: 'solar-system', caption: 'Sluneční soustava (vzdálenosti ani velikosti nejsou v měřítku). Země je třetí planeta od Slunce, mezi Venuší a Marsem.' },
             { type: 'p', text: 'Země má proti sousedkám štěstí. Je od Slunce v takové vzdálenosti, že na jejím povrchu může být kapalná voda: na Venuši je na ni příliš horko, na Marsu je zamrzlá. Je to jediná planeta, o které víme, že na ní žijí organismy.' },
-            { type: 'callout', variant: 'fact', text: 'Fyzika se sluneční soustavě věnuje v lekci „Sluneční soustava a vesmír“. Zeměpis zajímá hlavně to, co z pohybů Země plyne pro lidi: den a noc, čas, roční období a příliv.' },
+            { type: 'callout', variant: 'fact', text: 'Fyzika se sluneční soustavě věnuje v lekci „Sluneční soustava a vesmír“. Geografii zajímá hlavně to, co z pohybů Země plyne pro lidi: den a noc, čas, roční období a příliv.' },
             { type: 'p', text: 'Víme tedy, kde Země je. Jaký má ale tvar? Dnes to víme z fotek z vesmíru, lidé to však poznali dávno předtím.' },
             { type: 'check', question: { kind: 'choice', q: 'Kolikátá planeta od Slunce je Země?', options: ['třetí', 'druhá', 'čtvrtá', 'pátá'], answer: 0, explain: 'Pořadí od Slunce: Merkur, Venuše, Země, Mars. Země je třetí.' } },
           ],

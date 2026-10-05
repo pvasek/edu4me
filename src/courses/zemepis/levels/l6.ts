@@ -1,7 +1,7 @@
 import type { LevelContent } from '../../../core/types'
 
 /**
- * Zeměpis level 6 – Hospodářství světa (ZŠ 7. třída).
+ * Geografie level 6 – Hospodářství světa (ZŠ 7. třída).
  * Data sources are named in the text (World Bank, IMF WEO, ILO, ČSÚ, FAO, USGS, Energy Institute, ERÚ,
  * OICA, SAP, UNCTAD, UN Tourism, WTO, UNDP HDR 2025, UN WPP 2024).
  */
@@ -22,7 +22,7 @@ const level: LevelContent = {
           title: 'Od pole po aplikaci: čtyři sektory',
           icon: 'factory',
           blocks: [
-            { type: 'p', text: 'V lekci „Sídla a města“ jsme viděli, že lidé se stěhují do měst hlavně za prací. Jakou práci ale dělají? Zeměpisci třídí všechny hospodářské činnosti do **sektorů** podle toho, co lidé s věcmi dělají: berou je z přírody, zpracovávají je, nebo poskytují službu.' },
+            { type: 'p', text: 'V lekci „Sídla a města“ jsme viděli, že lidé se stěhují do měst hlavně za prací. Jakou práci ale dělají? Geografové třídí všechny hospodářské činnosti do **sektorů** podle toho, co lidé s věcmi dělají: berou je z přírody, zpracovávají je, nebo poskytují službu.' },
             { type: 'p', text: 'Sektory jsou čtyři. První tři zná každá učebnice, čtvrtý se přidává až v posledních desetiletích:' },
             { type: 'keyterms', items: [
               { term: '**Primární sektor**', def: 'získává suroviny přímo z přírody: zemědělství, lesnictví, rybolov a těžba' },
@@ -37,7 +37,7 @@ const level: LevelContent = {
               { icon: 'container', title: 'Doprava a obchod', text: 'řidič rohlík rozveze, prodavačka prodá – terciérní sektor' },
               { icon: 'idea', title: 'Výzkum a aplikace', text: 'šlechtitel vyvine odolnější odrůdu, programátor aplikaci na nákup – kvartérní sektor' },
             ], caption: 'Na jednom rohlíku se podílejí všechny čtyři sektory.' },
-            { type: 'p', text: 'Pozor na jednu past: těžbu uhlí nebo rudy řadíme v zeměpise do **primárního** sektoru, protože bere suroviny přímo ze země. Statistiky Českého statistického úřadu ji ale počítají k průmyslu. Proto se čísla z různých zdrojů o kousek liší.' },
+            { type: 'p', text: 'Pozor na jednu past: těžbu uhlí nebo rudy řadíme v geografii do **primárního** sektoru, protože bere suroviny přímo ze země. Statistiky Českého statistického úřadu ji ale počítají k průmyslu. Proto se čísla z různých zdrojů o kousek liší.' },
             { type: 'p', text: 'Sektory tedy umíme rozlišit. Teď nás bude zajímat, kolik lidí v kterém sektoru pracuje – a proč se to mezi státy tolik liší.' },
             { type: 'check', question: { kind: 'match', q: 'Přiřaď povolání k sektoru hospodářství.', pairs: [
               ['rybář na Třeboňsku', 'primární sektor'],
@@ -157,7 +157,7 @@ const level: LevelContent = {
         'Parita kupní síly bere v úvahu ceny v dané zemi, a proto lépe ukazuje, jak se v ní skutečně žije.',
       ],
       quiz: [
-        { kind: 'tf', q: 'Těžbu uhlí řadíme v zeměpise do primárního sektoru.', answer: true, explain: 'Těžba bere surovinu přímo z přírody, stejně jako zemědělství nebo rybolov. Statistiky ji někdy počítají k průmyslu, proto se čísla mírně liší.' },
+        { kind: 'tf', q: 'Těžbu uhlí řadíme v geografii do primárního sektoru.', answer: true, explain: 'Těžba bere surovinu přímo z přírody, stejně jako zemědělství nebo rybolov. Statistiky ji někdy počítají k průmyslu, proto se čísla mírně liší.' },
         { kind: 'choice', q: 'Který stát měl v roce 2025 největší HDP na světě?', options: ['USA', 'Čína', 'Německo', 'Indie'], answer: 0, explain: 'USA s asi 30,8 bilionu USD, druhá je Čína s asi 19,6 bilionu USD (MMF, duben 2026).' },
         { kind: 'order', q: 'Seřaď státy od nejvyššího HDP na obyvatele po nejnižší (Světová banka 2024).', items: ['USA', 'Česko', 'Čína', 'Indie', 'Etiopie'], explain: 'USA asi 85 800 USD, Česko 31 700, Čína 13 300, Indie 2 700 a Etiopie asi 1 000 USD na obyvatele.' },
         { kind: 'tf', q: 'Čína má větší celkové HDP než Česko, a proto má i vyšší HDP na obyvatele.', answer: false, explain: 'Čína má přes 1,4 miliardy obyvatel. Její HDP na obyvatele (asi 13 300 USD) je menší než polovina českého.' },
@@ -201,7 +201,7 @@ const level: LevelContent = {
           title: 'Intenzivní, extenzivní, plantáž',
           icon: 'tractor',
           blocks: [
-            { type: 'p', text: 'Na jednom hektaru se dá hospodařit „naplno“, nebo jen „zlehka“. Zeměpisci podle toho rozlišují **intenzivní** a **extenzivní** zemědělství.' },
+            { type: 'p', text: 'Na jednom hektaru se dá hospodařit „naplno“, nebo jen „zlehka“. Geografové podle toho rozlišují **intenzivní** a **extenzivní** zemědělství.' },
             { type: 'p', text: 'Porovnej oba přístupy vedle sebe. Rozhoduje, kolik peněz, práce a techniky se vloží do jednoho hektaru:' },
             { type: 'compare', columns: [
               { title: 'Intenzivní zemědělství', icon: 'tractor', tone: 'a', points: ['hodně strojů, hnojiv, zavlažování a práce na hektar', 'vysoké výnosy z malé plochy', 'skleníky v Nizozemsku, rýžová pole v Asii, české řepkové lány', 'riziko: znečištění vod hnojivy, vyčerpaná půda'] },
@@ -957,7 +957,7 @@ const level: LevelContent = {
           icon: 'balance-scale',
           blocks: [
             { type: 'p', text: 'Státy se často dělí na **vyspělé** (bohaté, s průmyslem a službami) a **rozvojové** (chudší, s velkým podílem zemědělství). Mezi nimi stojí rychle rostoucí země jako Čína nebo Brazílie. V lekci „Sektory hospodářství“ jsme poznali HDP na obyvatele, jenže jedno číslo na to nestačí.' },
-            { type: 'p', text: 'Zeměpisci proto sledují víc ukazatelů rozvoje najednou. Každý ukazuje jinou stránku života:' },
+            { type: 'p', text: 'Geografové proto sledují víc ukazatelů rozvoje najednou. Každý ukazuje jinou stránku života:' },
             { type: 'iconlist', items: [
               { icon: 'coin', title: 'HDP na obyvatele', text: 'kolik hodnoty v průměru vytvoří jeden člověk' },
               { icon: 'heart', title: 'Střední délka života', text: 'kolik let se v průměru dožije právě narozené dítě' },
